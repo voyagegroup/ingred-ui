@@ -1,6 +1,6 @@
 # ingred-ui
 
-> 
+>
 
 [![NPM](https://img.shields.io/npm/v/ingred-ui.svg)](https://www.npmjs.com/package/ingred-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,15 +13,18 @@ npm install --save ingred-ui
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import * as React from "react";
 
-import MyComponent from 'ingred-ui'
+import { ThemeProvider, createTheme, Button } from "ingred-ui";
 
 class Example extends React.Component {
-  render () {
+  render() {
+    const theme = createTheme();
     return (
-      <MyComponent />
-    )
+      <ThemeProvider theme={theme}>
+        <Button>Sample</Button>
+      </ThemeProvider>
+    );
   }
 }
 ```

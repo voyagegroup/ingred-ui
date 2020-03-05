@@ -41,8 +41,8 @@ export const getPadding = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
 
 export const spacer = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
   return `
-    ${getMargin(payload)}
-    ${getPadding(payload)}
+    ${getMargin(payload)};
+    ${getPadding(payload)};
   `;
 };
 
