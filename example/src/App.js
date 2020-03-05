@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import ExampleComponent from 'ingred-ui'
+import { ThemeProvider, createTheme, Button } from "ingred-ui";
 
 export default class App extends Component {
-  render () {
+  render() {
+    const theme = createTheme();
     return (
-      <div>
-        <ExampleComponent text='Modern React component module' />
-      </div>
-    )
+      <ThemeProvider theme={theme}>
+        <Button>button</Button>
+      </ThemeProvider>
+    );
   }
 }
