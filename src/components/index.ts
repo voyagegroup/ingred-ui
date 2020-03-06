@@ -31,11 +31,14 @@ export * from "./LoadingBar";
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";
 
-export { default as Spinner } from "./Spinner";
-export * from "./Spinner";
+export { default as Select } from "./Select";
+export * from "./Select";
 
 export { default as Spacer } from "./Spacer";
 export * from "./Spacer";
+
+export { default as Spinner } from "./Spinner";
+export * from "./Spinner";
 
 export { default as Table } from "./Table";
 export * from "./Table";

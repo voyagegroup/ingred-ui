@@ -17,7 +17,8 @@ import {
   TextField,
   Checkbox,
   RadioButton,
-  Table
+  Table,
+  Select
 } from "ingred-ui";
 
 const componentList = [
@@ -99,6 +100,25 @@ const componentList = [
       {
         title: "Error text",
         content: <ErrorText>エラーメッセージ</ErrorText>
+      },
+      {
+        title: "Select",
+        content: (
+          <Styled.InputContainer>
+            <Select
+              options={[
+                {
+                  label: "option1",
+                  value: 1
+                },
+                {
+                  label: "option2",
+                  value: 2
+                }
+              ]}
+            />
+          </Styled.InputContainer>
+        )
       },
       {
         title: "Checkbox",
