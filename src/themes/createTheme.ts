@@ -29,3 +29,7 @@ export function createTheme(options: ThemeOptions = {}): Theme {
 
   return theme;
 }
+
+declare module "styled-components" {
+  interface DefaultTheme extends Theme {}
+}
