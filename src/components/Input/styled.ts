@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Size, Color, Radius } from "../../../styles/variables";
-import { colors } from "../../../styles/variables/color";
+import { Size, Radius } from "../../styles";
+import { colors } from "../../styles/color";
 
 export const Container = styled.div`
   position: relative;
@@ -20,12 +20,13 @@ export const Input = styled.input<{
   border: 0;
   line-height: 20px;
   font-size: 14px;
-  color: ${Color.black};
+  color: ${({ theme }) => theme.palette.black};
   background-color: transparent;
   border: ${Size.Border.Small} solid ${colors.basic[300]};
   border-radius: ${Radius.SMALL};
-  box-shadow: 0 ${Size.Border.Normal} 0 0 ${Color.gray.light} inset;
-  background-color: ${Color.background.default};
+  box-shadow: 0 ${Size.Border.Normal} 0 0
+    ${({ theme }) => theme.palette.gray.light} inset;
+  background-color: ${({ theme }) => theme.palette.background.default};
   overflow: hidden;
 
   /* lastpassのicon用 */
@@ -33,33 +34,34 @@ export const Input = styled.input<{
 
   &:focus {
     outline: none;
-    border-color: ${Color.primary.main};
+    border-color: ${({ theme }) => theme.palette.primary.main};
   }
   &::placeholder {
-    color: ${Color.text.hint};
+    color: ${({ theme }) => theme.palette.text.hint};
   }
 
   /* IE */
   input:-ms-input-placeholder {
-    color: ${Color.text.hint};
+    color: ${({ theme }) => theme.palette.text.hint};
   }
 
   /* Edge */
   &::-ms-input-placeholder {
-    color: ${Color.text.hint};
+    color: ${({ theme }) => theme.palette.text.hint};
   }
 
   &.is-disabled {
-    color: ${Color.text.disabled};
+    color: ${({ theme }) => theme.palette.text.disabled};
     border-color: ${colors.basic[300]};
     box-shadow: none;
-    background-color: ${Color.gray.light};
+    background-color: ${({ theme }) => theme.palette.gray.light};
   }
 
   &.is-error {
-    color: ${Color.danger.main};
-    border-color: ${Color.danger.main};
-    box-shadow: 0 ${Size.Border.Normal} 0 0 ${Color.danger.highlight} inset;
+    color: ${({ theme }) => theme.palette.danger.main};
+    border-color: ${({ theme }) => theme.palette.danger.main};
+    box-shadow: 0 ${Size.Border.Normal} 0 0
+      ${({ theme }) => theme.palette.danger.highlight} inset;
     background-color: ${colors.red[100]};
   }
 `;
