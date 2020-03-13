@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { Theme } from "../../themes";
+import { useTheme } from "../../themes/useTheme";
 import { DashboardIcon } from "./internal/DashboardIcon";
 import { BarChartIcon } from "./internal/BarChartIcon";
 import { LogoutIcon } from "./internal/LogoutIcon";
@@ -21,8 +23,12 @@ import { ZoomInIcon } from "./internal/ZoomInIcon";
 import { SortUpIcon } from "./internal/SortUpIcon";
 import { SortDownIcon } from "./internal/SortDownIcon";
 import { SortInactiveIcon } from "./internal/SortInactiveIcon";
-import { Theme } from "../../themes";
-import { useTheme } from "../../themes/useTheme";
+import { FolderIcon } from "./internal/FolderIcon";
+import { ReturnLineIcon } from "./internal/ReturnLineIcon";
+import { LinkIcon } from "./internal/LinkIcon";
+import { UnlinkIcon } from "./internal/UnlinkIcon";
+import { NoLinkIcon } from "./internal/NoLinkIcon";
+import { SearchIcon } from "./internal/SearchIcon";
 
 export type IconName =
   | "dashboard"
@@ -45,14 +51,20 @@ export type IconName =
   | "zoom_in"
   | "sort_up"
   | "sort_down"
-  | "sort_inactive";
+  | "sort_inactive"
+  | "folder"
+  | "return_line"
+  | "link"
+  | "unlink"
+  | "no_link"
+  | "search";
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
 type IconSize = "sm" | "md" | "lg";
 export const iconSize: { [key in IconSize]: number } = {
   sm: 12,
   md: 18,
-  lg: 24,
+  lg: 24
 };
 export interface IconProps {
   type: IconType;
@@ -84,6 +96,12 @@ export const icons: {
   sort_up: SortUpIcon,
   sort_down: SortDownIcon,
   sort_inactive: SortInactiveIcon,
+  folder: FolderIcon,
+  return_line: ReturnLineIcon,
+  link: LinkIcon,
+  unlink: UnlinkIcon,
+  no_link: NoLinkIcon,
+  search: SearchIcon
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
@@ -112,7 +130,7 @@ const Icon: React.FunctionComponent<Props> = ({
   name,
   type = "line",
   size = "md",
-  color = "fill",
+  color = "fill"
 }) => {
   const theme = useTheme();
   return (
