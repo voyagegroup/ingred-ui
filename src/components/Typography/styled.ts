@@ -6,12 +6,14 @@ type ContainerProps = {
   align: TextAlign;
   fontSize: string;
   weight: FontWeight;
+  lineHeight: string;
 };
 
 export const Container = styled.p<ContainerProps>`
-  line-height: 1.4;
   color: ${({ color }) => color};
   text-align: ${({ align }) => align};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ weight }) => weight};
+  line-height: ${({ lineHeight }) => lineHeight};
+  word-break: break-all;
 `;
