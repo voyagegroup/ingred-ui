@@ -24,53 +24,53 @@ export type ButtonColorStyle = {
 };
 
 const getContainerColorStyles = (
-  theme: Theme,
+  theme: Theme
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
   primary: {
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.white,
-      boxShadow: "0px 3px 16px #0b82f466",
+      boxShadow: "0px 3px 16px #0b82f466"
     },
     hover: {
-      background: theme.palette.primary.dark,
+      background: theme.palette.primary.dark
     },
     active: {
-      background: theme.palette.primary.deepDark,
-    },
+      background: theme.palette.primary.deepDark
+    }
   },
   danger: {
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.white,
-      boxShadow: "0px 3px 16px #EB0A4E66",
+      boxShadow: "0px 3px 16px #EB0A4E66"
     },
     hover: {
-      background: theme.palette.danger.dark,
+      background: theme.palette.danger.dark
     },
     active: {
-      background: theme.palette.danger.deepDark,
-    },
+      background: theme.palette.danger.deepDark
+    }
   },
   cancel: {
     normal: {
       background: "transparent",
       color: theme.palette.black,
-      boxShadow: "none",
+      boxShadow: "none"
     },
     hover: {
-      background: colors.basic[300],
+      background: colors.basic[300]
     },
     active: {
-      background: colors.basic[400],
-    },
-  },
+      background: colors.basic[400]
+    }
+  }
 });
 
 const buttonSize: Record<ButtonSize, string> = {
   small: "64px",
   medium: "130px",
-  large: "178px",
+  large: "178px"
 };
 
 export type Props = Omit<BaseButtonProps, "color"> & {
@@ -103,7 +103,7 @@ const Button: React.FunctionComponent<Props> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      height={size === "small" ? "32px" : "40px"}
+      height={size === "small" ? "32px" : "48px"}
       minWidth={buttonSize[size]}
     >
       {children}
