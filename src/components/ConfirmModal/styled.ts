@@ -64,8 +64,7 @@ export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing * 3}px
-    ${({ theme }) => theme.spacing * 4}px;
+  padding: ${({ theme }) => theme.spacing * 3}px;
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
 `;

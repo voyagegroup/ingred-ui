@@ -8,9 +8,9 @@ import Typography from "../Typography";
 import Icon from "../Icon";
 import Flex from "../Flex";
 
-interface Props extends InputProps {
+type Props = InputProps & {
   errorText?: string;
-}
+};
 
 const TextField: React.FunctionComponent<Props> = ({
   errorText,
