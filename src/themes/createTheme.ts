@@ -1,6 +1,6 @@
 import { Palette, PaletteOptions, createPalette } from "./palette";
 import { Space } from "../styles/space";
-import { Depth, DepthOptions } from "../styles/depth";
+import { Depth, DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 
 export interface ThemeOptions {
@@ -25,7 +25,7 @@ export function createTheme(options: ThemeOptions = {}): Theme {
   const palette = createPalette(paletteInput);
   const spacing = spacingInput || Space;
 
-  const theme = deepmerge({ palette, spacing }, other);
+  const theme = deepmerge({ palette, spacing, depth }, other);
 
   return theme;
 }
