@@ -7,7 +7,28 @@
 ## Install
 
 ```bash
-npm install --save ingred-ui
+yarn add ssh://git@github.com:yarnpkg/yarn.git
+```
+
+```bash
+yarn add ingred-ui styled-components react-select
+```
+
+## ~~Install~~
+
+> 現在はまだ npm publish されていない為
+> 下記コマンドは利用できません。
+
+For npm users:
+
+```bash
+npm install --save ingred-ui styled-components
+```
+
+For Yarn users:
+
+```bash
+yarn add ingred-ui styled-components
 ```
 
 ## Usage
