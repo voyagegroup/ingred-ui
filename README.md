@@ -11,7 +11,8 @@ yarn add ssh://git@github.com:yarnpkg/yarn.git
 ```
 
 ```bash
-yarn add ingred-ui styled-components react-select
+yarn add ssh://git@github.com:voyagegroup/ingred-ui.git
+yarn add styled-components react-select
 ```
 
 ## ~~Install~~
