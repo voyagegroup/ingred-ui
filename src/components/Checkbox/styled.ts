@@ -13,6 +13,8 @@ export const Checkbox = styled.input<{ indeterminate: boolean }>`
   position: absolute;
 
   &:checked + span::before {
+    flex: 1 0 auto;
+
     /* background */
     background-color: ${({ theme }) => theme.palette.primary.main};
     box-shadow: none;
