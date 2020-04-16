@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  ${({ theme }) => console.log(theme)}
   padding: ${({ theme }) => theme.spacing * 3}px
-    ${({ theme }) => theme.spacing * 3}px ${({ theme }) => theme.spacing * 10}px;
+    ${({ theme }) => theme.spacing * 3}px ${({ theme }) =>
+  theme.spacing * 10}px;
 `;
 
 export const GridContainer = styled.div`
