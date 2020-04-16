@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Radius, Color, Size } from "../../../styles/variables";
-import { colors } from "../../../styles/variables/color";
+import { Size, Radius } from "../../styles";
+import { colors } from "../../styles/color";
 
 export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
@@ -13,10 +13,12 @@ export const Container = styled.div<{ error: boolean }>`
   .DateRangePickerInput {
     display: block;
     border: ${Size.Border.Small} solid
-      ${({ error }) => (error ? Color.danger.main : colors.basic[300])};
+      ${({ error }) =>
+        error ? ({ theme }) => theme.palette.danger.main : colors.basic[300]};
     border-radius: ${Radius.SMALL};
-    background-color: ${Color.background.default};
-    box-shadow: 0 ${Size.Border.Normal} 0 0 ${Color.gray.light} inset;
+    background-color: ${({ theme }) => theme.palette.background.default};
+    box-shadow: 0 ${Size.Border.Normal} 0 0
+      ${({ theme }) => theme.palette.gray.light} inset;
     overflow: hidden;
   }
   .DateInput {
@@ -27,13 +29,16 @@ export const Container = styled.div<{ error: boolean }>`
     padding: 10px 11px 8px;
     line-height: 20px;
     font-size: 14px;
-    color: ${({ error }) => (error ? Color.danger.main : Color.black)};
+    color: ${({ error }) =>
+      error
+        ? ({ theme }) => theme.palette.danger.main
+        : ({ theme }) => theme.palette.black};
     background-color: transparent;
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Proxima Nova",
       Verdana, "游ゴシック", YuGothic, Meiryo, sans-serif;
   }
   .DateInput_input__focused {
-    border-bottom-color: ${Color.primary.main};
+    border-bottom-color: ${({ theme }) => theme.palette.primary.main};
   }
   /* DayPickerRangeController */
   .DayPicker__withBorder {
@@ -41,7 +46,7 @@ export const Container = styled.div<{ error: boolean }>`
     border-radius: ${Radius.SMALL};
   }
   .DayPicker_weekHeader {
-    color: ${Color.text.secondary};
+    color: ${({ theme }) => theme.palette.text.secondary};
   }
   td {
     position: relative;
@@ -94,7 +99,7 @@ export const Container = styled.div<{ error: boolean }>`
   }
   .CalendarDay__hovered_span {
     background: transparent;
-    color: ${Color.black};
+    color: ${({ theme }) => theme.palette.black};
     z-index: 1;
     &:hover {
       background: inherit;
@@ -110,20 +115,20 @@ export const Container = styled.div<{ error: boolean }>`
       transform: translateY(-50%);
       width: 100%;
       height: 22px;
-      background: ${Color.primary.highlight};
+      background: ${({ theme }) => theme.palette.primary.highlight};
       z-index: -1;
     }
   }
   .CalendarDay__selected_span {
     background: transparent;
-    color: ${Color.black};
+    color: ${({ theme }) => theme.palette.black};
     z-index: 1;
     &:hover {
       background: inherit;
       border: 0;
       color: inherit;
       &:before {
-        background: ${Color.background.hint};
+        background: ${({ theme }) => theme.palette.background.hint};
       }
     }
     &:before {
@@ -135,26 +140,26 @@ export const Container = styled.div<{ error: boolean }>`
       transform: translateY(-50%);
       width: 100%;
       height: 22px;
-      background: ${Color.primary.highlight};
+      background: ${({ theme }) => theme.palette.primary.highlight};
       z-index: -1;
     }
   }
   .CalendarDay__outside {
-    color: ${Color.text.secondary};
+    color: ${({ theme }) => theme.palette.text.secondary};
   }
   .CalendarDay__selected {
     background: transparent;
-    color: ${Color.white};
+    color: ${({ theme }) => theme.palette.white};
     z-index: 1;
     &:hover {
       background: inherit;
       border: 0;
-      color: ${Color.white};
+      color: ${({ theme }) => theme.palette.white};
       &:before {
-        background: ${Color.primary.dark};
+        background: ${({ theme }) => theme.palette.primary.dark};
       }
       &::after {
-        background: ${Color.background.hint};
+        background: ${({ theme }) => theme.palette.background.hint};
       }
     }
     &:before {
@@ -163,10 +168,11 @@ export const Container = styled.div<{ error: boolean }>`
       position: absolute;
       top: 50%;
       left: 50% !important; /* td:nth-child(7n):beforeで上書きされるのを防ぐ */
-      transform: translate(calc(-50% - 0.5px), -50%);
+      transform: import { Size } from '../../styles/size';
+translate(calc(-50% - 0.5px), -50%);
       width: 22px;
       height: 22px;
-      background: ${Color.primary.main};
+      background: ${({ theme }) => theme.palette.primary.main};
       border-radius: 50%;
       z-index: -1;
     }
@@ -181,7 +187,7 @@ export const Container = styled.div<{ error: boolean }>`
       transform: translateY(-50%);
       width: 50%;
       height: 22px;
-      background: ${Color.primary.highlight};
+      background: ${({ theme }) => theme.palette.primary.highlight};
       z-index: -2;
     }
   }
@@ -195,7 +201,7 @@ export const Container = styled.div<{ error: boolean }>`
       transform: translateY(-50%);
       width: 50%;
       height: 22px;
-      background: ${Color.primary.highlight};
+      background: ${({ theme }) => theme.palette.primary.highlight};
       z-index: -2;
     }
   }
@@ -204,14 +210,14 @@ export const Container = styled.div<{ error: boolean }>`
 export const CustomArrowIcon = styled.div`
   width: 8px;
   height: 1px;
-  background-color: ${Color.text.hint};
+  background-color: ${({ theme }) => theme.palette.text.hint};
 `;
 
 export const BaseNavIcon = styled.div`
   position: absolute;
   top: 22px;
   border-radius: 50%;
-  background-color: ${Color.gray.light};
+  background-color: ${({ theme }) => theme.palette.gray.light};
 `;
 
 export const NavPrev = styled(BaseNavIcon)`

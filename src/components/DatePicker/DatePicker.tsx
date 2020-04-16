@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import * as moment from "moment";
+import moment from "moment";
 import {
   FocusedInputShape,
   DateRangePicker,
