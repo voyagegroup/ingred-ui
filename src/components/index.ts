@@ -13,6 +13,9 @@ export * from "./Checkbox";
 export { default as ConfirmModal } from "./ConfirmModal";
 export * from "./ConfirmModal";
 
+export { default as DataTable } from "./DataTable";
+export * from "./DataTable";
+
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 
@@ -25,8 +28,14 @@ export * from "./Icon";
 export { default as Input } from "./Input";
 export * from "./Input";
 
+export { default as ItemEmpty } from "./ItemEmpty";
+export * from "./ItemEmpty";
+
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
+
+export { default as Pager } from "./Pager";
+export * from "./Pager";
 
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";

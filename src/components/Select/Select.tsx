@@ -113,6 +113,8 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
   return overrideStyles;
 };
 
+export type OptionType<T = string> = { label: string; value: T };
+
 export interface Props extends ReactSelectProps {
   limit?: number;
   link?: {

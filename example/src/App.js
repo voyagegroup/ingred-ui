@@ -1,4 +1,5 @@
 import * as React from "react";
+import styled from "styled-components";
 import * as Styled from "./styled";
 import { GlobalStyle } from "./styles/globalStyle";
 import {
@@ -184,23 +185,18 @@ const getColors = theme => [
   }
 ];
 
+const Container = styled.div`
+  ${({ theme }) => console.log(theme)}
+`;
+
 export default class App extends React.Component {
   render() {
-    const theme = createTheme({
-      palette: {
-        // primary: {
-        //   deepDark: "darkslategray",
-        //   dark: "teal",
-        //   main: "darkcyan",
-        //   light: "lightseagreen",
-        //   highlight: "powderblue",
-        // },
-      }
-    });
+    const theme = createTheme();
     return (
       <React.Fragment>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
+          <Container></Container>
           <Spacer pt={10} pb={7}>
             <Typography
               component="h1"
