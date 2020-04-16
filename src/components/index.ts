@@ -16,6 +16,9 @@ export * from "./ConfirmModal";
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
+export { default as DatePicker } from "./DatePicker";
+export * from "./DatePicker";
+
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 
