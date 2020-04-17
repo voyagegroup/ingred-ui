@@ -9,13 +9,13 @@
 For npm users:
 
 ```bash
-npm install --save ingred-ui styled-components react-select
+npm install --save ingred-ui styled-components react-select react-dates
 ```
 
 For Yarn users:
 
 ```bash
-yarn add ingred-ui styled-components react-select
+yarn add ingred-ui styled-components react-select react-dates
 ```
 
 ## Usage
@@ -36,6 +36,14 @@ class Example extends React.Component {
   }
 }
 ```
+
+`<DatePicker />`を使う場合は
+
+```tsx
+import "react-dates/lib/css/_datepicker.css";
+```
+
+を追記してください
 
 ## License
 
