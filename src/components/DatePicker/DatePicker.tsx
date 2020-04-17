@@ -1,7 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import {
   FocusedInputShape,

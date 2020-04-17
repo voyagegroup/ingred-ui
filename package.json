@@ -24,7 +24,7 @@
   "dependencies": {},
   "peerDependencies": {
     "react": ">= 16.6.1",
-    "react-dates": "^21.8.0",
+    "react-dates": ">= 21.8.0",
     "react-dom": ">= 16.6.1",
     "react-select": ">= 3.X",
     "styled-components": ">= 5.X"
