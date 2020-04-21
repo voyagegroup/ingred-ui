@@ -48,6 +48,7 @@
     "babel-loader": "^8.1.0",
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.1.4",
+    "css-loader": "^3.5.2",
     "gh-pages": "^1.2.0",
     "react-dates": "^21.8.0",
     "react-scripts-ts": "^2.16.0",
@@ -60,6 +61,7 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
+    "style-loader": "^1.1.4",
     "styled-components": "^5.0.1",
     "ts-loader": "^7.0.1",
     "typescript": "^3.8.3"
