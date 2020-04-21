@@ -23,8 +23,8 @@ const RowContainer = styled.div`
 function createButtons(props: Props[], text = "ボタン") {
   return (
     <>
-      {props.map(prop => (
-        <Spacer pb={2}>
+      {props.map((prop, i) => (
+        <Spacer pb={2} key={i}>
           <ActionButton {...prop} onClick={action("onClick")}>
             {text}
           </ActionButton>

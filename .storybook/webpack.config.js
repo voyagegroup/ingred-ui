@@ -1,3 +1,6 @@
+/**
+ * @type import('webpack').Configuration
+ */
 module.exports = {
   plugins: [],
   resolve: {
@@ -17,6 +20,18 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.stories\.tsx?$/,
+        use: [
+          {
+            loader: "@storybook/source-loader",
+            options: {
+              parser: "typescript"
+            }
+          }
+        ],
+        enforce: "pre"
       }
       // {
       //   test: /\.css$/,
