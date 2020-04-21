@@ -1,0 +1,6 @@
+[build]
+  publish = "storybook-static"
+  command = "yarn build-storybook"
+
+[[headers]]
+  for = "/*"

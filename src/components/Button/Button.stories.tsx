@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
+import Button from ".";
 import { action } from "@storybook/addon-actions";
-import Typography from "../components/Typography";
-import Flex from "../components/Flex";
-import Spacer from "../components/Spacer";
+import Typography from "../Typography";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;

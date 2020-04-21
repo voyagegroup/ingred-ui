@@ -6,4 +6,7 @@ const theme = createTheme();
 
 addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 
-configure(require.context("../src/stories", true, /\.stories\.tsx$/), module);
+configure(
+  require.context("../src/components", true, /\.stories\.tsx$/),
+  module
+);

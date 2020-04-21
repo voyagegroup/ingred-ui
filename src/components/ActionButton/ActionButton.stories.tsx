@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
-import ActionButton from "../components/ActionButton";
-import { Props } from "../components/ActionButton/ActionButton";
-import Typography from "../components/Typography";
-import Spacer from "../components/Spacer";
+import ActionButton from ".";
+import { Props } from "./ActionButton";
+import Typography from "../Typography";
+import Spacer from "../Spacer";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
