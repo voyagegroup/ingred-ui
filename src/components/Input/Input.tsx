@@ -4,7 +4,7 @@ import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import { useTheme } from "../../themes";
 
-export type Props = {
+export type Props = React.ComponentPropsWithoutRef<"input"> & {
   name?: string;
   placeholder?: string;
   type?: string;

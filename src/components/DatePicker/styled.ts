@@ -168,8 +168,7 @@ export const Container = styled.div<{ error: boolean }>`
       position: absolute;
       top: 50%;
       left: 50% !important; /* td:nth-child(7n):beforeで上書きされるのを防ぐ */
-      transform: import { Size } from '../../styles/size';
-translate(calc(-50% - 0.5px), -50%);
+      transform: translate(calc(-50% - 0.5px), -50%);
       width: 22px;
       height: 22px;
       background: ${({ theme }) => theme.palette.primary.main};
