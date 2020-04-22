@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "cross-env CI=1 jest --runInBand",
-    "test:watch": "jest --runInBand",
+    "test:watch": "jest --watchAll",
     "test:update": "jest --updateSnapshot",
     "build": "rollup -c",
     "start": "rollup -c -w",

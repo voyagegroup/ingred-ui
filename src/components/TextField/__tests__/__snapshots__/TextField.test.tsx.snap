@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextField component testing TextField 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm StDqN"
+  >
+    <div
+      class="sc-AxirZ hcwaaf  "
+    >
+      <input
+        class="sc-AxiKw blbawH  "
+        type="text"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

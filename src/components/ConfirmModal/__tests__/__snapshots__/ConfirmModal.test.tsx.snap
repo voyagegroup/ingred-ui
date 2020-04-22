@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmModal component testing ConfirmModal 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb ivzUGN"
+  >
+    <div
+      class="sc-AxhUy kQIEnz"
+    />
+    <div
+      class="sc-AxiKw sc-AxgMl eoodFf"
+    >
+      <form>
+        <div
+          class="sc-AxheI lhdGVW"
+        >
+          <div
+            class="sc-Axmtr fLzaxD"
+          >
+            <div
+              class="sc-AxmLO eECFKd"
+            >
+              <p
+                class="sc-fzplWN bLugHJ"
+                color="#041C33"
+                font-size="20px"
+              >
+                タイトル
+              </p>
+            </div>
+            <div
+              class="sc-fzoLsD bpXaOq"
+            >
+              <div
+                class="sc-fznyAO haJfle"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-AxjAm gPrILy"
+          />
+        </div>
+        <div
+          class="sc-fzozJi egZCbJ"
+        >
+          <div
+            class="sc-AxirZ beOrDm"
+            display="flex"
+          >
+            <div
+              class="sc-AxjAm gJyBXz"
+            >
+              <button
+                class="sc-fznKkj sc-fznZeY hlFxIw"
+                font-size="14px"
+                font-weight="normal"
+                height="48px"
+                type="button"
+              >
+                キャンセル
+              </button>
+            </div>
+            <button
+              class="sc-fznKkj sc-fznZeY kwnryv"
+              font-size="14px"
+              font-weight="bold"
+              height="48px"
+              type="submit"
+            >
+              はい
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

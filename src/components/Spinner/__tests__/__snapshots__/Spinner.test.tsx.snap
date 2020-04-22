@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner component testing Spinner 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm hAYKFN"
+    width="50px"
+  >
+    <svg
+      class="sc-AxirZ ePAMbP"
+      viewBox="25 25 50 50"
+    >
+      <circle
+        class="sc-AxiKw hLRJHJ"
+        cx="50"
+        cy="50"
+        r="20"
+        stroke="#EFF1F2"
+      />
+      <circle
+        class="sc-AxiKw sc-AxhCb knVbPt"
+        cx="50"
+        cy="50"
+        r="20"
+        stroke="#0B82F4"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select component testing Select 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-1cspll6-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-b1k5wd-placeholder"
+          >
+            選択してください
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-2-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb bewVXq"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
