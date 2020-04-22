@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pager component testing Pager 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxgMl AqZdH"
+    display="flex"
+  >
+    <button
+      class="sc-AxiKw kCLFLR"
+      disabled=""
+      type="button"
+    >
+      <div
+        class="sc-AxhCb cEyZBz"
+        size="24"
+      >
+        <svg
+          transform="rotate(90)"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,0H24V24H0Z"
+            fill="none"
+          />
+          <path
+            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            fill="#D1D5DA"
+          />
+        </svg>
+      </div>
+    </button>
+    <button
+      class="sc-AxjAm hxAiWo"
+      disabled=""
+      type="button"
+    >
+      <span
+        class="sc-AxirZ cmrQJL"
+        color="#FFFFFF"
+        font-size="12px"
+      >
+        1
+      </span>
+    </button>
+    <button
+      class="sc-AxjAm gOxvLU"
+      type="button"
+    >
+      <span
+        class="sc-AxirZ gGavIZ"
+        color="#0B82F4"
+        font-size="12px"
+      >
+        2
+      </span>
+    </button>
+    <button
+      class="sc-AxjAm gOxvLU"
+      type="button"
+    >
+      <span
+        class="sc-AxirZ gGavIZ"
+        color="#0B82F4"
+        font-size="12px"
+      >
+        3
+      </span>
+    </button>
+    <button
+      class="sc-AxjAm gOxvLU"
+      type="button"
+    >
+      <span
+        class="sc-AxirZ gGavIZ"
+        color="#0B82F4"
+        font-size="12px"
+      >
+        4
+      </span>
+    </button>
+    <button
+      class="sc-AxjAm gOxvLU"
+      type="button"
+    >
+      <span
+        class="sc-AxirZ gGavIZ"
+        color="#0B82F4"
+        font-size="12px"
+      >
+        5
+      </span>
+    </button>
+    <div
+      class="sc-AxhUy eycXve"
+    >
+      ...
+    </div>
+    <button
+      class="sc-AxjAm gOxvLU"
+      type="button"
+    >
+      <span
+        class="sc-AxirZ gGavIZ"
+        color="#0B82F4"
+        font-size="12px"
+      >
+        10
+      </span>
+    </button>
+    <button
+      class="sc-AxiKw bCZWMB"
+      type="button"
+    >
+      <div
+        class="sc-AxhCb cEyZBz"
+        size="24"
+      >
+        <svg
+          transform="rotate(-90)"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,0H24V24H0Z"
+            fill="none"
+          />
+          <path
+            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            fill="#0B82F4"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+</DocumentFragment>
+`;

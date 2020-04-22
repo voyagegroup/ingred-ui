@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorText component testing ErrorText 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhCb egMkCy"
+    display="flex"
+  >
+    <div
+      class="sc-AxirZ coKwIH"
+    >
+      <div
+        class="sc-AxjAm dvjUMs"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,0H19V19H0Z"
+            fill="none"
+          />
+          <path
+            d="M10,18a8,8,0,1,1,8-8A8,8,0,0,1,10,18Zm-.8-5.6V14h1.6V12.4ZM9.2,6v4.8h1.6V6Z"
+            fill="#EB0A4E"
+            transform="translate(-0.25 -0.75)"
+          />
+        </svg>
+      </div>
+    </div>
+    <p
+      class="sc-AxiKw caPvAk"
+      color="#EB0A4E"
+      font-size="14px"
+    >
+      エラー
+    </p>
+  </div>
+</DocumentFragment>
+`;

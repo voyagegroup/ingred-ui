@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataTable component testing DataTable 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm jvkHqD"
+  >
+    <table
+      class="sc-fznxsB BNIBc"
+    >
+      <thead>
+        <tr
+          class="sc-fzpjYC kaHrsQ"
+        >
+          <th
+            class="sc-AxmLO jKXuVB"
+            width="auto"
+          >
+            <div
+              class="sc-AxirZ iqgkLM"
+              display="flex"
+            >
+              <span
+                class="sc-AxhCb kAPUXw"
+                color="#778490"
+                font-size="14px"
+              >
+                A
+              </span>
+            </div>
+          </th>
+          <th
+            class="sc-AxmLO jKXuVB"
+            width="auto"
+          >
+            <div
+              class="sc-AxirZ iqgkLM"
+              display="flex"
+            >
+              <span
+                class="sc-AxhCb kAPUXw"
+                color="#778490"
+                font-size="14px"
+              >
+                B
+              </span>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="sc-fzpjYC kaHrsQ"
+        >
+          <td
+            class="sc-fzoLag emDgsi"
+            width="auto"
+          >
+            <p
+              class="sc-AxhCb eTsdHR"
+              color="#041C33"
+              font-size="14px"
+            >
+              name2
+            </p>
+          </td>
+          <td
+            class="sc-fzoLag emDgsi"
+            width="auto"
+          >
+            <p
+              class="sc-AxhCb eTsdHR"
+              color="#041C33"
+              font-size="14px"
+            >
+              name2
+            </p>
+          </td>
+        </tr>
+        <tr
+          class="sc-fzpjYC kaHrsQ"
+        >
+          <td
+            class="sc-fzoLag emDgsi"
+            width="auto"
+          >
+            <p
+              class="sc-AxhCb eTsdHR"
+              color="#041C33"
+              font-size="14px"
+            >
+              name1
+            </p>
+          </td>
+          <td
+            class="sc-fzoLag emDgsi"
+            width="auto"
+          >
+            <p
+              class="sc-AxhCb eTsdHR"
+              color="#041C33"
+              font-size="14px"
+            >
+              name1
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
