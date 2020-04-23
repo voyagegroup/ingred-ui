@@ -8,6 +8,7 @@ type Props = {
   subtitle?: string;
 };
 
+// TODO: 画像入れる
 const ItemEmpty: React.FunctionComponent<Props> = ({ title, subtitle }) => (
   <Styled.EmptyContainer>
     <Spacer pt={5} pb={1}>

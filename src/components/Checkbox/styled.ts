@@ -11,26 +11,23 @@ export const Checkbox = styled.input<{ indeterminate: boolean }>`
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
-
   &:checked + span::before {
-    flex: 1 0 auto;
-
+    /* flex: 1 0 auto; */
     /* background */
     background-color: ${({ theme }) => theme.palette.primary.main};
     box-shadow: none;
     border: 0;
-
     /* check icon */
     background-image: ${({ indeterminate }) =>
       indeterminate
-        ? `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Crect width='12' height='3' fill='%23fff' transform='translate(3 8)'/%3E%3C/svg%3E")`
+        ? `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Crect width='12' height='3' fill='%23ffffff' transform='translate(3 8)'/%3E%3C/svg%3E")`
         : `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12.271' height='9.439' viewBox='0 0 12.271 9.439'%3E%3Crect width='2.67' height='6.674' fill='%23ffffff' transform='translate(0 4.72) rotate(-45)'/%3E%3Crect width='2.67' height='9.344' fill='%23ffffff' transform='translate(10.383 0) rotate(45)'/%3E%3C/svg%3E")`};
     background-repeat: no-repeat;
     background-position: center;
   }
 `;
 
-export const Span = styled.span<{ hasChild: boolean }>`
+export const Span = styled.span<{ hasChild: boolean; indeterminate: boolean }>`
   display: inline-flex;
   align-items: center;
   &::before {
@@ -45,5 +42,20 @@ export const Span = styled.span<{ hasChild: boolean }>`
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing}px` : "auto"};
+  }
+  ${Checkbox}:disabled + & {
+    color: ${({ theme }) => theme.palette.text.disabled};
+  }
+  ${Checkbox}:disabled + &::before {
+    border: ${Size.Border.Small} solid ${colors.basic[300]};
+    background-color: ${({ theme }) => theme.palette.gray.light};
+  }
+  ${Checkbox}:disabled:checked + &::before {
+    background-image: ${({ indeterminate }) =>
+      indeterminate
+        ? `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Crect width='12' height='3' fill='%23D1D5DA' transform='translate(3 8)'/%3E%3C/svg%3E")`
+        : `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12.271' height='9.439' viewBox='0 0 12.271 9.439'%3E%3Crect width='2.67' height='6.674' fill='%23D1D5DA' transform='translate(0 4.72) rotate(-45)'/%3E%3Crect width='2.67' height='9.344' fill='%23D1D5DA' transform='translate(10.383 0) rotate(45)'/%3E%3C/svg%3E")`};
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `;

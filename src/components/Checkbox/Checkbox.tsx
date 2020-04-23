@@ -14,13 +14,15 @@ const Checkbox: React.FunctionComponent<Props> = ({
   return (
     <Styled.Container>
       <Styled.Checkbox
+        readOnly={true}
         type="checkbox"
         checked={checked}
         indeterminate={indeterminate}
         {...rest}
-        onChange={() => {}}
       />
-      <Styled.Span hasChild={!!children}>{children}</Styled.Span>
+      <Styled.Span indeterminate={indeterminate} hasChild={!!children}>
+        {children}
+      </Styled.Span>
     </Styled.Container>
   );
 };

@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
-import { Size, Radius } from "../../styles";
 import Card from "../Card";
+import { Radius, Size } from "../../styles";
 
 export const Container = styled.div`
   position: fixed;
@@ -11,13 +11,13 @@ export const Container = styled.div`
   z-index: ${({ theme }) => theme.depth.modal};
 `;
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+const fadeIn = keyframes`	
+  0% {	
+    opacity: 0;	
+  }	
+  100% {	
+    opacity: 1;	
+  }	
 `;
 export const ModalBackground = styled.div`
   position: absolute;
@@ -30,13 +30,13 @@ export const ModalBackground = styled.div`
   animation: ${fadeIn} 0.4s;
 `;
 
-const slideIn = keyframes`
-  0% {
-    transform: translate(-50%, calc(-50% + 8px));
-  }
-  100% {
-    transform: translate(-50%, -50%);
-  }
+const slideIn = keyframes`	
+  0% {	
+    transform: translate(-50%, calc(-50% + 8px));	
+  }	
+  100% {	
+    transform: translate(-50%, -50%);	
+  }	
 `;
 export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   position: absolute;
@@ -82,7 +82,7 @@ export const ModalFooter = styled.div`
   align-items: center;
   width: 100%;
   padding: ${({ theme }) => theme.spacing * 2}px
-    ${({ theme }) => theme.spacing * 4}px;
+    ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.light};
   border-radius: 0 0 ${Radius.MEDIUM} ${Radius.MEDIUM};
 `;

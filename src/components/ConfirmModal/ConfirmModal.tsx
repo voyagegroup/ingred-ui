@@ -7,7 +7,7 @@ import Flex from "../Flex";
 import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
-import { useTheme } from "../../themes/useTheme";
+import { useTheme } from "../../themes";
 
 export type Props = {
   title: string;
@@ -36,7 +36,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   loading,
   fullSize = false,
   overflowYScroll = true,
-  disableHorizontalPadding = false,
+  disableHorizontalPadding = false
 }) => {
   const theme = useTheme();
   return (
@@ -59,7 +59,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
             {disableHorizontalPadding ? (
               children
             ) : (
-              <Spacer px={4} pb={3}>
+              <Spacer px={3} pb={3}>
                 {children}
               </Spacer>
             )}
@@ -67,7 +67,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
           <Styled.ModalFooter>
             <Flex display="flex" alignItems="center">
               <Spacer pr={2}>
-                <Button onClick={onClose} type="button" color="cancel">
+                <Button type="button" color="cancel" onClick={onClose}>
                   キャンセル
                 </Button>
               </Spacer>

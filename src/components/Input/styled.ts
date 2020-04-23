@@ -14,7 +14,7 @@ export const Input = styled.input<{
   hasRightIcon: boolean;
 }>`
   display: inline-flex;
-  padding: 9px ${({ hasRightIcon }) => (hasRightIcon ? "32px" : "8px")} 9px
+  padding: 10px ${({ hasRightIcon }) => (hasRightIcon ? "32px" : "8px")} 10px
     ${({ hasLeftIcon }) => (hasLeftIcon ? "35px" : "8px")};
   flex: 1;
   border: 0;
@@ -28,10 +28,8 @@ export const Input = styled.input<{
     ${({ theme }) => theme.palette.gray.light} inset;
   background-color: ${({ theme }) => theme.palette.background.default};
   overflow: hidden;
-
   /* lastpassのicon用 */
   background-position: calc(100% - 35px) 50% !important;
-
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.palette.primary.main};
@@ -39,24 +37,20 @@ export const Input = styled.input<{
   &::placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
   }
-
   /* IE */
   input:-ms-input-placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
   }
-
   /* Edge */
   &::-ms-input-placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
   }
-
   &.is-disabled {
     color: ${({ theme }) => theme.palette.text.disabled};
     border-color: ${colors.basic[300]};
     box-shadow: none;
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
-
   &.is-error {
     color: ${({ theme }) => theme.palette.danger.main};
     border-color: ${({ theme }) => theme.palette.danger.main};

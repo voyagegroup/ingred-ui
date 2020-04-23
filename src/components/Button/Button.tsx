@@ -1,6 +1,5 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
-// TODO: colorsの扱いについて考える
 import { colors } from "../../styles/color";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
@@ -67,10 +66,19 @@ const getContainerColorStyles = (
   }
 });
 
-const buttonSize: Record<ButtonSize, string> = {
-  small: "64px",
-  medium: "130px",
-  large: "178px"
+const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
+  small: {
+    minWidth: "64px",
+    height: "32px"
+  },
+  medium: {
+    minWidth: "130px",
+    height: "42px"
+  },
+  large: {
+    minWidth: "178px",
+    height: "48px"
+  }
 };
 
 export type Props = Omit<BaseButtonProps, "color"> & {
@@ -104,7 +112,7 @@ const Button: React.FunctionComponent<Props> = ({
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
       height={size === "small" ? "32px" : "48px"}
-      minWidth={buttonSize[size]}
+      minWidth={buttonSize[size].minWidth}
     >
       {children}
     </Styled.ButtonContainer>
