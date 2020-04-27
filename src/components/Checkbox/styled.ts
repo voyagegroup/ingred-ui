@@ -6,17 +6,22 @@ export const Container = styled.label`
   cursor: pointer;
 `;
 
-export const Checkbox = styled.input<{ indeterminate: boolean }>`
+export const Checkbox = styled.input<{
+  indeterminate: boolean;
+  error: boolean;
+}>`
   opacity: 0;
   -webkit-appearance: none;
   appearance: none;
   position: absolute;
+
   &:checked + span::before {
     /* flex: 1 0 auto; */
     /* background */
     background-color: ${({ theme }) => theme.palette.primary.main};
     box-shadow: none;
     border: 0;
+
     /* check icon */
     background-image: ${({ indeterminate }) =>
       indeterminate
@@ -27,15 +32,25 @@ export const Checkbox = styled.input<{ indeterminate: boolean }>`
   }
 `;
 
-export const Span = styled.span<{ hasChild: boolean; indeterminate: boolean }>`
+export const Span = styled.span<{
+  hasChild: boolean;
+  indeterminate: boolean;
+  error: boolean;
+}>`
   display: inline-flex;
   align-items: center;
+  color: ${({ error }) =>
+    error
+      ? ({ theme }) => theme.palette.danger.main
+      : ({ theme }) => theme.palette.black};
   &::before {
     display: block;
     content: "";
     width: 18px;
     height: 18px;
-    border: ${Size.Border.Small} solid ${colors.basic[300]};
+    border: ${Size.Border.Small} solid
+      ${({ error }) =>
+        error ? ({ theme }) => theme.palette.danger.main : colors.basic[300]};
     border-radius: ${Radius.SMALL};
     box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
         theme.palette.gray.light} inset;
