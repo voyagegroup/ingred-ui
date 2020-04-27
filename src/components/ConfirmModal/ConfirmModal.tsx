@@ -12,6 +12,7 @@ import { useTheme } from "../../themes";
 export type Props = {
   title: string;
   confirmText?: string;
+  cancelText?: string;
   onClose?: () => void;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   buttonColor?: Exclude<ButtonColor, "cancel">;
@@ -28,6 +29,7 @@ export type Props = {
 const ConfirmModal: React.FunctionComponent<Props> = ({
   title,
   confirmText = "はい",
+  cancelText = "キャンセル",
   children,
   onClose,
   onSubmit,
@@ -44,7 +46,10 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
       <Styled.ModalBackground />
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
-          <Styled.ScrollContainer overflowYScroll={overflowYScroll}>
+          <Styled.ScrollContainer
+            overflowYScroll={overflowYScroll}
+            fullSize={fullSize}
+          >
             <Styled.ModalHeader>
               <Styled.TitleContainer>
                 <Typography weight="bold" size="xxxl">
@@ -68,7 +73,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
             <Flex display="flex" alignItems="center">
               <Spacer pr={2}>
                 <Button type="button" color="cancel" onClick={onClose}>
-                  キャンセル
+                  {cancelText}
                 </Button>
               </Spacer>
               <Button type="submit" color={buttonColor} disabled={disabled}>

@@ -9,14 +9,14 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
       class="sc-AxhUy hrDucc"
     />
     <div
-      class="sc-AxiKw sc-AxgMl gbTYmj"
+      class="sc-AxiKw sc-AxgMl feJJIS"
     >
       <form>
         <div
-          class="sc-AxheI lhdGVW"
+          class="sc-AxheI boTqkr"
         >
           <div
-            class="sc-Axmtr fLzaxD"
+            class="sc-Axmtr kYXfQl"
           >
             <div
               class="sc-AxmLO eECFKd"
@@ -41,13 +41,13 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <rect
-                    fill="#041C33"
+                    fill="#959FA9"
                     height="23.141"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
-                    fill="#041C33"
+                    fill="#959FA9"
                     height="23.141"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
@@ -57,11 +57,11 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
             </div>
           </div>
           <div
-            class="sc-AxjAm fDYLkK"
+            class="sc-AxjAm gPrILy"
           />
         </div>
         <div
-          class="sc-fzozJi hfnpgi"
+          class="sc-fzozJi hvdymy"
         >
           <div
             class="sc-AxirZ beOrDm"
@@ -71,20 +71,20 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
               class="sc-AxjAm gJyBXz"
             >
               <button
-                class="sc-fznKkj sc-fznZeY hlFxIw"
+                class="sc-fznKkj sc-fznZeY bZnhNi"
                 font-size="14px"
                 font-weight="normal"
-                height="48px"
+                height="42px"
                 type="button"
               >
                 キャンセル
               </button>
             </div>
             <button
-              class="sc-fznKkj sc-fznZeY kwnryv"
+              class="sc-fznKkj sc-fznZeY hUEhlJ"
               font-size="14px"
               font-weight="bold"
-              height="48px"
+              height="42px"
               type="submit"
             >
               はい

@@ -52,11 +52,15 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   overflow: hidden;
 `;
 
-export const ScrollContainer = styled.div<{ overflowYScroll: boolean }>`
-  max-height: 80vh;
+export const ScrollContainer = styled.div<{
+  overflowYScroll: boolean;
+  fullSize: boolean;
+}>`
+  max-height: ${({ fullSize, theme }) =>
+    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42}px)` : "80vh"};
   padding-bottom: ${({ theme }) =>
     theme.spacing * 2 * 2 +
-    48}px; /* ModalFooterの高さ(padding上下 + Button size="large"の高さ) */
+    42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
   overflow-y: ${({ overflowYScroll }) =>
     overflowYScroll ? "scroll" : "visible"};
 `;
