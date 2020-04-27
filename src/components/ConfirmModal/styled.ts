@@ -56,11 +56,14 @@ export const ScrollContainer = styled.div<{
   overflowYScroll: boolean;
   fullSize: boolean;
 }>`
-  max-height: ${({ fullSize, theme }) =>
-    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42}px)` : "80vh"};
-  padding-bottom: ${({ theme }) =>
-    theme.spacing * 2 * 2 +
-    42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
+  max-height: ${({ fullSize }) => (fullSize ? "auto" : "80vh")};
+  height: ${({ fullSize, theme }) =>
+    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42}px)` : "auto"};
+  margin-bottom: ${({ fullSize, theme }) =>
+    fullSize
+      ? 0
+      : theme.spacing * 2 * 2 +
+        42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
   overflow-y: ${({ overflowYScroll }) =>
     overflowYScroll ? "scroll" : "visible"};
 `;
