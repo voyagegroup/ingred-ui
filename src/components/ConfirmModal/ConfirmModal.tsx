@@ -52,19 +52,19 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
                 </Typography>
               </Styled.TitleContainer>
               <Styled.IconContainer onClick={onClose}>
-                <Icon name="close" size="lg" color={theme.palette.black} />
+                <Icon name="close" size="lg" color={theme.palette.gray.main} />
               </Styled.IconContainer>
             </Styled.ModalHeader>
 
             {disableHorizontalPadding ? (
               children
             ) : (
-              <Spacer px={3} pb={3}>
+              <Spacer px={4} pb={3}>
                 {children}
               </Spacer>
             )}
           </Styled.ScrollContainer>
-          <Styled.ModalFooter>
+          <Styled.ModalFooter fullSize={fullSize}>
             <Flex display="flex" alignItems="center">
               <Spacer pr={2}>
                 <Button type="button" color="cancel" onClick={onClose}>
