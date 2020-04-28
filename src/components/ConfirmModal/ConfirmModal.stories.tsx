@@ -121,3 +121,28 @@ export const WithOverflowAndDisableFooter = () => (
     </ConfirmModal>
   </Container>
 );
+
+export const WithSubActions = () => (
+  <Container>
+    <Spacer pt={2} />
+    <ConfirmModal
+      title="タイトル"
+      fullSize={true}
+      overflowYScroll={false}
+      subActions={[
+        {
+          title: "CSV形式でダウンロード",
+          icon: "export",
+          action: action("onClick")
+        },
+        {
+          title: "ダッシュボードに追加",
+          icon: "export",
+          action: action("onClick")
+        }
+      ]}
+    >
+      コンテンツ
+    </ConfirmModal>
+  </Container>
+);

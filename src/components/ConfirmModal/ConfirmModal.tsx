@@ -8,6 +8,14 @@ import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
+import ActionButton from "../ActionButton";
+import { IconName } from "../Icon/Icon";
+
+export type SubAction = {
+  title: string;
+  icon: IconName;
+  action: () => void;
+};
 
 export type Props = {
   title: string;
@@ -21,6 +29,7 @@ export type Props = {
   overflowYScroll?: boolean;
   fullSize?: boolean;
   disableHorizontalPadding?: boolean;
+  subActions?: SubAction[];
 
   // TypeScriptで型エラーが出るので一旦これでしのぐ
   children?: React.ReactNode;
@@ -38,7 +47,8 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   loading,
   fullSize = false,
   overflowYScroll = true,
-  disableHorizontalPadding = false
+  disableHorizontalPadding = false,
+  subActions = []
 }) => {
   const theme = useTheme();
   const showFooter = !!onSubmit;
@@ -48,11 +58,21 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
           <Styled.ModalHeader>
-            <Styled.TitleContainer>
-              <Typography weight="bold" size="xxxl">
-                {title}
-              </Typography>
-            </Styled.TitleContainer>
+            <Flex display="flex" alignItems="center">
+              <Styled.TitleContainer>
+                <Typography weight="bold" size="xxxl">
+                  {title}
+                </Typography>
+              </Styled.TitleContainer>
+              <Spacer pr={2} />
+              {subActions.map(({ icon, action, title }) => (
+                <Spacer pr={2} key="title">
+                  <ActionButton icon={icon} onClick={action} type="button">
+                    {title}
+                  </ActionButton>
+                </Spacer>
+              ))}
+            </Flex>
             <Styled.IconContainer onClick={onClose}>
               <Icon name="close" size="lg" color={theme.palette.black} />
             </Styled.IconContainer>

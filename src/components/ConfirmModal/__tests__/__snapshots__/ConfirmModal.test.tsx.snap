@@ -16,15 +16,23 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
           class="sc-AxheI kKHUdq"
         >
           <div
-            class="sc-Axmtr htThjI"
+            class="sc-AxirZ hbjRJG"
+            display="flex"
           >
-            <p
-              class="sc-fzplWN bLugHJ"
-              color="#041C33"
-              font-size="20px"
+            <div
+              class="sc-Axmtr htThjI"
             >
-              タイトル
-            </p>
+              <p
+                class="sc-fzplWN bLugHJ"
+                color="#041C33"
+                font-size="20px"
+              >
+                タイトル
+              </p>
+            </div>
+            <div
+              class="sc-AxjAm gJyBXz"
+            />
           </div>
           <div
             class="sc-fzoLsD bpXaOq"

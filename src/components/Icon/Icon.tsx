@@ -29,6 +29,7 @@ import { LinkIcon } from "./internal/LinkIcon";
 import { UnlinkIcon } from "./internal/UnlinkIcon";
 import { NoLinkIcon } from "./internal/NoLinkIcon";
 import { SearchIcon } from "./internal/SearchIcon";
+import { ExportIcon } from "./internal/ExportIcon";
 
 export type IconName =
   | "dashboard"
@@ -57,7 +58,8 @@ export type IconName =
   | "link"
   | "unlink"
   | "no_link"
-  | "search";
+  | "search"
+  | "export";
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
 type IconSize = "sm" | "md" | "lg";
@@ -101,7 +103,8 @@ export const icons: {
   link: LinkIcon,
   unlink: UnlinkIcon,
   no_link: NoLinkIcon,
-  search: SearchIcon
+  search: SearchIcon,
+  export: ExportIcon
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
