@@ -46,21 +46,20 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
       <Styled.ModalBackground />
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
+          <Styled.ModalHeader>
+            <Styled.TitleContainer>
+              <Typography weight="bold" size="xxxl">
+                {title}
+              </Typography>
+            </Styled.TitleContainer>
+            <Styled.IconContainer onClick={onClose}>
+              <Icon name="close" size="lg" color={theme.palette.black} />
+            </Styled.IconContainer>
+          </Styled.ModalHeader>
           <Styled.ScrollContainer
             overflowYScroll={overflowYScroll}
             fullSize={fullSize}
           >
-            <Styled.ModalHeader>
-              <Styled.TitleContainer>
-                <Typography weight="bold" size="xxxl">
-                  {title}
-                </Typography>
-              </Styled.TitleContainer>
-              <Styled.IconContainer onClick={onClose}>
-                <Icon name="close" size="lg" color={theme.palette.gray.main} />
-              </Styled.IconContainer>
-            </Styled.ModalHeader>
-
             {disableHorizontalPadding ? (
               children
             ) : (

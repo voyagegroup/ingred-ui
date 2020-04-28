@@ -13,49 +13,49 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
     >
       <form>
         <div
-          class="sc-AxheI Pewgk"
+          class="sc-AxheI kKHUdq"
         >
           <div
-            class="sc-Axmtr kYXfQl"
+            class="sc-Axmtr htThjI"
+          >
+            <p
+              class="sc-fzplWN bLugHJ"
+              color="#041C33"
+              font-size="20px"
+            >
+              タイトル
+            </p>
+          </div>
+          <div
+            class="sc-fzoLsD bpXaOq"
           >
             <div
-              class="sc-AxmLO eECFKd"
+              class="sc-fznyAO haJfle"
+              size="24"
             >
-              <p
-                class="sc-fzplWN bLugHJ"
-                color="#041C33"
-                font-size="20px"
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                タイトル
-              </p>
-            </div>
-            <div
-              class="sc-fzoLsD bpXaOq"
-            >
-              <div
-                class="sc-fznyAO haJfle"
-                size="24"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    fill="#959FA9"
-                    height="23.141"
-                    transform="translate(18.364 2) rotate(45)"
-                    width="5.142"
-                  />
-                  <rect
-                    fill="#959FA9"
-                    height="23.141"
-                    transform="translate(2 5.636) rotate(-45)"
-                    width="5.143"
-                  />
-                </svg>
-              </div>
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(18.364 2) rotate(45)"
+                  width="5.142"
+                />
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(2 5.636) rotate(-45)"
+                  width="5.143"
+                />
+              </svg>
             </div>
           </div>
+        </div>
+        <div
+          class="sc-AxmLO hvOGPs"
+        >
           <div
             class="sc-AxjAm gPrILy"
           />

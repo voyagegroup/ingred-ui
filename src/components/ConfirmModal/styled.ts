@@ -52,22 +52,6 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   overflow: hidden;
 `;
 
-export const ScrollContainer = styled.div<{
-  overflowYScroll: boolean;
-  fullSize: boolean;
-}>`
-  max-height: ${({ fullSize }) => (fullSize ? "auto" : "80vh")};
-  height: ${({ fullSize, theme }) =>
-    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42}px)` : "auto"};
-  margin-bottom: ${({ fullSize, theme }) =>
-    fullSize
-      ? 0
-      : theme.spacing * 2 * 2 +
-        42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
-  overflow-y: ${({ overflowYScroll }) =>
-    overflowYScroll ? "scroll" : "visible"};
-`;
-
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -80,6 +64,22 @@ export const ModalHeader = styled.div`
 
 export const TitleContainer = styled.div`
   max-width: 70%;
+`;
+
+export const ScrollContainer = styled.div<{
+  overflowYScroll: boolean;
+  fullSize: boolean;
+}>`
+  max-height: ${({ fullSize }) => (fullSize ? "auto" : "calc(80vh - 61px)")};
+  height: ${({ fullSize, theme }) =>
+    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + 61}px)` : "auto"};
+  margin-bottom: ${({ fullSize, theme }) =>
+    fullSize
+      ? 0
+      : theme.spacing * 2 * 2 +
+        42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
+  overflow-y: ${({ overflowYScroll }) =>
+    overflowYScroll ? "scroll" : "visible"};
 `;
 
 export const ModalFooter = styled.div<{ fullSize: boolean }>`
