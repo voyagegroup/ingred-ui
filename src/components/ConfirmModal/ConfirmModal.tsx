@@ -58,12 +58,11 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
           <Styled.ModalHeader>
-            <Flex display="flex" alignItems="center">
-              <Styled.TitleContainer>
-                <Typography weight="bold" size="xxxl">
-                  {title}
-                </Typography>
-              </Styled.TitleContainer>
+            <Styled.LeftContainer>
+              <Typography weight="bold" size="xxxl">
+                {title}
+              </Typography>
+
               <Spacer pr={2} />
               {subActions.map(({ icon, action, title }) => (
                 <Spacer pr={2} key="title">
@@ -72,7 +71,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
                   </ActionButton>
                 </Spacer>
               ))}
-            </Flex>
+            </Styled.LeftContainer>
             <Styled.IconContainer onClick={onClose}>
               <Icon name="close" size="lg" color={theme.palette.black} />
             </Styled.IconContainer>

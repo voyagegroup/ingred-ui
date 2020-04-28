@@ -62,7 +62,9 @@ export const ModalHeader = styled.div`
     ${({ theme }) => theme.palette.gray.light};
 `;
 
-export const TitleContainer = styled.div`
+export const LeftContainer = styled.div`
+  display: flex;
+  align-items: center;
   max-width: 70%;
 `;
 
