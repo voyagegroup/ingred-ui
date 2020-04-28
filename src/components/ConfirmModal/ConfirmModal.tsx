@@ -41,6 +41,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   disableHorizontalPadding = false
 }) => {
   const theme = useTheme();
+  const showFooter = !!onSubmit;
   return (
     <Styled.Container>
       <Styled.ModalBackground />
@@ -59,27 +60,30 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
           <Styled.ScrollContainer
             overflowYScroll={overflowYScroll}
             fullSize={fullSize}
+            showFooter={showFooter}
           >
             {disableHorizontalPadding ? (
               children
             ) : (
-              <Spacer px={4} pb={3}>
+              <Spacer px={3} pb={3}>
                 {children}
               </Spacer>
             )}
           </Styled.ScrollContainer>
-          <Styled.ModalFooter fullSize={fullSize}>
-            <Flex display="flex" alignItems="center">
-              <Spacer pr={2}>
-                <Button type="button" color="cancel" onClick={onClose}>
-                  {cancelText}
+          {showFooter && (
+            <Styled.ModalFooter fullSize={fullSize}>
+              <Flex display="flex" alignItems="center">
+                <Spacer pr={2}>
+                  <Button type="button" color="cancel" onClick={onClose}>
+                    {cancelText}
+                  </Button>
+                </Spacer>
+                <Button type="submit" color={buttonColor} disabled={disabled}>
+                  {confirmText}
                 </Button>
-              </Spacer>
-              <Button type="submit" color={buttonColor} disabled={disabled}>
-                {confirmText}
-              </Button>
-            </Flex>
-          </Styled.ModalFooter>
+              </Flex>
+            </Styled.ModalFooter>
+          )}
         </form>
         {loading && (
           <Styled.LoadingContainer>

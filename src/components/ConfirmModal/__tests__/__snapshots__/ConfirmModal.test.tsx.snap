@@ -54,42 +54,11 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
           </div>
         </div>
         <div
-          class="sc-AxmLO hvOGPs"
+          class="sc-AxmLO kXQnKv"
         >
           <div
-            class="sc-AxjAm gPrILy"
+            class="sc-AxjAm fDYLkK"
           />
-        </div>
-        <div
-          class="sc-fzozJi hvdymy"
-        >
-          <div
-            class="sc-AxirZ beOrDm"
-            display="flex"
-          >
-            <div
-              class="sc-AxjAm gJyBXz"
-            >
-              <button
-                class="sc-fznKkj sc-fznZeY bZnhNi"
-                font-size="14px"
-                font-weight="normal"
-                height="42px"
-                type="button"
-              >
-                キャンセル
-              </button>
-            </div>
-            <button
-              class="sc-fznKkj sc-fznZeY hUEhlJ"
-              font-size="14px"
-              font-weight="bold"
-              height="42px"
-              type="submit"
-            >
-              はい
-            </button>
-          </div>
         </div>
       </form>
     </div>

@@ -69,12 +69,15 @@ export const TitleContainer = styled.div`
 export const ScrollContainer = styled.div<{
   overflowYScroll: boolean;
   fullSize: boolean;
+  showFooter: boolean;
 }>`
   max-height: ${({ fullSize }) => (fullSize ? "auto" : "calc(80vh - 61px)")};
-  height: ${({ fullSize, theme }) =>
-    fullSize ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + 61}px)` : "auto"};
-  margin-bottom: ${({ fullSize, theme }) =>
+  height: ${({ fullSize, showFooter, theme }) =>
     fullSize
+      ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`
+      : "auto"};
+  margin-bottom: ${({ fullSize, showFooter, theme }) =>
+    fullSize || !showFooter
       ? 0
       : theme.spacing * 2 * 2 +
         42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
