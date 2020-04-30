@@ -111,7 +111,7 @@ const Button: React.FunctionComponent<Props> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      height={size === "small" ? "32px" : "48px"}
+      height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
     >
       {children}

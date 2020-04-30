@@ -8,10 +8,19 @@ import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
+import ActionButton from "../ActionButton";
+import { IconName } from "../Icon/Icon";
+
+export type SubAction = {
+  title: string;
+  icon: IconName;
+  action: () => void;
+};
 
 export type Props = {
   title: string;
   confirmText?: string;
+  cancelText?: string;
   onClose?: () => void;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   buttonColor?: Exclude<ButtonColor, "cancel">;
@@ -20,6 +29,7 @@ export type Props = {
   overflowYScroll?: boolean;
   fullSize?: boolean;
   disableHorizontalPadding?: boolean;
+  subActions?: SubAction[];
 
   // TypeScriptで型エラーが出るので一旦これでしのぐ
   children?: React.ReactNode;
@@ -28,6 +38,7 @@ export type Props = {
 const ConfirmModal: React.FunctionComponent<Props> = ({
   title,
   confirmText = "はい",
+  cancelText = "キャンセル",
   children,
   onClose,
   onSubmit,
@@ -36,26 +47,40 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   loading,
   fullSize = false,
   overflowYScroll = true,
-  disableHorizontalPadding = false
+  disableHorizontalPadding = false,
+  subActions = []
 }) => {
   const theme = useTheme();
+  const showFooter = !!onSubmit;
   return (
     <Styled.Container>
       <Styled.ModalBackground />
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
-          <Styled.ScrollContainer overflowYScroll={overflowYScroll}>
-            <Styled.ModalHeader>
-              <Styled.TitleContainer>
-                <Typography weight="bold" size="xxxl">
-                  {title}
-                </Typography>
-              </Styled.TitleContainer>
-              <Styled.IconContainer onClick={onClose}>
-                <Icon name="close" size="lg" color={theme.palette.black} />
-              </Styled.IconContainer>
-            </Styled.ModalHeader>
+          <Styled.ModalHeader>
+            <Styled.LeftContainer>
+              <Typography weight="bold" size="xxxl">
+                {title}
+              </Typography>
 
+              <Spacer pr={2} />
+              {subActions.map(({ icon, action, title }) => (
+                <Spacer pr={2} key="title">
+                  <ActionButton icon={icon} onClick={action} type="button">
+                    {title}
+                  </ActionButton>
+                </Spacer>
+              ))}
+            </Styled.LeftContainer>
+            <Styled.IconContainer onClick={onClose}>
+              <Icon name="close" size="lg" color={theme.palette.black} />
+            </Styled.IconContainer>
+          </Styled.ModalHeader>
+          <Styled.ScrollContainer
+            overflowYScroll={overflowYScroll}
+            fullSize={fullSize}
+            showFooter={showFooter}
+          >
             {disableHorizontalPadding ? (
               children
             ) : (
@@ -64,18 +89,20 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
               </Spacer>
             )}
           </Styled.ScrollContainer>
-          <Styled.ModalFooter>
-            <Flex display="flex" alignItems="center">
-              <Spacer pr={2}>
-                <Button type="button" color="cancel" onClick={onClose}>
-                  キャンセル
+          {showFooter && (
+            <Styled.ModalFooter fullSize={fullSize}>
+              <Flex display="flex" alignItems="center">
+                <Spacer pr={2}>
+                  <Button type="button" color="cancel" onClick={onClose}>
+                    {cancelText}
+                  </Button>
+                </Spacer>
+                <Button type="submit" color={buttonColor} disabled={disabled}>
+                  {confirmText}
                 </Button>
-              </Spacer>
-              <Button type="submit" color={buttonColor} disabled={disabled}>
-                {confirmText}
-              </Button>
-            </Flex>
-          </Styled.ModalFooter>
+              </Flex>
+            </Styled.ModalFooter>
+          )}
         </form>
         {loading && (
           <Styled.LoadingContainer>

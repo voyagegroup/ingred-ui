@@ -43,37 +43,51 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   top: 50%;
   left: 50%;
   min-width: 400px; /* 削除モーダルなどコンテンツが少ない場合の最小単位を入れておく(400は仮) */
-  width: ${({ fullSize }) => (fullSize ? "90vw" : "auto")};
-  height: ${({ fullSize }) => (fullSize ? "90vh" : "auto")};
+  width: ${({ fullSize }) => (fullSize ? "100vw" : "auto")};
+  height: ${({ fullSize }) => (fullSize ? "100vh" : "auto")};
   transform: translate(-50%, -50%);
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ fullSize }) => (fullSize ? 0 : Radius.MEDIUM)};
   background-color: ${({ theme }) => theme.palette.background.default};
   animation: ${slideIn} 0.4s;
-`;
-
-export const ScrollContainer = styled.div<{ overflowYScroll: boolean }>`
-  max-height: 80vh;
-  padding-bottom: ${({ theme }) =>
-    theme.spacing * 2 * 2 +
-    40}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
-  overflow-y: ${({ overflowYScroll }) =>
-    overflowYScroll ? "scroll" : "visible"};
+  overflow: hidden;
 `;
 
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing * 3}px;
+  padding: ${({ theme }) => theme.spacing * 2}px
+    ${({ theme }) => theme.spacing * 3}px;
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
 `;
 
-export const TitleContainer = styled.div`
+export const LeftContainer = styled.div`
+  display: flex;
+  align-items: center;
   max-width: 70%;
 `;
 
-export const ModalFooter = styled.div`
+export const ScrollContainer = styled.div<{
+  overflowYScroll: boolean;
+  fullSize: boolean;
+  showFooter: boolean;
+}>`
+  max-height: ${({ fullSize }) => (fullSize ? "auto" : "calc(80vh - 61px)")};
+  height: ${({ fullSize, showFooter, theme }) =>
+    fullSize
+      ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`
+      : "auto"};
+  margin-bottom: ${({ fullSize, showFooter, theme }) =>
+    fullSize || !showFooter
+      ? 0
+      : theme.spacing * 2 * 2 +
+        42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
+  overflow-y: ${({ overflowYScroll }) =>
+    overflowYScroll ? "scroll" : "visible"};
+`;
+
+export const ModalFooter = styled.div<{ fullSize: boolean }>`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -84,7 +98,8 @@ export const ModalFooter = styled.div`
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.light};
-  border-radius: 0 0 ${Radius.MEDIUM} ${Radius.MEDIUM};
+  border-radius: ${({ fullSize }) =>
+    fullSize ? 0 : `0 0 ${Radius.MEDIUM} ${Radius.MEDIUM}`};
 `;
 
 export const IconContainer = styled.div`
