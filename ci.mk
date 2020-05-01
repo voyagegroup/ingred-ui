@@ -23,5 +23,5 @@ test:
 publish: __req_semver build
 	npm version ${SEMVER}
 	npm publish
-	git push origin master
+	git push origin feature-ci
 	git push origin --tags
