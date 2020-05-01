@@ -82,17 +82,17 @@ workflows:
           name: patch_publish
           semver: patch
           requires:
-            - patch_publish_approval
+            - 0.0.X_patch_publish_approval
           filters: { branches: { only: feature-ci } }
       - publish:
           name: minor_publish
           semver: minor
           requires:
-            - minor_publish_approval
+            - 0.X.0_minor_publish_approval
           filters: { branches: { only: feature-ci } }
       - publish:
           name: major_publish
           semver: major
           requires:
-            - major_publish_approval
+            - X.0.0_major_publish_approval
           filters: { branches: { only: feature-ci } }
