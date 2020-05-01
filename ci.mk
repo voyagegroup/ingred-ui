@@ -13,10 +13,14 @@ else
 	yarn install
 endif
 
+build:
+	yarn build
+
 test:
 	yarn test
 
-publish: __req_semver
+publish: __req_semver build
 	npm version ${SEMVER}
+	npm publish
 	git push origin master
 	git push origin --tags

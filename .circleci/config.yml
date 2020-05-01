@@ -11,7 +11,7 @@ commands:
       - restore_cache:
           name: Restore yarn dependencies
           keys:
-            - yarn-cache-v0-{{ .Branch }}-{{ checksum "client/yarn.lock" }}
+            - yarn-cache-v0-{{ .Branch }}-{{ checksum "yarn.lock" }}
             - yarn-cache-v0-{{ .Branch }}-
             - yarn-cache-v0-
 
@@ -19,7 +19,7 @@ commands:
     steps:
       - save_cache:
           name: Cache yarn dependencies
-          key: yarn-cache-v0-{{ .Branch }}-{{ checksum "client/yarn.lock" }}
+          key: yarn-cache-v0-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
 
