@@ -30,7 +30,7 @@ commands:
     steps:
       - run:
           name: publish
-          command: make -f ci.mk publish SEMVER={{ semver }}
+          command: make -f ci.mk publish SEMVER=<< parameters.semver >>
 
 jobs:
   test:
