@@ -69,30 +69,30 @@ workflows:
       - test
   publish:
     jobs:
-      - patch_publish_approval:
+      - 0.0.x_patch_publish_approval:
           type: approval
-          filters: { branches: { only: feature-ci } }
-      - minor_publish_approval:
+          filters: { branches: { only: master } }
+      - 0.x.0_minor_publish_approval:
           type: approval
-          filters: { branches: { only: feature-ci } }
-      - major_publish_approval:
+          filters: { branches: { only: master } }
+      - x.0.0_major_publish_approval:
           type: approval
-          filters: { branches: { only: feature-ci } }
+          filters: { branches: { only: master } }
       - publish:
           name: patch_publish
           semver: patch
           requires:
-            - patch_publish_approval
-          filters: { branches: { only: feature-ci } }
+            - 0.0.x_patch_publish_approval
+          filters: { branches: { only: master } }
       - publish:
           name: minor_publish
           semver: minor
           requires:
-            - minor_publish_approval
-          filters: { branches: { only: feature-ci } }
+            - 0.x.0_minor_publish_approval
+          filters: { branches: { only: master } }
       - publish:
           name: major_publish
           semver: major
           requires:
-            - major_publish_approval
-          filters: { branches: { only: feature-ci } }
+            - x.0.0_major_publish_approval
+          filters: { branches: { only: master } }
