@@ -1,9 +1,10 @@
 .PHONY: install test publish
 
 SEMVER :=
+
 __req_semver:
-ifeq ($(SEMVER),)
-	$(error "U should define SEMVER #=> Like $$ make SEMVER=xxx")
+ifeq ($(filter $(SEMVER),patch minor major),)
+	$(error Require param SEMVER (patch or minor or major): $(SEMVER)))
 endif
 
 install:

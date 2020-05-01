@@ -57,6 +57,7 @@ jobs:
       - run:
           name: yarn install
           command: make -f ci.mk install
+      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
       - publish:
           semver: << parameters.semver >>
 
@@ -71,10 +72,10 @@ workflows:
           filters: { branches: { only: feature-ci } }
       - minor_publish_approval:
           type: approval
-          filters: { branches: { only: master } }
+          filters: { branches: { only: feature-ci } }
       - major_publish_approval:
           type: approval
-          filters: { branches: { only: master } }
+          filters: { branches: { only: feature-ci } }
       - publish:
           name: patch_publish
           semver: patch
@@ -86,10 +87,10 @@ workflows:
           semver: minor
           requires:
             - minor_publish_approval
-          filters: { branches: { only: master } }
+          filters: { branches: { only: feature-ci } }
       - publish:
           name: major_publish
           semver: major
           requires:
             - major_publish_approval
-          filters: { branches: { only: master } }
+          filters: { branches: { only: feature-ci } }
