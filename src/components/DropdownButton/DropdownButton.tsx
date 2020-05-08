@@ -5,41 +5,48 @@ import Button from "../Button";
 type Props = { contentPosition?: "up" | "down" }
 
 const DropdownButton : React.FC<Props> = ({ contentPosition = "down" }) => {
-  const contentsElement = React.useRef<HTMLDivElement>(
-    document.createElement("div"),
-  );
-  const [show, setShow] = React.useState<boolean>(false);
+  const [focusButton, setFocusButton] = React.useState<boolean>(false);
+  const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
-  const handleMouseDown = () => {
-    setShow(!show);
-  };
   const handleBlur = () => {
-    setShow(false);
+    setFocusButton(false);
   };
-  const handleClick = () => {
-    setShow(!show);
+  const handleClickButton = () => {
+    setFocusButton(!focusButton);
   };
-
-  React.useEffect(() => {
-    if (show) {
-      contentsElement.current.focus();
-    }
-  }, [show]);
+  const handleMouseDown = () => {
+    setActiveContent(true);
+  };
+  const handleClickContent = () => {
+    setActiveContent(false);
+  };
 
   return (
     <Styled.Container>
-      <Button onMouseDown={handleMouseDown}>hoge</Button>
-      {show && (
-        <Styled.ContentsWrapper
-          ref={contentsElement}
-          tabIndex={-1}
-          contentPosition={contentPosition}
-          onBlur={handleBlur}
-        >
+      <Button onClick={handleClickButton} onBlur={handleBlur}>
+        hoge
+      </Button>
+      {(focusButton || activeContent) && (
+        <Styled.ContentsWrapper contentPosition={contentPosition}>
           <Styled.UL>
-            <Styled.LI onClick={handleClick}>保存する</Styled.LI>
-            <Styled.LI onClick={handleClick}>保存して実行する</Styled.LI>
-            <Styled.LI onClick={handleClick}>下書きとして保存する</Styled.LI>
+            <Styled.LI
+              onMouseDown={handleMouseDown}
+              onClick={handleClickContent}
+            >
+              保存する
+            </Styled.LI>
+            <Styled.LI
+              onMouseDown={handleMouseDown}
+              onClick={handleClickContent}
+            >
+              保存して実行する
+            </Styled.LI>
+            <Styled.LI
+              onMouseDown={handleMouseDown}
+              onClick={handleClickContent}
+            >
+              下書きとして保存する
+            </Styled.LI>
           </Styled.UL>
         </Styled.ContentsWrapper>
       )}
