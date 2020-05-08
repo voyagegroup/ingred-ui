@@ -19,5 +19,5 @@ export const HeaderCell = styled.th<CellProps>`
 `;
 
 export const IconContainer = styled.div`
-  /* flex: 1 0 auto; */
+  flex: 1 0 auto;
 `;

@@ -39,7 +39,6 @@ const Indicator = styled("div")<IndicatorProps>`
   position: relative;
   display: block;
   flex: 1 0 auto;
-  /* align-self: flex-start; */
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
