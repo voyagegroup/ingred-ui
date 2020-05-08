@@ -39,7 +39,7 @@ const Indicator = styled("div")<IndicatorProps>`
   position: relative;
   display: block;
   flex: 1 0 auto;
-  align-self: flex-start;
+  /* align-self: flex-start; */
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
@@ -88,7 +88,7 @@ const Indicator = styled("div")<IndicatorProps>`
 
 export const Label = styled.span`
   flex: 0 1 auto;
-  margin-left: ${({ theme }) => theme.spacing * 0.5}px;
+  margin-left: ${({ theme }) => theme.spacing}px;
   font-size: 14px;
 
   input:disabled + div + & {

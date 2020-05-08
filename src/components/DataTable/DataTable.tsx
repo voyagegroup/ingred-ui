@@ -68,6 +68,7 @@ export type Column<T> = {
   sortable?: boolean;
   width?: string;
   renderCell?: (data: T) => React.ReactNode;
+  align?: React.ComponentPropsWithoutRef<"td">["align"];
 };
 
 type Tab<T> = {
@@ -324,7 +325,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   </>
                 )}
                 {columns.map(column => (
-                  <Table.Cell key={column.name}>
+                  <Table.Cell key={column.name} align={column.align}>
                     {column.renderCell ? (
                       column.renderCell(item)
                     ) : (
