@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Size } from "../../styles";
-import { colors } from "../../styles/color";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
@@ -44,7 +43,8 @@ const Indicator = styled("div")<IndicatorProps>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   border-radius: 50%;
-  border: ${({ border }) => border} solid ${colors.basic[300]};
+  border: ${({ border }) => border} solid
+    ${({ theme }) => theme.palette.text.disabled};
   box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
       theme.palette.gray.light} inset;
 
@@ -90,6 +90,10 @@ export const Label = styled.span`
   flex: 0 1 auto;
   margin-left: ${({ theme }) => theme.spacing * 0.5}px;
   font-size: 14px;
+
+  input:disabled + div + & {
+    color: ${({ theme }) => theme.palette.text.disabled};
+  }
 `;
 
 export type RadioButtonChangeHandler = (
