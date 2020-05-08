@@ -72,6 +72,18 @@ const Indicator = styled("div")<IndicatorProps>`
     border-color: ${({ theme }) => theme.palette.primary.main};
     box-shadow: none;
   }
+
+  input:disabled + & {
+    background: ${({ theme }) => theme.palette.gray.light};
+    border-color: ${({ theme }) => theme.palette.text.disabled};
+    box-shadow: none;
+  }
+  input:disabled + &:after {
+    background: ${({ theme }) => theme.palette.gray.light};
+  }
+  input:disabled:checked + &:after {
+    background: ${({ theme }) => theme.palette.text.disabled};
+  }
 `;
 
 export const Label = styled.span`

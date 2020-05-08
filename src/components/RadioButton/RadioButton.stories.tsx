@@ -2,6 +2,7 @@ import { action } from "@storybook/addon-actions";
 
 import React from "react";
 import RadioButton, { RadioButtonSize } from "./";
+import Spacer from "../Spacer";
 
 export default {
   title: "RadioButton",
@@ -12,20 +13,25 @@ export default {
 
 export const Overview = () => (
   <>
-    <div style={{ marginBottom: 16 }}>
-      <RadioButton
-        defaultChecked={true}
-        name="group"
-        onChange={action("onChange1")}
-      >
-        ラジオボタン
-      </RadioButton>
-    </div>
-    <div>
-      <RadioButton name="group" onChange={action("onChange2")}>
-        ラジオボタン
-      </RadioButton>
-    </div>
+    <RadioButton
+      defaultChecked={true}
+      name="group"
+      onChange={action("onChange1")}
+    >
+      ラジオボタン
+    </RadioButton>
+    <Spacer mt={1} />
+    <RadioButton name="group" onChange={action("onChange2")}>
+      ラジオボタン
+    </RadioButton>
+    <Spacer mt={1} />
+    <RadioButton onChange={action("onChange2")} disabled={true}>
+      ラジオボタン
+    </RadioButton>
+    <Spacer mt={1} />
+    <RadioButton onChange={action("onChange2")} disabled={true} checked={true}>
+      ラジオボタン
+    </RadioButton>
   </>
 );
 
@@ -35,14 +41,12 @@ export const WithControled = () => (
 
 export const WithLongLabel = () => (
   <>
-    <div style={{ marginBottom: 16 }}>
-      <RadioButton
-        name="group"
-        size={RadioButtonSize.MEDIUM}
-        onChange={action("onChange")}
-      >
-        {"長いラベル ".repeat(15).trim()}
-      </RadioButton>
-    </div>
+    <RadioButton
+      name="group"
+      size={RadioButtonSize.MEDIUM}
+      onChange={action("onChange")}
+    >
+      {"長いラベル ".repeat(15).trim()}
+    </RadioButton>
   </>
 );
