@@ -9,10 +9,10 @@ exports[`RadioButton component testing RadioButton 1`] = `
       type="radio"
     />
     <div
-      class="sc-AxirZ fFxNUI"
+      class="sc-AxirZ oirma"
     />
     <span
-      class="sc-AxiKw dTGuxX"
+      class="sc-AxiKw hdRejV"
     >
       ラジオボタン
     </span>
