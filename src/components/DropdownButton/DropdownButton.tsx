@@ -5,45 +5,46 @@ import Button from "../Button";
 type Props = { contentPosition?: "up" | "down" }
 
 const DropdownButton : React.FC<Props> = ({ contentPosition = "down" }) => {
-  const [focus, setFocus] = React.useState<boolean>(false);
   const contentsElement = React.useRef<HTMLDivElement>(
     document.createElement("div"),
   );
+  const [show, setShow] = React.useState<boolean>(false);
 
-  const handleClick = () => {
-    setFocus(!focus)
-  }
+  const handleMouseDown = () => {
+    setShow(!show);
+  };
   const handleBlur = () => {
-    setFocus(false);
-  }
+    setShow(false);
+  };
+  const handleClick = () => {
+    setShow(!show);
+  };
 
   React.useEffect(() => {
-    if (focus) {
+    if (show) {
       contentsElement.current.focus();
     }
-  }, [focus]);
+  }, [show]);
 
   return (
-    <>
-      <Styled.ButtonWrapper>
-        <Button onClick={handleClick} >hoge</Button>
-        {focus && (
-          <Styled.ContentsWrapper
-            tabIndex={0}
-            ref={contentsElement}
-            onBlur={handleBlur}
-            contentPosition={contentPosition}
-          >
-            <Styled.UL>
-              <Styled.LI onClick={handleClick}>保存する</Styled.LI>
-              <Styled.LI onClick={handleClick}>保存して実行する</Styled.LI>
-              <Styled.LI onClick={handleClick}>下書きとして保存する</Styled.LI>
-            </Styled.UL>
-          </Styled.ContentsWrapper>
-        )}
-      </Styled.ButtonWrapper>
-    </>
-  )
+    <Styled.Container>
+      <Button onMouseDown={handleMouseDown}>hoge</Button>
+      {show && (
+        <Styled.ContentsWrapper
+          ref={contentsElement}
+          tabIndex={-1}
+          contentPosition={contentPosition}
+          onBlur={handleBlur}
+        >
+          <Styled.UL>
+            <Styled.LI onClick={handleClick}>保存する</Styled.LI>
+            <Styled.LI onClick={handleClick}>保存して実行する</Styled.LI>
+            <Styled.LI onClick={handleClick}>下書きとして保存する</Styled.LI>
+          </Styled.UL>
+        </Styled.ContentsWrapper>
+      )}
+    </Styled.Container>
+  );
 }
 
 export { DropdownButton };
