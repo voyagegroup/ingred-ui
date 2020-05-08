@@ -5,7 +5,7 @@ import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
 import { Table } from "./internal/Table";
-import Typography from "../Typography";
+import Typography, { Props as TypographyProps } from "../Typography";
 import {
   changeOrderState,
   GetValue,
@@ -68,7 +68,7 @@ export type Column<T> = {
   sortable?: boolean;
   width?: string;
   renderCell?: (data: T) => React.ReactNode;
-  align?: React.ComponentPropsWithoutRef<"td">["align"];
+  align?: TypographyProps["align"];
 };
 
 type Tab<T> = {
@@ -325,11 +325,13 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   </>
                 )}
                 {columns.map(column => (
-                  <Table.Cell key={column.name} align={column.align}>
+                  <Table.Cell key={column.name}>
                     {column.renderCell ? (
                       column.renderCell(item)
                     ) : (
-                      <Typography>{column.selector(item)}</Typography>
+                      <Typography align={column.align}>
+                        {column.selector(item)}
+                      </Typography>
                     )}
                   </Table.Cell>
                 ))}

@@ -61,14 +61,14 @@ export type TextAlign = "left" | "center" | "right";
 
 export type FontWeight = "normal" | "bold";
 
-interface Props {
+export type Props = {
   component?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   color?: ColorType | string;
   align?: "left" | "center" | "right";
   size?: FontSize;
   weight?: FontWeight;
   lineHeight?: string;
-}
+};
 
 const Typography: React.FunctionComponent<Props> = ({
   children,

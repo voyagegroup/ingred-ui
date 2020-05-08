@@ -1,1 +1,1 @@
-export { default, Props } from "./DatePicker";
+export { default } from "./DatePicker";
