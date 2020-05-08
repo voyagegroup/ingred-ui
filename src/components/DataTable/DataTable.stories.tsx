@@ -28,19 +28,19 @@ const Container = styled.div`
 type SampleObject = {
   id: number;
   name: string;
-  other: string;
+  count: number;
 };
 
 const sampleData: SampleObject[] = [
-  { id: 1, name: "1name", other: "9" },
-  { id: 2, name: "2name", other: "8" },
-  { id: 3, name: "3name", other: "7" },
-  { id: 4, name: "4name", other: "6" },
-  { id: 5, name: "5name", other: "5" },
-  { id: 6, name: "6name", other: "4" },
-  { id: 7, name: "7name", other: "3" },
-  { id: 8, name: "8name", other: "2" },
-  { id: 9, name: "9name", other: "1" }
+  { id: 1, name: "1name", count: 9 },
+  { id: 2, name: "2name", count: 8 },
+  { id: 3, name: "3name", count: 7 },
+  { id: 4, name: "4name", count: 6 },
+  { id: 5, name: "5name", count: 5 },
+  { id: 6, name: "6name", count: 4 },
+  { id: 7, name: "7name", count: 3 },
+  { id: 8, name: "8name", count: 2 },
+  { id: 9, name: "9name", count: 1 }
 ];
 
 export const Overview = () => (
@@ -56,6 +56,12 @@ export const Overview = () => (
           name: "名前",
           selector: data => data.name,
           sortable: true
+        },
+        {
+          name: "カウント",
+          selector: data => data.count,
+          sortable: true,
+          align: "right"
         }
       ]}
     />
