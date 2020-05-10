@@ -118,14 +118,14 @@ export type Props = Omit<BaseButtonProps, "color"> & {
   href?: string;
 };
 
-const Button: React.FunctionComponent<Props> = ({
+const Button = React.forwardRef<HTMLButtonElement, Props>(({
   children,
   color = "primary",
   inline = false,
   size = "medium",
   href,
   ...rest
-}) => {
+}, ref) => {
   const theme = useTheme();
   const colorStyle = getContainerColorStyles(theme)[color];
   const horizontalPadding =
@@ -144,6 +144,7 @@ const Button: React.FunctionComponent<Props> = ({
     <Styled.ButtonContainer
       {...anchorProps}
       {...rest}
+      ref={ref}
       inline={inline}
       horizontalPadding={horizontalPadding}
       normal={{ ...colorStyle.normal }}
@@ -159,6 +160,6 @@ const Button: React.FunctionComponent<Props> = ({
       {children}
     </Styled.ButtonContainer>
   );
-};
+});
 
 export default Button;
