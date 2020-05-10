@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { DropdownButton } from "./";
 import { action } from "@storybook/addon-actions";
+import Spacer from "../Spacer";
+import { MenuList } from "../MenuList";
 
 const Container = styled.div`
   display: flex;
@@ -31,13 +33,23 @@ export const Overview = () => {
       onClick: action("clicked '保存して実行する'"),
     },
     {
-      text: "下書きとして保存する",
+      text: "下書きとして保存するhogehogehogehoge",
       onClick: action("clicked '下書きとして保存する'"),
     },
   ];
   return (
     <Container>
-      <DropdownButton title="hogehoge" contents={contents} />
-    </Container>
+      <DropdownButton title="hogehoge">
+        <MenuList contents={contents} />
+      </DropdownButton>
+      <Spacer px={20} />
+      <DropdownButton
+        split
+        title="hogehoge"
+        onClick={action("clicked hogehgoe")}
+      >
+        <MenuList contents={contents} />
+      </DropdownButton>
+  </Container>
   );
 };

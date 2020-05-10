@@ -2,25 +2,30 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Button from "../Button";
 import { usePopper } from "react-popper";
+import Icon from "../Icon";
+import { colors } from "../../styles/color";
 
 type Props = {
   title: string;
-  contents: {
-    text: string;
-    onClick: () => void;
-  }[];
+  onClick?: () => void;
+  split?: boolean;
 };
 
-const DropdownButton : React.FC<Props> = ({ title, contents }) => {
+const DropdownButton: React.FC<Props> = ({
+  title,
+  onClick,
+  split = false,
+  children,
+}) => {
   const [
     buttonElement,
     setButtonElement,
-  ] = React.useState<HTMLButtonElement | null>(null);
+  ] = React.useState<HTMLDivElement | null>(null);
   const [
     popperElement,
     setPopperElement,
   ] = React.useState<HTMLDivElement | null>(null);
-  const [focusButton, setFocusButton] = React.useState<boolean>(false);
+  const [showContent, setShowContent] = React.useState<boolean>(false);
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
   const { styles, attributes } = usePopper(buttonElement, popperElement, {
@@ -42,52 +47,49 @@ const DropdownButton : React.FC<Props> = ({ title, contents }) => {
     ],
   });
 
-  const handleBlur = () => {
-    setFocusButton(false);
+  const handleToggleContent = (showContent: boolean) => () => {
+    setShowContent(showContent);
   };
-  const handleClickButton = () => {
-    setFocusButton(!focusButton);
-  };
-  const handleActiveContent = () => {
-    setActiveContent(true);
-  };
-  const handleClickContent = (onClick: () => void) => () => {
-    setActiveContent(false);
-    onClick();
+  const handleContentActive = (isActive: boolean) => () => {
+    setActiveContent(isActive);
   };
 
   return (
-    <Styled.Container>
-      <Button
-        ref={setButtonElement}
-        onClick={handleClickButton}
-        onBlur={handleBlur}
-      >
-        {title}
-      </Button>
-      {(focusButton || activeContent) && (
+    <>
+      <Styled.ButtonContainer ref={setButtonElement} role="button">
+        {split ? (
+          <>
+            <Styled.MainButton onClick={onClick}>{title}</Styled.MainButton>
+            <Styled.SplitToggle
+              onClick={handleToggleContent(!showContent)}
+              onBlur={handleToggleContent(false)}
+            >
+              <Icon name={"arrow_bottom"} size="lg" color={colors.basic[50]} />
+            </Styled.SplitToggle>
+          </>
+        ) : (
+          <Button
+            onClick={handleToggleContent(!showContent)}
+            onBlur={handleToggleContent(false)}
+          >
+            {title}
+            <Icon name={"arrow_bottom"} size="lg" color={colors.basic[50]} />
+          </Button>
+        )}
+      </Styled.ButtonContainer>
+      {(showContent || activeContent) && (
         <div
           ref={setPopperElement}
           style={styles.popper}
           {...attributes.popper}
-          onMouseDown={handleActiveContent}
-          onTouchStart={handleActiveContent}
+          onMouseDown={handleContentActive(true)}
+          onTouchStart={handleContentActive(true)}
+          onClick={handleContentActive(false)}
         >
-          <Styled.ContentsWrapper>
-            <Styled.UL>
-              {contents.map((content) => (
-                <Styled.LI
-                  key={content.text}
-                  onClick={handleClickContent(content.onClick)}
-                >
-                  {content.text}
-                </Styled.LI>
-              ))}
-            </Styled.UL>
-          </Styled.ContentsWrapper>
+          {children}
         </div>
       )}
-    </Styled.Container>
+    </>
   );
 }
 

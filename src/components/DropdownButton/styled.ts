@@ -1,31 +1,19 @@
 import styled from "styled-components";
+import Button from "../Button";
 
-export const Container = styled.div`
-  display: inline-block;
-  position: relative;
+export const ButtonContainer = styled.div`
+  display: inline-flex;
 `;
 
-export const ContentsWrapper = styled.div`
-  padding: 10px 0;
-  box-shadow: 0px 0px 16px #959fa967;
-  border-radius: 4px;
-  background-color: #fff;
+export const MainButton = styled(Button)`
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 `;
 
-export const UL = styled.ul`
-  list-style: none;
-`;
-
-export const LI = styled.li`
-  cursor: pointer;
-  height: 32px;
-  padding: 0 16px;
-  line-height: 32px;
-  white-space: nowrap;
-  &:hover {
-    background: #eff1f2 0% 0% no-repeat padding-box;
-  }
-  &:active {
-    background-color: #0B82F4;
-  }
+export const SplitToggle = styled(Button)`
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 1px solid #054baf;
+  padding: 0;
+  min-width: 38px;
 `;
