@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Button from "../Button";
-import { usePopper } from "react-popper";
 import Icon from "../Icon";
 import { colors } from "../../styles/color";
+import { Popper } from "../Popper";
 
 type Props = {
   title: string;
@@ -21,31 +21,8 @@ const DropdownButton: React.FC<Props> = ({
     buttonElement,
     setButtonElement,
   ] = React.useState<HTMLDivElement | null>(null);
-  const [
-    popperElement,
-    setPopperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
-
-  const { styles, attributes } = usePopper(buttonElement, popperElement, {
-    placement: "bottom-start",
-    modifiers: [
-      {
-        name: "flip",
-        options: {
-          padding: { bottom: 24, right: 24 },
-          fallbackPlacements: ["bottom-end", "top-start", "top-end"],
-        },
-      },
-      {
-        name: "preventOverflow",
-        options: {
-          mainAxis: false,
-        },
-      },
-    ],
-  });
 
   const handleToggleContent = (showContent: boolean) => () => {
     setShowContent(showContent);
@@ -77,18 +54,15 @@ const DropdownButton: React.FC<Props> = ({
           </Button>
         )}
       </Styled.ButtonContainer>
-      {(showContent || activeContent) && (
-        <div
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-          onMouseDown={handleContentActive(true)}
-          onTouchStart={handleContentActive(true)}
-          onClick={handleContentActive(false)}
-        >
-          {children}
-        </div>
-      )}
+      <Popper
+        show={showContent || activeContent}
+        baseElement={buttonElement}
+        onMouseDown={handleContentActive(true)}
+        onTouchStart={handleContentActive(true)}
+        onClick={handleContentActive(false)}
+      >
+        {children}
+      </Popper>
     </>
   );
 }
