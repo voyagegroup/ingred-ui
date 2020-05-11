@@ -1,5 +1,6 @@
 import React from "react";
 import * as Styled from "./styled";
+import { Divider } from "./internal/Divider";
 
 type Props = {
   inline?: boolean;
@@ -7,17 +8,24 @@ type Props = {
     text: string;
     onClick: () => void;
   }[];
+  divideIndex?: number[];
 };
 
-const MenuList: React.FC<Props> = ({ inline = false, contents }) => (
+const MenuList: React.FC<Props> = ({
+  inline = false,
+  contents,
+  divideIndex = []
+}) => (
   <Styled.Container inline={inline}>
-    <Styled.UL>
-      {contents.map((content) => (
-        <Styled.LI key={content.text} onClick={content.onClick}>
+    {contents.map((content, index) => (
+      <React.Fragment key={content.text}>
+        {/* TODO: Listの中身は<MenuItem />のようなコンポーネントとして定義する */}
+        <Styled.Div onClick={content.onClick}>
           {content.text}
-        </Styled.LI>
-      ))}
-    </Styled.UL>
+        </Styled.Div>
+        { divideIndex.includes(index) && <Divider /> }
+      </React.Fragment>
+    ))}
   </Styled.Container>
 );
 
