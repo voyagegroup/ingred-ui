@@ -251,7 +251,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [],
+    [theme.palette.primary.main],
   );
   return (
     <Container>

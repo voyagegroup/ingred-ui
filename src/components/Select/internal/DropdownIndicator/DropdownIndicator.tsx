@@ -7,21 +7,19 @@ import { useTheme } from "../../../../themes/useTheme";
 
 const DropdownIndicator = ({ isDisabled, error, ...rest }: any) => {
   const theme = useTheme();
+  let color = "";
+  if (isDisabled) {
+    color = colors.basic[400];
+  } else if (error) {
+    color = theme.palette.danger.main;
+  } else {
+    color = theme.palette.black;
+  }
   return (
     components.DropdownIndicator && (
       <components.DropdownIndicator {...rest}>
         <Styled.DropdownIndicator menuIsOpen={rest.selectProps.menuIsOpen}>
-          <Icon
-            name="arrow_bottom"
-            size="lg"
-            color={
-              isDisabled
-                ? colors.basic[400]
-                : error
-                ? `${theme.palette.danger.main}`
-                : theme.palette.black
-            }
-          />
+          <Icon name="arrow_bottom" size="lg" color={color} />
         </Styled.DropdownIndicator>
       </components.DropdownIndicator>
     )
