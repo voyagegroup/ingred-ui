@@ -8,16 +8,11 @@ export const Container = styled.div<{ inline: boolean }>`
   background-color: #fff;
 `;
 
-export const UL = styled.ul`
-  list-style: none;
-`;
-
-export const LI = styled.li`
+export const Div = styled.div`
   cursor: pointer;
   height: 32px;
   padding: 0 16px;
   line-height: 32px;
-  white-space: nowrap;
   &:hover {
     background: #eff1f2 0% 0% no-repeat padding-box;
   }

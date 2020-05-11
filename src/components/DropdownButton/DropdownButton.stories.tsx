@@ -36,11 +36,15 @@ export const Overview = () => {
       text: "下書きとして保存するhogehogehogehoge",
       onClick: action("clicked '下書きとして保存する'"),
     },
+    {
+      text: "やっぱり何もしない",
+      onClick: action("clicked 'やっぱり何もしない'"),
+    },
   ];
   return (
     <Container>
       <DropdownButton title="hogehoge">
-        <MenuList contents={contents} />
+        <MenuList contents={contents} divideIndex={[2]} />
       </DropdownButton>
       <Spacer px={20} />
       <DropdownButton
