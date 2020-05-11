@@ -4,7 +4,7 @@ import { Size } from "../../styles";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
-  MEDIUM = "18px"
+  MEDIUM = "18px",
 }
 
 const Wrapper = styled("label")<{ size: RadioButtonSize }>`
@@ -26,8 +26,8 @@ const Wrapper = styled("label")<{ size: RadioButtonSize }>`
 const indicatorSizes = {
   [RadioButtonSize.MEDIUM]: {
     inside: "8px",
-    border: "1px"
-  }
+    border: "1px",
+  },
 };
 
 type IndicatorProps = {
@@ -97,7 +97,7 @@ export const Label = styled.span`
 
 export type RadioButtonChangeHandler = (
   e: React.ChangeEvent<HTMLInputElement>,
-  checked: boolean
+  checked: boolean,
 ) => void;
 
 export type Props = Omit<
@@ -112,7 +112,7 @@ export type Props = Omit<
 
 class RadioButton extends React.PureComponent<Props> {
   public static defaultProps: Partial<Props> = {
-    size: RadioButtonSize.MEDIUM
+    size: RadioButtonSize.MEDIUM,
   };
 
   public render(): React.ReactNode {
@@ -129,9 +129,9 @@ class RadioButton extends React.PureComponent<Props> {
       <Wrapper as={children == null ? "span" : "label"} size={radioButtonSize}>
         <input
           {...rest}
+          ref={inputRef}
           type="radio"
           onChange={this.handleChange}
-          ref={inputRef}
         />
         <Indicator
           size={radioButtonSize}

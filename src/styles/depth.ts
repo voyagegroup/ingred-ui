@@ -1,7 +1,7 @@
-export interface Depth {
+export type Depth = {
   appBar: number;
   modal: number;
-}
+};
 
 export type DepthOptions = Partial<Depth>;
 

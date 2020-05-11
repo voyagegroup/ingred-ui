@@ -4,8 +4,8 @@ import Typography from "./";
 export default {
   title: "Typography",
   parameters: {
-    component: Typography
-  }
+    component: Typography,
+  },
 };
 
 export const Overview = () => <Typography>テキストコンポーネント</Typography>;

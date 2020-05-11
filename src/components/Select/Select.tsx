@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactSelect, {
   Props as ReactSelectProps,
-  StylesConfig
+  StylesConfig,
 } from "react-select";
 import * as Styled from "./styled";
 import { Space, Size } from "../../styles";
@@ -23,15 +23,15 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       borderBottomColor: menuIsOpen ? `transparent` : `${colors.basic[300]}`,
       borderColor: error ? `${theme.palette.danger.main}!important` : "",
       borderRadius: menuIsOpen ? "4px 4px 0 0" : "4px",
-      "&:hover": {}
+      "&:hover": {},
     }),
-    input: base => ({
+    input: (base) => ({
       ...base,
       margin: "0 2px",
       paddingBottom: 0,
-      paddingTop: 0
+      paddingTop: 0,
     }),
-    menu: base => ({
+    menu: (base) => ({
       ...base,
       marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
       boxShadow: "none",
@@ -44,17 +44,17 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       }`,
       borderLeft: `${Size.Border.Small} solid ${
         error ? theme.palette.danger.main : colors.basic[300]
-      }`
+      }`,
     }),
-    menuList: base => ({
+    menuList: (base) => ({
       ...base,
       paddingTop: "12px",
-      paddingBottom: `${Space}px`
+      paddingBottom: `${Space}px`,
     }),
-    noOptionsMessage: base => ({
+    noOptionsMessage: (base) => ({
       ...base,
       fontSize: `${fontSize.sm}px`,
-      color: theme.palette.text.hint
+      color: theme.palette.text.hint,
     }),
     option: (base, { isSelected, isFocused }) => {
       let backgroundColor = "transparent";
@@ -69,9 +69,9 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
         color: isSelected ? theme.palette.white : theme.palette.black,
         fontSize: `${fontSize.sm}px`,
         ":active": {
-          backgroundColor: colors.basic[300]
+          backgroundColor: colors.basic[300],
         },
-        backgroundColor
+        backgroundColor,
       };
     },
     placeholder: (base, { isDisabled, isFocused }) => {
@@ -91,10 +91,10 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
         ...base,
         transition: "color 0.2s",
         color,
-        fontSize: `${fontSize.sm}px`
+        fontSize: `${fontSize.sm}px`,
       };
     },
-    singleValue: base => {
+    singleValue: (base) => {
       let color = theme.palette.black;
       if (error) {
         color = theme.palette.danger.main;
@@ -102,30 +102,30 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       return {
         ...base,
         color: `${color}`,
-        fontSize: `${fontSize.sm}px`
+        fontSize: `${fontSize.sm}px`,
       };
     },
-    multiValue: base => ({
+    multiValue: (base) => ({
       ...base,
       backgroundColor: theme.palette.gray.light,
-      borderRadius: "4px"
+      borderRadius: "4px",
     }),
-    multiValueLabel: base => ({
+    multiValueLabel: (base) => ({
       ...base,
       padding: 0,
       fontSize: `${fontSize.sm}px`,
-      color: theme.palette.black
+      color: theme.palette.black,
     }),
-    multiValueRemove: base => ({
+    multiValueRemove: (base) => ({
       ...base,
       ":hover": {
-        backgroundColor: colors.basic[300]
-      }
+        backgroundColor: colors.basic[300],
+      },
     }),
-    valueContainer: base => ({
+    valueContainer: (base) => ({
       ...base,
-      padding: "8px"
-    })
+      padding: "8px",
+    }),
   };
   return overrideStyles;
 };
@@ -151,7 +151,7 @@ const Select: React.FunctionComponent<Props> = ({
     : undefined;
   const onHandleInputChange: Props["onInputChange"] = (
     newValue,
-    actionMeta
+    actionMeta,
   ) => {
     i = 0;
     if (onInputChange) {
@@ -167,12 +167,12 @@ const Select: React.FunctionComponent<Props> = ({
       <ReactSelect
         isClearable
         components={{
-          DropdownIndicator: props => (
+          DropdownIndicator: (props) => (
             <DropdownIndicator {...props} error={error} />
           ),
           ClearIndicator,
           IndicatorSeparator: null,
-          MultiValueRemove
+          MultiValueRemove,
         }}
         placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}

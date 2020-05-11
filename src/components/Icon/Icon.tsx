@@ -66,12 +66,12 @@ type IconSize = "sm" | "md" | "lg";
 export const iconSize: { [key in IconSize]: number } = {
   sm: 12,
   md: 18,
-  lg: 24
+  lg: 24,
 };
-export interface IconProps {
+export type IconProps = {
   type: IconType;
   fill: string;
-}
+};
 
 // for storybook
 export const icons: {
@@ -104,7 +104,7 @@ export const icons: {
   unlink: UnlinkIcon,
   no_link: NoLinkIcon,
   search: SearchIcon,
-  export: ExportIcon
+  export: ExportIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
@@ -123,17 +123,17 @@ const getIconColor = (color: IconColor, theme: Theme) => {
   }
 };
 
-export interface Props {
+export type Props = {
   name: IconName;
   type?: IconType;
   size?: IconSize;
   color?: IconColor;
-}
+};
 const Icon: React.FunctionComponent<Props> = ({
   name,
   type = "line",
   size = "md",
-  color = "fill"
+  color = "fill",
 }) => {
   const theme = useTheme();
   return (

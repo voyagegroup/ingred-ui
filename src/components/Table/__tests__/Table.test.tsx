@@ -26,7 +26,7 @@ describe("Table component testing", () => {
             <Table.Cell>コンテンツ</Table.Cell>
           </Table.Row>
         </Table.Body>
-      </Table>
+      </Table>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

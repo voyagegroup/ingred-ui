@@ -2,5 +2,5 @@ export {
   default,
   FilterState,
   useFilterState,
-  getFilteredItems
+  getFilteredItems,
 } from "./Pager";

@@ -5,12 +5,12 @@ import moment from "moment";
 import {
   FocusedInputShape,
   DateRangePicker,
-  DateRangePickerShape
+  DateRangePickerShape,
 } from "react-dates";
 import Icon from "../Icon";
 
 moment.locale("ja", {
-  weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"]
+  weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
 });
 
 function renderMonthText(day: moment.Moment) {
@@ -43,7 +43,7 @@ const DatePicker: React.FunctionComponent<Props> = ({
 }) => {
   const [
     focusedInput,
-    setFocusedInput
+    setFocusedInput,
   ] = React.useState<FocusedInputShape | null>(null);
 
   return (

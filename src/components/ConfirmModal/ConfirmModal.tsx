@@ -48,7 +48,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   fullSize = false,
   overflowYScroll = true,
   disableHorizontalPadding = false,
-  subActions = []
+  subActions = [],
 }) => {
   const theme = useTheme();
   const showFooter = !!onSubmit;
@@ -65,8 +65,8 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
 
               <Spacer pr={2} />
               {subActions.map(({ icon, action, title }) => (
-                <Spacer pr={2} key="title">
-                  <ActionButton icon={icon} onClick={action} type="button">
+                <Spacer key="title" pr={2}>
+                  <ActionButton icon={icon} type="button" onClick={action}>
                     {title}
                   </ActionButton>
                 </Spacer>

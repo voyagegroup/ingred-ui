@@ -7,7 +7,7 @@ export const data = [
     imp: 5511,
     click: 0,
     vimp: 4094,
-    created_at: "2019/08/16 09:18"
+    created_at: "2019/08/16 09:18",
   },
   {
     id: 32538,
@@ -17,7 +17,7 @@ export const data = [
     imp: 4821,
     click: 0,
     vimp: 3815,
-    created_at: "2019/08/17 09:16"
+    created_at: "2019/08/17 09:16",
   },
   {
     id: 32869,
@@ -27,7 +27,7 @@ export const data = [
     imp: 4761,
     click: 0,
     vimp: 3649,
-    created_at: "2019/08/18 09:16"
+    created_at: "2019/08/18 09:16",
   },
   {
     id: 33198,
@@ -37,7 +37,7 @@ export const data = [
     imp: 6538,
     click: 0,
     vimp: 4730,
-    created_at: "2019/08/19 09:17"
+    created_at: "2019/08/19 09:17",
   },
   {
     id: 33528,
@@ -47,7 +47,7 @@ export const data = [
     imp: 12982,
     click: 0,
     vimp: 9884,
-    created_at: "2019/08/20 09:16"
+    created_at: "2019/08/20 09:16",
   },
   {
     id: 35964,
@@ -57,7 +57,7 @@ export const data = [
     imp: 15160,
     click: 0,
     vimp: 11150,
-    created_at: "2019/08/21 09:17"
+    created_at: "2019/08/21 09:17",
   },
   {
     id: 36630,
@@ -67,7 +67,7 @@ export const data = [
     imp: 4185,
     click: 0,
     vimp: 3244,
-    created_at: "2019/08/22 16:31"
+    created_at: "2019/08/22 16:31",
   },
   {
     id: 36947,
@@ -77,7 +77,7 @@ export const data = [
     imp: 3409,
     click: 0,
     vimp: 2705,
-    created_at: "2019/08/23 09:17"
+    created_at: "2019/08/23 09:17",
   },
   {
     id: 37243,
@@ -87,7 +87,7 @@ export const data = [
     imp: 4058,
     click: 0,
     vimp: 3163,
-    created_at: "2019/08/24 09:16"
+    created_at: "2019/08/24 09:16",
   },
   {
     id: 37533,
@@ -97,7 +97,7 @@ export const data = [
     imp: 11134,
     click: 0,
     vimp: 8237,
-    created_at: "2019/08/25 09:17"
+    created_at: "2019/08/25 09:17",
   },
   {
     id: 37825,
@@ -107,7 +107,7 @@ export const data = [
     imp: 9546,
     click: 0,
     vimp: 7236,
-    created_at: "2019/08/26 09:17"
+    created_at: "2019/08/26 09:17",
   },
   {
     id: 38116,
@@ -117,7 +117,7 @@ export const data = [
     imp: 8766,
     click: 0,
     vimp: 6593,
-    created_at: "2019/08/27 09:17"
+    created_at: "2019/08/27 09:17",
   },
   {
     id: 38405,
@@ -127,7 +127,7 @@ export const data = [
     imp: 5531,
     click: 0,
     vimp: 4103,
-    created_at: "2019/08/28 09:17"
+    created_at: "2019/08/28 09:17",
   },
   {
     id: 38689,
@@ -137,7 +137,7 @@ export const data = [
     imp: 2574,
     click: 0,
     vimp: 1881,
-    created_at: "2019/08/29 09:17"
+    created_at: "2019/08/29 09:17",
   },
   {
     id: 38974,
@@ -147,7 +147,7 @@ export const data = [
     imp: 751,
     click: 0,
     vimp: 528,
-    created_at: "2019/08/30 09:16"
+    created_at: "2019/08/30 09:16",
   },
   {
     id: 39258,
@@ -157,7 +157,7 @@ export const data = [
     imp: 2251,
     click: 0,
     vimp: 1748,
-    created_at: "2019/08/31 09:17"
+    created_at: "2019/08/31 09:17",
   },
   {
     id: 39549,
@@ -167,7 +167,7 @@ export const data = [
     imp: 1611,
     click: 0,
     vimp: 1178,
-    created_at: "2019/09/01 09:17"
+    created_at: "2019/09/01 09:17",
   },
   {
     id: 39842,
@@ -177,7 +177,7 @@ export const data = [
     imp: 1328,
     click: 0,
     vimp: 915,
-    created_at: "2019/09/02 09:17"
+    created_at: "2019/09/02 09:17",
   },
   {
     id: 40135,
@@ -187,7 +187,7 @@ export const data = [
     imp: 1791,
     click: 0,
     vimp: 1234,
-    created_at: "2019/09/03 09:17"
+    created_at: "2019/09/03 09:17",
   },
   {
     id: 40428,
@@ -197,7 +197,7 @@ export const data = [
     imp: 48664,
     click: 0,
     vimp: 39135,
-    created_at: "2019/09/04 09:17"
+    created_at: "2019/09/04 09:17",
   },
   {
     id: 40720,
@@ -207,7 +207,7 @@ export const data = [
     imp: 75650,
     click: 0,
     vimp: 59397,
-    created_at: "2019/09/05 09:17"
+    created_at: "2019/09/05 09:17",
   },
   {
     id: 41007,
@@ -217,7 +217,7 @@ export const data = [
     imp: 60513,
     click: 0,
     vimp: 49111,
-    created_at: "2019/09/06 09:15"
+    created_at: "2019/09/06 09:15",
   },
   {
     id: 41289,
@@ -227,7 +227,7 @@ export const data = [
     imp: 67387,
     click: 0,
     vimp: 53858,
-    created_at: "2019/09/07 09:17"
+    created_at: "2019/09/07 09:17",
   },
   {
     id: 41578,
@@ -237,7 +237,7 @@ export const data = [
     imp: 49391,
     click: 0,
     vimp: 40109,
-    created_at: "2019/09/08 09:17"
+    created_at: "2019/09/08 09:17",
   },
   {
     id: 41869,
@@ -247,7 +247,7 @@ export const data = [
     imp: 75178,
     click: 0,
     vimp: 57589,
-    created_at: "2019/09/09 09:16"
+    created_at: "2019/09/09 09:16",
   },
   {
     id: 42155,
@@ -257,7 +257,7 @@ export const data = [
     imp: 78165,
     click: 0,
     vimp: 60747,
-    created_at: "2019/09/10 09:16"
+    created_at: "2019/09/10 09:16",
   },
   {
     id: 42442,
@@ -267,7 +267,7 @@ export const data = [
     imp: 52921,
     click: 0,
     vimp: 42914,
-    created_at: "2019/09/11 09:18"
+    created_at: "2019/09/11 09:18",
   },
   {
     id: 42614,
@@ -277,7 +277,7 @@ export const data = [
     imp: 62287,
     click: 0,
     vimp: 49239,
-    created_at: "2019/09/12 09:16"
+    created_at: "2019/09/12 09:16",
   },
   {
     id: 42779,
@@ -287,7 +287,7 @@ export const data = [
     imp: 66034,
     click: 0,
     vimp: 51819,
-    created_at: "2019/09/13 09:16"
+    created_at: "2019/09/13 09:16",
   },
   {
     id: 42944,
@@ -297,7 +297,7 @@ export const data = [
     imp: 52409,
     click: 0,
     vimp: 43703,
-    created_at: "2019/09/14 09:17"
+    created_at: "2019/09/14 09:17",
   },
   {
     id: 43111,
@@ -307,7 +307,7 @@ export const data = [
     imp: 104455,
     click: 0,
     vimp: 85272,
-    created_at: "2019/09/15 09:18"
+    created_at: "2019/09/15 09:18",
   },
   {
     id: 43282,
@@ -317,7 +317,7 @@ export const data = [
     imp: 93216,
     click: 0,
     vimp: 73541,
-    created_at: "2019/09/16 09:16"
+    created_at: "2019/09/16 09:16",
   },
   {
     id: 43457,
@@ -327,7 +327,7 @@ export const data = [
     imp: 53142,
     click: 0,
     vimp: 43433,
-    created_at: "2019/09/17 09:18"
+    created_at: "2019/09/17 09:18",
   },
   {
     id: 43629,
@@ -337,7 +337,7 @@ export const data = [
     imp: 106969,
     click: 0,
     vimp: 85314,
-    created_at: "2019/09/18 09:17"
+    created_at: "2019/09/18 09:17",
   },
   {
     id: 43805,
@@ -347,7 +347,7 @@ export const data = [
     imp: 93088,
     click: 0,
     vimp: 73304,
-    created_at: "2019/09/19 09:17"
+    created_at: "2019/09/19 09:17",
   },
   {
     id: 43980,
@@ -357,7 +357,7 @@ export const data = [
     imp: 103551,
     click: 0,
     vimp: 84252,
-    created_at: "2019/09/20 09:16"
+    created_at: "2019/09/20 09:16",
   },
   {
     id: 44150,
@@ -367,7 +367,7 @@ export const data = [
     imp: 55651,
     click: 0,
     vimp: 46162,
-    created_at: "2019/09/21 09:18"
+    created_at: "2019/09/21 09:18",
   },
   {
     id: 44319,
@@ -377,7 +377,7 @@ export const data = [
     imp: 51108,
     click: 0,
     vimp: 41517,
-    created_at: "2019/09/22 09:19"
+    created_at: "2019/09/22 09:19",
   },
   {
     id: 44486,
@@ -387,7 +387,7 @@ export const data = [
     imp: 61182,
     click: 0,
     vimp: 47806,
-    created_at: "2019/09/23 09:16"
+    created_at: "2019/09/23 09:16",
   },
   {
     id: 44656,
@@ -397,7 +397,7 @@ export const data = [
     imp: 91565,
     click: 0,
     vimp: 69051,
-    created_at: "2019/09/24 09:17"
+    created_at: "2019/09/24 09:17",
   },
   {
     id: 44828,
@@ -407,7 +407,7 @@ export const data = [
     imp: 72515,
     click: 0,
     vimp: 56853,
-    created_at: "2019/09/25 09:17"
+    created_at: "2019/09/25 09:17",
   },
   {
     id: 44993,
@@ -417,7 +417,7 @@ export const data = [
     imp: 62593,
     click: 0,
     vimp: 51939,
-    created_at: "2019/09/26 09:18"
+    created_at: "2019/09/26 09:18",
   },
   {
     id: 45134,
@@ -427,7 +427,7 @@ export const data = [
     imp: 43719,
     click: 0,
     vimp: 36949,
-    created_at: "2019/09/27 09:17"
+    created_at: "2019/09/27 09:17",
   },
   {
     id: 45280,
@@ -437,7 +437,7 @@ export const data = [
     imp: 43071,
     click: 0,
     vimp: 33661,
-    created_at: "2019/09/28 09:17"
+    created_at: "2019/09/28 09:17",
   },
   {
     id: 45425,
@@ -447,7 +447,7 @@ export const data = [
     imp: 37767,
     click: 0,
     vimp: 30721,
-    created_at: "2019/09/29 09:19"
+    created_at: "2019/09/29 09:19",
   },
   {
     id: 45569,
@@ -457,7 +457,7 @@ export const data = [
     imp: 34216,
     click: 0,
     vimp: 28642,
-    created_at: "2019/09/30 09:17"
+    created_at: "2019/09/30 09:17",
   },
   {
     id: 45716,
@@ -467,7 +467,7 @@ export const data = [
     imp: 33602,
     click: 0,
     vimp: 28452,
-    created_at: "2019/10/01 09:18"
+    created_at: "2019/10/01 09:18",
   },
   {
     id: 45865,
@@ -477,7 +477,7 @@ export const data = [
     imp: 40956,
     click: 0,
     vimp: 31932,
-    created_at: "2019/10/02 09:18"
+    created_at: "2019/10/02 09:18",
   },
   {
     id: 46007,
@@ -487,7 +487,7 @@ export const data = [
     imp: 37699,
     click: 0,
     vimp: 31130,
-    created_at: "2019/10/03 09:17"
+    created_at: "2019/10/03 09:17",
   },
   {
     id: 46490,
@@ -497,7 +497,7 @@ export const data = [
     imp: 37482,
     click: 0,
     vimp: 31826,
-    created_at: "2019/10/04 09:18"
+    created_at: "2019/10/04 09:18",
   },
   {
     id: 46998,
@@ -507,7 +507,7 @@ export const data = [
     imp: 41174,
     click: 0,
     vimp: 34259,
-    created_at: "2019/10/05 09:18"
+    created_at: "2019/10/05 09:18",
   },
   {
     id: 47527,
@@ -517,7 +517,7 @@ export const data = [
     imp: 34697,
     click: 0,
     vimp: 29213,
-    created_at: "2019/10/06 09:19"
+    created_at: "2019/10/06 09:19",
   },
   {
     id: 48053,
@@ -527,7 +527,7 @@ export const data = [
     imp: 36455,
     click: 0,
     vimp: 30248,
-    created_at: "2019/10/07 09:18"
+    created_at: "2019/10/07 09:18",
   },
   {
     id: 48586,
@@ -537,7 +537,7 @@ export const data = [
     imp: 43951,
     click: 0,
     vimp: 36484,
-    created_at: "2019/10/08 09:19"
+    created_at: "2019/10/08 09:19",
   },
   {
     id: 49116,
@@ -547,7 +547,7 @@ export const data = [
     imp: 43853,
     click: 0,
     vimp: 35366,
-    created_at: "2019/10/09 09:19"
+    created_at: "2019/10/09 09:19",
   },
   {
     id: 49654,
@@ -557,7 +557,7 @@ export const data = [
     imp: 33451,
     click: 0,
     vimp: 28245,
-    created_at: "2019/10/10 09:19"
+    created_at: "2019/10/10 09:19",
   },
   {
     id: 50458,
@@ -567,7 +567,7 @@ export const data = [
     imp: 39566,
     click: 0,
     vimp: 32424,
-    created_at: "2019/10/11 09:18"
+    created_at: "2019/10/11 09:18",
   },
   {
     id: 51523,
@@ -577,7 +577,7 @@ export const data = [
     imp: 38368,
     click: 0,
     vimp: 32339,
-    created_at: "2019/10/12 09:18"
+    created_at: "2019/10/12 09:18",
   },
   {
     id: 52059,
@@ -587,7 +587,7 @@ export const data = [
     imp: 41549,
     click: 0,
     vimp: 33322,
-    created_at: "2019/10/13 09:18"
+    created_at: "2019/10/13 09:18",
   },
   {
     id: 52592,
@@ -597,7 +597,7 @@ export const data = [
     imp: 37091,
     click: 0,
     vimp: 31201,
-    created_at: "2019/10/14 09:18"
+    created_at: "2019/10/14 09:18",
   },
   {
     id: 53134,
@@ -607,7 +607,7 @@ export const data = [
     imp: 37033,
     click: 0,
     vimp: 31449,
-    created_at: "2019/10/15 09:18"
+    created_at: "2019/10/15 09:18",
   },
   {
     id: 53937,
@@ -617,7 +617,7 @@ export const data = [
     imp: 35631,
     click: 0,
     vimp: 30512,
-    created_at: "2019/10/16 09:18"
+    created_at: "2019/10/16 09:18",
   },
   {
     id: 54744,
@@ -627,7 +627,7 @@ export const data = [
     imp: 37745,
     click: 0,
     vimp: 31999,
-    created_at: "2019/10/17 09:18"
+    created_at: "2019/10/17 09:18",
   },
   {
     id: 55538,
@@ -637,7 +637,7 @@ export const data = [
     imp: 33231,
     click: 0,
     vimp: 28009,
-    created_at: "2019/10/18 09:18"
+    created_at: "2019/10/18 09:18",
   },
   {
     id: 56338,
@@ -647,7 +647,7 @@ export const data = [
     imp: 32287,
     click: 0,
     vimp: 27753,
-    created_at: "2019/10/19 09:18"
+    created_at: "2019/10/19 09:18",
   },
   {
     id: 56867,
@@ -657,7 +657,7 @@ export const data = [
     imp: 28414,
     click: 0,
     vimp: 24694,
-    created_at: "2019/10/20 09:18"
+    created_at: "2019/10/20 09:18",
   },
   {
     id: 57395,
@@ -667,7 +667,7 @@ export const data = [
     imp: 31774,
     click: 0,
     vimp: 26949,
-    created_at: "2019/10/21 09:19"
+    created_at: "2019/10/21 09:19",
   },
   {
     id: 57916,
@@ -677,7 +677,7 @@ export const data = [
     imp: 32136,
     click: 0,
     vimp: 27178,
-    created_at: "2019/10/22 09:18"
+    created_at: "2019/10/22 09:18",
   },
   {
     id: 58438,
@@ -687,7 +687,7 @@ export const data = [
     imp: 36488,
     click: 0,
     vimp: 30460,
-    created_at: "2019/10/23 09:18"
+    created_at: "2019/10/23 09:18",
   },
   {
     id: 59250,
@@ -697,7 +697,7 @@ export const data = [
     imp: 31805,
     click: 0,
     vimp: 27020,
-    created_at: "2019/10/24 09:19"
+    created_at: "2019/10/24 09:19",
   },
   {
     id: 60064,
@@ -707,7 +707,7 @@ export const data = [
     imp: 30031,
     click: 0,
     vimp: 25749,
-    created_at: "2019/10/25 09:18"
+    created_at: "2019/10/25 09:18",
   },
   {
     id: 60974,
@@ -717,7 +717,7 @@ export const data = [
     imp: 25770,
     click: 0,
     vimp: 22051,
-    created_at: "2019/10/26 09:20"
+    created_at: "2019/10/26 09:20",
   },
   {
     id: 61693,
@@ -727,7 +727,7 @@ export const data = [
     imp: 29661,
     click: 0,
     vimp: 25222,
-    created_at: "2019/10/27 09:19"
+    created_at: "2019/10/27 09:19",
   },
   {
     id: 62420,
@@ -737,6 +737,6 @@ export const data = [
     imp: 32803,
     click: 0,
     vimp: 27778,
-    created_at: "2019/10/28 09:19"
-  }
+    created_at: "2019/10/28 09:19",
+  },
 ];

@@ -14,7 +14,7 @@ type Props = {
 export const ArrowButton: React.FunctionComponent<Props> = ({
   isRight,
   disabled,
-  onClick
+  onClick,
 }) => {
   const theme = useTheme();
   return (

@@ -16,8 +16,8 @@ import { useTheme } from "../../themes/useTheme";
 export default {
   title: "DataTable",
   parameters: {
-    component: DataTable
-  }
+    component: DataTable,
+  },
 };
 
 const Container = styled.div`
@@ -40,7 +40,7 @@ const sampleData: SampleObject[] = [
   { id: 6, name: "6name", count: 4 },
   { id: 7, name: "7name", count: 3 },
   { id: 8, name: "8name", count: 2 },
-  { id: 9, name: "9name", count: 1 }
+  { id: 9, name: "9name", count: 1 },
 ];
 
 export const Overview = () => (
@@ -50,19 +50,19 @@ export const Overview = () => (
       columns={[
         {
           name: "ID",
-          selector: data => data.id
+          selector: (data) => data.id,
         },
         {
           name: "名前",
-          selector: data => data.name,
-          sortable: true
+          selector: (data) => data.name,
+          sortable: true,
         },
         {
           name: "カウント",
-          selector: data => data.count,
+          selector: (data) => data.count,
           sortable: true,
-          align: "right"
-        }
+          align: "right",
+        },
       ]}
     />
   </Container>
@@ -76,14 +76,14 @@ export const WithPagination = () => (
       columns={[
         {
           name: "ID",
-          selector: data => data.id,
-          sortable: true
+          selector: (data) => data.id,
+          sortable: true,
         },
         {
           name: "imp",
-          selector: data => data.imp,
-          sortable: true
-        }
+          selector: (data) => data.imp,
+          sortable: true,
+        },
       ]}
     />
   </Container>
@@ -97,33 +97,33 @@ export const WithTabs = () => (
       tabs={[
         {
           label: "全て",
-          filter: data => data
+          filter: (data) => data,
         },
         {
           label: "1~4",
-          filter: data => data.filter(item => item.id < 5)
+          filter: (data) => data.filter((item) => item.id < 5),
         },
         {
           label: "5~9",
-          filter: data => data.filter(item => item.id >= 5)
+          filter: (data) => data.filter((item) => item.id >= 5),
         },
         {
           label: "empty",
-          filter: () => []
-        }
+          filter: () => [],
+        },
       ]}
       data={sampleData}
       columns={[
         {
           name: "ID",
-          selector: data => data.id,
-          sortable: true
+          selector: (data) => data.id,
+          sortable: true,
         },
         {
           name: "名前",
-          selector: data => data.name,
-          sortable: true
-        }
+          selector: (data) => data.name,
+          sortable: true,
+        },
       ]}
     />
   </Container>
@@ -132,7 +132,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    item => item.name && item.name.includes(searchText)
+    (item) => item.name && item.name.includes(searchText),
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -146,14 +146,14 @@ export const WithSearch: React.FunctionComponent = () => {
         columns={[
           {
             name: "ID",
-            selector: data => data.id,
-            sortable: true
+            selector: (data) => data.id,
+            sortable: true,
           },
           {
             name: "名前",
-            selector: data => data.name,
-            sortable: true
-          }
+            selector: (data) => data.name,
+            sortable: true,
+          },
         ]}
       />
     </Container>
@@ -173,14 +173,14 @@ export const SelectableRows: React.FunctionComponent = () => {
         columns={[
           {
             name: "ID",
-            selector: data => data.id,
-            sortable: true
+            selector: (data) => data.id,
+            sortable: true,
           },
           {
             name: "名前",
-            selector: data => data.name,
-            sortable: true
-          }
+            selector: (data) => data.name,
+            sortable: true,
+          },
         ]}
         onSelectRowsChange={setSelectedRows}
       />
@@ -201,14 +201,14 @@ export const SelectableRow: React.FunctionComponent = () => {
         columns={[
           {
             name: "ID",
-            selector: data => data.id,
-            sortable: true
+            selector: (data) => data.id,
+            sortable: true,
           },
           {
             name: "名前",
-            selector: data => data.name,
-            sortable: true
-          }
+            selector: (data) => data.name,
+            sortable: true,
+          },
         ]}
         onRadioChange={setSelectedRow}
       />
@@ -222,25 +222,25 @@ export const CustomCell: React.FunctionComponent = () => {
     () => [
       {
         name: "ID",
-        selector: data => data.id,
-        sortable: true
+        selector: (data) => data.id,
+        sortable: true,
       },
       {
         name: "imp",
-        selector: data => data.imp,
+        selector: (data) => data.imp,
         sortable: true,
-        renderCell: data => (
+        renderCell: (data) => (
           <Flex display="flex" alignItems="center">
             <Spacer pr={0.5}>
               <Icon name="folder" color={theme.palette.primary.main} />
             </Spacer>
             <Typography>{data.imp}</Typography>
           </Flex>
-        )
+        ),
       },
       {
         name: "操作",
-        selector: data => data.id,
+        selector: (data) => data.id,
         renderCell: () => (
           <Flex display="flex" alignItems="center">
             <Spacer pr={0.5}>
@@ -248,10 +248,10 @@ export const CustomCell: React.FunctionComponent = () => {
             </Spacer>
             <ActionButton icon="delete_bin">削除</ActionButton>
           </Flex>
-        )
-      }
+        ),
+      },
     ],
-    []
+    [],
   );
   return (
     <Container>

@@ -17,8 +17,8 @@ const SpacerContainer = styled.div`
 export default {
   title: "Spacer",
   parameters: {
-    component: Spacer
-  }
+    component: Spacer,
+  },
 };
 
 const marginProps = [
@@ -28,7 +28,7 @@ const marginProps = [
   "mb: margin-bottom",
   "ml: margin-left",
   "mx: margin-left and margin-right",
-  "my: margin-top and margin-bottom"
+  "my: margin-top and margin-bottom",
 ];
 
 const paddingProps = [
@@ -38,7 +38,7 @@ const paddingProps = [
   "pb: padding-bottom",
   "pl: padding-left",
   "px: padding-left and padding-right",
-  "py: padding-top and padding-bottom"
+  "py: padding-top and padding-bottom",
 ];
 
 export const Overview = () => (
@@ -50,7 +50,7 @@ export const Overview = () => (
       Margin Props
     </Typography>
     <ul>
-      {marginProps.map(l => (
+      {marginProps.map((l) => (
         <li>{l}</li>
       ))}
     </ul>
@@ -59,7 +59,7 @@ export const Overview = () => (
       Padding Props
     </Typography>
     <ul>
-      {paddingProps.map(l => (
+      {paddingProps.map((l) => (
         <li>{l}</li>
       ))}
     </ul>

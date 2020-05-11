@@ -1,36 +1,36 @@
 import { colors } from "../styles/color";
 import { deepmerge } from "../utils/deepmerge";
 
-interface PaletteColor {
+type PaletteColor = {
   deepDark: string;
   dark: string;
   main: string;
   light: string;
   highlight: string;
-}
+};
 
-export interface TypeText {
+export type TypeText = {
   primary: string;
   secondary: string;
   disabled: string;
   hint: string;
   white: string;
-}
+};
 
-export interface TypeBackground {
+export type TypeBackground = {
   default: string;
   dark: string;
   active: string;
   hint: string;
-}
+};
 
-export interface TypeIcon {
+export type TypeIcon = {
   active: string;
   fill: string;
   line: string;
-}
+};
 
-export interface Palette {
+export type Palette = {
   white: string;
   black: string;
   primary: PaletteColor;
@@ -41,7 +41,7 @@ export interface Palette {
   text: TypeText;
   background: TypeBackground;
   icon: TypeIcon;
-}
+};
 
 export const palette: Palette = {
   white: colors.basic[50] as string, // TODO
@@ -103,15 +103,15 @@ export const palette: Palette = {
 
 export type PaletteColorOptions = SimplePaletteColorOptions;
 
-export interface SimplePaletteColorOptions {
+export type SimplePaletteColorOptions = {
   deepDark?: string;
   dark?: string;
   main: string;
   light?: string;
   highlight?: string;
-}
+};
 
-export interface PaletteOptions {
+export type PaletteOptions = {
   white?: string;
   black?: string;
   primary?: PaletteColorOptions;
@@ -122,7 +122,7 @@ export interface PaletteOptions {
   text?: Partial<TypeText>;
   background?: Partial<TypeBackground>;
   icon?: Partial<TypeIcon>;
-}
+};
 
 export function createPalette(paletteInput: PaletteOptions): Palette {
   return deepmerge(palette, paletteInput);

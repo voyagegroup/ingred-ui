@@ -29,8 +29,8 @@ const Column = styled.div`
 export default {
   title: "TextField",
   parameters: {
-    component: TextField
-  }
+    component: TextField,
+  },
 };
 
 export const Overview = () => {

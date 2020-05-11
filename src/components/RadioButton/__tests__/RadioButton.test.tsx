@@ -9,7 +9,7 @@ describe("RadioButton component testing", () => {
 
   test("RadioButton", () => {
     const { asFragment } = renderWithThemeProvider(
-      <RadioButton>ラジオボタン</RadioButton>
+      <RadioButton>ラジオボタン</RadioButton>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

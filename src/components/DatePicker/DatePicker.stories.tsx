@@ -20,18 +20,18 @@ const RowContainer = styled.div`
 export default {
   title: "DatePicker",
   parameters: {
-    component: DatePicker
-  }
+    component: DatePicker,
+  },
 };
 
 export const Overview: React.FunctionComponent = () => {
   const [startDate, setStartDate] = React.useState<moment.Moment | null>(
-    moment().set("date", 1)
+    moment().set("date", 1),
   );
   const [endDate, setEndDate] = React.useState<moment.Moment | null>(moment());
   const onDatesChange = ({
     startDate,
-    endDate
+    endDate,
   }: {
     startDate: moment.Moment | null;
     endDate: moment.Moment | null;

@@ -9,7 +9,7 @@ describe("Pager component testing", () => {
 
   test("Pager", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Pager per={10} total={100} index={1} onClick={jest.fn} />
+      <Pager per={10} total={100} index={1} onClick={jest.fn} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

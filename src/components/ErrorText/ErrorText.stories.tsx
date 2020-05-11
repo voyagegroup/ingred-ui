@@ -10,8 +10,8 @@ const Container = styled.div`
 export default {
   title: "ErrorText",
   parameters: {
-    component: ErrorText
-  }
+    component: ErrorText,
+  },
 };
 
 export const Overview = () => (
