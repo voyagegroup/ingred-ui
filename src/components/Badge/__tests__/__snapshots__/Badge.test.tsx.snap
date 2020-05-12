@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge component testing Badge 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm byYTlK"
+    color="#FFFFFF"
+  >
+    text
+  </span>
+</DocumentFragment>
+`;
