@@ -7,7 +7,7 @@ type Props = {
 
 export const Container = styled.span<Props>`
   display: inline-block;
-  padding: 0.25em 0.4em;
+  padding: 0.25em 0.7em;
   border-radius: 4px;
   background-color: ${({ backgroundColor }) => backgroundColor};
   text-align: center;
