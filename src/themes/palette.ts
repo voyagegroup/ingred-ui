@@ -86,10 +86,10 @@ export const palette: Palette = {
     secondary: colors.basic[600],
     disabled: colors.basic[300],
     hint: colors.basic[400],
-    white: "#FFFFFF",
+    white: colors.basic[0] as string, // TODO
   },
   background: {
-    default: "#FFFFFF",
+    default: colors.basic[0] as string, // TODO
     dark: colors.blue[40] as string, // TODO
     active: colors.blue[100],
     hint: colors.blue[50] as string, // TODO
