@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const ArrowDoubleIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
+const ArrowDoubleLeftIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
       <path d="M0,0H18V18H0Z" fill="none" />
@@ -19,4 +19,4 @@ const ArrowDoubleIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
   );
 };
 
-export { ArrowDoubleIcon };
+export { ArrowDoubleLeftIcon };

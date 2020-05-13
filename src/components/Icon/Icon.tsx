@@ -17,7 +17,7 @@ import { CheckIcon } from "./internal/CheckIcon";
 import { EyeIcon } from "./internal/EyeIcon";
 import { EyeOffIcon } from "./internal/EyeOffIcon";
 import { ExclamationIcon } from "./internal/ExclamationIcon";
-import { ArrowDoubleIcon } from "./internal/ArrowDoubleIcon";
+import { ArrowDoubleLeftIcon } from "./internal/ArrowDoubleLeftIcon";
 import { QuestionIcon } from "./internal/QuestionIcon";
 import { ZoomInIcon } from "./internal/ZoomInIcon";
 import { SortUpIcon } from "./internal/SortUpIcon";
@@ -31,6 +31,16 @@ import { NoLinkIcon } from "./internal/NoLinkIcon";
 import { SearchIcon } from "./internal/SearchIcon";
 import { ExportIcon } from "./internal/ExportIcon";
 import { AddLineIcon } from "./internal/AddLineIcon";
+import { TrashIcon } from "./internal/TrashIcon";
+import { MoreVertIcon } from "./internal/MoreVertIcon";
+import { ArrowDoubleRightIcon } from "./internal/ArrowDoubleRightIcon";
+import { DateRangeIcon } from "./internal/DateRangeIcon";
+import { ImportIcon } from "./internal/ImportIcon";
+import { ExternalLinkIcon } from "./internal/ExternalLinkIcon";
+import { MobileIcon } from "./internal/MobileIcon";
+import { DesktopIcon } from "./internal/DesktopIcon";
+import { DesktopMobileIcon } from "./internal/DesktopMobileIcon";
+import { CopyIcon } from "./internal/CopyIcon";
 
 export type IconName =
   | "dashboard"
@@ -48,7 +58,8 @@ export type IconName =
   | "eye"
   | "eye_off"
   | "exclamation"
-  | "arrow_double"
+  | "arrow_double_left"
+  | "arrow_double_right"
   | "question"
   | "zoom_in"
   | "sort_up"
@@ -60,8 +71,17 @@ export type IconName =
   | "unlink"
   | "no_link"
   | "search"
+  | "import"
   | "export"
-  | "add_line";
+  | "add_line"
+  | "trash"
+  | "more_vert"
+  | "date_range"
+  | "external_link"
+  | "desktop"
+  | "mobile"
+  | "desktop_mobile"
+  | "copy";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -95,7 +115,8 @@ export const icons: {
   eye: EyeIcon,
   eye_off: EyeOffIcon,
   exclamation: ExclamationIcon,
-  arrow_double: ArrowDoubleIcon,
+  arrow_double_left: ArrowDoubleLeftIcon,
+  arrow_double_right: ArrowDoubleRightIcon,
   question: QuestionIcon,
   zoom_in: ZoomInIcon,
   sort_up: SortUpIcon,
@@ -107,8 +128,17 @@ export const icons: {
   unlink: UnlinkIcon,
   no_link: NoLinkIcon,
   search: SearchIcon,
+  import: ImportIcon,
   export: ExportIcon,
   add_line: AddLineIcon,
+  trash: TrashIcon,
+  more_vert: MoreVertIcon,
+  date_range: DateRangeIcon,
+  external_link: ExternalLinkIcon,
+  desktop: DesktopIcon,
+  mobile: MobileIcon,
+  desktop_mobile: DesktopMobileIcon,
+  copy: CopyIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
