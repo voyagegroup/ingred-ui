@@ -27,11 +27,13 @@ const getColor = (key: BadgeType, theme: Theme) => {
 
 export type Props = React.ComponentPropsWithRef<"a"|"span"> & {
   type: BadgeType;
+  shape?: Styled.BadgeShape;
   component?: "span" | "a";
 }
 
 const Badge: React.FunctionComponent<Props> = ({
   type,
+  shape = "normal",
   component = "span",
   children,
   ...rest
@@ -40,6 +42,7 @@ const Badge: React.FunctionComponent<Props> = ({
   return (
     <Styled.Container
       as={component}
+      shape={shape}
       color={theme.palette.text.white}
       backgroundColor={getColor(type, theme)}
       {...rest}

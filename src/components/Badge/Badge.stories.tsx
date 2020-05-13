@@ -36,7 +36,7 @@ export const Overview = () => {
       <Spacer py={1} />
       <Typography size="lg">
         Example text{" "}
-        <Badge type="danger">hoge</Badge>
+      <Badge type="danger" shape="pill">111</Badge>
       </Typography>
       <Spacer py={1} />
       <Typography size="md">
