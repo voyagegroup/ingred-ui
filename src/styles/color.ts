@@ -1,5 +1,4 @@
 export interface Color {
-  0?: string;  // TODO: 0を廃止するか他にも共通で入れる
   40?: string; // TODO: 40を廃止するか他にも共通で入れる
   50?: string; // TODO: 50を廃止するか他にも共通で入れる
   100: string;
@@ -63,7 +62,6 @@ export const colors: { [color: string]: Color } = {
     900: "#135E07"
   },
   basic: {
-    0: "#FFFFFF",
     50: "#FDFEFF",
 
     100: "#F5F7F8",
