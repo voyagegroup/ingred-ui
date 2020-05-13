@@ -2,7 +2,7 @@
 name: "icon component"
 description: "component of description"
 message: "Please enter icon name."
-root: "src/components/atoms/Icon/internal/"
+root: "src/components/Icon/internal/"
 ignore: []
 ---
 
