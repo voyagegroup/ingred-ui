@@ -23,7 +23,8 @@
     "deploy": "gh-pages -d example/build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint 'src/**/*.{ts,tsx}'"
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "generate": "yarn scaffdog generate"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -76,6 +77,7 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
+    "scaffdog": "^0.2.3",
     "style-loader": "^1.1.4",
     "styled-components": "^5.0.1",
     "ts-jest": "^25.4.0",
