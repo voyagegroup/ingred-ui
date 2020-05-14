@@ -1,22 +1,25 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Button from "../Button";
 import Icon from "../Icon";
-import { colors } from "../../styles/color";
 import { Popper } from "../Popper";
+import { ButtonSize } from "../Button/Button";
+import { useTheme } from "../../themes";
 
 type Props = {
   title: string;
+  size?: ButtonSize;
   onClick?: () => void;
   split?: boolean;
 };
 
 const DropdownButton: React.FC<Props> = ({
   title,
+  size = "medium",
   onClick,
   split = false,
   children,
 }) => {
+  const theme = useTheme();
   const [
     buttonElement,
     setButtonElement,
@@ -36,22 +39,31 @@ const DropdownButton: React.FC<Props> = ({
       <Styled.ButtonContainer ref={setButtonElement} role="button">
         {split ? (
           <>
-            <Styled.MainButton onClick={onClick}>{title}</Styled.MainButton>
+            <Styled.MainButton
+              size={size}
+              inline={true}
+              onClick={onClick}
+            >
+              {title}
+            </Styled.MainButton>
             <Styled.SplitToggle
+              size={size}
+              inline={true}
               onClick={handleToggleContent(!showContent)}
               onBlur={handleToggleContent(false)}
             >
-              <Icon name={"arrow_bottom"} size="lg" color={colors.basic[50]} />
+              <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
             </Styled.SplitToggle>
           </>
         ) : (
-          <Button
+          <Styled.SingleButton
             onClick={handleToggleContent(!showContent)}
             onBlur={handleToggleContent(false)}
+            size={size}
           >
             {title}
-            <Icon name={"arrow_bottom"} size="lg" color={colors.basic[50]} />
-          </Button>
+            <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
+          </Styled.SingleButton>
         )}
       </Styled.ButtonContainer>
       <Popper

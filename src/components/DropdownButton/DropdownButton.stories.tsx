@@ -48,7 +48,7 @@ export const Overview = () => {
       </DropdownButton>
       <Spacer px={20} />
       <DropdownButton
-        split
+        split={true}
         title="hogehoge"
         onClick={action("clicked hogehgoe")}
       >
