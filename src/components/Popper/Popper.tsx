@@ -1,15 +1,44 @@
 import * as React from "react";
-import { usePopper } from "react-popper";
+import * as PopperJS from '@popperjs/core';
+import { usePopper, Modifier } from "react-popper";
+
+// Ref: react-popper/typings/react-popper.d.ts
+export type PopperOptions = Omit<Partial<PopperJS.Options>, 'modifiers'> & {
+  createPopper?: typeof PopperJS.createPopper;
+  modifiers?: ReadonlyArray<Modifier<any>>;
+};
+
+const defaultPopperOptions: PopperOptions = {
+  placement: "bottom-start",
+  modifiers: [
+    {
+      name: "flip",
+      options: {
+        padding: { bottom: 24, right: 24 },
+        fallbackPlacements: ["bottom-start", "bottom-end", "top-start", "top-end"],
+      },
+    },
+    {
+      name: "preventOverflow",
+      options: {
+        mainAxis: false,
+      },
+    },
+  ],
+};
+
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   show: boolean;
-  baseElement: HTMLElement | null;
+  baseElement?: HTMLElement | null;
+  popperOptions?: PopperOptions;
 };
 
 // TODO: Popperで表示される要素のz-indexを定義する
 const Popper: React.FC<Props> = ({
   show = true,
   baseElement = null,
+  popperOptions = defaultPopperOptions,
   children,
   ...rest
 }) => {
@@ -18,24 +47,7 @@ const Popper: React.FC<Props> = ({
     setPopperElement,
   ] = React.useState<HTMLDivElement | null>(null);
 
-  const { styles, attributes } = usePopper(baseElement, popperElement, {
-    placement: "bottom-start",
-    modifiers: [
-      {
-        name: "flip",
-        options: {
-          padding: { bottom: 24, right: 24 },
-          fallbackPlacements: ["bottom-end", "top-start", "top-end"],
-        },
-      },
-      {
-        name: "preventOverflow",
-        options: {
-          mainAxis: false,
-        },
-      },
-    ],
-  });
+  const { styles, attributes } = usePopper(baseElement, popperElement, popperOptions);
 
   return show ? (
     <div
