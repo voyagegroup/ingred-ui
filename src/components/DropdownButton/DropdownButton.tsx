@@ -71,15 +71,16 @@ const DropdownButton: React.FC<Props> = ({
           </Styled.SingleButton>
         )}
       </Styled.ButtonContainer>
-      <Popper
-        show={showContent || activeContent}
-        baseElement={buttonElement}
-        onMouseDown={handleContentActive(true)}
-        onTouchStart={handleContentActive(true)}
-        onClick={handleContentActive(false)}
-      >
-        <MenuList contents={contents} />
-      </Popper>
+      {(showContent || activeContent) && (
+        <Popper
+          baseElement={buttonElement}
+          onMouseDown={handleContentActive(true)}
+          onTouchStart={handleContentActive(true)}
+          onClick={handleContentActive(false)}
+        >
+          <MenuList contents={contents} />
+        </Popper>
+      )}
     </>
   );
 }

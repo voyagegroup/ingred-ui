@@ -29,14 +29,12 @@ const defaultPopperOptions: PopperOptions = {
 
 
 type Props = React.ComponentPropsWithRef<"div"> & {
-  show: boolean;
   baseElement?: HTMLElement | null;
   popperOptions?: PopperOptions;
 };
 
 // TODO: Popperで表示される要素のz-indexを定義する
 const Popper: React.FC<Props> = ({
-  show = true,
   baseElement = null,
   popperOptions = defaultPopperOptions,
   children,
@@ -49,7 +47,7 @@ const Popper: React.FC<Props> = ({
 
   const { styles, attributes } = usePopper(baseElement, popperElement, popperOptions);
 
-  return show ? (
+  return (
     <div
       ref={setPopperElement}
       style={styles.popper}
@@ -58,7 +56,7 @@ const Popper: React.FC<Props> = ({
     >
       {children}
     </div>
-  ) : null;
+  );
 };
 
 export { Popper };
