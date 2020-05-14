@@ -9,6 +9,22 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.dark};
 `;
 
+const RowContainer = styled.div<{ minHeight?: string }>`
+  display: flex;
+  align-items: flex-start;
+  margin: ${({ theme }) => theme.spacing * 3}px;
+  padding: ${({ theme }) => theme.spacing * 3}px;
+  background-color: ${({ theme }) => theme.palette.background.default};
+  min-height: ${({ minHeight }) => minHeight || "0"};
+`;
+
+const Column = styled.div`
+  min-width: 300px;
+  & + & {
+    margin-left: ${({ theme }) => theme.spacing * 5}px;
+  }
+`;
+
 export default {
   title: "Badge",
   parameters: {
@@ -19,30 +35,70 @@ export default {
 export const Overview = () => {
   return (
     <Container>
-      <Typography size="xxxl">
-        Example text{" "}
-        <Badge type="primary">hoge</Badge>
-      </Typography>
-      <Spacer py={1} />
-      <Typography size="xxl">
-        Example text{" "}
-        <Badge type="secondary">hoge</Badge>
-      </Typography>
-      <Spacer py={1} />
-      <Typography size="xl">
-        Example text{" "}
-        <Badge type="warning">hoge</Badge>
-      </Typography>
-      <Spacer py={1} />
-      <Typography size="lg">
-        Example text{" "}
-      <Badge type="danger" shape="pill">111</Badge>
-      </Typography>
-      <Spacer py={1} />
-      <Typography size="md">
-        Example text{" "}
-        <Badge type="success">hoge</Badge>
-      </Typography>
+      <RowContainer>
+        <Column>
+          <Spacer pb={3}>
+            <Typography weight="bold" size="xxxxxl">
+              normal
+            </Typography>
+          </Spacer>
+          <Typography size="xxxl">
+            Example text{" "}
+            <Badge color="primary">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="xxl">
+            Example text{" "}
+            <Badge color="secondary">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="xl">
+            Example text{" "}
+            <Badge color="warning">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="lg">
+            Example text{" "}
+            <Badge color="danger">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="md">
+            Example text{" "}
+            <Badge color="success">hoge</Badge>
+          </Typography>
+        </Column>
+        <Column>
+          <Spacer pb={3}>
+            <Typography weight="bold" size="xxxxxl">
+              pill
+            </Typography>
+          </Spacer>
+          <Typography size="xxxl">
+            Example text{" "}
+            <Badge color="primary" type="pill">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="xxl">
+            Example text{" "}
+            <Badge color="secondary" type="pill">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="xl">
+            Example text{" "}
+            <Badge color="warning" type="pill">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="lg">
+            Example text{" "}
+            <Badge color="danger" type="pill">hoge</Badge>
+          </Typography>
+          <Spacer py={1} />
+          <Typography size="md">
+            Example text{" "}
+            <Badge color="success" type="pill">hoge</Badge>
+          </Typography>
+        </Column>
+      </RowContainer>
     </Container>
   );
 };

@@ -1,10 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Badge component testing Badge 1`] = `
+exports[`Badge component testing Badge normal 1`] = `
 <DocumentFragment>
   <span
-    class="sc-AxjAm byYTlK"
+    class="sc-AxjAm gbGUAi"
     color="#FFFFFF"
+    type="normal"
+  >
+    text
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge component testing Badge pill 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm jSrxBj"
+    color="#FFFFFF"
+    type="pill"
   >
     text
   </span>

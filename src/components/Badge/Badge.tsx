@@ -3,14 +3,14 @@ import * as Styled from "./styled";
 import { Theme } from "../../themes";
 import { useTheme } from "../../themes/useTheme";
 
-export type BadgeType =
+export type BadgeColor =
   | "primary"
   | "secondary"
   | "success"
   | "warning"
   | "danger"
 
-const getColor = (key: BadgeType, theme: Theme) => {
+const getColor = (key: BadgeColor, theme: Theme) => {
   switch (key) {
     case "primary":
       return theme.palette.primary.main;
@@ -26,14 +26,14 @@ const getColor = (key: BadgeType, theme: Theme) => {
 };
 
 export type Props = React.ComponentPropsWithRef<"a"|"span"> & {
-  type: BadgeType;
-  shape?: Styled.BadgeShape;
+  color: BadgeColor;
+  type?: Styled.BadgeType;
   component?: "span" | "a";
 }
 
 const Badge: React.FunctionComponent<Props> = ({
-  type,
-  shape = "normal",
+  color,
+  type = "normal",
   component = "span",
   children,
   ...rest
@@ -42,9 +42,9 @@ const Badge: React.FunctionComponent<Props> = ({
   return (
     <Styled.Container
       as={component}
-      shape={shape}
+      type={type}
       color={theme.palette.text.white}
-      backgroundColor={getColor(type, theme)}
+      backgroundColor={getColor(color, theme)}
       {...rest}
     >
       {children}

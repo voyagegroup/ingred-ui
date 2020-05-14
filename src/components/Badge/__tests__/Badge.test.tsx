@@ -7,9 +7,16 @@ import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider"
 describe("Badge component testing", () => {
   afterEach(cleanup);
 
-  test("Badge", () => {
+  test("Badge normal", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Badge type="primary">text</Badge>
+      <Badge color="primary">text</Badge>
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test("Badge pill", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <Badge color="primary" type="pill">text</Badge>
     );
     expect(asFragment()).toMatchSnapshot();
   });
