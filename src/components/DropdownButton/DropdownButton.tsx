@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as PopperJS from '@popperjs/core';
 import * as Styled from "./styled";
 import Icon from "../Icon";
 import { Popper } from "../Popper";
@@ -15,6 +16,7 @@ type Props = {
     onClick: () => void;
     divideBottom?: boolean;
   }[];
+  positionPriority?: PopperJS.Placement[];
 };
 
 const DropdownButton: React.FC<Props> = ({
@@ -22,6 +24,7 @@ const DropdownButton: React.FC<Props> = ({
   onClick,
   split = false,
   contents,
+  positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
   children,
 }) => {
   const theme = useTheme();
@@ -74,6 +77,24 @@ const DropdownButton: React.FC<Props> = ({
       {(showContent || activeContent) && (
         <Popper
           baseElement={buttonElement}
+          popperOptions={{
+            placement: positionPriority[0],
+            modifiers: [
+              {
+                name: "flip",
+                options: {
+                  padding: 24,
+                  fallbackPlacements: positionPriority,
+                },
+              },
+              {
+                name: "preventOverflow",
+                options: {
+                  mainAxis: false,
+                },
+              },
+            ],
+          }}
           onMouseDown={handleContentActive(true)}
           onTouchStart={handleContentActive(true)}
           onClick={handleContentActive(false)}

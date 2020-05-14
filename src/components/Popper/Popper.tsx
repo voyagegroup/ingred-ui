@@ -14,7 +14,7 @@ const defaultPopperOptions: PopperOptions = {
     {
       name: "flip",
       options: {
-        padding: { bottom: 24, right: 24 },
+        padding: 24,
         fallbackPlacements: ["bottom-start", "bottom-end", "top-start", "top-end"],
       },
     },
@@ -36,7 +36,7 @@ type Props = React.ComponentPropsWithRef<"div"> & {
 // TODO: Popperで表示される要素のz-indexを定義する
 const Popper: React.FC<Props> = ({
   baseElement = null,
-  popperOptions = defaultPopperOptions,
+  popperOptions = {},
   children,
   ...rest
 }) => {
@@ -45,7 +45,10 @@ const Popper: React.FC<Props> = ({
     setPopperElement,
   ] = React.useState<HTMLDivElement | null>(null);
 
-  const { styles, attributes } = usePopper(baseElement, popperElement, popperOptions);
+  const { styles, attributes } = usePopper(baseElement, popperElement, {
+    ...defaultPopperOptions,
+    ...popperOptions,
+  });
 
   return (
     <div
