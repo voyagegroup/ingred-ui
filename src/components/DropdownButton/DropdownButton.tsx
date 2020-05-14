@@ -4,19 +4,24 @@ import Icon from "../Icon";
 import { Popper } from "../Popper";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
+import { MenuList } from "./internal/MenuList";
 
 type Props = {
-  title: string;
   size?: ButtonSize;
   onClick?: () => void;
   split?: boolean;
+  contents: {
+    text: string;
+    onClick: () => void;
+    divideBottom?: boolean;
+  }[];
 };
 
 const DropdownButton: React.FC<Props> = ({
-  title,
   size = "medium",
   onClick,
   split = false,
+  contents,
   children,
 }) => {
   const theme = useTheme();
@@ -44,7 +49,7 @@ const DropdownButton: React.FC<Props> = ({
               inline={true}
               onClick={onClick}
             >
-              {title}
+              {children}
             </Styled.MainButton>
             <Styled.SplitToggle
               size={size}
@@ -61,7 +66,7 @@ const DropdownButton: React.FC<Props> = ({
             onBlur={handleToggleContent(false)}
             size={size}
           >
-            {title}
+            {children}
             <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
           </Styled.SingleButton>
         )}
@@ -73,7 +78,7 @@ const DropdownButton: React.FC<Props> = ({
         onTouchStart={handleContentActive(true)}
         onClick={handleContentActive(false)}
       >
-        {children}
+        <MenuList contents={contents} />
       </Popper>
     </>
   );
