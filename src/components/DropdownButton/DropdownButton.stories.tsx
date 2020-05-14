@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { DropdownButton } from "./";
 import { action } from "@storybook/addon-actions";
 import Spacer from "../Spacer";
-import { MenuList } from "../MenuList";
 
 const Container = styled.div`
   display: flex;
@@ -27,6 +26,7 @@ export const Overview = () => {
     {
       text: "保存する",
       onClick: action("clicked '保存する'"),
+      divideBottom: true,
     },
     {
       text: "保存して実行する",
@@ -35,6 +35,7 @@ export const Overview = () => {
     {
       text: "下書きとして保存するhogehogehogehoge",
       onClick: action("clicked '下書きとして保存する'"),
+      divideBottom: true,
     },
     {
       text: "やっぱり何もしない",
@@ -43,16 +44,16 @@ export const Overview = () => {
   ];
   return (
     <Container>
-      <DropdownButton title="hogehoge">
-        <MenuList contents={contents} divideIndex={[2]} />
+      <DropdownButton contents={contents}>
+        保存する
       </DropdownButton>
       <Spacer px={20} />
       <DropdownButton
         split={true}
-        title="hogehoge"
+        contents={contents}
         onClick={action("clicked hogehgoe")}
       >
-        <MenuList contents={contents} />
+        保存する
       </DropdownButton>
   </Container>
   );
