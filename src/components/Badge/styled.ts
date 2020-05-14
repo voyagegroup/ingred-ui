@@ -6,6 +6,8 @@ type Props = {
   color: string;
   backgroundColor: string;
   type: BadgeType;
+  fontSize: string;
+  fontWeight: string;
 }
 
 export const Container = styled.span<Props>`
@@ -14,8 +16,8 @@ export const Container = styled.span<Props>`
   border-radius: ${({ type }) => type === "pill" ? "1em" : "4px"};
   background-color: ${({ backgroundColor }) => backgroundColor};
   text-align: center;
-  font-size: 0.65em;
-  font-weight: bold;
+  font-size: ${({ fontSize }) => fontSize};
+  font-weight: ${({ fontWeight }) => fontWeight};
   color: ${({ color }) => color};
   text-decoration: none;
 `;
