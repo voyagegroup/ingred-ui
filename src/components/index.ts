@@ -23,6 +23,9 @@ export * from "./DataTable";
 export { default as DatePicker } from "./DatePicker";
 export * from "./DatePicker";
 
+export { default as DropdownButton } from "./DropdownButton";
+export * from "./DropdownButton";
+
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 
@@ -43,6 +46,12 @@ export * from "./LoadingBar";
 
 export { default as Pager } from "./Pager";
 export * from "./Pager";
+
+export { default as Popper } from "./Popper";
+export * from "./Popper";
+
+export { default as Portal } from "./Portal";
+export * from "./Portal";
 
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";

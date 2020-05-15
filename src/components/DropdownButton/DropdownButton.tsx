@@ -2,7 +2,6 @@ import * as React from "react";
 import * as PopperJS from '@popperjs/core';
 import * as Styled from "./styled";
 import Icon from "../Icon";
-import Portal from "../Portal";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 import { MenuList } from "./internal/MenuList";
@@ -75,34 +74,32 @@ const DropdownButton: React.FC<Props> = ({
         )}
       </Styled.ButtonContainer>
       {(showContent || activeContent) && (
-        <Portal>
-          <Styled.MenuPopper
-            baseElement={buttonElement}
-            popperOptions={{
-              placement: positionPriority[0],
-              modifiers: [
-                {
-                  name: "flip",
-                  options: {
-                    padding: 24,
-                    fallbackPlacements: positionPriority,
-                  },
+        <Styled.MenuPopper
+          baseElement={buttonElement}
+          popperOptions={{
+            placement: positionPriority[0],
+            modifiers: [
+              {
+                name: "flip",
+                options: {
+                  padding: 24,
+                  fallbackPlacements: positionPriority,
                 },
-                {
-                  name: "preventOverflow",
-                  options: {
-                    mainAxis: false,
-                  },
+              },
+              {
+                name: "preventOverflow",
+                options: {
+                  mainAxis: false,
                 },
-              ],
-            }}
-            onMouseDown={handleContentActive(true)}
-            onTouchStart={handleContentActive(true)}
-            onClick={handleContentActive(false)}
-          >
-            <MenuList contents={contents} />
-          </Styled.MenuPopper>
-        </Portal>
+              },
+            ],
+          }}
+          onMouseDown={handleContentActive(true)}
+          onTouchStart={handleContentActive(true)}
+          onClick={handleContentActive(false)}
+        >
+          <MenuList contents={contents} />
+        </Styled.MenuPopper>
       )}
     </>
   );
