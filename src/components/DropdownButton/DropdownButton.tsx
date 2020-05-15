@@ -2,7 +2,6 @@ import * as React from "react";
 import * as PopperJS from '@popperjs/core';
 import * as Styled from "./styled";
 import Icon from "../Icon";
-import { Popper } from "../Popper";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 import { MenuList } from "./internal/MenuList";
@@ -75,7 +74,7 @@ const DropdownButton: React.FC<Props> = ({
         )}
       </Styled.ButtonContainer>
       {(showContent || activeContent) && (
-        <Popper
+        <Styled.MenuPopper
           baseElement={buttonElement}
           popperOptions={{
             placement: positionPriority[0],
@@ -100,7 +99,7 @@ const DropdownButton: React.FC<Props> = ({
           onClick={handleContentActive(false)}
         >
           <MenuList contents={contents} />
-        </Popper>
+        </Styled.MenuPopper>
       )}
     </>
   );
