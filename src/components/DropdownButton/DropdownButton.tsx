@@ -108,4 +108,4 @@ const DropdownButton: React.FC<Props> = ({
   );
 }
 
-export { DropdownButton };
+export default DropdownButton;
