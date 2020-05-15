@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
-import { Popper } from "../Popper";
+import Popper from "../Popper";
 
 export const ButtonContainer = styled.div`
   display: inline-flex;

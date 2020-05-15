@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as PopperJS from '@popperjs/core';
 import { usePopper, Modifier } from "react-popper";
+import Portal from "../Portal";
 
 // Ref: react-popper/typings/react-popper.d.ts
 export type PopperOptions = Omit<Partial<PopperJS.Options>, 'modifiers'> & {
@@ -31,11 +32,13 @@ const defaultPopperOptions: PopperOptions = {
 type Props = React.ComponentPropsWithRef<"div"> & {
   baseElement?: HTMLElement | null;
   popperOptions?: PopperOptions;
+  disablePortal?: boolean;
 };
 
 const Popper: React.FC<Props> = ({
   baseElement = null,
   popperOptions = {},
+  disablePortal = false,
   children,
   ...rest
 }) => {
@@ -50,15 +53,17 @@ const Popper: React.FC<Props> = ({
   });
 
   return (
-    <div
-      ref={setPopperElement}
-      style={styles.popper}
-      {...attributes.popper}
-      {...rest}
-    >
-      {children}
-    </div>
+    <Portal disablePortal={disablePortal}>
+      <div
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+        {...rest}
+      >
+        {children}
+      </div>
+    </Portal>
   );
 };
 
-export { Popper };
+export default Popper;
