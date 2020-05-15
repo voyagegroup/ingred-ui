@@ -33,7 +33,6 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   popperOptions?: PopperOptions;
 };
 
-// TODO: Popperで表示される要素のz-indexを定義する
 const Popper: React.FC<Props> = ({
   baseElement = null,
   popperOptions = {},
