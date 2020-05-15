@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
+import { Popper } from "../Popper";
 
 export const ButtonContainer = styled.div`
   display: inline-flex;
@@ -21,4 +22,8 @@ export const SplitToggle = styled(Button)`
 export const SingleButton = styled(Button)`
   padding-right: ${({ theme, size }) => size === "small" ? theme.spacing / 2 : theme.spacing}px;
   min-width: auto;
+`;
+
+export const MenuPopper = styled(Popper)`
+  z-index: ${({ theme }) => theme.depth.dropdownMenu};
 `;
