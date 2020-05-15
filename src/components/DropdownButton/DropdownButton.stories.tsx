@@ -11,8 +11,8 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.dark};
   justify-content: center;
   align-items: center;
-  width: 2000px;
-  height: 1000px;
+  width: 200vw;
+  height: 250vh;
 `;
 
 export default {
