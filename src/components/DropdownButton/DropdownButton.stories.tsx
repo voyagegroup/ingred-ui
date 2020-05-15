@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import { DropdownButton } from "./";
 import { action } from "@storybook/addon-actions";
+import { select } from '@storybook/addon-knobs';
+import { DropdownButton } from "./";
 import Spacer from "../Spacer";
 
 const Container = styled.div`
@@ -22,6 +23,12 @@ export default {
 };
 
 export const Overview = () => {
+  const size = select("Size", {
+    Small: "small",
+    Medium: "medium",
+    Large: "large",
+  }, "medium")
+
   const contents = [
     {
       text: "保存する",
@@ -44,12 +51,13 @@ export const Overview = () => {
   ];
   return (
     <Container>
-      <DropdownButton contents={contents}>
+      <DropdownButton size={size} contents={contents}>
         保存する
       </DropdownButton>
       <Spacer px={20} />
       <DropdownButton
         split={true}
+        size={size}
         contents={contents}
         onClick={action("clicked hogehgoe")}
       >
