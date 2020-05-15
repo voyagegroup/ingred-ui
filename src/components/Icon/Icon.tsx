@@ -31,7 +31,6 @@ import { NoLinkIcon } from "./internal/NoLinkIcon";
 import { SearchIcon } from "./internal/SearchIcon";
 import { ExportIcon } from "./internal/ExportIcon";
 import { AddLineIcon } from "./internal/AddLineIcon";
-import { TrashIcon } from "./internal/TrashIcon";
 import { MoreVertIcon } from "./internal/MoreVertIcon";
 import { ArrowDoubleRightIcon } from "./internal/ArrowDoubleRightIcon";
 import { DateRangeIcon } from "./internal/DateRangeIcon";
@@ -74,7 +73,6 @@ export type IconName =
   | "import"
   | "export"
   | "add_line"
-  | "trash"
   | "more_vert"
   | "date_range"
   | "external_link"
@@ -131,7 +129,6 @@ export const icons: {
   import: ImportIcon,
   export: ExportIcon,
   add_line: AddLineIcon,
-  trash: TrashIcon,
   more_vert: MoreVertIcon,
   date_range: DateRangeIcon,
   external_link: ExternalLinkIcon,
