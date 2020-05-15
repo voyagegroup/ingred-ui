@@ -12,7 +12,7 @@ type Props = {
 
 export const Container = styled.span<Props>`
   display: inline-block;
-  padding: 0.25em 0.7em;
+  padding: ${({ theme }) => `${theme.spacing / 2}px ${theme.spacing}px`};
   border-radius: ${({ type }) => type === "pill" ? "1em" : "4px"};
   background-color: ${({ backgroundColor }) => backgroundColor};
   text-align: center;
