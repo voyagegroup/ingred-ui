@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
 import { select } from '@storybook/addon-knobs';
-import { DropdownButton } from "./";
+import DropdownButton from "./";
 import Spacer from "../Spacer";
 
 const Container = styled.div`
