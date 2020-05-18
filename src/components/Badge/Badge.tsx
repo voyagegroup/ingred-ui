@@ -8,7 +8,7 @@ export type BadgeColor =
   | "secondary"
   | "success"
   | "warning"
-  | "danger"
+  | "danger";
 
 const getColor = (key: BadgeColor, theme: Theme) => {
   switch (key) {
@@ -25,13 +25,13 @@ const getColor = (key: BadgeColor, theme: Theme) => {
   }
 };
 
-export type Props = React.ComponentPropsWithRef<"a"|"span"> & {
+export type Props = React.ComponentPropsWithRef<"a" | "span"> & {
   color: BadgeColor;
   type?: Styled.BadgeType;
   fontSize?: string;
   fontWeight?: string;
   component?: "span" | "a";
-}
+};
 
 const Badge: React.FunctionComponent<Props> = ({
   color,
@@ -55,7 +55,7 @@ const Badge: React.FunctionComponent<Props> = ({
     >
       {children}
     </Styled.Container>
-  )
-}
+  );
+};
 
 export default Badge;

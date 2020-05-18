@@ -8,12 +8,12 @@ type Props = {
   type: BadgeType;
   fontSize: string;
   fontWeight: string;
-}
+};
 
 export const Container = styled.span<Props>`
   display: inline-block;
   padding: ${({ theme }) => `${theme.spacing / 2}px ${theme.spacing}px`};
-  border-radius: ${({ type }) => type === "pill" ? "10rem" : "4px"};
+  border-radius: ${({ type }) => (type === "pill" ? "10rem" : "4px")};
   background-color: ${({ backgroundColor }) => backgroundColor};
   text-align: center;
   font-size: ${({ fontSize }) => fontSize};

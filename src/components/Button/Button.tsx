@@ -29,7 +29,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.white,
-      boxShadow: "0px 0px 16px #0b82f466"
+      boxShadow: "0px 0px 16px #0b82f466",
     },
     hover: {
       background: theme.palette.primary.dark,
@@ -42,7 +42,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.white,
-      boxShadow: "0px 0px 16px #EB0A4E66"
+      boxShadow: "0px 0px 16px #EB0A4E66",
     },
     hover: {
       background: theme.palette.danger.dark,
@@ -109,7 +109,7 @@ const Button: React.FunctionComponent<Props> = ({
       as: "a",
       href,
     };
-  };
+  }
 
   return (
     <Styled.ButtonContainer
