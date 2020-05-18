@@ -99,27 +99,27 @@ const Button: React.FunctionComponent<Props> = ({
 }) => {
   const theme = useTheme();
   const colorStyle = getContainerColorStyles(theme)[color];
-  const horizontalPadding =
-    size === "small" ? `10px` : `${theme.spacing * 2}px`;
-  const restProps = href ? {} : rest;
+  const isLink = !!href;
+
+  let props: Styled.ContainerProps & { as?: "a" | "button" } = {
+    inline,
+    horizontalPadding: size === "small" ? `10px` : `${theme.spacing * 2}px`,
+    normal: { ...colorStyle.normal },
+    hover: { ...colorStyle.hover },
+    active: { ...colorStyle.active },
+    fontWeight: color === "cancel" ? "normal" : "bold",
+    fontSize: size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`,
+    height: buttonSize[size].height,
+    minWidth: buttonSize[size].minWidth,
+  }
+
+  if (isLink) {
+    props.as = "a";
+    props.href = href
+  }
 
   return (
-    <Styled.ButtonContainer
-      as={href ? "a" : "button"}
-      href={href}
-      {...restProps}
-      inline={inline}
-      horizontalPadding={horizontalPadding}
-      normal={{ ...colorStyle.normal }}
-      hover={{ ...colorStyle.hover }}
-      active={{ ...colorStyle.active }}
-      fontWeight={color === "cancel" ? "normal" : "bold"}
-      fontSize={
-        size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
-      }
-      height={buttonSize[size].height}
-      minWidth={buttonSize[size].minWidth}
-    >
+    <Styled.ButtonContainer {...props} {...rest}>
       {children}
     </Styled.ButtonContainer>
   );
