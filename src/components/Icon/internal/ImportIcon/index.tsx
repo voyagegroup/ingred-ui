@@ -11,7 +11,7 @@ const ImportIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
         transform="translate(-0.5 -0.75)"
       />
     </svg>
-  )
+  );
 };
 
 export { ImportIcon };

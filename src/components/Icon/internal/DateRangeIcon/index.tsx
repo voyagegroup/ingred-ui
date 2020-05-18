@@ -11,7 +11,7 @@ const DateRangeIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
         transform="translate(-0.5 -0.25)"
       />
     </svg>
-  )
+  );
 };
 
 export { DateRangeIcon };

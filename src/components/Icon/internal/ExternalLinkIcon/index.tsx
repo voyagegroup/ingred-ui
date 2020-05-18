@@ -11,7 +11,7 @@ const ExternalLinkIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
         transform="translate(-0.75 -0.75)"
       />
     </svg>
-  )
+  );
 };
 
 export { ExternalLinkIcon };

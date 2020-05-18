@@ -11,7 +11,7 @@ const MoreVertIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
         transform="translate(-2.5 -0.75)"
       />
     </svg>
-  )
+  );
 };
 
 export { MoreVertIcon };

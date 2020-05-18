@@ -11,7 +11,7 @@ const MobileIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
         transform="translate(-0.5)"
       />
     </svg>
-  )
+  );
 };
 
 export { MobileIcon };
