@@ -27,59 +27,59 @@ const Column = styled.div`
 export default {
   title: "Select",
   parameters: {
-    component: Select
-  }
+    component: Select,
+  },
 };
 
 const options: OptionType[] = [
   {
     label: "Adgeneration",
-    value: "1"
+    value: "1",
   },
   {
     label: "fluct",
-    value: "2"
+    value: "2",
   },
   {
     label: "Pubmatic",
-    value: "3"
+    value: "3",
   },
   {
     label: "Hoge",
-    value: "4"
+    value: "4",
   },
   {
     label: "Pubmatic",
-    value: "3"
+    value: "3",
   },
   {
     label: "Hoge",
-    value: "4"
+    value: "4",
   },
   {
     label: "Pubmatic",
-    value: "3"
+    value: "3",
   },
   {
     label: "Hoge",
-    value: "4"
+    value: "4",
   },
   {
     label: "Pubmatic",
-    value: "3"
+    value: "3",
   },
   {
     label: "Hoge",
-    value: "4"
+    value: "4",
   },
   {
     label: "Pubmatic",
-    value: "3"
+    value: "3",
   },
   {
     label: "Hoge",
-    value: "4"
-  }
+    value: "4",
+  },
 ];
 
 export const Overview = () => (
@@ -140,7 +140,7 @@ export const Overview = () => (
           minWidth="200px"
           link={{
             to: "/",
-            text: "リンク"
+            text: "リンク",
           }}
           onChange={action("onChange")}
         />

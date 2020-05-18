@@ -35,7 +35,7 @@ export const fontSize: { [key in FontSize]: number } = {
   xxxxl: 24,
   xxxxxl: 28,
   xxxxxxl: 32,
-  xxxxxxxl: 40
+  xxxxxxxl: 40,
 };
 
 const getColor = (key: ColorType | string, theme: Theme) => {
@@ -77,7 +77,7 @@ const Typography: React.FunctionComponent<Props> = ({
   align = "left",
   size = "md",
   weight = "normal",
-  lineHeight = "1.4"
+  lineHeight = "1.4",
 }) => {
   const theme = useTheme();
   return (

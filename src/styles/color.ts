@@ -1,4 +1,4 @@
-export interface Color {
+export type Color = {
   40?: string; // TODO: 40を廃止するか他にも共通で入れる
   50?: string; // TODO: 50を廃止するか他にも共通で入れる
   100: string;
@@ -11,7 +11,7 @@ export interface Color {
   800: string;
   900: string;
   1000?: string; // TODO: 1000を廃止するか他にも共通で入れる
-}
+};
 
 export const colors: { [color: string]: Color } = {
   red: {
@@ -23,7 +23,7 @@ export const colors: { [color: string]: Color } = {
     600: "#CA0755",
     700: "#A90556",
     800: "#880352",
-    900: "#70014E"
+    900: "#70014E",
   },
   blue: {
     40: "#F4F8FA",
@@ -37,7 +37,7 @@ export const colors: { [color: string]: Color } = {
     600: "#0864D1",
     700: "#054BAF",
     800: "#03348D",
-    900: "#022575"
+    900: "#022575",
   },
   yellow: {
     100: "#FEFACF",
@@ -48,7 +48,7 @@ export const colors: { [color: string]: Color } = {
     600: "#D8B70E",
     700: "#B5960A",
     800: "#927606",
-    900: "#785F03"
+    900: "#785F03",
   },
   green: {
     100: "#ECFCD3",
@@ -59,7 +59,7 @@ export const colors: { [color: string]: Color } = {
     600: "#49A81C",
     700: "#338D13",
     800: "#20710C",
-    900: "#135E07"
+    900: "#135E07",
   },
   basic: {
     50: "#FDFEFF",
@@ -74,6 +74,6 @@ export const colors: { [color: string]: Color } = {
     800: "#1F3449",
     900: "#041C33",
 
-    1000: "#001326"
-  }
+    1000: "#001326",
+  },
 };

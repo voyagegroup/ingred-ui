@@ -3,17 +3,17 @@ import { Space } from "../styles/space";
 import { Depth, DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 
-export interface ThemeOptions {
+export type ThemeOptions = {
   palette?: PaletteOptions;
   spacing?: number;
   depth?: DepthOptions;
-}
+};
 
-export interface Theme {
+export type Theme = {
   palette: Palette;
   spacing: number;
   depth: Depth;
-}
+};
 
 export function createTheme(options: ThemeOptions = {}): Theme {
   const {
@@ -31,5 +31,6 @@ export function createTheme(options: ThemeOptions = {}): Theme {
 }
 
 declare module "styled-components" {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions,@typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }

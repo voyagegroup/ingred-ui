@@ -12,7 +12,7 @@ import {
   getOrder,
   sort,
   CurrentSortState,
-  useOrderState
+  useOrderState,
 } from "./sort";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
@@ -41,7 +41,7 @@ function getDisplayData<T>({
   filterState,
   enablePagination,
   tabs,
-  currentTabIndex
+  currentTabIndex,
 }: {
   sourceData: T[];
   sortState: CurrentSortState<T>;
@@ -103,7 +103,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   tabWidth,
   emptyTitle,
   emptySubtitle,
-  per
+  per,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -126,13 +126,15 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   // sort, pagination, count
   // 初回表示時は一番左側のsortableなcolumnを基準にソートする
-  const firstSortableColumn = columns.find(column => column.sortable === true);
+  const firstSortableColumn = columns.find(
+    (column) => column.sortable === true,
+  );
   const [sortState, setSortState] = useOrderState<T>(
     firstSortableColumn ? firstSortableColumn.selector : undefined,
-    firstSortableColumn ? firstSortableColumn.name : ""
+    firstSortableColumn ? firstSortableColumn.name : "",
   );
   const [filterState, setFilterState] = useFilterState(
-    per || getPerFromLocalStorage()
+    per || getPerFromLocalStorage(),
   );
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
@@ -141,8 +143,8 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       filterState,
       enablePagination,
       tabs,
-      currentTabIndex
-    })
+      currentTabIndex,
+    }),
   );
 
   useDidUpdate(() => {
@@ -152,7 +154,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       filterState,
       enablePagination,
       tabs,
-      currentTabIndex
+      currentTabIndex,
     });
     setDisplayData(displayData);
   }, [
@@ -162,7 +164,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     enablePagination,
     showTabs,
     tabs,
-    currentTabIndex
+    currentTabIndex,
   ]);
 
   // 検索などでpropsのdataが更新された場合は
@@ -170,7 +172,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   useDidUpdate(() => {
     const initialFilterState = {
       index: 1,
-      per: filterState.per
+      per: filterState.per,
     };
     setFilterState(initialFilterState);
     const displayData = getDisplayData({
@@ -179,7 +181,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       filterState: initialFilterState,
       enablePagination,
       tabs,
-      currentTabIndex
+      currentTabIndex,
     });
     setDisplayData(displayData);
   }, [sourceData]);
@@ -227,7 +229,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   const onHandleSelectCheckbox = (id: number) => () => {
     if (selectedRows.includes(id)) {
-      setSelectedRows(selectedRows.filter(selectedId => selectedId !== id));
+      setSelectedRows(selectedRows.filter((selectedId) => selectedId !== id));
     } else {
       setSelectedRows([...selectedRows, id]);
     }
@@ -243,7 +245,9 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       setAllSelected(false);
     } else {
       setSelectedRows(
-        sourceData.filter(data => !data.selectDisabled).map(data => data.id)
+        sourceData
+          .filter((data) => !data.selectDisabled)
+          .map((data) => data.id),
       );
       setAllSelected(true);
     }
@@ -257,7 +261,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
           value={currentTabIndex}
           items={tabs.map((tab, index) => ({
             label: tab.label,
-            value: index
+            value: index,
           }))}
           onChange={onHandleTabChange}
         />
@@ -278,7 +282,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 {showRadioButton && <CellRadio header={true} />}
               </>
             )}
-            {columns.map(column => (
+            {columns.map((column) => (
               <SortableHeaderCell
                 key={column.name}
                 sortable={column.sortable}
@@ -324,7 +328,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                     )}
                   </>
                 )}
-                {columns.map(column => (
+                {columns.map((column) => (
                   <Table.Cell key={column.name}>
                     {column.renderCell ? (
                       column.renderCell(item)

@@ -2,7 +2,7 @@ import * as CSS from "csstype";
 import styled from "styled-components";
 
 type TLengthStyledSystem = string | 0 | number;
-export interface FlexboxProps {
+export type FlexboxProps = {
   display?: "flex";
   height?: CSS.HeightProperty<TLengthStyledSystem>;
   alignItems?: CSS.AlignItemsProperty;
@@ -17,7 +17,7 @@ export interface FlexboxProps {
   flexBasis?: CSS.FlexBasisProperty<TLengthStyledSystem>;
   justifySelf?: CSS.JustifySelfProperty;
   alignSelf?: CSS.AlignSelfProperty;
-}
+};
 
 const camelToKebab = (string: string) => {
   return string.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();

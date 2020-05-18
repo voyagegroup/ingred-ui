@@ -9,7 +9,7 @@ describe("ActionButton component testing", () => {
 
   test("ActionButton", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ActionButton icon="pencil" />
+      <ActionButton icon="pencil" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

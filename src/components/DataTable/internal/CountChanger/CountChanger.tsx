@@ -9,24 +9,24 @@ import { OptionType } from "../../../Select/Select";
 const defaultOptions: OptionType[] = [
   {
     label: "10件",
-    value: "10"
+    value: "10",
   },
   {
     label: "50件",
-    value: "50"
+    value: "50",
   },
   {
     label: "100件",
-    value: "100"
+    value: "100",
   },
   {
     label: "500件",
-    value: "500"
+    value: "500",
   },
   {
     label: "1000件",
-    value: "1000"
-  }
+    value: "1000",
+  },
 ];
 
 export type Props = {
@@ -42,7 +42,7 @@ const CountChanger: React.FunctionComponent<Props> = ({
   total,
   index = 1,
   onChange,
-  options = defaultOptions
+  options = defaultOptions,
 }) => {
   const handleChange = (selectedOption: any) => {
     const option: OptionType = selectedOption || options[0];

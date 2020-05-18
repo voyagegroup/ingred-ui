@@ -42,6 +42,9 @@ jobs:
           name: yarn install
           command: make -f ci.mk install
       - run:
+          name: lint
+          command: make -f ci.mk lint
+      - run:
           name: test
           command: make -f ci.mk test
       - save_yarn

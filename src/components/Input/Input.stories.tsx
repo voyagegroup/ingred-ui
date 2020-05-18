@@ -29,8 +29,8 @@ const Column = styled.div`
 export default {
   title: "Input",
   parameters: {
-    component: Input
-  }
+    component: Input,
+  },
 };
 
 export const Overview = () => {

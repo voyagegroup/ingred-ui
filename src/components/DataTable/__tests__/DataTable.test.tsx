@@ -11,14 +11,14 @@ describe("DataTable component testing", () => {
     const { asFragment } = renderWithThemeProvider(
       <DataTable
         columns={[
-          { selector: row => row.name, name: "A" },
-          { selector: row => row.name, name: "B" }
+          { selector: (row) => row.name, name: "A" },
+          { selector: (row) => row.name, name: "B" },
         ]}
         data={[
           { id: 1, name: "name1" },
-          { id: 2, name: "name2" }
+          { id: 2, name: "name2" },
         ]}
-      />
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

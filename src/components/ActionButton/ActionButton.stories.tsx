@@ -24,7 +24,7 @@ function createButtons(props: Props[], text = "ボタン") {
   return (
     <>
       {props.map((prop, i) => (
-        <Spacer pb={2} key={i}>
+        <Spacer key={i} pb={2}>
           <ActionButton {...prop} onClick={action("onClick")}>
             {text}
           </ActionButton>
@@ -37,8 +37,8 @@ function createButtons(props: Props[], text = "ボタン") {
 export default {
   title: "ActionButton",
   parameters: {
-    component: ActionButton
-  }
+    component: ActionButton,
+  },
 };
 
 export const Overview = () => (

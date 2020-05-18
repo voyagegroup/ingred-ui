@@ -14,24 +14,24 @@ const defaultGetValue = (obj: any): string | number => obj;
 
 export const useOrderState = <T>(
   getValue: GetValue<T> = defaultGetValue,
-  name: string
+  name: string,
 ) => React.useState<CurrentSortState<T>>({ isDesc: false, getValue, name });
 
 export const changeOrderState = <T>(
   currentSortState: CurrentSortState<T>,
   getValue: GetValue<T>,
-  name: string
+  name: string,
 ): CurrentSortState<T> => ({
   isDesc:
     // MEMO(yutaro1031): 「今ソート状態である列をクリックしたか？」を判定
     currentSortState.name === name ? !currentSortState.isDesc : false,
   getValue,
-  name
+  name,
 });
 
 export const getOrder = <T>(
   currentSortState: CurrentSortState<T>,
-  name: string
+  name: string,
 ): OrderStatus => {
   // MEMO(yutaro1031): 「該当する列がソート状態であるか？」を判定し、アイコンを表示するための引数を返す
   const isActiveColumn = currentSortState.name === name;
@@ -42,7 +42,7 @@ export const getOrder = <T>(
 export const desc = <T>(
   a: any,
   b: any,
-  getValue: GetValue<T> = defaultGetValue
+  getValue: GetValue<T> = defaultGetValue,
 ) => {
   const itemA = getValue(a);
   const itemB = getValue(b);

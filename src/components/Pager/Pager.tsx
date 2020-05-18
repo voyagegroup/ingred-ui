@@ -16,7 +16,7 @@ const Pager: React.FunctionComponent<Props> = ({
   per,
   total,
   index = 1,
-  onClick
+  onClick,
 }) => {
   const pagerCount = Math.ceil(total / per);
   const isFirst = index === 1 || total === 0;

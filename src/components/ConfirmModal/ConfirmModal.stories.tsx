@@ -14,8 +14,8 @@ const Container = styled.div`
 export default {
   title: "ConfirmModal",
   parameters: {
-    component: ConfirmModal
-  }
+    component: ConfirmModal,
+  },
 };
 
 export const Overview = () => (
@@ -71,14 +71,14 @@ export const WithOverflowYScroll = () => (
         columns={[
           {
             name: "ID",
-            selector: data => data.id,
-            sortable: true
+            selector: (data) => data.id,
+            sortable: true,
           },
           {
             name: "名前",
-            selector: data => data.date,
-            sortable: true
-          }
+            selector: (data) => data.date,
+            sortable: true,
+          },
         ]}
       />
     </ConfirmModal>
@@ -107,14 +107,14 @@ export const WithOverflowAndDisableFooter = () => (
         columns={[
           {
             name: "ID",
-            selector: data => data.id,
-            sortable: true
+            selector: (data) => data.id,
+            sortable: true,
           },
           {
             name: "名前",
-            selector: data => data.date,
-            sortable: true
-          }
+            selector: (data) => data.date,
+            sortable: true,
+          },
         ]}
       />
     </ConfirmModal>
@@ -132,13 +132,13 @@ export const WithSubActions = () => (
         {
           title: "CSV形式でダウンロード",
           icon: "export",
-          action: action("onClick")
+          action: action("onClick"),
         },
         {
           title: "ダッシュボードに追加",
           icon: "export",
-          action: action("onClick")
-        }
+          action: action("onClick"),
+        },
       ]}
     >
       コンテンツ

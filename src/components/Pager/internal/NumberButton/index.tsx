@@ -12,7 +12,7 @@ type Props = {
 export const NumberButton: React.FunctionComponent<Props> = ({
   index,
   isActiveIndex,
-  onClick
+  onClick,
 }) => (
   <Styled.NumberButton
     disabled={isActiveIndex}

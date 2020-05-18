@@ -32,7 +32,7 @@ const Input: React.FunctionComponent<Props> = ({
   return (
     <Styled.Container
       className={[error ? "is-error" : "", disabled ? "is-disabled" : ""].join(
-        " "
+        " ",
       )}
     >
       {icon != null && (
@@ -47,7 +47,7 @@ const Input: React.FunctionComponent<Props> = ({
         type={type === "password" && !show ? "password" : "text"}
         className={[
           error ? "is-error" : "",
-          disabled ? "is-disabled" : ""
+          disabled ? "is-disabled" : "",
         ].join(" ")}
         hasLeftIcon={icon != null}
         hasRightIcon={type === "password"}

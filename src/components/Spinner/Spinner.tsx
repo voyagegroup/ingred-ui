@@ -2,9 +2,9 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes/useTheme";
 
-interface Props {
+type Props = {
   width?: string;
-}
+};
 
 const Spinner: React.FunctionComponent<Props> = ({ width = "50px" }) => {
   const theme = useTheme();

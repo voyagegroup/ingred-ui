@@ -26,14 +26,14 @@ const Column = styled.div`
 export default {
   title: "Icon",
   parameters: {
-    component: Icon
-  }
+    component: Icon,
+  },
 };
 
 const renderIcons = (props: Omit<Props, "name">) => (
   <RowContainer>
     <Flex display="flex" alignItems="center" flexWrap="wrap">
-      {Object.keys(icons).map(iconName => (
+      {Object.keys(icons).map((iconName) => (
         <Column key={iconName}>
           <Flex display="flex" alignItems="center">
             <Spacer pr={1}>
@@ -90,7 +90,7 @@ export const ForColor = () => {
       </Typography>
       {renderIcons({
         size: "lg",
-        color: theme.palette.danger.main
+        color: theme.palette.danger.main,
       })}
     </Container>
   );
