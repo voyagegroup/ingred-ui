@@ -28,8 +28,8 @@ const Column = styled.div`
 export default {
   title: "Badge",
   parameters: {
-    component: Badge
-  }
+    component: Badge,
+  },
 };
 
 export const Overview = () => {
@@ -43,28 +43,23 @@ export const Overview = () => {
             </Typography>
           </Spacer>
           <Typography size="xxxl">
-            Example text{" "}
-            <Badge color="primary">hoge</Badge>
+            Example text <Badge color="primary">hoge</Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="xxl">
-            Example text{" "}
-            <Badge color="secondary">hoge</Badge>
+            Example text <Badge color="secondary">hoge</Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="xl">
-            Example text{" "}
-            <Badge color="warning">hoge</Badge>
+            Example text <Badge color="warning">hoge</Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="lg">
-            Example text{" "}
-            <Badge color="danger">hoge</Badge>
+            Example text <Badge color="danger">hoge</Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="md">
-            Example text{" "}
-            <Badge color="success">hoge</Badge>
+            Example text <Badge color="success">hoge</Badge>
           </Typography>
         </Column>
         <Column>
@@ -75,27 +70,37 @@ export const Overview = () => {
           </Spacer>
           <Typography size="xxxl">
             Example text{" "}
-            <Badge color="primary" type="pill">hoge</Badge>
+            <Badge color="primary" type="pill">
+              hoge
+            </Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="xxl">
             Example text{" "}
-            <Badge color="secondary" type="pill">hoge</Badge>
+            <Badge color="secondary" type="pill">
+              hoge
+            </Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="xl">
             Example text{" "}
-            <Badge color="warning" type="pill">hoge</Badge>
+            <Badge color="warning" type="pill">
+              hoge
+            </Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="lg">
             Example text{" "}
-            <Badge color="danger" type="pill">hoge</Badge>
+            <Badge color="danger" type="pill">
+              hoge
+            </Badge>
           </Typography>
           <Spacer py={1} />
           <Typography size="md">
             Example text{" "}
-            <Badge color="success" type="pill">hoge</Badge>
+            <Badge color="success" type="pill">
+              hoge
+            </Badge>
           </Typography>
         </Column>
       </RowContainer>

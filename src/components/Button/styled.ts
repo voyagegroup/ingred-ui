@@ -4,13 +4,14 @@ import { colors } from "../../styles/color";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
 
-type ContainerProps = ButtonColorStyle & {
+export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
   fontSize: string;
   fontWeight: string;
   height: string;
   horizontalPadding: string;
   minWidth: string;
+  href?: string;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`

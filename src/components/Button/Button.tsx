@@ -29,7 +29,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.white,
-      boxShadow: "0px 3px 16px #0b82f466",
+      boxShadow: "0px 0px 16px #0b82f466",
     },
     hover: {
       background: theme.palette.primary.dark,
@@ -42,7 +42,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.white,
-      boxShadow: "0px 3px 16px #EB0A4E66",
+      boxShadow: "0px 0px 16px #EB0A4E66",
     },
     hover: {
       background: theme.palette.danger.dark,
@@ -86,6 +86,7 @@ export type Props = Omit<BaseButtonProps, "color"> & {
   inline?: boolean;
   size?: ButtonSize;
   onClick?: () => void;
+  href?: string;
 };
 
 const Button: React.FunctionComponent<Props> = ({
@@ -93,14 +94,26 @@ const Button: React.FunctionComponent<Props> = ({
   color = "primary",
   inline = false,
   size = "medium",
+  href,
   ...rest
 }) => {
   const theme = useTheme();
   const colorStyle = getContainerColorStyles(theme)[color];
   const horizontalPadding =
     size === "small" ? `10px` : `${theme.spacing * 2}px`;
+
+  const isLink = !!href;
+  let anchorProps: any = {};
+  if (isLink) {
+    anchorProps = {
+      as: "a",
+      href,
+    };
+  }
+
   return (
     <Styled.ButtonContainer
+      {...anchorProps}
       {...rest}
       inline={inline}
       horizontalPadding={horizontalPadding}
