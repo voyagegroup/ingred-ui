@@ -4,7 +4,7 @@ import { colors } from "../../styles/color";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
 
-type ContainerProps = ButtonColorStyle & {
+export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
   fontSize: string;
   fontWeight: string;
