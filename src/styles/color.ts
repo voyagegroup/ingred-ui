@@ -1,6 +1,6 @@
 export type Color = {
   40?: string; // TODO: 40を廃止するか他にも共通で入れる
-  50?: string; // TODO: 50を共通で入れる
+  50?: string; // TODO: 50を廃止するか他にも共通で入れる
   100: string;
   200: string;
   300: string;
@@ -10,8 +10,8 @@ export type Color = {
   700: string;
   800: string;
   900: string;
-  1000?: string; // TODO: 40を廃止するか他にも共通で入れる
-};
+  1000?: string; // TODO: 1000を廃止するか他にも共通で入れる
+}
 
 export const colors: { [color: string]: Color } = {
   red: {
@@ -41,7 +41,7 @@ export const colors: { [color: string]: Color } = {
   },
   yellow: {
     100: "#FEFACF",
-    200: "#FFF081",
+    200: "#FEF4A0",
     300: "#FEED71",
     400: "#FDE54E",
     500: "#FCD914",
@@ -52,7 +52,7 @@ export const colors: { [color: string]: Color } = {
   },
   green: {
     100: "#ECFCD3",
-    200: "#CBF497",
+    200: "#D6F9A9",
     300: "#B4ED7B",
     400: "#92DB57",
     500: "#63C427",
@@ -64,12 +64,12 @@ export const colors: { [color: string]: Color } = {
   basic: {
     50: "#FDFEFF",
 
-    100: "#FAFBFC",
+    100: "#F5F7F8",
     200: "#EFF1F2",
     300: "#D1D5DA",
     400: "#B3BAC1",
     500: "#959FA9",
-    600: "#778591",
+    600: "#778490",
     700: "#596978",
     800: "#1F3449",
     900: "#041C33",

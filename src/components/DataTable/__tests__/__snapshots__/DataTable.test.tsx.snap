@@ -13,7 +13,7 @@ exports[`DataTable component testing DataTable 1`] = `
           class="sc-fzpjYC kaHrsQ"
         >
           <th
-            class="sc-AxmLO jKXuVB"
+            class="sc-AxmLO hdlJJr"
             width="auto"
           >
             <div
@@ -21,8 +21,8 @@ exports[`DataTable component testing DataTable 1`] = `
               display="flex"
             >
               <span
-                class="sc-AxhCb hzBxpU"
-                color="#778591"
+                class="sc-AxhCb kAPUXw"
+                color="#778490"
                 font-size="14px"
               >
                 A
@@ -30,7 +30,7 @@ exports[`DataTable component testing DataTable 1`] = `
             </div>
           </th>
           <th
-            class="sc-AxmLO jKXuVB"
+            class="sc-AxmLO hdlJJr"
             width="auto"
           >
             <div
@@ -38,8 +38,8 @@ exports[`DataTable component testing DataTable 1`] = `
               display="flex"
             >
               <span
-                class="sc-AxhCb hzBxpU"
-                color="#778591"
+                class="sc-AxhCb kAPUXw"
+                color="#778490"
                 font-size="14px"
               >
                 B
