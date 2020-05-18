@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const BarChartOutlineIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
+const BarChartFramedIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M0 0h24v24H0z" fill="none" />
@@ -13,4 +13,4 @@ const BarChartOutlineIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
   )
 };
 
-export { BarChartOutlineIcon };
+export { BarChartFramedIcon };
