@@ -71,7 +71,7 @@ export const palette: Palette = {
     deepDark: colors.red[700],
     dark: colors.red[600],
     main: colors.red[500],
-    light: colors.red[200],
+    light: colors.red[300],
     highlight: colors.red[100],
   },
   gray: {
