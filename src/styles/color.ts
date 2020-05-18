@@ -11,7 +11,7 @@ export type Color = {
   800: string;
   900: string;
   1000?: string; // TODO: 1000を廃止するか他にも共通で入れる
-}
+};
 
 export const colors: { [color: string]: Color } = {
   red: {
