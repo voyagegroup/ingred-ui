@@ -5,9 +5,9 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import { useTheme } from "../../themes/useTheme";
 
-interface Props {
+type Props = {
   children: string;
-}
+};
 
 const ErrorText: React.FunctionComponent<Props> = ({ children }) => {
   const theme = useTheme();

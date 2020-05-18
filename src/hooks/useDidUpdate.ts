@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 export function useDidUpdate(
   effect: () => void | (() => void | undefined),
-  deps: ReadonlyArray<any>
+  deps: ReadonlyArray<any>,
 ) {
   const didMountRef = useRef(false);
   useEffect(() => {
@@ -11,5 +11,6 @@ export function useDidUpdate(
       return;
     }
     effect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

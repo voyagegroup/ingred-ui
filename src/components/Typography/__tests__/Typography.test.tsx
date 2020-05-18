@@ -9,7 +9,7 @@ describe("Typography component testing", () => {
 
   test("Typography", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Typography>text</Typography>
+      <Typography>text</Typography>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

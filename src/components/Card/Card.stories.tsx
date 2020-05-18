@@ -10,8 +10,8 @@ const Container = styled.div`
 export default {
   title: "Card",
   parameters: {
-    component: Card
-  }
+    component: Card,
+  },
 };
 
 export const Overview = () => (

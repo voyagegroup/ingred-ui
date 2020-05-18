@@ -23,7 +23,7 @@ export type ButtonColorStyle = {
 };
 
 const getContainerColorStyles = (
-  theme: Theme
+  theme: Theme,
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
   primary: {
     normal: {
@@ -32,11 +32,11 @@ const getContainerColorStyles = (
       boxShadow: "0px 0px 16px #0b82f466"
     },
     hover: {
-      background: theme.palette.primary.dark
+      background: theme.palette.primary.dark,
     },
     active: {
-      background: theme.palette.primary.deepDark
-    }
+      background: theme.palette.primary.deepDark,
+    },
   },
   danger: {
     normal: {
@@ -45,40 +45,40 @@ const getContainerColorStyles = (
       boxShadow: "0px 0px 16px #EB0A4E66"
     },
     hover: {
-      background: theme.palette.danger.dark
+      background: theme.palette.danger.dark,
     },
     active: {
-      background: theme.palette.danger.deepDark
-    }
+      background: theme.palette.danger.deepDark,
+    },
   },
   cancel: {
     normal: {
       background: "transparent",
       color: theme.palette.black,
-      boxShadow: "none"
+      boxShadow: "none",
     },
     hover: {
-      background: colors.basic[300]
+      background: colors.basic[300],
     },
     active: {
-      background: colors.basic[400]
-    }
-  }
+      background: colors.basic[400],
+    },
+  },
 });
 
 const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
   small: {
     minWidth: "64px",
-    height: "32px"
+    height: "32px",
   },
   medium: {
     minWidth: "130px",
-    height: "42px"
+    height: "42px",
   },
   large: {
     minWidth: "178px",
-    height: "48px"
-  }
+    height: "48px",
+  },
 };
 
 export type Props = Omit<BaseButtonProps, "color"> & {

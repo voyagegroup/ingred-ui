@@ -6,8 +6,8 @@ import Table from "./";
 export default {
   title: "Table",
   parameters: {
-    component: Table
-  }
+    component: Table,
+  },
 };
 
 const Container = styled.div`

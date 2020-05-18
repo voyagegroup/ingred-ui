@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge component testing Badge normal 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm jamDOi"
+    color="#FFFFFF"
+    font-size="0.65em"
+    font-weight="bold"
+    type="normal"
+  >
+    text
+  </span>
+</DocumentFragment>
+`;
+
+exports[`Badge component testing Badge pill 1`] = `
+<DocumentFragment>
+  <span
+    class="sc-AxjAm YEJyp"
+    color="#FFFFFF"
+    font-size="0.65em"
+    font-weight="bold"
+    type="pill"
+  >
+    text
+  </span>
+</DocumentFragment>
+`;

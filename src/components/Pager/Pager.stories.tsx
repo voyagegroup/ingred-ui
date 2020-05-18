@@ -28,8 +28,8 @@ const Column = styled.div`
 export default {
   title: "Pager",
   parameters: {
-    component: Pager
-  }
+    component: Pager,
+  },
 };
 
 const BasicExample: React.FunctionComponent = () => {
@@ -45,7 +45,7 @@ const BasicExample: React.FunctionComponent = () => {
   return (
     <>
       <ul>
-        {filteredItems.map(num => (
+        {filteredItems.map((num) => (
           <li key={num}>{num}</li>
         ))}
       </ul>

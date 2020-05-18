@@ -23,8 +23,8 @@ const RowContainer = styled.div`
 export default {
   title: "Button",
   parameters: {
-    component: Button
-  }
+    component: Button,
+  },
 };
 
 export const Overview = () => (

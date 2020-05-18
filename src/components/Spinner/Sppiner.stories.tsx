@@ -4,8 +4,8 @@ import Spinner from "./Spinner";
 export default {
   title: "Spinner",
   parameters: {
-    component: Spinner
-  }
+    component: Spinner,
+  },
 };
 
 export const Overview = () => (

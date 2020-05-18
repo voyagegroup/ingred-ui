@@ -9,7 +9,7 @@ describe("ItemEmpty component testing", () => {
 
   test("ItemEmpty", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ItemEmpty title="title" subtitle="subtitle" />
+      <ItemEmpty title="title" subtitle="subtitle" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

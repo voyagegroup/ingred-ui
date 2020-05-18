@@ -20,6 +20,9 @@ build:
 test:
 	yarn test
 
+lint:
+	yarn lint
+
 publish: __req_semver build
 	npm version ${SEMVER} -m "[ci skip] %s"
 	npm publish

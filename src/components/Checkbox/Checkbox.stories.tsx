@@ -7,8 +7,8 @@ import Spacer from "../Spacer";
 export default {
   title: "Checkbox",
   parameters: {
-    components: Checkbox
-  }
+    components: Checkbox,
+  },
 };
 
 export const Overview = () => (

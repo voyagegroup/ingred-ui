@@ -10,8 +10,8 @@ const Container = styled.div`
 export default {
   title: "LoadingBar",
   parameters: {
-    component: LoadingBar
-  }
+    component: LoadingBar,
+  },
 };
 
 export const Overview = () => (

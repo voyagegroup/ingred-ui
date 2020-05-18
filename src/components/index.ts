@@ -1,5 +1,9 @@
+/* eslint-disable import/export */
 export { default as ActionButton } from "./ActionButton";
 export * from "./ActionButton";
+
+export { default as Badge } from "./Badge";
+export * from "./Badge";
 
 export { default as Button } from "./Button";
 export * from "./Button";
@@ -60,3 +64,4 @@ export * from "./TextField";
 
 export { default as Typography } from "./Typography";
 export * from "./Typography";
+/* eslint-enable import/export */

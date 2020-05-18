@@ -9,7 +9,7 @@ describe("DatePicker component testing", () => {
 
   test("DatePicker", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DatePicker startDate={null} endDate={null} onDatesChange={jest.fn()} />
+      <DatePicker startDate={null} endDate={null} onDatesChange={jest.fn()} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

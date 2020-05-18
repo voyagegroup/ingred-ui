@@ -7,8 +7,8 @@ import Spacer from "../Spacer";
 export default {
   title: "RadioButton",
   parameters: {
-    components: RadioButton
-  }
+    components: RadioButton,
+  },
 };
 
 export const Overview = () => (
@@ -25,11 +25,11 @@ export const Overview = () => (
       ラジオボタン
     </RadioButton>
     <Spacer mt={1} />
-    <RadioButton onChange={action("onChange2")} disabled={true}>
+    <RadioButton disabled={true} onChange={action("onChange2")}>
       ラジオボタン
     </RadioButton>
     <Spacer mt={1} />
-    <RadioButton onChange={action("onChange2")} disabled={true} checked={true}>
+    <RadioButton disabled={true} checked={true} onChange={action("onChange2")}>
       ラジオボタン
     </RadioButton>
   </>
