@@ -40,10 +40,14 @@ import { MobileIcon } from "./internal/MobileIcon";
 import { DesktopIcon } from "./internal/DesktopIcon";
 import { DesktopMobileIcon } from "./internal/DesktopMobileIcon";
 import { CopyIcon } from "./internal/CopyIcon";
+import { BarChartOutlineIcon } from "./internal/BarChartOutlineIcon";
+import { LineChartOutlineIcon } from "./internal/LineChartOutlineIcon";
 
 export type IconName =
   | "dashboard"
   | "bar_chart"
+  | "bar_chart_outline"
+  | "line_chart_outline"
   | "logout"
   | "setting"
   | "arrow_bottom"
@@ -100,6 +104,8 @@ export const icons: {
 } = {
   dashboard: DashboardIcon,
   bar_chart: BarChartIcon,
+  bar_chart_outline: BarChartOutlineIcon,
+  line_chart_outline: LineChartOutlineIcon,
   logout: LogoutIcon,
   setting: SettingIcon,
   arrow_bottom: ArrowBottomIcon,
