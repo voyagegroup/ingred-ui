@@ -101,8 +101,7 @@ const Button: React.FunctionComponent<Props> = ({
   const colorStyle = getContainerColorStyles(theme)[color];
   const isLink = !!href;
 
-  let props: Styled.ContainerProps & { as?: "a" | "button" } = {
-    as: "button",
+  let props: any = {
     inline,
     horizontalPadding: size === "small" ? `10px` : `${theme.spacing * 2}px`,
     normal: { ...colorStyle.normal },
