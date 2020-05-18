@@ -115,7 +115,7 @@ const Button: React.FunctionComponent<Props> = ({
 
   if (isLink) {
     props.as = "a";
-    props.href = href
+    props.href = href;
   }
 
   return (
