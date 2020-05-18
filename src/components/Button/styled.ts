@@ -11,6 +11,7 @@ type ContainerProps = ButtonColorStyle & {
   height: string;
   horizontalPadding: string;
   minWidth: string;
+  href?: string;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
