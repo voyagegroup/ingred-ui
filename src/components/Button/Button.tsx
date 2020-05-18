@@ -102,12 +102,14 @@ const Button: React.FunctionComponent<Props> = ({
   const horizontalPadding =
     size === "small" ? `10px` : `${theme.spacing * 2}px`;
 
-  const isLink = !!href
+  const isLink = !!href;
   let anchorProps: any = {};
   if (isLink) {
-    anchorProps.as = "a";
-    anchorProps.href = href;
-  }
+    anchorProps = {
+      as: "a",
+      href,
+    };
+  };
 
   return (
     <Styled.ButtonContainer
