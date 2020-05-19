@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotificationBadge component testing NotificationBadge dot 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm cLqvxn"
+  >
+    text
+    <span
+      class="sc-AxirZ eqWgsh"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`NotificationBadge component testing NotificationBadge normal 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm cLqvxn"
+  >
+    text
+    <span
+      class="sc-AxirZ ghyNtv"
+    >
+      1
+    </span>
+  </div>
+</DocumentFragment>
+`;
