@@ -28,6 +28,8 @@ export const Input = styled.input<{
     ${({ theme }) => theme.palette.gray.light} inset;
   background-color: ${({ theme }) => theme.palette.background.default};
   overflow: hidden;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Proxima Nova",
+    Verdana, "游ゴシック", YuGothic, Meiryo, sans-serif;
   /* lastpassのicon用 */
   background-position: calc(100% - 35px) 50% !important;
   &:focus {
