@@ -1,9 +1,11 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
 import { colors } from "../../styles/color";
+import { Size } from "../../styles";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
+
 
 type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger" | "cancel";
@@ -49,15 +51,15 @@ const getContainerColorStyles = (
       background: colors.blue[50] as string,
       color: theme.palette.text.primary,
       boxShadow: "none",
-      border: `1px ${colors.blue[500]}`,
+      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
     },
     hover: {
       background: colors.blue[100],
-      border: `1px ${colors.blue[500]}`,
+      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
     },
     active: {
       background: colors.blue[200],
-      border: `1px ${colors.blue[500]}`,
+      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
     },
   },
   danger: {
