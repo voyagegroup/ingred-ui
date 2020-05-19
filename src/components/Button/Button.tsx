@@ -6,7 +6,6 @@ import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 
-
 type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger" | "cancel";
 
