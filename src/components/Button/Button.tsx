@@ -42,7 +42,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.secondary.main,
       color: theme.palette.text.primary,
-      boxShadow: "0px 0px 0px 1px #0B82F4 inset",
+      boxShadow: `0px 0px 0px 1px ${theme.palette.primary.main} inset`,
     },
     hover: {
       background: theme.palette.secondary.dark,
