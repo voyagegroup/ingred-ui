@@ -42,7 +42,7 @@ export const Badge = styled.span<BadgeProps>`
     variant === "normal" ? "20px" : dotSizeMapping[size]};
   min-width: ${({ variant, size }) =>
     variant === "normal" ? "20px" : dotSizeMapping[size]};
-  padding: 0 ${({ variant }) => (variant === "normal" ? "6px" : 0)};
+  padding: 0 ${({ variant }) => (variant === "normal" ? "6px" : 0)} 1px;
   border-radius: 10rem;
   color: ${({ theme }) => theme.palette.text.white};
   background-color: ${({ theme }) => theme.palette.danger.main};
