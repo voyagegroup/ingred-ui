@@ -6,7 +6,7 @@ import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 
 type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "danger" | "cancel";
+export type ButtonColor = "primary" | "secondary" | "danger" | "cancel";
 
 export type ButtonColorStyle = {
   normal: {
@@ -36,6 +36,19 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.deepDark,
+    },
+  },
+  secondary: {
+    normal: {
+      background: theme.palette.secondary.main,
+      color: theme.palette.text.primary,
+      boxShadow: "0px 0px 0px 1px #0B82F4 inset",
+    },
+    hover: {
+      background: theme.palette.secondary.dark,
+    },
+    active: {
+      background: theme.palette.secondary.deepDark,
     },
   },
   danger: {

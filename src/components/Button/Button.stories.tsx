@@ -49,6 +49,26 @@ export const Overview = () => (
     </RowContainer>
     <RowContainer>
       <Typography weight="bold" size="xxl">
+        Secondary
+      </Typography>
+      <Spacer pt={2} pb={5}>
+        <Button size="large" color="secondary" onClick={action("clicked")}>
+          ボタン
+        </Button>
+      </Spacer>
+      <div>
+        <Button
+          disabled
+          size="large"
+          color="secondary"
+          onClick={action("clicked")}
+        >
+          ボタン
+        </Button>
+      </div>
+    </RowContainer>
+    <RowContainer>
+      <Typography weight="bold" size="xxl">
         Danger
       </Typography>
       <Spacer pt={2} pb={5}>
@@ -104,6 +124,39 @@ export const Overview = () => (
           新規登録
         </Button>
         <Button inline disabled size="large" onClick={action("clicked")}>
+          新規登録
+        </Button>
+      </Flex>
+    </RowContainer>
+    <RowContainer>
+      <Typography weight="bold" size="xxl">
+        Secondary
+      </Typography>
+      <Spacer pt={2} />
+      <Flex display="flex" alignItems="center">
+        <Button
+          inline
+          size="large"
+          color="secondary"
+          onClick={action("clicked")}
+        >
+          長めの長めの文言ボタン
+        </Button>
+        <Button
+          inline
+          size="large"
+          color="secondary"
+          onClick={action("clicked")}
+        >
+          新規登録
+        </Button>
+        <Button
+          inline
+          disabled
+          size="large"
+          color="secondary"
+          onClick={action("clicked")}
+        >
           新規登録
         </Button>
       </Flex>
@@ -177,6 +230,23 @@ export const Overview = () => (
     </RowContainer>
     <RowContainer>
       <Typography weight="bold" size="xxl">
+        Secondary
+      </Typography>
+      <Spacer pt={2} />
+      <Flex display="flex" alignItems="center">
+        <Button inline color="secondary" onClick={action("clicked")}>
+          長めの文言ボタン
+        </Button>
+        <Button inline color="secondary" onClick={action("clicked")}>
+          保存する
+        </Button>
+        <Button inline disabled color="secondary" onClick={action("clicked")}>
+          保存する
+        </Button>
+      </Flex>
+    </RowContainer>
+    <RowContainer>
+      <Typography weight="bold" size="xxl">
         Danger
       </Typography>
       <Spacer pt={2} />
@@ -226,6 +296,39 @@ export const Overview = () => (
           適用
         </Button>
         <Button inline disabled size="small" onClick={action("clicked")}>
+          適用
+        </Button>
+      </Flex>
+    </RowContainer>
+    <RowContainer>
+      <Typography weight="bold" size="xxl">
+        Secondary
+      </Typography>
+      <Spacer pt={2} />
+      <Flex display="flex" alignItems="center">
+        <Button
+          inline
+          size="small"
+          color="secondary"
+          onClick={action("clicked")}
+        >
+          条件を変更
+        </Button>
+        <Button
+          inline
+          size="small"
+          color="secondary"
+          onClick={action("clicked")}
+        >
+          適用
+        </Button>
+        <Button
+          inline
+          disabled
+          size="small"
+          color="secondary"
+          onClick={action("clicked")}
+        >
           適用
         </Button>
       </Flex>
