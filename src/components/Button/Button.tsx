@@ -13,12 +13,15 @@ export type ButtonColorStyle = {
     background: string;
     color: string;
     boxShadow: string;
+    border: string;
   };
   hover: {
     background?: string;
+    border: string;
   };
   active: {
     background?: string;
+    border: string;
   };
 };
 
@@ -30,25 +33,31 @@ const getContainerColorStyles = (
       background: theme.palette.primary.main,
       color: theme.palette.white,
       boxShadow: "0px 0px 16px #0b82f466",
+      border: "none",
     },
     hover: {
       background: theme.palette.primary.dark,
+      border: "none",
     },
     active: {
       background: theme.palette.primary.deepDark,
+      border: "none",
     },
   },
   secondary: {
     normal: {
-      background: theme.palette.secondary.main,
+      background: colors.blue[50] as string,
       color: theme.palette.text.primary,
-      boxShadow: `0px 0px 0px 1px ${theme.palette.primary.main} inset`,
+      boxShadow: "none",
+      border: `1px ${colors.blue[500]}`,
     },
     hover: {
-      background: theme.palette.secondary.dark,
+      background: colors.blue[100],
+      border: `1px ${colors.blue[500]}`,
     },
     active: {
-      background: theme.palette.secondary.deepDark,
+      background: colors.blue[200],
+      border: `1px ${colors.blue[500]}`,
     },
   },
   danger: {
@@ -56,12 +65,15 @@ const getContainerColorStyles = (
       background: theme.palette.danger.main,
       color: theme.palette.white,
       boxShadow: "0px 0px 16px #EB0A4E66",
+      border: "none",
     },
     hover: {
       background: theme.palette.danger.dark,
+      border: "none",
     },
     active: {
       background: theme.palette.danger.deepDark,
+      border: "none",
     },
   },
   cancel: {
@@ -69,12 +81,15 @@ const getContainerColorStyles = (
       background: "transparent",
       color: theme.palette.black,
       boxShadow: "none",
+      border: "none",
     },
     hover: {
       background: colors.basic[300],
+      border: "none",
     },
     active: {
       background: colors.basic[400],
+      border: "none",
     },
   },
 });
