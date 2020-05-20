@@ -8,7 +8,7 @@ const contents = [
   {
     text: "保存する",
     onClick: () => {},
-    divideBottom: true,
+    divideTop: true,
   },
   {
     text: "保存して実行する",
@@ -17,7 +17,7 @@ const contents = [
   {
     text: "下書きとして保存する",
     onClick: () => {},
-    divideBottom: true,
+    divideTop: true,
   },
   {
     text: "やっぱり何もしない",

@@ -35,20 +35,20 @@ export const Overview = () => {
     {
       text: "保存する",
       onClick: action("clicked '保存する'"),
-      divideBottom: true,
     },
     {
       text: "保存して実行する",
       onClick: action("clicked '保存して実行する'"),
+      divideTop: true,
     },
     {
       text: "下書きとして保存するhogehogehogehoge",
       onClick: action("clicked '下書きとして保存する'"),
-      divideBottom: true,
     },
     {
       text: "やっぱり何もしない",
       onClick: action("clicked 'やっぱり何もしない'"),
+      divideTop: true,
     },
   ];
   return (
@@ -56,7 +56,7 @@ export const Overview = () => {
       <DropdownButton size={size} contents={contents}>
         {title}
       </DropdownButton>
-      <Spacer px={20} />
+      <Spacer pr={40} />
       <DropdownButton
         split={true}
         size={size}

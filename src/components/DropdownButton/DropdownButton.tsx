@@ -6,15 +6,17 @@ import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 import { MenuList } from "./internal/MenuList";
 
+type MenuContent = {
+  text: string;
+  onClick: () => void;
+  divideTop?: boolean;
+};
+
 type Props = {
   size?: ButtonSize;
   onClick?: () => void;
   split?: boolean;
-  contents: {
-    text: string;
-    onClick: () => void;
-    divideBottom?: boolean;
-  }[];
+  contents: MenuContent[];
   positionPriority?: PopperJS.Placement[];
 };
 

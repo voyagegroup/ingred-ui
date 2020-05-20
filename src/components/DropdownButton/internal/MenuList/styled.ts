@@ -8,7 +8,7 @@ export const Container = styled.div<{ inline: boolean }>`
   background-color: #fff;
 `;
 
-export const Div = styled.div`
+export const TextContainer = styled.div`
   cursor: pointer;
   height: 32px;
   padding: 0 16px;
