@@ -4,19 +4,14 @@ import * as Styled from "./styled";
 import Icon from "../Icon";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
-import { MenuList } from "./internal/MenuList";
-
-type MenuContent = {
-  text: string;
-  onClick: () => void;
-  divideTop?: boolean;
-};
+import { MenuList } from "../MenuList";
+import { ContentProp } from "../MenuList/MenuList";
 
 type Props = {
   size?: ButtonSize;
   onClick?: () => void;
   split?: boolean;
-  contents: MenuContent[];
+  contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
 };
 
@@ -36,10 +31,11 @@ const DropdownButton: React.FC<Props> = ({
   const [showContent, setShowContent] = React.useState<boolean>(false);
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
-  const handleToggleContent = (showContent: boolean) => () => {
+  const onHandleToggleContent = (showContent: boolean) => () => {
+    if (onClick) onClick();
     setShowContent(showContent);
   };
-  const handleContentActive = (isActive: boolean) => () => {
+  const onHandleContentActive = (isActive: boolean) => () => {
     setActiveContent(isActive);
   };
 
@@ -58,16 +54,16 @@ const DropdownButton: React.FC<Props> = ({
             <Styled.SplitToggle
               size={size}
               inline={true}
-              onClick={handleToggleContent(!showContent)}
-              onBlur={handleToggleContent(false)}
+              onClick={onHandleToggleContent(!showContent)}
+              onBlur={onHandleToggleContent(false)}
             >
               <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
             </Styled.SplitToggle>
           </>
         ) : (
           <Styled.SingleButton
-            onClick={handleToggleContent(!showContent)}
-            onBlur={handleToggleContent(false)}
+            onClick={onHandleToggleContent(!showContent)}
+            onBlur={onHandleToggleContent(false)}
             size={size}
           >
             {children}
@@ -96,9 +92,9 @@ const DropdownButton: React.FC<Props> = ({
               },
             ],
           }}
-          onMouseDown={handleContentActive(true)}
-          onTouchStart={handleContentActive(true)}
-          onClick={handleContentActive(false)}
+          onMouseDown={onHandleContentActive(true)}
+          onTouchStart={onHandleContentActive(true)}
+          onClick={onHandleContentActive(false)}
         >
           <MenuList contents={contents} />
         </Styled.MenuPopper>
