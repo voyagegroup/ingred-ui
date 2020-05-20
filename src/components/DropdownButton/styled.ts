@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Button from "../Button";
-import Popper from "../Popper";
 
 export const ButtonContainer = styled.div`
   display: inline-flex;
@@ -24,6 +23,6 @@ export const SingleButton = styled(Button)`
   min-width: auto;
 `;
 
-export const MenuPopper = styled(Popper)`
+export const MenuPopper = styled.div`
   z-index: ${({ theme }) => theme.depth.dropdownMenu};
 `;
