@@ -4,7 +4,7 @@ import * as Styled from "./styled";
 import Icon from "../Icon";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
-import { MenuList } from "../MenuList";
+import  MenuList from "../MenuList";
 import { ContentProp } from "../MenuList/MenuList";
 
 type Props = {

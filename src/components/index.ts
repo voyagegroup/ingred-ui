@@ -44,6 +44,9 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
+export { default as MenuList } from "./MenuList";
+export * from "./MenuList";
+
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 
