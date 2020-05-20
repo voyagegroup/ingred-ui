@@ -47,18 +47,18 @@ const getContainerColorStyles = (
   },
   secondary: {
     normal: {
-      background: colors.blue[50] as string,
+      background: theme.palette.background.hint,
       color: theme.palette.text.primary,
       boxShadow: "none",
-      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
     },
     hover: {
-      background: colors.blue[100],
-      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
+      background: theme.palette.primary.highlight,
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
     },
     active: {
-      background: colors.blue[200],
-      border: `${Size.Border.Small} solid ${colors.blue[500]}`,
+      background: theme.palette.primary.light,
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
     },
   },
   danger: {
