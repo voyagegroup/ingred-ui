@@ -9,11 +9,11 @@ export const Container = styled.div`
 
 export type BadgeProps = {
   variant: "dot" | "normal";
-  position: "top-right" | "top-left" | "bottom-right" | "bottom-left";
-  size: "small" | "medium" | "large";
+  position: string;
+  size: string;
 };
 
-const dotSizeMapping: { [size in BadgeProps["size"]]: string } = {
+const dotSizeMapping: { [size in string]: string } = {
   small: "8px",
   medium: "12px",
   large: "16px",
@@ -38,6 +38,7 @@ export const Badge = styled.span<BadgeProps>`
   display: flex;
   align-items: center;
   align-content: center;
+  justify-content: center;
   height: ${({ variant, size }) =>
     variant === "normal" ? "20px" : dotSizeMapping[size]};
   min-width: ${({ variant, size }) =>
@@ -46,7 +47,6 @@ export const Badge = styled.span<BadgeProps>`
   border-radius: 10rem;
   color: ${({ theme }) => theme.palette.text.white};
   background-color: ${({ theme }) => theme.palette.danger.main};
-  font-size: 0.75rem;
+  font-size: 10.5px;
   font-weight: bold;
-  z-index: 1;
 `;
