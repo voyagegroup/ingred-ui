@@ -44,6 +44,12 @@ export * from "./LoadingBar";
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 
+export { default as Popper } from "./Popper";
+export * from "./Popper";
+
+export { default as Portal } from "./Portal";
+export * from "./Portal";
+
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";
 
