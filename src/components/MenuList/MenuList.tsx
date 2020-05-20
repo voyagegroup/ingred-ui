@@ -29,4 +29,4 @@ const MenuList: React.FC<Props> = ({
   </Styled.Container>
 );
 
-export { MenuList };
+export default MenuList;
