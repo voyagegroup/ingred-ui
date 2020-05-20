@@ -5,7 +5,7 @@ import { Divider } from "./internal/Divider";
 export type ContentProp = {
   text: string;
   onClick: () => void;
-  divideBottom?: boolean;
+  divideTop?: boolean;
 };
 
 type Props = {
@@ -20,10 +20,10 @@ const MenuList: React.FC<Props> = ({
   <Styled.Container inline={inline}>
     {contents.map((content) => (
       <React.Fragment key={content.text}>
-        <Styled.Div onClick={content.onClick}>
+        { content.divideTop && <Divider /> }
+        <Styled.TextContainer onClick={content.onClick}>
           {content.text}
-        </Styled.Div>
-        { content.divideBottom && <Divider /> }
+        </Styled.TextContainer>
       </React.Fragment>
     ))}
   </Styled.Container>
