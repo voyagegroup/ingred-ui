@@ -3,8 +3,8 @@ import * as Styled from "./styled";
 
 export type Props = {
   content?: number | string;
-  position?: Styled.BadgeProps["position"];
-  size?: Styled.BadgeProps["size"];
+  position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
+  size?: "small" | "medium" | "large";
   max?: number;
 };
 
