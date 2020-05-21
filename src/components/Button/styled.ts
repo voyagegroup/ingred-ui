@@ -24,6 +24,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
   border-radius: ${Radius.SMALL};
+  border: ${({ normal }) => normal.border};
   background: ${({ normal }) => normal.background};
   color: ${({ normal }) => normal.color};
   text-align: center;
@@ -44,5 +45,6 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   &:disabled {
     background-color: ${colors.basic[100]};
     color: ${({ theme }) => theme.palette.text.disabled};
+    border: 0;
   }
 `;

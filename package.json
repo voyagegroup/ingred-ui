@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "2.8.1",
+  "version": "2.10.0",
   "description": "",
   "author": "voyagegroup",
   "license": "MIT",
@@ -37,6 +37,7 @@
   "devDependencies": {
     "@popperjs/core": "^2.4.0",
     "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/react": "^5.3.18",

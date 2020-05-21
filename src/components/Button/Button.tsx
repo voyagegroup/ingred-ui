@@ -1,24 +1,28 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
 import { colors } from "../../styles/color";
+import { Size } from "../../styles";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 
-type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "danger" | "cancel";
+export type ButtonSize = "small" | "medium" | "large";
+export type ButtonColor = "primary" | "secondary" | "danger" | "cancel";
 
 export type ButtonColorStyle = {
   normal: {
     background: string;
     color: string;
     boxShadow: string;
+    border: string;
   };
   hover: {
     background?: string;
+    border: string;
   };
   active: {
     background?: string;
+    border: string;
   };
 };
 
@@ -30,12 +34,31 @@ const getContainerColorStyles = (
       background: theme.palette.primary.main,
       color: theme.palette.white,
       boxShadow: "0px 0px 16px #0b82f466",
+      border: "none",
     },
     hover: {
       background: theme.palette.primary.dark,
+      border: "none",
     },
     active: {
       background: theme.palette.primary.deepDark,
+      border: "none",
+    },
+  },
+  secondary: {
+    normal: {
+      background: theme.palette.background.hint,
+      color: theme.palette.text.primary,
+      boxShadow: "none",
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
+    },
+    hover: {
+      background: theme.palette.primary.highlight,
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
+    },
+    active: {
+      background: theme.palette.primary.light,
+      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
     },
   },
   danger: {
@@ -43,12 +66,15 @@ const getContainerColorStyles = (
       background: theme.palette.danger.main,
       color: theme.palette.white,
       boxShadow: "0px 0px 16px #EB0A4E66",
+      border: "none",
     },
     hover: {
       background: theme.palette.danger.dark,
+      border: "none",
     },
     active: {
       background: theme.palette.danger.deepDark,
+      border: "none",
     },
   },
   cancel: {
@@ -56,12 +82,15 @@ const getContainerColorStyles = (
       background: "transparent",
       color: theme.palette.black,
       boxShadow: "none",
+      border: "none",
     },
     hover: {
       background: colors.basic[300],
+      border: "none",
     },
     active: {
       background: colors.basic[400],
+      border: "none",
     },
   },
 });
