@@ -3,18 +3,18 @@
 exports[`MenuList component testing MenuList splited 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm hxpWUW"
+    class="sc-AxjAm gcpoXr"
   >
     <hr
       class="sc-AxiKw kHaXTT"
     />
     <div
-      class="sc-AxirZ gZblWx"
+      class="sc-AxirZ dBmWb"
     >
       保存する
     </div>
     <div
-      class="sc-AxirZ gZblWx"
+      class="sc-AxirZ dBmWb"
     >
       保存して実行する
     </div>
@@ -22,12 +22,12 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxiKw kHaXTT"
     />
     <div
-      class="sc-AxirZ gZblWx"
+      class="sc-AxirZ dBmWb"
     >
       下書きとして保存する
     </div>
     <div
-      class="sc-AxirZ gZblWx"
+      class="sc-AxirZ dBmWb"
     >
       やっぱり何もしない
     </div>
