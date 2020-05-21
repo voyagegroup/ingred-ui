@@ -32,6 +32,7 @@
     "react-dates": ">= 21.8.0",
     "react-dom": ">= 16.6.1",
     "react-select": ">= 3.X",
+    "react-transition-group": "^4.4.1",
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
@@ -73,7 +74,6 @@
     "react-popper": "^2.2.3",
     "react-scripts-ts": "^2.16.0",
     "react-select": "^3.0.8",
-    "react-transition-group": "^4.4.1",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.3",
