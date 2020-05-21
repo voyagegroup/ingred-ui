@@ -7,7 +7,7 @@ export const Arrow = styled.div`
     position: absolute;
     width: 8px;
     height: 8px;
-    background-color: black;
+    background-color: ${({ theme }) => theme.palette.black};
   }
 `;
 
@@ -17,8 +17,8 @@ export const Tooltip = styled.div`
   align-content: center;
   padding: ${({ theme }) => `${theme.spacing * 0.75}px ${theme.spacing}px`};
   border-radius: 4px;
-  color: white;
-  background-color: black;
+  color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.black};
   font-weight: bold;
   z-index: ${({ theme }) => theme.depth.tooltip};
 
