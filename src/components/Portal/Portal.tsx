@@ -1,23 +1,24 @@
 import * as React from "react";
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from "react-dom";
 
-interface Props {
+type Props = {
   container?: HTMLElement;
   disablePortal?: boolean;
-}
+};
 
 const Portal: React.FunctionComponent<Props> = ({
   disablePortal = false,
   container,
-  children
+  children,
 }) => {
   const [mountNode, setMountNode] = React.useState<Element | null>(null);
 
   React.useEffect(() => {
     setMountNode(container || document.body);
-  }, [])
+  }, [container]);
 
   if (disablePortal) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     return children ? <>{children}</> : null;
   }
 

@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import * as PopperJS from '@popperjs/core';
+import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import Icon from "../Icon";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
-import  MenuList from "../MenuList";
+import MenuList from "../MenuList";
 import { ContentProp } from "../MenuList/MenuList";
 import Portal from "../Portal";
 
@@ -69,11 +69,7 @@ const DropdownButton: React.FC<Props> = ({
       <Styled.ButtonContainer ref={setButtonElement} role="button">
         {split ? (
           <>
-            <Styled.MainButton
-              size={size}
-              inline={true}
-              onClick={onClick}
-            >
+            <Styled.MainButton size={size} inline={true} onClick={onClick}>
               {children}
             </Styled.MainButton>
             <Styled.SplitToggle
@@ -82,14 +78,18 @@ const DropdownButton: React.FC<Props> = ({
               onClick={onHandleToggleContent(!showContent)}
               onBlur={onHandleToggleContent(false)}
             >
-              <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
+              <Icon
+                name={"arrow_bottom"}
+                size="lg"
+                color={theme.palette.white}
+              />
             </Styled.SplitToggle>
           </>
         ) : (
           <Styled.SingleButton
+            size={size}
             onClick={onHandleToggleContent(!showContent)}
             onBlur={onHandleToggleContent(false)}
-            size={size}
           >
             {children}
             <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
@@ -112,6 +112,6 @@ const DropdownButton: React.FC<Props> = ({
       )}
     </>
   );
-}
+};
 
 export default DropdownButton;
