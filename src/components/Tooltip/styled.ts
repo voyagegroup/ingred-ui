@@ -20,8 +20,7 @@ export const Tooltip = styled.div`
   color: white;
   background-color: black;
   font-weight: bold;
-  /* あとで定数に */
-  z-index: 100;
+  z-index: ${({ theme }) => theme.depth.tooltip};
 
   &[data-popper-placement^="top"] > ${Arrow} {
     bottom: 0;
