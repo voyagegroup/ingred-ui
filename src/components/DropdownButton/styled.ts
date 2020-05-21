@@ -13,7 +13,7 @@ export const MainButton = styled(Button)`
 export const SplitToggle = styled(Button)`
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-left: 1px solid #054baf;
+  border-left: 1px solid ${({ theme }) => theme.palette.primary.deepDark};
   padding: 0 ${({ theme, size }) => size === "small" ? 0 : theme.spacing}px;
   min-width: auto;
 `;
