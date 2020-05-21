@@ -11,6 +11,7 @@ type Props = {
   open?: boolean;
   disableHoverListener?: boolean;
   positionPriority?: PopperJS.Placement[];
+  offset?: [number, number];
   width?: string;
   children: React.ReactElement;
 };
@@ -19,7 +20,8 @@ const Tooltip: React.FC<Props> = ({
   content,
   open: openProp = false,
   disableHoverListener = false,
-  positionPriority = ["right"],
+  positionPriority = ["top"],
+  offset = [0, 10],
   width,
   children,
 }) => {
@@ -36,7 +38,7 @@ const Tooltip: React.FC<Props> = ({
       {
         name: "offset",
         options: {
-          offset: [0, 10],
+          offset,
         },
       },
       {
