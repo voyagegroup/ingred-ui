@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { select, text, boolean, number } from "@storybook/addon-knobs";
-import { Tooltip } from "./index";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
+import Tooltip from "./Tooltip";
 
 export default {
   title: "Tooltip",

@@ -107,4 +107,4 @@ const Tooltip: React.FC<Props> = ({
   );
 };
 
-export { Tooltip };
+export default Tooltip;
