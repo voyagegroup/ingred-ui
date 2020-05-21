@@ -7,18 +7,20 @@ import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { Portal } from "..";
 
 type Props = {
-  text: string;
+  content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
   positionPriority?: PopperJS.Placement[];
+  width?: string;
   children: React.ReactElement;
 };
 
 const Tooltip: React.FC<Props> = ({
-  text,
+  content,
   open: openProp = false,
   disableHoverListener = false,
-  positionPriority = ["left"],
+  positionPriority = ["right"],
+  width,
   children,
 }) => {
   /* eslint-disable prettier/prettier */
@@ -88,8 +90,9 @@ const Tooltip: React.FC<Props> = ({
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
+            width={width}
           >
-            {text}
+            {content}
             <Styled.Arrow
               ref={setArrowElement}
               data-popper-arrow

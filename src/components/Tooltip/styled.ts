@@ -13,10 +13,11 @@ export const Arrow = styled.div`
   }
 `;
 
-export const Tooltip = styled.div`
+export const Tooltip = styled.div<{ width?: string }>`
   display: flex;
   align-items: center;
   align-content: center;
+  width: ${({ width }) => width || "auto"};
   padding: ${({ theme }) => `${theme.spacing * 0.75}px ${theme.spacing}px`};
   border-radius: 4px;
   color: ${({ theme }) => theme.palette.white};

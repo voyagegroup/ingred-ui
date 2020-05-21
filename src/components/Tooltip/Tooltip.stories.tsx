@@ -10,7 +10,7 @@ export default {
 export const Basic = () => {
   return (
     <Spacer p={50}>
-      <Tooltip text="RIGHT-ENDhogehogehogheo">
+      <Tooltip content="RIGHT-ENDhogehogehogheo">
         <button style={{ width: "150px" }}>Hover Me!</button>
       </Tooltip>
     </Spacer>
