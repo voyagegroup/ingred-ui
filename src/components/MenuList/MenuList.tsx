@@ -13,14 +13,11 @@ type Props = {
   contents: ContentProp[];
 };
 
-const MenuList: React.FC<Props> = ({
-  inline = false,
-  contents,
-}) => (
+const MenuList: React.FC<Props> = ({ inline = false, contents }) => (
   <Styled.Container inline={inline}>
     {contents.map((content) => (
       <React.Fragment key={content.text}>
-        { content.divideTop && <Divider /> }
+        {content.divideTop && <Divider />}
         <Styled.TextContainer onClick={content.onClick}>
           {content.text}
         </Styled.TextContainer>

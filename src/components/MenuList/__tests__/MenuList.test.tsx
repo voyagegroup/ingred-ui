@@ -30,7 +30,7 @@ describe("MenuList component testing", () => {
 
   test("MenuList splited", () => {
     const { asFragment } = renderWithThemeProvider(
-      <MenuList contents={contents} />
+      <MenuList contents={contents} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

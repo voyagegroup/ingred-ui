@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
-import  MenuList from "./MenuList";
+import MenuList from "./MenuList";
 
 const Container = styled.div`
   display: inline-flex;
@@ -12,8 +12,8 @@ const Container = styled.div`
 export default {
   title: "MenuList",
   parameters: {
-    component: MenuList
-  }
+    component: MenuList,
+  },
 };
 
 export const Overview = () => {
