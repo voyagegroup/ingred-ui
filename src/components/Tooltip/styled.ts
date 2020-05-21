@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const transitionClass = "tooltip-transition";
+
 export const Arrow = styled.div`
   z-index: -1;
   &:after {
@@ -56,5 +58,23 @@ export const Tooltip = styled.div`
       transform: translateY(-50%) rotate(-45deg)
         skew(calc((30deg) / 2), calc((30deg) / 2));
     }
+  }
+
+  &.${transitionClass}-enter {
+    opacity: 0;
+  }
+
+  &.${transitionClass}-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+
+  &.${transitionClass}-exit {
+    opacity: 1;
+  }
+
+  &.${transitionClass}-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 `;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as PopperJS from "@popperjs/core";
+import { CSSTransition } from "react-transition-group";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
@@ -75,8 +76,14 @@ const Tooltip: React.FC<Props> = ({
   return (
     <>
       {React.cloneElement(children, childrenProps)}
-      {(open || openProp) && (
-        <Portal>
+      <Portal>
+        <CSSTransition
+          in={open || openProp}
+          classNames={Styled.transitionClass}
+          unmountOnExit={true}
+          mountOnEnter={true}
+          timeout={1000}
+        >
           <Styled.Tooltip
             ref={setPopperElement}
             style={styles.popper}
@@ -89,8 +96,8 @@ const Tooltip: React.FC<Props> = ({
               style={styles.arrow}
             />
           </Styled.Tooltip>
-        </Portal>
-      )}
+        </CSSTransition>
+      </Portal>
     </>
   );
 };
