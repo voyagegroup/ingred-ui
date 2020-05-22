@@ -7,7 +7,7 @@ export const Container = styled.div`
   vertical-align: middle;
 `;
 
-export type BadgeProps = {
+type BadgeProps = {
   variant: "dot" | "normal";
   position: string;
   size: string;
