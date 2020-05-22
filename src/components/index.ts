@@ -44,13 +44,11 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
-<<<<<<< HEAD
 export { default as MenuList } from "./MenuList";
 export * from "./MenuList";
-=======
+
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
->>>>>>> b80cebe... tweak
 
 export { default as Pager } from "./Pager";
 export * from "./Pager";
