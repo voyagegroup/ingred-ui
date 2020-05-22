@@ -11,8 +11,6 @@ const Component = styled.th<{ width: string }>`
   background-color: ${colors.basic[100]};
   border-right: ${Size.Border.Normal} solid
     ${({ theme }) => theme.palette.gray.light};
-  border-bottom: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
 `;
 
 const RequiredBadge = styled.div`
