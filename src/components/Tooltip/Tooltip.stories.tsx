@@ -45,7 +45,7 @@ export const Overview = () => {
     <>
       <Flex display="flex" justifyContent="center">
         {["top-start", "top", "top-end"].map((position) => (
-          <Spacer p={8}>
+          <Spacer key={position} p={8}>
             <Tooltip
               open={true}
               content={position.toUpperCase()}
@@ -59,7 +59,7 @@ export const Overview = () => {
       <Flex display="flex" justifyContent="space-between" alignItems="center">
         <Spacer pl={12}>
           {["left-start", "left", "left-end"].map((position) => (
-            <Spacer p={4}>
+            <Spacer key={position} p={4}>
               <Tooltip
                 open={true}
                 content={position.toUpperCase()}
@@ -81,7 +81,7 @@ export const Overview = () => {
         </Tooltip>
         <Spacer pr={12}>
           {["right-start", "right", "right-end"].map((position) => (
-            <Spacer p={4}>
+            <Spacer key={position} p={4}>
               <Tooltip
                 open={true}
                 content={position.toUpperCase()}
@@ -97,7 +97,7 @@ export const Overview = () => {
       </Flex>
       <Flex display="flex" justifyContent="center">
         {["bottom-start", "bottom", "bottom-end"].map((position) => (
-          <Spacer p={8}>
+          <Spacer key={position} p={8}>
             <Tooltip
               open={true}
               content={position.toUpperCase()}

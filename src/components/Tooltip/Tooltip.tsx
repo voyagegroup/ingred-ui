@@ -63,17 +63,25 @@ const Tooltip: React.FC<Props> = ({
     ],
   });
 
-  const handleTooltipOpen = (open: boolean) => (
-    event: React.MouseEvent<HTMLElement>,
-  ) => {
+  const onHandleEnter = (event: React.MouseEvent<HTMLElement>) => {
     setBaseElement(event.currentTarget);
-    if (!disableHoverListener) setOpen(open);
+    if (!disableHoverListener) setOpen(true);
+    if (children.props.onMouseEnter) {
+      children.props.onMouseEnter(event);
+    }
+  };
+
+  const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
+    if (!disableHoverListener) setOpen(false);
+    if (children.props.onMouseLeave) {
+      children.props.onMouseLeave(event);
+    }
   };
 
   const childrenProps = {
-    onMouseEnter: handleTooltipOpen(true),
-    onMouseLeave: handleTooltipOpen(false),
     ...children.props,
+    onMouseEnter: onHandleEnter,
+    onMouseLeave: onHandleLeave,
     ref: useMergeRefs(setBaseElement, children.props.ref),
   };
 
