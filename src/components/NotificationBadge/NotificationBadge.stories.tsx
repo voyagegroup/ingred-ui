@@ -63,6 +63,8 @@ export const Overview = () => {
 
   const showZero = boolean("Show Zero", false);
 
+  const invisible = boolean("Invisible", false);
+
   return (
     <Container>
       <RowContainer>
@@ -77,6 +79,7 @@ export const Overview = () => {
             max={max}
             position={position}
             showZero={showZero}
+            invisible={invisible}
           >
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
@@ -87,7 +90,11 @@ export const Overview = () => {
               normal(text)
             </Typography>
           </Spacer>
-          <NotificationBadge badgeContent={valueText} position={position}>
+          <NotificationBadge
+            badgeContent={valueText}
+            position={position}
+            invisible={invisible}
+          >
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
         </Column>
@@ -97,7 +104,12 @@ export const Overview = () => {
               dot
             </Typography>
           </Spacer>
-          <NotificationBadge variant="dot" dotSize={size} position={position}>
+          <NotificationBadge
+            variant="dot"
+            dotSize={size}
+            position={position}
+            invisible={invisible}
+          >
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
         </Column>
