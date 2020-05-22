@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { select, number, text } from "@storybook/addon-knobs";
+import { select, number, text, boolean } from "@storybook/addon-knobs";
 import NotificationBadge from ".";
 import { Icon } from "..";
 import Spacer from "../Spacer";
@@ -61,6 +61,8 @@ export const Overview = () => {
   const valueNum = number("Value(number)", 100);
   const valueText = text("Value(string)", "New");
 
+  const showZero = boolean("Show Zero", false);
+
   return (
     <Container>
       <RowContainer>
@@ -70,7 +72,12 @@ export const Overview = () => {
               normal(number)
             </Typography>
           </Spacer>
-          <NotificationBadge content={valueNum} max={max} position={position}>
+          <NotificationBadge
+            badgeContent={valueNum}
+            max={max}
+            position={position}
+            showZero={showZero}
+          >
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
         </Column>
@@ -80,7 +87,7 @@ export const Overview = () => {
               normal(text)
             </Typography>
           </Spacer>
-          <NotificationBadge content={valueText} position={position}>
+          <NotificationBadge badgeContent={valueText} position={position}>
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
         </Column>
@@ -90,7 +97,7 @@ export const Overview = () => {
               dot
             </Typography>
           </Spacer>
-          <NotificationBadge size={size} position={position}>
+          <NotificationBadge variant="dot" dotSize={size} position={position}>
             <Icon name="setting" type="fill" size="lg" />
           </NotificationBadge>
         </Column>

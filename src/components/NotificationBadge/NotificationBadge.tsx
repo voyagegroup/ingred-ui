@@ -2,29 +2,55 @@ import * as React from "react";
 import * as Styled from "./styled";
 
 export type Props = {
-  content?: number | string;
+  variant?: "dot" | "normal";
+  badgeContent?: number | string;
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
-  size?: "small" | "medium" | "large";
+  dotSize?: "small" | "medium" | "large";
   max?: number;
+  showZero?: boolean;
+  invisible?: boolean;
+  children: React.ReactNode;
 };
 
 const NotificationBadge: React.FunctionComponent<Props> = ({
-  content,
+  badgeContent = "",
+  variant = "normal",
   position = "top-right",
-  size = "medium",
+  dotSize = "medium",
   max = 99,
+  showZero = false,
+  invisible: invisibleProp = false,
   children,
 }) => {
-  const variant = content === undefined ? "dot" : "normal";
-  let displayContent = content;
-  if (typeof content === "number" && max < content) {
-    displayContent = `${max}+`;
+  let invisible = invisibleProp;
+
+  if (
+    (badgeContent === 0 && !showZero) ||
+    (badgeContent === "" && variant !== "dot")
+  ) {
+    invisible = true;
   }
+
+  let displayValue: number | string = "";
+
+  if (variant !== "dot") {
+    if (typeof badgeContent === "number") {
+      displayValue = badgeContent > max ? `${max}+` : badgeContent;
+    } else {
+      displayValue = badgeContent;
+    }
+  }
+
   return (
     <Styled.Container>
-      {children && children}
-      <Styled.Badge variant={variant} position={position} size={size}>
-        {displayContent}
+      {children}
+      <Styled.Badge
+        variant={variant}
+        position={position}
+        size={dotSize}
+        invisible={invisible}
+      >
+        {displayValue}
       </Styled.Badge>
     </Styled.Container>
   );

@@ -11,6 +11,7 @@ type BadgeProps = {
   variant: "dot" | "normal";
   position: string;
   size: string;
+  invisible: boolean;
 };
 
 const dotSizeMapping: { [size in string]: string } = {
@@ -29,12 +30,17 @@ export const Badge = styled.span<BadgeProps>`
     ["top-right", "bottom-right"].includes(position) ? 0 : "auto"};
   left: ${({ position }) =>
     ["top-left", "bottom-left"].includes(position) ? 0 : "auto"};
-  transform: translate(
-    ${({ position }) =>
-      ["top-right", "bottom-right"].includes(position) ? "50%" : "-50%"},
-    ${({ position }) =>
-      ["bottom-right", "bottom-left"].includes(position) ? "50%" : "-50%"}
-  );
+  transform: ${({ invisible }) => (invisible ? "scale(0)" : "scale(1)")}
+    translate(
+      ${({ position }) =>
+        ["top-right", "bottom-right"].includes(position) ? "50%" : "-50%"},
+      ${({ position }) =>
+        ["bottom-right", "bottom-left"].includes(position) ? "50%" : "-50%"}
+    );
+  transform-origin: ${({ position }) =>
+    `${["top-right", "bottom-right"].includes(position) ? "100%" : "0%"} ${
+      ["bottom-right", "bottom-left"].includes(position) ? "100%" : "0%"
+    }`};
   display: flex;
   align-items: center;
   align-content: center;
@@ -43,10 +49,12 @@ export const Badge = styled.span<BadgeProps>`
     variant === "normal" ? "20px" : dotSizeMapping[size]};
   min-width: ${({ variant, size }) =>
     variant === "normal" ? "20px" : dotSizeMapping[size]};
-  padding: 0 ${({ variant }) => (variant === "normal" ? "6px" : 0)} 1px;
+  line-height: 1;
+  padding: 0 ${({ variant }) => (variant === "normal" ? "6px" : 0)};
   border-radius: 10rem;
   color: ${({ theme }) => theme.palette.text.white};
   background-color: ${({ theme }) => theme.palette.danger.main};
   font-size: 10.5px;
   font-weight: bold;
+  transition: transform 0.3s;
 `;
