@@ -1,20 +1,42 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-export type Props = {
-  variant?: "dot" | "normal";
+type BaseProps = {
+  variant: "normal" | "dot";
   badgeContent?: number | string;
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
-  dotSize?: "small" | "medium" | "large";
   max?: number;
   showZero?: boolean;
   invisible?: boolean;
+  dotSize?: "small" | "medium" | "large";
   children: React.ReactNode;
 };
 
+export type Props = BaseProps &
+  (
+    | {
+        variant: "normal";
+        badgeContent: number;
+        dotSize?: never;
+      }
+    | {
+        variant: "normal";
+        badgeContent: string;
+        max?: never;
+        dotSize?: never;
+        showZero?: never;
+      }
+    | {
+        variant: "dot";
+        badgeContent?: never;
+        max?: never;
+        showZero?: never;
+      }
+  );
+
 const NotificationBadge: React.FunctionComponent<Props> = ({
-  badgeContent = "",
   variant = "normal",
+  badgeContent = "",
   position = "top-right",
   dotSize = "medium",
   max = 99,

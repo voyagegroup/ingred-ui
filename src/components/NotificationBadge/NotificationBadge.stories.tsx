@@ -75,6 +75,7 @@ export const Overview = () => {
             </Typography>
           </Spacer>
           <NotificationBadge
+            variant="normal"
             badgeContent={valueNum}
             max={max}
             position={position}
@@ -91,6 +92,7 @@ export const Overview = () => {
             </Typography>
           </Spacer>
           <NotificationBadge
+            variant="normal"
             badgeContent={valueText}
             position={position}
             invisible={invisible}
