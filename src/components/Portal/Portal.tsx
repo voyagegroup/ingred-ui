@@ -18,7 +18,8 @@ const Portal: React.FunctionComponent<Props> = ({
   }, [container]);
 
   if (disablePortal) {
-    return (children as React.ReactElement) || null;
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return children ? <>{children}</> : null;
   }
 
   return mountNode ? ReactDOM.createPortal(children, mountNode) : null;

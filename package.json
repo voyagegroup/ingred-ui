@@ -32,7 +32,6 @@
     "react-dates": ">= 21.8.0",
     "react-dom": ">= 16.6.1",
     "react-select": ">= 3.X",
-    "react-transition-group": "^4.4.1",
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
@@ -51,7 +50,6 @@
     "@types/react-dates": "^17.1.10",
     "@types/react-dom": "^16.0.5",
     "@types/react-select": "^3.0.10",
-    "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
