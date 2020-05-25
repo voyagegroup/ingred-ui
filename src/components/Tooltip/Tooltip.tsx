@@ -15,6 +15,7 @@ type Props = {
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
+  disable?: boolean;
   children: React.ReactElement;
 };
 
@@ -27,6 +28,7 @@ const Tooltip: React.FC<Props> = ({
   positionPriority = ["top"],
   offset = [0, 10],
   width,
+  disable = false,
   children,
 }) => {
   /* eslint-disable prettier/prettier */
@@ -124,29 +126,31 @@ const Tooltip: React.FC<Props> = ({
   return (
     <>
       {React.cloneElement(children, childrenProps)}
-      <Portal>
-        <CSSTransition
-          in={open || openProp}
-          classNames={Styled.transitionClass}
-          unmountOnExit={true}
-          mountOnEnter={true}
-          timeout={1000}
-        >
-          <Styled.Tooltip
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            width={width}
+      {!disable && (
+        <Portal>
+          <CSSTransition
+            in={open || openProp}
+            classNames={Styled.transitionClass}
+            unmountOnExit={true}
+            mountOnEnter={true}
+            timeout={1000}
           >
-            {content}
-            <Styled.Arrow
-              ref={setArrowElement}
-              data-popper-arrow
-              style={styles.arrow}
-            />
-          </Styled.Tooltip>
-        </CSSTransition>
-      </Portal>
+            <Styled.Tooltip
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              width={width}
+            >
+              {content}
+              <Styled.Arrow
+                ref={setArrowElement}
+                data-popper-arrow
+                style={styles.arrow}
+              />
+            </Styled.Tooltip>
+          </CSSTransition>
+        </Portal>
+      )}
     </>
   );
 };

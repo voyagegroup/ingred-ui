@@ -1,0 +1,1 @@
+export { DrawerFixture } from "./DrawerFixture";

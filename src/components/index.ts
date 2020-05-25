@@ -23,6 +23,9 @@ export * from "./DataTable";
 export { default as DatePicker } from "./DatePicker";
 export * from "./DatePicker";
 
+export { default as Drawer } from "./Drawer";
+export * from "./Drawer";
+
 export { default as DropdownButton } from "./DropdownButton";
 export * from "./DropdownButton";
 
