@@ -23,4 +23,5 @@ export const DrawerFooter = styled.div`
   flex-basis: ${DrawerContentHeight.HEADER};
   display: flex;
   align-items: center;
+  border-top: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
