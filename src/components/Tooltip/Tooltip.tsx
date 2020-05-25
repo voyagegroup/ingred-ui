@@ -10,6 +10,8 @@ type Props = {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
+  openDelay?: number;
+  closeDelay?: number;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
@@ -20,6 +22,8 @@ const Tooltip: React.FC<Props> = ({
   content,
   open: openProp = false,
   disableHoverListener = false,
+  openDelay = 0,
+  closeDelay = 0,
   positionPriority = ["top"],
   offset = [0, 10],
   width,
@@ -31,6 +35,16 @@ const Tooltip: React.FC<Props> = ({
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(null);
   /* eslint-enable prettier/prettier */
   const [open, setOpen] = React.useState<boolean>(false);
+
+  const [openTimer, setOpenTimer] = React.useState<number>(0);
+  const [closeTimer, setCloseTimer] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(openTimer);
+      clearTimeout(closeTimer);
+    };
+  }, [openTimer, closeTimer]);
 
   const { styles, attributes } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],
@@ -65,14 +79,36 @@ const Tooltip: React.FC<Props> = ({
 
   const onHandleEnter = (event: React.MouseEvent<HTMLElement>) => {
     setBaseElement(event.currentTarget);
-    if (!disableHoverListener) setOpen(true);
+    clearTimeout(closeTimer);
+    if (!disableHoverListener) {
+      if (openDelay) {
+        setOpenTimer(
+          setTimeout(() => {
+            setOpen(true);
+          }, openDelay),
+        );
+      } else {
+        setOpen(true);
+      }
+    }
     if (children.props.onMouseEnter) {
       children.props.onMouseEnter(event);
     }
   };
 
   const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
-    if (!disableHoverListener) setOpen(false);
+    clearTimeout(openTimer);
+    if (!disableHoverListener) {
+      if (closeDelay) {
+        setCloseTimer(
+          setTimeout(() => {
+            setOpen(false);
+          }, closeDelay),
+        );
+      } else {
+        setOpen(false);
+      }
+    }
     if (children.props.onMouseLeave) {
       children.props.onMouseLeave(event);
     }
