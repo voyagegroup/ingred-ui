@@ -9,14 +9,16 @@ describe("NotificationBadge component testing", () => {
 
   test("NotificationBadge normal", () => {
     const { asFragment } = renderWithThemeProvider(
-      <NotificationBadge badgeContent={1}>text</NotificationBadge>,
+      <NotificationBadge variant="normal" badgeContent={1}>
+        text
+      </NotificationBadge>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   test("NotificationBadge dot", () => {
     const { asFragment } = renderWithThemeProvider(
-      <NotificationBadge>text</NotificationBadge>,
+      <NotificationBadge variant="dot">text</NotificationBadge>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
