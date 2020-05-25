@@ -30,7 +30,6 @@ const DrawerMenu: React.FC<Props> = ({
   ) => {
     // MEMO: transition後の幅を取得するために遅らせている
     setTimeout(() => {
-      if (showTooltip) return;
       if (textWrapperElement.current && textElement.current) {
         const wrapperWidth = textWrapperElement.current.offsetWidth;
         const textWidth = textElement.current.offsetWidth;

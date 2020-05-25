@@ -44,7 +44,6 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   ) => {
     // MEMO: transition後の幅を取得するために遅らせている
     setTimeout(() => {
-      if (showTooltip) return;
       if (textWrapperElement.current && textElement.current) {
         const wrapperWidth = textWrapperElement.current.offsetWidth;
         const textWidth = textElement.current.offsetWidth;
@@ -55,8 +54,12 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   };
 
   React.useEffect(() => {
-    setDelayTransition(!isOpen);
+    setDelayTransition(isOpen);
   }, [isOpen]);
+
+  React.useEffect(() => {
+    setDelayTransition(false);
+  }, [isExpand]);
 
   React.useEffect(() => {
     if (!expantionElement.current) return;
@@ -92,30 +95,26 @@ const DrawerExpantionMenu: React.FC<Props> = ({
           >
             <span ref={textElement}>{title}</span>
           </Styled.TextWrapper>
-          {expantionList.length !== 0 && (
-            <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
-              <Icon
-                name="arrow_bottom"
-                color={isActive ? "active" : "line"}
-                size="lg"
-              />
-            </Styled.ArrowIconWrapper>
-          )}
+          <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
+            <Icon
+              name="arrow_bottom"
+              color={isActive ? "active" : "line"}
+              size="lg"
+            />
+          </Styled.ArrowIconWrapper>
         </Styled.Container>
       </Tooltip>
-      {expantionList.length !== 0 && (
-        <Styled.Expantion
-          ref={expantionElement}
-          isExpand={(isExpand && isOpen) || expantionHeight === "auto"}
-          height={expantionHeight}
-          delay={delayTransition}
-        >
-          {expantionList.map((node, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <React.Fragment key={index}>{node}</React.Fragment>
-          ))}
-        </Styled.Expantion>
-      )}
+      <Styled.Expantion
+        ref={expantionElement}
+        isExpand={(isExpand && isOpen) || expantionHeight === "auto"}
+        height={expantionHeight}
+        delay={delayTransition}
+      >
+        {expantionList.map((node, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <React.Fragment key={index}>{node}</React.Fragment>
+        ))}
+      </Styled.Expantion>
     </>
   );
 };
