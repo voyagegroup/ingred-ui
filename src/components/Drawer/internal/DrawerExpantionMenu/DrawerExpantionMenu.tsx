@@ -18,6 +18,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   iconName,
   expantionList = [],
   onClick,
+  onMouseEnter,
   ...rest
 }) => {
   const { isOpen } = React.useContext(DrawerContext);
@@ -25,28 +26,32 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   const [isExpand, setIsExpand] = React.useState<boolean>(false);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
   const [expantionHeight, setExpantionHeight] = React.useState<string>("auto");
+  const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
-  const expantionElement = React.useRef<HTMLDivElement | null>(null);
   const textWrapperElement = React.useRef<HTMLDivElement | null>(null);
   const textElement = React.useRef<HTMLSpanElement | null>(null);
-
-  const isTextOverflow = (): boolean => {
-    if (textWrapperElement.current && textElement.current) {
-      const wrapperWidth = textWrapperElement.current.offsetWidth;
-      const textWidth = textElement.current.offsetWidth;
-      console.log({ wrapperWidth, textWidth });
-      return wrapperWidth < textWidth;
-    }
-    return false;
-  };
-
-  console.log(textWrapperElement.current?.offsetWidth);
+  const expantionElement = React.useRef<HTMLDivElement | null>(null);
 
   const onHandleClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (expantionList.length !== 0) setIsExpand(!isExpand);
     if (onClick) onClick(event);
+  };
+
+  const onHandleMouseEnter = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    // MEMO: transition後の幅を取得するために遅らせている
+    setTimeout(() => {
+      if (showTooltip) return;
+      if (textWrapperElement.current && textElement.current) {
+        const wrapperWidth = textWrapperElement.current.offsetWidth;
+        const textWidth = textElement.current.offsetWidth;
+        setShowTooltip(wrapperWidth < textWidth);
+      }
+    }, 300);
+    if (onMouseEnter) onMouseEnter(event);
   };
 
   React.useEffect(() => {
@@ -66,9 +71,14 @@ const DrawerExpantionMenu: React.FC<Props> = ({
         content={title}
         positionPriority={["right"]}
         openDelay={300}
-        disable={!isTextOverflow()}
+        disable={!showTooltip}
       >
-        <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
+        <Styled.Container
+          isActive={isActive}
+          onClick={onHandleClick}
+          onMouseEnter={onHandleMouseEnter}
+          {...rest}
+        >
           <Icon
             name={iconName}
             size="lg"
@@ -80,9 +90,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
             isActive={isActive}
             isOpen={isOpen}
           >
-            <div>
-              <span ref={textElement}>{title}</span>
-            </div>
+            <span ref={textElement}>{title}</span>
           </Styled.TextWrapper>
           {expantionList.length !== 0 && (
             <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>

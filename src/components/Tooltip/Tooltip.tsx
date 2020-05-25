@@ -16,7 +16,7 @@ type Props = {
   offset?: [number, number];
   width?: string;
   disable?: boolean;
-  children: React.ReactElement;
+  children: React.ComponentElement<HTMLElement, any>;
 };
 
 const Tooltip: React.FC<Props> = ({
@@ -120,7 +120,7 @@ const Tooltip: React.FC<Props> = ({
     ...children.props,
     onMouseEnter: onHandleEnter,
     onMouseLeave: onHandleLeave,
-    ref: useMergeRefs(setBaseElement, children.props.ref),
+    ref: useMergeRefs(setBaseElement, children.ref as any),
   };
 
   return (

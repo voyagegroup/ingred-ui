@@ -2,23 +2,16 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  border-left: ${({ isActive, theme }) =>
-    isActive ? `2px solid ${theme.palette.primary.main}` : "none"};
-  padding: ${({ theme, isActive }) =>
-    `${theme.spacing * 2}px 0 ${theme.spacing * 2}px calc(${
-      theme.spacing * 3
-    }px + ${isActive ? 0 : 2}px)`};
-  background-color: ${({ isActive, theme }) =>
-    isActive ? theme.palette.background.hint : "none"};
+  padding: ${({ theme }) => theme.spacing * 2}px 0;
+  color: ${({ theme, isActive }) =>
+    theme.palette.text[isActive ? "primary" : "secondary"]};
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.gray.light};
-  }
-
-  & > * {
-    flex-shrink: 0;
+    font-weight: bold;
   }
 `;
 
