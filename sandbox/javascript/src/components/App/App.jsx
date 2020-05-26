@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 import * as Styled from "./styled";
 import {
   ThemeProvider,
@@ -185,19 +184,13 @@ const getColors = theme => [
   }
 ];
 
-const Container = styled.div`
-  ${({ theme }) => console.log(theme)}
-`;
-
 export class App extends React.Component {
   render() {
     const theme = createTheme();
-    console.log(theme)
     return (
       <React.Fragment>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Container></Container>
           <Spacer pt={10} pb={7}>
             <Typography
               component="h1"
