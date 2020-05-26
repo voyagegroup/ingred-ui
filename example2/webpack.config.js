@@ -19,6 +19,10 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".json"],
     modules: ["node_modules"],
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      "styled-components": path.resolve('./node_modules/styled-components')
+    },
   },
   devtool: "eval-source-map",
   devServer: {
