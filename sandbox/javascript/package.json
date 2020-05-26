@@ -5,8 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "lint": "eslint src/*.js"
+    "start": "webpack-dev-server --mode development"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
