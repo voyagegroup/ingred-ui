@@ -2,6 +2,7 @@ const path = require("path");
 const WebpackBar = require("webpackbar");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 const outputPath = path.resolve(__dirname, "dist");
@@ -10,14 +11,16 @@ const outputPath = path.resolve(__dirname, "dist");
  * @type import('webpack').Configuration
  */
 module.exports = {
+  target: "web",
   mode: IS_PRODUCTION ? "production" : "development",
-  entry: path.resolve(__dirname, "src/index.js"),
+  entry: path.resolve(__dirname, "src/index.tsx"),
   output: {
     path: outputPath,
     publicPath: "/",
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json"],
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     modules: ["node_modules"],
     alias: {
       react: path.resolve("./node_modules/react"),
@@ -36,29 +39,39 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         exclude: [/node_modules/],
         use: [
           {
             loader: "babel-loader",
           },
+          {
+            loader: "ts-loader",
+            options: {
+              // MEMO: トランスパイル後にbabelを噛ませているので、設定は再考する余地がある
+              configFile: "tsconfig.json",
+              transpileOnly: true,
+              happyPackMode: true,
+            },
+          },
         ],
       },
       {
-        test: /\.(gif|png|jpe?g|svg|ico)$/i,
+        test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
             loader: "file-loader",
             options: {
-              name: "img/[name].[ext]",
+              name: "[path][name].[ext]",
             },
           },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
           {
-            loader: "image-webpack-loader",
-            options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
-            },
+            loader: "react-svg-loader",
           },
         ],
       },
@@ -70,6 +83,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true,
     }),
   ],
 };
