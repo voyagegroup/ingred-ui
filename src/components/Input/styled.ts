@@ -22,7 +22,7 @@ export const Input = styled.input<{
   font-size: 14px;
   color: ${({ theme }) => theme.palette.black};
   background-color: transparent;
-  border: ${Size.Border.Small} solid ${colors.basic[300]};
+  border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
   border-radius: ${Radius.SMALL};
   box-shadow: 0 ${Size.Border.Normal} 0 0
     ${({ theme }) => theme.palette.gray.light} inset;
@@ -47,7 +47,7 @@ export const Input = styled.input<{
   }
   &.is-disabled {
     color: ${({ theme }) => theme.palette.text.disabled};
-    border-color: ${colors.basic[300]};
+    border-color: ${({ theme }) => theme.palette.divider};
     box-shadow: none;
     background-color: ${({ theme }) => theme.palette.gray.light};
   }

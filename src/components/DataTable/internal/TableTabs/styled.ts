@@ -4,8 +4,6 @@ import { colors } from "../../../../styles/color";
 
 export const Container = styled.div`
   padding-left: ${({ theme }) => theme.spacing * 3}px;
-  border-bottom: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
 `;
 
 export const TabContainer = styled.ul<{ width: string }>`
@@ -20,14 +18,12 @@ export const TabItem = styled.li<{ active: boolean; width: string }>`
   padding: ${({ theme }) => theme.spacing * 1.5}px
     ${({ theme }) => theme.spacing * 2}px;
   border-left: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
-  border-top: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
+    ${({ theme }) => theme.palette.divider};
+  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
   border-right: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
-  border-bottom: ${Size.Border.Small} solid
-    ${({ active }) =>
-      active ? colors.basic[100] : ({ theme }) => theme.palette.gray.light};
+    ${({ theme }) => theme.palette.divider};
+  border-bottom: ${({ active, theme }) =>
+    active ? `none` : `${Size.Border.Small} solid ${theme.palette.divider}`};
   border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
   font-size: 13px;
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
