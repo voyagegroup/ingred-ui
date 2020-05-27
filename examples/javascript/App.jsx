@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Styled from "./styled";
+import * as Styled from "./styles/styled";
 import {
   ThemeProvider,
   createTheme,
@@ -19,7 +19,7 @@ import {
   Table,
   Select,
 } from "ingred-ui";
-import { GlobalStyle } from "../../styles/globalStyle";
+import { GlobalStyle } from "./styles/globalStyle";
 
 const componentList = [
   {

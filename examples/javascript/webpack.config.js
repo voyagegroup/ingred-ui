@@ -11,7 +11,7 @@ const outputPath = path.resolve(__dirname, "dist");
  */
 module.exports = {
   mode: IS_PRODUCTION ? "production" : "development",
-  entry: path.resolve(__dirname, "src/index.js"),
+  entry: path.resolve(__dirname, "index.js"),
   output: {
     path: outputPath,
     publicPath: "/",
@@ -68,7 +68,7 @@ module.exports = {
     new WebpackBar(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./index.html",
       filename: "./index.html",
     }),
   ],
