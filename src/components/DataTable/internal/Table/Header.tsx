@@ -6,8 +6,9 @@ import { Size } from "../../../../styles";
 export type Props = {};
 
 const Component = styled.thead`
-  border-top: ${Size.Border.Small} solid ${colors.basic[300]};
-  border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
+  border-bottom: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
   background-color: ${colors.basic[100]};
 `;
 

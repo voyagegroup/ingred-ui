@@ -9,7 +9,8 @@ const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing * 2}px;
   background-color: ${colors.basic[100]};
-  border-right: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-right: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
 `;
 
 const RequiredBadge = styled.div`

@@ -17,11 +17,13 @@ export const TabItem = styled.li<{ active: boolean; width: string }>`
   margin-bottom: -${Size.Border.Small}; /* containerのborderにかぶせるためのネガティブマージン */
   padding: ${({ theme }) => theme.spacing * 1.5}px
     ${({ theme }) => theme.spacing * 2}px;
-  border-left: ${Size.Border.Small} solid ${colors.basic[300]};
-  border-top: ${Size.Border.Small} solid ${colors.basic[300]};
-  border-right: ${Size.Border.Small} solid ${colors.basic[300]};
-  border-bottom: ${({ active }) =>
-    active ? `none` : `${Size.Border.Small} solid ${colors.basic[300]}`};
+  border-left: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
+  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
+  border-right: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
+  border-bottom: ${({ active, theme }) =>
+    active ? `none` : `${Size.Border.Small} solid ${theme.palette.divider}`};
   border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
   font-size: 13px;
   font-weight: ${({ active }) => (active ? "bold" : "normal")};
