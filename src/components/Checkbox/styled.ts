@@ -62,7 +62,7 @@ export const Span = styled.span<{
     color: ${({ theme }) => theme.palette.text.disabled};
   }
   ${Checkbox}:disabled + &::before {
-    border: ${Size.Border.Small} solid ${colors.basic[300]};
+    border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
   ${Checkbox}:disabled:checked + &::before {

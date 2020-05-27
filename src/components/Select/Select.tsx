@@ -17,10 +17,12 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: `0 -${Size.Border.Normal} 0 0 ${theme.palette.gray.light} inset`,
-      borderTopColor: `${colors.basic[300]}`,
-      borderRightColor: `${colors.basic[300]}`,
-      borderLeftColor: `${colors.basic[300]}`,
-      borderBottomColor: menuIsOpen ? `transparent` : `${colors.basic[300]}`,
+      borderTopColor: `${({ theme }) => theme.palette.divider}`,
+      borderRightColor: `${({ theme }) => theme.palette.divider}`,
+      borderLeftColor: `${({ theme }) => theme.palette.divider}`,
+      borderBottomColor: menuIsOpen
+        ? `transparent`
+        : `${({ theme }) => theme.palette.divider}`,
       borderColor: error ? `${theme.palette.danger.main}!important` : "",
       borderRadius: menuIsOpen ? "4px 4px 0 0" : "4px",
       "&:hover": {},
