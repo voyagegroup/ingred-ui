@@ -41,6 +41,9 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
+export { default as NotificationBadge } from "./NotificationBadge";
+export * from "./NotificationBadge";
+
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 
