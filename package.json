@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "2.10.0",
+  "version": "2.10.2",
   "description": "",
   "author": "voyagegroup",
   "license": "MIT",
@@ -32,13 +32,10 @@
     "react-dates": ">= 21.8.0",
     "react-dom": ">= 16.6.1",
     "react-select": ">= 3.X",
-    "react-transition-group": "^4.4.1",
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
-    "@popperjs/core": "^2.4.0",
     "@storybook/addon-actions": "^5.3.18",
-    "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-notes": "^5.3.18",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/react": "^5.3.18",
@@ -51,7 +48,6 @@
     "@types/react-dates": "^17.1.10",
     "@types/react-dom": "^16.0.5",
     "@types/react-select": "^3.0.10",
-    "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
@@ -71,7 +67,6 @@
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "react-dates": "^21.8.0",
-    "react-popper": "^2.2.3",
     "react-scripts-ts": "^2.16.0",
     "react-select": "^3.0.8",
     "rollup": "^0.62.0",
