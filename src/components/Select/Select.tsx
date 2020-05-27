@@ -17,12 +17,10 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: `0 -${Size.Border.Normal} 0 0 ${theme.palette.gray.light} inset`,
-      borderTopColor: `${({ theme }) => theme.palette.divider}`,
-      borderRightColor: `${({ theme }) => theme.palette.divider}`,
-      borderLeftColor: `${({ theme }) => theme.palette.divider}`,
-      borderBottomColor: menuIsOpen
-        ? `transparent`
-        : `${({ theme }) => theme.palette.divider}`,
+      borderTopColor: theme.palette.divider,
+      borderRightColor: theme.palette.divider,
+      borderLeftColor: theme.palette.divider,
+      borderBottomColor: menuIsOpen ? `transparent` : theme.palette.divider,
       borderColor: error ? `${theme.palette.danger.main}!important` : "",
       borderRadius: menuIsOpen ? "4px 4px 0 0" : "4px",
       "&:hover": {},
@@ -39,13 +37,13 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       boxShadow: "none",
       borderRadius: "0 0 4px 4px",
       borderRight: `${Size.Border.Small} solid ${
-        error ? theme.palette.danger.main : colors.basic[300]
+        error ? theme.palette.danger.main : theme.palette.divider
       }`,
       borderBottom: `${Size.Border.Small} solid ${
-        error ? theme.palette.danger.main : colors.basic[300]
+        error ? theme.palette.danger.main : theme.palette.divider
       }`,
       borderLeft: `${Size.Border.Small} solid ${
-        error ? theme.palette.danger.main : colors.basic[300]
+        error ? theme.palette.danger.main : theme.palette.divider
       }`,
     }),
     menuList: (base) => ({
