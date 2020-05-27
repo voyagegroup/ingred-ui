@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PaletteColorOptions } from "../../../../../dist/themes/palette";
+import { PaletteColorOptions } from "../../../dist/themes/palette";
 
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px

@@ -13,7 +13,7 @@ const outputPath = path.resolve(__dirname, "dist");
 module.exports = {
   target: "web",
   mode: IS_PRODUCTION ? "production" : "development",
-  entry: path.resolve(__dirname, "src/index.tsx"),
+  entry: path.resolve(__dirname, "./index.tsx"),
   output: {
     path: outputPath,
     publicPath: "/",
@@ -81,7 +81,7 @@ module.exports = {
     new WebpackBar(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: "./index.html",
       filename: "./index.html",
     }),
     new ForkTsCheckerWebpackPlugin({
