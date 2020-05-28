@@ -23,7 +23,7 @@ export type Props = {
   cancelText?: string;
   onClose?: () => void;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
-  buttonColor?: Exclude<ButtonColor, "cancel">;
+  buttonColor?: ButtonColor;
   disabled?: boolean;
   loading?: boolean;
   overflowYScroll?: boolean;
