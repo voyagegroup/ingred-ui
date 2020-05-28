@@ -1,13 +1,12 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
-import { colors } from "../../styles/color";
 import { Size } from "../../styles";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 
 type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "secondary" | "danger" | "cancel";
+export type ButtonColor = "primary" | "secondary" | "danger";
 
 export type ButtonColorStyle = {
   normal: {
@@ -47,18 +46,18 @@ const getContainerColorStyles = (
   },
   secondary: {
     normal: {
-      background: theme.palette.background.hint,
-      color: theme.palette.text.primary,
+      background: "transparent",
+      color: theme.palette.black,
       boxShadow: "none",
-      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
+      border: `${Size.Border.Small} solid ${theme.palette.divider}`,
     },
     hover: {
-      background: theme.palette.primary.highlight,
-      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
+      background: theme.palette.gray.light,
+      border: `${Size.Border.Small} solid ${theme.palette.divider}`,
     },
     active: {
-      background: theme.palette.primary.light,
-      border: `${Size.Border.Small} solid ${theme.palette.primary.main}`,
+      background: theme.palette.divider,
+      border: `${Size.Border.Small} solid ${theme.palette.divider}`,
     },
   },
   danger: {
@@ -74,22 +73,6 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.deepDark,
-      border: "none",
-    },
-  },
-  cancel: {
-    normal: {
-      background: "transparent",
-      color: theme.palette.black,
-      boxShadow: "none",
-      border: "none",
-    },
-    hover: {
-      background: colors.basic[300],
-      border: "none",
-    },
-    active: {
-      background: colors.basic[400],
       border: "none",
     },
   },
@@ -149,7 +132,7 @@ const Button: React.FunctionComponent<Props> = ({
       normal={{ ...colorStyle.normal }}
       hover={{ ...colorStyle.hover }}
       active={{ ...colorStyle.active }}
-      fontWeight={color === "cancel" ? "normal" : "bold"}
+      fontWeight={color === "secondary" ? "normal" : "bold"}
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }

@@ -93,7 +93,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
             <Styled.ModalFooter fullSize={fullSize}>
               <Flex display="flex" alignItems="center">
                 <Spacer pr={2}>
-                  <Button type="button" color="cancel" onClick={onClose}>
+                  <Button type="button" color="secondary" onClick={onClose}>
                     {cancelText}
                   </Button>
                 </Spacer>
