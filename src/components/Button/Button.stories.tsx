@@ -87,26 +87,6 @@ export const Overview = () => (
         </Button>
       </div>
     </RowContainer>
-    <RowContainer>
-      <Typography weight="bold" size="xxl">
-        Cancel
-      </Typography>
-      <Spacer pt={2} pb={5}>
-        <Button size="large" color="cancel" onClick={action("clicked")}>
-          ボタン
-        </Button>
-      </Spacer>
-      <div>
-        <Button
-          disabled
-          size="large"
-          color="cancel"
-          onClick={action("clicked")}
-        >
-          ボタン
-        </Button>
-      </div>
-    </RowContainer>
 
     <Typography weight="bold" size="xxl">
       Large Button
@@ -184,29 +164,6 @@ export const Overview = () => (
         </Button>
       </Flex>
     </RowContainer>
-    <RowContainer>
-      <Typography weight="bold" size="xxl">
-        Cancel
-      </Typography>
-      <Spacer pt={2} />
-      <Flex display="flex" alignItems="center">
-        <Button inline color="cancel" size="large" onClick={action("clicked")}>
-          長めの文言ボタン
-        </Button>
-        <Button inline color="cancel" size="large" onClick={action("clicked")}>
-          キャンセル
-        </Button>
-        <Button
-          inline
-          disabled
-          color="cancel"
-          size="large"
-          onClick={action("clicked")}
-        >
-          キャンセル
-        </Button>
-      </Flex>
-    </RowContainer>
 
     <Typography weight="bold" size="xxl">
       Medium Button
@@ -259,23 +216,6 @@ export const Overview = () => (
         </Button>
         <Button inline disabled color="danger" onClick={action("clicked")}>
           削除する
-        </Button>
-      </Flex>
-    </RowContainer>
-    <RowContainer>
-      <Typography weight="bold" size="xxl">
-        Cancel
-      </Typography>
-      <Spacer pt={2} />
-      <Flex display="flex" alignItems="center">
-        <Button inline color="cancel" onClick={action("clicked")}>
-          長めの文言ボタン
-        </Button>
-        <Button inline color="cancel" onClick={action("clicked")}>
-          キャンセル
-        </Button>
-        <Button inline disabled color="cancel" onClick={action("clicked")}>
-          キャンセル
         </Button>
       </Flex>
     </RowContainer>
@@ -353,29 +293,6 @@ export const Overview = () => (
           onClick={action("clicked")}
         >
           削除
-        </Button>
-      </Flex>
-    </RowContainer>
-    <RowContainer>
-      <Typography weight="bold" size="xxl">
-        Cancel
-      </Typography>
-      <Spacer pt={2} />
-      <Flex display="flex" alignItems="center">
-        <Button inline size="small" color="cancel" onClick={action("clicked")}>
-          条件を変更
-        </Button>
-        <Button inline size="small" color="cancel" onClick={action("clicked")}>
-          キャ
-        </Button>
-        <Button
-          inline
-          disabled
-          size="small"
-          color="cancel"
-          onClick={action("clicked")}
-        >
-          キャ
         </Button>
       </Flex>
     </RowContainer>
