@@ -27,7 +27,6 @@
     "fork-ts-checker-webpack-plugin": "^4.1.2",
     "html-webpack-plugin": "^4.0.3",
     "ingred-ui": "link:../..",
-    "react-dates": "^21.8.0",
     "react-svg-loader": "^3.0.3",
     "react-transition-group": "^4.4.1",
     "regenerator-runtime": "^0.13.5",
