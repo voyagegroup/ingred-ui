@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuList component testing MenuList splited 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gcpoXr"
+  >
+    <hr
+      class="sc-AxiKw kHaXTT"
+    />
+    <div
+      class="sc-AxirZ dBmWb"
+    >
+      保存する
+    </div>
+    <div
+      class="sc-AxirZ dBmWb"
+    >
+      保存して実行する
+    </div>
+    <hr
+      class="sc-AxiKw kHaXTT"
+    />
+    <div
+      class="sc-AxirZ dBmWb"
+    >
+      下書きとして保存する
+    </div>
+    <div
+      class="sc-AxirZ dBmWb"
+    >
+      やっぱり何もしない
+    </div>
+  </div>
+</DocumentFragment>
+`;

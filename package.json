@@ -28,13 +28,16 @@
   },
   "dependencies": {},
   "peerDependencies": {
+    "@popperjs/core": ">= 2.X",
     "react": ">= 16.6.1",
     "react-dates": ">= 21.8.0",
     "react-dom": ">= 16.6.1",
+    "react-popper": ">= 2.X",
     "react-select": ">= 3.X",
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
+    "@popperjs/core": "^2.4.0",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^6.0.0-beta.12",
     "@storybook/addon-notes": "^5.3.18",
@@ -68,6 +71,7 @@
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "react-dates": "^21.8.0",
+    "react-popper": "^2.2.3",
     "react-scripts-ts": "^2.16.0",
     "react-select": "^3.0.8",
     "rollup": "^0.62.0",
