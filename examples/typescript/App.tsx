@@ -19,6 +19,7 @@ import {
   Table,
   Select,
   Theme,
+  DropdownButton,
 } from "ingred-ui";
 import { GlobalStyle } from "./styles/globalStyle";
 
@@ -63,6 +64,23 @@ const componentList = [
       {
         title: "Button",
         content: <Button inline={true}>ボタン</Button>,
+      },
+      {
+        title: "DropdownButton",
+        content: <DropdownButton contents={
+          [
+            {
+              text: "メニュー1",
+              onClick: () => {}
+            },
+            {
+              text: "メニュー2",
+              onClick: () => {}
+            },
+          ]
+        }>
+          ボタン
+        </DropdownButton>,
       },
       {
         title: "Action Button",

@@ -84,8 +84,6 @@ module.exports = {
       template: "./index.html",
       filename: "./index.html",
     }),
-    new ForkTsCheckerWebpackPlugin({
-      eslint: true,
-    }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
