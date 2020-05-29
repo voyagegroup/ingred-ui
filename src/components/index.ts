@@ -74,6 +74,9 @@ export * from "./Table";
 export { default as TextField } from "./TextField";
 export * from "./TextField";
 
+export { default as Tooltip } from "./Tooltip";
+export * from "./Tooltip";
+
 export { default as Typography } from "./Typography";
 export * from "./Typography";
 /* eslint-enable import/export */
