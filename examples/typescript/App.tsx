@@ -17,6 +17,7 @@ import {
   Checkbox,
   RadioButton,
   Table,
+  Tooltip,
   Select,
   Theme,
   DropdownButton,
@@ -67,20 +68,22 @@ const componentList = [
       },
       {
         title: "DropdownButton",
-        content: <DropdownButton contents={
-          [
-            {
-              text: "メニュー1",
-              onClick: () => {}
-            },
-            {
-              text: "メニュー2",
-              onClick: () => {}
-            },
-          ]
-        }>
-          ボタン
-        </DropdownButton>,
+        content: (
+          <DropdownButton
+            contents={[
+              {
+                text: "メニュー1",
+                onClick: () => {},
+              },
+              {
+                text: "メニュー2",
+                onClick: () => {},
+              },
+            ]}
+          >
+            ボタン
+          </DropdownButton>
+        ),
       },
       {
         title: "Action Button",
@@ -159,7 +162,7 @@ const componentList = [
     ],
   },
   {
-    title: "Visualize",
+    title: "Data Display",
     items: [
       {
         title: "Table",
@@ -178,6 +181,14 @@ const componentList = [
               </Table.Row>
             </Table.Body>
           </Table>
+        ),
+      },
+      {
+        title: "Icon",
+        content: (
+          <Tooltip content="This is Tooltip!!">
+            <div>Hover me!!</div>
+          </Tooltip>
         ),
       },
     ],

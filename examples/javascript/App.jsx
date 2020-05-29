@@ -17,7 +17,9 @@ import {
   Checkbox,
   RadioButton,
   Table,
+  Tooltip,
   Select,
+  DropdownButton,
 } from "ingred-ui";
 import { GlobalStyle } from "./styles/globalStyle";
 
@@ -62,6 +64,25 @@ const componentList = [
       {
         title: "Button",
         content: <Button inline={true}>ボタン</Button>,
+      },
+      {
+        title: "DropdownButton",
+        content: (
+          <DropdownButton
+            contents={[
+              {
+                text: "メニュー1",
+                onClick: () => {},
+              },
+              {
+                text: "メニュー2",
+                onClick: () => {},
+              },
+            ]}
+          >
+            ボタン
+          </DropdownButton>
+        ),
       },
       {
         title: "Action Button",
@@ -140,7 +161,7 @@ const componentList = [
     ],
   },
   {
-    title: "Visualize",
+    title: "Data Display",
     items: [
       {
         title: "Table",
@@ -148,8 +169,8 @@ const componentList = [
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.Cell header={true}>タイトル</Table.Cell>
-                <Table.Cell header={true}>タイトル</Table.Cell>
+                <Table.HeaderCell>タイトル</Table.HeaderCell>
+                <Table.HeaderCell>タイトル</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -159,6 +180,14 @@ const componentList = [
               </Table.Row>
             </Table.Body>
           </Table>
+        ),
+      },
+      {
+        title: "Icon",
+        content: (
+          <Tooltip content="This is Tooltip!!">
+            <div>Hover me!!</div>
+          </Tooltip>
         ),
       },
     ],
