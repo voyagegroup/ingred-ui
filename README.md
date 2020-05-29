@@ -9,13 +9,13 @@
 For npm users:
 
 ```bash
-npm install --save ingred-ui styled-components react-select react-dates
+npm install --save ingred-ui styled-components react-dates
 ```
 
 For Yarn users:
 
 ```bash
-yarn add ingred-ui styled-components react-select react-dates
+yarn add ingred-ui styled-components react-dates
 ```
 
 ## Usage
