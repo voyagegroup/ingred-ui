@@ -183,7 +183,7 @@ const componentList = [
         ),
       },
       {
-        title: "Icon",
+        title: "Tooltip",
         content: (
           <Tooltip content="This is Tooltip!!">
             <div>Hover me!!</div>
