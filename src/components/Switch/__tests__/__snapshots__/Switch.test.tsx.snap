@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch component testing Switch 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm gYsfQO"
+  />
+</DocumentFragment>
+`;
