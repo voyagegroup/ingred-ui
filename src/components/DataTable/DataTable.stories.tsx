@@ -25,6 +25,13 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
+const StickyContainer = styled.div`
+  thead th {
+    position: sticky;
+    top: 0;
+  }
+`;
+
 type SampleObject = {
   id: number;
   name: string;
@@ -259,3 +266,26 @@ export const CustomCell: React.FunctionComponent = () => {
     </Container>
   );
 };
+
+export const WithStickyHeader = () => (
+  <Container>
+    <StickyContainer>
+      <DataTable
+        enablePagination={true}
+        data={data}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+            sortable: true,
+          },
+          {
+            name: "imp",
+            selector: (data) => data.imp,
+            sortable: true,
+          },
+        ]}
+      />
+    </StickyContainer>
+  </Container>
+);
