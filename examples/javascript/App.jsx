@@ -1,5 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styles/styled";
+import moment from "moment";
+import "react-dates/lib/css/_datepicker.css";
 import {
   ThemeProvider,
   createTheme,
@@ -20,6 +22,7 @@ import {
   Tooltip,
   Select,
   DropdownButton,
+  DatePicker,
 } from "ingred-ui";
 import { GlobalStyle } from "./styles/globalStyle";
 
@@ -148,6 +151,16 @@ const componentList = [
       {
         title: "RadioButton",
         content: <RadioButton checked={true} />,
+      },
+      {
+        title: "DatePicker",
+        content: (
+          <DatePicker
+            startDate={moment()}
+            endDate={moment()}
+            onDatesChange={() => {}}
+          />
+        ),
       },
     ],
   },
