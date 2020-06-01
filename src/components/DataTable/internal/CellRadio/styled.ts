@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Size } from "../../../../styles";
 
 const CELL_PADDING = 24;
 
@@ -15,4 +16,8 @@ export const HeaderCell = styled.th`
   padding: ${({ theme }) => theme.spacing * 2}px 0
     ${({ theme }) => theme.spacing * 2 - 2}px
     ${({ theme }) => theme.spacing * 3}px;
+  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
+  border-bottom: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme }) => theme.palette.gray.highlight};
 `;
