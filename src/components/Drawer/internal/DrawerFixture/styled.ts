@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DrawerTransitionDuration } from "../../constants";
 
 export const Container = styled.div<{ isFixed: boolean }>`
   cursor: pointer;
@@ -6,7 +7,7 @@ export const Container = styled.div<{ isFixed: boolean }>`
   margin-left: ${({ theme }) => theme.spacing * 3}px;
   font-weight: bold;
   transform: rotate(${({ isFixed }) => (isFixed ? "none" : "180deg")});
-  transition: transform 0.3s;
+  transition: transform ${DrawerTransitionDuration}s;
 
   &::before {
     content: " ";

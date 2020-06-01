@@ -4,6 +4,7 @@ import Icon from "../../../Icon";
 import { IconName } from "../../../Icon/Icon";
 import { DrawerContext } from "../../utils";
 import Tooltip from "../../../Tooltip";
+import { DrawerTransitionDuration } from "../../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -42,6 +43,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   const onHandleMouseEnter = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
+    if (onMouseEnter) onMouseEnter(event);
     // MEMO: transition後の幅を取得するために遅らせている
     setTimeout(() => {
       if (textWrapperElement.current && textElement.current) {
@@ -49,8 +51,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
         const textWidth = textElement.current.offsetWidth;
         setShowTooltip(wrapperWidth < textWidth);
       }
-    }, 300);
-    if (onMouseEnter) onMouseEnter(event);
+    }, DrawerTransitionDuration * 1000);
   };
 
   React.useEffect(() => {
@@ -73,7 +74,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
       <Tooltip
         content={title}
         positionPriority={["right"]}
-        openDelay={300}
+        openDelay={DrawerTransitionDuration * 1000}
         disable={!showTooltip}
       >
         <Styled.Container

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DrawerTransitionDuration } from "../../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
@@ -33,5 +34,5 @@ export const TextWrapper = styled.div<{ isActive: boolean; isOpen: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: opacity 0.3s;
+  transition: opacity ${DrawerTransitionDuration}s;
 `;

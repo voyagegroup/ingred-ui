@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Tooltip from "../../../Tooltip";
+import { DrawerTransitionDuration } from "../../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -21,20 +22,20 @@ const DrawerExpantionMenuItem: React.FC<Props> = ({
   const onHandleMouseEnter = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
+    if (onMouseEnter) onMouseEnter(event);
     if (textWrapperElement.current && textElement.current) {
       if (showTooltip) return;
       const wrapperWidth = textWrapperElement.current.offsetWidth;
       const textWidth = textElement.current.offsetWidth;
       setShowTooltip(wrapperWidth < textWidth);
     }
-    if (onMouseEnter) onMouseEnter(event);
   };
 
   return (
     <Tooltip
       content={title}
       positionPriority={["right"]}
-      openDelay={300}
+      openDelay={DrawerTransitionDuration * 1000}
       disable={!showTooltip}
     >
       <Styled.Container

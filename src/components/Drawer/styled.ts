@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DrawerWidth } from "./constants";
+import { DrawerWidth, DrawerTransitionDuration } from "./constants";
 
 type ContaierProps = {
   isOpen: boolean;
@@ -26,5 +26,5 @@ export const Container = styled.div<ContaierProps>`
   box-sizing: content-box;
   overflow-x: hidden;
   z-index: ${({ theme }) => theme.depth.drawer};
-  transition: width 0.3s;
+  transition: width ${DrawerTransitionDuration}s;
 `;

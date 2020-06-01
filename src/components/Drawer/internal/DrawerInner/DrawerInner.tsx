@@ -20,7 +20,7 @@ export const DrawerContent = styled.div`
 
 export const DrawerFooter = styled.div`
   flex-shrink: 0;
-  flex-basis: ${DrawerContentHeight.HEADER};
+  flex-basis: ${DrawerContentHeight.FOOTER};
   display: flex;
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.palette.gray.light};

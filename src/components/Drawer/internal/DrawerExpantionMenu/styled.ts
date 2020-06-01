@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DrawerTransitionDuration } from "../../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
@@ -33,7 +34,7 @@ export const TextWrapper = styled.div<{ isActive: boolean; isOpen: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: opacity 0.3s;
+  transition: opacity ${DrawerTransitionDuration}s;
 `;
 
 export const ArrowIconWrapper = styled.div<{
@@ -43,7 +44,7 @@ export const ArrowIconWrapper = styled.div<{
   margin-right: ${({ theme }) => theme.spacing}px;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   transform: rotate(${({ isExpand }) => (isExpand ? "180deg" : "none")});
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity ${DrawerTransitionDuration}s;
 `;
 
 type ExpantionProps = {
@@ -58,5 +59,6 @@ export const Expantion = styled.div<ExpantionProps>`
   overflow: hidden;
   padding-left: ${({ theme }) => theme.spacing * 7}px;
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};
-  transition: max-height 0.3s ${({ delay }) => (delay ? 0.3 : 0)}s;
+  transition: max-height 0.3s
+    ${({ delay }) => (delay ? DrawerTransitionDuration : 0)}s;
 `;
