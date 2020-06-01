@@ -3,8 +3,8 @@ import * as PopperJS from "@popperjs/core";
 import { CSSTransition } from "react-transition-group";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
+import Portal from "../Portal";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
-import { Portal } from "..";
 
 type Props = {
   content: React.ReactChild;

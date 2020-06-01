@@ -1,7 +1,7 @@
 import * as React from "react";
-import styled from "styled-components";
-import * as Styled from "./styled";
-import { GlobalStyle } from "./styles/globalStyle";
+import * as Styled from "./styles/styled";
+import moment from "moment";
+import "react-dates/lib/css/_datepicker.css";
 import {
   ThemeProvider,
   createTheme,
@@ -19,8 +19,12 @@ import {
   Checkbox,
   RadioButton,
   Table,
-  Select
+  Tooltip,
+  Select,
+  DropdownButton,
+  DatePicker,
 } from "ingred-ui";
+import { GlobalStyle } from "./styles/globalStyle";
 
 const componentList = [
   {
@@ -28,7 +32,7 @@ const componentList = [
     items: [
       {
         title: "Spacer",
-        content: <Spacer pt={10} />
+        content: <Spacer pt={10} />,
       },
       {
         title: "Flex",
@@ -40,9 +44,9 @@ const componentList = [
               <Styled.Square />
             </Flex>
           </Styled.FullBox>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   {
     title: "Text",
@@ -53,42 +57,61 @@ const componentList = [
           <Typography weight="bold" size="xxxxxl" align="center">
             Typography
           </Typography>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   },
   {
     title: "Controll",
     items: [
       {
         title: "Button",
-        content: <Button inline={true}>ボタン</Button>
+        content: <Button inline={true}>ボタン</Button>,
+      },
+      {
+        title: "DropdownButton",
+        content: (
+          <DropdownButton
+            contents={[
+              {
+                text: "メニュー1",
+                onClick: () => {},
+              },
+              {
+                text: "メニュー2",
+                onClick: () => {},
+              },
+            ]}
+          >
+            ボタン
+          </DropdownButton>
+        ),
       },
       {
         title: "Action Button",
-        content: <ActionButton icon="pencil">アクションボタン</ActionButton>
-      }
-    ]
+        content: <ActionButton icon="pencil">アクションボタン</ActionButton>,
+      },
+    ],
   },
   {
     title: "Indicator",
     items: [
       {
         title: "Loading bar",
-        content: <LoadingBar />
+        content: <LoadingBar />,
       },
       {
         title: "Spinner",
-        content: <Spinner />
-      }
-    ]
+        content: <Spinner />,
+      },
+    ],
   },
   {
     title: "Input",
     items: [
       {
         title: "Input",
-        content: <Input />
+        content: <Input />,
       },
       {
         title: "TextField",
@@ -96,11 +119,11 @@ const componentList = [
           <Styled.InputContainer>
             <TextField errorText="エラーメッセージ" />
           </Styled.InputContainer>
-        )
+        ),
       },
       {
         title: "Error text",
-        content: <ErrorText>エラーメッセージ</ErrorText>
+        content: <ErrorText>エラーメッセージ</ErrorText>,
       },
       {
         title: "Select",
@@ -110,38 +133,48 @@ const componentList = [
               options={[
                 {
                   label: "option1",
-                  value: 1
+                  value: 1,
                 },
                 {
                   label: "option2",
-                  value: 2
-                }
+                  value: 2,
+                },
               ]}
             />
           </Styled.InputContainer>
-        )
+        ),
       },
       {
         title: "Checkbox",
-        content: <Checkbox checked={true} />
+        content: <Checkbox checked={true} />,
       },
       {
         title: "RadioButton",
-        content: <RadioButton checked={true} />
-      }
-    ]
+        content: <RadioButton checked={true} />,
+      },
+      {
+        title: "DatePicker",
+        content: (
+          <DatePicker
+            startDate={moment()}
+            endDate={moment()}
+            onDatesChange={() => {}}
+          />
+        ),
+      },
+    ],
   },
   {
     title: "Accessory",
     items: [
       {
         title: "Icon",
-        content: <Icon name="dashboard" size="lg" />
-      }
-    ]
+        content: <Icon name="dashboard" size="lg" />,
+      },
+    ],
   },
   {
-    title: "Visualize",
+    title: "Data Display",
     items: [
       {
         title: "Table",
@@ -149,8 +182,8 @@ const componentList = [
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.Cell header={true}>タイトル</Table.Cell>
-                <Table.Cell header={true}>タイトル</Table.Cell>
+                <Table.HeaderCell>タイトル</Table.HeaderCell>
+                <Table.HeaderCell>タイトル</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -160,43 +193,46 @@ const componentList = [
               </Table.Row>
             </Table.Body>
           </Table>
-        )
-      }
-    ]
-  }
+        ),
+      },
+      {
+        title: "Tooltip",
+        content: (
+          <Tooltip content="This is Tooltip!!">
+            <div>Hover me!!</div>
+          </Tooltip>
+        ),
+      },
+    ],
+  },
 ];
 
-const getColors = theme => [
+const getColors = (theme) => [
   {
     title: "Primary",
-    palette: theme.palette.primary
+    palette: theme.palette.primary,
   },
   {
     title: "Success",
-    palette: theme.palette.success
+    palette: theme.palette.success,
   },
   {
     title: "Warning",
-    palette: theme.palette.warning
+    palette: theme.palette.warning,
   },
   {
     title: "Danger",
-    palette: theme.palette.danger
-  }
+    palette: theme.palette.danger,
+  },
 ];
 
-const Container = styled.div`
-  ${({ theme }) => console.log(theme)}
-`;
-
-export default class App extends React.Component {
+export class App extends React.Component {
   render() {
     const theme = createTheme();
     return (
-      <React.Fragment>
+      <>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Container></Container>
           <Spacer pt={10} pb={7}>
             <Typography
               component="h1"
@@ -214,7 +250,7 @@ export default class App extends React.Component {
               </Typography>
             </Spacer>
             <Styled.GridContainer>
-              {getColors(theme).map(item => (
+              {getColors(theme).map((item) => (
                 <Styled.Column key={item.title}>
                   <Styled.Title>{item.title}</Styled.Title>
                   <Styled.ColorTile palette={item.palette} />
@@ -222,7 +258,7 @@ export default class App extends React.Component {
               ))}
             </Styled.GridContainer>
 
-            {componentList.map(group => (
+            {componentList.map((group) => (
               <React.Fragment key={group.title}>
                 <Spacer pl={2} pt={4} pb={2}>
                   <Typography component="h2" weight="bold" size="xxxxxl">
@@ -230,7 +266,7 @@ export default class App extends React.Component {
                   </Typography>
                 </Spacer>
                 <Styled.GridContainer>
-                  {group.items.map(item => (
+                  {group.items.map((item) => (
                     <Styled.Column key={item.title}>
                       <Styled.Title>{item.title}</Styled.Title>
                       <Styled.Component>{item.content}</Styled.Component>
@@ -241,7 +277,7 @@ export default class App extends React.Component {
             ))}
           </Styled.Container>
         </ThemeProvider>
-      </React.Fragment>
+      </>
     );
   }
 }

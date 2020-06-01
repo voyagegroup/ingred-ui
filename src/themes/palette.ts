@@ -40,6 +40,7 @@ export type Palette = {
   gray: PaletteColor;
   text: TypeText;
   background: TypeBackground;
+  divider: string;
   icon: TypeIcon;
 };
 
@@ -61,7 +62,7 @@ export const palette: Palette = {
     highlight: colors.green[100],
   },
   warning: {
-    deepDark: colors.yellow[700],
+    deepDark: colors.yellow[900],
     dark: colors.yellow[600],
     main: colors.yellow[500],
     light: colors.yellow[400],
@@ -94,6 +95,7 @@ export const palette: Palette = {
     active: colors.blue[100],
     hint: colors.blue[50] as string, // TODO
   },
+  divider: colors.basic[300],
   icon: {
     active: colors.blue[500],
     fill: colors.basic[700],

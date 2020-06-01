@@ -24,6 +24,4 @@ export const SingleButton = styled(Button)`
   min-width: auto;
 `;
 
-export const MenuPopper = styled.div`
-  z-index: ${({ theme }) => theme.depth.dropdownMenu};
-`;
+export const MenuPopper = styled.div``;

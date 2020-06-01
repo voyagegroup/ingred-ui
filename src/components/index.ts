@@ -47,6 +47,9 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
+export { default as NotificationBadge } from "./NotificationBadge";
+export * from "./NotificationBadge";
+
 export { default as MenuList } from "./MenuList";
 export * from "./MenuList";
 
@@ -73,6 +76,9 @@ export * from "./Table";
 
 export { default as TextField } from "./TextField";
 export * from "./TextField";
+
+export { default as Tooltip } from "./Tooltip";
+export * from "./Tooltip";
 
 export { default as Typography } from "./Typography";
 export * from "./Typography";
