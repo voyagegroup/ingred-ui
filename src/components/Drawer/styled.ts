@@ -7,7 +7,9 @@ type ContaierProps = {
 };
 
 export const Container = styled.div<ContaierProps>`
-  position: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,7 +25,6 @@ export const Container = styled.div<ContaierProps>`
       : "none"};
   box-sizing: content-box;
   overflow-x: hidden;
-  /* あとで定義する */
-  z-index: 1000;
+  z-index: ${({ theme }) => theme.depth.drawer};
   transition: width 0.3s;
 `;

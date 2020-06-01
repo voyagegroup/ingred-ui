@@ -1,6 +1,7 @@
 import React from "react";
 import * as Styled from "./styled";
 import { DrawerContext } from "./utils";
+import Portal from "../Portal";
 
 type Props = {};
 
@@ -10,14 +11,16 @@ const Drawer: React.FC<Props> = ({ children }) => {
   );
 
   return (
-    <Styled.Container
-      isOpen={isOpen}
-      isFixed={isFixed}
-      onMouseEnter={onHandleOpen}
-      onMouseLeave={onHandleClose}
-    >
-      {children}
-    </Styled.Container>
+    <Portal>
+      <Styled.Container
+        isOpen={isOpen}
+        isFixed={isFixed}
+        onMouseEnter={onHandleOpen}
+        onMouseLeave={onHandleClose}
+      >
+        {children}
+      </Styled.Container>
+    </Portal>
   );
 };
 
