@@ -26,32 +26,21 @@ const DrawerMenu: React.FC<Props> = ({
   const textWrapperElement = React.useRef<HTMLDivElement | null>(null);
   const textElement = React.useRef<HTMLSpanElement | null>(null);
 
-  const onHandleMouseEnter = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    if (onMouseEnter) onMouseEnter(event);
-    // MEMO: transition後の幅を取得するために遅らせている
-    setTimeout(() => {
-      if (textWrapperElement.current && textElement.current) {
-        const wrapperWidth = textWrapperElement.current.offsetWidth;
-        const textWidth = textElement.current.offsetWidth;
-        setShowTooltip(wrapperWidth < textWidth);
-      }
-    }, DrawerTransitionDuration * 1000);
-  };
+  React.useEffect(() => {
+    if (!textWrapperElement.current || !textElement.current) return;
+    const wrapperWidth = textWrapperElement.current.offsetWidth;
+    const textWidth = textElement.current.offsetWidth;
+    setShowTooltip(wrapperWidth < textWidth);
+  }, [textWrapperElement, textElement]);
 
   return (
     <Tooltip
       content={title}
       positionPriority={["right"]}
-      openDelay={300}
+      openDelay={DrawerTransitionDuration * 1000}
       disable={!showTooltip}
     >
-      <Styled.Container
-        isActive={isActive}
-        onMouseEnter={onHandleMouseEnter}
-        {...rest}
-      >
+      <Styled.Container isActive={isActive} {...rest}>
         <Icon
           name={iconName}
           size="lg"

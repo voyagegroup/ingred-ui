@@ -33,25 +33,18 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   const textElement = React.useRef<HTMLSpanElement | null>(null);
   const expantionElement = React.useRef<HTMLDivElement | null>(null);
 
+  React.useEffect(() => {
+    if (!textWrapperElement.current || !textElement.current) return;
+    const wrapperWidth = textWrapperElement.current.offsetWidth;
+    const textWidth = textElement.current.offsetWidth;
+    setShowTooltip(wrapperWidth < textWidth);
+  }, [textWrapperElement, textElement]);
+
   const onHandleClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (expantionList.length !== 0) setIsExpand(!isExpand);
     if (onClick) onClick(event);
-  };
-
-  const onHandleMouseEnter = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    if (onMouseEnter) onMouseEnter(event);
-    // MEMO: transition後の幅を取得するために遅らせている
-    setTimeout(() => {
-      if (textWrapperElement.current && textElement.current) {
-        const wrapperWidth = textWrapperElement.current.offsetWidth;
-        const textWidth = textElement.current.offsetWidth;
-        setShowTooltip(wrapperWidth < textWidth);
-      }
-    }, DrawerTransitionDuration * 1000);
   };
 
   React.useEffect(() => {
@@ -77,12 +70,7 @@ const DrawerExpantionMenu: React.FC<Props> = ({
         openDelay={DrawerTransitionDuration * 1000}
         disable={!showTooltip}
       >
-        <Styled.Container
-          isActive={isActive}
-          onClick={onHandleClick}
-          onMouseEnter={onHandleMouseEnter}
-          {...rest}
-        >
+        <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
           <Icon
             name={iconName}
             size="lg"

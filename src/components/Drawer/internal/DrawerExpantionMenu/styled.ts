@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { DrawerTransitionDuration } from "../../constants";
+import { DrawerTransitionDuration, DrawerWidth } from "../../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
-  align-items: center;
+  width: ${DrawerWidth.WIDE};
   border-left: ${({ isActive, theme }) =>
     isActive ? `2px solid ${theme.palette.primary.main}` : "none"};
   padding: ${({ theme, isActive }) =>
@@ -56,6 +56,7 @@ type ExpantionProps = {
 export const Expantion = styled.div<ExpantionProps>`
   display: flex;
   flex-direction: column;
+  width: ${DrawerWidth.WIDE};
   overflow: hidden;
   padding-left: ${({ theme }) => theme.spacing * 7}px;
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};

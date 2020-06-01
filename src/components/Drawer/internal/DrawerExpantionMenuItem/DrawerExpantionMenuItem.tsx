@@ -19,17 +19,12 @@ const DrawerExpantionMenuItem: React.FC<Props> = ({
   const textWrapperElement = React.useRef<HTMLDivElement | null>(null);
   const textElement = React.useRef<HTMLSpanElement | null>(null);
 
-  const onHandleMouseEnter = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    if (onMouseEnter) onMouseEnter(event);
-    if (textWrapperElement.current && textElement.current) {
-      if (showTooltip) return;
-      const wrapperWidth = textWrapperElement.current.offsetWidth;
-      const textWidth = textElement.current.offsetWidth;
-      setShowTooltip(wrapperWidth < textWidth);
-    }
-  };
+  React.useEffect(() => {
+    if (!textWrapperElement.current || !textElement.current) return;
+    const wrapperWidth = textWrapperElement.current.offsetWidth;
+    const textWidth = textElement.current.offsetWidth;
+    setShowTooltip(wrapperWidth < textWidth);
+  }, [textWrapperElement, textElement]);
 
   return (
     <Tooltip
@@ -38,12 +33,7 @@ const DrawerExpantionMenuItem: React.FC<Props> = ({
       openDelay={DrawerTransitionDuration * 1000}
       disable={!showTooltip}
     >
-      <Styled.Container
-        ref={textWrapperElement}
-        isActive={isActive}
-        onMouseEnter={onHandleMouseEnter}
-        {...rest}
-      >
+      <Styled.Container ref={textWrapperElement} isActive={isActive} {...rest}>
         <span ref={textElement}>{title}</span>
       </Styled.Container>
     </Tooltip>
