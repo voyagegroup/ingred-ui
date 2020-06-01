@@ -25,6 +25,13 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
+const StickyContainer = styled.div`
+  thead th {
+    position: sticky;
+    top: 0;
+  }
+`;
+
 type SampleObject = {
   id: number;
   name: string;
@@ -132,7 +139,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    (item) => item.name && item.name.includes(searchText),
+    (item) => item.name && item.name.includes(searchText)
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -251,7 +258,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main],
+    [theme.palette.primary.main]
   );
   return (
     <Container>
@@ -259,3 +266,26 @@ export const CustomCell: React.FunctionComponent = () => {
     </Container>
   );
 };
+
+export const WithStickyHeader = () => (
+  <Container>
+    <StickyContainer>
+      <DataTable
+        enablePagination={true}
+        data={data}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+            sortable: true,
+          },
+          {
+            name: "imp",
+            selector: (data) => data.imp,
+            sortable: true,
+          },
+        ]}
+      />
+    </StickyContainer>
+  </Container>
+);
