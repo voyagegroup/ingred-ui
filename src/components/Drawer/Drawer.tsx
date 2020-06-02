@@ -15,8 +15,8 @@ const Drawer: React.FC<Props> = ({ children }) => {
       <Styled.Container
         isOpen={isOpen}
         isFixed={isFixed}
-        onMouseEnter={onHandleOpen}
-        onMouseLeave={onHandleClose}
+        onMouseOver={onHandleOpen}
+        onMouseOut={onHandleClose}
       >
         {children}
       </Styled.Container>

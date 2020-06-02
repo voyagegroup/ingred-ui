@@ -116,6 +116,12 @@ const Tooltip: React.FC<Props> = ({
     }
   };
 
+  // MEMO: childrenで定義したmouseOver/mouseOutイベントをツールチップから伝搬させないため
+  //       https://github.com/facebook/react/issues/11387
+  const stopPropagation = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
+  };
+
   const childrenProps = {
     ...children.props,
     onMouseEnter: onHandleEnter,
@@ -140,6 +146,8 @@ const Tooltip: React.FC<Props> = ({
               style={styles.popper}
               {...attributes.popper}
               width={width}
+              onMouseOver={stopPropagation}
+              onMouseOut={stopPropagation}
             >
               {content}
               <Styled.Arrow
