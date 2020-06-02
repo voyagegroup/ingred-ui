@@ -17,7 +17,7 @@ const DrawerFixture: React.FC<Props> = () => {
       content={`サイドメニューを${isFixed ? "閉じる" : "開く"}`}
       positionPriority={["right"]}
       offset={[0, theme.spacing * 2.5]}
-      openDelay={DrawerTransitionDuration}
+      enterDelay={DrawerTransitionDuration}
     >
       <Styled.Container isFixed={isFixed} onClick={onHandleFix}>
         <Icon name="arrow_double_left" />

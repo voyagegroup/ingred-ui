@@ -37,7 +37,7 @@ const DrawerMenu: React.FC<Props> = ({
     <Tooltip
       content={title}
       positionPriority={["right"]}
-      openDelay={DrawerTransitionDuration * 1000}
+      enterDelay={DrawerTransitionDuration * 1000}
       disable={!showTooltip}
     >
       <Styled.Container isActive={isActive} {...rest}>

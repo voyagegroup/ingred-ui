@@ -10,8 +10,8 @@ type Props = {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
-  openDelay?: number;
-  closeDelay?: number;
+  enterDelay?: number;
+  leaveDelay?: number;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
@@ -23,8 +23,8 @@ const Tooltip: React.FC<Props> = ({
   content,
   open: openProp = false,
   disableHoverListener = false,
-  openDelay = 0,
-  closeDelay = 0,
+  enterDelay = 0,
+  leaveDelay = 0,
   positionPriority = ["top"],
   offset = [0, 10],
   width,
@@ -83,11 +83,11 @@ const Tooltip: React.FC<Props> = ({
     setBaseElement(event.currentTarget);
     clearTimeout(closeTimer);
     if (!disableHoverListener) {
-      if (openDelay) {
+      if (enterDelay) {
         setOpenTimer(
           setTimeout(() => {
             setOpen(true);
-          }, openDelay),
+          }, enterDelay),
         );
       } else {
         setOpen(true);
@@ -101,11 +101,11 @@ const Tooltip: React.FC<Props> = ({
   const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
     clearTimeout(openTimer);
     if (!disableHoverListener) {
-      if (closeDelay) {
+      if (leaveDelay) {
         setCloseTimer(
           setTimeout(() => {
             setOpen(false);
-          }, closeDelay),
+          }, leaveDelay),
         );
       } else {
         setOpen(false);
