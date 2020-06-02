@@ -17,7 +17,7 @@ describe("Tooltip component testing", () => {
 
   test("Tooltip", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Tooltip content="tooltip text">
+      <Tooltip content="tooltip text" open={true}>
         <div>text</div>
       </Tooltip>,
     );
