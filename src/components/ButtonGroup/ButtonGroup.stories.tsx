@@ -28,7 +28,14 @@ export const Overview = () => {
   const midiumButtonRight = boolean("Midium Button Right Disable", false);
   const midiumButtonLeft = boolean("Midium Button Left Disable", false);
   const smallButtonRight = boolean("Small Button Right Disable", false);
-  const smallButtonCenter = boolean("Small Button Center Disable", false);
+  const smallButtonCenterLeft = boolean(
+    "Small Button Center Left Disable",
+    false,
+  );
+  const smallButtonCenterRight = boolean(
+    "Small Button Center Right Disable",
+    false,
+  );
   const smallButtonLeft = boolean("Small Button Left Disable", false);
   return (
     <Container>
@@ -54,11 +61,11 @@ export const Overview = () => {
           <Button disabled={smallButtonRight} onClick={action("clicked")}>
             保存する
           </Button>
-          <Button disabled={smallButtonCenter} onClick={action("clicked")}>
+          <Button disabled={smallButtonCenterLeft} onClick={action("clicked")}>
             編集する
           </Button>
-          <Button disabled={smallButtonCenter} onClick={action("clicked")}>
-            編集する
+          <Button disabled={smallButtonCenterRight} onClick={action("clicked")}>
+            削除する
           </Button>
           <Button disabled={smallButtonLeft} onClick={action("clicked")}>
             キャンセル
