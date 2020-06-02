@@ -42,7 +42,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
     >
-      {childrenWithProps}
+      {disabled ? childrenWithProps : children}
     </Styled.ButtonGroupContainer>
   );
 };
