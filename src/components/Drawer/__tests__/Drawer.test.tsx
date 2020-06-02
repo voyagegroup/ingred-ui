@@ -14,6 +14,14 @@ import Drawer, {
 } from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
+jest.mock("react-dom", () => {
+  const original = jest.requireActual("react-dom");
+  return {
+    ...original,
+    createPortal: (node: any) => node,
+  };
+});
+
 describe("Drawer component testing", () => {
   afterEach(cleanup);
 
