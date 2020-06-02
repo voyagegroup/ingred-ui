@@ -30,16 +30,27 @@ describe("DropdownButton component testing", () => {
 
   test("DropdownButton not splited", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DropdownButton contents={contents}>保存する</DropdownButton>,
+      <>
+        <DropdownButton contents={contents}>保存する</DropdownButton>,
+        <DropdownButton disabled={true} contents={contents}>
+          保存する
+        </DropdownButton>
+        ,
+      </>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
   test("DropdownButton splited", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DropdownButton split={true} contents={contents}>
-        保存する
-      </DropdownButton>,
+      <>
+        <DropdownButton split={true} contents={contents}>
+          保存する
+        </DropdownButton>
+        <DropdownButton disabled={true} split={true} contents={contents}>
+          保存する
+        </DropdownButton>
+      </>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
