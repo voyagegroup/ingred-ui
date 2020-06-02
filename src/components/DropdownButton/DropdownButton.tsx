@@ -38,7 +38,9 @@ const DropdownButton: React.FC<Props> = ({
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
   const onHandleToggleContent = (showContent: boolean) => () => {
-    if (onClick) onClick();
+    if (showContent && !split && onClick) {
+      onClick();
+    }
     setShowContent(showContent);
   };
   const onHandleContentActive = (isActive: boolean) => () => {

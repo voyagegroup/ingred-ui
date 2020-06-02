@@ -65,7 +65,7 @@ export const Overview = () => {
         split={true}
         size={size}
         contents={contents}
-        onClick={action("clicked hogehgoe")}
+        onClick={action(`clicked ${title}`)}
       >
         {title}
       </DropdownButton>
