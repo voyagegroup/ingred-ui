@@ -34,18 +34,18 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
     }
   }
 
-  button:not(:last-child) {
+  button:not(:last-of-type) {
     border-right: none;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
 
-  button:not(:first-child) {
+  button:not(:first-of-type) {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
 
-  button:last-child {
+  button:last-of-type {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
