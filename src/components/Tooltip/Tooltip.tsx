@@ -15,7 +15,7 @@ type Props = {
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
-  disable?: boolean;
+  disabled?: boolean;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
@@ -28,7 +28,7 @@ const Tooltip: React.FC<Props> = ({
   positionPriority = ["top"],
   offset = [0, 10],
   width,
-  disable = false,
+  disabled = false,
   children,
 }) => {
   /* eslint-disable prettier/prettier */
@@ -37,7 +37,6 @@ const Tooltip: React.FC<Props> = ({
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(null);
   /* eslint-enable prettier/prettier */
   const [open, setOpen] = React.useState<boolean>(false);
-
   const [openTimer, setOpenTimer] = React.useState<number>(0);
   const [closeTimer, setCloseTimer] = React.useState<number>(0);
 
@@ -132,7 +131,7 @@ const Tooltip: React.FC<Props> = ({
   return (
     <>
       {React.cloneElement(children, childrenProps)}
-      {!disable && (
+      {!disabled && (
         <Portal>
           <CSSTransition
             in={open || openProp}

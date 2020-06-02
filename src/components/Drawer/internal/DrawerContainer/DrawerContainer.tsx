@@ -22,14 +22,14 @@ const DrawerContainer: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const onHandleFix = () => {
+  const onHandleFixed = () => {
     setIsFixed(!isFixed);
     setIsOpen(!isFixed);
   };
 
   return (
     <DrawerContext.Provider
-      value={{ isOpen, isFixed, onHandleOpen, onHandleClose, onHandleFix }}
+      value={{ isOpen, isFixed, onHandleOpen, onHandleClose, onHandleFixed }}
     >
       <Styled.Container>{children}</Styled.Container>
     </DrawerContext.Provider>

@@ -5,7 +5,7 @@ export type DrawerContextValues = {
   isFixed: boolean;
   onHandleOpen?: () => void;
   onHandleClose?: () => void;
-  onHandleFix?: () => void;
+  onHandleFixed?: () => void;
 };
 
 export const DrawerContext = React.createContext<DrawerContextValues>({

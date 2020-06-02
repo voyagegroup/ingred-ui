@@ -10,7 +10,7 @@ type Props = {};
 
 const DrawerFixture: React.FC<Props> = () => {
   const theme = useTheme();
-  const { isFixed, onHandleFix } = React.useContext(DrawerContext);
+  const { isFixed, onHandleFixed } = React.useContext(DrawerContext);
 
   return (
     <Tooltip
@@ -19,7 +19,7 @@ const DrawerFixture: React.FC<Props> = () => {
       offset={[0, theme.spacing * 2.5]}
       enterDelay={DrawerTransitionDuration}
     >
-      <Styled.Container isFixed={isFixed} onClick={onHandleFix}>
+      <Styled.Container isFixed={isFixed} onClick={onHandleFixed}>
         <Icon name="arrow_double_left" />
       </Styled.Container>
     </Tooltip>

@@ -31,7 +31,7 @@ const DrawerExpantionMenuItem: React.FC<Props> = ({
       content={title}
       positionPriority={["right"]}
       enterDelay={DrawerTransitionDuration * 1000}
-      disable={!showTooltip}
+      disabled={!showTooltip}
     >
       <Styled.Container ref={textWrapperElement} isActive={isActive} {...rest}>
         <span ref={textElement}>{title}</span>

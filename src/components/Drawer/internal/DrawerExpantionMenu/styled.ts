@@ -54,10 +54,8 @@ type ExpantionProps = {
 };
 
 export const Expantion = styled.div<ExpantionProps>`
-  display: flex;
-  flex-direction: column;
   width: ${DrawerWidth.WIDE};
-  overflow: hidden;
+  overflow-y: hidden;
   padding-left: ${({ theme }) => theme.spacing * 7}px;
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};
   transition: max-height 0.3s

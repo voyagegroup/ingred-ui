@@ -10,7 +10,7 @@ export const Container = styled.div<{ isFixed: boolean }>`
   transition: transform ${DrawerTransitionDuration}s;
 
   &::before {
-    content: " ";
+    content: "";
     position: absolute;
     top: 0;
     bottom: 0;
