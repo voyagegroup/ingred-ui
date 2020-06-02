@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { fontSize } from "../Typography/Typography";
 
 type GroupButtonSize = "small" | "medium";
 
@@ -28,21 +27,29 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
   disabled = false,
   children,
 }) => {
+  const childProps = disabled
+    ? {
+        disabled: true,
+        size: size,
+        color: "secondary",
+      }
+    : {
+        size: size,
+        color: "secondary",
+      };
+
   const childrenWithProps = React.Children.map(
     children,
     (child: React.ReactElement) => {
-      return React.cloneElement(child, { disabled: disabled });
+      return React.cloneElement(child, childProps);
     },
   );
   return (
     <Styled.ButtonGroupContainer
       height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
-      fontSize={
-        size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
-      }
     >
-      {disabled ? childrenWithProps : children}
+      {childrenWithProps}
     </Styled.ButtonGroupContainer>
   );
 };

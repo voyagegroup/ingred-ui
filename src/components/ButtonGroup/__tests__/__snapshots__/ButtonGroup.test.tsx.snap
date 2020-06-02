@@ -3,8 +3,7 @@
 exports[`Button component testing ButtonGroup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm gCLtQN"
-    font-size="14px"
+    class="sc-AxjAm fuANfX"
     height="42px"
   />
 </DocumentFragment>
