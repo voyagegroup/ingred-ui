@@ -1,3 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snackbar component testing Snackbar 1`] = `<DocumentFragment />`;
+exports[`Snackbar component testing Snackbar 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm cOiBWI"
+  >
+    <div
+      class="sc-AxirZ cRDiIS"
+    >
+      <div
+        class="sc-AxiKw evrauU"
+      >
+        <div
+          class="sc-AxhCb ggFXhj"
+          size="18"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              fill="#041C33"
+              height="23.141"
+              transform="translate(18.364 2) rotate(45)"
+              width="5.142"
+            />
+            <rect
+              fill="#041C33"
+              height="23.141"
+              transform="translate(2 5.636) rotate(-45)"
+              width="5.143"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

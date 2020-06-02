@@ -72,11 +72,11 @@ export const Overview: React.FunctionComponent = () => {
           value={imageValue}
           cases={[
             {
-              name: "bar",
+              name: "棒グラフ",
               icon: "bar_chart_framed",
             },
             {
-              name: "line",
+              name: "折れ線グラフ",
               icon: "line_chart_framed",
             },
           ]}
@@ -100,12 +100,12 @@ export const WithCustomValue: React.FunctionComponent = () => {
           value={value}
           cases={[
             {
-              name: "bar",
+              name: "棒グラフ",
               icon: "bar_chart_framed",
               value: "bar",
             },
             {
-              name: "line",
+              name: "折れ線グラフ",
               icon: "line_chart_framed",
               value: "line",
             },

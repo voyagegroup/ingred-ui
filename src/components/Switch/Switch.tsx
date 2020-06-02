@@ -3,6 +3,7 @@ import * as Styled from "./styled";
 import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import Typography from "../Typography";
+import Tooltip from "../Tooltip";
 
 type Case = {
   name: string;
@@ -34,29 +35,37 @@ const Switch: React.FunctionComponent<Props> = ({ cases, value, onChange }) => {
       {items.map((item, index) => {
         const childValue = item.value === undefined ? index : item.value;
         const active = childValue === value;
-        return item.icon != null ? (
-          <Styled.IconItemContainer
+        return (
+          <Tooltip
             key={item.name}
-            active={active}
-            onClick={onHandleChange(childValue)}
+            content={item.name}
+            positionPriority={["top-start"]}
+            offset={[0, 15]}
           >
-            <Icon name={item.icon} size="lg" />
-          </Styled.IconItemContainer>
-        ) : (
-          <Styled.TextItemContainer
-            key={item.name}
-            active={active}
-            onClick={onHandleChange(childValue)}
-          >
-            <Typography
-              component="span"
-              size="sm"
-              weight={active ? "bold" : "normal"}
-              color="secondary"
-            >
-              {item.name}
-            </Typography>
-          </Styled.TextItemContainer>
+            {item.icon != null ? (
+              <Styled.IconItemContainer
+                active={active}
+                onClick={onHandleChange(childValue)}
+              >
+                <Icon name={item.icon} size="lg" />
+              </Styled.IconItemContainer>
+            ) : (
+              <Styled.TextItemContainer
+                key={item.name}
+                active={active}
+                onClick={onHandleChange(childValue)}
+              >
+                <Typography
+                  component="span"
+                  size="sm"
+                  weight={active ? "bold" : "normal"}
+                  color="secondary"
+                >
+                  {item.name}
+                </Typography>
+              </Styled.TextItemContainer>
+            )}
+          </Tooltip>
         );
       })}
     </Styled.Container>
