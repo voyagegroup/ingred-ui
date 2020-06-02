@@ -3,7 +3,7 @@
 exports[`Drawer component testing Drawer 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ fHhFqk"
+    class="sc-AxirZ irBydL"
   >
     <div
       class="sc-AxjAm kNSWgB"
@@ -68,7 +68,7 @@ exports[`Drawer component testing Drawer 1`] = `
           </div>
         </div>
         <div
-          class="sc-AxgMl kfePWy"
+          class="sc-AxgMl eztyRC"
           height="auto"
         >
           <div
@@ -113,7 +113,7 @@ exports[`Drawer component testing Drawer 1`] = `
         class="sc-fznyAO ijsgNR"
       >
         <div
-          class="sc-fzoLsD ikLDSA"
+          class="sc-fzoLsD FytOk"
         >
           <div
             class="sc-AxheI kVDYRm"
