@@ -35,7 +35,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
         color: "secondary",
       }
     : {
-        // disabledを指定すると各子要素のdisabledが使えなくなるので disabled:false は指定しない
+        // 各子要素のdisabledが使えなくなるので disabled:false は指定しない
         size: size,
         color: "secondary",
       };
