@@ -62,6 +62,16 @@ export const Overview = () => {
           </Button>
         </ButtonGroup>
       </RowContainer>
+
+      <Typography weight="bold" size="xxl">
+        Disabled Button
+      </Typography>
+      <RowContainer>
+        <ButtonGroup disabled>
+          <Button onClick={action("clicked")}>保存する</Button>
+          <Button onClick={action("clicked")}>編集する</Button>
+        </ButtonGroup>
+      </RowContainer>
     </Container>
   );
 };
