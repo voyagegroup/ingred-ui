@@ -37,13 +37,13 @@ const Tooltip: React.FC<Props> = ({
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(null);
   /* eslint-enable prettier/prettier */
   const [open, setOpen] = React.useState<boolean>(false);
-  const [openTimer, setOpenTimer] = React.useState<number>(0);
-  const [closeTimer, setCloseTimer] = React.useState<number>(0);
+  const [openTimer, setOpenTimer] = React.useState<number | null>(null);
+  const [closeTimer, setCloseTimer] = React.useState<number | null>(null);
 
   React.useEffect(() => {
     return () => {
-      clearTimeout(openTimer);
-      clearTimeout(closeTimer);
+      if (openTimer != null) clearTimeout(openTimer);
+      if (closeTimer != null) clearTimeout(closeTimer);
     };
   }, [openTimer, closeTimer]);
 
@@ -80,7 +80,7 @@ const Tooltip: React.FC<Props> = ({
 
   const onHandleEnter = (event: React.MouseEvent<HTMLElement>) => {
     setBaseElement(event.currentTarget);
-    clearTimeout(closeTimer);
+    if (closeTimer != null) clearTimeout(closeTimer);
     if (!disableHoverListener) {
       if (enterDelay) {
         setOpenTimer(
@@ -98,7 +98,7 @@ const Tooltip: React.FC<Props> = ({
   };
 
   const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
-    clearTimeout(openTimer);
+    if (openTimer != null) clearTimeout(openTimer);
     if (!disableHoverListener) {
       if (leaveDelay) {
         setCloseTimer(
