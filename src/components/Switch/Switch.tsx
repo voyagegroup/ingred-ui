@@ -39,7 +39,7 @@ const Switch: React.FunctionComponent<Props> = ({ cases, value, onChange }) => {
           <Tooltip
             key={item.name}
             content={item.name}
-            positionPriority={["top-start"]}
+            positionPriority={["top-start", "bottom-start", "auto"]}
             offset={[0, 15]}
           >
             {item.icon != null ? (
