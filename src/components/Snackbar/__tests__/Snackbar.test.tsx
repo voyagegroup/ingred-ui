@@ -8,7 +8,7 @@ describe("Snackbar component testing", () => {
   afterEach(cleanup);
 
   test("Snackbar", () => {
-    const { asFragment } = renderWithThemeProvider(<Snackbar />);
+    const { asFragment } = renderWithThemeProvider(<Snackbar isOpen={true} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

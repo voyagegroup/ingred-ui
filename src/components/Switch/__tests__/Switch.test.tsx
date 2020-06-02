@@ -9,7 +9,17 @@ describe("Switch component testing", () => {
 
   test("Switch", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Switch cases={[]} value={0} />,
+      <Switch
+        cases={[
+          {
+            name: "デマンド別",
+          },
+          {
+            name: "チャネル別",
+          },
+        ]}
+        value={0}
+      />,
     );
 
     expect(asFragment()).toMatchSnapshot();

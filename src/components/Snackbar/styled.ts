@@ -13,4 +13,5 @@ export const Container = styled.div<{
     vertical === "top" ? `${theme.spacing * 3}px` : "auto"};
   bottom: ${({ vertical, theme }) =>
     vertical === "bottom" ? `${theme.spacing * 3}px` : "auto"};
+  z-index: ${({ theme }) => theme.depth.snackbar};
 `;
