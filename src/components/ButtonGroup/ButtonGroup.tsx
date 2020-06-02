@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { ButtonSize } from "../Button/Button";
 
-type GroupButtonSize = "small" | "medium";
+type GroupButtonSize = Exclude<ButtonSize, "large">;
 
 type Props = {
   size?: GroupButtonSize;
