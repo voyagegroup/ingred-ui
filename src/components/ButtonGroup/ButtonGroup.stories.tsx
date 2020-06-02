@@ -57,6 +57,9 @@ export const Overview = () => {
           <Button disabled={smallButtonCenter} onClick={action("clicked")}>
             編集する
           </Button>
+          <Button disabled={smallButtonCenter} onClick={action("clicked")}>
+            編集する
+          </Button>
           <Button disabled={smallButtonLeft} onClick={action("clicked")}>
             キャンセル
           </Button>

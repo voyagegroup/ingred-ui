@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Size } from "../../styles/size";
 
 export type ContainerProps = {
   height: string;
@@ -16,13 +17,18 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
     padding-left: ${({ theme }) => theme.spacing}px;
   }
 
+  button:disabled + button:not(:disabled) {
+    border-left: ${Size.Border.Small} solid
+      ${({ theme }) => theme.palette.divider};
+  }
+
   button:not(:last-of-type) {
-    border-right: none;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
 
   button:not(:first-of-type) {
+    border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
