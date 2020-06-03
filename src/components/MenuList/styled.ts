@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../styles/color";
 
 export const Container = styled.div<{ inline: boolean }>`
   display: ${({ inline }) => (inline ? "inline-block" : "block")};
@@ -17,6 +18,6 @@ export const TextContainer = styled.div`
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
   &:active {
-    background-color: ${({ theme }) => theme.palette.primary.main};
+    background-color: ${colors.basic[300]};
   }
 `;

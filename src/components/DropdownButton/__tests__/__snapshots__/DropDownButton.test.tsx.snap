@@ -33,6 +33,40 @@ exports[`DropdownButton component testing DropdownButton not splited 1`] = `
       </div>
     </button>
   </div>
+  ,
+  <div
+    class="sc-AxhCb cheniG"
+    role="button"
+  >
+    <button
+      class="sc-AxirZ sc-AxiKw jfPFaf sc-AxheI cbsHKE"
+      disabled=""
+      font-size="14px"
+      font-weight="bold"
+      height="42px"
+    >
+      保存する
+      <div
+        class="sc-AxmLO jnRgqc"
+        size="24"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,0H24V24H0Z"
+            fill="none"
+          />
+          <path
+            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            fill="#D1D5DA"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+  ,
 </DocumentFragment>
 `;
 
@@ -51,7 +85,7 @@ exports[`DropdownButton component testing DropdownButton splited 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxgMl dLHjrC"
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxgMl dYeuxs"
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -71,6 +105,46 @@ exports[`DropdownButton component testing DropdownButton splited 1`] = `
           <path
             d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
             fill="#FDFEFF"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
+  <div
+    class="sc-AxhCb cheniG"
+    role="button"
+  >
+    <button
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxhUy eZxGGB"
+      disabled=""
+      font-size="14px"
+      font-weight="bold"
+      height="42px"
+    >
+      保存する
+    </button>
+    <button
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxgMl dYeuxs"
+      disabled=""
+      font-size="14px"
+      font-weight="bold"
+      height="42px"
+    >
+      <div
+        class="sc-AxmLO jnRgqc"
+        size="24"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,0H24V24H0Z"
+            fill="none"
+          />
+          <path
+            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            fill="#D1D5DA"
           />
         </svg>
       </div>

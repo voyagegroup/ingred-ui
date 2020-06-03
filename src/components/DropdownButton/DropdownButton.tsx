@@ -14,6 +14,7 @@ type Props = {
   onClick?: () => void;
   split?: boolean;
   contents: ContentProp[];
+  disabled?: boolean;
   positionPriority?: PopperJS.Placement[];
 };
 
@@ -22,6 +23,7 @@ const DropdownButton: React.FC<Props> = ({
   onClick,
   split = false,
   contents,
+  disabled = false,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
   children,
 }) => {
@@ -38,7 +40,9 @@ const DropdownButton: React.FC<Props> = ({
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
   const onHandleToggleContent = (showContent: boolean) => () => {
-    if (onClick) onClick();
+    if (showContent && !split && onClick) {
+      onClick();
+    }
     setShowContent(showContent);
   };
   const onHandleContentActive = (isActive: boolean) => () => {
@@ -69,30 +73,45 @@ const DropdownButton: React.FC<Props> = ({
       <Styled.ButtonContainer ref={setButtonElement} role="button">
         {split ? (
           <>
-            <Styled.MainButton size={size} inline={true} onClick={onClick}>
+            <Styled.MainButton
+              size={size}
+              inline={true}
+              disabled={disabled}
+              onClick={onClick}
+            >
               {children}
             </Styled.MainButton>
             <Styled.SplitToggle
               size={size}
               inline={true}
+              disabled={disabled}
               onClick={onHandleToggleContent(!showContent)}
               onBlur={onHandleToggleContent(false)}
             >
               <Icon
                 name={"arrow_bottom"}
                 size="lg"
-                color={theme.palette.white}
+                color={
+                  disabled ? theme.palette.text.disabled : theme.palette.white
+                }
               />
             </Styled.SplitToggle>
           </>
         ) : (
           <Styled.SingleButton
             size={size}
+            disabled={disabled}
             onClick={onHandleToggleContent(!showContent)}
             onBlur={onHandleToggleContent(false)}
           >
             {children}
-            <Icon name={"arrow_bottom"} size="lg" color={theme.palette.white} />
+            <Icon
+              name={"arrow_bottom"}
+              size="lg"
+              color={
+                disabled ? theme.palette.text.disabled : theme.palette.white
+              }
+            />
           </Styled.SingleButton>
         )}
       </Styled.ButtonContainer>

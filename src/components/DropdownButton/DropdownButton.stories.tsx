@@ -1,18 +1,25 @@
 import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
-import { select, text } from "@storybook/addon-knobs";
+import { select, text, boolean } from "@storybook/addon-knobs";
 import DropdownButton from "./";
 import Spacer from "../Spacer";
 
 const Container = styled.div`
   display: flex;
-  padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.dark};
   justify-content: center;
   align-items: center;
   width: 150vw;
   height: 150vh;
+`;
+
+const Inner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: ${({ theme }) => theme.spacing * 5}px;
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export default {
@@ -24,6 +31,7 @@ export default {
 
 export const Overview = () => {
   const title = text("Title", "保存する");
+  const disabled = boolean("Disabled", false);
 
   const size = select(
     "Size",
@@ -57,18 +65,21 @@ export const Overview = () => {
   ];
   return (
     <Container>
-      <DropdownButton size={size} contents={contents}>
-        {title}
-      </DropdownButton>
-      <Spacer pr={40} />
-      <DropdownButton
-        split={true}
-        size={size}
-        contents={contents}
-        onClick={action("clicked hogehgoe")}
-      >
-        {title}
-      </DropdownButton>
+      <Inner>
+        <DropdownButton disabled={disabled} size={size} contents={contents}>
+          {title}
+        </DropdownButton>
+        <Spacer pr={40} />
+        <DropdownButton
+          disabled={disabled}
+          split={true}
+          size={size}
+          contents={contents}
+          onClick={action(`clicked ${title}`)}
+        >
+          {title}
+        </DropdownButton>
+      </Inner>
     </Container>
   );
 };
