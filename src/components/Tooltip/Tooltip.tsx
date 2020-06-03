@@ -10,19 +10,25 @@ type Props = {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
+  enterDelay?: number;
+  leaveDelay?: number;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
-  children: React.ReactElement;
+  disabled?: boolean;
+  children: React.ComponentElement<HTMLElement, any>;
 };
 
 const Tooltip: React.FC<Props> = ({
   content,
   open: openProp = false,
   disableHoverListener = false,
+  enterDelay = 0,
+  leaveDelay = 0,
   positionPriority = ["top"],
   offset = [0, 10],
   width,
+  disabled = false,
   children,
 }) => {
   /* eslint-disable prettier/prettier */
@@ -31,6 +37,15 @@ const Tooltip: React.FC<Props> = ({
   const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(null);
   /* eslint-enable prettier/prettier */
   const [open, setOpen] = React.useState<boolean>(false);
+  const [openTimer, setOpenTimer] = React.useState<number | null>(null);
+  const [closeTimer, setCloseTimer] = React.useState<number | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (openTimer != null) clearTimeout(openTimer);
+      if (closeTimer != null) clearTimeout(closeTimer);
+    };
+  }, [openTimer, closeTimer]);
 
   const { styles, attributes } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],
@@ -65,52 +80,84 @@ const Tooltip: React.FC<Props> = ({
 
   const onHandleEnter = (event: React.MouseEvent<HTMLElement>) => {
     setBaseElement(event.currentTarget);
-    if (!disableHoverListener) setOpen(true);
+    if (closeTimer != null) clearTimeout(closeTimer);
+    if (!disableHoverListener) {
+      if (enterDelay) {
+        setOpenTimer(
+          setTimeout(() => {
+            setOpen(true);
+          }, enterDelay),
+        );
+      } else {
+        setOpen(true);
+      }
+    }
     if (children.props.onMouseEnter) {
       children.props.onMouseEnter(event);
     }
   };
 
   const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
-    if (!disableHoverListener) setOpen(false);
+    if (openTimer != null) clearTimeout(openTimer);
+    if (!disableHoverListener) {
+      if (leaveDelay) {
+        setCloseTimer(
+          setTimeout(() => {
+            setOpen(false);
+          }, leaveDelay),
+        );
+      } else {
+        setOpen(false);
+      }
+    }
     if (children.props.onMouseLeave) {
       children.props.onMouseLeave(event);
     }
+  };
+
+  // MEMO: childrenで定義したmouseOver/mouseOutイベントをツールチップから伝搬させないため
+  //       https://github.com/facebook/react/issues/11387
+  const stopPropagation = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation();
   };
 
   const childrenProps = {
     ...children.props,
     onMouseEnter: onHandleEnter,
     onMouseLeave: onHandleLeave,
-    ref: useMergeRefs(setBaseElement, children.props.ref),
+    ref: useMergeRefs(setBaseElement, children.ref),
   };
 
   return (
     <>
       {React.cloneElement(children, childrenProps)}
-      <Portal>
-        <CSSTransition
-          in={open || openProp}
-          classNames={Styled.transitionClass}
-          unmountOnExit={true}
-          mountOnEnter={true}
-          timeout={1000}
-        >
-          <Styled.Tooltip
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            width={width}
+      {!disabled && (
+        <Portal>
+          <CSSTransition
+            in={open || openProp}
+            classNames={Styled.transitionClass}
+            unmountOnExit={true}
+            mountOnEnter={true}
+            timeout={1000}
           >
-            {content}
-            <Styled.Arrow
-              ref={setArrowElement}
-              data-popper-arrow
-              style={styles.arrow}
-            />
-          </Styled.Tooltip>
-        </CSSTransition>
-      </Portal>
+            <Styled.Tooltip
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              width={width}
+              onMouseOver={stopPropagation}
+              onMouseOut={stopPropagation}
+            >
+              {content}
+              <Styled.Arrow
+                ref={setArrowElement}
+                data-popper-arrow
+                style={styles.arrow}
+              />
+            </Styled.Tooltip>
+          </CSSTransition>
+        </Portal>
+      )}
     </>
   );
 };

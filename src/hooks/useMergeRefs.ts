@@ -1,8 +1,14 @@
 import * as React from "react";
 
-type ReactRef<T> = React.RefCallback<T> | { current: T };
+// MEMO: React.LegacyRef<T>のcurrentプロパティを変更可能にしたもの
+type ReactRef<T> =
+  | React.RefCallback<T>
+  | React.MutableRefObject<T>
+  | string
+  | null
+  | undefined;
 
-export function useMergeRefs<T>(...refs: ReactRef<T>[]) {
+export function useMergeRefs<T>(...refs: ReactRef<T>[]): ReactRef<T> {
   return React.useMemo(() => {
     if (refs.every((ref) => ref === null)) {
       return null;
@@ -11,7 +17,7 @@ export function useMergeRefs<T>(...refs: ReactRef<T>[]) {
       for (const ref of refs) {
         if (typeof ref === "function") {
           ref(refValue);
-        } else if (ref) {
+        } else if (ref && typeof ref !== "string") {
           ref.current = refValue;
         }
       }
