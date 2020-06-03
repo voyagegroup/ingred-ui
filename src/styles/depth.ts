@@ -1,21 +1,23 @@
 export type Depth = {
   appBar: number;
-  modal: number;
   drawer: number;
+  navigationRails: number;
+  modal: number;
   popover: number;
-  tooltip: number;
   snackbar: number;
+  tooltip: number;
   toast: number;
 };
 
 export type DepthOptions = Partial<Depth>;
 
 export const depth: Depth = {
-  appBar: 800,
-  modal: 999,
+  appBar: 1100,
   drawer: 1200,
+  navigationRails: 1200,
+  modal: 1300,
+  snackbar: 1400,
   popover: 1500,
   tooltip: 1500,
-  snackbar: 1700,
   toast: 1700,
 };
