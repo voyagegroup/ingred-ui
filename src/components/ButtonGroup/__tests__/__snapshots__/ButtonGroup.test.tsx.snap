@@ -5,6 +5,23 @@ exports[`Button component testing ButtonGroup 1`] = `
   <div
     class="sc-AxjAm dDOH"
     height="42px"
-  />
+  >
+    <button
+      class="sc-AxiKw sc-AxhCb gPbCGn"
+      font-size="14px"
+      font-weight="normal"
+      height="42px"
+    >
+      編集する
+    </button>
+    <button
+      class="sc-AxiKw sc-AxhCb gPbCGn"
+      font-size="14px"
+      font-weight="normal"
+      height="42px"
+    >
+      保存する
+    </button>
+  </div>
 </DocumentFragment>
 `;
