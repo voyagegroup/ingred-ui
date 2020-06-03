@@ -9,12 +9,12 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxiKw kHaXTT"
     />
     <div
-      class="sc-AxirZ dBmWb"
+      class="sc-AxirZ jtvWQI"
     >
       保存する
     </div>
     <div
-      class="sc-AxirZ dBmWb"
+      class="sc-AxirZ jtvWQI"
     >
       保存して実行する
     </div>
@@ -22,12 +22,12 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxiKw kHaXTT"
     />
     <div
-      class="sc-AxirZ dBmWb"
+      class="sc-AxirZ jtvWQI"
     >
       下書きとして保存する
     </div>
     <div
-      class="sc-AxirZ dBmWb"
+      class="sc-AxirZ jtvWQI"
     >
       やっぱり何もしない
     </div>
