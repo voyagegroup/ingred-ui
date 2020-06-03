@@ -26,6 +26,6 @@ export const Container = styled.div<ContaierProps>`
       : "none"};
   box-sizing: content-box;
   overflow-x: hidden;
-  z-index: ${({ theme }) => theme.depth.navigationRail};
+  z-index: ${({ theme }) => theme.depth.drawer};
   transition: width ${NavigationRailTransitionDuration}s;
 `;
