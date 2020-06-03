@@ -7,9 +7,7 @@ type ContaierProps = {
 };
 
 export const Container = styled.div<ContaierProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
