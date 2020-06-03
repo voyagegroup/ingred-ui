@@ -1,1 +1,0 @@
-export { DrawerMainContent } from "./DrawerMainContent";

@@ -1,17 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { boolean } from "@storybook/addon-knobs";
-import Drawer, {
-  DrawerHeader,
-  DrawerContainer,
-  DrawerContent,
-  DrawerExpantionMenu,
-  DrawerExpantionMenuItem,
-  DrawerMainContent,
-  DrawerMenu,
-  DrawerFooter,
-  DrawerFixture,
-} from "./";
+import Drawer from "./";
 import { IconName } from "../Icon/Icon";
 
 export default {
@@ -148,39 +138,39 @@ const createDrawerContents = (path: string): DrawerContents => [
 ];
 
 export const Overview = () => (
-  <DrawerContainer>
+  <Drawer.Container>
     <Drawer />
-    <DrawerMainContent>
+    <Drawer.MainContent>
       <MainContent />
-    </DrawerMainContent>
-  </DrawerContainer>
+    </Drawer.MainContent>
+  </Drawer.Container>
 );
 
 export const WithMenu = () => {
   const withHeader = boolean("With Header", true);
   const withFooter = boolean("With Footer", true);
   return (
-    <DrawerContainer>
+    <Drawer.Container>
       <Drawer>
-        {withHeader && <DrawerHeader>ここにロゴとかが入るよ</DrawerHeader>}
-        <DrawerContent>
+        {withHeader && <Drawer.Header>ここにロゴとかが入るよ</Drawer.Header>}
+        <Drawer.Content>
           {createDrawerContents("/setting/demand").map((item) => (
             <React.Fragment key={item.title}>
               {item.expantionList ? (
-                <DrawerExpantionMenu
+                <Drawer.ExpantionMenu
                   key={item.title}
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
                   expantionList={item.expantionList.map((expantion) => (
-                    <DrawerExpantionMenuItem
+                    <Drawer.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
                     />
                   ))}
                 />
               ) : (
-                <DrawerMenu
+                <Drawer.Menu
                   key={item.title}
                   title={item.title}
                   isActive={item.isActive}
@@ -189,17 +179,17 @@ export const WithMenu = () => {
               )}
             </React.Fragment>
           ))}
-        </DrawerContent>
+        </Drawer.Content>
         {withFooter && (
-          <DrawerFooter>
-            <DrawerFixture />
-          </DrawerFooter>
+          <Drawer.Footer>
+            <Drawer.Fixture />
+          </Drawer.Footer>
         )}
       </Drawer>
-      <DrawerMainContent>
+      <Drawer.MainContent>
         <MainContent />
-      </DrawerMainContent>
-    </DrawerContainer>
+      </Drawer.MainContent>
+    </Drawer.Container>
   );
 };
 

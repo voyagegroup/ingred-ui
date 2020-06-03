@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DrawerTransitionDuration } from "../../constants";
+import { DrawerTransitionDuration } from "../constants";
 
 export const Container = styled.div<{ isFixed: boolean }>`
   cursor: pointer;

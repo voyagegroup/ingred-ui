@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Icon from "../../../Icon";
-import { IconName } from "../../../Icon/Icon";
-import { DrawerContext } from "../../utils";
-import Tooltip from "../../../Tooltip";
-import { DrawerTransitionDuration } from "../../constants";
+import Icon from "../../Icon";
+import { IconName } from "../../Icon/Icon";
+import { DrawerContext } from "../utils";
+import Tooltip from "../../Tooltip";
+import { DrawerTransitionDuration } from "../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -13,7 +13,7 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   expantionList?: React.ReactNode[];
 };
 
-const DrawerExpantionMenu: React.FC<Props> = ({
+const ExpantionMenu: React.FC<Props> = ({
   title,
   isActive = false,
   iconName,
@@ -108,4 +108,4 @@ const DrawerExpantionMenu: React.FC<Props> = ({
   );
 };
 
-export { DrawerExpantionMenu };
+export { ExpantionMenu };

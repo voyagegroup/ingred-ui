@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DrawerWidth, DrawerTransitionDuration } from "../../constants";
+import { DrawerWidth, DrawerTransitionDuration } from "../constants";
 
 export const Container = styled.div<{ isFixed: boolean }>`
   padding-left: ${({ isFixed }) =>

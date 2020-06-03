@@ -1,12 +1,12 @@
 import React from "react";
 import * as Styled from "./styled";
-import { DrawerContext } from "../../utils";
+import { DrawerContext } from "../utils";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const DrawerContainer: React.FC<Props> = ({ children }) => {
+const Container: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [isFixed, setIsFixed] = React.useState<boolean>(false);
 
@@ -36,4 +36,4 @@ const DrawerContainer: React.FC<Props> = ({ children }) => {
   );
 };
 
-export { DrawerContainer };
+export { Container };

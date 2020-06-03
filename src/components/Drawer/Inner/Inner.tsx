@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { DrawerContentHeight } from "../../constants";
+import { DrawerContentHeight } from "../constants";
 
-export const DrawerHeader = styled.div`
+export const Header = styled.div`
   flex-shrink: 0;
   flex-basis: ${DrawerContentHeight.HEADER};
   display: flex;
   align-items: center;
 `;
 
-export const DrawerContent = styled.div`
+export const Content = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -18,7 +18,7 @@ export const DrawerContent = styled.div`
   }
 `;
 
-export const DrawerFooter = styled.div`
+export const Footer = styled.div`
   flex-shrink: 0;
   flex-basis: ${DrawerContentHeight.FOOTER};
   display: flex;

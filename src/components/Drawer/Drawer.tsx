@@ -1,10 +1,19 @@
 import React from "react";
 import * as Styled from "./styled";
 import { DrawerContext } from "./utils";
+import { Container } from "./Container";
+import { Header, Content, Footer } from "./Inner";
+import { MainContent } from "./MainContent";
+import { Fixture } from "./Fixture";
+import { Menu } from "./Menu";
+import { ExpantionMenu } from "./ExpantionMenu";
+import { ExpantionMenuItem } from "./ExpantionMenuItem";
 
-type Props = {};
+type Props = {
+  children?: React.ReactNode;
+};
 
-const Drawer: React.FC<Props> = ({ children }) => {
+const Drawer = ({ children }: Props) => {
   const { isOpen, isFixed, onHandleOpen, onHandleClose } = React.useContext(
     DrawerContext,
   );
@@ -20,5 +29,15 @@ const Drawer: React.FC<Props> = ({ children }) => {
     </Styled.Container>
   );
 };
+
+Drawer.Container = Container;
+Drawer.Header = Header;
+Drawer.Content = Content;
+Drawer.Footer = Footer;
+Drawer.Menu = Menu;
+Drawer.ExpantionMenu = ExpantionMenu;
+Drawer.ExpantionMenuItem = ExpantionMenuItem;
+Drawer.Fixture = Fixture;
+Drawer.MainContent = MainContent;
 
 export default Drawer;

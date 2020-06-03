@@ -1,14 +1,14 @@
 import React from "react";
 import * as Styled from "./styled";
-import Icon from "../../../Icon";
-import Tooltip from "../../../Tooltip";
-import { DrawerContext } from "../../utils";
-import { useTheme } from "../../../../themes";
-import { DrawerTransitionDuration } from "../../constants";
+import Icon from "../../Icon";
+import Tooltip from "../../Tooltip";
+import { DrawerContext } from "../utils";
+import { useTheme } from "../../../themes";
+import { DrawerTransitionDuration } from "../constants";
 
 type Props = {};
 
-const DrawerFixture: React.FC<Props> = () => {
+const Fixture: React.FC<Props> = () => {
   const theme = useTheme();
   const { isFixed, onHandleFixed } = React.useContext(DrawerContext);
 
@@ -26,4 +26,4 @@ const DrawerFixture: React.FC<Props> = () => {
   );
 };
 
-export { DrawerFixture };
+export { Fixture };
