@@ -44,6 +44,9 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
+export { default as NavigationRail } from "./NavigationRail";
+export * from "./NavigationRail";
+
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
 
