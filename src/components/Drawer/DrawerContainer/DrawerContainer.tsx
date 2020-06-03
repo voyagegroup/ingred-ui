@@ -6,7 +6,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Container: React.FC<Props> = ({ children }) => {
+const DrawerContainer: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [isFixed, setIsFixed] = React.useState<boolean>(false);
 
@@ -36,4 +36,4 @@ const Container: React.FC<Props> = ({ children }) => {
   );
 };
 
-export { Container };
+export { DrawerContainer };

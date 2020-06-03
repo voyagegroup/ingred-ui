@@ -11,7 +11,7 @@ export const Container = styled.div<ContaierProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
   width: ${({ isOpen, isFixed }) =>
     isOpen || isFixed ? DrawerWidth.WIDE : DrawerWidth.NARROW};
   background-color: ${({ theme }) => theme.palette.background.default};

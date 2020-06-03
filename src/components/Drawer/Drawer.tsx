@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./styled";
 import { DrawerContext } from "./utils";
-import { Container } from "./Container";
+import { DrawerContainer } from "./DrawerContainer";
 import { Header, Content, Footer } from "./Inner";
 import { MainContent } from "./MainContent";
 import { Fixture } from "./Fixture";
@@ -30,7 +30,7 @@ const Drawer = ({ children }: Props) => {
   );
 };
 
-Drawer.Container = Container;
+Drawer.Container = DrawerContainer;
 Drawer.Header = Header;
 Drawer.Content = Content;
 Drawer.Footer = Footer;
