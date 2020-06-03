@@ -6,21 +6,21 @@ exports[`Drawer component testing Drawer 1`] = `
     class="sc-AxirZ irBydL"
   >
     <div
-      class="sc-AxjAm kNSWgB"
+      class="sc-AxjAm jfJkiI"
     >
       <div
-        class="sc-fzpans klZVIl"
+        class="sc-AxiKw bYZETB"
       >
         ここにロゴとかが入るよ
       </div>
       <div
-        class="sc-fzplWN hrglaZ"
+        class="sc-AxhCb ekArAs"
       >
         <div
-          class="sc-AxiKw giCsMy"
+          class="sc-fzplWN iyOXxP"
         >
           <div
-            class="sc-AxheI czLa-De"
+            class="sc-Axmtr kFYDZB"
             size="24"
           >
             <svg
@@ -38,17 +38,17 @@ exports[`Drawer component testing Drawer 1`] = `
             </svg>
           </div>
           <div
-            class="sc-AxhCb kjnsSB"
+            class="sc-fznyAO jDMidI"
           >
             <span>
               設定
             </span>
           </div>
           <div
-            class="sc-AxhUy iVvmYT"
+            class="sc-fznKkj bbjLMi"
           >
             <div
-              class="sc-AxheI czLa-De"
+              class="sc-Axmtr kFYDZB"
               size="24"
             >
               <svg
@@ -68,11 +68,11 @@ exports[`Drawer component testing Drawer 1`] = `
           </div>
         </div>
         <div
-          class="sc-AxgMl eztyRC"
+          class="sc-fznZeY tgBeZ"
           height="auto"
         >
           <div
-            class="sc-fzozJi hEHlA"
+            class="sc-fzokOt ehXjaF"
           >
             <span>
               デマンド設定
@@ -80,10 +80,10 @@ exports[`Drawer component testing Drawer 1`] = `
           </div>
         </div>
         <div
-          class="sc-fznZeY VsdNT"
+          class="sc-fzoLsD fstdID"
         >
           <div
-            class="sc-AxheI czLa-De"
+            class="sc-Axmtr kFYDZB"
             size="24"
           >
             <svg
@@ -101,7 +101,7 @@ exports[`Drawer component testing Drawer 1`] = `
             </svg>
           </div>
           <div
-            class="sc-fzokOt gttOoF"
+            class="sc-fzpans hXReIC"
           >
             <span>
               ダッシュボード
@@ -110,13 +110,13 @@ exports[`Drawer component testing Drawer 1`] = `
         </div>
       </div>
       <div
-        class="sc-fznyAO ijsgNR"
+        class="sc-AxhUy hGdzOF"
       >
         <div
-          class="sc-fzoLsD FytOk"
+          class="sc-AxheI jMPkWV"
         >
           <div
-            class="sc-AxheI kVDYRm"
+            class="sc-Axmtr dOuQux"
             size="18"
           >
             <svg
@@ -143,7 +143,7 @@ exports[`Drawer component testing Drawer 1`] = `
       </div>
     </div>
     <div
-      class="sc-fznKkj hgZXNb"
+      class="sc-AxgMl ikmpMs"
     >
       hogehoge
     </div>

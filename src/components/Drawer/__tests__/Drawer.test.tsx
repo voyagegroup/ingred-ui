@@ -1,59 +1,41 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import Drawer, {
-  DrawerContainer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerExpantionMenu,
-  DrawerExpantionMenuItem,
-  DrawerMenu,
-  DrawerFooter,
-  DrawerFixture,
-  DrawerMainContent,
-} from "..";
+import Drawer from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
-
-jest.mock("react-dom", () => {
-  const original = jest.requireActual("react-dom");
-  return {
-    ...original,
-    createPortal: (node: any) => node,
-  };
-});
 
 describe("Drawer component testing", () => {
   afterEach(cleanup);
 
   test("Drawer", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DrawerContainer>
+      <Drawer.Container>
         <Drawer>
-          <DrawerHeader>ここにロゴとかが入るよ</DrawerHeader>
-          <DrawerContent>
-            <DrawerExpantionMenu
+          <Drawer.Header>ここにロゴとかが入るよ</Drawer.Header>
+          <Drawer.Content>
+            <Drawer.ExpantionMenu
               title="設定"
               isActive={true}
               iconName="setting"
               expantionList={[
-                <DrawerExpantionMenuItem
+                <Drawer.ExpantionMenuItem
                   isActive={true}
                   title="デマンド設定"
                 />,
               ]}
             />
-            <DrawerMenu
+            <Drawer.Menu
               title="ダッシュボード"
               isActive={false}
               iconName="dashboard"
             />
-          </DrawerContent>
-          <DrawerFooter>
-            <DrawerFixture />
-          </DrawerFooter>
+          </Drawer.Content>
+          <Drawer.Footer>
+            <Drawer.Fixture />
+          </Drawer.Footer>
         </Drawer>
-        <DrawerMainContent>hogehoge</DrawerMainContent>
-      </DrawerContainer>,
+        <Drawer.MainContent>hogehoge</Drawer.MainContent>
+      </Drawer.Container>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
