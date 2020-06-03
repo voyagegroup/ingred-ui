@@ -5,5 +5,15 @@ exports[`Tooltip component testing Tooltip 1`] = `
   <div>
     text
   </div>
+  <div
+    class="sc-AxirZ klUXyZ"
+    style="position: absolute; left: 0px; top: 0px;"
+  >
+    tooltip text
+    <div
+      class="sc-AxjAm iHJmte"
+      data-popper-arrow="true"
+    />
+  </div>
 </DocumentFragment>
 `;
