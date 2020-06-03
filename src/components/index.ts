@@ -62,11 +62,17 @@ export * from "./RadioButton";
 export { default as Select } from "./Select";
 export * from "./Select";
 
+export { default as Snackbar } from "./Snackbar";
+export * from "./Snackbar";
+
 export { default as Spacer } from "./Spacer";
 export * from "./Spacer";
 
 export { default as Spinner } from "./Spinner";
 export * from "./Spinner";
+
+export { default as Switch } from "./Switch";
+export * from "./Switch";
 
 export { default as Table } from "./Table";
 export * from "./Table";
