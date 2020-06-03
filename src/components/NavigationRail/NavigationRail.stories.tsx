@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { boolean } from "@storybook/addon-knobs";
-import NavigationRail from ".";
+import NavigationRail, { NavigationRailContext } from ".";
 import { IconName } from "../Icon/Icon";
 
 export default {
@@ -144,7 +144,9 @@ export const Overview = () => {
     <NavigationRail.Container>
       <NavigationRail>
         {withHeader && (
-          <NavigationRail.Header>ここにロゴとかが入るよ</NavigationRail.Header>
+          <NavigationRail.Header>
+            <HeaderContent />
+          </NavigationRail.Header>
         )}
         <NavigationRail.Content>
           {createNavigationRailContents("/setting/demand").map((item) => (
@@ -184,6 +186,11 @@ export const Overview = () => {
       </NavigationRail.MainContent>
     </NavigationRail.Container>
   );
+};
+
+const HeaderContent = () => {
+  const { isOpen } = React.useContext(NavigationRailContext);
+  return <div>{isOpen ? "ロゴ(大)" : "ロゴ(小)"}</div>;
 };
 
 const Container = styled.div`

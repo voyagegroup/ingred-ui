@@ -23,9 +23,6 @@ export * from "./DataTable";
 export { default as DatePicker } from "./DatePicker";
 export * from "./DatePicker";
 
-export { default as NavigationRail } from "./NavigationRail";
-export * from "./NavigationRail";
-
 export { default as DropdownButton } from "./DropdownButton";
 export * from "./DropdownButton";
 
@@ -46,6 +43,9 @@ export * from "./ItemEmpty";
 
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
+
+export { default as NavigationRail } from "./NavigationRail";
+export * from "./NavigationRail";
 
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
