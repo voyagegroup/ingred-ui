@@ -10,6 +10,9 @@ type ReactRef<T> =
 
 export function useMergeRefs<T>(...refs: ReactRef<T>[]): ReactRef<T> {
   return React.useMemo(() => {
+    if (refs.every((ref) => ref === null)) {
+      return null;
+    }
     return (refValue: T) => {
       for (const ref of refs) {
         if (typeof ref === "function") {
