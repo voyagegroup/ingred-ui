@@ -47,7 +47,7 @@ const getContainerColorStyles = (
   },
   secondary: {
     normal: {
-      background: "transparent",
+      background: theme.palette.white,
       color: theme.palette.black,
       boxShadow: "none",
       border: `${Size.Border.Small} solid ${theme.palette.divider}`,
