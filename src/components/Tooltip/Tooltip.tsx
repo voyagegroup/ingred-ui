@@ -125,7 +125,7 @@ const Tooltip: React.FC<Props> = ({
     ...children.props,
     onMouseEnter: onHandleEnter,
     onMouseLeave: onHandleLeave,
-    ref: useMergeRefs(setBaseElement, children.ref as any),
+    ref: useMergeRefs(setBaseElement, children.ref),
   };
 
   return (
