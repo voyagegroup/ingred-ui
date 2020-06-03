@@ -1,12 +1,12 @@
 import React from "react";
 import * as Styled from "./styled";
-import { DrawerContext } from "../utils";
+import { NavigationRailContext } from "../utils";
 
 type Props = {
   children: React.ReactNode;
 };
 
-const DrawerContainer: React.FC<Props> = ({ children }) => {
+const NavigationRailContainer: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [isFixed, setIsFixed] = React.useState<boolean>(false);
 
@@ -28,12 +28,12 @@ const DrawerContainer: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <DrawerContext.Provider
+    <NavigationRailContext.Provider
       value={{ isOpen, isFixed, onHandleOpen, onHandleClose, onHandleFixed }}
     >
       <Styled.Container>{children}</Styled.Container>
-    </DrawerContext.Provider>
+    </NavigationRailContext.Provider>
   );
 };
 
-export { DrawerContainer };
+export { NavigationRailContainer };

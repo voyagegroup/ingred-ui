@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./styled";
-import { DrawerContext } from "./utils";
-import { DrawerContainer } from "./DrawerContainer";
+import { NavigationRailContext } from "./utils";
+import { NavigationRailContainer } from "./NavigationRailContainer";
 import { Header, Content, Footer } from "./Inner";
 import { MainContent } from "./MainContent";
 import { Fixture } from "./Fixture";
@@ -13,9 +13,9 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const Drawer = ({ children }: Props) => {
+const NavigationRail = ({ children }: Props) => {
   const { isOpen, isFixed, onHandleOpen, onHandleClose } = React.useContext(
-    DrawerContext,
+    NavigationRailContext,
   );
 
   return (
@@ -30,14 +30,14 @@ const Drawer = ({ children }: Props) => {
   );
 };
 
-Drawer.Container = DrawerContainer;
-Drawer.Header = Header;
-Drawer.Content = Content;
-Drawer.Footer = Footer;
-Drawer.Menu = Menu;
-Drawer.ExpantionMenu = ExpantionMenu;
-Drawer.ExpantionMenuItem = ExpantionMenuItem;
-Drawer.Fixture = Fixture;
-Drawer.MainContent = MainContent;
+NavigationRail.Container = NavigationRailContainer;
+NavigationRail.Header = Header;
+NavigationRail.Content = Content;
+NavigationRail.Footer = Footer;
+NavigationRail.Menu = Menu;
+NavigationRail.ExpantionMenu = ExpantionMenu;
+NavigationRail.ExpantionMenuItem = ExpantionMenuItem;
+NavigationRail.Fixture = Fixture;
+NavigationRail.MainContent = MainContent;
 
-export default Drawer;
+export default NavigationRail;

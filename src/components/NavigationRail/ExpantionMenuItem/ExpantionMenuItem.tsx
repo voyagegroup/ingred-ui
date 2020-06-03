@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Tooltip from "../../Tooltip";
-import { DrawerTransitionDuration } from "../constants";
+import { NavigationRailTransitionDuration } from "../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -30,7 +30,7 @@ const ExpantionMenuItem: React.FC<Props> = ({
     <Tooltip
       content={title}
       positionPriority={["right"]}
-      enterDelay={DrawerTransitionDuration * 1000}
+      enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
     >
       <Styled.Container ref={textWrapperElement} isActive={isActive} {...rest}>

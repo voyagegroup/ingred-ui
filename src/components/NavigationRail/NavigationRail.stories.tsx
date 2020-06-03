@@ -1,17 +1,17 @@
 import * as React from "react";
 import styled from "styled-components";
 import { boolean } from "@storybook/addon-knobs";
-import Drawer from "./";
+import NavigationRail from ".";
 import { IconName } from "../Icon/Icon";
 
 export default {
-  title: "Drawer",
+  title: "NavigationRail",
   parameters: {
-    component: Drawer,
+    component: NavigationRail,
   },
 };
 
-type DrawerContents = {
+type NavigationRailContents = {
   title: string;
   iconName: IconName;
   isActive: boolean;
@@ -23,7 +23,7 @@ type DrawerContents = {
   }[];
 }[];
 
-const createDrawerContents = (path: string): DrawerContents => [
+const createNavigationRailContents = (path: string): NavigationRailContents => [
   {
     title: "ダッシュボード(長いテキストにはツールチップがでるよ)",
     iconName: "dashboard",
@@ -137,40 +137,33 @@ const createDrawerContents = (path: string): DrawerContents => [
   },
 ];
 
-export const Overview = () => (
-  <Drawer.Container>
-    <Drawer />
-    <Drawer.MainContent>
-      <MainContent />
-    </Drawer.MainContent>
-  </Drawer.Container>
-);
-
-export const WithMenu = () => {
+export const Overview = () => {
   const withHeader = boolean("With Header", true);
   const withFooter = boolean("With Footer", true);
   return (
-    <Drawer.Container>
-      <Drawer>
-        {withHeader && <Drawer.Header>ここにロゴとかが入るよ</Drawer.Header>}
-        <Drawer.Content>
-          {createDrawerContents("/setting/demand").map((item) => (
+    <NavigationRail.Container>
+      <NavigationRail>
+        {withHeader && (
+          <NavigationRail.Header>ここにロゴとかが入るよ</NavigationRail.Header>
+        )}
+        <NavigationRail.Content>
+          {createNavigationRailContents("/setting/demand").map((item) => (
             <React.Fragment key={item.title}>
               {item.expantionList ? (
-                <Drawer.ExpantionMenu
+                <NavigationRail.ExpantionMenu
                   key={item.title}
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
                   expantionList={item.expantionList.map((expantion) => (
-                    <Drawer.ExpantionMenuItem
+                    <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
                     />
                   ))}
                 />
               ) : (
-                <Drawer.Menu
+                <NavigationRail.Menu
                   key={item.title}
                   title={item.title}
                   isActive={item.isActive}
@@ -179,17 +172,17 @@ export const WithMenu = () => {
               )}
             </React.Fragment>
           ))}
-        </Drawer.Content>
+        </NavigationRail.Content>
         {withFooter && (
-          <Drawer.Footer>
-            <Drawer.Fixture />
-          </Drawer.Footer>
+          <NavigationRail.Footer>
+            <NavigationRail.Fixture />
+          </NavigationRail.Footer>
         )}
-      </Drawer>
-      <Drawer.MainContent>
+      </NavigationRail>
+      <NavigationRail.MainContent>
         <MainContent />
-      </Drawer.MainContent>
-    </Drawer.Container>
+      </NavigationRail.MainContent>
+    </NavigationRail.Container>
   );
 };
 

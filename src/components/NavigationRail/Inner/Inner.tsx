@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { DrawerContentHeight } from "../constants";
+import { NavigationRailContentHeight } from "../constants";
 
 export const Header = styled.div`
   flex-shrink: 0;
-  flex-basis: ${DrawerContentHeight.HEADER};
+  flex-basis: ${NavigationRailContentHeight.HEADER};
   display: flex;
   align-items: center;
 `;
@@ -20,7 +20,7 @@ export const Content = styled.div`
 
 export const Footer = styled.div`
   flex-shrink: 0;
-  flex-basis: ${DrawerContentHeight.FOOTER};
+  flex-basis: ${NavigationRailContentHeight.FOOTER};
   display: flex;
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.palette.gray.light};

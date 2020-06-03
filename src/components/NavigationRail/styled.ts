@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { DrawerWidth, DrawerTransitionDuration } from "./constants";
+import {
+  NavigationRailWidth,
+  NavigationRailTransitionDuration,
+} from "./constants";
 
 type ContaierProps = {
   isOpen: boolean;
@@ -13,7 +16,7 @@ export const Container = styled.div<ContaierProps>`
   justify-content: space-between;
   height: 100%;
   width: ${({ isOpen, isFixed }) =>
-    isOpen || isFixed ? DrawerWidth.WIDE : DrawerWidth.NARROW};
+    isOpen || isFixed ? NavigationRailWidth.WIDE : NavigationRailWidth.NARROW};
   background-color: ${({ theme }) => theme.palette.background.default};
   border-right: ${({ theme, isOpen, isFixed }) =>
     isOpen && !isFixed ? "none" : `1px solid ${theme.palette.gray.light}`};
@@ -23,6 +26,6 @@ export const Container = styled.div<ContaierProps>`
       : "none"};
   box-sizing: content-box;
   overflow-x: hidden;
-  z-index: ${({ theme }) => theme.depth.drawer};
-  transition: width ${DrawerTransitionDuration}s;
+  z-index: ${({ theme }) => theme.depth.navigationRail};
+  transition: width ${NavigationRailTransitionDuration}s;
 `;

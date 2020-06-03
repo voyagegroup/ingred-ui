@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { DrawerTransitionDuration, DrawerWidth } from "../constants";
+import {
+  NavigationRailTransitionDuration,
+  NavigationRailWidth,
+} from "../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
-  width: ${DrawerWidth.WIDE};
+  width: ${NavigationRailWidth.WIDE};
   border-left: ${({ isActive, theme }) =>
     isActive ? `2px solid ${theme.palette.primary.main}` : "none"};
   padding: ${({ theme, isActive }) =>
@@ -34,5 +37,5 @@ export const TextWrapper = styled.div<{ isActive: boolean; isOpen: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: opacity ${DrawerTransitionDuration}s;
+  transition: opacity ${NavigationRailTransitionDuration}s;
 `;

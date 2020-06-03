@@ -2,9 +2,9 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Icon from "../../Icon";
 import { IconName } from "../../Icon/Icon";
-import { DrawerContext } from "../utils";
+import { NavigationRailContext } from "../utils";
 import Tooltip from "../../Tooltip";
-import { DrawerTransitionDuration } from "../constants";
+import { NavigationRailTransitionDuration } from "../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -22,7 +22,7 @@ const ExpantionMenu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
-  const { isOpen } = React.useContext(DrawerContext);
+  const { isOpen } = React.useContext(NavigationRailContext);
 
   const [isExpand, setIsExpand] = React.useState<boolean>(false);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
@@ -67,7 +67,7 @@ const ExpantionMenu: React.FC<Props> = ({
       <Tooltip
         content={title}
         positionPriority={["right"]}
-        enterDelay={DrawerTransitionDuration * 1000}
+        enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
       >
         <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DrawerTransitionDuration } from "../constants";
+import { NavigationRailTransitionDuration } from "../constants";
 
 export const Container = styled.div<{ isFixed: boolean }>`
   cursor: pointer;
@@ -7,7 +7,7 @@ export const Container = styled.div<{ isFixed: boolean }>`
   margin-left: ${({ theme }) => theme.spacing * 3}px;
   font-weight: bold;
   transform: rotate(${({ isFixed }) => (isFixed ? "none" : "180deg")});
-  transition: transform ${DrawerTransitionDuration}s;
+  transition: transform ${NavigationRailTransitionDuration}s;
 
   &::before {
     content: "";

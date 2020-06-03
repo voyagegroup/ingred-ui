@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export type DrawerContextValues = {
+export type NavigationRailContextValues = {
   isOpen: boolean;
   isFixed: boolean;
   onHandleOpen?: () => void;
@@ -8,7 +8,9 @@ export type DrawerContextValues = {
   onHandleFixed?: () => void;
 };
 
-export const DrawerContext = React.createContext<DrawerContextValues>({
+export const NavigationRailContext = React.createContext<
+  NavigationRailContextValues
+>({
   isOpen: false,
   isFixed: false,
 });

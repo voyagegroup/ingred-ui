@@ -3,8 +3,8 @@ import * as Styled from "./styled";
 import Icon from "../../Icon";
 import { IconName } from "../../Icon/Icon";
 import Tooltip from "../../Tooltip";
-import { DrawerContext } from "../utils";
-import { DrawerTransitionDuration } from "../constants";
+import { NavigationRailContext } from "../utils";
+import { NavigationRailTransitionDuration } from "../constants";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -19,7 +19,7 @@ const Menu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
-  const { isOpen } = React.useContext(DrawerContext);
+  const { isOpen } = React.useContext(NavigationRailContext);
 
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
@@ -37,7 +37,7 @@ const Menu: React.FC<Props> = ({
     <Tooltip
       content={title}
       positionPriority={["right"]}
-      enterDelay={DrawerTransitionDuration * 1000}
+      enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
     >
       <Styled.Container isActive={isActive} {...rest}>

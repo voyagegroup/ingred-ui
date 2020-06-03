@@ -1,10 +1,13 @@
 import styled from "styled-components";
-import { DrawerTransitionDuration, DrawerWidth } from "../constants";
+import {
+  NavigationRailTransitionDuration,
+  NavigationRailWidth,
+} from "../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
-  width: ${DrawerWidth.WIDE};
+  width: ${NavigationRailWidth.WIDE};
   border-left: ${({ isActive, theme }) =>
     isActive ? `2px solid ${theme.palette.primary.main}` : "none"};
   padding: ${({ theme, isActive }) =>
@@ -34,7 +37,7 @@ export const TextWrapper = styled.div<{ isActive: boolean; isOpen: boolean }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: opacity ${DrawerTransitionDuration}s;
+  transition: opacity ${NavigationRailTransitionDuration}s;
 `;
 
 export const ArrowIconWrapper = styled.div<{
@@ -44,7 +47,7 @@ export const ArrowIconWrapper = styled.div<{
   margin-right: ${({ theme }) => theme.spacing}px;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   transform: rotate(${({ isExpand }) => (isExpand ? "180deg" : "none")});
-  transition: transform 0.3s, opacity ${DrawerTransitionDuration}s;
+  transition: transform 0.3s, opacity ${NavigationRailTransitionDuration}s;
 `;
 
 type ExpantionProps = {
@@ -54,10 +57,10 @@ type ExpantionProps = {
 };
 
 export const Expantion = styled.div<ExpantionProps>`
-  width: ${DrawerWidth.WIDE};
+  width: ${NavigationRailWidth.WIDE};
   overflow-y: hidden;
   padding-left: ${({ theme }) => theme.spacing * 7}px;
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};
   transition: max-height 0.3s
-    ${({ delay }) => (delay ? DrawerTransitionDuration : 0)}s;
+    ${({ delay }) => (delay ? NavigationRailTransitionDuration : 0)}s;
 `;

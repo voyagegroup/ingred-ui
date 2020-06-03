@@ -1,41 +1,41 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import Drawer from "..";
+import NavigationRail from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
-describe("Drawer component testing", () => {
+describe("NavigationRail component testing", () => {
   afterEach(cleanup);
 
-  test("Drawer", () => {
+  test("NavigationRail", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Drawer.Container>
-        <Drawer>
-          <Drawer.Header>ここにロゴとかが入るよ</Drawer.Header>
-          <Drawer.Content>
-            <Drawer.ExpantionMenu
+      <NavigationRail.Container>
+        <NavigationRail>
+          <NavigationRail.Header>ここにロゴとかが入るよ</NavigationRail.Header>
+          <NavigationRail.Content>
+            <NavigationRail.ExpantionMenu
               title="設定"
               isActive={true}
               iconName="setting"
               expantionList={[
-                <Drawer.ExpantionMenuItem
+                <NavigationRail.ExpantionMenuItem
                   isActive={true}
                   title="デマンド設定"
                 />,
               ]}
             />
-            <Drawer.Menu
+            <NavigationRail.Menu
               title="ダッシュボード"
               isActive={false}
               iconName="dashboard"
             />
-          </Drawer.Content>
-          <Drawer.Footer>
-            <Drawer.Fixture />
-          </Drawer.Footer>
-        </Drawer>
-        <Drawer.MainContent>hogehoge</Drawer.MainContent>
-      </Drawer.Container>,
+          </NavigationRail.Content>
+          <NavigationRail.Footer>
+            <NavigationRail.Fixture />
+          </NavigationRail.Footer>
+        </NavigationRail>
+        <NavigationRail.MainContent>hogehoge</NavigationRail.MainContent>
+      </NavigationRail.Container>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
