@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { boolean } from "@storybook/addon-knobs";
 import Drawer, {
   DrawerHeader,
   DrawerContainer,
@@ -148,44 +149,59 @@ const createDrawerContents = (path: string): DrawerContents => [
 
 export const Overview = () => (
   <DrawerContainer>
-    <Drawer>
-      <DrawerHeader>ここにロゴとかが入るよ</DrawerHeader>
-      <DrawerContent>
-        {createDrawerContents("/setting/demand").map((item) => (
-          <React.Fragment key={item.title}>
-            {item.expantionList ? (
-              <DrawerExpantionMenu
-                key={item.title}
-                title={item.title}
-                isActive={item.isActive}
-                iconName={item.iconName}
-                expantionList={item.expantionList.map((expantion) => (
-                  <DrawerExpantionMenuItem
-                    isActive={expantion.isActive}
-                    title={expantion.title}
-                  />
-                ))}
-              />
-            ) : (
-              <DrawerMenu
-                key={item.title}
-                title={item.title}
-                isActive={item.isActive}
-                iconName={item.iconName}
-              />
-            )}
-          </React.Fragment>
-        ))}
-      </DrawerContent>
-      <DrawerFooter>
-        <DrawerFixture />
-      </DrawerFooter>
-    </Drawer>
+    <Drawer />
     <DrawerMainContent>
       <MainContent />
     </DrawerMainContent>
   </DrawerContainer>
 );
+
+export const WithMenu = () => {
+  const withHeader = boolean("With Header", true);
+  const withFooter = boolean("With Footer", true);
+  return (
+    <DrawerContainer>
+      <Drawer>
+        {withHeader && <DrawerHeader>ここにロゴとかが入るよ</DrawerHeader>}
+        <DrawerContent>
+          {createDrawerContents("/setting/demand").map((item) => (
+            <React.Fragment key={item.title}>
+              {item.expantionList ? (
+                <DrawerExpantionMenu
+                  key={item.title}
+                  title={item.title}
+                  isActive={item.isActive}
+                  iconName={item.iconName}
+                  expantionList={item.expantionList.map((expantion) => (
+                    <DrawerExpantionMenuItem
+                      isActive={expantion.isActive}
+                      title={expantion.title}
+                    />
+                  ))}
+                />
+              ) : (
+                <DrawerMenu
+                  key={item.title}
+                  title={item.title}
+                  isActive={item.isActive}
+                  iconName={item.iconName}
+                />
+              )}
+            </React.Fragment>
+          ))}
+        </DrawerContent>
+        {withFooter && (
+          <DrawerFooter>
+            <DrawerFixture />
+          </DrawerFooter>
+        )}
+      </Drawer>
+      <DrawerMainContent>
+        <MainContent />
+      </DrawerMainContent>
+    </DrawerContainer>
+  );
+};
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 2}px;
