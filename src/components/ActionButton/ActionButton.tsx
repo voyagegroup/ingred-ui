@@ -9,19 +9,17 @@ export type Props = React.ComponentPropsWithRef<"button"> & {
   icon: IconName;
 };
 
-const ActionButton: React.FunctionComponent<Props> = ({
-  children,
-  icon,
-  ...rest
-}) => (
-  <Styled.Container {...rest}>
-    <Spacer pr={0.25}>
-      <Icon name={icon} color="active" />
-    </Spacer>
-    <Typography color="primary" size="md">
-      {children}
-    </Typography>
-  </Styled.Container>
+const ActionButton: React.FunctionComponent<Props> = React.forwardRef(
+  ({ children, icon, ...rest }, ref) => (
+    <Styled.Container {...rest} ref={ref}>
+      <Spacer pr={0.25}>
+        <Icon name={icon} color="active" />
+      </Spacer>
+      <Typography color="primary" size="md">
+        {children}
+      </Typography>
+    </Styled.Container>
+  ),
 );
 
 export default ActionButton;

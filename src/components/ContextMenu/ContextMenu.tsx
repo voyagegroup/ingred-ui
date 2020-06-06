@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { ContentProp } from "../MenuList/MenuList";
 import ActionButton from "../ActionButton";
@@ -17,7 +16,7 @@ const ContextMenu: React.FunctionComponent<Props> = ({
   const [
     iconWrapperElement,
     setIconWrapperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  ] = React.useState<HTMLButtonElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
@@ -30,15 +29,13 @@ const ContextMenu: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      {/* MEMO: ingred-uiに実装する際はActionButtonにforward refを用いる */}
-      <Styled.IconWrapper ref={setIconWrapperElement}>
-        <ActionButton
-          data-testid="icon-wrapper"
-          icon="more_vert"
-          onClick={onHandleToggleContent(!showContent)}
-          onBlur={onHandleToggleContent(false)}
-        />
-      </Styled.IconWrapper>
+      <ActionButton
+        ref={setIconWrapperElement}
+        data-testid="icon-wrapper"
+        icon="more_vert"
+        onClick={onHandleToggleContent(!showContent)}
+        onBlur={onHandleToggleContent(false)}
+      />
       {(showContent || activeContent) && (
         <Menu
           baseElement={iconWrapperElement}

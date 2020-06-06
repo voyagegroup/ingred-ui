@@ -20,6 +20,9 @@ export * from "./Checkbox";
 export { default as ConfirmModal } from "./ConfirmModal";
 export * from "./ConfirmModal";
 
+export { default as ContextMenu } from "./ContextMenu";
+export * from "./ContextMenu";
+
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
