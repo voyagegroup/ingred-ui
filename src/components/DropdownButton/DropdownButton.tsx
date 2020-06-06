@@ -8,6 +8,7 @@ import { useTheme } from "../../themes";
 import MenuList from "../MenuList";
 import { ContentProp } from "../MenuList/MenuList";
 import Portal from "../Portal";
+import ClickAwayListener from "../ClickAwayListener";
 
 type Props = {
   size?: ButtonSize;
@@ -37,16 +38,12 @@ const DropdownButton: React.FC<Props> = ({
     setPopperElement,
   ] = React.useState<HTMLDivElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
-  const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
   const onHandleToggleContent = (showContent: boolean) => () => {
     if (showContent && !split && onClick) {
       onClick();
     }
     setShowContent(showContent);
-  };
-  const onHandleContentActive = (isActive: boolean) => () => {
-    setActiveContent(isActive);
   };
 
   const { styles, attributes } = usePopper(buttonElement, popperElement, {
@@ -86,7 +83,6 @@ const DropdownButton: React.FC<Props> = ({
               inline={true}
               disabled={disabled}
               onClick={onHandleToggleContent(!showContent)}
-              onBlur={onHandleToggleContent(false)}
             >
               <Icon
                 name={"arrow_bottom"}
@@ -102,7 +98,6 @@ const DropdownButton: React.FC<Props> = ({
             size={size}
             disabled={disabled}
             onClick={onHandleToggleContent(!showContent)}
-            onBlur={onHandleToggleContent(false)}
           >
             {children}
             <Icon
@@ -115,18 +110,18 @@ const DropdownButton: React.FC<Props> = ({
           </Styled.SingleButton>
         )}
       </Styled.ButtonContainer>
-      {(showContent || activeContent) && (
+      {showContent && (
         <Portal>
-          <Styled.MenuPopper
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            onMouseDown={onHandleContentActive(true)}
-            onTouchStart={onHandleContentActive(true)}
-            onClick={onHandleContentActive(false)}
-          >
-            <MenuList contents={contents} />
-          </Styled.MenuPopper>
+          <ClickAwayListener onClickAway={onHandleToggleContent(false)}>
+            <Styled.MenuPopper
+              ref={setPopperElement}
+              style={styles.popper}
+              {...attributes.popper}
+              onClick={onHandleToggleContent(false)}
+            >
+              <MenuList contents={contents} />
+            </Styled.MenuPopper>
+          </ClickAwayListener>
         </Portal>
       )}
     </>
