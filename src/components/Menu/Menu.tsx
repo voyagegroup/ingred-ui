@@ -3,7 +3,7 @@ import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import MenuList, { ContentProp } from "../MenuList/MenuList";
-import Portal from "../Portal";
+import Modal from "../Modal";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
@@ -42,7 +42,7 @@ const Menu: React.FunctionComponent<Props> = ({
   });
 
   return (
-    <Portal>
+    <Modal>
       <Styled.Container
         ref={setPopperElement}
         style={styles.popper}
@@ -51,7 +51,7 @@ const Menu: React.FunctionComponent<Props> = ({
       >
         <MenuList contents={contents} />
       </Styled.Container>
-    </Portal>
+    </Modal>
   );
 };
 

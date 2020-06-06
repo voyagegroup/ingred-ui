@@ -2,78 +2,78 @@
 
 exports[`ContextMenu component testing ContextMenu 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-AxjAm hQOSVZ"
-  >
-    <button
-      class="sc-AxiKw kkvlgA"
-      data-testid="icon-wrapper"
-    >
-      <div
-        class="sc-AxhCb UMLCh"
-      >
-        <div
-          class="sc-AxhUy fzAQyO"
-          size="18"
-        >
-          <svg
-            viewBox="0 0 18 18"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M0 0h18v18H0z"
-              fill="none"
-            />
-            <path
-              d="M11.5,3A1.5,1.5,0,1,0,13,4.5,1.5,1.5,0,0,0,11.5,3Zm0,10.5A1.5,1.5,0,1,0,13,15,1.5,1.5,0,0,0,11.5,13.5Zm0-5.25A1.5,1.5,0,1,0,13,9.75,1.5,1.5,0,0,0,11.5,8.25Z"
-              fill="#0B82F4"
-              transform="translate(-2.5 -0.75)"
-            />
-          </svg>
-        </div>
-      </div>
-      <p
-        class="sc-AxgMl jicjnO"
-        color="#0B82F4"
-        font-size="14px"
-      />
-    </button>
-  </div>
-  <div
-    class="sc-AxheI dQRmog"
-    data-popper-escaped="true"
-    data-popper-placement="bottom-start"
-    data-popper-reference-hidden="true"
-    style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+  <button
+    class="sc-AxjAm jXWceb"
+    data-testid="icon-wrapper"
   >
     <div
-      class="sc-Axmtr cJgDpS"
+      class="sc-AxirZ kWeVrl"
     >
-      <hr
-        class="sc-fzozJi bgLJhR"
-      />
       <div
-        class="sc-AxmLO cuLfrH"
+        class="sc-AxiKw iSBsKP"
+        size="18"
       >
-        保存する
+        <svg
+          viewBox="0 0 18 18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h18v18H0z"
+            fill="none"
+          />
+          <path
+            d="M11.5,3A1.5,1.5,0,1,0,13,4.5,1.5,1.5,0,0,0,11.5,3Zm0,10.5A1.5,1.5,0,1,0,13,15,1.5,1.5,0,0,0,11.5,13.5Zm0-5.25A1.5,1.5,0,1,0,13,9.75,1.5,1.5,0,0,0,11.5,8.25Z"
+            fill="#0B82F4"
+            transform="translate(-2.5 -0.75)"
+          />
+        </svg>
       </div>
+    </div>
+    <p
+      class="sc-AxhCb gtbArF"
+      color="#0B82F4"
+      font-size="14px"
+    />
+  </button>
+  <div
+    class="sc-AxmLO kBckan"
+  >
+    <div
+      class="sc-AxhUy kMyssT"
+      data-popper-escaped="true"
+      data-popper-placement="bottom-start"
+      data-popper-reference-hidden="true"
+      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+    >
       <div
-        class="sc-AxmLO cuLfrH"
+        class="sc-AxgMl cjBIvb"
       >
-        保存して実行する
-      </div>
-      <hr
-        class="sc-fzozJi bgLJhR"
-      />
-      <div
-        class="sc-AxmLO cuLfrH"
-      >
-        下書きとして保存する
-      </div>
-      <div
-        class="sc-AxmLO cuLfrH"
-      >
-        やっぱり何もしない
+        <hr
+          class="sc-Axmtr giahJZ"
+        />
+        <div
+          class="sc-AxheI gETZIx"
+        >
+          保存する
+        </div>
+        <div
+          class="sc-AxheI gETZIx"
+        >
+          保存して実行する
+        </div>
+        <hr
+          class="sc-Axmtr giahJZ"
+        />
+        <div
+          class="sc-AxheI gETZIx"
+        >
+          下書きとして保存する
+        </div>
+        <div
+          class="sc-AxheI gETZIx"
+        >
+          やっぱり何もしない
+        </div>
       </div>
     </div>
   </div>

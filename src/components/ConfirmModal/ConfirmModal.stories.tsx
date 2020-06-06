@@ -5,6 +5,7 @@ import Spacer from "../Spacer";
 import DataTable from "../DataTable";
 import { data } from "../DataTable/data";
 import { action } from "@storybook/addon-actions";
+import DropdownButton from "../DropdownButton";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;

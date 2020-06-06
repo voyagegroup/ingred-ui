@@ -62,6 +62,9 @@ export * from "./Menu";
 export { default as MenuList } from "./MenuList";
 export * from "./MenuList";
 
+export { default as Modal } from "./Modal";
+export * from "./Modal";
+
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 
