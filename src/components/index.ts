@@ -53,6 +53,9 @@ export * from "./NavigationRail";
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
 
+export { default as Menu } from "./Menu";
+export * from "./Menu";
+
 export { default as MenuList } from "./MenuList";
 export * from "./MenuList";
 
