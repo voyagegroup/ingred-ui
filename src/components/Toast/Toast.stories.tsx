@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
+import { action } from "@storybook/addon-actions";
+import { AppearanceTypes } from "react-toast-notifications";
 import Toast from ".";
 import Typography from "../Typography";
 import Button from "../Button";
-import { ToastProps } from "react-toast-notifications";
-import { palette } from "../../themes";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -31,19 +31,6 @@ export default {
   parameters: {
     component: Toast,
   },
-};
-
-const toastProps: Omit<ToastProps, "children"> = {
-  appearance: "info",
-  autoDismiss: false,
-  autoDismissTimeout: 0,
-  isRunning: true,
-  onDismiss: () => {},
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
-  placement: "top-center",
-  transitionDuration: 0,
-  transitionState: "entered",
 };
 
 const ToastSample = () => {
@@ -79,46 +66,20 @@ export const Overview = () => (
         </Toast.Provider>
       </Column>
     </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Info
-        </Typography>
-        <Toast {...toastProps}>○○が完了しました。</Toast>
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Success
-        </Typography>
-        <Toast {...toastProps} appearance="success">
-          ○○が完了しました。
-        </Toast>
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Warning
-        </Typography>
-        <Toast {...toastProps} appearance="warning">
-          ○○が完了しました。
-        </Toast>
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Error
-        </Typography>
-        <Typography color={palette.gray.main}>
-          エラーメッセージを表示する時はautoDismissをつけないでください
-        </Typography>
-        <Toast {...toastProps} appearance="error">
-          ○○に失敗しました。
-        </Toast>
-      </Column>
-    </RowContainer>
+    {["info", "success", "warning", "error"].map((appearance) => (
+      <RowContainer key={appearance}>
+        <Column>
+          <Typography weight="bold" size="xxl">
+            Info
+          </Typography>
+          <Toast
+            appearance={appearance as AppearanceTypes}
+            onDismiss={action("clicked")}
+          >
+            ○○が完了しました。
+          </Toast>
+        </Column>
+      </RowContainer>
+    ))}
   </Container>
 );
