@@ -59,6 +59,9 @@ export * from "./MenuList";
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 
+export { default as Popover } from "./Popover";
+export * from "./Popover";
+
 export { default as Portal } from "./Portal";
 export * from "./Portal";
 
