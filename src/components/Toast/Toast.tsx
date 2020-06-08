@@ -26,9 +26,7 @@ const defaultToastProps: Omit<ToastProps, "appearance" | "children"> = {
 };
 
 const Toast = (props: Props) => (
-  <DefaultToast {...defaultToastProps} {...props}>
-    {props.children}
-  </DefaultToast>
+  <DefaultToast {...defaultToastProps} {...props} />
 );
 Toast.Provider = ToastProvider;
 Toast.useToasts = useToasts;
