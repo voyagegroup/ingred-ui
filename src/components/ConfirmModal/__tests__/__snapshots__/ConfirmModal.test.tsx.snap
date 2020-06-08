@@ -1,3 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfirmModal component testing ConfirmModal 1`] = `<DocumentFragment />`;
+exports[`ConfirmModal component testing ConfirmModal 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-fzoLag cQbesB"
+  >
+    <div
+      class="sc-AxhCb gVyHYV"
+    />
+    <div
+      class="sc-AxiKw sc-AxhUy dywwWM"
+    >
+      <form>
+        <div
+          class="sc-AxgMl gdoVuo"
+        >
+          <div
+            class="sc-AxheI bKfQtn"
+          >
+            <p
+              class="sc-fzpans fTXtsg"
+              color="#041C33"
+              font-size="20px"
+            >
+              タイトル
+            </p>
+            <div
+              class="sc-AxjAm gJyBXz"
+            />
+          </div>
+          <div
+            class="sc-fzozJi kQYPgQ"
+          >
+            <div
+              class="sc-fzplWN bGVqhG"
+              size="24"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(18.364 2) rotate(45)"
+                  width="5.142"
+                />
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(2 5.636) rotate(-45)"
+                  width="5.143"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-Axmtr dMPXPm"
+        >
+          <div
+            class="sc-AxjAm fDYLkK"
+          />
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
