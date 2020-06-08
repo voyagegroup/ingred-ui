@@ -4,7 +4,7 @@ import {
   ToastProviderProps,
 } from "react-toast-notifications";
 import ToastContainer from "./internal/ToastContainer";
-import Toast from "../Toast";
+import DefaultToast from "../DefaultToast";
 import { deepmerge } from "../../../utils/deepmerge";
 
 type Props = ToastProviderProps;
@@ -14,7 +14,10 @@ const ToastProvider: React.FunctionComponent<Props> = ({
   components: componentProps = {},
   ...rest
 }) => {
-  const components = deepmerge({ Toast, ToastContainer }, componentProps);
+  const components = deepmerge(
+    { Toast: DefaultToast, ToastContainer },
+    componentProps,
+  );
   return (
     <DefaultToastProvider components={components} {...rest}>
       {children}
