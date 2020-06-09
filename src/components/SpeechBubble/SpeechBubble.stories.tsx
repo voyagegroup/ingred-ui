@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { select, boolean, number } from "@storybook/addon-knobs";
 import SpeechBubble from ".";
 import Typography from "../Typography";
 import Icon from "../Icon";
@@ -31,6 +32,28 @@ export default {
 };
 
 export const Overview: React.FunctionComponent = () => {
+  const keepShow = boolean("Keep Show", false);
+  const offsetX = number("Offset X", 0);
+  const offsetY = number("Offset Y", 0);
+  const position = select(
+    "Position",
+    {
+      top: "top",
+      top_start: "top-start",
+      top_end: "top-end",
+      bottom: "bottom",
+      bottom_start: "bottom-start",
+      bottom_end: "bottom-end",
+      left: "left",
+      left_start: "left-start",
+      left_end: "left-end",
+      right: "right",
+      right_start: "right-start",
+      right_end: "right-end",
+    },
+    "top",
+  );
+
   const [
     iconWrapperElement,
     setIconWrapperElement,
@@ -47,7 +70,9 @@ export const Overview: React.FunctionComponent = () => {
         </div>
         <SpeechBubble
           baseElement={iconWrapperElement}
-          open={open}
+          open={open || keepShow}
+          offset={[offsetX, offsetY]}
+          positionPriority={[position]}
           onClose={onHandleIsOpen(false)}
         >
           <Content>
