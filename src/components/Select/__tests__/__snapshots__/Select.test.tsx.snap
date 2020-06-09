@@ -15,9 +15,74 @@ exports[`Select component testing Disable multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class=" css-8c8x5h-singleValue"
+            class="css-1dgzjo1-multiValue"
           >
-            hoge
+            <div
+              class="css-1mndlyy"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-1mndlyy"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
           <div
             class="css-1knq81y-Input"
@@ -84,18 +149,9 @@ exports[`Select component testing Disable multiple selected 1`] = `
           class=" css-47qful-MenuList"
         >
           <div
-            class=" css-1sv3iew-option"
-            id="react-select-7-option-0"
-            tabindex="-1"
+            class=" css-10hvqfk-NoOptionsMessage"
           >
-            hoge
-          </div>
-          <div
-            class=" css-1sv3iew-option"
-            id="react-select-7-option-1"
-            tabindex="-1"
-          >
-            huga
+            見つかりませんでした
           </div>
         </div>
       </div>
@@ -327,9 +383,74 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class=" css-etdf8s-singleValue"
+            class="css-1dgzjo1-multiValue"
           >
-            hoge
+            <div
+              class="css-18bjtpy"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-18bjtpy"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
           <div
             class="css-1knq81y-Input"
@@ -426,18 +547,9 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-47qful-MenuList"
         >
           <div
-            class=" css-1sv3iew-option"
-            id="react-select-10-option-0"
-            tabindex="-1"
+            class=" css-10hvqfk-NoOptionsMessage"
           >
-            hoge
-          </div>
-          <div
-            class=" css-1sv3iew-option"
-            id="react-select-10-option-1"
-            tabindex="-1"
-          >
-            huga
+            見つかりませんでした
           </div>
         </div>
       </div>
@@ -698,9 +810,74 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class=" css-105lwrm-singleValue"
+            class="css-1dgzjo1-multiValue"
           >
-            hoge
+            <div
+              class="css-gqt44k"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-gqt44k"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
           <div
             class="css-1knq81y-Input"
@@ -797,18 +974,9 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-47qful-MenuList"
         >
           <div
-            class=" css-1sv3iew-option"
-            id="react-select-4-option-0"
-            tabindex="-1"
+            class=" css-10hvqfk-NoOptionsMessage"
           >
-            hoge
-          </div>
-          <div
-            class=" css-1sv3iew-option"
-            id="react-select-4-option-1"
-            tabindex="-1"
-          >
-            huga
+            見つかりませんでした
           </div>
         </div>
       </div>

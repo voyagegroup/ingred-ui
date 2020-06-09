@@ -34,6 +34,7 @@ describe("Select component testing", () => {
       const { asFragment } = renderWithThemeProvider(
         <Select
           menuIsOpen
+          isMulti
           options={options}
           defaultValue={[
             { label: "hoge", value: "1" },
@@ -68,6 +69,7 @@ describe("Select component testing", () => {
         <Select
           menuIsOpen
           isDisabled
+          isMulti
           options={options}
           defaultValue={[
             { label: "hoge", value: "1" },
@@ -102,6 +104,7 @@ describe("Select component testing", () => {
         <Select
           menuIsOpen
           error
+          isMulti
           options={options}
           defaultValue={[
             { label: "hoge", value: "1" },
