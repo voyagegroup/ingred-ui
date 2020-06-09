@@ -6,13 +6,13 @@ import MenuList, { ContentProp } from "../MenuList/MenuList";
 import Modal from "../Modal";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
-  baseElement: HTMLElement | null;
+  baseElement?: HTMLElement | null;
   contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
 };
 
 const Menu: React.FunctionComponent<Props> = ({
-  baseElement,
+  baseElement = null,
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
   ...rest
