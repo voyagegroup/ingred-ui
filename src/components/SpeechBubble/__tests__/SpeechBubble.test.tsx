@@ -1,13 +1,26 @@
-// import * as React from "react";
-// import "@testing-library/jest-dom/extend-expect";
-// import { cleanup, render } from "@testing-library/react";
-// import { SpeechBubble } from "..";
+import * as React from "react";
+import "@testing-library/jest-dom/extend-expect";
+import { cleanup } from "@testing-library/react";
+import SpeechBubble from "..";
+import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
-// describe("SpeechBubble component testing", () => {
-//   afterEach(cleanup);
+jest.mock("react-dom", () => {
+  const original = jest.requireActual("react-dom");
+  return {
+    ...original,
+    createPortal: (node: any) => node,
+  };
+});
 
-//   test("SpeechBubble", () => {
-//     const { asFragment } = render(<SpeechBubble />);
-//     expect(asFragment()).toMatchSnapshot();
-//   });
-// });
+describe("SpeechBubble component testing", () => {
+  afterEach(cleanup);
+
+  test("SpeechBubble", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <SpeechBubble baseElement={null} open={true} onClose={() => {}}>
+        <div>hoge</div>
+      </SpeechBubble>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+});

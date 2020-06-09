@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SpeechBubble component testing SpeechBubble 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxhUy fZmwyN"
+  >
+    <div
+      class="sc-AxhCb cywSGC"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      <div
+        class="sc-AxjAm ldmlCS"
+      >
+        <div
+          class="sc-AxirZ erZjJG"
+        >
+          <div>
+            hoge
+          </div>
+        </div>
+        <div
+          class="sc-AxiKw gOnsof"
+        >
+          <div
+            class="sc-AxgMl llNzBE"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="#041C33"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#041C33"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
