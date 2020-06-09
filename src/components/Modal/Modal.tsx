@@ -2,10 +2,16 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Portal from "../Portal";
 
-type Props = {};
+type Props = {
+  hasBackground?: boolean;
+};
 
-const Modal: React.FunctionComponent<Props> = ({ children }) => (
+const Modal: React.FunctionComponent<Props> = ({
+  hasBackground = false,
+  children,
+}) => (
   <Portal>
+    {hasBackground && <Styled.ModalBackground />}
     <Styled.Container>{children}</Styled.Container>
   </Portal>
 );

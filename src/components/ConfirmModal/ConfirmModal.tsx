@@ -54,8 +54,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   const theme = useTheme();
   const showFooter = !!onSubmit;
   return (
-    <Modal>
-      <Styled.ModalBackground />
+    <Modal hasBackground={true}>
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
           <Styled.ModalHeader>

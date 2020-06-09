@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component testing Modal with background 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ kseInl"
+  />
+  <div
+    class="sc-AxjAm jpmlrb"
+  />
+</DocumentFragment>
+`;
+
+exports[`Modal component testing Modal without background 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm jpmlrb"
+  />
+</DocumentFragment>
+`;
