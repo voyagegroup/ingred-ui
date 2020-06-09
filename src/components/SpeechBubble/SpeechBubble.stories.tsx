@@ -11,17 +11,16 @@ const Container = styled.div`
 
 const RowContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
   margin: ${({ theme }) => theme.spacing * 3}px;
   padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.default};
-  button + button {
-    margin-left: ${({ theme }) => theme.spacing * 5}px;
-  }
 `;
 
-const Column = styled.div`
-  width: 120px;
+const Content = styled.div`
+  width: 300px;
 `;
 
 export default {
@@ -38,27 +37,27 @@ export const Overview: React.FunctionComponent = () => {
   ] = React.useState<HTMLDivElement | null>(null);
   const [open, setOpen] = React.useState<boolean>(false);
   const onHandleIsOpen = (isOpen: boolean) => () => {
-    console.log("hoge");
     setOpen(isOpen);
   };
   return (
     <Container>
       <RowContainer>
-        <Column>
-          <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!open)}>
-            <Icon name="question" type="fill" />
-          </div>
-          <SpeechBubble
-            baseElement={iconWrapperElement}
-            open={open}
-            onClose={onHandleIsOpen(false)}
-          >
+        <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!open)}>
+          <Icon name="question" type="fill" />
+        </div>
+        <SpeechBubble
+          baseElement={iconWrapperElement}
+          open={open}
+          onClose={onHandleIsOpen(false)}
+        >
+          <Content>
             <Typography size="sm" lineHeight="1.7">
-              指定したグループと紐付いているクリエイティブのみがグループとして選択できます。
-              グループとの紐付けは「設定＞デマンド広告クリエイティブ管理（リンク）」から行えます
+              指定したグループと紐付いているクリエイティブの
+              みがグループとして選択できます。グループとの紐
+              付けは設定メニューから行えます。
             </Typography>
-          </SpeechBubble>
-        </Column>
+          </Content>
+        </SpeechBubble>
       </RowContainer>
     </Container>
   );

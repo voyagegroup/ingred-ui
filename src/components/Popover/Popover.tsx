@@ -7,12 +7,14 @@ import Modal from "../Modal";
 type Props = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
+  offset?: [number, number];
   children: React.ReactNode;
 };
 
 const Popover: React.FunctionComponent<Props> = ({
   baseElement,
-  positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+  offset = [0, 0],
+  positionPriority = ["auto"],
   children,
   ...rest
 }) => {
@@ -24,6 +26,12 @@ const Popover: React.FunctionComponent<Props> = ({
   const { styles, attributes } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],
     modifiers: [
+      {
+        name: "offset",
+        options: {
+          offset,
+        },
+      },
       {
         name: "flip",
         options: {
