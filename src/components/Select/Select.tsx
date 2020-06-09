@@ -94,10 +94,12 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
         fontSize: `${fontSize.sm}px`,
       };
     },
-    singleValue: (base) => {
+    singleValue: (base, { isDisabled }) => {
       let color = theme.palette.black;
       if (error) {
         color = theme.palette.danger.main;
+      } else if (isDisabled) {
+        color = theme.palette.text.disabled;
       }
       return {
         ...base,
@@ -110,12 +112,20 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       backgroundColor: theme.palette.gray.light,
       borderRadius: "4px",
     }),
-    multiValueLabel: (base) => ({
-      ...base,
-      padding: 0,
-      fontSize: `${fontSize.sm}px`,
-      color: theme.palette.black,
-    }),
+    multiValueLabel: (base, { isDisabled }) => {
+      let color = theme.palette.black;
+      if (error) {
+        color = theme.palette.danger.main;
+      } else if (isDisabled) {
+        color = theme.palette.text.disabled;
+      }
+      return {
+        ...base,
+        padding: 0,
+        color: `${color}`,
+        fontSize: `${fontSize.sm}px`,
+      };
+    },
     multiValueRemove: (base) => ({
       ...base,
       ":hover": {
