@@ -1,13 +1,11 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
-import { usePopper } from "react-popper";
+import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import { ButtonSize } from "../Button/Button";
-import { useTheme } from "../../themes";
-import MenuList from "../MenuList";
 import { ContentProp } from "../MenuList/MenuList";
-import Portal from "../Portal";
+import Menu from "../Menu";
 
 type Props = {
   size?: ButtonSize;
@@ -32,10 +30,6 @@ const DropdownButton: React.FC<Props> = ({
     buttonElement,
     setButtonElement,
   ] = React.useState<HTMLDivElement | null>(null);
-  const [
-    popperElement,
-    setPopperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
   const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
@@ -48,25 +42,6 @@ const DropdownButton: React.FC<Props> = ({
   const onHandleContentActive = (isActive: boolean) => () => {
     setActiveContent(isActive);
   };
-
-  const { styles, attributes } = usePopper(buttonElement, popperElement, {
-    placement: positionPriority[0],
-    modifiers: [
-      {
-        name: "flip",
-        options: {
-          padding: 24,
-          fallbackPlacements: positionPriority,
-        },
-      },
-      {
-        name: "preventOverflow",
-        options: {
-          mainAxis: false,
-        },
-      },
-    ],
-  });
 
   return (
     <>
@@ -116,18 +91,14 @@ const DropdownButton: React.FC<Props> = ({
         )}
       </Styled.ButtonContainer>
       {(showContent || activeContent) && (
-        <Portal>
-          <Styled.MenuPopper
-            ref={setPopperElement}
-            style={styles.popper}
-            {...attributes.popper}
-            onMouseDown={onHandleContentActive(true)}
-            onTouchStart={onHandleContentActive(true)}
-            onClick={onHandleContentActive(false)}
-          >
-            <MenuList contents={contents} />
-          </Styled.MenuPopper>
-        </Portal>
+        <Menu
+          baseElement={buttonElement}
+          contents={contents}
+          positionPriority={positionPriority}
+          onMouseDown={onHandleContentActive(true)}
+          onTouchStart={onHandleContentActive(true)}
+          onClick={onHandleContentActive(false)}
+        />
       )}
     </>
   );

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import ConfirmModal from "..";
+import Modal from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
 jest.mock("react-dom", () => {
@@ -12,12 +12,17 @@ jest.mock("react-dom", () => {
   };
 });
 
-describe("ConfirmModal component testing", () => {
+describe("Modal component testing", () => {
   afterEach(cleanup);
 
-  test("ConfirmModal", () => {
+  test("Modal without background", () => {
+    const { asFragment } = renderWithThemeProvider(<Modal />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test("Modal with background", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ConfirmModal title="タイトル" />,
+      <Modal hasBackground={true} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

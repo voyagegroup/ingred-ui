@@ -3,14 +3,13 @@ name: "component"
 description: "component of description"
 message: "Please enter component name."
 root: "src"
-output: "./components/*"
 ignore: []
 ---
 
 # `{{ input | pascal }}/index.tsx`
 
 ```typescript
-export { {{ input | pascal }} } from "./{{ input | pascal }}";
+export { default } from "./{{ input | pascal }}";
 ```
 
 # `{{ input | pascal }}/{{ input | pascal }}.tsx`
@@ -28,7 +27,8 @@ const {{ input | pascal }}: React.FunctionComponent<Props> = () => (
   </Styled.Container>
 );
 
-export { {{ input | pascal }} };
+export default {{ input | pascal }};
+
 ```
 
 # `{{ input | pascal }}/styled.ts`
@@ -37,6 +37,7 @@ export { {{ input | pascal }} };
 import styled from "styled-components";
 
 export const Container = styled.div``;
+
 ```
 
 # `{{ input | pascal }}/__tests__/{{ input | pascal }}.test.tsx`
@@ -55,4 +56,22 @@ describe("{{ input | pascal }} component testing", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 });
+
+```
+
+# `{{ input }}/{{ input }}.stories.tsx`
+
+```typescript
+import * as React from "react";
+import { {{ input }} } from "./index";
+
+export default {
+  title: "{{ input }}",
+  component: {{ input }},
+};
+
+export const Basic = () => (
+  <{{ input }} />
+);
+
 ```

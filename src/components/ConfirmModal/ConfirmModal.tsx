@@ -10,6 +10,7 @@ import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
 import ActionButton from "../ActionButton";
 import { IconName } from "../Icon/Icon";
+import Modal from "../Modal";
 
 export type SubAction = {
   title: string;
@@ -53,8 +54,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   const theme = useTheme();
   const showFooter = !!onSubmit;
   return (
-    <Styled.Container>
-      <Styled.ModalBackground />
+    <Modal hasBackground={true}>
       <Styled.ModalContainer fullSize={fullSize}>
         <form onSubmit={onSubmit}>
           <Styled.ModalHeader>
@@ -110,7 +110,7 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
           </Styled.LoadingContainer>
         )}
       </Styled.ModalContainer>
-    </Styled.Container>
+    </Modal>
   );
 };
 
