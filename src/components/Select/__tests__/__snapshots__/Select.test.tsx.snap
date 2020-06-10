@@ -1,6 +1,374 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select component testing Select 1`] = `
+exports[`Select component testing Disable multiple selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-14jk2my-container"
+    >
+      <div
+        class=" css-1k8b2zs-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-1mndlyy"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-1mndlyy"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="react-select-7-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#B3BAC1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-10hvqfk-NoOptionsMessage"
+          >
+            見つかりませんでした
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Disable not selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-14jk2my-container"
+    >
+      <div
+        class=" css-1k8b2zs-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-cialks-placeholder"
+          >
+            選択してください
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="react-select-5-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#B3BAC1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-5-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-5-option-1"
+            tabindex="-1"
+          >
+            huga
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Disable one selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-14jk2my-container"
+    >
+      <div
+        class=" css-1k8b2zs-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-8c8x5h-singleValue"
+          >
+            hoge
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="react-select-6-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#B3BAC1"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-1sv3iew-option"
+            id="react-select-6-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-6-option-1"
+            tabindex="-1"
+          >
+            huga
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Error multiple selected 1`] = `
 <DocumentFragment>
   <div
     class="sc-AxjAm icRfnh"
@@ -9,7 +377,624 @@ exports[`Select component testing Select 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-1cspll6-control"
+        class=" css-ru5j42-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-18bjtpy"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-18bjtpy"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-10-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            class="sc-AxhUy KFyPX"
+          >
+            <div
+              aria-hidden="true"
+              class=" css-tlfecz-indicatorContainer"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#EB0A4E"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-1nod682-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-10hvqfk-NoOptionsMessage"
+          >
+            見つかりませんでした
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Error not selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-ru5j42-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-2rfliy-placeholder"
+          >
+            選択してください
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-8-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#EB0A4E"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-1nod682-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-8-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-8-option-1"
+            tabindex="-1"
+          >
+            huga
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Error one selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-ru5j42-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-etdf8s-singleValue"
+          >
+            hoge
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-9-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            class="sc-AxhUy KFyPX"
+          >
+            <div
+              aria-hidden="true"
+              class=" css-tlfecz-indicatorContainer"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#EB0A4E"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-1nod682-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-1sv3iew-option"
+            id="react-select-9-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-9-option-1"
+            tabindex="-1"
+          >
+            huga
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Normal multiple selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-1lxgh1k-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-gqt44k"
+            >
+              hoge
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1dgzjo1-multiValue"
+          >
+            <div
+              class="css-gqt44k"
+            >
+              huga
+            </div>
+            <div
+              class="css-19h014q"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-4-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            class="sc-AxhUy KFyPX"
+          >
+            <div
+              aria-hidden="true"
+              class=" css-tlfecz-indicatorContainer"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-10hvqfk-NoOptionsMessage"
+          >
+            見つかりませんでした
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Normal not selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-1lxgh1k-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -52,7 +1037,7 @@ exports[`Select component testing Select 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb bewVXq"
+              class="sc-AxhCb ijFnGd"
             >
               <div
                 class="sc-AxiKw hkUKuj"
@@ -73,6 +1058,162 @@ exports[`Select component testing Select 1`] = `
                 </svg>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-2-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-2-option-1"
+            tabindex="-1"
+          >
+            huga
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Select component testing Normal one selected 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm icRfnh"
+  >
+    <div
+      class=" css-2b097c-container"
+    >
+      <div
+        class=" css-1lxgh1k-control"
+      >
+        <div
+          class=" css-12ms9px-ValueContainer"
+        >
+          <div
+            class=" css-105lwrm-singleValue"
+          >
+            hoge
+          </div>
+          <div
+            class="css-1knq81y-Input"
+          >
+            <div
+              class=""
+              style="display: inline-block;"
+            >
+              <input
+                aria-autocomplete="list"
+                autocapitalize="none"
+                autocomplete="off"
+                autocorrect="off"
+                id="react-select-3-input"
+                spellcheck="false"
+                style="box-sizing: content-box; width: 2px; border: 0px; font-size: inherit; opacity: 1; outline: 0; padding: 0px;"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-size: inherit; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <div
+            class="sc-AxhUy KFyPX"
+          >
+            <div
+              aria-hidden="true"
+              class=" css-tlfecz-indicatorContainer"
+            >
+              <div
+                class="sc-AxiKw kKGUrf"
+                size="12"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(18.364 2) rotate(45)"
+                    width="5.142"
+                  />
+                  <rect
+                    fill="#041C33"
+                    height="23.141"
+                    transform="translate(2 5.636) rotate(-45)"
+                    width="5.143"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class=" css-tlfecz-indicatorContainer"
+          >
+            <div
+              class="sc-AxhCb ijFnGd"
+            >
+              <div
+                class="sc-AxiKw hkUKuj"
+                size="24"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" css-19hiz16-menu"
+      >
+        <div
+          class=" css-47qful-MenuList"
+        >
+          <div
+            class=" css-1sv3iew-option"
+            id="react-select-3-option-0"
+            tabindex="-1"
+          >
+            hoge
+          </div>
+          <div
+            class=" css-64ovdt-option"
+            id="react-select-3-option-1"
+            tabindex="-1"
+          >
+            huga
           </div>
         </div>
       </div>
