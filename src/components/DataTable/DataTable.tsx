@@ -62,6 +62,22 @@ function getDisplayData<T>({
   return sortedData;
 }
 
+function getPaginationDataLength<T>({
+  sourceData,
+  tabs,
+  currentTabIndex,
+}: {
+  sourceData: T[];
+  tabs?: Tab<T>[];
+  currentTabIndex: number;
+}) {
+  let data = sourceData;
+  if (!!tabs && tabs[currentTabIndex]) {
+    data = tabs[currentTabIndex].filter(data);
+  }
+  return data.length;
+}
+
 export type Column<T> = {
   name: string;
   selector: (data: T) => string | number;
@@ -147,6 +163,16 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     }),
   );
 
+  const totalLength = React.useMemo(
+    () =>
+      getPaginationDataLength({
+        sourceData,
+        tabs,
+        currentTabIndex,
+      }),
+    [sourceData, tabs, currentTabIndex],
+  );
+
   useDidUpdate(() => {
     const displayData = getDisplayData({
       sourceData,
@@ -168,6 +194,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   ]);
 
   // 検索などでpropsのdataが更新された場合は
+  // もしくはcurrentTabIndexが更新された場合は
   // paginationを1に戻す
   useDidUpdate(() => {
     const initialFilterState = {
@@ -184,7 +211,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       currentTabIndex,
     });
     setDisplayData(displayData);
-  }, [sourceData]);
+  }, [sourceData, currentTabIndex]);
 
   // 選択項目のクリア
   React.useEffect(() => {
@@ -362,13 +389,13 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
           >
             <Pager
               per={filterState.per}
-              total={sourceData.length}
+              total={totalLength}
               index={filterState.index}
               onClick={onHandlePagerChange}
             />
             <CountChanger
               per={filterState.per}
-              total={sourceData.length}
+              total={totalLength}
               index={filterState.index}
               onChange={onHandleCountChange}
             />
