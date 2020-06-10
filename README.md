@@ -1,4 +1,4 @@
-![logo.png](https://user-images.githubusercontent.com/15682771/84245728-7789d600-ab40-11ea-80c5-52b64b736c4e.png)
+![logo.png](https://user-images.githubusercontent.com/8923331/84282349-999d4b80-ab74-11ea-8321-746dbfb0dffb.png)
 
 # ingred-ui
 
