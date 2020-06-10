@@ -14,7 +14,7 @@ exports[`DropdownButton component testing DropdownButton not splited 1`] = `
     >
       保存する
       <div
-        class="sc-AxmLO jnRgqc"
+        class="sc-Axmtr kFYDZB"
         size="24"
       >
         <svg
@@ -47,7 +47,7 @@ exports[`DropdownButton component testing DropdownButton not splited 1`] = `
     >
       保存する
       <div
-        class="sc-AxmLO jnRgqc"
+        class="sc-Axmtr kFYDZB"
         size="24"
       >
         <svg
@@ -91,7 +91,7 @@ exports[`DropdownButton component testing DropdownButton splited 1`] = `
       height="42px"
     >
       <div
-        class="sc-AxmLO jnRgqc"
+        class="sc-Axmtr kFYDZB"
         size="24"
       >
         <svg
@@ -131,7 +131,7 @@ exports[`DropdownButton component testing DropdownButton splited 1`] = `
       height="42px"
     >
       <div
-        class="sc-AxmLO jnRgqc"
+        class="sc-Axmtr kFYDZB"
         size="24"
       >
         <svg

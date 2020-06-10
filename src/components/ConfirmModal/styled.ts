@@ -2,15 +2,6 @@ import styled, { keyframes } from "styled-components";
 import Card from "../Card";
 import { Radius, Size } from "../../styles";
 
-export const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: ${({ theme }) => theme.depth.modal};
-`;
-
 const fadeIn = keyframes`	
   0% {	
     opacity: 0;	

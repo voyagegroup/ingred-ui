@@ -20,6 +20,9 @@ export * from "./Checkbox";
 export { default as ConfirmModal } from "./ConfirmModal";
 export * from "./ConfirmModal";
 
+export { default as ContextMenu } from "./ContextMenu";
+export * from "./ContextMenu";
+
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
@@ -53,8 +56,14 @@ export * from "./NavigationRail";
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
 
+export { default as Menu } from "./Menu";
+export * from "./Menu";
+
 export { default as MenuList } from "./MenuList";
 export * from "./MenuList";
+
+export { default as Modal } from "./Modal";
+export * from "./Modal";
 
 export { default as Pager } from "./Pager";
 export * from "./Pager";

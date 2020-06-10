@@ -26,8 +26,3 @@ export const SingleButton = styled(Button)`
     size === "small" ? theme.spacing / 2 : theme.spacing}px;
   min-width: auto;
 `;
-
-export const MenuPopper = styled.div`
-  /* Portalの部分はいずれ抽象化された<Modal/>になるためdepth.modalを使用する */
-  z-index: ${({ theme }) => theme.depth.modal};
-`;
