@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  useToasts,
-  ToastProps,
-  AppearanceTypes,
-} from "react-toast-notifications";
+import { useToasts, ToastProps } from "react-toast-notifications";
 import DefaultToast from "./DefaultToast";
 import ToastProvider from "./ToastProvider";
 
-type Props = {
-  children: React.ReactNode;
-  appearance: AppearanceTypes;
-  onDismiss?: (id?: string | undefined) => void;
-};
-
-const defaultToastProps: Omit<ToastProps, "appearance" | "children"> = {
+const defaultToastProps: ToastProps = {
+  appearance: "info",
   autoDismiss: false,
   autoDismissTimeout: 0,
   isRunning: true,
@@ -23,9 +14,10 @@ const defaultToastProps: Omit<ToastProps, "appearance" | "children"> = {
   placement: "top-center",
   transitionDuration: 0,
   transitionState: "entered",
+  children: null,
 };
 
-const Toast = (props: Props) => (
+const Toast = (props: Partial<ToastProps>) => (
   <DefaultToast {...defaultToastProps} {...props} />
 );
 Toast.Provider = ToastProvider;
