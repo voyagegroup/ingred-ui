@@ -2,7 +2,7 @@ import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 type Props = {
-  onClickAway: (event: MouseEvent) => void;
+  onClickAway?: (event: MouseEvent) => void;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
@@ -18,7 +18,7 @@ const ClickAwayListener: React.FunctionComponent<Props> = ({
         childrenRef.current != null &&
         !childrenRef.current.contains(event.target as Node)
       ) {
-        onClickAway(event);
+        if (onClickAway) onClickAway(event);
       }
     };
     document.addEventListener("click", handleClickOutside);

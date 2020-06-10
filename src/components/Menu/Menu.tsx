@@ -4,17 +4,20 @@ import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import MenuList, { ContentProp } from "../MenuList/MenuList";
 import Modal from "../Modal";
+import ClickAwayListener from "../ClickAwayListener";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   baseElement?: HTMLElement | null;
   contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
+  onClickAway?: (event: MouseEvent) => void;
 };
 
 const Menu: React.FunctionComponent<Props> = ({
   baseElement = null,
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+  onClickAway,
   ...rest
 }) => {
   const [
@@ -43,14 +46,16 @@ const Menu: React.FunctionComponent<Props> = ({
 
   return (
     <Modal>
-      <Styled.Container
-        ref={setPopperElement}
-        style={styles.popper}
-        {...attributes.popper}
-        {...rest}
-      >
-        <MenuList contents={contents} />
-      </Styled.Container>
+      <ClickAwayListener onClickAway={onClickAway}>
+        <Styled.Container
+          ref={setPopperElement}
+          style={styles.popper}
+          {...attributes.popper}
+          {...rest}
+        >
+          <MenuList contents={contents} />
+        </Styled.Container>
+      </ClickAwayListener>
     </Modal>
   );
 };

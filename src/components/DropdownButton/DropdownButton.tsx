@@ -6,7 +6,6 @@ import Icon from "../Icon";
 import Menu from "../Menu";
 import { ButtonSize } from "../Button/Button";
 import { ContentProp } from "../MenuList/MenuList";
-import ClickAwayListener from "../ClickAwayListener";
 
 type Props = {
   size?: ButtonSize;
@@ -86,14 +85,13 @@ const DropdownButton: React.FC<Props> = ({
         )}
       </Styled.ButtonContainer>
       {showContent && (
-        <ClickAwayListener onClickAway={onHandleToggleContent(false)}>
-          <Menu
-            baseElement={buttonElement}
-            contents={contents}
-            positionPriority={positionPriority}
-            onClick={onHandleToggleContent(false)}
-          />
-        </ClickAwayListener>
+        <Menu
+          baseElement={buttonElement}
+          contents={contents}
+          positionPriority={positionPriority}
+          onClick={onHandleToggleContent(false)}
+          onClickAway={onHandleToggleContent(false)}
+        />
       )}
     </>
   );
