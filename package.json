@@ -31,7 +31,6 @@
     "moment": "^2.26.0",
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
-    "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
@@ -55,7 +54,6 @@
     "@types/react-dates": "^17.1.10",
     "@types/react-dom": "^16.0.5",
     "@types/react-select": "^3.0.10",
-    "@types/react-toast-notifications": "^2.4.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
