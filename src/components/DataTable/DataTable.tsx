@@ -16,7 +16,11 @@ import {
 } from "./sort";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
-import Pager, { useFilterState, getFilteredItems, FilterState } from "../Pager";
+import Pager, {
+  useFilterState,
+  getFilteredItems as getFilteredItemsByPagination,
+  FilterState,
+} from "../Pager";
 import ItemEmpty from "../ItemEmpty";
 
 import { StorageKey } from "../../constants/storageKeys";
@@ -35,6 +39,22 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
+function getFilteredItemsByTab<T>({
+  sourceData,
+  tabs,
+  currentTabIndex,
+}: {
+  sourceData: T[];
+  tabs?: Tab<T>[];
+  currentTabIndex: number;
+}): T[] {
+  let data = sourceData;
+  if (!!tabs && tabs[currentTabIndex]) {
+    data = tabs[currentTabIndex].filter(data);
+  }
+  return data;
+}
+
 function getDisplayData<T>({
   sourceData,
   sortState,
@@ -50,32 +70,17 @@ function getDisplayData<T>({
   tabs?: Tab<T>[];
   currentTabIndex: number;
 }): T[] {
-  let data = sourceData;
-  if (!!tabs && tabs[currentTabIndex]) {
-    data = tabs[currentTabIndex].filter(data);
-  }
+  const data = getFilteredItemsByTab({
+    sourceData,
+    tabs,
+    currentTabIndex,
+  });
   const sortedData = sort(data, sortState);
   if (enablePagination) {
-    const filteredData = getFilteredItems(sortedData, filterState);
+    const filteredData = getFilteredItemsByPagination(sortedData, filterState);
     return filteredData;
   }
   return sortedData;
-}
-
-function getPaginationDataLength<T>({
-  sourceData,
-  tabs,
-  currentTabIndex,
-}: {
-  sourceData: T[];
-  tabs?: Tab<T>[];
-  currentTabIndex: number;
-}) {
-  let data = sourceData;
-  if (!!tabs && tabs[currentTabIndex]) {
-    data = tabs[currentTabIndex].filter(data);
-  }
-  return data.length;
 }
 
 export type Column<T> = {
@@ -165,11 +170,11 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   const totalLength = React.useMemo(
     () =>
-      getPaginationDataLength({
+      getFilteredItemsByTab({
         sourceData,
         tabs,
         currentTabIndex,
-      }),
+      }).length,
     [sourceData, tabs, currentTabIndex],
   );
 
