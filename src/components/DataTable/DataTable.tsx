@@ -16,7 +16,11 @@ import {
 } from "./sort";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
-import Pager, { useFilterState, getFilteredItems, FilterState } from "../Pager";
+import Pager, {
+  useFilterState,
+  getFilteredItems as getFilteredItemsByPagination,
+  FilterState,
+} from "../Pager";
 import ItemEmpty from "../ItemEmpty";
 
 import { StorageKey } from "../../constants/storageKeys";
@@ -35,6 +39,22 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
+function getFilteredItemsByTab<T>({
+  sourceData,
+  tabs,
+  currentTabIndex,
+}: {
+  sourceData: T[];
+  tabs?: Tab<T>[];
+  currentTabIndex: number;
+}): T[] {
+  let data = sourceData;
+  if (!!tabs && tabs[currentTabIndex]) {
+    data = tabs[currentTabIndex].filter(data);
+  }
+  return data;
+}
+
 function getDisplayData<T>({
   sourceData,
   sortState,
@@ -50,13 +70,14 @@ function getDisplayData<T>({
   tabs?: Tab<T>[];
   currentTabIndex: number;
 }): T[] {
-  let data = sourceData;
-  if (!!tabs && tabs[currentTabIndex]) {
-    data = tabs[currentTabIndex].filter(data);
-  }
+  const data = getFilteredItemsByTab({
+    sourceData,
+    tabs,
+    currentTabIndex,
+  });
   const sortedData = sort(data, sortState);
   if (enablePagination) {
-    const filteredData = getFilteredItems(sortedData, filterState);
+    const filteredData = getFilteredItemsByPagination(sortedData, filterState);
     return filteredData;
   }
   return sortedData;
@@ -147,6 +168,16 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     }),
   );
 
+  const totalLength = React.useMemo(
+    () =>
+      getFilteredItemsByTab({
+        sourceData,
+        tabs,
+        currentTabIndex,
+      }).length,
+    [sourceData, tabs, currentTabIndex],
+  );
+
   useDidUpdate(() => {
     const displayData = getDisplayData({
       sourceData,
@@ -168,6 +199,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   ]);
 
   // 検索などでpropsのdataが更新された場合は
+  // もしくはcurrentTabIndexが更新された場合は
   // paginationを1に戻す
   useDidUpdate(() => {
     const initialFilterState = {
@@ -184,7 +216,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       currentTabIndex,
     });
     setDisplayData(displayData);
-  }, [sourceData]);
+  }, [sourceData, currentTabIndex]);
 
   // 選択項目のクリア
   React.useEffect(() => {
@@ -362,13 +394,13 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
           >
             <Pager
               per={filterState.per}
-              total={sourceData.length}
+              total={totalLength}
               index={filterState.index}
               onClick={onHandlePagerChange}
             />
             <CountChanger
               per={filterState.per}
-              total={sourceData.length}
+              total={totalLength}
               index={filterState.index}
               onChange={onHandleCountChange}
             />

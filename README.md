@@ -1,3 +1,5 @@
+![logo.png](https://user-images.githubusercontent.com/8923331/84283521-0e24ba00-ab76-11ea-94a2-6430e4b289d3.png)
+
 # ingred-ui
 
 >
