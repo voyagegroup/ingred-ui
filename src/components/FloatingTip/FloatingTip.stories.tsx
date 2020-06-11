@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { select, boolean, number } from "@storybook/addon-knobs";
-import SpeechBubble from ".";
+import FloatingTip from ".";
 import Typography from "../Typography";
 import Icon from "../Icon";
 
@@ -25,9 +25,9 @@ const Content = styled.div`
 `;
 
 export default {
-  title: "SpeechBubble",
+  title: "FloatingTip",
   parameters: {
-    component: SpeechBubble,
+    component: FloatingTip,
   },
 };
 
@@ -68,7 +68,7 @@ export const Overview: React.FunctionComponent = () => {
         <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!open)}>
           <Icon name="question" type="fill" />
         </div>
-        <SpeechBubble
+        <FloatingTip
           baseElement={iconWrapperElement}
           open={open || keepShow}
           offset={[offsetX, offsetY]}
@@ -82,7 +82,7 @@ export const Overview: React.FunctionComponent = () => {
               付けは設定メニューから行えます。
             </Typography>
           </Content>
-        </SpeechBubble>
+        </FloatingTip>
       </RowContainer>
     </Container>
   );

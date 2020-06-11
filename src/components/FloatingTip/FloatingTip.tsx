@@ -15,8 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-// MEMO: 命名はまた相談
-const SpeechBubble: React.FunctionComponent<Props> = ({
+const FloatingTip: React.FunctionComponent<Props> = ({
   baseElement,
   positionPriority = ["auto"],
   offset = [0, 0],
@@ -43,4 +42,4 @@ const SpeechBubble: React.FunctionComponent<Props> = ({
   ) : null;
 };
 
-export default SpeechBubble;
+export default FloatingTip;

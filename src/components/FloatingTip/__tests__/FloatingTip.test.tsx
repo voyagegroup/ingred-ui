@@ -1,7 +1,7 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import SpeechBubble from "..";
+import FloatingTip from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
 jest.mock("react-dom", () => {
@@ -12,14 +12,14 @@ jest.mock("react-dom", () => {
   };
 });
 
-describe("SpeechBubble component testing", () => {
+describe("FloatingTip component testing", () => {
   afterEach(cleanup);
 
-  test("SpeechBubble", () => {
+  test("FloatingTip", () => {
     const { asFragment } = renderWithThemeProvider(
-      <SpeechBubble baseElement={null} open={true} onClose={() => {}}>
+      <FloatingTip baseElement={null} open={true} onClose={() => {}}>
         <div>hoge</div>
-      </SpeechBubble>,
+      </FloatingTip>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
