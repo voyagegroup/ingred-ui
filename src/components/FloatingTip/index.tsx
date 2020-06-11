@@ -1,1 +1,1 @@
-export { default } from "./SpeechBubble";
+export { default } from "./FloatingTip";
