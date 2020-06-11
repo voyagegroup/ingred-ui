@@ -48,6 +48,11 @@ const sampleData: SampleObject[] = [
   { id: 7, name: "7name", count: 3 },
   { id: 8, name: "8name", count: 2 },
   { id: 9, name: "9name", count: 1 },
+  { id: 10, name: "9name", count: 1 },
+  { id: 11, name: "9name", count: 1 },
+  { id: 12, name: "9name", count: 1 },
+  { id: 13, name: "9name", count: 1 },
+  { id: 14, name: "9name", count: 1 },
 ];
 
 export const Overview = () => (
