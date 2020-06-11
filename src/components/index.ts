@@ -98,6 +98,9 @@ export * from "./Table";
 export { default as TextField } from "./TextField";
 export * from "./TextField";
 
+export { default as Toast } from "./Toast";
+export * from "./Toast";
+
 export { default as Tooltip } from "./Tooltip";
 export * from "./Tooltip";
 
