@@ -18,13 +18,9 @@ const ContextMenu: React.FunctionComponent<Props> = ({
     setIconWrapperElement,
   ] = React.useState<HTMLButtonElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
-  const [activeContent, setActiveContent] = React.useState<boolean>(false);
 
   const onHandleToggleContent = (showContent: boolean) => () => {
     setShowContent(showContent);
-  };
-  const onHandleContentActive = (isActive: boolean) => () => {
-    setActiveContent(isActive);
   };
 
   return (
@@ -36,14 +32,13 @@ const ContextMenu: React.FunctionComponent<Props> = ({
         onClick={onHandleToggleContent(!showContent)}
         onBlur={onHandleToggleContent(false)}
       />
-      {(showContent || activeContent) && (
+      {showContent && (
         <Menu
           baseElement={iconWrapperElement}
           contents={contents}
           positionPriority={positionPriority}
-          onMouseDown={onHandleContentActive(true)}
-          onTouchStart={onHandleContentActive(true)}
-          onClick={onHandleContentActive(false)}
+          onClick={onHandleToggleContent(false)}
+          onClickAway={onHandleToggleContent(false)}
         />
       )}
     </>
