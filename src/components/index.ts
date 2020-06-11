@@ -41,6 +41,9 @@ export * from "./ErrorText";
 export { default as Flex } from "./Flex";
 export * from "./Flex";
 
+export { default as FloatingTip } from "./FloatingTip";
+export * from "./FloatingTip";
+
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 
