@@ -11,15 +11,17 @@ type Props = {
 
 const buttonSize: Record<
   GroupButtonSize,
-  { minWidth: string; height: string }
+  { minWidth: string; height: string; padding: number }
 > = {
   small: {
     minWidth: "63px",
     height: "32px",
+    padding: 1,
   },
   medium: {
     minWidth: "71px",
     height: "42px",
+    padding: 2,
   },
 };
 
@@ -50,6 +52,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
     <Styled.ButtonGroupContainer
       height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
+      padding={buttonSize[size].padding}
     >
       {childrenWithProps}
     </Styled.ButtonGroupContainer>
