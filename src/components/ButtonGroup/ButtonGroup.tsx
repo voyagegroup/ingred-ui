@@ -31,7 +31,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
 }) => {
   const theme = useTheme();
   const horizontalPadding =
-    size === "small" ? `${theme.spacing * 1}px` : `${theme.spacing * 2}px`;
+    size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
 
   const childProps = disabled
     ? {
