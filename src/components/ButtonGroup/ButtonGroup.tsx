@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import { ButtonSize } from "../Button/Button";
+import { useTheme } from "../../themes";
 
 type GroupButtonSize = Exclude<ButtonSize, "large">;
 
@@ -28,6 +29,10 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
   disabled = false,
   children,
 }) => {
+  const theme = useTheme();
+  const horizontalPadding =
+    size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
+
   const childProps = disabled
     ? {
         disabled: true,
@@ -50,6 +55,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
     <Styled.ButtonGroupContainer
       height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
+      horizontalPadding={horizontalPadding}
     >
       {childrenWithProps}
     </Styled.ButtonGroupContainer>

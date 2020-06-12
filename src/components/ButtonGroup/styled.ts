@@ -4,6 +4,7 @@ import { Size } from "../../styles/size";
 export type ContainerProps = {
   height: string;
   minWidth: string;
+  horizontalPadding: string;
 };
 
 export const ButtonGroupContainer = styled.div<ContainerProps>`
@@ -13,8 +14,8 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
     min-width: ${({ minWidth }) => minWidth};
     width: auto;
     height: ${({ height }) => height};
-    padding-right: ${({ theme }) => theme.spacing}px;
-    padding-left: ${({ theme }) => theme.spacing}px;
+    padding-right: ${({ horizontalPadding }) => horizontalPadding};
+    padding-left: ${({ horizontalPadding }) => horizontalPadding};
   }
 
   button:disabled + button:not(:disabled) {
