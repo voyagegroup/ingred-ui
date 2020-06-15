@@ -26,18 +26,24 @@ export const Container = styled.div<{ isActive: boolean }>`
   }
 `;
 
-export const TextWrapper = styled.div<{ isActive: boolean; isOpen: boolean }>`
+export const TextContainer = styled.div<{ isActive: boolean; isOpen: boolean }>`
   flex-shrink: 1;
   flex-grow: 1;
+  display: flex;
+  align-items: center;
   margin-left: ${({ theme }) => theme.spacing * 1.5}px;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   color: ${({ theme, isActive }) =>
     theme.palette.text[isActive ? "primary" : "secondary"]};
   font-weight: bold;
+  transition: opacity ${NavigationRailTransitionDuration}s;
+  min-width: 0;
+`;
+
+export const TextWrapper = styled.span`
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  transition: opacity ${NavigationRailTransitionDuration}s;
 `;
 
 export const ArrowIconWrapper = styled.div<{
