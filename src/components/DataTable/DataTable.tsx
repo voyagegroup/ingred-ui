@@ -111,6 +111,7 @@ type Props<T> = {
   emptySubtitle?: string;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
+  defaultSortOrder?: "desc" | "asc";
 };
 
 // idを必須にしたい
@@ -127,6 +128,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   emptySubtitle,
   per,
   defaultSortField,
+  defaultSortOrder,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -170,6 +172,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   const [sortState, setSortState] = useOrderState<T>(
     firstSortableColumn ? firstSortableColumn.selector : undefined,
     firstSortableColumn ? firstSortableColumn.name : "",
+    defaultSortOrder,
   );
   const [filterState, setFilterState] = useFilterState(
     per || getPerFromLocalStorage(),

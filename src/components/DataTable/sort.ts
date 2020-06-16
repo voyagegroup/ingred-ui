@@ -15,7 +15,13 @@ const defaultGetValue = (obj: any): string | number => obj;
 export const useOrderState = <T>(
   getValue: GetValue<T> = defaultGetValue,
   name: string,
-) => React.useState<CurrentSortState<T>>({ isDesc: false, getValue, name });
+  order?: "desc" | "asc",
+) =>
+  React.useState<CurrentSortState<T>>({
+    getValue,
+    name,
+    isDesc: order === "desc",
+  });
 
 export const changeOrderState = <T>(
   currentSortState: CurrentSortState<T>,
