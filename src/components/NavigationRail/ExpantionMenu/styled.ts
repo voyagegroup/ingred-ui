@@ -65,7 +65,7 @@ type ExpantionProps = {
 export const Expantion = styled.div<ExpantionProps>`
   width: ${NavigationRailWidth.WIDE};
   overflow-y: hidden;
-  padding-left: ${({ theme }) => theme.spacing * 7}px;
+  /* padding-left: ${({ theme }) => theme.spacing * 7}px; */
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};
   transition: max-height 0.3s
     ${({ delay }) => (delay ? NavigationRailTransitionDuration : 0)}s;
