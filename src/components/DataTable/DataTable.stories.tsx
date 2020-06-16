@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
 import DataTable from "./";
 import Input from "../Input";
 import Button from "../Button";
@@ -59,6 +58,8 @@ export const Overview = () => (
   <Container>
     <DataTable
       data={sampleData}
+      defaultSortField="名前"
+      defaultSortOrder="desc"
       columns={[
         {
           name: "ID",
@@ -144,7 +145,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    (item) => item.name && item.name.includes(searchText),
+    (item) => item.name && item.name.includes(searchText)
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -263,7 +264,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main],
+    [theme.palette.primary.main]
   );
   return (
     <Container>
