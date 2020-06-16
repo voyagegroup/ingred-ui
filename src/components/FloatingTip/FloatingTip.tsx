@@ -10,7 +10,7 @@ type Props = {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
 };
@@ -19,12 +19,12 @@ const FloatingTip: React.FunctionComponent<Props> = ({
   baseElement,
   positionPriority = ["auto"],
   offset = [0, 0],
-  open,
+  isOpen,
   onClose,
   children,
 }) => {
   const theme = useTheme();
-  return open ? (
+  return isOpen ? (
     <Popover
       baseElement={baseElement}
       positionPriority={positionPriority}

@@ -58,9 +58,9 @@ export const Overview: React.FunctionComponent = () => {
     iconWrapperElement,
     setIconWrapperElement,
   ] = React.useState<HTMLDivElement | null>(null);
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const onHandleIsOpen = (isOpen: boolean) => () => {
-    setOpen(isOpen);
+    setIsOpen(isOpen);
   };
   return (
     <Container>
@@ -70,7 +70,7 @@ export const Overview: React.FunctionComponent = () => {
         </div>
         <FloatingTip
           baseElement={iconWrapperElement}
-          open={open || keepShow}
+          isOpen={isOpen || keepShow}
           offset={[offsetX, offsetY]}
           positionPriority={[position]}
           onClose={onHandleIsOpen(false)}
