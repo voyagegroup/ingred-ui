@@ -8,6 +8,10 @@ type RowProps = {
 const Component = styled.tr<RowProps>`
   background-color: ${({ highlighted, theme }) =>
     highlighted ? theme.palette.primary.highlight : "none"};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.highlight};
+  }
 `;
 
 export type Props = React.ComponentPropsWithRef<"tr"> & {
