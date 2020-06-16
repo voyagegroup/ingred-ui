@@ -44,7 +44,7 @@ export const Overview = () => {
           </Typography>
           <Spacer pt={2} />
           <TextField
-            value="ゴシガルトーク"
+            value="Textfield"
             readOnly={true}
             errorText={"数値で入力してください"}
           />

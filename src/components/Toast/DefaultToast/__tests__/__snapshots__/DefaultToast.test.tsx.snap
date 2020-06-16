@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultToast component testing DefaultToast error 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKtazC"
+    style="height: 8px;"
+  >
+    <div
+      class="sc-AxirZ cywoxa"
+      opacity="1"
+      transform="translate3d(0,0,0)"
+    >
+      <div
+        class="sc-AxgMl GHvoa"
+        display="flex"
+      >
+        <div
+          class="sc-AxgMl emAFrd"
+          display="flex"
+        >
+          <div
+            class="sc-AxiKw dtQDvP"
+          >
+            <div
+              class="sc-AxheI kVDYRm"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,0H18V18H0Z"
+                  fill="none"
+                />
+                <path
+                  d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                  fill="#FDFEFF"
+                  transform="translate(-6521.011 -4616.011)"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="sc-Axmtr huxUkl"
+            color="#A90556"
+            font-size="14px"
+          >
+            hoge
+          </p>
+        </div>
+        <div
+          class="sc-AxhCb dnXiiO"
+        >
+          <div
+            class="sc-AxheI kVDYRm"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="#F96979"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#F96979"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxhUy hAoiiv"
+        opacity="0"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultToast component testing DefaultToast info 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKtazC"
+    style="height: 8px;"
+  >
+    <div
+      class="sc-AxirZ kxyRwe"
+      opacity="1"
+      transform="translate3d(0,0,0)"
+    >
+      <div
+        class="sc-AxgMl GHvoa"
+        display="flex"
+      >
+        <div
+          class="sc-AxgMl emAFrd"
+          display="flex"
+        >
+          <div
+            class="sc-AxiKw eKGFEO"
+          >
+            <div
+              class="sc-AxheI kVDYRm"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="#FDFEFF"
+                  height="23.141"
+                  transform="translate(18.364 2) rotate(45)"
+                  width="5.142"
+                />
+                <rect
+                  fill="#FDFEFF"
+                  height="23.141"
+                  transform="translate(2 5.636) rotate(-45)"
+                  width="5.143"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="sc-Axmtr jhePiP"
+            color="#054BAF"
+            font-size="14px"
+          >
+            hoge
+          </p>
+        </div>
+        <div
+          class="sc-AxhCb dnXiiO"
+        >
+          <div
+            class="sc-AxheI kVDYRm"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="#9CDDFD"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#9CDDFD"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxhUy eAzyHe"
+        opacity="0"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultToast component testing DefaultToast success 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKtazC"
+    style="height: 8px;"
+  >
+    <div
+      class="sc-AxirZ jpdcmC"
+      opacity="1"
+      transform="translate3d(0,0,0)"
+    >
+      <div
+        class="sc-AxgMl GHvoa"
+        display="flex"
+      >
+        <div
+          class="sc-AxgMl emAFrd"
+          display="flex"
+        >
+          <div
+            class="sc-AxiKw hYKvBb"
+          >
+            <div
+              class="sc-AxheI kVDYRm"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,0H18V18H0Z"
+                  fill="none"
+                />
+                <rect
+                  fill="#FDFEFF"
+                  height="6.084"
+                  transform="translate(2.895 10.011) rotate(-45)"
+                  width="1.721"
+                />
+                <rect
+                  fill="#FDFEFF"
+                  height="11.317"
+                  transform="translate(15.126 3.951) rotate(45)"
+                  width="1.72"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="sc-Axmtr gKQSVN"
+            color="#338D13"
+            font-size="14px"
+          >
+            hoge
+          </p>
+        </div>
+        <div
+          class="sc-AxhCb dnXiiO"
+        >
+          <div
+            class="sc-AxheI kVDYRm"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="#B4ED7B"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#B4ED7B"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxhUy dHuYJj"
+        opacity="0"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DefaultToast component testing DefaultToast warning 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm fKtazC"
+    style="height: 8px;"
+  >
+    <div
+      class="sc-AxirZ iiuvla"
+      opacity="1"
+      transform="translate3d(0,0,0)"
+    >
+      <div
+        class="sc-AxgMl GHvoa"
+        display="flex"
+      >
+        <div
+          class="sc-AxgMl emAFrd"
+          display="flex"
+        >
+          <div
+            class="sc-AxiKw loNzYp"
+          >
+            <div
+              class="sc-AxheI kVDYRm"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="#FDFEFF"
+                  height="23.141"
+                  transform="translate(18.364 2) rotate(45)"
+                  width="5.142"
+                />
+                <rect
+                  fill="#FDFEFF"
+                  height="23.141"
+                  transform="translate(2 5.636) rotate(-45)"
+                  width="5.143"
+                />
+              </svg>
+            </div>
+          </div>
+          <p
+            class="sc-Axmtr hCfiGs"
+            color="#785F03"
+            font-size="14px"
+          >
+            hoge
+          </p>
+        </div>
+        <div
+          class="sc-AxhCb dnXiiO"
+        >
+          <div
+            class="sc-AxheI kVDYRm"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                fill="#FDE54E"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#FDE54E"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-AxhUy iXoSOV"
+        opacity="0"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -19,12 +19,30 @@ import {
   Checkbox,
   RadioButton,
   Table,
+  Toast,
   Tooltip,
   Select,
   DropdownButton,
   DatePicker,
 } from "ingred-ui";
 import { GlobalStyle } from "./styles/globalStyle";
+
+const GetToastSample = () => {
+  const { addToast } = Toast.useToasts();
+  const onHandleClick = () => {
+    addToast("○○が完了しました", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+  };
+  return (
+    <div>
+      <Button inline onClick={onHandleClick}>
+        トーストを表示する
+      </Button>
+    </div>
+  );
+};
 
 const componentList = [
   {
@@ -203,6 +221,10 @@ const componentList = [
           </Tooltip>
         ),
       },
+      {
+        title: "Toast",
+        content: <GetToastSample />,
+      },
     ],
   },
 ];
@@ -233,49 +255,55 @@ export class App extends React.Component {
       <>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Spacer pt={10} pb={7}>
-            <Typography
-              component="h1"
-              weight="bold"
-              size="xxxxxxxl"
-              align="center"
-            >
-              XDC-UI
-            </Typography>
-          </Spacer>
-          <Styled.Container>
-            <Spacer pl={2} pt={4} pb={2}>
-              <Typography component="h2" weight="bold" size="xxxxxl">
-                Color
+          <Toast.Provider
+            placement="top-center"
+            autoDismissTimeout={3000}
+            transitionDuration={300}
+          >
+            <Spacer pt={10} pb={7}>
+              <Typography
+                component="h1"
+                weight="bold"
+                size="xxxxxxxl"
+                align="center"
+              >
+                XDC-UI
               </Typography>
             </Spacer>
-            <Styled.GridContainer>
-              {getColors(theme).map((item) => (
-                <Styled.Column key={item.title}>
-                  <Styled.Title>{item.title}</Styled.Title>
-                  <Styled.ColorTile palette={item.palette} />
-                </Styled.Column>
-              ))}
-            </Styled.GridContainer>
+            <Styled.Container>
+              <Spacer pl={2} pt={4} pb={2}>
+                <Typography component="h2" weight="bold" size="xxxxxl">
+                  Color
+                </Typography>
+              </Spacer>
+              <Styled.GridContainer>
+                {getColors(theme).map((item) => (
+                  <Styled.Column key={item.title}>
+                    <Styled.Title>{item.title}</Styled.Title>
+                    <Styled.ColorTile palette={item.palette} />
+                  </Styled.Column>
+                ))}
+              </Styled.GridContainer>
 
-            {componentList.map((group) => (
-              <React.Fragment key={group.title}>
-                <Spacer pl={2} pt={4} pb={2}>
-                  <Typography component="h2" weight="bold" size="xxxxxl">
-                    {group.title}
-                  </Typography>
-                </Spacer>
-                <Styled.GridContainer>
-                  {group.items.map((item) => (
-                    <Styled.Column key={item.title}>
-                      <Styled.Title>{item.title}</Styled.Title>
-                      <Styled.Component>{item.content}</Styled.Component>
-                    </Styled.Column>
-                  ))}
-                </Styled.GridContainer>
-              </React.Fragment>
-            ))}
-          </Styled.Container>
+              {componentList.map((group) => (
+                <React.Fragment key={group.title}>
+                  <Spacer pl={2} pt={4} pb={2}>
+                    <Typography component="h2" weight="bold" size="xxxxxl">
+                      {group.title}
+                    </Typography>
+                  </Spacer>
+                  <Styled.GridContainer>
+                    {group.items.map((item) => (
+                      <Styled.Column key={item.title}>
+                        <Styled.Title>{item.title}</Styled.Title>
+                        <Styled.Component>{item.content}</Styled.Component>
+                      </Styled.Column>
+                    ))}
+                  </Styled.GridContainer>
+                </React.Fragment>
+              ))}
+            </Styled.Container>
+          </Toast.Provider>
         </ThemeProvider>
       </>
     );
