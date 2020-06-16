@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Popover component testing Popover 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ cNxaZg"
+  >
+    <div
+      class="sc-AxjAm jbvdRN"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      hoge
+    </div>
+  </div>
+</DocumentFragment>
+`;

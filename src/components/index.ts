@@ -41,6 +41,9 @@ export * from "./ErrorText";
 export { default as Flex } from "./Flex";
 export * from "./Flex";
 
+export { default as FloatingTip } from "./FloatingTip";
+export * from "./FloatingTip";
+
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 
@@ -70,6 +73,9 @@ export * from "./Modal";
 
 export { default as Pager } from "./Pager";
 export * from "./Pager";
+
+export { default as Popover } from "./Popover";
+export * from "./Popover";
 
 export { default as Portal } from "./Portal";
 export * from "./Portal";

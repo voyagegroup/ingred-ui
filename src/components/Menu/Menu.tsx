@@ -1,10 +1,8 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
-import { usePopper } from "react-popper";
 import MenuList, { ContentProp } from "../MenuList/MenuList";
-import Modal from "../Modal";
 import ClickAwayListener from "../ClickAwayListener";
+import Popover from "../Popover";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   baseElement?: HTMLElement | null;
@@ -19,45 +17,12 @@ const Menu: React.FunctionComponent<Props> = ({
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
   onClickAway,
   ...rest
-}) => {
-  const [
-    popperElement,
-    setPopperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
-
-  const { styles, attributes } = usePopper(baseElement, popperElement, {
-    placement: positionPriority[0],
-    modifiers: [
-      {
-        name: "flip",
-        options: {
-          padding: 24,
-          fallbackPlacements: positionPriority,
-        },
-      },
-      {
-        name: "preventOverflow",
-        options: {
-          mainAxis: false,
-        },
-      },
-    ],
-  });
-
-  return (
-    <Modal>
-      <ClickAwayListener onClickAway={onClickAway}>
-        <Styled.Container
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-          {...rest}
-        >
-          <MenuList contents={contents} />
-        </Styled.Container>
-      </ClickAwayListener>
-    </Modal>
-  );
-};
+}) => (
+  <Popover baseElement={baseElement} positionPriority={positionPriority}>
+    <ClickAwayListener onClickAway={onClickAway}>
+      <MenuList contents={contents} {...rest} />
+    </ClickAwayListener>
+  </Popover>
+);
 
 export default Menu;
