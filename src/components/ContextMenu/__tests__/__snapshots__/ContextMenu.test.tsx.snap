@@ -3,7 +3,7 @@
 exports[`ContextMenu component testing ContextMenu 1`] = `
 <DocumentFragment>
   <button
-    class="sc-AxjAm jXWceb"
+    class="sc-AxjAm jXWceb sc-AxhUy kFchZA"
     data-testid="icon-wrapper"
   >
     <div
@@ -36,41 +36,41 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     />
   </button>
   <div
-    class="sc-AxmLO kBckan"
+    class="sc-fzozJi jXQLm"
   >
     <div
-      class="sc-Axmtr fNeQDA"
+      class="sc-AxmLO kcpTOR"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="sc-AxhUy hYXiue"
+        class="sc-AxgMl daAZqM"
       >
         <hr
-          class="sc-AxheI iUKrcA"
+          class="sc-Axmtr bybBIf"
         />
         <div
-          class="sc-AxgMl hLPPgL"
+          class="sc-AxheI gETZIx"
         >
           保存する
         </div>
         <div
-          class="sc-AxgMl hLPPgL"
+          class="sc-AxheI gETZIx"
         >
           保存して実行する
         </div>
         <hr
-          class="sc-AxheI iUKrcA"
+          class="sc-Axmtr bybBIf"
         />
         <div
-          class="sc-AxgMl hLPPgL"
+          class="sc-AxheI gETZIx"
         >
           下書きとして保存する
         </div>
         <div
-          class="sc-AxgMl hLPPgL"
+          class="sc-AxheI gETZIx"
         >
           やっぱり何もしない
         </div>

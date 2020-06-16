@@ -37,7 +37,7 @@ const ExpantionMenu: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth < textWidth);
+    setShowTooltip(wrapperWidth === textWidth);
   }, [textWrapperElement, textElement]);
 
   const onHandleClick = (
@@ -77,13 +77,13 @@ const ExpantionMenu: React.FC<Props> = ({
             type={isActive ? "fill" : "line"}
             color={isActive ? "active" : "line"}
           />
-          <Styled.TextWrapper
+          <Styled.TextContainer
             ref={textWrapperElement}
             isActive={isActive}
             isOpen={isOpen}
           >
-            <span ref={textElement}>{title}</span>
-          </Styled.TextWrapper>
+            <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
+          </Styled.TextContainer>
           <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
             <Icon
               name="arrow_bottom"

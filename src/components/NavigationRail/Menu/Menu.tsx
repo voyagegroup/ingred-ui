@@ -47,13 +47,13 @@ const Menu: React.FC<Props> = ({
           type={isActive ? "fill" : "line"}
           color={isActive ? "active" : "line"}
         />
-        <Styled.TextWrapper
+        <Styled.TextContainer
           ref={textWrapperElement}
           isActive={isActive}
           isOpen={isOpen}
         >
-          <span ref={textElement}>{title}</span>
-        </Styled.TextWrapper>
+          <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
+        </Styled.TextContainer>
       </Styled.Container>
     </Tooltip>
   );

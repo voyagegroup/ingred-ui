@@ -1,7 +1,7 @@
 import * as React from "react";
+import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { ContentProp } from "../MenuList/MenuList";
-import ActionButton from "../ActionButton";
 import Menu from "../Menu";
 
 type Props = {
@@ -25,7 +25,7 @@ const ContextMenu: React.FunctionComponent<Props> = ({
 
   return (
     <>
-      <ActionButton
+      <Styled.ActionButton
         ref={setIconWrapperElement}
         data-testid="icon-wrapper"
         icon="more_vert"
