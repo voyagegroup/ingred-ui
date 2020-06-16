@@ -9,7 +9,7 @@ export type Props = React.ComponentPropsWithRef<"button"> & {
   icon: IconName;
 };
 
-const ActionButton: React.FunctionComponent<Props> = React.forwardRef(
+const ActionButton = React.forwardRef<HTMLButtonElement, Props>(
   ({ children, icon, ...rest }, ref) => (
     <Styled.Container {...rest} ref={ref}>
       <Spacer pr={0.25}>

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../styles/color";
+import { Radius } from "../../styles";
 
 export const Container = styled.div<{ inline: boolean }>`
   display: ${({ inline }) => (inline ? "inline-block" : "block")};
   padding: ${({ theme }) => theme.spacing * 1.25}px 0;
-  box-shadow: 0px 0px 16px ${({ theme }) => theme.palette.gray.main}67;
-  border-radius: 4px;
+  border-radius: ${Radius.SMALL};
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
