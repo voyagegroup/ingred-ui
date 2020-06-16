@@ -17,8 +17,8 @@ type Props = {
 
 const FloatingTip: React.FunctionComponent<Props> = ({
   baseElement,
-  positionPriority = ["auto"],
-  offset = [0, 0],
+  positionPriority = ["right-start"],
+  offset = [0, 10],
   isOpen,
   onClose,
   children,

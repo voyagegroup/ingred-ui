@@ -17,7 +17,7 @@ describe("FloatingTip component testing", () => {
 
   test("FloatingTip", () => {
     const { asFragment } = renderWithThemeProvider(
-      <FloatingTip baseElement={null} open={true} onClose={() => {}}>
+      <FloatingTip baseElement={null} isOpen={true} onClose={() => {}}>
         <div>hoge</div>
       </FloatingTip>,
     );
