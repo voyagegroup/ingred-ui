@@ -12,8 +12,6 @@ export const Container = styled.div<{ isActive: boolean }>`
   white-space: nowrap;
 
   &:hover {
-    /* color: ${({ theme, isActive }) =>
-      isActive ? theme.palette.text.primary : theme.palette.gray.deepDark}; */
-    background-color: ${({ theme }) => theme.palette.gray.highlight};
+    background-color: ${({ theme }) => theme.palette.gray.light};
   }
 `;
