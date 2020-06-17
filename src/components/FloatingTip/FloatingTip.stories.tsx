@@ -20,6 +20,10 @@ const RowContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
+const IconWrapper = styled.div`
+  cursor: pointer;
+`;
+
 const Content = styled.div`
   width: 300px;
 `;
@@ -34,7 +38,7 @@ export default {
 export const Overview: React.FunctionComponent = () => {
   const keepShow = boolean("Keep Show", false);
   const offsetX = number("Offset X", 0);
-  const offsetY = number("Offset Y", 0);
+  const offsetY = number("Offset Y", 10);
   const position = select(
     "Position",
     {
@@ -65,9 +69,12 @@ export const Overview: React.FunctionComponent = () => {
   return (
     <Container>
       <RowContainer>
-        <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!isOpen)}>
+        <IconWrapper
+          ref={setIconWrapperElement}
+          onClick={onHandleIsOpen(!isOpen)}
+        >
           <Icon name="question" type="fill" />
-        </div>
+        </IconWrapper>
         <FloatingTip
           baseElement={iconWrapperElement}
           isOpen={isOpen || keepShow}
