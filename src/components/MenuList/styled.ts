@@ -11,9 +11,10 @@ export const Container = styled.div<{ inline: boolean }>`
 
 export const TextContainer = styled.div`
   cursor: pointer;
+  display: flex;
+  align-items: center;
   height: 32px;
   padding: 0 ${({ theme }) => theme.spacing * 2}px;
-  line-height: 32px;
   &:hover {
     background-color: ${({ theme }) => theme.palette.gray.light};
   }

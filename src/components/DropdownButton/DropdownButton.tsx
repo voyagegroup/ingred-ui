@@ -56,6 +56,7 @@ const DropdownButton: React.FC<Props> = ({
               size={size}
               inline={true}
               disabled={disabled}
+              data-testid="menu-toggle"
               onClick={onHandleToggleContent(!showContent)}
             >
               <Icon
@@ -71,6 +72,7 @@ const DropdownButton: React.FC<Props> = ({
           <Styled.SingleButton
             size={size}
             disabled={disabled}
+            data-testid="menu-toggle"
             onClick={onHandleToggleContent(!showContent)}
           >
             {children}
