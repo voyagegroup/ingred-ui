@@ -20,6 +20,10 @@ const Content = styled.div`
   height: 200px;
 `;
 
+const BaseElement = styled.div`
+  border: 1px solid ${({ theme }) => theme.palette.divider};
+`;
+
 export default {
   title: "Popover",
   parameters: {
@@ -52,11 +56,11 @@ export const Overview = () => {
   const [
     buttonElement,
     setButtonElement,
-  ] = React.useState<HTMLButtonElement | null>(null);
+  ] = React.useState<HTMLDivElement | null>(null);
 
   return (
     <Container>
-      <button ref={setButtonElement}>Base element</button>
+      <BaseElement ref={setButtonElement}>Base element</BaseElement>
       <Popover
         baseElement={buttonElement}
         positionPriority={[position]}

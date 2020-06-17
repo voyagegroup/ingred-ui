@@ -65,7 +65,7 @@ export const Overview: React.FunctionComponent = () => {
   return (
     <Container>
       <RowContainer>
-        <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!open)}>
+        <div ref={setIconWrapperElement} onClick={onHandleIsOpen(!isOpen)}>
           <Icon name="question" type="fill" />
         </div>
         <FloatingTip
