@@ -55,7 +55,7 @@ export const Overview: React.FunctionComponent = () => {
       right_start: "right-start",
       right_end: "right-end",
     },
-    "top",
+    "right-start",
   );
 
   const [
