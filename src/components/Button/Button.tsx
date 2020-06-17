@@ -95,6 +95,9 @@ const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
 };
 
 export type Props = Omit<BaseButtonProps, "color"> & {
+  component?:
+    | keyof JSX.IntrinsicElements
+    | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   inline?: boolean;
   size?: ButtonSize;
@@ -103,6 +106,7 @@ export type Props = Omit<BaseButtonProps, "color"> & {
 };
 
 const Button: React.FunctionComponent<Props> = ({
+  component = "button",
   children,
   color = "primary",
   inline = false,
@@ -128,6 +132,7 @@ const Button: React.FunctionComponent<Props> = ({
     <Styled.ButtonContainer
       {...anchorProps}
       {...rest}
+      as={component}
       inline={inline}
       horizontalPadding={horizontalPadding}
       normal={{ ...colorStyle.normal }}
