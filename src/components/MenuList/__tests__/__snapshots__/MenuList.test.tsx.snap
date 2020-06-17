@@ -9,27 +9,51 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxiKw cplZSJ"
     />
     <div
-      class="sc-AxirZ jtvWQI"
+      class="sc-AxirZ jrLUvq"
     >
-      保存する
+      <p
+        class="sc-AxhCb kdcBdC"
+        color="#041C33"
+        font-size="13px"
+      >
+        保存する
+      </p>
     </div>
     <div
-      class="sc-AxirZ jtvWQI"
+      class="sc-AxirZ jrLUvq"
     >
-      保存して実行する
+      <p
+        class="sc-AxhCb kdcBdC"
+        color="#041C33"
+        font-size="13px"
+      >
+        保存して実行する
+      </p>
     </div>
     <hr
       class="sc-AxiKw cplZSJ"
     />
     <div
-      class="sc-AxirZ jtvWQI"
+      class="sc-AxirZ jrLUvq"
     >
-      下書きとして保存する
+      <p
+        class="sc-AxhCb kdcBdC"
+        color="#041C33"
+        font-size="13px"
+      >
+        下書きとして保存する
+      </p>
     </div>
     <div
-      class="sc-AxirZ jtvWQI"
+      class="sc-AxirZ jrLUvq"
     >
-      やっぱり何もしない
+      <p
+        class="sc-AxhCb kdcBdC"
+        color="#041C33"
+        font-size="13px"
+      >
+        やっぱり何もしない
+      </p>
     </div>
   </div>
 </DocumentFragment>

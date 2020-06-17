@@ -52,27 +52,51 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           class="sc-Axmtr bybBIf"
         />
         <div
-          class="sc-AxheI gETZIx"
+          class="sc-AxheI kHbkvT"
         >
-          保存する
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存する
+          </p>
         </div>
         <div
-          class="sc-AxheI gETZIx"
+          class="sc-AxheI kHbkvT"
         >
-          保存して実行する
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存して実行する
+          </p>
         </div>
         <hr
           class="sc-Axmtr bybBIf"
         />
         <div
-          class="sc-AxheI gETZIx"
+          class="sc-AxheI kHbkvT"
         >
-          下書きとして保存する
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
+          >
+            下書きとして保存する
+          </p>
         </div>
         <div
-          class="sc-AxheI gETZIx"
+          class="sc-AxheI kHbkvT"
         >
-          やっぱり何もしない
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
+          >
+            やっぱり何もしない
+          </p>
         </div>
       </div>
     </div>
