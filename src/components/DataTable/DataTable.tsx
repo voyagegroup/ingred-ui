@@ -152,22 +152,12 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   // sort, pagination, count
 
   // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
-  const onSetFirstSortableColumn = (defaultSortField?: string) => {
-    if (defaultSortField) {
-      const selectedColumn = columns.find(
-        (column) => column.name === defaultSortField,
-      );
-      if (selectedColumn && selectedColumn.sortable === true) {
-        return selectedColumn;
-      } else {
-        return columns.find((column) => column.sortable === true);
-      }
-    } else {
-      return columns.find((column) => column.sortable === true);
-    }
-  };
-
-  const firstSortableColumn = onSetFirstSortableColumn(defaultSortField);
+  const selectedColumn = columns.find(
+    (column) => column.name === defaultSortField,
+  );
+  const firstSortableColumn = selectedColumn?.sortable
+    ? selectedColumn
+    : columns.find((column) => column.sortable === true);
 
   const [sortState, setSortState] = useOrderState<T>(
     firstSortableColumn ? firstSortableColumn.selector : undefined,
