@@ -20,6 +20,16 @@ const RowContainer = styled.div`
   }
 `;
 
+const Link: React.FunctionComponent<{ href: string; className: string }> = ({
+  href,
+  className,
+  children,
+}) => (
+  <a href={href} className={className} onClick={action("clicked")}>
+    {children}
+  </a>
+);
+
 export default {
   title: "Button",
   parameters: {
@@ -293,6 +303,26 @@ export const Overview = () => (
           onClick={action("clicked")}
         >
           削除
+        </Button>
+      </Flex>
+    </RowContainer>
+    <RowContainer>
+      <Typography weight="bold" size="xxl">
+        Link
+      </Typography>
+      <Spacer pt={2} />
+      <Flex display="flex" alignItems="center">
+        <Button inline size="small" href="#" onClick={action("clicked")}>
+          Link without component
+        </Button>
+        <Spacer pr={1} />
+        <Button
+          inline
+          size="small"
+          component={Link}
+          onClick={action("clicked")}
+        >
+          Link with component
         </Button>
       </Flex>
     </RowContainer>
