@@ -161,8 +161,8 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   const [sortState, setSortState] = useOrderState<T>({
     isDesc: defaultSortOrder === "desc",
-    name: firstSortableColumn ? firstSortableColumn.name : "",
-    getValue: firstSortableColumn ? firstSortableColumn.selector : undefined,
+    name: firstSortableColumn?.name || "",
+    getValue: firstSortableColumn?.selector,
   });
 
   const [filterState, setFilterState] = useFilterState(
