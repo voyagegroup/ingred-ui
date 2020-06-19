@@ -6,6 +6,7 @@ export type NavigationRailContextValues = {
   onHandleOpen?: () => void;
   onHandleClose?: () => void;
   onHandleFixed?: () => void;
+  onHandleUnFixed?: () => void;
 };
 
 export const NavigationRailContext = React.createContext<

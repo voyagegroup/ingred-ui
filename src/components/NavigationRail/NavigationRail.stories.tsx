@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 import NavigationRail, { NavigationRailContext } from ".";
 import { IconName } from "../Icon/Icon";
 
@@ -141,7 +142,12 @@ export const Overview = () => {
   const withHeader = boolean("With Header", true);
   const withFooter = boolean("With Footer", true);
   return (
-    <NavigationRail.Container>
+    <NavigationRail.Container
+      onOpen={action("opened")}
+      onClose={action("closed")}
+      onFixed={action("fixed")}
+      onUnFixed={action("unfixed")}
+    >
       <NavigationRail>
         {withHeader && (
           <NavigationRail.Header>

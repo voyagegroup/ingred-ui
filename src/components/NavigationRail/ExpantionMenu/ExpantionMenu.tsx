@@ -22,7 +22,7 @@ const ExpantionMenu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
-  const { isOpen } = React.useContext(NavigationRailContext);
+  const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
   const [isExpand, setIsExpand] = React.useState<boolean>(false);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
@@ -69,6 +69,7 @@ const ExpantionMenu: React.FC<Props> = ({
         positionPriority={["right"]}
         enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
+        onMouseEnter={onHandleClose}
       >
         <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
           <Icon
