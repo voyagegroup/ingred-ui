@@ -74,11 +74,15 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           height="auto"
         >
           <div
-            class="sc-fzqNJr ejpWaH"
+            class="sc-fzqNJr dXCCGg"
           >
-            <span>
-              デマンド設定
-            </span>
+            <div
+              class="sc-fzoyAV rNAWR"
+            >
+              <span>
+                デマンド設定
+              </span>
+            </div>
           </div>
         </div>
         <div
@@ -103,7 +107,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </svg>
           </div>
           <div
-            class="sc-fzpans gnGizh"
+            class="sc-fzpans cMFQwP"
           >
             <span
               class="sc-fzplWN gSMKae"

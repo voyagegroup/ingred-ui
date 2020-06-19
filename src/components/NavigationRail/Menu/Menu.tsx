@@ -30,7 +30,7 @@ const Menu: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth < textWidth);
+    setShowTooltip(wrapperWidth === textWidth);
   }, [textWrapperElement, textElement]);
 
   return (

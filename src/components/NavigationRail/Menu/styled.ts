@@ -37,6 +37,7 @@ export const TextContainer = styled.div<{ isActive: boolean; isOpen: boolean }>`
     theme.palette.text[isActive ? "primary" : "secondary"]};
   font-weight: bold;
   transition: opacity ${NavigationRailTransitionDuration}s;
+  min-width: 0;
 `;
 
 export const TextWrapper = styled.span`

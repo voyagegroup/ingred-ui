@@ -33,8 +33,10 @@ const ExpantionMenuItem: React.FC<Props> = ({
       enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
     >
-      <Styled.Container ref={textWrapperElement} isActive={isActive} {...rest}>
-        <span ref={textElement}>{title}</span>
+      <Styled.Container {...rest}>
+        <Styled.TextContainer ref={textWrapperElement} isActive={isActive}>
+          <span ref={textElement}>{title}</span>
+        </Styled.TextContainer>
       </Styled.Container>
     </Tooltip>
   );
