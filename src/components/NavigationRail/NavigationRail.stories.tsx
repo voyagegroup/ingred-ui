@@ -169,6 +169,8 @@ export const Overview = () => {
                       title={expantion.title}
                     />
                   ))}
+                  onExpand={action("expanded menu")}
+                  onClose={action("closed menu")}
                 />
               ) : (
                 <NavigationRail.Menu

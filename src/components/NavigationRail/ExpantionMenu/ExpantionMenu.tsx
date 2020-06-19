@@ -11,6 +11,9 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   isActive?: boolean;
   iconName: IconName;
   expantionList?: React.ReactNode[];
+  defaultExpand?: boolean;
+  onExpand?: () => void;
+  onClose?: () => void;
 };
 
 const ExpantionMenu: React.FC<Props> = ({
@@ -18,13 +21,16 @@ const ExpantionMenu: React.FC<Props> = ({
   isActive = false,
   iconName,
   expantionList = [],
+  defaultExpand = false,
+  onExpand,
+  onClose,
   onClick,
   onMouseEnter,
   ...rest
 }) => {
   const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
-  const [isExpand, setIsExpand] = React.useState<boolean>(false);
+  const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
   const [expantionHeight, setExpantionHeight] = React.useState<string>("auto");
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
@@ -53,7 +59,12 @@ const ExpantionMenu: React.FC<Props> = ({
 
   React.useEffect(() => {
     setDelayTransition(false);
-  }, [isExpand]);
+    if (isExpand) {
+      if (onExpand) onExpand();
+    } else {
+      if (onClose) onClose();
+    }
+  }, [isExpand, onExpand, onClose]);
 
   React.useEffect(() => {
     if (!expantionElement.current) return;
