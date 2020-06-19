@@ -10,7 +10,7 @@ exports[`DataTable component testing DataTable 1`] = `
     >
       <thead>
         <tr
-          class="sc-fzoXzr fsOuNX"
+          class="sc-fzoXzr cqNSdS"
         >
           <th
             class="sc-AxmLO PYjft"
@@ -50,7 +50,7 @@ exports[`DataTable component testing DataTable 1`] = `
       </thead>
       <tbody>
         <tr
-          class="sc-fzoXzr fsOuNX"
+          class="sc-fzoXzr cqNSdS"
         >
           <td
             class="sc-fzoLag emDgsi"
@@ -61,7 +61,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name2
+              name1
             </p>
           </td>
           <td
@@ -73,12 +73,12 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name2
+              name1
             </p>
           </td>
         </tr>
         <tr
-          class="sc-fzoXzr fsOuNX"
+          class="sc-fzoXzr cqNSdS"
         >
           <td
             class="sc-fzoLag emDgsi"
@@ -89,7 +89,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name1
+              name2
             </p>
           </td>
           <td
@@ -101,7 +101,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name1
+              name2
             </p>
           </td>
         </tr>

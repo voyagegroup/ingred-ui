@@ -110,6 +110,8 @@ type Props<T> = {
   emptyTitle?: string;
   emptySubtitle?: string;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
+  defaultSortField?: string;
+  defaultSortOrder?: "desc" | "asc";
 };
 
 // idを必須にしたい
@@ -125,6 +127,8 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   emptyTitle,
   emptySubtitle,
   per,
+  defaultSortField,
+  defaultSortOrder = "desc",
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -146,14 +150,21 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   }
 
   // sort, pagination, count
-  // 初回表示時は一番左側のsortableなcolumnを基準にソートする
-  const firstSortableColumn = columns.find(
-    (column) => column.sortable === true,
+
+  // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
+  const selectedColumn = columns.find(
+    (column) => column.name === defaultSortField,
   );
-  const [sortState, setSortState] = useOrderState<T>(
-    firstSortableColumn ? firstSortableColumn.selector : undefined,
-    firstSortableColumn ? firstSortableColumn.name : "",
-  );
+  const firstSortableColumn = selectedColumn?.sortable
+    ? selectedColumn
+    : columns.find((column) => column.sortable === true);
+
+  const [sortState, setSortState] = useOrderState<T>({
+    isDesc: defaultSortOrder === "desc",
+    name: firstSortableColumn?.name || "",
+    getValue: firstSortableColumn?.selector,
+  });
+
   const [filterState, setFilterState] = useFilterState(
     per || getPerFromLocalStorage(),
   );
