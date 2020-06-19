@@ -12,16 +12,8 @@ export type CurrentSortState<T> = {
 
 const defaultGetValue = (obj: any): string | number => obj;
 
-export const useOrderState = <T>(
-  getValue: GetValue<T> = defaultGetValue,
-  name: string,
-  order?: "desc" | "asc",
-) =>
-  React.useState<CurrentSortState<T>>({
-    getValue,
-    name,
-    isDesc: order === "desc",
-  });
+export const useOrderState = <T>(defaultState: CurrentSortState<T>) =>
+  React.useState<CurrentSortState<T>>(defaultState);
 
 export const changeOrderState = <T>(
   currentSortState: CurrentSortState<T>,

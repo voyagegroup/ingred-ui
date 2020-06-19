@@ -128,7 +128,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   emptySubtitle,
   per,
   defaultSortField,
-  defaultSortOrder,
+  defaultSortOrder = "desc",
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -159,11 +159,12 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     ? selectedColumn
     : columns.find((column) => column.sortable === true);
 
-  const [sortState, setSortState] = useOrderState<T>(
-    firstSortableColumn ? firstSortableColumn.selector : undefined,
-    firstSortableColumn ? firstSortableColumn.name : "",
-    defaultSortOrder,
-  );
+  const [sortState, setSortState] = useOrderState<T>({
+    isDesc: defaultSortOrder === "desc",
+    name: firstSortableColumn ? firstSortableColumn.name : "",
+    getValue: firstSortableColumn ? firstSortableColumn.selector : undefined,
+  });
+
   const [filterState, setFilterState] = useFilterState(
     per || getPerFromLocalStorage(),
   );

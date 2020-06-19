@@ -61,7 +61,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name2
+              name1
             </p>
           </td>
           <td
@@ -73,7 +73,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name2
+              name1
             </p>
           </td>
         </tr>
@@ -89,7 +89,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name1
+              name2
             </p>
           </td>
           <td
@@ -101,7 +101,7 @@ exports[`DataTable component testing DataTable 1`] = `
               color="#041C33"
               font-size="14px"
             >
-              name1
+              name2
             </p>
           </td>
         </tr>
