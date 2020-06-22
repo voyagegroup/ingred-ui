@@ -143,10 +143,8 @@ export const Overview = () => {
   const withFooter = boolean("With Footer", true);
   return (
     <NavigationRail.Container
-      onOpen={action("opened")}
-      onClose={action("closed")}
-      onFixed={action("fixed")}
-      onUnFixed={action("unfixed")}
+      onChangeOpen={(isOpen) => action(`change opened "${isOpen}"`)()}
+      onChangeFixed={(isFixed) => action(`change fixed "${isFixed}"`)()}
     >
       <NavigationRail>
         {withHeader && (
@@ -169,8 +167,9 @@ export const Overview = () => {
                       title={expantion.title}
                     />
                   ))}
-                  onExpand={action("expanded menu")}
-                  onClose={action("closed menu")}
+                  onChangeExpand={(isExpanded) =>
+                    action(`change expanded "${isExpanded}"`)()
+                  }
                 />
               ) : (
                 <NavigationRail.Menu

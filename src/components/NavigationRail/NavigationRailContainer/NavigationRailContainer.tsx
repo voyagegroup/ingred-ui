@@ -4,19 +4,15 @@ import { NavigationRailContext } from "../utils";
 
 type Props = {
   defaultFixed?: boolean;
-  onOpen?: () => void;
-  onClose?: () => void;
-  onFixed?: () => void;
-  onUnFixed?: () => void;
+  onChangeOpen?: (isOpen: boolean) => void;
+  onChangeFixed?: (isFixed: boolean) => void;
   children: React.ReactNode;
 };
 
 const NavigationRailContainer: React.FC<Props> = ({
   defaultFixed = false,
-  onOpen,
-  onClose,
-  onFixed,
-  onUnFixed,
+  onChangeOpen,
+  onChangeFixed,
   children,
 }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
@@ -25,25 +21,25 @@ const NavigationRailContainer: React.FC<Props> = ({
   const onHandleOpen = () => {
     if (!isFixed) {
       setIsOpen(true);
-      if (onOpen) onOpen();
+      if (onChangeOpen) onChangeOpen(true);
     }
   };
 
   const onHandleClose = () => {
     if (!isFixed) {
       setIsOpen(false);
-      if (onClose) onClose();
+      if (onChangeOpen) onChangeOpen(false);
     }
   };
 
   const onHandleFixed = () => {
     setIsFixed(true);
-    if (onFixed) onFixed();
+    if (onChangeFixed) onChangeFixed(true);
   };
 
   const onHandleUnFixed = () => {
     setIsFixed(false);
-    if (onUnFixed) onUnFixed();
+    if (onChangeFixed) onChangeFixed(false);
   };
 
   return (

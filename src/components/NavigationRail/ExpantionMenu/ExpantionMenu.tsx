@@ -12,8 +12,7 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   iconName: IconName;
   expantionList?: React.ReactNode[];
   defaultExpand?: boolean;
-  onExpand?: () => void;
-  onClose?: () => void;
+  onChangeExpand?: (isExpand: boolean) => void;
 };
 
 const ExpantionMenu: React.FC<Props> = ({
@@ -22,8 +21,7 @@ const ExpantionMenu: React.FC<Props> = ({
   iconName,
   expantionList = [],
   defaultExpand = false,
-  onExpand,
-  onClose,
+  onChangeExpand,
   onClick,
   onMouseEnter,
   ...rest
@@ -43,7 +41,7 @@ const ExpantionMenu: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth === textWidth);
+    setShowTooltip(wrapperWidth <= textWidth);
   }, [textWrapperElement, textElement]);
 
   const onHandleClick = (
@@ -59,12 +57,8 @@ const ExpantionMenu: React.FC<Props> = ({
 
   React.useEffect(() => {
     setDelayTransition(false);
-    if (isExpand) {
-      if (onExpand) onExpand();
-    } else {
-      if (onClose) onClose();
-    }
-  }, [isExpand, onExpand, onClose]);
+    if (onChangeExpand) onChangeExpand(isExpand);
+  }, [isExpand, onChangeExpand]);
 
   React.useEffect(() => {
     if (!expantionElement.current) return;
