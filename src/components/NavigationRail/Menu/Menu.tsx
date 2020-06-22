@@ -19,7 +19,7 @@ const Menu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
-  const { isOpen } = React.useContext(NavigationRailContext);
+  const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
@@ -30,7 +30,7 @@ const Menu: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth < textWidth);
+    setShowTooltip(wrapperWidth <= textWidth);
   }, [textWrapperElement, textElement]);
 
   return (
@@ -39,6 +39,7 @@ const Menu: React.FC<Props> = ({
       positionPriority={["right"]}
       enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
+      onMouseEnter={onHandleClose}
     >
       <Styled.Container isActive={isActive} {...rest}>
         <Icon

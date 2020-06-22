@@ -11,6 +11,8 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   isActive?: boolean;
   iconName: IconName;
   expantionList?: React.ReactNode[];
+  defaultExpand?: boolean;
+  onChangeExpand?: (isExpand: boolean) => void;
 };
 
 const ExpantionMenu: React.FC<Props> = ({
@@ -18,13 +20,15 @@ const ExpantionMenu: React.FC<Props> = ({
   isActive = false,
   iconName,
   expantionList = [],
+  defaultExpand = false,
+  onChangeExpand,
   onClick,
   onMouseEnter,
   ...rest
 }) => {
-  const { isOpen } = React.useContext(NavigationRailContext);
+  const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
-  const [isExpand, setIsExpand] = React.useState<boolean>(false);
+  const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
   const [expantionHeight, setExpantionHeight] = React.useState<string>("auto");
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
@@ -37,7 +41,7 @@ const ExpantionMenu: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth === textWidth);
+    setShowTooltip(wrapperWidth <= textWidth);
   }, [textWrapperElement, textElement]);
 
   const onHandleClick = (
@@ -53,7 +57,8 @@ const ExpantionMenu: React.FC<Props> = ({
 
   React.useEffect(() => {
     setDelayTransition(false);
-  }, [isExpand]);
+    if (onChangeExpand) onChangeExpand(isExpand);
+  }, [isExpand, onChangeExpand]);
 
   React.useEffect(() => {
     if (!expantionElement.current) return;
@@ -69,6 +74,7 @@ const ExpantionMenu: React.FC<Props> = ({
         positionPriority={["right"]}
         enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
+        onMouseEnter={onHandleClose}
       >
         <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
           <Icon

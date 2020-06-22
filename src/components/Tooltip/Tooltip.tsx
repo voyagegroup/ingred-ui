@@ -6,7 +6,7 @@ import * as Styled from "./styled";
 import Portal from "../Portal";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
-type Props = {
+type Props = React.ComponentPropsWithRef<"div"> & {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
@@ -30,6 +30,7 @@ const Tooltip: React.FC<Props> = ({
   width,
   disabled = false,
   children,
+  ...rest
 }) => {
   /* eslint-disable prettier/prettier */
   const [baseElement, setBaseElement] = React.useState<HTMLElement | null>(null);
@@ -144,9 +145,10 @@ const Tooltip: React.FC<Props> = ({
               ref={setPopperElement}
               style={styles.popper}
               {...attributes.popper}
-              width={width}
               onMouseOver={stopPropagation}
               onMouseOut={stopPropagation}
+              {...rest}
+              width={width}
             >
               {content}
               <Styled.Arrow

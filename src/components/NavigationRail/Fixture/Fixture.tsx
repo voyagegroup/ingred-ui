@@ -10,7 +10,9 @@ type Props = {};
 
 const Fixture: React.FC<Props> = () => {
   const theme = useTheme();
-  const { isFixed, onHandleFixed } = React.useContext(NavigationRailContext);
+  const { isFixed, onHandleFixed, onHandleUnFixed } = React.useContext(
+    NavigationRailContext,
+  );
 
   return (
     <Tooltip
@@ -19,7 +21,10 @@ const Fixture: React.FC<Props> = () => {
       offset={[0, theme.spacing * 2.5]}
       enterDelay={NavigationRailTransitionDuration}
     >
-      <Styled.Container isFixed={isFixed} onClick={onHandleFixed}>
+      <Styled.Container
+        isFixed={isFixed}
+        onClick={isFixed ? onHandleUnFixed : onHandleFixed}
+      >
         <Icon name="arrow_double_left" />
       </Styled.Container>
     </Tooltip>

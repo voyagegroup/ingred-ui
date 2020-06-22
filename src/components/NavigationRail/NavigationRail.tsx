@@ -22,8 +22,8 @@ const NavigationRail = ({ children }: Props) => {
     <Styled.Container
       isOpen={isOpen}
       isFixed={isFixed}
-      onMouseOver={onHandleOpen}
-      onMouseOut={onHandleClose}
+      onMouseEnter={onHandleOpen}
+      onMouseLeave={onHandleClose}
     >
       {children}
     </Styled.Container>
