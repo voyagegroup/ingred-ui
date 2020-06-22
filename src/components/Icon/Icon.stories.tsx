@@ -78,7 +78,7 @@ export const ForColor = () => {
       <Typography weight="bold" size="xxl">
         fill
       </Typography>
-      {renderIcons({ size: "lg", color: "fill" })}
+      {renderIcons({ size: "lg", color: "fill", type: "fill" })}
 
       <Typography weight="bold" size="xxl">
         line
