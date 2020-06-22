@@ -43,6 +43,15 @@ export const Overview = () => {
     "medium",
   );
 
+  const color = select(
+    "Color",
+    {
+      Primary: "primary",
+      Secondary: "secondary",
+    },
+    "primary",
+  );
+
   const contents = [
     {
       text: "保存する",
@@ -66,12 +75,18 @@ export const Overview = () => {
   return (
     <Container>
       <Inner>
-        <DropdownButton disabled={disabled} size={size} contents={contents}>
+        <DropdownButton
+          disabled={disabled}
+          color={color}
+          size={size}
+          contents={contents}
+        >
           {title}
         </DropdownButton>
         <Spacer pr={40} />
         <DropdownButton
           disabled={disabled}
+          color={color}
           split={true}
           size={size}
           contents={contents}

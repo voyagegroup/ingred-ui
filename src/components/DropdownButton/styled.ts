@@ -8,12 +8,17 @@ export const ButtonContainer = styled.div`
 export const MainButton = styled(Button)`
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+  border-right: none;
 `;
 
 export const SplitToggle = styled(Button)`
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-left: 1px solid ${({ theme }) => theme.palette.primary.deepDark};
+  border-left: 1px solid
+    ${({ theme, color }) =>
+      color === "primary"
+        ? theme.palette.primary.deepDark
+        : theme.palette.divider};
   padding: 0 ${({ theme, size }) => (size === "small" ? 0 : theme.spacing)}px;
   min-width: auto;
   &:disabled {

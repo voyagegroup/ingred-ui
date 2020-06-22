@@ -4,11 +4,14 @@ import * as PopperJS from "@popperjs/core";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import Menu from "../Menu";
-import { ButtonSize } from "../Button/Button";
+import { ButtonSize, ButtonColor } from "../Button/Button";
 import { ContentProp } from "../MenuList/MenuList";
+
+type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 
 type Props = {
   size?: ButtonSize;
+  color?: DropdownButtonColor;
   onClick?: () => void;
   split?: boolean;
   contents: ContentProp[];
@@ -18,6 +21,7 @@ type Props = {
 
 const DropdownButton: React.FC<Props> = ({
   size = "medium",
+  color = "primary",
   onClick,
   split = false,
   contents,
@@ -39,6 +43,16 @@ const DropdownButton: React.FC<Props> = ({
     setShowContent(showContent);
   };
 
+  const setIconColor = (disabled: boolean, color: DropdownButtonColor) => {
+    if (disabled) {
+      return theme.palette.text.disabled;
+    } else if (color === "primary") {
+      return theme.palette.white;
+    } else {
+      return "fill";
+    }
+  };
+
   return (
     <>
       <Styled.ButtonContainer ref={setButtonElement} role="button">
@@ -46,6 +60,7 @@ const DropdownButton: React.FC<Props> = ({
           <>
             <Styled.MainButton
               size={size}
+              color={color}
               inline={true}
               disabled={disabled}
               onClick={onClick}
@@ -54,6 +69,7 @@ const DropdownButton: React.FC<Props> = ({
             </Styled.MainButton>
             <Styled.SplitToggle
               size={size}
+              color={color}
               inline={true}
               disabled={disabled}
               data-testid="menu-toggle"
@@ -62,15 +78,14 @@ const DropdownButton: React.FC<Props> = ({
               <Icon
                 name={"arrow_bottom"}
                 size="lg"
-                color={
-                  disabled ? theme.palette.text.disabled : theme.palette.white
-                }
+                color={setIconColor(disabled, color)}
               />
             </Styled.SplitToggle>
           </>
         ) : (
           <Styled.SingleButton
             size={size}
+            color={color}
             disabled={disabled}
             data-testid="menu-toggle"
             onClick={onHandleToggleContent(!showContent)}
@@ -79,9 +94,7 @@ const DropdownButton: React.FC<Props> = ({
             <Icon
               name={"arrow_bottom"}
               size="lg"
-              color={
-                disabled ? theme.palette.text.disabled : theme.palette.white
-              }
+              color={setIconColor(disabled, color)}
             />
           </Styled.SingleButton>
         )}
