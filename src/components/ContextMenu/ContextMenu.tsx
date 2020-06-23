@@ -30,7 +30,6 @@ const ContextMenu: React.FunctionComponent<Props> = ({
         data-testid="icon-wrapper"
         icon="more_vert"
         onClick={onHandleToggleContent(!showContent)}
-        onBlur={onHandleToggleContent(false)}
       />
       {showContent && (
         <Menu
