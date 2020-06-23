@@ -1,29 +1,27 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const LogoutIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
+const FilterIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
   switch (type) {
+    case "fill":
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="none" d="M0,0H24V24H0Z" />
+          <path fill={fill} d="M10,14,4,5V3H20V5l-6,9v6l-4,2Z" />
+        </svg>
+      );
     case "line":
       return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <path fill="none" d="M0,0H24V24H0Z" />
           <path
             fill={fill}
-            d="M4,18H6v2H18V4H6V6H4V3A1,1,0,0,1,5,2H19a1,1,0,0,1,1,1V21a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1Zm2-7h7v2H6v3L1,12,6,8Z"
-          />
-        </svg>
-      );
-    case "fill":
-      return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path fill="none" d="M0,0H24V24H0Z" />
-          <path
-            fill={fill}
-            d="M5,2H19a1,1,0,0,1,1,1V21a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V3A1,1,0,0,1,5,2Zm4,9V8L4,12l5,4V13h6V11Z"
+            d="M12.333,13.035v5.474L9,20.333v-7.3L4,4.825V3H17.333V4.825ZM6,4.825l4.663,7.658L15.33,4.825Z"
+            transform="translate(1.333 1)"
           />
         </svg>
       );
   }
 };
 
-export { LogoutIcon };
+export { FilterIcon };

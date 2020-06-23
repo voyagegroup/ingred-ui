@@ -42,6 +42,16 @@ import { DesktopMobileIcon } from "./internal/DesktopMobileIcon";
 import { CopyIcon } from "./internal/CopyIcon";
 import { BarChartFramedIcon } from "./internal/BarChartFramedIcon";
 import { LineChartFramedIcon } from "./internal/LineChartFramedIcon";
+import { TruckIcon } from "./internal/TruckIcon";
+import { CameraMovieIcon } from "./internal/CameraMovieIcon";
+import { CodeFileIcon } from "./internal/CodeFileIcon";
+import { CartSecureIcon } from "./internal/CartSecureIcon";
+import { ProfileIcon } from "./internal/ProfileIcon";
+import { AuctionIcon } from "./internal/AuctionIcon";
+import { MailIcon } from "./internal/MailIcon";
+import { MailOpenIcon } from "./internal/MailOpenIcon";
+import { FilterIcon } from "./internal/FilterIcon";
+import { MoreIcon } from "./internal/MoreIcon";
 
 export type IconName =
   | "dashboard"
@@ -78,13 +88,23 @@ export type IconName =
   | "import"
   | "export"
   | "add_line"
+  | "more"
   | "more_vert"
   | "date_range"
   | "external_link"
   | "desktop"
   | "mobile"
   | "desktop_mobile"
-  | "copy";
+  | "copy"
+  | "truck"
+  | "camera_movie"
+  | "code_file"
+  | "cart_secure"
+  | "profile"
+  | "auction"
+  | "mail"
+  | "mail_open"
+  | "filter";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -137,6 +157,7 @@ export const icons: {
   import: ImportIcon,
   export: ExportIcon,
   add_line: AddLineIcon,
+  more: MoreIcon,
   more_vert: MoreVertIcon,
   date_range: DateRangeIcon,
   external_link: ExternalLinkIcon,
@@ -144,6 +165,15 @@ export const icons: {
   mobile: MobileIcon,
   desktop_mobile: DesktopMobileIcon,
   copy: CopyIcon,
+  truck: TruckIcon,
+  camera_movie: CameraMovieIcon,
+  code_file: CodeFileIcon,
+  cart_secure: CartSecureIcon,
+  profile: ProfileIcon,
+  auction: AuctionIcon,
+  mail: MailIcon,
+  mail_open: MailOpenIcon,
+  filter: FilterIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
