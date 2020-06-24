@@ -3,11 +3,11 @@
 exports[`ConfirmModal component testing ConfirmModal 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fzoXzr dUAKJy"
-  />
-  <div
     class="sc-fzoLag cQbesB"
   >
+    <div
+      class="sc-fzoXzr dUAKJy"
+    />
     <div
       class="sc-AxiKw sc-AxhUy dywwWM"
     >

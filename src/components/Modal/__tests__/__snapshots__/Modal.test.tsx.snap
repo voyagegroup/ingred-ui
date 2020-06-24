@@ -3,11 +3,12 @@
 exports[`Modal component testing Modal with background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxirZ kseInl"
-  />
-  <div
     class="sc-AxjAm jpmlrb"
-  />
+  >
+    <div
+      class="sc-AxirZ kseInl"
+    />
+  </div>
 </DocumentFragment>
 `;
 
