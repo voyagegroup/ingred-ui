@@ -130,9 +130,9 @@ const Button: React.FunctionComponent<Props> = ({
 
   return (
     <Styled.ButtonContainer
-      {...anchorProps}
       {...rest}
       as={component}
+      {...anchorProps}
       inline={inline}
       horizontalPadding={horizontalPadding}
       normal={{ ...colorStyle.normal }}
