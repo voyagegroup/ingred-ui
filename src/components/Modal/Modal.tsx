@@ -11,8 +11,10 @@ const Modal: React.FunctionComponent<Props> = ({
   children,
 }) => (
   <Portal>
-    {hasBackground && <Styled.ModalBackground />}
-    <Styled.Container>{children}</Styled.Container>
+    <Styled.Container>
+      {hasBackground && <Styled.ModalBackground />}
+      {children}
+    </Styled.Container>
   </Portal>
 );
 
