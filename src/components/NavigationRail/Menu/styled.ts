@@ -8,12 +8,8 @@ export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
   width: ${NavigationRailWidth.WIDE};
-  border-left: ${({ isActive, theme }) =>
-    isActive ? `2px solid ${theme.palette.primary.main}` : "none"};
-  padding: ${({ theme, isActive }) =>
-    `${theme.spacing * 2}px 0 ${theme.spacing * 2}px calc(${
-      theme.spacing * 3
-    }px + ${isActive ? 0 : 2}px)`};
+  padding: ${({ theme }) =>
+    `${theme.spacing * 2}px 0 ${theme.spacing * 2}px ${theme.spacing * 3}px`};
   background-color: ${({ isActive, theme }) =>
     isActive ? theme.palette.background.hint : "none"};
 
