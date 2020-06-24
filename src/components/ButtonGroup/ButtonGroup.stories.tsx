@@ -17,6 +17,16 @@ const RowContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
+const Link: React.FunctionComponent<{ href: string; className: string }> = ({
+  href,
+  className,
+  children,
+}) => (
+  <a href={href} className={className} onClick={action("clicked")}>
+    {children}
+  </a>
+);
+
 export default {
   title: "ButtonGroup",
   parameters: {
@@ -70,6 +80,18 @@ export const Overview = () => {
           <Button disabled={smallButtonLeft} onClick={action("clicked")}>
             キャンセル
           </Button>
+        </ButtonGroup>
+      </RowContainer>
+
+      <Typography weight="bold" size="xxl">
+        Link Mixed
+      </Typography>
+      <RowContainer>
+        <ButtonGroup size="small">
+          <Button component={Link}>保存する</Button>
+          <Button onClick={action("clicked")}>編集する</Button>
+          <Button component={Link}>削除する</Button>
+          <Button onClick={action("clicked")}>キャンセル</Button>
         </ButtonGroup>
       </RowContainer>
 
