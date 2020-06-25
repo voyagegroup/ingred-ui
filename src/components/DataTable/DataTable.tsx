@@ -5,7 +5,6 @@ import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
 import { Table } from "./internal/Table";
-import { ItemEmptyRow } from "./internal/ItemEmptyRow";
 import Typography, { Props as TypographyProps } from "../Typography";
 import {
   changeOrderState,
@@ -22,6 +21,7 @@ import Pager, {
   getFilteredItems as getFilteredItemsByPagination,
   FilterState,
 } from "../Pager";
+import ItemEmpty from "../ItemEmpty";
 
 import { StorageKey } from "../../constants/storageKeys";
 import { TableTabs } from "./internal/TableTabs";
@@ -385,11 +385,14 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
               </Table.Row>
             ))
           ) : (
-            <ItemEmptyRow
-              rowSpan={rowSpan}
-              title={emptyTitle}
-              subtitle={emptySubtitle}
-            />
+            <Styled.ItemEmptyRowContainer>
+              <td colSpan={rowSpan}>
+                <ItemEmpty
+                  title={emptyTitle || "見つかりませんでした"}
+                  subtitle={emptySubtitle}
+                />
+              </td>
+            </Styled.ItemEmptyRowContainer>
           )}
         </Table.Body>
       </Table>
