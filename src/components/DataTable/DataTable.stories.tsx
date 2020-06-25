@@ -295,3 +295,30 @@ export const WithStickyHeader = () => (
     </StickyContainer>
   </Container>
 );
+
+export const WithEmptyTable = () => (
+  <Container>
+    <DataTable
+      data={[]}
+      defaultSortField="名前"
+      defaultSortOrder="desc"
+      columns={[
+        {
+          name: "ID",
+          selector: (data) => data.id,
+        },
+        {
+          name: "名前",
+          selector: (data) => data.name,
+          sortable: true,
+        },
+        {
+          name: "カウント",
+          selector: (data) => data.count,
+          sortable: true,
+          align: "right",
+        },
+      ]}
+    />
+  </Container>
+);
