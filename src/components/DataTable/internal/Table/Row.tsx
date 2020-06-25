@@ -10,7 +10,7 @@ const Component = styled.tr<RowProps>`
     highlighted ? theme.palette.primary.highlight : "none"};
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.primary.highlight};
+    background-color: ${({ theme }) => theme.palette.gray.highlight};
   }
 `;
 
