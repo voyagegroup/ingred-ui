@@ -6,6 +6,3 @@ export const Container = styled.div`
     white-space: nowrap;
   }
 `;
-
-// ItemEmptyの表示はホバー時に背景色が変わってほしくないので別でスタイリング
-export const ItemEmptyRowContainer = styled.tr``;
