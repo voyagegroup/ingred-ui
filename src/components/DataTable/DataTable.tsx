@@ -385,14 +385,14 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
               </Table.Row>
             ))
           ) : (
-            <Table.Row>
+            <tr>
               <td colSpan={rowSpan}>
                 <ItemEmpty
                   title={emptyTitle || "見つかりませんでした"}
                   subtitle={emptySubtitle}
                 />
               </td>
-            </Table.Row>
+            </tr>
           )}
         </Table.Body>
       </Table>
