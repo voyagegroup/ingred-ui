@@ -12,6 +12,7 @@ export type ContainerProps = ButtonColorStyle & {
   horizontalPadding: string;
   minWidth: string;
   href?: string;
+  disabled?: boolean;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
@@ -24,14 +25,18 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
   border-radius: ${Radius.SMALL};
-  border: ${({ normal }) => normal.border};
-  background: ${({ normal }) => normal.background};
-  color: ${({ normal }) => normal.color};
+  border: ${({ normal, disabled }) => (disabled ? 0 : normal.border)};
+  background: ${({ normal, disabled }) =>
+    disabled ? colors.basic[100] : normal.background};
+  color: ${({ normal, disabled, theme }) =>
+    disabled ? theme.palette.text.disabled : normal.color};
   text-align: center;
   font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${({ fontSize }) => fontSize};
-  box-shadow: ${({ normal }) => normal.boxShadow};
+  box-shadow: ${({ normal, disabled }) =>
+    disabled ? "none" : normal.boxShadow};
   transition: all 0.3s;
+  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
 
   &:hover {
     background: ${({ hover }) => hover.background};
@@ -40,11 +45,5 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   &:active {
     background: ${({ active }) => active.background};
     box-shadow: none;
-  }
-
-  &:disabled {
-    background-color: ${colors.basic[100]};
-    color: ${({ theme }) => theme.palette.text.disabled};
-    border: 0;
   }
 `;
