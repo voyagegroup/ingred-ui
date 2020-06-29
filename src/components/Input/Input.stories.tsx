@@ -59,7 +59,7 @@ export const Overview = () => {
             Typed
           </Typography>
           <Spacer pt={2} />
-          <Input value="ゴシガルトーク" readOnly={true} />
+          <Input value="Textfield" readOnly={true} />
         </Column>
         <Column>
           <Typography weight="bold" size="xxl">
@@ -73,7 +73,7 @@ export const Overview = () => {
             Typed &amp; Disabled
           </Typography>
           <Spacer pt={2} />
-          <Input value="ゴシガルトーク" readOnly={true} disabled={true} />
+          <Input value="Textfield" readOnly={true} disabled={true} />
         </Column>
       </RowContainer>
       <RowContainer>
