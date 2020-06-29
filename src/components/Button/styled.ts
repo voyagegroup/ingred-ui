@@ -3,6 +3,7 @@ import { Radius } from "../../styles";
 import { colors } from "../../styles/color";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
+import { Size } from "../../styles/size";
 
 export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
@@ -25,7 +26,10 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
   border-radius: ${Radius.SMALL};
-  border: ${({ normal, disabled }) => (disabled ? 0 : normal.border)};
+  border: ${({ normal, disabled }) =>
+    disabled
+      ? `${Size.Border.Small} solid ${colors.basic[100]}`
+      : normal.border};
   background: ${({ normal, disabled }) =>
     disabled ? colors.basic[100] : normal.background};
   color: ${({ normal, disabled, theme }) =>
