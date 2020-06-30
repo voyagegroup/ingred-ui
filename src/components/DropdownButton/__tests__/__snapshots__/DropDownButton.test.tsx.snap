@@ -7,8 +7,9 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-AxirZ sc-AxiKw wsLGD disabled"
+      class="sc-AxirZ sc-AxiKw jfPFaf sc-AxheI cbsHKE"
       data-testid="menu-toggle"
+      disabled=""
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -44,7 +45,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-AxirZ sc-AxiKw wsLGD"
+      class="sc-AxirZ sc-AxiKw jfPFaf sc-AxheI cbsHKE"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -147,7 +148,8 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-AxirZ sc-AxiKw ibzKfU disabled"
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxhUy bnlmnx"
+      disabled=""
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -155,8 +157,9 @@ exports[`DropdownButton component testing splited disable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw ibzKfU disabled"
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxgMl hGPnli"
       data-testid="menu-toggle"
+      disabled=""
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -191,7 +194,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-AxirZ sc-AxiKw ibzKfU"
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxhUy bnlmnx"
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -199,7 +202,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw ibzKfU"
+      class="sc-AxirZ sc-AxiKw cXsjbM sc-AxgMl hGPnli"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"

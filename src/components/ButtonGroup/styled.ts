@@ -10,7 +10,7 @@ export type ContainerProps = {
 export const ButtonGroupContainer = styled.div<ContainerProps>`
   display: inline-flex;
 
-  & > * {
+  button {
     min-width: ${({ minWidth }) => minWidth};
     width: auto;
     height: ${({ height }) => height};
@@ -18,24 +18,24 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
     padding-left: ${({ horizontalPadding }) => horizontalPadding};
   }
 
-  & > *:not(:last-child) {
+  button:disabled + button:not(:disabled) {
+    border-left: ${Size.Border.Small} solid
+      ${({ theme }) => theme.palette.divider};
+  }
+
+  button:not(:last-of-type) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
   }
 
-  & > *:not(:first-child) {
+  button:not(:first-of-type) {
     border-left: none;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
 
-  & > *:last-child {
+  button:last-of-type {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-  }
-
-  & > *.disabled + *:not(.disabled) {
-    border-left: ${Size.Border.Small} solid
-      ${({ theme }) => theme.palette.divider};
   }
 `;

@@ -54,8 +54,6 @@ const sampleData: SampleObject[] = [
   { id: 14, name: "9name", count: 1 },
 ];
 
-const sampleEmptyData: SampleObject[] = [];
-
 export const Overview = () => (
   <Container>
     <DataTable
@@ -301,7 +299,7 @@ export const WithStickyHeader = () => (
 export const WithEmptyTable = () => (
   <Container>
     <DataTable
-      data={sampleEmptyData}
+      data={[]}
       defaultSortField="名前"
       defaultSortOrder="desc"
       columns={[

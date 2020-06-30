@@ -3,11 +3,11 @@
 exports[`Button component testing ButtonGroup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fUhBap"
+    class="sc-AxjAm bYPLHT"
     height="42px"
   >
     <button
-      class="sc-AxiKw sc-AxhCb gkGwNf"
+      class="sc-AxiKw sc-AxhCb hgPQYb"
       font-size="14px"
       font-weight="normal"
       height="42px"
@@ -15,7 +15,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       編集する
     </button>
     <button
-      class="sc-AxiKw sc-AxhCb gkGwNf"
+      class="sc-AxiKw sc-AxhCb hgPQYb"
       font-size="14px"
       font-weight="normal"
       height="42px"

@@ -17,16 +17,6 @@ const RowContainer = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-const Link: React.FunctionComponent<{ href: string; className: string }> = ({
-  href,
-  className,
-  children,
-}) => (
-  <a href={href} className={className} onClick={action("clicked")}>
-    {children}
-  </a>
-);
-
 export default {
   title: "ButtonGroup",
   parameters: {
@@ -47,16 +37,6 @@ export const Overview = () => {
     false,
   );
   const smallButtonLeft = boolean("Small Button Left Disable", false);
-  const linkButtonRight = boolean("Link Mixed Button Right Disable", false);
-  const linkButtonCenterLeft = boolean(
-    "Link Mixed Button Center Left Disable",
-    false,
-  );
-  const linkButtonCenterRight = boolean(
-    "Link Mixed Button Center Right Disable",
-    false,
-  );
-  const linkButtonLeft = boolean("Link Mixed Button Left Disable", false);
   return (
     <Container>
       <Typography weight="bold" size="xxl">
@@ -88,26 +68,6 @@ export const Overview = () => {
             削除する
           </Button>
           <Button disabled={smallButtonLeft} onClick={action("clicked")}>
-            キャンセル
-          </Button>
-        </ButtonGroup>
-      </RowContainer>
-
-      <Typography weight="bold" size="xxl">
-        Link Mixed
-      </Typography>
-      <RowContainer>
-        <ButtonGroup size="small">
-          <Button disabled={linkButtonRight} component={Link}>
-            保存する
-          </Button>
-          <Button disabled={linkButtonCenterLeft} onClick={action("clicked")}>
-            編集する
-          </Button>
-          <Button disabled={linkButtonCenterRight} component={Link}>
-            削除する
-          </Button>
-          <Button disabled={linkButtonLeft} onClick={action("clicked")}>
             キャンセル
           </Button>
         </ButtonGroup>

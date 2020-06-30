@@ -100,7 +100,6 @@ export type Props = Omit<BaseButtonProps, "color"> & {
     | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   inline?: boolean;
-  disabled?: boolean;
   size?: ButtonSize;
   onClick?: () => void;
   href?: string;
@@ -111,7 +110,6 @@ const Button: React.FunctionComponent<Props> = ({
   children,
   color = "primary",
   inline = false,
-  disabled = false,
   size = "medium",
   href,
   ...rest
@@ -144,7 +142,6 @@ const Button: React.FunctionComponent<Props> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      className={disabled ? "disabled" : ""}
       height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
     >

@@ -3,7 +3,6 @@ import { Radius } from "../../styles";
 import { colors } from "../../styles/color";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
-import { Size } from "../../styles/size";
 
 export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
@@ -34,14 +33,6 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   box-shadow: ${({ normal }) => normal.boxShadow};
   transition: all 0.3s;
 
-  &.disabled {
-    border: ${Size.Border.Small} solid ${colors.basic[100]};
-    background: ${colors.basic[100]};
-    color: ${({ theme }) => theme.palette.text.disabled};
-    box-shadow: none;
-    pointer-events: none;
-  }
-
   &:hover {
     background: ${({ hover }) => hover.background};
   }
@@ -49,5 +40,11 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   &:active {
     background: ${({ active }) => active.background};
     box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: ${colors.basic[100]};
+    color: ${({ theme }) => theme.palette.text.disabled};
+    border: 0;
   }
 `;
