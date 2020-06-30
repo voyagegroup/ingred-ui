@@ -43,6 +43,7 @@ export const Span = styled.span<{
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
   &::before {
+    flex-shrink: 0;
     display: block;
     content: "";
     width: 18px;
