@@ -47,6 +47,16 @@ export const Overview = () => {
     false,
   );
   const smallButtonLeft = boolean("Small Button Left Disable", false);
+  const linkButtonRight = boolean("Link Mixed Button Right Disable", false);
+  const linkButtonCenterLeft = boolean(
+    "Link Mixed Button Center Left Disable",
+    false,
+  );
+  const linkButtonCenterRight = boolean(
+    "Link Mixed Button Center Right Disable",
+    false,
+  );
+  const linkButtonLeft = boolean("Link Mixed Button Left Disable", false);
   return (
     <Container>
       <Typography weight="bold" size="xxl">
@@ -88,10 +98,18 @@ export const Overview = () => {
       </Typography>
       <RowContainer>
         <ButtonGroup size="small">
-          <Button component={Link}>保存する</Button>
-          <Button onClick={action("clicked")}>編集する</Button>
-          <Button component={Link}>削除する</Button>
-          <Button onClick={action("clicked")}>キャンセル</Button>
+          <Button disabled={linkButtonRight} component={Link}>
+            保存する
+          </Button>
+          <Button disabled={linkButtonCenterLeft} onClick={action("clicked")}>
+            編集する
+          </Button>
+          <Button disabled={linkButtonCenterRight} component={Link}>
+            削除する
+          </Button>
+          <Button disabled={linkButtonLeft} onClick={action("clicked")}>
+            キャンセル
+          </Button>
         </ButtonGroup>
       </RowContainer>
 

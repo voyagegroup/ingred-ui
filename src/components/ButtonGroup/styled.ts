@@ -18,11 +18,6 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
     padding-left: ${({ horizontalPadding }) => horizontalPadding};
   }
 
-  & > *:disabled + & > *:not(:disabled) {
-    border-left: ${Size.Border.Small} solid
-      ${({ theme }) => theme.palette.divider};
-  }
-
   & > *:not(:last-child) {
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
@@ -37,5 +32,10 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
   & > *:last-child {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+  }
+
+  & > *.disabled + *:not(.disabled) {
+    border-left: ${Size.Border.Small} solid
+      ${({ theme }) => theme.palette.divider};
   }
 `;

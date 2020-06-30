@@ -13,7 +13,6 @@ export type ContainerProps = ButtonColorStyle & {
   horizontalPadding: string;
   minWidth: string;
   href?: string;
-  disabled?: boolean;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
@@ -26,21 +25,22 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
   border-radius: ${Radius.SMALL};
-  border: ${({ normal, disabled }) =>
-    disabled
-      ? `${Size.Border.Small} solid ${colors.basic[100]}`
-      : normal.border};
-  background: ${({ normal, disabled }) =>
-    disabled ? colors.basic[100] : normal.background};
-  color: ${({ normal, disabled, theme }) =>
-    disabled ? theme.palette.text.disabled : normal.color};
+  border: ${({ normal }) => normal.border};
+  background: ${({ normal }) => normal.background};
+  color: ${({ normal }) => normal.color};
   text-align: center;
   font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${({ fontSize }) => fontSize};
-  box-shadow: ${({ normal, disabled }) =>
-    disabled ? "none" : normal.boxShadow};
+  box-shadow: ${({ normal }) => normal.boxShadow};
   transition: all 0.3s;
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+
+  &.disabled {
+    border: ${Size.Border.Small} solid ${colors.basic[100]};
+    background: ${colors.basic[100]};
+    color: ${({ theme }) => theme.palette.text.disabled};
+    box-shadow: none;
+    pointer-events: none;
+  }
 
   &:hover {
     background: ${({ hover }) => hover.background};
