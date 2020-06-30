@@ -7,7 +7,7 @@ exports[`Button component testing ButtonGroup 1`] = `
     height="42px"
   >
     <button
-      class="sc-AxiKw sc-AxhCb hgPQYb"
+      class="sc-AxiKw sc-AxhCb fPRoOm"
       font-size="14px"
       font-weight="normal"
       height="42px"
@@ -15,7 +15,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       編集する
     </button>
     <button
-      class="sc-AxiKw sc-AxhCb hgPQYb"
+      class="sc-AxiKw sc-AxhCb fPRoOm"
       font-size="14px"
       font-weight="normal"
       height="42px"
