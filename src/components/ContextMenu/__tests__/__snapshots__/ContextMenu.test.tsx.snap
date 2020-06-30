@@ -48,9 +48,13 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
       <div
         class="sc-AxgMl eGmloN"
       >
-        <hr
-          class="sc-Axmtr htlXhn"
-        />
+        <div
+          class="sc-AxirZ jsnPXP"
+        >
+          <hr
+            class="sc-Axmtr YqLKd"
+          />
+        </div>
         <div
           class="sc-AxheI cvPbiY"
         >
@@ -73,9 +77,13 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
             保存して実行する
           </p>
         </div>
-        <hr
-          class="sc-Axmtr htlXhn"
-        />
+        <div
+          class="sc-AxirZ jsnPXP"
+        >
+          <hr
+            class="sc-Axmtr YqLKd"
+          />
+        </div>
         <div
           class="sc-AxheI cvPbiY"
         >
