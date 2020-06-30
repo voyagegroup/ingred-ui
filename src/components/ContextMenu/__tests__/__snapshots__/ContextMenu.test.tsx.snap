@@ -46,13 +46,13 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="sc-AxgMl daAZqM"
+        class="sc-AxgMl eGmloN"
       >
         <hr
-          class="sc-Axmtr bybBIf"
+          class="sc-Axmtr htlXhn"
         />
         <div
-          class="sc-AxheI kHbkvT"
+          class="sc-AxheI cvPbiY"
         >
           <p
             class="sc-AxhCb kdcBdC"
@@ -63,7 +63,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxheI kHbkvT"
+          class="sc-AxheI cvPbiY"
         >
           <p
             class="sc-AxhCb kdcBdC"
@@ -74,10 +74,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-Axmtr bybBIf"
+          class="sc-Axmtr htlXhn"
         />
         <div
-          class="sc-AxheI kHbkvT"
+          class="sc-AxheI cvPbiY"
         >
           <p
             class="sc-AxhCb kdcBdC"
@@ -88,7 +88,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxheI kHbkvT"
+          class="sc-AxheI cvPbiY"
         >
           <p
             class="sc-AxhCb kdcBdC"

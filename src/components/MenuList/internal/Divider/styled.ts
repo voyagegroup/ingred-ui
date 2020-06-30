@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Divider = styled.hr`
   border: none;
-  margin: 4px 0;
+  margin: ${({ theme }) => `${theme.spacing}px ${theme.spacing * 2}px`};
   height: 1px;
   background-color: ${({ theme }) => theme.palette.divider};
 `;
