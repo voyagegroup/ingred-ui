@@ -319,6 +319,7 @@ export const Overview = () => (
         <Button
           inline
           size="small"
+          href="#"
           component={Link}
           onClick={action("clicked")}
         >
