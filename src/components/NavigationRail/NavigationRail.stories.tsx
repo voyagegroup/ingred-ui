@@ -174,6 +174,7 @@ export const Overview = () => {
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
+                      notificationCount={expantion.notificationCount}
                     />
                   ))}
                   onChangeExpand={(isExpanded) =>
