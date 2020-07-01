@@ -7,7 +7,6 @@ import { NavigationRailContext } from "../utils";
 import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
-import Spacer from "../../Spacer";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -67,9 +66,7 @@ const Menu: React.FC<Props> = ({
           <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
         </Styled.TextContainer>
         {notificationCount !== 0 && (
-          <Spacer pr={2}>
-            <SideNotificationBadge notificationCount={notificationCount} />
-          </Spacer>
+          <SideNotificationBadge notificationCount={notificationCount} />
         )}
       </Styled.Container>
     </Tooltip>

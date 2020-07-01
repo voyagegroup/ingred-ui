@@ -3,7 +3,6 @@ import * as Styled from "./styled";
 import Tooltip from "../../Tooltip";
 import { NavigationRailTransitionDuration } from "../constants";
 import { NavigationRailContext } from "../utils";
-import Spacer from "../../Spacer";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
@@ -45,9 +44,7 @@ const ExpantionMenuItem: React.FC<Props> = ({
           <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
         </Styled.TextContainer>
         {notificationCount !== 0 && (
-          <Spacer pr={2}>
-            <SideNotificationBadge notificationCount={notificationCount} />
-          </Spacer>
+          <SideNotificationBadge notificationCount={notificationCount} />
         )}
       </Styled.Container>
     </Tooltip>

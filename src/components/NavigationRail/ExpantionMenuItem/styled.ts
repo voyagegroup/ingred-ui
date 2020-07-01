@@ -4,8 +4,10 @@ export const Container = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: ${({ theme }) => theme.spacing * 2}px 0;
-  padding-left: ${({ theme }) => theme.spacing * 7.75}px;
+  padding: ${({ theme }) =>
+    `${theme.spacing * 2}px ${theme.spacing * 2}px ${theme.spacing * 2}px ${
+      theme.spacing * 7.75
+    }px`};
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.gray.light};

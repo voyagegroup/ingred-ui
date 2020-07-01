@@ -17,7 +17,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
         class="sc-AxhCb ekArAs"
       >
         <div
-          class="sc-fzqBZW jSQVXI"
+          class="sc-fzokOt jvJBKh"
         >
           <div
             class="sc-fznyAO gCSAhN"
@@ -47,16 +47,16 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </span>
           </div>
           <div
-            class="sc-fzqNJr AGGev"
+            class="sc-fzqBZW hoiGda"
           >
             <span
-              class="sc-fzoyAV gEdpVK"
+              class="sc-fzqNJr dehWPY"
             >
               設定
             </span>
           </div>
           <div
-            class="sc-fzoLag hfHVIz"
+            class="sc-fzoyAV gGGLgn"
           >
             <div
               class="sc-Axmtr kFYDZB"
@@ -79,17 +79,17 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-fzoXzr jJXNMK"
+          class="sc-fzoLag bfwMDY"
           height="auto"
         >
           <div
-            class="sc-fzpjYC kIcCPO"
+            class="sc-fzoXzr huZyoe"
           >
             <div
-              class="sc-fznxsB jFCMGa"
+              class="sc-fzpjYC eeSuTd"
             >
               <span
-                class="sc-fznJRM brvoJE"
+                class="sc-fznxsB dGqSTc"
               >
                 デマンド設定
               </span>
@@ -97,7 +97,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-fzoLsD jupDHj"
+          class="sc-fzoLsD eZvoFM"
         >
           <div
             class="sc-fznyAO gCSAhN"
