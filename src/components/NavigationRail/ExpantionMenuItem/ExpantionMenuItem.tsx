@@ -3,6 +3,8 @@ import * as Styled from "./styled";
 import Tooltip from "../../Tooltip";
 import { NavigationRailTransitionDuration } from "../constants";
 import { NavigationRailContext } from "../utils";
+import Spacer from "../../Spacer";
+import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -15,6 +17,7 @@ const ExpantionMenuItem: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
+  const notificationCount = 10 as number;
   const { onHandleClose } = React.useContext(NavigationRailContext);
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
@@ -25,7 +28,7 @@ const ExpantionMenuItem: React.FC<Props> = ({
     if (!textWrapperElement.current || !textElement.current) return;
     const wrapperWidth = textWrapperElement.current.offsetWidth;
     const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth < textWidth);
+    setShowTooltip(wrapperWidth <= textWidth);
   }, [textWrapperElement, textElement]);
 
   return (
@@ -38,8 +41,13 @@ const ExpantionMenuItem: React.FC<Props> = ({
     >
       <Styled.Container {...rest}>
         <Styled.TextContainer ref={textWrapperElement} isActive={isActive}>
-          <span ref={textElement}>{title}</span>
+          <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
         </Styled.TextContainer>
+        {notificationCount !== 0 && (
+          <Spacer pr={2}>
+            <SideNotificationBadge notificationCount={notificationCount} />
+          </Spacer>
+        )}
       </Styled.Container>
     </Tooltip>
   );
