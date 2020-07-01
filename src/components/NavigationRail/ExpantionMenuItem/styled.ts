@@ -16,12 +16,17 @@ export const Container = styled.div`
   }
 `;
 
-export const TextContainer = styled.div<{ isActive: boolean }>`
+export const TextContainer = styled.div<{
+  isActive: boolean;
+  hasNotification: boolean;
+}>`
   flex-shrink: 1;
   flex-grow: 1;
   display: flex;
   align-items: center;
   min-width: 0;
+  margin-right: ${({ theme, hasNotification }) =>
+    hasNotification ? 0 : theme.spacing * 2}px;
   color: ${({ theme, isActive }) =>
     isActive ? theme.palette.text.primary : theme.palette.gray.dark};
   font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};

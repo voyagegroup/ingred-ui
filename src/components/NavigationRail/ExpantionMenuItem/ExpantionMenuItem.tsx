@@ -9,15 +9,16 @@ import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
   isActive?: boolean;
+  notificationCount?: number;
 };
 
 const ExpantionMenuItem: React.FC<Props> = ({
   title,
   isActive = false,
   onMouseEnter,
+  notificationCount = 0,
   ...rest
 }) => {
-  const notificationCount = 10 as number;
   const { onHandleClose } = React.useContext(NavigationRailContext);
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
@@ -40,7 +41,11 @@ const ExpantionMenuItem: React.FC<Props> = ({
       onMouseEnter={onHandleClose}
     >
       <Styled.Container {...rest}>
-        <Styled.TextContainer ref={textWrapperElement} isActive={isActive}>
+        <Styled.TextContainer
+          ref={textWrapperElement}
+          isActive={isActive}
+          hasNotification={notificationCount !== 0}
+        >
           <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
         </Styled.TextContainer>
         {notificationCount !== 0 && (
