@@ -1,7 +1,8 @@
 import React from "react";
 import * as Styled from "./styled";
-import { Divider } from "./internal/Divider";
+import Divider from "../Divider";
 import Typography from "../Typography";
+import Spacer from "../Spacer";
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
@@ -19,7 +20,11 @@ const MenuList = React.forwardRef<HTMLDivElement, Props>(
     <Styled.Container inline={inline} {...rest} ref={ref}>
       {contents.map((content) => (
         <React.Fragment key={content.text}>
-          {content.divideTop && <Divider />}
+          {content.divideTop && (
+            <Spacer py={1}>
+              <Divider variant="middle" />
+            </Spacer>
+          )}
           <Styled.TextContainer onClick={content.onClick}>
             <Typography size="sm">{content.text}</Typography>
           </Styled.TextContainer>

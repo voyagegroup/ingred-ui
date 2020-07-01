@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider component testing Divider fullWidth 1`] = `
+<DocumentFragment>
+  <hr
+    class="sc-AxjAm dAvPIb"
+  />
+</DocumentFragment>
+`;
+
+exports[`Divider component testing Divider middle 1`] = `
+<DocumentFragment>
+  <hr
+    class="sc-AxjAm wgGZY"
+  />
+</DocumentFragment>
+`;

@@ -4,7 +4,7 @@ import { Radius } from "../../styles";
 
 export const Container = styled.div<{ inline: boolean }>`
   display: ${({ inline }) => (inline ? "inline-block" : "block")};
-  padding: ${({ theme }) => theme.spacing * 1.25}px 0;
+  padding: ${({ theme }) => theme.spacing}px 0;
   border-radius: ${Radius.SMALL};
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
@@ -14,7 +14,9 @@ export const TextContainer = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
-  padding: 0 ${({ theme }) => theme.spacing * 2}px;
+  margin: 0 ${({ theme }) => theme.spacing}px;
+  padding: 0 ${({ theme }) => theme.spacing}px;
+  border-radius: ${Radius.SMALL};
   &:hover {
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
