@@ -5,17 +5,22 @@ import { IconName } from "../../Icon/Icon";
 import Tooltip from "../../Tooltip";
 import { NavigationRailContext } from "../utils";
 import { NavigationRailTransitionDuration } from "../constants";
+import NotificationBadge from "../../NotificationBadge";
+import { SideNotificationBadge } from "../internal/SideNotificationBadge";
+import Spacer from "../../Spacer";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
   isActive?: boolean;
   iconName: IconName;
+  notificationCount?: number;
 };
 
 const Menu: React.FC<Props> = ({
   title,
   isActive = false,
   iconName,
+  notificationCount = 0,
   onMouseEnter,
   ...rest
 }) => {
@@ -42,12 +47,18 @@ const Menu: React.FC<Props> = ({
       onMouseEnter={onHandleClose}
     >
       <Styled.Container isActive={isActive} {...rest}>
-        <Icon
-          name={iconName}
-          size="lg"
-          type={isActive ? "fill" : "line"}
-          color={isActive ? "active" : "line"}
-        />
+        <NotificationBadge
+          badgeContent={notificationCount}
+          position="top-left"
+          invisible={isOpen}
+        >
+          <Icon
+            name={iconName}
+            size="lg"
+            type={isActive ? "fill" : "line"}
+            color={isActive ? "active" : "line"}
+          />
+        </NotificationBadge>
         <Styled.TextContainer
           ref={textWrapperElement}
           isActive={isActive}
@@ -55,6 +66,11 @@ const Menu: React.FC<Props> = ({
         >
           <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
         </Styled.TextContainer>
+        {notificationCount !== 0 && (
+          <Spacer pr={2}>
+            <SideNotificationBadge notificationCount={notificationCount} />
+          </Spacer>
+        )}
       </Styled.Container>
     </Tooltip>
   );

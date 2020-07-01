@@ -31,6 +31,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     iconName: "dashboard",
     isActive: path.includes("/dashboard"),
     path: "/dashboard",
+    notificationCount: 33,
   },
   {
     title: "設定(長いテキストにはツールチップがでるよ)",
@@ -55,6 +56,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     iconName: "bar_chart",
     isActive: path.includes("/detail_report"),
     path: "detail-report",
+    notificationCount: 33,
   },
   {
     title: "詳細設定",
@@ -92,7 +94,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     ],
   },
   {
-    title: "日付設定",
+    title: "日付設定(長いテキストにはツールチップがでるよ)",
     iconName: "date_range",
     isActive: path.includes("/setting-date"),
     path: "setting-date",
@@ -181,6 +183,7 @@ export const Overview = () => {
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
+                  notificationCount={item.notificationCount}
                 />
               )}
             </React.Fragment>
