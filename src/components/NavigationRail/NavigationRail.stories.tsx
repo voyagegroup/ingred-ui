@@ -22,6 +22,7 @@ type NavigationRailContents = {
     title: string;
     path: string;
     isActive: boolean;
+    notificationCount?: number;
   }[];
 }[];
 
@@ -43,6 +44,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
         path: "/setting/demand",
         isActive: path === "/setting/demand",
+        notificationCount: 13,
       },
       {
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
@@ -68,6 +70,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         title: "環境設定",
         path: "/setting-detail/environment",
         isActive: path === "/setting-detail/environment",
+        notificationCount: 13,
       },
       {
         title: "ユーザー設定",
