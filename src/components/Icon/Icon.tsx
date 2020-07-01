@@ -52,6 +52,7 @@ import { MailIcon } from "./internal/MailIcon";
 import { MailOpenIcon } from "./internal/MailOpenIcon";
 import { FilterIcon } from "./internal/FilterIcon";
 import { MoreIcon } from "./internal/MoreIcon";
+import { NotificationIcon } from "./internal/NotificationIcon";
 
 export type IconName =
   | "dashboard"
@@ -104,7 +105,8 @@ export type IconName =
   | "auction"
   | "mail"
   | "mail_open"
-  | "filter";
+  | "filter"
+  | "notification";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -174,6 +176,7 @@ export const icons: {
   mail: MailIcon,
   mail_open: MailOpenIcon,
   filter: FilterIcon,
+  notification: NotificationIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
