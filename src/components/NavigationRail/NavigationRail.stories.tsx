@@ -16,6 +16,7 @@ type NavigationRailContents = {
   title: string;
   iconName: IconName;
   isActive: boolean;
+  notificationCount?: number;
   path?: string;
   expantionList?: {
     title: string;
@@ -35,6 +36,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     title: "設定(長いテキストにはツールチップがでるよ)",
     iconName: "setting",
     isActive: path.includes("/setting"),
+    notificationCount: 10,
     expantionList: [
       {
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
@@ -58,6 +60,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     title: "詳細設定",
     iconName: "setting",
     isActive: path.includes("/setting-detail"),
+    notificationCount: 100,
     expantionList: [
       {
         title: "環境設定",
@@ -161,6 +164,7 @@ export const Overview = () => {
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
+                  notificationCount={item.notificationCount}
                   expantionList={item.expantionList.map((expantion) => (
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
