@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { Size } from "../../styles";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 
@@ -45,9 +46,25 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
         color: "secondary",
       };
 
+  //直前のchildがdisabledだった場合にはborderLeftの設定を追加する
+  const childNeighborDisabledProps = {
+    ...childProps,
+    style: {
+      borderLeft: `${Size.Border.Small} solid ${theme.palette.divider}`,
+    },
+  };
+
+  let isBeforeChildDisabled = false;
+
   const childrenWithProps = React.Children.map(
     children,
     (child: React.ReactElement) => {
+      if (child.props.disabled) {
+        isBeforeChildDisabled = true;
+      } else if (isBeforeChildDisabled) {
+        isBeforeChildDisabled = false;
+        return React.cloneElement(child, childNeighborDisabledProps);
+      }
       return React.cloneElement(child, childProps);
     },
   );
