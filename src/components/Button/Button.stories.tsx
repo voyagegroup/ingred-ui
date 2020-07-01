@@ -316,13 +316,7 @@ export const Overview = () => (
           Link without component
         </Button>
         <Spacer pr={1} />
-        <Button
-          inline
-          size="small"
-          href="#"
-          component={Link}
-          onClick={action("clicked")}
-        >
+        <Button inline size="small" href="#" component={Link}>
           Link with component
         </Button>
       </Flex>
