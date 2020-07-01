@@ -21,8 +21,9 @@ const Link: React.FunctionComponent<{ href: string; className: string }> = ({
   href,
   className,
   children,
+  ...rest
 }) => (
-  <a href={href} className={className} onClick={action("clicked")}>
+  <a href={href} className={className} onClick={action("clicked")} {...rest}>
     {children}
   </a>
 );
@@ -102,7 +103,11 @@ export const Overview = () => {
           <Button disabled={linkButtonRight} component={Link}>
             保存する
           </Button>
-          <Button disabled={linkButtonCenterLeft} onClick={action("clicked")}>
+          <Button
+            disabled={linkButtonCenterLeft}
+            href="#"
+            onClick={action("clicked")}
+          >
             編集する
           </Button>
           <Button disabled={linkButtonCenterRight} component={Link}>
