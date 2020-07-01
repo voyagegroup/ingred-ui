@@ -22,7 +22,6 @@ type NavigationRailContents = {
     title: string;
     path: string;
     isActive: boolean;
-    notificationCount?: number;
   }[];
 }[];
 
@@ -44,7 +43,6 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
         path: "/setting/demand",
         isActive: path === "/setting/demand",
-        notificationCount: 23,
       },
       {
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
@@ -173,7 +171,6 @@ export const Overview = () => {
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
-                      notificationCount={expantion.notificationCount}
                     />
                   ))}
                   onChangeExpand={(isExpanded) =>
