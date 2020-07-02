@@ -106,7 +106,7 @@ export type Props = Omit<BaseButtonProps, "color"> & {
 };
 
 const Button: React.FunctionComponent<Props> = ({
-  component = "button",
+  component,
   children,
   color = "primary",
   inline = false,
@@ -123,7 +123,7 @@ const Button: React.FunctionComponent<Props> = ({
   let anchorProps: any = {};
   if (isLink) {
     anchorProps = {
-      as: "a",
+      as: component || "a",
       href,
     };
   }
@@ -131,7 +131,7 @@ const Button: React.FunctionComponent<Props> = ({
   return (
     <Styled.ButtonContainer
       {...rest}
-      as={component}
+      as={component || "button"}
       {...anchorProps}
       inline={inline}
       horizontalPadding={horizontalPadding}

@@ -19,7 +19,7 @@ export type Props = React.ComponentPropsWithoutRef<"input"> & {
 const Input: React.FunctionComponent<Props> = ({
   inputRef,
   error,
-  type,
+  type = "text",
   disabled,
   icon,
   ...rest
@@ -44,7 +44,7 @@ const Input: React.FunctionComponent<Props> = ({
         {...rest}
         ref={inputRef}
         disabled={disabled}
-        type={type === "password" && !show ? "password" : "text"}
+        type={type === "password" && !show ? "password" : type}
         className={[
           error ? "is-error" : "",
           disabled ? "is-disabled" : "",

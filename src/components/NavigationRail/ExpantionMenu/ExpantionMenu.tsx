@@ -5,11 +5,13 @@ import { IconName } from "../../Icon/Icon";
 import { NavigationRailContext } from "../utils";
 import Tooltip from "../../Tooltip";
 import { NavigationRailTransitionDuration } from "../constants";
+import NotificationBadge from "../../NotificationBadge";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
   isActive?: boolean;
   iconName: IconName;
+  notificationCount?: number;
   expantionList?: React.ReactNode[];
   defaultExpand?: boolean;
   onChangeExpand?: (isExpand: boolean) => void;
@@ -21,6 +23,7 @@ const ExpantionMenu: React.FC<Props> = ({
   iconName,
   expantionList = [],
   defaultExpand = false,
+  notificationCount = 0,
   onChangeExpand,
   onClick,
   onMouseEnter,
@@ -77,12 +80,17 @@ const ExpantionMenu: React.FC<Props> = ({
         onMouseEnter={onHandleClose}
       >
         <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
-          <Icon
-            name={iconName}
-            size="lg"
-            type={isActive ? "fill" : "line"}
-            color={isActive ? "active" : "line"}
-          />
+          <NotificationBadge
+            badgeContent={notificationCount}
+            position="top-left"
+          >
+            <Icon
+              name={iconName}
+              size="lg"
+              type={isActive ? "fill" : "line"}
+              color={isActive ? "active" : "line"}
+            />
+          </NotificationBadge>
           <Styled.TextContainer
             ref={textWrapperElement}
             isActive={isActive}

@@ -32,6 +32,9 @@ export * from "./DataTable";
 export { default as DatePicker } from "./DatePicker";
 export * from "./DatePicker";
 
+export { default as Divider } from "./Divider";
+export * from "./Divider";
+
 export { default as DropdownButton } from "./DropdownButton";
 export * from "./DropdownButton";
 

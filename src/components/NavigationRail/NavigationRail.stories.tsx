@@ -16,11 +16,13 @@ type NavigationRailContents = {
   title: string;
   iconName: IconName;
   isActive: boolean;
+  notificationCount?: number;
   path?: string;
   expantionList?: {
     title: string;
     path: string;
     isActive: boolean;
+    notificationCount?: number;
   }[];
 }[];
 
@@ -30,16 +32,19 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     iconName: "dashboard",
     isActive: path.includes("/dashboard"),
     path: "/dashboard",
+    notificationCount: 33,
   },
   {
     title: "設定(長いテキストにはツールチップがでるよ)",
     iconName: "setting",
     isActive: path.includes("/setting"),
+    notificationCount: 10,
     expantionList: [
       {
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
         path: "/setting/demand",
         isActive: path === "/setting/demand",
+        notificationCount: 13,
       },
       {
         title: "デマンド設定(長いテキストにはツールチップがでるよ)",
@@ -53,16 +58,19 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     iconName: "bar_chart",
     isActive: path.includes("/detail_report"),
     path: "detail-report",
+    notificationCount: 33,
   },
   {
     title: "詳細設定",
     iconName: "setting",
     isActive: path.includes("/setting-detail"),
+    notificationCount: 100,
     expantionList: [
       {
         title: "環境設定",
         path: "/setting-detail/environment",
         isActive: path === "/setting-detail/environment",
+        notificationCount: 13,
       },
       {
         title: "ユーザー設定",
@@ -89,7 +97,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
     ],
   },
   {
-    title: "日付設定",
+    title: "日付設定(長いテキストにはツールチップがでるよ)",
     iconName: "date_range",
     isActive: path.includes("/setting-date"),
     path: "setting-date",
@@ -161,10 +169,12 @@ export const Overview = () => {
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
+                  notificationCount={item.notificationCount}
                   expantionList={item.expantionList.map((expantion) => (
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
+                      notificationCount={expantion.notificationCount}
                     />
                   ))}
                   onChangeExpand={(isExpanded) =>
@@ -177,6 +187,7 @@ export const Overview = () => {
                   title={item.title}
                   isActive={item.isActive}
                   iconName={item.iconName}
+                  notificationCount={item.notificationCount}
                 />
               )}
             </React.Fragment>

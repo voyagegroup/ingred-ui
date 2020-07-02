@@ -54,8 +54,6 @@ const sampleData: SampleObject[] = [
   { id: 14, name: "9name", count: 1 },
 ];
 
-const sampleEmptyData: SampleObject[] = [];
-
 export const Overview = () => (
   <Container>
     <DataTable
@@ -298,29 +296,33 @@ export const WithStickyHeader = () => (
   </Container>
 );
 
-export const WithEmptyTable = () => (
-  <Container>
-    <DataTable
-      data={sampleEmptyData}
-      defaultSortField="名前"
-      defaultSortOrder="desc"
-      columns={[
-        {
-          name: "ID",
-          selector: (data) => data.id,
-        },
-        {
-          name: "名前",
-          selector: (data) => data.name,
-          sortable: true,
-        },
-        {
-          name: "カウント",
-          selector: (data) => data.count,
-          sortable: true,
-          align: "right",
-        },
-      ]}
-    />
-  </Container>
-);
+export const WithEmptyTable = () => {
+  const columns: Column<{ id: number; name: string; count: number }>[] = [
+    {
+      name: "ID",
+      selector: (data) => data.id,
+    },
+    {
+      name: "名前",
+      selector: (data) => data.name,
+      sortable: true,
+    },
+    {
+      name: "カウント",
+      selector: (data) => data.count,
+      sortable: true,
+      align: "right",
+    },
+  ];
+
+  return (
+    <Container>
+      <DataTable
+        data={[]}
+        defaultSortField="名前"
+        defaultSortOrder="desc"
+        columns={columns}
+      />
+    </Container>
+  );
+};
