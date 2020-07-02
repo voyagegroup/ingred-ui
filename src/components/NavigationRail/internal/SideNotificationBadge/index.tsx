@@ -1,0 +1,1 @@
+export { SideNotificationBadge } from "./SideNotificationBadge";
