@@ -4,6 +4,7 @@ import Typography from "../Typography";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
+import FloatingTip from "../FloatingTip";
 import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
@@ -31,6 +32,7 @@ export type Props = {
   fullSize?: boolean;
   disableHorizontalPadding?: boolean;
   subActions?: SubAction[];
+  tipElement?: JSX.Element;
 
   // TypeScriptで型エラーが出るので一旦これでしのぐ
   children?: React.ReactNode;
@@ -50,9 +52,18 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
   overflowYScroll = true,
   disableHorizontalPadding = false,
   subActions = [],
+  tipElement,
 }) => {
   const theme = useTheme();
   const showFooter = !!onSubmit;
+  const [
+    iconWrapperElement,
+    setIconWrapperElement,
+  ] = React.useState<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const onHandleIsOpen = (isOpen: boolean) => () => {
+    setIsOpen(isOpen);
+  };
   return (
     <Modal hasBackground={true}>
       <Styled.ModalContainer fullSize={fullSize}>
@@ -62,6 +73,27 @@ const ConfirmModal: React.FunctionComponent<Props> = ({
               <Typography weight="bold" size="xxxl">
                 {title}
               </Typography>
+
+              {tipElement && (
+                <Styled.TipContainer>
+                  <Styled.IconContainer
+                    ref={setIconWrapperElement}
+                    onClick={onHandleIsOpen(!isOpen)}
+                  >
+                    <Icon name="question" type="fill" size="lg" />
+                  </Styled.IconContainer>
+                  <FloatingTip
+                    baseElement={iconWrapperElement}
+                    isOpen={isOpen}
+                    positionPriority={["right-start"]}
+                    onClose={onHandleIsOpen(false)}
+                  >
+                    <Styled.TipContentContainer>
+                      {tipElement}
+                    </Styled.TipContentContainer>
+                  </FloatingTip>
+                </Styled.TipContainer>
+              )}
 
               <Spacer pr={2} />
               {subActions.map(({ icon, action, title }) => (

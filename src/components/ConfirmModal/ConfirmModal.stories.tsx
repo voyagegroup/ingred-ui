@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ConfirmModal from ".";
 import Spacer from "../Spacer";
 import DataTable from "../DataTable";
+import Typography from "../Typography";
 import { data } from "../DataTable/data";
 import { action } from "@storybook/addon-actions";
 
@@ -43,6 +44,26 @@ export const WithFullSize = () => (
   <Container>
     <Spacer pt={2} />
     <ConfirmModal title="タイトル" fullSize={true} onSubmit={action("submit")}>
+      コンテンツ
+    </ConfirmModal>
+  </Container>
+);
+
+export const WithTips = () => (
+  <Container>
+    <Spacer pt={2} />
+    <ConfirmModal
+      title="タイトル"
+      tipElement={
+        <Typography size="sm" lineHeight="1.7">
+          モーダルの設定内容に関する脚注を入れたい場合は、
+          &quot;tipElement&quot;
+          に表示したい内容を追加することでfloatingTipを追加できます。
+        </Typography>
+      }
+      fullSize={true}
+      onSubmit={action("submit")}
+    >
       コンテンツ
     </ConfirmModal>
   </Container>
