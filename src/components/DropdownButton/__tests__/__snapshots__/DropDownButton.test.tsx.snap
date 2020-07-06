@@ -76,7 +76,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     class="sc-fznyAO fxqxlZ"
   >
     <div
-      class="sc-fzplWN jBOVWf"
+      class="sc-fzplWN glxjXw"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -240,7 +240,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     class="sc-fznyAO fxqxlZ"
   >
     <div
-      class="sc-fzplWN jBOVWf"
+      class="sc-fzplWN glxjXw"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
