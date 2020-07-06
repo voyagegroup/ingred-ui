@@ -28,7 +28,7 @@ export type ButtonColorStyle = {
 };
 
 const getContainerColorStyles = (
-  theme: Theme
+  theme: Theme,
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
   primary: {
     normal: {
