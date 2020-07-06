@@ -5,6 +5,7 @@ import { Size } from "../../styles";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
+import { hexToRgba } from "../../utils/hexToRgba";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger";
@@ -33,7 +34,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.white,
-      boxShadow: "0px 0px 16px #0b82f466",
+      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.primary.main, 0.4)}`,
       border: "none",
     },
     hover: {
