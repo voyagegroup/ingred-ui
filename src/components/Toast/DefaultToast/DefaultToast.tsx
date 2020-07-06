@@ -9,6 +9,7 @@ import Flex from "../../Flex";
 import Icon from "../../Icon";
 import Typography from "../../Typography";
 import { Theme, useTheme } from "../../../themes";
+import { hexToRgba } from "../../../utils/hexToRgba";
 
 type ToastStyle = {
   background: string;
@@ -25,7 +26,7 @@ const getToastStyles = ({
 }: Theme): Record<AppearanceTypes, ToastStyle> => ({
   info: {
     background: palette.primary.highlight,
-    boxShadow: `0px 0px 16px ${palette.primary.highlight}66`,
+    boxShadow: `0px 0px 16px ${hexToRgba(palette.primary.highlight, 0.4)}`,
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.primary.main,
     titleColor: palette.primary.deepDark,
@@ -34,7 +35,7 @@ const getToastStyles = ({
   },
   success: {
     background: palette.success.highlight,
-    boxShadow: `0px 0px 16px ${palette.success.highlight}66`,
+    boxShadow: `0px 0px 16px ${hexToRgba(palette.success.highlight, 0.4)}`,
     icon: <Icon name="check" color={palette.white} />,
     iconBackground: palette.success.main,
     titleColor: palette.success.deepDark,
@@ -43,7 +44,7 @@ const getToastStyles = ({
   },
   warning: {
     background: palette.warning.highlight,
-    boxShadow: `0px 0px 16px ${palette.warning.highlight}66`,
+    boxShadow: `0px 0px 16px ${hexToRgba(palette.warning.highlight, 0.4)}`,
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.warning.main,
     titleColor: palette.warning.deepDark,
@@ -52,7 +53,7 @@ const getToastStyles = ({
   },
   error: {
     background: palette.danger.highlight,
-    boxShadow: `0px 0px 16px ${palette.danger.highlight}66`,
+    boxShadow: `0px 0px 16px ${hexToRgba(palette.danger.highlight, 0.4)}`,
     icon: <Icon name="forbid" color={palette.white} />,
     iconBackground: palette.danger.main,
     titleColor: palette.danger.deepDark,
