@@ -28,7 +28,7 @@ export type ButtonColorStyle = {
 };
 
 const getContainerColorStyles = (
-  theme: Theme,
+  theme: Theme
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
   primary: {
     normal: {
@@ -66,7 +66,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.white,
-      boxShadow: "0px 0px 16px #EB0A4E66",
+      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.danger.main, 0.4)}`,
       border: "none",
     },
     hover: {
