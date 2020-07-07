@@ -39,7 +39,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     class="sc-fzozJi jXQLm"
   >
     <div
-      class="sc-AxmLO kcpTOR"
+      class="sc-AxmLO bYbldO"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"

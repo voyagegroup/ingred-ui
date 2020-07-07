@@ -5,6 +5,7 @@ import { SnackbarColor } from "../../Snackbar";
 import { Theme } from "../../../../themes";
 import { useTheme } from "../../../../themes/useTheme";
 import { colors } from "../../../../styles/color";
+import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type Props = {
   color: SnackbarColor;
@@ -23,19 +24,26 @@ const getSnackbarStyle = (
   return {
     default: {
       iconColor: theme.palette.black,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${colors.basic[300]}65`,
+      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
+        colors.basic[300],
+        0.4,
+      )}`,
       background: theme.palette.background.default,
     },
     dark: {
       iconColor: theme.palette.white,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${theme.palette.gray.dark}65`,
+      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
+        theme.palette.gray.dark,
+        0.4,
+      )}`,
       background: theme.palette.gray.dark,
     },
     warning: {
       iconColor: theme.palette.warning.deepDark,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${
-        theme.palette.warning.highlight
-      }65`,
+      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
+        theme.palette.warning.highlight,
+        0.4,
+      )}`,
       background: theme.palette.warning.highlight,
     },
   };
