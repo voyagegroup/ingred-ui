@@ -117,7 +117,7 @@ export const WithTabs = () => (
           filter: (data) => data.filter((item) => item.id < 5),
         },
         {
-          label: "5~9",
+          label: "5~",
           filter: (data) => data.filter((item) => item.id >= 5),
         },
         {
@@ -145,7 +145,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    (item) => item.name && item.name.includes(searchText),
+    (item) => item.name && item.name.includes(searchText)
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -194,7 +194,7 @@ export const SelectableRows: React.FunctionComponent = () => {
             filter: (data) => data.filter((item) => item.id < 5),
           },
           {
-            label: "5~9",
+            label: "5~",
             filter: (data) => data.filter((item) => item.id >= 5),
           },
           {
@@ -283,7 +283,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main],
+    [theme.palette.primary.main]
   );
   return (
     <Container>
