@@ -288,7 +288,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       setAllSelected(false);
     } else {
       setSelectedRows(
-        sourceData
+        displayData
           .filter((data) => !data.selectDisabled)
           .map((data) => data.id),
       );
