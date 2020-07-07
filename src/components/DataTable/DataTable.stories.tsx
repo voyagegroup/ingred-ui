@@ -145,7 +145,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    (item) => item.name && item.name.includes(searchText)
+    (item) => item.name && item.name.includes(searchText),
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -283,7 +283,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main]
+    [theme.palette.primary.main],
   );
   return (
     <Container>
