@@ -53,6 +53,8 @@ import { MailOpenIcon } from "./internal/MailOpenIcon";
 import { FilterIcon } from "./internal/FilterIcon";
 import { MoreIcon } from "./internal/MoreIcon";
 import { NotificationIcon } from "./internal/NotificationIcon";
+import { UserSettingsIcon } from "./internal/UserSettingsIcon";
+import { CompanySettingsIcon } from "./internal/CompanySettingsIcon";
 
 export type IconName =
   | "dashboard"
@@ -106,7 +108,9 @@ export type IconName =
   | "mail"
   | "mail_open"
   | "filter"
-  | "notification";
+  | "notification"
+  | "user_settings"
+  | "company_settings";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -177,6 +181,8 @@ export const icons: {
   mail_open: MailOpenIcon,
   filter: FilterIcon,
   notification: NotificationIcon,
+  user_settings: UserSettingsIcon,
+  company_settings: CompanySettingsIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
