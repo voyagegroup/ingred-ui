@@ -19,11 +19,8 @@ const Component = styled.td<CellProps>`
       ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
       : "none"};
 
-  &:first-of-type {
-    border-left: ${({ theme, ruledLine }) =>
-      ruledLine
-        ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
-        : "none"};
+  &:last-of-type {
+    border-right: none;
   }
 `;
 

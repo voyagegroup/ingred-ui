@@ -24,6 +24,26 @@ export const HeaderCell = styled.th<CellProps>`
     inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
 
   background-color: ${({ theme }) => theme.palette.gray.highlight};
+
+  &:last-of-type {
+    box-shadow: ${({ theme, ruledLine }) =>
+      ruledLine
+        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset 0.5px 0 0 ${theme.palette.divider}`
+        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
+        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
+  }
+
+  &:first-of-type {
+    box-shadow: ${({ theme, ruledLine }) =>
+      ruledLine
+        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset -0.5px 0 0 ${theme.palette.divider}`
+        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
+        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
+  }
 `;
 
 export const IconContainer = styled.div``;
