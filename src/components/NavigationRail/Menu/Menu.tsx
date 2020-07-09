@@ -31,10 +31,12 @@ const Menu: React.FC<Props> = ({
   const textElement = React.useRef<HTMLSpanElement | null>(null);
 
   React.useEffect(() => {
-    if (!textWrapperElement.current || !textElement.current) return;
-    const wrapperWidth = textWrapperElement.current.offsetWidth;
-    const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth <= textWidth);
+    textWrapperElement.current?.addEventListener("transitionend", () => {
+      if (!textWrapperElement.current || !textElement.current) return;
+      const wrapperWidth = textWrapperElement.current.offsetWidth;
+      const textWidth = textElement.current.offsetWidth;
+      setShowTooltip(wrapperWidth <= textWidth);
+    });
   }, [textWrapperElement, textElement]);
 
   return (

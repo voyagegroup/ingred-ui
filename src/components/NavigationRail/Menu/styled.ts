@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import {
-  NavigationRailTransitionDuration,
-  NavigationRailWidth,
-} from "../constants";
+import { NavigationRailTransitionDuration } from "../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  width: ${NavigationRailWidth.WIDE};
   padding: ${({ theme }) =>
     `${theme.spacing * 2}px ${theme.spacing * 2}px ${theme.spacing * 2}px ${
       theme.spacing * 3
