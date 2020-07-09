@@ -16,8 +16,8 @@ export const HeaderCell = styled.th<CellProps>`
       ${({ theme }) => theme.palette.divider},
     inset 0 -${Size.Border.Small} 0 ${({ theme }) => theme.palette.divider};
   background-color: ${({ theme }) => theme.palette.gray.highlight};
+  border-right: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.gray.light};
 `;
 
-export const IconContainer = styled.div`
-  flex: 1 0 auto;
-`;
+export const IconContainer = styled.div``;

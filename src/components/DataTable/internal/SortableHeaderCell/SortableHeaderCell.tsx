@@ -25,7 +25,11 @@ export const SortableHeaderCell: React.FunctionComponent<Props> = ({
   if (order === "asc") iconName = "sort_down";
   return (
     <Styled.HeaderCell width={width} isSortable={sortable} {...rest}>
-      <Flex display="flex" alignItems="flex-start">
+      <Flex
+        display="flex"
+        alignItems="flex-start"
+        justifyContent="space-between"
+      >
         <Typography color="secondary" weight="bold" size="md" component="span">
           {children}
         </Typography>

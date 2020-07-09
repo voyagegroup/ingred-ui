@@ -13,6 +13,8 @@ const Component = styled.td<CellProps>`
     ${({ theme }) => theme.spacing * 3}px;
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
+  border-right: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.gray.light};
 `;
 
 export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> & {
