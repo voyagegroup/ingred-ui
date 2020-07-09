@@ -298,6 +298,7 @@ export const WithStickyHeader = () => (
       <DataTable
         enablePagination={true}
         data={data}
+        ruledLine={true}
         columns={[
           {
             name: "ID",
@@ -312,6 +313,33 @@ export const WithStickyHeader = () => (
         ]}
       />
     </StickyContainer>
+  </Container>
+);
+
+export const WithRuledLine = () => (
+  <Container>
+    <DataTable
+      data={sampleData}
+      defaultSortField="名前"
+      defaultSortOrder="desc"
+      ruledLine={true}
+      columns={[
+        {
+          name: "ID",
+          selector: (data) => data.id,
+        },
+        {
+          name: "名前",
+          selector: (data) => data.name,
+          sortable: true,
+        },
+        {
+          name: "カウント",
+          selector: (data) => data.count,
+          sortable: true,
+        },
+      ]}
+    />
   </Container>
 );
 

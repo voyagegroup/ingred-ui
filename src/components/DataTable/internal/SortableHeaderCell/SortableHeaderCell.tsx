@@ -11,12 +11,14 @@ export type Props = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
   order?: OrderStatus;
   width?: string;
   children?: React.ReactNode;
+  ruledLine?: boolean;
 };
 
 export const SortableHeaderCell: React.FunctionComponent<Props> = ({
   sortable = false,
   order = null,
   width = "auto",
+  ruledLine = false,
   children,
   ...rest
 }) => {
@@ -24,7 +26,12 @@ export const SortableHeaderCell: React.FunctionComponent<Props> = ({
   if (order === "desc") iconName = "sort_up";
   if (order === "asc") iconName = "sort_down";
   return (
-    <Styled.HeaderCell width={width} isSortable={sortable} {...rest}>
+    <Styled.HeaderCell
+      width={width}
+      isSortable={sortable}
+      ruledLine={ruledLine}
+      {...rest}
+    >
       <Flex
         display="flex"
         alignItems="flex-start"

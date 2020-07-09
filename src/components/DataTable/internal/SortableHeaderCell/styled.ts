@@ -4,6 +4,7 @@ import { Size } from "../../../../styles";
 type CellProps = {
   width: string;
   isSortable: boolean;
+  ruledLine: boolean;
 };
 
 export const HeaderCell = styled.th<CellProps>`
@@ -12,11 +13,16 @@ export const HeaderCell = styled.th<CellProps>`
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px
     ${({ theme }) => theme.spacing * 2 - 2}px;
-  box-shadow: inset 0 ${Size.Border.Small} 0
-      ${({ theme }) => theme.palette.divider},
-    inset 0 -${Size.Border.Small} 0 ${({ theme }) => theme.palette.divider},
-    inset -0.5px 0 0 ${({ theme }) => theme.palette.gray.light},
-    inset 0.5px 0 0 ${({ theme }) => theme.palette.gray.light};
+
+  box-shadow: ${({ theme, ruledLine }) =>
+    ruledLine
+      ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
+        inset -0.5px 0 0 ${theme.palette.divider}, 
+        inset 0.5px 0 0 ${theme.palette.divider}`
+      : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
+    inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
+
   background-color: ${({ theme }) => theme.palette.gray.highlight};
 `;
 
