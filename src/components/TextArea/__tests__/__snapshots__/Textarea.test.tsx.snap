@@ -6,7 +6,7 @@ exports[`Textarea component testing Textarea 1`] = `
     class="sc-AxjAm bsXfnX"
   >
     <textarea
-      class="sc-AxirZ iLdtVo"
+      class="sc-AxirZ RVxwc"
       readonly=""
     >
       hoge
@@ -21,7 +21,7 @@ exports[`Textarea component testing Textarea disable 1`] = `
     class="sc-AxjAm bsXfnX"
   >
     <textarea
-      class="sc-AxirZ iLdtVo"
+      class="sc-AxirZ RVxwc"
       disabled=""
       readonly=""
     >
@@ -37,7 +37,7 @@ exports[`Textarea component testing Textarea error 1`] = `
     class="sc-AxjAm bsXfnX"
   >
     <textarea
-      class="sc-AxirZ dmKnCD"
+      class="sc-AxirZ dagQXi"
       readonly=""
     >
       hoge
