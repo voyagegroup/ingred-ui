@@ -85,10 +85,10 @@ const Switch: React.FunctionComponent<Props> = ({ cases, value, onChange }) => {
       setIndicatorStyle(newIndicatorStyle);
     } else {
       const dStart = Math.abs(
-        indicatorStyle["left"] - newIndicatorStyle["left"]
+        indicatorStyle["left"] - newIndicatorStyle["left"],
       );
       const dSize = Math.abs(
-        indicatorStyle["width"] - newIndicatorStyle["width"]
+        indicatorStyle["width"] - newIndicatorStyle["width"],
       );
 
       if (dStart >= 1 || dSize >= 1) {
