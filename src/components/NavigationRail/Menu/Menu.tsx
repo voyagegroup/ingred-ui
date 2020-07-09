@@ -27,17 +27,17 @@ const Menu: React.FC<Props> = ({
 
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
-  const textWrapperElement = React.useRef<HTMLDivElement | null>(null);
+  const textContainerElement = React.useRef<HTMLDivElement | null>(null);
   const textElement = React.useRef<HTMLSpanElement | null>(null);
 
   React.useEffect(() => {
-    textWrapperElement.current?.addEventListener("transitionend", () => {
-      if (!textWrapperElement.current || !textElement.current) return;
-      const wrapperWidth = textWrapperElement.current.offsetWidth;
+    textContainerElement.current?.addEventListener("transitionend", () => {
+      if (!textContainerElement.current || !textElement.current) return;
+      const containerWidth = textContainerElement.current.offsetWidth;
       const textWidth = textElement.current.offsetWidth;
-      setShowTooltip(wrapperWidth <= textWidth);
+      setShowTooltip(containerWidth <= textWidth);
     });
-  }, [textWrapperElement, textElement]);
+  }, [textContainerElement, textElement]);
 
   return (
     <Tooltip
@@ -60,12 +60,15 @@ const Menu: React.FC<Props> = ({
             color={isActive ? "active" : "line"}
           />
         </NotificationBadge>
-        <Styled.TextContainer
-          ref={textWrapperElement}
-          isActive={isActive}
-          isOpen={isOpen}
-        >
-          <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
+        <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
+          <Styled.TextWrapper
+            ref={textElement}
+            component="span"
+            color={isActive ? "primary" : "secondary"}
+            weight="bold"
+          >
+            {title}
+          </Styled.TextWrapper>
         </Styled.TextContainer>
         {notificationCount !== 0 && (
           <SideNotificationBadge notificationCount={notificationCount} />
