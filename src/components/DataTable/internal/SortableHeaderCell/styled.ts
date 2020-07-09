@@ -14,10 +14,10 @@ export const HeaderCell = styled.th<CellProps>`
     ${({ theme }) => theme.spacing * 2 - 2}px;
   box-shadow: inset 0 ${Size.Border.Small} 0
       ${({ theme }) => theme.palette.divider},
-    inset 0 -${Size.Border.Small} 0 ${({ theme }) => theme.palette.divider};
+    inset 0 -${Size.Border.Small} 0 ${({ theme }) => theme.palette.divider},
+    inset -0.5px 0 0 ${({ theme }) => theme.palette.gray.light},
+    inset 0.5px 0 0 ${({ theme }) => theme.palette.gray.light};
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-right: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
 `;
 
 export const IconContainer = styled.div``;
