@@ -4,8 +4,8 @@ import { Radius, Size } from "../../styles";
 export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
 
-  /* .SingleDatePicker */
-  .SingleDatePicker {
+  /* .DatePicker */
+  .DatePicker {
     display: inline-flex;
   }
 

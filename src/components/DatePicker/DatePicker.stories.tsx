@@ -1,5 +1,5 @@
 import * as React from "react";
-import SingleDatePicker from "./SingleDatePicker";
+import DatePicker from "./DatePicker";
 import styled from "styled-components";
 import moment from "moment";
 import "react-dates/lib/css/_datepicker.css";
@@ -18,9 +18,9 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "SingleDatePicker",
+  title: "DatePicker",
   parameters: {
-    component: SingleDatePicker,
+    component: DatePicker,
   },
 };
 
@@ -34,10 +34,10 @@ export const Overview: React.FunctionComponent = () => {
   return (
     <Container>
       <Typography weight="bold" size="xxl">
-        SingleDatePicker
+        DatePicker
       </Typography>
       <RowContainer>
-        <SingleDatePicker date={date} onDateChange={onDateChange} />
+        <DatePicker date={date} onDateChange={onDateChange} />
       </RowContainer>
     </Container>
   );
@@ -46,10 +46,10 @@ export const Overview: React.FunctionComponent = () => {
 export const withError = () => (
   <Container>
     <Typography weight="bold" size="xxl">
-      SingleDatePicker
+      DatePicker
     </Typography>
     <RowContainer>
-      <SingleDatePicker
+      <DatePicker
         date={moment().set("date", 1)}
         error={true}
         onDateChange={action("onDatesChange")}

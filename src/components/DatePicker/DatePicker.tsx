@@ -2,10 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
 import moment from "moment";
-import {
-  SingleDatePicker as OriginalSingleDatePicker,
-  SingleDatePickerShape,
-} from "react-dates";
+import { SingleDatePicker, SingleDatePickerShape } from "react-dates";
 import Icon from "../Icon";
 
 moment.locale("ja", {
@@ -32,7 +29,7 @@ export type Props = Partial<
   error?: boolean;
 };
 
-const SingleDatePicker: React.FunctionComponent<Props> = ({
+const DatePicker: React.FunctionComponent<Props> = ({
   date,
   error = false,
   ...rest
@@ -44,7 +41,7 @@ const SingleDatePicker: React.FunctionComponent<Props> = ({
 
   return (
     <Styled.Container error={error}>
-      <OriginalSingleDatePicker
+      <SingleDatePicker
         id="datePicker"
         focused={focused}
         date={date}
@@ -73,4 +70,4 @@ const SingleDatePicker: React.FunctionComponent<Props> = ({
   );
 };
 
-export default SingleDatePicker;
+export default DatePicker;
