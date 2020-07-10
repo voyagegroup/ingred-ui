@@ -52,8 +52,6 @@ export const Overview = () => {
           <Spacer pt={2} />
           <Input />
         </Column>
-      </RowContainer>
-      <RowContainer>
         <Column>
           <Typography weight="bold" size="xxl">
             Typed
@@ -61,6 +59,8 @@ export const Overview = () => {
           <Spacer pt={2} />
           <Input value="Textfield" readOnly={true} />
         </Column>
+      </RowContainer>
+      <RowContainer>
         <Column>
           <Typography weight="bold" size="xxl">
             Disabled
@@ -70,7 +70,7 @@ export const Overview = () => {
         </Column>
         <Column>
           <Typography weight="bold" size="xxl">
-            Typed &amp; Disabled
+            Disabled &amp; Typed
           </Typography>
           <Spacer pt={2} />
           <Input value="Textfield" readOnly={true} disabled={true} />
@@ -79,23 +79,17 @@ export const Overview = () => {
       <RowContainer>
         <Column>
           <Typography weight="bold" size="xxl">
-            Password
-          </Typography>
-          <Typography color={theme.palette.text.hint}>
-            Last
-            passを利用している方は下キーを押すとパスワードの候補が表示されます
+            Error
           </Typography>
           <Spacer pt={2} />
-          <Input value="secure text" readOnly={true} type="password" />
+          <Input error={true} readOnly={true} />
         </Column>
-      </RowContainer>
-      <RowContainer>
         <Column>
           <Typography weight="bold" size="xxl">
-            with Icon
+            Error &amp; Typed
           </Typography>
           <Spacer pt={2} />
-          <Input placeholder="検索" icon="search" />
+          <Input error={true} value="Textfield" readOnly={true} />
         </Column>
       </RowContainer>
     </Container>

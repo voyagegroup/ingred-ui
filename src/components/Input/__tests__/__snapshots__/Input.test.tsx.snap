@@ -2,13 +2,25 @@
 
 exports[`Input component testing Input 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-AxjAm hPcro  "
-  >
-    <input
-      class="sc-AxirZ hzGbCn  "
-      type="text"
-    />
-  </div>
+  <input
+    class="sc-AxjAm fgxEhk"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input disabled 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-AxjAm fgxEhk"
+    disabled=""
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input error 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-AxjAm beYHXC"
+  />
 </DocumentFragment>
 `;
