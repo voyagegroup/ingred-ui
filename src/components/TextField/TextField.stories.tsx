@@ -63,6 +63,15 @@ export const Overview = () => {
           <TextField value="secure text" readOnly={true} type="password" />
         </Column>
       </RowContainer>
+      <RowContainer>
+        <Column>
+          <Typography weight="bold" size="xxl">
+            With icon
+          </Typography>
+          <Spacer pt={2} />
+          <TextField placeholder="検索" icon="search" />
+        </Column>
+      </RowContainer>
     </Container>
   );
 };

@@ -29,7 +29,10 @@ const TextField: React.FunctionComponent<Props> = ({
 
   return (
     <Styled.Container>
-      <Styled.InputContainer>
+      <Styled.InputContainer
+        hasLeftIcon={icon != null}
+        hasRightIcon={type === "password"}
+      >
         {icon != null && (
           <Styled.LeftIconContainer onClick={onHandleToggleShowPassword}>
             <Icon name={icon} size="md" color={theme.palette.gray.main} />
