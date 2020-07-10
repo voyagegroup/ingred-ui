@@ -49,6 +49,18 @@ export const Overview = () => {
             errorText={"数値で入力してください"}
           />
         </Column>
+        <Column>
+          <Typography weight="bold" size="xxl">
+            Error(Textarea)
+          </Typography>
+          <Spacer pt={2} />
+          <TextField
+            value="Textfield"
+            readOnly={true}
+            errorText={"入力が正しくありません"}
+            multiline={true}
+          />
+        </Column>
       </RowContainer>
       <RowContainer>
         <Column>

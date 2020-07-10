@@ -92,6 +92,22 @@ export const Overview = () => {
           <Input error={true} value="Textfield" readOnly={true} />
         </Column>
       </RowContainer>
+      <RowContainer>
+        <Column>
+          <Typography weight="bold" size="xxl">
+            Textarea
+          </Typography>
+          <Spacer pt={2} />
+          <Input multiline={true} placeholder="プレースホルダー" />
+        </Column>
+        <Column>
+          <Typography weight="bold" size="xxl">
+            Textarea(Error)
+          </Typography>
+          <Spacer pt={2} />
+          <Input error={true} multiline={true} placeholder="プレースホルダー" />
+        </Column>
+      </RowContainer>
     </Container>
   );
 };

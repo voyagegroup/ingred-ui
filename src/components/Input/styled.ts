@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Size, Radius } from "../../styles";
 
-
 export const Input = styled.input<{
   isError: boolean;
   width?: string | number;
+  resize?: string;
 }>`
   ${({ width }) =>
     width ? `width: ${isNaN(+width) ? width : width + "px"}` : ""};
@@ -27,6 +27,7 @@ export const Input = styled.input<{
   border-color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.divider};
   overflow: hidden;
+  resize: ${({ resize }) => resize};
   /* lastpassのicon用 */
   background-position: calc(100% - 35px) 50% !important;
   &:focus {

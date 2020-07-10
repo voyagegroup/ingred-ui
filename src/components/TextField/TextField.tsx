@@ -13,12 +13,15 @@ import { IconName } from "../Icon/Icon";
 type Props = InputProps & {
   errorText?: string;
   icon?: IconName;
+  type?: string;
+  inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 };
 
 const TextField: React.FunctionComponent<Props> = ({
   errorText,
-  type,
   icon,
+  type,
+  inputRef,
   ...rest
 }) => {
   const [show, setShow] = React.useState(false);
@@ -38,7 +41,7 @@ const TextField: React.FunctionComponent<Props> = ({
             <Icon name={icon} size="md" color={theme.palette.gray.main} />
           </Styled.LeftIconContainer>
         )}
-        <Input {...rest} error={!!errorText} type={type} />
+        <Input ref={inputRef} {...rest} error={!!errorText} type={type} />
         {type === "password" && (
           <Styled.RightIconContainer onClick={onHandleToggleShowPassword}>
             <Icon
