@@ -60,7 +60,7 @@ const Switch: React.FunctionComponent<Props> = ({ cases, value, onChange }) => {
 
         if (children.length > 0) {
           const tab = children[valueToIndex.get(value)];
-          tabMeta = tab ? tab.getBoundingClientRect() : null;
+          tabMeta = tab?.getBoundingClientRect() || null;
         }
       }
     }
