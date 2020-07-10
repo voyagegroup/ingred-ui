@@ -155,7 +155,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
   const selectedColumn = columns.find(
-    (column) => column.name === defaultSortField
+    (column) => column.name === defaultSortField,
   );
   const firstSortableColumn = selectedColumn?.sortable
     ? selectedColumn
@@ -168,7 +168,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   });
 
   const [filterState, setFilterState] = useFilterState(
-    per || getPerFromLocalStorage()
+    per || getPerFromLocalStorage(),
   );
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
@@ -178,7 +178,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       enablePagination,
       tabs,
       currentTabIndex,
-    })
+    }),
   );
 
   const totalLength = React.useMemo(
@@ -188,7 +188,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
         tabs,
         currentTabIndex,
       }).length,
-    [sourceData, tabs, currentTabIndex]
+    [sourceData, tabs, currentTabIndex],
   );
 
   useDidUpdate(() => {
@@ -292,7 +292,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       setSelectedRows(
         displayData
           .filter((data) => !data.selectDisabled)
-          .map((data) => data.id)
+          .map((data) => data.id),
       );
       setAllSelected(true);
     }
