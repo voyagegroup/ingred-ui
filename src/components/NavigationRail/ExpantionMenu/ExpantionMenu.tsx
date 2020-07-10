@@ -36,16 +36,18 @@ const ExpantionMenu: React.FC<Props> = ({
   const [expantionHeight, setExpantionHeight] = React.useState<string>("auto");
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
-  const textWrapperElement = React.useRef<HTMLDivElement | null>(null);
+  const textContainerElement = React.useRef<HTMLDivElement | null>(null);
   const textElement = React.useRef<HTMLSpanElement | null>(null);
   const expantionElement = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    if (!textWrapperElement.current || !textElement.current) return;
-    const wrapperWidth = textWrapperElement.current.offsetWidth;
-    const textWidth = textElement.current.offsetWidth;
-    setShowTooltip(wrapperWidth <= textWidth);
-  }, [textWrapperElement, textElement]);
+    textContainerElement.current?.addEventListener("transitionend", () => {
+      if (!textContainerElement.current || !textElement.current) return;
+      const containerWidth = textContainerElement.current.offsetWidth;
+      const textWidth = textElement.current.offsetWidth;
+      setShowTooltip(containerWidth <= textWidth);
+    });
+  }, [textContainerElement, textElement]);
 
   const onHandleClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -91,12 +93,15 @@ const ExpantionMenu: React.FC<Props> = ({
               color={isActive ? "active" : "line"}
             />
           </NotificationBadge>
-          <Styled.TextContainer
-            ref={textWrapperElement}
-            isActive={isActive}
-            isOpen={isOpen}
-          >
-            <Styled.TextWrapper ref={textElement}>{title}</Styled.TextWrapper>
+          <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
+            <Styled.TextWrapper
+              ref={textElement}
+              component="span"
+              color={isActive ? "primary" : "secondary"}
+              weight="bold"
+            >
+              {title}
+            </Styled.TextWrapper>
           </Styled.TextContainer>
           <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
             <Icon

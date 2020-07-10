@@ -17,10 +17,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
         class="sc-AxhCb ekArAs"
       >
         <div
-          class="sc-fzokOt jvJBKh"
+          class="sc-fzqBZW dreHQL"
         >
           <div
-            class="sc-fznyAO gCSAhN"
+            class="sc-fznKkj urvBc"
           >
             <div
               class="sc-Axmtr kFYDZB"
@@ -41,22 +41,24 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </svg>
             </div>
             <span
-              class="sc-fznKkj doiaBm"
+              class="sc-fznZeY gqxGKu"
             >
               0
             </span>
           </div>
           <div
-            class="sc-fzqBZW hoiGda"
+            class="sc-fzqNJr eByRrb"
           >
             <span
-              class="sc-fzqNJr dehWPY"
+              class="sc-fzoLsD Toynz sc-fzoyAV gEdpVK"
+              color="#0B82F4"
+              font-size="14px"
             >
               設定
             </span>
           </div>
           <div
-            class="sc-fzoyAV gGGLgn"
+            class="sc-fzoLag hfHVIz"
           >
             <div
               class="sc-Axmtr kFYDZB"
@@ -79,17 +81,19 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-fzoLag bfwMDY"
+          class="sc-fzoXzr inAVql"
           height="auto"
         >
           <div
-            class="sc-fzoXzr huZyoe"
+            class="sc-fzpjYC cnHENx"
           >
             <div
-              class="sc-fzpjYC eeSuTd"
+              class="sc-fznxsB iaRQNF"
             >
               <span
-                class="sc-fznxsB dGqSTc"
+                class="sc-fzoLsD Toynz sc-fznJRM brvoJE"
+                color="#0B82F4"
+                font-size="14px"
               >
                 デマンド設定
               </span>
@@ -97,10 +101,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-fzoLsD eZvoFM"
+          class="sc-fzpans eErVPn"
         >
           <div
-            class="sc-fznyAO gCSAhN"
+            class="sc-fznKkj urvBc"
           >
             <div
               class="sc-Axmtr kFYDZB"
@@ -121,16 +125,18 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </svg>
             </div>
             <span
-              class="sc-fznKkj doiaBm"
+              class="sc-fznZeY gqxGKu"
             >
               0
             </span>
           </div>
           <div
-            class="sc-fzpans cMFQwP"
+            class="sc-fzplWN hdsezt"
           >
             <span
-              class="sc-fzplWN gSMKae"
+              class="sc-fzoLsD jpOnuY sc-fznyAO deZnEW"
+              color="#778490"
+              font-size="14px"
             >
               ダッシュボード
             </span>

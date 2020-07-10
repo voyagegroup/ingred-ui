@@ -68,30 +68,41 @@ export type Props = {
   size?: FontSize;
   weight?: FontWeight;
   lineHeight?: string;
+  // MEMO: Enable to override style with styled-component
+  className?: string;
+  children: React.ReactNode;
 };
 
-const Typography: React.FunctionComponent<Props> = ({
-  children,
-  component: Component = "p",
-  color = "initial",
-  align = "left",
-  size = "md",
-  weight = "normal",
-  lineHeight = "1.4",
-}) => {
-  const theme = useTheme();
-  return (
-    <Styled.Container
-      as={Component}
-      color={getColor(color, theme)}
-      align={align}
-      fontSize={`${fontSize[size]}px`}
-      weight={weight}
-      lineHeight={lineHeight}
-    >
-      {children}
-    </Styled.Container>
-  );
-};
+const Typography = React.forwardRef<HTMLElement, Props>(
+  (
+    {
+      children,
+      component: Component = "p",
+      color = "initial",
+      align = "left",
+      size = "md",
+      weight = "normal",
+      lineHeight = "1.4",
+      className,
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <Styled.Container
+        ref={ref}
+        as={Component}
+        color={getColor(color, theme)}
+        align={align}
+        fontSize={`${fontSize[size]}px`}
+        weight={weight}
+        lineHeight={lineHeight}
+        className={className}
+      >
+        {children}
+      </Styled.Container>
+    );
+  },
+);
 
 export default Typography;
