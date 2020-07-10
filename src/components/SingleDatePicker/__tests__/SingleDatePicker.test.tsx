@@ -4,10 +4,10 @@ import { cleanup } from "@testing-library/react";
 import SingleDatePicker from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
-describe("DatePicker component testing", () => {
+describe("DateRangePicker component testing", () => {
   afterEach(cleanup);
 
-  test("DatePicker", () => {
+  test("DateRangePicker", () => {
     const { asFragment } = renderWithThemeProvider(
       <SingleDatePicker date={null} onDateChange={jest.fn()} />,
     );

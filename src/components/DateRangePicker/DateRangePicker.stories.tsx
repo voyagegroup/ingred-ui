@@ -1,5 +1,5 @@
 import * as React from "react";
-import DatePicker from "./DatePicker";
+import DateRangePicker from "./DateRangePicker";
 import Typography from "../Typography";
 import styled from "styled-components";
 import moment from "moment";
@@ -18,9 +18,9 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "DatePicker",
+  title: "DateRangePicker",
   parameters: {
-    component: DatePicker,
+    component: DateRangePicker,
   },
 };
 
@@ -42,10 +42,10 @@ export const Overview: React.FunctionComponent = () => {
   return (
     <Container>
       <Typography weight="bold" size="xxl">
-        DatePicker
+        DateRangePicker
       </Typography>
       <RowContainer>
-        <DatePicker
+        <DateRangePicker
           startDate={startDate}
           endDate={endDate}
           onDatesChange={onDatesChange}
@@ -58,10 +58,10 @@ export const Overview: React.FunctionComponent = () => {
 export const withError = () => (
   <Container>
     <Typography weight="bold" size="xxl">
-      DatePicker
+      DateRangePicker
     </Typography>
     <RowContainer>
-      <DatePicker
+      <DateRangePicker
         startDate={moment().set("date", 1)}
         endDate={moment()}
         error={true}

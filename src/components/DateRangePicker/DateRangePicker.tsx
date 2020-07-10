@@ -4,7 +4,7 @@ import "react-dates/initialize";
 import moment from "moment";
 import {
   FocusedInputShape,
-  DateRangePicker,
+  DateRangePicker as OriginalDateRangePicker,
   DateRangePickerShape,
 } from "react-dates";
 import Icon from "../Icon";
@@ -35,7 +35,7 @@ export type Props = Partial<DateRangePickerShape> & {
   error?: boolean;
 };
 
-const DatePicker: React.FunctionComponent<Props> = ({
+const DateRangePicker: React.FunctionComponent<Props> = ({
   startDate,
   endDate,
   error = false,
@@ -48,7 +48,7 @@ const DatePicker: React.FunctionComponent<Props> = ({
 
   return (
     <Styled.Container error={error}>
-      <DateRangePicker
+      <OriginalDateRangePicker
         startDatePlaceholderText="FROM"
         endDatePlaceholderText="TO"
         isOutsideRange={isOutsideRange}
@@ -82,4 +82,4 @@ const DatePicker: React.FunctionComponent<Props> = ({
   );
 };
 
-export default DatePicker;
+export default DateRangePicker;

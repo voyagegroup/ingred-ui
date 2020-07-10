@@ -29,8 +29,8 @@ export * from "./ContextMenu";
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
-export { default as DatePicker } from "./DatePicker";
-export * from "./DatePicker";
+export { default as DateRangePicker } from "./DateRangePicker";
+export * from "./DateRangePicker";
 
 export { default as Divider } from "./Divider";
 export * from "./Divider";
