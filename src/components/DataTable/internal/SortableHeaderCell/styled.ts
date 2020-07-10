@@ -4,7 +4,7 @@ import { Size } from "../../../../styles";
 type CellProps = {
   width: string;
   isSortable: boolean;
-  ruledLine: boolean;
+  enableRuledLine: boolean;
 };
 
 export const HeaderCell = styled.th<CellProps>`
@@ -14,8 +14,8 @@ export const HeaderCell = styled.th<CellProps>`
     ${({ theme }) => theme.spacing * 3}px
     ${({ theme }) => theme.spacing * 2 - 2}px;
 
-  box-shadow: ${({ theme, ruledLine }) =>
-    ruledLine
+  box-shadow: ${({ theme, enableRuledLine }) =>
+    enableRuledLine
       ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset -0.5px 0 0 ${theme.palette.divider}, 
@@ -26,8 +26,8 @@ export const HeaderCell = styled.th<CellProps>`
   background-color: ${({ theme }) => theme.palette.gray.highlight};
 
   &:last-of-type {
-    box-shadow: ${({ theme, ruledLine }) =>
-      ruledLine
+    box-shadow: ${({ theme, enableRuledLine }) =>
+      enableRuledLine
         ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset 0.5px 0 0 ${theme.palette.divider}`
@@ -36,8 +36,8 @@ export const HeaderCell = styled.th<CellProps>`
   }
 
   &:first-of-type {
-    box-shadow: ${({ theme, ruledLine }) =>
-      ruledLine
+    box-shadow: ${({ theme, enableRuledLine }) =>
+      enableRuledLine
         ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
         inset -0.5px 0 0 ${theme.palette.divider}`

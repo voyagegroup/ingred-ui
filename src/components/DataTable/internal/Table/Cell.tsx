@@ -5,7 +5,7 @@ import { Size } from "../../../../styles/size";
 
 type CellProps = {
   width: string;
-  ruledLine: boolean;
+  enableRuledLine: boolean;
 };
 
 const Component = styled.td<CellProps>`
@@ -14,8 +14,8 @@ const Component = styled.td<CellProps>`
     ${({ theme }) => theme.spacing * 3}px;
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
-  border-right: ${({ theme, ruledLine }) =>
-    ruledLine
+  border-right: ${({ theme, enableRuledLine }) =>
+    enableRuledLine
       ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
       : "none"};
 
@@ -26,18 +26,18 @@ const Component = styled.td<CellProps>`
 
 export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> & {
   width?: string;
-  ruledLine?: boolean;
+  enableRuledLine?: boolean;
   children?: React.ReactNode;
 };
 
 export const Cell: React.FunctionComponent<Props> = ({
   width = "auto",
-  ruledLine = false,
+  enableRuledLine = false,
   children,
   ...rest
 }) => {
   return (
-    <Component width={width} ruledLine={ruledLine} {...rest}>
+    <Component width={width} enableRuledLine={enableRuledLine} {...rest}>
       {children}
     </Component>
   );

@@ -112,7 +112,7 @@ type Props<T> = {
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
-  ruledLine?: boolean;
+  enableRuledLine?: boolean;
 };
 
 // idを必須にしたい
@@ -130,7 +130,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   per,
   defaultSortField,
   defaultSortOrder = "desc",
-  ruledLine = false,
+  enableRuledLine = false,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -155,7 +155,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
   const selectedColumn = columns.find(
-    (column) => column.name === defaultSortField,
+    (column) => column.name === defaultSortField
   );
   const firstSortableColumn = selectedColumn?.sortable
     ? selectedColumn
@@ -168,7 +168,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   });
 
   const [filterState, setFilterState] = useFilterState(
-    per || getPerFromLocalStorage(),
+    per || getPerFromLocalStorage()
   );
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
@@ -178,7 +178,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       enablePagination,
       tabs,
       currentTabIndex,
-    }),
+    })
   );
 
   const totalLength = React.useMemo(
@@ -188,7 +188,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
         tabs,
         currentTabIndex,
       }).length,
-    [sourceData, tabs, currentTabIndex],
+    [sourceData, tabs, currentTabIndex]
   );
 
   useDidUpdate(() => {
@@ -292,7 +292,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       setSelectedRows(
         displayData
           .filter((data) => !data.selectDisabled)
-          .map((data) => data.id),
+          .map((data) => data.id)
       );
       setAllSelected(true);
     }
@@ -333,7 +333,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 sortable={column.sortable}
                 order={getOrder(sortState, column.name)}
                 width={column.width}
-                ruledLine={ruledLine}
+                enableRuledLine={enableRuledLine}
                 onClick={
                   column.sortable
                     ? onHandleSort(column.selector, column.name)
@@ -359,7 +359,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   <>
                     {showCheckbox &&
                       (item.selectDisabled ? (
-                        <Table.Cell ruledLine={ruledLine} />
+                        <Table.Cell enableRuledLine={enableRuledLine} />
                       ) : (
                         <CellCheckbox
                           selected={selectedRows.includes(item.id)}
@@ -375,7 +375,10 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   </>
                 )}
                 {columns.map((column) => (
-                  <Table.Cell key={column.name} ruledLine={ruledLine}>
+                  <Table.Cell
+                    key={column.name}
+                    enableRuledLine={enableRuledLine}
+                  >
                     {column.renderCell ? (
                       column.renderCell(item)
                     ) : (

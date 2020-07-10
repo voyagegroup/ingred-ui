@@ -145,7 +145,7 @@ export const WithTabs = () => (
 export const WithSearch: React.FunctionComponent = () => {
   const [searchText, setSearchText] = React.useState("");
   const searchedItems = sampleData.filter(
-    (item) => item.name && item.name.includes(searchText),
+    (item) => item.name && item.name.includes(searchText)
   );
   const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
@@ -283,7 +283,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main],
+    [theme.palette.primary.main]
   );
   return (
     <Container>
@@ -298,7 +298,7 @@ export const WithStickyHeader = () => (
       <DataTable
         enablePagination={true}
         data={data}
-        ruledLine={true}
+        enableRuledLine={true}
         columns={[
           {
             name: "ID",
@@ -316,13 +316,13 @@ export const WithStickyHeader = () => (
   </Container>
 );
 
-export const WithRuledLine = () => (
+export const WithenableRuledLine = () => (
   <Container>
     <DataTable
       data={sampleData}
       defaultSortField="名前"
       defaultSortOrder="desc"
-      ruledLine={true}
+      enableRuledLine={true}
       columns={[
         {
           name: "ID",
