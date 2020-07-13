@@ -3,64 +3,34 @@
 exports[`DatePicker component testing DatePicker 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm cCoEaS"
+    class="sc-AxjAm ihKFjO"
   >
     <div
-      class="DateRangePicker DateRangePicker_1"
+      class="SingleDatePicker SingleDatePicker_1"
     >
       <div>
         <div
-          class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2"
+          class="SingleDatePickerInput SingleDatePickerInput_1 SingleDatePickerInput__withBorder SingleDatePickerInput__withBorder_2"
         >
           <div
             class="DateInput DateInput_1"
           >
             <input
-              aria-describedby="DateInput__screen-reader-message-startDate"
-              aria-label="FROM"
+              aria-describedby="DateInput__screen-reader-message-datePicker"
+              aria-label="Date"
               autocomplete="off"
               class="DateInput_input DateInput_input_1"
-              id="startDate"
-              name="startDate"
-              placeholder="FROM"
+              id="datePicker"
+              name="datePicker"
+              placeholder="Date"
               type="text"
               value=""
             />
             <p
               class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-              id="DateInput__screen-reader-message-startDate"
+              id="DateInput__screen-reader-message-datePicker"
             >
               Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
-            </p>
-          </div>
-          <div
-            aria-hidden="true"
-            class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1"
-            role="presentation"
-          >
-            <div
-              class="sc-AxirZ hHQEfB"
-            />
-          </div>
-          <div
-            class="DateInput DateInput_1"
-          >
-            <input
-              aria-describedby="DateInput__screen-reader-message-endDate"
-              aria-label="TO"
-              autocomplete="off"
-              class="DateInput_input DateInput_input_1"
-              id="endDate"
-              name="endDate"
-              placeholder="TO"
-              type="text"
-              value=""
-            />
-            <p
-              class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
-              id="DateInput__screen-reader-message-endDate"
-            >
-              Navigate backward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
             </p>
           </div>
         </div>

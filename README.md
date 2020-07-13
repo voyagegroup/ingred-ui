@@ -39,7 +39,7 @@ class Example extends React.Component {
 }
 ```
 
-`<DatePicker />`を使う場合は
+`<DatePicker />`または`<DateRangePicker />`を使う場合は
 
 ```tsx
 import "react-dates/lib/css/_datepicker.css";
