@@ -74,6 +74,7 @@ export type IconName =
   | "eye"
   | "eye_off"
   | "exclamation"
+  | "arrow_double" // TODO: あとで消す(メジャーバージョンをあげてリリース)
   | "arrow_double_left"
   | "arrow_double_right"
   | "question"
@@ -145,6 +146,7 @@ export const icons: {
   eye: EyeIcon,
   eye_off: EyeOffIcon,
   exclamation: ExclamationIcon,
+  arrow_double: ArrowDoubleLeftIcon,
   arrow_double_left: ArrowDoubleLeftIcon,
   arrow_double_right: ArrowDoubleRightIcon,
   question: QuestionIcon,

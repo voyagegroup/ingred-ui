@@ -24,7 +24,7 @@ import {
   Theme,
   Toast,
   DropdownButton,
-  DateRangePicker,
+  DatePicker,
 } from "ingred-ui";
 import { GlobalStyle } from "./styles/globalStyle";
 
@@ -172,9 +172,9 @@ const componentList = [
         content: <RadioButton checked={true} />,
       },
       {
-        title: "DateRangePicker",
+        title: "DatePicker",
         content: (
-          <DateRangePicker
+          <DatePicker
             startDate={moment()}
             endDate={moment()}
             onDatesChange={() => {}}

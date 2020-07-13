@@ -2,7 +2,11 @@ import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
 import moment from "moment";
-import { SingleDatePicker, SingleDatePickerShape } from "react-dates";
+import {
+  FocusedInputShape,
+  DateRangePicker,
+  DateRangePickerShape,
+} from "react-dates";
 import Icon from "../Icon";
 
 moment.locale("ja", {
@@ -21,38 +25,43 @@ function isOutsideRange() {
   return false;
 }
 
-export type Props = Partial<
-  Omit<SingleDatePickerShape, "date" | "onFocusChange">
-> & {
-  date: moment.Moment | null;
-  onDateChange: (date: moment.Moment | null) => void;
+export type Props = Partial<DateRangePickerShape> & {
+  startDate: moment.Moment | null;
+  endDate: moment.Moment | null;
+  onDatesChange: (arg: {
+    startDate: moment.Moment | null;
+    endDate: moment.Moment | null;
+  }) => void;
   error?: boolean;
 };
 
 const DatePicker: React.FunctionComponent<Props> = ({
-  date,
+  startDate,
+  endDate,
   error = false,
   ...rest
 }) => {
-  const [focused, setFocused] = React.useState<boolean | null>(null);
-  const onFocusChange = ({ focused }: { focused: boolean | null }) => {
-    setFocused(focused);
-  };
+  const [
+    focusedInput,
+    setFocusedInput,
+  ] = React.useState<FocusedInputShape | null>(null);
 
   return (
     <Styled.Container error={error}>
-      <SingleDatePicker
-        id="datePicker"
-        focused={focused}
-        date={date}
+      <DateRangePicker
+        startDatePlaceholderText="FROM"
+        endDatePlaceholderText="TO"
         isOutsideRange={isOutsideRange}
         displayFormat={displayFormat}
-        numberOfMonths={1}
+        customArrowIcon={<Styled.CustomArrowIcon />}
+        numberOfMonths={2}
         enableOutsideDays={true}
         daySize={41}
         renderMonthText={renderMonthText}
         weekDayFormat="ddd"
         hideKeyboardShortcutsPanel={true}
+        startDateId="startDate"
+        endDateId="endDate"
         navPrev={
           <Styled.NavPrev>
             <Icon name="arrow_left" size="lg" />
@@ -63,8 +72,11 @@ const DatePicker: React.FunctionComponent<Props> = ({
             <Icon name="arrow_right" size="lg" />
           </Styled.NavNext>
         }
-        onFocusChange={onFocusChange}
         {...rest}
+        startDate={startDate}
+        endDate={endDate}
+        focusedInput={focusedInput}
+        onFocusChange={setFocusedInput}
       />
     </Styled.Container>
   );

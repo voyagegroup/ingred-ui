@@ -3,7 +3,7 @@
 exports[`Divider component testing Divider fullWidth 1`] = `
 <DocumentFragment>
   <hr
-    class="sc-AxjAm EBdgq"
+    class="sc-AxjAm dAvPIb"
   />
 </DocumentFragment>
 `;
@@ -11,7 +11,7 @@ exports[`Divider component testing Divider fullWidth 1`] = `
 exports[`Divider component testing Divider middle 1`] = `
 <DocumentFragment>
   <hr
-    class="sc-AxjAm cjlJBJ"
+    class="sc-AxjAm wgGZY"
   />
 </DocumentFragment>
 `;

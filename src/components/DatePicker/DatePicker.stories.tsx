@@ -1,10 +1,10 @@
 import * as React from "react";
 import DatePicker from "./DatePicker";
+import Typography from "../Typography";
 import styled from "styled-components";
 import moment from "moment";
-import "react-dates/lib/css/_datepicker.css";
 import { action } from "@storybook/addon-actions";
-import Typography from "../Typography";
+import "react-dates/lib/css/_datepicker.css";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -25,11 +25,19 @@ export default {
 };
 
 export const Overview: React.FunctionComponent = () => {
-  const [date, setDate] = React.useState<moment.Moment | null>(
+  const [startDate, setStartDate] = React.useState<moment.Moment | null>(
     moment().set("date", 1),
   );
-  const onDateChange = (date: moment.Moment | null) => {
-    setDate(date);
+  const [endDate, setEndDate] = React.useState<moment.Moment | null>(moment());
+  const onDatesChange = ({
+    startDate,
+    endDate,
+  }: {
+    startDate: moment.Moment | null;
+    endDate: moment.Moment | null;
+  }) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
   };
   return (
     <Container>
@@ -37,7 +45,11 @@ export const Overview: React.FunctionComponent = () => {
         DatePicker
       </Typography>
       <RowContainer>
-        <DatePicker date={date} onDateChange={onDateChange} />
+        <DatePicker
+          startDate={startDate}
+          endDate={endDate}
+          onDatesChange={onDatesChange}
+        />
       </RowContainer>
     </Container>
   );
@@ -50,9 +62,10 @@ export const withError = () => (
     </Typography>
     <RowContainer>
       <DatePicker
-        date={moment().set("date", 1)}
+        startDate={moment().set("date", 1)}
+        endDate={moment()}
         error={true}
-        onDateChange={action("onDatesChange")}
+        onDatesChange={action("onDatesChange")}
       />
     </RowContainer>
   </Container>

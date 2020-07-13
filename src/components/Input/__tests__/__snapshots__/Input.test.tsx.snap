@@ -2,33 +2,13 @@
 
 exports[`Input component testing Input 1`] = `
 <DocumentFragment>
-  <input
-    class="sc-AxjAm dYVOFr"
-  />
-</DocumentFragment>
-`;
-
-exports[`Input component testing Input disabled 1`] = `
-<DocumentFragment>
-  <input
-    class="sc-AxjAm dYVOFr"
-    disabled=""
-  />
-</DocumentFragment>
-`;
-
-exports[`Input component testing Input error 1`] = `
-<DocumentFragment>
-  <input
-    class="sc-AxjAm bScezx"
-  />
-</DocumentFragment>
-`;
-
-exports[`Input component testing Input multiline 1`] = `
-<DocumentFragment>
-  <textarea
-    class="sc-AxjAm dYVOFr"
-  />
+  <div
+    class="sc-AxjAm hPcro  "
+  >
+    <input
+      class="sc-AxirZ iLZthr  "
+      type="text"
+    />
+  </div>
 </DocumentFragment>
 `;
