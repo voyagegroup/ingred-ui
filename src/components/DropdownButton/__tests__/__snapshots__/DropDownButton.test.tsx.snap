@@ -89,7 +89,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           class="sc-fzpans fxWQbr"
         >
           <hr
-            class="sc-fzoLsD cFvoJD"
+            class="sc-fzoLsD SqmhS"
           />
         </div>
         <div
@@ -118,7 +118,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           class="sc-fzpans fxWQbr"
         >
           <hr
-            class="sc-fzoLsD cFvoJD"
+            class="sc-fzoLsD SqmhS"
           />
         </div>
         <div
@@ -165,7 +165,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw dnBLnw sc-AxgMl hGPnli"
+      class="sc-AxirZ sc-AxiKw dnBLnw sc-AxgMl hkveav"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -210,7 +210,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw hAPwhR sc-AxgMl hGPnli"
+      class="sc-AxirZ sc-AxiKw hAPwhR sc-AxgMl hkveav"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -253,7 +253,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           class="sc-fzpans fxWQbr"
         >
           <hr
-            class="sc-fzoLsD cFvoJD"
+            class="sc-fzoLsD SqmhS"
           />
         </div>
         <div
@@ -282,7 +282,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           class="sc-fzpans fxWQbr"
         >
           <hr
-            class="sc-fzoLsD cFvoJD"
+            class="sc-fzoLsD SqmhS"
           />
         </div>
         <div

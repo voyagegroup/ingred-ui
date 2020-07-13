@@ -11,4 +11,16 @@ describe("TextField component testing", () => {
     const { asFragment } = renderWithThemeProvider(<TextField />);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test("TextField with icon", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <TextField type="password" />,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test("TextField passward", () => {
+    const { asFragment } = renderWithThemeProvider(<TextField icon="search" />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

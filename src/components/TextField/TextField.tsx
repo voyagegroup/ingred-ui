@@ -7,36 +7,70 @@ import Spacer from "../Spacer";
 import Typography from "../Typography";
 import Icon from "../Icon";
 import Flex from "../Flex";
+import { useTheme } from "../../themes";
+import { IconName } from "../Icon/Icon";
 
 type Props = InputProps & {
   errorText?: string;
+  icon?: IconName;
+  type?: string;
+  inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 };
 
 const TextField: React.FunctionComponent<Props> = ({
   errorText,
+  icon,
   type,
+  inputRef,
   ...rest
-}) => (
-  <Styled.Container>
-    <Input {...rest} error={!!errorText} type={type} />
-    {errorText && (
-      <Spacer pt={1}>
-        <ErrorText>{errorText}</ErrorText>
-      </Spacer>
-    )}
-    {type === "password" && (
-      <Spacer pt={1}>
-        <Flex display="flex" alignItems="center">
-          <Spacer mr={0.25}>
-            <Icon name="eye_off" />
-          </Spacer>
-          <Typography color="secondary" size="sm">
-            をクリックするとパスワード表示できます
-          </Typography>
-        </Flex>
-      </Spacer>
-    )}
-  </Styled.Container>
-);
+}) => {
+  const [show, setShow] = React.useState(false);
+  const theme = useTheme();
+  const onHandleToggleShowPassword = () => {
+    setShow(!show);
+  };
+
+  return (
+    <Styled.Container>
+      <Styled.InputContainer
+        hasLeftIcon={icon != null}
+        hasRightIcon={type === "password"}
+      >
+        {icon != null && (
+          <Styled.LeftIconContainer onClick={onHandleToggleShowPassword}>
+            <Icon name={icon} size="md" color={theme.palette.gray.main} />
+          </Styled.LeftIconContainer>
+        )}
+        <Input ref={inputRef} {...rest} error={!!errorText} type={type} />
+        {type === "password" && (
+          <Styled.RightIconContainer onClick={onHandleToggleShowPassword}>
+            <Icon
+              name={show ? "eye" : "eye_off"}
+              size="md"
+              color={theme.palette.black}
+            />
+          </Styled.RightIconContainer>
+        )}
+      </Styled.InputContainer>
+      {errorText && (
+        <Spacer pt={1}>
+          <ErrorText>{errorText}</ErrorText>
+        </Spacer>
+      )}
+      {type === "password" && (
+        <Spacer pt={1}>
+          <Flex display="flex" alignItems="center">
+            <Spacer mr={0.25}>
+              <Icon name="eye_off" />
+            </Spacer>
+            <Typography color="secondary" size="sm">
+              をクリックするとパスワード表示できます
+            </Typography>
+          </Flex>
+        </Spacer>
+      )}
+    </Styled.Container>
+  );
+};
 
 export default TextField;

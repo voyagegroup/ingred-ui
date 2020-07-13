@@ -32,6 +32,9 @@ export * from "./DataTable";
 export { default as DatePicker } from "./DatePicker";
 export * from "./DatePicker";
 
+export { default as DateRangePicker } from "./DateRangePicker";
+export * from "./DateRangePicker";
+
 export { default as Divider } from "./Divider";
 export * from "./Divider";
 
@@ -109,6 +112,9 @@ export * from "./TextField";
 
 export { default as Toast } from "./Toast";
 export * from "./Toast";
+
+export { default as ToggleButton } from "./ToggleButton";
+export * from "./ToggleButton";
 
 export { default as Tooltip } from "./Tooltip";
 export * from "./Tooltip";
