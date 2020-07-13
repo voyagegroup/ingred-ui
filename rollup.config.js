@@ -39,7 +39,10 @@ export default {
     }),
     commonjs({
       namedExports: {
-        "node_modules/react-dates/index.js": ["DateRangePicker"],
+        "node_modules/react-dates/index.js": [
+          "DateRangePicker",
+          "SingleDatePicker",
+        ],
         "node_modules/react-toast-notifications/dist/index.js": [
           "useToasts",
           "ToastProvider",

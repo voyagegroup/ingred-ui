@@ -7,10 +7,10 @@ exports[`Table component testing Table 1`] = `
   >
     <tbody>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxirZ cJZHQg"
       >
         <th
-          class="sc-AxhUy eVPxys"
+          class="sc-AxhUy MBmqd"
           width="177px"
         >
           <div
@@ -45,10 +45,10 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxirZ cJZHQg"
       >
         <th
-          class="sc-AxhUy eVPxys"
+          class="sc-AxhUy MBmqd"
           width="177px"
         >
           <div
@@ -72,10 +72,10 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxirZ cJZHQg"
       >
         <th
-          class="sc-AxhUy eVPxys"
+          class="sc-AxhUy MBmqd"
           width="177px"
         >
           <div

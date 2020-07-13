@@ -1,10 +1,10 @@
 import * as React from "react";
-import DatePicker from "./DatePicker";
+import DateRangePicker from "./DateRangePicker";
+import Typography from "../Typography";
 import styled from "styled-components";
 import moment from "moment";
-import "react-dates/lib/css/_datepicker.css";
 import { action } from "@storybook/addon-actions";
-import Typography from "../Typography";
+import "react-dates/lib/css/_datepicker.css";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -18,26 +18,38 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "DatePicker",
+  title: "DateRangePicker",
   parameters: {
-    component: DatePicker,
+    component: DateRangePicker,
   },
 };
 
 export const Overview: React.FunctionComponent = () => {
-  const [date, setDate] = React.useState<moment.Moment | null>(
+  const [startDate, setStartDate] = React.useState<moment.Moment | null>(
     moment().set("date", 1),
   );
-  const onDateChange = (date: moment.Moment | null) => {
-    setDate(date);
+  const [endDate, setEndDate] = React.useState<moment.Moment | null>(moment());
+  const onDatesChange = ({
+    startDate,
+    endDate,
+  }: {
+    startDate: moment.Moment | null;
+    endDate: moment.Moment | null;
+  }) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
   };
   return (
     <Container>
       <Typography weight="bold" size="xxl">
-        DatePicker
+        DateRangePicker
       </Typography>
       <RowContainer>
-        <DatePicker date={date} onDateChange={onDateChange} />
+        <DateRangePicker
+          startDate={startDate}
+          endDate={endDate}
+          onDatesChange={onDatesChange}
+        />
       </RowContainer>
     </Container>
   );
@@ -46,13 +58,14 @@ export const Overview: React.FunctionComponent = () => {
 export const withError = () => (
   <Container>
     <Typography weight="bold" size="xxl">
-      DatePicker
+      DateRangePicker
     </Typography>
     <RowContainer>
-      <DatePicker
-        date={moment().set("date", 1)}
+      <DateRangePicker
+        startDate={moment().set("date", 1)}
+        endDate={moment()}
         error={true}
-        onDateChange={action("onDatesChange")}
+        onDatesChange={action("onDatesChange")}
       />
     </RowContainer>
   </Container>

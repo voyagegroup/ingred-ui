@@ -1,16 +1,15 @@
 import styled from "styled-components";
-import { Radius, Size } from "../../styles";
+import { Size, Radius } from "../../styles";
 
 export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
-
-  /* .DatePicker */
-  .DatePicker {
-    display: inline-flex;
+  /* DateRangePicker */
+  .DateRangePicker {
+    display: inline-flex; /* これがないと.DateRangePickerInputのoveflow:hiddenで位置がずれる */
   }
 
-  /* SingleDatePickerInput */
-  .SingleDatePickerInput {
+  /* DateRangePickerInput */
+  .DateRangePickerInput {
     display: block;
     border: ${Size.Border.Small} solid
       ${({ error, theme }) =>

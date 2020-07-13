@@ -95,7 +95,7 @@ export const palette: Palette = {
     active: colors.blue[100],
     hint: colors.blue[50] as string, // TODO
   },
-  divider: colors.basic[300],
+  divider: colors.basic[200],
   icon: {
     active: colors.blue[500],
     fill: colors.basic[700],

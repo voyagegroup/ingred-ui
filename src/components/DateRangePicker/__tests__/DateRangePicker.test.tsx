@@ -1,15 +1,19 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import DatePicker from "..";
+import DateRangePicker from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
-describe("DatePicker component testing", () => {
+describe("DateRangePicker component testing", () => {
   afterEach(cleanup);
 
-  test("DatePicker", () => {
+  test("DateRangePicker", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DatePicker date={null} onDateChange={jest.fn()} />,
+      <DateRangePicker
+        startDate={null}
+        endDate={null}
+        onDatesChange={jest.fn()}
+      />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
