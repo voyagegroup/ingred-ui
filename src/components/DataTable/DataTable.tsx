@@ -112,6 +112,7 @@ type Props<T> = {
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
+  enableRuledLine?: boolean;
 };
 
 // idを必須にしたい
@@ -129,6 +130,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   per,
   defaultSortField,
   defaultSortOrder = "desc",
+  enableRuledLine = false,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -331,6 +333,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 sortable={column.sortable}
                 order={getOrder(sortState, column.name)}
                 width={column.width}
+                enableRuledLine={enableRuledLine}
                 onClick={
                   column.sortable
                     ? onHandleSort(column.selector, column.name)
@@ -356,7 +359,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   <>
                     {showCheckbox &&
                       (item.selectDisabled ? (
-                        <Table.Cell />
+                        <Table.Cell enableRuledLine={enableRuledLine} />
                       ) : (
                         <CellCheckbox
                           selected={selectedRows.includes(item.id)}
@@ -372,7 +375,10 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                   </>
                 )}
                 {columns.map((column) => (
-                  <Table.Cell key={column.name}>
+                  <Table.Cell
+                    key={column.name}
+                    enableRuledLine={enableRuledLine}
+                  >
                     {column.renderCell ? (
                       column.renderCell(item)
                     ) : (
