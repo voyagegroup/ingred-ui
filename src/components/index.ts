@@ -113,6 +113,9 @@ export * from "./TextField";
 export { default as Toast } from "./Toast";
 export * from "./Toast";
 
+export { default as ToggleButton } from "./ToggleButton";
+export * from "./ToggleButton";
+
 export { default as Tooltip } from "./Tooltip";
 export * from "./Tooltip";
 
