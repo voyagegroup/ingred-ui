@@ -3,12 +3,12 @@
 exports[`Table component testing Table 1`] = `
 <DocumentFragment>
   <table
-    class="sc-AxgMl ewwXUj"
+    class="sc-AxgMl irKSqk"
   >
     <tbody>
       <tr>
         <th
-          class="sc-AxhCb dPPGgX"
+          class="sc-AxhCb jydzwA"
           width="177px"
         >
           <div
@@ -36,7 +36,7 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm dcbZXE"
+          class="sc-AxjAm grdUlG"
           width="auto"
         >
           コンテンツ
@@ -44,7 +44,7 @@ exports[`Table component testing Table 1`] = `
       </tr>
       <tr>
         <th
-          class="sc-AxhCb dPPGgX"
+          class="sc-AxhCb jydzwA"
           width="177px"
         >
           <div
@@ -61,7 +61,7 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm dcbZXE"
+          class="sc-AxjAm grdUlG"
           width="auto"
         >
           コンテンツ
@@ -69,7 +69,7 @@ exports[`Table component testing Table 1`] = `
       </tr>
       <tr>
         <th
-          class="sc-AxhCb dPPGgX"
+          class="sc-AxhCb jydzwA"
           width="177px"
         >
           <div
@@ -86,7 +86,7 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm dcbZXE"
+          class="sc-AxjAm grdUlG"
           width="auto"
         >
           コンテンツ
