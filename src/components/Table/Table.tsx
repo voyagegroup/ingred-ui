@@ -18,9 +18,9 @@ const Container = styled.table`
   border-spacing: 0;
   overflow: hidden;
 
-  & tr:not(:last-child) > th,
-  & tr:not(:last-child) > td {
-    border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  & tr:not(:first-child) > th,
+  & tr:not(:first-child) > td {
+    border-top: ${Size.Border.Small} solid ${colors.basic[300]};
   }
 
   & tr > th:not(:last-child),

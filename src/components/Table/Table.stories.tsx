@@ -23,9 +23,16 @@ export const Overview = () => (
           <Table.HeaderCell width="177px" required={true}>
             タイトル
           </Table.HeaderCell>
-          <Table.Cell>コンテンツ</Table.Cell>
+          <Table.Cell colSpan={2}>コンテンツ</Table.Cell>
         </Table.Row>
         <Table.Row>
+          <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
+          <Table.Cell colSpan={2}>コンテンツ</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.HeaderCell rowSpan={2} width="177px">
+            タイトル
+          </Table.HeaderCell>
           <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
           <Table.Cell>コンテンツ</Table.Cell>
         </Table.Row>
