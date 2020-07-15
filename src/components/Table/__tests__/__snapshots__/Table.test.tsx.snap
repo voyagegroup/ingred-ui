@@ -3,32 +3,30 @@
 exports[`Table component testing Table 1`] = `
 <DocumentFragment>
   <table
-    class="sc-AxheI klJKTW"
+    class="sc-AxgMl ewwXUj"
   >
     <tbody>
-      <tr
-        class="sc-AxirZ cJZHQg"
-      >
+      <tr>
         <th
-          class="sc-AxhUy MBmqd"
+          class="sc-AxhCb dPPGgX"
           width="177px"
         >
           <div
-            class="sc-AxhCb dzpAlW"
+            class="sc-AxiKw bJqPYy"
             display="flex"
           >
             <p
-              class="sc-AxiKw vQWyf"
+              class="sc-AxirZ extcGX"
               color="#041C33"
               font-size="14px"
             >
               タイトル
             </p>
             <div
-              class="sc-AxgMl ipymkH"
+              class="sc-AxhUy JOSzx"
             >
               <p
-                class="sc-AxiKw lpenSv"
+                class="sc-AxirZ cmrQJL"
                 color="#FFFFFF"
                 font-size="12px"
               >
@@ -38,25 +36,23 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxjAm dcbZXE"
           width="auto"
         >
           コンテンツ
         </td>
       </tr>
-      <tr
-        class="sc-AxirZ cJZHQg"
-      >
+      <tr>
         <th
-          class="sc-AxhUy MBmqd"
+          class="sc-AxhCb dPPGgX"
           width="177px"
         >
           <div
-            class="sc-AxhCb jMXRtl"
+            class="sc-AxiKw eXNMil"
             display="flex"
           >
             <p
-              class="sc-AxiKw vQWyf"
+              class="sc-AxirZ extcGX"
               color="#041C33"
               font-size="14px"
             >
@@ -65,25 +61,23 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxjAm dcbZXE"
           width="auto"
         >
           コンテンツ
         </td>
       </tr>
-      <tr
-        class="sc-AxirZ cJZHQg"
-      >
+      <tr>
         <th
-          class="sc-AxhUy MBmqd"
+          class="sc-AxhCb dPPGgX"
           width="177px"
         >
           <div
-            class="sc-AxhCb jMXRtl"
+            class="sc-AxiKw eXNMil"
             display="flex"
           >
             <p
-              class="sc-AxiKw vQWyf"
+              class="sc-AxirZ extcGX"
               color="#041C33"
               font-size="14px"
             >
@@ -92,7 +86,7 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxjAm dcbZXE"
           width="auto"
         >
           コンテンツ
