@@ -7,6 +7,7 @@ export const Container = styled.div`
   padding-left: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
 `;
 
 export const TabContainer = styled.ul<{ width: string }>`
