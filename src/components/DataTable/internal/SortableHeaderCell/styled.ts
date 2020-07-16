@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../../../styles/color";
 import { Size } from "../../../../styles";
 
 type CellProps = {
@@ -10,40 +11,10 @@ type CellProps = {
 export const HeaderCell = styled.th<CellProps>`
   cursor: ${({ isSortable }) => (isSortable ? "pointer" : "default")};
   width: ${({ width }) => width};
-  padding: ${({ theme }) => theme.spacing * 2}px
-    ${({ theme }) => theme.spacing * 3}px
-    ${({ theme }) => theme.spacing * 2 - 2}px;
-
-  box-shadow: ${({ theme, enableRuledLine }) =>
-    enableRuledLine
-      ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset -0.5px 0 0 ${theme.palette.divider}, 
-        inset 0.5px 0 0 ${theme.palette.divider}`
-      : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-    inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
-
-  background-color: ${({ theme }) => theme.palette.gray.highlight};
-
-  &:last-of-type {
-    box-shadow: ${({ theme, enableRuledLine }) =>
-      enableRuledLine
-        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0.5px 0 0 ${theme.palette.divider}`
-        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
-  }
-
-  &:first-of-type {
-    box-shadow: ${({ theme, enableRuledLine }) =>
-      enableRuledLine
-        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset -0.5px 0 0 ${theme.palette.divider}`
-        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
-  }
+  padding: ${({ theme }) => theme.spacing}px
+    ${({ theme }) => theme.spacing * 2}px;
+  /* TODO: 他に透明度指定する方法を聞く */
+  box-shadow: 0 4px ${colors.basic[300]}3D;
+  background-color: ${({ theme }) => theme.palette.background.default};
+  border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
 `;
-
-export const IconContainer = styled.div``;

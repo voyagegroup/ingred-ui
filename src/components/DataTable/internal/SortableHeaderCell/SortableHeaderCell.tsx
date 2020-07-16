@@ -32,19 +32,11 @@ export const SortableHeaderCell: React.FunctionComponent<Props> = ({
       enableRuledLine={enableRuledLine}
       {...rest}
     >
-      <Flex
-        display="flex"
-        alignItems="flex-start"
-        justifyContent="space-between"
-      >
-        <Typography color="secondary" weight="bold" size="md" component="span">
+      <Flex display="flex" alignItems="center">
+        <Typography weight="bold" size="md" component="span">
           {children}
         </Typography>
-        {sortable && (
-          <Styled.IconContainer>
-            <Icon name={iconName} size={"md"} />
-          </Styled.IconContainer>
-        )}
+        {sortable && <Icon name={iconName} size={"md"} />}
       </Flex>
     </Styled.HeaderCell>
   );
