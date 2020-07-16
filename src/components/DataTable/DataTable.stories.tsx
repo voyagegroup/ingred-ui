@@ -11,6 +11,7 @@ import ActionButton from "../ActionButton";
 import { data } from "./data";
 import { Column } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
+import { select } from "@storybook/addon-knobs";
 
 export default {
   title: "DataTable",
@@ -54,38 +55,51 @@ const sampleData: SampleObject[] = [
   { id: 14, name: "9name", count: 1 },
 ];
 
-export const Overview = () => (
-  <Container>
-    <DataTable
-      data={sampleData}
-      defaultSortField="名前"
-      defaultSortOrder="desc"
-      columns={[
-        {
-          name: "ID",
-          selector: (data) => data.id,
-        },
-        {
-          name: "名前",
-          selector: (data) => data.name,
-          sortable: true,
-        },
-        {
-          name: "カウント",
-          selector: (data) => data.count,
-          sortable: true,
-          align: "right",
-        },
-      ]}
-    />
-  </Container>
-);
+export const Overview = () => {
+  const verticalSpacing = select(
+    "VerticalSpacing",
+    {
+      Small: "small",
+      Medium: "medium",
+      Large: "large",
+    },
+    "medium",
+  );
+  return (
+    <Container>
+      <DataTable
+        data={sampleData}
+        defaultSortField="名前"
+        defaultSortOrder="desc"
+        verticalSpacing={verticalSpacing}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "名前",
+            selector: (data) => data.name,
+            sortable: true,
+          },
+          {
+            name: "カウント",
+            selector: (data) => data.count,
+            sortable: true,
+            align: "right",
+          },
+        ]}
+      />
+    </Container>
+  );
+};
 
 export const WithPagination = () => (
   <Container>
     <DataTable
       enablePagination={true}
       data={data}
+      verticalSpacing={verticalSpacing}
       columns={[
         {
           name: "ID",
@@ -106,6 +120,7 @@ export const WithTabs = () => (
   <Container>
     <DataTable
       enablePagination={true}
+      verticalSpacing={verticalSpacing}
       tabWidth="300px"
       tabs={[
         {
@@ -156,6 +171,7 @@ export const WithSearch: React.FunctionComponent = () => {
       <DataTable
         enablePagination={true}
         data={searchedItems}
+        verticalSpacing={verticalSpacing}
         columns={[
           {
             name: "ID",
@@ -183,6 +199,7 @@ export const SelectableRows: React.FunctionComponent = () => {
       <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
+        verticalSpacing={verticalSpacing}
         tabWidth="300px"
         tabs={[
           {
@@ -230,6 +247,7 @@ export const SelectableRow: React.FunctionComponent = () => {
       <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
+        verticalSpacing={verticalSpacing}
         columns={[
           {
             name: "ID",
@@ -287,7 +305,12 @@ export const CustomCell: React.FunctionComponent = () => {
   );
   return (
     <Container>
-      <DataTable data={data} enablePagination={true} columns={columns} />
+      <DataTable
+        data={data}
+        verticalSpacing={verticalSpacing}
+        enablePagination={true}
+        columns={columns}
+      />
     </Container>
   );
 };
@@ -298,6 +321,7 @@ export const WithStickyHeader = () => (
       <DataTable
         enablePagination={true}
         data={data}
+        verticalSpacing={verticalSpacing}
         enableRuledLine={true}
         columns={[
           {

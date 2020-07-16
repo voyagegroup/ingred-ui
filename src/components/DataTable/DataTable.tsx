@@ -26,6 +26,7 @@ import ItemEmpty from "../ItemEmpty";
 import { StorageKey } from "../../constants/storageKeys";
 import { TableTabs } from "./internal/TableTabs";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
+import { VerticalSpacing } from "./internal/Table/Row";
 
 const getPerFromLocalStorage = () => {
   const per = localStorage.getItem(StorageKey.DISPLAY_LIST_COUNT);
@@ -113,6 +114,7 @@ type Props<T> = {
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
   enableRuledLine?: boolean;
+  verticalSpacing?: VerticalSpacing;
 };
 
 // idを必須にしたい
@@ -131,6 +133,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   defaultSortField,
   defaultSortOrder = "desc",
   enableRuledLine = false,
+  verticalSpacing = "medium",
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -351,6 +354,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
               displayData.map((item, index) => (
                 <Table.Row
                   key={index} // eslint-disable-line react/no-array-index-key
+                  verticalSpacing={verticalSpacing}
                   highlighted={
                     !item.selectDisabled &&
                     (selectedRows.includes(item.id) || selectedRow === item.id)
