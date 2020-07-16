@@ -115,6 +115,7 @@ type Props<T> = {
   defaultSortOrder?: "desc" | "asc";
   enableRuledLine?: boolean;
   verticalSpacing?: VerticalSpacing;
+  fullWidth?: boolean;
 };
 
 // idを必須にしたい
@@ -134,6 +135,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   defaultSortOrder = "desc",
   enableRuledLine = false,
   verticalSpacing = "medium",
+  fullWidth = false,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -303,7 +305,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   return (
     <Styled.Container>
-      <Styled.TableContainer>
+      <Styled.TableContainer fullWidth={fullWidth}>
         {!!tabs && (
           <TableTabs
             width={tabWidth}

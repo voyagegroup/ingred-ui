@@ -9,8 +9,10 @@ export const Container = styled.div`
   }
 `;
 
-export const TableContainer = styled.div`
-  border: ${Size.Border.Small} solid ${colors.basic[300]};
-  border-radius: ${Radius.SMALL};
+export const TableContainer = styled.div<{ fullWidth?: boolean }>`
   overflow: hidden;
+  border: ${({ fullWidth }) =>
+    fullWidth ? "none" : `${Size.Border.Small} solid ${colors.basic[300]}`};
+  border-top: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-radius: ${({ fullWidth }) => (fullWidth ? "none" : Radius.SMALL)};
 `;

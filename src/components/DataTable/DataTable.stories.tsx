@@ -11,7 +11,7 @@ import ActionButton from "../ActionButton";
 import { data } from "./data";
 import { Column } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
-import { select } from "@storybook/addon-knobs";
+import { select, boolean } from "@storybook/addon-knobs";
 
 export default {
   title: "DataTable",
@@ -65,6 +65,7 @@ export const Overview = () => {
     },
     "medium",
   );
+  const fullWidth = boolean("FullWidth", false);
   return (
     <Container>
       <DataTable
@@ -72,6 +73,7 @@ export const Overview = () => {
         defaultSortField="名前"
         defaultSortOrder="desc"
         verticalSpacing={verticalSpacing}
+        fullWidth={fullWidth}
         columns={[
           {
             name: "ID",
