@@ -17,4 +17,12 @@ export const HeaderCell = styled.th<CellProps>`
   box-shadow: 0 4px ${colors.basic[300]}3D;
   background-color: ${({ theme }) => theme.palette.background.default};
   border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-right: ${({ theme, enableRuledLine }) =>
+    enableRuledLine
+      ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
+      : "none"};
+
+  &:last-of-type {
+    border-right: none;
+  }
 `;
