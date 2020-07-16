@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import DataTable from "./";
-import Input from "../Input";
 import Button from "../Button";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import Icon from "../Icon";
+import TextField from "../TextField";
 import Typography from "../Typography";
 import ActionButton from "../ActionButton";
 import { data } from "./data";
@@ -167,7 +167,7 @@ export const WithSearch: React.FunctionComponent = () => {
   };
   return (
     <Container>
-      <Input placeholder="名前で絞り込む" onChange={onHandleInput} />
+      <TextField placeholder="名前で絞り込む" onChange={onHandleInput} />
       <DataTable
         enablePagination={true}
         data={searchedItems}

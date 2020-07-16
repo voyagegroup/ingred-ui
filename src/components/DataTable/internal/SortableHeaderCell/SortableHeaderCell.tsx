@@ -5,6 +5,7 @@ import Flex from "../../../Flex";
 import Typography from "../../../Typography";
 import Icon from "../../../Icon";
 import { IconName } from "../../../Icon/Icon";
+import Spacer from "../../../Spacer";
 
 export type Props = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
   sortable?: boolean;
@@ -36,7 +37,12 @@ export const SortableHeaderCell: React.FunctionComponent<Props> = ({
         <Typography weight="bold" size="md" component="span">
           {children}
         </Typography>
-        {sortable && <Icon name={iconName} size={"md"} />}
+        {sortable && (
+          <>
+            <Spacer pl={0.5} />
+            <Icon name={iconName} size={"md"} />
+          </>
+        )}
       </Flex>
     </Styled.HeaderCell>
   );

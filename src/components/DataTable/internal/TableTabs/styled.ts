@@ -3,7 +3,7 @@ import { Size, Radius } from "../../../../styles";
 import { colors } from "../../../../styles/color";
 
 export const Container = styled.div`
-  padding-top: ${({ theme }) => theme.spacing * 2}px;
+  padding-top: ${({ theme }) => theme.spacing * 1.5}px;
   padding-left: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
