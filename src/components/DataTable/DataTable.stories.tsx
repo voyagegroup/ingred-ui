@@ -99,7 +99,6 @@ export const WithPagination = () => (
     <DataTable
       enablePagination={true}
       data={data}
-      verticalSpacing={verticalSpacing}
       columns={[
         {
           name: "ID",
@@ -120,7 +119,6 @@ export const WithTabs = () => (
   <Container>
     <DataTable
       enablePagination={true}
-      verticalSpacing={verticalSpacing}
       tabWidth="300px"
       tabs={[
         {
@@ -171,7 +169,6 @@ export const WithSearch: React.FunctionComponent = () => {
       <DataTable
         enablePagination={true}
         data={searchedItems}
-        verticalSpacing={verticalSpacing}
         columns={[
           {
             name: "ID",
@@ -199,7 +196,6 @@ export const SelectableRows: React.FunctionComponent = () => {
       <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
-        verticalSpacing={verticalSpacing}
         tabWidth="300px"
         tabs={[
           {
@@ -247,7 +243,6 @@ export const SelectableRow: React.FunctionComponent = () => {
       <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
-        verticalSpacing={verticalSpacing}
         columns={[
           {
             name: "ID",
@@ -305,12 +300,7 @@ export const CustomCell: React.FunctionComponent = () => {
   );
   return (
     <Container>
-      <DataTable
-        data={data}
-        verticalSpacing={verticalSpacing}
-        enablePagination={true}
-        columns={columns}
-      />
+      <DataTable data={data} enablePagination={true} columns={columns} />
     </Container>
   );
 };
@@ -319,9 +309,7 @@ export const WithStickyHeader = () => (
   <Container>
     <StickyContainer>
       <DataTable
-        enablePagination={true}
         data={data}
-        verticalSpacing={verticalSpacing}
         enableRuledLine={true}
         columns={[
           {
