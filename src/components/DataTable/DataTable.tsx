@@ -116,6 +116,7 @@ type Props<T> = {
   enableRuledLine?: boolean;
   verticalSpacing?: VerticalSpacing;
   fullWidth?: boolean;
+  tableMaxHeight?: string;
 };
 
 // idを必須にしたい
@@ -136,6 +137,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   enableRuledLine = false,
   verticalSpacing = "medium",
   fullWidth = false,
+  tableMaxHeight = "auto",
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -305,7 +307,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
 
   return (
     <Styled.Container>
-      <Styled.TableContainer fullWidth={fullWidth}>
+      <Styled.BorderContainer fullWidth={fullWidth}>
         {!!tabs && (
           <TableTabs
             width={tabWidth}
@@ -317,99 +319,102 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
             onChange={onHandleTabChange}
           />
         )}
-        <Table>
-          <Table.Header>
-            <Table.Row>
-              {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
-                <>
-                  {showCheckbox && (
-                    <CellCheckbox
-                      header={true}
-                      selected={selectedRows.length > 0}
-                      indeterminate={indeterminate}
-                      onClick={onHandleToggleCheckAll}
-                    />
-                  )}
-                  {showRadioButton && <CellRadio header={true} />}
-                </>
-              )}
-              {columns.map((column) => (
-                <SortableHeaderCell
-                  key={column.name}
-                  sortable={column.sortable}
-                  order={getOrder(sortState, column.name)}
-                  width={column.width}
-                  enableRuledLine={enableRuledLine}
-                  onClick={
-                    column.sortable
-                      ? onHandleSort(column.selector, column.name)
-                      : undefined
-                  }
-                >
-                  {column.name}
-                </SortableHeaderCell>
-              ))}
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {displayData.length > 0 ? (
-              displayData.map((item, index) => (
-                <Table.Row
-                  key={index} // eslint-disable-line react/no-array-index-key
-                  verticalSpacing={verticalSpacing}
-                  highlighted={
-                    !item.selectDisabled &&
-                    (selectedRows.includes(item.id) || selectedRow === item.id)
-                  }
-                >
-                  {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
-                    <>
-                      {showCheckbox &&
-                        (item.selectDisabled ? (
-                          <Table.Cell enableRuledLine={enableRuledLine} />
-                        ) : (
-                          <CellCheckbox
-                            selected={selectedRows.includes(item.id)}
-                            onClick={onHandleSelectCheckbox(item.id)}
+        <Styled.TableContainer maxHeight={tableMaxHeight}>
+          <Table>
+            <Table.Header>
+              <Table.Row>
+                {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
+                  <>
+                    {showCheckbox && (
+                      <CellCheckbox
+                        header={true}
+                        selected={selectedRows.length > 0}
+                        indeterminate={indeterminate}
+                        onClick={onHandleToggleCheckAll}
+                      />
+                    )}
+                    {showRadioButton && <CellRadio header={true} />}
+                  </>
+                )}
+                {columns.map((column) => (
+                  <SortableHeaderCell
+                    key={column.name}
+                    sortable={column.sortable}
+                    order={getOrder(sortState, column.name)}
+                    width={column.width}
+                    enableRuledLine={enableRuledLine}
+                    onClick={
+                      column.sortable
+                        ? onHandleSort(column.selector, column.name)
+                        : undefined
+                    }
+                  >
+                    {column.name}
+                  </SortableHeaderCell>
+                ))}
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {displayData.length > 0 ? (
+                displayData.map((item, index) => (
+                  <Table.Row
+                    key={index} // eslint-disable-line react/no-array-index-key
+                    verticalSpacing={verticalSpacing}
+                    highlighted={
+                      !item.selectDisabled &&
+                      (selectedRows.includes(item.id) ||
+                        selectedRow === item.id)
+                    }
+                  >
+                    {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
+                      <>
+                        {showCheckbox &&
+                          (item.selectDisabled ? (
+                            <Table.Cell enableRuledLine={enableRuledLine} />
+                          ) : (
+                            <CellCheckbox
+                              selected={selectedRows.includes(item.id)}
+                              onClick={onHandleSelectCheckbox(item.id)}
+                            />
+                          ))}
+                        {showRadioButton && (
+                          <CellRadio
+                            selected={item.id === selectedRow}
+                            onClick={onHandleSelectRadioButton(item.id)}
                           />
-                        ))}
-                      {showRadioButton && (
-                        <CellRadio
-                          selected={item.id === selectedRow}
-                          onClick={onHandleSelectRadioButton(item.id)}
-                        />
-                      )}
-                    </>
-                  )}
-                  {columns.map((column) => (
-                    <Table.Cell
-                      key={column.name}
-                      enableRuledLine={enableRuledLine}
-                    >
-                      {column.renderCell ? (
-                        column.renderCell(item)
-                      ) : (
-                        <Typography align={column.align}>
-                          {column.selector(item)}
-                        </Typography>
-                      )}
-                    </Table.Cell>
-                  ))}
-                </Table.Row>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={rowSpan}>
-                  <ItemEmpty
-                    title={emptyTitle || "見つかりませんでした"}
-                    subtitle={emptySubtitle}
-                  />
-                </td>
-              </tr>
-            )}
-          </Table.Body>
-        </Table>
-      </Styled.TableContainer>
+                        )}
+                      </>
+                    )}
+                    {columns.map((column) => (
+                      <Table.Cell
+                        key={column.name}
+                        enableRuledLine={enableRuledLine}
+                      >
+                        {column.renderCell ? (
+                          column.renderCell(item)
+                        ) : (
+                          <Typography align={column.align}>
+                            {column.selector(item)}
+                          </Typography>
+                        )}
+                      </Table.Cell>
+                    ))}
+                  </Table.Row>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={rowSpan}>
+                    <ItemEmpty
+                      title={emptyTitle || "見つかりませんでした"}
+                      subtitle={emptySubtitle}
+                    />
+                  </td>
+                </tr>
+              )}
+            </Table.Body>
+          </Table>
+        </Styled.TableContainer>
+      </Styled.BorderContainer>
       {enablePagination && (
         <Spacer p={3}>
           <Flex

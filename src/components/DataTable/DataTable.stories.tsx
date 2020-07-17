@@ -11,7 +11,7 @@ import ActionButton from "../ActionButton";
 import { data } from "./data";
 import { Column } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
-import { select, boolean } from "@storybook/addon-knobs";
+import { select, boolean, text } from "@storybook/addon-knobs";
 
 export default {
   title: "DataTable",
@@ -25,23 +25,10 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-const StickyContainer = styled.div`
-  thead th {
-    position: sticky;
-    top: 0;
-  }
-`;
-
-const ScrollableContainer = styled.div`
+const TableLayoutContainer = styled.div`
   table {
-    display: block;
-    overflow: scroll;
+    table-layout: auto;
     white-space: nowrap;
-    height: 600px;
-    thead th {
-      position: sticky;
-      top: 0;
-    }
   }
 `;
 
@@ -79,6 +66,7 @@ export const Overview = () => {
     "medium",
   );
   const fullWidth = boolean("FullWidth", false);
+  const tableMaxHeight = text("TableMaxHeight", "auto");
   return (
     <Container>
       <DataTable
@@ -87,6 +75,7 @@ export const Overview = () => {
         defaultSortOrder="desc"
         verticalSpacing={verticalSpacing}
         fullWidth={fullWidth}
+        tableMaxHeight={tableMaxHeight}
         columns={[
           {
             name: "ID",
@@ -132,10 +121,11 @@ export const WithPagination = () => (
 
 export const WithTabs = () => (
   <Container>
-    <ScrollableContainer>
+    <TableLayoutContainer>
       <DataTable
         enablePagination={true}
         tabWidth="300px"
+        tableMaxHeight="500px"
         tabs={[
           {
             label: "全て",
@@ -177,7 +167,7 @@ export const WithTabs = () => (
           })),
         ]}
       />
-    </ScrollableContainer>
+    </TableLayoutContainer>
   </Container>
 );
 
@@ -330,29 +320,6 @@ export const CustomCell: React.FunctionComponent = () => {
     </Container>
   );
 };
-
-export const WithStickyHeader = () => (
-  <Container>
-    <StickyContainer>
-      <DataTable
-        data={data}
-        enableRuledLine={true}
-        columns={[
-          {
-            name: "ID",
-            selector: (data) => data.id,
-            sortable: true,
-          },
-          {
-            name: "imp",
-            selector: (data) => data.imp,
-            sortable: true,
-          },
-        ]}
-      />
-    </StickyContainer>
-  </Container>
-);
 
 export const WithenableRuledLine = () => (
   <Container>
