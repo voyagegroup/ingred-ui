@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FixedPanel component testing FixedPanel 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxjAm ebvLCT"
+    height="0"
+    offset="0"
+  />
+</DocumentFragment>
+`;

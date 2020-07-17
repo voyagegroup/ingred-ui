@@ -45,8 +45,9 @@ export const Container = styled.div``;
 ```typescript
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup, render } from "@testing-library/react";
-import { {{ input | pascal }} } from "../";
+import { cleanup } from "@testing-library/react";
+import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
+import {{ input | pascal }} from "../";
 
 describe("{{ input | pascal }} component testing", () => {
   afterEach(cleanup);
@@ -63,14 +64,14 @@ describe("{{ input | pascal }} component testing", () => {
 
 ```typescript
 import * as React from "react";
-import { {{ input }} } from "./index";
+import {{ input }} from "./index";
 
 export default {
   title: "{{ input }}",
   component: {{ input }},
 };
 
-export const Basic = () => (
+export const Overview = () => (
   <{{ input }} />
 );
 
