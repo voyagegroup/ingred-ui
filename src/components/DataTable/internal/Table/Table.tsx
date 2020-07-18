@@ -11,10 +11,6 @@ const Container = styled.table`
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
-  & th {
-    position: sticky;
-    top: 0;
-  }
   & > thead > tr:first-of-type > th {
     &:first-of-type {
       border-top-left-radius: ${Radius.SMALL};

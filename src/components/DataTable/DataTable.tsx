@@ -137,7 +137,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   enableRuledLine = false,
   verticalSpacing = "medium",
   fullWidth = false,
-  tableMaxHeight = "auto",
+  tableMaxHeight = "none",
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -322,7 +322,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
         <Styled.TableContainer maxHeight={tableMaxHeight}>
           <Table>
             <Table.Header>
-              <Table.Row>
+              <Table.Row isStickyHeader={tableMaxHeight !== "none"}>
                 {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
                   <>
                     {showCheckbox && (

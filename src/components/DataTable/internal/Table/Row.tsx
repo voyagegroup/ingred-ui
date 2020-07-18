@@ -12,6 +12,7 @@ const verticalSpacingMap: { [key in VerticalSpacing]: string } = {
 type RowProps = {
   highlighted: boolean;
   verticalSpacing: VerticalSpacing;
+  isStickyHeader: boolean;
 };
 
 const Component = styled.tr<RowProps>`
@@ -21,6 +22,16 @@ const Component = styled.tr<RowProps>`
   &:hover {
     background-color: ${({ highlighted, theme }) =>
       highlighted ? "none" : theme.palette.gray.highlight};
+  }
+
+  & > th {
+    ${({ isStickyHeader }) =>
+      isStickyHeader
+        ? `
+    position: sticky;
+    top: 0;
+    `
+        : ""}
   }
 
   & > td {
@@ -36,12 +47,14 @@ export type Props = React.ComponentPropsWithRef<"tr"> & Partial<RowProps>;
 export const Row: React.FunctionComponent<Props> = ({
   highlighted = false,
   verticalSpacing = "medium",
+  isStickyHeader = false,
   children,
   ...rest
 }) => (
   <Component
     highlighted={highlighted}
     verticalSpacing={verticalSpacing}
+    isStickyHeader={isStickyHeader}
     {...rest}
   >
     {children}

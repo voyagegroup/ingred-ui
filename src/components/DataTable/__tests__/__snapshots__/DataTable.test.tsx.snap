@@ -9,14 +9,14 @@ exports[`DataTable component testing DataTable 1`] = `
       class="sc-AxirZ dnbnUY"
     >
       <div
-        class="sc-AxiKw kAmvJP"
+        class="sc-AxiKw oeWKG"
       >
         <table
-          class="sc-fznxsB dRQJco"
+          class="sc-fznxsB heIqzt"
         >
           <thead>
             <tr
-              class="sc-fzpjYC iauSQn"
+              class="sc-fzpjYC jPJeQN"
             >
               <th
                 class="sc-fzoLsD juQkTT"
@@ -56,7 +56,7 @@ exports[`DataTable component testing DataTable 1`] = `
           </thead>
           <tbody>
             <tr
-              class="sc-fzpjYC iauSQn"
+              class="sc-fzpjYC jPJeQN"
             >
               <td
                 class="sc-fzoXzr kuUQxD"
@@ -84,7 +84,7 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
             </tr>
             <tr
-              class="sc-fzpjYC iauSQn"
+              class="sc-fzpjYC jPJeQN"
             >
               <td
                 class="sc-fzoXzr kuUQxD"

@@ -13,7 +13,7 @@ export const BorderContainer = styled.div<{ fullWidth?: boolean }>`
   border-radius: ${({ fullWidth }) => (fullWidth ? "none" : Radius.SMALL)};
 `;
 
-export const TableContainer = styled.div<{ maxHeight?: string }>`
+export const TableContainer = styled.div<{ maxHeight: string }>`
   overflow: scroll;
-  max-height: ${({ maxHeight }) => maxHeight || "auto"};
+  max-height: ${({ maxHeight }) => maxHeight};
 `;

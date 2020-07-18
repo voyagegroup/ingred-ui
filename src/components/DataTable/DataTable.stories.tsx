@@ -119,6 +119,27 @@ export const WithPagination = () => (
   </Container>
 );
 
+export const WithStickyHeader = () => (
+  <Container>
+    <DataTable
+      tableMaxHeight="300px"
+      data={data}
+      columns={[
+        {
+          name: "ID",
+          selector: (data) => data.id,
+          sortable: true,
+        },
+        {
+          name: "imp",
+          selector: (data) => data.imp,
+          sortable: true,
+        },
+      ]}
+    />
+  </Container>
+);
+
 export const WithTabs = () => (
   <Container>
     <TableLayoutContainer>
