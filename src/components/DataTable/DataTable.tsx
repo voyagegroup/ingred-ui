@@ -117,6 +117,7 @@ type Props<T> = {
   verticalSpacing?: VerticalSpacing;
   fullWidth?: boolean;
   tableMaxHeight?: string;
+  horizontalScrollable?: boolean;
 };
 
 // idを必須にしたい
@@ -138,6 +139,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   verticalSpacing = "medium",
   fullWidth = false,
   tableMaxHeight = "none",
+  horizontalScrollable = false,
 }: Props<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -320,7 +322,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
           />
         )}
         <Styled.TableContainer maxHeight={tableMaxHeight}>
-          <Table>
+          <Table horizontalScrollable={horizontalScrollable}>
             <Table.Header>
               <Table.Row isStickyHeader={tableMaxHeight !== "none"}>
                 {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (

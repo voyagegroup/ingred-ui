@@ -25,13 +25,6 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-const TableLayoutContainer = styled.div`
-  table {
-    table-layout: auto;
-    white-space: nowrap;
-  }
-`;
-
 type SampleObject = {
   id: number;
   name: string;
@@ -142,53 +135,52 @@ export const WithStickyHeader = () => (
 
 export const WithTabs = () => (
   <Container>
-    <TableLayoutContainer>
-      <DataTable
-        enablePagination={true}
-        tabWidth="300px"
-        tableMaxHeight="500px"
-        tabs={[
-          {
-            label: "全て",
-            filter: (data) => data,
-          },
-          {
-            label: "1~4",
-            filter: (data) => data.filter((item) => item.id < 5),
-          },
-          {
-            label: "5~",
-            filter: (data) => data.filter((item) => item.id >= 5),
-          },
-          {
-            label: "empty",
-            filter: () => [],
-          },
-        ]}
-        data={sampleData}
-        columns={[
-          {
-            name: "ID",
-            selector: (data) => data.id,
-          },
-          {
-            name: "名前",
-            selector: (data) => data.name,
-            sortable: true,
-          },
-          {
-            name: "カウント",
-            selector: (data) => data.count,
-            sortable: true,
-            align: "right",
-          },
-          ...[...Array(10)].map((_, i) => ({
-            name: `サンプル列${i}`,
-            selector: () => `${i}`,
-          })),
-        ]}
-      />
-    </TableLayoutContainer>
+    <DataTable
+      enablePagination={true}
+      tabWidth="300px"
+      tableMaxHeight="500px"
+      horizontalScrollable={true}
+      tabs={[
+        {
+          label: "全て",
+          filter: (data) => data,
+        },
+        {
+          label: "1~4",
+          filter: (data) => data.filter((item) => item.id < 5),
+        },
+        {
+          label: "5~",
+          filter: (data) => data.filter((item) => item.id >= 5),
+        },
+        {
+          label: "empty",
+          filter: () => [],
+        },
+      ]}
+      data={sampleData}
+      columns={[
+        {
+          name: "ID",
+          selector: (data) => data.id,
+        },
+        {
+          name: "名前",
+          selector: (data) => data.name,
+          sortable: true,
+        },
+        {
+          name: "カウント",
+          selector: (data) => data.count,
+          sortable: true,
+          align: "right",
+        },
+        ...[...Array(10)].map((_, i) => ({
+          name: `サンプル列${i}`,
+          selector: () => `${i}`,
+        })),
+      ]}
+    />
   </Container>
 );
 
