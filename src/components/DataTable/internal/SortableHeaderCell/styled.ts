@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../../styles/color";
 import { Size } from "../../../../styles";
+import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type CellProps = {
   width: string;
@@ -14,8 +15,7 @@ export const HeaderCell = styled.th<CellProps>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 2}px;
-  /* TODO: 他に透明度指定する方法を聞く */
-  box-shadow: 0 4px ${colors.basic[300]}3D;
+  box-shadow: 0 4px ${hexToRgba(colors.basic[300], 0.24)};
   background-color: ${({ theme }) => theme.palette.background.default};
   border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
 
