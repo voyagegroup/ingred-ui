@@ -44,6 +44,9 @@ export * from "./DropdownButton";
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 
+export { default as FixedPanel } from "./FixedPanel";
+export * from "./FixedPanel";
+
 export { default as Flex } from "./Flex";
 export * from "./Flex";
 
