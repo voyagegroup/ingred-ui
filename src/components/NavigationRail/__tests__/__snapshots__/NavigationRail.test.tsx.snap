@@ -50,9 +50,9 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             class="sc-fzqNJr eByRrb"
           >
             <span
-              class="sc-fzoLsD Toynz sc-fzoyAV gEdpVK"
+              class="sc-fzoLsD gMRKsY sc-fzoyAV gEdpVK"
               color="#0B82F4"
-              font-size="14px"
+              font-size="13px"
             >
               設定
             </span>
@@ -85,15 +85,15 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           height="auto"
         >
           <div
-            class="sc-fzpjYC cnHENx"
+            class="sc-fzpjYC cnnoXp"
           >
             <div
               class="sc-fznxsB iaRQNF"
             >
               <span
-                class="sc-fzoLsD Toynz sc-fznJRM brvoJE"
+                class="sc-fzoLsD gMRKsY sc-fznJRM brvoJE"
                 color="#0B82F4"
-                font-size="14px"
+                font-size="13px"
               >
                 デマンド設定
               </span>
@@ -120,7 +120,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 />
                 <path
                   d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"
-                  fill="#778490"
+                  fill="#041C33"
                 />
               </svg>
             </div>
@@ -134,9 +134,9 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             class="sc-fzplWN hdsezt"
           >
             <span
-              class="sc-fzoLsD jpOnuY sc-fznyAO deZnEW"
-              color="#778490"
-              font-size="14px"
+              class="sc-fzoLsD cuqxQU sc-fznyAO deZnEW"
+              color="#041C33"
+              font-size="13px"
             >
               ダッシュボード
             </span>

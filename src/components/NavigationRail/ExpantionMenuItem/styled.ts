@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   padding: ${({ theme }) =>
-    `${theme.spacing * 2}px ${theme.spacing * 2}px ${theme.spacing * 2}px ${
+    `${theme.spacing * 1.5}px ${theme.spacing * 2}px ${theme.spacing * 1.5}px ${
       theme.spacing * 7.75
     }px`};
 

@@ -49,7 +49,8 @@ const ExpantionMenuItem: React.FC<Props> = ({
             ref={textElement}
             component="span"
             weight={isActive ? "bold" : "normal"}
-            color={isActive ? "primary" : theme.palette.gray.dark}
+            color={isActive ? "primary" : theme.palette.black}
+            size="sm"
           >
             {title}
           </Styled.TextWrapper>

@@ -7,6 +7,7 @@ import { NavigationRailContext } from "../utils";
 import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
+import { palette } from "../../../themes";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -57,15 +58,16 @@ const Menu: React.FC<Props> = ({
             name={iconName}
             size="lg"
             type={isActive ? "fill" : "line"}
-            color={isActive ? "active" : "line"}
+            color={isActive ? "active" : palette.black}
           />
         </NotificationBadge>
         <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
           <Styled.TextWrapper
             ref={textElement}
             component="span"
-            color={isActive ? "primary" : "secondary"}
+            color={isActive ? "primary" : "initial"}
             weight="bold"
+            size="sm"
           >
             {title}
           </Styled.TextWrapper>
