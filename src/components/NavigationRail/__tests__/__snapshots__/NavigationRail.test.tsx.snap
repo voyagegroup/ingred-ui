@@ -98,6 +98,11 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 デマンド設定
               </span>
             </div>
+            <span
+              class="sc-fzokOt bSFcDQ"
+            >
+              0
+            </span>
           </div>
         </div>
         <div
@@ -141,6 +146,11 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               ダッシュボード
             </span>
           </div>
+          <span
+            class="sc-fzokOt bSFcDQ"
+          >
+            0
+          </span>
         </div>
       </div>
       <div

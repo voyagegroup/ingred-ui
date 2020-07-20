@@ -7,7 +7,7 @@ import { NavigationRailContext } from "../utils";
 import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
-import { palette } from "../../../themes";
+import { useTheme } from "../../../themes";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -24,6 +24,7 @@ const Menu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
+  const theme = useTheme();
   const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
@@ -58,7 +59,7 @@ const Menu: React.FC<Props> = ({
             name={iconName}
             size="lg"
             type={isActive ? "fill" : "line"}
-            color={isActive ? "active" : palette.black}
+            color={isActive ? "active" : theme.palette.black}
           />
         </NotificationBadge>
         <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
@@ -72,9 +73,10 @@ const Menu: React.FC<Props> = ({
             {title}
           </Styled.TextWrapper>
         </Styled.TextContainer>
-        {notificationCount !== 0 && (
-          <SideNotificationBadge notificationCount={notificationCount} />
-        )}
+        <SideNotificationBadge
+          notificationCount={notificationCount}
+          invisible={notificationCount === 0 || !isOpen}
+        />
       </Styled.Container>
     </Tooltip>
   );

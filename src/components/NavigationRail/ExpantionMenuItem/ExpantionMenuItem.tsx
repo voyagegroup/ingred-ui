@@ -55,9 +55,10 @@ const ExpantionMenuItem: React.FC<Props> = ({
             {title}
           </Styled.TextWrapper>
         </Styled.TextContainer>
-        {notificationCount !== 0 && (
-          <SideNotificationBadge notificationCount={notificationCount} />
-        )}
+        <SideNotificationBadge
+          notificationCount={notificationCount}
+          invisible={notificationCount === 0}
+        />
       </Styled.Container>
     </Tooltip>
   );
