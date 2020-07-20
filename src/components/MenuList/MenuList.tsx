@@ -23,7 +23,7 @@ const MenuList = React.forwardRef<HTMLDivElement, Props>(
         {contents.map((content) => (
           <React.Fragment key={content.text}>
             {content.divideTop && (
-              <Divider py={1} mx={2} color={theme.palette.gray.light} />
+              <Divider my={1} mx={2} color={theme.palette.gray.light} />
             )}
             <Styled.TextContainer onClick={content.onClick}>
               <Typography size="sm">{content.text}</Typography>

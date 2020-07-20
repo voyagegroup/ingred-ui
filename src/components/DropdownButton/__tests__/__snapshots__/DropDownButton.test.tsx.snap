@@ -86,7 +86,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
         class="sc-AxmLO kzuGTd"
       >
         <hr
-          class="sc-fzpans cvtTPq"
+          class="sc-fzpans COpIC"
           color="#EFF1F2"
         />
         <div
@@ -112,7 +112,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fzpans cvtTPq"
+          class="sc-fzpans COpIC"
           color="#EFF1F2"
         />
         <div
@@ -244,7 +244,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
         class="sc-AxmLO kzuGTd"
       >
         <hr
-          class="sc-fzpans cvtTPq"
+          class="sc-fzpans COpIC"
           color="#EFF1F2"
         />
         <div
@@ -270,7 +270,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fzpans cvtTPq"
+          class="sc-fzpans COpIC"
           color="#EFF1F2"
         />
         <div
