@@ -5,18 +5,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
   <div
     class="sc-AxjAm BheQN"
   >
-    <div
-      class="sc-AxhUy btMKRS"
-    >
-      <hr
-        class="sc-AxiKw gspLkK"
-      />
-    </div>
+    <hr
+      class="sc-AxhCb jtzPIC"
+      color="#EFF1F2"
+    />
     <div
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-AxhUy fGQAqL"
         color="#041C33"
         font-size="13px"
       >
@@ -27,25 +24,22 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-AxhUy fGQAqL"
         color="#041C33"
         font-size="13px"
       >
         保存して実行する
       </p>
     </div>
-    <div
-      class="sc-AxhUy btMKRS"
-    >
-      <hr
-        class="sc-AxiKw gspLkK"
-      />
-    </div>
+    <hr
+      class="sc-AxhCb jtzPIC"
+      color="#EFF1F2"
+    />
     <div
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-AxhUy fGQAqL"
         color="#041C33"
         font-size="13px"
       >
@@ -56,7 +50,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-AxhUy fGQAqL"
         color="#041C33"
         font-size="13px"
       >

@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { SpacerProps, spacer } from "../Spacer/Spacer";
 
-export const Divider = styled.hr<{ variant: "fullWidth" | "middle" }>`
-  border: none;
-  margin: 0
-    ${({ theme, variant }) => (variant === "middle" ? theme.spacing * 2 : 0)}px;
+type DividerProps = SpacerProps & {
+  color: string;
+};
+
+export const Divider = styled.hr<DividerProps>`
+  /* TODO: style.tsに書かれているものもutils/に移動せずに利用して良いのか相談 */
+  ${spacer}
   height: 1px;
-  background-color: ${({ theme }) => theme.palette.divider};
+  border: none;
+  background-color: ${({ color }) => color};
 `;
