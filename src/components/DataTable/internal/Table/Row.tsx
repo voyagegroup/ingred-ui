@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export type VerticalSpacing = "small" | "medium" | "large";
 
@@ -27,10 +27,10 @@ const Component = styled.tr<RowProps>`
   & > th {
     ${({ isStickyHeader }) =>
       isStickyHeader
-        ? `
-    position: sticky;
-    top: 0;
-    `
+        ? css`
+            position: sticky;
+            top: 0;
+          `
         : ""}
   }
 
