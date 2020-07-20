@@ -6,6 +6,7 @@ import { NavigationRailContext } from "../utils";
 import Tooltip from "../../Tooltip";
 import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
+import { useTheme } from "../../../themes";
 
 type Props = React.ComponentPropsWithRef<"div"> & {
   title: string;
@@ -29,6 +30,7 @@ const ExpantionMenu: React.FC<Props> = ({
   onMouseEnter,
   ...rest
 }) => {
+  const theme = useTheme();
   const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
 
   const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
@@ -90,15 +92,16 @@ const ExpantionMenu: React.FC<Props> = ({
               name={iconName}
               size="lg"
               type={isActive ? "fill" : "line"}
-              color={isActive ? "active" : "line"}
+              color={isActive ? "active" : theme.palette.black}
             />
           </NotificationBadge>
           <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
             <Styled.TextWrapper
               ref={textElement}
               component="span"
-              color={isActive ? "primary" : "secondary"}
+              color={isActive ? "primary" : "initial"}
               weight="bold"
+              size="sm"
             >
               {title}
             </Styled.TextWrapper>
@@ -106,7 +109,7 @@ const ExpantionMenu: React.FC<Props> = ({
           <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
             <Icon
               name="arrow_bottom"
-              color={isActive ? "active" : "line"}
+              color={isActive ? "active" : theme.palette.black}
               size="lg"
             />
           </Styled.ArrowIconWrapper>
