@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import Typography from "../../../Typography";
 
 type ValueType = number;
 
@@ -35,7 +36,14 @@ const TableTabs: React.FunctionComponent<Props> = ({
             active={item.value === value}
             onClick={onHandleChange(item.value)}
           >
-            {item.label}
+            <Typography
+              size="sm"
+              weight={item.value === value ? "bold" : "normal"}
+              color={item.value === value ? "initial" : "secondary"}
+              align="center"
+            >
+              {item.label}
+            </Typography>
           </Styled.TabItem>
         ))}
       </Styled.TabContainer>

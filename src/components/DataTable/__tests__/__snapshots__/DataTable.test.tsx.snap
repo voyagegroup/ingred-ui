@@ -3,110 +3,118 @@
 exports[`DataTable component testing DataTable 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm kNttCc"
+    class="sc-AxjAm krjTuO"
   >
-    <table
-      class="sc-fzpjYC jZnCzf"
+    <div
+      class="sc-AxirZ dnbnUY"
     >
-      <thead>
-        <tr
-          class="sc-fzoXzr dEyaZk"
+      <div
+        class="sc-AxiKw oeWKG"
+      >
+        <table
+          class="sc-fznxsB kIHQaQ"
         >
-          <th
-            class="sc-AxmLO bsBXdl"
-            width="auto"
-          >
-            <div
-              class="sc-AxirZ fFuFas"
-              display="flex"
+          <thead>
+            <tr
+              class="sc-fzpjYC jPJeQN"
             >
-              <span
-                class="sc-AxhCb kAPUXw"
-                color="#778490"
-                font-size="14px"
+              <th
+                class="sc-fzoLsD juQkTT"
+                width="auto"
               >
-                A
-              </span>
-            </div>
-          </th>
-          <th
-            class="sc-AxmLO bsBXdl"
-            width="auto"
-          >
-            <div
-              class="sc-AxirZ fFuFas"
-              display="flex"
-            >
-              <span
-                class="sc-AxhCb kAPUXw"
-                color="#778490"
-                font-size="14px"
+                <div
+                  class="sc-AxhCb COYJx"
+                  display="flex"
+                >
+                  <span
+                    class="sc-AxgMl ffqIVQ"
+                    color="#041C33"
+                    font-size="14px"
+                  >
+                    A
+                  </span>
+                </div>
+              </th>
+              <th
+                class="sc-fzoLsD juQkTT"
+                width="auto"
               >
-                B
-              </span>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          class="sc-fzoXzr dEyaZk"
-        >
-          <td
-            class="sc-fzoLag gMVRvK"
-            width="auto"
-          >
-            <p
-              class="sc-AxhCb eTsdHR"
-              color="#041C33"
-              font-size="14px"
+                <div
+                  class="sc-AxhCb COYJx"
+                  display="flex"
+                >
+                  <span
+                    class="sc-AxgMl ffqIVQ"
+                    color="#041C33"
+                    font-size="14px"
+                  >
+                    B
+                  </span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="sc-fzpjYC jPJeQN"
             >
-              name1
-            </p>
-          </td>
-          <td
-            class="sc-fzoLag gMVRvK"
-            width="auto"
-          >
-            <p
-              class="sc-AxhCb eTsdHR"
-              color="#041C33"
-              font-size="14px"
+              <td
+                class="sc-fzoXzr kuUQxD"
+                width="auto"
+              >
+                <p
+                  class="sc-AxgMl bJtsTC"
+                  color="#041C33"
+                  font-size="14px"
+                >
+                  name1
+                </p>
+              </td>
+              <td
+                class="sc-fzoXzr kuUQxD"
+                width="auto"
+              >
+                <p
+                  class="sc-AxgMl bJtsTC"
+                  color="#041C33"
+                  font-size="14px"
+                >
+                  name1
+                </p>
+              </td>
+            </tr>
+            <tr
+              class="sc-fzpjYC jPJeQN"
             >
-              name1
-            </p>
-          </td>
-        </tr>
-        <tr
-          class="sc-fzoXzr dEyaZk"
-        >
-          <td
-            class="sc-fzoLag gMVRvK"
-            width="auto"
-          >
-            <p
-              class="sc-AxhCb eTsdHR"
-              color="#041C33"
-              font-size="14px"
-            >
-              name2
-            </p>
-          </td>
-          <td
-            class="sc-fzoLag gMVRvK"
-            width="auto"
-          >
-            <p
-              class="sc-AxhCb eTsdHR"
-              color="#041C33"
-              font-size="14px"
-            >
-              name2
-            </p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              <td
+                class="sc-fzoXzr kuUQxD"
+                width="auto"
+              >
+                <p
+                  class="sc-AxgMl bJtsTC"
+                  color="#041C33"
+                  font-size="14px"
+                >
+                  name2
+                </p>
+              </td>
+              <td
+                class="sc-fzoXzr kuUQxD"
+                width="auto"
+              >
+                <p
+                  class="sc-AxgMl bJtsTC"
+                  color="#041C33"
+                  font-size="14px"
+                >
+                  name2
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

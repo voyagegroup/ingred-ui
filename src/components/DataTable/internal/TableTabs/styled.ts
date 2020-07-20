@@ -3,37 +3,30 @@ import { Size, Radius } from "../../../../styles";
 import { colors } from "../../../../styles/color";
 
 export const Container = styled.div`
+  padding-top: ${({ theme }) => theme.spacing * 1.5}px;
   padding-left: ${({ theme }) => theme.spacing * 3}px;
+  background-color: ${({ theme }) => theme.palette.gray.highlight};
+  border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
 `;
 
 export const TabContainer = styled.ul<{ width: string }>`
-  width: ${({ width }) => width};
   list-style: none;
   display: flex;
+  width: ${({ width }) => width};
 `;
 
 export const TabItem = styled.li<{ active: boolean; width: string }>`
   width: ${({ width }) => width};
   margin-bottom: -${Size.Border.Small}; /* containerのborderにかぶせるためのネガティブマージン */
-  padding: ${({ theme }) => theme.spacing * 1.5}px
+  padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 2}px;
-  border-left: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.divider};
-  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-right: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.divider};
-  border-bottom: ${({ active, theme }) =>
-    active ? `none` : `${Size.Border.Small} solid ${theme.palette.divider}`};
+  border: ${({ active }) =>
+    active ? `1px solid ${colors.basic[300]}` : "none"};
+  border-bottom: ${({ active }) =>
+    active ? "none" : `1px solid ${colors.basic[300]}`};
   border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
-  font-size: 13px;
-  font-weight: ${({ active }) => (active ? "bold" : "normal")};
-  background-color: ${({ active }) =>
-    active
-      ? colors.basic[100]
-      : ({ theme }) => theme.palette.background.default};
-  text-align: center;
+  background-color: ${({ active, theme }) =>
+    active ? theme.palette.background.default : "none"};
   cursor: pointer;
-  & + & {
-    margin-left: -${Size.Border.Small};
-  }
 `;

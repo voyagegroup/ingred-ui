@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { colors } from "../../../../styles/color";
 import { Size } from "../../../../styles";
+import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type CellProps = {
   width: string;
@@ -9,41 +11,19 @@ type CellProps = {
 
 export const HeaderCell = styled.th<CellProps>`
   cursor: ${({ isSortable }) => (isSortable ? "pointer" : "default")};
+  white-space: nowrap;
   width: ${({ width }) => width};
-  padding: ${({ theme }) => theme.spacing * 2}px
-    ${({ theme }) => theme.spacing * 3}px
-    ${({ theme }) => theme.spacing * 2 - 2}px;
+  padding: ${({ theme }) => theme.spacing}px
+    ${({ theme }) => theme.spacing * 2}px;
+  box-shadow: 0 4px ${hexToRgba(colors.basic[300], 0.24)};
+  background-color: ${({ theme }) => theme.palette.background.default};
+  border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
 
-  box-shadow: ${({ theme, enableRuledLine }) =>
+  border-right: ${({ theme, enableRuledLine }) =>
     enableRuledLine
-      ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset -0.5px 0 0 ${theme.palette.divider}, 
-        inset 0.5px 0 0 ${theme.palette.divider}`
-      : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-    inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
-
-  background-color: ${({ theme }) => theme.palette.gray.highlight};
-
+      ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
+      : "none"};
   &:last-of-type {
-    box-shadow: ${({ theme, enableRuledLine }) =>
-      enableRuledLine
-        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0.5px 0 0 ${theme.palette.divider}`
-        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
-  }
-
-  &:first-of-type {
-    box-shadow: ${({ theme, enableRuledLine }) =>
-      enableRuledLine
-        ? `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}, 
-        inset -0.5px 0 0 ${theme.palette.divider}`
-        : `inset 0 ${Size.Border.Small} 0 ${theme.palette.divider},
-        inset 0 -${Size.Border.Small} 0 ${theme.palette.divider}`};
+    border-right: none;
   }
 `;
-
-export const IconContainer = styled.div``;

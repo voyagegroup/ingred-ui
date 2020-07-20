@@ -10,8 +10,8 @@ type CellProps = {
 
 const Component = styled.td<CellProps>`
   width: ${({ width }) => width};
-  padding: ${({ theme }) => theme.spacing * 2}px
-    ${({ theme }) => theme.spacing * 3}px;
+  padding-right: ${({ theme }) => theme.spacing * 3}px;
+  padding-left: ${({ theme }) => theme.spacing * 2}px;
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
   border-right: ${({ theme, enableRuledLine }) =>

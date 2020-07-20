@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import DataTable from "./";
-import Input from "../Input";
 import Button from "../Button";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import Icon from "../Icon";
+import TextField from "../TextField";
 import Typography from "../Typography";
 import ActionButton from "../ActionButton";
 import { data } from "./data";
 import { Column } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
+import { select, boolean, text } from "@storybook/addon-knobs";
 
 export default {
   title: "DataTable",
@@ -22,13 +23,6 @@ export default {
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.default};
-`;
-
-const StickyContainer = styled.div`
-  thead th {
-    position: sticky;
-    top: 0;
-  }
 `;
 
 type SampleObject = {
@@ -54,32 +48,48 @@ const sampleData: SampleObject[] = [
   { id: 14, name: "9name", count: 1 },
 ];
 
-export const Overview = () => (
-  <Container>
-    <DataTable
-      data={sampleData}
-      defaultSortField="名前"
-      defaultSortOrder="desc"
-      columns={[
-        {
-          name: "ID",
-          selector: (data) => data.id,
-        },
-        {
-          name: "名前",
-          selector: (data) => data.name,
-          sortable: true,
-        },
-        {
-          name: "カウント",
-          selector: (data) => data.count,
-          sortable: true,
-          align: "right",
-        },
-      ]}
-    />
-  </Container>
-);
+export const Overview = () => {
+  const verticalSpacing = select(
+    "VerticalSpacing",
+    {
+      Small: "small",
+      Medium: "medium",
+      Large: "large",
+    },
+    "medium",
+  );
+  const fullWidth = boolean("FullWidth", false);
+  const tableMaxHeight = text("TableMaxHeight", "auto");
+  return (
+    <Container>
+      <DataTable
+        data={sampleData}
+        defaultSortField="名前"
+        defaultSortOrder="desc"
+        verticalSpacing={verticalSpacing}
+        fullWidth={fullWidth}
+        tableMaxHeight={tableMaxHeight}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "名前",
+            selector: (data) => data.name,
+            sortable: true,
+          },
+          {
+            name: "カウント",
+            selector: (data) => data.count,
+            sortable: true,
+            align: "right",
+          },
+        ]}
+      />
+    </Container>
+  );
+};
 
 export const WithPagination = () => (
   <Container>
@@ -102,11 +112,34 @@ export const WithPagination = () => (
   </Container>
 );
 
+export const WithStickyHeader = () => (
+  <Container>
+    <DataTable
+      tableMaxHeight="300px"
+      data={data}
+      columns={[
+        {
+          name: "ID",
+          selector: (data) => data.id,
+          sortable: true,
+        },
+        {
+          name: "imp",
+          selector: (data) => data.imp,
+          sortable: true,
+        },
+      ]}
+    />
+  </Container>
+);
+
 export const WithTabs = () => (
   <Container>
     <DataTable
       enablePagination={true}
       tabWidth="300px"
+      tableMaxHeight="500px"
+      horizontalScrollable={true}
       tabs={[
         {
           label: "全て",
@@ -130,13 +163,22 @@ export const WithTabs = () => (
         {
           name: "ID",
           selector: (data) => data.id,
-          sortable: true,
         },
         {
           name: "名前",
           selector: (data) => data.name,
           sortable: true,
         },
+        {
+          name: "カウント",
+          selector: (data) => data.count,
+          sortable: true,
+          align: "right",
+        },
+        ...[...Array(10)].map((_, i) => ({
+          name: `サンプル列${i}`,
+          selector: () => `${i}`,
+        })),
       ]}
     />
   </Container>
@@ -152,7 +194,7 @@ export const WithSearch: React.FunctionComponent = () => {
   };
   return (
     <Container>
-      <Input placeholder="名前で絞り込む" onChange={onHandleInput} />
+      <TextField placeholder="名前で絞り込む" onChange={onHandleInput} />
       <DataTable
         enablePagination={true}
         data={searchedItems}
@@ -291,30 +333,6 @@ export const CustomCell: React.FunctionComponent = () => {
     </Container>
   );
 };
-
-export const WithStickyHeader = () => (
-  <Container>
-    <StickyContainer>
-      <DataTable
-        enablePagination={true}
-        data={data}
-        enableRuledLine={true}
-        columns={[
-          {
-            name: "ID",
-            selector: (data) => data.id,
-            sortable: true,
-          },
-          {
-            name: "imp",
-            selector: (data) => data.imp,
-            sortable: true,
-          },
-        ]}
-      />
-    </StickyContainer>
-  </Container>
-);
 
 export const WithenableRuledLine = () => (
   <Container>
