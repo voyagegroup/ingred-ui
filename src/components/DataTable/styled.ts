@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import { Size, Radius } from "../../styles";
-import { colors } from "../../styles/color";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const BorderContainer = styled.div<{ fullWidth?: boolean }>`
-  border: ${({ fullWidth }) =>
-    fullWidth ? "none" : `${Size.Border.Small} solid ${colors.basic[300]}`};
-  border-top: ${Size.Border.Small} solid ${colors.basic[300]};
+  border: ${({ fullWidth, theme }) =>
+    fullWidth ? "none" : `${Size.Border.Small} solid ${theme.palette.divider}`};
+  border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ fullWidth }) => (fullWidth ? "none" : Radius.SMALL)};
 `;
 
