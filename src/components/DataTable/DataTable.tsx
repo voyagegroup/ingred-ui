@@ -107,7 +107,6 @@ type Props<T> = {
   onRadioChange?: (radio: number) => void;
   clearSelectedRows?: boolean;
   tabs?: Tab<T>[];
-  tabWidth?: string; // tabsがある時のみ有効
   emptyTitle?: string;
   emptySubtitle?: string;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
@@ -129,7 +128,6 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   onRadioChange,
   clearSelectedRows,
   tabs,
-  tabWidth,
   emptyTitle,
   emptySubtitle,
   per,
@@ -312,7 +310,6 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
       <Styled.BorderContainer fullWidth={fullWidth}>
         {!!tabs && (
           <TableTabs
-            width={tabWidth}
             value={currentTabIndex}
             items={tabs.map((tab, index) => ({
               label: tab.label,
