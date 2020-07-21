@@ -321,7 +321,10 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
             onChange={onHandleTabChange}
           />
         )}
-        <Styled.TableContainer maxHeight={tableMaxHeight}>
+        <Styled.TableContainer
+          maxHeight={tableMaxHeight}
+          horizontalScrollable={horizontalScrollable}
+        >
           <Table horizontalScrollable={horizontalScrollable}>
             <Table.Header>
               <Table.Row isStickyHeader={tableMaxHeight !== "none"}>
