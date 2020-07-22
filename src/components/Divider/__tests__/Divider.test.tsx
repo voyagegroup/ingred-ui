@@ -7,17 +7,8 @@ import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider"
 describe("Divider component testing", () => {
   afterEach(cleanup);
 
-  test("Divider fullWidth", () => {
-    const { asFragment } = renderWithThemeProvider(
-      <Divider variant="fullWidth" />,
-    );
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  test("Divider middle", () => {
-    const { asFragment } = renderWithThemeProvider(
-      <Divider variant="middle" />,
-    );
+  test("Divider", () => {
+    const { asFragment } = renderWithThemeProvider(<Divider />);
     expect(asFragment()).toMatchSnapshot();
   });
 });

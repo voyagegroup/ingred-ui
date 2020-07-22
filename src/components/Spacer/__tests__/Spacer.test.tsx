@@ -2,9 +2,9 @@ import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup, render } from "@testing-library/react";
 import Spacer from "../";
-import { getMargin, getPadding } from "../Spacer";
 import { Space } from "../../../styles/space";
 import { createTheme } from "../../../themes/createTheme";
+import { getMargin, getPadding } from "../../../utils/spacerUtils";
 
 describe("Spacer component testing", () => {
   afterEach(cleanup);

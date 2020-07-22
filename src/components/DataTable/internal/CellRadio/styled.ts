@@ -20,5 +20,6 @@ export const HeaderCell = styled.th`
     ${({ theme }) => theme.spacing * 2}px;
   box-shadow: 0 4px ${hexToRgba(colors.basic[300], 0.24)};
   background-color: ${({ theme }) => theme.palette.background.default};
-  border-bottom: ${Size.Border.Small} solid ${colors.basic[300]};
+  border-bottom: ${Size.Border.Small} solid
+    ${({ theme }) => theme.palette.divider};
 `;
