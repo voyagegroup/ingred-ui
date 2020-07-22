@@ -10,17 +10,20 @@ export const Container = styled.div`
   border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
 `;
 
-export const TabContainer = styled.ul<{ width: string }>`
+export const TabContainer = styled.ul`
   list-style: none;
   display: flex;
-  width: ${({ width }) => width};
 `;
 
-export const TabItem = styled.li<{ active: boolean; width: string }>`
-  width: ${({ width }) => width};
+export const TabItem = styled.li<{ active: boolean }>`
+  min-width: ${({ theme }) => theme.spacing * 10}px;
   margin-bottom: -${Size.Border.Small}; /* containerのborderにかぶせるためのネガティブマージン */
-  padding: ${({ theme }) => theme.spacing}px
-    ${({ theme }) => theme.spacing * 2}px;
+  padding: ${({ active, theme }) =>
+    active
+      ? `calc(${theme.spacing * 1.5}px - ${Size.Border.Small}) calc(${
+          theme.spacing * 2
+        }px - ${Size.Border.Small})`
+      : `${theme.spacing * 1.5}px ${theme.spacing * 2}px`};
   border: ${({ active, theme }) =>
     active ? `1px solid ${theme.palette.divider}` : "none"};
   border-bottom: ${({ active, theme }) =>

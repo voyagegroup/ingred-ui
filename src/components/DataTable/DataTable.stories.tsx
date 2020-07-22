@@ -154,7 +154,7 @@ export const WithTabs = () => (
           filter: (data) => data.filter((item) => item.id >= 5),
         },
         {
-          label: "empty",
+          label: "empty data",
           filter: () => [],
         },
       ]}
