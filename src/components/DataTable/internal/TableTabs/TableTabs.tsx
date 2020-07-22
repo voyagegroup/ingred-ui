@@ -34,7 +34,6 @@ const TableTabs: React.FunctionComponent<Props> = ({
           >
             <Typography
               size="sm"
-              weight={item.value === value ? "bold" : "normal"}
               color={item.value === value ? "initial" : "secondary"}
               align="center"
             >
