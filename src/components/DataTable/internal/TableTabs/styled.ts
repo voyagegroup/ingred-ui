@@ -15,13 +15,15 @@ export const TabContainer = styled.ul`
   display: flex;
 `;
 
-export const TabItem = styled.li<{ active: boolean; }>`
+export const TabItem = styled.li<{ active: boolean }>`
   min-width: ${({ theme }) => theme.spacing * 10}px;
   margin-bottom: -${Size.Border.Small}; /* containerのborderにかぶせるためのネガティブマージン */
-  padding: ${({ active, theme }) => 
-    active 
-    ? `calc(${theme.spacing * 1.5}px - ${Size.Border.Small}) calc(${theme.spacing * 2}px - ${Size.Border.Small})` 
-    : `${theme.spacing * 1.5}px ${theme.spacing * 2}px`};
+  padding: ${({ active, theme }) =>
+    active
+      ? `calc(${theme.spacing * 1.5}px - ${Size.Border.Small}) calc(${
+          theme.spacing * 2
+        }px - ${Size.Border.Small})`
+      : `${theme.spacing * 1.5}px ${theme.spacing * 2}px`};
   border: ${({ active }) =>
     active ? `1px solid ${colors.basic[300]}` : "none"};
   border-bottom: ${({ active }) =>
