@@ -1,7 +1,7 @@
 import React from "react";
 import * as Styled from "./styled";
-import { SpacerProps } from "../Spacer/Spacer";
 import { useTheme } from "../../themes";
+import { SpacerProps } from "../../utils/spacerUtils";
 
 type Props = SpacerProps & {
   color?: string;

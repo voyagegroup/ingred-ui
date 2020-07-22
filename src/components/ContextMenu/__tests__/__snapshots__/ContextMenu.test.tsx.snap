@@ -49,7 +49,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
         class="sc-AxgMl eGmloN"
       >
         <hr
-          class="sc-Axmtr htlrDI"
+          class="sc-Axmtr ehFXlb"
           color="#EFF1F2"
         />
         <div
@@ -75,7 +75,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-Axmtr htlrDI"
+          class="sc-Axmtr ehFXlb"
           color="#EFF1F2"
         />
         <div

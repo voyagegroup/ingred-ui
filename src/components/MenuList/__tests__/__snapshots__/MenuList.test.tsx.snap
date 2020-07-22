@@ -6,14 +6,14 @@ exports[`MenuList component testing MenuList splited 1`] = `
     class="sc-AxjAm BheQN"
   >
     <hr
-      class="sc-AxhCb hAUlBO"
+      class="sc-AxiKw dYVjyJ"
       color="#EFF1F2"
     />
     <div
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhUy fGQAqL"
+        class="sc-AxhCb kdcBdC"
         color="#041C33"
         font-size="13px"
       >
@@ -24,7 +24,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhUy fGQAqL"
+        class="sc-AxhCb kdcBdC"
         color="#041C33"
         font-size="13px"
       >
@@ -32,14 +32,14 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-AxhCb hAUlBO"
+      class="sc-AxiKw dYVjyJ"
       color="#EFF1F2"
     />
     <div
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhUy fGQAqL"
+        class="sc-AxhCb kdcBdC"
         color="#041C33"
         font-size="13px"
       >
@@ -50,7 +50,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       class="sc-AxirZ goUFkV"
     >
       <p
-        class="sc-AxhUy fGQAqL"
+        class="sc-AxhCb kdcBdC"
         color="#041C33"
         font-size="13px"
       >
