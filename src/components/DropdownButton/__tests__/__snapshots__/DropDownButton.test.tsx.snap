@@ -73,10 +73,10 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-fznyAO fxqxlZ"
+    class="sc-fzplWN giuPsl"
   >
     <div
-      class="sc-fzplWN glxjXw"
+      class="sc-fzpans iIcycl"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -85,13 +85,10 @@ exports[`DropdownButton component testing not splited enable 1`] = `
       <div
         class="sc-AxmLO kzuGTd"
       >
-        <div
-          class="sc-fzpans fxWQbr"
-        >
-          <hr
-            class="sc-fzoLsD SqmhS"
-          />
-        </div>
+        <hr
+          class="sc-fzoLsD iflzvJ"
+          color="#EFF1F2"
+        />
         <div
           class="sc-fzozJi iuAPRP"
         >
@@ -114,13 +111,10 @@ exports[`DropdownButton component testing not splited enable 1`] = `
             保存して実行する
           </p>
         </div>
-        <div
-          class="sc-fzpans fxWQbr"
-        >
-          <hr
-            class="sc-fzoLsD SqmhS"
-          />
-        </div>
+        <hr
+          class="sc-fzoLsD iflzvJ"
+          color="#EFF1F2"
+        />
         <div
           class="sc-fzozJi iuAPRP"
         >
@@ -165,7 +159,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw dnBLnw sc-AxgMl hkveav"
+      class="sc-AxirZ sc-AxiKw dnBLnw sc-AxgMl hGPnli"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -210,7 +204,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw hAPwhR sc-AxgMl hkveav"
+      class="sc-AxirZ sc-AxiKw hAPwhR sc-AxgMl hGPnli"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -237,10 +231,10 @@ exports[`DropdownButton component testing splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-fznyAO fxqxlZ"
+    class="sc-fzplWN giuPsl"
   >
     <div
-      class="sc-fzplWN glxjXw"
+      class="sc-fzpans iIcycl"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -249,13 +243,10 @@ exports[`DropdownButton component testing splited enable 1`] = `
       <div
         class="sc-AxmLO kzuGTd"
       >
-        <div
-          class="sc-fzpans fxWQbr"
-        >
-          <hr
-            class="sc-fzoLsD SqmhS"
-          />
-        </div>
+        <hr
+          class="sc-fzoLsD iflzvJ"
+          color="#EFF1F2"
+        />
         <div
           class="sc-fzozJi iuAPRP"
         >
@@ -278,13 +269,10 @@ exports[`DropdownButton component testing splited enable 1`] = `
             保存して実行する
           </p>
         </div>
-        <div
-          class="sc-fzpans fxWQbr"
-        >
-          <hr
-            class="sc-fzoLsD SqmhS"
-          />
-        </div>
+        <hr
+          class="sc-fzoLsD iflzvJ"
+          color="#EFF1F2"
+        />
         <div
           class="sc-fzozJi iuAPRP"
         >

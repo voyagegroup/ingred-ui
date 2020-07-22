@@ -1,13 +1,14 @@
-import { Radius } from "../../styles";
-import { spacer, SpacerProps } from "../Spacer/Spacer";
-import { flexbox, FlexboxProps } from "../Flex/Flex";
 import styled from "styled-components";
+import { Radius } from "../../styles";
+import { flexbox, FlexboxProps } from "../Flex/Flex";
+import { spacer, SpacerProps } from "../../utils/spacerUtils";
 
 type Props = {
   width?: string;
   maxWidth?: string;
   minWidth?: string;
 };
+
 const Card = styled.div<SpacerProps & FlexboxProps & Props>`
   border-radius: ${Radius.MEDIUM};
   background-color: ${({ theme }) => theme.palette.background.default};

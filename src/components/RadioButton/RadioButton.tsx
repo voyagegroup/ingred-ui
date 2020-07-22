@@ -43,7 +43,7 @@ const Indicator = styled("div")<IndicatorProps>`
   height: ${({ size }) => size};
   border-radius: 50%;
   border: ${({ border }) => border} solid
-    ${({ theme }) => theme.palette.text.disabled};
+    ${({ theme }) => theme.palette.divider};
   box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
       theme.palette.gray.light} inset;
 

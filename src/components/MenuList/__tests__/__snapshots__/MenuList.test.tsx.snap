@@ -5,13 +5,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
   <div
     class="sc-AxjAm BheQN"
   >
-    <div
-      class="sc-AxhUy btMKRS"
-    >
-      <hr
-        class="sc-AxiKw gspLkK"
-      />
-    </div>
+    <hr
+      class="sc-AxiKw dYVjyJ"
+      color="#EFF1F2"
+    />
     <div
       class="sc-AxirZ goUFkV"
     >
@@ -34,13 +31,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
         保存して実行する
       </p>
     </div>
-    <div
-      class="sc-AxhUy btMKRS"
-    >
-      <hr
-        class="sc-AxiKw gspLkK"
-      />
-    </div>
+    <hr
+      class="sc-AxiKw dYVjyJ"
+      color="#EFF1F2"
+    />
     <div
       class="sc-AxirZ goUFkV"
     >

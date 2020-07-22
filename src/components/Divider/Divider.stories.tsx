@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import Divider from ".";
 import Typography from "../Typography";
+import Spacer from "../Spacer";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -24,16 +25,27 @@ export default {
 export const Overview = () => (
   <Container>
     <Typography weight="bold" size="xxl">
-      Full Width
+      Normal
     </Typography>
     <RowContainer>
-      <Divider variant="fullWidth" />
+      <Divider />
     </RowContainer>
     <Typography weight="bold" size="xxl">
-      Middle
+      With Space
     </Typography>
     <RowContainer>
-      <Divider variant="middle" />
+      <Divider m={3} />
+      <Spacer pt={2} pl={2}>
+        <Typography size="md" weight="bold">
+          ＊It can define margin and padding like &quot;Spacer&quot; component.
+        </Typography>
+      </Spacer>
+    </RowContainer>
+    <Typography weight="bold" size="xxl">
+      Override Color
+    </Typography>
+    <RowContainer>
+      <Divider color="red" m={3} />
     </RowContainer>
   </Container>
 );
