@@ -17,3 +17,9 @@ declare module "*.svg" {
   export default svgUrl;
   export { svgComponent as ReactComponent };
 }
+
+type DeepPartial<T> = T extends Function
+  ? T
+  : T extends object
+  ? { [P in keyof T]?: DeepPartial<T[P]> }
+  : T;

@@ -103,29 +103,6 @@ export const palette: Palette = {
   },
 };
 
-export type PaletteColorOptions = SimplePaletteColorOptions;
-
-export type SimplePaletteColorOptions = {
-  deepDark?: string;
-  dark?: string;
-  main: string;
-  light?: string;
-  highlight?: string;
-};
-
-export type PaletteOptions = {
-  white?: string;
-  black?: string;
-  primary?: PaletteColorOptions;
-  success?: PaletteColorOptions;
-  warning?: PaletteColorOptions;
-  danger?: PaletteColorOptions;
-  gray?: PaletteColorOptions;
-  text?: Partial<TypeText>;
-  background?: Partial<TypeBackground>;
-  icon?: Partial<TypeIcon>;
-};
-
-export function createPalette(paletteInput: PaletteOptions): Palette {
+export function createPalette(paletteInput: DeepPartial<Palette>): Palette {
   return deepmerge(palette, paletteInput);
 }
