@@ -3,30 +3,32 @@
 exports[`Table component testing Table 1`] = `
 <DocumentFragment>
   <table
-    class="sc-AxgMl yHLYw"
+    class="sc-AxheI klJKTW"
   >
     <tbody>
-      <tr>
+      <tr
+        class="sc-AxirZ bLvNGV"
+      >
         <th
-          class="sc-AxhCb dyrWJI"
+          class="sc-AxhUy eVPxys"
           width="177px"
         >
           <div
-            class="sc-AxiKw bJqPYy"
+            class="sc-AxhCb dzpAlW"
             display="flex"
           >
             <p
-              class="sc-AxirZ extcGX"
+              class="sc-AxiKw vQWyf"
               color="#041C33"
               font-size="14px"
             >
               タイトル
             </p>
             <div
-              class="sc-AxhUy JOSzx"
+              class="sc-AxgMl ipymkH"
             >
               <p
-                class="sc-AxirZ cmrQJL"
+                class="sc-AxiKw lpenSv"
                 color="#FFFFFF"
                 font-size="12px"
               >
@@ -42,17 +44,19 @@ exports[`Table component testing Table 1`] = `
           コンテンツ
         </td>
       </tr>
-      <tr>
+      <tr
+        class="sc-AxirZ bLvNGV"
+      >
         <th
-          class="sc-AxhCb dyrWJI"
+          class="sc-AxhUy eVPxys"
           width="177px"
         >
           <div
-            class="sc-AxiKw eXNMil"
+            class="sc-AxhCb jMXRtl"
             display="flex"
           >
             <p
-              class="sc-AxirZ extcGX"
+              class="sc-AxiKw vQWyf"
               color="#041C33"
               font-size="14px"
             >
@@ -67,17 +71,19 @@ exports[`Table component testing Table 1`] = `
           コンテンツ
         </td>
       </tr>
-      <tr>
+      <tr
+        class="sc-AxirZ bLvNGV"
+      >
         <th
-          class="sc-AxhCb dyrWJI"
+          class="sc-AxhUy eVPxys"
           width="177px"
         >
           <div
-            class="sc-AxiKw eXNMil"
+            class="sc-AxhCb jMXRtl"
             display="flex"
           >
             <p
-              class="sc-AxirZ extcGX"
+              class="sc-AxiKw vQWyf"
               color="#041C33"
               font-size="14px"
             >
