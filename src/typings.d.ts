@@ -18,8 +18,7 @@ declare module "*.svg" {
   export { svgComponent as ReactComponent };
 }
 
-type DeepPartial<T> = T extends Function
-  ? T
-  : T extends object
-  ? { [P in keyof T]?: DeepPartial<T[P]> }
-  : T;
+// MEMO: from Redux
+type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
