@@ -137,7 +137,6 @@ export const WithTabs = () => (
   <Container>
     <DataTable
       enablePagination={true}
-      tabWidth="300px"
       tableMaxHeight="500px"
       horizontalScrollable={true}
       tabs={[
@@ -225,7 +224,6 @@ export const SelectableRows: React.FunctionComponent = () => {
       <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
-        tabWidth="300px"
         tabs={[
           {
             label: "全て",

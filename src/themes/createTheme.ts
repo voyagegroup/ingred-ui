@@ -1,10 +1,10 @@
-import { Palette, PaletteOptions, createPalette } from "./palette";
+import { Palette, createPalette } from "./palette";
 import { Space } from "../styles/space";
 import { Depth, DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 
 export type ThemeOptions = {
-  palette?: PaletteOptions;
+  palette?: DeepPartial<Palette>;
   spacing?: number;
   depth?: DepthOptions;
 };
