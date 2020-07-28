@@ -34,7 +34,7 @@ export const SortableHeaderCell: React.FunctionComponent<Props> = ({
       {...rest}
     >
       <Flex display="flex" alignItems="center">
-        <Typography weight="bold" size="md" component="span">
+        <Typography weight="bold" size="md" component="div">
           {children}
         </Typography>
         {sortable && (

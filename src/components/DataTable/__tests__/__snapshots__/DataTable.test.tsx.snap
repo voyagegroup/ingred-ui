@@ -26,13 +26,13 @@ exports[`DataTable component testing DataTable 1`] = `
                   class="sc-AxhCb COYJx"
                   display="flex"
                 >
-                  <span
+                  <div
                     class="sc-AxgMl ffqIVQ"
                     color="#041C33"
                     font-size="14px"
                   >
                     A
-                  </span>
+                  </div>
                 </div>
               </th>
               <th
@@ -43,13 +43,13 @@ exports[`DataTable component testing DataTable 1`] = `
                   class="sc-AxhCb COYJx"
                   display="flex"
                 >
-                  <span
+                  <div
                     class="sc-AxgMl ffqIVQ"
                     color="#041C33"
                     font-size="14px"
                   >
                     B
-                  </span>
+                  </div>
                 </div>
               </th>
             </tr>

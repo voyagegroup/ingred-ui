@@ -85,11 +85,14 @@ function getDisplayData<T>({
 }
 
 export type Column<T> = {
+  // MEMO: nameを廃止して、headerCellのみにすることも可能
+  //       他の破壊的変更に合わせて行うのが良さそう
   name: string;
   selector: (data: T) => string | number;
   sortable?: boolean;
   width?: string;
   renderCell?: (data: T) => React.ReactNode;
+  headerCell?: React.ReactNode;
   align?: TypographyProps["align"];
 };
 
@@ -351,7 +354,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                         : undefined
                     }
                   >
-                    {column.name}
+                    {column.headerCell || column.name}
                   </SortableHeaderCell>
                 ))}
               </Table.Row>
