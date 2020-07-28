@@ -19,6 +19,6 @@ export const Container = styled.div<ContainerProps>`
     hexToRgba(theme.palette.background.default, 0.9)};
   border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
   border-bottom: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.divider};
+    ${({ theme }) => theme.palette.gray.light};
   transition: all 0.3s;
 `;
