@@ -12,7 +12,11 @@ type ContainerProps = {
 export const Container = styled.div<ContainerProps>`
   position: fixed;
   ${({ isOpen, height, offset, placement }) =>
-    `${placement}: ${isOpen ? offset : -height - 10}px`};
+    `${placement}: calc(${
+      isOpen
+        ? `${offset}px`
+        : `${height !== 0 ? `${-height}px` : "-100vh"} - 10px`
+    })`};
   width: 100%;
   backdrop-filter: blur(2px);
   background-color: ${({ theme }) =>
