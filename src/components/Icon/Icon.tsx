@@ -55,6 +55,7 @@ import { MoreIcon } from "./internal/MoreIcon";
 import { NotificationIcon } from "./internal/NotificationIcon";
 import { UserSettingsIcon } from "./internal/UserSettingsIcon";
 import { CompanySettingsIcon } from "./internal/CompanySettingsIcon";
+import { HeartPulseIcon } from "./internal/HeartPulseIcon";
 
 export type IconName =
   | "dashboard"
@@ -109,7 +110,8 @@ export type IconName =
   | "filter"
   | "notification"
   | "user_settings"
-  | "company_settings";
+  | "company_settings"
+  | "heart_pulse";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -181,6 +183,7 @@ export const icons: {
   notification: NotificationIcon,
   user_settings: UserSettingsIcon,
   company_settings: CompanySettingsIcon,
+  heart_pulse: HeartPulseIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
