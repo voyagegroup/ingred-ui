@@ -12,6 +12,7 @@ import { data } from "./data";
 import { Column } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
 import { select, boolean, text } from "@storybook/addon-knobs";
+import FloatingTip from "../FloatingTip";
 
 export default {
   title: "DataTable",
@@ -23,6 +24,10 @@ export default {
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.default};
+`;
+
+const Content = styled.div`
+  width: 300px;
 `;
 
 type SampleObject = {
@@ -290,6 +295,16 @@ export const SelectableRow: React.FunctionComponent = () => {
 
 export const CustomCell: React.FunctionComponent = () => {
   const theme = useTheme();
+
+  const [
+    iconWrapperElement,
+    setIconWrapperElement,
+  ] = React.useState<HTMLDivElement | null>(null);
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const onHandleIsOpen = (isOpen: boolean) => () => {
+    setIsOpen(isOpen);
+  };
+
   const columns: Column<{ id: number; imp: number }>[] = React.useMemo(
     () => [
       {
@@ -313,6 +328,29 @@ export const CustomCell: React.FunctionComponent = () => {
       {
         name: "操作",
         selector: (data) => data.id,
+        headerCell: (
+          <>
+            <Flex display="flex" alignItems="center">
+              操作
+              <Spacer pl={1} />
+              <div ref={setIconWrapperElement} onClick={onHandleIsOpen(true)}>
+                <Icon name="question" type="fill" />
+              </div>
+            </Flex>
+            <FloatingTip
+              baseElement={iconWrapperElement}
+              isOpen={isOpen}
+              positionPriority={["left"]}
+              onClose={onHandleIsOpen(false)}
+            >
+              <Content>
+                <Typography size="sm" lineHeight="1.7">
+                  こんな感じで入れられます
+                </Typography>
+              </Content>
+            </FloatingTip>
+          </>
+        ),
         renderCell: () => (
           <Flex display="flex" alignItems="center">
             <Spacer pr={0.5}>
@@ -323,7 +361,7 @@ export const CustomCell: React.FunctionComponent = () => {
         ),
       },
     ],
-    [theme.palette.primary.main],
+    [isOpen, iconWrapperElement, theme.palette.primary.main],
   );
   return (
     <Container>
