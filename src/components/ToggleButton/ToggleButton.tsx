@@ -8,6 +8,7 @@ type Props = {
   width?: string;
   activeText?: string;
   inActiveText?: string;
+  inputRef?: React.Ref<HTMLInputElement>;
 };
 
 const ToggleButton: React.FunctionComponent<Props> = ({
@@ -17,10 +18,12 @@ const ToggleButton: React.FunctionComponent<Props> = ({
   width = "56px",
   activeText = "ON",
   inActiveText = "OFF",
+  inputRef,
 }) => (
   <Styled.Container active={active} disabled={disabled}>
     <Styled.Label active={active} disabled={disabled} width={width}>
       <Styled.HiddenInput
+        ref={inputRef}
         checked={active}
         type="checkbox"
         readOnly={onChange == undefined}
