@@ -81,7 +81,6 @@ export const HiddenInput = styled.input`
 `;
 
 type LabelTextProps = {
-  disabled: boolean;
   position: "right" | "left";
 };
 
@@ -93,12 +92,4 @@ export const LabelText = styled.div<LabelTextProps>`
     ${({ position }) => (position === "right" ? "" : "-")}50%,
     -50%
   );
-  color: ${({ disabled, position, theme }) => {
-    if (disabled) return theme.palette.text.disabled;
-    return position === "right"
-      ? theme.palette.text.secondary
-      : theme.palette.primary.main;
-  }};
-  font-size: 12px;
-  font-weight: bold;
 `;

@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import Typography from "../Typography";
 
 type Props = {
   active?: boolean;
@@ -19,25 +20,32 @@ const ToggleButton: React.FunctionComponent<Props> = ({
   activeText = "ON",
   inActiveText = "OFF",
   inputRef,
-}) => (
-  <Styled.Container active={active} disabled={disabled}>
-    <Styled.Label active={active} disabled={disabled} width={width}>
-      <Styled.HiddenInput
-        ref={inputRef}
-        checked={active}
-        type="checkbox"
-        readOnly={onChange == undefined}
-        onChange={disabled ? undefined : onChange}
-      />
-      <Styled.ToggleButton active={active} disabled={disabled} />
-      <Styled.LabelText
-        disabled={disabled}
-        position={active ? "left" : "right"}
-      >
-        {active ? activeText : inActiveText}
-      </Styled.LabelText>
-    </Styled.Label>
-  </Styled.Container>
-);
+}) => {
+  const textColor = active ? "primary" : "secondary";
+  return (
+    <Styled.Container active={active} disabled={disabled}>
+      <Styled.Label active={active} disabled={disabled} width={width}>
+        <Styled.HiddenInput
+          ref={inputRef}
+          checked={active}
+          type="checkbox"
+          readOnly={onChange == undefined}
+          onChange={disabled ? undefined : onChange}
+        />
+        <Styled.ToggleButton active={active} disabled={disabled} />
+        <Styled.LabelText position={active ? "left" : "right"}>
+          <Typography
+            component="span"
+            color={disabled ? "disabled" : textColor}
+            size="xs"
+            weight="bold"
+          >
+            {active ? activeText : inActiveText}
+          </Typography>
+        </Styled.LabelText>
+      </Styled.Label>
+    </Styled.Container>
+  );
+};
 
 export default ToggleButton;
