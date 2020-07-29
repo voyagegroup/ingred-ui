@@ -61,7 +61,7 @@ export const Overview = () => (
     </Typography>
     <RowContainer>
       <Flex display="flex" justifyContent="center" height="50px">
-        <Divider orientation="vertical" isFlexItem={true} />
+        <Divider orientation="vertical" />
       </Flex>
     </RowContainer>
   </Container>
