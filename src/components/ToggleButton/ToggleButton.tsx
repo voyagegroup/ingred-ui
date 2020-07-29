@@ -5,15 +5,21 @@ type Props = {
   active?: boolean;
   disabled?: boolean;
   onChange?: () => void;
+  width?: string;
+  activeText?: string;
+  inActiveText?: string;
 };
 
 const ToggleButton: React.FunctionComponent<Props> = ({
   active = false,
   disabled = false,
   onChange,
+  width = "56px",
+  activeText = "ON",
+  inActiveText = "OFF",
 }) => (
   <Styled.Container active={active} disabled={disabled}>
-    <Styled.Label active={active} disabled={disabled}>
+    <Styled.Label active={active} disabled={disabled} width={width}>
       <Styled.HiddenInput
         checked={active}
         type="checkbox"
@@ -25,7 +31,7 @@ const ToggleButton: React.FunctionComponent<Props> = ({
         disabled={disabled}
         position={active ? "left" : "right"}
       >
-        {active ? "ON" : "OFF"}
+        {active ? activeText : inActiveText}
       </Styled.LabelText>
     </Styled.Label>
   </Styled.Container>

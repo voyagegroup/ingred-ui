@@ -46,6 +46,7 @@ export const ToggleButton = styled.span<ToggleButtonProps>`
 type LabelProps = {
   active: boolean;
   disabled: boolean;
+  width: string;
 };
 
 export const Label = styled.label<LabelProps>`
@@ -56,7 +57,7 @@ export const Label = styled.label<LabelProps>`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  width: 54px;
+  width: ${({ width }) => width};
   height: calc(${Size.Border.Small} * 2 + 22px);
   background-color: ${({ active, disabled, theme }) =>
     active && !disabled

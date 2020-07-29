@@ -3,6 +3,7 @@ import styled from "styled-components";
 import ToggleButton from "./ToggleButton";
 import Spacer from "../Spacer";
 import Typography from "../Typography";
+import { text } from "@storybook/addon-knobs";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -29,6 +30,9 @@ export default {
 
 export const Overview: React.FunctionComponent = () => {
   const [isActive, setIsActive] = React.useState(false);
+  const activeText = text("ActiveText", "ON");
+  const inActiveText = text("InActiveText", "OFF");
+  const width = text("Width", "56px");
   return (
     <Container>
       <Typography weight="bold" size="xxl">
@@ -41,6 +45,9 @@ export const Overview: React.FunctionComponent = () => {
           </Spacer>
           <ToggleButton
             active={isActive}
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
             onChange={() => setIsActive(!isActive)}
           />
         </Spacer>
@@ -49,6 +56,9 @@ export const Overview: React.FunctionComponent = () => {
             <Typography>Disabled</Typography>
           </Spacer>
           <ToggleButton
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
             disabled={true}
             active={isActive}
             onChange={() => setIsActive(!isActive)}
@@ -60,25 +70,47 @@ export const Overview: React.FunctionComponent = () => {
           <Spacer pb={1}>
             <Typography>Normal</Typography>
           </Spacer>
-          <ToggleButton active={false} />
+          <ToggleButton
+            active={false}
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
+          />
         </Spacer>
         <Spacer pr={3}>
           <Spacer pb={1}>
             <Typography>Checked</Typography>
           </Spacer>
-          <ToggleButton active={true} />
+          <ToggleButton
+            active={true}
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
+          />
         </Spacer>
         <Spacer pr={3}>
           <Spacer pb={1}>
             <Typography>Disabled</Typography>
           </Spacer>
-          <ToggleButton active={false} disabled={true} />
+          <ToggleButton
+            active={false}
+            disabled={true}
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
+          />
         </Spacer>
         <Spacer pr={3}>
           <Spacer pb={1}>
             <Typography>Checked &amp; Disabled</Typography>
           </Spacer>
-          <ToggleButton active={true} disabled={true} />
+          <ToggleButton
+            active={true}
+            disabled={true}
+            width={width}
+            activeText={activeText}
+            inActiveText={inActiveText}
+          />
         </Spacer>
       </RowContainer>
     </Container>
