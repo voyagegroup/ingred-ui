@@ -6,12 +6,7 @@ export const Container = styled.div<{ active: boolean; disabled: boolean }>`
   height: calc(${Size.Border.Small} * 2 + 22px);
 `;
 
-type ToggleButtonProps = {
-  active: boolean;
-  disabled: boolean;
-};
-
-export const ToggleButton = styled.span<ToggleButtonProps>`
+export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   content: "";
   position: absolute;
   top: 2px;
@@ -80,11 +75,7 @@ export const HiddenInput = styled.input`
   visibility: hidden;
 `;
 
-type LabelTextProps = {
-  position: "right" | "left";
-};
-
-export const LabelText = styled.div<LabelTextProps>`
+export const LabelText = styled.div<{ position: "right" | "left" }>`
   position: absolute;
   top: 50%;
   ${({ position }) => `${position}: calc(50% - 7px)`};
