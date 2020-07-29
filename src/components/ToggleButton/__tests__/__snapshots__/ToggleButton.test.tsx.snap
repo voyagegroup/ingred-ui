@@ -6,7 +6,8 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
     class="sc-AxjAm VnLDo"
   >
     <label
-      class="sc-AxiKw laZqtx"
+      class="sc-AxiKw dJxstw"
+      width="56px"
     >
       <input
         class="sc-AxhCb gxTQDi"
@@ -17,9 +18,15 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         class="sc-AxirZ bPivgb"
       />
       <div
-        class="sc-AxhUy ksLymO"
+        class="sc-AxhUy gTyiaa"
       >
-        OFF
+        <span
+          class="sc-AxgMl iiGPWZ"
+          color="#778490"
+          font-size="12px"
+        >
+          OFF
+        </span>
       </div>
     </label>
   </div>
