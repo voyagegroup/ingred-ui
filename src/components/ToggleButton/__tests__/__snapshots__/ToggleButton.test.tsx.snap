@@ -3,24 +3,24 @@
 exports[`ToggleButton component testing ToggleButton 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm kogbHp"
+    class="sc-AxjAm VnLDo"
   >
     <label
-      class="react-switch-label"
+      class="sc-AxiKw laZqtx"
     >
       <input
-        class="react-switch-checkbox"
+        class="sc-AxhCb gxTQDi"
         readonly=""
         type="checkbox"
       />
       <span
-        class="react-switch-button"
+        class="sc-AxirZ bPivgb"
       />
-      <span
-        class="sc-AxirZ sc-AxhCb jcGmJA"
+      <div
+        class="sc-AxhUy ksLymO"
       >
         OFF
-      </span>
+      </div>
     </label>
   </div>
 </DocumentFragment>

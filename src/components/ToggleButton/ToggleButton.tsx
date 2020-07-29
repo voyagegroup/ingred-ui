@@ -13,21 +13,21 @@ const ToggleButton: React.FunctionComponent<Props> = ({
   onChange,
 }) => (
   <Styled.Container active={active} disabled={disabled}>
-    <label className="react-switch-label">
-      <input
+    <Styled.Label active={active} disabled={disabled}>
+      <Styled.HiddenInput
         checked={active}
-        className="react-switch-checkbox"
         type="checkbox"
         readOnly={onChange == undefined}
         onChange={disabled ? undefined : onChange}
       />
-      <span className="react-switch-button" />
-      {active ? (
-        <Styled.LeftLabel disabled={disabled}>ON</Styled.LeftLabel>
-      ) : (
-        <Styled.RightLabel disabled={disabled}>OFF</Styled.RightLabel>
-      )}
-    </label>
+      <Styled.ToggleButton active={active} disabled={disabled} />
+      <Styled.LabelText
+        disabled={disabled}
+        position={active ? "left" : "right"}
+      >
+        {active ? "ON" : "OFF"}
+      </Styled.LabelText>
+    </Styled.Label>
   </Styled.Container>
 );
 
