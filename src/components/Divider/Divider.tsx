@@ -5,15 +5,17 @@ import { SpacerProps } from "../../utils/spacerUtils";
 
 type Props = SpacerProps & {
   color?: string;
+  orientation?: "vertical" | "horizontal";
 };
 
 const Divider: React.FunctionComponent<Props> = ({
   color: colorProp,
+  orientation = "horizontal",
   ...rest
 }) => {
   const theme = useTheme();
   const color = colorProp || theme.palette.divider;
-  return <Styled.Divider color={color} {...rest} />;
+  return <Styled.Divider color={color} orientation={orientation} {...rest} />;
 };
 
 export default Divider;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Divider from ".";
 import Typography from "../Typography";
 import Spacer from "../Spacer";
+import Flex from "../Flex";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -46,6 +47,14 @@ export const Overview = () => (
     </Typography>
     <RowContainer>
       <Divider color="red" m={3} />
+    </RowContainer>
+    <Typography weight="bold" size="xxl">
+      Vertical
+    </Typography>
+    <RowContainer>
+      <Flex display="flex" justifyContent="center" height="50px">
+        <Divider orientation="vertical" />
+      </Flex>
     </RowContainer>
   </Container>
 );

@@ -3,11 +3,13 @@ import { SpacerProps, spacer } from "../../utils/spacerUtils";
 
 type DividerProps = SpacerProps & {
   color: string;
+  orientation: "vertical" | "horizontal";
 };
 
 export const Divider = styled.hr<DividerProps>`
   ${spacer}
-  height: 1px;
+  width: ${({ orientation }) => (orientation === "vertical" ? "1px" : "auto")};
+  height: ${({ orientation }) => (orientation === "vertical" ? "100%" : "1px")};
   border: none;
   background-color: ${({ color }) => color};
 `;
