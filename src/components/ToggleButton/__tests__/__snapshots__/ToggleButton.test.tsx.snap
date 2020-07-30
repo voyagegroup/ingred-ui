@@ -20,13 +20,13 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
       <div
         class="sc-AxhUy gTyiaa"
       >
-        <span
+        <div
           class="sc-AxgMl iiGPWZ"
           color="#778490"
           font-size="12px"
         >
           OFF
-        </span>
+        </div>
       </div>
     </label>
   </div>

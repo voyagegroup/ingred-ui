@@ -35,7 +35,7 @@ const ToggleButton: React.FunctionComponent<Props> = ({
         <Styled.ToggleButton active={active} disabled={disabled} />
         <Styled.LabelText position={active ? "left" : "right"}>
           <Typography
-            component="span"
+            component="div"
             color={disabled ? "disabled" : textColor}
             size="xs"
             weight="bold"
