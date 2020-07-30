@@ -52,14 +52,6 @@ export const Overview = () => (
       Vertical
     </Typography>
     <RowContainer>
-      <div style={{ height: "50px", width: "1px", margin: "auto" }}>
-        <Divider orientation="vertical" />
-      </div>
-    </RowContainer>
-    <Typography weight="bold" size="xxl">
-      Vertical(in Flexbox)
-    </Typography>
-    <RowContainer>
       <Flex display="flex" justifyContent="center" height="50px">
         <Divider orientation="vertical" />
       </Flex>
