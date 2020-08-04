@@ -40,6 +40,34 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
+function isMergedCell<T>(
+  column: Column<T>,
+  displayData: T[],
+  index: number,
+): boolean {
+  if (index === 0) return false;
+  return (
+    !!column.enableMergeCell &&
+    column.selector(displayData[index]) ===
+      column.selector(displayData[index - 1])
+  );
+}
+
+function calculateRowSpan<T>(
+  column: Column<T>,
+  displayData: T[],
+  startIndex: number,
+): number {
+  if (!column.enableMergeCell) return 1;
+  const baseCell = column.selector(displayData[startIndex]);
+  let rowSpan = 1;
+  for (let idx = startIndex + 1; idx < displayData.length; idx++) {
+    if (column.selector(displayData[idx]) !== baseCell) break;
+    rowSpan++;
+  }
+  return rowSpan;
+}
+
 function getFilteredItemsByTab<T>({
   sourceData,
   tabs,
@@ -58,6 +86,7 @@ function getFilteredItemsByTab<T>({
 
 function getDisplayData<T>({
   sourceData,
+  columns,
   sortState,
   filterState,
   enablePagination,
@@ -65,6 +94,7 @@ function getDisplayData<T>({
   currentTabIndex,
 }: {
   sourceData: T[];
+  columns: Column<T>[];
   sortState: CurrentSortState<T>;
   filterState: FilterState;
   enablePagination: boolean;
@@ -76,7 +106,14 @@ function getDisplayData<T>({
     tabs,
     currentTabIndex,
   });
-  const sortedData = sort(data, sortState);
+  const sortedData = sort(data, {
+    ...sortState,
+    // MEMO: Not to separate cells that we want to merge.
+    getValue: (data: T) =>
+      columns
+        .map((column) => (column.enableMergeCell ? column.selector(data) : ""))
+        .join("") + (sortState.getValue ? sortState.getValue(data) : ""),
+  });
   if (enablePagination) {
     const filteredData = getFilteredItemsByPagination(sortedData, filterState);
     return filteredData;
@@ -94,6 +131,7 @@ export type Column<T> = {
   renderCell?: (data: T) => React.ReactNode;
   headerCell?: React.ReactNode;
   align?: TypographyProps["align"];
+  enableMergeCell?: boolean;
 };
 
 type Tab<T> = {
@@ -183,6 +221,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
       sourceData,
+      columns,
       sortState,
       filterState,
       enablePagination,
@@ -204,6 +243,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   useDidUpdate(() => {
     const displayData = getDisplayData({
       sourceData,
+      columns,
       sortState,
       filterState,
       enablePagination,
@@ -232,6 +272,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     setFilterState(initialFilterState);
     const displayData = getDisplayData({
       sourceData,
+      columns,
       sortState,
       filterState: initialFilterState,
       enablePagination,
@@ -390,20 +431,27 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                         )}
                       </>
                     )}
-                    {columns.map((column) => (
-                      <Table.Cell
-                        key={column.name}
-                        enableRuledLine={enableRuledLine}
-                      >
-                        {column.renderCell ? (
-                          column.renderCell(item)
-                        ) : (
-                          <Typography align={column.align}>
-                            {column.selector(item)}
-                          </Typography>
-                        )}
-                      </Table.Cell>
-                    ))}
+                    {columns.map((column) =>
+                      isMergedCell(column, displayData, index) ? null : (
+                        <Table.Cell
+                          key={column.name}
+                          enableRuledLine={enableRuledLine}
+                          rowSpan={
+                            column.enableMergeCell
+                              ? calculateRowSpan(column, displayData, index)
+                              : 1
+                          }
+                        >
+                          {column.renderCell ? (
+                            column.renderCell(item)
+                          ) : (
+                            <Typography align={column.align}>
+                              {column.selector(item)}
+                            </Typography>
+                          )}
+                        </Table.Cell>
+                      ),
+                    )}
                   </Table.Row>
                 ))
               ) : (

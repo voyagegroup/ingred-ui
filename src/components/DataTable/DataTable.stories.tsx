@@ -38,7 +38,14 @@ type SampleObject = {
 
 const sampleData: SampleObject[] = [
   { id: 1, name: "1name", count: 9 },
+  { id: 1, name: "1name", count: 3 },
+  { id: 1, name: "1name", count: 4 },
+  { id: 1, name: "2name", count: 9 },
+  { id: 1, name: "2name", count: 8 },
+  { id: 1, name: "2name", count: 4 },
+  { id: 1, name: "2name", count: 3 },
   { id: 2, name: "2name", count: 8 },
+  { id: 1, name: "1name", count: 9 },
   { id: 3, name: "3name", count: 7 },
   { id: 4, name: "4name", count: 6 },
   { id: 5, name: "5name", count: 5 },
@@ -47,10 +54,10 @@ const sampleData: SampleObject[] = [
   { id: 8, name: "8name", count: 2 },
   { id: 9, name: "9name", count: 1 },
   { id: 10, name: "9name", count: 1 },
-  { id: 11, name: "9name", count: 1 },
-  { id: 12, name: "9name", count: 1 },
-  { id: 13, name: "9name", count: 1 },
-  { id: 14, name: "9name", count: 1 },
+  { id: 11, name: "9name", count: 2 },
+  { id: 12, name: "9name", count: 2 },
+  { id: 13, name: "9name", count: 3 },
+  { id: 14, name: "9name", count: 3 },
 ];
 
 export const Overview = () => {
@@ -82,11 +89,13 @@ export const Overview = () => {
           {
             name: "名前",
             selector: (data) => data.name,
+            enableMergeCell: true,
             sortable: true,
           },
           {
             name: "カウント",
             selector: (data) => data.count,
+            enableMergeCell: true,
             sortable: true,
             align: "right",
           },
