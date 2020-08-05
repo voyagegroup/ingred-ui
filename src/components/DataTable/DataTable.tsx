@@ -411,6 +411,9 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                       (selectedRows.includes(item.id) ||
                         selectedRow === item.id)
                     }
+                    disableHoverHighlight={columns.some(
+                      (column) => column.enableMergeCell,
+                    )}
                   >
                     {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
                       <>
