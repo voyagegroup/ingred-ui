@@ -16,7 +16,7 @@ exports[`DataTable component testing DataTable 1`] = `
         >
           <thead>
             <tr
-              class="sc-fzpjYC jPJeQN"
+              class="sc-fzpjYC iiZvqF"
             >
               <th
                 class="sc-fzoLsD cwdXLh"
@@ -56,10 +56,11 @@ exports[`DataTable component testing DataTable 1`] = `
           </thead>
           <tbody>
             <tr
-              class="sc-fzpjYC jPJeQN"
+              class="sc-fzpjYC iiZvqF"
             >
               <td
                 class="sc-fzoXzr kuUQxD"
+                rowspan="1"
                 width="auto"
               >
                 <p
@@ -72,6 +73,7 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
               <td
                 class="sc-fzoXzr kuUQxD"
+                rowspan="1"
                 width="auto"
               >
                 <p
@@ -84,10 +86,11 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
             </tr>
             <tr
-              class="sc-fzpjYC jPJeQN"
+              class="sc-fzpjYC iiZvqF"
             >
               <td
                 class="sc-fzoXzr kuUQxD"
+                rowspan="1"
                 width="auto"
               >
                 <p
@@ -100,6 +103,7 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
               <td
                 class="sc-fzoXzr kuUQxD"
+                rowspan="1"
                 width="auto"
               >
                 <p
