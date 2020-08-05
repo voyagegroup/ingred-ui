@@ -114,12 +114,12 @@ export const WithPagination = () => (
         {
           name: "ID",
           selector: (data) => data.id,
-          sortable: true,
+          // sortable: true,
         },
         {
           name: "imp",
           selector: (data) => data.imp,
-          sortable: true,
+          // sortable: true,
         },
       ]}
     />

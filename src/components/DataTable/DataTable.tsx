@@ -40,29 +40,38 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
-function isMergedCell<T>(
+function isMergedCell<T extends DataTableBaseData>(
   column: Column<T>,
   displayData: T[],
   index: number,
 ): boolean {
   if (index === 0) return false;
+  const baseRow = displayData[index];
+  const baseCell = column.selector(baseRow);
+  const previousRow = displayData[index - 1];
+  const previousCell = column.selector(previousRow);
   return (
     !!column.enableMergeCell &&
-    column.selector(displayData[index]) ===
-      column.selector(displayData[index - 1])
+    baseRow.id === previousRow.id &&
+    baseCell === previousCell
   );
 }
 
-function calculateRowSpan<T>(
+function calculateRowSpan<T extends DataTableBaseData>(
   column: Column<T>,
   displayData: T[],
   startIndex: number,
 ): number {
   if (!column.enableMergeCell) return 1;
-  const baseCell = column.selector(displayData[startIndex]);
+  const baseRow = displayData[startIndex];
+  const baseCell = column.selector(baseRow);
   let rowSpan = 1;
   for (let idx = startIndex + 1; idx < displayData.length; idx++) {
-    if (column.selector(displayData[idx]) !== baseCell) break;
+    const comparisonRow = displayData[idx];
+    const comparisonCell = column.selector(comparisonRow);
+    if (comparisonRow.id !== baseRow.id || comparisonCell !== baseCell) {
+      break;
+    }
     rowSpan++;
   }
   return rowSpan;
@@ -84,9 +93,8 @@ function getFilteredItemsByTab<T>({
   return data;
 }
 
-function getDisplayData<T>({
+function getDisplayData<T extends DataTableBaseData>({
   sourceData,
-  columns,
   sortState,
   filterState,
   enablePagination,
@@ -94,7 +102,6 @@ function getDisplayData<T>({
   currentTabIndex,
 }: {
   sourceData: T[];
-  columns: Column<T>[];
   sortState: CurrentSortState<T>;
   filterState: FilterState;
   enablePagination: boolean;
@@ -106,20 +113,18 @@ function getDisplayData<T>({
     tabs,
     currentTabIndex,
   });
-  const sortedData = sort(data, {
-    ...sortState,
-    // MEMO: Not to separate cells that we want to merge.
-    getValue: (data: T) =>
-      columns
-        .map((column) => (column.enableMergeCell ? column.selector(data) : ""))
-        .join("") + (sortState.getValue ? sortState.getValue(data) : ""),
-  });
+  const sortedData = sort(data, sortState);
   if (enablePagination) {
     const filteredData = getFilteredItemsByPagination(sortedData, filterState);
     return filteredData;
   }
   return sortedData;
 }
+
+export type DataTableBaseData = {
+  id: number;
+  selectDisabled?: boolean;
+};
 
 export type Column<T> = {
   // MEMO: nameを廃止して、headerCellのみにすることも可能
@@ -161,7 +166,7 @@ type Props<T> = {
 };
 
 // idを必須にしたい
-const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
+const DataTable = <T extends DataTableBaseData>({
   data: sourceData,
   columns,
   enablePagination = false,
@@ -191,13 +196,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   const showTabs = !!tabs;
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 
-  let rowSpan = columns.length;
-  if (
-    (showCheckbox || showRadioButton) &&
-    (!showTabs || isCheckableTab(currentTabIndex, tabs))
-  ) {
-    rowSpan = columns.length + 1;
-  }
+  const enableMergeCell = columns.some((column) => column.enableMergeCell);
 
   // sort, pagination, count
 
@@ -221,7 +220,6 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
       sourceData,
-      columns,
       sortState,
       filterState,
       enablePagination,
@@ -243,7 +241,6 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   useDidUpdate(() => {
     const displayData = getDisplayData({
       sourceData,
-      columns,
       sortState,
       filterState,
       enablePagination,
@@ -272,7 +269,6 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
     setFilterState(initialFilterState);
     const displayData = getDisplayData({
       sourceData,
-      columns,
       sortState,
       filterState: initialFilterState,
       enablePagination,
@@ -385,12 +381,12 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 {columns.map((column) => (
                   <SortableHeaderCell
                     key={column.name}
-                    sortable={column.sortable}
+                    sortable={column.sortable && !enableMergeCell}
                     order={getOrder(sortState, column.name)}
                     width={column.width}
                     enableRuledLine={enableRuledLine}
                     onClick={
-                      column.sortable
+                      column.sortable && !enableMergeCell
                         ? onHandleSort(column.selector, column.name)
                         : undefined
                     }
@@ -411,9 +407,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                       (selectedRows.includes(item.id) ||
                         selectedRow === item.id)
                     }
-                    disableHoverHighlight={columns.some(
-                      (column) => column.enableMergeCell,
-                    )}
+                    disableHoverHighlight={enableMergeCell}
                   >
                     {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
                       <>
@@ -439,11 +433,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                         <Table.Cell
                           key={column.name}
                           enableRuledLine={enableRuledLine}
-                          rowSpan={
-                            column.enableMergeCell
-                              ? calculateRowSpan(column, displayData, index)
-                              : 1
-                          }
+                          rowSpan={calculateRowSpan(column, displayData, index)}
                         >
                           {column.renderCell ? (
                             column.renderCell(item)
@@ -459,7 +449,15 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 ))
               ) : (
                 <tr>
-                  <td colSpan={rowSpan}>
+                  <td
+                    colSpan={
+                      columns.length +
+                      ((showCheckbox || showRadioButton) &&
+                      (!showTabs || isCheckableTab(currentTabIndex, tabs))
+                        ? 1
+                        : 0)
+                    }
+                  >
                     <ItemEmpty
                       title={emptyTitle || "見つかりませんでした"}
                       subtitle={emptySubtitle}
