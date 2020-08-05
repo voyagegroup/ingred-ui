@@ -117,6 +117,7 @@ export const WithRowSpan = () => {
   return (
     <Container>
       <DataTable
+        enableRuledLine={true}
         data={sampleDataWithDuplicateId}
         defaultSortField="名前"
         defaultSortOrder="desc"
@@ -134,6 +135,7 @@ export const WithRowSpan = () => {
           {
             name: "カウント",
             selector: (data) => data.count,
+            // MEMO: Cannot use sort when using "enableMergeCall"
             sortable: true,
             align: "right",
           },
