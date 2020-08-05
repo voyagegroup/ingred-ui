@@ -20,16 +20,16 @@ const Component = styled.tr<RowProps>`
   background-color: ${({ highlighted, theme }) =>
     highlighted ? theme.palette.primary.highlight : "none"};
 
-  ${({ disableHoverHighlight, highlighted, theme }) =>
-    disableHoverHighlight
-      ? ""
-      : css`
-          &:hover {
+  &:hover {
+    ${({ disableHoverHighlight, highlighted, theme }) =>
+      disableHoverHighlight
+        ? ""
+        : css`
             background-color: ${highlighted
               ? "none"
               : theme.palette.gray.highlight};
-          }
-        `}
+          `}
+  }
 
   & > th {
     ${({ isStickyHeader }) =>
