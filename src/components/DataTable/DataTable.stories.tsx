@@ -82,13 +82,11 @@ export const Overview = () => {
           {
             name: "名前",
             selector: (data) => data.name,
-            enableMergeCell: true,
             sortable: true,
           },
           {
             name: "カウント",
             selector: (data) => data.count,
-            enableMergeCell: true,
             sortable: true,
             align: "right",
           },
@@ -154,12 +152,12 @@ export const WithPagination = () => (
         {
           name: "ID",
           selector: (data) => data.id,
-          // sortable: true,
+          sortable: true,
         },
         {
           name: "imp",
           selector: (data) => data.imp,
-          // sortable: true,
+          sortable: true,
         },
       ]}
     />
