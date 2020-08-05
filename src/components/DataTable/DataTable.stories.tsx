@@ -37,15 +37,8 @@ type SampleObject = {
 };
 
 const sampleData: SampleObject[] = [
-  { id: 1, name: "1name", count: 9 },
-  { id: 1, name: "1name", count: 3 },
   { id: 1, name: "1name", count: 4 },
-  { id: 1, name: "2name", count: 9 },
-  { id: 1, name: "2name", count: 8 },
-  { id: 1, name: "2name", count: 4 },
-  { id: 1, name: "2name", count: 3 },
   { id: 2, name: "2name", count: 8 },
-  { id: 1, name: "1name", count: 9 },
   { id: 3, name: "3name", count: 7 },
   { id: 4, name: "4name", count: 6 },
   { id: 5, name: "5name", count: 5 },
@@ -96,6 +89,51 @@ export const Overview = () => {
             name: "カウント",
             selector: (data) => data.count,
             enableMergeCell: true,
+            sortable: true,
+            align: "right",
+          },
+        ]}
+      />
+    </Container>
+  );
+};
+
+export const WithRowSpan = () => {
+  // MEMO: Need to sort data yourself.
+  const sampleDataWithDuplicateId: SampleObject[] = [
+    { id: 1, name: "1name", count: 9 },
+    { id: 1, name: "1name", count: 3 },
+    { id: 1, name: "1name", count: 4 },
+    { id: 1, name: "2name", count: 9 },
+    { id: 1, name: "2name", count: 8 },
+    { id: 1, name: "2name", count: 4 },
+    { id: 1, name: "2name", count: 3 },
+    { id: 2, name: "2name", count: 8 },
+    { id: 3, name: "3name", count: 7 },
+    { id: 4, name: "4name", count: 6 },
+    { id: 5, name: "5name", count: 5 },
+    { id: 6, name: "6name", count: 4 },
+  ];
+  return (
+    <Container>
+      <DataTable
+        data={sampleDataWithDuplicateId}
+        defaultSortField="名前"
+        defaultSortOrder="desc"
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "名前",
+            selector: (data) => data.name,
+            enableMergeCell: true,
+            sortable: true,
+          },
+          {
+            name: "カウント",
+            selector: (data) => data.count,
             sortable: true,
             align: "right",
           },
