@@ -7,7 +7,7 @@ exports[`Table component testing Table 1`] = `
   >
     <tbody>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxiKw hlMSJp"
       >
         <th
           class="sc-AxhUy eVPxys"
@@ -17,18 +17,18 @@ exports[`Table component testing Table 1`] = `
             class="sc-AxhCb dzpAlW"
             display="flex"
           >
-            <p
-              class="sc-AxiKw vQWyf"
+            <div
+              class="sc-AxjAm iYepyg"
               color="#041C33"
               font-size="14px"
             >
               タイトル
-            </p>
+            </div>
             <div
               class="sc-AxgMl ipvmgT"
             >
               <p
-                class="sc-AxiKw lpenSv"
+                class="sc-AxjAm fLJoJQ"
                 color="#FFFFFF"
                 font-size="12px"
               >
@@ -38,14 +38,20 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxirZ eaTSoX"
           width="auto"
         >
-          コンテンツ
+          <div
+            class="sc-AxjAm dQgfvm"
+            color="#041C33"
+            font-size="14px"
+          >
+            コンテンツ
+          </div>
         </td>
       </tr>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxiKw hlMSJp"
       >
         <th
           class="sc-AxhUy eVPxys"
@@ -55,24 +61,30 @@ exports[`Table component testing Table 1`] = `
             class="sc-AxhCb jMXRtl"
             display="flex"
           >
-            <p
-              class="sc-AxiKw vQWyf"
+            <div
+              class="sc-AxjAm iYepyg"
               color="#041C33"
               font-size="14px"
             >
               タイトル
-            </p>
+            </div>
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxirZ eaTSoX"
           width="auto"
         >
-          コンテンツ
+          <div
+            class="sc-AxjAm dQgfvm"
+            color="#041C33"
+            font-size="14px"
+          >
+            コンテンツ
+          </div>
         </td>
       </tr>
       <tr
-        class="sc-AxirZ bLvNGV"
+        class="sc-AxiKw hlMSJp"
       >
         <th
           class="sc-AxhUy eVPxys"
@@ -82,20 +94,26 @@ exports[`Table component testing Table 1`] = `
             class="sc-AxhCb jMXRtl"
             display="flex"
           >
-            <p
-              class="sc-AxiKw vQWyf"
+            <div
+              class="sc-AxjAm iYepyg"
               color="#041C33"
               font-size="14px"
             >
               タイトル
-            </p>
+            </div>
           </div>
         </th>
         <td
-          class="sc-AxjAm czLlJc"
+          class="sc-AxirZ eaTSoX"
           width="auto"
         >
-          コンテンツ
+          <div
+            class="sc-AxjAm dQgfvm"
+            color="#041C33"
+            font-size="14px"
+          >
+            コンテンツ
+          </div>
         </td>
       </tr>
     </tbody>
