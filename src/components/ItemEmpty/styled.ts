@@ -11,10 +11,15 @@ export const EmptyContainer = styled.div`
 
 export const EmptyImageContainer = styled.div``;
 
-export const DefaultEmptyImageContainer = styled.div`
-  width: 25%;
-  min-width: 137px;
-  max-width: 180px;
+type DefaultEmptyImageProps = {
+  imageWidth?: number;
+  imageHeight?: number;
+};
+
+export const DefaultEmptyImageContainer = styled.div<DefaultEmptyImageProps>`
+  width: ${({ imageWidth }) => (imageWidth ? `${imageWidth}px` : "137px")};
+  height: ${({ imageHeight }) => (imageHeight ? `${imageHeight}px` : "auto")};
+
   img {
     display: block;
     width: 100%;

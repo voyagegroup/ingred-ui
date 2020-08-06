@@ -8,8 +8,8 @@ type Props = {
   title: string;
   subtitle?: string;
   emptyImage?: string;
-  imageWidth?: string;
-  imageHeight?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
 const ItemEmpty: React.FunctionComponent<Props> = ({
@@ -24,7 +24,10 @@ const ItemEmpty: React.FunctionComponent<Props> = ({
       {emptyImage ? (
         <img src={emptyImage} width={imageWidth} height={imageHeight} />
       ) : (
-        <Styled.DefaultEmptyImageContainer>
+        <Styled.DefaultEmptyImageContainer
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+        >
           <EmptyImage />
         </Styled.DefaultEmptyImageContainer>
       )}

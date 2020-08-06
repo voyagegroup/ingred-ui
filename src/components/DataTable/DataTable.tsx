@@ -113,8 +113,8 @@ type Props<T> = {
   emptyTitle?: string;
   emptySubtitle?: string;
   emptyImage?: string;
-  emptyImageWidth?: string;
-  emptyImageHeight?: string;
+  emptyImageWidth?: number;
+  emptyImageHeight?: number;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
