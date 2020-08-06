@@ -7,12 +7,17 @@ import { EmptyImage } from "./internal/EmptyImage";
 type Props = {
   title: string;
   subtitle?: string;
+  emptyImage?: string;
 };
 
-const ItemEmpty: React.FunctionComponent<Props> = ({ title, subtitle }) => (
+const ItemEmpty: React.FunctionComponent<Props> = ({
+  title,
+  subtitle,
+  emptyImage,
+}) => (
   <Styled.EmptyContainer>
     <Styled.EmptyImageContainer>
-      <EmptyImage />
+      {emptyImage ? <img src={emptyImage} /> : <EmptyImage />}
     </Styled.EmptyImageContainer>
     <Spacer pt={5} pb={1}>
       <Typography weight="bold" size="xxxl" align="center">
