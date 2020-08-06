@@ -4,7 +4,7 @@ import { Radius } from "../../styles/radius";
 export const Container = styled.div`
   height: 40px;
   padding: ${({ theme }) => theme.spacing / 2}px;
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   background-color: ${({ theme }) => theme.palette.gray.light};
 `;
 
@@ -35,7 +35,7 @@ export const TextItemContainer = styled.div`
   align-items: center;
   height: 32px;
   padding: 0 ${({ theme }) => theme.spacing}px;
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   & + & {

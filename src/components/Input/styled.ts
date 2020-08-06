@@ -19,11 +19,7 @@ export const Input = styled.input<{
       ? theme.palette.danger.highlight
       : theme.palette.background.default};
   border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-radius: ${Radius.SMALL};
-  box-shadow: 0 ${Size.Border.Normal} 0 0
-    ${({ theme, isError }) =>
-      isError ? theme.palette.danger.highlight : theme.palette.gray.light}
-    inset;
+  border-radius: ${Radius.MEDIUM};
   border-color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.divider};
   overflow: hidden;

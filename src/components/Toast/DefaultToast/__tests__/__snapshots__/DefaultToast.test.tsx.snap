@@ -7,7 +7,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-AxirZ gwydYm"
+      class="sc-AxirZ ceROQG"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -93,7 +93,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-AxirZ jcLymU"
+      class="sc-AxirZ fAfnWc"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -182,7 +182,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-AxirZ dDpjKA"
+      class="sc-AxirZ hRyzuw"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -275,7 +275,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-AxirZ iCbAeE"
+      class="sc-AxirZ dEPcgQ"
       opacity="1"
       transform="translate3d(0,0,0)"
     >

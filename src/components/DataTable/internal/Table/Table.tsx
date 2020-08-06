@@ -20,18 +20,18 @@ const Container = styled.table<TableProps>`
     horizontalScrollable ? "nowrap" : "normal"};
   & > thead > tr:first-of-type > th {
     &:first-of-type {
-      border-top-left-radius: ${Radius.SMALL};
+      border-top-left-radius: ${Radius.MEDIUM};
     }
     &:last-of-type {
-      border-top-right-radius: ${Radius.SMALL};
+      border-top-right-radius: ${Radius.MEDIUM};
     }
   }
   & > tbody > tr:last-of-type > td {
     &:first-of-type {
-      border-bottom-left-radius: ${Radius.SMALL};
+      border-bottom-left-radius: ${Radius.MEDIUM};
     }
     &:last-of-type {
-      border-bottom-right-radius: ${Radius.SMALL};
+      border-bottom-right-radius: ${Radius.MEDIUM};
     }
   }
 `;

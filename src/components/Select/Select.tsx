@@ -4,7 +4,7 @@ import ReactSelect, {
   StylesConfig,
 } from "react-select";
 import * as Styled from "./styled";
-import { Space, Size } from "../../styles";
+import { Space, Size, Radius } from "../../styles";
 import { fontSize } from "../Typography/Typography";
 import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { ClearIndicator } from "./internal/ClearIndicator";
@@ -21,7 +21,9 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       borderLeftColor: theme.palette.divider,
       borderBottomColor: menuIsOpen ? `transparent` : theme.palette.divider,
       borderColor: error ? `${theme.palette.danger.main}!important` : "",
-      borderRadius: menuIsOpen ? "4px 4px 0 0" : "4px",
+      borderRadius: menuIsOpen
+        ? `${Radius.MEDIUM} ${Radius.MEDIUM} 0 0`
+        : Radius.MEDIUM,
       "&:hover": {},
     }),
     input: (base) => ({
@@ -34,7 +36,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       ...base,
       marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
       boxShadow: "none",
-      borderRadius: "0 0 4px 4px",
+      borderRadius: `0 0 ${Radius.MEDIUM} ${Radius.MEDIUM}`,
       borderRight: `${Size.Border.Small} solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
@@ -109,7 +111,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValue: (base) => ({
       ...base,
       backgroundColor: theme.palette.gray.light,
-      borderRadius: "4px",
+      borderRadius: Radius.MEDIUM,
     }),
     multiValueLabel: (base, { isDisabled }) => {
       let color = theme.palette.black;

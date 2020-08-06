@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.divider};
-  border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
+  border-radius: ${Radius.MEDIUM} ${Radius.MEDIUM} 0 0;
 `;
 
 export const TabContainer = styled.ul`
@@ -28,7 +28,7 @@ export const TabItem = styled.li<{ active: boolean }>`
     active ? `1px solid ${theme.palette.divider}` : "none"};
   border-bottom: ${({ active, theme }) =>
     active ? "none" : `1px solid ${theme.palette.divider}`};
-  border-radius: ${Radius.SMALL} ${Radius.SMALL} 0 0;
+  border-radius: ${Radius.MEDIUM} ${Radius.MEDIUM} 0 0;
   background-color: ${({ active, theme }) =>
     active ? theme.palette.background.default : "none"};
   cursor: pointer;

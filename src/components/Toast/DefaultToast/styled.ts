@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { Radius } from "../../../styles";
 
 export const Wrapper = styled.div<{ transitionDuration: number }>`
   padding: ${({ theme }) => theme.spacing * 2}px;
@@ -28,7 +29,7 @@ export const Container = styled.div<ContainerProps>`
     opacity ${({ transitionDuration }) => transitionDuration}ms;
   transform: ${({ transform }) => transform};
   opacity: ${({ opacity }) => opacity};
-  border-radius: ${({ theme }) => theme.spacing / 2}px;
+  border-radius: ${Radius.MEDIUM};
   overflow: hidden;
 `;
 
