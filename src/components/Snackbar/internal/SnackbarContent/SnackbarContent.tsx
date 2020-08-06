@@ -33,10 +33,10 @@ const getSnackbarStyle = (
     dark: {
       iconColor: theme.palette.white,
       boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
-        theme.palette.gray.dark,
+        theme.palette.gray.deepDark,
         0.4,
       )}`,
-      background: theme.palette.gray.dark,
+      background: theme.palette.gray.deepDark,
     },
     warning: {
       iconColor: theme.palette.warning.deepDark,
