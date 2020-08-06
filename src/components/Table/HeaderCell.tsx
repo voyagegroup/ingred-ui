@@ -34,7 +34,7 @@ export const HeaderCell: React.FunctionComponent<Props> = ({
   return (
     <Component width={width} {...rest}>
       <Flex display="flex" justifyContent="space-between">
-        <Typography weight="bold" size="md">
+        <Typography component="div" weight="bold" size="md">
           {children}
         </Typography>
         {required && (

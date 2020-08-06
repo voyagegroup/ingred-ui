@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import Typography from "../Typography";
 
 const Component = styled.td<{ width: string }>`
   width: ${({ width }) => width};
@@ -18,6 +19,6 @@ export const Cell: React.FunctionComponent<Props> = ({
   ...rest
 }) => (
   <Component width={width} {...rest}>
-    {children}
+    <Typography component="div">{children}</Typography>
   </Component>
 );
