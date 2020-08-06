@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Size } from "../../styles";
+import { Border } from "../../styles";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
@@ -44,8 +44,8 @@ const Indicator = styled("div")<IndicatorProps>`
   border-radius: 50%;
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
-  box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
-      theme.palette.gray.light} inset;
+  box-shadow: 0 -${Border.Normal} 0 0 ${({ theme }) => theme.palette.gray.light}
+    inset;
 
   &::after {
     position: absolute;

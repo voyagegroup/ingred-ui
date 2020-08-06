@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { Size } from "../../../../styles/size";
+import { Border } from "../../../../styles/border";
 
 type CellProps = {
   width: string;
@@ -12,11 +12,11 @@ const Component = styled.td<CellProps>`
   width: ${({ width }) => width};
   padding-right: ${({ theme }) => theme.spacing * 3}px;
   padding-left: ${({ theme }) => theme.spacing * 2}px;
-  border-bottom: ${Size.Border.Small} solid
+  border-bottom: ${Border.Small} solid
     ${({ theme }) => theme.palette.gray.light};
   border-right: ${({ theme, enableRuledLine }) =>
     enableRuledLine
-      ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
+      ? `${Border.Small} solid ${theme.palette.gray.light}`
       : "none"};
 
   &:last-of-type {

@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import { Size } from "../../styles";
+import { Border } from "../../styles";
 
 export const Container = styled.div<{ active: boolean; disabled: boolean }>`
   position: relative;
-  height: calc(${Size.Border.Small} * 2 + 22px);
+  height: calc(${Border.Small} * 2 + 22px);
 `;
 
 export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
@@ -24,7 +24,7 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
     }
     return backgroundColor;
   }};
-  border: ${Size.Border.Small} solid
+  border: ${Border.Small} solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
 
@@ -53,12 +53,12 @@ export const Label = styled.label<LabelProps>`
   justify-content: space-between;
   cursor: pointer;
   width: ${({ width }) => width};
-  height: calc(${Size.Border.Small} * 2 + 22px);
+  height: calc(${Border.Small} * 2 + 22px);
   background-color: ${({ active, disabled, theme }) =>
     active && !disabled
       ? theme.palette.background.hint
       : theme.palette.gray.highlight};
-  border: ${Size.Border.Small} solid
+  border: ${Border.Small} solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
   border-radius: 56px;
