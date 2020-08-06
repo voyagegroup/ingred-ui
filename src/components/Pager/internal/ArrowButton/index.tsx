@@ -2,7 +2,6 @@ import * as React from "react";
 
 import * as Styled from "./styled";
 import Icon from "../../../Icon";
-import { colors } from "../../../../styles/color";
 import { useTheme } from "../../../../themes";
 
 type Props = {
@@ -27,7 +26,7 @@ export const ArrowButton: React.FunctionComponent<Props> = ({
       <Icon
         name={isRight ? "arrow_right" : "arrow_left"}
         size="lg"
-        color={disabled ? colors.basic[300] : theme.palette.icon.active}
+        color={disabled ? theme.palette.gray.main : theme.palette.icon.active}
       />
     </Styled.ArrowButton>
   );

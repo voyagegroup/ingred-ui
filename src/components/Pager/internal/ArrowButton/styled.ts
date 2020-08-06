@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../../../styles/color";
 
 type ButtonProps = {
   active?: boolean;
@@ -19,10 +18,10 @@ export const ArrowButton = styled.button<ButtonProps>`
     margin-left: 14px;
   }
   background-color: ${({ active, theme }) =>
-    active ? colors.basic[100] : theme.palette.background.hint};
+    active ? theme.palette.gray.highlight : theme.palette.background.hint};
   &:hover {
     background-color: ${({ active, theme }) =>
-      active ? colors.basic[100] : theme.palette.primary.highlight};
+      active ? theme.palette.gray.highlight : theme.palette.primary.highlight};
     cursor: ${({ active }) => (active ? "default" : "pointer")};
   }
 `;
