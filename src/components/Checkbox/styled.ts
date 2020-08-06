@@ -69,7 +69,7 @@ export const Span = styled.span<{
     background-image: ${({ indeterminate }) =>
       indeterminate
         ? `url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Crect width='12' height='3' fill='%23D1D5DA' transform='translate(3 8)'/%3E%3C/svg%3E")`
-        : `url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="11.527" height="8.699" viewBox="0 0 11.527 8.699"%3E%3Cpath fill="%23fff" transform="translate(-393.861 -341.066)" d="M405.214,343.361l-4.95,4.95-1.279,1.279a.594.594,0,0,1-.842,0l-1.28-1.279h0l-2.827-2.827a.6.6,0,0,1,0-.842l1.279-1.28a.6.6,0,0,1,.842,0l2.407,2.407,4.528-4.529a.6.6,0,0,1,.842,0l1.28,1.279A.6.6,0,0,1,405.214,343.361Z"/%3E%3C/svg%3E')`};
+        : `url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="11.527" height="8.699" viewBox="0 0 11.527 8.699"%3E%3Cpath fill="%23d1d5da" transform="translate(-393.861 -341.066)" d="M405.214,343.361l-4.95,4.95-1.279,1.279a.594.594,0,0,1-.842,0l-1.28-1.279h0l-2.827-2.827a.6.6,0,0,1,0-.842l1.279-1.28a.6.6,0,0,1,.842,0l2.407,2.407,4.528-4.529a.6.6,0,0,1,.842,0l1.28,1.279A.6.6,0,0,1,405.214,343.361Z"/%3E%3C/svg%3E')`};
     background-repeat: no-repeat;
     background-position: center;
   }
