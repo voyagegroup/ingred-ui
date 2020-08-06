@@ -17,8 +17,6 @@ export const Container = styled.div<{ error: boolean }>`
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${Radius.MEDIUM};
     background-color: ${({ theme }) => theme.palette.background.default};
-    box-shadow: 0 ${Size.Border.Normal} 0 0
-      ${({ theme }) => theme.palette.gray.light} inset;
     overflow: hidden;
   }
   .DateInput {
