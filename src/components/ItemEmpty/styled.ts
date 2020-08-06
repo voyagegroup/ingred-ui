@@ -9,7 +9,9 @@ export const EmptyContainer = styled.div`
     ${({ theme }) => theme.spacing * 4}px ${({ theme }) => theme.spacing * 7}px;
 `;
 
-export const EmptyImageContainer = styled.div`
+export const EmptyImageContainer = styled.div``;
+
+export const DefaultEmptyImageContainer = styled.div`
   width: 25%;
   min-width: 137px;
   max-width: 180px;

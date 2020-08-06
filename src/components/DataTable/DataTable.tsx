@@ -113,6 +113,8 @@ type Props<T> = {
   emptyTitle?: string;
   emptySubtitle?: string;
   emptyImage?: string;
+  emptyImageWidth?: string;
+  emptyImageHeight?: string;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
@@ -135,6 +137,8 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   emptyTitle,
   emptySubtitle,
   emptyImage,
+  emptyImageWidth,
+  emptyImageHeight,
   per,
   defaultSortField,
   defaultSortOrder = "desc",
@@ -415,6 +419,8 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                       title={emptyTitle || "見つかりませんでした"}
                       subtitle={emptySubtitle}
                       emptyImage={emptyImage}
+                      imageWidth={emptyImageWidth}
+                      imageHeight={emptyImageHeight}
                     />
                   </td>
                 </tr>

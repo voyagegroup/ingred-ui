@@ -27,11 +27,16 @@ export default {
 
 const Example = () => {
   const emptyImage = text("EmptyImageUrl", "");
+  const emptyImageWidth = text("EmptyImageWidth", "150px");
+  const emptyImageHeight = text("EmptyImageHeight", "150px");
+
   return (
     <ItemEmpty
       title="アイテムが存在しません。"
       subtitle="アイテムを作成してください。"
       emptyImage={emptyImage}
+      imageWidth={emptyImageWidth}
+      imageHeight={emptyImageHeight}
     />
   );
 };
