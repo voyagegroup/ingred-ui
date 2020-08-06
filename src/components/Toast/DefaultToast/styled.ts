@@ -34,6 +34,7 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const IconContainer = styled.div<{ background: string }>`
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,6 +47,7 @@ export const IconContainer = styled.div<{ background: string }>`
 
 export const CloseIconContainer = styled.div`
   cursor: pointer;
+  margin-left: ${({ theme }) => theme.spacing * 2}px;
 `;
 
 type CountdownProps = {
