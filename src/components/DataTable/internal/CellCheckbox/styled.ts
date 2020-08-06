@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Size } from "../../../../styles";
-import { colors } from "../../../../styles/color";
 import { hexToRgba } from "../../../../utils/hexToRgba";
 
 const CELL_PADDING = 24;
@@ -18,7 +17,7 @@ export const HeaderCell = styled.th`
   width: ${CELL_PADDING + 18}px;
   padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 2}px;
-  box-shadow: 0 4px ${hexToRgba(colors.basic[300], 0.24)};
+  box-shadow: 0 4px ${({ theme }) => hexToRgba(theme.palette.gray.main, 0.24)};
   background-color: ${({ theme }) => theme.palette.background.default};
   border-bottom: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.divider};

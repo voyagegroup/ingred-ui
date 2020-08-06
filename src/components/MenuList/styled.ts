@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../styles/color";
 import { Radius } from "../../styles";
 
 export const Container = styled.div<{ inline: boolean }>`
@@ -21,6 +20,6 @@ export const TextContainer = styled.div`
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
   &:active {
-    background-color: ${colors.basic[300]};
+    background-color: ${({ theme }) => theme.palette.gray.main};
   }
 `;
