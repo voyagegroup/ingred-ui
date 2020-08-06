@@ -5,7 +5,6 @@ import { Cell } from "./Cell";
 import { Header } from "./Header";
 import { Row } from "./Row";
 
-
 type TableProps = {
   horizontalScrollable: boolean;
 };
