@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import Card from "../Card";
-import { Border } from "../../styles";
 
 const fadeIn = keyframes`	
   0% {	
@@ -49,8 +48,7 @@ export const ModalHeader = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
-  border-bottom: ${Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
 
 export const LeftContainer = styled.div`

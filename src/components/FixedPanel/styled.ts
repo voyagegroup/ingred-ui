@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Border } from "../../styles";
+
 import { hexToRgba } from "../../utils/hexToRgba";
 
 type ContainerProps = {
@@ -21,8 +21,7 @@ export const Container = styled.div<ContainerProps>`
   backdrop-filter: blur(2px);
   background-color: ${({ theme }) =>
     hexToRgba(theme.palette.background.default, 0.9)};
-  border-top: ${Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-bottom: ${Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
+  border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
   transition: all 0.3s;
 `;

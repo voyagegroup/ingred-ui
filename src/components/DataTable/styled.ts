@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Border } from "../../styles";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
@@ -7,8 +6,8 @@ export const Container = styled.div`
 
 export const BorderContainer = styled.div<{ fullWidth?: boolean }>`
   border: ${({ fullWidth, theme }) =>
-    fullWidth ? "none" : `${Border.Small} solid ${theme.palette.divider}`};
-  border-top: ${Border.Small} solid ${({ theme }) => theme.palette.divider};
+    fullWidth ? "none" : `1px solid ${theme.palette.divider}`};
+  border-top: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ fullWidth, theme }) =>
     fullWidth ? "none" : `${theme.radius}px`};
 `;

@@ -4,7 +4,7 @@ import ReactSelect, {
   StylesConfig,
 } from "react-select";
 import * as Styled from "./styled";
-import { Space, Border } from "../../styles";
+import { Space } from "../../styles";
 import { fontSize } from "../Typography/Typography";
 import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { ClearIndicator } from "./internal/ClearIndicator";
@@ -15,7 +15,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
   const overrideStyles: StylesConfig = {
     control: (base, { menuIsOpen }) => ({
       ...base,
-      boxShadow: `0 -${Border.Normal} 0 0 ${theme.palette.gray.light} inset`,
+      boxShadow: `0 -2px 0 0 ${theme.palette.gray.light} inset`,
       borderTopColor: theme.palette.divider,
       borderRightColor: theme.palette.divider,
       borderLeftColor: theme.palette.divider,
@@ -37,13 +37,13 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
       boxShadow: "none",
       borderRadius: `0 0 ${theme.radius}px ${theme.radius}px`,
-      borderRight: `${Border.Small} solid ${
+      borderRight: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
-      borderBottom: `${Border.Small} solid ${
+      borderBottom: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
-      borderLeft: `${Border.Small} solid ${
+      borderLeft: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
     }),

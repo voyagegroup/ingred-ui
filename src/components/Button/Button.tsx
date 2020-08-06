@@ -1,6 +1,6 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
-import { Border } from "../../styles";
+
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
@@ -50,15 +50,15 @@ const getContainerColorStyles = (
       background: theme.palette.white,
       color: theme.palette.black,
       boxShadow: "none",
-      border: `${Border.Small} solid ${theme.palette.divider}`,
+      border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
       background: theme.palette.gray.light,
-      border: `${Border.Small} solid ${theme.palette.divider}`,
+      border: `1px solid ${theme.palette.divider}`,
     },
     active: {
       background: theme.palette.gray.main,
-      border: `${Border.Small} solid ${theme.palette.divider}`,
+      border: `1px solid ${theme.palette.divider}`,
     },
   },
   danger: {

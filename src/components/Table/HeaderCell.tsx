@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
 import Flex from "../Flex";
-import { Border } from "../../styles";
 
 const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing * 2}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-right: ${Border.Small} solid ${({ theme }) => theme.palette.divider};
+  border-right: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 const RequiredBadge = styled.div`

@@ -1,8 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 
-import { Border } from "../../../../styles/border";
-
 type CellProps = {
   width: string;
   enableRuledLine: boolean;
@@ -12,12 +10,9 @@ const Component = styled.td<CellProps>`
   width: ${({ width }) => width};
   padding-right: ${({ theme }) => theme.spacing * 3}px;
   padding-left: ${({ theme }) => theme.spacing * 2}px;
-  border-bottom: ${Border.Small} solid
-    ${({ theme }) => theme.palette.gray.light};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
   border-right: ${({ theme, enableRuledLine }) =>
-    enableRuledLine
-      ? `${Border.Small} solid ${theme.palette.gray.light}`
-      : "none"};
+    enableRuledLine ? `1px solid ${theme.palette.gray.light}` : "none"};
 
   &:last-of-type {
     border-right: none;

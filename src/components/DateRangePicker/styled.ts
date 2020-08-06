@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Border } from "../../styles";
 
 export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
@@ -11,7 +10,7 @@ export const Container = styled.div<{ error: boolean }>`
   /* DateRangePickerInput */
   .DateRangePickerInput {
     display: block;
-    border: ${Border.Small} solid
+    border: 1px solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${({ theme }) => theme.radius}px;
