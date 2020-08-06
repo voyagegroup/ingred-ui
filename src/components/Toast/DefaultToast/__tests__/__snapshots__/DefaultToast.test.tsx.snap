@@ -20,7 +20,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw dtQDvP"
+            class="sc-AxiKw iHnQH"
           >
             <div
               class="sc-AxheI kVDYRm"
@@ -51,7 +51,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxhCb dnXiiO"
+          class="sc-AxhCb gIAJCN"
         >
           <div
             class="sc-AxheI kVDYRm"
@@ -106,7 +106,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw eKGFEO"
+            class="sc-AxiKw bCwysm"
           >
             <div
               class="sc-AxheI kVDYRm"
@@ -140,7 +140,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxhCb dnXiiO"
+          class="sc-AxhCb gIAJCN"
         >
           <div
             class="sc-AxheI kVDYRm"
@@ -195,7 +195,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw hYKvBb"
+            class="sc-AxiKw lZXNn"
           >
             <div
               class="sc-AxheI kVDYRm"
@@ -233,7 +233,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxhCb dnXiiO"
+          class="sc-AxhCb gIAJCN"
         >
           <div
             class="sc-AxheI kVDYRm"
@@ -288,7 +288,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw loNzYp"
+            class="sc-AxiKw eOgwaJ"
           >
             <div
               class="sc-AxheI kVDYRm"
@@ -322,7 +322,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
           </p>
         </div>
         <div
-          class="sc-AxhCb dnXiiO"
+          class="sc-AxhCb gIAJCN"
         >
           <div
             class="sc-AxheI kVDYRm"
