@@ -16,7 +16,7 @@ const Component = styled.th<{ width: string }>`
 const RequiredBadge = styled.div`
   padding: 2px 7px;
   background: ${({ theme }) => theme.palette.danger.main};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
 `;
 
 export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &

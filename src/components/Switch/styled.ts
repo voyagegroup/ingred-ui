@@ -6,14 +6,14 @@ export const Container = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing / 2}px;
   background-color: ${({ theme }) => theme.palette.gray.light};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
 `;
 
 export const IconItemContainer = styled.div<{ active: boolean }>`
   padding: ${({ theme }) => theme.spacing / 2}px;
   background-color: ${({ active, theme }) =>
     active ? theme.palette.background.default : "transparent"};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   cursor: pointer;
   transition: all 0.3s;
   & + & {
@@ -28,7 +28,7 @@ export const TextItemContainer = styled.div<{ active: boolean }>`
   padding: 0 ${({ theme }) => theme.spacing}px;
   background-color: ${({ active, theme }) =>
     active ? theme.palette.background.default : "transparent"};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   cursor: pointer;
   transition: all 0.3s;
   & + & {

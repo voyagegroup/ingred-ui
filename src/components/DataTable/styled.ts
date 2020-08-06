@@ -9,7 +9,7 @@ export const BorderContainer = styled.div<{ fullWidth?: boolean }>`
   border: ${({ fullWidth, theme }) =>
     fullWidth ? "none" : `${Size.Border.Small} solid ${theme.palette.divider}`};
   border-top: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-radius: ${({ fullWidth }) => (fullWidth ? "none" : Radius.SMALL)};
+  border-radius: ${({ fullWidth }) => (fullWidth ? "none" : Radius.MEDIUM)};
 `;
 
 export const TableContainer = styled.div<{

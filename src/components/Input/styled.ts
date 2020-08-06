@@ -19,7 +19,7 @@ export const Input = styled.input<{
       ? theme.palette.danger.highlight
       : theme.palette.background.default};
   border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   box-shadow: 0 ${Size.Border.Normal} 0 0
     ${({ theme, isError }) =>
       isError ? theme.palette.danger.highlight : theme.palette.gray.light}

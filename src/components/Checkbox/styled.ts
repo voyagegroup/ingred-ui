@@ -51,7 +51,7 @@ export const Span = styled.span<{
     border: ${Size.Border.Small} solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
-    border-radius: ${Radius.SMALL};
+    border-radius: ${Radius.MEDIUM};
     box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
         theme.palette.gray.light} inset;
     background-color: ${({ theme }) => theme.palette.background.default};

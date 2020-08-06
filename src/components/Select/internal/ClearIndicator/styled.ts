@@ -4,7 +4,7 @@ import { colors } from "../../../../styles/color";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.gray.light};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   &:hover {
     background-color: ${colors.basic[300]};
   }

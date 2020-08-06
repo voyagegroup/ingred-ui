@@ -24,7 +24,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   width: ${({ inline }) => (inline ? "auto" : "100%")};
   min-width: ${({ minWidth }) => minWidth};
   height: ${({ height }) => height};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   border: ${({ normal, disabled }) => (disabled ? 0 : normal.border)};
   background: ${({ normal, disabled }) =>
     disabled ? colors.basic[100] : normal.background};

@@ -14,7 +14,7 @@ export const Container = styled.div<{
   padding-left: ${({ theme }) => theme.spacing * 2}px;
   background: ${({ background }) => background};
   box-shadow: ${({ boxShadow }) => boxShadow};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
 `;
 
 export const IconContainer = styled.div`

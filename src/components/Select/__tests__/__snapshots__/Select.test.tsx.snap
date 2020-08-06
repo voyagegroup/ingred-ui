@@ -481,7 +481,7 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy KFyPX"
+            class="sc-AxhUy dgjbDv"
           >
             <div
               aria-hidden="true"
@@ -709,7 +709,7 @@ exports[`Select component testing Error one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy KFyPX"
+            class="sc-AxhUy dgjbDv"
           >
             <div
               aria-hidden="true"
@@ -908,7 +908,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy KFyPX"
+            class="sc-AxhUy dgjbDv"
           >
             <div
               aria-hidden="true"
@@ -1136,7 +1136,7 @@ exports[`Select component testing Normal one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy KFyPX"
+            class="sc-AxhUy dgjbDv"
           >
             <div
               aria-hidden="true"

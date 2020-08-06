@@ -15,7 +15,7 @@ export const Container = styled.div<{ error: boolean }>`
     border: ${Size.Border.Small} solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
-    border-radius: ${Radius.SMALL};
+    border-radius: ${Radius.MEDIUM};
     background-color: ${({ theme }) => theme.palette.background.default};
     box-shadow: 0 ${Size.Border.Normal} 0 0
       ${({ theme }) => theme.palette.gray.light} inset;
@@ -43,7 +43,7 @@ export const Container = styled.div<{ error: boolean }>`
   /* DayPickerRangeController */
   .DayPicker__withBorder {
     box-shadow: 0px 0px 16px #041c3315;
-    border-radius: ${Radius.SMALL};
+    border-radius: ${Radius.MEDIUM};
   }
   .DayPicker_weekHeader {
     color: ${({ theme }) => theme.palette.text.secondary};

@@ -7,7 +7,7 @@ export const Container = styled.button`
   padding: ${Space * 0.75}px ${Space}px;
   border: 0;
   cursor: pointer;
-  border-radius: ${Radius.SMALL};
+  border-radius: ${Radius.MEDIUM};
   background-color: ${({ theme }) => theme.palette.background.hint};
   white-space: nowrap;
   transition: all 0.3s;
