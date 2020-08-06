@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../../styles/color";
+import { Radius } from "../../../../styles";
 
 type ButtonProps = {
   active?: boolean;
@@ -9,7 +10,7 @@ export const ArrowButton = styled.button<ButtonProps>`
   width: 28px;
   height: 28px;
   padding: 0 2px;
-  border-radius: 4px;
+  border-radius: ${Radius.MEDIUM};
   border: 0;
   transition: all 0.3s;
   &:first-child {
