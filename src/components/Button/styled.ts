@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Radius } from "../../styles";
-import { colors } from "../../styles/color";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
 
@@ -26,8 +25,8 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   height: ${({ height }) => height};
   border-radius: ${Radius.MEDIUM};
   border: ${({ normal, disabled }) => (disabled ? 0 : normal.border)};
-  background: ${({ normal, disabled }) =>
-    disabled ? colors.basic[100] : normal.background};
+  background: ${({ normal, disabled, theme }) =>
+    disabled ? theme.palette.gray.highlight : normal.background};
   color: ${({ normal, disabled, theme }) =>
     disabled ? theme.palette.text.disabled : normal.color};
   text-align: center;

@@ -3,6 +3,7 @@ import {
   NavigationRailWidth,
   NavigationRailTransitionDuration,
 } from "./constants";
+import { hexToRgba } from "../../utils/hexToRgba";
 
 type ContaierProps = {
   isOpen: boolean;
@@ -22,7 +23,10 @@ export const Container = styled.div<ContaierProps>`
     isOpen && !isFixed ? "none" : `1px solid ${theme.palette.gray.light}`};
   box-shadow: ${({ isOpen, isFixed, theme }) =>
     isOpen && !isFixed
-      ? `0px 0px ${theme.spacing * 2}px ${theme.palette.gray.main}67`
+      ? `0px 0px ${theme.spacing * 2}px ${hexToRgba(
+          theme.palette.gray.dark,
+          0.33,
+        )}`
       : "none"};
   box-sizing: content-box;
   overflow-x: hidden;

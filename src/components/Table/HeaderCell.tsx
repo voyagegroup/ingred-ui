@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
 import Flex from "../Flex";
-import { colors } from "../../styles/color";
 import { Size, Radius } from "../../styles";
 
 const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing * 2}px;
-  background-color: ${colors.basic[100]};
+  background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-right: ${Size.Border.Small} solid
     ${({ theme }) => theme.palette.divider};
 `;

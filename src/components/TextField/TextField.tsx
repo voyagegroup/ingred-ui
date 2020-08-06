@@ -38,7 +38,7 @@ const TextField: React.FunctionComponent<Props> = ({
       >
         {icon != null && (
           <Styled.LeftIconContainer onClick={onHandleToggleShowPassword}>
-            <Icon name={icon} size="md" color={theme.palette.gray.main} />
+            <Icon name={icon} size="md" color={theme.palette.gray.dark} />
           </Styled.LeftIconContainer>
         )}
         <Input ref={inputRef} {...rest} error={!!errorText} type={type} />

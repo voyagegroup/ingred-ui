@@ -5,7 +5,6 @@ import ReactSelect, {
 } from "react-select";
 import * as Styled from "./styled";
 import { Space, Size, Radius } from "../../styles";
-import { colors } from "../../styles/color";
 import { fontSize } from "../Typography/Typography";
 import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { ClearIndicator } from "./internal/ClearIndicator";
@@ -71,7 +70,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
         color: isSelected ? theme.palette.white : theme.palette.black,
         fontSize: `${fontSize.sm}px`,
         ":active": {
-          backgroundColor: colors.basic[300],
+          backgroundColor: theme.palette.gray.main,
         },
         backgroundColor,
       };
@@ -131,7 +130,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValueRemove: (base) => ({
       ...base,
       ":hover": {
-        backgroundColor: colors.basic[300],
+        backgroundColor: theme.palette.gray.main,
       },
     }),
     valueContainer: (base) => ({
