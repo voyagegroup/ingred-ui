@@ -3,29 +3,41 @@
 exports[`Switch component testing Switch 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm gYsfQO"
+    class="sc-AxjAm izBPWS"
   >
     <div
-      class="sc-AxiKw jtBFUM"
+      class="sc-AxirZ gpWHsK"
     >
-      <span
-        class="sc-AxhUy bGMkBe"
-        color="#778490"
-        font-size="13px"
+      <div
+        class="sc-AxgMl eZWLSu"
+        style="left: 0px; width: 0px;"
+      />
+      <div
+        class="sc-AxiKw dELjYj"
       >
-        デマンド別
-      </span>
-    </div>
-    <div
-      class="sc-AxiKw dYlyLN"
-    >
-      <span
-        class="sc-AxhUy iowxBQ"
-        color="#778490"
-        font-size="13px"
-      >
-        チャネル別
-      </span>
+        <div
+          class="sc-AxhUy blkhQL"
+        >
+          <span
+            class="sc-Axmtr iuSKvl"
+            color="#778490"
+            font-size="13px"
+          >
+            デマンド別
+          </span>
+        </div>
+        <div
+          class="sc-AxhUy blkhQL"
+        >
+          <span
+            class="sc-Axmtr fXDcFn"
+            color="#778490"
+            font-size="13px"
+          >
+            チャネル別
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
