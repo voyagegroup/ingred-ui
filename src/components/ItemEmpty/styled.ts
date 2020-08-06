@@ -17,11 +17,17 @@ type DefaultEmptyImageProps = {
 };
 
 export const DefaultEmptyImageContainer = styled.div<DefaultEmptyImageProps>`
-  width: ${({ imageWidth }) => (imageWidth ? `${imageWidth}px` : "137px")};
-  height: ${({ imageHeight }) => (imageHeight ? `${imageHeight}px` : "auto")};
-
-  img {
+  svg {
     display: block;
-    width: 100%;
+    width: ${({ imageWidth, imageHeight }) => {
+      if (imageWidth) {
+        return `${imageWidth}px`;
+      } else if (imageHeight) {
+        return "auto";
+      } else {
+        return "137px"; // imageHeightとimageWidthが両方 auto だとアイコンが消える
+      }
+    }};
+    height: ${({ imageHeight }) => (imageHeight ? `${imageHeight}px` : "auto")};
   }
 `;
