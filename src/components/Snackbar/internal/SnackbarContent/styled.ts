@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Radius } from "../../../../styles/radius";
 
 export const Container = styled.div<{
   boxShadow: string;
@@ -14,7 +13,7 @@ export const Container = styled.div<{
   padding-left: ${({ theme }) => theme.spacing * 2}px;
   background: ${({ background }) => background};
   box-shadow: ${({ boxShadow }) => boxShadow};
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ theme }) => theme.radius}px;
 `;
 
 export const IconContainer = styled.div`

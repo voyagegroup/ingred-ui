@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { Radius } from "../../styles/radius";
 
 export const Container = styled.div`
   height: 40px;
   padding: ${({ theme }) => theme.spacing / 2}px;
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ theme }) => theme.palette.gray.light};
 `;
 
@@ -35,7 +34,7 @@ export const TextItemContainer = styled.div`
   align-items: center;
   height: 32px;
   padding: 0 ${({ theme }) => theme.spacing}px;
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ theme }) => theme.radius}px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   & + & {
@@ -49,5 +48,5 @@ export const Indicator = styled.div`
   height: 100%;
   transition: all 0.3s ease-in-out;
   background-color: ${({ theme }) => theme.palette.background.default};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${({ theme }) => theme.radius * 0.5}px;
 `;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size, Radius } from "../../styles";
+import { Size } from "../../styles";
 
 export const Container = styled.label`
   cursor: pointer;
@@ -51,7 +51,7 @@ export const Span = styled.span<{
     border: ${Size.Border.Small} solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
-    border-radius: ${Radius.SMALL};
+    border-radius: ${({ theme }) => theme.radius * 0.5}px;
     box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
         theme.palette.gray.light} inset;
     background-color: ${({ theme }) => theme.palette.background.default};

@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Card from "../Card";
-import { Radius, Size } from "../../styles";
+import { Size } from "../../styles";
 
 const fadeIn = keyframes`	
   0% {	
@@ -37,7 +37,7 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   width: ${({ fullSize }) => (fullSize ? "100vw" : "auto")};
   height: ${({ fullSize }) => (fullSize ? "100vh" : "auto")};
   transform: translate(-50%, -50%);
-  border-radius: ${({ fullSize }) => (fullSize ? 0 : Radius.MEDIUM)};
+  border-radius: ${({ fullSize, theme }) => (fullSize ? 0 : theme.radius)}px;
   background-color: ${({ theme }) => theme.palette.background.default};
   animation: ${slideIn} 0.4s;
   overflow: hidden;
@@ -89,8 +89,8 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.light};
-  border-radius: ${({ fullSize }) =>
-    fullSize ? 0 : `0 0 ${Radius.MEDIUM} ${Radius.MEDIUM}`};
+  border-radius: ${({ fullSize, theme }) =>
+    fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
 `;
 
 export const IconContainer = styled.div`
