@@ -15,7 +15,7 @@ const getColor = (key: BadgeColor, theme: Theme) => {
     case "primary":
       return theme.palette.primary.main;
     case "secondary":
-      return theme.palette.gray.dark;
+      return theme.palette.gray.deepDark;
     case "success":
       return theme.palette.success.main;
     case "warning":

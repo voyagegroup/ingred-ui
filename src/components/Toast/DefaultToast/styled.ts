@@ -28,11 +28,12 @@ export const Container = styled.div<ContainerProps>`
     opacity ${({ transitionDuration }) => transitionDuration}ms;
   transform: ${({ transform }) => transform};
   opacity: ${({ opacity }) => opacity};
-  border-radius: ${({ theme }) => theme.spacing / 2}px;
+  border-radius: ${({ theme }) => theme.radius}px;
   overflow: hidden;
 `;
 
 export const IconContainer = styled.div<{ background: string }>`
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,6 +46,7 @@ export const IconContainer = styled.div<{ background: string }>`
 
 export const CloseIconContainer = styled.div`
   cursor: pointer;
+  margin-left: ${({ theme }) => theme.spacing * 2}px;
 `;
 
 type CountdownProps = {

@@ -3,7 +3,7 @@
 exports[`MenuList component testing MenuList splited 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm BheQN"
+    class="sc-AxjAm fnBaWJ"
   >
     <hr
       class="sc-AxiKw cCiIlb"
@@ -11,7 +11,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       orientation="horizontal"
     />
     <div
-      class="sc-AxirZ goUFkV"
+      class="sc-AxirZ ldapuR"
     >
       <p
         class="sc-AxhCb kdcBdC"
@@ -22,7 +22,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-AxirZ goUFkV"
+      class="sc-AxirZ ldapuR"
     >
       <p
         class="sc-AxhCb kdcBdC"
@@ -38,7 +38,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       orientation="horizontal"
     />
     <div
-      class="sc-AxirZ goUFkV"
+      class="sc-AxirZ ldapuR"
     >
       <p
         class="sc-AxhCb kdcBdC"
@@ -49,7 +49,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-AxirZ goUFkV"
+      class="sc-AxirZ ldapuR"
     >
       <p
         class="sc-AxhCb kdcBdC"

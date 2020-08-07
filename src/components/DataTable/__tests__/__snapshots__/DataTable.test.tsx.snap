@@ -6,20 +6,20 @@ exports[`DataTable component testing DataTable 1`] = `
     class="sc-AxjAm krjTuO"
   >
     <div
-      class="sc-AxirZ dnbnUY"
+      class="sc-AxirZ cAXuXf"
     >
       <div
         class="sc-AxiKw gjtbZd"
       >
         <table
-          class="sc-fznxsB kIHQaQ"
+          class="sc-fznxsB hdFtfw"
         >
           <thead>
             <tr
               class="sc-fzpjYC iiZvqF"
             >
               <th
-                class="sc-fzoLsD cwdXLh"
+                class="sc-fzoLsD eEDAEM"
                 width="auto"
               >
                 <div
@@ -36,7 +36,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </div>
               </th>
               <th
-                class="sc-fzoLsD cwdXLh"
+                class="sc-fzoLsD eEDAEM"
                 width="auto"
               >
                 <div
@@ -59,7 +59,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC iiZvqF"
             >
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 rowspan="1"
                 width="auto"
               >
@@ -72,7 +72,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 rowspan="1"
                 width="auto"
               >
@@ -89,7 +89,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC iiZvqF"
             >
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 rowspan="1"
                 width="auto"
               >
@@ -102,7 +102,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 rowspan="1"
                 width="auto"
               >

@@ -8,7 +8,7 @@ export const NumberButton = styled.button<ButtonProps>`
   width: 28px;
   height: 28px;
   margin: 0 4px;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius}px;
   border: 0;
   background-color: ${({ active, theme }) =>
     active ? theme.palette.primary.main : theme.palette.background.hint};

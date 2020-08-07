@@ -1,17 +1,19 @@
 import { Palette, createPalette } from "./palette";
-import { Space } from "../styles/space";
-import { Depth, DepthOptions, depth } from "../styles/depth";
+import { Radius, Space, Depth } from "../styles";
+import { DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;
   spacing?: number;
+  radius?: number;
   depth?: DepthOptions;
 };
 
 export type Theme = {
   palette: Palette;
   spacing: number;
+  radius: number;
   depth: Depth;
 };
 
@@ -19,13 +21,15 @@ export function createTheme(options: ThemeOptions = {}): Theme {
   const {
     palette: paletteInput = {},
     spacing: spacingInput,
+    radius: radiusInput,
     ...other
   } = options;
 
   const palette = createPalette(paletteInput);
   const spacing = spacingInput || Space;
+  const radius = radiusInput || Radius;
 
-  const theme = deepmerge({ palette, spacing, depth }, other);
+  const theme = deepmerge({ palette, spacing, depth, radius }, other);
 
   return theme;
 }

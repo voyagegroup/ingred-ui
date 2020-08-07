@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { Radius } from "../../../../styles";
-import { colors } from "../../../../styles/color";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.gray.light};
-  border-radius: ${Radius.SMALL};
+  border-radius: ${({ theme }) => theme.radius}px;
   &:hover {
-    background-color: ${colors.basic[300]};
+    background-color: ${({ theme }) => theme.palette.gray.main};
   }
   & > div {
     /* css-tlfecz-indicatorContainer */
