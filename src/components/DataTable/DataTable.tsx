@@ -40,6 +40,43 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
+function isMergedCell<T extends DataTableBaseData>(
+  column: Column<T>,
+  displayData: T[],
+  index: number,
+): boolean {
+  if (index === 0) return false;
+  const baseRow = displayData[index];
+  const baseCell = column.selector(baseRow);
+  const previousRow = displayData[index - 1];
+  const previousCell = column.selector(previousRow);
+  return (
+    !!column.enableMergeCell &&
+    baseRow.id === previousRow.id &&
+    baseCell === previousCell
+  );
+}
+
+function calculateRowSpan<T extends DataTableBaseData>(
+  column: Column<T>,
+  displayData: T[],
+  startIndex: number,
+): number {
+  if (!column.enableMergeCell) return 1;
+  const baseRow = displayData[startIndex];
+  const baseCell = column.selector(baseRow);
+  let rowSpan = 1;
+  for (let idx = startIndex + 1; idx < displayData.length; idx++) {
+    const comparisonRow = displayData[idx];
+    const comparisonCell = column.selector(comparisonRow);
+    if (comparisonRow.id !== baseRow.id || comparisonCell !== baseCell) {
+      break;
+    }
+    rowSpan++;
+  }
+  return rowSpan;
+}
+
 function getFilteredItemsByTab<T>({
   sourceData,
   tabs,
@@ -56,7 +93,7 @@ function getFilteredItemsByTab<T>({
   return data;
 }
 
-function getDisplayData<T>({
+function getDisplayData<T extends DataTableBaseData>({
   sourceData,
   sortState,
   filterState,
@@ -84,6 +121,11 @@ function getDisplayData<T>({
   return sortedData;
 }
 
+export type DataTableBaseData = {
+  id: number;
+  selectDisabled?: boolean;
+};
+
 export type Column<T> = {
   // MEMO: nameを廃止して、headerCellのみにすることも可能
   //       他の破壊的変更に合わせて行うのが良さそう
@@ -94,6 +136,7 @@ export type Column<T> = {
   renderCell?: (data: T) => React.ReactNode;
   headerCell?: React.ReactNode;
   align?: TypographyProps["align"];
+  enableMergeCell?: boolean;
 };
 
 type Tab<T> = {
@@ -123,7 +166,7 @@ type Props<T> = {
 };
 
 // idを必須にしたい
-const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
+const DataTable = <T extends DataTableBaseData>({
   data: sourceData,
   columns,
   enablePagination = false,
@@ -153,13 +196,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
   const showTabs = !!tabs;
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
 
-  let rowSpan = columns.length;
-  if (
-    (showCheckbox || showRadioButton) &&
-    (!showTabs || isCheckableTab(currentTabIndex, tabs))
-  ) {
-    rowSpan = columns.length + 1;
-  }
+  const enableMergeCell = columns.some((column) => column.enableMergeCell);
 
   // sort, pagination, count
 
@@ -344,12 +381,12 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                 {columns.map((column) => (
                   <SortableHeaderCell
                     key={column.name}
-                    sortable={column.sortable}
+                    sortable={column.sortable && !enableMergeCell}
                     order={getOrder(sortState, column.name)}
                     width={column.width}
                     enableRuledLine={enableRuledLine}
                     onClick={
-                      column.sortable
+                      column.sortable && !enableMergeCell
                         ? onHandleSort(column.selector, column.name)
                         : undefined
                     }
@@ -370,6 +407,7 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                       (selectedRows.includes(item.id) ||
                         selectedRow === item.id)
                     }
+                    disableHoverHighlight={enableMergeCell}
                   >
                     {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
                       <>
@@ -390,25 +428,36 @@ const DataTable = <T extends { id: number; selectDisabled?: boolean }>({
                         )}
                       </>
                     )}
-                    {columns.map((column) => (
-                      <Table.Cell
-                        key={column.name}
-                        enableRuledLine={enableRuledLine}
-                      >
-                        {column.renderCell ? (
-                          column.renderCell(item)
-                        ) : (
-                          <Typography align={column.align}>
-                            {column.selector(item)}
-                          </Typography>
-                        )}
-                      </Table.Cell>
-                    ))}
+                    {columns.map((column) =>
+                      isMergedCell(column, displayData, index) ? null : (
+                        <Table.Cell
+                          key={column.name}
+                          enableRuledLine={enableRuledLine}
+                          rowSpan={calculateRowSpan(column, displayData, index)}
+                        >
+                          {column.renderCell ? (
+                            column.renderCell(item)
+                          ) : (
+                            <Typography align={column.align}>
+                              {column.selector(item)}
+                            </Typography>
+                          )}
+                        </Table.Cell>
+                      ),
+                    )}
                   </Table.Row>
                 ))
               ) : (
                 <tr>
-                  <td colSpan={rowSpan}>
+                  <td
+                    colSpan={
+                      columns.length +
+                      ((showCheckbox || showRadioButton) &&
+                      (!showTabs || isCheckableTab(currentTabIndex, tabs))
+                        ? 1
+                        : 0)
+                    }
+                  >
                     <ItemEmpty
                       title={emptyTitle || "見つかりませんでした"}
                       subtitle={emptySubtitle}

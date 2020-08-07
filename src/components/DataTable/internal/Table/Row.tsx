@@ -13,6 +13,7 @@ type RowProps = {
   highlighted: boolean;
   verticalSpacing: VerticalSpacing;
   isStickyHeader: boolean;
+  disableHoverHighlight: boolean;
 };
 
 const Component = styled.tr<RowProps>`
@@ -20,8 +21,14 @@ const Component = styled.tr<RowProps>`
     highlighted ? theme.palette.primary.highlight : "none"};
 
   &:hover {
-    background-color: ${({ highlighted, theme }) =>
-      highlighted ? "none" : theme.palette.gray.highlight};
+    ${({ disableHoverHighlight, highlighted, theme }) =>
+      disableHoverHighlight
+        ? ""
+        : css`
+            background-color: ${highlighted
+              ? "none"
+              : theme.palette.gray.highlight};
+          `}
   }
 
   & > th {
@@ -48,6 +55,7 @@ export const Row: React.FunctionComponent<Props> = ({
   highlighted = false,
   verticalSpacing = "medium",
   isStickyHeader = false,
+  disableHoverHighlight = false,
   children,
   ...rest
 }) => (
@@ -55,6 +63,7 @@ export const Row: React.FunctionComponent<Props> = ({
     highlighted={highlighted}
     verticalSpacing={verticalSpacing}
     isStickyHeader={isStickyHeader}
+    disableHoverHighlight={disableHoverHighlight}
     {...rest}
   >
     {children}
