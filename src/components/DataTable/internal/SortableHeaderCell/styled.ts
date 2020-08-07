@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Size } from "../../../../styles";
+
 import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type CellProps = {
@@ -16,13 +16,10 @@ export const HeaderCell = styled.th<CellProps>`
     ${({ theme }) => theme.spacing * 2}px;
   box-shadow: 0 4px ${({ theme }) => hexToRgba(theme.palette.gray.main, 0.24)};
   background-color: ${({ theme }) => theme.palette.background.default};
-  border-bottom: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.divider};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 
   border-right: ${({ theme, enableRuledLine }) =>
-    enableRuledLine
-      ? `${Size.Border.Small} solid ${theme.palette.gray.light}`
-      : "none"};
+    enableRuledLine ? `1px solid ${theme.palette.gray.light}` : "none"};
   &:last-of-type {
     border-right: none;
   }

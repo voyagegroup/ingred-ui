@@ -2,20 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
 import Flex from "../Flex";
-import { Size, Radius } from "../../styles";
 
 const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing * 2}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-right: ${Size.Border.Small} solid
-    ${({ theme }) => theme.palette.divider};
+  border-right: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 const RequiredBadge = styled.div`
   padding: 2px 7px;
   background: ${({ theme }) => theme.palette.danger.main};
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ theme }) => theme.radius}px;
 `;
 
 export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &

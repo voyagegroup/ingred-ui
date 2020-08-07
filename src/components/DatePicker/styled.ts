@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Radius, Size } from "../../styles";
 
 export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
@@ -12,10 +11,10 @@ export const Container = styled.div<{ error: boolean }>`
   /* SingleDatePickerInput */
   .SingleDatePickerInput {
     display: block;
-    border: ${Size.Border.Small} solid
+    border: 1px solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
-    border-radius: ${Radius.MEDIUM};
+    border-radius: ${({ theme }) => theme.radius}px;
     background-color: ${({ theme }) => theme.palette.background.default};
     overflow: hidden;
   }
@@ -41,7 +40,7 @@ export const Container = styled.div<{ error: boolean }>`
   /* DayPickerRangeController */
   .DayPicker__withBorder {
     box-shadow: 0px 0px 16px #041c3315;
-    border-radius: ${Radius.MEDIUM};
+    border-radius: ${({ theme }) => theme.radius}px;
   }
   .DayPicker_weekHeader {
     color: ${({ theme }) => theme.palette.text.secondary};

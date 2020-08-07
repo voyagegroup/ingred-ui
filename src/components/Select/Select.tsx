@@ -4,7 +4,7 @@ import ReactSelect, {
   StylesConfig,
 } from "react-select";
 import * as Styled from "./styled";
-import { Space, Size, Radius } from "../../styles";
+import { Space } from "../../styles";
 import { fontSize } from "../Typography/Typography";
 import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { ClearIndicator } from "./internal/ClearIndicator";
@@ -15,15 +15,15 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
   const overrideStyles: StylesConfig = {
     control: (base, { menuIsOpen }) => ({
       ...base,
-      boxShadow: `0 -${Size.Border.Normal} 0 0 ${theme.palette.gray.light} inset`,
+      boxShadow: `0 -2px 0 0 ${theme.palette.gray.light} inset`,
       borderTopColor: theme.palette.divider,
       borderRightColor: theme.palette.divider,
       borderLeftColor: theme.palette.divider,
       borderBottomColor: menuIsOpen ? `transparent` : theme.palette.divider,
       borderColor: error ? `${theme.palette.danger.main}!important` : "",
       borderRadius: menuIsOpen
-        ? `${Radius.MEDIUM} ${Radius.MEDIUM} 0 0`
-        : Radius.MEDIUM,
+        ? `${theme.radius}px ${theme.radius}px 0 0`
+        : `${theme.radius}px`,
       "&:hover": {},
     }),
     input: (base) => ({
@@ -36,14 +36,14 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       ...base,
       marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
       boxShadow: "none",
-      borderRadius: `0 0 ${Radius.MEDIUM} ${Radius.MEDIUM}`,
-      borderRight: `${Size.Border.Small} solid ${
+      borderRadius: `0 0 ${theme.radius}px ${theme.radius}px`,
+      borderRight: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
-      borderBottom: `${Size.Border.Small} solid ${
+      borderBottom: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
-      borderLeft: `${Size.Border.Small} solid ${
+      borderLeft: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
     }),
@@ -111,7 +111,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValue: (base) => ({
       ...base,
       backgroundColor: theme.palette.gray.light,
-      borderRadius: Radius.MEDIUM,
+      borderRadius: `${theme.radius}px`,
     }),
     multiValueLabel: (base, { isDisabled }) => {
       let color = theme.palette.black;

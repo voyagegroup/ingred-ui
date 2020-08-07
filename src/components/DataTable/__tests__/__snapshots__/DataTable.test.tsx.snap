@@ -6,20 +6,20 @@ exports[`DataTable component testing DataTable 1`] = `
     class="sc-AxjAm krjTuO"
   >
     <div
-      class="sc-AxirZ dnelgU"
+      class="sc-AxirZ cAXuXf"
     >
       <div
         class="sc-AxiKw gjtbZd"
       >
         <table
-          class="sc-fznxsB dskRek"
+          class="sc-fznxsB hdFtfw"
         >
           <thead>
             <tr
               class="sc-fzpjYC jPJeQN"
             >
               <th
-                class="sc-fzoLsD cwdXLh"
+                class="sc-fzoLsD eEDAEM"
                 width="auto"
               >
                 <div
@@ -36,7 +36,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </div>
               </th>
               <th
-                class="sc-fzoLsD cwdXLh"
+                class="sc-fzoLsD eEDAEM"
                 width="auto"
               >
                 <div
@@ -59,7 +59,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC jPJeQN"
             >
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 width="auto"
               >
                 <p
@@ -71,7 +71,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 width="auto"
               >
                 <p
@@ -87,7 +87,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC jPJeQN"
             >
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 width="auto"
               >
                 <p
@@ -99,7 +99,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr kuUQxD"
+                class="sc-fzoXzr ftJcgi"
                 width="auto"
               >
                 <p

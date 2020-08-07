@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { Size } from "../../styles";
+
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 
@@ -50,7 +50,7 @@ const ButtonGroup: React.FunctionComponent<Props> = ({
   const childNeighborDisabledProps = {
     ...childProps,
     style: {
-      borderLeft: `${Size.Border.Small} solid ${theme.palette.divider}`,
+      borderLeft: `1px solid ${theme.palette.divider}`,
     },
   };
 

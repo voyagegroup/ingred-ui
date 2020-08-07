@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Size, Radius } from "../../styles";
 
 export const Container = styled.label`
   cursor: pointer;
@@ -48,12 +47,11 @@ export const Span = styled.span<{
     content: "";
     width: 18px;
     height: 18px;
-    border: ${Size.Border.Small} solid
+    border: 1px solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
-    border-radius: ${Radius.SMALL};
-    box-shadow: 0 -${Size.Border.Normal} 0 0 ${({ theme }) =>
-        theme.palette.gray.light} inset;
+    border-radius: ${({ theme }) => theme.radius * 0.5}px;
+    box-shadow: 0 -2px 0 0 ${({ theme }) => theme.palette.gray.light} inset;
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing}px` : "auto"};
@@ -62,7 +60,7 @@ export const Span = styled.span<{
     color: ${({ theme }) => theme.palette.text.disabled};
   }
   ${Checkbox}:disabled + &::before {
-    border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     background-color: ${({ theme }) => theme.palette.gray.light};
   }
   ${Checkbox}:disabled:checked + &::before {

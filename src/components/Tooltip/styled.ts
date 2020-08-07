@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Radius } from "../../styles";
 
 export const transitionClass = "tooltip-transition";
 
@@ -20,7 +19,7 @@ export const Tooltip = styled.div<{ width?: string }>`
   align-content: center;
   width: ${({ width }) => width || "auto"};
   padding: ${({ theme }) => `${theme.spacing * 0.75}px ${theme.spacing}px`};
-  border-radius: ${Radius.MEDIUM};
+  border-radius: ${({ theme }) => theme.radius}px;
   color: ${({ theme }) => theme.palette.white};
   background-color: ${({ theme }) => theme.palette.black};
   font-weight: bold;

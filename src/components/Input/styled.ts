@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Size, Radius } from "../../styles";
 
 export const Input = styled.input<{
   isError: boolean;
@@ -18,8 +17,8 @@ export const Input = styled.input<{
     isError
       ? theme.palette.danger.highlight
       : theme.palette.background.default};
-  border: ${Size.Border.Small} solid ${({ theme }) => theme.palette.divider};
-  border-radius: ${Radius.MEDIUM};
+  border: 1px solid ${({ theme }) => theme.palette.divider};
+  border-radius: ${({ theme }) => theme.radius}px;
   border-color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.divider};
   overflow: hidden;
