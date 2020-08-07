@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
 import ItemEmpty from "./ItemEmpty";
+import { text, number } from "@storybook/addon-knobs";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -25,10 +26,17 @@ export default {
 };
 
 const Example = () => {
+  const emptyImage = text("EmptyImageUrl", "");
+  const emptyImageWidth = number("EmptyImageWidth", 150);
+  const emptyImageHeight = number("EmptyImageHeight", 150);
+
   return (
     <ItemEmpty
       title="アイテムが存在しません。"
       subtitle="アイテムを作成してください。"
+      emptyImage={emptyImage}
+      imageWidth={emptyImageWidth}
+      imageHeight={emptyImageHeight}
     />
   );
 };

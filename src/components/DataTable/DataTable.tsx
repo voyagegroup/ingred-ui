@@ -145,6 +145,13 @@ type Tab<T> = {
   disabledCheck?: boolean;
 };
 
+// TODO: emptyTitle と emptySubtitle もここに移す
+type ItemEmptyProps = {
+  emptyImage?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+};
+
 type Props<T> = {
   data: T[];
   columns: Column<T>[];
@@ -155,6 +162,7 @@ type Props<T> = {
   tabs?: Tab<T>[];
   emptyTitle?: string;
   emptySubtitle?: string;
+  itemEmptyProps?: ItemEmptyProps;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
   defaultSortOrder?: "desc" | "asc";
@@ -176,6 +184,7 @@ const DataTable = <T extends DataTableBaseData>({
   tabs,
   emptyTitle,
   emptySubtitle,
+  itemEmptyProps,
   per,
   defaultSortField,
   defaultSortOrder = "desc",
@@ -461,6 +470,9 @@ const DataTable = <T extends DataTableBaseData>({
                     <ItemEmpty
                       title={emptyTitle || "見つかりませんでした"}
                       subtitle={emptySubtitle}
+                      emptyImage={itemEmptyProps?.emptyImage}
+                      imageWidth={itemEmptyProps?.imageWidth}
+                      imageHeight={itemEmptyProps?.imageHeight}
                     />
                   </td>
                 </tr>

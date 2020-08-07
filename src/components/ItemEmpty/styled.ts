@@ -9,12 +9,25 @@ export const EmptyContainer = styled.div`
     ${({ theme }) => theme.spacing * 4}px ${({ theme }) => theme.spacing * 7}px;
 `;
 
-export const EmptyImageContainer = styled.div`
-  width: 25%;
-  min-width: 137px;
-  max-width: 180px;
-  img {
+export const EmptyImageContainer = styled.div``;
+
+type DefaultEmptyImageProps = {
+  imageWidth?: number;
+  imageHeight?: number;
+};
+
+export const DefaultEmptyImageContainer = styled.div<DefaultEmptyImageProps>`
+  svg {
     display: block;
-    width: 100%;
+    width: ${({ imageWidth, imageHeight }) => {
+      if (imageWidth) {
+        return `${imageWidth}px`;
+      } else if (imageHeight) {
+        return "auto";
+      } else {
+        return "137px"; // imageHeightとimageWidthが両方 auto だとアイコンが消える
+      }
+    }};
+    height: ${({ imageHeight }) => (imageHeight ? `${imageHeight}px` : "auto")};
   }
 `;
