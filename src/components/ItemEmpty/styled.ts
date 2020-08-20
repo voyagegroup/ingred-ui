@@ -10,24 +10,3 @@ export const EmptyContainer = styled.div`
 `;
 
 export const EmptyImageContainer = styled.div``;
-
-type DefaultEmptyImageProps = {
-  imageWidth?: number;
-  imageHeight?: number;
-};
-
-export const DefaultEmptyImageContainer = styled.div<DefaultEmptyImageProps>`
-  svg {
-    display: block;
-    width: ${({ imageWidth, imageHeight }) => {
-      if (imageWidth) {
-        return `${imageWidth}px`;
-      } else if (imageHeight) {
-        return "auto";
-      } else {
-        return "137px"; // imageHeightとimageWidthが両方 auto だとアイコンが消える
-      }
-    }};
-    height: ${({ imageHeight }) => (imageHeight ? `${imageHeight}px` : "auto")};
-  }
-`;
