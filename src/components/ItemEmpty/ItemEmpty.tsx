@@ -21,11 +21,11 @@ const ItemEmpty: React.FunctionComponent<Props> = ({
 }) => (
   <Styled.EmptyContainer>
     <Styled.EmptyImageContainer>
-      {emptyImage ? (
-        <img src={emptyImage} width={imageWidth} height={imageHeight} />
-      ) : (
-        <img src={defaultEmptyImage} width={imageWidth} height={imageHeight} />
-      )}
+      <img
+        src={emptyImage ? emptyImage : defaultEmptyImage}
+        width={imageWidth}
+        height={imageHeight}
+      />
     </Styled.EmptyImageContainer>
     <Spacer pt={5} pb={1}>
       <Typography weight="bold" size="xxxl" align="center">
