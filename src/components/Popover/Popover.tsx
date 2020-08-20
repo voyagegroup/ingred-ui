@@ -4,14 +4,14 @@ import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import Modal from "../Modal";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   children: React.ReactNode;
 };
 
-const Popover: React.FunctionComponent<Props> = ({
+const Popover: React.FunctionComponent<PopoverProps> = ({
   baseElement,
   offset = [0, 0],
   positionPriority = ["auto"],

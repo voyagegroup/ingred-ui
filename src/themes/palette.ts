@@ -1,7 +1,7 @@
 import { colors } from "../styles/color";
 import { deepmerge } from "../utils/deepmerge";
 
-type PaletteColor = {
+export type PaletteColor = {
   deepDark: string;
   dark: string;
   main: string;
@@ -9,7 +9,7 @@ type PaletteColor = {
   highlight: string;
 };
 
-export type TypeText = {
+export type PaletteText = {
   primary: string;
   secondary: string;
   disabled: string;
@@ -17,14 +17,14 @@ export type TypeText = {
   white: string;
 };
 
-export type TypeBackground = {
+export type PaletteBackground = {
   default: string;
   dark: string;
   active: string;
   hint: string;
 };
 
-export type TypeIcon = {
+export type PaletteIcon = {
   active: string;
   fill: string;
   line: string;
@@ -38,10 +38,10 @@ export type Palette = {
   warning: PaletteColor;
   danger: PaletteColor;
   gray: PaletteColor;
-  text: TypeText;
-  background: TypeBackground;
+  text: PaletteText;
+  background: PaletteBackground;
   divider: string;
-  icon: TypeIcon;
+  icon: PaletteIcon;
 };
 
 export const palette: Palette = {

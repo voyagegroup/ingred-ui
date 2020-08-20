@@ -4,12 +4,12 @@ import * as PopperJS from "@popperjs/core";
 import { ContentProp } from "../MenuList/MenuList";
 import Menu from "../Menu";
 
-type Props = {
+export type ContextMenuProps = {
   contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
 };
 
-const ContextMenu: React.FunctionComponent<Props> = ({
+const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
 }) => {

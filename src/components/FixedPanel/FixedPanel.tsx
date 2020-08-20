@@ -1,13 +1,13 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-type Props = {
+export type FixedPanelProps = {
   isOpen: boolean;
   placement?: "top" | "bottom";
   offset?: number;
 };
 
-const FixedPanel: React.FunctionComponent<Props> = ({
+const FixedPanel: React.FunctionComponent<FixedPanelProps> = ({
   isOpen,
   placement = "top",
   offset = 0,

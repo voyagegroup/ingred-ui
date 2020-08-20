@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
-type Props = {
+export type ClickAwayListenerProps = {
   onClickAway?: (event: MouseEvent) => void;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
-const ClickAwayListener: React.FunctionComponent<Props> = ({
+const ClickAwayListener: React.FunctionComponent<ClickAwayListenerProps> = ({
   onClickAway,
   children,
 }) => {

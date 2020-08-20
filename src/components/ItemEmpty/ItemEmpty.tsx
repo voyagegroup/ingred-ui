@@ -4,7 +4,7 @@ import Spacer from "../Spacer";
 import Typography from "../Typography";
 import { EmptyImage } from "./internal/EmptyImage";
 
-type Props = {
+export type ItemEmptyProps = {
   title: string;
   subtitle?: string;
   emptyImage?: string;
@@ -12,7 +12,7 @@ type Props = {
   imageHeight?: number;
 };
 
-const ItemEmpty: React.FunctionComponent<Props> = ({
+const ItemEmpty: React.FunctionComponent<ItemEmptyProps> = ({
   title,
   subtitle,
   emptyImage,

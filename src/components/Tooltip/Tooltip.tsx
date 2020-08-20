@@ -6,7 +6,7 @@ import * as Styled from "./styled";
 import Portal from "../Portal";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;
@@ -19,7 +19,7 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   children: React.ComponentElement<HTMLElement, any>;
 };
 
-const Tooltip: React.FC<Props> = ({
+const Tooltip: React.FunctionComponent<TooltipProps> = ({
   content,
   open: openProp = false,
   disableHoverListener = false,

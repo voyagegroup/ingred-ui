@@ -3,4 +3,5 @@ export {
   FilterState,
   useFilterState,
   getFilteredItems,
+  PagerProps,
 } from "./Pager";

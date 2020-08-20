@@ -4,14 +4,14 @@ import MenuList, { ContentProp } from "../MenuList/MenuList";
 import ClickAwayListener from "../ClickAwayListener";
 import Popover from "../Popover";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type MenuProps = React.ComponentPropsWithRef<"div"> & {
   baseElement?: HTMLElement | null;
   contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
   onClickAway?: (event: MouseEvent) => void;
 };
 
-const Menu: React.FunctionComponent<Props> = ({
+const Menu: React.FunctionComponent<MenuProps> = ({
   baseElement = null,
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { PaletteColorOptions } from "../../../dist/themes/palette";
+import { PaletteColor } from "ingred-ui";
 
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px
@@ -37,7 +37,7 @@ export const InputContainer = styled.div`
   width: 100%;
 `;
 
-export const ColorTile = styled.div<{ palette: PaletteColorOptions }>`
+export const ColorTile = styled.div<{ palette: PaletteColor }>`
   width: 100%;
   height: calc(100% - 44px);
   border-radius: ${({ theme }) => theme.spacing * 2}px;

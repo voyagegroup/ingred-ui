@@ -1,1 +1,1 @@
-export { default } from "./FloatingTip";
+export { default, FloatingTipProps } from "./FloatingTip";

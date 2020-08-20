@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-type Props = React.ComponentPropsWithRef<"input"> & {
+export type CheckBoxProps = React.ComponentPropsWithRef<"input"> & {
   indeterminate?: boolean;
   error?: boolean;
 };
 
-const Checkbox: React.FunctionComponent<Props> = ({
+const Checkbox: React.FunctionComponent<CheckBoxProps> = ({
   children,
   indeterminate = false,
   checked = false,

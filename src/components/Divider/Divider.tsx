@@ -3,12 +3,12 @@ import * as Styled from "./styled";
 import { useTheme } from "../../themes";
 import { SpacerProps } from "../../utils/spacerUtils";
 
-type Props = SpacerProps & {
+export type DividerProps = SpacerProps & {
   color?: string;
   orientation?: "vertical" | "horizontal";
 };
 
-const Divider: React.FunctionComponent<Props> = ({
+const Divider: React.FunctionComponent<DividerProps> = ({
   color: colorProp,
   orientation = "horizontal",
   ...rest

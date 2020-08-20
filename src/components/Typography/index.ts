@@ -1,1 +1,1 @@
-export { default, Props } from "./Typography";
+export { default, TypographyProps } from "./Typography";

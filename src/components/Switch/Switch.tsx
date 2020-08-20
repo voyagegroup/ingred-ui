@@ -14,13 +14,17 @@ type CaseWithIcon = Case & {
   icon: IconName;
 };
 
-type Props = {
+export type SwitchProps = {
   cases: Case[] | CaseWithIcon[];
   value: any;
   onChange?: (value: any) => void;
 };
 
-const Switch: React.FunctionComponent<Props> = ({ cases, value, onChange }) => {
+const Switch: React.FunctionComponent<SwitchProps> = ({
+  cases,
+  value,
+  onChange,
+}) => {
   const items = cases as {
     name: string;
     icon?: IconName;

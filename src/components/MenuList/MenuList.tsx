@@ -10,12 +10,12 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   divideTop?: boolean;
 };
 
-type Props = {
+export type MenuListProps = {
   inline?: boolean;
   contents: ContentProp[];
 };
 
-const MenuList = React.forwardRef<HTMLDivElement, Props>(
+const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
   ({ inline = false, contents, ...rest }, ref) => {
     const theme = useTheme();
     return (

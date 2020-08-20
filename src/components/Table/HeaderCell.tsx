@@ -16,14 +16,15 @@ const RequiredBadge = styled.div`
   border-radius: ${({ theme }) => theme.radius}px;
 `;
 
-export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
-  React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
-    width?: string;
-    children?: React.ReactNode;
-    required?: boolean;
-  };
+export type TableHeaderCellProps = React.ThHTMLAttributes<
+  HTMLTableHeaderCellElement
+> & {
+  width?: string;
+  children?: React.ReactNode;
+  required?: boolean;
+};
 
-export const HeaderCell: React.FunctionComponent<Props> = ({
+export const HeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
   width = "auto",
   children,
   required = false,

@@ -1,1 +1,1 @@
-export { default } from "./ToastProvider";
+export { default, ToastProviderProps } from "./ToastProvider";

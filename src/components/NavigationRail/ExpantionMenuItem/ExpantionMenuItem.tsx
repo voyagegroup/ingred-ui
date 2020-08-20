@@ -6,13 +6,15 @@ import { NavigationRailContext } from "../utils";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
+  "div"
+> & {
   title: string;
   isActive?: boolean;
   notificationCount?: number;
 };
 
-const ExpantionMenuItem: React.FC<Props> = ({
+const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
   title,
   isActive = false,
   onMouseEnter,

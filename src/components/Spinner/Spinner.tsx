@@ -2,11 +2,11 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes/useTheme";
 
-type Props = {
+export type SpinnerProps = {
   width?: string;
 };
 
-const Spinner: React.FunctionComponent<Props> = ({ width = "50px" }) => {
+const Spinner: React.FunctionComponent<SpinnerProps> = ({ width = "50px" }) => {
   const theme = useTheme();
   return (
     <Styled.Container width={width}>

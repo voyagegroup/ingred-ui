@@ -5,14 +5,14 @@ import { ArrowButton } from "./internal/ArrowButton";
 import { PagerButtonsWithDottedLine } from "./internal/PagerButtonsWithDottedLine";
 import Flex from "../Flex";
 
-export type Props = {
+export type PagerProps = {
   per: number;
   total: number;
   index?: number;
   onClick: (index: number) => void;
 };
 
-const Pager: React.FunctionComponent<Props> = ({
+const Pager: React.FunctionComponent<PagerProps> = ({
   per,
   total,
   index = 1,

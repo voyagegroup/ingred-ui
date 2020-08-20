@@ -1,1 +1,1 @@
-export { default } from "./ToggleButton";
+export { default, ToggleButtonProps } from "./ToggleButton";

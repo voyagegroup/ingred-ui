@@ -1,14 +1,14 @@
 import * as React from "react";
 import {
   ToastProvider as DefaultToastProvider,
-  ToastProviderProps,
+  ToastProviderProps as DefaultToastProviderProps,
 } from "react-toast-notifications";
 import ToastContainer from "./internal/ToastContainer";
 import DefaultToast from "../DefaultToast";
 
-type Props = ToastProviderProps;
+export type ToastProviderProps = DefaultToastProviderProps;
 
-const ToastProvider: React.FunctionComponent<Props> = ({
+const ToastProvider: React.FunctionComponent<ToastProviderProps> = ({
   children,
   ...rest
 }) => (

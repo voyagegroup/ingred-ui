@@ -21,7 +21,7 @@ function isOutsideRange() {
   return false;
 }
 
-export type Props = Partial<
+export type DatePickerProps = Partial<
   Omit<SingleDatePickerShape, "date" | "onFocusChange">
 > & {
   date: moment.Moment | null;
@@ -29,7 +29,7 @@ export type Props = Partial<
   error?: boolean;
 };
 
-const DatePicker: React.FunctionComponent<Props> = ({
+const DatePicker: React.FunctionComponent<DatePickerProps> = ({
   date,
   error = false,
   ...rest

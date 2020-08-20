@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-type Props = {
+export type NotificationBadgeProps = {
   variant?: "normal" | "dot";
   badgeContent?: number | string;
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -12,7 +12,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const NotificationBadge: React.FunctionComponent<Props> = ({
+const NotificationBadge: React.FunctionComponent<NotificationBadgeProps> = ({
   variant = "normal",
   badgeContent = "",
   position = "top-right",

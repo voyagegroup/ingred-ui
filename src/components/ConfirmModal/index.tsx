@@ -1,1 +1,1 @@
-export { default } from "./ConfirmModal";
+export { default, ConfirmModalProps } from "./ConfirmModal";

@@ -2,14 +2,14 @@ import React from "react";
 import * as Styled from "./styled";
 import { NavigationRailContext } from "../utils";
 
-type Props = {
+export type NavigationRailContainerProps = {
   defaultFixed?: boolean;
   onChangeOpen?: (isOpen: boolean) => void;
   onChangeFixed?: (isFixed: boolean) => void;
   children: React.ReactNode;
 };
 
-const NavigationRailContainer: React.FC<Props> = ({
+const NavigationRailContainer: React.FC<NavigationRailContainerProps> = ({
   defaultFixed = false,
   onChangeOpen,
   onChangeFixed,

@@ -25,7 +25,7 @@ const getColor = (key: BadgeColor, theme: Theme) => {
   }
 };
 
-export type Props = React.ComponentPropsWithRef<"a" | "span"> & {
+export type BadgeProps = React.ComponentPropsWithRef<"a" | "span"> & {
   color: BadgeColor;
   type?: Styled.BadgeType;
   fontSize?: string;
@@ -33,7 +33,7 @@ export type Props = React.ComponentPropsWithRef<"a" | "span"> & {
   component?: "span" | "a";
 };
 
-const Badge: React.FunctionComponent<Props> = ({
+const Badge: React.FunctionComponent<BadgeProps> = ({
   color,
   type = "normal",
   component = "span",

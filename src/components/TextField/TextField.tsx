@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Input from "../Input";
-import { Props as InputProps } from "../Input/Input";
+import { InputProps } from "../Input/Input";
 import ErrorText from "../ErrorText";
 import Spacer from "../Spacer";
 import Typography from "../Typography";
@@ -10,14 +10,14 @@ import Flex from "../Flex";
 import { useTheme } from "../../themes";
 import { IconName } from "../Icon/Icon";
 
-type Props = InputProps & {
+export type TextFieldProps = InputProps & {
   errorText?: string;
   icon?: IconName;
   type?: string;
   inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 };
 
-const TextField: React.FunctionComponent<Props> = ({
+const TextField: React.FunctionComponent<TextFieldProps> = ({
   errorText,
   icon,
   type,

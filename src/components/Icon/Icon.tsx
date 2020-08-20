@@ -208,6 +208,7 @@ export type Props = {
   size?: IconSize;
   color?: IconColor;
 };
+
 const Icon: React.FunctionComponent<Props> = ({
   name,
   type = "line",

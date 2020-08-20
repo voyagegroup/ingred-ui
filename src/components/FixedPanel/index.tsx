@@ -1,1 +1,1 @@
-export { default } from "./FixedPanel";
+export { default, FixedPanelProps } from "./FixedPanel";

@@ -1,1 +1,1 @@
-export { default } from "./ContextMenu";
+export { default, ContextMenuProps } from "./ContextMenu";

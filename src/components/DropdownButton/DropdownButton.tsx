@@ -9,7 +9,7 @@ import { ContentProp } from "../MenuList/MenuList";
 
 type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 
-type Props = {
+export type DropdownButtonProps = {
   size?: ButtonSize;
   color?: DropdownButtonColor;
   onClick?: () => void;
@@ -19,7 +19,7 @@ type Props = {
   positionPriority?: PopperJS.Placement[];
 };
 
-const DropdownButton: React.FC<Props> = ({
+const DropdownButton: React.FC<DropdownButtonProps> = ({
   size = "medium",
   color = "primary",
   onClick,

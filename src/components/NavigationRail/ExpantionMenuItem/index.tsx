@@ -1,1 +1,4 @@
-export { ExpantionMenuItem } from "./ExpantionMenuItem";
+export {
+  ExpantionMenuItem,
+  NavigationRailExpantionMenuItemProps,
+} from "./ExpantionMenuItem";

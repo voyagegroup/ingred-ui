@@ -1,7 +1,12 @@
 import React from "react";
-import { useToasts, ToastProps } from "react-toast-notifications";
+import {
+  useToasts,
+  ToastProps as DefaultToastProps,
+} from "react-toast-notifications";
 import DefaultToast from "./DefaultToast";
 import ToastProvider from "./ToastProvider";
+
+export type ToastProps = DefaultToastProps;
 
 const defaultToastProps: ToastProps = {
   appearance: "info",
