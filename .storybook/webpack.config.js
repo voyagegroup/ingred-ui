@@ -5,7 +5,7 @@ module.exports = {
   plugins: [],
   resolve: {
     modules: ["node_modules"],
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   module: {
     rules: [
@@ -16,10 +16,10 @@ module.exports = {
           {
             loader: "ts-loader",
             options: {
-              configFile: "tsconfig.json"
-            }
-          }
-        ]
+              configFile: "tsconfig.json",
+            },
+          },
+        ],
       },
       {
         test: /\.stories\.tsx?$/,
@@ -27,16 +27,27 @@ module.exports = {
           {
             loader: "@storybook/source-loader",
             options: {
-              parser: "typescript"
-            }
-          }
+              parser: "typescript",
+            },
+          },
         ],
-        enforce: "pre"
+        enforce: "pre",
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
-  }
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

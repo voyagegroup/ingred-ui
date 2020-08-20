@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Spacer from "../Spacer";
 import Typography from "../Typography";
-import { EmptyImage } from "./internal/EmptyImage";
+import defaultEmptyImage from "../../../assets/emptyImage.png";
 
 type Props = {
   title: string;
@@ -16,21 +16,16 @@ const ItemEmpty: React.FunctionComponent<Props> = ({
   title,
   subtitle,
   emptyImage,
-  imageWidth,
-  imageHeight,
+  imageWidth = 135,
+  imageHeight = 135,
 }) => (
   <Styled.EmptyContainer>
     <Styled.EmptyImageContainer>
-      {emptyImage ? (
-        <img src={emptyImage} width={imageWidth} height={imageHeight} />
-      ) : (
-        <Styled.DefaultEmptyImageContainer
-          imageWidth={imageWidth}
-          imageHeight={imageHeight}
-        >
-          <EmptyImage />
-        </Styled.DefaultEmptyImageContainer>
-      )}
+      <img
+        src={emptyImage ? emptyImage : defaultEmptyImage}
+        width={imageWidth}
+        height={imageHeight}
+      />
     </Styled.EmptyImageContainer>
     <Spacer pt={5} pb={1}>
       <Typography weight="bold" size="xxxl" align="center">

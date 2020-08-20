@@ -11,6 +11,11 @@ type SvgrComponent = {} & React.StatelessComponent<
   React.SVGAttributes<SVGElement>
 >;
 
+declare module "*.png" {
+  const value: any;
+  export default value;
+}
+
 declare module "*.svg" {
   const svgUrl: string;
   const svgComponent: SvgrComponent;
