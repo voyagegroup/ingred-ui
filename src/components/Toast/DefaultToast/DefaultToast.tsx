@@ -36,8 +36,15 @@ const getToastStyles = ({
   success: {
     background: palette.success.highlight,
     boxShadow: `0px 0px 16px ${hexToRgba(palette.success.highlight, 0.4)}`,
-    icon: <Icon name="check" color={palette.white} />,
-    iconBackground: palette.success.main,
+    icon: (
+      <Icon
+        name="checkbox_circle"
+        type="fill"
+        size="lg"
+        color={palette.success.main}
+      />
+    ),
+    iconBackground: palette.success.highlight,
     titleColor: palette.success.deepDark,
     contentColor: palette.success.main,
     closeColor: palette.success.light,
@@ -54,8 +61,10 @@ const getToastStyles = ({
   error: {
     background: palette.danger.highlight,
     boxShadow: `0px 0px 16px ${hexToRgba(palette.danger.highlight, 0.4)}`,
-    icon: <Icon name="forbid" color={palette.white} />,
-    iconBackground: palette.danger.main,
+    icon: (
+      <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
+    ),
+    iconBackground: palette.danger.highlight,
     titleColor: palette.danger.deepDark,
     contentColor: palette.danger.main,
     closeColor: palette.danger.light,
