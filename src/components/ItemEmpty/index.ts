@@ -1,1 +1,1 @@
-export { default } from "./ItemEmpty";
+export { default, ItemEmptyProps } from "./ItemEmpty";

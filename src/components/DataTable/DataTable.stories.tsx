@@ -470,6 +470,7 @@ export const WithEmptyTable = () => {
         defaultSortField="名前"
         defaultSortOrder="desc"
         columns={columns}
+        itemEmptyProps={{ title: "アイテムが存在しません。" }}
       />
     </Container>
   );
