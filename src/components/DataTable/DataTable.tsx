@@ -21,7 +21,7 @@ import Pager, {
   getFilteredItems as getFilteredItemsByPagination,
   FilterState,
 } from "../Pager";
-import ItemEmpty from "../ItemEmpty";
+import ItemEmpty, { ItemEmptyProps } from "../ItemEmpty";
 
 import { StorageKey } from "../../constants/storageKeys";
 import { TableTabs } from "./internal/TableTabs";
@@ -127,8 +127,6 @@ export type DataTableBaseData = {
 };
 
 export type Column<T> = {
-  // MEMO: nameを廃止して、headerCellのみにすることも可能
-  //       他の破壊的変更に合わせて行うのが良さそう
   name: string;
   selector: (data: T) => string | number;
   sortable?: boolean;
@@ -145,13 +143,6 @@ type Tab<T> = {
   disabledCheck?: boolean;
 };
 
-// TODO: emptyTitle と emptySubtitle もここに移す
-type ItemEmptyProps = {
-  emptyImage?: string;
-  imageWidth?: number;
-  imageHeight?: number;
-};
-
 export type DataTableProps<T> = {
   data: T[];
   columns: Column<T>[];
@@ -160,8 +151,6 @@ export type DataTableProps<T> = {
   onRadioChange?: (radio: number) => void;
   clearSelectedRows?: boolean;
   tabs?: Tab<T>[];
-  emptyTitle?: string;
-  emptySubtitle?: string;
   itemEmptyProps?: ItemEmptyProps;
   per?: number; // perが指定されている場合、初期値がそれに強制されます
   defaultSortField?: string;
@@ -182,8 +171,6 @@ const DataTable = <T extends DataTableBaseData>({
   onRadioChange,
   clearSelectedRows,
   tabs,
-  emptyTitle,
-  emptySubtitle,
   itemEmptyProps,
   per,
   defaultSortField,
@@ -468,11 +455,8 @@ const DataTable = <T extends DataTableBaseData>({
                     }
                   >
                     <ItemEmpty
-                      title={emptyTitle || "見つかりませんでした"}
-                      subtitle={emptySubtitle}
-                      emptyImage={itemEmptyProps?.emptyImage}
-                      imageWidth={itemEmptyProps?.imageWidth}
-                      imageHeight={itemEmptyProps?.imageHeight}
+                      {...itemEmptyProps}
+                      title={itemEmptyProps?.title || "見つかりませんでした"}
                     />
                   </td>
                 </tr>
