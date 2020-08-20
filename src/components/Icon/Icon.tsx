@@ -56,6 +56,10 @@ import { NotificationIcon } from "./internal/NotificationIcon";
 import { UserSettingsIcon } from "./internal/UserSettingsIcon";
 import { CompanySettingsIcon } from "./internal/CompanySettingsIcon";
 import { HeartPulseIcon } from "./internal/HeartPulseIcon";
+import { CheckBoxCircleIcon } from "./internal/CheckBoxCircleIcon";
+import { AlartIcon } from "./internal/AlartIcon";
+import { BaseStationIcon } from "./internal/BaseStationIcon";
+import { BrailleIcon } from "./internal/BrailleIcon";
 
 export type IconName =
   | "dashboard"
@@ -111,7 +115,11 @@ export type IconName =
   | "notification"
   | "user_settings"
   | "company_settings"
-  | "heart_pulse";
+  | "heart_pulse"
+  | "checkbox_circle"
+  | "alart"
+  | "base_station"
+  | "braille";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -184,6 +192,10 @@ export const icons: {
   user_settings: UserSettingsIcon,
   company_settings: CompanySettingsIcon,
   heart_pulse: HeartPulseIcon,
+  checkbox_circle: CheckBoxCircleIcon,
+  alart: AlartIcon,
+  base_station: BaseStationIcon,
+  braille: BrailleIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
