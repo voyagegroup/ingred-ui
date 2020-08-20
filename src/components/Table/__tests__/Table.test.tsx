@@ -12,9 +12,7 @@ describe("Table component testing", () => {
       <Table>
         <Table.Body>
           <Table.Row>
-            <Table.HeaderCell width="177px" required={true}>
-              タイトル
-            </Table.HeaderCell>
+            <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
             <Table.Cell>コンテンツ</Table.Cell>
           </Table.Row>
           <Table.Row>
