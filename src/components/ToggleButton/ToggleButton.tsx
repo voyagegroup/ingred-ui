@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Typography from "../Typography";
 
-type Props = {
+export type ToggleButtonProps = {
   active?: boolean;
   disabled?: boolean;
   onChange?: () => void;
@@ -12,7 +12,7 @@ type Props = {
   inputRef?: React.Ref<HTMLInputElement>;
 };
 
-const ToggleButton: React.FunctionComponent<Props> = ({
+const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
   active = false,
   disabled = false,
   onChange,

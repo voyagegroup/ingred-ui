@@ -5,7 +5,7 @@ import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
 import { Table } from "./internal/Table";
-import Typography, { Props as TypographyProps } from "../Typography";
+import Typography, { TypographyProps } from "../Typography";
 import {
   changeOrderState,
   GetValue,
@@ -143,7 +143,7 @@ type Tab<T> = {
   disabledCheck?: boolean;
 };
 
-type Props<T> = {
+export type DataTableProps<T> = {
   data: T[];
   columns: Column<T>[];
   enablePagination?: boolean;
@@ -180,7 +180,7 @@ const DataTable = <T extends DataTableBaseData>({
   fullWidth = false,
   tableMaxHeight = "none",
   horizontalScrollable = false,
-}: Props<T>) => {
+}: DataTableProps<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);

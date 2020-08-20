@@ -1,1 +1,1 @@
-export { default } from "./ActionButton";
+export { default, ActionButtonProps } from "./ActionButton";

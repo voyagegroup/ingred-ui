@@ -4,7 +4,7 @@ import { SnackbarContent } from "./internal/SnackbarContent";
 
 export type SnackbarColor = "default" | "dark" | "warning";
 
-type Props = {
+export type SnackbarProps = {
   color?: SnackbarColor;
   anchorOrigin?: {
     horizontal: "left" | "right";
@@ -14,7 +14,7 @@ type Props = {
   onClose?: () => void;
 };
 
-const Snackbar: React.FunctionComponent<Props> = ({
+const Snackbar: React.FunctionComponent<SnackbarProps> = ({
   color = "default",
   anchorOrigin: { vertical, horizontal } = {
     vertical: "bottom",

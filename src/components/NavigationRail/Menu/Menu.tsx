@@ -9,14 +9,14 @@ import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type NavigationRailMenuProps = React.ComponentPropsWithRef<"div"> & {
   title: string;
   isActive?: boolean;
   iconName: IconName;
   notificationCount?: number;
 };
 
-const Menu: React.FC<Props> = ({
+const Menu: React.FC<NavigationRailMenuProps> = ({
   title,
   isActive = false,
   iconName,

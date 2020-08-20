@@ -5,11 +5,11 @@ import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import Typography from "../Typography";
 
-export type Props = React.ComponentPropsWithRef<"button"> & {
+export type ActionButtonProps = React.ComponentPropsWithRef<"button"> & {
   icon: IconName;
 };
 
-const ActionButton = React.forwardRef<HTMLButtonElement, Props>(
+const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
   ({ children, icon, ...rest }, ref) => (
     <Styled.Container {...rest} ref={ref}>
       <Spacer pr={0.25}>

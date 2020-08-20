@@ -18,7 +18,7 @@ export { default } from "./{{ input | pascal }}";
 import * as React from "react";
 import * as Styled from "./styled";
 
-type Props = {
+type {{ input | pascal }}Props = {
 }
 
 const {{ input | pascal }}: React.FunctionComponent<Props> = () => (

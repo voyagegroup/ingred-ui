@@ -5,11 +5,11 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import { useTheme } from "../../themes/useTheme";
 
-type Props = {
+export type ErrorTextProps = {
   children: string;
 };
 
-const ErrorText: React.FunctionComponent<Props> = ({ children }) => {
+const ErrorText: React.FunctionComponent<ErrorTextProps> = ({ children }) => {
   const theme = useTheme();
   return (
     <Flex display="flex" alignItems="center">

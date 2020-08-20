@@ -8,7 +8,9 @@ import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
 
-type Props = React.ComponentPropsWithRef<"div"> & {
+export type NavitagionRailExpantionMenuProps = React.ComponentPropsWithRef<
+  "div"
+> & {
   title: string;
   isActive?: boolean;
   iconName: IconName;
@@ -18,7 +20,7 @@ type Props = React.ComponentPropsWithRef<"div"> & {
   onChangeExpand?: (isExpand: boolean) => void;
 };
 
-const ExpantionMenu: React.FC<Props> = ({
+const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
   title,
   isActive = false,
   iconName,

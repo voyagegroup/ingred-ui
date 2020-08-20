@@ -6,7 +6,7 @@ import Popover from "../Popover";
 import Icon from "../Icon";
 import { useTheme } from "../../themes";
 
-type Props = {
+export type FloatingTipProps = {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
@@ -15,7 +15,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const FloatingTip: React.FunctionComponent<Props> = ({
+const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
   baseElement,
   positionPriority = ["right-start"],
   offset = [0, 10],

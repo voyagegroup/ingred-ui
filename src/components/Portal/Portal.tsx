@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-type Props = {
+export type PortalProps = {
   container?: HTMLElement;
   disablePortal?: boolean;
 };
 
-const Portal: React.FunctionComponent<Props> = ({
+const Portal: React.FunctionComponent<PortalProps> = ({
   disablePortal = false,
   container,
   children,

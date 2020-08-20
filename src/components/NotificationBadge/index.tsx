@@ -1,1 +1,1 @@
-export { default } from "./NotificationBadge";
+export { default, NotificationBadgeProps } from "./NotificationBadge";

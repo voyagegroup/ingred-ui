@@ -1,1 +1,1 @@
-export { default } from "./ErrorText";
+export { default, ErrorTextProps } from "./ErrorText";

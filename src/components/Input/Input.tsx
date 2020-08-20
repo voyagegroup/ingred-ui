@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-export type Props = (
+export type InputProps = (
   | React.ComponentPropsWithoutRef<"input">
   | React.ComponentPropsWithoutRef<"textarea">
 ) & {
@@ -10,16 +10,17 @@ export type Props = (
   resize?: "none" | "both" | "horizontal" | "vertical" | "inherit";
 };
 
-const Input = React.forwardRef<HTMLTextAreaElement | HTMLInputElement, Props>(
-  ({ error = false, multiline = false, resize = "both", ...rest }, ref) => (
-    <Styled.Input
-      {...rest}
-      ref={ref as any}
-      as={multiline ? "textarea" : "input"}
-      isError={error}
-      resize={resize}
-    />
-  ),
-);
+const Input = React.forwardRef<
+  HTMLTextAreaElement | HTMLInputElement,
+  InputProps
+>(({ error = false, multiline = false, resize = "both", ...rest }, ref) => (
+  <Styled.Input
+    {...rest}
+    ref={ref as any}
+    as={multiline ? "textarea" : "input"}
+    isError={error}
+    resize={resize}
+  />
+));
 
 export default Input;

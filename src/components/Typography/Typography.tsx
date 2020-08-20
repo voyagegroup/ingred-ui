@@ -61,7 +61,7 @@ export type TextAlign = "left" | "center" | "right";
 
 export type FontWeight = "normal" | "bold";
 
-export type Props = {
+export type TypographyProps = {
   component?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
   color?: ColorType | string;
   align?: "left" | "center" | "right";
@@ -73,7 +73,7 @@ export type Props = {
   children: React.ReactNode;
 };
 
-const Typography = React.forwardRef<HTMLElement, Props>(
+const Typography = React.forwardRef<HTMLElement, TypographyProps>(
   (
     {
       children,

@@ -2,11 +2,11 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Portal from "../Portal";
 
-type Props = {
+export type ModalProps = {
   hasBackground?: boolean;
 };
 
-const Modal: React.FunctionComponent<Props> = ({
+const Modal: React.FunctionComponent<ModalProps> = ({
   hasBackground = false,
   children,
 }) => (

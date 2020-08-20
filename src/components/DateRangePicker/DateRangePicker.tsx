@@ -25,7 +25,7 @@ function isOutsideRange() {
   return false;
 }
 
-export type Props = Partial<DateRangePickerShape> & {
+export type DateRangePickerProps = Partial<DateRangePickerShape> & {
   startDate: moment.Moment | null;
   endDate: moment.Moment | null;
   onDatesChange: (arg: {
@@ -35,7 +35,7 @@ export type Props = Partial<DateRangePickerShape> & {
   error?: boolean;
 };
 
-const DateRangePicker: React.FunctionComponent<Props> = ({
+const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = ({
   startDate,
   endDate,
   error = false,

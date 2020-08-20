@@ -98,7 +98,7 @@ export type RadioButtonChangeHandler = (
   checked: boolean,
 ) => void;
 
-export type Props = Omit<
+export type RadioButtonProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "size" | "onChange"
 > & {
@@ -108,8 +108,8 @@ export type Props = Omit<
   inputRef?: React.Ref<HTMLInputElement>;
 };
 
-class RadioButton extends React.PureComponent<Props> {
-  public static defaultProps: Partial<Props> = {
+class RadioButton extends React.PureComponent<RadioButtonProps> {
+  public static defaultProps: Partial<RadioButtonProps> = {
     size: RadioButtonSize.MEDIUM,
   };
 

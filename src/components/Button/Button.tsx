@@ -94,7 +94,7 @@ const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
   },
 };
 
-export type Props = Omit<BaseButtonProps, "color"> & {
+export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   component?:
     | keyof JSX.IntrinsicElements
     | React.ComponentType<{ className: string }>;
@@ -105,7 +105,7 @@ export type Props = Omit<BaseButtonProps, "color"> & {
   href?: string;
 };
 
-const Button: React.FunctionComponent<Props> = ({
+const Button: React.FunctionComponent<ButtonProps> = ({
   component,
   children,
   color = "primary",

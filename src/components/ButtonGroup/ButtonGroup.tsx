@@ -6,7 +6,7 @@ import { useTheme } from "../../themes";
 
 type GroupButtonSize = Exclude<ButtonSize, "large">;
 
-type Props = {
+export type ButtonGroupProps = {
   size?: GroupButtonSize;
   disabled?: boolean;
 };
@@ -25,7 +25,7 @@ const buttonSize: Record<
   },
 };
 
-const ButtonGroup: React.FunctionComponent<Props> = ({
+const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
   size = "medium",
   disabled = false,
   children,

@@ -2,7 +2,7 @@ import * as CSS from "csstype";
 import styled from "styled-components";
 
 type TLengthStyledSystem = string | 0 | number;
-export type FlexboxProps = {
+export type FlexProps = {
   display?: "flex";
   height?: CSS.HeightProperty<TLengthStyledSystem>;
   alignItems?: CSS.AlignItemsProperty;
@@ -23,9 +23,9 @@ const camelToKebab = (string: string) => {
   return string.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, "$1-$2").toLowerCase();
 };
 
-export const flexbox = (payload: FlexboxProps) => {
+export const flexbox = (payload: FlexProps) => {
   let property = "";
-  (Object.keys(payload) as (keyof FlexboxProps)[]).map((key) => {
+  (Object.keys(payload) as (keyof FlexProps)[]).map((key) => {
     if (payload[key] != undefined) {
       property += `${camelToKebab(key)}: ${payload[key]};`;
     }
@@ -33,7 +33,7 @@ export const flexbox = (payload: FlexboxProps) => {
   return property;
 };
 
-const Flex = styled.div<FlexboxProps>`
+const Flex = styled.div<FlexProps>`
   ${flexbox};
 `;
 

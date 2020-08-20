@@ -19,7 +19,7 @@ export type SubAction = {
   action: () => void;
 };
 
-export type Props = {
+export type ConfirmModalProps = {
   title: string;
   confirmText?: string;
   cancelText?: string;
@@ -38,7 +38,7 @@ export type Props = {
   children?: React.ReactNode;
 };
 
-const ConfirmModal: React.FunctionComponent<Props> = ({
+const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   title,
   confirmText = "はい",
   cancelText = "キャンセル",

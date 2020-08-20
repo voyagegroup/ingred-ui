@@ -1,1 +1,1 @@
-export { default } from "./DropdownButton";
+export { default, DropdownButtonProps } from "./DropdownButton";
