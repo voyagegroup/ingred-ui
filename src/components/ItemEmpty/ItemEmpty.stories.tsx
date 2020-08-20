@@ -27,8 +27,8 @@ export default {
 
 const Example = () => {
   const emptyImage = text("EmptyImageUrl", "");
-  const emptyImageWidth = number("EmptyImageWidth", 150);
-  const emptyImageHeight = number("EmptyImageHeight", 150);
+  const emptyImageWidth = number("EmptyImageWidth", 135);
+  const emptyImageHeight = number("EmptyImageHeight", 135);
 
   return (
     <ItemEmpty

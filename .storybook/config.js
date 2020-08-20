@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from "../src/themes";
 
 const theme = createTheme();
 
-addDecorator(story => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
+addDecorator((story) => <ThemeProvider theme={theme}>{story()}</ThemeProvider>);
 addDecorator(withKnobs());
 
 configure(
