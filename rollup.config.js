@@ -1,6 +1,7 @@
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
+import imagemin from "rollup-plugin-imagemin";
 // import postcss from 'rollup-plugin-postcss-modules'
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
@@ -32,6 +33,7 @@ export default {
     }),
     url(),
     svgr(),
+    imagemin(),
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
