@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "../Typography";
-import Flex from "../Flex";
 
 const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
@@ -10,39 +9,21 @@ const Component = styled.th<{ width: string }>`
   border-right: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
-const RequiredBadge = styled.div`
-  padding: 2px 7px;
-  background: ${({ theme }) => theme.palette.danger.main};
-  border-radius: ${({ theme }) => theme.radius}px;
-`;
-
-export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
-  React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
-    width?: string;
-    children?: React.ReactNode;
-    required?: boolean;
-  };
+export type Props = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
+  width?: string;
+  children?: React.ReactNode;
+};
 
 export const HeaderCell: React.FunctionComponent<Props> = ({
   width = "auto",
   children,
-  required = false,
   ...rest
 }) => {
   return (
     <Component width={width} {...rest}>
-      <Flex display="flex" justifyContent="space-between">
-        <Typography component="div" weight="bold" size="md">
-          {children}
-        </Typography>
-        {required && (
-          <RequiredBadge>
-            <Typography color="white" weight="bold" size="xs">
-              必須
-            </Typography>
-          </RequiredBadge>
-        )}
-      </Flex>
+      <Typography component="div" weight="bold" size="md" lineHeight="normal">
+        {children}
+      </Typography>
     </Component>
   );
 };

@@ -18,7 +18,6 @@ export const Container = styled.div<ContainerProps>`
         : `${height !== 0 ? `calc(${-height}px - 10px)` : "-100vh"}`
     }`};
   width: 100%;
-  backdrop-filter: blur(2px);
   background-color: ${({ theme }) =>
     hexToRgba(theme.palette.background.default, 0.9)};
   border-top: 1px solid ${({ theme }) => theme.palette.divider};
