@@ -16,6 +16,7 @@ type ToastStyle = {
   boxShadow: string;
   icon: JSX.Element;
   iconBackground: string;
+  countDownBackground: string;
   titleColor: string;
   contentColor: string;
   closeColor: string;
@@ -29,6 +30,7 @@ const getToastStyles = ({
     boxShadow: `0px 0px 16px ${hexToRgba(palette.primary.highlight, 0.4)}`,
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.primary.main,
+    countDownBackground: palette.primary.main,
     titleColor: palette.primary.deepDark,
     contentColor: palette.primary.main,
     closeColor: palette.primary.light,
@@ -45,6 +47,7 @@ const getToastStyles = ({
       />
     ),
     iconBackground: palette.success.highlight,
+    countDownBackground: palette.success.main,
     titleColor: palette.success.deepDark,
     contentColor: palette.success.main,
     closeColor: palette.success.light,
@@ -54,6 +57,7 @@ const getToastStyles = ({
     boxShadow: `0px 0px 16px ${hexToRgba(palette.warning.highlight, 0.4)}`,
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.warning.main,
+    countDownBackground: palette.warning.main,
     titleColor: palette.warning.deepDark,
     contentColor: palette.warning.main,
     closeColor: palette.warning.light,
@@ -65,6 +69,7 @@ const getToastStyles = ({
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),
     iconBackground: palette.danger.highlight,
+    countDownBackground: palette.danger.main,
     titleColor: palette.danger.deepDark,
     contentColor: palette.danger.main,
     closeColor: palette.danger.light,
@@ -159,7 +164,7 @@ const DefaultToast: React.FunctionComponent<Props> = ({
           opacity={autoDismiss ? 1 : 0}
           autoDismissTimeout={autoDismissTimeout}
           isRunning={isRunning}
-          backgroundColor={toastStyle.iconBackground}
+          backgroundColor={toastStyle.countDownBackground}
         />
       </Styled.Container>
     </Styled.Wrapper>
