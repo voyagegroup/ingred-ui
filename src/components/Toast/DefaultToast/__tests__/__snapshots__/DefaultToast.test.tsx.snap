@@ -20,24 +20,23 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw iHnQH"
+            class="sc-AxiKw yHMNn"
           >
             <div
-              class="sc-AxheI kVDYRm"
-              size="18"
+              class="sc-AxheI czLa-De"
+              size="24"
             >
               <svg
-                viewBox="0 0 18 18"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0,0H18V18H0Z"
+                  d="M0,0H24V24H0Z"
                   fill="none"
                 />
                 <path
-                  d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
-                  fill="#FDFEFF"
-                  transform="translate(-6521.011 -4616.011)"
+                  d="M12.866,3l9.526,16.5a1,1,0,0,1-.866,1.5H2.474a1,1,0,0,1-.866-1.5L11.134,3a1,1,0,0,1,1.732,0ZM11,16v2h2V16Zm0-7v5h2V9Z"
+                  fill="#EB0A4E"
                 />
               </svg>
             </div>
@@ -195,31 +194,23 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           display="flex"
         >
           <div
-            class="sc-AxiKw lZXNn"
+            class="sc-AxiKw gXfIdU"
           >
             <div
-              class="sc-AxheI kVDYRm"
-              size="18"
+              class="sc-AxheI czLa-De"
+              size="24"
             >
               <svg
-                viewBox="0 0 18 18"
+                viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M0,0H18V18H0Z"
+                  d="M0,0H24V24H0Z"
                   fill="none"
                 />
-                <rect
-                  fill="#FDFEFF"
-                  height="6.084"
-                  transform="translate(2.895 10.011) rotate(-45)"
-                  width="1.721"
-                />
-                <rect
-                  fill="#FDFEFF"
-                  height="11.317"
-                  transform="translate(15.126 3.951) rotate(45)"
-                  width="1.72"
+                <path
+                  d="M12,22A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm-1-6,7.07-7.071L16.659,7.515,11,13.172,8.174,10.343,6.76,11.757Z"
+                  fill="#63C427"
                 />
               </svg>
             </div>
