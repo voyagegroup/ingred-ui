@@ -18,7 +18,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
             class="css-jahdpg-multiValue"
           >
             <div
-              class="css-1mndlyy"
+              class="css-uybk9d"
             >
               hoge
             </div>
@@ -53,7 +53,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
             class="css-jahdpg-multiValue"
           >
             <div
-              class="css-1mndlyy"
+              class="css-uybk9d"
             >
               huga
             </div>
@@ -175,7 +175,7 @@ exports[`Select component testing Disable not selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class=" css-cialks-placeholder"
+            class=" css-dcdqlp-placeholder"
           >
             選択してください
           </div>
@@ -279,7 +279,7 @@ exports[`Select component testing Disable one selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class=" css-8c8x5h-singleValue"
+            class=" css-10spk3r-singleValue"
           >
             hoge
           </div>
