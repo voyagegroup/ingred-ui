@@ -85,7 +85,7 @@ export const palette: Palette = {
   text: {
     primary: colors.blue[500],
     secondary: colors.basic[700],
-    disabled: colors.basic[300],
+    disabled: colors.basic[400],
     hint: colors.basic[400],
     white: "#FFFFFF",
   },
