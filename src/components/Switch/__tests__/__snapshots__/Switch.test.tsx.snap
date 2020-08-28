@@ -19,8 +19,8 @@ exports[`Switch component testing Switch 1`] = `
           class="sc-AxhUy eOzVgP"
         >
           <span
-            class="sc-Axmtr iuSKvl"
-            color="#778490"
+            class="sc-Axmtr eVWLQo"
+            color="#596978"
             font-size="13px"
           >
             デマンド別
@@ -30,8 +30,8 @@ exports[`Switch component testing Switch 1`] = `
           class="sc-AxhUy eOzVgP"
         >
           <span
-            class="sc-Axmtr fXDcFn"
-            color="#778490"
+            class="sc-Axmtr kVmwSa"
+            color="#596978"
             font-size="13px"
           >
             チャネル別

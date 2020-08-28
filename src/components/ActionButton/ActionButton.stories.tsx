@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
 import ActionButton from ".";
-import { Props } from "./ActionButton";
+import { ActionButtonProps as Props } from "./ActionButton";
 import Typography from "../Typography";
 import Spacer from "../Spacer";
 
