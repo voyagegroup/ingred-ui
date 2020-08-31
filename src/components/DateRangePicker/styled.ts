@@ -92,6 +92,25 @@ export const Container = styled.div<{ error: boolean }>`
   .CalendarDay__default {
     border: 0;
     font-size: 12px;
+    background: transparent;
+    z-index: 1;
+    &:hover {
+      background: inherit;
+      border: 0;
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50% !important; /* td:nth-child(7n):beforeで上書きされるのを防ぐ */
+        transform: translate(calc(-50% - 0.5px), -50%);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        z-index: -1;
+        background: ${({ theme }) => theme.palette.gray.main};
+      }
+    }
   }
   .CalendarDay__hovered_span {
     background: transparent;
