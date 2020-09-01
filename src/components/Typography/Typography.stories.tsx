@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import Typography from "./";
+import { TextAlign, FontSize } from "./Typography";
 
 export default {
   title: "Typography",
@@ -24,7 +25,7 @@ const RowContainer = styled.div`
 `;
 
 const colors = ["initial", "primary", "secondary", "disabled", "hint", "white"];
-const sizes = [
+const sizes: FontSize[] = [
   "xs",
   "sm",
   "md",
@@ -37,7 +38,8 @@ const sizes = [
   "xxxxxxl",
   "xxxxxxxl",
 ];
-const aligns = ["left", "center", "right"];
+
+const aligns: TextAlign[] = ["left", "center", "right"];
 
 export const Overview = () => (
   <Container>

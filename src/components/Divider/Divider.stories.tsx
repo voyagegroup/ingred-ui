@@ -46,14 +46,20 @@ export const Overview = () => (
       Override Color
     </Typography>
     <RowContainer>
-      <Divider color="red" m={3} />
+      <Flex display="flex" flexDirection="column" justifyContent="center">
+        <Spacer pt={3} />
+        <Divider color="red" m={3} />
+        <Spacer pt={3} />
+      </Flex>
     </RowContainer>
     <Typography weight="bold" size="xxl">
       Vertical
     </Typography>
     <RowContainer>
-      <Flex display="flex" justifyContent="center" height="50px">
+      <Flex display="flex" justifyContent="center" alignItems="center">
+        <div style={{ height: "300px" }} />
         <Divider orientation="vertical" />
+        <div style={{ height: "300px" }} />
       </Flex>
     </RowContainer>
   </Container>
