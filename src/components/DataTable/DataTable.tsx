@@ -41,34 +41,34 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
 }
 
 function isMergedCell<T extends DataTableBaseData>(
-  column: Column<T>,
   displayData: T[],
   index: number,
+  column?: Column<T>,
 ): boolean {
   if (index === 0) return false;
   const baseRow = displayData[index];
-  const baseCell = column.selector(baseRow);
+  const baseCell = column?.selector(baseRow);
   const previousRow = displayData[index - 1];
-  const previousCell = column.selector(previousRow);
+  const previousCell = column?.selector(previousRow);
   return (
-    !!column.enableMergeCell &&
+    (!column || !!column.enableMergeCell) &&
     baseRow.id === previousRow.id &&
     baseCell === previousCell
   );
 }
 
 function calculateRowSpan<T extends DataTableBaseData>(
-  column: Column<T>,
   displayData: T[],
   startIndex: number,
+  column?: Column<T>,
 ): number {
-  if (!column.enableMergeCell) return 1;
+  if (column && !column.enableMergeCell) return 1;
   const baseRow = displayData[startIndex];
-  const baseCell = column.selector(baseRow);
+  const baseCell = column?.selector(baseRow);
   let rowSpan = 1;
   for (let idx = startIndex + 1; idx < displayData.length; idx++) {
     const comparisonRow = displayData[idx];
-    const comparisonCell = column.selector(comparisonRow);
+    const comparisonCell = column?.selector(comparisonRow);
     if (comparisonRow.id !== baseRow.id || comparisonCell !== baseCell) {
       break;
     }
@@ -405,31 +405,37 @@ const DataTable = <T extends DataTableBaseData>({
                     }
                     disableHoverHighlight={enableMergeCell}
                   >
-                    {(!showTabs || isCheckableTab(currentTabIndex, tabs)) && (
-                      <>
-                        {showCheckbox &&
-                          (item.selectDisabled ? (
-                            <Table.Cell enableRuledLine={enableRuledLine} />
-                          ) : (
-                            <CellCheckbox
-                              selected={selectedRows.includes(item.id)}
-                              onClick={onHandleSelectCheckbox(item.id)}
+                    {(!showTabs || isCheckableTab(currentTabIndex, tabs)) &&
+                      !isMergedCell(displayData, index) && (
+                        <>
+                          {showCheckbox &&
+                            (item.selectDisabled ? (
+                              <Table.Cell
+                                enableRuledLine={enableRuledLine}
+                                rowSpan={calculateRowSpan(displayData, index)}
+                              />
+                            ) : (
+                              <CellCheckbox
+                                selected={selectedRows.includes(item.id)}
+                                rowSpan={calculateRowSpan(displayData, index)}
+                                onClick={onHandleSelectCheckbox(item.id)}
+                              />
+                            ))}
+                          {showRadioButton && (
+                            <CellRadio
+                              selected={item.id === selectedRow}
+                              rowSpan={calculateRowSpan(displayData, index)}
+                              onClick={onHandleSelectRadioButton(item.id)}
                             />
-                          ))}
-                        {showRadioButton && (
-                          <CellRadio
-                            selected={item.id === selectedRow}
-                            onClick={onHandleSelectRadioButton(item.id)}
-                          />
-                        )}
-                      </>
-                    )}
+                          )}
+                        </>
+                      )}
                     {columns.map((column) =>
-                      isMergedCell(column, displayData, index) ? null : (
+                      isMergedCell(displayData, index, column) ? null : (
                         <Table.Cell
                           key={column.name}
                           enableRuledLine={enableRuledLine}
-                          rowSpan={calculateRowSpan(column, displayData, index)}
+                          rowSpan={calculateRowSpan(displayData, index, column)}
                         >
                           {column.renderCell ? (
                             column.renderCell(item)

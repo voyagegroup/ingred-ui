@@ -97,6 +97,10 @@ export const Overview = () => {
 };
 
 export const WithRowSpan = () => {
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const onHandleClick = () => {
+    alert(selectedRows.join(","));
+  };
   // MEMO: Need to sort data yourself.
   const sampleDataWithDuplicateId: SampleObject[] = [
     { id: 1, name: "1name", count: 9 },
@@ -114,6 +118,7 @@ export const WithRowSpan = () => {
   ];
   return (
     <Container>
+      <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
       <DataTable
         enableRuledLine={true}
         data={sampleDataWithDuplicateId}
@@ -138,6 +143,7 @@ export const WithRowSpan = () => {
             align: "right",
           },
         ]}
+        onSelectRowsChange={setSelectedRows}
       />
     </Container>
   );
