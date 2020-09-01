@@ -30,7 +30,8 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           checked={active}
           type="checkbox"
           readOnly={onChange == undefined}
-          onChange={disabled ? undefined : onChange}
+          disabled={disabled}
+          onChange={onChange}
         />
         <Styled.ToggleButton active={active} disabled={disabled} />
         <Styled.LabelText position={active ? "left" : "right"}>
