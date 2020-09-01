@@ -6,7 +6,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
     class="sc-AxjAm fnBaWJ"
   >
     <hr
-      class="sc-AxiKw cCiIlb"
+      class="sc-AxiKw gMzvcs"
       color="#EFF1F2"
       orientation="horizontal"
     />
@@ -33,7 +33,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-AxiKw cCiIlb"
+      class="sc-AxiKw gMzvcs"
       color="#EFF1F2"
       orientation="horizontal"
     />

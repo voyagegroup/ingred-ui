@@ -86,7 +86,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
         class="sc-AxmLO eHBXod"
       >
         <hr
-          class="sc-fzoLsD cKTFaj"
+          class="sc-fzoLsD jyvfHQ"
           color="#EFF1F2"
           orientation="horizontal"
         />
@@ -113,7 +113,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fzoLsD cKTFaj"
+          class="sc-fzoLsD jyvfHQ"
           color="#EFF1F2"
           orientation="horizontal"
         />
@@ -246,7 +246,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
         class="sc-AxmLO eHBXod"
       >
         <hr
-          class="sc-fzoLsD cKTFaj"
+          class="sc-fzoLsD jyvfHQ"
           color="#EFF1F2"
           orientation="horizontal"
         />
@@ -273,7 +273,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fzoLsD cKTFaj"
+          class="sc-fzoLsD jyvfHQ"
           color="#EFF1F2"
           orientation="horizontal"
         />
