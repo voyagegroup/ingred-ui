@@ -11,7 +11,7 @@ export type ColorType =
   | "hint"
   | "white";
 
-type FontSize =
+export type FontSize =
   | "xs"
   | "sm"
   | "md"
