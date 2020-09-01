@@ -6,10 +6,9 @@ export const Input = styled.input<{
   resize?: string;
 }>`
   ${({ width }) =>
-    width ? `width: ${isNaN(+width) ? width : width + "px"}` : ""};
+    width ? `width: ${isNaN(+width) ? width : width + "px"}` : "auto"};
   padding: 10px 8px;
   border: 0;
-  line-height: 20px;
   font-size: 14px;
   color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.black};
