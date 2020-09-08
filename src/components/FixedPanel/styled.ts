@@ -23,4 +23,5 @@ export const Container = styled.div<ContainerProps>`
   border-top: 1px solid ${({ theme }) => theme.palette.gray.light};
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
   transition: all 0.3s;
+  z-index: 1;
 `;
