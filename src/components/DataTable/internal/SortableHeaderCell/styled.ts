@@ -19,7 +19,7 @@ export const HeaderCell = styled.th<CellProps>`
   border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 
   border-right: ${({ theme, enableRuledLine }) =>
-    enableRuledLine ? `1px solid ${theme.palette.gray.light}` : "none"};
+    enableRuledLine ? `1px solid ${theme.palette.divider}` : "none"};
   &:last-of-type {
     border-right: none;
   }
