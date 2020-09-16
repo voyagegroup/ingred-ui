@@ -22,7 +22,7 @@ type NavigationRailContents = {
   notificationCount?: number;
   path?: string;
   expantionList?: {
-    title: React.ReactNode;
+    title: Omit<React.ReactNode, "undefined">;
     path: string;
     isActive: boolean;
     notificationCount?: number;
@@ -97,7 +97,7 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
           <Flex display="flex" alignItems="center" justifyContent="flex-start">
             詳細版
             <Spacer pr={0.25} />
-            <Icon name="external_link" size="sm" />
+            <Icon name="external_link" size="md" />
           </Flex>
         ),
         path: "/statistics/detail",
