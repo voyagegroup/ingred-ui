@@ -22,7 +22,6 @@ type NavigationRailContents = {
     title: string;
     path: string;
     isActive: boolean;
-    isBlank?: boolean;
     notificationCount?: number;
   }[];
 }[];
@@ -89,7 +88,6 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         title: "簡易版",
         path: "/statistics/summary",
         isActive: path === "/statistics/summary",
-        isBlank: true,
       },
       {
         title: "詳細版",
@@ -175,7 +173,6 @@ export const Overview = () => {
                   expantionList={item.expantionList.map((expantion) => (
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
-                      isBlank={expantion.isBlank}
                       title={expantion.title}
                       notificationCount={expantion.notificationCount}
                     />
