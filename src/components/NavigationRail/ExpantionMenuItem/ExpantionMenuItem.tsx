@@ -5,18 +5,23 @@ import { NavigationRailTransitionDuration } from "../constants";
 import { NavigationRailContext } from "../utils";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
+import Flex from "../../Flex";
+import Icon from "../../Icon";
+import Spacer from "../../Spacer";
 
 export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
   "div"
 > & {
   title: string;
   isActive?: boolean;
+  isBlank?: boolean;
   notificationCount?: number;
 };
 
 const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
   title,
   isActive = false,
+  isBlank = false,
   onMouseEnter,
   notificationCount = 0,
   ...rest
@@ -54,7 +59,23 @@ const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
             color={isActive ? "primary" : theme.palette.black}
             size="sm"
           >
-            {title}
+            {isBlank ? (
+              <Flex
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-start"
+              >
+                {title}
+                <Spacer pr={0.25} />
+                <Icon
+                  name="external_link"
+                  size="sm"
+                  color={isActive ? "primary" : theme.palette.black}
+                />
+              </Flex>
+            ) : (
+              title
+            )}
           </Styled.TextWrapper>
         </Styled.TextContainer>
         <SideNotificationBadge
