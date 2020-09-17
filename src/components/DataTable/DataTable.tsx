@@ -183,8 +183,10 @@ const DataTable = <T extends DataTableBaseData>({
 }: DataTableProps<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
-  const indeterminate = selectedRows.length > 0 && !allSelected;
+  const [selectedRows, setSelectedRows] = React.useState<Set<number>>(
+    new Set([]),
+  );
+  const indeterminate = selectedRows.size > 0 && !allSelected;
 
   const showRadioButton = !!onRadioChange;
   const [selectedRow, setSelectedRow] = React.useState<number | null>(null);
@@ -277,7 +279,7 @@ const DataTable = <T extends DataTableBaseData>({
   // 選択項目のクリア
   React.useEffect(() => {
     if (clearSelectedRows) {
-      setSelectedRows([]);
+      setSelectedRows(new Set([]));
       if (onSelectRowsChange) {
         onSelectRowsChange([]);
       }
@@ -287,7 +289,7 @@ const DataTable = <T extends DataTableBaseData>({
   // selectの変更をonSelectRowsChangeに伝える
   React.useEffect(() => {
     if (onSelectRowsChange) {
-      onSelectRowsChange(selectedRows);
+      onSelectRowsChange(Array.from(selectedRows));
     }
   }, [selectedRows, onSelectRowsChange]);
 
@@ -316,11 +318,13 @@ const DataTable = <T extends DataTableBaseData>({
   };
 
   const onHandleSelectCheckbox = (id: number) => () => {
-    if (selectedRows.includes(id)) {
-      setSelectedRows(selectedRows.filter((selectedId) => selectedId !== id));
+    const newSet = new Set(selectedRows);
+    if (selectedRows.has(id)) {
+      newSet.delete(id);
     } else {
-      setSelectedRows([...selectedRows, id]);
+      newSet.add(id);
     }
+    setSelectedRows(newSet);
   };
 
   const onHandleSelectRadioButton = (id: number) => () => {
@@ -328,15 +332,16 @@ const DataTable = <T extends DataTableBaseData>({
   };
 
   const onHandleToggleCheckAll = () => {
-    if (selectedRows.length > 0) {
-      setSelectedRows([]);
+    if (selectedRows.size > 0) {
+      setSelectedRows(new Set([]));
       setAllSelected(false);
     } else {
-      setSelectedRows(
+      const ids = new Set(
         displayData
           .filter((data) => !data.selectDisabled)
           .map((data) => data.id),
       );
+      setSelectedRows(ids);
       setAllSelected(true);
     }
   };
@@ -366,7 +371,7 @@ const DataTable = <T extends DataTableBaseData>({
                     {showCheckbox && (
                       <CellCheckbox
                         header={true}
-                        selected={selectedRows.length > 0}
+                        selected={selectedRows.size > 0}
                         indeterminate={indeterminate}
                         onClick={onHandleToggleCheckAll}
                       />
@@ -400,8 +405,7 @@ const DataTable = <T extends DataTableBaseData>({
                     verticalSpacing={verticalSpacing}
                     highlighted={
                       !item.selectDisabled &&
-                      (selectedRows.includes(item.id) ||
-                        selectedRow === item.id)
+                      (selectedRows.has(item.id) || selectedRow === item.id)
                     }
                     disableHoverHighlight={enableMergeCell}
                   >
@@ -416,7 +420,7 @@ const DataTable = <T extends DataTableBaseData>({
                               />
                             ) : (
                               <CellCheckbox
-                                selected={selectedRows.includes(item.id)}
+                                selected={selectedRows.has(item.id)}
                                 rowSpan={calculateRowSpan(displayData, index)}
                                 onClick={onHandleSelectCheckbox(item.id)}
                               />

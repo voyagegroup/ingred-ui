@@ -8,7 +8,7 @@ export const StandardCell = styled.td`
   text-align: left;
   width: ${CELL_PADDING + 18}px;
   padding-left: ${({ theme }) => theme.spacing * 2}px;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 export const HeaderCell = styled.th`

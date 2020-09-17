@@ -9,7 +9,7 @@ import { useTheme } from "../../../themes";
 export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
   "div"
 > & {
-  title: string;
+  title: Omit<React.ReactNode, "undefined">;
   isActive?: boolean;
   notificationCount?: number;
 };

@@ -4,6 +4,9 @@ import { boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import NavigationRail, { NavigationRailContext } from ".";
 import { IconName } from "../Icon/Icon";
+import Flex from "../Flex";
+import Icon from "../Icon";
+import Spacer from "../Spacer";
 
 export default {
   title: "NavigationRail",
@@ -19,7 +22,7 @@ type NavigationRailContents = {
   notificationCount?: number;
   path?: string;
   expantionList?: {
-    title: string;
+    title: Omit<React.ReactNode, "undefined">;
     path: string;
     isActive: boolean;
     notificationCount?: number;
@@ -90,7 +93,13 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         isActive: path === "/statistics/summary",
       },
       {
-        title: "詳細版",
+        title: (
+          <Flex display="flex" alignItems="center" justifyContent="flex-start">
+            詳細版
+            <Spacer pr={0.25} />
+            <Icon name="external_link" size="md" />
+          </Flex>
+        ),
         path: "/statistics/detail",
         isActive: path === "/statistics/detail",
       },
