@@ -22,7 +22,8 @@ type NavigationRailContents = {
   notificationCount?: number;
   path?: string;
   expantionList?: {
-    title: Omit<React.ReactNode, "undefined">;
+    title: string;
+    titleElement?: JSX.Element;
     path: string;
     isActive: boolean;
     notificationCount?: number;
@@ -93,7 +94,8 @@ const createNavigationRailContents = (path: string): NavigationRailContents => [
         isActive: path === "/statistics/summary",
       },
       {
-        title: (
+        title: "詳細版",
+        titleElement: (
           <Flex display="flex" alignItems="center" justifyContent="flex-start">
             詳細版
             <Spacer pr={0.25} />
@@ -183,6 +185,7 @@ export const Overview = () => {
                     <NavigationRail.ExpantionMenuItem
                       isActive={expantion.isActive}
                       title={expantion.title}
+                      titleElement={expantion.titleElement}
                       notificationCount={expantion.notificationCount}
                     />
                   ))}

@@ -9,13 +9,15 @@ import { useTheme } from "../../../themes";
 export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
   "div"
 > & {
-  title: Omit<React.ReactNode, "undefined">;
+  title: string;
+  titleElement?: JSX.Element;
   isActive?: boolean;
   notificationCount?: number;
 };
 
 const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
   title,
+  titleElement,
   isActive = false,
   onMouseEnter,
   notificationCount = 0,
@@ -54,7 +56,7 @@ const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
             color={isActive ? "primary" : theme.palette.black}
             size="sm"
           >
-            {title}
+            {titleElement ? titleElement : title}
           </Styled.TextWrapper>
         </Styled.TextContainer>
         <SideNotificationBadge
