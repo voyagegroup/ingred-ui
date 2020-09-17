@@ -7,7 +7,7 @@ exports[`Table component testing Table 1`] = `
   >
     <tbody>
       <tr
-        class="sc-AxiKw evyKMu"
+        class="sc-AxiKw gEcxRg"
       >
         <th
           class="sc-AxhCb jZYsHj"
@@ -35,7 +35,7 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-AxiKw evyKMu"
+        class="sc-AxiKw gEcxRg"
       >
         <th
           class="sc-AxhCb jZYsHj"
@@ -63,7 +63,7 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-AxiKw evyKMu"
+        class="sc-AxiKw gEcxRg"
       >
         <th
           class="sc-AxhCb jZYsHj"
