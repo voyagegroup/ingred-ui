@@ -19,7 +19,9 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-const InnerTable: React.FunctionComponent<{verticalSpacing: VerticalSpacing}> = ({verticalSpacing}) => (
+const InnerTable: React.FunctionComponent<{
+  verticalSpacing: VerticalSpacing;
+}> = ({ verticalSpacing }) => (
   <Table>
     <Table.Body>
       <Table.Row verticalSpacing={verticalSpacing}>
@@ -60,13 +62,23 @@ const InnerTable: React.FunctionComponent<{verticalSpacing: VerticalSpacing}> = 
 
 export const Overview = () => (
   <Container>
-    {["small", "medium", "large"].map(space => {
+    <Table>
+      <Table.Row>
+        <Table.HeaderCell>normal</Table.HeaderCell>
+        <Table.HeaderCell>table</Table.HeaderCell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>row</Table.Cell>
+        <Table.Cell>row</Table.Cell>
+      </Table.Row>
+    </Table>
+    {["small", "medium", "large"].map((space) => {
       return (
         <>
           <Typography>verticalSpacing = {space}</Typography>
           <InnerTable verticalSpacing={space as VerticalSpacing} />
         </>
-      )
+      );
     })}
   </Container>
 );

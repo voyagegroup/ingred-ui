@@ -13,8 +13,9 @@ const Container = styled.table`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-export type TableProps = React.ComponentPropsWithRef<"table"> &
-  { verticalSpacing?: VerticalSpacing };
+export type TableProps = React.ComponentPropsWithRef<"table"> & {
+  verticalSpacing?: VerticalSpacing;
+};
 
 const Table = ({ children }: TableProps) => <Container>{children}</Container>;
 
