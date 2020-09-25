@@ -9,7 +9,7 @@ ignore: []
 # `{{ input | pascal }}/index.tsx`
 
 ```typescript
-export { default } from "./{{ input | pascal }}";
+export { default, {{ input | pascal }}Props } from "./{{ input | pascal }}";
 ```
 
 # `{{ input | pascal }}/{{ input | pascal }}.tsx`
@@ -18,10 +18,10 @@ export { default } from "./{{ input | pascal }}";
 import * as React from "react";
 import * as Styled from "./styled";
 
-type {{ input | pascal }}Props = {
+export type {{ input | pascal }}Props = {
 }
 
-const {{ input | pascal }}: React.FunctionComponent<Props> = () => (
+const {{ input | pascal }}: React.FunctionComponent<{{ input | pascal }}Props> = () => (
   <Styled.Container>
 
   </Styled.Container>
@@ -53,7 +53,7 @@ describe("{{ input | pascal }} component testing", () => {
   afterEach(cleanup);
 
   test("{{ input | pascal }}", () => {
-    const { asFragment } = render(<{{ input | pascal }} />);
+    const { asFragment } = renderWithThemeProvider(<{{ input | pascal }} />);
     expect(asFragment()).toMatchSnapshot();
   });
 });
