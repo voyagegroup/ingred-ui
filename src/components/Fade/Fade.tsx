@@ -14,6 +14,29 @@ const styles: TransitionStyle = {
   unmounted: { opacity: 0 },
 };
 
+const getTransitionStyle = (
+  timeout: Omit<TransitionProps["timeout"], "undefined">,
+  state: TransitionStatus,
+): React.CSSProperties => {
+  let duration: number;
+  if (typeof timeout === "number") {
+    duration = timeout;
+  } else {
+    switch (state) {
+      case "entered":
+      case "entering":
+        duration = timeout["enter"] || 0;
+        break;
+      case "exiting":
+      case "exited":
+      case "unmounted":
+        duration = timeout["exit"] || 0;
+        break;
+    }
+  }
+  return { transition: `opacity ${duration}ms` };
+};
+
 type ChildrenType = React.ComponentElement<HTMLElement, any>;
 
 export type FadeProps = Partial<TransitionProps> & {
@@ -34,6 +57,7 @@ const Fade: React.FunctionComponent<FadeProps> = ({
           ...childComponent.props,
           style: {
             ...styles[state],
+            ...getTransitionStyle(timeout, state),
             ...childComponent.props.style,
           },
           ref: childComponent.ref,

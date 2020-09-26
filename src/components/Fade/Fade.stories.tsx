@@ -10,9 +10,20 @@ export default {
 
 export const Overview = () => {
   const isOpen = boolean("IsOpen", true);
-  const duration = number("Duration", 300);
+  const timeout = number("Timeout", 300);
   return (
-    <Fade duration={duration} in={isOpen}>
+    <Fade timeout={timeout} in={isOpen}>
+      <Button>Control in Knob Footer</Button>
+    </Fade>
+  );
+};
+
+export const DifferentInOut = () => {
+  const isOpen = boolean("IsOpen", true);
+  const enter = number("EnterTimeout", 300);
+  const exit = number("ExitTimeout", 300);
+  return (
+    <Fade timeout={{ enter, exit }} in={isOpen}>
       <Button>Control in Knob Footer</Button>
     </Fade>
   );
