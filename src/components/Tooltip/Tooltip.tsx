@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as PopperJS from "@popperjs/core";
-import { CSSTransition } from "react-transition-group";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
 import Portal from "../Portal";
+import Fade from "../Fade";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
@@ -134,13 +134,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
       {React.cloneElement(children, childrenProps)}
       {!disabled && (
         <Portal>
-          <CSSTransition
-            in={open || openProp}
-            classNames={Styled.transitionClass}
-            unmountOnExit={true}
-            mountOnEnter={true}
-            timeout={1000}
-          >
+          <Fade in={open || openProp} unmountOnExit={true} mountOnEnter={true}>
             <Styled.Tooltip
               ref={setPopperElement}
               style={styles.popper}
@@ -157,7 +151,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
                 style={styles.arrow}
               />
             </Styled.Tooltip>
-          </CSSTransition>
+          </Fade>
         </Portal>
       )}
     </>
