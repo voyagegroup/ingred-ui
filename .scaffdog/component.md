@@ -10,6 +10,7 @@ ignore: []
 
 ```typescript
 export { default, {{ input | pascal }}Props } from "./{{ input | pascal }}";
+
 ```
 
 # `{{ input | pascal }}/{{ input | pascal }}.tsx`
