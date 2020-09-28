@@ -4,12 +4,18 @@ import Portal from "../Portal";
 import Backdrop, { BackdropProps } from "../Backdrop";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 
+// TODO: enable close with Escape key
+export type ModalCloseReason = "backdropClick";
+
 export type ModalProps = {
   isOpen?: boolean;
-  onClose?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   hasBackground?: boolean;
   backdropProps?: BackdropProps;
   enableTransition?: boolean;
+  onClose?: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    reason: ModalCloseReason,
+  ) => void;
 };
 
 const Modal: React.FunctionComponent<ModalProps> = ({
@@ -25,7 +31,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   const onHandleBackDropClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    if (onClose) onClose(event);
+    if (onClose) onClose(event, "backdropClick");
   };
 
   const onHandleEnter = () => {
