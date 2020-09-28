@@ -6,6 +6,9 @@ exports[`Popover component testing Popover 1`] = `
     class="sc-AxirZ iXkbLy"
   >
     <div
+      class="sc-AxiKw gUGIcH sc-AxhCb hzmVaE"
+    />
+    <div
       class="sc-AxjAm bHwAjl"
       style="position: absolute; left: 0px; top: 0px;"
     >
