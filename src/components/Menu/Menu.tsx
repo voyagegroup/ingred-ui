@@ -1,28 +1,42 @@
 import * as React from "react";
 import * as PopperJS from "@popperjs/core";
 import MenuList, { ContentProp } from "../MenuList/MenuList";
-import ClickAwayListener from "../ClickAwayListener";
 import Popover from "../Popover";
+import { ModalProps } from "../Modal";
 
 export type MenuProps = React.ComponentPropsWithRef<"div"> & {
+  isOpen?: boolean;
   baseElement?: HTMLElement | null;
   contents: ContentProp[];
   positionPriority?: PopperJS.Placement[];
-  onClickAway?: (event: MouseEvent) => void;
+  onClose?: ModalProps["onClose"];
 };
 
 const Menu: React.FunctionComponent<MenuProps> = ({
+  isOpen = true,
   baseElement = null,
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
-  onClickAway,
+  onClose,
   ...rest
-}) => (
-  <Popover baseElement={baseElement} positionPriority={positionPriority}>
-    <ClickAwayListener onClickAway={onClickAway}>
-      <MenuList contents={contents} {...rest} />
-    </ClickAwayListener>
-  </Popover>
-);
+}) => {
+  const onHandleClickMenuList = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if (onClose) onClose(event);
+    if (rest.onClick) rest.onClick(event);
+  };
+
+  return (
+    <Popover
+      isOpen={isOpen}
+      baseElement={baseElement}
+      positionPriority={positionPriority}
+      onClose={onClose}
+    >
+      <MenuList contents={contents} {...rest} onClick={onHandleClickMenuList} />
+    </Popover>
+  );
+};
 
 export default Menu;

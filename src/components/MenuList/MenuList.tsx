@@ -10,7 +10,7 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   divideTop?: boolean;
 };
 
-export type MenuListProps = {
+export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
   inline?: boolean;
   contents: ContentProp[];
 };

@@ -6,6 +6,7 @@ import { createChainedFunction } from "../../utils/createChainedFunction";
 
 export type ModalProps = {
   isOpen?: boolean;
+  onClose?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   hasBackground?: boolean;
   backdropProps?: BackdropProps;
   enableTransition?: boolean;
@@ -13,12 +14,19 @@ export type ModalProps = {
 
 const Modal: React.FunctionComponent<ModalProps> = ({
   isOpen = true,
-  hasBackground = false,
+  onClose,
+  hasBackground = true,
   backdropProps,
   enableTransition = false,
   children,
 }) => {
   const [exited, setExited] = React.useState<boolean>(true);
+
+  const onHandleBackDropClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if (onClose) onClose(event);
+  };
 
   const onHandleEnter = () => {
     setExited(false);
@@ -45,6 +53,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
             {...backdropProps}
             isOpen={!enableTransition || isOpen}
             fadeProps={fadeProps}
+            onClick={onHandleBackDropClick}
           />
         )}
         {children}
