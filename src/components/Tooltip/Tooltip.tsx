@@ -3,7 +3,7 @@ import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
 import Portal from "../Portal";
-import Fade from "../Fade";
+import Fade, { FadeProps } from "../Fade";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
@@ -16,6 +16,7 @@ export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   offset?: [number, number];
   width?: string;
   disabled?: boolean;
+  fadeProps?: FadeProps;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
@@ -29,6 +30,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
   offset = [0, 10],
   width,
   disabled = false,
+  fadeProps,
   children,
   ...rest
 }) => {
@@ -134,7 +136,12 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
       {React.cloneElement(children, childrenProps)}
       {!disabled && (
         <Portal>
-          <Fade in={open || openProp} unmountOnExit={true} mountOnEnter={true}>
+          <Fade
+            in={open || openProp}
+            unmountOnExit={true}
+            mountOnEnter={true}
+            {...fadeProps}
+          >
             <Styled.Tooltip
               ref={setPopperElement}
               style={styles.popper}
