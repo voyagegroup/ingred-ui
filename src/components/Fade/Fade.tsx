@@ -2,8 +2,8 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { CSSTransitionProps } from "react-transition-group/CSSTransition";
 
-export type FadeProps = Partial<Omit<CSSTransitionProps, "classNames">> & {
-  children: React.ComponentElement<HTMLElement, any>;
+export type FadeProps = Partial<CSSTransitionProps> & {
+  children?: React.ComponentElement<HTMLElement, any>;
 };
 
 const Fade: React.FunctionComponent<FadeProps> = ({

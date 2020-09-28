@@ -26,7 +26,6 @@ const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(
         in={isOpen}
         timeout={transitionDuration}
         unmountOnExit={true}
-        mountOnEnter={true}
         {...fadeProps}
       >
         <Styled.Container invisible={invisible} {...rest} ref={ref}>
