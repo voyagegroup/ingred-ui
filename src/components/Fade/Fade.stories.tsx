@@ -23,11 +23,8 @@ export const DifferentInOut = () => {
   const enter = number("EnterTimeout", 300);
   const exit = number("ExitTimeout", 300);
   return (
-    <>
-      <Fade timeout={{ enter, exit }} in={isOpen}>
-        <Button>Control in Knob Footer</Button>
-      </Fade>
-      <div>hoge</div>
-    </>
+    <Fade timeout={{ enter, exit }} in={isOpen}>
+      <Button>Control in Knob Footer</Button>
+    </Fade>
   );
 };
