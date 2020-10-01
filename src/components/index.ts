@@ -59,6 +59,9 @@ export * from "./Flex";
 export { default as FloatingTip } from "./FloatingTip";
 export * from "./FloatingTip";
 
+export { default as Grow } from "./Grow";
+export * from "./Grow";
+
 export { default as Icon } from "./Icon";
 export * from "./Icon";
 

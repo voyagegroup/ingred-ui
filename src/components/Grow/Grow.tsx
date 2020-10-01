@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { CSSTransitionProps } from "react-transition-group/CSSTransition";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
 
 export type GrowProps = Partial<CSSTransitionProps> & {
   children?: React.ComponentElement<HTMLElement, any>;
