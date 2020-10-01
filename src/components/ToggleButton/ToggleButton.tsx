@@ -23,7 +23,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
 }) => {
   const textColor = active ? "primary" : "secondary";
   return (
-    <Styled.Container active={active} disabled={disabled}>
+    <Styled.Container active={active} disabled={disabled} width={width}>
       <Styled.Label active={active} disabled={disabled} width={width}>
         <Styled.HiddenInput
           ref={inputRef}

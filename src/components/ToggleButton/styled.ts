@@ -1,7 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const Container = styled.div<{ active: boolean; disabled: boolean }>`
+export const Container = styled.div<{
+  active: boolean;
+  disabled: boolean;
+  width: string;
+}>`
   position: relative;
+  width: ${({ width }) => width};
   height: calc(1px * 2 + 22px);
 `;
 
