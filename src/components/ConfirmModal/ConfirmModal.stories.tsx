@@ -4,6 +4,7 @@ import ConfirmModal from ".";
 import Spacer from "../Spacer";
 import DataTable from "../DataTable";
 import Typography from "../Typography";
+import Button from "../Button";
 import { data } from "../DataTable/data";
 import { action } from "@storybook/addon-actions";
 
@@ -19,13 +20,25 @@ export default {
   },
 };
 
-export const Overview = () => (
-  <Container>
-    <ConfirmModal title="タイトル" onSubmit={action("submit")}>
-      コンテンツ
-    </ConfirmModal>
-  </Container>
-);
+export const Overview: React.FunctionComponent = () => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const onHandleToggleButton = () => {
+    setIsOpen(!isOpen);
+  };
+  return (
+    <Container>
+      <Button onClick={onHandleToggleButton}>Open Modal</Button>
+      <ConfirmModal
+        isOpen={isOpen}
+        title="タイトル"
+        onClose={onHandleToggleButton}
+        onSubmit={action("submit")}
+      >
+        コンテンツ
+      </ConfirmModal>
+    </Container>
+  );
+};
 
 export const WithDanger = () => (
   <Container>

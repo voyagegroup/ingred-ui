@@ -3,10 +3,10 @@
 exports[`Modal component testing Modal with background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm jpmlrb"
+    class="sc-AxjAm ZnMRp"
   >
     <div
-      class="sc-AxirZ kseInl"
+      class="sc-AxirZ bRfJRy sc-AxiKw gVORbU"
     />
   </div>
 </DocumentFragment>
@@ -15,7 +15,11 @@ exports[`Modal component testing Modal with background 1`] = `
 exports[`Modal component testing Modal without background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm jpmlrb"
-  />
+    class="sc-AxjAm ZnMRp"
+  >
+    <div
+      class="sc-AxirZ bRfJRy sc-AxiKw gVORbU"
+    />
+  </div>
 </DocumentFragment>
 `;

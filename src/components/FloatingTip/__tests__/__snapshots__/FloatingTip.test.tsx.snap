@@ -3,8 +3,11 @@
 exports[`FloatingTip component testing FloatingTip 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxhUy fZmwyN"
+    class="sc-AxhUy hEpkdT"
   >
+    <div
+      class="sc-AxgMl cfckGA sc-AxheI zRPCd"
+    />
     <div
       class="sc-AxhCb fescVK"
       style="position: absolute; left: 0px; top: 0px;"
@@ -23,7 +26,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
           class="sc-AxiKw gOnsof"
         >
           <div
-            class="sc-AxheI kVDYRm"
+            class="sc-Axmtr dOuQux"
             size="18"
           >
             <svg

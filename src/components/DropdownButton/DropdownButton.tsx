@@ -99,15 +99,13 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
           </Styled.SingleButton>
         )}
       </Styled.ButtonContainer>
-      {showContent && (
-        <Menu
-          baseElement={buttonElement}
-          contents={contents}
-          positionPriority={positionPriority}
-          onClick={onHandleToggleContent(false)}
-          onClickAway={onHandleToggleContent(false)}
-        />
-      )}
+      <Menu
+        isOpen={showContent}
+        baseElement={buttonElement}
+        contents={contents}
+        positionPriority={positionPriority}
+        onClose={onHandleToggleContent(false)}
+      />
     </>
   );
 };

@@ -83,8 +83,7 @@ export const Overview: React.FunctionComponent = () => {
             baseElement={buttonElement}
             contents={contents}
             positionPriority={[position]}
-            onClick={onHandleToggleMenu(false)}
-            onClickAway={onHandleToggleMenu(false)}
+            onClose={onHandleToggleMenu(false)}
           />
         )}
       </RowContainer>

@@ -1,18 +1,23 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
-import ClickAwayListener from "../ClickAwayListener";
 import Popover from "../Popover";
 import Icon from "../Icon";
+import { ModalCloseReason } from "../Modal";
 import { useTheme } from "../../themes";
+
+export type FloatingTipCloseReason = "clickCloseIcon";
 
 export type FloatingTipProps = {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   isOpen: boolean;
-  onClose: () => void;
   children: React.ReactNode;
+  onClose?: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    reason: ModalCloseReason | FloatingTipCloseReason,
+  ) => void;
 };
 
 const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
@@ -24,22 +29,29 @@ const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
   children,
 }) => {
   const theme = useTheme();
-  return isOpen ? (
+
+  const onHandleClickCloseIcon = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if (onClose) onClose(event, "clickCloseIcon");
+  };
+
+  return (
     <Popover
+      isOpen={isOpen}
       baseElement={baseElement}
       positionPriority={positionPriority}
       offset={offset}
+      onClose={onClose}
     >
-      <ClickAwayListener onClickAway={onClose}>
-        <Styled.Container>
-          <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
-          <Styled.IconWrapper onClick={onClose}>
-            <Icon name="close" color={theme.palette.black} />
-          </Styled.IconWrapper>
-        </Styled.Container>
-      </ClickAwayListener>
+      <Styled.Container>
+        <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
+        <Styled.IconWrapper onClick={onHandleClickCloseIcon}>
+          <Icon name="close" color={theme.palette.black} />
+        </Styled.IconWrapper>
+      </Styled.Container>
     </Popover>
-  ) : null;
+  );
 };
 
 export default FloatingTip;

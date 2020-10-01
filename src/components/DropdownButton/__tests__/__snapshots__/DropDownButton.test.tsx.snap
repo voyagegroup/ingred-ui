@@ -35,6 +35,76 @@ exports[`DropdownButton component testing not splited disable 1`] = `
       </div>
     </button>
   </div>
+  <div
+    class="sc-fzplWN cFdOwr"
+  >
+    <div
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+    />
+    <div
+      class="sc-fzpans fvaVJK"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      <div
+        class="sc-AxmLO eHBXod"
+      >
+        <hr
+          class="sc-fzoLsD jyvfHQ"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存する
+          </p>
+        </div>
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存して実行する
+          </p>
+        </div>
+        <hr
+          class="sc-fzoLsD jyvfHQ"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            下書きとして保存する
+          </p>
+        </div>
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            やっぱり何もしない
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </DocumentFragment>
 `;
 
@@ -73,8 +143,11 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-fzplWN giuPsl"
+    class="sc-fzplWN kYgXIv"
   >
+    <div
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+    />
     <div
       class="sc-fzpans fvaVJK"
       data-popper-escaped="true"
@@ -188,6 +261,76 @@ exports[`DropdownButton component testing splited disable 1`] = `
       </div>
     </button>
   </div>
+  <div
+    class="sc-fzplWN cFdOwr"
+  >
+    <div
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+    />
+    <div
+      class="sc-fzpans fvaVJK"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      <div
+        class="sc-AxmLO eHBXod"
+      >
+        <hr
+          class="sc-fzoLsD jyvfHQ"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存する
+          </p>
+        </div>
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            保存して実行する
+          </p>
+        </div>
+        <hr
+          class="sc-fzoLsD jyvfHQ"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            下書きとして保存する
+          </p>
+        </div>
+        <div
+          class="sc-fzozJi jwtAGz"
+        >
+          <p
+            class="sc-AxjAm dflXoF"
+            color="#041C33"
+            font-size="13px"
+          >
+            やっぱり何もしない
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </DocumentFragment>
 `;
 
@@ -233,8 +376,11 @@ exports[`DropdownButton component testing splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-fzplWN giuPsl"
+    class="sc-fzplWN kYgXIv"
   >
+    <div
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+    />
     <div
       class="sc-fzpans fvaVJK"
       data-popper-escaped="true"

@@ -36,8 +36,11 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     />
   </button>
   <div
-    class="sc-fzozJi jXQLm"
+    class="sc-fzozJi bmbTcg"
   >
+    <div
+      class="sc-fzoLsD bmnYDj sc-fzpans iPJBFY"
+    />
     <div
       class="sc-AxmLO hgyfBR"
       data-popper-escaped="true"

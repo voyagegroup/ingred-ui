@@ -2,6 +2,9 @@
 export { default as ActionButton } from "./ActionButton";
 export * from "./ActionButton";
 
+export { default as Backdrop } from "./Backdrop";
+export * from "./Backdrop";
+
 export { default as Badge } from "./Badge";
 export * from "./Badge";
 
@@ -43,6 +46,9 @@ export * from "./DropdownButton";
 
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
+
+export { default as Fade } from "./Fade";
+export * from "./Fade";
 
 export { default as FixedPanel } from "./FixedPanel";
 export * from "./FixedPanel";

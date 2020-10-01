@@ -2,9 +2,11 @@ import * as React from "react";
 import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
-import Modal from "../Modal";
+import Modal, { ModalProps } from "../Modal";
 
 export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
+  isOpen?: boolean;
+  onClose?: ModalProps["onClose"];
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
@@ -12,6 +14,8 @@ export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
 };
 
 const Popover: React.FunctionComponent<PopoverProps> = ({
+  isOpen = true,
+  onClose,
   baseElement,
   offset = [0, 0],
   positionPriority = ["auto"],
@@ -49,7 +53,11 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
   });
 
   return (
-    <Modal>
+    <Modal
+      isOpen={isOpen}
+      backdropProps={{ invisible: true }}
+      onClose={onClose}
+    >
       <Styled.Container
         ref={setPopperElement}
         style={styles.popper}
