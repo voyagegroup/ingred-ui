@@ -3,8 +3,9 @@ import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
 import Portal from "../Portal";
-import Fade, { FadeProps } from "../Fade";
+import Fade from "../Fade";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
 
 export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   content: React.ReactChild;
@@ -16,7 +17,7 @@ export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   offset?: [number, number];
   width?: string;
   disabled?: boolean;
-  fadeProps?: FadeProps;
+  fadeProps?: CSSTransitionProps;
   children: React.ComponentElement<HTMLElement, any>;
 };
 

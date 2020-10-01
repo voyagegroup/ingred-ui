@@ -3,6 +3,11 @@ import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import Modal, { ModalProps } from "../Modal";
+import Grow from "../Grow";
+import {
+  CSSTransitionProps,
+  TransitionComponent,
+} from "../../utils/reactTransitionGroupUtils";
 
 export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
@@ -10,7 +15,10 @@ export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
-  children: React.ReactNode;
+  TransitionComponent?: TransitionComponent;
+  transitionProps?: CSSTransitionProps;
+  transitionDuration?: number;
+  children: React.ComponentElement<HTMLElement, any>;
 };
 
 const Popover: React.FunctionComponent<PopoverProps> = ({
@@ -19,6 +27,9 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
   baseElement,
   offset = [0, 0],
   positionPriority = ["auto"],
+  TransitionComponent = Grow,
+  transitionProps = {},
+  transitionDuration,
   children,
   ...rest
 }) => {
@@ -56,16 +67,23 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
     <Modal
       isOpen={isOpen}
       backdropProps={{ invisible: true }}
+      enableTransition={true}
       onClose={onClose}
     >
-      <Styled.Container
+      <div
         ref={setPopperElement}
         style={styles.popper}
         {...attributes.popper}
         {...rest}
       >
-        {children}
-      </Styled.Container>
+        <TransitionComponent
+          in={isOpen}
+          {...transitionProps}
+          timeout={transitionDuration || transitionProps.timeout}
+        >
+          <Styled.Container>{children}</Styled.Container>
+        </TransitionComponent>
+      </div>
     </Modal>
   );
 };

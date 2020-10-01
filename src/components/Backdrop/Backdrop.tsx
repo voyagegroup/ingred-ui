@@ -1,12 +1,13 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Fade, { FadeProps } from "../Fade";
+import Fade from "../Fade";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
 
 export type BackdropProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
   invisible?: boolean;
   transitionDuration?: number; // MEMO: millisecond
-  fadeProps?: FadeProps;
+  fadeProps?: CSSTransitionProps;
 };
 
 const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(

@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { select, number } from "@storybook/addon-knobs";
+import { select, number, boolean } from "@storybook/addon-knobs";
 import Popover from "./Popover";
 
 const Container = styled.div`
@@ -52,6 +52,7 @@ export const Overview = () => {
   );
   const offsetX = number("Offset X", 0);
   const offsetY = number("Offset Y", 10);
+  const isOpen = boolean("IsOpen", true);
 
   const [
     buttonElement,
@@ -62,6 +63,7 @@ export const Overview = () => {
     <Container>
       <BaseElement ref={setButtonElement}>Base element</BaseElement>
       <Popover
+        isOpen={isOpen}
         baseElement={buttonElement}
         positionPriority={[position]}
         offset={[offsetX, offsetY]}

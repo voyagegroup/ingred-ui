@@ -1,1 +1,1 @@
-export { default, GrowProps } from "./Grow";
+export { default } from "./Grow";

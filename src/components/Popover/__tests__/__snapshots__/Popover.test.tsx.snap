@@ -9,10 +9,15 @@ exports[`Popover component testing Popover 1`] = `
       class="sc-AxiKw gUGIcH sc-AxhCb hzmVaE"
     />
     <div
-      class="sc-AxjAm bHwAjl"
       style="position: absolute; left: 0px; top: 0px;"
     >
-      hoge
+      <div
+        class="sc-AxjAm bHwAjl sc-AxhUy crOYeu"
+      >
+        <div>
+          hoge
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>

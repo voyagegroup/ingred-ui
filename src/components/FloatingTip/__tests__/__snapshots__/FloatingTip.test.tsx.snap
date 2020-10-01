@@ -9,43 +9,46 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
       class="sc-AxgMl cfckGA sc-AxheI zRPCd"
     />
     <div
-      class="sc-AxhCb fescVK"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-AxjAm ldmlCS"
+        class="sc-AxhCb fescVK sc-Axmtr lksCpF"
       >
         <div
-          class="sc-AxirZ erZjJG"
-        >
-          <div>
-            hoge
-          </div>
-        </div>
-        <div
-          class="sc-AxiKw gOnsof"
+          class="sc-AxjAm ldmlCS"
         >
           <div
-            class="sc-Axmtr dOuQux"
-            size="18"
+            class="sc-AxirZ erZjJG"
           >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
+            <div>
+              hoge
+            </div>
+          </div>
+          <div
+            class="sc-AxiKw gOnsof"
+          >
+            <div
+              class="sc-AxmLO ksOsqc"
+              size="18"
             >
-              <rect
-                fill="#041C33"
-                height="23.141"
-                transform="translate(18.364 2) rotate(45)"
-                width="5.142"
-              />
-              <rect
-                fill="#041C33"
-                height="23.141"
-                transform="translate(2 5.636) rotate(-45)"
-                width="5.143"
-              />
-            </svg>
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(18.364 2) rotate(45)"
+                  width="5.142"
+                />
+                <rect
+                  fill="#041C33"
+                  height="23.141"
+                  transform="translate(2 5.636) rotate(-45)"
+                  width="5.143"
+                />
+              </svg>
+            </div>
           </div>
         </div>
       </div>

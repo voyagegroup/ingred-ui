@@ -39,68 +39,68 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     class="sc-fzplWN cFdOwr"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
-    />
-    <div
-      class="sc-fzpans fvaVJK"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-AxmLO eHBXod"
+        class="sc-fzpans fvaVJK sc-fznZeY bRRGyn"
       >
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
         <div
-          class="sc-fzozJi jwtAGz"
+          class="sc-AxmLO eHBXod"
         >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存して実行する
-          </p>
-        </div>
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存して実行する
+            </p>
+          </div>
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            下書きとして保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              下書きとして保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            やっぱり何もしない
-          </p>
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              やっぱり何もしない
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -146,71 +146,74 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     class="sc-fzplWN kYgXIv"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-fzpans fvaVJK"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="sc-AxmLO eHBXod"
+        class="sc-fzpans fvaVJK sc-fznZeY bRRGyn grow-transition-enter grow-transition-enter-active"
       >
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
         <div
-          class="sc-fzozJi jwtAGz"
+          class="sc-AxmLO eHBXod"
         >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存して実行する
-          </p>
-        </div>
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存して実行する
+            </p>
+          </div>
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            下書きとして保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              下書きとして保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            やっぱり何もしない
-          </p>
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              やっぱり何もしない
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -265,68 +268,68 @@ exports[`DropdownButton component testing splited disable 1`] = `
     class="sc-fzplWN cFdOwr"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
-    />
-    <div
-      class="sc-fzpans fvaVJK"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-AxmLO eHBXod"
+        class="sc-fzpans fvaVJK sc-fznZeY bRRGyn"
       >
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
         <div
-          class="sc-fzozJi jwtAGz"
+          class="sc-AxmLO eHBXod"
         >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存して実行する
-          </p>
-        </div>
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存して実行する
+            </p>
+          </div>
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            下書きとして保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              下書きとして保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            やっぱり何もしない
-          </p>
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              やっぱり何もしない
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -379,71 +382,74 @@ exports[`DropdownButton component testing splited enable 1`] = `
     class="sc-fzplWN kYgXIv"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-fzpans fvaVJK"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
     >
       <div
-        class="sc-AxmLO eHBXod"
+        class="sc-fzpans fvaVJK sc-fznZeY bRRGyn grow-transition-enter grow-transition-enter-active"
       >
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
         <div
-          class="sc-fzozJi jwtAGz"
+          class="sc-AxmLO eHBXod"
         >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            保存して実行する
-          </p>
-        </div>
-        <hr
-          class="sc-fzoLsD jyvfHQ"
-          color="#EFF1F2"
-          orientation="horizontal"
-        />
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              保存して実行する
+            </p>
+          </div>
+          <hr
+            class="sc-fzoLsD jyvfHQ"
+            color="#EFF1F2"
+            orientation="horizontal"
+          />
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            下書きとして保存する
-          </p>
-        </div>
-        <div
-          class="sc-fzozJi jwtAGz"
-        >
-          <p
-            class="sc-AxjAm dflXoF"
-            color="#041C33"
-            font-size="13px"
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              下書きとして保存する
+            </p>
+          </div>
+          <div
+            class="sc-fzozJi jwtAGz"
           >
-            やっぱり何もしない
-          </p>
+            <p
+              class="sc-AxjAm dflXoF"
+              color="#041C33"
+              font-size="13px"
+            >
+              やっぱり何もしない
+            </p>
+          </div>
         </div>
       </div>
     </div>
