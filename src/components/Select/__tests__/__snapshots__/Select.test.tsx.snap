@@ -9,7 +9,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
       class=" css-14jk2my-container"
     >
       <div
-        class=" css-1oxl2dk-control"
+        class=" css-7n5mtx-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -169,7 +169,7 @@ exports[`Select component testing Disable not selected 1`] = `
       class=" css-14jk2my-container"
     >
       <div
-        class=" css-1oxl2dk-control"
+        class=" css-7n5mtx-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -273,7 +273,7 @@ exports[`Select component testing Disable one selected 1`] = `
       class=" css-14jk2my-container"
     >
       <div
-        class=" css-1oxl2dk-control"
+        class=" css-7n5mtx-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -377,7 +377,7 @@ exports[`Select component testing Error multiple selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-17azi0e-control"
+        class=" css-15ys67v-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -567,7 +567,7 @@ exports[`Select component testing Error not selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-17azi0e-control"
+        class=" css-15ys67v-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -670,7 +670,7 @@ exports[`Select component testing Error one selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-17azi0e-control"
+        class=" css-15ys67v-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -804,7 +804,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-1psjvfh-control"
+        class=" css-1ukuozi-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -994,7 +994,7 @@ exports[`Select component testing Normal not selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-1psjvfh-control"
+        class=" css-1ukuozi-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
@@ -1097,7 +1097,7 @@ exports[`Select component testing Normal one selected 1`] = `
       class=" css-2b097c-container"
     >
       <div
-        class=" css-1psjvfh-control"
+        class=" css-1ukuozi-control"
       >
         <div
           class=" css-12ms9px-ValueContainer"
