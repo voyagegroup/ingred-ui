@@ -6,49 +6,46 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
     class="sc-AxhUy hEpkdT"
   >
     <div
-      class="sc-AxgMl cfckGA sc-AxheI zRPCd"
+      class="sc-AxgMl cfckGA sc-AxheI efXtLA fade-transition-appear fade-transition-appear-active"
     />
     <div
+      class="sc-AxhCb fescVK sc-Axmtr eUsOxA grow-transition-appear grow-transition-appear-active"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-AxhCb fescVK sc-Axmtr lksCpF"
+        class="sc-AxjAm ldmlCS"
       >
         <div
-          class="sc-AxjAm ldmlCS"
+          class="sc-AxirZ erZjJG"
+        >
+          <div>
+            hoge
+          </div>
+        </div>
+        <div
+          class="sc-AxiKw gOnsof"
         >
           <div
-            class="sc-AxirZ erZjJG"
+            class="sc-AxmLO ksOsqc"
+            size="18"
           >
-            <div>
-              hoge
-            </div>
-          </div>
-          <div
-            class="sc-AxiKw gOnsof"
-          >
-            <div
-              class="sc-AxmLO ksOsqc"
-              size="18"
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  fill="#041C33"
-                  height="23.141"
-                  transform="translate(18.364 2) rotate(45)"
-                  width="5.142"
-                />
-                <rect
-                  fill="#041C33"
-                  height="23.141"
-                  transform="translate(2 5.636) rotate(-45)"
-                  width="5.143"
-                />
-              </svg>
-            </div>
+              <rect
+                fill="#041C33"
+                height="23.141"
+                transform="translate(18.364 2) rotate(45)"
+                width="5.142"
+              />
+              <rect
+                fill="#041C33"
+                height="23.141"
+                transform="translate(2 5.636) rotate(-45)"
+                width="5.143"
+              />
+            </svg>
           </div>
         </div>
       </div>

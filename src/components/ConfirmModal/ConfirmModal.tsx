@@ -68,7 +68,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
     setIsTipOpen(isTipOpen);
   };
   return (
-    <Modal isOpen={isOpen} enableTransition={true}>
+    <Modal isOpen={isOpen}>
       <Fade in={isOpen}>
         <Styled.ModalContainer fullSize={fullSize}>
           <form onSubmit={onSubmit}>

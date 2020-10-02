@@ -11,7 +11,6 @@ export type TransitionComponent = typeof Fade | typeof Grow;
 export const getDuration = (
   timeout: CSSTransitionProps["timeout"],
   state: "enter" | "exit",
-  // ): number => (typeof timeout === "number" ? timeout : timeout[state] || 0);
 ): number => {
   switch (typeof timeout) {
     case "number":

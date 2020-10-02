@@ -39,74 +39,71 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     class="sc-fzozJi bmbTcg"
   >
     <div
-      class="sc-fzoLsD bmnYDj sc-fzpans iPJBFY fade-transition-enter fade-transition-enter-active"
+      class="sc-fzoLsD bmnYDj sc-fzpans gkSRDV fade-transition-enter fade-transition-enter-active"
     />
     <div
+      class="sc-AxmLO hgyfBR sc-fzplWN ezieFH grow-transition-enter grow-transition-enter-active"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-AxmLO hgyfBR sc-fzplWN dJFHiW grow-transition-enter grow-transition-enter-active"
+        class="sc-AxgMl jsGhuJ"
       >
+        <hr
+          class="sc-Axmtr iUfaAm"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
         <div
-          class="sc-AxgMl jsGhuJ"
+          class="sc-AxheI lhRPPk"
         >
-          <hr
-            class="sc-Axmtr iUfaAm"
-            color="#EFF1F2"
-            orientation="horizontal"
-          />
-          <div
-            class="sc-AxheI lhRPPk"
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
           >
-            <p
-              class="sc-AxhCb kdcBdC"
-              color="#041C33"
-              font-size="13px"
-            >
-              保存する
-            </p>
-          </div>
-          <div
-            class="sc-AxheI lhRPPk"
+            保存する
+          </p>
+        </div>
+        <div
+          class="sc-AxheI lhRPPk"
+        >
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
           >
-            <p
-              class="sc-AxhCb kdcBdC"
-              color="#041C33"
-              font-size="13px"
-            >
-              保存して実行する
-            </p>
-          </div>
-          <hr
-            class="sc-Axmtr iUfaAm"
-            color="#EFF1F2"
-            orientation="horizontal"
-          />
-          <div
-            class="sc-AxheI lhRPPk"
+            保存して実行する
+          </p>
+        </div>
+        <hr
+          class="sc-Axmtr iUfaAm"
+          color="#EFF1F2"
+          orientation="horizontal"
+        />
+        <div
+          class="sc-AxheI lhRPPk"
+        >
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
           >
-            <p
-              class="sc-AxhCb kdcBdC"
-              color="#041C33"
-              font-size="13px"
-            >
-              下書きとして保存する
-            </p>
-          </div>
-          <div
-            class="sc-AxheI lhRPPk"
+            下書きとして保存する
+          </p>
+        </div>
+        <div
+          class="sc-AxheI lhRPPk"
+        >
+          <p
+            class="sc-AxhCb kdcBdC"
+            color="#041C33"
+            font-size="13px"
           >
-            <p
-              class="sc-AxhCb kdcBdC"
-              color="#041C33"
-              font-size="13px"
-            >
-              やっぱり何もしない
-            </p>
-          </div>
+            やっぱり何もしない
+          </p>
         </div>
       </div>
     </div>
