@@ -10,6 +10,7 @@ const Grow: React.FunctionComponent<CSSTransitionProps> = ({
 }) => {
   return (
     <Styled.CSSTransition
+      appear={true}
       timeout={timeout}
       classNames={Styled.transitionClass}
       {...rest}

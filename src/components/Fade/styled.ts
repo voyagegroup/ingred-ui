@@ -8,11 +8,11 @@ import {
 export const transitionClass = "fade-transition";
 
 export const CSSTransition = styled(OriginalCSSTransition)<CSSTransitionProps>`
-  &.${transitionClass}-enter {
+  &.${transitionClass}-enter, &.${transitionClass}-appear {
     opacity: 0;
   }
 
-  &.${transitionClass}-enter-active {
+  &.${transitionClass}-enter-active, &.${transitionClass}-appear-active {
     opacity: 1;
     transition: opacity ${({ timeout }) => getDuration(timeout, "enter")}ms;
   }

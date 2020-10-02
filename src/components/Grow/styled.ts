@@ -8,11 +8,11 @@ import {
 export const transitionClass = "grow-transition";
 
 export const CSSTransition = styled(OriginalCSSTransition)<CSSTransitionProps>`
-  &.${transitionClass}-enter {
+  &.${transitionClass}-enter, &.${transitionClass}-appear {
     transform: scale(0);
   }
 
-  &.${transitionClass}-enter-active {
+  &.${transitionClass}-enter-active, &.${transitionClass}-appear-active {
     transform: none;
     transition: transform ${({ timeout }) => getDuration(timeout, "enter")}ms;
   }
