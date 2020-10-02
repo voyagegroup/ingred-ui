@@ -7,7 +7,7 @@ exports[`Pager component testing Pager 1`] = `
     display="flex"
   >
     <button
-      class="sc-AxiKw fxOKAu"
+      class="sc-AxiKw fyvUFW"
       disabled=""
       type="button"
     >
@@ -26,7 +26,7 @@ exports[`Pager component testing Pager 1`] = `
           />
           <path
             d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
-            fill="#D1D5DA"
+            fill="#B3BAC1"
           />
         </svg>
       </div>
