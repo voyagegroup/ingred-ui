@@ -16,13 +16,19 @@ describe("Modal component testing", () => {
   afterEach(cleanup);
 
   test("Modal without background", () => {
-    const { asFragment } = renderWithThemeProvider(<Modal />);
+    const { asFragment } = renderWithThemeProvider(
+      <Modal>
+        <div>hoge</div>
+      </Modal>,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   test("Modal with background", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Modal hasBackground={true} />,
+      <Modal hasBackground={true}>
+        <div>hoge</div>
+      </Modal>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

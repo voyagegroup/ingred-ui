@@ -4,6 +4,11 @@ import Portal from "../Portal";
 import Backdrop, { BackdropProps } from "../Backdrop";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 
+const getHasTransition = (props: React.PropsWithChildren<any>): boolean => {
+  // eslint-disable-next-line no-prototype-builtins
+  return props.hasOwnProperty("in");
+};
+
 // TODO: enable close with Escape key
 export type ModalCloseReason = "backdropClick";
 
@@ -16,6 +21,7 @@ export type ModalProps = {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason,
   ) => void;
+  children: React.ReactElement;
 };
 
 const Modal: React.FunctionComponent<ModalProps> = ({
@@ -23,7 +29,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   onClose,
   hasBackground = true,
   backdropProps,
-  enableTransition = false,
+  enableTransition = true,
   children,
 }) => {
   const [exited, setExited] = React.useState<boolean>(true);
@@ -42,12 +48,15 @@ const Modal: React.FunctionComponent<ModalProps> = ({
     setExited(true);
   };
 
-  const fadeProps: BackdropProps["fadeProps"] = { ...backdropProps?.fadeProps };
-  if (enableTransition) {
-    fadeProps.onEnter = createChainedFunction(fadeProps.onEnter, onHandleEnter);
-    fadeProps.onExited = createChainedFunction(
-      fadeProps.onExited,
+  const childProps: any = {};
+  if (enableTransition && getHasTransition(children.props)) {
+    childProps.onEnter = createChainedFunction(
+      onHandleEnter,
+      children.props.onEnter,
+    );
+    childProps.onExited = createChainedFunction(
       onHandleExited,
+      children.props.onExited,
     );
   }
 
@@ -58,11 +67,10 @@ const Modal: React.FunctionComponent<ModalProps> = ({
           <Backdrop
             {...backdropProps}
             isOpen={!enableTransition || isOpen}
-            fadeProps={fadeProps}
             onClick={onHandleBackDropClick}
           />
         )}
-        {children}
+        {React.cloneElement(children, childProps)}
       </Styled.Container>
     </Portal>
   );
