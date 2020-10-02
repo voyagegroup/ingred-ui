@@ -60,6 +60,12 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
           mainAxis: false,
         },
       },
+      {
+        name: "computeStyles",
+        options: {
+          gpuAcceleration: false, // MEMO: To disable override CSS property "transform"
+        },
+      },
     ],
   });
 
@@ -67,23 +73,22 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
     <Modal
       isOpen={isOpen}
       backdropProps={{ invisible: true }}
-      enableTransition={true}
       onClose={onClose}
     >
-      <div
-        ref={setPopperElement}
-        style={styles.popper}
-        {...attributes.popper}
-        {...rest}
+      <TransitionComponent
+        in={isOpen}
+        {...transitionProps}
+        timeout={transitionDuration || transitionProps.timeout}
       >
-        <TransitionComponent
-          in={isOpen}
-          {...transitionProps}
-          timeout={transitionDuration || transitionProps.timeout}
+        <Styled.Container
+          ref={setPopperElement}
+          style={styles.popper}
+          {...attributes.popper}
+          {...rest}
         >
-          <Styled.Container>{children}</Styled.Container>
-        </TransitionComponent>
-      </div>
+          {children}
+        </Styled.Container>
+      </TransitionComponent>
     </Modal>
   );
 };
