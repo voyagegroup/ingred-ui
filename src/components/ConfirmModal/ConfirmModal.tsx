@@ -11,8 +11,10 @@ import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
 import ActionButton from "../ActionButton";
 import { IconName } from "../Icon/Icon";
-import Modal from "../Modal";
+import Modal, { ModalCloseReason } from "../Modal";
 import Fade from "../Fade";
+
+export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
 export type SubAction = {
   title: string;
@@ -24,7 +26,10 @@ export type ConfirmModalProps = {
   title: string;
   confirmText?: string;
   cancelText?: string;
-  onClose?: () => void;
+  onClose?: (
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+    reason: ModalCloseReason | ConfirmModalCloseReason,
+  ) => void;
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   buttonColor?: ButtonColor;
   isOpen?: boolean;
@@ -64,11 +69,19 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
     setIconWrapperElement,
   ] = React.useState<HTMLDivElement | null>(null);
   const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
+
   const onHandleIsTipOpen = (isTipOpen: boolean) => () => {
     setIsTipOpen(isTipOpen);
   };
+
+  const onHandleClose = (reason: ConfirmModalCloseReason) => (
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+  ) => {
+    if (onClose) onClose(event, reason);
+  };
+
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <Fade in={isOpen}>
         <Styled.ModalContainer fullSize={fullSize}>
           <form onSubmit={onSubmit}>
@@ -108,7 +121,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                   </Spacer>
                 ))}
               </Styled.LeftContainer>
-              <Styled.IconContainer onClick={onClose}>
+              <Styled.IconContainer onClick={onHandleClose("clickCloseIcon")}>
                 <Icon name="close" size="lg" color={theme.palette.black} />
               </Styled.IconContainer>
             </Styled.ModalHeader>
@@ -129,7 +142,11 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
               <Styled.ModalFooter fullSize={fullSize}>
                 <Flex display="flex" alignItems="center">
                   <Spacer pr={2}>
-                    <Button type="button" color="secondary" onClick={onClose}>
+                    <Button
+                      type="button"
+                      color="secondary"
+                      onClick={onHandleClose("clickCancelButton")}
+                    >
                       {cancelText}
                     </Button>
                   </Spacer>
