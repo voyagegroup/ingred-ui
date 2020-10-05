@@ -163,7 +163,7 @@ const Select: SelectComponent = ({
   const theme = useTheme();
   let i = 0;
   const filterOption: SelectProps<string | number>["filterOption"] = limit
-    ? ({ label }, query) => `${label}`.indexOf(query) >= 0 && i++ < limit
+    ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
   const onHandleInputChange: SelectProps<string | number>["onInputChange"] = (
     newValue,
