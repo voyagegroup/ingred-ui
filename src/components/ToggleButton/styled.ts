@@ -56,7 +56,7 @@ export const Label = styled.label<LabelProps>`
   background-color: ${({ active, disabled, theme }) =>
     active && !disabled
       ? theme.palette.background.hint
-      : theme.palette.gray.highlight};
+      : theme.palette.gray.light};
   border: 1px solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};

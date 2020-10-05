@@ -17,16 +17,13 @@ export const ArrowButton: React.FunctionComponent<Props> = ({
 }) => {
   const theme = useTheme();
   return (
-    <Styled.ArrowButton
-      disabled={disabled}
-      active={disabled}
-      type="button"
-      onClick={onClick}
-    >
+    <Styled.ArrowButton disabled={disabled} type="button" onClick={onClick}>
       <Icon
         name={isRight ? "arrow_right" : "arrow_left"}
         size="lg"
-        color={disabled ? theme.palette.gray.main : theme.palette.icon.active}
+        color={
+          disabled ? theme.palette.text.disabled : theme.palette.icon.active
+        }
       />
     </Styled.ArrowButton>
   );

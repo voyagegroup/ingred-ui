@@ -6,7 +6,7 @@ exports[`DataTable component testing DataTable 1`] = `
     class="sc-AxjAm krjTuO"
   >
     <div
-      class="sc-AxirZ cAXuXf"
+      class="sc-AxirZ fdaJMX"
     >
       <div
         class="sc-AxiKw gjtbZd"
@@ -19,7 +19,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC iiZvqF"
             >
               <th
-                class="sc-fzoLsD eEDAEM"
+                class="sc-fzoLsD hGzEVt"
                 width="auto"
               >
                 <div
@@ -36,7 +36,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </div>
               </th>
               <th
-                class="sc-fzoLsD eEDAEM"
+                class="sc-fzoLsD hGzEVt"
                 width="auto"
               >
                 <div
@@ -59,7 +59,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC iiZvqF"
             >
               <td
-                class="sc-fzoXzr eGDaoP"
+                class="sc-fzoXzr ixnYnC"
                 rowspan="1"
                 width="auto"
               >
@@ -72,7 +72,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr eGDaoP"
+                class="sc-fzoXzr ixnYnC"
                 rowspan="1"
                 width="auto"
               >
@@ -89,7 +89,7 @@ exports[`DataTable component testing DataTable 1`] = `
               class="sc-fzpjYC iiZvqF"
             >
               <td
-                class="sc-fzoXzr eGDaoP"
+                class="sc-fzoXzr ixnYnC"
                 rowspan="1"
                 width="auto"
               >
@@ -102,7 +102,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-fzoXzr eGDaoP"
+                class="sc-fzoXzr ixnYnC"
                 rowspan="1"
                 width="auto"
               >

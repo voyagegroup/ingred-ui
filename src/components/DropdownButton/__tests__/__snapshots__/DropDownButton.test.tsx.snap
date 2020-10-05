@@ -234,7 +234,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw bqdRkp sc-AxgMl hGPnli"
+      class="sc-AxirZ sc-AxiKw bqdRkp sc-AxgMl fYhcsn"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -349,7 +349,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       保存する
     </button>
     <button
-      class="sc-AxirZ sc-AxiKw QnZp sc-AxgMl hGPnli"
+      class="sc-AxirZ sc-AxiKw QnZp sc-AxgMl fYhcsn"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"

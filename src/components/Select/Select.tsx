@@ -15,7 +15,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
   const overrideStyles: StylesConfig = {
     control: (base, { menuIsOpen }) => ({
       ...base,
-      boxShadow: `0 -2px 0 0 ${theme.palette.gray.light} inset`,
+      boxShadow: "none",
       borderTopColor: theme.palette.divider,
       borderRightColor: theme.palette.divider,
       borderLeftColor: theme.palette.divider,

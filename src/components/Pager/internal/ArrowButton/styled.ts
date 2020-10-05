@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type ButtonProps = {
-  active?: boolean;
+  disabled?: boolean;
 };
 
 export const ArrowButton = styled.button<ButtonProps>`
@@ -17,11 +17,11 @@ export const ArrowButton = styled.button<ButtonProps>`
   &:last-child {
     margin-left: 14px;
   }
-  background-color: ${({ active, theme }) =>
-    active ? theme.palette.gray.highlight : theme.palette.background.hint};
+  background-color: ${({ disabled, theme }) =>
+    disabled ? theme.palette.gray.light : theme.palette.background.hint};
   &:hover {
-    background-color: ${({ active, theme }) =>
-      active ? theme.palette.gray.highlight : theme.palette.primary.highlight};
-    cursor: ${({ active }) => (active ? "default" : "pointer")};
+    background-color: ${({ disabled, theme }) =>
+      disabled ? theme.palette.gray.light : theme.palette.primary.highlight};
+    cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   }
 `;
