@@ -31,54 +31,56 @@ export default {
   },
 };
 
-const options: OptionType[] = [
+type OptionTypeWithNumberValue = OptionType<number>;
+
+const options: OptionTypeWithNumberValue[] = [
   {
     label: "Adgeneration",
-    value: "1",
+    value: 1,
   },
   {
     label: "fluct",
-    value: "2",
+    value: 2,
   },
   {
     label: "Pubmatic",
-    value: "3",
+    value: 3,
   },
   {
     label: "Hoge",
-    value: "4",
+    value: 4,
   },
   {
     label: "Pubmatic",
-    value: "3",
+    value: 3,
   },
   {
     label: "Hoge",
-    value: "4",
+    value: 4,
   },
   {
     label: "Pubmatic",
-    value: "3",
+    value: 3,
   },
   {
     label: "Hoge",
-    value: "4",
+    value: 4,
   },
   {
     label: "Pubmatic",
-    value: "3",
+    value: 3,
   },
   {
     label: "Hoge",
-    value: "4",
+    value: 4,
   },
   {
     label: "Pubmatic",
-    value: "3",
+    value: 3,
   },
   {
     label: "Hoge",
-    value: "4",
+    value: 4,
   },
 ];
 
@@ -89,7 +91,8 @@ export const Overview = () => (
         <Typography weight="bold" size="xxl">
           Normal
         </Typography>
-        <Select
+        {/* MEMO: Can define Generics */}
+        <Select<number>
           options={options}
           minWidth="200px"
           onChange={action("onChange")}
