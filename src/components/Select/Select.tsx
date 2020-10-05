@@ -143,13 +143,17 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
 
 export type OptionType<T = string> = { label: string; value: T };
 
-export type SelectProps = {
+export type SelectProps<T> = {
   limit?: number;
   minWidth?: string;
   error?: boolean;
-} & ReactSelectProps;
+} & ReactSelectProps<OptionType<T>>;
 
-const Select: React.FunctionComponent<SelectProps> = ({
+export type SelectComponent = <T = string>(
+  props: SelectProps<T>,
+) => React.ReactElement<SelectProps<T>>;
+
+const Select: SelectComponent = ({
   limit,
   onInputChange,
   minWidth,
@@ -158,10 +162,10 @@ const Select: React.FunctionComponent<SelectProps> = ({
 }) => {
   const theme = useTheme();
   let i = 0;
-  const filterOption: SelectProps["filterOption"] = limit
+  const filterOption: SelectProps<string | number>["filterOption"] = limit
     ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
-  const onHandleInputChange: SelectProps["onInputChange"] = (
+  const onHandleInputChange: SelectProps<string | number>["onInputChange"] = (
     newValue,
     actionMeta,
   ) => {
