@@ -48,11 +48,11 @@ export const Overview: React.FunctionComponent = () => {
     },
     "top",
   );
-  const transitionComponent = select(
-    "Transition",
-    { grow: "Grow", fade: "fade" },
-    "Grow",
-  );
+  // const transitionComponent = select(
+  //   "Transition",
+  //   { grow: "Grow", fade: "fade" },
+  //   "Grow",
+  // );
   const offsetX = number("Offset X", 0);
   const offsetY = number("Offset Y", 10);
 
@@ -76,7 +76,8 @@ export const Overview: React.FunctionComponent = () => {
         baseElement={buttonElement}
         positionPriority={[position]}
         offset={[offsetX, offsetY]}
-        TransitionComponent={transitionComponent === "Grow" ? Grow : Fade}
+        // MEMO: ref https://github.com/voyagegroup/ingred-ui/issues/191
+        // TransitionComponent={transitionComponent === "Grow" ? Grow : Fade}
         onClose={onHandleToggleOpen}
       >
         <Content>hoge</Content>

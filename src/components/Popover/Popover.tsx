@@ -3,11 +3,6 @@ import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import Modal, { ModalProps } from "../Modal";
-import Grow from "../Grow";
-import {
-  CSSTransitionProps,
-  TransitionComponent,
-} from "../../utils/reactTransitionGroupUtils";
 
 export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
@@ -15,21 +10,18 @@ export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
-  TransitionComponent?: TransitionComponent;
-  transitionProps?: CSSTransitionProps;
-  transitionDuration?: number;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
+// TODO: Must decide detail transition (e.g. easing, transform-origin)
+// MEMO: We will add transition to this component.
+//       ref https://github.com/voyagegroup/ingred-ui/issues/191
 const Popover: React.FunctionComponent<PopoverProps> = ({
   isOpen = true,
   onClose,
   baseElement,
   offset = [0, 0],
   positionPriority = ["auto"],
-  TransitionComponent = Grow,
-  transitionProps = {},
-  transitionDuration,
   children,
   ...rest
 }) => {
@@ -75,20 +67,14 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
       backdropProps={{ invisible: true }}
       onClose={onClose}
     >
-      <TransitionComponent
-        in={isOpen}
-        {...transitionProps}
-        timeout={transitionDuration || transitionProps.timeout}
+      <Styled.Container
+        ref={setPopperElement}
+        style={styles.popper}
+        {...attributes.popper}
+        {...rest}
       >
-        <Styled.Container
-          ref={setPopperElement}
-          style={styles.popper}
-          {...attributes.popper}
-          {...rest}
-        >
-          {children}
-        </Styled.Container>
-      </TransitionComponent>
+        {children}
+      </Styled.Container>
     </Modal>
   );
 };
