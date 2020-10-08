@@ -101,7 +101,7 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   color?: ButtonColor;
   inline?: boolean;
   size?: ButtonSize;
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
   href?: string;
 };
 

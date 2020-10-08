@@ -17,7 +17,9 @@ describe("Popover component testing", () => {
 
   test("Popover", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Popover baseElement={null}>hoge</Popover>,
+      <Popover baseElement={null}>
+        <div>hoge</div>
+      </Popover>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -39,9 +39,6 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     class="sc-fzplWN cFdOwr"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
-    />
-    <div
       class="sc-fzpans fvaVJK"
       style="position: absolute; left: 0px; top: 0px;"
     >
@@ -146,14 +143,14 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     class="sc-fzplWN kYgXIv"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+      class="sc-fznyAO gSVmMi sc-fznKkj kPRjHh fade-transition-enter fade-transition-enter-active"
     />
     <div
       class="sc-fzpans fvaVJK"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; left: 0px; top: 0px;"
     >
       <div
         class="sc-AxmLO eHBXod"
@@ -264,9 +261,6 @@ exports[`DropdownButton component testing splited disable 1`] = `
   <div
     class="sc-fzplWN cFdOwr"
   >
-    <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
-    />
     <div
       class="sc-fzpans fvaVJK"
       style="position: absolute; left: 0px; top: 0px;"
@@ -379,14 +373,14 @@ exports[`DropdownButton component testing splited enable 1`] = `
     class="sc-fzplWN kYgXIv"
   >
     <div
-      class="sc-fznyAO gSVmMi sc-fznKkj cnhmaM"
+      class="sc-fznyAO gSVmMi sc-fznKkj kPRjHh fade-transition-enter fade-transition-enter-active"
     />
     <div
       class="sc-fzpans fvaVJK"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px; transform: translate(0px, 0px);"
+      style="position: absolute; left: 0px; top: 0px;"
     >
       <div
         class="sc-AxmLO eHBXod"

@@ -10,9 +10,13 @@ export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
   baseElement: HTMLElement | null;
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
-  children: React.ReactNode;
+  children: React.ComponentElement<HTMLElement, any>;
 };
 
+// TODO: Must decide detail transition (e.g. easing, transform-origin)
+// MEMO: We will add transition to this component.
+//       ref https://github.com/voyagegroup/ingred-ui/issues/191
+//       ref e10d4db15b36488922651ee3128df89d3006f82f
 const Popover: React.FunctionComponent<PopoverProps> = ({
   isOpen = true,
   onClose,
@@ -47,6 +51,12 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
         name: "preventOverflow",
         options: {
           mainAxis: false,
+        },
+      },
+      {
+        name: "computeStyles",
+        options: {
+          gpuAcceleration: false, // MEMO: To disable override CSS property "transform"
         },
       },
     ],

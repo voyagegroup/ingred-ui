@@ -6,8 +6,11 @@ exports[`Modal component testing Modal with background 1`] = `
     class="sc-AxjAm ZnMRp"
   >
     <div
-      class="sc-AxirZ bRfJRy sc-AxiKw gVORbU"
+      class="sc-AxirZ bRfJRy sc-AxiKw gDSvch fade-transition-appear fade-transition-appear-active"
     />
+    <div>
+      hoge
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -18,8 +21,11 @@ exports[`Modal component testing Modal without background 1`] = `
     class="sc-AxjAm ZnMRp"
   >
     <div
-      class="sc-AxirZ bRfJRy sc-AxiKw gVORbU"
+      class="sc-AxirZ bRfJRy sc-AxiKw gDSvch fade-transition-appear fade-transition-appear-active"
     />
+    <div>
+      hoge
+    </div>
   </div>
 </DocumentFragment>
 `;

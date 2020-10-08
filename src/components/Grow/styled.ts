@@ -5,28 +5,28 @@ import {
   getDuration,
 } from "../../utils/reactTransitionGroupUtils";
 
-export const transitionClass = "fade-transition";
+export const transitionClass = "grow-transition";
 
 export const CSSTransition = styled(OriginalCSSTransition)<CSSTransitionProps>`
   &.${transitionClass}-enter, &.${transitionClass}-appear {
-    opacity: 0;
+    transform: scale(0);
   }
 
   &.${transitionClass}-enter-active, &.${transitionClass}-appear-active {
-    opacity: 1;
-    transition: opacity ${({ timeout }) => getDuration(timeout, "enter")}ms;
+    transform: none;
+    transition: transform ${({ timeout }) => getDuration(timeout, "enter")}ms;
   }
 
   &.${transitionClass}-exit {
-    opacity: 1;
+    transform: none;
   }
 
   &.${transitionClass}-exit-active {
-    opacity: 0;
-    transition: opacity ${({ timeout }) => getDuration(timeout, "exit")}ms;
+    transform: scale(0);
+    transition: transform ${({ timeout }) => getDuration(timeout, "exit")}ms;
   }
 
   &.${transitionClass}-exit-done {
-    opacity: 0;
+    transform: scale(0);
   }
 `;

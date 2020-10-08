@@ -2,7 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
 
-const Fade: React.FunctionComponent<CSSTransitionProps> = ({
+const Grow: React.FunctionComponent<CSSTransitionProps> = ({
   // TODO: define and get duration from theme
   timeout = 300,
   children,
@@ -20,4 +20,4 @@ const Fade: React.FunctionComponent<CSSTransitionProps> = ({
   );
 };
 
-export default Fade;
+export default Grow;

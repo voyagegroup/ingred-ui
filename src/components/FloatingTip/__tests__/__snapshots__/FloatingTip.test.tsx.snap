@@ -6,7 +6,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
     class="sc-AxhUy hEpkdT"
   >
     <div
-      class="sc-AxgMl cfckGA sc-AxheI zRPCd"
+      class="sc-AxgMl cfckGA sc-AxheI efXtLA fade-transition-appear fade-transition-appear-active"
     />
     <div
       class="sc-AxhCb fescVK"

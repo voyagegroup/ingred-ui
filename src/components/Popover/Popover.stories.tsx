@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { select, number } from "@storybook/addon-knobs";
 import Popover from "./Popover";
+import Grow from "../Grow";
+import Fade from "../Fade";
 
 const Container = styled.div`
   display: flex;
@@ -20,10 +22,6 @@ const Content = styled.div`
   height: 200px;
 `;
 
-const BaseElement = styled.div`
-  border: 1px solid ${({ theme }) => theme.palette.divider};
-`;
-
 export default {
   title: "Popover",
   parameters: {
@@ -31,7 +29,7 @@ export default {
   },
 };
 
-export const Overview = () => {
+export const Overview: React.FunctionComponent = () => {
   const position = select(
     "Position",
     {
@@ -50,21 +48,37 @@ export const Overview = () => {
     },
     "top",
   );
+  // const transitionComponent = select(
+  //   "Transition",
+  //   { grow: "Grow", fade: "fade" },
+  //   "Grow",
+  // );
   const offsetX = number("Offset X", 0);
   const offsetY = number("Offset Y", 10);
 
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
   const [
     buttonElement,
     setButtonElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  ] = React.useState<HTMLButtonElement | null>(null);
+
+  const onHandleToggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <Container>
-      <BaseElement ref={setButtonElement}>Base element</BaseElement>
+      <button ref={setButtonElement} onClick={onHandleToggleOpen}>
+        Click me!
+      </button>
       <Popover
+        isOpen={isOpen}
         baseElement={buttonElement}
         positionPriority={[position]}
         offset={[offsetX, offsetY]}
+        // MEMO: ref https://github.com/voyagegroup/ingred-ui/issues/191
+        // TransitionComponent={transitionComponent === "Grow" ? Grow : Fade}
+        onClose={onHandleToggleOpen}
       >
         <Content>hoge</Content>
       </Popover>
