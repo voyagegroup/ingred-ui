@@ -9,7 +9,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
       class="sc-AxgMl cfckGA sc-AxheI efXtLA fade-transition-appear fade-transition-appear-active"
     />
     <div
-      class="sc-AxhCb fescVK sc-Axmtr eUsOxA grow-transition-appear grow-transition-appear-active"
+      class="sc-AxhCb fescVK"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
@@ -26,7 +26,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
           class="sc-AxiKw gOnsof"
         >
           <div
-            class="sc-AxmLO ksOsqc"
+            class="sc-Axmtr dOuQux"
             size="18"
           >
             <svg

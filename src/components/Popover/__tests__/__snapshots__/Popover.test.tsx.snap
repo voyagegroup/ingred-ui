@@ -9,7 +9,7 @@ exports[`Popover component testing Popover 1`] = `
       class="sc-AxiKw gUGIcH sc-AxhCb cJVObV fade-transition-appear fade-transition-appear-active"
     />
     <div
-      class="sc-AxjAm bHwAjl sc-AxhUy fjuCQb grow-transition-appear grow-transition-appear-active"
+      class="sc-AxjAm bHwAjl"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div>
