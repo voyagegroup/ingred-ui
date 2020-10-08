@@ -16,6 +16,7 @@ export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
 // TODO: Must decide detail transition (e.g. easing, transform-origin)
 // MEMO: We will add transition to this component.
 //       ref https://github.com/voyagegroup/ingred-ui/issues/191
+//       ref e10d4db15b36488922651ee3128df89d3006f82f
 const Popover: React.FunctionComponent<PopoverProps> = ({
   isOpen = true,
   onClose,
