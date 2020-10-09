@@ -2,8 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import { select, number } from "@storybook/addon-knobs";
 import Popover from "./Popover";
-import Grow from "../Grow";
-import Fade from "../Fade";
 
 const Container = styled.div`
   display: flex;
