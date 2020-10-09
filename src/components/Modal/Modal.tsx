@@ -26,10 +26,10 @@ export type ModalProps = {
 
 const Modal: React.FunctionComponent<ModalProps> = ({
   isOpen = true,
-  onClose,
   hasBackground = true,
   backdropProps,
   enableTransition = true,
+  onClose,
   children,
 }) => {
   const [exited, setExited] = React.useState<boolean>(true);

@@ -11,8 +11,9 @@ import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
 import ActionButton from "../ActionButton";
 import { IconName } from "../Icon/Icon";
-import Modal, { ModalCloseReason } from "../Modal";
+import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
@@ -40,6 +41,8 @@ export type ConfirmModalProps = {
   disableHorizontalPadding?: boolean;
   subActions?: SubAction[];
   tipElement?: JSX.Element;
+  modalProps?: ModalProps;
+  fadeProps?: CSSTransitionProps;
 
   // TypeScriptで型エラーが出るので一旦これでしのぐ
   children?: React.ReactNode;
@@ -61,6 +64,8 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   disableHorizontalPadding = false,
   subActions = [],
   tipElement,
+  modalProps,
+  fadeProps,
 }) => {
   const theme = useTheme();
   const showFooter = !!onSubmit;
@@ -81,8 +86,8 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <Fade in={isOpen}>
+    <Modal isOpen={isOpen} onClose={onClose} {...modalProps}>
+      <Fade in={isOpen} unmountOnExit={true} {...fadeProps}>
         <Styled.ModalContainer fullSize={fullSize}>
           <form onSubmit={onSubmit}>
             <Styled.ModalHeader>
