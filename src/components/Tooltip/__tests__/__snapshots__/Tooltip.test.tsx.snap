@@ -11,7 +11,7 @@ exports[`Tooltip component testing Tooltip 1`] = `
   >
     tooltip text
     <div
-      class="sc-AxjAm iHJmte"
+      class="sc-AxjAm eJGUOd"
       data-popper-arrow="true"
     />
   </div>

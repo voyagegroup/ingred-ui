@@ -1,6 +1,26 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
+import * as PopperJS from "@popperjs/core";
 
-export const Arrow = styled.div`
+const getArrowPosition = (
+  theme: DefaultTheme,
+  placements: PopperJS.Placement[],
+  currentPlacement?: PopperJS.Placement,
+) =>
+  currentPlacement && placements.includes(currentPlacement)
+    ? `${theme.spacing * 1.5}px`
+    : "auto";
+
+export const Arrow = styled.div<{ placement?: PopperJS.Placement }>`
+  position: absolute;
+  top: ${({ theme, placement }) =>
+    getArrowPosition(theme, ["left-start", "right-start"], placement)};
+  bottom: ${({ theme, placement }) =>
+    getArrowPosition(theme, ["left-end", "right-end"], placement)};
+  left: ${({ theme, placement }) =>
+    getArrowPosition(theme, ["top-start", "bottom-start"], placement)};
+  right: ${({ theme, placement }) =>
+    getArrowPosition(theme, ["top-end", "bottom-end"], placement)};
+
   z-index: -1;
   &:after {
     content: " ";
