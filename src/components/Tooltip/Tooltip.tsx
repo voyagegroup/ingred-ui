@@ -51,7 +51,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     };
   }, [openTimer, closeTimer]);
 
-  const { styles, attributes } = usePopper(baseElement, popperElement, {
+  const { styles, attributes, state } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],
     modifiers: [
       {
@@ -156,7 +156,21 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
               <Styled.Arrow
                 ref={setArrowElement}
                 data-popper-arrow
-                style={styles.arrow}
+                placement={state?.placement}
+                // MEMO: The following placements use popperJS default styles
+                style={
+                  [
+                    "auto",
+                    "auto-start",
+                    "auto-end",
+                    "top",
+                    "bottom",
+                    "right",
+                    "left",
+                  ].includes(state?.placement || "")
+                    ? styles.arrow
+                    : undefined
+                }
               />
             </Styled.Tooltip>
           </Fade>
