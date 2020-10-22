@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Annotation from ".";
+import SplitAnnotation from ".";
 import Typography from "../Typography";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
@@ -20,9 +20,9 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "Annotation",
+  title: " SplitAnnotation",
   parameters: {
-    component: Annotation,
+    component: SplitAnnotation,
   },
 };
 
@@ -37,9 +37,9 @@ export const Overview = () => (
         <Typography size="md" weight="bold">
           タイトル
         </Typography>
-        <Annotation>
+        <SplitAnnotation>
           <Typography size="sm">注釈はこのように表示されます。</Typography>
-        </Annotation>
+        </SplitAnnotation>
       </Flex>
     </RowContainer>
     <RowContainer>
@@ -51,10 +51,10 @@ export const Overview = () => (
         <Typography size="md" weight="bold">
           タイトル
         </Typography>
-        <Annotation>
+        <SplitAnnotation>
           <Typography size="sm">注釈はこのように表示されます。</Typography>
           <Typography size="sm">注釈はこのように表示されます。</Typography>
-        </Annotation>
+        </SplitAnnotation>
       </Flex>
     </RowContainer>
   </Container>

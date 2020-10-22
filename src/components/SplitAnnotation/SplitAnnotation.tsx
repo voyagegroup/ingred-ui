@@ -4,10 +4,10 @@ import Spacer from "../Spacer";
 
 export type Props = {};
 
-const Annotation: React.FunctionComponent<Props> = ({ children }) => (
+const SplitAnnotation: React.FunctionComponent<Props> = ({ children }) => (
   <Spacer pl={1}>
     <Styled.Container>{children}</Styled.Container>
   </Spacer>
 );
 
-export default Annotation;
+export default SplitAnnotation;

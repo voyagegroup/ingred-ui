@@ -1,15 +1,15 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import Annotation from "..";
+import SplitAnnotation from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
-describe("Annotation component testing", () => {
+describe("SplitAnnotation component testing", () => {
   afterEach(cleanup);
 
   test("ActionButton", () => {
     const { asFragment } = renderWithThemeProvider(
-      <Annotation>Annnotation</Annotation>,
+      <SplitAnnotation>Annnotation</SplitAnnotation>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
