@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SplitAnnotation component testing ActionButton 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-AxirZ cKrgRj"
+  >
+    <div
+      class="sc-AxjAm itZwQl"
+    >
+      Annnotation
+    </div>
+  </div>
+</DocumentFragment>
+`;
