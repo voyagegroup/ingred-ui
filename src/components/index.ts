@@ -2,6 +2,9 @@
 export { default as ActionButton } from "./ActionButton";
 export * from "./ActionButton";
 
+export { default as Annotation } from "./Annotation";
+export * from "./Annotation";
+
 export { default as Backdrop } from "./Backdrop";
 export * from "./Backdrop";
 
