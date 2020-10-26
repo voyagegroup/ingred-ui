@@ -1,13 +1,18 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import Spacer from "../Spacer";
+import Divider from "../Divider";
+import Flex from "../Flex";
+import * as Styled from "./styled";
 
 export type Props = {};
 
 const SplitAnnotation: React.FunctionComponent<Props> = ({ children }) => (
-  <Spacer pl={1}>
+  <Flex display="flex">
+    <Spacer pr={1} />
+    <Divider orientation="vertical" />
+    <Spacer pr={1} />
     <Styled.Container>{children}</Styled.Container>
-  </Spacer>
+  </Flex>
 );
 
 export default SplitAnnotation;
