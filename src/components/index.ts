@@ -2,6 +2,9 @@
 export { default as ActionButton } from "./ActionButton";
 export * from "./ActionButton";
 
+export { default as SplitAnnotation } from "./SplitAnnotation";
+export * from "./SplitAnnotation";
+
 export { default as Backdrop } from "./Backdrop";
 export * from "./Backdrop";
 
