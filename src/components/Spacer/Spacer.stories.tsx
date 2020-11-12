@@ -51,7 +51,7 @@ export const Overview = () => (
     </Typography>
     <ul>
       {marginProps.map((l) => (
-        <li>{l}</li>
+        <li key={l}>{l}</li>
       ))}
     </ul>
 
@@ -60,7 +60,7 @@ export const Overview = () => (
     </Typography>
     <ul>
       {paddingProps.map((l) => (
-        <li>{l}</li>
+        <li key={l}>{l}</li>
       ))}
     </ul>
 
