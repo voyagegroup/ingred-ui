@@ -3,14 +3,14 @@
 exports[`ErrorText component testing ErrorText 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxhCb egMkCy"
+    class="sc-hKgILt cjZGgd"
     display="flex"
   >
     <div
-      class="sc-AxirZ coKwIH"
+      class="sc-gsTCUz esyKal"
     >
       <div
-        class="sc-AxjAm dvjUMs"
+        class="sc-bdfBwQ hvbojt"
         size="18"
       >
         <svg
@@ -30,7 +30,7 @@ exports[`ErrorText component testing ErrorText 1`] = `
       </div>
     </div>
     <p
-      class="sc-AxiKw caPvAk"
+      class="sc-dlfnbm hmhpPt"
       color="#EB0A4E"
       font-size="14px"
     >

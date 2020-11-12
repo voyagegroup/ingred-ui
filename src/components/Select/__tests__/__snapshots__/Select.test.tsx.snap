@@ -3,7 +3,7 @@
 exports[`Select component testing Disable multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-14jk2my-container"
@@ -26,7 +26,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -61,7 +61,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -118,10 +118,10 @@ exports[`Select component testing Disable multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -163,7 +163,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
 exports[`Select component testing Disable not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-14jk2my-container"
@@ -213,10 +213,10 @@ exports[`Select component testing Disable not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -267,7 +267,7 @@ exports[`Select component testing Disable not selected 1`] = `
 exports[`Select component testing Disable one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-14jk2my-container"
@@ -317,10 +317,10 @@ exports[`Select component testing Disable one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -371,7 +371,7 @@ exports[`Select component testing Disable one selected 1`] = `
 exports[`Select component testing Error multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -394,7 +394,7 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -429,7 +429,7 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -481,14 +481,14 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy kKSXOz"
+            class="sc-eCssSg gIOVBe"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -516,10 +516,10 @@ exports[`Select component testing Error multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -561,7 +561,7 @@ exports[`Select component testing Error multiple selected 1`] = `
 exports[`Select component testing Error not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -610,10 +610,10 @@ exports[`Select component testing Error not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -664,7 +664,7 @@ exports[`Select component testing Error not selected 1`] = `
 exports[`Select component testing Error one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -709,14 +709,14 @@ exports[`Select component testing Error one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy kKSXOz"
+            class="sc-eCssSg gIOVBe"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -744,10 +744,10 @@ exports[`Select component testing Error one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -798,7 +798,7 @@ exports[`Select component testing Error one selected 1`] = `
 exports[`Select component testing Normal multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -821,7 +821,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -856,7 +856,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="css-19h014q"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -908,14 +908,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy kKSXOz"
+            class="sc-eCssSg gIOVBe"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -943,10 +943,10 @@ exports[`Select component testing Normal multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -988,7 +988,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
 exports[`Select component testing Normal not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -1037,10 +1037,10 @@ exports[`Select component testing Normal not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
@@ -1091,7 +1091,7 @@ exports[`Select component testing Normal not selected 1`] = `
 exports[`Select component testing Normal one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm icRfnh"
+    class="sc-bdfBwQ fQdfBQ"
   >
     <div
       class=" css-2b097c-container"
@@ -1136,14 +1136,14 @@ exports[`Select component testing Normal one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-AxhUy kKSXOz"
+            class="sc-eCssSg gIOVBe"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-AxiKw kKGUrf"
+                class="sc-dlfnbm hnsUFa"
                 size="12"
               >
                 <svg
@@ -1171,10 +1171,10 @@ exports[`Select component testing Normal one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-AxhCb ijFnGd"
+              class="sc-hKgILt ivLANu"
             >
               <div
-                class="sc-AxiKw hkUKuj"
+                class="sc-dlfnbm cDOLxW"
                 size="24"
               >
                 <svg
