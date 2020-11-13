@@ -1,22 +1,22 @@
-import * as CSS from "csstype";
+import { Property } from "csstype";
 import styled from "styled-components";
 
 type TLengthStyledSystem = string | 0 | number;
 export type FlexProps = {
   display?: "flex";
-  height?: CSS.HeightProperty<TLengthStyledSystem>;
-  alignItems?: CSS.AlignItemsProperty;
-  alignContent?: CSS.AlignContentProperty;
-  justifyItems?: CSS.JustifyItemsProperty;
-  justifyContent?: CSS.JustifyContentProperty;
-  flexWrap?: CSS.FlexWrapProperty;
-  flexDirection?: CSS.FlexDirectionProperty;
-  flex?: CSS.FlexProperty<TLengthStyledSystem>;
-  flexGrow?: CSS.GlobalsNumber;
-  flexShrink?: CSS.GlobalsNumber;
-  flexBasis?: CSS.FlexBasisProperty<TLengthStyledSystem>;
-  justifySelf?: CSS.JustifySelfProperty;
-  alignSelf?: CSS.AlignSelfProperty;
+  height?: Property.Height<TLengthStyledSystem>;
+  alignItems?: Property.AlignItems;
+  alignContent?: Property.AlignContent;
+  justifyItems?: Property.JustifyItems;
+  justifyContent?: Property.JustifyContent;
+  flexWrap?: Property.FlexWrap;
+  flexDirection?: Property.FlexDirection;
+  flex?: Property.Flex<TLengthStyledSystem>;
+  flexGrow?: Property.FlexGrow;
+  flexShrink?: Property.FlexShrink;
+  flexBasis?: Property.FlexBasis<TLengthStyledSystem>;
+  justifySelf?: Property.JustifySelf;
+  alignSelf?: Property.AlignSelf;
 };
 
 const camelToKebab = (string: string) => {

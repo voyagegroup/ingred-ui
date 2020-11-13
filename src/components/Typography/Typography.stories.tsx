@@ -46,13 +46,17 @@ export const Overview = () => (
     <h2>Sizes</h2>
     <RowContainer>
       {sizes.map((s) => (
-        <Typography size={s}>{s}</Typography>
+        <Typography key={s} size={s}>
+          {s}
+        </Typography>
       ))}
     </RowContainer>
     <h2>Colors</h2>
     <RowContainer>
       {colors.map((c) => (
-        <Typography color={c}>{c}</Typography>
+        <Typography key={c} color={c}>
+          {c}
+        </Typography>
       ))}
     </RowContainer>
     <h2>Weight</h2>
@@ -63,7 +67,9 @@ export const Overview = () => (
     <h2>Align</h2>
     <RowContainer>
       {aligns.map((a) => (
-        <Typography align={a}>{a}</Typography>
+        <Typography key={a} align={a}>
+          {a}
+        </Typography>
       ))}
     </RowContainer>
   </Container>

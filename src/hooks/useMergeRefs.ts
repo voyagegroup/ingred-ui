@@ -22,5 +22,5 @@ export function useMergeRefs<T>(...refs: ReactRef<T>[]): ReactRef<T> {
         }
       }
     };
-  }, [refs]);
+  }, [refs]); // eslint-disable-line react-hooks/exhaustive-deps
 }

@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.1",
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
     "react-toast-notifications": "^2.4.0",
@@ -43,9 +43,8 @@
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-knobs": "^6.0.0-beta.12",
     "@storybook/addon-notes": "^5.3.18",
-    "@storybook/addon-storysource": "^5.3.18",
     "@storybook/react": "^5.3.18",
-    "@storybook/source-loader": "^5.3.18",
+    "@storybook/source-loader": "^6.0.28",
     "@svgr/rollup": "^2.4.1",
     "@testing-library/jest-dom": "^5.11.0",
     "@testing-library/react": "^10.0.3",
@@ -58,8 +57,8 @@
     "@types/react-toast-notifications": "^2.4.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^5.0.1",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "babel-runtime": "^6.26.0",
@@ -88,10 +87,10 @@
     "rollup-plugin-url": "^1.4.0",
     "scaffdog": "^0.2.3",
     "style-loader": "^1.1.4",
-    "styled-components": "^5.0.1",
+    "styled-components": "^5.2.1",
     "ts-jest": "^26.1.1",
-    "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3"
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.0.5"
   },
   "files": [
     "dist"
