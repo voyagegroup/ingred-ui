@@ -381,6 +381,7 @@ const DataTable = <T extends DataTableBaseData>({
                     order={getOrder(sortState, column.name)}
                     width={column.width}
                     enableRuledLine={enableRuledLine}
+                    // eslint-disable-next-line react/jsx-handler-names
                     onClick={
                       column.sortable && !enableMergeCell
                         ? handleSort(column.selector, column.name)

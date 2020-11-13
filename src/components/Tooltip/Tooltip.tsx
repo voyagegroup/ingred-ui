@@ -147,7 +147,9 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
               ref={setPopperElement}
               style={styles.popper}
               {...attributes.popper}
+              // eslint-disable-next-line react/jsx-handler-names
               onMouseOver={stopPropagation}
+              // eslint-disable-next-line react/jsx-handler-names
               onMouseOut={stopPropagation}
               {...rest}
               width={width}

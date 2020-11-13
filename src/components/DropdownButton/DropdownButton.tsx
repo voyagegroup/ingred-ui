@@ -78,6 +78,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
               <Icon
                 name={"arrow_bottom"}
                 size="lg"
+                // eslint-disable-next-line react/jsx-handler-names
                 color={setIconColor(disabled, color)}
               />
             </Styled.SplitToggle>
@@ -94,6 +95,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             <Icon
               name={"arrow_bottom"}
               size="lg"
+              // eslint-disable-next-line react/jsx-handler-names
               color={setIconColor(disabled, color)}
             />
           </Styled.SingleButton>

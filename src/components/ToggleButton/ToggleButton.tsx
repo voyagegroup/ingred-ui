@@ -29,6 +29,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           ref={inputRef}
           checked={active}
           type="checkbox"
+          // eslint-disable-next-line react/jsx-handler-names
           readOnly={onChange == undefined}
           disabled={disabled}
           onChange={onChange}

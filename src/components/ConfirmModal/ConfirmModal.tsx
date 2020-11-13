@@ -79,7 +79,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
     setIsTipOpen(isTipOpen);
   };
 
-  const onClose = (reason: ConfirmModalCloseReason) => (
+  const handleClose = (reason: ConfirmModalCloseReason) => (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, reason);
@@ -120,13 +120,14 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                 <Spacer pr={2} />
                 {subActions.map(({ icon, action, title }) => (
                   <Spacer key={title} pr={2}>
+                    {/* eslint-disable-next-line react/jsx-handler-names */}
                     <ActionButton icon={icon} type="button" onClick={action}>
                       {title}
                     </ActionButton>
                   </Spacer>
                 ))}
               </Styled.LeftContainer>
-              <Styled.IconContainer onClick={onClose("clickCloseIcon")}>
+              <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
                 <Icon name="close" size="lg" color={theme.palette.black} />
               </Styled.IconContainer>
             </Styled.ModalHeader>

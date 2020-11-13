@@ -23,6 +23,7 @@ const Fixture: React.FC<Props> = () => {
     >
       <Styled.Container
         isFixed={isFixed}
+        // eslint-disable-next-line react/jsx-handler-names
         onClick={isFixed ? handleUnFixed : handleFixed}
       >
         <Icon name="arrow_double_left" />
