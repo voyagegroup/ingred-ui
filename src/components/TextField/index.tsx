@@ -1,1 +1,2 @@
-export { default, TextFieldProps } from "./TextField";
+export { default } from "./TextField";
+export type { TextFieldProps } from "./TextField";

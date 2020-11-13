@@ -1,1 +1,2 @@
-export { default, DropdownButtonProps } from "./DropdownButton";
+export { default } from "./DropdownButton";
+export type { DropdownButtonProps } from "./DropdownButton";

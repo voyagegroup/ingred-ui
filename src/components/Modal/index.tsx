@@ -1,1 +1,2 @@
-export { default, ModalProps, ModalCloseReason } from "./Modal";
+export { default } from "./Modal";
+export type { ModalProps, ModalCloseReason } from "./Modal";

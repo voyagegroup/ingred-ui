@@ -114,13 +114,7 @@ class RadioButton extends React.PureComponent<RadioButtonProps> {
   };
 
   public render(): React.ReactNode {
-    const {
-      children,
-      size,
-      onChange: _onChange,
-      inputRef,
-      ...rest
-    } = this.props;
+    const { children, size, onChange, inputRef, ...rest } = this.props;
     const radioButtonSize = size as RadioButtonSize;
 
     return (

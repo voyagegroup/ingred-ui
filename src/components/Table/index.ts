@@ -1,3 +1,4 @@
-export { default, TableProps } from "./Table";
-export { TableCellProps } from "./Cell";
-export { TableHeaderCellProps } from "./HeaderCell";
+export { default } from "./Table";
+export type { TableProps } from "./Table";
+export type { TableCellProps } from "./Cell";
+export type { TableHeaderCellProps } from "./HeaderCell";

@@ -147,6 +147,7 @@ module.exports = {
         "react/no-array-index-key": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/no-multi-comp": "off",
       },
     },
     {

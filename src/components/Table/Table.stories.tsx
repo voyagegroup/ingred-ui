@@ -63,21 +63,23 @@ const InnerTable: React.FunctionComponent<{
 export const Overview = () => (
   <Container>
     <Table>
-      <Table.Row>
-        <Table.HeaderCell>normal</Table.HeaderCell>
-        <Table.HeaderCell>table</Table.HeaderCell>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell>row</Table.Cell>
-        <Table.Cell>row</Table.Cell>
-      </Table.Row>
+      <Table.Body>
+        <Table.Row>
+          <Table.HeaderCell>normal</Table.HeaderCell>
+          <Table.HeaderCell>table</Table.HeaderCell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>row</Table.Cell>
+          <Table.Cell>row</Table.Cell>
+        </Table.Row>
+      </Table.Body>
     </Table>
     {["small", "medium", "large"].map((space) => {
       return (
-        <>
+        <React.Fragment key={space}>
           <Typography>verticalSpacing = {space}</Typography>
           <InnerTable verticalSpacing={space as VerticalSpacing} />
-        </>
+        </React.Fragment>
       );
     })}
   </Container>

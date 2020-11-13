@@ -119,7 +119,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
 
                 <Spacer pr={2} />
                 {subActions.map(({ icon, action, title }) => (
-                  <Spacer key="title" pr={2}>
+                  <Spacer key={title} pr={2}>
                     <ActionButton icon={icon} type="button" onClick={action}>
                       {title}
                     </ActionButton>

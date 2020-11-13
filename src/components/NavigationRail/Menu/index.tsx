@@ -1,1 +1,2 @@
-export { Menu, NavigationRailMenuProps } from "./Menu";
+export { Menu } from "./Menu";
+export type { NavigationRailMenuProps } from "./Menu";
