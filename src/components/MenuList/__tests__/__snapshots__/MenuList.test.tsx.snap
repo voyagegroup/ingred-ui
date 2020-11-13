@@ -3,18 +3,18 @@
 exports[`MenuList component testing MenuList splited 1`] = `
 <DocumentFragment>
   <div
-    class="sc-AxjAm fnBaWJ"
+    class="sc-bdfBwQ fqNcls"
   >
     <hr
-      class="sc-AxiKw gMzvcs"
+      class="sc-dlfnbm gCtrZt"
       color="#EFF1F2"
       orientation="horizontal"
     />
     <div
-      class="sc-AxirZ ldapuR"
+      class="sc-gsTCUz iuKiqj"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
@@ -22,10 +22,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-AxirZ ldapuR"
+      class="sc-gsTCUz iuKiqj"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
@@ -33,15 +33,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-AxiKw gMzvcs"
+      class="sc-dlfnbm gCtrZt"
       color="#EFF1F2"
       orientation="horizontal"
     />
     <div
-      class="sc-AxirZ ldapuR"
+      class="sc-gsTCUz iuKiqj"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
@@ -49,10 +49,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-AxirZ ldapuR"
+      class="sc-gsTCUz iuKiqj"
     >
       <p
-        class="sc-AxhCb kdcBdC"
+        class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >

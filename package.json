@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "7.4.0",
+  "version": "7.4.1",
   "description": "",
   "author": "voyagegroup",
   "license": "MIT",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.1",
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
     "react-toast-notifications": "^2.4.0",
@@ -57,8 +57,8 @@
     "@types/react-toast-notifications": "^2.4.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-components": "^5.0.1",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "cross-env": "^5.1.4",
     "eslint": "^7.0.0",
     "eslint-config-prettier": "^6.11.0",
@@ -79,9 +79,9 @@
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-url": "^1.4.0",
     "scaffdog": "^0.2.3",
-    "styled-components": "^5.0.1",
+    "styled-components": "^5.2.1",
     "ts-jest": "^26.1.1",
-    "typescript": "^3.8.3"
+    "typescript": "^4.0.5"
   },
   "files": [
     "dist"
