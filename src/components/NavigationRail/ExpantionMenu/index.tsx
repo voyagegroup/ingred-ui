@@ -1,4 +1,2 @@
-export {
-  ExpantionMenu,
-  NavitagionRailExpantionMenuProps,
-} from "./ExpantionMenu";
+export { ExpantionMenu } from "./ExpantionMenu";
+export type { NavitagionRailExpantionMenuProps } from "./ExpantionMenu";
