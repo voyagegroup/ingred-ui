@@ -1,7 +1,2 @@
-export {
-  default,
-  FilterState,
-  useFilterState,
-  getFilteredItems,
-  PagerProps,
-} from "./Pager";
+export { default, useFilterState, getFilteredItems } from "./Pager";
+export type { FilterState, PagerProps } from "./Pager";

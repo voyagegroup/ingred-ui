@@ -1,4 +1,2 @@
-export {
-  NavigationRailContainer,
-  NavigationRailContainerProps,
-} from "./NavigationRailContainer";
+export { NavigationRailContainer } from "./NavigationRailContainer";
+export type { NavigationRailContainerProps } from "./NavigationRailContainer";

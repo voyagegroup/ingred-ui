@@ -1,5 +1,5 @@
-export { Color } from "./color";
 export { Radius } from "./radius";
 export { Space } from "./space";
-export { Depth } from "./depth";
 export { BreakPoint } from "./breakPoint";
+export type { Color } from "./color";
+export type { Depth } from "./depth";
