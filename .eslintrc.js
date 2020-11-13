@@ -34,6 +34,19 @@ module.exports = {
     SharedArrayBuffer: "readonly",
   },
   rules: {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      { selector: "class", format: ["PascalCase"] },
+      { selector: "interface", format: ["PascalCase"] },
+      { selector: "enum", format: ["PascalCase"] },
+      { selector: "enumMember", format: ["UPPER_CASE"] },
+      { selector: "method", format: ["PascalCase", "camelCase"] },
+      {
+        selector: "variable",
+        format: ["PascalCase", "camelCase", "UPPER_CASE"],
+      },
+    ],
+
     "no-restricted-syntax": "off",
     "no-await-in-loop": "off",
     "no-empty": ["error", { allowEmptyCatch: true }],
@@ -59,13 +72,14 @@ module.exports = {
         arrowParens: "always",
       },
     ],
+
+    "react/jsx-handler-names": "error",
+    "react/no-multi-comp": ["error", { ignoreStateless: true }],
     "react/no-access-state-in-setstate": "error",
     "react/no-redundant-should-component-update": "error",
     "react/no-this-in-sfc": "error",
     "react/no-unused-state": "error",
-    "react/jsx-no-bind": "error",
     "react/self-closing-comp": "error",
-    "react/jsx-boolean-value": ["error", "never"],
     "react/jsx-no-useless-fragment": "error",
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-sort-props": [
@@ -112,13 +126,11 @@ module.exports = {
     {
       files: ["*.ts", "*.tsx"],
       rules: {
+        "@typescript-eslint/ban-types": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/camelcase": [
-          "error",
-          { properties: "never", ignoreDestructuring: true },
-        ],
         "@typescript-eslint/consistent-type-definitions": ["error", "type"],
         "@typescript-eslint/no-require-imports": "error",
         "@typescript-eslint/no-use-before-define": "warn",
@@ -127,13 +139,14 @@ module.exports = {
     {
       files: ["*.stories.tsx", "*.test.ts", "*.test.tsx"],
       rules: {
+        "react/jsx-handler-names": "off",
         "no-empty": "off",
         "no-console": "off",
         "react/jsx-key": "off",
-        "react/jsx-no-bind": "off",
         "react/jsx-no-useless-fragment": "off",
         "react/no-array-index-key": "off",
         "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
       },
     },
     {
@@ -143,7 +156,6 @@ module.exports = {
         "global-require": "off",
         camelcase: "off",
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/camelcase": "off",
       },
     },
   ],
