@@ -23,7 +23,7 @@ const BaseComponent: React.FunctionComponent<{
 }> = ({ growTimeout }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
 
-  const onHandleToggle = () => {
+  const handleToggle = () => {
     setIsOpen(!isOpen);
   };
 
@@ -35,7 +35,7 @@ const BaseComponent: React.FunctionComponent<{
       alignItems="center"
     >
       <Spacer pt={3} />
-      <ToggleButton active={isOpen} onChange={onHandleToggle} />
+      <ToggleButton active={isOpen} onChange={handleToggle} />
       <Spacer pt={3} />
       <Grow timeout={growTimeout} in={isOpen}>
         <Box />

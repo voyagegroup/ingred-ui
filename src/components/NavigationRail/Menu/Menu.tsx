@@ -25,7 +25,7 @@ const Menu: React.FC<NavigationRailMenuProps> = ({
   ...rest
 }) => {
   const theme = useTheme();
-  const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
+  const { isOpen, handleClose } = React.useContext(NavigationRailContext);
 
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
@@ -47,7 +47,7 @@ const Menu: React.FC<NavigationRailMenuProps> = ({
       positionPriority={["right"]}
       enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
-      onMouseEnter={onHandleClose}
+      onMouseEnter={handleClose}
     >
       <Styled.Container isActive={isActive} {...rest}>
         <NotificationBadge

@@ -82,7 +82,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     ],
   });
 
-  const onHandleEnter = (event: React.MouseEvent<HTMLElement>) => {
+  const handleEnter = (event: React.MouseEvent<HTMLElement>) => {
     setBaseElement(event.currentTarget);
     if (closeTimer != null) clearTimeout(closeTimer);
     if (!disableHoverListener) {
@@ -101,7 +101,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     }
   };
 
-  const onHandleLeave = (event: React.MouseEvent<HTMLElement>) => {
+  const handleLeave = (event: React.MouseEvent<HTMLElement>) => {
     if (openTimer != null) clearTimeout(openTimer);
     if (!disableHoverListener) {
       if (leaveDelay) {
@@ -127,8 +127,8 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
 
   const childrenProps = {
     ...children.props,
-    onMouseEnter: onHandleEnter,
-    onMouseLeave: onHandleLeave,
+    onMouseEnter: handleEnter,
+    onMouseLeave: handleLeave,
     ref: useMergeRefs(setBaseElement, children.ref),
   };
 

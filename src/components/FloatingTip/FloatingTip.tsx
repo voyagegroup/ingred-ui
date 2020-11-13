@@ -30,7 +30,7 @@ const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
 }) => {
   const theme = useTheme();
 
-  const onHandleClickCloseIcon = (
+  const handleClickCloseIcon = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, "clickCloseIcon");
@@ -46,7 +46,7 @@ const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
     >
       <Styled.Container>
         <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
-        <Styled.IconWrapper onClick={onHandleClickCloseIcon}>
+        <Styled.IconWrapper onClick={handleClickCloseIcon}>
           <Icon name="close" color={theme.palette.black} />
         </Styled.IconWrapper>
       </Styled.Container>

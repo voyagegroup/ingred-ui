@@ -75,11 +75,11 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   ] = React.useState<HTMLDivElement | null>(null);
   const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
 
-  const onHandleIsTipOpen = (isTipOpen: boolean) => () => {
+  const handleIsTipOpen = (isTipOpen: boolean) => () => {
     setIsTipOpen(isTipOpen);
   };
 
-  const onHandleClose = (reason: ConfirmModalCloseReason) => (
+  const onClose = (reason: ConfirmModalCloseReason) => (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, reason);
@@ -100,7 +100,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                   <Styled.TipContainer>
                     <Styled.IconContainer
                       ref={setIconWrapperElement}
-                      onClick={onHandleIsTipOpen(!isTipOpen)}
+                      onClick={handleIsTipOpen(!isTipOpen)}
                     >
                       <Icon name="question" type="fill" size="lg" />
                     </Styled.IconContainer>
@@ -108,7 +108,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                       baseElement={iconWrapperElement}
                       isOpen={isTipOpen}
                       positionPriority={["right-start"]}
-                      onClose={onHandleIsTipOpen(false)}
+                      onClose={handleIsTipOpen(false)}
                     >
                       <Styled.TipContentContainer>
                         {tipElement}
@@ -126,7 +126,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                   </Spacer>
                 ))}
               </Styled.LeftContainer>
-              <Styled.IconContainer onClick={onHandleClose("clickCloseIcon")}>
+              <Styled.IconContainer onClick={onClose("clickCloseIcon")}>
                 <Icon name="close" size="lg" color={theme.palette.black} />
               </Styled.IconContainer>
             </Styled.ModalHeader>
@@ -150,7 +150,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                     <Button
                       type="button"
                       color="secondary"
-                      onClick={onHandleClose("clickCancelButton")}
+                      onClick={handleClose("clickCancelButton")}
                     >
                       {cancelText}
                     </Button>

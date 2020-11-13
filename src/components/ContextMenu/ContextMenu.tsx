@@ -19,7 +19,7 @@ const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
   ] = React.useState<HTMLButtonElement | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-  const onHandleToggleOpen = (open: boolean) => () => {
+  const handleToggleOpen = (open: boolean) => () => {
     setIsOpen(open);
   };
 
@@ -29,14 +29,14 @@ const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
         ref={setIconWrapperElement}
         data-testid="icon-wrapper"
         icon="more_vert"
-        onClick={onHandleToggleOpen(!isOpen)}
+        onClick={handleToggleOpen(!isOpen)}
       />
       <Menu
         isOpen={isOpen}
         baseElement={iconWrapperElement}
         contents={contents}
         positionPriority={positionPriority}
-        onClose={onHandleToggleOpen(false)}
+        onClose={handleToggleOpen(false)}
       />
     </>
   );

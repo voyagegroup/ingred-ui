@@ -26,7 +26,7 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
 }) => {
   const [show, setShow] = React.useState(false);
   const theme = useTheme();
-  const onHandleToggleShowPassword = () => {
+  const handleToggleShowPassword = () => {
     setShow(!show);
   };
 
@@ -37,13 +37,13 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
         hasRightIcon={type === "password"}
       >
         {icon != null && (
-          <Styled.LeftIconContainer onClick={onHandleToggleShowPassword}>
+          <Styled.LeftIconContainer onClick={handleToggleShowPassword}>
             <Icon name={icon} size="md" color={theme.palette.gray.dark} />
           </Styled.LeftIconContainer>
         )}
         <Input ref={inputRef} {...rest} error={!!errorText} type={type} />
         {type === "password" && (
-          <Styled.RightIconContainer onClick={onHandleToggleShowPassword}>
+          <Styled.RightIconContainer onClick={handleToggleShowPassword}>
             <Icon
               name={show ? "eye" : "eye_off"}
               size="md"

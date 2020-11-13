@@ -20,7 +20,7 @@ const TableTabs: React.FunctionComponent<Props> = ({
   value,
   onChange,
 }) => {
-  const onHandleChange = (value: ValueType) => () => {
+  const handleChange = (value: ValueType) => () => {
     onChange(value);
   };
   return (
@@ -30,7 +30,7 @@ const TableTabs: React.FunctionComponent<Props> = ({
           <Styled.TabItem
             key={item.value}
             active={item.value === value}
-            onClick={onHandleChange(item.value)}
+            onClick={handleChange(item.value)}
           >
             <Typography
               size="sm"

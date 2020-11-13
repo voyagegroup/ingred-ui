@@ -14,7 +14,7 @@ type Props = {
 };
 
 const NavigationRail = ({ children }: Props) => {
-  const { isOpen, isFixed, onHandleOpen, onHandleClose } = React.useContext(
+  const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
     NavigationRailContext,
   );
 
@@ -22,8 +22,8 @@ const NavigationRail = ({ children }: Props) => {
     <Styled.Container
       isOpen={isOpen}
       isFixed={isFixed}
-      onMouseEnter={onHandleOpen}
-      onMouseLeave={onHandleClose}
+      onMouseEnter={handleOpen}
+      onMouseLeave={handleClose}
     >
       {children}
     </Styled.Container>

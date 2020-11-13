@@ -73,7 +73,13 @@ module.exports = {
       },
     ],
 
-    "react/jsx-handler-names": "error",
+    "react/jsx-handler-names": [
+      "error",
+      {
+        checkLocalVariables: true,
+        checkInlineFunction: true,
+      },
+    ],
     "react/no-multi-comp": ["error", { ignoreStateless: true }],
     "react/no-access-state-in-setstate": "error",
     "react/no-redundant-should-component-update": "error",

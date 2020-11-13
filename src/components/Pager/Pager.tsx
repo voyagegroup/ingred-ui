@@ -22,14 +22,14 @@ const Pager: React.FunctionComponent<PagerProps> = ({
   const isFirst = index === 1 || total === 0;
   const isLast = index === pagerCount || total === 0;
 
-  const onHandleClick = (index: number) => () => onClick(index);
+  const handleClick = (index: number) => () => onClick(index);
 
   return (
     <Flex display="flex" alignItems="center">
       <ArrowButton
         isRight={false}
         disabled={isFirst}
-        onClick={onHandleClick(index - 1)}
+        onClick={handleClick(index - 1)}
       />
       {pagerCount < 7 ? (
         [...Array(pagerCount)].map((_, i) => (
@@ -37,7 +37,7 @@ const Pager: React.FunctionComponent<PagerProps> = ({
             key={i} // eslint-disable-line react/no-array-index-key
             index={i + 1}
             isActiveIndex={index === i + 1}
-            onClick={onHandleClick(i + 1)}
+            onClick={handleClick(i + 1)}
           />
         ))
       ) : (
@@ -47,11 +47,7 @@ const Pager: React.FunctionComponent<PagerProps> = ({
           onClick={onClick}
         />
       )}
-      <ArrowButton
-        isRight
-        disabled={isLast}
-        onClick={onHandleClick(index + 1)}
-      />
+      <ArrowButton isRight disabled={isLast} onClick={handleClick(index + 1)} />
     </Flex>
   );
 };

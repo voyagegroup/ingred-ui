@@ -22,16 +22,16 @@ export default {
 
 export const Overview: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const onHandleToggleButton = () => {
+  const handleToggleButton = () => {
     setIsOpen(!isOpen);
   };
   return (
     <Container>
-      <Button onClick={onHandleToggleButton}>Open Modal</Button>
+      <Button onClick={handleToggleButton}>Open Modal</Button>
       <ConfirmModal
         isOpen={isOpen}
         title="タイトル"
-        onClose={onHandleToggleButton}
+        onClose={handleToggleButton}
         onSubmit={action("submit")}
       >
         コンテンツ

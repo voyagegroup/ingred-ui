@@ -33,7 +33,7 @@ const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
   ...rest
 }) => {
   const theme = useTheme();
-  const { isOpen, onHandleClose } = React.useContext(NavigationRailContext);
+  const { isOpen, handleClose } = React.useContext(NavigationRailContext);
 
   const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
@@ -53,9 +53,7 @@ const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
     });
   }, [textContainerElement, textElement]);
 
-  const onHandleClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (expantionList.length !== 0) setIsExpand(!isExpand);
     if (onClick) onClick(event);
   };
@@ -83,9 +81,9 @@ const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
         positionPriority={["right"]}
         enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
-        onMouseEnter={onHandleClose}
+        onMouseEnter={handleClose}
       >
-        <Styled.Container isActive={isActive} onClick={onHandleClick} {...rest}>
+        <Styled.Container isActive={isActive} onClick={handleClick} {...rest}>
           <NotificationBadge
             badgeContent={notificationCount}
             position="top-left"

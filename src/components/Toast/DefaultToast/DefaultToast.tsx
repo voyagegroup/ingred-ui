@@ -115,7 +115,7 @@ const DefaultToast: React.FunctionComponent<Props> = ({
   const [height, setHeight] = React.useState<number | "auto">("auto");
   const elementRef = React.useRef<HTMLDivElement>(null);
 
-  const onHandleClose = () => {
+  const handleClose = () => {
     onDismiss();
   };
 
@@ -156,7 +156,7 @@ const DefaultToast: React.FunctionComponent<Props> = ({
               {children}
             </Typography>
           </Flex>
-          <Styled.CloseIconContainer onClick={onHandleClose}>
+          <Styled.CloseIconContainer onClick={handleClose}>
             <Icon name="close" color={toastStyle.closeColor} />
           </Styled.CloseIconContainer>
         </Flex>

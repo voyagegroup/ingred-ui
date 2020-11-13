@@ -33,7 +33,7 @@ export const Overview: React.FunctionComponent = () => {
     };
   }, [buttonContainerRef]);
 
-  const onHandleClick = () => {
+  const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
@@ -64,7 +64,7 @@ export const Overview: React.FunctionComponent = () => {
       <Spacer pt={10} />
       <Flex display="flex" justifyContent="center">
         <div ref={buttonContainerRef}>
-          <Button onClick={onHandleClick}>
+          <Button onClick={handleClick}>
             Appear panel when hiding this element
           </Button>
         </div>

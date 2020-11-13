@@ -98,7 +98,7 @@ export const Overview = () => {
 
 export const WithRowSpan = () => {
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
-  const onHandleClick = () => {
+  const handleClick = () => {
     alert(selectedRows.join(","));
   };
   // MEMO: Need to sort data yourself.
@@ -118,7 +118,7 @@ export const WithRowSpan = () => {
   ];
   return (
     <Container>
-      <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
+      <Button onClick={handleClick}>選択したアイテムを表示</Button>
       <DataTable
         enableRuledLine={true}
         data={sampleDataWithDuplicateId}
@@ -246,12 +246,12 @@ export const WithSearch: React.FunctionComponent = () => {
   const searchedItems = sampleData.filter(
     (item) => item.name && item.name.includes(searchText),
   );
-  const onHandleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(event.target.value);
   };
   return (
     <Container>
-      <TextField placeholder="名前で絞り込む" onChange={onHandleInput} />
+      <TextField placeholder="名前で絞り込む" onChange={handleInput} />
       <DataTable
         enablePagination={true}
         data={searchedItems}
@@ -274,12 +274,12 @@ export const WithSearch: React.FunctionComponent = () => {
 
 export const SelectableRows: React.FunctionComponent = () => {
   const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
-  const onHandleClick = () => {
+  const handleClick = () => {
     alert(selectedRows.join(","));
   };
   return (
     <Container>
-      <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
+      <Button onClick={handleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
         tabs={[
@@ -320,12 +320,12 @@ export const SelectableRows: React.FunctionComponent = () => {
 
 export const SelectableRow: React.FunctionComponent = () => {
   const [selectedRow, setSelectedRow] = React.useState<number>();
-  const onHandleClick = () => {
+  const handleClick = () => {
     alert(selectedRow);
   };
   return (
     <Container>
-      <Button onClick={onHandleClick}>選択したアイテムを表示</Button>
+      <Button onClick={handleClick}>選択したアイテムを表示</Button>
       <DataTable
         data={sampleData}
         columns={[
@@ -354,7 +354,7 @@ export const CustomCell: React.FunctionComponent = () => {
     setIconWrapperElement,
   ] = React.useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const onHandleIsOpen = (isOpen: boolean) => () => {
+  const handleIsOpen = (isOpen: boolean) => () => {
     setIsOpen(isOpen);
   };
 
@@ -386,7 +386,7 @@ export const CustomCell: React.FunctionComponent = () => {
             <Flex display="flex" alignItems="center">
               操作
               <Spacer pl={1} />
-              <div ref={setIconWrapperElement} onClick={onHandleIsOpen(true)}>
+              <div ref={setIconWrapperElement} onClick={handleIsOpen(true)}>
                 <Icon name="question" type="fill" />
               </div>
             </Flex>
@@ -394,7 +394,7 @@ export const CustomCell: React.FunctionComponent = () => {
               baseElement={iconWrapperElement}
               isOpen={isOpen}
               positionPriority={["left"]}
-              onClose={onHandleIsOpen(false)}
+              onClose={handleIsOpen(false)}
             >
               <Content>
                 <Typography size="sm" lineHeight="1.7">

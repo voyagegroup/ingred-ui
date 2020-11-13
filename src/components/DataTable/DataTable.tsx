@@ -298,24 +298,24 @@ const DataTable = <T extends DataTableBaseData>({
     }
   }, [selectedRow, onRadioChange]);
 
-  const onHandleTabChange = (tabIndex: number) => {
+  const handleTabChange = (tabIndex: number) => {
     setCurrentTabIndex(tabIndex);
   };
 
-  const onHandleSort = (getValue: GetValue<T>, name: string) => () => {
+  const handleSort = (getValue: GetValue<T>, name: string) => () => {
     setSortState(changeOrderState<T>(sortState, getValue, name));
   };
 
-  const onHandlePagerChange = (index: number) => {
+  const handlePagerChange = (index: number) => {
     setFilterState({ index, per: filterState.per });
   };
 
-  const onHandleCountChange = (per: number) => {
+  const handleCountChange = (per: number) => {
     setPerInLocalStorage(per);
     setFilterState({ index: 1, per });
   };
 
-  const onHandleSelectCheckbox = (id: number) => () => {
+  const handleSelectCheckbox = (id: number) => () => {
     if (selectedRows.includes(id)) {
       setSelectedRows(selectedRows.filter((selectedId) => selectedId !== id));
     } else {
@@ -323,11 +323,11 @@ const DataTable = <T extends DataTableBaseData>({
     }
   };
 
-  const onHandleSelectRadioButton = (id: number) => () => {
+  const handleSelectRadioButton = (id: number) => () => {
     setSelectedRow(id);
   };
 
-  const onHandleToggleCheckAll = () => {
+  const handleToggleCheckAll = () => {
     if (selectedRows.length > 0) {
       setSelectedRows([]);
       setAllSelected(false);
@@ -351,7 +351,7 @@ const DataTable = <T extends DataTableBaseData>({
               label: tab.label,
               value: index,
             }))}
-            onChange={onHandleTabChange}
+            onChange={handleTabChange}
           />
         )}
         <Styled.TableContainer
@@ -368,7 +368,7 @@ const DataTable = <T extends DataTableBaseData>({
                         header={true}
                         selected={selectedRows.length > 0}
                         indeterminate={indeterminate}
-                        onClick={onHandleToggleCheckAll}
+                        onClick={handleToggleCheckAll}
                       />
                     )}
                     {showRadioButton && <CellRadio header={true} />}
@@ -383,7 +383,7 @@ const DataTable = <T extends DataTableBaseData>({
                     enableRuledLine={enableRuledLine}
                     onClick={
                       column.sortable && !enableMergeCell
-                        ? onHandleSort(column.selector, column.name)
+                        ? handleSort(column.selector, column.name)
                         : undefined
                     }
                   >
@@ -418,14 +418,14 @@ const DataTable = <T extends DataTableBaseData>({
                               <CellCheckbox
                                 selected={selectedRows.includes(item.id)}
                                 rowSpan={calculateRowSpan(displayData, index)}
-                                onClick={onHandleSelectCheckbox(item.id)}
+                                onClick={handleSelectCheckbox(item.id)}
                               />
                             ))}
                           {showRadioButton && (
                             <CellRadio
                               selected={item.id === selectedRow}
                               rowSpan={calculateRowSpan(displayData, index)}
-                              onClick={onHandleSelectRadioButton(item.id)}
+                              onClick={handleSelectRadioButton(item.id)}
                             />
                           )}
                         </>
@@ -482,13 +482,13 @@ const DataTable = <T extends DataTableBaseData>({
               per={filterState.per}
               total={totalLength}
               index={filterState.index}
-              onClick={onHandlePagerChange}
+              onClick={handlePagerChange}
             />
             <CountChanger
               per={filterState.per}
               total={totalLength}
               index={filterState.index}
-              onChange={onHandleCountChange}
+              onChange={handleCountChange}
             />
           </Flex>
         </Spacer>
