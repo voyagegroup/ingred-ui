@@ -1,1 +1,2 @@
-export { default, RadioButtonSize, RadioButtonProps } from "./RadioButton";
+export { default, RadioButtonSize } from "./RadioButton";
+export type { RadioButtonProps } from "./RadioButton";

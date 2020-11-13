@@ -13,6 +13,7 @@
     "removeComments": false,
     "noEmit": false,
     "strict": true,
+    "isolatedModules": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

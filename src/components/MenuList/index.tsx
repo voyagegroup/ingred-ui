@@ -1,1 +1,2 @@
-export { default, MenuListProps } from "./MenuList";
+export { default } from "./MenuList";
+export type { MenuListProps } from "./MenuList";

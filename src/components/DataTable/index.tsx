@@ -1,1 +1,2 @@
-export { default, Column, DataTableProps } from "./DataTable";
+export { default } from "./DataTable";
+export type { Column, DataTableProps } from "./DataTable";
