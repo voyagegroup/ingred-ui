@@ -10,7 +10,7 @@ type Props = {};
 
 const Fixture: React.FC<Props> = () => {
   const theme = useTheme();
-  const { isFixed, onHandleFixed, onHandleUnFixed } = React.useContext(
+  const { isFixed, handleFixed, handleUnFixed } = React.useContext(
     NavigationRailContext,
   );
 
@@ -23,7 +23,8 @@ const Fixture: React.FC<Props> = () => {
     >
       <Styled.Container
         isFixed={isFixed}
-        onClick={isFixed ? onHandleUnFixed : onHandleFixed}
+        // eslint-disable-next-line react/jsx-handler-names
+        onClick={isFixed ? handleUnFixed : handleFixed}
       >
         <Icon name="arrow_double_left" />
       </Styled.Container>

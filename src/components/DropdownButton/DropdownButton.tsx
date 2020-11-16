@@ -36,7 +36,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   ] = React.useState<HTMLDivElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
 
-  const onHandleToggleContent = (showContent: boolean) => () => {
+  const handleToggleContent = (showContent: boolean) => () => {
     if (showContent && !split && onClick) {
       onClick();
     }
@@ -73,11 +73,12 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
               inline={true}
               disabled={disabled}
               data-testid="menu-toggle"
-              onClick={onHandleToggleContent(!showContent)}
+              onClick={handleToggleContent(!showContent)}
             >
               <Icon
                 name={"arrow_bottom"}
                 size="lg"
+                // eslint-disable-next-line react/jsx-handler-names
                 color={setIconColor(disabled, color)}
               />
             </Styled.SplitToggle>
@@ -88,12 +89,13 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             color={color}
             disabled={disabled}
             data-testid="menu-toggle"
-            onClick={onHandleToggleContent(!showContent)}
+            onClick={handleToggleContent(!showContent)}
           >
             {children}
             <Icon
               name={"arrow_bottom"}
               size="lg"
+              // eslint-disable-next-line react/jsx-handler-names
               color={setIconColor(disabled, color)}
             />
           </Styled.SingleButton>
@@ -104,7 +106,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
         baseElement={buttonElement}
         contents={contents}
         positionPriority={positionPriority}
-        onClose={onHandleToggleContent(false)}
+        onClose={handleToggleContent(false)}
       />
     </>
   );

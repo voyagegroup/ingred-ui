@@ -18,26 +18,26 @@ const NavigationRailContainer: React.FC<NavigationRailContainerProps> = ({
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
 
-  const onHandleOpen = () => {
+  const handleOpen = () => {
     if (!isFixed) {
       setIsOpen(true);
       if (onChangeOpen) onChangeOpen(true);
     }
   };
 
-  const onHandleClose = () => {
+  const handleClose = () => {
     if (!isFixed) {
       setIsOpen(false);
       if (onChangeOpen) onChangeOpen(false);
     }
   };
 
-  const onHandleFixed = () => {
+  const handleFixed = () => {
     setIsFixed(true);
     if (onChangeFixed) onChangeFixed(true);
   };
 
-  const onHandleUnFixed = () => {
+  const handleUnFixed = () => {
     setIsFixed(false);
     if (onChangeFixed) onChangeFixed(false);
   };
@@ -47,10 +47,10 @@ const NavigationRailContainer: React.FC<NavigationRailContainerProps> = ({
       value={{
         isOpen,
         isFixed,
-        onHandleOpen,
-        onHandleClose,
-        onHandleFixed,
-        onHandleUnFixed,
+        handleOpen,
+        handleClose,
+        handleFixed,
+        handleUnFixed,
       }}
     >
       <Styled.Container>{children}</Styled.Container>

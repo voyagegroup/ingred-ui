@@ -34,28 +34,28 @@ const Modal: React.FunctionComponent<ModalProps> = ({
 }) => {
   const [exited, setExited] = React.useState<boolean>(true);
 
-  const onHandleBackDropClick = (
+  const handleBackDropClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, "backdropClick");
   };
 
-  const onHandleEnter = () => {
+  const handleEnter = () => {
     setExited(false);
   };
 
-  const onHandleExited = () => {
+  const handleExited = () => {
     setExited(true);
   };
 
   const childProps: any = {};
   if (enableTransition && getHasTransition(children.props)) {
     childProps.onEnter = createChainedFunction(
-      onHandleEnter,
+      handleEnter,
       children.props.onEnter,
     );
     childProps.onExited = createChainedFunction(
-      onHandleExited,
+      handleExited,
       children.props.onExited,
     );
   }
@@ -67,7 +67,7 @@ const Modal: React.FunctionComponent<ModalProps> = ({
           <Backdrop
             {...backdropProps}
             isOpen={!enableTransition || isOpen}
-            onClick={onHandleBackDropClick}
+            onClick={handleBackDropClick}
           />
         )}
         {React.cloneElement(children, childProps)}

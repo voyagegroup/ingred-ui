@@ -29,7 +29,7 @@ import { GlobalStyle } from "./styles/globalStyle";
 
 const GetToastSample = () => {
   const { addToast } = Toast.useToasts();
-  const onHandleClick = () => {
+  const handleClick = () => {
     addToast("○○が完了しました", {
       appearance: "success",
       autoDismiss: true,
@@ -37,7 +37,7 @@ const GetToastSample = () => {
   };
   return (
     <div>
-      <Button inline onClick={onHandleClick}>
+      <Button inline onClick={handleClick}>
         トーストを表示する
       </Button>
     </div>

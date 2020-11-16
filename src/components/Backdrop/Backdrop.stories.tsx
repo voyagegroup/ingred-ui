@@ -15,19 +15,17 @@ export const Overview: React.FunctionComponent = () => {
   const invisible = boolean("Invisible", false);
   const duration = number("Duration", 300);
 
-  const onHandleToggleOpen = () => {
+  const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
   return (
     <>
-      <Button onClick={onHandleToggleOpen}>
-        Toggle Show Backdrop & Spacer
-      </Button>
+      <Button onClick={handleToggleOpen}>Toggle Show Backdrop & Spacer</Button>
       <Backdrop
         isOpen={isOpen}
         invisible={invisible}
         transitionDuration={duration}
-        onClick={onHandleToggleOpen}
+        onClick={handleToggleOpen}
       >
         <Spinner />
       </Backdrop>

@@ -68,14 +68,14 @@ export const Overview: React.FunctionComponent = () => {
   ] = React.useState<HTMLButtonElement | null>(null);
   const [showMenu, setShowMenu] = React.useState<boolean>(false);
 
-  const onHandleToggleMenu = (showMenu: boolean) => () => {
+  const handleToggleMenu = (showMenu: boolean) => () => {
     setShowMenu(showMenu);
   };
 
   return (
     <Container>
       <RowContainer>
-        <button ref={setButtonElement} onClick={onHandleToggleMenu(!showMenu)}>
+        <button ref={setButtonElement} onClick={handleToggleMenu(!showMenu)}>
           Click me!!
         </button>
         {showMenu && (
@@ -83,7 +83,7 @@ export const Overview: React.FunctionComponent = () => {
             baseElement={buttonElement}
             contents={contents}
             positionPriority={[position]}
-            onClose={onHandleToggleMenu(false)}
+            onClose={handleToggleMenu(false)}
           />
         )}
       </RowContainer>

@@ -24,7 +24,7 @@ const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
   ...rest
 }) => {
   const theme = useTheme();
-  const { onHandleClose } = React.useContext(NavigationRailContext);
+  const { handleClose } = React.useContext(NavigationRailContext);
   const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
   const textContainerElement = React.useRef<HTMLDivElement | null>(null);
@@ -45,7 +45,7 @@ const ExpantionMenuItem: React.FC<NavigationRailExpantionMenuItemProps> = ({
       positionPriority={["right"]}
       enterDelay={NavigationRailTransitionDuration * 1000}
       disabled={!showTooltip}
-      onMouseEnter={onHandleClose}
+      onMouseEnter={handleClose}
     >
       <Styled.Container {...rest}>
         <Styled.TextContainer ref={textContainerElement}>

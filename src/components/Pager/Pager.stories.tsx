@@ -38,7 +38,7 @@ const BasicExample: React.FunctionComponent = () => {
 
   const filteredItems = getFilteredItems(mockArray, filterState);
 
-  const onHandleChangePager = (index: number) => {
+  const handleChangePager = (index: number) => {
     setFilterState({ ...filterState, index });
   };
 
@@ -54,7 +54,7 @@ const BasicExample: React.FunctionComponent = () => {
           per={filterState.per}
           total={mockArray.length}
           index={filterState.index}
-          onClick={onHandleChangePager}
+          onClick={handleChangePager}
         />
       </Flex>
     </>

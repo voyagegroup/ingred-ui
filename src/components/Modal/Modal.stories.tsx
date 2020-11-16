@@ -28,17 +28,17 @@ export default {
 export const Overview: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-  const onHandleToggleOpen = () => {
+  const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
   return (
     <>
-      <Button onClick={onHandleToggleOpen}>Toggle Show Modal</Button>
-      <Modal isOpen={isOpen} onClose={onHandleToggleOpen}>
+      <Button onClick={handleToggleOpen}>Toggle Show Modal</Button>
+      <Modal isOpen={isOpen} onClose={handleToggleOpen}>
         <Fade in={isOpen}>
           <ModalContainer>
             <Typography>This is Modal.</Typography>
-            <Button inline={true} onClick={onHandleToggleOpen}>
+            <Button inline={true} onClick={handleToggleOpen}>
               Close
             </Button>
           </ModalContainer>

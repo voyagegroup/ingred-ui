@@ -25,7 +25,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({
   onClose,
   ...rest
 }) => {
-  const onHandleClickMenuList = (
+  const handleClickMenuList = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, "clickMenuList");
@@ -39,7 +39,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({
       positionPriority={positionPriority}
       onClose={onClose}
     >
-      <MenuList contents={contents} {...rest} onClick={onHandleClickMenuList} />
+      <MenuList contents={contents} {...rest} onClick={handleClickMenuList} />
     </Popover>
   );
 };

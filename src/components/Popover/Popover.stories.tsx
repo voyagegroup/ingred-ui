@@ -60,13 +60,13 @@ export const Overview: React.FunctionComponent = () => {
     setButtonElement,
   ] = React.useState<HTMLButtonElement | null>(null);
 
-  const onHandleToggleOpen = () => {
+  const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
   return (
     <Container>
-      <button ref={setButtonElement} onClick={onHandleToggleOpen}>
+      <button ref={setButtonElement} onClick={handleToggleOpen}>
         Click me!
       </button>
       <Popover
@@ -76,7 +76,7 @@ export const Overview: React.FunctionComponent = () => {
         offset={[offsetX, offsetY]}
         // MEMO: ref https://github.com/voyagegroup/ingred-ui/issues/191
         // TransitionComponent={transitionComponent === "Grow" ? Grow : Fade}
-        onClose={onHandleToggleOpen}
+        onClose={handleToggleOpen}
       >
         <Content>hoge</Content>
       </Popover>

@@ -34,7 +34,7 @@ const Switch: React.FunctionComponent<SwitchProps> = ({
   const tabsRef = React.useRef<HTMLDivElement>(null);
   const childrenWrapperRef = React.useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = React.useState({});
-  const onHandleChange = (value: any) => () => {
+  const handleChange = (value: any) => () => {
     if (onChange) {
       onChange(value);
     }
@@ -137,15 +137,13 @@ const Switch: React.FunctionComponent<SwitchProps> = ({
                 offset={[0, 15]}
               >
                 {item.icon != null ? (
-                  <Styled.IconItemContainer
-                    onClick={onHandleChange(childValue)}
-                  >
+                  <Styled.IconItemContainer onClick={handleChange(childValue)}>
                     <Icon name={item.icon} size="lg" />
                   </Styled.IconItemContainer>
                 ) : (
                   <Styled.TextItemContainer
                     key={item.name}
-                    onClick={onHandleChange(childValue)}
+                    onClick={handleChange(childValue)}
                   >
                     <Typography
                       component="span"

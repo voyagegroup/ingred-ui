@@ -6,6 +6,7 @@ import { useTheme } from "../../themes";
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
+  // TODO: rename "handleClick"
   onClick: () => void;
   divideTop?: boolean;
 };
@@ -25,6 +26,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
             {content.divideTop && (
               <Divider my={1} mx={2} color={theme.palette.gray.light} />
             )}
+            {/* eslint-disable-next-line react/jsx-handler-names */}
             <Styled.TextContainer onClick={content.onClick}>
               <Typography size="sm">{content.text}</Typography>
             </Styled.TextContainer>

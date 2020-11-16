@@ -63,7 +63,7 @@ export const Overview: React.FunctionComponent = () => {
     setIconWrapperElement,
   ] = React.useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const onHandleIsOpen = (isOpen: boolean) => () => {
+  const handleIsOpen = (isOpen: boolean) => () => {
     setIsOpen(isOpen);
   };
   return (
@@ -71,7 +71,7 @@ export const Overview: React.FunctionComponent = () => {
       <RowContainer>
         <IconWrapper
           ref={setIconWrapperElement}
-          onClick={onHandleIsOpen(!isOpen)}
+          onClick={handleIsOpen(!isOpen)}
         >
           <Icon name="question" type="fill" />
         </IconWrapper>
@@ -80,7 +80,7 @@ export const Overview: React.FunctionComponent = () => {
           isOpen={isOpen || keepShow}
           offset={[offsetX, offsetY]}
           positionPriority={[position]}
-          onClose={onHandleIsOpen(false)}
+          onClose={handleIsOpen(false)}
         >
           <Content>
             <Typography size="sm" lineHeight="1.7">

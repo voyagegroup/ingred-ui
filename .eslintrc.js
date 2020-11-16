@@ -73,6 +73,15 @@ module.exports = {
       },
     ],
 
+    "react/jsx-handler-names": [
+      "error",
+      {
+        eventHandlerPrefix: "(handle|on|set)",
+        checkLocalVariables: true,
+        checkInlineFunction: true,
+      },
+    ],
+    "react/no-multi-comp": ["error", { ignoreStateless: true }],
     "react/no-access-state-in-setstate": "error",
     "react/no-redundant-should-component-update": "error",
     "react/no-this-in-sfc": "error",

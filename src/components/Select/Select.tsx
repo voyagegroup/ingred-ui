@@ -165,7 +165,7 @@ const Select: SelectComponent = ({
   const filterOption: SelectProps<string | number>["filterOption"] = limit
     ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
-  const onHandleInputChange: SelectProps<string | number>["onInputChange"] = (
+  const handleInputChange: SelectProps<string | number>["onInputChange"] = (
     newValue,
     actionMeta,
   ) => {
@@ -196,7 +196,7 @@ const Select: SelectComponent = ({
         maxMenuHeight={150}
         {...rest}
         filterOption={filterOption}
-        onInputChange={onHandleInputChange}
+        onInputChange={handleInputChange}
       />
     </Styled.Container>
   );

@@ -43,13 +43,13 @@ export const PagerButtonsWithDottedLine: React.FunctionComponent<Props> = ({
   onClick,
 }) => {
   const centerIndex = getCenterIndex(pagerCount, index);
-  const onHandleClick = (index: number) => () => onClick(index);
+  const handleClick = (index: number) => () => onClick(index);
   return (
     <>
       <NumberButton
         index={1}
         isActiveIndex={index === 1}
-        onClick={onHandleClick(1)}
+        onClick={handleClick(1)}
       />
       {centerIndex !== 3 && <ThreeDottedLine />}
       {getCenterIndexes(centerIndex, pagerCount).map((i) => (
@@ -57,14 +57,14 @@ export const PagerButtonsWithDottedLine: React.FunctionComponent<Props> = ({
           key={i}
           index={i}
           isActiveIndex={index === i}
-          onClick={onHandleClick(i)}
+          onClick={handleClick(i)}
         />
       ))}
       {centerIndex !== pagerCount - 2 && <ThreeDottedLine />}
       <NumberButton
         index={pagerCount}
         isActiveIndex={index === pagerCount}
-        onClick={onHandleClick(pagerCount)}
+        onClick={handleClick(pagerCount)}
       />
     </>
   );

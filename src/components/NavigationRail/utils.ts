@@ -3,10 +3,10 @@ import * as React from "react";
 export type NavigationRailContextValues = {
   isOpen: boolean;
   isFixed: boolean;
-  onHandleOpen?: () => void;
-  onHandleClose?: () => void;
-  onHandleFixed?: () => void;
-  onHandleUnFixed?: () => void;
+  handleOpen?: () => void;
+  handleClose?: () => void;
+  handleFixed?: () => void;
+  handleUnFixed?: () => void;
 };
 
 export const NavigationRailContext = React.createContext<
