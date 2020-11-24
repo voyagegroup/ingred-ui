@@ -19,3 +19,5 @@ export const Container = styled.div<Props>`
     background-color: ${({ theme }) => theme.palette.background.hint};
   }
 `;
+
+export const TextContainer = styled.div<Props>``;
