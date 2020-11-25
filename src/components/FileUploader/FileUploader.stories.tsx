@@ -17,6 +17,7 @@ export const Overview = () => {
       width={width}
       height={height}
       description={description}
+      accept={["image/png"]}
       onSelectFile={(file) => action(`Uploaded "${file.name}"`)()}
     />
   );
