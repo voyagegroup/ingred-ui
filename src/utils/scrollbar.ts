@@ -8,23 +8,24 @@ export const addScrollbarProperties = (
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 2em;
+    width: 14px;
   }
 
   &::-webkit-scrollbar-track {
-    border: 0.5em solid transparent;
+    border: 4px solid transparent;
     background-color: ${({ theme }) => theme.palette.gray.light};
     background-clip: content-box;
     border-radius: 10rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    width: 2px;
-    border: 0.5em solid transparent;
-    background-clip: padding-box;
-    /* border-radius: 10em; */
-    background-color: red;
-    box-shadow: inset 0 0 0 6px ${({ theme }) => theme.palette.gray.light};
-    border-radius: 1.5em;
+    border: 5.5px solid transparent;
+    background-color: ${({ theme }) => theme.palette.divider};
+    background-clip: content-box;
+    border-radius: 10rem;
+    transition: all 0.3s;
+    &:hover {
+      background-color: ${({ theme }) => theme.palette.gray.dark};
+    }
   }
 `;
