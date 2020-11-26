@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
 import MenuList from "./MenuList";
+import Spacer from "../Spacer";
 
 const Container = styled.div`
   display: inline-flex;
@@ -40,6 +41,8 @@ export const Overview = () => {
   return (
     <Container>
       <MenuList contents={contents} />
+      <Spacer pl={5} />
+      <MenuList contents={contents.slice(0, 2)} />
     </Container>
   );
 };
