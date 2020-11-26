@@ -19,7 +19,7 @@ export const addScrollbarProperties = (
   }
 
   &::-webkit-scrollbar-thumb {
-    border: 5px solid transparent;
+    border: 6px solid transparent;
     background-color: ${({ theme }) => theme.palette.divider};
     background-clip: padding-box;
     border-radius: 10rem;
