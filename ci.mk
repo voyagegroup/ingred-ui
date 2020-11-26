@@ -25,6 +25,6 @@ lint:
 
 publish: __req_semver build
 	npm version ${SEMVER} -m "[ci skip] %s"
-	npm publish
 	git push origin master
 	git push origin --tags
+	npm publish
