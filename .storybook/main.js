@@ -6,4 +6,8 @@ module.exports = {
     "@storybook/addon-notes",
     "@storybook/addon-storysource",
   ],
+  reactOptions: {
+    fastRefresh: true,
+    strictMode: true,
+  },
 };
