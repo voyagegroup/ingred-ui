@@ -13,7 +13,7 @@ import ActionButton from "../ActionButton";
 import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
-import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 

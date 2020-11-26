@@ -3,7 +3,7 @@ import { CSSTransition as OriginalCSSTransition } from "react-transition-group";
 import {
   CSSTransitionProps,
   getDuration,
-} from "../../utils/reactTransitionGroupUtils";
+} from "../../utils/reactTransitionGroup";
 
 export const transitionClass = "grow-transition";
 

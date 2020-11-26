@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SpacerProps, spacer } from "../../utils/spacerUtils";
+import { SpacerProps, spacer } from "../../utils/spacer";
 
 type DividerProps = SpacerProps & {
   color: string;
