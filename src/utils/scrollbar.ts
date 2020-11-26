@@ -14,16 +14,15 @@ export const addScrollbarProperties = (
   &::-webkit-scrollbar-track {
     border: 4px solid transparent;
     background-color: ${({ theme }) => theme.palette.gray.light};
-    background-clip: content-box;
+    background-clip: padding-box;
     border-radius: 10rem;
   }
 
   &::-webkit-scrollbar-thumb {
-    border: 5.5px solid transparent;
+    border: 5px solid transparent;
     background-color: ${({ theme }) => theme.palette.divider};
-    background-clip: content-box;
+    background-clip: padding-box;
     border-radius: 10rem;
-    transition: all 0.3s;
     &:hover {
       background-color: ${({ theme }) => theme.palette.gray.dark};
     }
