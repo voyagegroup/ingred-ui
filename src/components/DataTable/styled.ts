@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { addScrollbarProperties } from "../../utils/scrollbar";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background.default};
@@ -20,5 +21,11 @@ export const TableContainer = styled.div<{
     horizontalScrollable ? "scroll" : "visible"};
   overflow-y: ${({ maxHeight }) =>
     maxHeight !== "none" ? "scroll" : "visible"};
-  max-height: ${({ maxHeight }) => maxHeight};
+  ${({ maxHeight }) =>
+    maxHeight !== "none"
+      ? addScrollbarProperties(maxHeight)
+      : css`
+          overflow-y: visible;
+          max-height: ${maxHeight};
+        `}
 `;

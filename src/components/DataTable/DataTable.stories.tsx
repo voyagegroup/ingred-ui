@@ -64,7 +64,7 @@ export const Overview = () => {
     "medium",
   );
   const fullWidth = boolean("FullWidth", false);
-  const tableMaxHeight = text("TableMaxHeight", "auto");
+  const tableMaxHeight = text("TableMaxHeight", "none");
   return (
     <Container>
       <DataTable
