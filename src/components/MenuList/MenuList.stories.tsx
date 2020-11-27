@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
 import MenuList from "./MenuList";
-import Spacer from "../Spacer";
+import { text } from "@storybook/addon-knobs";
 
 const Container = styled.div`
   display: inline-flex;
@@ -38,11 +38,10 @@ export const Overview = () => {
       divideTop: true,
     },
   ];
+  const maxHeight = text("MaxHeight", "100px");
   return (
     <Container>
-      <MenuList contents={contents} />
-      <Spacer pl={5} />
-      <MenuList contents={contents.slice(0, 2)} />
+      <MenuList contents={contents} maxHeight={maxHeight} />
     </Container>
   );
 };

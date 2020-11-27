@@ -1,5 +1,6 @@
 import React from "react";
 import * as Styled from "./styled";
+import { Property } from "csstype";
 import Divider from "../Divider";
 import Typography from "../Typography";
 import { useTheme } from "../../themes";
@@ -14,13 +15,19 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
   inline?: boolean;
   contents: ContentProp[];
+  maxHeight?: Property.MaxHeight;
 };
 
 const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
-  ({ inline = false, contents, ...rest }, ref) => {
+  ({ inline = false, contents, maxHeight = "none", ...rest }, ref) => {
     const theme = useTheme();
     return (
-      <Styled.Container inline={inline} {...rest} ref={ref}>
+      <Styled.Container
+        inline={inline}
+        maxHeight={maxHeight}
+        {...rest}
+        ref={ref}
+      >
         {contents.map((content) => (
           <React.Fragment key={content.text}>
             {content.divideTop && (
