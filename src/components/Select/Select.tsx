@@ -189,11 +189,17 @@ const Select: SelectComponent = ({
           ClearIndicator,
           IndicatorSeparator: null,
           MultiValueRemove,
+          MenuList: Styled.ReactSelectMenuList,
         }}
         placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
         styles={getOverrideStyles(theme, error)}
         maxMenuHeight={150}
+        // MEMO: use palette in Styled.ReactSelectMenuList
+        theme={(originalTheme) => ({
+          ...originalTheme,
+          palette: theme.palette,
+        })}
         {...rest}
         filterOption={filterOption}
         onInputChange={handleInputChange}

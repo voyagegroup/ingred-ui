@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
   padding: ${({ theme }) => theme.spacing}px 0;
   border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ theme }) => theme.palette.background.default};
-  ${({ maxHeight }) => addScrollbarProperties(maxHeight)};
+  ${({ maxHeight }) => addScrollbarProperties(maxHeight)}
 `;
 
 export const TextContainer = styled.div`
