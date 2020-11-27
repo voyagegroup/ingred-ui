@@ -9,5 +9,5 @@ export const Container = styled.div<{ minWidth?: string }>`
 export const ReactSelectMenuList = styled(components.MenuList)<
   MenuListComponentProps<any>
 >`
-  ${({ maxHeight }) => addScrollbarProperties(`${maxHeight}px`)}
+  ${({ maxHeight }) => addScrollbarProperties({ maxHeight: `${maxHeight}px` })}
 `;
