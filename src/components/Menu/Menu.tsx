@@ -1,11 +1,14 @@
 import * as React from "react";
 import * as PopperJS from "@popperjs/core";
-import MenuList, { ContentProp } from "../MenuList/MenuList";
+import MenuList, { ContentProp, MenuListProps } from "../MenuList/MenuList";
 import Popover from "../Popover";
 import { ModalCloseReason } from "../Modal";
+import { createChainedFunction } from "../../utils/createChainedFunction";
 
 export type MenuCloseReason = "clickMenuList";
 
+// TODO: need breaking change
+//       remove 'React.ComponentPropsWithRef<"div">' because it is included menuListProps
 export type MenuProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
   baseElement?: HTMLElement | null;
@@ -15,6 +18,8 @@ export type MenuProps = React.ComponentPropsWithRef<"div"> & {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | MenuCloseReason,
   ) => void;
+  maxHeight?: MenuListProps["maxHeight"];
+  menuListProps?: Partial<MenuListProps>;
 };
 
 const Menu: React.FunctionComponent<MenuProps> = ({
@@ -23,13 +28,14 @@ const Menu: React.FunctionComponent<MenuProps> = ({
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
   onClose,
+  maxHeight = "none",
+  menuListProps,
   ...rest
 }) => {
-  const handleClickMenuList = (
+  const handleCloseMenuList = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     if (onClose) onClose(event, "clickMenuList");
-    if (rest.onClick) rest.onClick(event);
   };
 
   return (
@@ -39,7 +45,16 @@ const Menu: React.FunctionComponent<MenuProps> = ({
       positionPriority={positionPriority}
       onClose={onClose}
     >
-      <MenuList contents={contents} {...rest} onClick={handleClickMenuList} />
+      <MenuList
+        contents={contents}
+        maxHeight={maxHeight}
+        {...rest}
+        onClick={createChainedFunction(
+          handleCloseMenuList,
+          rest.onClick,
+          menuListProps?.onClick,
+        )}
+      />
     </Popover>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
-import { select } from "@storybook/addon-knobs";
+import { select, text } from "@storybook/addon-knobs";
 import Menu from ".";
 
 const Container = styled.div`
@@ -61,6 +61,7 @@ export const Overview: React.FunctionComponent = () => {
     },
     "top",
   );
+  const maxHeight = text("MaxHeight", "none");
 
   const [
     buttonElement,
@@ -83,6 +84,7 @@ export const Overview: React.FunctionComponent = () => {
             baseElement={buttonElement}
             contents={contents}
             positionPriority={[position]}
+            maxHeight={maxHeight}
             onClose={handleToggleMenu(false)}
           />
         )}
