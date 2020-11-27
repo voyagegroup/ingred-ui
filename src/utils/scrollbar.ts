@@ -23,19 +23,12 @@ export const addScrollbarProperties = ({
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
-    width: 14px;
-  }
-
-  &::-webkit-scrollbar-track {
-    border: 4px solid transparent;
-    background-color: ${({ theme }) => theme.palette.gray.light};
-    background-clip: padding-box;
-    border-radius: 10rem;
+    width: 16px;
   }
 
   &::-webkit-scrollbar-thumb {
-    border: 6px solid transparent;
-    background-color: ${({ theme }) => theme.palette.divider};
+    border: 5px solid transparent;
+    background-color: ${({ theme }) => theme.palette.gray.main};
     background-clip: padding-box;
     border-radius: 10rem;
     &:hover {
