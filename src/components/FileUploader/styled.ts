@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 type Props = {
+  width: string;
+  height: string;
   filesDraggedOver: boolean;
 };
 
@@ -8,8 +10,8 @@ export const Container = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 564px;
-  height: 144px;
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
   border: 2px
     ${({ theme, filesDraggedOver }) =>
       filesDraggedOver
