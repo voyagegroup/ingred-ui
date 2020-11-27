@@ -6,7 +6,9 @@ exports[`ScrollArea component testing ScrollArea 1`] = `
     class="sc-bdfBwQ hVJzqY"
     height="auto"
   >
-    hoge
+    <div>
+      hoge
+    </div>
   </div>
 </DocumentFragment>
 `;

@@ -9,7 +9,9 @@ describe("ScrollArea component testing", () => {
 
   test("ScrollArea", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ScrollArea>hoge</ScrollArea>,
+      <ScrollArea>
+        <div>hoge</div>
+      </ScrollArea>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

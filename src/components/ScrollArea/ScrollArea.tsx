@@ -6,8 +6,14 @@ export type ScrollAreaProps = React.ComponentPropsWithRef<"div"> & {
   height?: Property.Height;
   maxHeight?: Property.MaxHeight;
   minHeight?: Property.MinHeight;
+  children: React.ComponentElement<HTMLElement, any>;
 };
 
+/**
+ * Add Scrollbar to inner DOM.
+ * Only for Mac OS x Chromium Engine.
+ * Plan to enable to add horizontal scrollbar.
+ */
 const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
   (
     {

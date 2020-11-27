@@ -1,6 +1,7 @@
-// TODO: resolve "any" type assertion
-
-// ref: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/utils/createChainedFunction.js
+/**
+ * ref: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/utils/createChainedFunction.js
+ * TODO: resolve "any" type assertion
+ */
 export function createChainedFunction<F extends Function>(
   ...funcs: (F | null | undefined)[]
 ): F {

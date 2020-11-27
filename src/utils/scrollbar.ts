@@ -7,6 +7,11 @@ type ScrollbarConfig = {
   minHeight?: Property.MinHeight;
 };
 
+/**
+ * Add CSS Properties to add scrollbar.
+ * Only for Mac OS x Chromium Engine.
+ * Plan to enable to add horizontal scrollbar.
+ */
 export const addScrollbarProperties = ({
   height = "auto",
   maxHeight = "none",
