@@ -104,6 +104,9 @@ export * from "./Portal";
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";
 
+export { default as ScrollArea } from "./ScrollArea";
+export * from "./ScrollArea";
+
 export { default as Select } from "./Select";
 export * from "./Select";
 
