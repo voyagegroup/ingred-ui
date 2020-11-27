@@ -3,7 +3,9 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ chJoPH"
+    class="sc-bdfBwQ cOsWmE"
+    height="144px"
+    width="564px"
   >
     <input
       multiple=""
