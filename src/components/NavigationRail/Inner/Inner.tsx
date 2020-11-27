@@ -12,7 +12,7 @@ export const Header = styled.div`
 export const Content = styled.div`
   flex-grow: 1;
   overflow-x: hidden;
-  ${addScrollbarProperties("none")}
+  ${addScrollbarProperties({ maxHeight: "none" })}
 
   & * {
     text-decoration: none;

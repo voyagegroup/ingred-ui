@@ -76,7 +76,9 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
         42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
   ${({ overflowYScroll, fullSize }) =>
     overflowYScroll
-      ? addScrollbarProperties(fullSize ? "auto" : "calc(80vh - 61px)")
+      ? addScrollbarProperties({
+          maxHeight: fullSize ? "auto" : "calc(80vh - 61px)",
+        })
       : css`
           overflow-y: visible;
           max-height: ${fullSize ? "auto" : "calc(80vh - 61px)"};

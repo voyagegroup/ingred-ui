@@ -23,7 +23,7 @@ export const TableContainer = styled.div<{
     maxHeight !== "none" ? "scroll" : "visible"};
   ${({ maxHeight }) =>
     maxHeight !== "none"
-      ? addScrollbarProperties(maxHeight)
+      ? addScrollbarProperties({ maxHeight })
       : css`
           overflow-y: visible;
           max-height: ${maxHeight};

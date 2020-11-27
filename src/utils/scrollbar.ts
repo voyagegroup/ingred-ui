@@ -1,10 +1,20 @@
 import { Property } from "csstype";
 import { css } from "styled-components";
 
-export const addScrollbarProperties = (
-  maxHeight: Property.MaxHeight,
-): ReturnType<typeof css> => css`
+type ScrollbarConfig = {
+  height?: Property.Height;
+  maxHeight?: Property.MaxHeight;
+  minHeight?: Property.MinHeight;
+};
+
+export const addScrollbarProperties = ({
+  height = "auto",
+  maxHeight = "none",
+  minHeight = "none",
+}: ScrollbarConfig): ReturnType<typeof css> => css`
+  height: ${height};
   max-height: ${maxHeight};
+  min-height: ${minHeight};
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
