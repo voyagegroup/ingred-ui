@@ -9,7 +9,8 @@ ignore: []
 # `{{ input | pascal }}/index.tsx`
 
 ```typescript
-export { default, {{ input | pascal }}Props } from "./{{ input | pascal }}";
+export { default } from "./{{ input | pascal }}";
+export type { {{ input | pascal }}Props } from "./{{ input | pascal }}";
 
 ```
 
