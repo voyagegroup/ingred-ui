@@ -6,8 +6,6 @@ import Icon from "../Icon";
 import Spacer from "../Spacer";
 
 export type FileUploaderProps = {
-  width?: string;
-  height?: string;
   description?: string;
   title?: string;
   accept?: string;
@@ -18,8 +16,6 @@ export type FileUploaderProps = {
 };
 
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
-  width = "564px",
-  height = "144px",
   accept,
   title = "ドラッグ&ドロップするか、クリックしてアップロード",
   description,
@@ -64,8 +60,6 @@ const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
 
   return (
     <Styled.Container
-      width={width}
-      height={height}
       filesDraggedOver={filesDraggedOver}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
