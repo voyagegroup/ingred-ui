@@ -9,7 +9,7 @@ describe("FileUploader component testing", () => {
 
   test("FileUploader", () => {
     const { asFragment } = renderWithThemeProvider(
-      <FileUploader onSelectFile={jest.fn} />,
+      <FileUploader onSelectFiles={jest.fn} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

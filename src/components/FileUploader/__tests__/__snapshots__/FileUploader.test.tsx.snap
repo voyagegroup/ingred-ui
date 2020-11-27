@@ -3,14 +3,10 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ bhHGyW"
-    tabindex="0"
+    class="sc-bdfBwQ chJoPH"
   >
     <input
-      autocomplete="off"
       multiple=""
-      style="display: none;"
-      tabindex="-1"
       type="file"
     />
     <div
