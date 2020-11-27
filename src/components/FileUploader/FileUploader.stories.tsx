@@ -6,19 +6,25 @@ import { text } from "@storybook/addon-knobs";
 export default {
   title: "FileUploader",
   component: FileUploader,
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const Overview = () => {
-  const width = text("Width", "564px");
-  const height = text("Height", "144px");
+  const title = text(
+    "Title",
+    "ドラッグ&ドロップするか、クリックしてアップロード",
+  );
   const description = text("Description", "ファイル容量3MBまで");
   return (
     <FileUploader
-      width={width}
-      height={height}
       description={description}
-      accept={["image/png"]}
-      onSelectFile={(file) => action(`Uploaded "${file.name}"`)()}
+      title={title}
+      accept="image/*"
+      onSelectFiles={action("onSelectFiles")}
     />
   );
 };

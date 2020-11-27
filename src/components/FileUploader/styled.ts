@@ -1,25 +1,28 @@
 import styled from "styled-components";
 
 type Props = {
-  width?: string;
-  height?: string;
-  active: boolean;
+  filesDraggedOver: boolean;
 };
 
 export const Container = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ width }) => (width ? width : "564px")};
-  height: ${({ height }) => (height ? height : "144px")};
+  width: 564px;
+  height: 144px;
   border: 2px
-    ${({ theme, active }) =>
-      active
+    ${({ theme, filesDraggedOver }) =>
+      filesDraggedOver
         ? `solid ${theme.palette.primary.main}`
         : `dashed ${theme.palette.gray.deepDark}`};
-  background-color: ${({ theme, active }) =>
-    active ? theme.palette.background.hint : theme.palette.gray.highlight};
+  background-color: ${({ theme, filesDraggedOver }) =>
+    filesDraggedOver
+      ? theme.palette.background.hint
+      : theme.palette.gray.highlight};
   transition: all 0.3s ease-in-out;
+  input {
+    display: none;
+  }
   &:hover {
     cursor: pointer;
     border: 2px solid ${({ theme }) => theme.palette.primary.main};

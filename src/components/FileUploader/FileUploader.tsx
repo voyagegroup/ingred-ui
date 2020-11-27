@@ -1,54 +1,83 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { useDropzone } from "react-dropzone";
 import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 
 export type FileUploaderProps = {
-  width?: string;
-  height?: string;
   description?: string;
-  accept?: string[];
-  onSelectFile: (files: File) => void;
+  title?: string;
+  accept?: string;
+  onSelectFiles: (
+    event: React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLElement>,
+    files: FileList | null,
+  ) => void;
 };
 
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
-  width,
-  height,
+  accept,
+  title = "ドラッグ&ドロップするか、クリックしてアップロード",
   description,
-  accept = [],
-  onSelectFile,
+  onSelectFiles,
 }) => {
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-  } = useDropzone({
-    accept: accept.join(),
-  });
+  const fileRef = React.useRef<HTMLInputElement>(null);
+  const [filesDraggedOver, setFilesDraggedOver] = React.useState(false);
 
-  React.useEffect(() => {
-    if (acceptedFiles.length) {
-      onSelectFile(acceptedFiles[0]);
-    }
-  }, [acceptedFiles, onSelectFile]);
+  const handleDrop = React.useCallback(
+    (e: React.DragEvent<HTMLElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setFilesDraggedOver(false);
+      onSelectFiles(e, e.dataTransfer.files);
+    },
+    [setFilesDraggedOver, onSelectFiles],
+  );
+
+  const handleDragOver = React.useCallback(
+    (e: React.DragEvent<HTMLElement>) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setFilesDraggedOver(true);
+    },
+    [setFilesDraggedOver],
+  );
+
+  const handleDragLeave = React.useCallback(() => {
+    setFilesDraggedOver(false);
+  }, [setFilesDraggedOver]);
+
+  const handleChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      onSelectFiles(e, e.target.files);
+    },
+    [onSelectFiles],
+  );
+
+  const handleClickZone = () => {
+    fileRef.current?.click();
+  };
 
   return (
     <Styled.Container
-      width={width}
-      height={height}
-      active={isDragActive}
-      {...getRootProps()}
+      filesDraggedOver={filesDraggedOver}
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onClick={handleClickZone}
     >
-      <input {...getInputProps()} />
+      <input
+        ref={fileRef}
+        multiple
+        type="file"
+        accept={accept}
+        onChange={handleChange}
+      />
       <Styled.TextContainer>
         <Flex display="flex">
           <Icon name="folder_open" size="md" color="active" />
           <Typography weight="bold" color="primary">
-            ドラッグ&ドロップするか、クリックしてアップロード
+            {title}
           </Typography>
         </Flex>
         {description && (
