@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { action } from "@storybook/addon-actions";
+import { text } from "@storybook/addon-knobs";
 import ContextMenu from "./ContextMenu";
 
 const Container = styled.div`
@@ -24,21 +25,25 @@ export default {
   },
 };
 
-export const Overview = () => (
-  <Container>
-    <RowContainer>
-      <ContextMenu
-        contents={[
-          {
-            text: "編集",
-            onClick: action("clicked 編集"),
-          },
-          {
-            text: "保存",
-            onClick: action("clicked 保存"),
-          },
-        ]}
-      />
-    </RowContainer>
-  </Container>
-);
+export const Overview = () => {
+  const menuMaxHeight = text("MenuMaxHeight", "none");
+  return (
+    <Container>
+      <RowContainer>
+        <ContextMenu
+          contents={[
+            {
+              text: "編集",
+              onClick: action("clicked 編集"),
+            },
+            {
+              text: "保存",
+              onClick: action("clicked 保存"),
+            },
+          ]}
+          menuMaxHeight={menuMaxHeight}
+        />
+      </RowContainer>
+    </Container>
+  );
+};
