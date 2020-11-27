@@ -53,6 +53,9 @@ export * from "./ErrorText";
 export { default as Fade } from "./Fade";
 export * from "./Fade";
 
+export { default as FileUploader } from "./FileUploader";
+export * from "./FileUploader";
+
 export { default as FixedPanel } from "./FixedPanel";
 export * from "./FixedPanel";
 

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader component testing FileUploader 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bdfBwQ chJoPH"
+  >
+    <input
+      multiple=""
+      type="file"
+    />
+    <div
+      class="sc-gsTCUz"
+    >
+      <div
+        class="sc-hKgILt fNBBZR"
+        display="flex"
+      >
+        <div
+          class="sc-eCssSg gHiJXT"
+          size="18"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              class="a"
+              d="M0,0H24V24H0Z"
+              fill="none"
+            />
+            <path
+              class="b"
+              d="M3,21a1,1,0,0,1-1-1V4A1,1,0,0,1,3,3h7.414l2,2H20a1,1,0,0,1,1,1V9H4V19l2-8H22.5l-2.31,9.243a1,1,0,0,1-.97.757Z"
+              fill="#0B82F4"
+            />
+          </svg>
+        </div>
+        <p
+          class="sc-dlfnbm jEWxpW"
+          color="#0B82F4"
+          font-size="14px"
+        >
+          ドラッグ&ドロップするか、クリックしてアップロード
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

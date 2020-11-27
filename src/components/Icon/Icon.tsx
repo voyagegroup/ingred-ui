@@ -24,6 +24,7 @@ import { SortUpIcon } from "./internal/SortUpIcon";
 import { SortDownIcon } from "./internal/SortDownIcon";
 import { SortInactiveIcon } from "./internal/SortInactiveIcon";
 import { FolderIcon } from "./internal/FolderIcon";
+import { FolderOpenIcon } from "./internal/FolderOpenIcon";
 import { ReturnLineIcon } from "./internal/ReturnLineIcon";
 import { LinkIcon } from "./internal/LinkIcon";
 import { UnlinkIcon } from "./internal/UnlinkIcon";
@@ -87,6 +88,7 @@ export type IconName =
   | "sort_down"
   | "sort_inactive"
   | "folder"
+  | "folder_open"
   | "return_line"
   | "link"
   | "unlink"
@@ -163,6 +165,7 @@ export const icons: {
   sort_down: SortDownIcon,
   sort_inactive: SortInactiveIcon,
   folder: FolderIcon,
+  folder_open: FolderOpenIcon,
   return_line: ReturnLineIcon,
   link: LinkIcon,
   unlink: UnlinkIcon,
