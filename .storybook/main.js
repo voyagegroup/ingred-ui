@@ -1,13 +1,13 @@
 module.exports = {
   stories: ["../src/components/**/*.stories.tsx"],
   addons: [
-    "@storybook/addon-actions",
+    "@storybook/addon-essentials",
     "@storybook/addon-knobs",
-    "@storybook/addon-notes",
-    "@storybook/addon-storysource",
   ],
   reactOptions: {
     fastRefresh: true,
-    strictMode: true,
+    // TODO: fix warn "Rendered more hooks than during the previous render."
+    // knobを完全に排除できたタイミングで再度調査
+    // strictMode: true,
   },
 };
