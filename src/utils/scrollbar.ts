@@ -26,6 +26,10 @@ export const addScrollbarProperties = ({
     width: 16px;
   }
 
+  &::-webkit-scrollbar-corner {
+    display: none;
+  }
+
   &::-webkit-scrollbar-thumb {
     border: 5px solid transparent;
     background-color: ${({ theme }) => theme.palette.gray.main};
