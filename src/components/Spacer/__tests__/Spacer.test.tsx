@@ -4,7 +4,7 @@ import { cleanup, render } from "@testing-library/react";
 import Spacer from "../";
 import { Space } from "../../../styles/space";
 import { createTheme } from "../../../themes/createTheme";
-import { getMargin, getPadding } from "../../../utils/spacerUtils";
+import { getMargin, getPadding } from "../../../utils/spacer";
 
 describe("Spacer component testing", () => {
   afterEach(cleanup);

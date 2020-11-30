@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { flexbox, FlexProps } from "../Flex/Flex";
-import { spacer, SpacerProps } from "../../utils/spacerUtils";
+import { spacer, SpacerProps } from "../../utils/spacer";
 
 export type CardProps = SpacerProps &
   FlexProps & {

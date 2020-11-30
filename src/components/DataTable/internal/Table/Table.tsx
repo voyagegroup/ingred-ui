@@ -25,13 +25,8 @@ const Container = styled.table<TableProps>`
       border-top-right-radius: ${({ theme }) => theme.radius}px;
     }
   }
-  & > tbody > tr:last-of-type > td {
-    &:first-of-type {
-      border-bottom-left-radius: ${({ theme }) => theme.radius}px;
-    }
-    &:last-of-type {
-      border-bottom-right-radius: ${({ theme }) => theme.radius}px;
-    }
+  & > tbody > tr:first-of-type > td {
+    border-top: none;
   }
 `;
 

@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
+import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
 
 const fadeIn = keyframes`	
@@ -57,12 +58,13 @@ export const LeftContainer = styled.div`
   max-width: 70%;
 `;
 
-export const ScrollContainer = styled.div<{
+type ScrollContainerProps = {
   overflowYScroll: boolean;
   fullSize: boolean;
   showFooter: boolean;
-}>`
-  max-height: ${({ fullSize }) => (fullSize ? "auto" : "calc(80vh - 61px)")};
+};
+
+export const ScrollContainer = styled.div<ScrollContainerProps>`
   height: ${({ fullSize, showFooter, theme }) =>
     fullSize
       ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`
@@ -72,8 +74,15 @@ export const ScrollContainer = styled.div<{
       ? 0
       : theme.spacing * 2 * 2 +
         42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
-  overflow-y: ${({ overflowYScroll }) =>
-    overflowYScroll ? "scroll" : "visible"};
+  ${({ overflowYScroll, fullSize }) =>
+    overflowYScroll
+      ? addScrollbarProperties({
+          maxHeight: fullSize ? "auto" : "calc(80vh - 61px)",
+        })
+      : css`
+          overflow-y: visible;
+          max-height: ${fullSize ? "auto" : "calc(80vh - 61px)"};
+        `}
 `;
 
 export const ModalFooter = styled.div<{ fullSize: boolean }>`

@@ -1,10 +1,18 @@
 import styled from "styled-components";
+import { Property } from "csstype";
+import { addScrollbarProperties } from "../../utils/scrollbar";
 
-export const Container = styled.div<{ inline: boolean }>`
+type ContainerProps = {
+  inline: boolean;
+  maxHeight: Property.MaxHeight;
+};
+
+export const Container = styled.div<ContainerProps>`
   display: ${({ inline }) => (inline ? "inline-block" : "block")};
   padding: ${({ theme }) => theme.spacing}px 0;
   border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ theme }) => theme.palette.background.default};
+  ${({ maxHeight }) => addScrollbarProperties({ maxHeight })}
 `;
 
 export const TextContainer = styled.div`
