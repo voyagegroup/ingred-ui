@@ -9,6 +9,7 @@ export type FileUploaderProps = {
   description?: string;
   title?: string;
   accept?: string;
+  width?: string;
   onSelectFiles: (
     event: React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLElement>,
     files: FileList | null,
@@ -18,6 +19,7 @@ export type FileUploaderProps = {
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
   accept,
   title = "ドラッグ&ドロップするか、クリックしてアップロード",
+  width,
   description,
   onSelectFiles,
 }) => {
@@ -60,6 +62,7 @@ const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
 
   return (
     <Styled.Container
+      width={width}
       filesDraggedOver={filesDraggedOver}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
