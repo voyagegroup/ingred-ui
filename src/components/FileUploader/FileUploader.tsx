@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { Property } from "csstype";
 import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
@@ -9,6 +10,7 @@ export type FileUploaderProps = {
   description?: string;
   title?: string;
   accept?: string;
+  width?: Property.Width;
   onSelectFiles: (
     event: React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLElement>,
     files: FileList | null,
@@ -18,6 +20,7 @@ export type FileUploaderProps = {
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
   accept,
   title = "ドラッグ&ドロップするか、クリックしてアップロード",
+  width,
   description,
   onSelectFiles,
 }) => {
@@ -60,6 +63,7 @@ const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
 
   return (
     <Styled.Container
+      width={width}
       filesDraggedOver={filesDraggedOver}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
