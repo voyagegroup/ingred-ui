@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { Property } from "csstype";
 
 type Props = {
   filesDraggedOver: boolean;
-  width?: string;
+  width?: Property.Width;
 };
 
 export const Container = styled.div<Props>`

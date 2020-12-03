@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { Property } from "csstype";
 import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
@@ -9,7 +10,7 @@ export type FileUploaderProps = {
   description?: string;
   title?: string;
   accept?: string;
-  width?: string;
+  width?: Property.Width;
   onSelectFiles: (
     event: React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLElement>,
     files: FileList | null,
