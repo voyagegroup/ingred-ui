@@ -200,8 +200,8 @@ const Select: SelectComponent = ({
           ...originalTheme,
           palette: theme.palette,
         })}
-        {...rest}
         filterOption={filterOption}
+        {...rest}
         onInputChange={handleInputChange}
       />
     </Styled.Container>
