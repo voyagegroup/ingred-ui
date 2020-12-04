@@ -10,6 +10,7 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jest/recommended",
+    "plugin:mdx/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -165,6 +166,21 @@ module.exports = {
         camelcase: "off",
         "@typescript-eslint/no-var-requires": "off",
       },
+    },
+    {
+      files: ["*.md"],
+      rules: {
+        "prettier/prettier": [
+          2,
+          {
+            parser: "markdown",
+          },
+        ],
+      },
+    },
+    {
+      files: ["*.mdx"],
+      extends: ["plugin:mdx/overrides"],
     },
   ],
 };

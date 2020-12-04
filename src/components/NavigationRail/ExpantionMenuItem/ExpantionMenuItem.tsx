@@ -6,9 +6,7 @@ import { NavigationRailContext } from "../utils";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
-export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
-  "div"
-> & {
+export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<"div"> & {
   title: string;
   titleElement?: JSX.Element;
   isActive?: boolean;

@@ -1,10 +1,10 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
-import Button, { ButtonProps } from "./Button";
+import Button from "./Button";
 
 <Meta
-  title='Button'
+  title="Button"
   component={Button}
-  argTypes={{ onClick: { action: 'clicked' } }}
+  argTypes={{ onClick: { action: "clicked" } }}
 />
 
 # Button
@@ -16,46 +16,63 @@ import Button, { ButtonProps } from "./Button";
 ### Colors
 
 <Canvas>
-  <Story name="primary" args={{
-    color: "primary",
-    children: "primary"
-  }}>
+  <Story
+    name="primary"
+    args={{
+      color: "primary",
+      children: "primary",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
-  <Story name="secondary" args={{
-    color: "secondary",
-    children: "secondary"
-  }}>
+  <Story
+    name="secondary"
+    args={{
+      color: "secondary",
+      children: "secondary",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
-  <Story name="danger" args={{
-    color: "danger",
-    children: "danger"
-  }}>
+  <Story
+    name="danger"
+    args={{
+      color: "danger",
+      children: "danger",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
 </Canvas>
 
-
 ### Sizes
 
 <Canvas>
-  <Story name="small" args={{
-    size: "small",
-    children: "small"
-  }}>
+  <Story
+    name="small"
+    args={{
+      size: "small",
+      children: "small",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
-  <Story name="medium" args={{
-    size: "medium",
-    children: "medium"
-  }}>
+  <Story
+    name="medium"
+    args={{
+      size: "medium",
+      children: "medium",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
-  <Story name="large" args={{
-    size: "large",
-    children: "large"
-  }}>
+  <Story
+    name="large"
+    args={{
+      size: "large",
+      children: "large",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
 </Canvas>
@@ -63,10 +80,13 @@ import Button, { ButtonProps } from "./Button";
 ### Use "href" props
 
 <Canvas>
-  <Story name="Use href props" args={{
-    href: "https://google.com",
-    children: "Link to google.com"
-  }}>
+  <Story
+    name="Use href props"
+    args={{
+      href: "https://google.com",
+      children: "Link to google.com",
+    }}
+  >
     {(args) => <Button {...args} />}
   </Story>
 </Canvas>
@@ -84,11 +104,9 @@ const LinkToHome = ({ className, children }) => (
   <Link className={className} href="/home">
     {children}
   </Link>
-)
+);
 
 const ButtonWithRouterLink = ({ children }) => (
-  <Button component={LinkToHome}>
-    {children}
-  </Button>
-)
+  <Button component={LinkToHome}>{children}</Button>
+);
 ```

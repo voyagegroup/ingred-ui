@@ -8,9 +8,7 @@ import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
 
-export type NavitagionRailExpantionMenuProps = React.ComponentPropsWithRef<
-  "div"
-> & {
+export type NavitagionRailExpantionMenuProps = React.ComponentPropsWithRef<"div"> & {
   title: string;
   isActive?: boolean;
   iconName: IconName;
