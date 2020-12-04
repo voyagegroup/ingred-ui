@@ -77,6 +77,20 @@ import Button from "./Button";
   </Story>
 </Canvas>
 
+### Disabled
+
+<Canvas>
+  <Story
+    name="disabled"
+    args={{
+      disabled: true,
+      children: "disabled",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
 ### Use "href" props
 
 <Canvas>
