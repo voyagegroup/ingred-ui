@@ -58,6 +58,7 @@ export default {
   title: "NavigationRail",
   parameters: {
     component: NavigationRail,
+    layout: "fullscreen",
   },
 };
 
