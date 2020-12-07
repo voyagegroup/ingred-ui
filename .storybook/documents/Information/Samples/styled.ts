@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { PaletteColor } from "ingred-ui";
+import styled, { css } from "styled-components";
+import { PaletteColor } from "../../../../src/themes";
 
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px
@@ -19,8 +19,15 @@ export const Column = styled.div`
   padding: 0 ${({ theme }) => theme.spacing * 2}px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled.h3<{ hasLink?: boolean }>`
   padding-bottom: ${({ theme }) => theme.spacing * 2}px;
+  ${({ hasLink }) =>
+    hasLink &&
+    css`
+      cursor: pointer;
+      text-decoration: underline;
+      color: ${({ theme }) => theme.palette.text.primary};
+    `}
 `;
 
 export const Component = styled.div`

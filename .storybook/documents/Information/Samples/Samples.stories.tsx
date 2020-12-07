@@ -2,6 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import moment from "moment";
 import { action } from "@storybook/addon-actions";
+import { linkTo } from "@storybook/addon-links";
 import {
   Button,
   Typography,
@@ -104,7 +105,7 @@ const componentList = [
         ),
       },
       {
-        title: "Action Button",
+        title: "ActionButton",
         content: <ActionButton icon="pencil">アクションボタン</ActionButton>,
       },
     ],
@@ -113,7 +114,7 @@ const componentList = [
     title: "Indicator",
     items: [
       {
-        title: "Loading bar",
+        title: "LoadingBar",
         content: <LoadingBar />,
       },
       {
@@ -138,7 +139,7 @@ const componentList = [
         ),
       },
       {
-        title: "Error text",
+        title: "ErrorText",
         content: <ErrorText>エラーメッセージ</ErrorText>,
       },
       {
@@ -287,7 +288,12 @@ export const Overview = () => {
             <Styled.GridContainer>
               {group.items.map((item) => (
                 <Styled.Column key={item.title}>
-                  <Styled.Title>{item.title}</Styled.Title>
+                  <Styled.Title
+                    hasLink={true}
+                    onClick={linkTo(`Components/${item.title}`)}
+                  >
+                    {item.title}
+                  </Styled.Title>
                   <Styled.Component>{item.content}</Styled.Component>
                 </Styled.Column>
               ))}
