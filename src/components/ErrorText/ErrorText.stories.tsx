@@ -9,8 +9,9 @@ const Container = styled.div`
 
 export default {
   title: "ErrorText",
+  component: ErrorText,
   parameters: {
-    component: ErrorText,
+    docs: { page: null },
   },
 };
 

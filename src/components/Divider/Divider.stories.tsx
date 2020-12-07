@@ -18,8 +18,9 @@ const RowContainer = styled.div`
 
 export default {
   title: "Divider",
+  component: Divider,
   parameters: {
-    component: Divider,
+    docs: { page: null },
   },
 };
 

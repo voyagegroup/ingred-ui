@@ -28,8 +28,9 @@ const Column = styled.div`
 
 export default {
   title: "TextField",
+  component: TextField,
   parameters: {
-    component: TextField,
+    docs: { page: null },
   },
 };
 

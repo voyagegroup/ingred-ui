@@ -1,30 +1,59 @@
 import * as React from "react";
+import styled from "styled-components";
+import { CSSTransitionProps } from "react-transition-group/CSSTransition";
+import { number } from "@storybook/addon-knobs";
 import Fade from "./index";
-import { boolean, number } from "@storybook/addon-knobs";
-import Button from "../Button";
+import Flex from "../Flex";
+import ToggleButton from "../ToggleButton";
+import Spacer from "../Spacer";
+
+const Box = styled.div`
+  height: 200px;
+  width: 200px;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+`;
 
 export default {
   title: "Fade",
   component: Fade,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
-export const Overview = () => {
-  const isOpen = boolean("IsOpen", true);
-  const timeout = number("Timeout", 300);
+const BaseComponent: React.FunctionComponent<{
+  FadeTimeout: CSSTransitionProps["timeout"];
+}> = ({ FadeTimeout }) => {
+  const [isOpen, setIsOpen] = React.useState<boolean>(true);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <Fade timeout={timeout} in={isOpen}>
-      <Button>Control in Knob Footer</Button>
-    </Fade>
+    <Flex
+      display="flex"
+      height="500px"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <Spacer pt={3} />
+      <ToggleButton active={isOpen} onChange={handleToggle} />
+      <Spacer pt={3} />
+      <Fade timeout={FadeTimeout} in={isOpen}>
+        <Box />
+      </Fade>
+    </Flex>
   );
+};
+
+export const Overview: React.FunctionComponent = () => {
+  const timeout = number("Timeout", 300);
+  return <BaseComponent FadeTimeout={timeout} />;
 };
 
 export const DifferentInOut = () => {
-  const isOpen = boolean("IsOpen", true);
   const enter = number("EnterTimeout", 300);
   const exit = number("ExitTimeout", 300);
-  return (
-    <Fade timeout={{ enter, exit }} in={isOpen}>
-      <Button>Control in Knob Footer</Button>
-    </Fade>
-  );
+  return <BaseComponent FadeTimeout={{ enter, exit }} />;
 };

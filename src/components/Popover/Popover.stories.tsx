@@ -22,8 +22,9 @@ const Content = styled.div`
 
 export default {
   title: "Popover",
+  component: Popover,
   parameters: {
-    component: Popover,
+    docs: { page: null },
   },
 };
 

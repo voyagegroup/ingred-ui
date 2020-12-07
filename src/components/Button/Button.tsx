@@ -95,13 +95,23 @@ const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
 };
 
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
+  /**
+   * The component used for the root node.
+   * Default: `<button />`
+   */
   component?:
     | keyof JSX.IntrinsicElements
     | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
+  /**
+   * Control whether "inline" or "block" Element.
+   */
   inline?: boolean;
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
+  /**
+   * If added this props, root node becomes `<a />`.
+   */
   href?: string;
 };
 

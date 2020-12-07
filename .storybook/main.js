@@ -1,13 +1,18 @@
 module.exports = {
-  stories: ["../src/components/**/*.stories.tsx"],
+  stories: [
+    "../src/components/**/*.stories.tsx",
+    "../src/components/**/*.stories.mdx",
+  ],
   addons: [
-    "@storybook/addon-actions",
+    "@storybook/addon-essentials",
     "@storybook/addon-knobs",
-    "@storybook/addon-notes",
+    // TODO: Remove this addon after replace to `.mdx`.
     "@storybook/addon-storysource",
   ],
   reactOptions: {
     fastRefresh: true,
-    strictMode: true,
+    // TODO: fix warn "Rendered more hooks than during the previous render."
+    // knobを完全に排除できたタイミングで再度調査
+    // strictMode: true,
   },
 };

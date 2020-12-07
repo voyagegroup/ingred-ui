@@ -9,6 +9,9 @@ import { select, boolean, number } from "@storybook/addon-knobs";
 export default {
   title: "FixedPanel",
   component: FixedPanel,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 const Container = styled.div`

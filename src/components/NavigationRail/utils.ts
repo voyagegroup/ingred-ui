@@ -9,9 +9,9 @@ export type NavigationRailContextValues = {
   handleUnFixed?: () => void;
 };
 
-export const NavigationRailContext = React.createContext<
-  NavigationRailContextValues
->({
-  isOpen: false,
-  isFixed: false,
-});
+export const NavigationRailContext = React.createContext<NavigationRailContextValues>(
+  {
+    isOpen: false,
+    isFixed: false,
+  },
+);

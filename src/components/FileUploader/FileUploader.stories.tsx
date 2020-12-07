@@ -7,9 +7,8 @@ export default {
   title: "FileUploader",
   component: FileUploader,
   parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
+    knobs: { escapeHTML: false },
+    docs: { page: null },
   },
 };
 
