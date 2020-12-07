@@ -6,7 +6,7 @@ import Spacer from "../Spacer";
 
 export default {
   title: "RadioButton",
-  component:  RadioButton,
+  component: RadioButton,
   parameters: {
     docs: { page: null },
   },

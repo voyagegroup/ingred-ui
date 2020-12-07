@@ -19,7 +19,7 @@ const RowContainer = styled.div`
 
 export default {
   title: "DateRangePicker",
-  component:  DateRangePicker,
+  component: DateRangePicker,
   parameters: {
     docs: { page: null },
   },

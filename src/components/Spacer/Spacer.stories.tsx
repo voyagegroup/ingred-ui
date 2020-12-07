@@ -16,7 +16,7 @@ const SpacerContainer = styled.div`
 
 export default {
   title: "Spacer",
-  component:  Spacer,
+  component: Spacer,
   parameters: {
     docs: { page: null },
   },

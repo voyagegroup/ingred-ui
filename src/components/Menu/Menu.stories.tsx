@@ -21,7 +21,7 @@ const RowContainer = styled.div<{ minHeight?: string }>`
 
 export default {
   title: "Menu",
-  component:  Menu,
+  component: Menu,
   parameters: {
     docs: { page: null },
   },

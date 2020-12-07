@@ -15,7 +15,7 @@ const Container = styled.div`
 
 export default {
   title: "ConfirmModal",
-  component:  ConfirmModal,
+  component: ConfirmModal,
   parameters: {
     docs: { page: null },
   },

@@ -9,7 +9,7 @@ import { VerticalSpacing } from "./Row";
 
 export default {
   title: "Table",
-  component:  Table,
+  component: Table,
   parameters: {
     docs: { page: null },
   },

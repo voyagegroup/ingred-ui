@@ -25,7 +25,7 @@ const Column = styled.div`
 
 export default {
   title: "Icon",
-  component:  Icon,
+  component: Icon,
   parameters: {
     docs: { page: null },
   },

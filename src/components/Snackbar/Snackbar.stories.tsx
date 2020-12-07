@@ -21,7 +21,7 @@ const RowContainer = styled.div`
 
 export default {
   title: "Snackbar",
-  component:  Snackbar,
+  component: Snackbar,
   parameters: {
     docs: { page: null },
   },
