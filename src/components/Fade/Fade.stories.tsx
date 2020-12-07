@@ -14,7 +14,7 @@ const Box = styled.div`
 `;
 
 export default {
-  title: "Fade",
+  title: "Components/Fade",
   component: Fade,
   parameters: {
     docs: { page: null },

@@ -20,7 +20,7 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "Snackbar",
+  title: "Components/Snackbar",
   component: Snackbar,
   parameters: {
     docs: { page: null },

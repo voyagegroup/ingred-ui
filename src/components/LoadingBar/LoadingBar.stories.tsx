@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 export default {
-  title: "LoadingBar",
+  title: "Components/LoadingBar",
   component: LoadingBar,
   parameters: {
     docs: { page: null },

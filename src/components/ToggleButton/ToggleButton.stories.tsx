@@ -22,7 +22,7 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "ToggleButton",
+  title: "Components/ToggleButton",
   component: ToggleButton,
   parameters: {
     docs: { page: null },

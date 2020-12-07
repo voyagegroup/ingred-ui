@@ -35,7 +35,7 @@ function createButtons(props: Props[], text = "ボタン") {
 }
 
 export default {
-  title: "ActionButton",
+  title: "Components/ActionButton",
   component: ActionButton,
   parameters: {
     docs: { page: null },

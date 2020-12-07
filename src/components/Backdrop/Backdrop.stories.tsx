@@ -5,7 +5,7 @@ import Spinner from "../Spinner";
 import Button from "../Button";
 
 export default {
-  title: "Backdrop",
+  title: "Components/Backdrop",
   component: Backdrop,
   parameters: {
     docs: { page: null },

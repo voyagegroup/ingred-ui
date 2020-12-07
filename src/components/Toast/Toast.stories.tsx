@@ -27,7 +27,7 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "Toast",
+  title: "Components/Toast",
   component: Toast,
   parameters: {
     docs: { page: null },
