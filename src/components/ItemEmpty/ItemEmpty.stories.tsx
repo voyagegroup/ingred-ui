@@ -20,8 +20,9 @@ const RowContainer = styled.div<{ minHeight?: string; flex?: boolean }>`
 
 export default {
   title: "ItemEmpty",
+  component: ItemEmpty,
   parameters: {
-    component: ItemEmpty,
+    docs: { page: null },
   },
 };
 

@@ -16,8 +16,9 @@ import FloatingTip from "../FloatingTip";
 
 export default {
   title: "DataTable",
+  component: DataTable,
   parameters: {
-    component: DataTable,
+    docs: { page: null },
   },
 };
 

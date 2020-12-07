@@ -21,8 +21,9 @@ const RowContainer = styled.div`
 
 export default {
   title: " SplitAnnotation",
+  component:  SplitAnnotation,
   parameters: {
-    component: SplitAnnotation,
+    docs: { page: null },
   },
 };
 

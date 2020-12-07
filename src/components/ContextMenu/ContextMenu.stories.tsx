@@ -19,8 +19,9 @@ const RowContainer = styled.div`
 
 export default {
   title: "ContextMenu",
+  component:  ContextMenu,
   parameters: {
-    component: ContextMenu,
+    docs: { page: null },
   },
 };
 

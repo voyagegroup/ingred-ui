@@ -29,8 +29,9 @@ const Column = styled.div`
 
 export default {
   title: "NotificationBadge",
+  component: NotificationBadge,
   parameters: {
-    component: NotificationBadge,
+    docs: { page: null },
   },
 };
 

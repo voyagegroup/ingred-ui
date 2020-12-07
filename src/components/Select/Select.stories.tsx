@@ -26,8 +26,9 @@ const Column = styled.div`
 
 export default {
   title: "Select",
+  component:  Select,
   parameters: {
-    component: Select,
+    docs: { page: null },
   },
 };
 

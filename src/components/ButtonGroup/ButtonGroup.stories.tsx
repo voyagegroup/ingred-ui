@@ -30,8 +30,9 @@ const Link: React.FunctionComponent<{ href: string; className: string }> = ({
 
 export default {
   title: "ButtonGroup",
+  component: Button,
   parameters: {
-    component: Button,
+    docs: { page: null },
   },
 };
 

@@ -7,6 +7,9 @@ import Button from "../Button";
 export default {
   title: "Backdrop",
   component: Backdrop,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 export const Overview: React.FunctionComponent = () => {

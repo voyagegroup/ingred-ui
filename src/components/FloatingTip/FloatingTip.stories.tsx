@@ -30,8 +30,9 @@ const Content = styled.div`
 
 export default {
   title: "FloatingTip",
+  component: FloatingTip,
   parameters: {
-    component: FloatingTip,
+    docs: { page: null },
   },
 };
 

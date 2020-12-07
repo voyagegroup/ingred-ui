@@ -3,8 +3,9 @@ import Spinner from "./Spinner";
 
 export default {
   title: "Spinner",
+  component: Spinner,
   parameters: {
-    component: Spinner,
+    docs: { page: null },
   },
 };
 

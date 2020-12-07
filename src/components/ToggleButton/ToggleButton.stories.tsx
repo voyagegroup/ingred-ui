@@ -23,8 +23,9 @@ const RowContainer = styled.div`
 
 export default {
   title: "ToggleButton",
+  component:  ToggleButton,
   parameters: {
-    component: ToggleButton,
+    docs: { page: null },
   },
 };
 

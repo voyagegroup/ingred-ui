@@ -16,6 +16,9 @@ const Box = styled.div`
 export default {
   title: "Fade",
   component: Fade,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 const BaseComponent: React.FunctionComponent<{

@@ -5,8 +5,9 @@ import { TextAlign, FontSize } from "./Typography";
 
 export default {
   title: "Typography",
+  component:  Typography,
   parameters: {
-    component: Typography,
+    docs: { page: null },
   },
 };
 

@@ -23,6 +23,9 @@ const ModalContainer = styled.div`
 export default {
   title: "Modal",
   component: Modal,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 export const Overview: React.FunctionComponent = () => {

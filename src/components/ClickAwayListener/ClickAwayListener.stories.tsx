@@ -20,8 +20,9 @@ const RowContainer = styled.div<{ minHeight?: string }>`
 
 export default {
   title: "ClickAwayListener",
+  component:  ClickAwayListener,
   parameters: {
-    components: ClickAwayListener,
+    docs: { page: null },
   },
 };
 

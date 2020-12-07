@@ -27,8 +27,9 @@ const Column = styled.div`
 
 export default {
   title: "Badge",
+  component: Badge,
   parameters: {
-    component: Badge,
+    docs: { page: null },
   },
 };
 

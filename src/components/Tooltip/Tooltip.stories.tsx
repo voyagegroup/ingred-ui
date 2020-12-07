@@ -8,6 +8,9 @@ import Tooltip from "./Tooltip";
 export default {
   title: "Tooltip",
   component: Tooltip,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 const TextWrapper = styled.div<{ textAlign?: string }>`

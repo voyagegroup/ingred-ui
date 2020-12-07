@@ -16,6 +16,9 @@ const Box = styled.div`
 export default {
   title: "Grow",
   component: Grow,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 const BaseComponent: React.FunctionComponent<{
