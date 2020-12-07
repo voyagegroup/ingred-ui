@@ -6,6 +6,8 @@ module.exports = {
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-knobs",
+    // TODO: Remove this addon after replace to `.mdx`.
+    "@storybook/addon-storysource",
   ],
   reactOptions: {
     fastRefresh: true,
