@@ -58,7 +58,7 @@ type ComponentSection = {
 const GetToastSample = () => {
   const { addToast } = Toast.useToasts();
   const handleClick = () => {
-    addToast("○○が完了しました", {
+    addToast("The payment is now completed!!", {
       appearance: "success",
       autoDismiss: true,
     });
@@ -66,7 +66,7 @@ const GetToastSample = () => {
   return (
     <div>
       <Button inline onClick={handleClick}>
-        トーストを表示する
+        Show the Toast
       </Button>
     </div>
   );
@@ -78,7 +78,7 @@ const componentList: ComponentSection[] = [
     items: [
       {
         title: "Card",
-        content: <Card p={3}>コンテンツ</Card>,
+        content: <Card p={3}>Contents</Card>,
       },
       {
         title: "Flex",
@@ -103,18 +103,18 @@ const componentList: ComponentSection[] = [
     items: [
       {
         title: "ActionButton",
-        content: <ActionButton icon="pencil">アクションボタン</ActionButton>,
+        content: <ActionButton icon="pencil">Edit</ActionButton>,
       },
       {
         title: "Button",
-        content: <Button inline={true}>ボタン</Button>,
+        content: <Button inline={true}>Button</Button>,
       },
       {
         title: "ButtonGroup",
         content: (
           <ButtonGroup>
-            <Button onClick={action("clicked")}>保存する</Button>
-            <Button onClick={action("clicked")}>編集する</Button>
+            <Button onClick={action("clicked")}>Save</Button>
+            <Button onClick={action("clicked")}>Edit</Button>
           </ButtonGroup>
         ),
       },
@@ -146,17 +146,11 @@ const componentList: ComponentSection[] = [
         content: (
           <DropdownButton
             contents={[
-              {
-                text: "メニュー1",
-                onClick: () => {},
-              },
-              {
-                text: "メニュー2",
-                onClick: () => {},
-              },
+              { text: "Menu 1", onClick: action("clicked 'menu 1'") },
+              { text: "Menu 2", onClick: action("clicked 'menu 2'") },
             ]}
           >
-            ボタン
+            DropdownButton
           </DropdownButton>
         ),
       },
@@ -173,6 +167,7 @@ const componentList: ComponentSection[] = [
         content: (
           <Styled.InputContainer>
             <Select
+              placeholder="Select..."
               options={[
                 { label: "option1", value: "1" },
                 { label: "option2", value: "2" },
@@ -186,7 +181,7 @@ const componentList: ComponentSection[] = [
         content: (
           <Switch
             value={0}
-            cases={[{ name: "デマンド別" }, { name: "チャネル別" }]}
+            cases={[{ name: "Sum" }, { name: "Average" }]}
             onChange={action("changed 'Switch'")}
           />
         ),
@@ -195,7 +190,7 @@ const componentList: ComponentSection[] = [
         title: "TextField",
         content: (
           <Styled.InputContainer>
-            <TextField errorText="エラーメッセージ" />
+            <TextField errorText="Error Message" />
           </Styled.InputContainer>
         ),
       },
@@ -218,8 +213,8 @@ const componentList: ComponentSection[] = [
         content: (
           <ContextMenu
             contents={[
-              { text: "編集", onClick: action("clicked 編集") },
-              { text: "保存", onClick: action("clicked 保存") },
+              { text: "Edit", onClick: action("clicked Edit") },
+              { text: "Save", onClick: action("clicked Save") },
             ]}
           />
         ),
@@ -229,8 +224,8 @@ const componentList: ComponentSection[] = [
         content: (
           <MenuList
             contents={[
-              { text: "編集", onClick: action("clicked 編集") },
-              { text: "保存", onClick: action("clicked 保存") },
+              { text: "Edit", onClick: action("clicked Edit") },
+              { text: "Save", onClick: action("clicked Save") },
             ]}
           />
         ),
@@ -247,9 +242,7 @@ const componentList: ComponentSection[] = [
       {
         title: "Snackbar",
         content: (
-          <SnackbarContent color="warning">
-            操作が長時間行われていません。
-          </SnackbarContent>
+          <SnackbarContent color="warning">This is Snackbar.</SnackbarContent>
         ),
       },
       {
@@ -275,7 +268,7 @@ const componentList: ComponentSection[] = [
       },
       {
         title: "ErrorText",
-        content: <ErrorText>エラーメッセージ</ErrorText>,
+        content: <ErrorText>Error message</ErrorText>,
       },
       {
         title: "Icon",
@@ -297,9 +290,7 @@ const componentList: ComponentSection[] = [
       },
       {
         title: "SplitAnnotation",
-        content: (
-          <SplitAnnotation>注釈はこのように表示されます。</SplitAnnotation>
-        ),
+        content: <SplitAnnotation>Write some annotations.</SplitAnnotation>,
       },
       {
         title: "Table",
@@ -307,14 +298,14 @@ const componentList: ComponentSection[] = [
           <Table>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>タイトル</Table.HeaderCell>
-                <Table.HeaderCell>タイトル</Table.HeaderCell>
+                <Table.HeaderCell>Title</Table.HeaderCell>
+                <Table.HeaderCell>Title</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               <Table.Row>
-                <Table.Cell>コンテンツ</Table.Cell>
-                <Table.Cell>コンテンツ</Table.Cell>
+                <Table.Cell>Contents</Table.Cell>
+                <Table.Cell>Contents</Table.Cell>
               </Table.Row>
             </Table.Body>
           </Table>
