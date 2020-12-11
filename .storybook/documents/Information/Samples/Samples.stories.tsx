@@ -37,6 +37,9 @@ import {
   SplitAnnotation,
   ItemEmpty,
   ScrollArea,
+  FileUploader,
+  DataTable,
+  FixedPanel,
 } from "../../../../src/components";
 import { createTheme, Theme } from "../../../../src/themes";
 import { SnackbarContent } from "../../../../src/components/Snackbar/internal/SnackbarContent";
@@ -47,6 +50,8 @@ import ModalSample from "./components/ModalSample";
 import FadeSample from "./components/FadeSample";
 import GrowSample from "./components/GrowSample";
 import PopoverSample from "./components/PopoverSample";
+import MenuSample from "./components/MenuSample";
+import FloatingTipSample from "./components/FloatingTipSample";
 
 type SectionsTitle =
   | "Layout"
@@ -149,6 +154,11 @@ const componentList: ComponentSection[] = [
         ),
       },
       {
+        title: "FileUploader",
+        content: <FileUploader onSelectFiles={action("uploaded")} />,
+        column: 2,
+      },
+      {
         title: "Input",
         content: <Input />,
       },
@@ -209,6 +219,10 @@ const componentList: ComponentSection[] = [
         ),
       },
       {
+        title: "Menu",
+        content: <MenuSample />,
+      },
+      {
         title: "MenuList",
         content: (
           <MenuList
@@ -252,12 +266,40 @@ const componentList: ComponentSection[] = [
         content: <Badge color="primary">Badge</Badge>,
       },
       {
+        title: "DataTable",
+        content: (
+          <DataTable
+            data={[
+              { id: 1, name: "1name" },
+              { id: 2, name: "2name" },
+              { id: 3, name: "3name" },
+            ]}
+            columns={[
+              {
+                name: "ID",
+                selector: (data) => data.id,
+              },
+              {
+                name: "名前",
+                selector: (data) => data.name,
+                sortable: true,
+              },
+            ]}
+          />
+        ),
+        row: 2,
+      },
+      {
         title: "Divider",
         content: <Divider orientation="vertical" />,
       },
       {
         title: "ErrorText",
         content: <ErrorText>Error message</ErrorText>,
+      },
+      {
+        title: "FloatingTip",
+        content: <FloatingTipSample />,
       },
       {
         title: "Icon",
