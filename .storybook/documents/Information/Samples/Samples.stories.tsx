@@ -39,7 +39,6 @@ import {
   ScrollArea,
   FileUploader,
   DataTable,
-  FixedPanel,
 } from "../../../../src/components";
 import { createTheme, Theme } from "../../../../src/themes";
 import { SnackbarContent } from "../../../../src/components/Snackbar/internal/SnackbarContent";
@@ -53,7 +52,7 @@ import PopoverSample from "./components/PopoverSample";
 import MenuSample from "./components/MenuSample";
 import FloatingTipSample from "./components/FloatingTipSample";
 
-type SectionsTitle =
+type SectionTitle =
   | "Layout"
   | "Inputs"
   | "Navigation"
@@ -61,9 +60,16 @@ type SectionsTitle =
   | "Data Display"
   | "Utils";
 
-type ComponentSection = {
-  title: SectionsTitle;
-  items: {
+type UndisplayedSection = {
+  title: SectionTitle;
+  components: {
+    title: string;
+  }[];
+};
+
+type Section = {
+  title: SectionTitle;
+  components: {
     title: string;
     content: JSX.Element;
     column?: number;
@@ -71,10 +77,10 @@ type ComponentSection = {
   }[];
 };
 
-const componentList: ComponentSection[] = [
+const componentList: Section[] = [
   {
     title: "Layout",
-    items: [
+    components: [
       {
         title: "Card",
         content: <Card p={3}>Contents</Card>,
@@ -99,7 +105,7 @@ const componentList: ComponentSection[] = [
   },
   {
     title: "Inputs",
-    items: [
+    components: [
       {
         title: "ActionButton",
         content: <ActionButton icon="pencil">Edit</ActionButton>,
@@ -206,7 +212,7 @@ const componentList: ComponentSection[] = [
   },
   {
     title: "Navigation",
-    items: [
+    components: [
       {
         title: "ContextMenu",
         content: (
@@ -237,7 +243,7 @@ const componentList: ComponentSection[] = [
   },
   {
     title: "Feedback",
-    items: [
+    components: [
       {
         title: "LoadingBar",
         content: <LoadingBar />,
@@ -260,7 +266,7 @@ const componentList: ComponentSection[] = [
   },
   {
     title: "Data Display",
-    items: [
+    components: [
       {
         title: "Badge",
         content: <Badge color="primary">Badge</Badge>,
@@ -362,7 +368,7 @@ const componentList: ComponentSection[] = [
   },
   {
     title: "Utils",
-    items: [
+    components: [
       {
         title: "ClickawayListener",
         content: <ClickAwayListenerSample />,
@@ -415,6 +421,18 @@ const componentList: ComponentSection[] = [
       },
     ],
   },
+];
+
+const undisplayedSections: UndisplayedSection[] = [
+  {
+    title: "Navigation",
+    components: [{ title: "FixedPanel" }, { title: "NavigationRail" }],
+  },
+  // TODO: Add Portal.stories.mdx
+  // {
+  //   title: "Utils",
+  //   components: [{ title: "Portal" }],
+  // },
 ];
 
 const getColors = (theme: Theme) => [
@@ -471,22 +489,45 @@ export const Overview = () => {
               </Typography>
             </Spacer>
             <Styled.GridContainer>
-              {group.items.map((item) => (
+              {group.components.map((component) => (
                 <Styled.Cell
-                  key={item.title}
-                  column={item.column}
-                  row={item.row}
+                  key={component.title}
+                  column={component.column}
+                  row={component.row}
                 >
                   <Styled.Title
                     hasLink={true}
-                    onClick={linkTo(`Components/${item.title}`)}
+                    onClick={linkTo(`Components/${component.title}`)}
                   >
-                    {item.title}
+                    {component.title}
                   </Styled.Title>
-                  <Styled.Component>{item.content}</Styled.Component>
+                  <Styled.Component>{component.content}</Styled.Component>
                 </Styled.Cell>
               ))}
             </Styled.GridContainer>
+          </React.Fragment>
+        ))}
+        <Spacer pl={2} pt={4} pb={2}>
+          <Typography component="h2" weight="bold" size="xxxxxl">
+            Others
+          </Typography>
+        </Spacer>
+        {undisplayedSections.map((section) => (
+          <React.Fragment key={section.title}>
+            <Spacer pl={2} py={2}>
+              <Styled.Title>{section.title}</Styled.Title>
+            </Spacer>
+            <Spacer pl={4}>
+              {section.components.map((component) => (
+                <Styled.Title
+                  as="h4"
+                  hasLink={true}
+                  onClick={linkTo(`Components/${component.title}`)}
+                >
+                  {component.title}
+                </Styled.Title>
+              ))}
+            </Spacer>
           </React.Fragment>
         ))}
       </Styled.Container>
