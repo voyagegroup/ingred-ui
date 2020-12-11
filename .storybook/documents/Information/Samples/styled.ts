@@ -8,14 +8,16 @@ export const Container = styled.div`
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(192px, 384px));
-  grid-auto-rows: 192px;
+  grid-template-columns: repeat(auto-fill, 384px);
+  grid-auto-flow: dense;
   grid-row-gap: 24px;
 `;
 
-export const Column = styled.div`
-  width: 384px;
-  height: 192px;
+export const Cell = styled.div<{ column?: number; row?: number }>`
+  width: ${({ column }) => (column || 1) * 384}px;
+  height: ${({ row }) => (row || 1) * 192}px;
+  grid-row: span ${({ row }) => row || 1};
+  grid-column: span ${({ column }) => column || 1};
   padding: 0 ${({ theme }) => theme.spacing * 2}px;
 `;
 

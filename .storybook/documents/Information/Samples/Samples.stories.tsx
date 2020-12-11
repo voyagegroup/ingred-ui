@@ -52,6 +52,8 @@ type ComponentSection = {
   items: {
     title: string;
     content: JSX.Element;
+    column?: number;
+    row?: number;
   }[];
 };
 
@@ -374,10 +376,10 @@ export const Overview = () => {
         </Spacer>
         <Styled.GridContainer>
           {getColors(theme).map((item) => (
-            <Styled.Column key={item.title}>
+            <Styled.Cell key={item.title}>
               <Styled.Title>{item.title}</Styled.Title>
               <Styled.ColorTile palette={item.palette} />
-            </Styled.Column>
+            </Styled.Cell>
           ))}
         </Styled.GridContainer>
 
@@ -390,7 +392,11 @@ export const Overview = () => {
             </Spacer>
             <Styled.GridContainer>
               {group.items.map((item) => (
-                <Styled.Column key={item.title}>
+                <Styled.Cell
+                  key={item.title}
+                  column={item.column}
+                  row={item.row}
+                >
                   <Styled.Title
                     hasLink={true}
                     onClick={linkTo(`Components/${item.title}`)}
@@ -398,7 +404,7 @@ export const Overview = () => {
                     {item.title}
                   </Styled.Title>
                   <Styled.Component>{item.content}</Styled.Component>
-                </Styled.Column>
+                </Styled.Cell>
               ))}
             </Styled.GridContainer>
           </React.Fragment>
