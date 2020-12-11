@@ -11,3 +11,11 @@ export const decorators = [
     </ThemeProvider>
   ),
 ];
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ["Information", "Components"],
+    },
+  },
+};
