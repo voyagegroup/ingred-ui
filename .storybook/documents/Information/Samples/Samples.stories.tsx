@@ -167,15 +167,14 @@ const componentList: ComponentSection[] = [
       {
         title: "Select",
         content: (
-          <Styled.InputContainer>
-            <Select
-              placeholder="Select..."
-              options={[
-                { label: "option1", value: "1" },
-                { label: "option2", value: "2" },
-              ]}
-            />
-          </Styled.InputContainer>
+          <Select
+            minWidth="200px"
+            placeholder="Select..."
+            options={[
+              { label: "option1", value: "1" },
+              { label: "option2", value: "2" },
+            ]}
+          />
         ),
       },
       {
@@ -190,11 +189,7 @@ const componentList: ComponentSection[] = [
       },
       {
         title: "TextField",
-        content: (
-          <Styled.InputContainer>
-            <TextField errorText="Error Message" />
-          </Styled.InputContainer>
-        ),
+        content: <TextField errorText="Error Message" width="200px" />,
       },
       {
         title: "ToggleButton",

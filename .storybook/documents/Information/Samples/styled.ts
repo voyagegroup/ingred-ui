@@ -42,10 +42,6 @@ export const Component = styled.div`
   background-color: ${({ theme }) => theme.palette.background.active};
 `;
 
-export const InputContainer = styled.div`
-  width: 100%;
-`;
-
 export const ColorTile = styled.div<{ palette: PaletteColor }>`
   width: 100%;
   height: calc(100% - 44px);
