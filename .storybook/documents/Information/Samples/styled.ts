@@ -71,3 +71,12 @@ export const Square = styled.div`
 export const FullBox = styled.div`
   width: 100%;
 `;
+
+export const ScrollAreaContainer = styled.div`
+  width: 200px;
+  border: solid 1px ${({ theme }) => theme.palette.divider};
+`;
+
+export const ScrollAreaContent = styled.div`
+  height: 100px;
+`;

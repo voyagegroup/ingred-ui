@@ -35,9 +35,18 @@ import {
   NotificationBadge,
   Pager,
   SplitAnnotation,
+  ItemEmpty,
+  ScrollArea,
 } from "../../../../src/components";
 import { createTheme, Theme } from "../../../../src/themes";
 import { SnackbarContent } from "../../../../src/components/Snackbar/internal/SnackbarContent";
+import ToastSample from "./components/ToastSample";
+import ClickAwayListenerSample from "./components/ClickawayListenerSample";
+import ConfirmModalSample from "./components/ConfirmModalSample";
+import ModalSample from "./components/ModalSample";
+import FadeSample from "./components/FadeSample";
+import GrowSample from "./components/GrowSample";
+import PopoverSample from "./components/PopoverSample";
 
 type SectionsTitle =
   | "Layout"
@@ -55,23 +64,6 @@ type ComponentSection = {
     column?: number;
     row?: number;
   }[];
-};
-
-const GetToastSample = () => {
-  const { addToast } = Toast.useToasts();
-  const handleClick = () => {
-    addToast("The payment is now completed!!", {
-      appearance: "success",
-      autoDismiss: true,
-    });
-  };
-  return (
-    <div>
-      <Button inline onClick={handleClick}>
-        Show the Toast
-      </Button>
-    </div>
-  );
 };
 
 const componentList: ComponentSection[] = [
@@ -248,7 +240,7 @@ const componentList: ComponentSection[] = [
       },
       {
         title: "Toast",
-        content: <GetToastSample />,
+        content: <ToastSample />,
       },
     ],
   },
@@ -326,6 +318,61 @@ const componentList: ComponentSection[] = [
       },
     ],
   },
+  {
+    title: "Utils",
+    items: [
+      {
+        title: "ClickawayListener",
+        content: <ClickAwayListenerSample />,
+      },
+      {
+        title: "ConfirmModal",
+        content: <ConfirmModalSample />,
+      },
+      {
+        title: "Modal",
+        content: <ModalSample />,
+      },
+      {
+        title: "Fade",
+        content: <FadeSample />,
+      },
+      {
+        title: "Grow",
+        content: <GrowSample />,
+      },
+      {
+        title: "ItemEmpty",
+        content: (
+          <ItemEmpty
+            title="Title"
+            subtitle="Sub Title"
+            imageWidth={100}
+            imageHeight={100}
+          />
+        ),
+        row: 2,
+      },
+      {
+        title: "Popover",
+        content: <PopoverSample />,
+      },
+      {
+        title: "ScrollArea",
+        content: (
+          <div>
+            <Styled.ScrollAreaContainer>
+              <ScrollArea height="70px">
+                <Styled.ScrollAreaContent />
+              </ScrollArea>
+            </Styled.ScrollAreaContainer>
+            <Spacer pt={1} />
+            <Typography align="center">※Only for Mac x Chromium</Typography>
+          </div>
+        ),
+      },
+    ],
+  },
 ];
 
 const getColors = (theme: Theme) => [
@@ -358,11 +405,7 @@ export default {
 export const Overview = () => {
   const theme = createTheme();
   return (
-    <Toast.Provider
-      placement="top-center"
-      autoDismissTimeout={3000}
-      transitionDuration={300}
-    >
+    <Toast.Provider placement="top-center">
       <Styled.Container>
         <Spacer pl={2} pt={4} pb={2}>
           <Typography component="h2" weight="bold" size="xxxxxl">
