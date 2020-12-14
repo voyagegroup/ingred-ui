@@ -428,11 +428,10 @@ const undisplayedSections: UndisplayedSection[] = [
     title: "Navigation",
     components: [{ title: "FixedPanel" }, { title: "NavigationRail" }],
   },
-  // TODO: Add Portal.stories.mdx
-  // {
-  //   title: "Utils",
-  //   components: [{ title: "Portal" }],
-  // },
+  {
+    title: "Utils",
+    components: [{ title: "Portal" }],
+  },
 ];
 
 const getColors = (theme: Theme) => [
