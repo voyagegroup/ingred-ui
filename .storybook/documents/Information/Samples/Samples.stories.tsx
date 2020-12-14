@@ -524,7 +524,9 @@ export const Overview = () => {
                   key={component.title}
                   as="h4"
                   hasLink={true}
-                  onClick={linkTo(`Components/${component.title}`)}
+                  onClick={linkTo(
+                    `Components/${section.title}/${component.title}`,
+                  )}
                 >
                   {component.title}
                 </Styled.Title>
