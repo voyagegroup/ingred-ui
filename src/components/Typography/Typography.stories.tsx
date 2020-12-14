@@ -4,7 +4,7 @@ import Typography from "./";
 import { TextAlign, FontSize } from "./Typography";
 
 export default {
-  title: "Components/Typography",
+  title: "Components/Data Display/Typography",
   component: Typography,
   parameters: {
     docs: { page: null },

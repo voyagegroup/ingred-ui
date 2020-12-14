@@ -26,7 +26,7 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "Components/Pager",
+  title: "Components/Data Display/Pager",
   component: Pager,
   parameters: {
     docs: { page: null },

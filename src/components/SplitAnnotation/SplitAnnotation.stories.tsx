@@ -20,7 +20,7 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "Components/SplitAnnotation",
+  title: "Components/Data Display/SplitAnnotation",
   component: SplitAnnotation,
   parameters: {
     docs: { page: null },

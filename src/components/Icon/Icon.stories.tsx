@@ -24,7 +24,7 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "Components/Icon",
+  title: "Components/Data Display/Icon",
   component: Icon,
   parameters: {
     docs: { page: null },

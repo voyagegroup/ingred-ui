@@ -8,7 +8,7 @@ import Badge from "../Badge";
 import { VerticalSpacing } from "./Row";
 
 export default {
-  title: "Components/Table",
+  title: "Components/Data Display/Table",
   component: Table,
   parameters: {
     docs: { page: null },
