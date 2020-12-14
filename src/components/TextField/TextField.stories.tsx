@@ -27,7 +27,7 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "TextField",
+  title: "Components/TextField",
   component: TextField,
   parameters: {
     docs: { page: null },

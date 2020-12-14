@@ -1,12 +1,13 @@
 module.exports = {
   stories: [
-    "../src/components/**/*.stories.tsx",
-    "../src/components/**/*.stories.mdx",
+    "../src/components/**/*.stories.@(tsx|mdx)",
+    "./documents/**/*.stories.@(tsx|mdx)",
   ],
   addons: [
     "@storybook/addon-essentials",
+    "@storybook/addon-links",
+    // TODO: Remove following addons after replace to `.mdx`.
     "@storybook/addon-knobs",
-    // TODO: Remove this addon after replace to `.mdx`.
     "@storybook/addon-storysource",
   ],
   reactOptions: {

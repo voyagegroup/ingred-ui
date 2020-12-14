@@ -23,7 +23,7 @@ const Inner = styled.div`
 `;
 
 export default {
-  title: "DropdownButton",
+  title: "Components/DropdownButton",
   component: DropdownButton,
   parameters: {
     docs: { page: null },

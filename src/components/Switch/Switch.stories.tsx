@@ -16,7 +16,7 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "Switch",
+  title: "Components/Switch",
   component: Switch,
   parameters: {
     docs: { page: null },

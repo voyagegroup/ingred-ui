@@ -18,7 +18,7 @@ const RowContainer = styled.div`
 `;
 
 export default {
-  title: "DatePicker",
+  title: "Components/DatePicker",
   component: DatePicker,
   parameters: {
     docs: { page: null },

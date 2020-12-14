@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 export default {
-  title: "MenuList",
+  title: "Components/MenuList",
   component: MenuList,
   parameters: {
     docs: { page: null },

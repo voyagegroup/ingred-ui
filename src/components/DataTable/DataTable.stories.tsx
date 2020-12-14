@@ -15,7 +15,7 @@ import { select, boolean, text } from "@storybook/addon-knobs";
 import FloatingTip from "../FloatingTip";
 
 export default {
-  title: "DataTable",
+  title: "Components/DataTable",
   component: DataTable,
   parameters: {
     docs: { page: null },

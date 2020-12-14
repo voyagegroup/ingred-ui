@@ -14,7 +14,7 @@ const Box = styled.div`
 `;
 
 export default {
-  title: "Grow",
+  title: "Components/Grow",
   component: Grow,
   parameters: {
     docs: { page: null },

@@ -2,7 +2,6 @@ import * as React from "react";
 import { ThemeProvider, createTheme } from "../src/themes";
 import "@storybook/addon-console";
 
-
 const theme = createTheme();
 
 export const decorators = [
@@ -12,3 +11,11 @@ export const decorators = [
     </ThemeProvider>
   ),
 ];
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ["Information", "Components"],
+    },
+  },
+};

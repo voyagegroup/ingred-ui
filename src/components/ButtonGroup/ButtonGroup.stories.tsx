@@ -29,7 +29,7 @@ const Link: React.FunctionComponent<{ href: string; className: string }> = ({
 );
 
 export default {
-  title: "ButtonGroup",
+  title: "Components/ButtonGroup",
   component: Button,
   parameters: {
     docs: { page: null },

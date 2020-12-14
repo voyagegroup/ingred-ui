@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 export default {
-  title: "Card",
+  title: "Components/Card",
   component: Card,
   parameters: {
     docs: { page: null },
