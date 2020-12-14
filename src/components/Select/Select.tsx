@@ -182,16 +182,6 @@ const Select: SelectComponent = ({
     <Styled.Container minWidth={minWidth}>
       <ReactSelect
         isClearable
-        components={{
-          DropdownIndicator: (props) => (
-            <DropdownIndicator {...props} error={error} />
-          ),
-          ClearIndicator,
-          IndicatorSeparator: null,
-          MultiValueRemove,
-          MenuList: Styled.ReactSelectMenuList,
-          ...rest.components,
-        }}
         placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
         styles={getOverrideStyles(theme, error)}
@@ -203,6 +193,16 @@ const Select: SelectComponent = ({
         })}
         filterOption={filterOption}
         {...rest}
+        components={{
+          DropdownIndicator: (props) => (
+            <DropdownIndicator {...props} error={error} />
+          ),
+          ClearIndicator,
+          IndicatorSeparator: null,
+          MultiValueRemove,
+          MenuList: Styled.ReactSelectMenuList,
+          ...rest.components,
+        }}
         onInputChange={handleInputChange}
       />
     </Styled.Container>
