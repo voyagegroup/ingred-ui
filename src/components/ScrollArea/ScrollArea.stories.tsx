@@ -16,7 +16,7 @@ const Content = styled.div`
 `;
 
 export default {
-  title: "Components/ScrollArea",
+  title: "Components/Utils/ScrollArea",
   component: ScrollArea,
 };
 
