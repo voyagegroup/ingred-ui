@@ -190,6 +190,7 @@ const Select: SelectComponent = ({
           IndicatorSeparator: null,
           MultiValueRemove,
           MenuList: Styled.ReactSelectMenuList,
+          ...rest.components,
         }}
         placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
