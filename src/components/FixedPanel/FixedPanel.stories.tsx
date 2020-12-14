@@ -7,7 +7,7 @@ import Spacer from "../Spacer";
 import { select, boolean, number } from "@storybook/addon-knobs";
 
 export default {
-  title: "Components/FixedPanel",
+  title: "Components/Navigation/FixedPanel",
   component: FixedPanel,
   parameters: {
     docs: { page: null },

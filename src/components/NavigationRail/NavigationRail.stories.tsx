@@ -55,7 +55,7 @@ const MainContent = () => (
 );
 
 export default {
-  title: "Components/NavigationRail",
+  title: "Components/Navigation/NavigationRail",
   component: NavigationRail,
   parameters: {
     layout: "fullscreen",
