@@ -5,7 +5,7 @@ import RadioButton, { RadioButtonSize } from "./";
 import Spacer from "../Spacer";
 
 export default {
-  title: "Components/RadioButton",
+  title: "Components/Inputs/RadioButton",
   component: RadioButton,
   parameters: {
     docs: { page: null },

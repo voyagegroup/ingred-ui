@@ -5,7 +5,7 @@ import Checkbox from ".";
 import Spacer from "../Spacer";
 
 export default {
-  title: "Components/Checkbox",
+  title: "Components/Inputs/Checkbox",
   component: Checkbox,
   parameters: {
     docs: { page: null },
