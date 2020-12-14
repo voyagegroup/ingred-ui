@@ -496,7 +496,9 @@ export const Overview = () => {
                 >
                   <Styled.Title
                     hasLink={true}
-                    onClick={linkTo(`Components/${component.title}`)}
+                    onClick={linkTo(
+                      `Components/${group.title}/${component.title}`,
+                    )}
                   >
                     {component.title}
                   </Styled.Title>
@@ -519,6 +521,7 @@ export const Overview = () => {
             <Spacer pl={4}>
               {section.components.map((component) => (
                 <Styled.Title
+                  key={component.title}
                   as="h4"
                   hasLink={true}
                   onClick={linkTo(`Components/${component.title}`)}
