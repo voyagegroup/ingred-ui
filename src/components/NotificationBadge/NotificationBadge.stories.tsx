@@ -28,7 +28,7 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "Components/NotificationBadge",
+  title: "Components/Data Display/NotificationBadge",
   component: NotificationBadge,
   parameters: {
     docs: { page: null },

@@ -21,7 +21,7 @@ const ModalContainer = styled.div`
 `;
 
 export default {
-  title: "Components/Modal",
+  title: "Components/Utils/Modal",
   component: Modal,
   parameters: {
     docs: { page: null },

@@ -8,7 +8,7 @@ const Box = styled.div`
 `;
 
 export default {
-  title: "Components/Portal",
+  title: "Components/Utils/Portal",
   component: Portal,
 };
 

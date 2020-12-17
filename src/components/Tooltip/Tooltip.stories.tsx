@@ -6,7 +6,7 @@ import Flex from "../Flex";
 import Tooltip from "./Tooltip";
 
 export default {
-  title: "Components/Tooltip",
+  title: "Components/Data Display/Tooltip",
   component: Tooltip,
   parameters: {
     docs: { page: null },

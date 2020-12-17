@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { text } from "@storybook/addon-knobs";
 
 export default {
-  title: "Components/FileUploader",
+  title: "Components/Inputs/FileUploader",
   component: FileUploader,
   parameters: {
     knobs: { escapeHTML: false },
