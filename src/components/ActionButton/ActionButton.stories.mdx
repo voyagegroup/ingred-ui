@@ -1,0 +1,28 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import ActionButton from "./ActionButton";
+
+<Meta
+  title="Components/Inputs/ActionButton"
+  component={ActionButton}
+  argTypes={{ onClick: { action: "clicked" } }}
+/>
+
+# ActionButton
+
+It can behave like a `<button />` tags.
+
+<ArgsTable of={ActionButton} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      icon: "pencil",
+      children: "Edit",
+    }}
+  >
+    {(args) => <ActionButton {...args} />}
+  </Story>
+</Canvas>
