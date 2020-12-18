@@ -9,6 +9,15 @@ module.exports = {
     // TODO: Remove following addons after replace to `.mdx`.
     "@storybook/addon-knobs",
     "@storybook/addon-storysource",
+    {
+      // MEMO: included in addon-essentials
+      name: "@storybook/addon-docs",
+      options: {
+        sourceLoaderOptions: {
+          injectStoryParameters: false,
+        },
+      },
+    },
   ],
   reactOptions: {
     fastRefresh: true,
