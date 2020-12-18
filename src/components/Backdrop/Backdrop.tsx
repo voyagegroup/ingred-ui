@@ -6,7 +6,13 @@ import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 export type BackdropProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
   invisible?: boolean;
-  transitionDuration?: number; // MEMO: millisecond
+  /**
+   * Unit: millisecond
+   */
+  transitionDuration?: number;
+  /**
+   * props of `<Fade />`
+   */
   fadeProps?: CSSTransitionProps;
 };
 
