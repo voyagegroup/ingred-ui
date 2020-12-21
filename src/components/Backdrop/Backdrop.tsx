@@ -11,7 +11,7 @@ export type BackdropProps = React.ComponentPropsWithRef<"div"> & {
    */
   transitionDuration?: number;
   /**
-   * props of `<Fade />`
+   * props of [Fade](/?path=/docs/components-utils-fade)
    */
   fadeProps?: CSSTransitionProps;
 };
