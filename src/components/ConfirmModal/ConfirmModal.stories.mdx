@@ -1,5 +1,4 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
-import { action } from "@storybook/addon-actions";
 import ConfirmModal from "./ConfirmModal";
 import Button from "../Button";
 import DataTable from "../DataTable";
@@ -122,8 +121,6 @@ import { data } from "../DataTable/data";
 
 ### With subactions
 
-<!-- fullsizeをtrueにしないといけないことを書く -->
-
 <Canvas>
   <Story
     name="with subactions"
@@ -148,12 +145,12 @@ import { data } from "../DataTable/data";
               {
                 title: "CSV形式でダウンロード",
                 icon: "export",
-                action: action("clicked subaction"),
+                action: () => {},
               },
               {
                 title: "ダッシュボードに追加",
                 icon: "export",
-                action: action("clicked subaction"),
+                action: () => {},
               },
             ]}
             isOpen={isOpen}

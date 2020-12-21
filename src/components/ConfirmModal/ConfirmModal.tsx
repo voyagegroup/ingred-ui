@@ -56,6 +56,7 @@ export type ConfirmModalProps = {
    *   action: () => void;
    * }
    * ```
+   * **Recommend to use with `fullSize={true}`**
    */
   subActions?: SubAction[];
   tipElement?: JSX.Element;
