@@ -1,0 +1,58 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import Badge from "./Badge";
+
+<Meta title="Components/Data Display/Badge" component={Badge} />
+
+# Badge
+
+<ArgsTable of={Badge} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="primary"
+    args={{
+      color: "primary",
+      children: "primary",
+    }}
+  >
+    {(args) => <Badge {...args} />}
+  </Story>
+  <Story
+    name="secondary"
+    args={{
+      color: "secondary",
+      children: "secondary",
+    }}
+  >
+    {(args) => <Badge {...args} />}
+  </Story>
+  <Story
+    name="success"
+    args={{
+      color: "success",
+      children: "success",
+    }}
+  >
+    {(args) => <Badge {...args} />}
+  </Story>
+  <Story
+    name="warning"
+    args={{
+      color: "warning",
+      children: "warning",
+    }}
+  >
+    {(args) => <Badge {...args} />}
+  </Story>
+  <Story
+    name="danger"
+    args={{
+      color: "danger",
+      children: "danger",
+    }}
+  >
+    {(args) => <Badge {...args} />}
+  </Story>
+</Canvas>
