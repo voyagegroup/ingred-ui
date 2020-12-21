@@ -1,0 +1,22 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import ItemEmpty from "./ItemEmpty";
+
+<Meta title="Components/Utils/ItemEmpty" component={ItemEmpty} />
+
+# ItemEmpty
+
+<ArgsTable of={ItemEmpty} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      title: "There is not items.",
+      subtitle: "this is subtitle.",
+    }}
+  >
+    {(args) => <ItemEmpty {...args} />}
+  </Story>
+</Canvas>
