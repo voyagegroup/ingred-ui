@@ -43,6 +43,7 @@ import { DesktopMobileIcon } from "./internal/DesktopMobileIcon";
 import { CopyIcon } from "./internal/CopyIcon";
 import { BarChartFramedIcon } from "./internal/BarChartFramedIcon";
 import { LineChartFramedIcon } from "./internal/LineChartFramedIcon";
+import { MultiLineChartFramedIcon } from "./internal/MultiLineChartFramedIcon";
 import { TruckIcon } from "./internal/TruckIcon";
 import { CameraMovieIcon } from "./internal/CameraMovieIcon";
 import { CodeFileIcon } from "./internal/CodeFileIcon";
@@ -67,6 +68,7 @@ export type IconName =
   | "bar_chart"
   | "bar_chart_framed"
   | "line_chart_framed"
+  | "multi_line_chart_framed"
   | "logout"
   | "setting"
   | "arrow_bottom"
@@ -144,6 +146,7 @@ export const icons: {
   bar_chart: BarChartIcon,
   bar_chart_framed: BarChartFramedIcon,
   line_chart_framed: LineChartFramedIcon,
+  multi_line_chart_framed: MultiLineChartFramedIcon,
   logout: LogoutIcon,
   setting: SettingIcon,
   arrow_bottom: ArrowBottomIcon,
