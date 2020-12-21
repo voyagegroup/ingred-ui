@@ -31,20 +31,44 @@ export type ConfirmModalProps = {
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
     reason: ModalCloseReason | ConfirmModalCloseReason,
   ) => void;
+  /**
+   * If `undefined`, footer is removed.
+   */
   onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
   buttonColor?: ButtonColor;
   isOpen?: boolean;
+  /**
+   * If `true`, disabled to click submit button.
+   */
   disabled?: boolean;
   loading?: boolean;
   overflowYScroll?: boolean;
   fullSize?: boolean;
+  /**
+   * If `true`, children is wrapped by `<Spacer px={3} pb={3} />`.
+   */
   disableHorizontalPadding?: boolean;
+  /**
+   * ```
+   * type SubAction = {
+   *   title: string;
+   *   icon: IconName;
+   *   action: () => void;
+   * }
+   * ```
+   */
   subActions?: SubAction[];
   tipElement?: JSX.Element;
+  /**
+   * props of [Modal](/?path=/docs/components-utils-modal)
+   */
   modalProps?: ModalProps;
+  /**
+   * props of [Fade](/?path=/docs/components-utils-fade)
+   */
   fadeProps?: CSSTransitionProps;
 
-  // TypeScriptで型エラーが出るので一旦これでしのぐ
+  // MEMO: Added this to prevent type error.
   children?: React.ReactNode;
 };
 

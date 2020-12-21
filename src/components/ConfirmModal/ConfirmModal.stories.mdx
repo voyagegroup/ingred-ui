@@ -1,0 +1,282 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import ConfirmModal from "./ConfirmModal";
+import Button from "../Button";
+import DataTable from "../DataTable";
+import { data } from "../DataTable/data";
+
+<Meta
+  title="Components/Utils/ConfirmModal"
+  component={ConfirmModal}
+  parameters={{ docs: { source: { type: "code" } } }}
+  argTypes={{ onSubmit: { action: "submitted" } }}
+/>
+
+# ConfirmModal
+
+<ArgsTable of={ConfirmModal} />
+
+## Samples
+
+### Basic
+
+<Canvas>
+  <Story
+    name="basic"
+    args={{
+      isOpen: false,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            {...args}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### Full Size
+
+<Canvas>
+  <Story
+    name="full size"
+    args={{
+      isOpen: false,
+      fullSize: true,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            fullSize={true}
+            {...args}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### With tips
+
+<Canvas>
+  <Story
+    name="with tips"
+    args={{
+      isOpen: false,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            tipElement={
+              <div>
+                モーダルの設定内容に関する脚注を入れたい場合は、
+                &quot;tipElement&quot;
+                に表示したい内容を追加することでfloatingTipを追加できます。
+              </div>
+            }
+            {...args}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### With subactions
+<!-- fullsizeをtrueにしないといけないことを書く -->
+
+<Canvas>
+  <Story
+    name="with subactions"
+    args={{
+      isOpen: false,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            {...args}
+            fullSize={true}
+            subActions={[
+              {
+                title: "CSV形式でダウンロード",
+                icon: "export",
+                action: () => {},
+              },
+              {
+                title: "ダッシュボードに追加",
+                icon: "export",
+                action: () => {},
+              },
+            ]}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### Loading
+
+<Canvas>
+  <Story
+    name="loading"
+    args={{
+      isOpen: false,
+      loading: true,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            loading={true}
+            {...args}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### Overflow Y scroll
+
+<Canvas>
+  <Story
+    name="overflow Y scroll"
+    args={{
+      isOpen: false,
+      overflowYScroll: true,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            overflowYScroll={true}
+            {...args}
+            isOpen={isOpen}
+          >
+            <DataTable
+              data={data}
+              columns={[
+                {
+                  name: "ID",
+                  selector: (data) => data.id,
+                },
+                {
+                  name: "名前",
+                  selector: (data) => data.date,
+                },
+              ]}
+            />
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+
+### Without footer
+
+<Canvas>
+  <Story
+    name="without footer"
+    args={{
+      isOpen: false,
+      onSubmit: undefined,
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const handleToggleButton = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <Button onClick={handleToggleButton}>Open Modal</Button>
+          <ConfirmModal
+            title="タイトル"
+            onClose={handleToggleButton}
+            onSubmit={undefined}
+            {...args}
+            isOpen={isOpen}
+          >
+            コンテンツ
+          </ConfirmModal>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
