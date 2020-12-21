@@ -13,9 +13,21 @@ const getHasTransition = (props: React.PropsWithChildren<any>): boolean => {
 export type ModalCloseReason = "backdropClick";
 
 export type ModalProps = {
+  /**
+   * If `false`, children becomes `visibility: hidden`.
+   */
   isOpen?: boolean;
+  /**
+   * If `true`, children contains [Backdrop](/?path=/docs/components-feedback-backdrop).
+   */
   hasBackground?: boolean;
+  /**
+   * props of [Backdrop](/?path=/docs/components-feedback-backdrop)
+   */
   backdropProps?: BackdropProps;
+  /**
+   * Control the transition of Backdrop.
+   */
   enableTransition?: boolean;
   onClose?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
