@@ -145,7 +145,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.stories.tsx", "*.test.ts", "*.test.tsx"],
+      files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
       rules: {
         "react/jsx-handler-names": "off",
         "no-empty": "off",

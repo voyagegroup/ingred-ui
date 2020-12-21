@@ -1,7 +1,5 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
 import Popover from "./Popover";
-import Button from "../Button";
-import Fade from "../Fade";
 
 <Meta
   title="Components/Utils/Popover"
@@ -20,15 +18,12 @@ import Fade from "../Fade";
     name="example"
     args={{
       isOpen: false,
-      positionPriority: ["top"]
+      positionPriority: ["top"],
     }}
   >
     {(args) => {
       const [isOpen, setIsOpen] = React.useState(args.isOpen);
-      const [
-        buttonElement,
-        setButtonElement,
-      ] = React.useState(null);
+      const [buttonElement, setButtonElement] = React.useState(null);
       const handleToggleOpen = () => {
         setIsOpen(!isOpen);
       };

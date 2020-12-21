@@ -1,4 +1,5 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import { action } from "@storybook/addon-actions";
 import ConfirmModal from "./ConfirmModal";
 import Button from "../Button";
 import DataTable from "../DataTable";
@@ -48,7 +49,6 @@ import { data } from "../DataTable/data";
   </Story>
 </Canvas>
 
-
 ### Full Size
 
 <Canvas>
@@ -69,8 +69,8 @@ import { data } from "../DataTable/data";
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
             title="タイトル"
-            onClose={handleToggleButton}
             fullSize={true}
+            onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
@@ -81,7 +81,6 @@ import { data } from "../DataTable/data";
     }}
   </Story>
 </Canvas>
-
 
 ### With tips
 
@@ -102,7 +101,6 @@ import { data } from "../DataTable/data";
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
             title="タイトル"
-            onClose={handleToggleButton}
             tipElement={
               <div>
                 モーダルの設定内容に関する脚注を入れたい場合は、
@@ -110,6 +108,7 @@ import { data } from "../DataTable/data";
                 に表示したい内容を追加することでfloatingTipを追加できます。
               </div>
             }
+            onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
@@ -121,8 +120,8 @@ import { data } from "../DataTable/data";
   </Story>
 </Canvas>
 
-
 ### With subactions
+
 <!-- fullsizeをtrueにしないといけないことを書く -->
 
 <Canvas>
@@ -149,12 +148,12 @@ import { data } from "../DataTable/data";
               {
                 title: "CSV形式でダウンロード",
                 icon: "export",
-                action: () => {},
+                action: action("clicked subaction"),
               },
               {
                 title: "ダッシュボードに追加",
                 icon: "export",
-                action: () => {},
+                action: action("clicked subaction"),
               },
             ]}
             isOpen={isOpen}
@@ -166,7 +165,6 @@ import { data } from "../DataTable/data";
     }}
   </Story>
 </Canvas>
-
 
 ### Loading
 
@@ -188,8 +186,8 @@ import { data } from "../DataTable/data";
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
             title="タイトル"
-            onClose={handleToggleButton}
             loading={true}
+            onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
@@ -200,7 +198,6 @@ import { data } from "../DataTable/data";
     }}
   </Story>
 </Canvas>
-
 
 ### Overflow Y scroll
 
@@ -222,8 +219,8 @@ import { data } from "../DataTable/data";
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
             title="タイトル"
-            onClose={handleToggleButton}
             overflowYScroll={true}
+            onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
@@ -246,7 +243,6 @@ import { data } from "../DataTable/data";
     }}
   </Story>
 </Canvas>
-
 
 ### Without footer
 
