@@ -1,7 +1,5 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
 import ClickAwayListener from "./ClickAwayListener";
-import Spinner from "../Spinner";
-import Button from "../Button";
 
 <Meta
   title="Components/Utils/ClickAwayListener"
@@ -16,11 +14,8 @@ import Button from "../Button";
 ## Samples
 
 <Canvas>
-  <Story
-    name="example"
-    args={{}}
-  >
-    {(args) => {
+  <Story name="example" args={{}}>
+    {() => {
       const [text, setText] = React.useState("not clicked");
       const handleClickInner = () => {
         setText("clicked inner");
