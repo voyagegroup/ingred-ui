@@ -1,4 +1,4 @@
-import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, ArgsTable } from "@storybook/addon-docs/blocks";
 import NavigationRail from "./NavigationRail";
 
 <Meta
@@ -16,7 +16,7 @@ import NavigationRail from "./NavigationRail";
   }}
   parameters={{
     docs: { source: { type: "code" } },
-    layout: "fullscreen"
+    layout: "fullscreen",
   }}
 />
 
@@ -30,17 +30,11 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
 
 <ArgsTable of={NavigationRail} />
 
-<Story
-  name="example"
-  parameters={{ docs: { disable: true } }}
-  args={{}}
->
+<Story name="example" parameters={{ docs: { disable: true } }} args={{}}>
   {() => (
     <NavigationRail.Container>
       <NavigationRail>
-        <NavigationRail.Header>
-          This is Header.
-        </NavigationRail.Header>
+        <NavigationRail.Header>This is Header.</NavigationRail.Header>
         <NavigationRail.Content>
           <NavigationRail.Menu
             title="ダッシュボード"
@@ -79,5 +73,5 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
         Source code is written in &rdquo;Story&rdquo; Tab at footer.
       </NavigationRail.MainContent>
     </NavigationRail.Container>
-  )}}
+  )}
 </Story>
