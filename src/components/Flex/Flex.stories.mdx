@@ -1,0 +1,36 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import Flex from "./Flex";
+
+<Meta title="Components/Layout/Flex" component={Flex} />
+
+# Flex
+
+Flex can easier express CSS that related flexbox with simple props.
+
+<ArgsTable of={Flex} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      display: "flex",
+      justifyContent: "space-between",
+    }}
+  >
+    {(args) => (
+      <Flex {...args}>
+        <div
+          style={{ width: "100px", height: "100px", backgroundColor: "blue" }}
+        />
+        <div
+          style={{ width: "100px", height: "100px", backgroundColor: "blue" }}
+        />
+        <div
+          style={{ width: "100px", height: "100px", backgroundColor: "blue" }}
+        />
+      </Flex>
+    )}
+  </Story>
+</Canvas>
