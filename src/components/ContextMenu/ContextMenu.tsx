@@ -6,9 +6,22 @@ import Menu, { MenuProps } from "../Menu";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 
 export type ContextMenuProps = {
+  /**
+   * `type ContentProp = React.ComponentPropsWithRef<"div"> & {
+   *   text: string;
+   *   onClick: () => void;
+   *   divideTop?: boolean;
+   * }`
+   */
   contents: ContentProp[];
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   menuMaxHeight?: MenuProps["maxHeight"];
+  /**
+   * props of [Menu](/?path=/docs/components-navigation-menu)
+   */
   menuProps?: Partial<MenuProps>;
 };
 
