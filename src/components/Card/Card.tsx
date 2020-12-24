@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { Property } from "csstype";
 
 import { flexbox, FlexProps } from "../Flex/Flex";
 import { spacer, SpacerProps } from "../../utils/spacer";
 
 export type CardProps = SpacerProps &
   FlexProps & {
-    width?: string;
-    maxWidth?: string;
-    minWidth?: string;
+    width?: Property.Width;
+    maxWidth?: Property.MaxWidth;
+    minWidth?: Property.MinWidth;
   };
 
 const Card = styled.div<CardProps>`
