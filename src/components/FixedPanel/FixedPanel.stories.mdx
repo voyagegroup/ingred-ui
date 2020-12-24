@@ -1,4 +1,4 @@
-import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, ArgsTable } from "@storybook/addon-docs/blocks";
 import FixedPanel from "./FixedPanel";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
@@ -9,7 +9,7 @@ import Button from "../Button";
   component={FixedPanel}
   parameters={{
     docs: { source: { type: "code" } },
-    layout: "fullscreen"
+    layout: "fullscreen",
   }}
 />
 
@@ -26,7 +26,7 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
   parameters={{ docs: { disable: true } }}
   args={{
     isOpen: false,
-    placement: "top"
+    placement: "top",
   }}
 >
   {(args) => {
