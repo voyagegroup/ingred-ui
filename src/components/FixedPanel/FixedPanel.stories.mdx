@@ -1,0 +1,70 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import FixedPanel from "./FixedPanel";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
+import Button from "../Button";
+
+<Meta
+  title="Components/Navigation/FixedPanel"
+  component={FixedPanel}
+  parameters={{
+    docs: { source: { type: "code" } },
+    layout: "fullscreen"
+  }}
+/>
+
+# FixedPanel
+
+It implement like &rdquo;Header/Footer&rdquo; UI that is styled `position: fixed;`.
+
+Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
+
+<ArgsTable of={FixedPanel} />
+
+<Story
+  name="example"
+  parameters={{ docs: { disable: true } }}
+  args={{
+    isOpen: false,
+    placement: "top"
+  }}
+>
+  {(args) => {
+    const buttonContainerRef = React.useRef(null);
+    const [isOpen, setIsOpen] = React.useState(args.isOpen);
+    React.useEffect(() => {
+      if (!buttonContainerRef.current) return;
+      const observer = new IntersectionObserver((entries) => {
+        setIsOpen(!entries[0].isIntersecting);
+      });
+      observer.observe(buttonContainerRef.current);
+      return () => {
+        observer.disconnect();
+      };
+    }, [buttonContainerRef]);
+    const handleClick = () => {
+      setIsOpen(!isOpen);
+    };
+    return (
+      <div style={{ height: "200vh" }}>
+        <FixedPanel {...args} isOpen={isOpen}>
+          <Flex display="flex" justifyContent="flex-end">
+            <Spacer py={2}>
+              <Button>Do Something!</Button>
+            </Spacer>
+          </Flex>
+        </FixedPanel>
+        <Spacer pt={10} />
+        <Flex display="flex" flexDirection="column" alignItems="center">
+          <div ref={buttonContainerRef}>
+            <Button onClick={handleClick}>
+              Appear panel when hiding this element
+            </Button>
+          </div>
+          <Spacer pt={5} />
+          <p>Source code is written in &rdquo;Story&rdquo; Tab at footer.</p>
+        </Flex>
+      </div>
+    );
+  }}
+</Story>
