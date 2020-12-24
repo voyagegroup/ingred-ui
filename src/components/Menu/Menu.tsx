@@ -11,14 +11,30 @@ export type MenuCloseReason = "clickMenuList";
 //       remove 'React.ComponentPropsWithRef<"div">' because it is included menuListProps
 export type MenuProps = React.ComponentPropsWithRef<"div"> & {
   isOpen?: boolean;
+  /**
+   * Basis of `<Menu />` position.
+   */
   baseElement?: HTMLElement | null;
+  /**
+   * `type ContentProp = React.ComponentPropsWithRef<"div"> & {
+   *   text: string;
+   *   onClick: () => void;
+   *   divideTop?: boolean;
+   * }`
+   */
   contents: ContentProp[];
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   onClose?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | MenuCloseReason,
   ) => void;
   maxHeight?: MenuListProps["maxHeight"];
+  /**
+   * props of [MenuList](/?path=/docs/components-navigation-menulist)
+   */
   menuListProps?: Partial<MenuListProps>;
 };
 
@@ -49,6 +65,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({
         contents={contents}
         maxHeight={maxHeight}
         {...rest}
+        {...menuListProps}
         onClick={createChainedFunction(
           handleCloseMenuList,
           rest.onClick,
