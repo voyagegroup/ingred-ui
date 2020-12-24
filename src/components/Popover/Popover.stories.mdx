@@ -1,0 +1,58 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import Popover from "./Popover";
+
+<Meta
+  title="Components/Utils/Popover"
+  component={Popover}
+  parameters={{ docs: { source: { type: "code" } } }}
+/>
+
+# Popover
+
+<ArgsTable of={Popover} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      isOpen: false,
+      positionPriority: ["top"],
+    }}
+  >
+    {(args) => {
+      const [isOpen, setIsOpen] = React.useState(args.isOpen);
+      const [buttonElement, setButtonElement] = React.useState(null);
+      const handleToggleOpen = () => {
+        setIsOpen(!isOpen);
+      };
+      return (
+        <>
+          <button ref={setButtonElement} onClick={handleToggleOpen}>
+            Click me!
+          </button>
+          <Popover
+            {...args}
+            isOpen={isOpen}
+            baseElement={buttonElement}
+            onClose={handleToggleOpen}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "white",
+                width: "200px",
+                height: "200px",
+              }}
+            >
+              hoge
+            </div>
+          </Popover>
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
