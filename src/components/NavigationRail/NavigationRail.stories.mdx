@@ -1,0 +1,83 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import NavigationRail from "./NavigationRail";
+
+<Meta
+  title="Components/Navigation/NavigationRail"
+  subcomponents={{
+    Container: NavigationRail.Container,
+    Header: NavigationRail.Header,
+    Content: NavigationRail.Content,
+    ExpantionMenu: NavigationRail.ExpantionMenu,
+    ExpantionMenuItem: NavigationRail.ExpantionMenuItem,
+    Menu: NavigationRail.Menu,
+    Footer: NavigationRail.Footer,
+    Fixture: NavigationRail.Fixture,
+    MainContent: NavigationRail.MainContent,
+  }}
+  parameters={{
+    docs: { source: { type: "code" } },
+    layout: "fullscreen"
+  }}
+/>
+
+# NavigationRail
+
+It implements like Sidebar UI.
+
+It consists of multiple components.
+
+Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
+
+<ArgsTable of={NavigationRail} />
+
+<Story
+  name="example"
+  parameters={{ docs: { disable: true } }}
+  args={{}}
+>
+  {() => (
+    <NavigationRail.Container>
+      <NavigationRail>
+        <NavigationRail.Header>
+          This is Header.
+        </NavigationRail.Header>
+        <NavigationRail.Content>
+          <NavigationRail.Menu
+            title="ダッシュボード"
+            isActive={true}
+            iconName="dashboard"
+            notificationCount={2}
+          />
+          <NavigationRail.Menu
+            title="チャート"
+            isActive={false}
+            iconName="bar_chart"
+          />
+          <NavigationRail.ExpantionMenu
+            title="設定"
+            isActive={false}
+            iconName="setting"
+            notificationCount={2}
+            expantionList={[
+              <NavigationRail.ExpantionMenuItem
+                isActive={true}
+                title="詳細設定"
+                notificationCount={2}
+              />,
+              <NavigationRail.ExpantionMenuItem
+                isActive={false}
+                title="アカウント設定"
+              />,
+            ]}
+          />
+        </NavigationRail.Content>
+        <NavigationRail.Footer>
+          <NavigationRail.Fixture />
+        </NavigationRail.Footer>
+      </NavigationRail>
+      <NavigationRail.MainContent>
+        Source code is written in &rdquo;Story&rdquo; Tab at footer.
+      </NavigationRail.MainContent>
+    </NavigationRail.Container>
+  )}}
+</Story>
