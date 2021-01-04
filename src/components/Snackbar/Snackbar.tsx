@@ -6,11 +6,20 @@ export type SnackbarColor = "default" | "dark" | "warning";
 
 export type SnackbarProps = {
   color?: SnackbarColor;
+  /**
+   * Define position of this component.
+   */
   anchorOrigin?: {
     horizontal: "left" | "right";
     vertical: "top" | "bottom";
   };
+  /**
+   * If `false`, Snackbar doesn't rendered.
+   */
   isOpen?: boolean;
+  /**
+   * Callback function that triggered when clicked ✖︎ Icon.
+   */
   onClose?: () => void;
 };
 
