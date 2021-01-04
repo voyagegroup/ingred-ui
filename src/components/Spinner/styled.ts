@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { Property } from "csstype";
 
 const rotate = keyframes`
   100% {
@@ -21,9 +22,9 @@ const dash = keyframes`
   }
 `;
 
-export const Container = styled.div`
-  width: ${(props: { width: string }) => props.width};
-  height: ${(props: { width: string }) => props.width};
+export const Container = styled.div<{ width: Property.Width }>`
+  width: ${({ width }) => width};
+  height: ${({ width }) => width};
   background-color: transparent;
 `;
 
