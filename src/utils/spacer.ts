@@ -2,21 +2,35 @@ import { ThemedStyledProps } from "styled-components";
 import { Theme } from "../themes";
 
 export type SpacerProps = {
-  m?: number; // margin
-  mt?: number; // margin-top
-  mr?: number; // margin-right
-  mb?: number; // margin-bottom
-  ml?: number; // margin-left
-  mx?: number; // margin-left and margin-right
-  my?: number; // margin-top and margin-bottom
+  /** margin */
+  m?: number;
+  /** margin-top */
+  mt?: number;
+  /** margin-right */
+  mr?: number;
+  /** margin-bottom */
+  mb?: number;
+  /** margin-left */
+  ml?: number;
+  /** margin-right&margin-left */
+  mx?: number;
+  /** margin-top&margin-bottom */
+  my?: number;
 
-  p?: number; // padding
-  pt?: number; // padding-top
-  pr?: number; // padding-right
-  pb?: number; // padding-bottom
-  pl?: number; // padding-left
-  px?: number; // padding-left and padding-right
-  py?: number; // padding-top and padding-bottom
+  /** padding */
+  p?: number;
+  /** padding-top */
+  pt?: number;
+  /** padding-right */
+  pr?: number;
+  /** padding-bottom */
+  pb?: number;
+  /** padding-left */
+  pl?: number;
+  /** padding-right&padding-left */
+  px?: number;
+  /** padding-top&padding-bottom */
+  py?: number;
 };
 
 export const getMargin = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
