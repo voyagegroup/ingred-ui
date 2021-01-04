@@ -11,8 +11,14 @@ import { useTheme } from "../../../themes";
 
 export type NavigationRailMenuProps = React.ComponentPropsWithRef<"div"> & {
   title: string;
+  /**
+   * If `true`, it is highlighted.
+   */
   isActive?: boolean;
   iconName: IconName;
+  /**
+   * The number is located on the upper right.
+   */
   notificationCount?: number;
 };
 

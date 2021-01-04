@@ -1,0 +1,33 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import MenuList from "./MenuList";
+
+<Meta title="Components/Navigation/MenuList" component={MenuList} />
+
+# MenuList
+
+MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/components-navigation-menu--example).
+
+<ArgsTable of={MenuList} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      contents: [
+        { text: "Save", onClick: () => {} },
+        { text: "Edit", onClick: () => {} },
+        { text: "Delete", onClick: () => {} },
+        { text: "Update", onClick: () => {} },
+      ],
+      maxHeight: "100px",
+    }}
+  >
+    {(args) => (
+      <div style={{ backgroundColor: "silver", padding: "10px" }}>
+        <MenuList {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>
