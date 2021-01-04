@@ -41,7 +41,12 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
             <Icon name={icon} size="md" color={theme.palette.gray.dark} />
           </Styled.LeftIconContainer>
         )}
-        <Input ref={inputRef} {...rest} error={!!errorText} type={type} />
+        <Input
+          ref={inputRef}
+          {...rest}
+          error={!!errorText}
+          type={show ? "text" : type}
+        />
         {type === "password" && (
           <Styled.RightIconContainer onClick={handleToggleShowPassword}>
             <Icon
