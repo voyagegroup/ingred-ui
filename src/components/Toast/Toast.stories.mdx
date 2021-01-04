@@ -1,11 +1,8 @@
-import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import { Meta, Story, Canvas } from "@storybook/addon-docs/blocks";
 import Toast from "./Toast";
 import Button from "../Button";
 
-<Meta
-  title="Components/Feedback/Toast"
-  component={Toast}
-/>
+<Meta title="Components/Feedback/Toast" component={Toast} />
 
 # Toast
 
@@ -27,7 +24,7 @@ Explanation of each prop is written in here's [README](https://github.com/jossma
     args={{}}
     parameters={{ docs: { source: { type: "code" } } }}
   >
-    {(args) => {
+    {() => {
       const ToastSample = () => {
         const { addToast } = Toast.useToasts();
         const handleClick = () => {
@@ -60,28 +57,16 @@ Explanation of each prop is written in here's [README](https://github.com/jossma
 ### Colors
 
 <Canvas>
-  <Story
-    name="info"
-    args={{ appearance: "info" }}
-  >
+  <Story name="info" args={{ appearance: "info" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story
-    name="success"
-    args={{ appearance: "success" }}
-  >
+  <Story name="success" args={{ appearance: "success" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story
-    name="warning"
-    args={{ appearance: "warning" }}
-  >
+  <Story name="warning" args={{ appearance: "warning" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story
-    name="error"
-    args={{ appearance: "error" }}
-  >
+  <Story name="error" args={{ appearance: "error" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
 </Canvas>
