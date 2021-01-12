@@ -29,6 +29,15 @@ const slideIn = keyframes`
     transform: translate(-50%, -50%);	
   }	
 `;
+
+const FullSizeSlideIn = keyframes`
+  0% {
+    transform: translate(-50%, 0%);
+  }
+  100% {
+    transform: translate(-50%, -48%);
+  }
+`;
 export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   position: absolute;
   top: 50%;
@@ -36,10 +45,12 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   min-width: 400px; /* 削除モーダルなどコンテンツが少ない場合の最小単位を入れておく(400は仮) */
   width: ${({ fullSize }) => (fullSize ? "100vw" : "auto")};
   height: ${({ fullSize }) => (fullSize ? "100vh" : "auto")};
-  transform: translate(-50%, -50%);
-  border-radius: ${({ fullSize, theme }) => (fullSize ? 0 : theme.radius)}px;
+  transform: ${({ fullSize }) =>
+    fullSize ? `translate(-50%, -48%);` : `translate(-50%, -50%);`};
+  border-radius: ${({ fullSize, theme }) =>
+    fullSize ? `8px 8px 0 0` : `${theme.radius}px`};
   background-color: ${({ theme }) => theme.palette.background.default};
-  animation: ${slideIn} 0.4s;
+  animation: ${({ fullSize }) => (fullSize ? FullSizeSlideIn : slideIn)} 0.4s;
   overflow: hidden;
 `;
 
