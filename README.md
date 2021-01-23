@@ -1,4 +1,4 @@
-![logo.png](https://user-images.githubusercontent.com/8923331/105569588-0670f900-5d86-11eb-9833-646e42260321.png)
+![logo.png](https://user-images.githubusercontent.com/8923331/105577508-78b10000-5dbd-11eb-8314-03910081af23.png)
 INGRED UI is a design system developed to make it easy and quick for anyone to build a user interface.
 It is based on React and has a well thought out structure that works well with Type script.
 
