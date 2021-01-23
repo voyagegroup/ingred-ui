@@ -1,6 +1,6 @@
 ![logo.png](https://user-images.githubusercontent.com/8923331/105569588-0670f900-5d86-11eb-9833-646e42260321.png)
-
-# ingred-ui
+INGRED UI is a design system developed to make it easy and quick for anyone to build a user interface.
+It is based on React and has a well thought out structure that works well with Type script.
 
 >
 
@@ -39,13 +39,11 @@ class Example extends React.Component {
 }
 ```
 
-`<DatePicker />`または`<DateRangePicker />`を使う場合は
+If you use `<DatePicker />` or `<DateRangePicker />` , add
 
 ```tsx
 import "react-dates/lib/css/_datepicker.css";
 ```
-
-を追記してください
 
 ## License
 
