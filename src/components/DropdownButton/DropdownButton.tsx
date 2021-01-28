@@ -3,9 +3,10 @@ import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
-import Menu from "../Menu";
+import Menu, { MenuProps } from "../Menu";
 import { ButtonSize, ButtonColor } from "../Button/Button";
 import { ContentProp } from "../MenuList/MenuList";
+import { createChainedFunction } from "../../utils/createChainedFunction";
 
 type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 
@@ -17,6 +18,8 @@ export type DropdownButtonProps = {
   contents: ContentProp[];
   disabled?: boolean;
   positionPriority?: PopperJS.Placement[];
+  menuMaxHeight?: MenuProps["maxHeight"];
+  menuProps?: Partial<MenuProps>;
 };
 
 const DropdownButton: React.FC<DropdownButtonProps> = ({
@@ -27,6 +30,8 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   contents,
   disabled = false,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+  menuMaxHeight = "none",
+  menuProps,
   children,
 }) => {
   const theme = useTheme();
@@ -106,7 +111,12 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
         baseElement={buttonElement}
         contents={contents}
         positionPriority={positionPriority}
-        onClose={handleToggleContent(false)}
+        maxHeight={menuMaxHeight}
+        {...menuProps}
+        onClose={createChainedFunction(
+          handleToggleContent(false),
+          menuProps?.onClose,
+        )}
       />
     </>
   );

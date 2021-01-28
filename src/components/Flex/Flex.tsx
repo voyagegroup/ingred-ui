@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 type TLengthStyledSystem = string | 0 | number;
 export type FlexProps = {
-  display?: "flex";
+  display?: "flex" | "inline-flex";
   height?: Property.Height<TLengthStyledSystem>;
   alignItems?: Property.AlignItems;
   alignContent?: Property.AlignContent;

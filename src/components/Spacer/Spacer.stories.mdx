@@ -1,0 +1,54 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import Spacer from "./Spacer";
+
+<Meta title="Components/Layout/Spacer" component={Spacer} />
+
+# Spacer
+
+Spacer can easier express `margin` & `padding` with simple props.
+
+<ArgsTable of={Spacer} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      pt: 3,
+    }}
+  >
+    {(args) => (
+      <>
+        <Spacer {...args}>
+          <p>
+            This Element is wrapped {"<Spacer />"}
+            <br />
+            And there is one more {"<Spacer />"} directly below.
+          </p>
+        </Spacer>
+        <Spacer {...args} />
+        <div>hoge</div>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Configuration
+
+`Margin` and `Padding` actually rendered is dependent on the theme configuration.
+
+```tsx
+class Example extends React.Component {
+  render() {
+    const theme = createTheme({ spacing: 8 }); // default is also `8`.
+    return (
+      <ThemeProvider theme={theme}>
+        <Spacer m={3} /> {/* margin: 24px; */}
+        <Spacer m={0} /> {/* margin: 0px; */}
+        <Spacer m={0.5} /> {/* margin: 4px; */}
+      </ThemeProvider>
+    );
+  }
+}
+```

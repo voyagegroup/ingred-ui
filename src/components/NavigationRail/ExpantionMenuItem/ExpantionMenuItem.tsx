@@ -6,12 +6,19 @@ import { NavigationRailContext } from "../utils";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
-export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<
-  "div"
-> & {
+export type NavigationRailExpantionMenuItemProps = React.ComponentPropsWithRef<"div"> & {
   title: string;
+  /**
+   * If it props exists, replace `title` props with it.
+   */
   titleElement?: JSX.Element;
+  /**
+   * If `true`, it is highlighted.
+   */
   isActive?: boolean;
+  /**
+   * If not `0`, the number is located on the right.
+   */
   notificationCount?: number;
 };
 

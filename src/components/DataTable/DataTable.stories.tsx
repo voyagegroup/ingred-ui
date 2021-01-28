@@ -15,9 +15,10 @@ import { select, boolean, text } from "@storybook/addon-knobs";
 import FloatingTip from "../FloatingTip";
 
 export default {
-  title: "DataTable",
+  title: "Components/Data Display/DataTable",
+  component: DataTable,
   parameters: {
-    component: DataTable,
+    docs: { page: null },
   },
 };
 
@@ -64,7 +65,7 @@ export const Overview = () => {
     "medium",
   );
   const fullWidth = boolean("FullWidth", false);
-  const tableMaxHeight = text("TableMaxHeight", "auto");
+  const tableMaxHeight = text("TableMaxHeight", "none");
   return (
     <Container>
       <DataTable

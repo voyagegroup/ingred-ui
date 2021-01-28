@@ -5,9 +5,18 @@ import { usePopper } from "react-popper";
 import Modal, { ModalProps } from "../Modal";
 
 export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
+  /**
+   * If `false`, children becomes `visibility: hidden`.
+   */
   isOpen?: boolean;
   onClose?: ModalProps["onClose"];
+  /**
+   * That becomes position reference of this component.
+   */
   baseElement: HTMLElement | null;
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   children: React.ComponentElement<HTMLElement, any>;

@@ -26,9 +26,10 @@ const Column = styled.div`
 `;
 
 export default {
-  title: "Input",
+  title: "Components/Inputs/Input",
+  component: Input,
   parameters: {
-    component: Input,
+    docs: { page: null },
   },
 };
 

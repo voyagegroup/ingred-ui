@@ -6,8 +6,11 @@ import Flex from "../Flex";
 import Tooltip from "./Tooltip";
 
 export default {
-  title: "Tooltip",
+  title: "Components/Data Display/Tooltip",
   component: Tooltip,
+  parameters: {
+    docs: { page: null },
+  },
 };
 
 const TextWrapper = styled.div<{ textAlign?: string }>`

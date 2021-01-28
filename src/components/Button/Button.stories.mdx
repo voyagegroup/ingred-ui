@@ -1,0 +1,126 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import Button from "./Button";
+
+<Meta
+  title="Components/Inputs/Button"
+  component={Button}
+  argTypes={{ onClick: { action: "clicked" } }}
+/>
+
+# Button
+
+<ArgsTable of={Button} />
+
+## Samples
+
+### Colors
+
+<Canvas>
+  <Story
+    name="primary"
+    args={{
+      color: "primary",
+      children: "primary",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="secondary"
+    args={{
+      color: "secondary",
+      children: "secondary",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="danger"
+    args={{
+      color: "danger",
+      children: "danger",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Sizes
+
+<Canvas>
+  <Story
+    name="small"
+    args={{
+      size: "small",
+      children: "small",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="medium"
+    args={{
+      size: "medium",
+      children: "medium",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="large"
+    args={{
+      size: "large",
+      children: "large",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+  <Story
+    name="disabled"
+    args={{
+      disabled: true,
+      children: "disabled",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Use "href" props
+
+<Canvas>
+  <Story
+    name="Use href props"
+    args={{
+      href: "https://google.com",
+      children: "Link to google.com",
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Use with router library like "react-router"
+
+Here's an example code.
+
+But We have plan to change like [Material-UI](https://material-ui.com/guides/composition/#link).
+
+```tsx
+// Get "className" prop to enable <Button /> style.
+const LinkToHome = ({ className, children }) => (
+  // "href" prop defines not via <Button />
+  <Link className={className} href="/home">
+    {children}
+  </Link>
+);
+
+const ButtonWithRouterLink = ({ children }) => (
+  <Button component={LinkToHome}>{children}</Button>
+);
+```

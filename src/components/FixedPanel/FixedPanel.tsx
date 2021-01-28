@@ -2,8 +2,15 @@ import * as React from "react";
 import * as Styled from "./styled";
 
 export type FixedPanelProps = {
+  /**
+   * If `false`, it is outside of viewport.
+   */
   isOpen: boolean;
   placement?: "top" | "bottom";
+  /**
+   * Unit: `px`
+   * Define distance from top/bottom.
+   */
   offset?: number;
 };
 

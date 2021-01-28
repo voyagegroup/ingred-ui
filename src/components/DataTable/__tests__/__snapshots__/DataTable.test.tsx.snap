@@ -9,17 +9,17 @@ exports[`DataTable component testing DataTable 1`] = `
       class="sc-gsTCUz brDJp"
     >
       <div
-        class="sc-dlfnbm cGvblo"
+        class="sc-dlfnbm kBeuhl"
       >
         <table
-          class="sc-hHftDr yfZqZ"
+          class="sc-dmlrTW iYQxOO"
         >
           <thead>
             <tr
-              class="sc-dIUggk gYDnfI"
+              class="sc-hHftDr fbfpMz"
             >
               <th
-                class="sc-jrAGrp lmSIJH"
+                class="sc-kEjbxe hTUOUc"
                 width="auto"
               >
                 <div
@@ -27,7 +27,7 @@ exports[`DataTable component testing DataTable 1`] = `
                   display="flex"
                 >
                   <div
-                    class="sc-jSgupP guepTG"
+                    class="sc-gKsewC bfcIpf"
                     color="#041C33"
                     font-size="14px"
                   >
@@ -36,7 +36,7 @@ exports[`DataTable component testing DataTable 1`] = `
                 </div>
               </th>
               <th
-                class="sc-jrAGrp lmSIJH"
+                class="sc-kEjbxe hTUOUc"
                 width="auto"
               >
                 <div
@@ -44,7 +44,7 @@ exports[`DataTable component testing DataTable 1`] = `
                   display="flex"
                 >
                   <div
-                    class="sc-jSgupP guepTG"
+                    class="sc-gKsewC bfcIpf"
                     color="#041C33"
                     font-size="14px"
                   >
@@ -56,15 +56,15 @@ exports[`DataTable component testing DataTable 1`] = `
           </thead>
           <tbody>
             <tr
-              class="sc-dIUggk gYDnfI"
+              class="sc-hHftDr fbfpMz"
             >
               <td
-                class="sc-idOhPF jSLiQH"
+                class="sc-dIUggk gMPBbE"
                 rowspan="1"
                 width="auto"
               >
                 <p
-                  class="sc-jSgupP eLPDFM"
+                  class="sc-gKsewC cMjHyx"
                   color="#041C33"
                   font-size="14px"
                 >
@@ -72,12 +72,12 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-idOhPF jSLiQH"
+                class="sc-dIUggk gMPBbE"
                 rowspan="1"
                 width="auto"
               >
                 <p
-                  class="sc-jSgupP eLPDFM"
+                  class="sc-gKsewC cMjHyx"
                   color="#041C33"
                   font-size="14px"
                 >
@@ -86,15 +86,15 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
             </tr>
             <tr
-              class="sc-dIUggk gYDnfI"
+              class="sc-hHftDr fbfpMz"
             >
               <td
-                class="sc-idOhPF jSLiQH"
+                class="sc-dIUggk gMPBbE"
                 rowspan="1"
                 width="auto"
               >
                 <p
-                  class="sc-jSgupP eLPDFM"
+                  class="sc-gKsewC cMjHyx"
                   color="#041C33"
                   font-size="14px"
                 >
@@ -102,12 +102,12 @@ exports[`DataTable component testing DataTable 1`] = `
                 </p>
               </td>
               <td
-                class="sc-idOhPF jSLiQH"
+                class="sc-dIUggk gMPBbE"
                 rowspan="1"
                 width="auto"
               >
                 <p
-                  class="sc-jSgupP eLPDFM"
+                  class="sc-gKsewC cMjHyx"
                   color="#041C33"
                   font-size="14px"
                 >

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { addScrollbarProperties } from "../../../utils/scrollbar";
 import { NavigationRailContentHeight } from "../constants";
 
 export const Header = styled.div`
@@ -10,8 +11,8 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   flex-grow: 1;
-  overflow-y: scroll;
   overflow-x: hidden;
+  ${addScrollbarProperties({ maxHeight: "none" })}
 
   & * {
     text-decoration: none;

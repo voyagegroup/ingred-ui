@@ -29,9 +29,10 @@ const Content = styled.div`
 `;
 
 export default {
-  title: "FloatingTip",
+  title: "Components/Data Display/FloatingTip",
+  component: FloatingTip,
   parameters: {
-    component: FloatingTip,
+    docs: { page: null },
   },
 };
 

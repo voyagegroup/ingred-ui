@@ -1,0 +1,34 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import ContextMenu from "./ContextMenu";
+
+<Meta
+  title="Components/Navigation/ContextMenu"
+  component={ContextMenu}
+  argTypes={{ onClick: { action: "clicked" } }}
+/>
+
+# ContextMenu
+
+<ArgsTable of={ContextMenu} />
+
+## Samples
+
+<Canvas>
+  <Story
+    name="example"
+    args={{
+      contents: [
+        {
+          text: "Edit",
+          onClick: () => {},
+        },
+        {
+          text: "Save",
+          onClick: () => {},
+        },
+      ],
+    }}
+  >
+    {(args) => <ContextMenu {...args} />}
+  </Story>
+</Canvas>

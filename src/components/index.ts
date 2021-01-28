@@ -53,6 +53,9 @@ export * from "./ErrorText";
 export { default as Fade } from "./Fade";
 export * from "./Fade";
 
+export { default as FileUploader } from "./FileUploader";
+export * from "./FileUploader";
+
 export { default as FixedPanel } from "./FixedPanel";
 export * from "./FixedPanel";
 
@@ -103,6 +106,9 @@ export * from "./Portal";
 
 export { default as RadioButton } from "./RadioButton";
 export * from "./RadioButton";
+
+export { default as ScrollArea } from "./ScrollArea";
+export * from "./ScrollArea";
 
 export { default as Select } from "./Select";
 export * from "./Select";

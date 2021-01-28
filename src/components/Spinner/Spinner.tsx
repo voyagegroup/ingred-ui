@@ -1,9 +1,10 @@
 import * as React from "react";
+import { Property } from "csstype";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes/useTheme";
 
 export type SpinnerProps = {
-  width?: string;
+  width?: Property.Width;
 };
 
 const Spinner: React.FunctionComponent<SpinnerProps> = ({ width = "50px" }) => {

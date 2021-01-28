@@ -9,7 +9,8 @@ ignore: []
 # `{{ input | pascal }}/index.tsx`
 
 ```typescript
-export { default, {{ input | pascal }}Props } from "./{{ input | pascal }}";
+export { default } from "./{{ input | pascal }}";
+export type { {{ input | pascal }}Props } from "./{{ input | pascal }}";
 
 ```
 
@@ -61,19 +62,35 @@ describe("{{ input | pascal }} component testing", () => {
 
 ```
 
-# `{{ input }}/{{ input }}.stories.tsx`
+# `{{ input | pascal }}/{{ input | pascal }}.stories.mdx`
 
 ```typescript
-import * as React from "react";
-import {{ input }} from "./index";
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import {{ input | pascal }} from "./index";
 
-export default {
-  title: "{{ input }}",
-  component: {{ input }},
-};
+<Meta
+  title="{{ input | pascal }}"
+  component={ {{ input | pascal }} }
+  argTypes={
+    { onClick: { action: "clicked" } }
+  }
+/>
 
-export const Overview = () => (
-  <{{ input }} />
-);
+# {{ input | pascal }}
+
+<ArgsTable of={ {{ input | pascal }} } />
+
+## Samples
+
+### Something
+
+<Canvas>
+  <Story
+    name="something"
+    args={{}}
+  >
+    {(args) => <{{ input | pascal }} {...args} />}
+  </Story>
+</Canvas>
 
 ```

@@ -5,7 +5,7 @@ import * as Styled from "./styled";
 import Portal from "../Portal";
 import Fade from "../Fade";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
-import { CSSTransitionProps } from "../../utils/reactTransitionGroupUtils";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 
 export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   content: React.ReactChild;

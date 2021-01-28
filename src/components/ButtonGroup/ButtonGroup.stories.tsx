@@ -29,9 +29,10 @@ const Link: React.FunctionComponent<{ href: string; className: string }> = ({
 );
 
 export default {
-  title: "ButtonGroup",
+  title: "Components/Inputs/ButtonGroup",
+  component: Button,
   parameters: {
-    component: Button,
+    docs: { page: null },
   },
 };
 

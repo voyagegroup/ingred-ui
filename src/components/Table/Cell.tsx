@@ -7,9 +7,7 @@ const Component = styled.td<{ width: string }>`
   padding: ${({ theme }) => theme.spacing * 2}px;
 `;
 
-export type TableCellProps = React.TdHTMLAttributes<
-  HTMLTableDataCellElement
-> & {
+export type TableCellProps = React.TdHTMLAttributes<HTMLTableDataCellElement> & {
   width?: string;
   children?: React.ReactNode;
 };

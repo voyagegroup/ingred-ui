@@ -2,16 +2,34 @@ import * as React from "react";
 import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { ContentProp } from "../MenuList/MenuList";
-import Menu from "../Menu";
+import Menu, { MenuProps } from "../Menu";
+import { createChainedFunction } from "../../utils/createChainedFunction";
 
 export type ContextMenuProps = {
+  /**
+   * `type ContentProp = React.ComponentPropsWithRef<"div"> & {
+   *   text: string;
+   *   onClick: () => void;
+   *   divideTop?: boolean;
+   * }`
+   */
   contents: ContentProp[];
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
+  menuMaxHeight?: MenuProps["maxHeight"];
+  /**
+   * props of [Menu](/?path=/docs/components-navigation-menu)
+   */
+  menuProps?: Partial<MenuProps>;
 };
 
 const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
   contents,
   positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+  menuMaxHeight = "none",
+  menuProps,
 }) => {
   const [
     iconWrapperElement,
@@ -36,7 +54,12 @@ const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
         baseElement={iconWrapperElement}
         contents={contents}
         positionPriority={positionPriority}
-        onClose={handleToggleOpen(false)}
+        maxHeight={menuMaxHeight}
+        {...menuProps}
+        onClose={createChainedFunction(
+          handleToggleOpen(false),
+          menuProps?.onClose,
+        )}
       />
     </>
   );

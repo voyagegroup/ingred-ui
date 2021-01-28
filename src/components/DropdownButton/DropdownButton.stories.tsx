@@ -23,15 +23,17 @@ const Inner = styled.div`
 `;
 
 export default {
-  title: "DropdownButton",
+  title: "Components/Inputs/DropdownButton",
+  component: DropdownButton,
   parameters: {
-    component: DropdownButton,
+    docs: { page: null },
   },
 };
 
 export const Overview = () => {
   const title = text("Title", "保存する");
   const disabled = boolean("Disabled", false);
+  const menuMaxHeight = text("MenuMaxHeight", "none");
 
   const size = select(
     "Size",
@@ -80,6 +82,7 @@ export const Overview = () => {
           color={color}
           size={size}
           contents={contents}
+          menuMaxHeight={menuMaxHeight}
         >
           {title}
         </DropdownButton>
@@ -90,6 +93,7 @@ export const Overview = () => {
           split={true}
           size={size}
           contents={contents}
+          menuMaxHeight={menuMaxHeight}
           onClick={action(`clicked ${title}`)}
         >
           {title}

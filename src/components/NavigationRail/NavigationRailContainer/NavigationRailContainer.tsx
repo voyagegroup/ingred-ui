@@ -3,8 +3,17 @@ import * as Styled from "./styled";
 import { NavigationRailContext } from "../utils";
 
 export type NavigationRailContainerProps = {
+  /**
+   * If `true`, it is opened as default.
+   */
   defaultFixed?: boolean;
+  /**
+   * It can define callback function that triggered when NavigationRail is `opened`.
+   */
   onChangeOpen?: (isOpen: boolean) => void;
+  /**
+   * It can define callback function that triggered when NavigationRail is `fixed`.
+   */
   onChangeFixed?: (isFixed: boolean) => void;
   children: React.ReactNode;
 };
