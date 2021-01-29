@@ -17,6 +17,7 @@ const Card = styled.div<CardProps>`
   width: ${({ width }) => width || "auto"};
   min-width: ${({ minWidth }) => minWidth || "auto"};
   max-width: ${({ maxWidth }) => maxWidth || "auto"};
+  border: 1px solid ${({ theme }) => theme.palette.gray.light};
   ${spacer}
   ${flexbox}
 `;
