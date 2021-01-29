@@ -1,0 +1,352 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import DataTable from "./DataTable";
+import Button from "../Button";
+import { data } from "./data";
+
+<Meta
+  title="Components/Data Display/DataTable"
+  component={DataTable}
+  parameters={{
+    docs: { source: { type: "code" } },
+  }}
+/>
+
+# DataTable
+
+<ArgsTable of={DataTable} />
+
+## Samples
+
+### Basic
+
+<Canvas>
+  <Story name="basic" args={{}}>
+    {(args) => (
+      <DataTable
+        data={data.slice(0, 4)}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+          },
+          {
+            name: "Created at",
+            selector: (data) => data.created_at,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### With vertical line
+
+<Canvas>
+  <Story name="with vertical line" args={{}}>
+    {(args) => (
+      <DataTable
+        enableRuledLine={true}
+        data={data.slice(0, 4)}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+          },
+          {
+            name: "Created at",
+            selector: (data) => data.created_at,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### With pagination
+
+<Canvas>
+  <Story name="with pagination" args={{}}>
+    {(args) => (
+      <DataTable
+        data={data}
+        per={5}
+        enablePagination={true}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+            sortable: true,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+            sortable: true,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### With sticky header
+
+<Canvas>
+  <Story name="with sticky header" args={{ tableMaxHeight: "300px" }}>
+    {(args) => (
+      <DataTable
+        tableMaxHeight="300px"
+        data={data}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+            sortable: true,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+            sortable: true,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### WithTabs
+
+<Canvas>
+  <Story name="with tabs" args={{}}>
+    {(args) => (
+      <DataTable
+        enablePagination={true}
+        per={5}
+        tabs={[
+          {
+            label: "All",
+            filter: (data) => data,
+          },
+          {
+            label: "imp odd",
+            filter: (data) => data.filter((item) => item.imp % 2 !== 0),
+          },
+          {
+            label: "imp even",
+            filter: (data) => data.filter((item) => item.imp % 2 === 0),
+          },
+          {
+            label: "empty",
+            filter: () => [],
+          },
+        ]}
+        data={data}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+            sortable: true,
+          },
+          {
+            name: "Created at",
+            selector: (data) => data.created_at,
+            sortable: true,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Selectable with checkbox
+
+<Canvas>
+  <Story name="selectable with checkbox" args={{}}>
+    {(args) => {
+      const [selectedRows, setSelectedRows] = React.useState([]);
+      const handleClick = () => {
+        alert(selectedRows.join(","));
+      };
+      return (
+        <>
+          <Button onClick={handleClick}>Show selected Items</Button>
+          <DataTable
+            data={data.slice(0, 4)}
+            columns={[
+              {
+                name: "ID",
+                selector: (data) => data.id,
+              },
+              {
+                name: "Impression",
+                selector: (data) => data.imp,
+                sortable: true,
+              },
+              {
+                name: "Created at",
+                selector: (data) => data.created_at,
+                sortable: true,
+              },
+            ]}
+            onSelectRowsChange={setSelectedRows}
+            {...args}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Selectable with radio button
+
+<Canvas>
+  <Story name="selectable with radio button" args={{}}>
+    {(args) => {
+      const [selectedRow, setSelectedRow] = React.useState();
+      const handleClick = () => {
+        alert(selectedRow.join(","));
+      };
+      return (
+        <>
+          <Button onClick={handleClick}>Show selected Items</Button>
+          <DataTable
+            data={data.slice(0, 4)}
+            columns={[
+              {
+                name: "ID",
+                selector: (data) => data.id,
+              },
+              {
+                name: "Impression",
+                selector: (data) => data.imp,
+                sortable: true,
+              },
+              {
+                name: "Created at",
+                selector: (data) => data.created_at,
+                sortable: true,
+              },
+            ]}
+            onRadioChange={setSelectedRow}
+            {...args}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Custom cell
+
+<Canvas>
+  <Story name="custom cell" args={{}}>
+    {(args) => (
+      <DataTable
+        data={data.slice(0, 4)}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+            sortable: true,
+          },
+          {
+            name: "Impression",
+            selector: (data) => data.imp,
+            renderCell: (data) => (
+              <div style={{ color: "red" }}>{data.imp}</div>
+            ),
+            sortable: true,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### With row span
+
+<Canvas>
+  <Story name="with row span" args={{}}>
+    {(args) => {
+      const [selectedRows, setSelectedRows] = React.useState([]);
+      const handleClick = () => {
+        alert(selectedRows.join(","));
+      };
+      // MEMO: Need to sort data yourself.
+      const sampleDataWithDuplicateId = [
+        { id: 1, name: "2name", count: 8 },
+        { id: 1, name: "2name", count: 4 },
+        { id: 1, name: "2name", count: 3 },
+        { id: 2, name: "2name", count: 8 },
+        { id: 3, name: "3name", count: 7 },
+        { id: 5, name: "5name", count: 5 },
+      ];
+      return (
+        <>
+          <Button onClick={handleClick}>Show selected items</Button>
+          <DataTable
+            enableRuledLine={true}
+            data={sampleDataWithDuplicateId}
+            columns={[
+              {
+                name: "ID",
+                selector: (data) => data.id,
+                enableMergeCell: true,
+              },
+              {
+                name: "name",
+                selector: (data) => data.name,
+                sortable: true,
+                enableMergeCell: true,
+              },
+              {
+                name: "count",
+                selector: (data) => data.count,
+                // MEMO: Cannot use sort when using "enableMergeCall"
+                sortable: true,
+              },
+            ]}
+            onSelectRowsChange={setSelectedRows}
+            {...args}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Empty
+
+<Canvas>
+  <Story name="empty" args={{}}>
+    {(args) => (
+      <DataTable
+        data={[]}
+        columns={[
+          {
+            name: "ID",
+            selector: (data) => data.id,
+          },
+        ]}
+        {...args}
+      />
+    )}
+  </Story>
+</Canvas>

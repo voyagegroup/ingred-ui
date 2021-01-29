@@ -35,7 +35,7 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
     React.useEffect(() => {
       if (!buttonContainerRef.current) return;
       const observer = new IntersectionObserver((entries) => {
-        setIsOpen(!entries[0].isIntersecting);
+        if (args.isOpen) setIsOpen(!entries[0].isIntersecting);
       });
       observer.observe(buttonContainerRef.current);
       return () => {
