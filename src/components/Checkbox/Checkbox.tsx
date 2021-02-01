@@ -11,17 +11,19 @@ const Checkbox: React.FunctionComponent<CheckBoxProps> = ({
   children,
   indeterminate = false,
   error = false,
+  disabled = false,
   inputRef,
   ...rest
 }) => {
   return (
-    <Styled.Container>
+    <Styled.Container disabled={disabled}>
       <Styled.Checkbox
         ref={inputRef}
         error={error}
         readOnly={true}
         type="checkbox"
         indeterminate={indeterminate}
+        disabled={disabled}
         {...rest}
       />
       <Styled.Span

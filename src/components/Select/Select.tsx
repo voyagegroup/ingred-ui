@@ -157,6 +157,7 @@ const Select: SelectComponent = ({
   limit,
   onInputChange,
   minWidth,
+  isDisabled,
   error = false,
   ...rest
 }) => {
@@ -179,11 +180,12 @@ const Select: SelectComponent = ({
     return "見つかりませんでした";
   };
   return (
-    <Styled.Container minWidth={minWidth}>
+    <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
         placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
+        isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList
