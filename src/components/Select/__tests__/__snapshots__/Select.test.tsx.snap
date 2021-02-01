@@ -3,7 +3,7 @@
 exports[`Select component testing Disable multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ jNedcy"
   >
     <div
       class=" css-14jk2my-container"
@@ -15,7 +15,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-uybk9d"
@@ -50,7 +50,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-uybk9d"
@@ -163,7 +163,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
 exports[`Select component testing Disable not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ jNedcy"
   >
     <div
       class=" css-14jk2my-container"
@@ -267,7 +267,7 @@ exports[`Select component testing Disable not selected 1`] = `
 exports[`Select component testing Disable one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ jNedcy"
   >
     <div
       class=" css-14jk2my-container"
@@ -371,7 +371,7 @@ exports[`Select component testing Disable one selected 1`] = `
 exports[`Select component testing Error multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -383,7 +383,7 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-18bjtpy"
@@ -418,7 +418,7 @@ exports[`Select component testing Error multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-18bjtpy"
@@ -481,7 +481,7 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jSgupP lazPgH"
+            class="sc-jSgupP fhHPSN"
           >
             <div
               aria-hidden="true"
@@ -561,7 +561,7 @@ exports[`Select component testing Error multiple selected 1`] = `
 exports[`Select component testing Error not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -664,7 +664,7 @@ exports[`Select component testing Error not selected 1`] = `
 exports[`Select component testing Error one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -709,7 +709,7 @@ exports[`Select component testing Error one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jSgupP lazPgH"
+            class="sc-jSgupP fhHPSN"
           >
             <div
               aria-hidden="true"
@@ -798,7 +798,7 @@ exports[`Select component testing Error one selected 1`] = `
 exports[`Select component testing Normal multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -810,7 +810,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-12ms9px-ValueContainer"
         >
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-gqt44k"
@@ -845,7 +845,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-jahdpg-multiValue"
+            class="css-utwydg-multiValue"
           >
             <div
               class="css-gqt44k"
@@ -908,7 +908,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jSgupP lazPgH"
+            class="sc-jSgupP fhHPSN"
           >
             <div
               aria-hidden="true"
@@ -988,7 +988,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
 exports[`Select component testing Normal not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -1091,7 +1091,7 @@ exports[`Select component testing Normal not selected 1`] = `
 exports[`Select component testing Normal one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fQdfBQ"
+    class="sc-bdfBwQ eYvPRt"
   >
     <div
       class=" css-2b097c-container"
@@ -1136,7 +1136,7 @@ exports[`Select component testing Normal one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jSgupP lazPgH"
+            class="sc-jSgupP fhHPSN"
           >
             <div
               aria-hidden="true"
