@@ -34,10 +34,9 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   font-size: ${({ fontSize }) => fontSize};
   box-shadow: ${({ normal, disabled }) =>
     disabled ? "none" : normal.boxShadow};
-  pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   transition: all 0.3s;
 
-  &:hover {
+  &:hover:not([disabled]) {
     background: ${({ hover }) => hover.background};
   }
 

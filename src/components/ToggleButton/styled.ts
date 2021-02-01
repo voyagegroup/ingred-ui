@@ -55,7 +55,7 @@ export const Label = styled.label<LabelProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   width: ${({ width }) => width};
   height: calc(1px * 2 + 22px);
   background-color: ${({ active, disabled, theme }) =>

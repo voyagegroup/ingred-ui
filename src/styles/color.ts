@@ -65,7 +65,7 @@ export const colors: { [color: string]: Color } = {
     50: "#FDFEFF",
 
     100: "#F5F7F8",
-    200: "#EFF1F2",
+    200: "#E2E8EA",
     300: "#D1D5DA",
     400: "#B3BAC1",
     500: "#959FA9",

@@ -1,9 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.label`
-  cursor: pointer;
-`;
-
 export const Checkbox = styled.input<{
   indeterminate: boolean;
   error: boolean;
@@ -28,6 +24,10 @@ export const Checkbox = styled.input<{
     background-repeat: no-repeat;
     background-position: center;
   }
+`;
+
+export const Container = styled.label<{ disabled: boolean }>`
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 `;
 
 export const Span = styled.span<{

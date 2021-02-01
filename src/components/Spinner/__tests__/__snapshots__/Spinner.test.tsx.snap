@@ -15,7 +15,7 @@ exports[`Spinner component testing Spinner 1`] = `
         cx="50"
         cy="50"
         r="20"
-        stroke="#EFF1F2"
+        stroke="#E2E8EA"
       />
       <circle
         class="sc-dlfnbm sc-hKgILt erQbZM fZCBdO"

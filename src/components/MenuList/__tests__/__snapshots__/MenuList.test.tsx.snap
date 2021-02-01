@@ -6,12 +6,12 @@ exports[`MenuList component testing MenuList splited 1`] = `
     class="sc-bdfBwQ hWeOum"
   >
     <hr
-      class="sc-dlfnbm gCtrZt"
-      color="#EFF1F2"
+      class="sc-dlfnbm jOeRSr"
+      color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
@@ -22,7 +22,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
@@ -33,12 +33,12 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-dlfnbm gCtrZt"
-      color="#EFF1F2"
+      class="sc-dlfnbm jOeRSr"
+      color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
@@ -49,7 +49,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"

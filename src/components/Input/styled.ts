@@ -40,5 +40,6 @@ export const Input = styled.input<{
     border-color: ${({ theme }) => theme.palette.divider};
     box-shadow: none;
     background-color: ${({ theme }) => theme.palette.gray.light};
+    cursor: not-allowed;
   }
 `;

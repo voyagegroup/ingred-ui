@@ -7,7 +7,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF bCiabC sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm drHOmF hnouyd sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -46,12 +46,12 @@ exports[`DropdownButton component testing not splited disable 1`] = `
         class="sc-fubCfw SsASl"
       >
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -62,7 +62,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -73,12 +73,12 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -89,7 +89,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -112,7 +112,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF ciPuqS sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm drHOmF eVHwxU sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -156,12 +156,12 @@ exports[`DropdownButton component testing not splited enable 1`] = `
         class="sc-fubCfw SsASl"
       >
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -172,7 +172,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -183,12 +183,12 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -199,7 +199,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -222,7 +222,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF ifYubB sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm drHOmF cyQxHy sc-eCssSg eZdWdg"
       disabled=""
       font-size="14px"
       font-weight="bold"
@@ -231,7 +231,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       保存する
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF ifYubB sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm drHOmF cyQxHy sc-jSgupP pjuOx"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -269,12 +269,12 @@ exports[`DropdownButton component testing splited disable 1`] = `
         class="sc-fubCfw SsASl"
       >
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -285,7 +285,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -296,12 +296,12 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -312,7 +312,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -335,7 +335,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF kmMnXp sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm drHOmF gsbZLr sc-eCssSg eZdWdg"
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -343,7 +343,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       保存する
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF kmMnXp sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm drHOmF gsbZLr sc-jSgupP pjuOx"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -386,12 +386,12 @@ exports[`DropdownButton component testing splited enable 1`] = `
         class="sc-fubCfw SsASl"
       >
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -402,7 +402,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -413,12 +413,12 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp fQySwu"
-          color="#EFF1F2"
+          class="sc-jrAGrp jgCjEA"
+          color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -429,7 +429,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ brtMAP"
+          class="sc-pFZIQ kdyKdd"
         >
           <p
             class="sc-bdfBwQ gNlqto"
