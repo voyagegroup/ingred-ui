@@ -59,35 +59,3 @@ export const Sample: React.FunctionComponent<FloatingTipProps> = (args) => {
     </Container>
   );
 };
-
-export const Hoge: React.FunctionComponent<FloatingTipProps> = (args) => {
-  const [
-    iconWrapperElement,
-    setIconWrapperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const handleIsOpen = (isOpen: boolean) => () => {
-    setIsOpen(isOpen);
-  };
-  return (
-    <Container>
-      <p>Source code is written in &rdquo;Story&rdquo; Tab at footer.</p>
-      <RowContainer>
-        <IconWrapper
-          ref={setIconWrapperElement}
-          onClick={handleIsOpen(!isOpen)}
-        >
-          <Icon name="question" type="fill" />
-        </IconWrapper>
-        <FloatingTip
-          {...args}
-          baseElement={iconWrapperElement}
-          isOpen={isOpen || !!args.isOpen}
-          onClose={handleIsOpen(false)}
-        >
-          <p>Some message.</p>
-        </FloatingTip>
-      </RowContainer>
-    </Container>
-  );
-};
