@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import Pager, { useFilterState, getFilteredItems } from "./";
-import Flex from "../Flex";
+import Pager, { useFilterState, getFilteredItems, PagerProps } from "./";
+import { Story } from "@storybook/react/types-6-0";
 import Typography from "../Typography";
 import Spacer from "../Spacer";
 
@@ -17,26 +17,23 @@ const RowContainer = styled.div<{ minHeight?: string; flex?: boolean }>`
   padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.default};
   min-height: ${({ minHeight }) => minHeight || "0"};
-`;
-
-const Column = styled.div`
-  & + & {
-    margin-left: ${({ theme }) => theme.spacing * 5}px;
-  }
+  flex-wrap: wrap;
 `;
 
 export default {
   title: "Components/Data Display/Pager",
   component: Pager,
-  parameters: {
-    docs: { page: null },
+  args: {
+    onClick: () => {},
   },
 };
 
-const BasicExample: React.FunctionComponent = () => {
+export const Example: Story<PagerProps> = () => {
   const mockArray: number[] = [...Array(61)].map((_, i) => i);
-  const [filterState, setFilterState] = useFilterState();
 
+  // MEMO: `usefilterState()` & `getFilteredItems()` is available from ingred-ui.
+  // e.g. filterState = { per: 10, index: 3 }
+  const [filterState, setFilterState] = useFilterState(10, 1); // (per, index)
   const filteredItems = getFilteredItems(mockArray, filterState);
 
   const handleChangePager = (index: number) => {
@@ -50,77 +47,68 @@ const BasicExample: React.FunctionComponent = () => {
           <li key={num}>{num}</li>
         ))}
       </ul>
-      <Flex display="flex" alignItems="center" justifyContent="space-between">
-        <Pager
-          per={filterState.per}
-          total={mockArray.length}
-          index={filterState.index}
-          onClick={handleChangePager}
-        />
-      </Flex>
+      <Pager
+        per={filterState.per}
+        total={mockArray.length}
+        index={filterState.index}
+        onClick={handleChangePager}
+      />
     </>
   );
 };
 
-export const Overview = () => (
+export const DesignSample: Story = () => (
   <Container>
-    <Typography weight="bold" size="xxl">
-      Basic Example
-    </Typography>
-    <RowContainer>
-      <BasicExample />
-    </RowContainer>
-
-    <Typography weight="bold" size="xxl">
-      Design Sample
-    </Typography>
     <RowContainer flex>
-      <Column>
+      <div>
         <Typography weight="bold" size="xxl">
           Can&apos;t Forward
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={2} index={2} onClick={() => {}} />
-      </Column>
-      <Column>
+      </div>
+      <Spacer pr={5} />
+      <div>
         <Typography weight="bold" size="xxl">
           Can&apos;t Back
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={2} index={1} onClick={() => {}} />
-      </Column>
-      <Column>
+      </div>
+      <Spacer pr={5} />
+      <div>
         <Typography weight="bold" size="xxl">
           Can Both
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={3} index={2} onClick={() => {}} />
-      </Column>
+      </div>
     </RowContainer>
 
     <RowContainer flex>
-      <Column>
+      <div>
         <Typography weight="bold" size="xxl">
           Left Three Dots
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={7} index={7} onClick={() => {}} />
-      </Column>
-      <Column>
+      </div>
+      <Spacer pr={5} />
+      <div>
         <Typography weight="bold" size="xxl">
           Both Three Dots
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={7} index={4} onClick={() => {}} />
-      </Column>
-      <Column>
+      </div>
+      <Spacer pr={5} />
+      <div>
         <Typography weight="bold" size="xxl">
           Rignt Three Dots
         </Typography>
         <Spacer mb={3} />
         <Pager per={1} total={7} index={1} onClick={() => {}} />
-      </Column>
+      </div>
     </RowContainer>
   </Container>
-  /* eslint-enable react/jsx-no-bind */
 );

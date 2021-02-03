@@ -9,7 +9,13 @@ import { useTheme } from "../../themes";
 export type FloatingTipCloseReason = "clickCloseIcon";
 
 export type FloatingTipProps = {
+  /**
+   * That becomes position reference of this component.
+   */
   baseElement: HTMLElement | null;
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   isOpen: boolean;

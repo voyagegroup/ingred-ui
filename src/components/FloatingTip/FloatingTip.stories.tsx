@@ -1,9 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
-import { select, boolean, number } from "@storybook/addon-knobs";
 import FloatingTip from ".";
-import Typography from "../Typography";
 import Icon from "../Icon";
+import { FloatingTipProps } from "./FloatingTip";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;
@@ -14,7 +13,7 @@ const RowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 300px;
   margin: ${({ theme }) => theme.spacing * 3}px;
   padding: ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.background.default};
@@ -24,41 +23,12 @@ const IconWrapper = styled.div`
   cursor: pointer;
 `;
 
-const Content = styled.div`
-  width: 300px;
-`;
-
 export default {
   title: "Components/Data Display/FloatingTip",
   component: FloatingTip,
-  parameters: {
-    docs: { page: null },
-  },
 };
 
-export const Overview: React.FunctionComponent = () => {
-  const keepShow = boolean("Keep Show", false);
-  const offsetX = number("Offset X", 0);
-  const offsetY = number("Offset Y", 10);
-  const position = select(
-    "Position",
-    {
-      top: "top",
-      top_start: "top-start",
-      top_end: "top-end",
-      bottom: "bottom",
-      bottom_start: "bottom-start",
-      bottom_end: "bottom-end",
-      left: "left",
-      left_start: "left-start",
-      left_end: "left-end",
-      right: "right",
-      right_start: "right-start",
-      right_end: "right-end",
-    },
-    "right-start",
-  );
-
+export const Sample: React.FunctionComponent<FloatingTipProps> = (args) => {
   const [
     iconWrapperElement,
     setIconWrapperElement,
@@ -69,6 +39,7 @@ export const Overview: React.FunctionComponent = () => {
   };
   return (
     <Container>
+      <p>Source code is written in &rdquo;Story&rdquo; Tab at footer.</p>
       <RowContainer>
         <IconWrapper
           ref={setIconWrapperElement}
@@ -77,19 +48,12 @@ export const Overview: React.FunctionComponent = () => {
           <Icon name="question" type="fill" />
         </IconWrapper>
         <FloatingTip
+          {...args}
           baseElement={iconWrapperElement}
-          isOpen={isOpen || keepShow}
-          offset={[offsetX, offsetY]}
-          positionPriority={[position]}
+          isOpen={isOpen || !!args.isOpen}
           onClose={handleIsOpen(false)}
         >
-          <Content>
-            <Typography size="sm" lineHeight="1.7">
-              指定したグループと紐付いているクリエイティブの
-              みがグループとして選択できます。グループとの紐
-              付けは設定メニューから行えます。
-            </Typography>
-          </Content>
+          <p>Some message.</p>
         </FloatingTip>
       </RowContainer>
     </Container>

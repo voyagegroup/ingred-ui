@@ -1,87 +1,99 @@
 import React from "react";
-import styled from "styled-components";
-
-import Table from "./";
+import Badge from "../Badge";
 import Flex from "../Flex";
 import Typography from "../Typography";
-import Badge from "../Badge";
-import { VerticalSpacing } from "./Row";
+import Table from "./";
 
 export default {
   title: "Components/Data Display/Table",
   component: Table,
-  parameters: {
-    docs: { page: null },
+  subcomponents: {
+    Header: Table.Header,
+    Body: Table.Body,
+    Row: Table.Row,
+    Cell: Table.Cell,
+    HeaderCell: Table.HeaderCell,
   },
 };
 
-const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.background.default};
-`;
-
-const InnerTable: React.FunctionComponent<{
-  verticalSpacing: VerticalSpacing;
-}> = ({ verticalSpacing }) => (
+export const Example = () => (
   <Table>
     <Table.Body>
-      <Table.Row verticalSpacing={verticalSpacing}>
-        <Table.HeaderCell width="177px">
+      <Table.Row>
+        <Table.HeaderCell>normal</Table.HeaderCell>
+        <Table.HeaderCell>table</Table.HeaderCell>
+      </Table.Row>
+      <Table.Row>
+        <Table.Cell>row</Table.Cell>
+        <Table.Cell>row</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+);
+
+export const ChangeVerticalSpacing = () => (
+  <Table>
+    <Table.Body>
+      <Table.Row verticalSpacing="small">
+        <Table.HeaderCell>
           <Flex
             display="flex"
             justifyContent="space-between"
             alignItems="center"
           >
             <Typography component="div" weight="bold" size="md">
-              タイトル
+              Title
             </Typography>
             <Badge color="danger" fontWeight="bold">
-              必須
+              Required
             </Badge>
           </Flex>
         </Table.HeaderCell>
-        <Table.Cell colSpan={2}>コンテンツ</Table.Cell>
+        <Table.Cell>Contents</Table.Cell>
       </Table.Row>
-      <Table.Row verticalSpacing={verticalSpacing}>
-        <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-        <Table.Cell colSpan={2}>コンテンツ</Table.Cell>
-      </Table.Row>
-      <Table.Row verticalSpacing={verticalSpacing}>
-        <Table.HeaderCell rowSpan={2} width="177px">
-          タイトル
-        </Table.HeaderCell>
-        <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-        <Table.Cell>コンテンツ</Table.Cell>
-      </Table.Row>
-      <Table.Row verticalSpacing={verticalSpacing}>
-        <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-        <Table.Cell>コンテンツ</Table.Cell>
+      <Table.Row verticalSpacing="small">
+        <Table.HeaderCell>Title</Table.HeaderCell>
+        <Table.Cell>Contents</Table.Cell>
       </Table.Row>
     </Table.Body>
   </Table>
 );
 
-export const Overview = () => (
-  <Container>
-    <Table>
-      <Table.Body>
-        <Table.Row>
-          <Table.HeaderCell>normal</Table.HeaderCell>
-          <Table.HeaderCell>table</Table.HeaderCell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>row</Table.Cell>
-          <Table.Cell>row</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
-    {["small", "medium", "large"].map((space) => {
-      return (
-        <React.Fragment key={space}>
-          <Typography>verticalSpacing = {space}</Typography>
-          <InnerTable verticalSpacing={space as VerticalSpacing} />
-        </React.Fragment>
-      );
-    })}
-  </Container>
+export const ChangeWidth = () => (
+  <Table>
+    <Table.Body>
+      <Table.Row>
+        <Table.HeaderCell width="100px">Title</Table.HeaderCell>
+        <Table.Cell>Contents</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell width="100px">Title</Table.HeaderCell>
+        <Table.Cell>Contents</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+);
+
+export const WithRowSpanAndColSpan = () => (
+  <Table>
+    <Table.Body>
+      <Table.Row>
+        <Table.HeaderCell>Title</Table.HeaderCell>
+        <Table.Cell colSpan={2}>Contents</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell>Title</Table.HeaderCell>
+        <Table.Cell colSpan={2}>Contents</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell rowSpan={2}>Title</Table.HeaderCell>
+        <Table.HeaderCell>SubTitle</Table.HeaderCell>
+        <Table.Cell>Contents</Table.Cell>
+      </Table.Row>
+      <Table.Row>
+        <Table.HeaderCell>SubTitle</Table.HeaderCell>
+        <Table.Cell>Contents</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
 );
