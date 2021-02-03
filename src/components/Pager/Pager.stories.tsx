@@ -33,7 +33,7 @@ export const Example: Story<PagerProps> = () => {
 
   // MEMO: `usefilterState()` & `getFilteredItems()` is available from ingred-ui.
   // e.g. filterState = { per: 10, index: 3 }
-  const [filterState, setFilterState] = useFilterState();
+  const [filterState, setFilterState] = useFilterState(10, 1); // (per, index)
   const filteredItems = getFilteredItems(mockArray, filterState);
 
   const handleChangePager = (index: number) => {
