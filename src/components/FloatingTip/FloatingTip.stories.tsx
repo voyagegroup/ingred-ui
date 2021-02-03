@@ -28,8 +28,6 @@ export default {
   component: FloatingTip,
 };
 
-// MEMO: Cannot use "ref" with MDX format.
-//       https://github.com/storybookjs/storybook/issues/10446
 export const Sample: React.FunctionComponent<FloatingTipProps> = (args) => {
   const [
     iconWrapperElement,
