@@ -9,4 +9,7 @@ export const EmptyContainer = styled.div`
     ${({ theme }) => theme.spacing * 4}px ${({ theme }) => theme.spacing * 7}px;
 `;
 
-export const EmptyImageContainer = styled.div``;
+export const EmptyImage = styled.img<{ width: number }>`
+  width: ${({ width }) => width}px;
+  height: auto;
+`;

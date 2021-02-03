@@ -9,30 +9,25 @@ export type ItemEmptyProps = {
   subtitle?: string;
   emptyImage?: string;
   imageWidth?: number;
-  imageHeight?: number;
 };
 
 const ItemEmpty: React.FunctionComponent<ItemEmptyProps> = ({
   title,
   subtitle,
   emptyImage,
-  imageWidth = 135,
-  imageHeight = 135,
+  imageWidth = 100,
 }) => (
   <Styled.EmptyContainer>
-    <Styled.EmptyImageContainer>
-      <img
-        src={emptyImage ? emptyImage : defaultEmptyImage}
-        width={imageWidth}
-        height={imageHeight}
-      />
-    </Styled.EmptyImageContainer>
-    <Spacer pt={5} pb={1}>
-      <Typography weight="bold" size="xxxl" align="center">
+    <Styled.EmptyImage
+      src={emptyImage ? emptyImage : defaultEmptyImage}
+      width={imageWidth}
+    />
+    <Spacer pt={2} pb={1}>
+      <Typography weight="bold" size="md" align="center">
         {title}
       </Typography>
     </Spacer>
-    {subtitle && <Typography size="md">{subtitle}</Typography>}
+    {subtitle && <Typography size="sm">{subtitle}</Typography>}
   </Styled.EmptyContainer>
 );
 
