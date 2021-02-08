@@ -15,7 +15,7 @@ const ItemEmpty: React.FunctionComponent<ItemEmptyProps> = ({
   title,
   subtitle,
   emptyImage,
-  imageWidth = 100,
+  imageWidth = 80,
 }) => (
   <Styled.EmptyContainer>
     <Styled.EmptyImage
