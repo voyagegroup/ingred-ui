@@ -1,42 +1,36 @@
-import { action } from "@storybook/addon-actions";
-
 import React from "react";
+import { Story } from "@storybook/react/types-6-0";
 import Checkbox from ".";
-import Spacer from "../Spacer";
+import { CheckBoxProps } from "./Checkbox";
+import { Flex } from "..";
 
 export default {
   title: "Components/Inputs/Checkbox",
   component: Checkbox,
-  parameters: {
-    docs: { page: null },
+  argTypes: {
+    onChange: { action: "changed" },
   },
 };
 
-export const Overview = () => (
-  <>
-    <Checkbox checked={true} name="group" onChange={action("onChange1")}>
-      チェックボックス
+export const Example: Story<CheckBoxProps> = (args) => (
+  <Checkbox {...args}>Checkbox</Checkbox>
+);
+
+export const DesignSamples = () => (
+  <Flex display="flex" flexDirection="column">
+    <Checkbox checked={false}>Not checked</Checkbox>
+    <Checkbox checked={true}>Checked</Checkbox>
+    <Checkbox indeterminate={true} checked={true}>
+      Checked(indeterminate)
     </Checkbox>
-    <Spacer pt={1} />
-    <Checkbox name="group" onChange={action("onChange2")}>
-      チェックボックス
+    <Checkbox disabled checked={false}>
+      Not checked(disabled)
     </Checkbox>
-    <Spacer pt={1} />
-    <Checkbox disabled={true} name="group" onChange={action("onChange2")}>
-      チェックボックス
+    <Checkbox disabled checked={true}>
+      Checked(disabled)
     </Checkbox>
-    <Spacer pt={1} />
-    <Checkbox
-      checked={true}
-      disabled={true}
-      name="group"
-      onChange={action("onChange2")}
-    >
-      チェックボックス
+    <Checkbox disabled indeterminate={true} checked={true}>
+      Checked(disabled & indeterminate)
     </Checkbox>
-    <Spacer pt={1} />
-    <Checkbox error={true} name="group" onChange={action("onChange2")}>
-      チェックボックス
-    </Checkbox>
-  </>
+  </Flex>
 );
