@@ -23,9 +23,6 @@ const RowContainer = styled.div<{ minHeight?: string; flex?: boolean }>`
 export default {
   title: "Components/Data Display/Pager",
   component: Pager,
-  args: {
-    onClick: () => {},
-  },
 };
 
 export const Example: Story<PagerProps> = () => {
