@@ -29,8 +29,5 @@ export const DesignSamples = () => (
     <Checkbox disabled checked={true}>
       Checked(disabled)
     </Checkbox>
-    <Checkbox disabled indeterminate={true} checked={true}>
-      Checked(disabled & indeterminate)
-    </Checkbox>
   </Flex>
 );
