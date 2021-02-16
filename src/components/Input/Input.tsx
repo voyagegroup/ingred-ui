@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
+import { Property } from "csstype";
 
 export type InputProps = (
   | React.ComponentPropsWithoutRef<"input">
@@ -7,7 +8,7 @@ export type InputProps = (
 ) & {
   error?: boolean;
   multiline?: boolean;
-  resize?: "none" | "both" | "horizontal" | "vertical" | "inherit";
+  resize?: Property.Resize;
 };
 
 const Input = React.forwardRef<

@@ -1,110 +1,79 @@
 import * as React from "react";
-import styled from "styled-components";
-import Input from "./Input";
-import Typography from "../Typography";
-import Spacer from "../Spacer";
-
-const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.background.dark};
-`;
-
-const RowContainer = styled.div<{ minHeight?: string }>`
-  display: flex;
-  align-items: flex-start;
-  margin: ${({ theme }) => theme.spacing * 3}px;
-  padding: ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.background.default};
-  min-height: ${({ minHeight }) => minHeight || "0"};
-`;
-
-const Column = styled.div`
-  min-width: 300px;
-  & + & {
-    margin-left: ${({ theme }) => theme.spacing * 5}px;
-  }
-`;
+import Input, { InputProps } from "./Input";
+import { Story } from "@storybook/react/types-6-0";
+import { Flex, Spacer, Typography } from "..";
 
 export default {
   title: "Components/Inputs/Input",
   component: Input,
-  parameters: {
-    docs: { page: null },
+  args: {
+    placeholder: "placeholder",
   },
 };
 
-export const Overview = () => (
-  <Container>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Empty
-        </Typography>
-        <Spacer pt={2} />
-        <Input placeholder="Place holder" />
-      </Column>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Focus
-        </Typography>
+export const Example: Story<InputProps> = (args) => <Input {...args} />;
+
+export const Textarea: Story<InputProps> = (args) => <Input {...args} />;
+Textarea.args = {
+  multiline: true,
+};
+
+export const DesignSample: Story<InputProps> = () => (
+  <>
+    <Typography size="xxl" weight="bold">
+      Normal
+    </Typography>
+    <Spacer pt={3} />
+    <Flex display="flex">
+      <div>
+        <Typography weight="bold">Empty</Typography>
         <Spacer pt={2} />
         <Input />
-      </Column>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Typed
-        </Typography>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Typed</Typography>
         <Spacer pt={2} />
-        <Input value="Textfield" readOnly={true} />
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Disabled
-        </Typography>
+        <Input value="typed" />
+      </div>
+    </Flex>
+    <Spacer pt={3} />
+    <Typography size="xxl" weight="bold">
+      Disabled
+    </Typography>
+    <Spacer pt={3} />
+    <Flex display="flex">
+      <div>
+        <Typography weight="bold">Empty</Typography>
         <Spacer pt={2} />
         <Input disabled={true} />
-      </Column>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Disabled &amp; Typed
-        </Typography>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Typed</Typography>
         <Spacer pt={2} />
-        <Input value="Textfield" readOnly={true} disabled={true} />
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Error
-        </Typography>
+        <Input disabled={true} value="typed" />
+      </div>
+      <Spacer pl={3} />
+    </Flex>
+    <Spacer pt={3} />
+    <Typography size="xxl" weight="bold">
+      Error
+    </Typography>
+    <Spacer pt={3} />
+    <Flex display="flex">
+      <div>
+        <Typography weight="bold">Empty</Typography>
         <Spacer pt={2} />
-        <Input error={true} readOnly={true} />
-      </Column>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Error &amp; Typed
-        </Typography>
+        <Input error={true} />
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Typed</Typography>
         <Spacer pt={2} />
-        <Input error={true} value="Textfield" readOnly={true} />
-      </Column>
-    </RowContainer>
-    <RowContainer>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Textarea
-        </Typography>
-        <Spacer pt={2} />
-        <Input multiline={true} placeholder="プレースホルダー" />
-      </Column>
-      <Column>
-        <Typography weight="bold" size="xxl">
-          Textarea(Error)
-        </Typography>
-        <Spacer pt={2} />
-        <Input error={true} multiline={true} placeholder="プレースホルダー" />
-      </Column>
-    </RowContainer>
-  </Container>
+        <Input error={true} value="typed" />
+      </div>
+      <Spacer pl={3} />
+    </Flex>
+  </>
 );
