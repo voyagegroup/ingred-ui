@@ -23,7 +23,7 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
               color="#041C33"
               font-size="20px"
             >
-              タイトル
+              Title
             </p>
             <div
               class="sc-dQppl eGrkaT"

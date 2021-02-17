@@ -12,16 +12,16 @@ describe("Table component testing", () => {
       <Table>
         <Table.Body>
           <Table.Row>
-            <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-            <Table.Cell>コンテンツ</Table.Cell>
+            <Table.HeaderCell width="177px">Title</Table.HeaderCell>
+            <Table.Cell>Content</Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-            <Table.Cell>コンテンツ</Table.Cell>
+            <Table.HeaderCell width="177px">Title</Table.HeaderCell>
+            <Table.Cell>Content</Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.HeaderCell width="177px">タイトル</Table.HeaderCell>
-            <Table.Cell>コンテンツ</Table.Cell>
+            <Table.HeaderCell width="177px">Title</Table.HeaderCell>
+            <Table.Cell>Content</Table.Cell>
           </Table.Row>
         </Table.Body>
       </Table>,
