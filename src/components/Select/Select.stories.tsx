@@ -120,7 +120,7 @@ So when you want to use with async callback, please implement as follows.
   },
 };
 
-export const DesignSample = () => {
+export const DesignSamples = () => {
   const options = [
     { label: "One", value: 1 },
     { label: "Two", value: 2 },

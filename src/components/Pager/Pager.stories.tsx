@@ -54,7 +54,7 @@ export const Example: Story<PagerProps> = () => {
   );
 };
 
-export const DesignSample: Story = () => (
+export const DesignSamples: Story = () => (
   <Container>
     <RowContainer flex>
       <div>

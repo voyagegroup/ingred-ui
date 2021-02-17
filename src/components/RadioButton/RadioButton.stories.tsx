@@ -22,7 +22,7 @@ Example.args = {
   name: "example",
 };
 
-export const DesignSample = () => (
+export const DesignSamples = () => (
   <>
     <RadioButton>Basic</RadioButton>
     <br />

@@ -18,7 +18,7 @@ Textarea.args = {
   multiline: true,
 };
 
-export const DesignSample: Story<InputProps> = () => (
+export const DesignSamples: Story<InputProps> = () => (
   <>
     <Typography size="xxl" weight="bold">
       Normal
