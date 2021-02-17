@@ -1775,31 +1775,6 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-knobs@^6.1.9":
-  version "6.1.9"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-6.1.9.tgz#49773931770effc208db094c61eeecbceaf5836b"
-  integrity sha512-aUKD9FaQGl/WOkGT6utElspYZJ7cBtUARe41JN59qOao7RNviabipQUASrjORcYUUU55sfKsLPEqQaEKB3x2bw==
-  dependencies:
-    "@storybook/addons" "6.1.9"
-    "@storybook/api" "6.1.9"
-    "@storybook/channels" "6.1.9"
-    "@storybook/client-api" "6.1.9"
-    "@storybook/components" "6.1.9"
-    "@storybook/core-events" "6.1.9"
-    "@storybook/theming" "6.1.9"
-    copy-to-clipboard "^3.0.8"
-    core-js "^3.0.1"
-    escape-html "^1.0.3"
-    fast-deep-equal "^3.1.1"
-    global "^4.3.2"
-    lodash "^4.17.15"
-    prop-types "^15.7.2"
-    qs "^6.6.0"
-    react-color "^2.17.0"
-    react-lifecycles-compat "^3.0.4"
-    react-select "^3.0.8"
-    regenerator-runtime "^0.13.7"
-
 "@storybook/addon-links@^6.1.10":
   version "6.1.10"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.1.10.tgz#7aeaa9467527e3ef294efc5b27f22bf3ff05a4bd"
@@ -6597,7 +6572,7 @@ escalade@^3.1.1:
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
-escape-html@^1.0.3, escape-html@~1.0.3:
+escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
   integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
@@ -12963,7 +12938,7 @@ react-refresh@^0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-react-select@^3.0.8, react-select@^3.1.1:
+react-select@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-3.1.1.tgz#156a5b4a6c22b1e3d62a919cb1fd827adb4060bc"
   integrity sha512-HjC6jT2BhUxbIbxMZWqVcDibrEpdUJCfGicN0MMV+BQyKtCaPTgFekKWiOizSCy4jdsLMGjLqcFGJMhVGWB0Dg==

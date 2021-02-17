@@ -6,8 +6,6 @@ module.exports = {
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-links",
-    // TODO: Remove following addons after replace to `.mdx`.
-    "@storybook/addon-knobs",
     "@storybook/addon-storysource",
     {
       // MEMO: included in addon-essentials
