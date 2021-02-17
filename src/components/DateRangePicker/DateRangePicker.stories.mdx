@@ -1,0 +1,62 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
+import moment from "moment";
+import DateRangePicker from "./DateRangePicker";
+import "react-dates/lib/css/_datepicker.css";
+
+<Meta title="Components/Inputs/DateRangePicker" component={DateRangePicker} />
+
+# DateRangePicker
+
+The wrapper of [react-dates](https://github.com/airbnb/react-dates).
+
+For more detail props, please see [it](https://github.com/airbnb/react-dates#daterangepicker).
+
+<ArgsTable of={DateRangePicker} />
+
+## When the display is strange
+
+Please import css from `react-dates`.
+
+```tsx
+import "react-dates/lib/css/_datepicker.css";
+```
+
+## Samples
+
+### Basic
+
+<Canvas>
+  <Story name="Basic">
+    {() => {
+      const [startDate, setStartDate] = React.useState(moment().set("date", 1));
+      const [endDate, setEndDate] = React.useState(moment());
+      const handleChangeDates = ({ startDate, endDate }) => {
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      return (
+        <div style={{ height: "400px" }}>
+          <DateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            onDatesChange={handleChangeDates}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story name="Error">
+    {() => (
+      <DateRangePicker
+        startDate={moment().set("date", 1)}
+        endDate={moment()}
+        error={true}
+      />
+    )}
+  </Story>
+</Canvas>
