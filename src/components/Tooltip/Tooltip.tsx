@@ -13,10 +13,16 @@ export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
   disableHoverListener?: boolean;
   enterDelay?: number;
   leaveDelay?: number;
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
   width?: string;
   disabled?: boolean;
+  /**
+   * props of [Fade](/?path=/docs/components-utils-fade)
+   */
   fadeProps?: CSSTransitionProps;
   children: React.ComponentElement<HTMLElement, any>;
 };
