@@ -34,40 +34,26 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
   const horizontalPadding =
     size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
 
-  const childProps = disabled
-    ? {
-        disabled: true,
-        size: size,
-        color: "secondary",
-      }
-    : {
-        // 各子要素のdisabledが使えなくなるので disabled:false は指定しない
-        size: size,
-        color: "secondary",
-      };
-
-  //直前のchildがdisabledだった場合にはborderLeftの設定を追加する
-  const childNeighborDisabledProps = {
-    ...childProps,
-    style: {
-      borderLeft: `1px solid ${theme.palette.divider}`,
-    },
-  };
-
-  let isBeforeChildDisabled = false;
-
+  let isLeftButtonDisabled = false;
   const childrenWithProps = React.Children.map(
     children,
     (child: React.ReactElement) => {
-      if (child.props.disabled) {
-        isBeforeChildDisabled = true;
-      } else if (isBeforeChildDisabled) {
-        isBeforeChildDisabled = false;
-        return React.cloneElement(child, childNeighborDisabledProps);
-      }
-      return React.cloneElement(child, childProps);
+      const Button = React.cloneElement(child, {
+        ...child.props,
+        ...(disabled && { disabled: true }),
+        size: size,
+        color: "secondary",
+        style: {
+          borderLeft:
+            isLeftButtonDisabled && `1px solid ${theme.palette.divider}`,
+          ...child.props.style,
+        },
+      });
+      isLeftButtonDisabled = child.props.disabled;
+      return Button;
     },
   );
+
   return (
     <Styled.ButtonGroupContainer
       height={buttonSize[size].height}

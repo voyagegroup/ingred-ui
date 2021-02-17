@@ -60,16 +60,17 @@ export const LinkMixed: Story<ButtonGroupProps> = (args) => {
     href,
     className,
     children,
-    ...rest
   }) => (
     // MEMO: Add className props to apply style
-    <a href={href} className={className} {...rest}>
+    <a href={href} className={className}>
       {children}
     </a>
   );
   return (
     <ButtonGroup {...args}>
-      <Button component={Link}>Link via {`<Link />`} Component</Button>
+      <Button component={Link} href="#">
+        Link via {`<Link />`} Component
+      </Button>
       <Button href="#">Link via href props</Button>
     </ButtonGroup>
   );
