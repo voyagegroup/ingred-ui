@@ -4,9 +4,7 @@ import Input from "../Input";
 import { InputProps } from "../Input/Input";
 import ErrorText from "../ErrorText";
 import Spacer from "../Spacer";
-import Typography from "../Typography";
 import Icon from "../Icon";
-import Flex from "../Flex";
 import { useTheme } from "../../themes";
 import { IconName } from "../Icon/Icon";
 
@@ -60,18 +58,6 @@ const TextField: React.FunctionComponent<TextFieldProps> = ({
       {errorText && (
         <Spacer pt={1}>
           <ErrorText>{errorText}</ErrorText>
-        </Spacer>
-      )}
-      {type === "password" && (
-        <Spacer pt={1}>
-          <Flex display="flex" alignItems="center">
-            <Spacer mr={0.25}>
-              <Icon name="eye_off" />
-            </Spacer>
-            <Typography color="secondary" size="sm">
-              をクリックするとパスワード表示できます
-            </Typography>
-          </Flex>
         </Spacer>
       )}
     </Styled.Container>
