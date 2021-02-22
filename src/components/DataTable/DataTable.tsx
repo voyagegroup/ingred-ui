@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { CountChanger } from "./internal/CountChanger";
+import { CountChanger, LabelDisplayRows } from "./internal/CountChanger";
 import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
@@ -206,6 +206,8 @@ export type DataTableProps<T> = {
   fullWidth?: boolean;
   tableMaxHeight?: string;
   horizontalScrollable?: boolean;
+  labelRowsPerPage?: string;
+  labelDisplayedRows?: LabelDisplayRows;
 };
 
 // idを必須にしたい
@@ -226,6 +228,8 @@ const DataTable = <T extends DataTableBaseData>({
   fullWidth = false,
   tableMaxHeight = "none",
   horizontalScrollable = false,
+  labelRowsPerPage = "Rows per page:",
+  labelDisplayedRows = ({ from, to, total }) => `${from}-${to} of ${total}`,
 }: DataTableProps<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -535,6 +539,8 @@ const DataTable = <T extends DataTableBaseData>({
               per={filterState.per}
               total={totalLength}
               index={filterState.index}
+              labelRowsPerPage={labelRowsPerPage}
+              labelDisplayedRows={labelDisplayedRows}
               onChange={handleCountChange}
             />
           </Flex>
