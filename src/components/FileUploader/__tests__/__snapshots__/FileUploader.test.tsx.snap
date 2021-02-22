@@ -41,7 +41,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
           color="#0B82F4"
           font-size="14px"
         >
-          ドラッグ&ドロップするか、クリックしてアップロード
+          Click or Drag & Drop file.
         </p>
       </div>
     </div>
