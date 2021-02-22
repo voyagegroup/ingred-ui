@@ -15,7 +15,8 @@ export const TabContainer = styled.ul`
 
 export const TabItem = styled.li<{ active: boolean }>`
   min-width: ${({ theme }) => theme.spacing * 10}px;
-  margin-bottom: -1px; /* containerのborderにかぶせるためのネガティブマージン */
+  /* MEMO: Use negative margin to cover the border of Container */
+  margin-bottom: -1px;
   padding: ${({ active, theme }) =>
     active
       ? `calc(${theme.spacing * 1.5}px - 1px) calc(${

@@ -125,7 +125,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     }
   };
 
-  // MEMO: childrenで定義したmouseOver/mouseOutイベントをツールチップから伝搬させないため
+  // MEMO: Not to propergate mouseOver/mouseOut event that defined in children
   //       https://github.com/facebook/react/issues/11387
   const stopPropagation = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();

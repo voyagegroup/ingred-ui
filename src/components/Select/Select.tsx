@@ -34,7 +34,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     }),
     menu: (base) => ({
       ...base,
-      marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
+      marginTop: "-1px",
       boxShadow: "none",
       borderRadius: `0 0 ${theme.radius}px ${theme.radius}px`,
       borderRight: `1px solid ${

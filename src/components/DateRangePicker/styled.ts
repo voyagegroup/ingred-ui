@@ -4,7 +4,7 @@ export const Container = styled.div<{ error: boolean }>`
   /* Overriding styles */
   /* DateRangePicker */
   .DateRangePicker {
-    display: inline-flex; /* これがないと.DateRangePickerInputのoveflow:hiddenで位置がずれる */
+    display: inline-flex;
   }
 
   /* DateRangePickerInput */
@@ -102,7 +102,8 @@ export const Container = styled.div<{ error: boolean }>`
         display: block;
         position: absolute;
         top: 50%;
-        left: 50% !important; /* td:nth-child(7n):beforeで上書きされるのを防ぐ */
+        /* MEMO: use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
+        left: 50% !important;
         transform: translate(calc(-50% - 0.5px), -50%);
         width: 22px;
         height: 22px;
@@ -126,7 +127,7 @@ export const Container = styled.div<{ error: boolean }>`
       display: block;
       position: absolute;
       top: 50%;
-      /* left: 0; td:nth-childにて指定している */
+      /* MEMO: 'left: 0;' is written by 'td:nth-child' */
       transform: translateY(-50%);
       width: 100%;
       height: 22px;
@@ -151,7 +152,7 @@ export const Container = styled.div<{ error: boolean }>`
       display: block;
       position: absolute;
       top: 50%;
-      /* left: 0; td:nth-childにて指定している */
+      /* MEMO: 'left: 0;' is written by 'td:nth-child' */
       transform: translateY(-50%);
       width: 100%;
       height: 22px;
@@ -182,7 +183,8 @@ export const Container = styled.div<{ error: boolean }>`
       display: block;
       position: absolute;
       top: 50%;
-      left: 50% !important; /* td:nth-child(7n):beforeで上書きされるのを防ぐ */
+      /* MEMO: use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
+      left: 50% !important;
       transform: translate(calc(-50% - 0.5px), -50%);
       width: 22px;
       height: 22px;
