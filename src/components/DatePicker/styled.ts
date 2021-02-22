@@ -103,7 +103,7 @@ export const Container = styled.div<{ error: boolean }>`
         display: block;
         position: absolute;
         top: 50%;
-        /* MEMO: use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
+        /* MEMO: Use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
         left: 50% !important;
         transform: translate(calc(-50% - 0.5px), -50%);
         width: 22px;
@@ -184,7 +184,7 @@ export const Container = styled.div<{ error: boolean }>`
       display: block;
       position: absolute;
       top: 50%;
-      /* MEMO: use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
+      /* MEMO: Use !important to prevent overwriting by 'td:nth-child(7n):before' selector */
       left: 50% !important;
       transform: translate(calc(-50% - 0.5px), -50%);
       width: 22px;
