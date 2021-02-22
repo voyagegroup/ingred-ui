@@ -31,7 +31,7 @@ export default {
 };
 
 export const Overview = () => {
-  const title = text("Title", "保存する");
+  const title = text("Title", "Save");
   const disabled = boolean("Disabled", false);
   const menuMaxHeight = text("MenuMaxHeight", "none");
 
@@ -56,21 +56,21 @@ export const Overview = () => {
 
   const contents = [
     {
-      text: "保存する",
-      onClick: action("clicked '保存する'"),
+      text: "Save",
+      onClick: action("clicked 'Save'"),
     },
     {
-      text: "保存して実行する",
-      onClick: action("clicked '保存して実行する'"),
+      text: "Save and execute",
+      onClick: action("clicked 'Save and execute'"),
       divideTop: true,
     },
     {
-      text: "下書きとして保存するhogehogehogehoge",
-      onClick: action("clicked '下書きとして保存する'"),
+      text: "Save as drafthogehogehogehoge",
+      onClick: action("clicked 'Save as draft'"),
     },
     {
-      text: "やっぱり何もしない",
-      onClick: action("clicked 'やっぱり何もしない'"),
+      text: "Cancel",
+      onClick: action("clicked 'Cancel'"),
       divideTop: true,
     },
   ];

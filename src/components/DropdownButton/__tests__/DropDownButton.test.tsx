@@ -14,21 +14,21 @@ jest.mock("react-dom", () => {
 
 const contents = [
   {
-    text: "保存する",
+    text: "Save",
     onClick: () => {},
     divideTop: true,
   },
   {
-    text: "保存して実行する",
+    text: "Save and execute",
     onClick: () => {},
   },
   {
-    text: "下書きとして保存する",
+    text: "Save as draft",
     onClick: () => {},
     divideTop: true,
   },
   {
-    text: "やっぱり何もしない",
+    text: "Cancel",
     onClick: () => {},
   },
 ];
@@ -39,7 +39,7 @@ describe("DropdownButton component testing", () => {
   describe("not splited", () => {
     test("enable", async () => {
       const { asFragment, getByTestId } = renderWithThemeProvider(
-        <DropdownButton contents={contents}>保存する</DropdownButton>,
+        <DropdownButton contents={contents}>Save</DropdownButton>,
       );
       await act(async () => {
         fireEvent.click(getByTestId("menu-toggle"));
@@ -50,7 +50,7 @@ describe("DropdownButton component testing", () => {
     test("disable", () => {
       const { asFragment } = renderWithThemeProvider(
         <DropdownButton disabled={true} contents={contents}>
-          保存する
+          Save
         </DropdownButton>,
       );
       expect(asFragment()).toMatchSnapshot();
@@ -61,7 +61,7 @@ describe("DropdownButton component testing", () => {
     test("enable", async () => {
       const { asFragment, getByTestId } = renderWithThemeProvider(
         <DropdownButton split={true} contents={contents}>
-          保存する
+          Save
         </DropdownButton>,
       );
       await act(async () => {
@@ -73,7 +73,7 @@ describe("DropdownButton component testing", () => {
     test("disable", () => {
       const { asFragment } = renderWithThemeProvider(
         <DropdownButton split={true} disabled={true} contents={contents}>
-          保存する
+          Save
         </DropdownButton>,
       );
       expect(asFragment()).toMatchSnapshot();

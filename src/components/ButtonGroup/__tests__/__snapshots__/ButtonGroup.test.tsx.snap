@@ -20,7 +20,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       font-weight="normal"
       height="42px"
     >
-      保存する
+      Save
     </button>
   </div>
 </DocumentFragment>

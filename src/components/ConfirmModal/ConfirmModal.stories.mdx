@@ -100,13 +100,7 @@ import { data } from "../DataTable/data";
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
             title="Title"
-            tipElement={
-              <div>
-                モーダルの設定内容に関する脚注を入れたい場合は、
-                &quot;tipElement&quot;
-                に表示したい内容を追加することでfloatingTipを追加できます。
-              </div>
-            }
+            tipElement={<div>Description for this modal.</div>}
             onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
@@ -143,12 +137,12 @@ import { data } from "../DataTable/data";
             fullSize={true}
             subActions={[
               {
-                title: "CSV形式でダウンロード",
+                title: "Download in CSV format",
                 icon: "export",
                 action: () => {},
               },
               {
-                title: "ダッシュボードに追加",
+                title: "Add to dashboard",
                 icon: "export",
                 action: () => {},
               },

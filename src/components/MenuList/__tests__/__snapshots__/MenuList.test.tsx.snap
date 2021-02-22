@@ -18,7 +18,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         color="#041C33"
         font-size="13px"
       >
-        保存する
+        Save
       </p>
     </div>
     <div
@@ -29,7 +29,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         color="#041C33"
         font-size="13px"
       >
-        保存して実行する
+        Save and execute
       </p>
     </div>
     <hr
@@ -45,7 +45,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         color="#041C33"
         font-size="13px"
       >
-        下書きとして保存する
+        Save as draft
       </p>
     </div>
     <div
@@ -56,7 +56,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         color="#041C33"
         font-size="13px"
       >
-        やっぱり何もしない
+        Cancel
       </p>
     </div>
   </div>
