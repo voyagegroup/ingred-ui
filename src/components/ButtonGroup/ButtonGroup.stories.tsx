@@ -20,7 +20,7 @@ export const Example: Story<ButtonGroupProps> = (args) => (
   </ButtonGroup>
 );
 
-export const DesignSample = () => (
+export const DesignSamples = () => (
   <Flex display="flex">
     <div>
       <Typography weight="bold">Size Medium</Typography>
