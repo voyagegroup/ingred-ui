@@ -177,13 +177,12 @@ const Select: SelectComponent = ({
   };
 
   const getEmptyMessage = () => {
-    return "見つかりませんでした";
+    return "Not found";
   };
   return (
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
-        placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}

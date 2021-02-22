@@ -15,8 +15,14 @@ export type DropdownButtonProps = {
   color?: DropdownButtonColor;
   onClick?: () => void;
   split?: boolean;
+  /**
+   * props of [MenuList](/?path=/docs/components-navigation-menulist)
+   */
   contents: ContentProp[];
   disabled?: boolean;
+  /**
+   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   */
   positionPriority?: PopperJS.Placement[];
   menuMaxHeight?: MenuProps["maxHeight"];
   menuProps?: Partial<MenuProps>;

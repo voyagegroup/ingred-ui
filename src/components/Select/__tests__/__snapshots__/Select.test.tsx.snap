@@ -151,7 +151,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
           <div
             class=" css-10hvqfk-NoOptionsMessage"
           >
-            見つかりませんでした
+            Not found
           </div>
         </div>
       </div>
@@ -177,7 +177,7 @@ exports[`Select component testing Disable not selected 1`] = `
           <div
             class=" css-dcdqlp-placeholder"
           >
-            選択してください
+            Select...
           </div>
           <div
             class="css-1knq81y-Input"
@@ -549,7 +549,7 @@ exports[`Select component testing Error multiple selected 1`] = `
           <div
             class=" css-10hvqfk-NoOptionsMessage"
           >
-            見つかりませんでした
+            Not found
           </div>
         </div>
       </div>
@@ -575,7 +575,7 @@ exports[`Select component testing Error not selected 1`] = `
           <div
             class=" css-2rfliy-placeholder"
           >
-            選択してください
+            Select...
           </div>
           <div
             class="css-1knq81y-Input"
@@ -976,7 +976,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
           <div
             class=" css-10hvqfk-NoOptionsMessage"
           >
-            見つかりませんでした
+            Not found
           </div>
         </div>
       </div>
@@ -1002,7 +1002,7 @@ exports[`Select component testing Normal not selected 1`] = `
           <div
             class=" css-b1k5wd-placeholder"
           >
-            選択してください
+            Select...
           </div>
           <div
             class="css-1knq81y-Input"
