@@ -45,7 +45,9 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
         color: "secondary",
         style: {
           borderLeft:
-            isLeftButtonDisabled && `1px solid ${theme.palette.divider}`,
+            isLeftButtonDisabled &&
+            !child.props.disabled &&
+            `1px solid ${theme.palette.divider}`,
           ...child.props.style,
         },
       });
