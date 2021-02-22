@@ -9,7 +9,7 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
       class="sc-bkzZxe fuFIfA sc-idOhPF hnQDfL fade-transition-appear fade-transition-appear-active"
     />
     <div
-      class="sc-gsTCUz sc-hKgILt jsbffe DlKbJ sc-idOhPF hnQDfL fade-transition-appear fade-transition-appear-active"
+      class="sc-gsTCUz sc-hKgILt jsbffe fRZlcX sc-idOhPF hnQDfL fade-transition-appear fade-transition-appear-active"
     >
       <form>
         <div
@@ -57,7 +57,7 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
           </div>
         </div>
         <div
-          class="sc-gKsewC drKJTI"
+          class="sc-gKsewC bSTtgP"
         >
           <div
             class="sc-dQppl lmHbPO"

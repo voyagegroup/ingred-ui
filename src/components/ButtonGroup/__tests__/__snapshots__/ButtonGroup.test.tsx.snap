@@ -12,7 +12,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       font-weight="normal"
       height="42px"
     >
-      編集する
+      Edit
     </button>
     <button
       class="sc-dlfnbm sc-hKgILt iQdNXO hSrEyx"
