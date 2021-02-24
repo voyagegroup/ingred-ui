@@ -9,7 +9,7 @@ import { NavigationRailTransitionDuration } from "../constants";
 export type LabelFixtureTooltip = (isFixed: boolean) => string;
 
 type Props = {
-  labelFixtureTooltip: LabelFixtureTooltip;
+  labelFixtureTooltip?: LabelFixtureTooltip;
 };
 
 const Fixture: React.FC<Props> = ({
