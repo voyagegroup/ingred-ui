@@ -34,7 +34,7 @@ exports[`ErrorText component testing ErrorText 1`] = `
       color="#EB0A4E"
       font-size="14px"
     >
-      エラー
+      Error
     </p>
   </div>
 </DocumentFragment>

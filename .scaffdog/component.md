@@ -62,35 +62,19 @@ describe("{{ input | pascal }} component testing", () => {
 
 ```
 
-# `{{ input | pascal }}/{{ input | pascal }}.stories.mdx`
+# `{{ input | pascal }}/{{ input | pascal }}.stories.tsx`
 
 ```typescript
-import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
-import {{ input | pascal }} from "./index";
+import * as React from "react";
+import { Story } from "@storybook/react/types-6-0";
+import {{ input | pascal }}, { {{ input | pascal }}Props } from ".";
 
-<Meta
-  title="{{ input | pascal }}"
-  component={ {{ input | pascal }} }
-  argTypes={
-    { onClick: { action: "clicked" } }
-  }
-/>
+export default {
+  title: "Components/〇〇/{{ input | pascal }}",
+  component: {{ input | pascal }},
+};
 
-# {{ input | pascal }}
-
-<ArgsTable of={ {{ input | pascal }} } />
-
-## Samples
-
-### Something
-
-<Canvas>
-  <Story
-    name="something"
-    args={{}}
-  >
-    {(args) => <{{ input | pascal }} {...args} />}
-  </Story>
-</Canvas>
-
+export const Example: Story<{{ input | pascal }}Props> = (args) => (
+  <{{ input | pascal }} {...args} />
+);
 ```

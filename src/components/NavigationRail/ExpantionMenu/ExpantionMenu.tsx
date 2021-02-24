@@ -82,7 +82,7 @@ const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
 
   React.useEffect(() => {
     if (!expantionElement.current) return;
-    // MEMO: transitionのための高さを取得
+    // MEMO: Get height for CSS transition
     const { height } = expantionElement.current.getBoundingClientRect();
     if (height !== 0) setExpantionHeight(`${height}px`);
   }, []);

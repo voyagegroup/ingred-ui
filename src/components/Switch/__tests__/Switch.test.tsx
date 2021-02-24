@@ -12,10 +12,10 @@ describe("Switch component testing", () => {
       <Switch
         cases={[
           {
-            name: "デマンド別",
+            name: "Hoge",
           },
           {
-            name: "チャネル別",
+            name: "Fuga",
           },
         ]}
         value={0}

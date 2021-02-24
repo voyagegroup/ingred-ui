@@ -22,7 +22,7 @@ export type FileUploaderProps = {
 
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
   accept,
-  title = "ドラッグ&ドロップするか、クリックしてアップロード",
+  title = "Click or Drag & Drop file.",
   width,
   description,
   onSelectFiles,

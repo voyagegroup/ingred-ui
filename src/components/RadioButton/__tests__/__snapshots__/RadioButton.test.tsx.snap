@@ -14,7 +14,7 @@ exports[`RadioButton component testing RadioButton 1`] = `
     <span
       class="sc-dlfnbm ldcfCB"
     >
-      ラジオボタン
+      RadioButton
     </span>
   </label>
 </DocumentFragment>

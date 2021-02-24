@@ -286,7 +286,7 @@ const componentList: Section[] = [
                 selector: (data) => data.id,
               },
               {
-                name: "名前",
+                name: "name",
                 selector: (data) => data.name,
                 sortable: true,
               },
