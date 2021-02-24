@@ -6,9 +6,16 @@ import { NavigationRailContext } from "../utils";
 import { useTheme } from "../../../themes";
 import { NavigationRailTransitionDuration } from "../constants";
 
-type Props = {};
+export type LabelFixtureTooltip = (isFixed: boolean) => string;
 
-const Fixture: React.FC<Props> = () => {
+type Props = {
+  labelFixtureTooltip: LabelFixtureTooltip;
+};
+
+const Fixture: React.FC<Props> = ({
+  labelFixtureTooltip = (isFixed) =>
+    `${isFixed ? "Unfix" : "Fix"} the side menu`,
+}) => {
   const theme = useTheme();
   const { isFixed, handleFixed, handleUnFixed } = React.useContext(
     NavigationRailContext,
@@ -16,7 +23,7 @@ const Fixture: React.FC<Props> = () => {
 
   return (
     <Tooltip
-      content={`サイドメニューを${isFixed ? "閉じる" : "開く"}`}
+      content={labelFixtureTooltip(isFixed)}
       positionPriority={["right"]}
       offset={[0, theme.spacing * 2.5]}
       enterDelay={NavigationRailTransitionDuration}
