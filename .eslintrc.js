@@ -103,7 +103,7 @@ module.exports = {
     "react-hooks/rules-of-hooks": "error",
 
     /**
-     * `plugin:react/recommended` の一部を無効化
+     * Disable some `plugin:react/recommended` settings.
      */
     "react-hooks/exhaustive-deps": "warn",
     "react/display-name": "off",

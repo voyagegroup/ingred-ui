@@ -35,12 +35,12 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );
@@ -67,13 +67,13 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             fullSize={true}
             onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );
@@ -99,19 +99,13 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
-            tipElement={
-              <div>
-                モーダルの設定内容に関する脚注を入れたい場合は、
-                &quot;tipElement&quot;
-                に表示したい内容を追加することでfloatingTipを追加できます。
-              </div>
-            }
+            title="Title"
+            tipElement={<div>Description for this modal.</div>}
             onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );
@@ -137,25 +131,25 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             onClose={handleToggleButton}
             {...args}
             fullSize={true}
             subActions={[
               {
-                title: "CSV形式でダウンロード",
+                title: "Download in CSV format",
                 icon: "export",
                 action: () => {},
               },
               {
-                title: "ダッシュボードに追加",
+                title: "Add to dashboard",
                 icon: "export",
                 action: () => {},
               },
             ]}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );
@@ -182,13 +176,13 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             loading={true}
             onClose={handleToggleButton}
             {...args}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );
@@ -215,7 +209,7 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             overflowYScroll={true}
             onClose={handleToggleButton}
             {...args}
@@ -229,7 +223,7 @@ import { data } from "../DataTable/data";
                   selector: (data) => data.id,
                 },
                 {
-                  name: "名前",
+                  name: "name",
                   selector: (data) => data.date,
                 },
               ]}
@@ -260,13 +254,13 @@ import { data } from "../DataTable/data";
         <>
           <Button onClick={handleToggleButton}>Open Modal</Button>
           <ConfirmModal
-            title="タイトル"
+            title="Title"
             onClose={handleToggleButton}
             onSubmit={undefined}
             {...args}
             isOpen={isOpen}
           >
-            コンテンツ
+            Content
           </ConfirmModal>
         </>
       );

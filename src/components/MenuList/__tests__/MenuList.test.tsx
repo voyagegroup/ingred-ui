@@ -6,21 +6,21 @@ import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider"
 
 const contents = [
   {
-    text: "保存する",
+    text: "Save",
     onClick: () => {},
     divideTop: true,
   },
   {
-    text: "保存して実行する",
+    text: "Save and execute",
     onClick: () => {},
   },
   {
-    text: "下書きとして保存する",
+    text: "Save as draft",
     onClick: () => {},
     divideTop: true,
   },
   {
-    text: "やっぱり何もしない",
+    text: "Cancel",
     onClick: () => {},
   },
 ];

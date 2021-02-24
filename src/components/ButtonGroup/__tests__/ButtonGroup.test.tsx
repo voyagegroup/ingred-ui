@@ -11,8 +11,8 @@ describe("Button component testing", () => {
   test("ButtonGroup", () => {
     const { asFragment } = renderWithThemeProvider(
       <ButtonGroup>
-        <Button>編集する</Button>
-        <Button>保存する</Button>
+        <Button>Edit</Button>
+        <Button>Save</Button>
       </ButtonGroup>,
     );
     expect(asFragment()).toMatchSnapshot();

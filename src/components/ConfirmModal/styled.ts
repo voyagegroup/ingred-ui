@@ -33,7 +33,7 @@ export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 400px; /* 削除モーダルなどコンテンツが少ない場合の最小単位を入れておく(400は仮) */
+  min-width: 400px;
   width: ${({ fullSize }) => (fullSize ? "100vw" : "auto")};
   height: ${({ fullSize }) => (fullSize ? "100vh" : "auto")};
   transform: translate(-50%, -50%);
@@ -70,10 +70,8 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
       ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`
       : "auto"};
   margin-bottom: ${({ fullSize, showFooter, theme }) =>
-    fullSize || !showFooter
-      ? 0
-      : theme.spacing * 2 * 2 +
-        42}px; /* ModalFooterの高さ(padding上下 + Button size="medium"の高さ) */
+    /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
+    fullSize || !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
   ${({ overflowYScroll, fullSize }) =>
     overflowYScroll
       ? addScrollbarProperties({

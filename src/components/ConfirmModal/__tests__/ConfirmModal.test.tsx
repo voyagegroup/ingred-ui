@@ -17,7 +17,7 @@ describe("ConfirmModal component testing", () => {
 
   test("ConfirmModal", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ConfirmModal title="タイトル" />,
+      <ConfirmModal title="Title" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
