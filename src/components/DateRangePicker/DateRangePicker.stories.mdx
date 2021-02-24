@@ -28,6 +28,10 @@ import "react-dates/lib/css/_datepicker.css";
 <Canvas>
   <Story name="Basic">
     {() => {
+      {
+        /* MEMO: To be unaffected　by "Localize" story. */
+      }
+      moment.locale("en");
       const [startDate, setStartDate] = React.useState(moment().set("date", 1));
       const [endDate, setEndDate] = React.useState(moment());
       const handleChangeDates = ({ startDate, endDate }) => {
@@ -60,3 +64,35 @@ import "react-dates/lib/css/_datepicker.css";
     )}
   </Story>
 </Canvas>
+
+### Localize
+
+<Canvas>
+  <Story name="Localize">
+    {() => {
+      moment.locale("ja", {
+        weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
+      });
+      const renderMonthText = (day) => day.format("YYYY年M月");
+      const displayFormat = () => "YYYY/MM/DD";
+      const [startDate, setStartDate] = React.useState(moment().set("date", 1));
+      const [endDate, setEndDate] = React.useState(moment());
+      const handleChangeDates = ({ startDate, endDate }) => {
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      return (
+        <div style={{ height: "400px" }}>
+          <DateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            displayFormat={displayFormat}
+            renderMonthText={renderMonthText}
+            onDatesChange={handleChangeDates}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
