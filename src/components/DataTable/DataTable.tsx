@@ -301,9 +301,7 @@ const DataTable = <T extends DataTableBaseData>({
     currentTabIndex,
   ]);
 
-  // 検索などでpropsのdataが更新された場合は
-  // もしくはcurrentTabIndexが更新された場合は
-  // paginationを1に戻す
+  // MEMO: Reset the pagination settings when updated 'sourceData' or 'currentTabIndex'.
   useDidUpdate(() => {
     const initialFilterState = {
       index: 1,
@@ -321,7 +319,7 @@ const DataTable = <T extends DataTableBaseData>({
     setDisplayData(displayData);
   }, [sourceData, currentTabIndex]);
 
-  // 選択項目のクリア
+  // MEMO: Clear selected items.
   React.useEffect(() => {
     if (clearSelectedRows) {
       setSelectedRows([]);
@@ -331,14 +329,11 @@ const DataTable = <T extends DataTableBaseData>({
     }
   }, [clearSelectedRows, onSelectRowsChange]);
 
-  // selectの変更をonSelectRowsChangeに伝える
   React.useEffect(() => {
     if (onSelectRowsChange) {
       onSelectRowsChange(selectedRows);
     }
   }, [selectedRows, onSelectRowsChange]);
-
-  // radioの変更をonRadioChangeに伝える
   React.useEffect(() => {
     if (onRadioChange) {
       onRadioChange(selectedRow as number);

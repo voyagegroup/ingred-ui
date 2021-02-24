@@ -21,7 +21,7 @@ export const changeOrderState = <T>(
   name: string,
 ): CurrentSortState<T> => ({
   isDesc:
-    // MEMO(yutaro1031): 「今ソート状態である列をクリックしたか？」を判定
+    // MEMO: Judge that clicked the <th /> that is active sort state.
     currentSortState.name === name ? !currentSortState.isDesc : false,
   getValue,
   name,
@@ -31,7 +31,6 @@ export const getOrder = <T>(
   currentSortState: CurrentSortState<T>,
   name: string,
 ): OrderStatus => {
-  // MEMO(yutaro1031): 「該当する列がソート状態であるか？」を判定し、アイコンを表示するための引数を返す
   const isActiveColumn = currentSortState.name === name;
   if (!isActiveColumn) return null;
   return currentSortState.isDesc ? "desc" : "asc";
