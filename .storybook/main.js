@@ -6,8 +6,6 @@ module.exports = {
   addons: [
     "@storybook/addon-essentials",
     "@storybook/addon-links",
-    // TODO: Remove following addons after replace to `.mdx`.
-    "@storybook/addon-knobs",
     "@storybook/addon-storysource",
     {
       // MEMO: included in addon-essentials
@@ -22,7 +20,6 @@ module.exports = {
   reactOptions: {
     fastRefresh: true,
     // TODO: fix warn "Rendered more hooks than during the previous render."
-    // knobを完全に排除できたタイミングで再度調査
     // strictMode: true,
   },
 };
