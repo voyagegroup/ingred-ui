@@ -210,7 +210,6 @@ export type DataTableProps<T> = {
   labelDisplayedRows?: LabelDisplayRows;
 };
 
-// idを必須にしたい
 const DataTable = <T extends DataTableBaseData>({
   data: sourceData,
   columns,
@@ -244,9 +243,7 @@ const DataTable = <T extends DataTableBaseData>({
 
   const enableMergeCell = columns.some((column) => column.enableMergeCell);
 
-  // sort, pagination, count
-
-  // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
+  // MEMO: Sort based on the leftmost sortable column, if there's no 'defaultSortField'.
   const selectedColumn = columns.find(
     (column) => column.name === defaultSortField,
   );
@@ -511,10 +508,7 @@ const DataTable = <T extends DataTableBaseData>({
                         : 0)
                     }
                   >
-                    <ItemEmpty
-                      {...itemEmptyProps}
-                      title={itemEmptyProps?.title || "見つかりませんでした"}
-                    />
+                    <ItemEmpty {...itemEmptyProps} />
                   </td>
                 </tr>
               )}
