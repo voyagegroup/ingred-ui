@@ -8,13 +8,26 @@ import Spacer from "../Spacer";
   title="Components/Utils/Slide"
   component={Slide}
   parameters={{ docs: { source: { type: "code" } } }}
+    argTypes={{
+      direction: {
+        control: {
+          type: 'select',
+          options: [
+            'down',
+            'up',
+            'right',
+            'left',
+          ],
+        }
+      }
+    }}
 />
 
 # Slide
 
 The wrapper of `<CSSTransition />` that implemented in [react-transition-group](https://reactcommunity.org/react-transition-group).
 
-It makes easy to implement CSS transitions that uses `opacity`.
+It makes easy to implement CSS transitions that uses `transform`.
 
 Props type is same as [this](https://reactcommunity.org/react-transition-group/transition#Transition-props).
 
@@ -26,6 +39,7 @@ Props type is same as [this](https://reactcommunity.org/react-transition-group/t
     args={{
       in: true,
       timeout: 300,
+      direction: "down",
     }}
   >
     {(args) => {

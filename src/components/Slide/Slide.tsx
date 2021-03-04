@@ -6,13 +6,14 @@ const Slide: React.FunctionComponent<CSSTransitionProps> = ({
   // TODO: define and get duration from theme
   timeout = 300,
   children,
+  direction = "down",
   ...rest
 }) => {
   return (
     <Styled.CSSTransition
       appear={true}
-      mountOnEnter={true}
       timeout={timeout}
+      direction={direction}
       classNames={Styled.transitionClass}
       {...rest}
     >
