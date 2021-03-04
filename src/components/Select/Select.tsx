@@ -34,7 +34,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     }),
     menu: (base) => ({
       ...base,
-      marginTop: "-1px", // controlのborderBottom分ネガティヴマージンを当てる
+      marginTop: "-1px",
       boxShadow: "none",
       borderRadius: `0 0 ${theme.radius}px ${theme.radius}px`,
       borderRight: `1px solid ${
@@ -157,6 +157,7 @@ const Select: SelectComponent = ({
   limit,
   onInputChange,
   minWidth,
+  isDisabled,
   error = false,
   ...rest
 }) => {
@@ -176,14 +177,14 @@ const Select: SelectComponent = ({
   };
 
   const getEmptyMessage = () => {
-    return "見つかりませんでした";
+    return "Not found";
   };
   return (
-    <Styled.Container minWidth={minWidth}>
+    <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
-        placeholder="選択してください"
         noOptionsMessage={getEmptyMessage}
+        isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList

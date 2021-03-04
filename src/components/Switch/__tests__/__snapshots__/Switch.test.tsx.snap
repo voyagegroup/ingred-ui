@@ -3,7 +3,7 @@
 exports[`Switch component testing Switch 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ cEaTJr"
+    class="sc-bdfBwQ hSNFPn"
   >
     <div
       class="sc-gsTCUz khJLZs"
@@ -23,7 +23,7 @@ exports[`Switch component testing Switch 1`] = `
             color="#596978"
             font-size="13px"
           >
-            デマンド別
+            Hoge
           </span>
         </div>
         <div
@@ -34,7 +34,7 @@ exports[`Switch component testing Switch 1`] = `
             color="#596978"
             font-size="13px"
           >
-            チャネル別
+            Fuga
           </span>
         </div>
       </div>

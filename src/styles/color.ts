@@ -1,6 +1,6 @@
 export type Color = {
-  40?: string; // TODO: 40を廃止するか他にも共通で入れる
-  50?: string; // TODO: 50を廃止するか他にも共通で入れる
+  40?: string; // TODO: Abolish this key or define all colors with this key
+  50?: string; // TODO: Abolish this key or define all colors with this key
   100: string;
   200: string;
   300: string;
@@ -10,7 +10,7 @@ export type Color = {
   700: string;
   800: string;
   900: string;
-  1000?: string; // TODO: 1000を廃止するか他にも共通で入れる
+  1000?: string; // TODO: Abolish this key or define all colors with this key
 };
 
 export const colors: { [color: string]: Color } = {
@@ -65,7 +65,7 @@ export const colors: { [color: string]: Color } = {
     50: "#FDFEFF",
 
     100: "#F5F7F8",
-    200: "#EFF1F2",
+    200: "#E2E8EA",
     300: "#D1D5DA",
     400: "#B3BAC1",
     500: "#959FA9",

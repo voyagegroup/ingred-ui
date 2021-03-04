@@ -11,21 +11,21 @@ describe("NavigationRail component testing", () => {
     const { asFragment } = renderWithThemeProvider(
       <NavigationRail.Container>
         <NavigationRail>
-          <NavigationRail.Header>ここにロゴとかが入るよ</NavigationRail.Header>
+          <NavigationRail.Header>Add logo here</NavigationRail.Header>
           <NavigationRail.Content>
             <NavigationRail.ExpantionMenu
-              title="設定"
+              title="Settings"
               isActive={true}
               iconName="setting"
               expantionList={[
                 <NavigationRail.ExpantionMenuItem
                   isActive={true}
-                  title="デマンド設定"
+                  title="Account Setting"
                 />,
               ]}
             />
             <NavigationRail.Menu
-              title="ダッシュボード"
+              title="Dashboard"
               isActive={false}
               iconName="dashboard"
             />

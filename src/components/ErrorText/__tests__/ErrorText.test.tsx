@@ -9,7 +9,7 @@ describe("ErrorText component testing", () => {
 
   test("ErrorText", () => {
     const { asFragment } = renderWithThemeProvider(
-      <ErrorText>エラー</ErrorText>,
+      <ErrorText>Error</ErrorText>,
     );
     expect(asFragment()).toMatchSnapshot();
   });

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-// MEMO: React.LegacyRef<T>のcurrentプロパティを変更可能にしたもの
+// MEMO: React.LegacyRef<T> & "current" property is mutable;
 type ReactRef<T> =
   | React.RefCallback<T>
   | React.MutableRefObject<T>

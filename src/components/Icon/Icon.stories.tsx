@@ -26,8 +26,8 @@ const Column = styled.div`
 export default {
   title: "Components/Data Display/Icon",
   component: Icon,
-  parameters: {
-    docs: { page: null },
+  args: {
+    name: "dashboard",
   },
 };
 
@@ -46,6 +46,10 @@ const renderIcons = (props: Omit<Props, "name">) => (
       ))}
     </Flex>
   </RowContainer>
+);
+
+export const Sample: React.FunctionComponent<Props> = (args) => (
+  <Icon {...args} />
 );
 
 export const Overview = () => (

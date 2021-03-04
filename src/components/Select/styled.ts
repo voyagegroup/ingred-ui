@@ -3,8 +3,12 @@ import styled, { DefaultTheme, StyledComponent } from "styled-components";
 import { components, MenuListComponentProps } from "react-select";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 
-export const Container = styled.div<{ minWidth?: string }>`
+export const Container = styled.div<{
+  minWidth?: string;
+  isDisabled?: boolean;
+}>`
   min-width: ${({ minWidth }) => minWidth || "auto"};
+  cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "auto")};
 `;
 
 // MEMO: Add type annotations cause of Error↓

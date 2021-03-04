@@ -7,20 +7,20 @@ exports[`Button component testing ButtonGroup 1`] = `
     height="42px"
   >
     <button
-      class="sc-dlfnbm sc-hKgILt iQdNXO mKBUh"
+      class="sc-dlfnbm sc-hKgILt iQdNXO hSrEyx"
       font-size="14px"
       font-weight="normal"
       height="42px"
     >
-      編集する
+      Edit
     </button>
     <button
-      class="sc-dlfnbm sc-hKgILt iQdNXO mKBUh"
+      class="sc-dlfnbm sc-hKgILt iQdNXO hSrEyx"
       font-size="14px"
       font-weight="normal"
       height="42px"
     >
-      保存する
+      Save
     </button>
   </div>
 </DocumentFragment>

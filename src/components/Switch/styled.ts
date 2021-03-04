@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  display: inline-flex;
   height: 40px;
   padding: ${({ theme }) => theme.spacing / 2}px;
   border-radius: ${({ theme }) => theme.radius}px;

@@ -6,10 +6,11 @@ export enum RadioButtonSize {
   MEDIUM = "18px",
 }
 
-const Wrapper = styled("label")<{ size: RadioButtonSize }>`
+const Wrapper = styled.label<{ size: RadioButtonSize; disabled?: boolean }>`
   position: relative;
   display: inline-flex;
   align-items: center;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
   & > input {
     position: absolute;
@@ -19,6 +20,7 @@ const Wrapper = styled("label")<{ size: RadioButtonSize }>`
     width: ${({ size }) => size};
     height: ${({ size }) => size};
     opacity: 0;
+    cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   }
 `;
 
@@ -34,7 +36,7 @@ type IndicatorProps = {
   inside: string;
   border: string;
 };
-const Indicator = styled("div")<IndicatorProps>`
+const Indicator = styled.div<IndicatorProps>`
   position: relative;
   display: block;
   flex: 1 0 auto;
@@ -114,14 +116,26 @@ class RadioButton extends React.PureComponent<RadioButtonProps> {
   };
 
   public render(): React.ReactNode {
-    const { children, size, onChange, inputRef, ...rest } = this.props;
+    const {
+      children,
+      size,
+      disabled,
+      onChange,
+      inputRef,
+      ...rest
+    } = this.props;
     const radioButtonSize = size as RadioButtonSize;
 
     return (
-      <Wrapper as={children == null ? "span" : "label"} size={radioButtonSize}>
+      <Wrapper
+        as={children == null ? "span" : "label"}
+        disabled={disabled}
+        size={radioButtonSize}
+      >
         <input
           {...rest}
           ref={inputRef}
+          disabled={disabled}
           type="radio"
           onChange={this.handleChange}
         />

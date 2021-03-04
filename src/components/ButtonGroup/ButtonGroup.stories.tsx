@@ -1,134 +1,79 @@
 import * as React from "react";
-import styled from "styled-components";
+import { Story } from "@storybook/react/types-6-0";
 import ButtonGroup from ".";
 import Button from "../Button";
-import { boolean } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
-import Typography from "../Typography";
-
-const Container = styled.div`
-  padding: ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.background.dark};
-`;
-
-const RowContainer = styled.div`
-  margin: ${({ theme }) => theme.spacing * 3}px;
-  padding: ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.background.default};
-`;
-
-const Link: React.FunctionComponent<{ href: string; className: string }> = ({
-  href,
-  className,
-  children,
-  ...rest
-}) => (
-  <a href={href} className={className} onClick={action("clicked")} {...rest}>
-    {children}
-  </a>
-);
+import { ButtonGroupProps } from "./ButtonGroup";
+import { Flex, Spacer, Typography } from "..";
 
 export default {
   title: "Components/Inputs/ButtonGroup",
-  component: Button,
-  parameters: {
-    docs: { page: null },
-  },
+  component: ButtonGroup,
+  subcomponents: { Button },
 };
 
-export const Overview = () => {
-  const midiumButtonRight = boolean("Midium Button Right Disable", false);
-  const midiumButtonLeft = boolean("Midium Button Left Disable", false);
-  const smallButtonRight = boolean("Small Button Right Disable", false);
-  const smallButtonCenterLeft = boolean(
-    "Small Button Center Left Disable",
-    false,
-  );
-  const smallButtonCenterRight = boolean(
-    "Small Button Center Right Disable",
-    false,
-  );
-  const smallButtonLeft = boolean("Small Button Left Disable", false);
-  const linkButtonRight = boolean("Link Mixed Button Right Disable", false);
-  const linkButtonCenterLeft = boolean(
-    "Link Mixed Button Center Left Disable",
-    false,
-  );
-  const linkButtonCenterRight = boolean(
-    "Link Mixed Button Center Right Disable",
-    false,
-  );
-  const linkButtonLeft = boolean("Link Mixed Button Left Disable", false);
+export const Example: Story<ButtonGroupProps> = (args) => (
+  <ButtonGroup {...args}>
+    <Button>Save</Button>
+    <Button>Edit</Button>
+    <Button>Delete</Button>
+    <Button>Cancel</Button>
+  </ButtonGroup>
+);
 
+export const DesignSamples = () => (
+  <Flex display="flex">
+    <div>
+      <Typography weight="bold">Size Medium</Typography>
+      <Spacer pt={2} />
+      <ButtonGroup>
+        <Button>Save</Button>
+        <Button>Edit</Button>
+        <Button>Delete</Button>
+        <Button>Cancel</Button>
+      </ButtonGroup>
+    </div>
+    <Spacer pl={5} />
+    <div>
+      <Typography weight="bold">Size Small</Typography>
+      <Spacer pt={2} />
+      <ButtonGroup size="small">
+        <Button>Save</Button>
+        <Button>Edit</Button>
+        <Button>Delete</Button>
+        <Button>Cancel</Button>
+      </ButtonGroup>
+    </div>
+  </Flex>
+);
+
+export const DisablePartially: Story<ButtonGroupProps> = (args) => (
+  <ButtonGroup {...args}>
+    <Button>Save</Button>
+    <Button disabled>Edit</Button>
+    <Button>Delete</Button>
+    <Button>Cancel</Button>
+  </ButtonGroup>
+);
+
+export const LinkMixed: Story<ButtonGroupProps> = (args) => {
+  const Link: React.FC<{ href: string; className: string }> = ({
+    href,
+    className,
+    children,
+  }) => (
+    // MEMO: Add className props to apply style
+    <a href={href} className={className}>
+      {children}
+    </a>
+  );
   return (
-    <Container>
-      <Typography weight="bold" size="xxl">
-        Medium Button
-      </Typography>
-      <RowContainer>
-        <ButtonGroup>
-          <Button disabled={midiumButtonRight} onClick={action("clicked")}>
-            保存する
-          </Button>
-          <Button disabled={midiumButtonLeft} onClick={action("clicked")}>
-            編集する
-          </Button>
-        </ButtonGroup>
-      </RowContainer>
-
-      <Typography weight="bold" size="xxl">
-        Small Button
-      </Typography>
-      <RowContainer>
-        <ButtonGroup size="small">
-          <Button disabled={smallButtonRight} onClick={action("clicked")}>
-            保存する
-          </Button>
-          <Button disabled={smallButtonCenterLeft} onClick={action("clicked")}>
-            編集する
-          </Button>
-          <Button disabled={smallButtonCenterRight} onClick={action("clicked")}>
-            削除する
-          </Button>
-          <Button disabled={smallButtonLeft} onClick={action("clicked")}>
-            キャンセル
-          </Button>
-        </ButtonGroup>
-      </RowContainer>
-
-      <Typography weight="bold" size="xxl">
-        Link Mixed
-      </Typography>
-      <RowContainer>
-        <ButtonGroup size="small">
-          <Button disabled={linkButtonRight} component={Link}>
-            保存する
-          </Button>
-          <Button
-            disabled={linkButtonCenterLeft}
-            href="#"
-            onClick={action("clicked")}
-          >
-            編集する
-          </Button>
-          <Button disabled={linkButtonCenterRight} component={Link}>
-            削除する
-          </Button>
-          <Button disabled={linkButtonLeft} onClick={action("clicked")}>
-            キャンセル
-          </Button>
-        </ButtonGroup>
-      </RowContainer>
-
-      <Typography weight="bold" size="xxl">
-        Disabled Button
-      </Typography>
-      <RowContainer>
-        <ButtonGroup disabled>
-          <Button onClick={action("clicked")}>保存する</Button>
-          <Button onClick={action("clicked")}>編集する</Button>
-        </ButtonGroup>
-      </RowContainer>
-    </Container>
+    <ButtonGroup {...args}>
+      <Button component={Link} href="#">
+        Link via {`<Link />`} Component
+      </Button>
+      <Button href="#">Link via href props</Button>
+    </ButtonGroup>
   );
 };
+
+LinkMixed.parameters = { docs: { source: { type: "code" } } };

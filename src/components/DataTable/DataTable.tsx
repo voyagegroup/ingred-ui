@@ -144,19 +144,65 @@ type Tab<T> = {
 };
 
 export type DataTableProps<T> = {
+  /**
+   * Array of some object that has `id: number` property.
+   */
   data: T[];
+  /**
+   * Define column of table. Please refer to the samples below.
+   */
   columns: Column<T>[];
   enablePagination?: boolean;
+  /**
+   * Enable to use checkbox in table.
+   * The argument `rows` is array of `id: number` defined in `data` props.
+   * **Don't use with `onRadioChange={true}`**
+   */
   onSelectRowsChange?: (rows: number[]) => void;
+  /**
+   * Enable to use radio button in table.
+   * The argument `radio` is `id: number` defined in `data` props.
+   * **Don't use with `onSelectRowsChange={true}`**
+   */
   onRadioChange?: (radio: number) => void;
+  /**
+   * Reset selected checkboxes when this props changed to `true`.
+   */
   clearSelectedRows?: boolean;
+  /**
+   * Define tabs of table. Please refer to the samples below.
+   */
   tabs?: Tab<T>[];
+  /**
+   * props of [ItemEnpty](/?path=/docs/components-utils-itemempty)
+   */
   itemEmptyProps?: ItemEmptyProps;
-  per?: number; // perが指定されている場合、初期値がそれに強制されます
+  /**
+   * Number of rows per page when `enablePagination={true}`.
+   * If `undefined` it, `dlc` of localStorage is referenced.
+   */
+  per?: number;
+  /**
+   * If defined `name: string` of `Column` it, enable to specify default sort Field.
+   * **Please use `sortable: true` in `columns` props.**
+   */
   defaultSortField?: string;
+  /**
+   * Specify default sort order.
+   * **Please use `sortable: true` in `columns` props.**
+   */
   defaultSortOrder?: "desc" | "asc";
+  /**
+   * Add verticale line in table.
+   */
   enableRuledLine?: boolean;
+  /**
+   * Define vertical padding of rows.
+   */
   verticalSpacing?: VerticalSpacing;
+  /**
+   * If `true` it, hidden both side border.
+   */
   fullWidth?: boolean;
   tableMaxHeight?: string;
   horizontalScrollable?: boolean;

@@ -22,7 +22,7 @@ export const Input = styled.input<{
     isError ? theme.palette.danger.main : theme.palette.divider};
   overflow: hidden;
   resize: ${({ resize }) => resize};
-  /* lastpassのicon用 */
+  /* MEMO: To take a place that display LastPass icon. */
   background-position: calc(100% - 35px) 50% !important;
   &:focus {
     outline: none;
@@ -40,5 +40,6 @@ export const Input = styled.input<{
     border-color: ${({ theme }) => theme.palette.divider};
     box-shadow: none;
     background-color: ${({ theme }) => theme.palette.gray.light};
+    cursor: not-allowed;
   }
 `;

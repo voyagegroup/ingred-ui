@@ -15,14 +15,14 @@ It can contains `<Flex />`props & `<Spacer />`props.
 
 <Canvas>
   <Story
-    name="example"
+    name="Example"
     args={{
       p: 3,
       children: "contents",
     }}
   >
     {(args) => (
-      <div style={{ backgroundColor: "silver", padding: "10px" }}>
+      <div style={{ padding: "10px" }}>
         <Card {...args} />
       </div>
     )}

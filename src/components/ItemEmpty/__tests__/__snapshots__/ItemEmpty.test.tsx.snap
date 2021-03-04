@@ -5,30 +5,26 @@ exports[`ItemEmpty component testing ItemEmpty 1`] = `
   <div
     class="sc-bdfBwQ ihahlg"
   >
+    <img
+      class="sc-gsTCUz FUvIv"
+      src=""
+      width="80"
+    />
     <div
-      class="sc-gsTCUz"
-    >
-      <img
-        height="135"
-        src=""
-        width="135"
-      />
-    </div>
-    <div
-      class="sc-dlfnbm hqLIAi"
+      class="sc-dlfnbm VgExN"
     >
       <p
-        class="sc-hKgILt kZNQPP"
+        class="sc-hKgILt eknLAc"
         color="#041C33"
-        font-size="20px"
+        font-size="14px"
       >
         title
       </p>
     </div>
     <p
-      class="sc-hKgILt eWMIhW"
+      class="sc-hKgILt jKKuBF"
       color="#041C33"
-      font-size="14px"
+      font-size="13px"
     >
       subtitle
     </p>

@@ -9,6 +9,7 @@ export const BorderContainer = styled.div<{ fullWidth?: boolean }>`
   border: ${({ fullWidth, theme }) =>
     fullWidth ? "none" : `1px solid ${theme.palette.divider}`};
   border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ fullWidth, theme }) =>
     fullWidth ? "none" : `${theme.radius}px`};
 `;

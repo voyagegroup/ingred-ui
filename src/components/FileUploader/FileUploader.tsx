@@ -9,6 +9,9 @@ import Spacer from "../Spacer";
 export type FileUploaderProps = {
   description?: string;
   title?: string;
+  /**
+   * Define the type of file the server accepts. (e.g. `image/*`)
+   */
   accept?: string;
   width?: Property.Width;
   onSelectFiles: (
@@ -19,7 +22,7 @@ export type FileUploaderProps = {
 
 const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
   accept,
-  title = "ドラッグ&ドロップするか、クリックしてアップロード",
+  title = "Click or Drag & Drop file.",
   width,
   description,
   onSelectFiles,

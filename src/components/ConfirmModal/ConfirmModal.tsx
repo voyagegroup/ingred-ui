@@ -75,8 +75,8 @@ export type ConfirmModalProps = {
 
 const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   title,
-  confirmText = "はい",
-  cancelText = "キャンセル",
+  confirmText = "Confirm",
+  cancelText = "Cancel",
   children,
   onClose,
   onSubmit,

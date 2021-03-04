@@ -1,29 +1,20 @@
 import * as React from "react";
-import FileUploader from "./index";
-import { action } from "@storybook/addon-actions";
-import { text } from "@storybook/addon-knobs";
+import { Story } from "@storybook/react/types-6-0";
+import FileUploader, { FileUploaderProps } from "./index";
 
 export default {
   title: "Components/Inputs/FileUploader",
   component: FileUploader,
-  parameters: {
-    knobs: { escapeHTML: false },
-    docs: { page: null },
+  argTypes: {
+    onSelectFiles: { action: "select file" },
   },
 };
 
-export const Overview = () => {
-  const title = text(
-    "Title",
-    "ドラッグ&ドロップするか、クリックしてアップロード",
-  );
-  const description = text("Description", "ファイル容量3MBまで");
-  return (
-    <FileUploader
-      description={description}
-      title={title}
-      accept="image/*"
-      onSelectFiles={action("onSelectFiles")}
-    />
-  );
+export const Example: Story<FileUploaderProps> = (args) => (
+  <FileUploader {...args} />
+);
+
+Example.args = {
+  title: "Click or Drag & Drop file.",
+  description: "description",
 };

@@ -6,57 +6,57 @@ exports[`MenuList component testing MenuList splited 1`] = `
     class="sc-bdfBwQ hWeOum"
   >
     <hr
-      class="sc-dlfnbm gCtrZt"
-      color="#EFF1F2"
+      class="sc-dlfnbm jOeRSr"
+      color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
-        保存する
+        Save
       </p>
     </div>
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
-        保存して実行する
+        Save and execute
       </p>
     </div>
     <hr
-      class="sc-dlfnbm gCtrZt"
-      color="#EFF1F2"
+      class="sc-dlfnbm jOeRSr"
+      color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
-        下書きとして保存する
+        Save as draft
       </p>
     </div>
     <div
-      class="sc-gsTCUz iuKiqj"
+      class="sc-gsTCUz jkzjCh"
     >
       <p
         class="sc-hKgILt jKKuBF"
         color="#041C33"
         font-size="13px"
       >
-        やっぱり何もしない
+        Cancel
       </p>
     </div>
   </div>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Body } from "./Body";
 import { Cell } from "./Cell";
 import { Header } from "./Header";
-import { Row, VerticalSpacing } from "./Row";
+import { Row } from "./Row";
 import { HeaderCell } from "./HeaderCell";
 
 const Container = styled.table`
@@ -13,9 +13,7 @@ const Container = styled.table`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-export type TableProps = React.ComponentPropsWithRef<"table"> & {
-  verticalSpacing?: VerticalSpacing;
-};
+export type TableProps = React.ComponentPropsWithRef<"table">;
 
 const Table = ({ children }: TableProps) => <Container>{children}</Container>;
 
