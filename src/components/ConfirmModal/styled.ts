@@ -107,6 +107,7 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   background-color: ${({ theme }) => theme.palette.gray.light};
   border-radius: ${({ fullSize, theme }) =>
     fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
+  margin-bottom: ${({ fullSize }) => (fullSize ? "1.8vh" : "auto")};
 `;
 
 export const IconContainer = styled.div`
