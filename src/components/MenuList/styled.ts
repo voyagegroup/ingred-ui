@@ -15,18 +15,22 @@ export const Container = styled.div<ContainerProps>`
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight })}
 `;
 
-export const TextContainer = styled.div`
-  cursor: pointer;
+export const TextContainer = styled.div<{ disabled?: boolean }>`
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.palette.text.disabled : "auto"};
   height: 32px;
   margin: 0 ${({ theme }) => theme.spacing}px;
   padding: 0 ${({ theme }) => theme.spacing}px;
   border-radius: ${({ theme }) => theme.radius}px;
   &:hover {
-    background-color: ${({ theme }) => theme.palette.gray.light};
+    background-color: ${({ disabled, theme }) =>
+      disabled ? "auto" : theme.palette.gray.light};
   }
   &:active {
-    background-color: ${({ theme }) => theme.palette.gray.main};
+    background-color: ${({ disabled, theme }) =>
+      disabled ? "auto" : theme.palette.gray.main};
   }
 `;

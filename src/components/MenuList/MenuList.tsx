@@ -10,6 +10,7 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   // TODO: rename "handleClick"
   onClick: () => void;
   divideTop?: boolean;
+  disabled?: boolean;
 };
 
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
@@ -34,8 +35,16 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
               <Divider my={1} mx={2} color={theme.palette.gray.light} />
             )}
             {/* eslint-disable-next-line react/jsx-handler-names */}
-            <Styled.TextContainer onClick={content.onClick}>
-              <Typography size="sm">{content.text}</Typography>
+            <Styled.TextContainer
+              disabled={content.disabled}
+              onClick={content.onClick}
+            >
+              <Typography
+                size="sm"
+                color={content.disabled ? "disabled" : "initial"}
+              >
+                {content.text}
+              </Typography>
             </Styled.TextContainer>
           </React.Fragment>
         ))}
