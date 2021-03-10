@@ -11,6 +11,7 @@ export type ContextMenuProps = {
    *   text: string;
    *   onClick: () => void;
    *   divideTop?: boolean;
+   *   disabled?: boolean;
    * }`
    */
   contents: ContentProp[];

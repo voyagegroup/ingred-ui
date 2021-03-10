@@ -20,6 +20,7 @@ export type MenuProps = React.ComponentPropsWithRef<"div"> & {
    *   text: string;
    *   onClick: () => void;
    *   divideTop?: boolean;
+   *   disabled?: boolean;
    * }`
    */
   contents: ContentProp[];
