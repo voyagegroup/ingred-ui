@@ -33,8 +33,11 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.white,
-      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.primary.main, 0.4)}`,
-      border: "none",
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.black,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
       background: theme.palette.primary.dark,
@@ -49,7 +52,10 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.white,
       color: theme.palette.black,
-      boxShadow: "none",
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.black,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
@@ -65,8 +71,11 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.white,
-      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.danger.main, 0.4)}`,
-      border: "none",
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.danger.main,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.danger.dark, 0.08)}`,
+      border: `1px solid ${theme.palette.danger.deepDark}`,
     },
     hover: {
       background: theme.palette.danger.dark,
