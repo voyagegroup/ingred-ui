@@ -40,6 +40,5 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
 
   &:active {
     background: ${({ active }) => active.background};
-    box-shadow: none;
   }
 `;
