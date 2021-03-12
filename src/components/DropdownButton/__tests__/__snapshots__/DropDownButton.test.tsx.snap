@@ -112,7 +112,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dMbzMA sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm drHOmF dtyYRP sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -335,7 +335,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm drHOmF kBVvDg sc-eCssSg eZdWdg"
       font-size="14px"
       font-weight="bold"
       height="42px"
@@ -343,7 +343,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm drHOmF kBVvDg sc-jSgupP pjuOx"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
