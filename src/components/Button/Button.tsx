@@ -100,6 +100,24 @@ const verticalPadding: Record<ButtonSize, { padding: string }> = {
   },
 };
 
+const paddingAtActive: Record<
+  ButtonSize,
+  { paddingTop: string; paddingBottom: string }
+> = {
+  small: {
+    paddingTop: "7px",
+    paddingBottom: "5px",
+  },
+  medium: {
+    paddingTop: "11px",
+    paddingBottom: "9px",
+  },
+  large: {
+    paddingTop: "14px",
+    paddingBottom: "12px",
+  },
+};
+
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
    * The component used for the root node.
@@ -149,10 +167,11 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       {...rest}
       as={component || "button"}
       {...anchorProps}
-      size={size}
       inline={inline}
       verticalPadding={verticalPadding[size].padding}
       horizontalPadding={horizontalPadding}
+      paddingTopAtActive={paddingAtActive[size].paddingTop}
+      paddingBottomAtActive={paddingAtActive[size].paddingBottom}
       normal={{ ...colorStyle.normal }}
       hover={{ ...colorStyle.hover }}
       active={{ ...colorStyle.active }}
