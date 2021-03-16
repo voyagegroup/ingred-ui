@@ -17,24 +17,28 @@ export type ContainerProps = ButtonColorStyle & {
   disabled?: boolean;
 };
 
-function computePaddingBySize(size: ButtonSize) {
-  if (size === "small") {
-    return css`
-      padding-top: 7px;
-      padding-bottom: 5px;
-    `;
-  } else if (size === "medium") {
-    return css`
-      padding-top: 11px;
-      padding-bottom: 9px;
-    `;
-  } else {
-    return css`
-      padding-top: 14px;
-      padding-bottom: 12px;
-    `;
+const computePaddingBySize = (size?: ButtonSize) => {
+  switch (size) {
+    case "small":
+      return css`
+        padding-top: 7px;
+        padding-bottom: 5px;
+      `;
+      break;
+    case "large":
+      return css`
+        padding-top: 14px;
+        padding-bottom: 12px;
+      `;
+      break;
+    default:
+      return css`
+        padding-top: 11px;
+        padding-bottom: 9px;
+      `;
+      break;
   }
-}
+};
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   display: ${({ inline }) => (inline ? "inline-flex" : "flex")};
