@@ -32,7 +32,7 @@ const getContainerColorStyles = (
   primary: {
     normal: {
       background: theme.palette.primary.main,
-      color: theme.palette.white,
+      color: theme.palette.text.white,
       boxShadow: `0px -2px ${hexToRgba(
         theme.palette.black,
         0.16,
@@ -50,7 +50,7 @@ const getContainerColorStyles = (
   },
   secondary: {
     normal: {
-      background: theme.palette.white,
+      background: theme.palette.background.default,
       color: theme.palette.black,
       boxShadow: `0px -2px ${hexToRgba(
         theme.palette.black,
@@ -59,23 +59,23 @@ const getContainerColorStyles = (
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
-      background: theme.palette.gray.light,
+      background: theme.palette.gray.highlight,
       border: `1px solid ${theme.palette.divider}`,
     },
     active: {
-      background: theme.palette.gray.main,
+      background: theme.palette.gray.light,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
   danger: {
     normal: {
       background: theme.palette.danger.main,
-      color: theme.palette.white,
+      color: theme.palette.text.white,
       boxShadow: `0px -2px ${hexToRgba(
-        theme.palette.danger.main,
+        theme.palette.black,
         0.16,
-      )} inset, 0px 2px ${hexToRgba(theme.palette.danger.dark, 0.08)}`,
-      border: `1px solid ${theme.palette.danger.deepDark}`,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
       background: theme.palette.danger.dark,
@@ -88,15 +88,15 @@ const getContainerColorStyles = (
   },
 });
 
-const buttonSize: Record<ButtonSize, { height: string }> = {
+const verticalPadding: Record<ButtonSize, { padding: string }> = {
   small: {
-    height: "32px",
+    padding: "6px",
   },
   medium: {
-    height: "42px",
+    padding: "10px",
   },
   large: {
-    height: "48px",
+    padding: "13px",
   },
 };
 
@@ -149,7 +149,9 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       {...rest}
       as={component || "button"}
       {...anchorProps}
+      size={size}
       inline={inline}
+      verticalPadding={verticalPadding[size].padding}
       horizontalPadding={horizontalPadding}
       normal={{ ...colorStyle.normal }}
       hover={{ ...colorStyle.hover }}
@@ -158,7 +160,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      height={buttonSize[size].height}
     >
       {children}
     </Styled.ButtonContainer>

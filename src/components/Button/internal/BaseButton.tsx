@@ -4,7 +4,7 @@ export type Props = React.ComponentPropsWithRef<"button">;
 
 export const BaseButton = styled.button`
   margin: 0;
-  padding: 0;
+  padding: 10px 16px;
   border: 0;
   background-color: transparent;
   text-decoration: none;
@@ -16,8 +16,6 @@ export const BaseButton = styled.button`
   outline: none;
 
   &:disabled {
-    box-shadow: none;
-    text-shadow: none;
     cursor: not-allowed;
   }
 `;
