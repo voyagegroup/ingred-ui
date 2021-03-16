@@ -4,7 +4,7 @@ export type Props = React.ComponentPropsWithRef<"button">;
 
 export const BaseButton = styled.button`
   margin: 0;
-  padding: 10px 16px;
+  padding: 0;
   border: 0;
   background-color: transparent;
   text-decoration: none;

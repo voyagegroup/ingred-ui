@@ -34,7 +34,6 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
   const horizontalPadding =
     size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
 
-  let isLeftButtonDisabled = false;
   const childrenWithProps = React.Children.map(
     children,
     (child: React.ReactElement) => {
@@ -44,14 +43,9 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
         size: size,
         color: "secondary",
         style: {
-          borderLeft:
-            isLeftButtonDisabled &&
-            !child.props.disabled &&
-            `1px solid ${theme.palette.divider}`,
           ...child.props.style,
         },
       });
-      isLeftButtonDisabled = child.props.disabled;
       return Button;
     },
   );

@@ -7,14 +7,14 @@ exports[`Button component testing ButtonGroup 1`] = `
     height="42px"
   >
     <button
-      class="sc-dlfnbm sc-hKgILt eHpxDE hXFYVy"
+      class="sc-dlfnbm sc-hKgILt bqGKDG hXFYVy"
       font-size="14px"
       font-weight="normal"
     >
       Edit
     </button>
     <button
-      class="sc-dlfnbm sc-hKgILt eHpxDE hXFYVy"
+      class="sc-dlfnbm sc-hKgILt bqGKDG hXFYVy"
       font-size="14px"
       font-weight="normal"
     >
