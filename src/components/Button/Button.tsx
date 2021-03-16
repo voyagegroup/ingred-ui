@@ -44,7 +44,7 @@ const getContainerColorStyles = (
       border: "none",
     },
     active: {
-      background: theme.palette.primary.deepDark,
+      background: theme.palette.primary.dark,
       border: "none",
     },
   },
@@ -63,7 +63,7 @@ const getContainerColorStyles = (
       border: `1px solid ${theme.palette.divider}`,
     },
     active: {
-      background: theme.palette.gray.light,
+      background: theme.palette.gray.highlight,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -82,7 +82,7 @@ const getContainerColorStyles = (
       border: "none",
     },
     active: {
-      background: theme.palette.danger.deepDark,
+      background: theme.palette.danger.dark,
       border: "none",
     },
   },

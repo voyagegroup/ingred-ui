@@ -72,8 +72,8 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   }
 
   &:active:not([disabled]) {
-    background: ${({ active }) => active.background};
     ${({ size }) => computePaddingBySize(size)}
+    background: ${({ active }) => active.background};
     box-shadow: ${({ theme }) =>
       `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`};
   }

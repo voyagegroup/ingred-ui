@@ -11,17 +11,12 @@ export type ButtonGroupProps = {
   disabled?: boolean;
 };
 
-const buttonSize: Record<
-  GroupButtonSize,
-  { minWidth: string; height: string }
-> = {
+const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
   small: {
     minWidth: "63px",
-    height: "32px",
   },
   medium: {
     minWidth: "71px",
-    height: "42px",
   },
 };
 
@@ -52,7 +47,6 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
 
   return (
     <Styled.ButtonGroupContainer
-      height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
       horizontalPadding={horizontalPadding}
     >
