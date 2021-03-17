@@ -7,12 +7,11 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF iDkGgJ sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex utbqr sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
       <div
@@ -112,11 +111,10 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dMbzMA sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex bHISMI sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
       <div
@@ -222,21 +220,19 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF hFvtmK sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex kVUASo sc-eCssSg eZdWdg"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF hFvtmK sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm idRKex kVUASo sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       <div
         class="sc-iBPRYJ gvzchn"
@@ -335,19 +331,17 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex jIElxj sc-eCssSg eZdWdg"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm idRKex jIElxj sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       <div
         class="sc-iBPRYJ gvzchn"

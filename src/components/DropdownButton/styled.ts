@@ -21,6 +21,12 @@ export const SplitToggle = styled(Button)`
         : theme.palette.divider};
   padding: 0 ${({ theme, size }) => (size === "small" ? 0 : theme.spacing)}px;
   min-width: auto;
+
+  &:active:not([disabled]) {
+    padding-bottom: 0;
+    padding-top: 2px;
+  }
+
   &:disabled {
     border-left: 1px solid ${({ theme }) => theme.palette.divider};
   }
