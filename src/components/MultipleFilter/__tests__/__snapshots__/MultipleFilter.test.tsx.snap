@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultipleFilter component testing MultipleFilter 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-bdfBwQ fWUjEs"
+    >
+      <div
+        class="sc-dlfnbm djsBdb"
+      >
+        <div
+          class="sc-iqHYGH dyuBiv"
+          size="18"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0H24V24H0Z"
+              fill="none"
+            />
+            <path
+              d="M12.333,13.035v5.474L9,20.333v-7.3L4,4.825V3H17.333V4.825ZM6,4.825l4.663,7.658L15.33,4.825Z"
+              fill="#959FA9"
+              transform="translate(1.333 1)"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="sc-hKgILt cqZZuW"
+      >
+        <div
+          class="sc-gsTCUz fZEEyA"
+        >
+          <span
+            class="sc-dQppl jelHqW"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            成人 | true
+          </span>
+          <span
+            class="sc-dQppl jelHqW"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            血液型 | AB型
+          </span>
+          <span
+            class="sc-dQppl jelHqW"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            身長170cm未満 | true
+          </span>
+          <span
+            class="sc-dQppl jelHqW"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            生年月日 | 6月
+          </span>
+          <span
+            class="sc-dQppl jelHqW"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            体重 | 60 ~ 70
+          </span>
+          <input
+            class="sc-crrsfI bTNKRB"
+            placeholder="新しいフィルタを追加"
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
