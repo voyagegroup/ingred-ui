@@ -57,7 +57,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   };
 
   const handleMenuClose = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    _: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: "backdropClick" | "clickMenuList",
   ) => {
     switch (reason) {
