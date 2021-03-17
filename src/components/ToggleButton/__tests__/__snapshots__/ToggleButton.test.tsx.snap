@@ -7,7 +7,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
     width="56px"
   >
     <label
-      class="sc-dlfnbm jRmUcB"
+      class="sc-dlfnbm ioGuzp"
       width="56px"
     >
       <input
@@ -16,7 +16,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         type="checkbox"
       />
       <span
-        class="sc-gsTCUz bYFmhz"
+        class="sc-gsTCUz eMKoBC"
       />
       <div
         class="sc-eCssSg boVAbf"
