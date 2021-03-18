@@ -6,12 +6,12 @@ exports[`Checkbox component testing Checkbox 1`] = `
     class="sc-gsTCUz jlyGiH"
   >
     <input
-      class="sc-bdfBwQ isisTI"
+      class="sc-bdfBwQ hekALC"
       readonly=""
       type="checkbox"
     />
     <span
-      class="sc-dlfnbm gMqJkK"
+      class="sc-dlfnbm ROmgr"
     />
   </label>
 </DocumentFragment>
