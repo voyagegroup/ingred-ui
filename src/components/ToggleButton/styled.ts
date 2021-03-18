@@ -65,8 +65,15 @@ export const Label = styled.label<LabelProps>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   width: ${({ width }) => width};
   height: calc(1px * 2 + 22px);
-  background-color: ${({ disabled, theme }) =>
-    !disabled ? theme.palette.background.default : theme.palette.gray.light};
+  background-color: ${({ active, disabled, theme }) => {
+    let backgroundColor = theme.palette.gray.highlight;
+    if (disabled) {
+      backgroundColor = theme.palette.gray.light;
+    } else if (active) {
+      backgroundColor = theme.palette.background.hint;
+    }
+    return backgroundColor;
+  }};
   border: 1px solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
