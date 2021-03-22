@@ -17,8 +17,8 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
   disabled = false,
   onChange,
   width = "56px",
-  activeText = "ON",
-  inActiveText = "OFF",
+  activeText = "ONNNNNNNNNNNNNNNNN",
+  inActiveText = "OFFFFFFFFFFFFFFFFFFFFFF",
   inputRef,
 }) => {
   return (

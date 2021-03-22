@@ -19,25 +19,25 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         class="sc-gsTCUz bqUFVN"
       />
       <div
-        class="sc-dlfnbm sc-hKgILt bYFWIa iPmpMo"
+        class="sc-dlfnbm sc-hKgILt knXVJq xtjCQ"
       >
         <div
           class="sc-iBPRYJ dJqPht"
           color="#0B82F4"
           font-size="12px"
         >
-          ON
+          ONNNNNNNNNNNNNNNNN
         </div>
       </div>
       <div
-        class="sc-dlfnbm sc-eCssSg bYFWIa dxsAVF"
+        class="sc-dlfnbm sc-eCssSg knXVJq hvwnZm"
       >
         <div
           class="sc-iBPRYJ iZXNbL"
           color="#596978"
           font-size="12px"
         >
-          OFF
+          OFFFFFFFFFFFFFFFFFFFFFF
         </div>
       </div>
     </label>

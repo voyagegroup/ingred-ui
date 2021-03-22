@@ -41,14 +41,16 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
 export const LabelText = styled.div`
   position: absolute;
   width: 100%;
+  word-break: break-all;
+  white-space: nowrap;
   transition: all 0s 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
 `;
 export const ActiveLabelText = styled(LabelText)`
-  right: 6px;
+  padding-right: 6px;
   opacity: 0;
 `;
 export const InActiveLabelText = styled(LabelText)`
-  left: 6px;
+  margin-left: 6px;
   opacity: 1;
 `;
 
