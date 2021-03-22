@@ -8,7 +8,30 @@ import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
 
-export type MenuCloseReason = "clickCloseIcon" | "backdropClick";
+const Status = {
+  Defalut: 0,
+  FilterSelect: 1,
+  ConditionSelect: 2,
+} as const;
+
+type Status = typeof Status[keyof typeof Status];
+
+class FilterEntity {
+  private _status: Status;
+  constructor(isFocus: boolean, selectedFilter: any) {
+    this._status = Status.Defalut;
+    if (isFocus && selectedFilter === null) {
+      this._status = Status.FilterSelect;
+    }
+    if (isFocus && selectedFilter !== null) {
+      this._status = Status.ConditionSelect;
+    }
+  }
+
+  get status(): Status {
+    return this._status;
+  }
+}
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
@@ -18,10 +41,9 @@ export type MultipleFilterProps = {
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   menuMaxHeight = "none",
 }) => {
-  // step1: filter選択, step2: filter詳細決定
-  // TODO: stepをunion型にする
-  const [step, setStep] = React.useState<number>(0);
+  const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [selectedFilter, setSelectedFilter] = React.useState<any>(null);
+  const [fileterStatus, setFileterstatus] = React.useState<FilterEntity>();
   const theme = useTheme();
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
@@ -41,33 +63,35 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   // For render   //
   /////////////////
 
+  React.useEffect(() => {
+    // 途中でcloseした場合
+    if (!isFocus && selectedFilter === null) {
+      setSelectedFilter(null);
+    }
+
+    setFileterstatus(new FilterEntity(isFocus, selectedFilter));
+  }, [isFocus, selectedFilter]);
+
   const handleOnFocus = () => {
-    setStep(1);
+    setIsFocus(true);
   };
 
   // TODO: 条件のオブジェクトの形式を考える
-  const handleSlect = (elem: any) => () => {
+  const handleSelect = (elem: any) => () => {
     setSelectedFilter(elem.name);
-    setStep(2);
   };
 
   const handleClose = () => {
-    setStep(0);
     setSelectedFilter(null);
+    setIsFocus(false);
   };
 
   const handleMenuClose = (
     _: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: "backdropClick" | "clickMenuList",
   ) => {
-    switch (reason) {
-      case "backdropClick":
-        setSelectedFilter(null);
-        setStep(0);
-        break;
-      case "clickMenuList":
-        setStep(2);
-        break;
+    if (reason === "backdropClick") {
+      setIsFocus(false);
     }
   };
 
@@ -76,12 +100,12 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
       TODO: filterを追加する処理
     */
     setSelectedFilter(null);
-    setStep(0);
+    setIsFocus(false);
   };
 
   return (
     <div>
-      <Styled.Container isFocused={step !== 0}>
+      <Styled.Container isFocused={!(fileterStatus?.status === Status.Defalut)}>
         <Styled.LeftContainer>
           <Icon name="filter" size="md" color={theme.palette.gray.dark} />
         </Styled.LeftContainer>
@@ -106,22 +130,19 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           </Styled.InputContiner>
           <Menu
             contents={filterExample.map((elem) => ({
-              onClick: handleSlect(elem),
+              onClick: handleSelect(elem),
               text: elem.name,
             }))}
-            isOpen={step === 1}
+            isOpen={fileterStatus?.status === Status.FilterSelect}
             baseElement={inputElement}
             maxHeight={menuMaxHeight}
             onClose={handleMenuClose}
           />
         </Styled.RightContainer>
       </Styled.Container>
-      {step === 2 && (
-        <Popover
-          isOpen={step === 2}
-          baseElement={inputElement}
-          onClose={handleClose}
-        >
+
+      {fileterStatus?.status === Status.ConditionSelect && (
+        <Popover baseElement={inputElement} onClose={handleClose}>
           <FilterCard
             selectedFilter={selectedFilter}
             onSubmit={handleApply}

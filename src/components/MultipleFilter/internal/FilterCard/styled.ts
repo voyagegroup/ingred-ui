@@ -6,8 +6,6 @@ export const FilterCard = styled(Card)`
   box-shadow: 0px 0px 16px
     ${({ theme }) => hexToRgba(theme.palette.gray.main, 0.4)};
   min-width: 300px;
-  width: "auto";
-  height: "auto";
   border-radius: ${({ theme }) => `${theme.radius}px`};
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
