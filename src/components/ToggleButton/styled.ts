@@ -45,10 +45,12 @@ export const LabelText = styled.div`
   white-space: nowrap;
   transition: all 0s 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
 `;
+
 export const ActiveLabelText = styled(LabelText)`
   padding-right: 6px;
   opacity: 0;
 `;
+
 export const InActiveLabelText = styled(LabelText)`
   margin-left: 6px;
   opacity: 1;
