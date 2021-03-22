@@ -7,6 +7,8 @@ import { useTheme } from "../../themes";
 import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
+import Spacer from "../Spacer";
+import { Label } from "./internal/Label/Label";
 
 const Status = {
   Defalut: 0,
@@ -140,7 +142,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           />
         </Styled.RightContainer>
       </Styled.Container>
-
       {fileterStatus?.status === Status.ConditionSelect && (
         <Popover baseElement={inputElement} onClose={handleClose}>
           <FilterCard
@@ -150,6 +151,9 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           />
         </Popover>
       )}
+      <Spacer py={5} pl={5} />
+      この辺につくる
+      <Label />
     </div>
   );
 };
