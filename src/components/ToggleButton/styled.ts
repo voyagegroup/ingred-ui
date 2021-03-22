@@ -2,8 +2,6 @@ import styled, { css } from "styled-components";
 import { hexToRgba } from "../../utils/hexToRgba";
 
 export const Container = styled.div<{
-  active: boolean;
-  disabled: boolean;
   width: string;
 }>`
   position: relative;
@@ -12,15 +10,14 @@ export const Container = styled.div<{
 `;
 
 export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
-  content: "";
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   left: 4px;
+  z-index: 99999;
+  transform: translateY(-50%);
   width: 14px;
   height: 14px;
   border-radius: 14px;
-  transition: all 0.3s;
   background-color: ${({ active, disabled, theme }) => {
     let backgroundColor = theme.palette.background.default;
     if (disabled) {
@@ -38,15 +35,19 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
       theme.palette.black,
       0.08,
     )}`};
+  transition: all 0.2s cubic-bezier(0.47, 0, 0.75, 0.72);
+`;
 
-  ${({ active }) =>
-    active &&
-    css`
-      & {
-        left: calc(100% - 4px);
-        transform: translate(-100%, -50%);
-      }
-    `}
+export const LabelText = styled.div<{ position: "right" | "left" }>`
+  position: absolute;
+  ${({ position }) => `${position}: 6px`};
+  width: 100%;
+`;
+export const ActiveLabelText = styled(LabelText)`
+  opacity: 0;
+`;
+export const InActiveLabelText = styled(LabelText)`
+  opacity: 1;
 `;
 
 type LabelProps = {
@@ -80,25 +81,25 @@ export const Label = styled.label<LabelProps>`
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
 
-  &:active > ${ToggleButton} {
-    width: 22px;
-  }
+  ${({ active }) =>
+    active &&
+    css`
+      & > ${ToggleButton} {
+        left: calc(100% - 14px - 4px);
+      }
+      & > ${ActiveLabelText} {
+        opacity: 1;
+      }
+      & > ${InActiveLabelText} {
+        opacity: 0;
+      }
+    `}
 `;
 
 export const HiddenInput = styled.input`
   width: 0;
   height: 0;
   visibility: hidden;
-`;
-
-export const LabelText = styled.div<{ position: "right" | "left" }>`
-  position: absolute;
-  top: 50%;
-  ${({ position }) => `${position}: calc(50% - 7px)`};
-  transform: translate(
-    ${({ position }) => (position === "right" ? "" : "-")}50%,
-    -50%
-  );
 `;
