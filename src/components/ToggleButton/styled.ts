@@ -13,7 +13,7 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   position: absolute;
   top: 50%;
   left: 4px;
-  z-index: 99999;
+  z-index: 9999;
   transform: translateY(-50%);
   width: 14px;
   height: 14px;
