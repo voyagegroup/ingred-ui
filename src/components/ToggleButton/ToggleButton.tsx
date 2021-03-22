@@ -21,7 +21,6 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
   inActiveText = "OFF",
   inputRef,
 }) => {
-  const textColor = active ? "primary" : "secondary";
   return (
     <Styled.Container width={width}>
       <Styled.Label active={active} disabled={disabled} width={width}>
@@ -35,10 +34,10 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           onChange={onChange}
         />
         <Styled.ToggleButton active={active} disabled={disabled} />
-        <Styled.ActiveLabelText position={active ? "right" : "left"}>
+        <Styled.ActiveLabelText>
           <Typography
             component="div"
-            color={disabled ? "disabled" : textColor}
+            color={disabled ? "disabled" : "primary"}
             align="center"
             size="xs"
             weight="bold"
@@ -46,10 +45,10 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
             {activeText}
           </Typography>
         </Styled.ActiveLabelText>
-        <Styled.InActiveLabelText position={active ? "right" : "left"}>
+        <Styled.InActiveLabelText>
           <Typography
             component="div"
-            color={disabled ? "disabled" : textColor}
+            color={disabled ? "disabled" : "secondary"}
             align="center"
             size="xs"
             weight="bold"

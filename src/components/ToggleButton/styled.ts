@@ -29,24 +29,26 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   }};
   border: 1px solid
     ${({ active, disabled, theme }) =>
-      active && !disabled ? theme.palette.primary.main : theme.palette.divider};
+      active && !disabled ? theme.palette.primary.dark : theme.palette.divider};
   box-shadow: ${({ theme }) =>
-    `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0px 2px ${hexToRgba(
+    `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0px 1px ${hexToRgba(
       theme.palette.black,
       0.08,
     )}`};
-  transition: all 0.2s cubic-bezier(0.47, 0, 0.75, 0.72);
+  transition: all 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
 `;
 
-export const LabelText = styled.div<{ position: "right" | "left" }>`
+export const LabelText = styled.div`
   position: absolute;
-  ${({ position }) => `${position}: 6px`};
   width: 100%;
+  transition: all 0s 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
 `;
 export const ActiveLabelText = styled(LabelText)`
+  right: 6px;
   opacity: 0;
 `;
 export const InActiveLabelText = styled(LabelText)`
+  left: 6px;
   opacity: 1;
 `;
 
@@ -81,7 +83,7 @@ export const Label = styled.label<LabelProps>`
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
-  transition: all 0.3s ease;
+  transition: all 0.3s ease, border-color 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
 
   ${({ active }) =>
     active &&
