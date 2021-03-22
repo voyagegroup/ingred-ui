@@ -26,7 +26,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
           color="#0B82F4"
           font-size="12px"
         >
-          ONNNNNNNNNNNNNNNNN
+          ON
         </div>
       </div>
       <div
@@ -37,7 +37,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
           color="#596978"
           font-size="12px"
         >
-          OFFFFFFFFFFFFFFFFFFFFFF
+          OFF
         </div>
       </div>
     </label>
