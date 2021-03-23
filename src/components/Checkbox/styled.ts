@@ -22,7 +22,7 @@ export const Checkbox = styled.input<{
         ? `url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%223%22%20viewBox%3D%220%200%2010%203%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Crect%20class%3D%22a%22%20width%3D%2210%22%20height%3D%223%22%20rx%3D%220.596%22%2F%3E%3C%2Fsvg%3E')`
         : `url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212.001%22%20height%3D%228.997%22%20viewBox%3D%220%200%2012.001%208.997%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23fff%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22a%22%20d%3D%22M405.681%2C343.44l-5.154%2C5.12-1.332%2C1.323a.622.622%2C0%2C0%2C1-.877%2C0l-1.333-1.323h0l-2.943-2.924a.612.612%2C0%2C0%2C1%2C0-.871l1.332-1.324a.624.624%2C0%2C0%2C1%2C.877%2C0l2.506%2C2.49%2C4.714-4.685a.624.624%2C0%2C0%2C1%2C.877%2C0l1.333%2C1.323A.614.614%2C0%2C0%2C1%2C405.681%2C343.44Z%22%20transform%3D%22translate(-393.861%20-341.066)%22%2F%3E%3C%2Fsvg%3E')`};
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
   }
 `;
 
@@ -42,6 +42,7 @@ export const Span = styled.span<{
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
   &::before {
+    box-sizing: content-box;
     flex-shrink: 0;
     display: block;
     content: "";
@@ -74,6 +75,6 @@ export const Span = styled.span<{
         ? `url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%223%22%20viewBox%3D%220%200%2010%203%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23b3bac1%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Crect%20class%3D%22a%22%20width%3D%2210%22%20height%3D%223%22%20rx%3D%220.596%22%2F%3E%3C%2Fsvg%3E')`
         : `url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212.001%22%20height%3D%228.997%22%20viewBox%3D%220%200%2012.001%208.997%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23b3bac1%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cpath%20class%3D%22a%22%20d%3D%22M405.681%2C343.44l-5.154%2C5.12-1.332%2C1.323a.622.622%2C0%2C0%2C1-.877%2C0l-1.333-1.323h0l-2.943-2.924a.612.612%2C0%2C0%2C1%2C0-.871l1.332-1.324a.624.624%2C0%2C0%2C1%2C.877%2C0l2.506%2C2.49%2C4.714-4.685a.624.624%2C0%2C0%2C1%2C.877%2C0l1.333%2C1.323A.614.614%2C0%2C0%2C1%2C405.681%2C343.44Z%22%20transform%3D%22translate(-393.861%20-341.066)%22%2F%3E%3C%2Fsvg%3E')`};
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
   }
 `;
