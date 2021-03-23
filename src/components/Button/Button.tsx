@@ -118,18 +118,15 @@ const paddingAtActive: Record<
   },
 };
 
-const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
+const buttonSize: Record<ButtonSize, { minWidth: string }> = {
   small: {
     minWidth: "64px",
-    height: "32px",
   },
   medium: {
     minWidth: "130px",
-    height: "42px",
   },
   large: {
     minWidth: "178px",
-    height: "48px",
   },
 };
 
@@ -194,7 +191,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
     >
       {children}
