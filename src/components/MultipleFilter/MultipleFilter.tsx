@@ -7,7 +7,7 @@ import { useTheme } from "../../themes";
 import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
-import { Status } from "./MultipleFilterStatus";
+import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
@@ -23,6 +23,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
   >(null);
+  const currentStatus = getCurrentStatus(isFocus, selectedFilter);
 
   //////////////////
   // For render  //
@@ -37,23 +38,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   ];
   // For render   //
   /////////////////
-
-  // TODO: このanyを外す
-  const getCurrentStatus = (isFocus: boolean, selectedFilter: any): Status => {
-    if (!isFocus) {
-      return Status.Empty;
-    }
-    if (selectedFilter === null) {
-      return Status.FilterSelecting;
-    }
-    if (selectedFilter !== null) {
-      return Status.ConditionSelecting;
-    }
-
-    return Status.Empty;
-  };
-
-  const currentStatus = getCurrentStatus(isFocus, selectedFilter);
 
   const handleOnFocus = () => {
     setIsFocus(true);
