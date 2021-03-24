@@ -63,12 +63,14 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
               <rect
                 fill="#F96979"
                 height="23.141"
+                rx="2.571"
                 transform="translate(18.364 2) rotate(45)"
                 width="5.142"
               />
               <rect
                 fill="#F96979"
                 height="23.141"
+                rx="2.571"
                 transform="translate(2 5.636) rotate(-45)"
                 width="5.143"
               />
@@ -118,12 +120,14 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
                 <rect
                   fill="#FDFEFF"
                   height="23.141"
+                  rx="2.571"
                   transform="translate(18.364 2) rotate(45)"
                   width="5.142"
                 />
                 <rect
                   fill="#FDFEFF"
                   height="23.141"
+                  rx="2.571"
                   transform="translate(2 5.636) rotate(-45)"
                   width="5.143"
                 />
@@ -152,12 +156,14 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
               <rect
                 fill="#9CDDFD"
                 height="23.141"
+                rx="2.571"
                 transform="translate(18.364 2) rotate(45)"
                 width="5.142"
               />
               <rect
                 fill="#9CDDFD"
                 height="23.141"
+                rx="2.571"
                 transform="translate(2 5.636) rotate(-45)"
                 width="5.143"
               />
@@ -237,12 +243,14 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
               <rect
                 fill="#B4ED7B"
                 height="23.141"
+                rx="2.571"
                 transform="translate(18.364 2) rotate(45)"
                 width="5.142"
               />
               <rect
                 fill="#B4ED7B"
                 height="23.141"
+                rx="2.571"
                 transform="translate(2 5.636) rotate(-45)"
                 width="5.143"
               />
@@ -292,12 +300,14 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
                 <rect
                   fill="#FDFEFF"
                   height="23.141"
+                  rx="2.571"
                   transform="translate(18.364 2) rotate(45)"
                   width="5.142"
                 />
                 <rect
                   fill="#FDFEFF"
                   height="23.141"
+                  rx="2.571"
                   transform="translate(2 5.636) rotate(-45)"
                   width="5.143"
                 />
@@ -326,12 +336,14 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
               <rect
                 fill="#FDE54E"
                 height="23.141"
+                rx="2.571"
                 transform="translate(18.364 2) rotate(45)"
                 width="5.142"
               />
               <rect
                 fill="#FDE54E"
                 height="23.141"
+                rx="2.571"
                 transform="translate(2 5.636) rotate(-45)"
                 width="5.143"
               />
