@@ -11,5 +11,12 @@ import * as Styled from "./styled";
 export type Props = {};
 
 export const Label: React.FunctionComponent<Props> = ({}) => {
-  return <Styled.Container>aad</Styled.Container>;
+  return (
+    <Styled.Container>
+      aad
+      <Styled.RightContainer>
+        <Icon name="close" />
+      </Styled.RightContainer>
+    </Styled.Container>
+  );
 };
