@@ -2,13 +2,13 @@ import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
 
-const fadeIn = keyframes`	
-  0% {	
-    opacity: 0;	
-  }	
-  100% {	
-    opacity: 1;	
-  }	
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 `;
 export const ModalBackground = styled.div`
   position: absolute;
@@ -21,13 +21,13 @@ export const ModalBackground = styled.div`
   animation: ${fadeIn} 0.4s;
 `;
 
-const slideIn = keyframes`	
-  0% {	
-    transform: translate(-50%, calc(-50% + 8px));	
-  }	
-  100% {	
-    transform: translate(-50%, -50%);	
-  }	
+const slideIn = keyframes`
+  0% {
+    transform: translate(-50%, calc(-50% + 8px));
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
 `;
 
 const FullSizeSlideIn = keyframes`
@@ -108,6 +108,7 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   border-radius: ${({ fullSize, theme }) =>
     fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
   margin-bottom: ${({ fullSize }) => (fullSize ? "1.8vh" : "auto")};
+  word-break: break-word;
 `;
 
 export const IconContainer = styled.div`
