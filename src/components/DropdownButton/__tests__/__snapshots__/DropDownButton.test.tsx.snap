@@ -7,7 +7,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex utbqr sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex ijETIn sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -111,7 +111,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex bHISMI sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex dGqrhc sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
@@ -220,7 +220,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex kVUASo sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex ewRgLw sc-eCssSg eZdWdg"
       disabled=""
       font-size="14px"
       font-weight="bold"
@@ -228,7 +228,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex kVUASo sc-jSgupP fKddXt"
+      class="sc-gsTCUz sc-dlfnbm idRKex ewRgLw sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
@@ -331,14 +331,14 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex jIElxj sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex iSfkoj sc-eCssSg eZdWdg"
       font-size="14px"
       font-weight="bold"
     >
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm idRKex jIElxj sc-jSgupP fKddXt"
+      class="sc-gsTCUz sc-dlfnbm idRKex iSfkoj sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"

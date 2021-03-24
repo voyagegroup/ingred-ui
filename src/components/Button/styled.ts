@@ -9,11 +9,11 @@ export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
   fontSize: string;
   fontWeight: string;
-  height: string;
   verticalPadding: string;
   horizontalPadding: string;
   paddingTopAtActive: string;
   paddingBottomAtActive: string;
+  minWidth: string;
   href?: string;
   disabled?: boolean;
 };
@@ -25,7 +25,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   padding: ${({ verticalPadding, horizontalPadding }) =>
     `${verticalPadding} ${horizontalPadding}`};
   width: ${({ inline }) => (inline ? "auto" : "100%")};
-  height: ${({ height }) => height};
+  min-width: ${({ minWidth }) => minWidth};
   border-radius: ${({ theme }) => theme.radius}px;
   border: ${({ normal, disabled, theme }) =>
     disabled ? `1px solid ${theme.palette.divider}` : normal.border};

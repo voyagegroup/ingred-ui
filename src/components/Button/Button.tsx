@@ -118,6 +118,18 @@ const paddingAtActive: Record<
   },
 };
 
+const buttonSize: Record<ButtonSize, { minWidth: string }> = {
+  small: {
+    minWidth: "64px",
+  },
+  medium: {
+    minWidth: "130px",
+  },
+  large: {
+    minWidth: "178px",
+  },
+};
+
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
    * The component used for the root node.
@@ -179,6 +191,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
+      minWidth={buttonSize[size].minWidth}
     >
       {children}
     </Styled.ButtonContainer>
