@@ -1,11 +1,5 @@
 import * as React from "react";
-import { useTheme } from "styled-components";
-import Button from "../../../Button";
-import { Divider } from "../../../Divider/styled";
-import Icon from "../../../Icon";
-import Select from "../../../Select";
-import Spacer from "../../../Spacer";
-import Typography from "../../../Typography";
+import { CloseButton } from "../CloseButton";
 import * as Styled from "./styled";
 
 export type Props = {};
@@ -15,7 +9,7 @@ export const Label: React.FunctionComponent<Props> = ({}) => {
     <Styled.Container>
       aad
       <Styled.RightContainer>
-        <Icon name="close" />
+        <CloseButton />
       </Styled.RightContainer>
     </Styled.Container>
   );
