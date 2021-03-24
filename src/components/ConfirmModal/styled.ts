@@ -108,7 +108,6 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   border-radius: ${({ fullSize, theme }) =>
     fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
   margin-bottom: ${({ fullSize }) => (fullSize ? "1.8vh" : "auto")};
-  word-break: break-word;
 `;
 
 export const IconContainer = styled.div`
