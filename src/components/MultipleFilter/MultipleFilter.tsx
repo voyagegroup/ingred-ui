@@ -7,14 +7,7 @@ import { useTheme } from "../../themes";
 import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
-
-const Status = {
-  Empty: 0,
-  FilterSelecting: 1,
-  ConditionSelecting: 2,
-} as const;
-
-type Status = typeof Status[keyof typeof Status];
+import { Status } from "./MultipleFilterStatus";
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
@@ -60,6 +53,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     return Status.Empty;
   };
 
+  const currentStatus = getCurrentStatus(isFocus, selectedFilter);
+
   const handleOnFocus = () => {
     setIsFocus(true);
   };
@@ -93,9 +88,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
 
   return (
     <div>
-      <Styled.Container
-        isFocused={getCurrentStatus(isFocus, selectedFilter) !== Status.Empty}
-      >
+      <Styled.Container isFocused={currentStatus !== Status.Empty}>
         <Styled.LeftContainer>
           <Icon name="filter" size="md" color={theme.palette.gray.dark} />
         </Styled.LeftContainer>
@@ -123,10 +116,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               onClick: handleSelect(elem),
               text: elem.name,
             }))}
-            isOpen={
-              getCurrentStatus(isFocus, selectedFilter) ===
-              Status.FilterSelecting
-            }
+            isOpen={currentStatus === Status.FilterSelecting}
             baseElement={inputElement}
             maxHeight={menuMaxHeight}
             onClose={handleMenuClose}
@@ -134,8 +124,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         </Styled.RightContainer>
       </Styled.Container>
 
-      {getCurrentStatus(isFocus, selectedFilter) ===
-        Status.ConditionSelecting && (
+      {currentStatus === Status.ConditionSelecting && (
         <Popover baseElement={inputElement} onClose={handleClose}>
           <FilterCard
             selectedFilter={selectedFilter}
