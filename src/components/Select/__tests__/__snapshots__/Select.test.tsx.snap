@@ -36,12 +36,14 @@ exports[`Select component testing Disable multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -71,12 +73,14 @@ exports[`Select component testing Disable multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -404,12 +408,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -439,12 +445,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -498,12 +506,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -726,12 +736,14 @@ exports[`Select component testing Error one selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -831,12 +843,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -866,12 +880,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -925,12 +941,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -1153,12 +1171,14 @@ exports[`Select component testing Normal one selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />

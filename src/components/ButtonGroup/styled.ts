@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export type ContainerProps = {
-  height: string;
   minWidth: string;
   horizontalPadding: string;
 };
@@ -12,7 +11,6 @@ export const ButtonGroupContainer = styled.div<ContainerProps>`
   & > * {
     min-width: ${({ minWidth }) => minWidth};
     width: auto;
-    height: ${({ height }) => height};
     padding-right: ${({ horizontalPadding }) => horizontalPadding};
     padding-left: ${({ horizontalPadding }) => horizontalPadding};
   }

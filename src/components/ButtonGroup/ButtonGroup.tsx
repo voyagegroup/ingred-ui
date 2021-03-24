@@ -11,17 +11,12 @@ export type ButtonGroupProps = {
   disabled?: boolean;
 };
 
-const buttonSize: Record<
-  GroupButtonSize,
-  { minWidth: string; height: string }
-> = {
+const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
   small: {
     minWidth: "63px",
-    height: "32px",
   },
   medium: {
     minWidth: "71px",
-    height: "42px",
   },
 };
 
@@ -34,7 +29,6 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
   const horizontalPadding =
     size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
 
-  let isLeftButtonDisabled = false;
   const childrenWithProps = React.Children.map(
     children,
     (child: React.ReactElement) => {
@@ -44,21 +38,15 @@ const ButtonGroup: React.FunctionComponent<ButtonGroupProps> = ({
         size: size,
         color: "secondary",
         style: {
-          borderLeft:
-            isLeftButtonDisabled &&
-            !child.props.disabled &&
-            `1px solid ${theme.palette.divider}`,
           ...child.props.style,
         },
       });
-      isLeftButtonDisabled = child.props.disabled;
       return Button;
     },
   );
 
   return (
     <Styled.ButtonGroupContainer
-      height={buttonSize[size].height}
       minWidth={buttonSize[size].minWidth}
       horizontalPadding={horizontalPadding}
     >
