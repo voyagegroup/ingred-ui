@@ -129,8 +129,9 @@ export type IconName =
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
-type IconSize = "sm" | "md" | "lg";
+type IconSize = "xs" | "sm" | "md" | "lg";
 export const iconSize: { [key in IconSize]: number } = {
+  xs: 10,
   sm: 12,
   md: 18,
   lg: 24,
