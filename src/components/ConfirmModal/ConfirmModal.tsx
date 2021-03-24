@@ -181,7 +181,12 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
                       {cancelText}
                     </Button>
                   </Spacer>
-                  <Button type="submit" color={buttonColor} disabled={disabled}>
+                  <Button
+                    type="submit"
+                    color={buttonColor}
+                    disabled={disabled}
+                    inline={true}
+                  >
                     {confirmText}
                   </Button>
                 </Flex>
