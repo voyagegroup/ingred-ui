@@ -9,29 +9,12 @@ import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
 
 const Status = {
-  Defalut: 0,
-  FilterSelect: 1,
-  ConditionSelect: 2,
+  Empty: 0,
+  FilterSelecting: 1,
+  ConditionSelecting: 2,
 } as const;
 
 type Status = typeof Status[keyof typeof Status];
-
-class FilterEntity {
-  private _status: Status;
-  constructor(isFocus: boolean, selectedFilter: any) {
-    this._status = Status.Defalut;
-    if (isFocus && selectedFilter === null) {
-      this._status = Status.FilterSelect;
-    }
-    if (isFocus && selectedFilter !== null) {
-      this._status = Status.ConditionSelect;
-    }
-  }
-
-  get status(): Status {
-    return this._status;
-  }
-}
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
@@ -43,7 +26,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [selectedFilter, setSelectedFilter] = React.useState<any>(null);
-  const [fileterStatus, setFileterstatus] = React.useState<FilterEntity>();
   const theme = useTheme();
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
@@ -63,14 +45,20 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   // For render   //
   /////////////////
 
-  React.useEffect(() => {
-    // 途中でcloseした場合
-    if (!isFocus && selectedFilter === null) {
-      setSelectedFilter(null);
+  // TODO: このanyを外す
+  const getCurrentStatus = (isFocus: boolean, selectedFilter: any): Status => {
+    if (!isFocus) {
+      return Status.Empty;
+    }
+    if (selectedFilter === null) {
+      return Status.FilterSelecting;
+    }
+    if (selectedFilter !== null) {
+      return Status.ConditionSelecting;
     }
 
-    setFileterstatus(new FilterEntity(isFocus, selectedFilter));
-  }, [isFocus, selectedFilter]);
+    return Status.Empty;
+  };
 
   const handleOnFocus = () => {
     setIsFocus(true);
@@ -105,7 +93,9 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
 
   return (
     <div>
-      <Styled.Container isFocused={!(fileterStatus?.status === Status.Defalut)}>
+      <Styled.Container
+        isFocused={getCurrentStatus(isFocus, selectedFilter) !== Status.Empty}
+      >
         <Styled.LeftContainer>
           <Icon name="filter" size="md" color={theme.palette.gray.dark} />
         </Styled.LeftContainer>
@@ -133,7 +123,10 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               onClick: handleSelect(elem),
               text: elem.name,
             }))}
-            isOpen={fileterStatus?.status === Status.FilterSelect}
+            isOpen={
+              getCurrentStatus(isFocus, selectedFilter) ===
+              Status.FilterSelecting
+            }
             baseElement={inputElement}
             maxHeight={menuMaxHeight}
             onClose={handleMenuClose}
@@ -141,7 +134,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         </Styled.RightContainer>
       </Styled.Container>
 
-      {fileterStatus?.status === Status.ConditionSelect && (
+      {getCurrentStatus(isFocus, selectedFilter) ===
+        Status.ConditionSelecting && (
         <Popover baseElement={inputElement} onClose={handleClose}>
           <FilterCard
             selectedFilter={selectedFilter}
