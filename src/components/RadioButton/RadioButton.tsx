@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { hexToRgba } from "../../utils/hexToRgba";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
@@ -46,12 +45,7 @@ const Indicator = styled.div<IndicatorProps>`
   border-radius: 50%;
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
-  box-shadow: ${({ theme }) =>
-    `0px -2px ${hexToRgba(
-      theme.palette.black,
-      0.16,
-    )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`};
-  transition: all 0.3s ease;
+  box-shadow: 0 -2px 0 0 ${({ theme }) => theme.palette.gray.light} inset;
 
   &::after {
     position: absolute;
@@ -74,12 +68,14 @@ const Indicator = styled.div<IndicatorProps>`
 
   input:checked + & {
     background: ${({ theme }) => theme.palette.primary.main};
-    border-color: ${({ theme }) => theme.palette.primary.dark};
+    border-color: ${({ theme }) => theme.palette.primary.main};
+    box-shadow: none;
   }
 
   input:disabled + & {
     background: ${({ theme }) => theme.palette.gray.light};
     border-color: ${({ theme }) => theme.palette.text.disabled};
+    box-shadow: none;
   }
   input:disabled + &:after {
     background: ${({ theme }) => theme.palette.gray.light};
