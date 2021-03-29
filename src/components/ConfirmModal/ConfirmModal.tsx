@@ -172,16 +172,21 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
             {showFooter && (
               <Styled.ModalFooter fullSize={fullSize}>
                 <Flex display="flex" alignItems="center">
-                  <Spacer pr={2}>
-                    <Button
-                      type="button"
-                      color="secondary"
-                      onClick={handleClose("clickCancelButton")}
-                    >
-                      {cancelText}
-                    </Button>
-                  </Spacer>
-                  <Button type="submit" color={buttonColor} disabled={disabled}>
+                  <Button
+                    type="button"
+                    color="secondary"
+                    inline={true}
+                    onClick={handleClose("clickCancelButton")}
+                  >
+                    {cancelText}
+                  </Button>
+                  <Spacer pr={2} />
+                  <Button
+                    type="submit"
+                    color={buttonColor}
+                    disabled={disabled}
+                    inline={true}
+                  >
                     {confirmText}
                   </Button>
                 </Flex>

@@ -68,6 +68,10 @@ export const Overview = () => (
       size: sm (12px)
     </Typography>
     {renderIcons({ size: "sm" })}
+    <Typography weight="bold" size="xxl">
+      size: xs (10px)
+    </Typography>
+    {renderIcons({ size: "xs" })}
   </Container>
 );
 

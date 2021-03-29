@@ -7,12 +7,14 @@ const CloseIcon: React.FunctionComponent<IconProps> = ({ fill }) => (
       fill={fill}
       width="5.142"
       height="23.141"
+      rx="2.571"
       transform="translate(18.364 2) rotate(45)"
     />
     <rect
       fill={fill}
       width="5.143"
       height="23.141"
+      rx="2.571"
       transform="translate(2 5.636) rotate(-45)"
     />
   </svg>
