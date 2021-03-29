@@ -5,6 +5,7 @@ import imagemin from "rollup-plugin-imagemin";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import url from "rollup-plugin-url";
+import nodePolyfills from "rollup-plugin-node-polyfills";
 import svgr from "@svgr/rollup";
 
 import pkg from "./package.json";
@@ -25,7 +26,6 @@ export default {
       sourcemap: true,
     },
   ],
-  external: ["util"],
   plugins: [
     external(),
     postcss({
@@ -34,7 +34,9 @@ export default {
     url(),
     svgr(),
     imagemin(),
-    resolve(),
+    resolve({
+      preferBuiltins: true,
+    }),
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
@@ -52,5 +54,6 @@ export default {
         ],
       },
     }),
+    nodePolyfills(),
   ],
 };
