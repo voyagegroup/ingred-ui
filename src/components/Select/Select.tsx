@@ -183,6 +183,7 @@ const Select: SelectComponent = ({
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
+        closeMenuOnSelect={false}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}

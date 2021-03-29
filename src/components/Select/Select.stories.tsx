@@ -49,6 +49,10 @@ export const MultipleSelect = () => {
     { label: "Three", value: 3 },
   ];
   const handleChange = (options: any) => {
+    if (options == null) {
+      setSelected([]);
+      return;
+    }
     setSelected(options.map((ops: OptionType<number>) => ops.label));
   };
   return (
