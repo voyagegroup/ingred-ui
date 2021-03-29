@@ -7,7 +7,7 @@ export type Props = {};
 export const CloseButton: React.FunctionComponent<Props> = () => {
   return (
     <Styled.IconContainer>
-      <Icon name="close" color="white" />
+      <Icon name="close" color="white" size="xs" />
     </Styled.IconContainer>
   );
 };

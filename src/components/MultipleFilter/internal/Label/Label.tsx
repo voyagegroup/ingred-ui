@@ -1,13 +1,20 @@
 import * as React from "react";
+import Typography from "../../../Typography";
 import { CloseButton } from "../CloseButton";
 import * as Styled from "./styled";
 
-export type Props = {};
+export type Props = {
+  filterOption: any;
+};
 
-export const Label: React.FunctionComponent<Props> = ({}) => {
+export const Label: React.FunctionComponent<Props> = ({ filterOption }) => {
   return (
     <Styled.Container>
-      aad
+      <Styled.LeftContainer>
+        <Typography size="sm" component="span">
+          説明
+        </Typography>
+      </Styled.LeftContainer>
       <Styled.RightContainer>
         <CloseButton />
       </Styled.RightContainer>

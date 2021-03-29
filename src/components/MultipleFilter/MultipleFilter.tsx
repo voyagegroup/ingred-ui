@@ -4,11 +4,10 @@ import Menu, { MenuProps } from "../Menu";
 import Icon from "../Icon";
 import Input from "../Input";
 import { useTheme } from "../../themes";
-import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
-import Spacer from "../Spacer";
 import { Label } from "./internal/Label/Label";
+import { CloseButton } from "./internal/CloseButton";
 
 const Status = {
   Defalut: 0,
@@ -62,6 +61,45 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     { name: "生年月日", condition: "6月" },
     { name: "体重", condition: "60 ~ 70" },
   ];
+
+  const filterOptions = [
+    {
+      categoryName: "列名",
+      filters: [
+        {
+          filterName: "デマンド",
+          control: {
+            type: "text",
+          },
+        },
+        {
+          filterName: "チャネル",
+          control: {
+            type: "text",
+          },
+        },
+      ],
+    },
+    {
+      categoryName: "紐付け",
+      filters: [
+        {
+          filterName: "デバイス",
+          control: {
+            type: "select",
+            options: ["未選択", "紐付け未完了", "紐付け完了"],
+          },
+        },
+        {
+          filterName: "サイト",
+          control: {
+            type: "select",
+            options: ["未選択", "紐付け未完了", "紐付け完了"],
+          },
+        },
+      ],
+    },
+  ];
   // For render   //
   /////////////////
 
@@ -111,15 +149,14 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         <Styled.LeftContainer>
           <Icon name="filter" size="md" color={theme.palette.gray.dark} />
         </Styled.LeftContainer>
-        <Styled.RightContainer>
+        <Styled.CenterContainer>
           <Styled.InputContiner>
             {/* TODO: filterを保持できるようにする */}
-            {/* TODO: Badgeを使わないようにする */}
             {filterExample.map((filter) => {
               return (
-                <Badge key={filter.name} color="secondary" type="pill">
-                  {filter.name} | {String(filter.condition)}
-                </Badge>
+                <Styled.LabelContainer key={filter.name}>
+                  <Label filterOption={filter} />
+                </Styled.LabelContainer>
               );
             })}
 
@@ -140,6 +177,9 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
             maxHeight={menuMaxHeight}
             onClose={handleMenuClose}
           />
+        </Styled.CenterContainer>
+        <Styled.RightContainer>
+          <CloseButton />
         </Styled.RightContainer>
       </Styled.Container>
       {fileterStatus?.status === Status.ConditionSelect && (
@@ -151,9 +191,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           />
         </Popover>
       )}
-      <Spacer py={5} pl={5} />
-      この辺につくる
-      <Label />
     </div>
   );
 };
