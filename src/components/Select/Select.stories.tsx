@@ -2,7 +2,6 @@ import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
 import { Story } from "@storybook/react/types-6-0";
 import Select, { OptionType } from "./Select";
-import { ValueType } from "react-select";
 
 export default {
   title: "Components/Inputs/Select",
@@ -36,7 +35,11 @@ export const Example = () => {
   return (
     <div style={{ height: "200px" }}>
       <div>selected: {selected}</div>
-      <Select options={options} onChange={handleChange} />
+      <Select
+        options={options}
+        closeMenuOnSelect={true}
+        onChange={handleChange}
+      />
     </div>
   );
 };
@@ -105,6 +108,7 @@ export const WithAsyncSearch: Story = () => {
         placeholder="Search with some text..."
         isLoading={loading}
         options={options}
+        closeMenuOnSelect={true}
         onInputChange={handleInputChange}
         onChange={handleSelect}
       />
@@ -143,19 +147,29 @@ export const DesignSamples = () => {
         <div>
           <Typography weight="bold">Normal</Typography>
           <Spacer pt={2} />
-          <Select minWidth="200px" options={options} />
+          <Select closeMenuOnSelect={true} minWidth="200px" options={options} />
         </div>
         <Spacer pl={3} />
         <div>
           <Typography weight="bold">Disabled</Typography>
           <Spacer pt={2} />
-          <Select minWidth="200px" options={options} isDisabled={true} />
+          <Select
+            closeMenuOnSelect={true}
+            minWidth="200px"
+            options={options}
+            isDisabled={true}
+          />
         </div>
         <Spacer pl={3} />
         <div>
           <Typography weight="bold">Error</Typography>
           <Spacer pt={2} />
-          <Select minWidth="200px" options={options} error={true} />
+          <Select
+            closeMenuOnSelect={true}
+            minWidth="200px"
+            options={options}
+            error={true}
+          />
         </div>
       </Flex>
       <Spacer pt={3} />
