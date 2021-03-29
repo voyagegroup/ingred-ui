@@ -159,6 +159,7 @@ const Select: SelectComponent = ({
   minWidth,
   isDisabled,
   error = false,
+  closeMenuOnSelect = false,
   ...rest
 }) => {
   const theme = useTheme();
@@ -183,7 +184,7 @@ const Select: SelectComponent = ({
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
-        closeMenuOnSelect={false}
+        closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}
