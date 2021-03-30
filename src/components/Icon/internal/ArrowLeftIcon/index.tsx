@@ -10,7 +10,8 @@ const ArrowLeftIcon: React.FunctionComponent<IconProps> = ({ fill }) => (
     <path fill="none" d="M0,0H24V24H0Z" />
     <path
       fill={fill}
-      d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+      d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+      transform="translate(-1.414 -1.114)"
     />
   </svg>
 );
