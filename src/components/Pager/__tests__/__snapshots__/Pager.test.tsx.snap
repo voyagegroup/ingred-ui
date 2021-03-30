@@ -7,13 +7,13 @@ exports[`Pager component testing Pager 1`] = `
     display="flex"
   >
     <button
-      class="sc-dlfnbm estAez"
+      class="sc-dlfnbm iMZluo"
       disabled=""
       type="button"
     >
       <div
-        class="sc-hKgILt bCJBUU"
-        size="24"
+        class="sc-hKgILt isIgGw"
+        size="18"
       >
         <svg
           transform="rotate(90)"
@@ -111,12 +111,12 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-dlfnbm dmhgon"
+      class="sc-dlfnbm daJEtg"
       type="button"
     >
       <div
-        class="sc-hKgILt bCJBUU"
-        size="24"
+        class="sc-hKgILt isIgGw"
+        size="18"
       >
         <svg
           transform="rotate(-90)"
