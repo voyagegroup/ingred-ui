@@ -3,6 +3,7 @@ import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
+import Spacer from "../Spacer";
 import Menu, { MenuProps } from "../Menu";
 import { ButtonSize, ButtonColor } from "../Button/Button";
 import { ContentProp } from "../MenuList/MenuList";
@@ -60,7 +61,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
     } else if (color === "primary") {
       return theme.palette.white;
     } else {
-      return "fill";
+      return theme.palette.black;
     }
   };
 
@@ -88,7 +89,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             >
               <Icon
                 name={"arrow_bottom"}
-                size="lg"
+                size="md"
                 // eslint-disable-next-line react/jsx-handler-names
                 color={setIconColor(disabled, color)}
               />
@@ -103,9 +104,10 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             onClick={handleToggleContent(!showContent)}
           >
             {children}
+            <Spacer pr={0.5} />
             <Icon
               name={"arrow_bottom"}
-              size="lg"
+              size="md"
               // eslint-disable-next-line react/jsx-handler-names
               color={setIconColor(disabled, color)}
             />
