@@ -12,7 +12,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -177,7 +177,7 @@ exports[`Select component testing Disable not selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-dcdqlp-placeholder"
@@ -282,7 +282,7 @@ exports[`Select component testing Disable one selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-10spk3r-singleValue"
@@ -387,7 +387,7 @@ exports[`Select component testing Error multiple selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -584,7 +584,7 @@ exports[`Select component testing Error not selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-2rfliy-placeholder"
@@ -688,7 +688,7 @@ exports[`Select component testing Error one selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-etdf8s-singleValue"
@@ -825,7 +825,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -1022,7 +1022,7 @@ exports[`Select component testing Normal not selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-b1k5wd-placeholder"
@@ -1126,7 +1126,7 @@ exports[`Select component testing Normal one selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-105lwrm-singleValue"
