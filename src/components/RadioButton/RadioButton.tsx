@@ -52,6 +52,7 @@ const Indicator = styled.div<IndicatorProps>`
       0.16,
     )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`};
   transition: all 0.3s ease;
+  background: ${({ theme }) => theme.palette.background.default};
 
   &::after {
     position: absolute;
