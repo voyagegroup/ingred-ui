@@ -63,6 +63,8 @@ import { AlartIcon } from "./internal/AlartIcon";
 import { BaseStationIcon } from "./internal/BaseStationIcon";
 import { BrailleIcon } from "./internal/BrailleIcon";
 import { LabelIcon } from "./internal/LabelIcon";
+import { DownloadCloudIcon } from "./internal/DownloadCloudIcon";
+import { SaveIcon } from "./internal/SaveIcon";
 
 export type IconName =
   | "dashboard"
@@ -125,7 +127,9 @@ export type IconName =
   | "alart"
   | "base_station"
   | "braille"
-  | "label";
+  | "label"
+  | "download_cloud"
+  | "save";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -206,6 +210,8 @@ export const icons: {
   base_station: BaseStationIcon,
   braille: BrailleIcon,
   label: LabelIcon,
+  download_cloud: DownloadCloudIcon,
+  save: SaveIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {

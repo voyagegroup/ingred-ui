@@ -123,7 +123,7 @@ const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
             <Icon
               name="arrow_bottom"
               color={isActive ? "active" : theme.palette.black}
-              size="lg"
+              size="md"
             />
           </Styled.ArrowIconWrapper>
         </Styled.Container>
