@@ -69,6 +69,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
+                  d="M0,0H24V24H0Z"
+                  fill="none"
+                />
+                <path
                   d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                   fill="#0B82F4"
                   transform="translate(-1.414 -1.114)"
