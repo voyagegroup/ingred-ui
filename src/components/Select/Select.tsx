@@ -135,7 +135,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: "8px",
+      padding: "10px",
     }),
   };
   return overrideStyles;
