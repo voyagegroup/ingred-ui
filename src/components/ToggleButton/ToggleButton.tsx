@@ -33,7 +33,6 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           disabled={disabled}
           onChange={onChange}
         />
-        <Styled.ToggleButton active={active} disabled={disabled} />
         <Styled.ActiveLabelText>
           <Typography
             component="div"
@@ -56,6 +55,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
             {inActiveText}
           </Typography>
         </Styled.InActiveLabelText>
+        <Styled.ToggleButton active={active} disabled={disabled} />
       </Styled.Label>
     </Styled.Container>
   );
