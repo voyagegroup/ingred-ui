@@ -130,7 +130,11 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
       </Styled.Container>
 
       {currentStatus === Status.ConditionSelecting && (
-        <Popover baseElement={inputElement} onClose={handleClose}>
+        <Popover
+          baseElement={inputElement}
+          positionPriority={["bottom-start"]}
+          onClose={handleClose}
+        >
           <FilterCard
             currentReferedFilters={currentReferedFilters}
             selectedFilterPack={filterPacks.find(
