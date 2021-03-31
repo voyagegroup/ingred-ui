@@ -159,7 +159,7 @@ const Select: SelectComponent = ({
   minWidth,
   isDisabled,
   error = false,
-  closeMenuOnSelect = false,
+  closeMenuOnSelect = true,
   ...rest
 }) => {
   const theme = useTheme();
