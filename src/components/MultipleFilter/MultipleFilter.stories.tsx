@@ -51,7 +51,6 @@ export const Example: Story<MultipleFilterProps> = () => {
   const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
   const handleChange = (referedFilters: ReferedFilterType[]) => {
     setFilters(referedFilters);
-    console.log(referedFilters);
   };
 
   return (

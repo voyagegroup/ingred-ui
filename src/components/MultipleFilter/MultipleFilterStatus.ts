@@ -1,3 +1,5 @@
+import { FilterPackType } from "./types";
+
 export const Status = {
   Empty: 0,
   FilterSelecting: 1,
@@ -6,10 +8,9 @@ export const Status = {
 
 export type Status = typeof Status[keyof typeof Status];
 
-// TODO: anyを外す
 export const getCurrentStatus = (
   isFocus: boolean,
-  selectedFilter: any,
+  selectedFilter: FilterPackType | null,
 ): Status => {
   if (!isFocus) {
     return Status.Empty;
