@@ -89,7 +89,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     <div>
       <Styled.Container isFocused={currentStatus !== Status.Empty}>
         <Styled.LeftContainer>
-          <Icon name="filter" size="md" color={theme.palette.gray.dark} />
+          <Icon name="search" size="md" color={theme.palette.gray.dark} />
         </Styled.LeftContainer>
         <Styled.CenterContainer>
           <Styled.InputContiner>
