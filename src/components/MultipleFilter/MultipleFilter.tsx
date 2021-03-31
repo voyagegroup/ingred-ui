@@ -109,16 +109,20 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               onFocus={handleOnFocus}
             />
           </Styled.InputContiner>
-          <Menu
-            contents={filterPacks.map((filterOption) => ({
-              onClick: handleSelect(filterOption),
-              text: filterOption.categoryName,
-            }))}
-            isOpen={currentStatus === Status.FilterSelecting}
-            baseElement={inputElement}
-            maxHeight={menuMaxHeight}
-            onClose={handleMenuClose}
-          />
+          {currentStatus === Status.FilterSelecting && (
+            <Popover baseElement={inputElement}>
+              <Menu
+                contents={filterPacks.slice().map((filterOption) => ({
+                  onClick: handleSelect(filterOption),
+                  text: filterOption.categoryName,
+                }))}
+                // isOpen={currentStatus === Status.FilterSelecting}
+                baseElement={inputElement}
+                maxHeight={menuMaxHeight}
+                onClose={handleMenuClose}
+              />
+            </Popover>
+          )}
         </Styled.CenterContainer>
         <Styled.RightContainer>
           <CloseButton onClick={handleClear} />
