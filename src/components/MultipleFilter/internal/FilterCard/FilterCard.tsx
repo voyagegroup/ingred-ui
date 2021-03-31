@@ -25,6 +25,7 @@ export type Props = {
 };
 
 type FormType = {
+  section: string;
   condition: string;
 };
 
@@ -43,13 +44,17 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     label: filter.filterName,
     value: filter.filterName,
   }));
-  const { register, setValue, handleSubmit, errors, watch } = useForm({
+  const { register, setValue, handleSubmit, errors } = useForm({
     shouldUnregister: false,
+    defaultValues: {
+      section: undefined,
+      condition: undefined,
+    },
   });
 
   const handleSelect = (option: OptionType<any>) => {
     if (option === null) {
-      setValue("condition", null);
+      setValue("condition", undefined);
     } else {
       setValue("condition", option.value);
     }
@@ -89,11 +94,10 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const onSubmit = (data: FormType) => {
-    if (selectedFilter === undefined) {
-      setSubmitError("区分を選択してください");
-      return;
-    } else {
+    if (data.section && data.condition) {
       setSubmitError(undefined);
+    } else {
+      setSubmitError("区分・状態を設定してください");
     }
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
@@ -106,14 +110,24 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
   const handleFilterChange = (option: OptionType<string>) => {
     if (option === null) {
+      setValue("section", undefined);
       setSelectedFilter(undefined);
     } else {
-      setSelectedFilter(
-        selectedFilterPack?.filters.find(
-          (filter) => filter.filterName === option.value,
-        ),
+      const filter = selectedFilterPack?.filters.find(
+        (f) => f.filterName === option.value,
       );
+      setValue("section", filter?.filterName);
+      setSelectedFilter(filter);
     }
+  };
+
+  const getUnSelectedOption = (options: OptionType[] | undefined) => {
+    return options?.filter(
+      (option) =>
+        !currentReferedFilters
+          .map((referedFilter) => referedFilter.filterName)
+          .includes(option.label),
+    );
   };
 
   return (
@@ -134,12 +148,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         </Typography>
         <Spacer py={0.5} />
         <Select
-          options={options?.filter(
-            (option) =>
-              !currentReferedFilters
-                .map((referedFilter) => referedFilter.filterName)
-                .includes(option.label),
-          )}
+          options={getUnSelectedOption(options)}
           onChange={handleFilterChange}
         />
         <Spacer py={1} />
@@ -163,9 +172,9 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           my={2}
         />
 
-        {submitError && !selectedFilter && (
+        {submitError && (
           <Spacer py={2}>
-            <ErrorText>状態を選択してください。</ErrorText>
+            <ErrorText>{submitError}</ErrorText>
           </Spacer>
         )}
 
