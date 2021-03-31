@@ -7,17 +7,19 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF iDkGgJ sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex oSzyM sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
       <div
-        class="sc-iBPRYJ gvzchn"
-        size="24"
+        class="sc-fubCfw dUqkTa"
+      />
+      <div
+        class="sc-iBPRYJ idfKxT"
+        size="18"
       >
         <svg
           viewBox="0 0 24 24"
@@ -28,30 +30,31 @@ exports[`DropdownButton component testing not splited disable 1`] = `
             fill="none"
           />
           <path
-            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
             fill="#B3BAC1"
+            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </div>
     </button>
   </div>
   <div
-    class="sc-iqHYGH hWETzC"
+    class="sc-crrsfI iItuYr"
   >
     <div
-      class="sc-kEjbxe kylNHj"
+      class="sc-iqHYGH icbpBe"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-fubCfw SsASl"
+        class="sc-pFZIQ flczYu"
       >
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -62,7 +65,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -73,12 +76,12 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -89,7 +92,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -112,16 +115,18 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dMbzMA sc-gKsewC ijcSYt"
+      class="sc-gsTCUz sc-dlfnbm idRKex cuSjWD sc-gKsewC ijcSYt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
       <div
-        class="sc-iBPRYJ gvzchn"
-        size="24"
+        class="sc-fubCfw dUqkTa"
+      />
+      <div
+        class="sc-iBPRYJ idfKxT"
+        size="18"
       >
         <svg
           viewBox="0 0 24 24"
@@ -132,36 +137,37 @@ exports[`DropdownButton component testing not splited enable 1`] = `
             fill="none"
           />
           <path
-            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
             fill="#FDFEFF"
+            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </div>
     </button>
   </div>
   <div
-    class="sc-iqHYGH jYfSdi"
+    class="sc-crrsfI eAnzhb"
   >
     <div
-      class="sc-crrsfI kTSDKm sc-dQppl gabPPy fade-transition-enter fade-transition-enter-active"
+      class="sc-dQppl bHQPKQ sc-bqyKva iUBVx fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-kEjbxe kylNHj"
+      class="sc-iqHYGH icbpBe"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-fubCfw SsASl"
+        class="sc-pFZIQ flczYu"
       >
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -172,7 +178,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -183,12 +189,12 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -199,7 +205,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -222,25 +228,23 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF hFvtmK sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex ffFyTf sc-eCssSg eZdWdg"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF hFvtmK sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm idRKex ffFyTf sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       <div
-        class="sc-iBPRYJ gvzchn"
-        size="24"
+        class="sc-iBPRYJ idfKxT"
+        size="18"
       >
         <svg
           viewBox="0 0 24 24"
@@ -251,30 +255,31 @@ exports[`DropdownButton component testing splited disable 1`] = `
             fill="none"
           />
           <path
-            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
             fill="#B3BAC1"
+            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </div>
     </button>
   </div>
   <div
-    class="sc-iqHYGH hWETzC"
+    class="sc-crrsfI iItuYr"
   >
     <div
-      class="sc-kEjbxe kylNHj"
+      class="sc-iqHYGH icbpBe"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-fubCfw SsASl"
+        class="sc-pFZIQ flczYu"
       >
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -285,7 +290,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -296,12 +301,12 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -312,7 +317,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -335,23 +340,21 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-eCssSg eZdWdg"
+      class="sc-gsTCUz sc-dlfnbm idRKex eCLzwk sc-eCssSg eZdWdg"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       Save
     </button>
     <button
-      class="sc-gsTCUz sc-dlfnbm drHOmF dJCGgL sc-jSgupP pjuOx"
+      class="sc-gsTCUz sc-dlfnbm idRKex eCLzwk sc-jSgupP fKddXt"
       data-testid="menu-toggle"
       font-size="14px"
       font-weight="bold"
-      height="42px"
     >
       <div
-        class="sc-iBPRYJ gvzchn"
-        size="24"
+        class="sc-iBPRYJ idfKxT"
+        size="18"
       >
         <svg
           viewBox="0 0 24 24"
@@ -362,36 +365,37 @@ exports[`DropdownButton component testing splited enable 1`] = `
             fill="none"
           />
           <path
-            d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
             fill="#FDFEFF"
+            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </div>
     </button>
   </div>
   <div
-    class="sc-iqHYGH jYfSdi"
+    class="sc-crrsfI eAnzhb"
   >
     <div
-      class="sc-crrsfI kTSDKm sc-dQppl gabPPy fade-transition-enter fade-transition-enter-active"
+      class="sc-dQppl bHQPKQ sc-bqyKva iUBVx fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-kEjbxe kylNHj"
+      class="sc-iqHYGH icbpBe"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-fubCfw SsASl"
+        class="sc-pFZIQ flczYu"
       >
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -402,7 +406,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -413,12 +417,12 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <hr
-          class="sc-jrAGrp jgCjEA"
+          class="sc-kEjbxe gJAmGL"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"
@@ -429,7 +433,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
           </p>
         </div>
         <div
-          class="sc-pFZIQ gTJVis"
+          class="sc-jrAGrp hsKOsc"
         >
           <p
             class="sc-bdfBwQ gNlqto"

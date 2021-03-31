@@ -16,8 +16,6 @@ export const BaseButton = styled.button`
   outline: none;
 
   &:disabled {
-    box-shadow: none;
-    text-shadow: none;
     cursor: not-allowed;
   }
 `;

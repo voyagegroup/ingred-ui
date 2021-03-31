@@ -5,6 +5,7 @@ import Typography from "../../Typography";
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;
   display: flex;
+  align-items: center;
   padding: ${({ theme }) =>
     `${theme.spacing * 2}px 0 ${theme.spacing * 2}px ${theme.spacing * 3}px`};
   background-color: ${({ isActive, theme }) =>

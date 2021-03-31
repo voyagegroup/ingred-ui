@@ -12,7 +12,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -36,12 +36,14 @@ exports[`Select component testing Disable multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -71,12 +73,14 @@ exports[`Select component testing Disable multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -121,8 +125,8 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -133,8 +137,9 @@ exports[`Select component testing Disable multiple selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#B3BAC1"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -172,7 +177,7 @@ exports[`Select component testing Disable not selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-dcdqlp-placeholder"
@@ -216,8 +221,8 @@ exports[`Select component testing Disable not selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -228,8 +233,9 @@ exports[`Select component testing Disable not selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#B3BAC1"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -276,7 +282,7 @@ exports[`Select component testing Disable one selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-10spk3r-singleValue"
@@ -320,8 +326,8 @@ exports[`Select component testing Disable one selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -332,8 +338,9 @@ exports[`Select component testing Disable one selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#B3BAC1"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -380,7 +387,7 @@ exports[`Select component testing Error multiple selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -404,12 +411,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -439,12 +448,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -498,12 +509,14 @@ exports[`Select component testing Error multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -519,8 +532,8 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -531,8 +544,9 @@ exports[`Select component testing Error multiple selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#EB0A4E"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -570,7 +584,7 @@ exports[`Select component testing Error not selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-2rfliy-placeholder"
@@ -613,8 +627,8 @@ exports[`Select component testing Error not selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -625,8 +639,9 @@ exports[`Select component testing Error not selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#EB0A4E"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -673,7 +688,7 @@ exports[`Select component testing Error one selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-etdf8s-singleValue"
@@ -726,12 +741,14 @@ exports[`Select component testing Error one selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -747,8 +764,8 @@ exports[`Select component testing Error one selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -759,8 +776,9 @@ exports[`Select component testing Error one selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#EB0A4E"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -807,7 +825,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class="css-utwydg-multiValue"
@@ -831,12 +849,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -866,12 +886,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -925,12 +947,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -946,8 +970,8 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -958,8 +982,9 @@ exports[`Select component testing Normal multiple selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#041C33"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -997,7 +1022,7 @@ exports[`Select component testing Normal not selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-b1k5wd-placeholder"
@@ -1040,8 +1065,8 @@ exports[`Select component testing Normal not selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1052,8 +1077,9 @@ exports[`Select component testing Normal not selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#041C33"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>
@@ -1100,7 +1126,7 @@ exports[`Select component testing Normal one selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-12ms9px-ValueContainer"
+          class=" css-6wqz8z-ValueContainer"
         >
           <div
             class=" css-105lwrm-singleValue"
@@ -1153,12 +1179,14 @@ exports[`Select component testing Normal one selected 1`] = `
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(18.364 2) rotate(45)"
                     width="5.142"
                   />
                   <rect
                     fill="#041C33"
                     height="23.141"
+                    rx="2.571"
                     transform="translate(2 5.636) rotate(-45)"
                     width="5.143"
                   />
@@ -1174,8 +1202,8 @@ exports[`Select component testing Normal one selected 1`] = `
               class="sc-eCssSg kawlMF"
             >
               <div
-                class="sc-hKgILt bCJBUU"
-                size="24"
+                class="sc-hKgILt isIgGw"
+                size="18"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1186,8 +1214,9 @@ exports[`Select component testing Normal one selected 1`] = `
                     fill="none"
                   />
                   <path
-                    d="M12,15,7.757,10.757,9.172,9.343,12,12.172l2.828-2.829,1.415,1.414Z"
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
                     fill="#041C33"
+                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </div>

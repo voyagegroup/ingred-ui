@@ -135,7 +135,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: "8px",
+      padding: "10px",
     }),
   };
   return overrideStyles;
@@ -159,6 +159,7 @@ const Select: SelectComponent = ({
   minWidth,
   isDisabled,
   error = false,
+  closeMenuOnSelect = false,
   ...rest
 }) => {
   const theme = useTheme();
@@ -183,6 +184,7 @@ const Select: SelectComponent = ({
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect
         isClearable
+        closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles(theme, error)}
