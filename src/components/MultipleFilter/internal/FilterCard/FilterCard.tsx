@@ -98,6 +98,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       setSubmitError(undefined);
     } else {
       setSubmitError("区分・状態を設定してください");
+      return;
     }
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
