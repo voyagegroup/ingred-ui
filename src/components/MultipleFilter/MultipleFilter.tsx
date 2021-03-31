@@ -4,89 +4,44 @@ import Menu, { MenuProps } from "../Menu";
 import Icon from "../Icon";
 import Input from "../Input";
 import { useTheme } from "../../themes";
-import Badge from "../Badge";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
 import { CloseButton } from "./internal/CloseButton";
+import { FilterPackType, ReferedFilterType } from "./types";
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
-  // TODO: ここでfilterの条件を受け取る
+  filterPacks: FilterPackType[];
+  onChange?: (referedFilters: ReferedFilterType[]) => void;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   menuMaxHeight = "none",
+  filterPacks,
+  onChange,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
-  const [selectedFilter, setSelectedFilter] = React.useState<any>(null);
+  const [
+    selectedFilter,
+    setSelectedFilter,
+  ] = React.useState<FilterPackType | null>(null);
   const theme = useTheme();
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
   >(null);
   const currentStatus = getCurrentStatus(isFocus, selectedFilter);
-
-  //////////////////
-  // For render  //
-
-  // TODO: 条件のオブジェクトの形式を考える
-  const filterExample = [
-    { name: "成人", condition: true },
-    { name: "血液型", condition: "AB型" },
-    { name: "身長170cm未満", condition: true },
-    { name: "生年月日", condition: "6月" },
-    { name: "体重", condition: "60 ~ 70" },
-  ];
-
-  const filterOptions = [
-    {
-      categoryName: "列名",
-      filters: [
-        {
-          filterName: "デマンド",
-          control: {
-            type: "text",
-          },
-        },
-        {
-          filterName: "チャネル",
-          control: {
-            type: "text",
-          },
-        },
-      ],
-    },
-    {
-      categoryName: "紐付け",
-      filters: [
-        {
-          filterName: "デバイス",
-          control: {
-            type: "select",
-            options: ["未選択", "紐付け未完了", "紐付け完了"],
-          },
-        },
-        {
-          filterName: "サイト",
-          control: {
-            type: "select",
-            options: ["未選択", "紐付け未完了", "紐付け完了"],
-          },
-        },
-      ],
-    },
-  ];
-  // For render   //
-  /////////////////
+  const [currentReferedFilters, setCurrentReferedFilters] = React.useState<
+    ReferedFilterType[]
+  >([]);
 
   const handleOnFocus = () => {
     setIsFocus(true);
   };
 
-  // TODO: 条件のオブジェクトの形式を考える
-  const handleSelect = (elem: any) => () => {
-    setSelectedFilter(elem.name);
+  const handleSelect = (elem: FilterPackType) => () => {
+    setSelectedFilter(elem);
   };
 
   const handleClose = () => {
@@ -103,12 +58,31 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     }
   };
 
-  const handleApply = () => {
-    /*
-      TODO: filterを追加する処理
-    */
+  const handleApply = (newReferedFilter: ReferedFilterType) => {
+    const newReferedFilters = currentReferedFilters.concat([newReferedFilter]);
+    setCurrentReferedFilters(newReferedFilters);
+    if (onChange !== undefined) {
+      onChange(newReferedFilters);
+    }
     setSelectedFilter(null);
     setIsFocus(false);
+  };
+
+  const handleRemove = (removedFilter: ReferedFilterType) => {
+    const newReferedFilters = currentReferedFilters.filter(
+      (referedFilter) => referedFilter.filterName !== removedFilter.filterName,
+    );
+    if (onChange !== undefined) {
+      onChange(newReferedFilters);
+    }
+    setCurrentReferedFilters(newReferedFilters);
+  };
+
+  const handleClear = () => {
+    if (onChange !== undefined) {
+      onChange([]);
+    }
+    setCurrentReferedFilters([]);
   };
 
   return (
@@ -120,10 +94,10 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         <Styled.CenterContainer>
           <Styled.InputContiner>
             {/* TODO: filterを保持できるようにする */}
-            {filterExample.map((filter) => {
+            {currentReferedFilters.map((referedFilter) => {
               return (
-                <Styled.LabelContainer key={filter.name}>
-                  <Label filterOption={filter} />
+                <Styled.LabelContainer key={referedFilter.filterName}>
+                  <Label filter={referedFilter} onRemove={handleRemove} />
                 </Styled.LabelContainer>
               );
             })}
@@ -136,9 +110,9 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
             />
           </Styled.InputContiner>
           <Menu
-            contents={filterExample.map((elem) => ({
-              onClick: handleSelect(elem),
-              text: elem.name,
+            contents={filterPacks.map((filterOption) => ({
+              onClick: handleSelect(filterOption),
+              text: filterOption.categoryName,
             }))}
             isOpen={currentStatus === Status.FilterSelecting}
             baseElement={inputElement}
@@ -147,15 +121,19 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           />
         </Styled.CenterContainer>
         <Styled.RightContainer>
-          <CloseButton />
+          <CloseButton onClick={handleClear} />
         </Styled.RightContainer>
       </Styled.Container>
 
       {currentStatus === Status.ConditionSelecting && (
         <Popover baseElement={inputElement} onClose={handleClose}>
           <FilterCard
-            selectedFilter={selectedFilter}
-            onSubmit={handleApply}
+            currentReferedFilters={currentReferedFilters}
+            selectedFilterPack={filterPacks.find(
+              (filterOption) =>
+                filterOption.categoryName === selectedFilter?.categoryName,
+            )}
+            onApply={handleApply}
             onClose={handleClose}
           />
         </Popover>

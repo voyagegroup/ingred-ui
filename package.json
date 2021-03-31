@@ -32,7 +32,8 @@
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
     "react-toast-notifications": "^2.4.0",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "react-use-form": "^0.1.0"
   },
   "peerDependencies": {
     "react": ">= 16.8.0 || ^17.0.1",
