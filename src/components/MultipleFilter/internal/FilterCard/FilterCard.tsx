@@ -60,7 +60,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     }
   };
 
-  const getInputField = (filter: FilterType | undefined) => {
+  const getInputField = (filter: FilterType) => {
     const type = filter?.control.type;
     switch (type) {
       case "text":
@@ -162,7 +162,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             {getInputField(
               selectedFilterPack?.filters.find(
                 (filter) => filter.filterName === selectedFilter.filterName,
-              ),
+              ) as FilterType,
             )}
             <Spacer py={1} />
           </div>

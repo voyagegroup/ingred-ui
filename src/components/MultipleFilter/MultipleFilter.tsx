@@ -10,10 +10,11 @@ import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
 import { CloseButton } from "./internal/CloseButton";
 import { FilterPackType, ReferedFilterType } from "./types";
+import { ContentProp } from "../MenuList/MenuList";
 
 export type MultipleFilterProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
-  filterPacks: FilterPackType[];
+  filterPacks?: FilterPackType[];
   onChange?: (referedFilters: ReferedFilterType[]) => void;
 };
 
@@ -111,10 +112,12 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           {currentStatus === Status.FilterSelecting && (
             <Popover baseElement={inputElement}>
               <Menu
-                contents={filterPacks.slice().map((filterOption) => ({
-                  onClick: handleSelect(filterOption),
-                  text: filterOption.categoryName,
-                }))}
+                contents={
+                  filterPacks?.map((filterOption) => ({
+                    onClick: handleSelect(filterOption),
+                    text: filterOption.categoryName,
+                  })) as ContentProp[]
+                }
                 baseElement={inputElement}
                 maxHeight={menuMaxHeight}
                 onClose={handleMenuClose}
@@ -135,7 +138,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         >
           <FilterCard
             currentReferedFilters={currentReferedFilters}
-            selectedFilterPack={filterPacks.find(
+            selectedFilterPack={filterPacks?.find(
               (filterOption) =>
                 filterOption.categoryName === selectedFilter?.categoryName,
             )}
