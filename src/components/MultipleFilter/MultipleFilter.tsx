@@ -37,6 +37,12 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     ReferedFilterType[]
   >([]);
 
+  React.useEffect(() => {
+    if (onChange !== undefined) {
+      onChange(currentReferedFilters);
+    }
+  }, [currentReferedFilters, onChange]);
+
   const handleOnFocus = () => {
     setIsFocus(true);
   };
@@ -62,9 +68,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const handleApply = (newReferedFilter: ReferedFilterType) => {
     const newReferedFilters = currentReferedFilters.concat([newReferedFilter]);
     setCurrentReferedFilters(newReferedFilters);
-    if (onChange !== undefined) {
-      onChange(newReferedFilters);
-    }
     setSelectedFilter(null);
     setIsFocus(false);
   };
@@ -73,16 +76,10 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     const newReferedFilters = currentReferedFilters.filter(
       (referedFilter) => referedFilter.filterName !== removedFilter.filterName,
     );
-    if (onChange !== undefined) {
-      onChange(newReferedFilters);
-    }
     setCurrentReferedFilters(newReferedFilters);
   };
 
   const handleClear = () => {
-    if (onChange !== undefined) {
-      onChange([]);
-    }
     setCurrentReferedFilters([]);
   };
 
