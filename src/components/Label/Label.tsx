@@ -29,12 +29,10 @@ const Label: React.FunctionComponent<LabelProps> = ({
           {labelTitle}
         </Typography>
       </Styled.LeftContainer>
-      {onRemove ? (
+      {onRemove && (
         <Styled.RightContainer>
           <CloseButton onClick={handleClick} />
         </Styled.RightContainer>
-      ) : (
-        <div />
       )}
     </Styled.Container>
   );
