@@ -9,10 +9,17 @@ export const Container = styled.div<{ isFocused: boolean }>`
 `;
 
 export const InputContiner = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   & > input {
     border: none;
     padding-left: 12px;
   }
+`;
+
+export const LabelContainer = styled.div`
+  padding-left: 10px;
 `;
 
 export const LeftContainer = styled.div`
@@ -20,8 +27,18 @@ export const LeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 8px;
+  flex-grow: 0;
+`;
+
+export const CenterContainer = styled.div`
+  padding-top: 12px;
+  padding-bottom: 12px;
+  flex-grow: 1;
 `;
 
 export const RightContainer = styled.div`
-  padding: 12px;
+  flex-grow: 0;
+  display: flex;
+  align-items: center;
+  padding-right: 19px;
 `;
