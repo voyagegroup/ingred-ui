@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const CloseCircleIcon: React.FunctionComponent<IconProps> = () => {
+const CloseCircleIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <g transform="translate(-657 -463)">
@@ -13,7 +13,7 @@ const CloseCircleIcon: React.FunctionComponent<IconProps> = () => {
             transform="translate(1.429 1.429)"
             fill="none"
           />
-          <circle cx="10" cy="10" r="10" fill="#041c33" />
+          <circle cx="10" cy="10" r="10" fill={fill} />
           <g transform="translate(2 2)">
             <rect width="16" height="16" fill="none" />
             <rect
