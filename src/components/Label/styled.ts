@@ -20,5 +20,5 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
-  padding-left: 5px;
+  padding-left: 8px;
 `;
