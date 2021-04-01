@@ -110,7 +110,11 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     },
     multiValue: (base) => ({
       ...base,
-      backgroundColor: theme.palette.gray.light,
+      // backgroundColor: "black",
+      backgroundColor: theme.palette.gray.highlight,
+      padding: 0,
+      margin: 0,
+      border: `1px solid ${theme.palette.divider}`,
       borderRadius: `${theme.radius}px`,
     }),
     multiValueLabel: (base, { isDisabled }) => {
@@ -122,7 +126,9 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       }
       return {
         ...base,
-        padding: 0,
+        // backgroundColor: "black",
+        padding: "2px 0px 3px 8px",
+
         color: `${color}`,
         fontSize: `${fontSize.sm}px`,
       };
@@ -135,7 +141,8 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: "10px 8px",
+      padding: "6px 8px",
+      minHeight: "40px",
     }),
   };
   return overrideStyles;
