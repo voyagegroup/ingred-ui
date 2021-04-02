@@ -3,14 +3,14 @@
 exports[`ContextMenu component testing ContextMenu 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdfBwQ bALooy sc-eCssSg cAxTqV"
+    class="sc-bdvvaa EUaCG sc-eCImvq jEQlSk"
     data-testid="icon-wrapper"
   >
     <div
-      class="sc-gsTCUz dAkVRH"
+      class="sc-gsDJrp jUzfiR"
     >
       <div
-        class="sc-dlfnbm fvnsYK"
+        class="sc-dkPtyc kAVcpe"
         size="18"
       >
         <svg
@@ -30,37 +30,37 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
       </div>
     </div>
     <p
-      class="sc-hKgILt fmILyq"
+      class="sc-hKwCoD hHciTh"
       color="#0B82F4"
       font-size="14px"
     />
   </button>
   <div
-    class="sc-pFZIQ ksFCbI"
+    class="sc-pVTma kfuYmo"
   >
     <div
-      class="sc-jrAGrp dWAcrB sc-kEjbxe coOSJc fade-transition-enter fade-transition-enter-active"
+      class="sc-jrQzUz jEEIov sc-kDThTU ctweVP fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-fubCfw bhqupj"
+      class="sc-furvIG eRmRZb"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-jSgupP hzoSSJ"
+        class="sc-jRQAMF OhOCP"
       >
         <hr
-          class="sc-iBPRYJ kWqbvW"
+          class="sc-iCfLBT fFFFEc"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-gKckTs iCdNbt"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKwCoD iLRwcO"
             color="#041C33"
             font-size="13px"
           >
@@ -68,10 +68,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-gKckTs iCdNbt"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKwCoD iLRwcO"
             color="#041C33"
             font-size="13px"
           >
@@ -79,15 +79,15 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-iBPRYJ kWqbvW"
+          class="sc-iCfLBT fFFFEc"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-gKckTs iCdNbt"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKwCoD iLRwcO"
             color="#041C33"
             font-size="13px"
           >
@@ -95,10 +95,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-gKckTs iCdNbt"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKwCoD iLRwcO"
             color="#041C33"
             font-size="13px"
           >
