@@ -34,7 +34,11 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
       theme.palette.black,
       0.08,
     )}`};
+<<<<<<< HEAD
   transition: all 0.2s ease-in-out;
+=======
+  transition: all 0.3s ease-in-out;
+>>>>>>> 478a42cedbd0a610a3f4b4d1d810d270912810b5
 `;
 
 export const LabelText = styled.div`
@@ -86,7 +90,7 @@ export const Label = styled.label<LabelProps>`
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   ${({ active }) =>
     active &&
