@@ -37,7 +37,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           <Typography
             component="div"
             color={disabled ? "disabled" : "primary"}
-            align="center"
+            align="left"
             size="xs"
             weight="bold"
           >
@@ -48,7 +48,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
           <Typography
             component="div"
             color={disabled ? "disabled" : "secondary"}
-            align="center"
+            align="right"
             size="xs"
             weight="bold"
           >
