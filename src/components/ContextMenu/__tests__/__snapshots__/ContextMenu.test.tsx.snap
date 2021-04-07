@@ -36,13 +36,13 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     />
   </button>
   <div
-    class="sc-pFZIQ ksFCbI"
+    class="sc-jrAGrp hiCsBc"
   >
     <div
-      class="sc-jrAGrp dWAcrB sc-kEjbxe coOSJc fade-transition-enter fade-transition-enter-active"
+      class="sc-kEjbxe gDEJEG sc-iqHYGH jmmggR fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-fubCfw bhqupj"
+      class="sc-pFZIQ horHys"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -52,15 +52,15 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
         class="sc-jSgupP hzoSSJ"
       >
         <hr
-          class="sc-iBPRYJ kWqbvW"
+          class="sc-fubCfw gdSgwf"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-iBPRYJ eNbA-Dk"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKgILt jKKuBF sc-gKsewC"
             color="#041C33"
             font-size="13px"
           >
@@ -68,10 +68,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-iBPRYJ eNbA-Dk"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKgILt jKKuBF sc-gKsewC"
             color="#041C33"
             font-size="13px"
           >
@@ -79,15 +79,15 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-iBPRYJ kWqbvW"
+          class="sc-fubCfw gdSgwf"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-iBPRYJ eNbA-Dk"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKgILt jKKuBF sc-gKsewC"
             color="#041C33"
             font-size="13px"
           >
@@ -95,10 +95,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-gKsewC eFXhdS"
+          class="sc-iBPRYJ eNbA-Dk"
         >
           <p
-            class="sc-hKgILt jKKuBF"
+            class="sc-hKgILt jKKuBF sc-gKsewC"
             color="#041C33"
             font-size="13px"
           >
