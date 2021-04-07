@@ -16,10 +16,10 @@ MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/
     name="Example"
     args={{
       contents: [
-        { text: "Save", onClick: () => {} },
-        { text: "Edit", onClick: () => {} },
-        { text: "Delete", onClick: () => {}, type: "disabled" },
-        { text: "Update", onClick: () => {}, type: "warning" },
+        { text: "Save", handleClick: () => {}, type: "default" },
+        { text: "Edit", handleClick: () => {}, type: "default" },
+        { text: "Delete", handleClick: () => {console.log("hoge")}, type: "disabled" },
+        { text: "Update", handleClick: () => {console.log("hoge")}, type: "warning" },
       ],
       maxHeight: "100px",
     }}

@@ -4,7 +4,7 @@ import { Property } from "csstype";
 import Divider from "../Divider";
 import { Theme, useTheme } from "../../themes";
 
-export type ContentType = "warning" | "disabled";
+export type ContentType = "default" | "warning" | "disabled";
 
 export type ContentTypeStyle = {
   normal: {
@@ -24,6 +24,20 @@ export type ContentTypeStyle = {
 export const getContentTypeStyles = (
   theme: Theme,
 ): { [P in ContentType]: ContentTypeStyle } => ({
+  default: {
+    normal: {
+      background: theme.palette.background.default,
+      color: theme.palette.black,
+    },
+    hover: {
+      background: theme.palette.gray.light,
+      color: theme.palette.black,
+    },
+    active: {
+      background: theme.palette.gray.main,
+      color: theme.palette.black,
+    },
+  },
   warning: {
     normal: {
       background: theme.palette.gray.highlight,
@@ -56,10 +70,9 @@ export const getContentTypeStyles = (
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
-  // TODO: rename "handleClick"
-  onClick: () => void;
+  handleClick: () => void;
   divideTop?: boolean;
-  type?: ContentType;
+  type: ContentType;
 };
 
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
@@ -73,6 +86,14 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
     const theme = useTheme();
     const contentTypeStyles = getContentTypeStyles(theme);
 
+    const checkIsDisabled = (type: ContentType) => type === "disabled";
+    const handleClick = (content: ContentProp) => (): void => {
+      if (content.type === "disabled") {
+        return;
+      }
+      content.handleClick();
+    };
+
     return (
       <Styled.Container
         inline={inline}
@@ -85,35 +106,22 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
             {content.divideTop && (
               <Divider my={1} mx={2} color={theme.palette.gray.light} />
             )}
-            {/* eslint-disable-next-line react/jsx-handler-names */}
             <Styled.TextContainer
-              disabled={content.type === "disabled"}
+              disabled={checkIsDisabled(content.type)}
               bgColorAtHover={
-                content.type
-                  ? contentTypeStyles[content.type]["hover"]["background"]
-                  : theme.palette.gray.light
+                contentTypeStyles[content.type]["hover"]["background"]
               }
               bgColorAtActive={
-                content.type
-                  ? contentTypeStyles[content.type]["active"]["background"]
-                  : theme.palette.gray.main
+                contentTypeStyles[content.type]["active"]["background"]
               }
               textColorAtHover={
-                content.type
-                  ? contentTypeStyles[content.type]["hover"]["color"]
-                  : theme.palette.black
+                contentTypeStyles[content.type]["hover"]["color"]
               }
-              onClick={
-                content.type === "disabled" ? undefined : content.onClick
-              }
+              onClick={handleClick(content)}
             >
               <Styled.Text
                 size="sm"
-                color={
-                  content.type
-                    ? contentTypeStyles[content.type]["normal"]["color"]
-                    : "initial"
-                }
+                color={contentTypeStyles[content.type]["normal"]["color"]}
               >
                 {content.text}
               </Styled.Text>
