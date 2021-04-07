@@ -4,7 +4,7 @@ import ContextMenu from "./ContextMenu";
 <Meta
   title="Components/Navigation/ContextMenu"
   component={ContextMenu}
-  argTypes={{ onClick: { action: "clicked" } }}
+  argTypes={{ handleClick: { action: "clicked" } }}
 />
 
 # ContextMenu
@@ -20,11 +20,13 @@ import ContextMenu from "./ContextMenu";
       contents: [
         {
           text: "Edit",
-          onClick: () => {},
+          handleClick: () => {},
+          type: "default",
         },
         {
           text: "Save",
-          onClick: () => {},
+          handleClick: () => {},
+          type: "default",
         },
       ],
     }}

@@ -2,30 +2,35 @@ import * as React from "react";
 import DropdownButton, { DropdownButtonProps } from "./";
 import { Story } from "@storybook/react/types-6-0";
 import { Flex, Spacer, Typography } from "..";
+import { ContentProp } from "../MenuList/MenuList";
 
 export default {
   title: "Components/Inputs/DropdownButton",
   component: DropdownButton,
 };
 
-const contents = [
+const contents: ContentProp[] = [
   {
     text: "Save",
-    onClick: () => {},
+    handleClick: () => {},
+    type: "default",
   },
   {
     text: "Save and execute",
-    onClick: () => {},
+    handleClick: () => {},
     divideTop: true,
+    type: "default",
   },
   {
     text: "Save as draft",
-    onClick: () => {},
+    handleClick: () => {},
+    type: "default",
   },
   {
     text: "Delete",
-    onClick: () => {},
+    handleClick: () => {},
     divideTop: true,
+    type: "default",
   },
 ];
 

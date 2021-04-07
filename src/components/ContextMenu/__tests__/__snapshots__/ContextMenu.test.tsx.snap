@@ -51,11 +51,6 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
       <div
         class="sc-jSgupP hzoSSJ"
       >
-        <hr
-          class="sc-fubCfw gdSgwf"
-          color="#E2E8EA"
-          orientation="horizontal"
-        />
         <div
           class="sc-iBPRYJ eNbA-Dk"
         >
@@ -67,6 +62,11 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
             Save
           </p>
         </div>
+        <hr
+          class="sc-fubCfw gdSgwf"
+          color="#E2E8EA"
+          orientation="horizontal"
+        />
         <div
           class="sc-iBPRYJ eNbA-Dk"
         >
@@ -76,6 +76,17 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
             font-size="13px"
           >
             Save and execute
+          </p>
+        </div>
+        <div
+          class="sc-iBPRYJ eNbA-Dk"
+        >
+          <p
+            class="sc-hKgILt jKKuBF sc-gKsewC"
+            color="#041C33"
+            font-size="13px"
+          >
+            Save as draft
           </p>
         </div>
         <hr
@@ -91,18 +102,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
             color="#041C33"
             font-size="13px"
           >
-            Save as draft
-          </p>
-        </div>
-        <div
-          class="sc-iBPRYJ eNbA-Dk"
-        >
-          <p
-            class="sc-hKgILt jKKuBF sc-gKsewC"
-            color="#041C33"
-            font-size="13px"
-          >
-            Cancel
+            Delete
           </p>
         </div>
       </div>
