@@ -42,3 +42,4 @@ export const RightContainer = styled.div`
   align-items: center;
   padding-right: 19px;
 `;
+export const IconContainer = styled.div``;

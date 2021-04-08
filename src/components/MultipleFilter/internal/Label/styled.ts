@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding-right: 8px;
-  padding-left: 8px;
+  padding: 2px 8px;
   width: auto;
-  height: 24px;
+  height: auto;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
   border: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ theme }) => theme.radius}px;
@@ -21,5 +20,7 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
-  padding-left: 10px;
+  padding-left: 8px;
 `;
+
+export const IconContainer = styled.div``;
