@@ -4,10 +4,10 @@ import { FontSize } from "../Typography/Typography";
 import { CloseButton } from "./internal/CloseButton";
 import * as Styled from "./styled";
 
-export type LabelProps = {
+export type LabelProps<E = object> = {
   title?: string;
   element?: any;
-  onRemove?: (element: any) => void;
+  onRemove?: (element: E) => void;
   size?: FontSize;
 };
 
