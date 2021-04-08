@@ -12,23 +12,23 @@ export default {
 const contents: ContentProp[] = [
   {
     text: "Save",
-    handleClick: () => {},
+    onClick: () => {},
     type: "default",
   },
   {
     text: "Save and execute",
-    handleClick: () => {},
+    onClick: () => {},
     divideTop: true,
     type: "default",
   },
   {
     text: "Save as draft",
-    handleClick: () => {},
+    onClick: () => {},
     type: "default",
   },
   {
     text: "Delete",
-    handleClick: () => {},
+    onClick: () => {},
     divideTop: true,
     type: "default",
   },

@@ -70,7 +70,7 @@ export const getContentTypeStyles = (
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
-  handleClick: () => void;
+  onClick: () => void;
   divideTop?: boolean;
   type: ContentType;
 };
@@ -91,7 +91,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       if (content.type === "disabled") {
         return;
       }
-      content.handleClick();
+      content.onClick();
     };
 
     return (

@@ -16,24 +16,24 @@ jest.mock("react-dom", () => {
 const contents: ContentProp[] = [
   {
     text: "Save",
-    handleClick: () => {},
+    onClick: () => {},
     divideTop: true,
     type: "default",
   },
   {
     text: "Save and execute",
-    handleClick: () => {},
+    onClick: () => {},
     type: "default",
   },
   {
     text: "Save as draft",
-    handleClick: () => {},
+    onClick: () => {},
     divideTop: true,
     type: "default",
   },
   {
     text: "Cancel",
-    handleClick: () => {},
+    onClick: () => {},
     type: "default",
   },
 ];

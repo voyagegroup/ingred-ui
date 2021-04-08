@@ -8,23 +8,23 @@ import { ContentProp } from "../MenuList";
 const contents: ContentProp[] = [
   {
     text: "Save",
-    handleClick: () => {},
+    onClick: () => {},
     type: "default",
   },
   {
     text: "Save and execute",
-    handleClick: () => {},
+    onClick: () => {},
     divideTop: true,
     type: "default",
   },
   {
     text: "Save as draft",
-    handleClick: () => {},
+    onClick: () => {},
     type: "warning",
   },
   {
     text: "Cancel",
-    handleClick: () => {},
+    onClick: () => {},
     type: "disabled",
   },
 ];
