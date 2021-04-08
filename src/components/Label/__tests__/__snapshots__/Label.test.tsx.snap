@@ -14,7 +14,6 @@ exports[`Label component testing Label 1`] = `
         font-size="13px"
       />
     </div>
-    <div />
   </div>
 </DocumentFragment>
 `;
