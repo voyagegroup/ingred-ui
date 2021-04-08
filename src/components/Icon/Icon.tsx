@@ -65,6 +65,7 @@ import { BrailleIcon } from "./internal/BrailleIcon";
 import { LabelIcon } from "./internal/LabelIcon";
 import { DownloadCloudIcon } from "./internal/DownloadCloudIcon";
 import { SaveIcon } from "./internal/SaveIcon";
+import { CloseCircleIcon } from "./internal/CloseCircleIcon";
 
 export type IconName =
   | "dashboard"
@@ -129,7 +130,8 @@ export type IconName =
   | "braille"
   | "label"
   | "download_cloud"
-  | "save";
+  | "save"
+  | "close_circle";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -212,6 +214,7 @@ export const icons: {
   label: LabelIcon,
   download_cloud: DownloadCloudIcon,
   save: SaveIcon,
+  close_circle: CloseCircleIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
