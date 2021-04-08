@@ -5,28 +5,28 @@ import { CloseButton } from "./internal/CloseButton";
 import * as Styled from "./styled";
 
 export type LabelProps = {
-  labelTitle?: string;
-  labelElement?: any;
-  onRemove?: (labelElement: any) => void;
+  title?: string;
+  element?: any;
+  onRemove?: (element: any) => void;
   size?: FontSize;
 };
 
 const Label: React.FunctionComponent<LabelProps> = ({
-  labelTitle,
-  labelElement,
+  title,
+  element,
   onRemove,
   size = "sm",
 }) => {
   const handleClick = () => {
     if (onRemove) {
-      onRemove(labelElement);
+      onRemove(element);
     }
   };
   return (
     <Styled.Container>
       <Styled.LeftContainer>
         <Typography size={size} component="span">
-          {labelTitle}
+          {title}
         </Typography>
       </Styled.LeftContainer>
       {onRemove && (
