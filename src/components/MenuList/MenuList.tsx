@@ -108,15 +108,9 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
             )}
             <Styled.TextContainer
               disabled={checkIsDisabled(content.type)}
-              bgColorAtHover={
-                contentTypeStyles[content.type]["hover"]["background"]
-              }
-              bgColorAtActive={
-                contentTypeStyles[content.type]["active"]["background"]
-              }
-              textColorAtHover={
-                contentTypeStyles[content.type]["hover"]["color"]
-              }
+              normal={contentTypeStyles[content.type].normal}
+              hover={contentTypeStyles[content.type].hover}
+              active={contentTypeStyles[content.type].active}
               onClick={handleClick(content)}
             >
               <Styled.Text

@@ -2,10 +2,15 @@ import styled from "styled-components";
 import { Property } from "csstype";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Typography from "../Typography";
+import { ContentTypeStyle } from "./MenuList";
 
 type ContainerProps = {
   inline: boolean;
   maxHeight: Property.MaxHeight;
+};
+
+type TextContainerProps = ContentTypeStyle & {
+  disabled: boolean;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -18,12 +23,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Text = styled(Typography)``;
 
-export const TextContainer = styled.div<{
-  disabled: boolean;
-  bgColorAtHover: string;
-  bgColorAtActive: string;
-  textColorAtHover: string;
-}>`
+export const TextContainer = styled.div<TextContainerProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
@@ -33,11 +33,11 @@ export const TextContainer = styled.div<{
   border-radius: ${({ theme }) => theme.radius}px;
   &:hover {
     ${Text} {
-      color: ${({ textColorAtHover }) => textColorAtHover};
+      color: ${({ hover }) => hover.color};
     }
-    background-color: ${({ bgColorAtHover }) => bgColorAtHover};
+    background-color: ${({ hover }) => hover.background};
   }
   &:active {
-    background-color: ${({ bgColorAtActive }) => bgColorAtActive};
+    background-color: ${({ active }) => active.background};
   }
 `;
