@@ -23,3 +23,5 @@ export const LeftContainer = styled.div`
 export const RightContainer = styled.div`
   padding-left: 10px;
 `;
+
+export const IconContainer = styled.div``;

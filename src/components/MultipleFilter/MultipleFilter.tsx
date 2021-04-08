@@ -8,7 +8,6 @@ import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
-import { CloseButton } from "./internal/CloseButton";
 import { FilterPackType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 
@@ -83,6 +82,10 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     setCurrentReferedFilters([]);
   };
 
+  const hasReferedFilter = (refoeredfilters: ReferedFilterType[]) => {
+    return refoeredfilters.length !== 0;
+  };
+
   return (
     <div>
       <Styled.Container isFocused={currentStatus !== Status.Empty}>
@@ -123,7 +126,11 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           )}
         </Styled.CenterContainer>
         <Styled.RightContainer>
-          <CloseButton onClick={handleClear} />
+          {hasReferedFilter(currentReferedFilters) && (
+            <Styled.IconContainer onClick={handleClear}>
+              <Icon name="close_circle" color={theme.palette.black} />
+            </Styled.IconContainer>
+          )}
         </Styled.RightContainer>
       </Styled.Container>
 

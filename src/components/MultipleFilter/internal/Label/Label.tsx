@@ -1,7 +1,8 @@
 import * as React from "react";
+import { useTheme } from "../../../../themes";
+import Icon from "../../../Icon";
 import Typography from "../../../Typography";
 import { ReferedFilterType } from "../../types";
-import { CloseButton } from "../CloseButton";
 import * as Styled from "./styled";
 
 export type Props = {
@@ -18,6 +19,7 @@ const boolToString = (condition: any) => {
 };
 
 export const Label: React.FunctionComponent<Props> = ({ filter, onRemove }) => {
+  const theme = useTheme();
   const handleClick = () => {
     onRemove(filter);
   };
@@ -31,7 +33,9 @@ export const Label: React.FunctionComponent<Props> = ({ filter, onRemove }) => {
         </Typography>
       </Styled.LeftContainer>
       <Styled.RightContainer>
-        <CloseButton onClick={handleClick} />
+        <Styled.IconContainer onClick={handleClick}>
+          <Icon name="close_circle" color={theme.palette.black} />
+        </Styled.IconContainer>
       </Styled.RightContainer>
     </Styled.Container>
   );
