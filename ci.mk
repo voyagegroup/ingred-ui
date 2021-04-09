@@ -1,13 +1,9 @@
-.PHONY: install test changelog publish
+.PHONY: install test lint changelog release_version publish
 
 SEMVER :=
 RELEASE_VERSION :=
 GITHUB_TOKEN :=
-
-__req_semver:
-ifeq ($(filter $(SEMVER),patch minor major),)
-	$(error Require param SEMVER (patch or minor or major): $(SEMVER)))
-endif
+NPM_TOKEN :=
 
 install:
 ifeq ($(CI), true)
@@ -37,5 +33,10 @@ release_version:
 	npm config set git-tag-version false
 	npm version ${RELEASE_VERSION}
 
-publish: __req_semver build
+publish: build
+ifeq ($(CI), true)
+	git config --global user.email ingred-ui@voyagegroup.com
+	git config --global user.name INGRED-UI
+endif
+	@echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 	npm publish
