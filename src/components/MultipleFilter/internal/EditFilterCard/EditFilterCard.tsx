@@ -20,9 +20,9 @@ import RadioButton from "../../../RadioButton";
 
 export type Props = {
   onClose: () => void;
-  onApply: (newReferedFilter: ReferedFilterType) => void;
+  onEdit: (editedReferedFilter: ReferedFilterType) => void;
+  willEditFilter?: ReferedFilterType;
   selectedFilterPack?: FilterPackType;
-  currentReferedFilters: ReferedFilterType[];
 };
 
 type FormType = {
@@ -30,28 +30,23 @@ type FormType = {
   condition: string;
 };
 
-export const FilterCard: React.FunctionComponent<Props> = ({
+export const EditFilterCard: React.FunctionComponent<Props> = ({
   onClose,
-  onApply,
+  onEdit,
+  willEditFilter,
   selectedFilterPack,
-  currentReferedFilters,
 }) => {
-  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
-  const [submitError, setSubmitError] = React.useState<string | undefined>(
-    undefined,
-  );
   const theme = useTheme();
-  const options = selectedFilterPack?.filters.map((filter) => ({
-    label: filter.filterName,
-    value: filter.filterName,
-  }));
   const { register, setValue, handleSubmit, errors } = useForm({
     shouldUnregister: false,
     defaultValues: {
-      section: undefined,
-      condition: undefined,
+      section: willEditFilter?.filterName,
+      condition: willEditFilter?.filterCondtion,
     },
   });
+  const [submitError, setSubmitError] = React.useState<string | undefined>(
+    undefined,
+  );
 
   const handleSelect = (option: OptionType<any>) => {
     if (option === null) {
@@ -74,23 +69,38 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         );
       case "select":
         const options = filter?.control.options as string[];
+
         return (
           <Select
             options={options.map((option) => ({
               label: option,
               value: option,
             }))}
+            defaultValue={{
+              label: willEditFilter?.filterCondtion,
+              value: willEditFilter?.filterCondtion,
+            }}
             onChange={handleSelect}
           />
         );
       case "boolean":
         return (
           <div>
-            <RadioButton inputRef={register()} name="condition" value="true">
+            <RadioButton
+              defaultChecked={willEditFilter?.filterCondtion}
+              inputRef={register()}
+              name="condition"
+              value="true"
+            >
               true
             </RadioButton>
             <br />
-            <RadioButton inputRef={register()} name="condition" value="false">
+            <RadioButton
+              defaultChecked={willEditFilter?.filterCondtion}
+              inputRef={register()}
+              name="condition"
+              value="false"
+            >
               false
             </RadioButton>
           </div>
@@ -99,48 +109,27 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const onSubmit = (data: FormType) => {
-    if (data.section && data.condition) {
+    if (data.condition) {
       setSubmitError(undefined);
     } else {
       setSubmitError("区分・状態を設定してください");
       return;
     }
-    const newFilter = {
-      categoryName: selectedFilterPack?.categoryName as string,
-      filterName: selectedFilter?.filterName as string,
-      filterType: selectedFilter?.control.type as Types,
+
+    const editedFilter: ReferedFilterType = {
       filterCondtion: data.condition,
+      filterType: willEditFilter?.filterType as Types,
+      filterName: willEditFilter?.filterName as string,
+      categoryName: willEditFilter?.categoryName as string,
     };
-    onApply(newFilter);
-  };
-
-  const handleFilterChange = (option: OptionType<string>) => {
-    if (option === null) {
-      setValue("section", undefined);
-      setSelectedFilter(undefined);
-    } else {
-      const filter = selectedFilterPack?.filters.find(
-        (f) => f.filterName === option.value,
-      );
-      setValue("section", filter?.filterName);
-      setSelectedFilter(filter);
-    }
-  };
-
-  const getUnSelectedOption = (options: OptionType[] | undefined) => {
-    return options?.filter(
-      (option) =>
-        !currentReferedFilters
-          .map((referedFilter) => referedFilter.filterName)
-          .includes(option.label),
-    );
+    onEdit(editedFilter);
   };
 
   return (
     <Styled.FilterCard>
       <Styled.FilterCardHeader>
         <Typography weight="bold" size="xxl">
-          {selectedFilterPack?.categoryName}
+          {willEditFilter?.categoryName}
         </Typography>
 
         <Spacer pr={2} />
@@ -153,25 +142,18 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           区分
         </Typography>
         <Spacer py={0.5} />
-        <Select
-          options={getUnSelectedOption(options)}
-          onChange={handleFilterChange}
-        />
+        <TextField readOnly value={willEditFilter?.filterName} />
         <Spacer py={1} />
-        {selectedFilter && (
-          <div>
-            <Typography weight="bold" size="lg">
-              状態
-            </Typography>
-            <Spacer py={0.5} />
-            {getInputField(
-              selectedFilterPack?.filters.find(
-                (filter) => filter.filterName === selectedFilter.filterName,
-              ) as FilterType,
-            )}
-            <Spacer py={1} />
-          </div>
+        <Typography weight="bold" size="lg">
+          状態
+        </Typography>
+        <Spacer py={0.5} />
+        {getInputField(
+          selectedFilterPack?.filters.find(
+            (filter) => filter.filterName === willEditFilter?.filterName,
+          ) as FilterType,
         )}
+        <Spacer py={1} />
         <Divider
           orientation="horizontal"
           color={theme.palette.divider}
@@ -186,7 +168,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            適用する
+            変更する
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>

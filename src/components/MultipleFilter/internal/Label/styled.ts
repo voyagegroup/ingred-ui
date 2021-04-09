@@ -11,6 +11,9 @@ export const Container = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const LeftContainer = styled.div`

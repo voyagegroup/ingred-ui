@@ -8,6 +8,10 @@ import * as Styled from "./styled";
 export type Props = {
   filter: ReferedFilterType;
   onRemove: (removedFilter: ReferedFilterType) => void;
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    willEditFilter: ReferedFilterType,
+  ) => void;
 };
 
 const boolToString = (condition: any) => {
@@ -18,14 +22,21 @@ const boolToString = (condition: any) => {
   }
 };
 
-export const Label: React.FunctionComponent<Props> = ({ filter, onRemove }) => {
+export const Label: React.FunctionComponent<Props> = ({
+  filter,
+  onRemove,
+  onClick,
+}) => {
   const theme = useTheme();
-  const handleClick = () => {
+  const handleRemoveClick = () => {
     onRemove(filter);
+  };
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onClick(event, filter);
   };
   return (
     <Styled.Container>
-      <Styled.LeftContainer>
+      <Styled.LeftContainer onClick={handleClick}>
         <Typography size="sm" component="span">
           {filter.filterName}
           &nbsp;
@@ -33,7 +44,7 @@ export const Label: React.FunctionComponent<Props> = ({ filter, onRemove }) => {
         </Typography>
       </Styled.LeftContainer>
       <Styled.RightContainer>
-        <Styled.IconContainer onClick={handleClick}>
+        <Styled.IconContainer onClick={handleRemoveClick}>
           <Icon name="close_circle" color={theme.palette.black} />
         </Styled.IconContainer>
       </Styled.RightContainer>

@@ -1,37 +1,48 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Menu, { MenuProps } from "../Menu";
+import Menu from "../Menu";
 import Icon from "../Icon";
 import Input from "../Input";
 import { useTheme } from "../../themes";
 import Popover from "../Popover";
 import { FilterCard } from "./internal/FilterCard";
+import { EditFilterCard } from "./internal/EditFilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
 import { FilterPackType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 
 export type MultipleFilterProps = {
-  menuMaxHeight?: MenuProps["maxHeight"];
   filterPacks?: FilterPackType[];
   onChange?: (referedFilters: ReferedFilterType[]) => void;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
-  menuMaxHeight = "none",
   filterPacks,
   onChange,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [
-    selectedFilter,
-    setSelectedFilter,
+    selectedFilterPack,
+    setSelectedFilterPack,
   ] = React.useState<FilterPackType | null>(null);
   const theme = useTheme();
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
   >(null);
-  const currentStatus = getCurrentStatus(isFocus, selectedFilter);
+  const [
+    edittingLabelElement,
+    setEdittingLabelElement,
+  ] = React.useState<HTMLDivElement | null>(null);
+  const [
+    willEditFilter,
+    setWillEditFilter,
+  ] = React.useState<ReferedFilterType | null>(null);
+  const currentStatus = getCurrentStatus(
+    isFocus,
+    selectedFilterPack,
+    willEditFilter,
+  );
   const [currentReferedFilters, setCurrentReferedFilters] = React.useState<
     ReferedFilterType[]
   >([]);
@@ -47,12 +58,13 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   };
 
   const handleSelect = (elem: FilterPackType) => () => {
-    setSelectedFilter(elem);
+    setSelectedFilterPack(elem);
   };
 
   const handleClose = () => {
-    setSelectedFilter(null);
+    setSelectedFilterPack(null);
     setIsFocus(false);
+    setWillEditFilter(null);
   };
 
   const handleMenuClose = (
@@ -67,7 +79,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const handleApply = (newReferedFilter: ReferedFilterType) => {
     const newReferedFilters = currentReferedFilters.concat([newReferedFilter]);
     setCurrentReferedFilters(newReferedFilters);
-    setSelectedFilter(null);
+    setSelectedFilterPack(null);
     setIsFocus(false);
   };
 
@@ -86,6 +98,47 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     return refoeredfilters.length !== 0;
   };
 
+  const handleLabelClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    referedFilter: ReferedFilterType,
+  ) => {
+    const willEditFilterPack = filterPacks?.find(
+      (filterPack) => filterPack.categoryName === referedFilter.categoryName,
+    );
+    if (willEditFilterPack) {
+      setEdittingLabelElement(event.currentTarget);
+      setIsFocus(true);
+      setSelectedFilterPack(willEditFilterPack);
+      setWillEditFilter(referedFilter);
+    }
+  };
+
+  const handleEdit = (editedFilter: ReferedFilterType) => {
+    const editIndex = currentReferedFilters.findIndex(
+      (referedfilter) => referedfilter.filterName === editedFilter.filterName,
+    );
+    currentReferedFilters[editIndex] = editedFilter;
+    setCurrentReferedFilters(currentReferedFilters);
+    setIsFocus(false);
+    setWillEditFilter(null);
+  };
+
+  const getMenuOption = () => {
+    return filterPacks
+      ?.filter(
+        (filterPack) =>
+          filterPack.filters.length !==
+          currentReferedFilters.filter(
+            (referedFilter) =>
+              referedFilter.categoryName === filterPack.categoryName,
+          ).length,
+      )
+      .map((filterOption) => ({
+        onClick: handleSelect(filterOption),
+        text: filterOption.categoryName,
+      })) as ContentProp[];
+  };
+
   return (
     <div>
       <Styled.Container isFocused={currentStatus !== Status.Empty}>
@@ -97,7 +150,11 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
             {currentReferedFilters.map((referedFilter) => {
               return (
                 <Styled.LabelContainer key={referedFilter.filterName}>
-                  <Label filter={referedFilter} onRemove={handleRemove} />
+                  <Label
+                    filter={referedFilter}
+                    onRemove={handleRemove}
+                    onClick={handleLabelClick}
+                  />
                 </Styled.LabelContainer>
               );
             })}
@@ -112,14 +169,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           {currentStatus === Status.FilterSelecting && (
             <Popover baseElement={inputElement}>
               <Menu
-                contents={
-                  filterPacks?.map((filterOption) => ({
-                    onClick: handleSelect(filterOption),
-                    text: filterOption.categoryName,
-                  })) as ContentProp[]
-                }
+                contents={getMenuOption()}
                 baseElement={inputElement}
-                maxHeight={menuMaxHeight}
                 onClose={handleMenuClose}
               />
             </Popover>
@@ -143,10 +194,27 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           <FilterCard
             currentReferedFilters={currentReferedFilters}
             selectedFilterPack={filterPacks?.find(
-              (filterOption) =>
-                filterOption.categoryName === selectedFilter?.categoryName,
+              (filterPack) =>
+                filterPack.categoryName === selectedFilterPack?.categoryName,
             )}
             onApply={handleApply}
+            onClose={handleClose}
+          />
+        </Popover>
+      )}
+      {currentStatus === Status.ConditionEditting && (
+        <Popover
+          baseElement={edittingLabelElement}
+          positionPriority={["bottom-start"]}
+          onClose={handleClose}
+        >
+          <EditFilterCard
+            willEditFilter={willEditFilter as ReferedFilterType}
+            selectedFilterPack={filterPacks?.find(
+              (filterPack) =>
+                filterPack.categoryName === willEditFilter?.categoryName,
+            )}
+            onEdit={handleEdit}
             onClose={handleClose}
           />
         </Popover>
