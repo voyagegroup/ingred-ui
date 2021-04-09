@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Menu, { MenuProps } from "../Menu";
+import Menu from "../Menu";
 import Icon from "../Icon";
 import Input from "../Input";
 import { useTheme } from "../../themes";
@@ -79,6 +79,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const handleApply = (newReferedFilter: ReferedFilterType) => {
     const newReferedFilters = currentReferedFilters.concat([newReferedFilter]);
     setCurrentReferedFilters(newReferedFilters);
+    setSelectedFilterPack(null);
     setIsFocus(false);
   };
 
@@ -122,6 +123,22 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     setWillEditFilter(null);
   };
 
+  const getMenuOption = () => {
+    return filterPacks
+      ?.filter(
+        (filterPack) =>
+          filterPack.filters.length !==
+          currentReferedFilters.filter(
+            (referedFilter) =>
+              referedFilter.categoryName === filterPack.categoryName,
+          ).length,
+      )
+      .map((filterOption) => ({
+        onClick: handleSelect(filterOption),
+        text: filterOption.categoryName,
+      })) as ContentProp[];
+  };
+
   return (
     <div>
       <Styled.Container isFocused={currentStatus !== Status.Empty}>
@@ -152,12 +169,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           {currentStatus === Status.FilterSelecting && (
             <Popover baseElement={inputElement}>
               <Menu
-                contents={
-                  filterPacks?.map((filterOption) => ({
-                    onClick: handleSelect(filterOption),
-                    text: filterOption.categoryName,
-                  })) as ContentProp[]
-                }
+                contents={getMenuOption()}
                 baseElement={inputElement}
                 onClose={handleMenuClose}
               />

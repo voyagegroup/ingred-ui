@@ -37,7 +37,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   selectedFilterPack,
 }) => {
   const theme = useTheme();
-  const { register, setValue, handleSubmit, errors, control } = useForm({
+  const { register, setValue, handleSubmit, errors } = useForm({
     shouldUnregister: false,
     defaultValues: {
       section: willEditFilter?.filterName,
