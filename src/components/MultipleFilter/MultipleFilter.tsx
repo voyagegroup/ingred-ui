@@ -13,13 +13,11 @@ import { FilterPackType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 
 export type MultipleFilterProps = {
-  menuMaxHeight?: MenuProps["maxHeight"];
   filterPacks?: FilterPackType[];
   onChange?: (referedFilters: ReferedFilterType[]) => void;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
-  menuMaxHeight = "none",
   filterPacks,
   onChange,
 }) => {
@@ -161,7 +159,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
                   })) as ContentProp[]
                 }
                 baseElement={inputElement}
-                maxHeight={menuMaxHeight}
                 onClose={handleMenuClose}
               />
             </Popover>
