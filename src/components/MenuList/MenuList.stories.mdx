@@ -31,3 +31,29 @@ MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/
     )}
   </Story>
 </Canvas>
+
+<Canvas>
+  <Story
+    name="Group Example"
+    args={{
+      contents: [
+        {
+          title: "フルーツ",
+          contents: [
+            { text: "Save", onClick: () => {} },
+            { text: "Edit", onClick: () => {} },
+            { text: "Delete", onClick: () => {}, disabled: true },
+            { text: "Update", onClick: () => {} },
+          ]
+        }
+      ],
+      maxHeight: "100px",
+    }}
+  >
+    {(args) => (
+      <div style={{ backgroundColor: "silver", padding: "10px" }}>
+        <MenuList {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>

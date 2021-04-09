@@ -7,21 +7,67 @@ import { useTheme } from "../../themes";
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
-  // TODO: rename "handleClick"
   onClick: () => void;
   divideTop?: boolean;
   disabled?: boolean;
 };
 
+export type GroupContentProp = React.ComponentPropsWithRef<"div"> & {
+  title: string;
+  contents: ContentProp[];
+};
+
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
   inline?: boolean;
-  contents: ContentProp[];
+  contents: ContentProp[] | GroupContentProp[];
   maxHeight?: Property.MaxHeight;
 };
 
 const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
   ({ inline = false, contents, maxHeight = "none", ...rest }, ref) => {
     const theme = useTheme();
+
+    const renderGroupContent = (content: GroupContentProp) => (
+      <>
+        <Styled.TitleContainer>
+          <Typography size="sm">{content.title}</Typography>
+        </Styled.TitleContainer>
+        {content.contents.map((content: ContentProp) => (
+          <Styled.TextContainer
+            key={content.title}
+            disabled={content.disabled}
+            onClick={content.onClick}
+          >
+            <Typography
+              size="sm"
+              color={content.disabled ? "disabled" : "initial"}
+            >
+              {content.text}
+            </Typography>
+          </Styled.TextContainer>
+        ))}
+      </>
+    );
+
+    const renderContent = (content: ContentProp) => (
+      <React.Fragment key={content.text}>
+        {content.divideTop && (
+          <Divider my={1} mx={2} color={theme.palette.gray.light} />
+        )}
+        <Styled.TextContainer
+          disabled={content.disabled}
+          onClick={content.onClick}
+        >
+          <Typography
+            size="sm"
+            color={content.disabled ? "disabled" : "initial"}
+          >
+            {content.text}
+          </Typography>
+        </Styled.TextContainer>
+      </React.Fragment>
+    );
+
     return (
       <Styled.Container
         inline={inline}
@@ -29,25 +75,11 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         {...rest}
         ref={ref}
       >
-        {contents.map((content) => (
-          <React.Fragment key={content.text}>
-            {content.divideTop && (
-              <Divider my={1} mx={2} color={theme.palette.gray.light} />
-            )}
-            {/* eslint-disable-next-line react/jsx-handler-names */}
-            <Styled.TextContainer
-              disabled={content.disabled}
-              onClick={content.onClick}
-            >
-              <Typography
-                size="sm"
-                color={content.disabled ? "disabled" : "initial"}
-              >
-                {content.text}
-              </Typography>
-            </Styled.TextContainer>
-          </React.Fragment>
-        ))}
+        {contents.map((content: ContentProp | GroupContentProp) =>
+          content.title
+            ? renderGroupContent(content as GroupContentProp)
+            : renderContent(content as ContentProp),
+        )}
       </Styled.Container>
     );
   },
