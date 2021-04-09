@@ -78,3 +78,5 @@ jobs:
           RELEASE_TAG_NAME: v${{ steps.get_version.outputs.VERSION }}
       - name: npm publish
         run: make -f ci.mk publish
+        env:
+          NPM_TOKEN: ${{ env.FLUCT_NPM_TOKEN }}
