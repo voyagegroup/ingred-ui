@@ -16,6 +16,7 @@ import * as Styled from "./styled";
 import { useForm } from "react-hook-form";
 import TextField from "../../../TextField";
 import ErrorText from "../../../ErrorText";
+import RadioButton from "../../../RadioButton";
 
 export type Props = {
   onClose: () => void;
@@ -84,11 +85,15 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         );
       case "boolean":
         return (
-          <TextField
-            inputRef={register({ required: true })}
-            name="condition"
-            errorText={errors.condition ? "入力してください" : ""}
-          />
+          <div>
+            <RadioButton inputRef={register()} name="condition" value="true">
+              true
+            </RadioButton>
+            <br />
+            <RadioButton inputRef={register()} name="condition" value="false">
+              false
+            </RadioButton>
+          </div>
         );
     }
   };

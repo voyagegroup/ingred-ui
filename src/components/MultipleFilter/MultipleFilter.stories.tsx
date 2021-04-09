@@ -45,6 +45,23 @@ const filterPacksExample: FilterPackType[] = [
       },
     ],
   },
+  {
+    categoryName: "状態",
+    filters: [
+      {
+        filterName: "公開",
+        control: {
+          type: "boolean",
+        },
+      },
+      {
+        filterName: "アクティブ",
+        control: {
+          type: "boolean",
+        },
+      },
+    ],
+  },
 ];
 
 export const Example: Story<MultipleFilterProps> = () => {
