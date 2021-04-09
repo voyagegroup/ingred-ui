@@ -118,8 +118,11 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return getContentTypeStyles(theme, type);
     };
 
-    const handleClick = (content: ContentProp) => (): void => {
-      if (content.type === "disabled") {
+    const handleClick = (
+      content: ContentProp,
+      disabled?: boolean,
+    ) => (): void => {
+      if (checkIsDisabled(content.type, disabled)) {
         return;
       }
       content.onClick();
@@ -140,27 +143,18 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
             <Styled.TextContainer
               disabled={checkIsDisabled(content.type, content.disabled)}
               normal={
-                selectStyleInDisabledProp(
-                  theme,
-                  content.type,
-                  checkIsDisabled(content.type, content.disabled),
-                ).normal
+                selectStyleInDisabledProp(theme, content.type, content.disabled)
+                  .normal
               }
               hover={
-                selectStyleInDisabledProp(
-                  theme,
-                  content.type,
-                  checkIsDisabled(content.type, content.disabled),
-                ).hover
+                selectStyleInDisabledProp(theme, content.type, content.disabled)
+                  .hover
               }
               active={
-                selectStyleInDisabledProp(
-                  theme,
-                  content.type,
-                  checkIsDisabled(content.type, content.disabled),
-                ).active
+                selectStyleInDisabledProp(theme, content.type, content.disabled)
+                  .active
               }
-              onClick={handleClick(content)}
+              onClick={handleClick(content, content.disabled)}
             >
               <Styled.Text
                 size="sm"
@@ -168,7 +162,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   selectStyleInDisabledProp(
                     theme,
                     content.type,
-                    checkIsDisabled(content.type, content.disabled),
+                    content.disabled,
                   ).normal.color
                 }
               >
