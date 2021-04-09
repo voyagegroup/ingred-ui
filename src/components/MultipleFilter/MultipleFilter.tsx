@@ -16,7 +16,7 @@ export type MultipleFilterProps = {
   filterPacks?: FilterPackType[];
   onChange?: (referedFilters: ReferedFilterType[]) => void;
 };
-// test
+// test 2
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   filterPacks,
   onChange,
