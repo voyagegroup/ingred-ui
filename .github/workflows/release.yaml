@@ -7,7 +7,7 @@ on:
       - 'feature/generate-changelog'
 
 jobs:
-  create-release-pr:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
