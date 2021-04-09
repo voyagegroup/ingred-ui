@@ -11,8 +11,10 @@ export const Container = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
   &:hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.palette.gray.light};
   }
 `;
 
