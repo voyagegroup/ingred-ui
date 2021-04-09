@@ -110,9 +110,8 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     },
     multiValue: (base) => ({
       ...base,
-      // backgroundColor: "black",
       backgroundColor: theme.palette.gray.highlight,
-      padding: 0,
+      padding: "2px 0px 3px 6px",
       margin: 0,
       border: `1px solid ${theme.palette.divider}`,
       borderRadius: `${theme.radius}px`,
@@ -126,8 +125,8 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       }
       return {
         ...base,
-        // backgroundColor: "black",
-        padding: "2px 0px 3px 8px",
+        padding: 0,
+        paddingRight: "6px",
 
         color: `${color}`,
         fontSize: `${fontSize.sm}px`,
