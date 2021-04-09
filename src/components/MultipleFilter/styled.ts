@@ -31,8 +31,8 @@ export const LeftContainer = styled.div`
 `;
 
 export const CenterContainer = styled.div`
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 2px;
+  padding-bottom: 2px;
   flex-grow: 1;
 `;
 
