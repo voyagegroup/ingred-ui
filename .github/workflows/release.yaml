@@ -35,7 +35,8 @@ jobs:
         run: echo ::set-output name=VERSION::99.99.0
       - name: Extract branch name
         shell: bash
-        run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
+        # run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
+        run: echo ::set-output name=BRANCH::release/99.99.0
         id: extract_branch
       - name: create CHANGELOG
         run: make -f ci.mk changelog
