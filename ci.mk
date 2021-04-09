@@ -1,9 +1,9 @@
 .PHONY: install test lint changelog release_version publish
 
 SEMVER :=
-RELEASE_VERSION :=
-GITHUB_TOKEN :=
-NPM_TOKEN :=
+RELEASE_VERSION ?=
+GITHUB_TOKEN ?=
+NPM_TOKEN ?=
 
 install:
 ifeq ($(CI), true)
