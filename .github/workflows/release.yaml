@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - 'release/**' 
-      - 'feature/release-flow'
 
 jobs:
   release:
@@ -31,8 +30,7 @@ jobs:
         run: gem install github_changelog_generator
       - name: Get the version
         id: get_version
-        # run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/heads\/release\//}
-        run: echo ::set-output name=VERSION::99.99.0
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/heads\/release\//}
       - name: Extract branch name
         shell: bash
         run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
