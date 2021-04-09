@@ -15,7 +15,13 @@ export const Container = styled.div<ContainerProps>`
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight })}
 `;
 
-export const TitleContainer = styled.div``;
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background: ${({ theme }) => theme.palette.gray.highlight};
+  padding: 0 ${({ theme }) => theme.spacing}px;
+`;
 
 export const TextContainer = styled.div<{ disabled?: boolean }>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};

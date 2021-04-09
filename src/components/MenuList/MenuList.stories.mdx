@@ -38,16 +38,25 @@ MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/
     args={{
       contents: [
         {
-          title: "フルーツ",
+          title: "Fruits",
           contents: [
-            { text: "Save", onClick: () => {} },
-            { text: "Edit", onClick: () => {} },
-            { text: "Delete", onClick: () => {}, disabled: true },
-            { text: "Update", onClick: () => {} },
+            { text: "Apple", onClick: () => {} },
+            { text: "Peach", onClick: () => {} },
+            { text: "Orange", onClick: () => {}, disabled: true },
+            { text: "Strawberry", onClick: () => {} },
           ]
-        }
+        },
+        {
+          title: "Vegetables",
+          contents: [
+            { text: "Cabbage", onClick: () => {} },
+            { text: "Carrot", onClick: () => {} },
+            { text: "Radish", onClick: () => {}, disabled: true },
+            { text: "Cucumber", onClick: () => {} },
+          ]
+        },
       ],
-      maxHeight: "100px",
+      maxHeight: "250px",
     }}
   >
     {(args) => (

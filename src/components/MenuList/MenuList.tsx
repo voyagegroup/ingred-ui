@@ -28,13 +28,19 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
     const theme = useTheme();
 
     const renderGroupContent = (content: GroupContentProp) => (
-      <>
+      <React.Fragment key={content.title}>
         <Styled.TitleContainer>
-          <Typography size="sm">{content.title}</Typography>
+          <Typography
+            size="xs"
+            color={theme.palette.text.secondary}
+            weight="bold"
+          >
+            {content.title}
+          </Typography>
         </Styled.TitleContainer>
         {content.contents.map((content: ContentProp) => (
           <Styled.TextContainer
-            key={content.title}
+            key={content.text}
             disabled={content.disabled}
             onClick={content.onClick}
           >
@@ -46,7 +52,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
             </Typography>
           </Styled.TextContainer>
         ))}
-      </>
+      </React.Fragment>
     );
 
     const renderContent = (content: ContentProp) => (
