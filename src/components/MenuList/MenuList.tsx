@@ -73,7 +73,7 @@ export const getContentTypeStyles = (
   if (type) {
     return contentTypeStyle[type];
   } else {
-    return contentTypeStyle["default"];
+    return contentTypeStyle.default;
   }
 };
 
@@ -84,7 +84,10 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   type?: ContentType;
 
   /**
-   * @deprecated since version 8.0.0
+   * @deprecated
+   *
+   * I'll delete it in the future.
+   * Please use "type: disabled".
    */
   disabled?: boolean;
 };
@@ -106,7 +109,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return false;
     };
 
-    // TODO: deprecated function since version 8.0.0
+    // TODO: I'll delete in the future.
     const selectStyleInDisabledProp = (
       theme: Theme,
       type?: ContentType,
