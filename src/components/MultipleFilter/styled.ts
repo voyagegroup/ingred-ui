@@ -12,14 +12,19 @@ export const InputContiner = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: -8px;
   & > input {
     border: none;
-    padding-left: 12px;
+    padding: 0 0 0 12px;
+    flex-grow: 1;
+    margin-bottom: 8px;
   }
 `;
 
 export const LabelContainer = styled.div`
-  padding-left: 10px;
+  padding-left: 8px;
+  margin-bottom: 8px;
 `;
 
 export const LeftContainer = styled.div`
@@ -31,9 +36,12 @@ export const LeftContainer = styled.div`
 `;
 
 export const CenterContainer = styled.div`
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   flex-grow: 1;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
 `;
 
 export const RightContainer = styled.div`
