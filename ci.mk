@@ -27,7 +27,7 @@ changelog:
 		--project ingred-ui \
 		--exclude-labels release \
 		--future-release v${RELEASE_VERSION} \
-		--token ${FLUCT_MEMBER_GITHUB_TOKEN}
+		--token ${GITHUB_TOKEN}
 
 release_version:
 	npm config set git-tag-version false

@@ -1,5 +1,21 @@
 # Changelog
 
+## [v7.21.1](https://github.com/voyagegroup/ingred-ui/tree/v7.21.1) (2021-04-08)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.0...v7.21.1)
+
+**Merged pull requests:**
+
+- see you xs size [\#281](https://github.com/voyagegroup/ingred-ui/pull/281) ([penicillin0](https://github.com/penicillin0))
+
+## [v7.21.0](https://github.com/voyagegroup/ingred-ui/tree/v7.21.0) (2021-04-08)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.20.4...v7.21.0)
+
+**Merged pull requests:**
+
+- CloseCircleアイコンを追加 [\#280](https://github.com/voyagegroup/ingred-ui/pull/280) ([penicillin0](https://github.com/penicillin0))
+
 ## [v7.20.4](https://github.com/voyagegroup/ingred-ui/tree/v7.20.4) (2021-04-01)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.20.3...v7.20.4)
@@ -160,6 +176,10 @@
 ## [v7.13.3](https://github.com/voyagegroup/ingred-ui/tree/v7.13.3) (2021-02-22)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.13.2...v7.13.3)
+
+**Closed issues:**
+
+- アクセシビリティ周り考える [\#183](https://github.com/voyagegroup/ingred-ui/issues/183)
 
 **Merged pull requests:**
 
