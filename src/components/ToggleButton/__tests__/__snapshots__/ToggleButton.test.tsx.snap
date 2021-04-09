@@ -7,7 +7,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
     width="56px"
   >
     <label
-      class="sc-jSgupP eTVUCj"
+      class="sc-jSgupP jBNiBn"
       width="56px"
     >
       <input
@@ -16,10 +16,10 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         type="checkbox"
       />
       <div
-        class="sc-dlfnbm sc-hKgILt knXVJq xtjCQ"
+        class="sc-dlfnbm sc-hKgILt cGEzWd eDaPRZ"
       >
         <div
-          class="sc-iBPRYJ dJqPht"
+          class="sc-iBPRYJ ftoWGF"
           color="#0B82F4"
           font-size="12px"
         >
@@ -27,10 +27,10 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         </div>
       </div>
       <div
-        class="sc-dlfnbm sc-eCssSg knXVJq hvwnZm"
+        class="sc-dlfnbm sc-eCssSg cGEzWd kraoWI"
       >
         <div
-          class="sc-iBPRYJ iZXNbL"
+          class="sc-iBPRYJ hGsCSs"
           color="#596978"
           font-size="12px"
         >
@@ -38,7 +38,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         </div>
       </div>
       <span
-        class="sc-gsTCUz gVssdf"
+        class="sc-gsTCUz fYXbzj"
       />
     </label>
   </div>
