@@ -23,56 +23,70 @@ export type ContentTypeStyle = {
 
 export const getContentTypeStyles = (
   theme: Theme,
-): { [P in ContentType]: ContentTypeStyle } => ({
-  default: {
-    normal: {
-      background: theme.palette.background.default,
-      color: theme.palette.black,
+  type?: ContentType,
+): ContentTypeStyle => {
+  const contentTypeStyle = {
+    default: {
+      normal: {
+        background: theme.palette.background.default,
+        color: theme.palette.black,
+      },
+      hover: {
+        background: theme.palette.gray.light,
+        color: theme.palette.black,
+      },
+      active: {
+        background: theme.palette.gray.main,
+        color: theme.palette.black,
+      },
     },
-    hover: {
-      background: theme.palette.gray.light,
-      color: theme.palette.black,
+    warning: {
+      normal: {
+        background: theme.palette.gray.highlight,
+        color: theme.palette.danger.main,
+      },
+      hover: {
+        background: theme.palette.danger.main,
+        color: theme.palette.text.white,
+      },
+      active: {
+        background: theme.palette.danger.dark,
+        color: theme.palette.text.white,
+      },
     },
-    active: {
-      background: theme.palette.gray.main,
-      color: theme.palette.black,
+    disabled: {
+      normal: {
+        background: "auto",
+        color: "disabled",
+      },
+      hover: {
+        background: "auto",
+        color: "disabled",
+      },
+      active: {
+        background: "auto",
+        color: "disabled",
+      },
     },
-  },
-  warning: {
-    normal: {
-      background: theme.palette.gray.highlight,
-      color: theme.palette.danger.main,
-    },
-    hover: {
-      background: theme.palette.danger.main,
-      color: theme.palette.text.white,
-    },
-    active: {
-      background: theme.palette.danger.dark,
-      color: theme.palette.text.white,
-    },
-  },
-  disabled: {
-    normal: {
-      background: "auto",
-      color: "disabled",
-    },
-    hover: {
-      background: "auto",
-      color: "disabled",
-    },
-    active: {
-      background: "auto",
-      color: "disabled",
-    },
-  },
-});
+  };
+
+  if (type) {
+    return contentTypeStyle[type];
+  } else {
+    return contentTypeStyle["default"];
+  }
+};
 
 export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   text: string;
   onClick: () => void;
   divideTop?: boolean;
-  type: ContentType;
+  type?: ContentType;
+
+  /**
+   * @deprecated since version 8.0.0
+   */
+  disabled?: boolean;
 };
 
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
@@ -84,9 +98,26 @@ export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
 const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
   ({ inline = false, contents, maxHeight = "none", ...rest }, ref) => {
     const theme = useTheme();
-    const contentTypeStyles = getContentTypeStyles(theme);
 
-    const checkIsDisabled = (type: ContentType) => type === "disabled";
+    const checkIsDisabled = (type?: ContentType, disabled?: boolean) => {
+      if (type === "disabled" || disabled === true) {
+        return true;
+      }
+      return false;
+    };
+
+    // TODO: deprecated function since version 8.0.0
+    const selectStyleInDisabledProp = (
+      theme: Theme,
+      type?: ContentType,
+      disabled?: boolean,
+    ) => {
+      if (checkIsDisabled(type, disabled)) {
+        return getContentTypeStyles(theme, "disabled");
+      }
+      return getContentTypeStyles(theme, type);
+    };
+
     const handleClick = (content: ContentProp) => (): void => {
       if (content.type === "disabled") {
         return;
@@ -107,15 +138,39 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
               <Divider my={1} mx={2} color={theme.palette.gray.light} />
             )}
             <Styled.TextContainer
-              disabled={checkIsDisabled(content.type)}
-              normal={contentTypeStyles[content.type].normal}
-              hover={contentTypeStyles[content.type].hover}
-              active={contentTypeStyles[content.type].active}
+              disabled={checkIsDisabled(content.type, content.disabled)}
+              normal={
+                selectStyleInDisabledProp(
+                  theme,
+                  content.type,
+                  checkIsDisabled(content.type, content.disabled),
+                ).normal
+              }
+              hover={
+                selectStyleInDisabledProp(
+                  theme,
+                  content.type,
+                  checkIsDisabled(content.type, content.disabled),
+                ).hover
+              }
+              active={
+                selectStyleInDisabledProp(
+                  theme,
+                  content.type,
+                  checkIsDisabled(content.type, content.disabled),
+                ).active
+              }
               onClick={handleClick(content)}
             >
               <Styled.Text
                 size="sm"
-                color={contentTypeStyles[content.type]["normal"]["color"]}
+                color={
+                  selectStyleInDisabledProp(
+                    theme,
+                    content.type,
+                    checkIsDisabled(content.type, content.disabled),
+                  ).normal.color
+                }
               >
                 {content.text}
               </Styled.Text>
