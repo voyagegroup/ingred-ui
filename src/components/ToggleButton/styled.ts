@@ -34,7 +34,7 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
       theme.palette.black,
       0.08,
     )}`};
-  transition: all 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
+  transition: all 0.3s ease-in-out;
 `;
 
 export const LabelText = styled.div`
@@ -42,16 +42,16 @@ export const LabelText = styled.div`
   width: 100%;
   word-break: break-all;
   white-space: nowrap;
-  transition: all 0s 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
+  transition: all 0.3s ease-in-out;
 `;
 
 export const ActiveLabelText = styled(LabelText)`
-  padding-right: 6px;
+  padding-left: 8px;
   opacity: 0;
 `;
 
 export const InActiveLabelText = styled(LabelText)`
-  margin-left: 6px;
+  padding-right: 8px;
   opacity: 1;
 `;
 
@@ -86,7 +86,7 @@ export const Label = styled.label<LabelProps>`
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
-  transition: all 0.3s ease, border-color 0.3s cubic-bezier(0.47, 0, 0.75, 0.72);
+  transition: all 0.3s ease-in-out;
 
   ${({ active }) =>
     active &&
