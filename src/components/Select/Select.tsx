@@ -111,8 +111,8 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValue: (base) => ({
       ...base,
       backgroundColor: theme.palette.gray.highlight,
-      padding: "2px 0px 3px 6px",
-      margin: 0,
+      padding: "2px 0px 3px 2px",
+      margin: "0px 4px",
       border: `1px solid ${theme.palette.divider}`,
       borderRadius: `${theme.radius}px`,
     }),
@@ -126,7 +126,7 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       return {
         ...base,
         padding: 0,
-        paddingRight: "6px",
+        paddingRight: "4px",
 
         color: `${color}`,
         fontSize: `${fontSize.sm}px`,
@@ -135,8 +135,9 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValueRemove: (base) => ({
       ...base,
       ":hover": {
-        backgroundColor: theme.palette.gray.main,
+        backgroundColor: "transparent",
       },
+      paddingRight: "8px",
     }),
     valueContainer: (base) => ({
       ...base,

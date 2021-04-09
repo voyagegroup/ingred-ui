@@ -7,7 +7,7 @@ const MultiValueRemove = (props: IndicatorProps<any>) => {
   const theme = useTheme();
   return (
     <components.MultiValueRemove {...props}>
-      <Icon name="close" size="sm" color={theme.palette.black} />
+      <Icon name="close_circle" color={theme.palette.black} />
     </components.MultiValueRemove>
   );
 };
