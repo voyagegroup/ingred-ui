@@ -1,11 +1,9 @@
-.PHONY: install test publish
+.PHONY: install test lint changelog release_version publish
 
 SEMVER :=
-
-__req_semver:
-ifeq ($(filter $(SEMVER),patch minor major),)
-	$(error Require param SEMVER (patch or minor or major): $(SEMVER)))
-endif
+RELEASE_VERSION ?=
+GITHUB_TOKEN ?=
+NPM_TOKEN ?=
 
 install:
 ifeq ($(CI), true)
@@ -23,8 +21,22 @@ test:
 lint:
 	yarn lint
 
-publish: __req_semver build
-	npm version ${SEMVER} -m "[ci skip] %s"
-	git push origin master
-	git push origin --tags
+changelog:
+	github_changelog_generator \
+		--user voyagegroup \
+		--project ingred-ui \
+		--exclude-labels release \
+		--future-release v${RELEASE_VERSION} \
+		--token ${GITHUB_TOKEN}
+
+release_version:
+	npm config set git-tag-version false
+	npm version ${RELEASE_VERSION}
+
+publish: build
+ifeq ($(CI), true)
+	git config --global user.email ingred-ui@voyagegroup.com
+	git config --global user.name INGRED-UI
+endif
+	@echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
 	npm publish
