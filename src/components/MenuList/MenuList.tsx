@@ -137,6 +137,15 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       content.onClick();
     };
 
+    const isGroupContent = (
+      content: GroupContentProp | ContentProp,
+    ): content is GroupContentProp => {
+      if (content.title === "") {
+        return true;
+      }
+      return !!content.title;
+    };
+
     const renderContent = (content: ContentProp) => (
       <React.Fragment key={content.text}>
         {content.divideTop && (
@@ -171,10 +180,6 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       </React.Fragment>
     );
 
-    const isGroupContent = (
-      content: GroupContentProp | ContentProp,
-    ): content is GroupContentProp => !!content.title;
-
     return (
       <Styled.Container
         inline={inline}
@@ -184,7 +189,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       >
         {contents.map((content: ContentProp | GroupContentProp) =>
           isGroupContent(content) ? (
-            <>
+            <React.Fragment key={content.title}>
               <Styled.TitleContainer>
                 <Typography
                   size="xs"
@@ -195,7 +200,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                 </Typography>
               </Styled.TitleContainer>
               {content.contents.map((content) => renderContent(content))}
-            </>
+            </React.Fragment>
           ) : (
             renderContent(content)
           ),

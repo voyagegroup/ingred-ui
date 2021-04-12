@@ -26,7 +26,8 @@ export const TitleContainer = styled.div`
   align-items: center;
   height: 32px;
   background: ${({ theme }) => theme.palette.gray.highlight};
-  padding: 0 ${({ theme }) => theme.spacing}px;
+  margin: ${({ theme }) => theme.spacing}px 0;
+  padding: ${({ theme }) => theme.spacing}px;
 `;
 
 export const Text = styled(Typography)``;
