@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Property } from "csstype";
 import { addScrollbarProperties } from "../../utils/scrollbar";
-import Typography from "../Typography";
 import { ContentTypeStyle } from "./MenuList";
+import Typography from "../Typography";
 
 type ContainerProps = {
   inline: boolean;
@@ -19,6 +19,15 @@ export const Container = styled.div<ContainerProps>`
   border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ theme }) => theme.palette.background.default};
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight })}
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background: ${({ theme }) => theme.palette.gray.highlight};
+  margin: ${({ theme }) => theme.spacing}px 0;
+  padding: ${({ theme }) => theme.spacing}px;
 `;
 
 export const Text = styled(Typography)``;

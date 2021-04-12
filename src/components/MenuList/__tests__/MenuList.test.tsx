@@ -3,29 +3,34 @@ import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
 import MenuList from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
-import { ContentProp } from "../MenuList";
+import { ContentProp, GroupContentProp } from "../MenuList";
 
-const contents: ContentProp[] = [
+const contents: Array<ContentProp | GroupContentProp> = [
   {
-    text: "Save",
-    onClick: () => {},
-    type: "default",
-  },
-  {
-    text: "Save and execute",
-    onClick: () => {},
-    divideTop: true,
-    type: "default",
-  },
-  {
-    text: "Save as draft",
-    onClick: () => {},
-    type: "warning",
-  },
-  {
-    text: "Cancel",
-    onClick: () => {},
-    type: "disabled",
+    title: "Title",
+    contents: [
+      {
+        text: "Save",
+        onClick: () => {},
+        type: "default",
+      },
+      {
+        text: "Save and execute",
+        onClick: () => {},
+        divideTop: true,
+        type: "default",
+      },
+      {
+        text: "Save as draft",
+        onClick: () => {},
+        type: "warning",
+      },
+      {
+        text: "Cancel",
+        onClick: () => {},
+        type: "disabled",
+      },
+    ],
   },
 ];
 

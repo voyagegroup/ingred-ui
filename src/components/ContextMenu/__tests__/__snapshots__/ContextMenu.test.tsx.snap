@@ -36,13 +36,13 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     />
   </button>
   <div
-    class="sc-jrAGrp hiCsBc"
+    class="sc-kEjbxe feirlT"
   >
     <div
-      class="sc-kEjbxe gDEJEG sc-iqHYGH jmmggR fade-transition-enter fade-transition-enter-active"
+      class="sc-iqHYGH cNhazb sc-crrsfI kRcxdo fade-transition-enter fade-transition-enter-active"
     />
     <div
-      class="sc-pFZIQ horHys"
+      class="sc-jrAGrp eDBZNU"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -52,10 +52,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
         class="sc-jSgupP hzoSSJ"
       >
         <div
-          class="sc-iBPRYJ eNbA-Dk"
+          class="sc-fubCfw fvfTXF"
         >
           <p
-            class="sc-hKgILt jKKuBF sc-gKsewC"
+            class="sc-hKgILt jKKuBF sc-iBPRYJ"
             color="#041C33"
             font-size="13px"
           >
@@ -63,15 +63,15 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fubCfw gdSgwf"
+          class="sc-pFZIQ cAneBo"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-iBPRYJ eNbA-Dk"
+          class="sc-fubCfw fvfTXF"
         >
           <p
-            class="sc-hKgILt jKKuBF sc-gKsewC"
+            class="sc-hKgILt jKKuBF sc-iBPRYJ"
             color="#041C33"
             font-size="13px"
           >
@@ -79,10 +79,10 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <div
-          class="sc-iBPRYJ eNbA-Dk"
+          class="sc-fubCfw fvfTXF"
         >
           <p
-            class="sc-hKgILt jKKuBF sc-gKsewC"
+            class="sc-hKgILt jKKuBF sc-iBPRYJ"
             color="#041C33"
             font-size="13px"
           >
@@ -90,15 +90,15 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
           </p>
         </div>
         <hr
-          class="sc-fubCfw gdSgwf"
+          class="sc-pFZIQ cAneBo"
           color="#E2E8EA"
           orientation="horizontal"
         />
         <div
-          class="sc-iBPRYJ eNbA-Dk"
+          class="sc-fubCfw fvfTXF"
         >
           <p
-            class="sc-hKgILt jKKuBF sc-gKsewC"
+            class="sc-hKgILt jKKuBF sc-iBPRYJ"
             color="#041C33"
             font-size="13px"
           >
