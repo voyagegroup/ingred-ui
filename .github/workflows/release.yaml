@@ -52,8 +52,8 @@ jobs:
           body: |
             ## Check List
             - [ ] CHANGELOGの確認
-            - [ ] [最新のリリースノート](https://github.com/ryokosuge/changelog-generator-sample/releases/tag/v${{ env.RELEASE_VERSION }})に変更内容を追加する
-            releaseを取り消す場合は[v${{ env.RELEASE_VERSION }}のリリースとタグ](https://github.com/ryokosuge/changelog-generator-sample/releases/tag/v${{ env.RELEASE_VERSION }})を消して、このPRを閉じてください
+            - [ ] [最新のリリースノート](https://github.com/voyagegroup/ingred-ui/releases/tag/v${{ env.RELEASE_VERSION }})に変更内容を追加する
+                - releaseを取り消す場合は[v${{ env.RELEASE_VERSION }}のリリースとタグ](https://github.com/voyagegroup/ingred-ui/releases/tag/v${{ env.RELEASE_VERSION }})を消して、このPRを閉じてください
           labels: release
           base: master
           branch: ${{ env.RELEASE_BRANCH }}
