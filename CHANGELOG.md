@@ -1,5 +1,23 @@
 # Changelog
 
+## [v7.21.2](https://github.com/voyagegroup/ingred-ui/tree/v7.21.2) (2021-04-12)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.1...v7.21.2)
+
+**Implemented enhancements:**
+
+- release作業をGitHub Actionsで実行できるようにする [\#295](https://github.com/voyagegroup/ingred-ui/pull/295) ([ryokosuge](https://github.com/ryokosuge))
+
+**Fixed bugs:**
+
+- release & publishのflowを修正する [\#299](https://github.com/voyagegroup/ingred-ui/pull/299) ([ryokosuge](https://github.com/ryokosuge))
+- releaseのPRのリンク修正 [\#298](https://github.com/voyagegroup/ingred-ui/pull/298) ([ryokosuge](https://github.com/ryokosuge))
+
+**Merged pull requests:**
+
+- ToggleButtonのインタラクションとテキストのレイアウトを変更 [\#285](https://github.com/voyagegroup/ingred-ui/pull/285) ([noronaoki](https://github.com/noronaoki))
+- CHANGELOGを出力した [\#282](https://github.com/voyagegroup/ingred-ui/pull/282) ([ryokosuge](https://github.com/ryokosuge))
+
 ## [v7.21.1](https://github.com/voyagegroup/ingred-ui/tree/v7.21.1) (2021-04-08)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.0...v7.21.1)
