@@ -52,8 +52,7 @@ jobs:
           body: |
             ## Check List
             - [ ] CHANGELOGの確認
-            - [ ] [最新のリリースノート](https://github.com/voyagegroup/ingred-ui/releases/tag/v${{ env.RELEASE_VERSION }})に変更内容を追加する
-                - releaseを取り消す場合は[v${{ env.RELEASE_VERSION }}のリリースとタグ](https://github.com/voyagegroup/ingred-ui/releases/tag/v${{ env.RELEASE_VERSION }})を消して、このPRを閉じてください
+            - [ ] [draftのリリースノート](https://github.com/voyagegroup/ingred-ui/releases/)の変更内容を編集してpublish
           labels: release
           base: master
           branch: ${{ env.RELEASE_BRANCH }}
@@ -72,6 +71,7 @@ jobs:
           tag: ${{ env.RELEASE_TAG_NAME }}
           token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
           commit: ${{ steps.get_last_commit_hash.outputs.HASH }}
+          draft: true
         env:
           RELEASE_BRANCH: ${{ steps.extract_branch.outputs.BRANCH }}
           RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
