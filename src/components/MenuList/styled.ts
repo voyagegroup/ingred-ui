@@ -1,10 +1,16 @@
 import styled from "styled-components";
 import { Property } from "csstype";
 import { addScrollbarProperties } from "../../utils/scrollbar";
+import Typography from "../Typography";
+import { ContentTypeStyle } from "./MenuList";
 
 type ContainerProps = {
   inline: boolean;
   maxHeight: Property.MaxHeight;
+};
+
+type TextContainerProps = ContentTypeStyle & {
+  disabled: boolean;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -15,22 +21,23 @@ export const Container = styled.div<ContainerProps>`
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight })}
 `;
 
-export const TextContainer = styled.div<{ disabled?: boolean }>`
+export const Text = styled(Typography)``;
+
+export const TextContainer = styled.div<TextContainerProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
-  color: ${({ disabled, theme }) =>
-    disabled ? theme.palette.text.disabled : "auto"};
   height: 32px;
   margin: 0 ${({ theme }) => theme.spacing}px;
   padding: 0 ${({ theme }) => theme.spacing}px;
   border-radius: ${({ theme }) => theme.radius}px;
   &:hover {
-    background-color: ${({ disabled, theme }) =>
-      disabled ? "auto" : theme.palette.gray.light};
+    ${Text} {
+      color: ${({ hover }) => hover.color};
+    }
+    background-color: ${({ hover }) => hover.background};
   }
   &:active {
-    background-color: ${({ disabled, theme }) =>
-      disabled ? "auto" : theme.palette.gray.main};
+    background-color: ${({ active }) => active.background};
   }
 `;

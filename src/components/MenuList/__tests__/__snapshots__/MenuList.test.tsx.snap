@@ -3,57 +3,53 @@
 exports[`MenuList component testing MenuList splited 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ hWeOum"
+    class="sc-gsTCUz pKiIS"
   >
-    <hr
-      class="sc-dlfnbm jOeRSr"
-      color="#E2E8EA"
-      orientation="horizontal"
-    />
     <div
-      class="sc-gsTCUz gFfxhE"
+      class="sc-hKgILt cgOKnC"
     >
       <p
-        class="sc-hKgILt jKKuBF"
+        class="sc-bdfBwQ gNlqto sc-dlfnbm"
         color="#041C33"
         font-size="13px"
       >
         Save
       </p>
     </div>
+    <hr
+      class="sc-eCssSg dxgEOm"
+      color="#E2E8EA"
+      orientation="horizontal"
+    />
     <div
-      class="sc-gsTCUz gFfxhE"
+      class="sc-hKgILt cgOKnC"
     >
       <p
-        class="sc-hKgILt jKKuBF"
+        class="sc-bdfBwQ gNlqto sc-dlfnbm"
         color="#041C33"
         font-size="13px"
       >
         Save and execute
       </p>
     </div>
-    <hr
-      class="sc-dlfnbm jOeRSr"
-      color="#E2E8EA"
-      orientation="horizontal"
-    />
     <div
-      class="sc-gsTCUz gFfxhE"
+      class="sc-hKgILt llPkGB"
     >
       <p
-        class="sc-hKgILt jKKuBF"
-        color="#041C33"
+        class="sc-bdfBwQ kbxRUt sc-dlfnbm"
+        color="#EB0A4E"
         font-size="13px"
       >
         Save as draft
       </p>
     </div>
     <div
-      class="sc-gsTCUz gFfxhE"
+      class="sc-hKgILt dObLPw"
+      disabled=""
     >
       <p
-        class="sc-hKgILt jKKuBF"
-        color="#041C33"
+        class="sc-bdfBwQ iQudAe sc-dlfnbm"
+        color="#B3BAC1"
         font-size="13px"
       >
         Cancel
