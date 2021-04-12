@@ -3,25 +3,29 @@ import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
 import MenuList from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
+import { ContentProp } from "../MenuList";
 
-const contents = [
+const contents: ContentProp[] = [
   {
     text: "Save",
     onClick: () => {},
-    divideTop: true,
+    type: "default",
   },
   {
     text: "Save and execute",
     onClick: () => {},
+    divideTop: true,
+    type: "default",
   },
   {
     text: "Save as draft",
     onClick: () => {},
-    divideTop: true,
+    type: "warning",
   },
   {
     text: "Cancel",
     onClick: () => {},
+    type: "disabled",
   },
 ];
 
