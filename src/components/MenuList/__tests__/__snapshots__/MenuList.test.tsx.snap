@@ -6,6 +6,17 @@ exports[`MenuList component testing MenuList splited 1`] = `
     class="sc-gsTCUz pKiIS"
   >
     <div
+      class="sc-dlfnbm djzfeK"
+    >
+      <p
+        class="sc-bdfBwQ flmsLJ"
+        color="#596978"
+        font-size="12px"
+      >
+        Title
+      </p>
+    </div>
+    <div
       class="sc-eCssSg MluwL"
     >
       <p

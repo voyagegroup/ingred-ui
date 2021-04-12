@@ -100,7 +100,7 @@ export type GroupContentProp = React.ComponentPropsWithRef<"div"> & {
 
 export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
   inline?: boolean;
-  contents: ContentProp[] | GroupContentProp[];
+  contents: Array<ContentProp | GroupContentProp>;
   maxHeight?: Property.MaxHeight;
 };
 
@@ -139,12 +139,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
 
     const isGroupContent = (
       content: GroupContentProp | ContentProp,
-    ): content is GroupContentProp => {
-      if (content.title === "") {
-        return true;
-      }
-      return !!content.title;
-    };
+    ): content is GroupContentProp => !!content.title;
 
     const renderContent = (content: ContentProp) => (
       <React.Fragment key={content.text}>
@@ -187,7 +182,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         {...rest}
         ref={ref}
       >
-        {contents.map((content: ContentProp | GroupContentProp) =>
+        {contents.map((content) =>
           isGroupContent(content) ? (
             <React.Fragment key={content.title}>
               <Styled.TitleContainer>
@@ -199,7 +194,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   {content.title}
                 </Typography>
               </Styled.TitleContainer>
-              {content.contents.map((content) => renderContent(content))}
+              {content.contents.map(renderContent)}
             </React.Fragment>
           ) : (
             renderContent(content)
