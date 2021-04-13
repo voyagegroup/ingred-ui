@@ -21,18 +21,24 @@ It can behave like a `<button />` tags.
     <Flex display="flex">
       <Spacer mr={5}>
         <Typography weight="bold">Primary</Typography>
-        <Spacer pt={1}/>
-        <ActionButton icon="pencil" color="primary" children="Edit" />
+        <Spacer pt={1} />
+        <ActionButton icon="pencil" color="primary">
+          Edit
+        </ActionButton>
       </Spacer>
       <Spacer mr={5}>
         <Typography weight="bold">Warning</Typography>
         <Spacer pt={1} />
-        <ActionButton icon="pencil" color="warning" children="Edit" />
+        <ActionButton icon="pencil" color="warning">
+          Edit
+        </ActionButton>
       </Spacer>
       <Spacer mr={5}>
         <Typography weight="bold">Disabled</Typography>
         <Spacer pt={1} />
-        <ActionButton icon="pencil" children="Edit" disabled={true} />
+        <ActionButton icon="pencil" disabled={true}>
+          Edit
+        </ActionButton>
       </Spacer>
     </Flex>
   </Story>
