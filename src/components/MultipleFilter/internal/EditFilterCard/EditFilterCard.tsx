@@ -25,6 +25,7 @@ export type Props = {
   selectedFilterPack?: FilterPackType;
   sectionTitle: string | undefined;
   conditionTitle: string | undefined;
+  editButtonTitle: string | undefined;
 };
 
 type FormType = {
@@ -39,6 +40,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   selectedFilterPack,
   sectionTitle,
   conditionTitle,
+  editButtonTitle,
 }) => {
   const theme = useTheme();
   const { register, setValue, handleSubmit, errors } = useForm({
@@ -172,7 +174,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            変更する
+            {editButtonTitle ?? "Edit"}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>

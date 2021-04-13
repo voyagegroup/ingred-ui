@@ -25,6 +25,7 @@ export type Props = {
   currentReferedFilters: ReferedFilterType[];
   sectionTitle: string | undefined;
   conditionTitle: string | undefined;
+  applyButtonTitle: string | undefined;
 };
 
 type FormType = {
@@ -39,6 +40,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   currentReferedFilters,
   sectionTitle,
   conditionTitle,
+  applyButtonTitle,
 }) => {
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -190,7 +192,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            適用する
+            {applyButtonTitle ?? "Apply"}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>

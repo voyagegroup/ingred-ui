@@ -32,6 +32,8 @@ export type MultipleFilterProps = {
   sectionTitle?: string;
   conditionTitle?: string;
   placeholder?: string;
+  editButtonTitle?: string;
+  applyButtonTitle?: string;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
@@ -40,6 +42,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   sectionTitle,
   conditionTitle,
   placeholder,
+  editButtonTitle,
+  applyButtonTitle,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [
@@ -213,6 +217,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           onClose={handleClose}
         >
           <FilterCard
+            applyButtonTitle={applyButtonTitle}
             sectionTitle={sectionTitle}
             conditionTitle={conditionTitle}
             currentReferedFilters={currentReferedFilters}
@@ -232,6 +237,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           onClose={handleClose}
         >
           <EditFilterCard
+            editButtonTitle={editButtonTitle}
             sectionTitle={sectionTitle}
             conditionTitle={conditionTitle}
             willEditFilter={willEditFilter as ReferedFilterType}
