@@ -30,14 +30,15 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCssSg eDTLKV"
+        class="sc-eCssSg bIiduW"
       >
         <div
-          class="sc-gsTCUz eoKGLh"
+          class="sc-gsTCUz ckMJrW"
         >
           <input
             class="sc-kstrdz fpBksa"
-            placeholder="新しいフィルタを追加"
+            placeholder="Add a new filter"
+            readonly=""
             type="text"
           />
         </div>
