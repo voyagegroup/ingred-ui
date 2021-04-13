@@ -10,7 +10,7 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
         class="sc-hKgILt dIbUfx"
       >
         <div
-          class="sc-bqyKva cULbVz"
+          class="sc-hBEYos gFgPJD"
           size="18"
         >
           <svg
@@ -36,7 +36,7 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
           class="sc-gsTCUz ckMJrW"
         >
           <input
-            class="sc-kstrdz fpBksa"
+            class="sc-fodVxV kGWssv"
             placeholder="Add a new filter"
             readonly=""
             type="text"
