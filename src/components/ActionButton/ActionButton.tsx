@@ -7,7 +7,7 @@ import Typography from "../Typography";
 import { Theme, useTheme } from "../../themes";
 import { colors } from "../../styles/color";
 
-export type ActionButtonColor = "primary" | "warning";
+type ActionButtonColor = "primary" | "warning";
 
 export type ActionButtonColorStyle = {
   normal: {
