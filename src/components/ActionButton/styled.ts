@@ -18,8 +18,4 @@ export const Container = styled.button<ContainerProps>`
   &:hover {
     background-color: ${({ hover }) => hover.background};
   }
-
-  &:disabled {
-    cursor: auto;
-  }
 `;
