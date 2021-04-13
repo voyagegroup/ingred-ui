@@ -7,7 +7,7 @@ import Typography from "../Typography";
 import { Theme, useTheme } from "../../themes";
 import { colors } from "../../styles/color";
 
-const getBackgroundColor = (theme: Theme) => ({
+const getBackgroundColorAtNormal = (theme: Theme) => ({
   primary: theme.palette.background.hint,
   warning: theme.palette.danger.highlight,
   disabled: theme.palette.gray.light,
@@ -44,7 +44,9 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     };
 
     const colorForStyle = getColorByDisabled(color, disabled);
-    const backgroundColor = getBackgroundColor(theme)[colorForStyle];
+    const backgroundColorAtNormal = getBackgroundColorAtNormal(theme)[
+      colorForStyle
+    ];
     const backgroundColorAtHover = getBackgroundColorAtHover(theme)[
       colorForStyle
     ];
@@ -54,7 +56,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
       <Styled.Container
         {...rest}
         ref={ref}
-        backgroundColor={backgroundColor}
+        backgroundColorAtNormal={backgroundColorAtNormal}
         backgroundColorAtHover={backgroundColorAtHover}
         disabled={disabled}
       >

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Space } from "../../styles";
 
 type ContainerProps = {
-  backgroundColor: string;
+  backgroundColorAtNormal: string;
   backgroundColorAtHover: string;
 };
 
@@ -13,7 +13,7 @@ export const Container = styled.button<ContainerProps>`
   border: 0;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: ${({ backgroundColorAtNormal }) => backgroundColorAtNormal};
   white-space: nowrap;
   transition: all 0.3s;
 
