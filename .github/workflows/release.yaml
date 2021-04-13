@@ -1,0 +1,78 @@
+name: release
+
+on:
+  push:
+    branches:
+      - 'release/**' 
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.x
+      - name: install
+        run: make -f ci.mk install
+      - name: lint
+        run: make -f ci.mk lint
+      - name: test
+        run: make -f ci.mk test
+      - name: Use Ruby 2.6
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: install github_changelog_generate
+        run: gem install github_changelog_generator
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/heads\/release\//}
+      - name: Extract branch name
+        shell: bash
+        run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
+        id: extract_branch
+      - name: create CHANGELOG
+        run: make -f ci.mk changelog
+        env:
+          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          GITHUB_TOKEN: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
+      - name: npm version
+        run: make -f ci.mk release_version
+        env:
+          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
+          title: release v${{ env.RELEASE_VERSION }}
+          body: |
+            ## Check List
+            - [ ] CHANGELOGの確認
+            - [ ] [draftのリリースノート](https://github.com/voyagegroup/ingred-ui/releases/)の変更内容を編集してpublish
+          labels: release
+          base: master
+          branch: ${{ env.RELEASE_BRANCH }}
+          commit-message: "[ci skip] release v${{ env.RELEASE_VERSION }}"
+        env:
+          RELEASE_BRANCH: ${{ steps.extract_branch.outputs.BRANCH }}
+          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+      - name: Get HEAD Hash
+        id: get_last_commit_hash
+        run: echo "::set-output name=HASH::$(git rev-parse HEAD)"
+      - name: Create Tag & Release
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          name: Release ${{ env.RELEASE_TAG_NAME }}
+          tag: ${{ env.RELEASE_TAG_NAME }}
+          token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
+          commit: ${{ steps.get_last_commit_hash.outputs.HASH }}
+          draft: true
+        env:
+          RELEASE_BRANCH: ${{ steps.extract_branch.outputs.BRANCH }}
+          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          RELEASE_TAG_NAME: v${{ steps.get_version.outputs.VERSION }}
