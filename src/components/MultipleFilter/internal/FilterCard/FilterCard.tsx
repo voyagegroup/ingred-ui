@@ -23,6 +23,8 @@ export type Props = {
   onApply: (newReferedFilter: ReferedFilterType) => void;
   selectedFilterPack?: FilterPackType;
   currentReferedFilters: ReferedFilterType[];
+  sectionTitle: string | undefined;
+  conditionTitle: string | undefined;
 };
 
 type FormType = {
@@ -35,6 +37,8 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   onApply,
   selectedFilterPack,
   currentReferedFilters,
+  sectionTitle,
+  conditionTitle,
 }) => {
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -69,7 +73,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           <TextField
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? "入力してください" : ""}
+            errorText={errors.condition ? "Please input" : ""}
           />
         );
       case "select":
@@ -102,7 +106,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     if (data.section && data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError("区分・状態を設定してください");
+      setSubmitError("Please set the section and condition.");
       return;
     }
     const newFilter = {
@@ -150,7 +154,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          区分
+          {sectionTitle ?? "Section"}
         </Typography>
         <Spacer py={0.5} />
         <Select
@@ -161,7 +165,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
-              状態
+              {conditionTitle ?? "Condition"}
             </Typography>
             <Spacer py={0.5} />
             {getInputField(

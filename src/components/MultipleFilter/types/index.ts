@@ -25,5 +25,5 @@ export type ReferedFilterType = {
   categoryName: string;
   filterName: string;
   filterType: Types;
-  filterCondtion: any;
+  filterCondtion: ControlType<Types>["options"];
 };

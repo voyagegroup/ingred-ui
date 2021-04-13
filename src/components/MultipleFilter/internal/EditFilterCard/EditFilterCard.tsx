@@ -23,6 +23,8 @@ export type Props = {
   onEdit: (editedReferedFilter: ReferedFilterType) => void;
   willEditFilter?: ReferedFilterType;
   selectedFilterPack?: FilterPackType;
+  sectionTitle: string | undefined;
+  conditionTitle: string | undefined;
 };
 
 type FormType = {
@@ -35,6 +37,8 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   onEdit,
   willEditFilter,
   selectedFilterPack,
+  sectionTitle,
+  conditionTitle,
 }) => {
   const theme = useTheme();
   const { register, setValue, handleSubmit, errors } = useForm({
@@ -64,7 +68,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           <TextField
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? "入力してください" : ""}
+            errorText={errors.condition ? "Please input" : ""}
           />
         );
       case "select":
@@ -77,8 +81,8 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
               value: option,
             }))}
             defaultValue={{
-              label: willEditFilter?.filterCondtion,
-              value: willEditFilter?.filterCondtion,
+              label: willEditFilter?.filterCondtion as string,
+              value: willEditFilter?.filterCondtion as string,
             }}
             onChange={handleSelect}
           />
@@ -87,7 +91,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         return (
           <div>
             <RadioButton
-              defaultChecked={willEditFilter?.filterCondtion}
+              defaultChecked={willEditFilter?.filterCondtion as boolean}
               inputRef={register()}
               name="condition"
               value="true"
@@ -96,7 +100,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             </RadioButton>
             <br />
             <RadioButton
-              defaultChecked={willEditFilter?.filterCondtion}
+              defaultChecked={willEditFilter?.filterCondtion as boolean}
               inputRef={register()}
               name="condition"
               value="false"
@@ -112,7 +116,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     if (data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError("区分・状態を設定してください");
+      setSubmitError("Please set the section and condition.");
       return;
     }
 
@@ -139,13 +143,13 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          区分
+          {sectionTitle ?? "Section"}
         </Typography>
         <Spacer py={0.5} />
         <TextField readOnly value={willEditFilter?.filterName} />
         <Spacer py={1} />
         <Typography weight="bold" size="lg">
-          状態
+          {conditionTitle ?? "Condition"}
         </Typography>
         <Spacer py={0.5} />
         {getInputField(
