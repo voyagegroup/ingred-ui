@@ -16,12 +16,47 @@ MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/
     name="Example"
     args={{
       contents: [
-        { text: "Save", onClick: () => {} },
-        { text: "Edit", onClick: () => {} },
-        { text: "Delete", onClick: () => {}, disabled: true },
-        { text: "Update", onClick: () => {} },
+        { text: "Save", onClick: () => {}, type: "default" },
+        { text: "Edit", onClick: () => {}, type: "default" },
+        { text: "Delete", onClick: () => {}, type: "disabled" },
+        { text: "Update", onClick: () => {}, type: "warning" },
       ],
       maxHeight: "100px",
+    }}
+  >
+    {(args) => (
+      <div style={{ backgroundColor: "silver", padding: "10px" }}>
+        <MenuList {...args} />
+      </div>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="Group Example"
+    args={{
+      contents: [
+        {
+          title: "Fruits",
+          contents: [
+            { text: "Apple", onClick: () => {} },
+            { text: "Peach", onClick: () => {} },
+            { text: "Orange", onClick: () => {} },
+            { text: "Strawberry", onClick: () => {} },
+          ],
+        },
+        {
+          title: "Vegetables",
+          contents: [
+            { text: "Cabbage", onClick: () => {} },
+            { text: "Carrot", onClick: () => {} },
+            { text: "Radish", onClick: () => {} },
+            { text: "Cucumber", onClick: () => {} },
+          ],
+        },
+      ],
+      maxHeight: "250px",
     }}
   >
     {(args) => (

@@ -3,6 +3,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { cleanup, act, fireEvent } from "@testing-library/react";
 import DropdownButton from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
+import { ContentProp } from "../../MenuList/MenuList";
 
 jest.mock("react-dom", () => {
   const original = jest.requireActual("react-dom");
@@ -12,24 +13,28 @@ jest.mock("react-dom", () => {
   };
 });
 
-const contents = [
+const contents: ContentProp[] = [
   {
     text: "Save",
     onClick: () => {},
     divideTop: true,
+    type: "default",
   },
   {
     text: "Save and execute",
     onClick: () => {},
+    type: "default",
   },
   {
     text: "Save as draft",
     onClick: () => {},
     divideTop: true,
+    type: "default",
   },
   {
     text: "Cancel",
     onClick: () => {},
+    type: "default",
   },
 ];
 

@@ -6,6 +6,8 @@ It is based on React and has a well thought out structure that works well with T
 
 [![NPM](https://img.shields.io/npm/v/ingred-ui.svg)](https://www.npmjs.com/package/ingred-ui) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/be195faf-d125-4654-8332-7ed36e1e9b2a/deploy-status)](https://app.netlify.com/sites/ingred-ui/deploys)
+
 ## Install
 
 For npm users:
