@@ -18,10 +18,6 @@ export type ActionButtonColorStyle = {
     background: string;
     color: string;
   };
-  active: {
-    background: string;
-    color: string;
-  };
 };
 
 const getContainerColorStyles = (
@@ -36,10 +32,6 @@ const getContainerColorStyles = (
       background: theme.palette.primary.highlight,
       color: theme.palette.primary.main,
     },
-    active: {
-      background: theme.palette.primary.main,
-      color: theme.palette.text.white,
-    },
   },
   warning: {
     normal: {
@@ -48,11 +40,7 @@ const getContainerColorStyles = (
     },
     hover: {
       background: colors.red[200],
-      color: theme.palette.text.white,
-    },
-    active: {
-      background: theme.palette.primary.main,
-      color: theme.palette.text.white,
+      color: theme.palette.danger.main,
     },
   },
   disabled: {
@@ -61,10 +49,6 @@ const getContainerColorStyles = (
       color: theme.palette.text.disabled,
     },
     hover: {
-      background: theme.palette.gray.light,
-      color: theme.palette.text.disabled,
-    },
-    active: {
       background: theme.palette.gray.light,
       color: theme.palette.text.disabled,
     },
@@ -77,11 +61,22 @@ export type ActionButtonProps = React.ComponentPropsWithRef<"button"> & {
 };
 
 const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
-  ({ children, icon, color = "primary", disabled, ...rest }, ref) => {
+  ({ children, icon, color = "primary", onClick, disabled, ...rest }, ref) => {
     const theme = useTheme();
+
     const colorStyle = disabled
       ? getContainerColorStyles(theme).disabled
       : getContainerColorStyles(theme)[color];
+
+    const handleClick = (
+      onClick?: React.MouseEventHandler<HTMLButtonElement>,
+      disabled?: boolean,
+    ) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
+      if (disabled || !onClick) {
+        return;
+      }
+      onClick(e);
+    };
 
     return (
       <Styled.Container
@@ -89,7 +84,8 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         ref={ref}
         normal={colorStyle.normal}
         hover={colorStyle.hover}
-        active={colorStyle.active}
+        disabled={disabled}
+        onClick={handleClick(onClick, disabled)}
       >
         <Spacer pr={0.25}>
           <Icon name={icon} color={colorStyle.normal.color} />

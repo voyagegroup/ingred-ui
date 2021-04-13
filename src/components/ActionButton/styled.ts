@@ -9,7 +9,7 @@ export const Container = styled.button<ContainerProps>`
   align-items: center;
   padding: ${Space * 0.75}px ${Space}px;
   border: 0;
-  cursor: ${({ disabled }) => (disabled ? "none" : "pointer")};
+  cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ normal }) => normal.background};
   white-space: nowrap;
@@ -17,5 +17,9 @@ export const Container = styled.button<ContainerProps>`
 
   &:hover {
     background-color: ${({ hover }) => hover.background};
+  }
+
+  &:disabled {
+    cursor: auto;
   }
 `;
