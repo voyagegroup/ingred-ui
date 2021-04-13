@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { Space } from "../../styles";
 
 type ContainerProps = {
-  backgroundColorAtNormal: string;
-  backgroundColorAtHover: string;
+  normalBackgroundColor: string;
+  hoverBackgroundColor: string;
 };
 
 export const Container = styled.button<ContainerProps>`
@@ -13,12 +13,12 @@ export const Container = styled.button<ContainerProps>`
   border: 0;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;
-  background-color: ${({ backgroundColorAtNormal }) => backgroundColorAtNormal};
+  background-color: ${({ normalBackgroundColor }) => normalBackgroundColor};
   white-space: nowrap;
   transition: all 0.3s;
 
   &:hover {
-    background-color: ${({ backgroundColorAtHover }) => backgroundColorAtHover};
+    background-color: ${({ hoverBackgroundColor }) => hoverBackgroundColor};
   }
 
   &:disabled {

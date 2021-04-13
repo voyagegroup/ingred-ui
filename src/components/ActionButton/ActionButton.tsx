@@ -44,10 +44,10 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     };
 
     const colorForStyle = getColorByDisabled(color, disabled);
-    const backgroundColorAtNormal = getBackgroundColorAtNormal(theme)[
+    const normalBackgroundColor = getBackgroundColorAtNormal(theme)[
       colorForStyle
     ];
-    const backgroundColorAtHover = getBackgroundColorAtHover(theme)[
+    const hoverBackgroundColor = getBackgroundColorAtHover(theme)[
       colorForStyle
     ];
     const textColor = getTextColor(theme)[colorForStyle];
@@ -56,8 +56,8 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
       <Styled.Container
         {...rest}
         ref={ref}
-        backgroundColorAtNormal={backgroundColorAtNormal}
-        backgroundColorAtHover={backgroundColorAtHover}
+        normalBackgroundColor={normalBackgroundColor}
+        hoverBackgroundColor={hoverBackgroundColor}
         disabled={disabled}
       >
         <Spacer pr={0.25}>
