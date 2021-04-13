@@ -8,7 +8,4 @@ export const IconContainer = styled.div`
   align-items: center;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.palette.black};
-  &:hover {
-    cursor: pointer;
-  }
 `;
