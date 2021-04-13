@@ -79,13 +79,17 @@ const filterPacksExample: FilterPackType[] = [
   },
 ];
 
-export const Example: Story<MultipleFilterProps> = () => {
+export const Example: Story<MultipleFilterProps> = (args) => {
   const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
   const handleChange = (referedFilters: ReferedFilterType[]) => {
     setFilters(referedFilters);
   };
 
   return (
-    <MultipleFilter filterPacks={filterPacksExample} onChange={handleChange} />
+    <MultipleFilter
+      {...args}
+      filterPacks={filterPacksExample}
+      onChange={handleChange}
+    />
   );
 };
