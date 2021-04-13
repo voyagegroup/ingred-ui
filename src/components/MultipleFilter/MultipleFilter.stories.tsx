@@ -6,20 +6,35 @@ import { FilterPackType, ReferedFilterType } from "./types";
 export default {
   title: "Components/Utils/MultipleFilter",
   component: MultipleFilter,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Set the condition by filterPacks.
+
+You can get the conditions set via ReferedFilters.
+
+`,
+      },
+      source: {
+        type: "code",
+      },
+    },
+  },
 };
 
 const filterPacksExample: FilterPackType[] = [
   {
-    categoryName: "列名",
+    categoryName: "Row name",
     filters: [
       {
-        filterName: "デマンド",
+        filterName: "Demand",
         control: {
           type: "text",
         },
       },
       {
-        filterName: "チャネル",
+        filterName: "channel",
         control: {
           type: "text",
         },
@@ -27,35 +42,35 @@ const filterPacksExample: FilterPackType[] = [
     ],
   },
   {
-    categoryName: "紐付け",
+    categoryName: "Linking",
     filters: [
       {
-        filterName: "デバイス",
+        filterName: "Device",
         control: {
           type: "select",
-          options: ["未選択", "紐付け未完了", "紐付け完了"],
+          options: ["Not selected", "Not Linking", "Linking"],
         },
       },
       {
-        filterName: "サイト",
+        filterName: "Site",
         control: {
           type: "select",
-          options: ["未選択", "紐付け未完了", "紐付け完了"],
+          options: ["Not selected", "Not Linking", "Linking"],
         },
       },
     ],
   },
   {
-    categoryName: "状態",
+    categoryName: "Condition",
     filters: [
       {
-        filterName: "公開",
+        filterName: "Public",
         control: {
           type: "boolean",
         },
       },
       {
-        filterName: "アクティブ",
+        filterName: "Active",
         control: {
           type: "boolean",
         },

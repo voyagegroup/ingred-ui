@@ -13,13 +13,33 @@ import { FilterPackType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 
 export type MultipleFilterProps = {
+  /**
+   * `type FilterPackType = {
+   *   categoryName: string;
+   *   filters: FilterType[];
+    }`
+   */
   filterPacks?: FilterPackType[];
+  /**
+   * `type ReferedFilterType = {
+   *   categoryName: string;
+   *   filterName: string;
+   *   filterType: Types;
+   *   filterCondtion: ControlType<Types>["options"];
+    }`
+   */
   onChange?: (referedFilters: ReferedFilterType[]) => void;
+  sectionTitle?: string;
+  conditionTitle?: string;
+  placeholder?: string;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   filterPacks,
   onChange,
+  sectionTitle,
+  conditionTitle,
+  placeholder,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [
@@ -161,8 +181,9 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
 
             <Input
               ref={setInputElement}
+              readOnly
               type="text"
-              placeholder="新しいフィルタを追加"
+              placeholder={placeholder ?? "Add a new filter"}
               onFocus={handleOnFocus}
             />
           </Styled.InputContiner>
@@ -192,6 +213,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           onClose={handleClose}
         >
           <FilterCard
+            sectionTitle={sectionTitle}
+            conditionTitle={conditionTitle}
             currentReferedFilters={currentReferedFilters}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
@@ -209,6 +232,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
           onClose={handleClose}
         >
           <EditFilterCard
+            sectionTitle={sectionTitle}
+            conditionTitle={conditionTitle}
             willEditFilter={willEditFilter as ReferedFilterType}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
