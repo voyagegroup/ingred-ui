@@ -61,22 +61,12 @@ export type ActionButtonProps = React.ComponentPropsWithRef<"button"> & {
 };
 
 const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
-  ({ children, icon, color = "primary", onClick, disabled, ...rest }, ref) => {
+  ({ children, icon, color = "primary", disabled, ...rest }, ref) => {
     const theme = useTheme();
 
     const colorStyle = disabled
       ? getContainerColorStyles(theme).disabled
       : getContainerColorStyles(theme)[color];
-
-    const handleClick = (
-      onClick?: React.MouseEventHandler<HTMLButtonElement>,
-      disabled?: boolean,
-    ) => (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-      if (disabled || !onClick) {
-        return;
-      }
-      onClick(e);
-    };
 
     return (
       <Styled.Container
@@ -84,7 +74,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         ref={ref}
         normal={colorStyle.normal}
         hover={colorStyle.hover}
-        onClick={handleClick(onClick, disabled)}
+        disabled={disabled}
       >
         <Spacer pr={0.25}>
           <Icon name={icon} color={colorStyle.normal.color} />
