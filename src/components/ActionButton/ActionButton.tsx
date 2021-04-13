@@ -84,6 +84,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         ref={ref}
         normal={colorStyle.normal}
         hover={colorStyle.hover}
+        disabled={disabled}
         onClick={handleClick(onClick, disabled)}
       >
         <Spacer pr={0.25}>
