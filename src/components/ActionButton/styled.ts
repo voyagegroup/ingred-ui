@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Space } from "../../styles";
-import { ActionButtonColorStyle } from "./ActionButton";
 
-type ContainerProps = ActionButtonColorStyle;
+type ContainerProps = {
+  backgroundColor: string;
+  backgroundColorAtHover: string;
+};
 
 export const Container = styled.button<ContainerProps>`
   display: flex;
@@ -11,12 +13,12 @@ export const Container = styled.button<ContainerProps>`
   border: 0;
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;
-  background-color: ${({ normal }) => normal.background};
+  background-color: ${({ backgroundColor }) => backgroundColor};
   white-space: nowrap;
   transition: all 0.3s;
 
   &:hover {
-    background-color: ${({ hover }) => hover.background};
+    background-color: ${({ backgroundColorAtHover }) => backgroundColorAtHover};
   }
 
   &:disabled {
