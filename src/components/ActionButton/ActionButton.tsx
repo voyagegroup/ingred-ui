@@ -7,13 +7,13 @@ import Typography from "../Typography";
 import { Theme, useTheme } from "../../themes";
 import { colors } from "../../styles/color";
 
-const getBackgroundColorAtNormal = (theme: Theme) => ({
+const getNormalBackgroundColor = (theme: Theme) => ({
   primary: theme.palette.background.hint,
   warning: theme.palette.danger.highlight,
   disabled: theme.palette.gray.light,
 });
 
-const getBackgroundColorAtHover = (theme: Theme) => ({
+const getHoverBackgroundColor = (theme: Theme) => ({
   primary: theme.palette.primary.highlight,
   warning: colors.red[200],
   disabled: theme.palette.gray.light,
@@ -39,17 +39,15 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     const getColorByDisabled = (
       color: ColorProp,
       disabled?: boolean,
-    ): string => {
+    ): ColorProp | "disabled" => {
       return disabled ? "disabled" : color;
     };
 
     const colorForStyle = getColorByDisabled(color, disabled);
-    const normalBackgroundColor = getBackgroundColorAtNormal(theme)[
+    const normalBackgroundColor = getNormalBackgroundColor(theme)[
       colorForStyle
     ];
-    const hoverBackgroundColor = getBackgroundColorAtHover(theme)[
-      colorForStyle
-    ];
+    const hoverBackgroundColor = getHoverBackgroundColor(theme)[colorForStyle];
     const textColor = getTextColor(theme)[colorForStyle];
 
     return (
