@@ -1,5 +1,6 @@
 import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs/blocks";
 import ActionButton from "./ActionButton";
+import { Flex, Spacer, Typography } from "..";
 
 <Meta
   title="Components/Inputs/ActionButton"
@@ -16,13 +17,23 @@ It can behave like a `<button />` tags.
 ## Samples
 
 <Canvas>
-  <Story
-    name="Example"
-    args={{
-      icon: "pencil",
-      children: "Edit",
-    }}
-  >
-    {(args) => <ActionButton {...args} />}
+  <Story name="Example">
+    <Flex display="flex">
+      <Spacer mr={5}>
+        <Typography weight="bold">Primary</Typography>
+        <Spacer pt={1}/>
+        <ActionButton icon="pencil" color="primary" children="Edit" />
+      </Spacer>
+      <Spacer mr={5}>
+        <Typography weight="bold">Warning</Typography>
+        <Spacer pt={1} />
+        <ActionButton icon="pencil" color="warning" children="Edit" />
+      </Spacer>
+      <Spacer mr={5}>
+        <Typography weight="bold">Disabled</Typography>
+        <Spacer pt={1} />
+        <ActionButton icon="pencil" children="Edit" disabled={true} />
+      </Spacer>
+    </Flex>
   </Story>
 </Canvas>

@@ -1,17 +1,21 @@
 import styled from "styled-components";
 import { Space } from "../../styles";
+import { ActionButtonColorStyle } from "./ActionButton";
 
-export const Container = styled.button`
+type ContainerProps = ActionButtonColorStyle;
+
+export const Container = styled.button<ContainerProps>`
   display: flex;
   align-items: center;
   padding: ${Space * 0.75}px ${Space}px;
   border: 0;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "none" : "pointer")};
   border-radius: ${({ theme }) => theme.radius}px;
-  background-color: ${({ theme }) => theme.palette.background.hint};
+  background-color: ${({ normal }) => normal.background};
   white-space: nowrap;
   transition: all 0.3s;
+
   &:hover {
-    background-color: ${({ theme }) => theme.palette.background.active};
+    background-color: ${({ hover }) => hover.background};
   }
 `;
