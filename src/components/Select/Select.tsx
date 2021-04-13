@@ -126,8 +126,6 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       return {
         ...base,
         padding: 0,
-        paddingRight: "4px",
-
         color: `${color}`,
         fontSize: `${fontSize.sm}px`,
       };
@@ -137,11 +135,10 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
       ":hover": {
         backgroundColor: "transparent",
       },
-      paddingRight: "8px",
+      padding: "0px 8px",
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: "6px 8px",
       minHeight: "40px",
     }),
   };
