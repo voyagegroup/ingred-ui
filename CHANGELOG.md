@@ -1,5 +1,17 @@
 # Changelog
 
+## [v7.22.0](https://github.com/voyagegroup/ingred-ui/tree/v7.22.0) (2021-04-14)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.2...v7.22.0)
+
+**Merged pull requests:**
+
+- ActionButtonに他カラーを追加 [\#302](https://github.com/voyagegroup/ingred-ui/pull/302) ([hirokikondo86](https://github.com/hirokikondo86))
+- MenuにGroupを追加 [\#296](https://github.com/voyagegroup/ingred-ui/pull/296) ([hirokikondo86](https://github.com/hirokikondo86))
+- MenuにWarnTextを追加 [\#288](https://github.com/voyagegroup/ingred-ui/pull/288) ([hirokikondo86](https://github.com/hirokikondo86))
+- MenuにWarnTextとGroupを追加 [\#287](https://github.com/voyagegroup/ingred-ui/pull/287) ([hirokikondo86](https://github.com/hirokikondo86))
+- Multiple Filterの作成 [\#259](https://github.com/voyagegroup/ingred-ui/pull/259) ([penicillin0](https://github.com/penicillin0))
+
 ## [v7.21.2](https://github.com/voyagegroup/ingred-ui/tree/v7.21.2) (2021-04-12)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.1...v7.21.2)
