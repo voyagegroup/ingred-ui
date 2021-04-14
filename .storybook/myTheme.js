@@ -1,4 +1,5 @@
 import { create } from '@storybook/theming';
+import logo from '../assets/logo.png';
 
 export default create({
     base: 'light',
@@ -33,5 +34,5 @@ export default create({
   
     brandTitle: 'INGRED UI',
     brandUrl: 'https://github.com/voyagegroup/ingred-ui',
-    brandImage: 'https://placehold.it/350x150',
+    brandImage: logo,
   });
