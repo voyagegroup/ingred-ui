@@ -20,7 +20,7 @@
     "start": "rollup -c -w",
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "storybook": "start-storybook -s ./assets -p 6006",
+    "storybook": "start-storybook -s ./assets -p 6006 --no-manager-cache",
     "build-storybook": "build-storybook",
     "lint": "eslint 'src/**/*.{ts,tsx,mdx}'",
     "generate": "yarn scaffdog generate",
