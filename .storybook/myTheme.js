@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming';
-import logo from '../assets/logo.png';
+import logo from '../assets/logoIngredUi.png';
 
 export default create({
     base: 'light',
