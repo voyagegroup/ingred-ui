@@ -23,3 +23,5 @@ yarn-error.log*
 
 # storybook
 storybook-static
+
+/.idea/
