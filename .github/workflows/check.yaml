@@ -1,12 +1,10 @@
-name: test
+name: PR Check
 
 on:
   pull_request:
-    branches:
-      - master
 
 jobs:
-  test:
+  test-and-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
