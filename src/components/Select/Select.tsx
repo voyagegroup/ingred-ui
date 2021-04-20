@@ -110,7 +110,10 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     },
     multiValue: (base) => ({
       ...base,
-      backgroundColor: theme.palette.gray.light,
+      backgroundColor: theme.palette.gray.highlight,
+      padding: "2px 0px 3px 2px",
+      margin: "0px 4px",
+      border: `1px solid ${theme.palette.divider}`,
       borderRadius: `${theme.radius}px`,
     }),
     multiValueLabel: (base, { isDisabled }) => {
@@ -130,12 +133,13 @@ const getOverrideStyles = (theme: Theme, error: boolean) => {
     multiValueRemove: (base) => ({
       ...base,
       ":hover": {
-        backgroundColor: theme.palette.gray.main,
+        backgroundColor: "transparent",
       },
+      padding: "0px 8px",
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: "10px 8px",
+      minHeight: "40px",
     }),
   };
   return overrideStyles;
