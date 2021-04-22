@@ -17,18 +17,17 @@ export const CellCheckbox: React.FunctionComponent<Props> = ({
   onClick,
   ...rest
 }) => {
+  const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+    if (onClick) return onClick(event);
+    return event.stopPropagation();
+  };
   const Component = header ? Styled.HeaderCell : Styled.StandardCell;
   return (
     <Component {...rest}>
       <Checkbox
         indeterminate={indeterminate}
         checked={selected}
-        // eslint-disable-next-line react/jsx-handler-names
-        onClick={
-          typeof onClick === "undefined"
-            ? (event) => event.stopPropagation()
-            : onClick
-        }
+        onClick={handleClick}
       />
     </Component>
   );
