@@ -23,6 +23,7 @@ export const CellCheckbox: React.FunctionComponent<Props> = ({
       <Checkbox
         indeterminate={indeterminate}
         checked={selected}
+        // eslint-disable-next-line react/jsx-handler-names
         onClick={
           typeof onClick === "undefined"
             ? (event) => event.stopPropagation()
