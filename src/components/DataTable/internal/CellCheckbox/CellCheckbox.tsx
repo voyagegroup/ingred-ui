@@ -23,7 +23,11 @@ export const CellCheckbox: React.FunctionComponent<Props> = ({
       <Checkbox
         indeterminate={indeterminate}
         checked={selected}
-        onClick={onClick}
+        onClick={
+          typeof onClick === "undefined"
+            ? (event) => event.stopPropagation()
+            : onClick
+        }
       />
     </Component>
   );
