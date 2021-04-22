@@ -241,7 +241,13 @@ import { data } from "./data";
                 name: "URL",
                 selector: (data) => data.url,
                 renderCell: (data) => (
-                  <a href={data.url} target={'_blank'} rel={"noopener noreferer"} >{data.url}</a>
+                  <a
+                    href={data.url}
+                    target={"_blank"}
+                    rel={"noopener noreferrer"}
+                  >
+                    {data.url}
+                  </a>
                 ),
               },
             ]}
