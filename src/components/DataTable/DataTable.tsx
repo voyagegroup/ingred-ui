@@ -551,13 +551,6 @@ const DataTable = <T extends DataTableBaseData>({
                         }
                         disableHoverHighlight={enableMergeCell}
                       >
-                        {(!showTabs || isCheckableTab(currentTabIndex, tabs)) &&
-                          !isMergedCell(displayData, index) && (
-                            <Table.Cell
-                              enableRuledLine={enableRuledLine}
-                              rowSpan={calculateRowSpan(displayData, index)}
-                            />
-                          )}
                         {columns.map((column) =>
                           isMergedCell(displayData, index, column) ? null : (
                             <Table.Cell
