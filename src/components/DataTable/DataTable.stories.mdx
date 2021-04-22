@@ -213,6 +213,47 @@ import { data } from "./data";
   </Story>
 </Canvas>
 
+### Selectable with checkbox and link
+
+<Canvas>
+  <Story name="selectable with checkbox and link" args={{}}>
+    {(args) => {
+      const [selectedRows, setSelectedRows] = React.useState([]);
+      const handleClick = () => {
+        alert(selectedRows.join(","));
+      };
+      return (
+        <>
+          <Button onClick={handleClick}>Show selected Items</Button>
+          <DataTable
+            data={data.slice(0, 4)}
+            columns={[
+              {
+                name: "ID",
+                selector: (data) => data.id,
+              },
+              {
+                name: "Impression",
+                selector: (data) => data.imp,
+                sortable: true,
+              },
+              {
+                name: "URL",
+                selector: (data) => data.url,
+                renderCell: (data) => (
+                  <a href={data.url} target={'_blank'} rel={"noopener noreferer"} >{data.url}</a>
+                ),
+              },
+            ]}
+            onSelectRowsChange={setSelectedRows}
+            {...args}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Canvas>
+
 ### Selectable with radio button
 
 <Canvas>
