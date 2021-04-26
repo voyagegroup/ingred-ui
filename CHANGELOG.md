@@ -1,5 +1,26 @@
 # Changelog
 
+## [v7.22.1](https://github.com/voyagegroup/ingred-ui/tree/v7.22.1) (2021-04-26)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.22.0...v7.22.1)
+
+**Implemented enhancements:**
+
+- testとlintがmasterに向いてないPRでも実行されるようにした [\#308](https://github.com/voyagegroup/ingred-ui/pull/308) ([ryokosuge](https://github.com/ryokosuge))
+- storybookにINGRED-UIのfaviconを設定 [\#307](https://github.com/voyagegroup/ingred-ui/pull/307) ([deatiger](https://github.com/deatiger))
+- Storybookの見た目をINGRED UI仕様にする [\#306](https://github.com/voyagegroup/ingred-ui/pull/306) ([noronaoki](https://github.com/noronaoki))
+- Select label design [\#292](https://github.com/voyagegroup/ingred-ui/pull/292) ([penicillin0](https://github.com/penicillin0))
+
+**Closed issues:**
+
+- Property 'css' is missing in type '{ children: string; icon: "more"; onClick: \(\) =\> Promise\<void\>; }' but required in type 'Pick\<ActionButtonProps....... [\#247](https://github.com/voyagegroup/ingred-ui/issues/247)
+- DateRangePicker: cannot select single date range [\#236](https://github.com/voyagegroup/ingred-ui/issues/236)
+
+**Merged pull requests:**
+
+- 本番のStorybookのfaviconを設定するためassetsディレクトリを含めてビルド [\#310](https://github.com/voyagegroup/ingred-ui/pull/310) ([deatiger](https://github.com/deatiger))
+- チェックボックスありのデータ行をクリック・タップするとチェックのON/OFFができるよう修正 [\#309](https://github.com/voyagegroup/ingred-ui/pull/309) ([deatiger](https://github.com/deatiger))
+
 ## [v7.22.0](https://github.com/voyagegroup/ingred-ui/tree/v7.22.0) (2021-04-14)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.21.2...v7.22.0)
