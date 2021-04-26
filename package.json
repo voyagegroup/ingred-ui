@@ -21,7 +21,7 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
     "storybook": "start-storybook -s ./assets -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -s ./assets",
     "lint": "eslint 'src/**/*.{ts,tsx,mdx}'",
     "generate": "yarn scaffdog generate",
     "format": "yarn lint --fix"
