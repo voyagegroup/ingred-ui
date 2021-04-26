@@ -8,6 +8,7 @@ export const data = [
     click: 0,
     vimp: 4094,
     created_at: "2019/08/16 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 32538,
@@ -18,6 +19,7 @@ export const data = [
     click: 0,
     vimp: 3815,
     created_at: "2019/08/17 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 32869,
@@ -28,6 +30,7 @@ export const data = [
     click: 0,
     vimp: 3649,
     created_at: "2019/08/18 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 33198,
@@ -38,6 +41,7 @@ export const data = [
     click: 0,
     vimp: 4730,
     created_at: "2019/08/19 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 33528,
@@ -48,6 +52,7 @@ export const data = [
     click: 0,
     vimp: 9884,
     created_at: "2019/08/20 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 35964,
@@ -58,6 +63,7 @@ export const data = [
     click: 0,
     vimp: 11150,
     created_at: "2019/08/21 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 36630,
@@ -68,6 +74,7 @@ export const data = [
     click: 0,
     vimp: 3244,
     created_at: "2019/08/22 16:31",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 36947,
@@ -78,6 +85,7 @@ export const data = [
     click: 0,
     vimp: 2705,
     created_at: "2019/08/23 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 37243,
@@ -88,6 +96,7 @@ export const data = [
     click: 0,
     vimp: 3163,
     created_at: "2019/08/24 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 37533,
@@ -98,6 +107,7 @@ export const data = [
     click: 0,
     vimp: 8237,
     created_at: "2019/08/25 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 37825,
@@ -108,6 +118,7 @@ export const data = [
     click: 0,
     vimp: 7236,
     created_at: "2019/08/26 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 38116,
@@ -118,6 +129,7 @@ export const data = [
     click: 0,
     vimp: 6593,
     created_at: "2019/08/27 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 38405,
@@ -128,6 +140,7 @@ export const data = [
     click: 0,
     vimp: 4103,
     created_at: "2019/08/28 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 38689,
@@ -138,6 +151,7 @@ export const data = [
     click: 0,
     vimp: 1881,
     created_at: "2019/08/29 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 38974,
@@ -148,6 +162,7 @@ export const data = [
     click: 0,
     vimp: 528,
     created_at: "2019/08/30 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 39258,
@@ -158,6 +173,7 @@ export const data = [
     click: 0,
     vimp: 1748,
     created_at: "2019/08/31 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 39549,
@@ -168,6 +184,7 @@ export const data = [
     click: 0,
     vimp: 1178,
     created_at: "2019/09/01 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 39842,
@@ -178,6 +195,7 @@ export const data = [
     click: 0,
     vimp: 915,
     created_at: "2019/09/02 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 40135,
@@ -188,6 +206,7 @@ export const data = [
     click: 0,
     vimp: 1234,
     created_at: "2019/09/03 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 40428,
@@ -198,6 +217,7 @@ export const data = [
     click: 0,
     vimp: 39135,
     created_at: "2019/09/04 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 40720,
@@ -208,6 +228,7 @@ export const data = [
     click: 0,
     vimp: 59397,
     created_at: "2019/09/05 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 41007,
@@ -218,6 +239,7 @@ export const data = [
     click: 0,
     vimp: 49111,
     created_at: "2019/09/06 09:15",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 41289,
@@ -228,6 +250,7 @@ export const data = [
     click: 0,
     vimp: 53858,
     created_at: "2019/09/07 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 41578,
@@ -238,6 +261,7 @@ export const data = [
     click: 0,
     vimp: 40109,
     created_at: "2019/09/08 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 41869,
@@ -248,6 +272,7 @@ export const data = [
     click: 0,
     vimp: 57589,
     created_at: "2019/09/09 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 42155,
@@ -258,6 +283,7 @@ export const data = [
     click: 0,
     vimp: 60747,
     created_at: "2019/09/10 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 42442,
@@ -268,6 +294,7 @@ export const data = [
     click: 0,
     vimp: 42914,
     created_at: "2019/09/11 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 42614,
@@ -278,6 +305,7 @@ export const data = [
     click: 0,
     vimp: 49239,
     created_at: "2019/09/12 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 42779,
@@ -288,6 +316,7 @@ export const data = [
     click: 0,
     vimp: 51819,
     created_at: "2019/09/13 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 42944,
@@ -298,6 +327,7 @@ export const data = [
     click: 0,
     vimp: 43703,
     created_at: "2019/09/14 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43111,
@@ -308,6 +338,7 @@ export const data = [
     click: 0,
     vimp: 85272,
     created_at: "2019/09/15 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43282,
@@ -318,6 +349,7 @@ export const data = [
     click: 0,
     vimp: 73541,
     created_at: "2019/09/16 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43457,
@@ -328,6 +360,7 @@ export const data = [
     click: 0,
     vimp: 43433,
     created_at: "2019/09/17 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43629,
@@ -338,6 +371,7 @@ export const data = [
     click: 0,
     vimp: 85314,
     created_at: "2019/09/18 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43805,
@@ -348,6 +382,7 @@ export const data = [
     click: 0,
     vimp: 73304,
     created_at: "2019/09/19 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 43980,
@@ -358,6 +393,7 @@ export const data = [
     click: 0,
     vimp: 84252,
     created_at: "2019/09/20 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44150,
@@ -368,6 +404,7 @@ export const data = [
     click: 0,
     vimp: 46162,
     created_at: "2019/09/21 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44319,
@@ -378,6 +415,7 @@ export const data = [
     click: 0,
     vimp: 41517,
     created_at: "2019/09/22 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44486,
@@ -388,6 +426,7 @@ export const data = [
     click: 0,
     vimp: 47806,
     created_at: "2019/09/23 09:16",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44656,
@@ -398,6 +437,7 @@ export const data = [
     click: 0,
     vimp: 69051,
     created_at: "2019/09/24 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44828,
@@ -408,6 +448,7 @@ export const data = [
     click: 0,
     vimp: 56853,
     created_at: "2019/09/25 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 44993,
@@ -418,6 +459,7 @@ export const data = [
     click: 0,
     vimp: 51939,
     created_at: "2019/09/26 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45134,
@@ -428,6 +470,7 @@ export const data = [
     click: 0,
     vimp: 36949,
     created_at: "2019/09/27 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45280,
@@ -438,6 +481,7 @@ export const data = [
     click: 0,
     vimp: 33661,
     created_at: "2019/09/28 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45425,
@@ -448,6 +492,7 @@ export const data = [
     click: 0,
     vimp: 30721,
     created_at: "2019/09/29 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45569,
@@ -458,6 +503,7 @@ export const data = [
     click: 0,
     vimp: 28642,
     created_at: "2019/09/30 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45716,
@@ -468,6 +514,7 @@ export const data = [
     click: 0,
     vimp: 28452,
     created_at: "2019/10/01 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 45865,
@@ -478,6 +525,7 @@ export const data = [
     click: 0,
     vimp: 31932,
     created_at: "2019/10/02 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 46007,
@@ -488,6 +536,7 @@ export const data = [
     click: 0,
     vimp: 31130,
     created_at: "2019/10/03 09:17",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 46490,
@@ -498,6 +547,7 @@ export const data = [
     click: 0,
     vimp: 31826,
     created_at: "2019/10/04 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 46998,
@@ -508,6 +558,7 @@ export const data = [
     click: 0,
     vimp: 34259,
     created_at: "2019/10/05 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 47527,
@@ -518,6 +569,7 @@ export const data = [
     click: 0,
     vimp: 29213,
     created_at: "2019/10/06 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 48053,
@@ -528,6 +580,7 @@ export const data = [
     click: 0,
     vimp: 30248,
     created_at: "2019/10/07 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 48586,
@@ -538,6 +591,7 @@ export const data = [
     click: 0,
     vimp: 36484,
     created_at: "2019/10/08 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 49116,
@@ -548,6 +602,7 @@ export const data = [
     click: 0,
     vimp: 35366,
     created_at: "2019/10/09 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 49654,
@@ -558,6 +613,7 @@ export const data = [
     click: 0,
     vimp: 28245,
     created_at: "2019/10/10 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 50458,
@@ -568,6 +624,7 @@ export const data = [
     click: 0,
     vimp: 32424,
     created_at: "2019/10/11 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 51523,
@@ -578,6 +635,7 @@ export const data = [
     click: 0,
     vimp: 32339,
     created_at: "2019/10/12 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 52059,
@@ -588,6 +646,7 @@ export const data = [
     click: 0,
     vimp: 33322,
     created_at: "2019/10/13 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 52592,
@@ -598,6 +657,7 @@ export const data = [
     click: 0,
     vimp: 31201,
     created_at: "2019/10/14 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 53134,
@@ -608,6 +668,7 @@ export const data = [
     click: 0,
     vimp: 31449,
     created_at: "2019/10/15 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 53937,
@@ -618,6 +679,7 @@ export const data = [
     click: 0,
     vimp: 30512,
     created_at: "2019/10/16 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 54744,
@@ -628,6 +690,7 @@ export const data = [
     click: 0,
     vimp: 31999,
     created_at: "2019/10/17 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 55538,
@@ -638,6 +701,7 @@ export const data = [
     click: 0,
     vimp: 28009,
     created_at: "2019/10/18 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 56338,
@@ -648,6 +712,7 @@ export const data = [
     click: 0,
     vimp: 27753,
     created_at: "2019/10/19 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 56867,
@@ -658,6 +723,7 @@ export const data = [
     click: 0,
     vimp: 24694,
     created_at: "2019/10/20 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 57395,
@@ -668,6 +734,7 @@ export const data = [
     click: 0,
     vimp: 26949,
     created_at: "2019/10/21 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 57916,
@@ -678,6 +745,7 @@ export const data = [
     click: 0,
     vimp: 27178,
     created_at: "2019/10/22 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 58438,
@@ -688,6 +756,7 @@ export const data = [
     click: 0,
     vimp: 30460,
     created_at: "2019/10/23 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 59250,
@@ -698,6 +767,7 @@ export const data = [
     click: 0,
     vimp: 27020,
     created_at: "2019/10/24 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 60064,
@@ -708,6 +778,7 @@ export const data = [
     click: 0,
     vimp: 25749,
     created_at: "2019/10/25 09:18",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 60974,
@@ -718,6 +789,7 @@ export const data = [
     click: 0,
     vimp: 22051,
     created_at: "2019/10/26 09:20",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 61693,
@@ -728,6 +800,7 @@ export const data = [
     click: 0,
     vimp: 25222,
     created_at: "2019/10/27 09:19",
+    url: "https://corp.fluct.jp/",
   },
   {
     id: 62420,
@@ -738,5 +811,6 @@ export const data = [
     click: 0,
     vimp: 27778,
     created_at: "2019/10/28 09:19",
+    url: "https://corp.fluct.jp/",
   },
 ];

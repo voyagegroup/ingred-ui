@@ -442,59 +442,139 @@ const DataTable = <T extends DataTableBaseData>({
             <Table.Body>
               {displayData.length > 0 ? (
                 displayData.map((item, index) => (
-                  <Table.Row
+                  <React.Fragment
                     key={index} // eslint-disable-line react/no-array-index-key
-                    verticalSpacing={verticalSpacing}
-                    highlighted={
-                      !item.selectDisabled &&
-                      (selectedRows.includes(item.id) ||
-                        selectedRow === item.id)
-                    }
-                    disableHoverHighlight={enableMergeCell}
                   >
-                    {(!showTabs || isCheckableTab(currentTabIndex, tabs)) &&
-                      !isMergedCell(displayData, index) && (
-                        <>
-                          {showCheckbox &&
-                            (item.selectDisabled ? (
-                              <Table.Cell
-                                enableRuledLine={enableRuledLine}
-                                rowSpan={calculateRowSpan(displayData, index)}
-                              />
-                            ) : (
-                              <CellCheckbox
-                                selected={selectedRows.includes(item.id)}
-                                rowSpan={calculateRowSpan(displayData, index)}
-                                onClick={handleSelectCheckbox(item.id)}
-                              />
-                            ))}
-                          {showRadioButton && (
-                            <CellRadio
-                              selected={item.id === selectedRow}
-                              rowSpan={calculateRowSpan(displayData, index)}
-                              onClick={handleSelectRadioButton(item.id)}
-                            />
-                          )}
-                        </>
-                      )}
-                    {columns.map((column) =>
-                      isMergedCell(displayData, index, column) ? null : (
-                        <Table.Cell
-                          key={column.name}
-                          enableRuledLine={enableRuledLine}
-                          rowSpan={calculateRowSpan(displayData, index, column)}
-                        >
-                          {column.renderCell ? (
-                            column.renderCell(item)
-                          ) : (
-                            <Typography align={column.align}>
-                              {column.selector(item)}
-                            </Typography>
-                          )}
-                        </Table.Cell>
-                      ),
+                    {showCheckbox || showRadioButton ? (
+                      <>
+                        {showCheckbox && (
+                          <Table.Row
+                            verticalSpacing={verticalSpacing}
+                            highlighted={
+                              !item.selectDisabled &&
+                              (selectedRows.includes(item.id) ||
+                                selectedRow === item.id)
+                            }
+                            disableHoverHighlight={enableMergeCell}
+                            onClick={handleSelectCheckbox(item.id)}
+                          >
+                            {(!showTabs ||
+                              isCheckableTab(currentTabIndex, tabs)) &&
+                              !isMergedCell(displayData, index) && (
+                                <CellCheckbox
+                                  selected={selectedRows.includes(item.id)}
+                                  rowSpan={calculateRowSpan(displayData, index)}
+                                />
+                              )}
+                            {columns.map((column) =>
+                              isMergedCell(
+                                displayData,
+                                index,
+                                column,
+                              ) ? null : (
+                                <Table.Cell
+                                  key={column.name}
+                                  enableRuledLine={enableRuledLine}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    index,
+                                    column,
+                                  )}
+                                >
+                                  {column.renderCell ? (
+                                    column.renderCell(item)
+                                  ) : (
+                                    <Typography align={column.align}>
+                                      {column.selector(item)}
+                                    </Typography>
+                                  )}
+                                </Table.Cell>
+                              ),
+                            )}
+                          </Table.Row>
+                        )}
+                        {showRadioButton && (
+                          <Table.Row
+                            verticalSpacing={verticalSpacing}
+                            highlighted={
+                              !item.selectDisabled &&
+                              (selectedRows.includes(item.id) ||
+                                selectedRow === item.id)
+                            }
+                            disableHoverHighlight={enableMergeCell}
+                            onClick={handleSelectRadioButton(item.id)}
+                          >
+                            {(!showTabs ||
+                              isCheckableTab(currentTabIndex, tabs)) &&
+                              !isMergedCell(displayData, index) && (
+                                <CellRadio
+                                  selected={item.id === selectedRow}
+                                  rowSpan={calculateRowSpan(displayData, index)}
+                                  onClick={handleSelectRadioButton(item.id)}
+                                />
+                              )}
+                            {columns.map((column) =>
+                              isMergedCell(
+                                displayData,
+                                index,
+                                column,
+                              ) ? null : (
+                                <Table.Cell
+                                  key={column.name}
+                                  enableRuledLine={enableRuledLine}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    index,
+                                    column,
+                                  )}
+                                >
+                                  {column.renderCell ? (
+                                    column.renderCell(item)
+                                  ) : (
+                                    <Typography align={column.align}>
+                                      {column.selector(item)}
+                                    </Typography>
+                                  )}
+                                </Table.Cell>
+                              ),
+                            )}
+                          </Table.Row>
+                        )}
+                      </>
+                    ) : (
+                      <Table.Row
+                        verticalSpacing={verticalSpacing}
+                        highlighted={
+                          !item.selectDisabled &&
+                          (selectedRows.includes(item.id) ||
+                            selectedRow === item.id)
+                        }
+                        disableHoverHighlight={enableMergeCell}
+                      >
+                        {columns.map((column) =>
+                          isMergedCell(displayData, index, column) ? null : (
+                            <Table.Cell
+                              key={column.name}
+                              enableRuledLine={enableRuledLine}
+                              rowSpan={calculateRowSpan(
+                                displayData,
+                                index,
+                                column,
+                              )}
+                            >
+                              {column.renderCell ? (
+                                column.renderCell(item)
+                              ) : (
+                                <Typography align={column.align}>
+                                  {column.selector(item)}
+                                </Typography>
+                              )}
+                            </Table.Cell>
+                          ),
+                        )}
+                      </Table.Row>
                     )}
-                  </Table.Row>
+                  </React.Fragment>
                 ))
               ) : (
                 <tr>
