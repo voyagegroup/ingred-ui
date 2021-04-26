@@ -8,6 +8,7 @@ import {
   DateRangePickerShape,
 } from "react-dates";
 import Icon from "../Icon";
+import Spacer from "../Spacer";
 
 function isOutsideRange() {
   return false;
@@ -50,12 +51,16 @@ const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = ({
         endDateId="endDate"
         navPrev={
           <Styled.NavPrev>
-            <Icon name="arrow_left" size="lg" />
+            <Spacer p={0.5}>
+              <Icon name="arrow_left" size="md" />
+            </Spacer>
           </Styled.NavPrev>
         }
         navNext={
           <Styled.NavNext>
-            <Icon name="arrow_right" size="lg" />
+            <Spacer p={0.5}>
+              <Icon name="arrow_right" size="md" />
+            </Spacer>
           </Styled.NavNext>
         }
         {...rest}

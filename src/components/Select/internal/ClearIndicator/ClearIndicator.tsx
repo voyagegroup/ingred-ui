@@ -9,7 +9,7 @@ const ClearIndicator = (props: IndicatorProps<any>) => {
   return (
     <Styled.Container>
       <components.ClearIndicator {...props}>
-        <Icon name="close" size="sm" color={theme.palette.black} />
+        <Icon name="close_circle" color={theme.palette.black} />
       </components.ClearIndicator>
     </Styled.Container>
   );

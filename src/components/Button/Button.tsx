@@ -32,65 +32,89 @@ const getContainerColorStyles = (
   primary: {
     normal: {
       background: theme.palette.primary.main,
-      color: theme.palette.white,
-      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.primary.main, 0.4)}`,
-      border: "none",
+      color: theme.palette.text.white,
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.black,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
       background: theme.palette.primary.dark,
       border: "none",
     },
     active: {
-      background: theme.palette.primary.deepDark,
+      background: theme.palette.primary.dark,
       border: "none",
     },
   },
   secondary: {
     normal: {
-      background: theme.palette.white,
+      background: theme.palette.background.default,
       color: theme.palette.black,
-      boxShadow: "none",
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.black,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
-      background: theme.palette.gray.light,
+      background: theme.palette.gray.highlight,
       border: `1px solid ${theme.palette.divider}`,
     },
     active: {
-      background: theme.palette.gray.main,
+      background: theme.palette.gray.highlight,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
   danger: {
     normal: {
       background: theme.palette.danger.main,
-      color: theme.palette.white,
-      boxShadow: `0px 0px 16px ${hexToRgba(theme.palette.danger.main, 0.4)}`,
-      border: "none",
+      color: theme.palette.text.white,
+      boxShadow: `0px -2px ${hexToRgba(
+        theme.palette.black,
+        0.16,
+      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
       background: theme.palette.danger.dark,
       border: "none",
     },
     active: {
-      background: theme.palette.danger.deepDark,
+      background: theme.palette.danger.dark,
       border: "none",
     },
   },
 });
 
-const buttonSize: Record<ButtonSize, { minWidth: string; height: string }> = {
+const verticalPadding: Record<ButtonSize, { padding: string }> = {
   small: {
-    minWidth: "64px",
-    height: "32px",
+    padding: "6px",
   },
   medium: {
-    minWidth: "130px",
-    height: "42px",
+    padding: "10px",
   },
   large: {
-    minWidth: "178px",
-    height: "48px",
+    padding: "13px",
+  },
+};
+
+const paddingAtActive: Record<
+  ButtonSize,
+  { paddingTop: string; paddingBottom: string }
+> = {
+  small: {
+    paddingTop: "7px",
+    paddingBottom: "5px",
+  },
+  medium: {
+    paddingTop: "11px",
+    paddingBottom: "9px",
+  },
+  large: {
+    paddingTop: "14px",
+    paddingBottom: "12px",
   },
 };
 
@@ -144,7 +168,10 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       as={component || "button"}
       {...anchorProps}
       inline={inline}
+      verticalPadding={verticalPadding[size].padding}
       horizontalPadding={horizontalPadding}
+      paddingTopAtActive={paddingAtActive[size].paddingTop}
+      paddingBottomAtActive={paddingAtActive[size].paddingBottom}
       normal={{ ...colorStyle.normal }}
       hover={{ ...colorStyle.hover }}
       active={{ ...colorStyle.active }}
@@ -152,8 +179,6 @@ const Button: React.FunctionComponent<ButtonProps> = ({
       fontSize={
         size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
       }
-      height={buttonSize[size].height}
-      minWidth={buttonSize[size].minWidth}
     >
       {children}
     </Styled.ButtonContainer>

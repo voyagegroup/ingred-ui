@@ -1,0 +1,53 @@
+import * as React from "react";
+import { useTheme } from "../../../../themes";
+import Icon from "../../../Icon";
+import Typography from "../../../Typography";
+import { ReferedFilterType } from "../../types";
+import * as Styled from "./styled";
+
+export type Props = {
+  filter: ReferedFilterType;
+  onRemove: (removedFilter: ReferedFilterType) => void;
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    willEditFilter: ReferedFilterType,
+  ) => void;
+};
+
+const boolToString = (condition: any) => {
+  if (typeof condition === "boolean") {
+    return condition ? "Yes" : "No";
+  } else {
+    return condition;
+  }
+};
+
+export const Label: React.FunctionComponent<Props> = ({
+  filter,
+  onRemove,
+  onClick,
+}) => {
+  const theme = useTheme();
+  const handleRemoveClick = () => {
+    onRemove(filter);
+  };
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onClick(event, filter);
+  };
+  return (
+    <Styled.Container>
+      <Styled.LeftContainer onClick={handleClick}>
+        <Typography size="sm" component="span">
+          {filter.filterName}
+          &nbsp;
+          {boolToString(filter.filterCondtion)}
+        </Typography>
+      </Styled.LeftContainer>
+      <Styled.RightContainer>
+        <Styled.IconContainer onClick={handleRemoveClick}>
+          <Icon name="close_circle" color={theme.palette.black} />
+        </Styled.IconContainer>
+      </Styled.RightContainer>
+    </Styled.Container>
+  );
+};

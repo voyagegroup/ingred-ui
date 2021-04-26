@@ -142,6 +142,7 @@ export const Overview: React.FC = () => {
         control={control}
         render={(props) => (
           <Select
+            closeMenuOnSelect={true}
             options={["1", "2", "3"].map((val) => ({ label: val, value: val }))}
             onChange={(value) => props.onChange(value)}
           />

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultipleFilter component testing MultipleFilter 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-bdfBwQ fWUjEs"
+    >
+      <div
+        class="sc-hKgILt dIbUfx"
+      >
+        <div
+          class="sc-hBEYos gFgPJD"
+          size="18"
+        >
+          <svg
+            viewBox="0 0 18 18"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h18v18H0z"
+              fill="none"
+            />
+            <path
+              d="M14.023,12.963l3.212,3.211-1.061,1.061-3.211-3.212a6.751,6.751,0,1,1,1.061-1.06Zm-1.5-.556a5.248,5.248,0,1,0-.112.112l.112-.112Z"
+              fill="#959FA9"
+              transform="translate(-0.5 -0.5)"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="sc-eCssSg bIiduW"
+      >
+        <div
+          class="sc-gsTCUz ckMJrW"
+        >
+          <input
+            class="sc-fodVxV kGWssv"
+            placeholder="Add a new filter"
+            readonly=""
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        class="sc-jSgupP iXYZQS"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

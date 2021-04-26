@@ -19,7 +19,7 @@ const DropdownIndicator = ({ isDisabled, error, ...rest }: any) => {
     components.DropdownIndicator && (
       <components.DropdownIndicator {...rest}>
         <Styled.DropdownIndicator menuIsOpen={rest.selectProps.menuIsOpen}>
-          <Icon name="arrow_bottom" size="lg" color={color} />
+          <Icon name="arrow_bottom" size="md" color={color} />
         </Styled.DropdownIndicator>
       </components.DropdownIndicator>
     )
