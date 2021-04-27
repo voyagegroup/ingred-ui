@@ -2,9 +2,6 @@
 export { default as ActionButton } from "./ActionButton";
 export * from "./ActionButton";
 
-export { default as SplitAnnotation } from "./SplitAnnotation";
-export * from "./SplitAnnotation";
-
 export { default as Backdrop } from "./Backdrop";
 export * from "./Backdrop";
 
@@ -80,12 +77,6 @@ export * from "./ItemEmpty";
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
 
-export { default as NavigationRail } from "./NavigationRail";
-export * from "./NavigationRail";
-
-export { default as NotificationBadge } from "./NotificationBadge";
-export * from "./NotificationBadge";
-
 export { default as Menu } from "./Menu";
 export * from "./Menu";
 
@@ -94,6 +85,15 @@ export * from "./MenuList";
 
 export { default as Modal } from "./Modal";
 export * from "./Modal";
+
+export { default as MultipleFilter } from "./MultipleFilter";
+export * from "./MultipleFilter";
+
+export { default as NavigationRail } from "./NavigationRail";
+export * from "./NavigationRail";
+
+export { default as NotificationBadge } from "./NotificationBadge";
+export * from "./NotificationBadge";
 
 export { default as Pager } from "./Pager";
 export * from "./Pager";
@@ -113,6 +113,9 @@ export * from "./ScrollArea";
 export { default as Select } from "./Select";
 export * from "./Select";
 
+export { default as Slide } from "./Slide";
+export * from "./Slide";
+
 export { default as Snackbar } from "./Snackbar";
 export * from "./Snackbar";
 
@@ -121,6 +124,9 @@ export * from "./Spacer";
 
 export { default as Spinner } from "./Spinner";
 export * from "./Spinner";
+
+export { default as SplitAnnotation } from "./SplitAnnotation";
+export * from "./SplitAnnotation";
 
 export { default as Switch } from "./Switch";
 export * from "./Switch";
