@@ -47,7 +47,7 @@
     "@storybook/react": "6.1.9",
     "@svgr/rollup": "2.4.1",
     "@testing-library/jest-dom": "5.11.6",
-    "@testing-library/react": "10.4.9",
+    "@testing-library/react": "11.2.6",
     "@types/jest": "26.0.15",
     "@types/moment": "2.13.0",
     "@types/react": "17.0.0",
