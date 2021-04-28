@@ -12,7 +12,7 @@ import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
 
 const getOverrideStyles = (theme: Theme, error: boolean) => {
-  const overrideStyles: StylesConfig = {
+  const overrideStyles: StylesConfig<OptionType<any>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: "none",
@@ -151,13 +151,9 @@ export type SelectProps<T> = {
   limit?: number;
   minWidth?: string;
   error?: boolean;
-} & ReactSelectProps<OptionType<T>>;
+} & ReactSelectProps<OptionType<T>, boolean>;
 
-export type SelectComponent = <T = string>(
-  props: SelectProps<T>,
-) => React.ReactElement<SelectProps<T>>;
-
-const Select: SelectComponent = ({
+const Select = <T,>({
   limit,
   onInputChange,
   minWidth,
@@ -165,7 +161,7 @@ const Select: SelectComponent = ({
   error = false,
   closeMenuOnSelect = true,
   ...rest
-}) => {
+}: SelectProps<T>): React.ReactElement<SelectProps<T>> => {
   const theme = useTheme();
   let i = 0;
   const filterOption: SelectProps<string | number>["filterOption"] = limit
@@ -186,7 +182,7 @@ const Select: SelectComponent = ({
   };
   return (
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
-      <ReactSelect
+      <ReactSelect<OptionType<T>, boolean>
         isClearable
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}

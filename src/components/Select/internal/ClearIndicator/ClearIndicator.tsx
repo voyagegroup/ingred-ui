@@ -3,8 +3,9 @@ import * as Styled from "./styled";
 import { IndicatorProps, components } from "react-select";
 import Icon from "../../../Icon";
 import { useTheme } from "../../../../themes/useTheme";
+import { OptionType } from "../../";
 
-const ClearIndicator = (props: IndicatorProps<any>) => {
+const ClearIndicator = <T,>(props: IndicatorProps<OptionType<T>, boolean>) => {
   const theme = useTheme();
   return (
     <Styled.Container>
@@ -14,4 +15,5 @@ const ClearIndicator = (props: IndicatorProps<any>) => {
     </Styled.Container>
   );
 };
+
 export { ClearIndicator };
