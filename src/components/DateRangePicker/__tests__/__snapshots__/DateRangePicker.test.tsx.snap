@@ -3,7 +3,7 @@
 exports[`DateRangePicker component testing DateRangePicker 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ djNFrk"
+    class="sc-bdvvaa eoAsRs"
   >
     <div
       class="DateRangePicker DateRangePicker_1"
@@ -39,7 +39,7 @@ exports[`DateRangePicker component testing DateRangePicker 1`] = `
             role="presentation"
           >
             <div
-              class="sc-gsTCUz egMOwL"
+              class="sc-gsDJrp dvzjQZ"
             />
           </div>
           <div

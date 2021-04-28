@@ -3,7 +3,7 @@
 exports[`Badge component testing Badge normal 1`] = `
 <DocumentFragment>
   <span
-    class="sc-bdfBwQ WZgDv"
+    class="sc-bdvvaa epDarL"
     color="#FFFFFF"
     font-size="0.65em"
     font-weight="bold"
@@ -17,7 +17,7 @@ exports[`Badge component testing Badge normal 1`] = `
 exports[`Badge component testing Badge pill 1`] = `
 <DocumentFragment>
   <span
-    class="sc-bdfBwQ dMErlM"
+    class="sc-bdvvaa kFBgQk"
     color="#FFFFFF"
     font-size="0.65em"
     font-weight="bold"
