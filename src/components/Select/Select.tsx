@@ -11,8 +11,8 @@ import { ClearIndicator } from "./internal/ClearIndicator";
 import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
 
-const getOverrideStyles = (theme: Theme, error: boolean) => {
-  const overrideStyles: StylesConfig<OptionType<any>, boolean> = {
+const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
+  const overrideStyles: StylesConfig<OptionType<T>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: "none",
@@ -187,7 +187,7 @@ const Select = <T,>({
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
-        styles={getOverrideStyles(theme, error)}
+        styles={getOverrideStyles<T>(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList
         theme={(originalTheme) => ({
