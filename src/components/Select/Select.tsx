@@ -164,10 +164,10 @@ const Select = <T,>({
 }: SelectProps<T>): React.ReactElement<SelectProps<T>> => {
   const theme = useTheme();
   let i = 0;
-  const filterOption: SelectProps<string | number>["filterOption"] = limit
+  const filterOption: SelectProps<T>["filterOption"] = limit
     ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
-  const handleInputChange: SelectProps<string | number>["onInputChange"] = (
+  const handleInputChange: SelectProps<T>["onInputChange"] = (
     newValue,
     actionMeta,
   ) => {
