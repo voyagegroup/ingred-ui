@@ -2,7 +2,8 @@
 name: "component"
 description: "component of description"
 message: "Please enter component name."
-root: "src"
+root: "src/components"
+output: '**/*'
 ignore: []
 ---
 
