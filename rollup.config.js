@@ -33,7 +33,9 @@ export default {
     url(),
     svgr(),
     imagemin(),
-    resolve(),
+    resolve({
+      preferBuiltins: false,
+    }),
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
