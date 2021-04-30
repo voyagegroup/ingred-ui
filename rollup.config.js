@@ -34,7 +34,8 @@ export default {
     svgr(),
     imagemin(),
     resolve({
-      preferBuiltins: false,
+      // TODO: Don't use built-in module(https://github.com/voyagegroup/ingred-ui/issues/328)
+      preferBuiltins: true,
     }),
     typescript({
       rollupCommonJSResolveHack: true,
