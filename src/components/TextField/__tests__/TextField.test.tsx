@@ -13,14 +13,14 @@ describe("TextField component testing", () => {
   });
 
   test("TextField with icon", () => {
-    const { asFragment } = renderWithThemeProvider(
-      <TextField type="password" />,
-    );
+    const { asFragment } = renderWithThemeProvider(<TextField icon="search" />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   test("TextField passward", () => {
-    const { asFragment } = renderWithThemeProvider(<TextField icon="search" />);
+    const { asFragment } = renderWithThemeProvider(
+      <TextField type="password" />,
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 });

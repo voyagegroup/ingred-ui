@@ -5,14 +5,14 @@ import Typography from "../Typography";
 import defaultEmptyImage from "../../../assets/emptyImage.png";
 
 export type ItemEmptyProps = {
-  title: string;
+  title?: string;
   subtitle?: string;
   emptyImage?: string;
   imageWidth?: number;
 };
 
 const ItemEmpty: React.FunctionComponent<ItemEmptyProps> = ({
-  title,
+  title = "Not found.",
   subtitle,
   emptyImage,
   imageWidth = 80,

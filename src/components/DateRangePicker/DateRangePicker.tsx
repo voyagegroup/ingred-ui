@@ -10,18 +10,6 @@ import {
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 
-moment.locale("ja", {
-  weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
-});
-
-function renderMonthText(day: moment.Moment) {
-  return day.format("YYYY年M月");
-}
-
-function displayFormat() {
-  return "YYYY/MM/DD";
-}
-
 function isOutsideRange() {
   return false;
 }
@@ -53,12 +41,10 @@ const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = ({
         startDatePlaceholderText="FROM"
         endDatePlaceholderText="TO"
         isOutsideRange={isOutsideRange}
-        displayFormat={displayFormat}
         customArrowIcon={<Styled.CustomArrowIcon />}
         numberOfMonths={2}
         enableOutsideDays={true}
         daySize={41}
-        renderMonthText={renderMonthText}
         weekDayFormat="ddd"
         hideKeyboardShortcutsPanel={true}
         startDateId="startDate"
