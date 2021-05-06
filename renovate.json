@@ -1,27 +1,23 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "labels": ["renovate"],
-  "timezone": "Asia/Tokyo",
-  "schedule": [
-    "after 9:30 and before 18:30 every weekday"
-  ],
-  "pin": {
-    "automerge": true
-  },
-  "packageRules": [
-    {
-      "updateTypes": ["patch", "minor"],
-      "groupName": "non-major"
-    },
-    {
-      "matchPackagePatterns": ["^@types/"],
+  "extends": ["config:base"],
+    "labels": ["renovate"],
+    "timezone": "Asia/Tokyo",
+    "schedule": ["after 9:30 and before 18:30 every weekday"],
+    "pin": {
       "automerge": true
     },
-    {
-      "matchPackagePatterns": ["^@testing-library/"],
-      "automerge": true
-    }
-  ]
+    "packageRules": [
+      {
+        "groupName": "non-major",
+        "matchUpdateTypes": ["patch", "minor"]
+      },
+      {
+        "matchPackagePatterns": ["^@types/"],
+        "automerge": true
+      },
+      {
+        "matchPackagePatterns": ["^@testing-library/"],
+        "automerge": true
+      }
+    ]
 }
