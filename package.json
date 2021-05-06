@@ -32,7 +32,8 @@
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
     "react-toast-notifications": "^2.4.0",
-    "react-transition-group": "^4.4.1"
+    "react-transition-group": "^4.4.1",
+    "react-hook-form": "6.13.1"
   },
   "peerDependencies": {
     "react": ">= 16.8.0 || ^17.0.1",
@@ -73,7 +74,6 @@
     "prettier": "2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-hook-form": "6.15.7",
     "react-select": "3.2.0",
     "rollup": "2.45.2",
     "rollup-plugin-commonjs": "10.1.0",

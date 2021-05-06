@@ -6,18 +6,6 @@ import { SingleDatePicker, SingleDatePickerShape } from "react-dates";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 
-moment.locale("ja", {
-  weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
-});
-
-function renderMonthText(day: moment.Moment) {
-  return day.format("YYYY年M月");
-}
-
-function displayFormat() {
-  return "YYYY/MM/DD";
-}
-
 function isOutsideRange() {
   return false;
 }
@@ -47,11 +35,9 @@ const DatePicker: React.FunctionComponent<DatePickerProps> = ({
         focused={focused}
         date={date}
         isOutsideRange={isOutsideRange}
-        displayFormat={displayFormat}
         numberOfMonths={1}
         enableOutsideDays={true}
         daySize={41}
-        renderMonthText={renderMonthText}
         weekDayFormat="ddd"
         hideKeyboardShortcutsPanel={true}
         navPrev={

@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { CountChanger } from "./internal/CountChanger";
+import { CountChanger, LabelDisplayRows } from "./internal/CountChanger";
 import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
@@ -206,9 +206,10 @@ export type DataTableProps<T> = {
   fullWidth?: boolean;
   tableMaxHeight?: string;
   horizontalScrollable?: boolean;
+  labelRowsPerPage?: string;
+  labelDisplayedRows?: LabelDisplayRows;
 };
 
-// idを必須にしたい
 const DataTable = <T extends DataTableBaseData>({
   data: sourceData,
   columns,
@@ -226,6 +227,8 @@ const DataTable = <T extends DataTableBaseData>({
   fullWidth = false,
   tableMaxHeight = "none",
   horizontalScrollable = false,
+  labelRowsPerPage = "Rows per page:",
+  labelDisplayedRows = ({ from, to, total }) => `${from}-${to} of ${total}`,
 }: DataTableProps<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
@@ -240,9 +243,7 @@ const DataTable = <T extends DataTableBaseData>({
 
   const enableMergeCell = columns.some((column) => column.enableMergeCell);
 
-  // sort, pagination, count
-
-  // 初回表示時にdefaultSortFieldがなければ一番左側のsortableなcolumnを基準にソートする
+  // MEMO: Sort based on the leftmost sortable column, if there's no 'defaultSortField'.
   const selectedColumn = columns.find(
     (column) => column.name === defaultSortField,
   );
@@ -300,9 +301,7 @@ const DataTable = <T extends DataTableBaseData>({
     currentTabIndex,
   ]);
 
-  // 検索などでpropsのdataが更新された場合は
-  // もしくはcurrentTabIndexが更新された場合は
-  // paginationを1に戻す
+  // MEMO: Reset the pagination settings when updated 'sourceData' or 'currentTabIndex'.
   useDidUpdate(() => {
     const initialFilterState = {
       index: 1,
@@ -320,7 +319,7 @@ const DataTable = <T extends DataTableBaseData>({
     setDisplayData(displayData);
   }, [sourceData, currentTabIndex]);
 
-  // 選択項目のクリア
+  // MEMO: Clear selected items.
   React.useEffect(() => {
     if (clearSelectedRows) {
       setSelectedRows([]);
@@ -330,14 +329,11 @@ const DataTable = <T extends DataTableBaseData>({
     }
   }, [clearSelectedRows, onSelectRowsChange]);
 
-  // selectの変更をonSelectRowsChangeに伝える
   React.useEffect(() => {
     if (onSelectRowsChange) {
       onSelectRowsChange(selectedRows);
     }
   }, [selectedRows, onSelectRowsChange]);
-
-  // radioの変更をonRadioChangeに伝える
   React.useEffect(() => {
     if (onRadioChange) {
       onRadioChange(selectedRow as number);
@@ -587,10 +583,7 @@ const DataTable = <T extends DataTableBaseData>({
                         : 0)
                     }
                   >
-                    <ItemEmpty
-                      {...itemEmptyProps}
-                      title={itemEmptyProps?.title || "見つかりませんでした"}
-                    />
+                    <ItemEmpty {...itemEmptyProps} />
                   </td>
                 </tr>
               )}
@@ -615,6 +608,8 @@ const DataTable = <T extends DataTableBaseData>({
               per={filterState.per}
               total={totalLength}
               index={filterState.index}
+              labelRowsPerPage={labelRowsPerPage}
+              labelDisplayedRows={labelDisplayedRows}
               onChange={handleCountChange}
             />
           </Flex>
