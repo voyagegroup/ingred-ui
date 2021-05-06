@@ -3,11 +3,11 @@
 exports[`NotificationBadge component testing NotificationBadge dot 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fHvAHq"
+    class="sc-bdvvaa cSPctO"
   >
     text
     <span
-      class="sc-gsTCUz bsNakH"
+      class="sc-gsDJrp kIPvUx"
     />
   </div>
 </DocumentFragment>
@@ -16,11 +16,11 @@ exports[`NotificationBadge component testing NotificationBadge dot 1`] = `
 exports[`NotificationBadge component testing NotificationBadge normal 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBwQ fHvAHq"
+    class="sc-bdvvaa cSPctO"
   >
     text
     <span
-      class="sc-gsTCUz jeTqyN"
+      class="sc-gsDJrp hYkwFL"
     >
       1
     </span>

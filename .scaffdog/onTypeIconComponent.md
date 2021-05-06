@@ -3,6 +3,7 @@ name: "one type icon component"
 description: "component of description"
 message: "Please enter icon name."
 root: "src/components/Icon/internal/"
+output: '!*'
 ignore: []
 ---
 
