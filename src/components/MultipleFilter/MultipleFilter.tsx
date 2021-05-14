@@ -71,12 +71,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     ReferedFilterType[]
   >([]);
 
-  // React.useEffect(() => {
-  //   if (onChange !== undefined) {
-  //     onChange(currentReferedFilters);
-  //   }
-  // }, [currentReferedFilters, onChange]);
-
   const handleOnFocus = () => {
     setIsFocus(true);
   };
