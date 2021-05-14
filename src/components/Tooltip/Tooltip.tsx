@@ -94,7 +94,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     if (!disableHoverListener) {
       if (enterDelay) {
         setOpenTimer(
-          setTimeout(() => {
+          window.setTimeout(() => {
             setOpen(true);
           }, enterDelay),
         );
@@ -112,7 +112,7 @@ const Tooltip: React.FunctionComponent<TooltipProps> = ({
     if (!disableHoverListener) {
       if (leaveDelay) {
         setCloseTimer(
-          setTimeout(() => {
+          window.setTimeout(() => {
             setOpen(false);
           }, leaveDelay),
         );

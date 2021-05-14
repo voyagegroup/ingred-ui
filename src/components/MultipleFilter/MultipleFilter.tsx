@@ -142,7 +142,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
       (referedfilter) => referedfilter.filterName === editedFilter.filterName,
     );
     currentReferedFilters[editIndex] = editedFilter;
-    setCurrentReferedFilters(currentReferedFilters);
+    setCurrentReferedFilters(currentReferedFilters.slice());
     setIsFocus(false);
     setWillEditFilter(null);
   };

@@ -11,8 +11,8 @@ import { ClearIndicator } from "./internal/ClearIndicator";
 import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
 
-const getOverrideStyles = (theme: Theme, error: boolean) => {
-  const overrideStyles: StylesConfig = {
+const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
+  const overrideStyles: StylesConfig<OptionType<T>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: "none",
@@ -151,13 +151,9 @@ export type SelectProps<T> = {
   limit?: number;
   minWidth?: string;
   error?: boolean;
-} & ReactSelectProps<OptionType<T>>;
+} & ReactSelectProps<OptionType<T>, boolean>;
 
-export type SelectComponent = <T = string>(
-  props: SelectProps<T>,
-) => React.ReactElement<SelectProps<T>>;
-
-const Select: SelectComponent = ({
+const Select = <T,>({
   limit,
   onInputChange,
   minWidth,
@@ -165,13 +161,13 @@ const Select: SelectComponent = ({
   error = false,
   closeMenuOnSelect = true,
   ...rest
-}) => {
+}: SelectProps<T>): React.ReactElement<SelectProps<T>> => {
   const theme = useTheme();
   let i = 0;
-  const filterOption: SelectProps<string | number>["filterOption"] = limit
+  const filterOption: SelectProps<T>["filterOption"] = limit
     ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
-  const handleInputChange: SelectProps<string | number>["onInputChange"] = (
+  const handleInputChange: SelectProps<T>["onInputChange"] = (
     newValue,
     actionMeta,
   ) => {
@@ -186,12 +182,12 @@ const Select: SelectComponent = ({
   };
   return (
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
-      <ReactSelect
+      <ReactSelect<OptionType<T>, boolean>
         isClearable
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}
-        styles={getOverrideStyles(theme, error)}
+        styles={getOverrideStyles<T>(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList
         theme={(originalTheme) => ({

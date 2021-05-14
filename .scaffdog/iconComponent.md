@@ -1,18 +1,19 @@
 ---
 name: "icon component"
-description: "component of description"
-message: "Please enter icon name."
+questions:
+  name: "Please enter icon name."
 root: "src/components/Icon/internal/"
+output: '!*'
 ignore: []
 ---
 
-# `{{ input | pascal }}Icon/index.tsx`
+# `{{ inputs.name | pascal }}Icon/index.tsx`
 
 ```typescript
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const {{ input | pascal }}Icon: React.FunctionComponent<IconProps> = ({ type, fill }) => {
+const {{ inputs.name | pascal }}Icon: React.FunctionComponent<IconProps> = ({ type, fill }) => {
   switch (type) {
     case "fill":
       return (
@@ -37,6 +38,6 @@ const {{ input | pascal }}Icon: React.FunctionComponent<IconProps> = ({ type, fi
   }
 };
 
-export { {{ input | pascal }}Icon };
+export { {{ inputs.name | pascal }}Icon };
 
 ```
