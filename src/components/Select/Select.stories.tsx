@@ -70,9 +70,7 @@ export const WithAsyncSearch: Story = () => {
   ];
   const [selected, setSelected] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [options, setOptions] = React.useState<OptionType<number>[]>(
-    baseOptions,
-  );
+  const [options, setOptions] = React.useState<OptionType<number>[]>();
 
   const handleSelect = async (option: any) => {
     if (option?.value) setSelected(option.value);
