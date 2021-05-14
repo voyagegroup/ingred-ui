@@ -159,6 +159,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     }
 
     setIsFocus(false);
+    setSelectedFilterPack(null);
     setWillEditFilter(null);
   };
 
