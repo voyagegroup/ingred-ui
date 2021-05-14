@@ -8,6 +8,12 @@ exports[`Select component testing Disable multiple selected 1`] = `
     <div
       class=" css-14jk2my-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-7n5mtx-control"
       >
@@ -157,7 +163,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-1knq81y-Input"
+            class="css-5o626r-Input"
           >
             <div
               class=""
@@ -241,6 +247,12 @@ exports[`Select component testing Disable not selected 1`] = `
     <div
       class=" css-14jk2my-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-7n5mtx-control"
       >
@@ -253,7 +265,7 @@ exports[`Select component testing Disable not selected 1`] = `
             Select...
           </div>
           <div
-            class="css-1knq81y-Input"
+            class="css-5o626r-Input"
           >
             <div
               class=""
@@ -346,6 +358,12 @@ exports[`Select component testing Disable one selected 1`] = `
     <div
       class=" css-14jk2my-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-7n5mtx-control"
       >
@@ -358,7 +376,7 @@ exports[`Select component testing Disable one selected 1`] = `
             hoge
           </div>
           <div
-            class="css-1knq81y-Input"
+            class="css-5o626r-Input"
           >
             <div
               class=""
@@ -451,6 +469,12 @@ exports[`Select component testing Error multiple selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-15ys67v-control"
       >
@@ -750,6 +774,12 @@ exports[`Select component testing Error not selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-15ys67v-control"
       >
@@ -854,6 +884,12 @@ exports[`Select component testing Error one selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-15ys67v-control"
       >
@@ -1025,6 +1061,12 @@ exports[`Select component testing Normal multiple selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-1ukuozi-control"
       >
@@ -1324,6 +1366,12 @@ exports[`Select component testing Normal not selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-1ukuozi-control"
       >
@@ -1428,6 +1476,12 @@ exports[`Select component testing Normal one selected 1`] = `
     <div
       class=" css-2b097c-container"
     >
+      <span
+        aria-atomic="false"
+        aria-live="polite"
+        aria-relevant="additions text"
+        class="css-1f43avz-a11yText-A11yText"
+      />
       <div
         class=" css-1ukuozi-control"
       >
