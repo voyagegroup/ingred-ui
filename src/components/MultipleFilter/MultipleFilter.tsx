@@ -145,11 +145,19 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     const editIndex = currentReferedFilters.findIndex(
       (referedfilter) => referedfilter.filterName === editedFilter.filterName,
     );
-    currentReferedFilters[editIndex] = editedFilter;
-    setCurrentReferedFilters(currentReferedFilters.slice());
-    if (onChange !== undefined) {
-      onChange(currentReferedFilters);
+
+    const isEdited =
+      currentReferedFilters[editIndex].filterCondtion !==
+      editedFilter.filterCondtion;
+
+    if (isEdited) {
+      currentReferedFilters[editIndex] = editedFilter;
+      setCurrentReferedFilters(currentReferedFilters.slice());
+      if (onChange !== undefined) {
+        onChange(currentReferedFilters);
+      }
     }
+
     setIsFocus(false);
     setWillEditFilter(null);
   };
