@@ -2,7 +2,11 @@ import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
 import moment from "moment";
-import { SingleDatePicker, SingleDatePickerShape } from "react-dates";
+import {
+  RenderMonthProps,
+  SingleDatePicker,
+  SingleDatePickerShape,
+} from "react-dates";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 
@@ -12,19 +16,21 @@ function isOutsideRange() {
 
 export type DatePickerProps = Partial<
   Omit<SingleDatePickerShape, "date" | "onFocusChange">
-> & {
-  date: moment.Moment | null;
-  onDateChange: (date: moment.Moment | null) => void;
-  error?: boolean;
-};
+> &
+  // MEMO: Add RenderMonthProps to pass type check.
+  RenderMonthProps & {
+    date: moment.Moment | null;
+    onDateChange: (date: moment.Moment | null) => void;
+    error?: boolean;
+  };
 
 const DatePicker: React.FunctionComponent<DatePickerProps> = ({
   date,
   error = false,
   ...rest
 }) => {
-  const [focused, setFocused] = React.useState<boolean | null>(null);
-  const onFocusChange = ({ focused }: { focused: boolean | null }) => {
+  const [focused, setFocused] = React.useState<boolean>(false);
+  const onFocusChange = ({ focused }: { focused: boolean }) => {
     setFocused(focused);
   };
 

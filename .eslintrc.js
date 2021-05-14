@@ -35,19 +35,6 @@ module.exports = {
     SharedArrayBuffer: "readonly",
   },
   rules: {
-    "@typescript-eslint/naming-convention": [
-      "error",
-      { selector: "class", format: ["PascalCase"] },
-      { selector: "interface", format: ["PascalCase"] },
-      { selector: "enum", format: ["PascalCase"] },
-      { selector: "enumMember", format: ["UPPER_CASE"] },
-      { selector: "method", format: ["PascalCase", "camelCase"] },
-      {
-        selector: "variable",
-        format: ["PascalCase", "camelCase", "UPPER_CASE"],
-      },
-    ],
-
     "no-restricted-syntax": "off",
     "no-await-in-loop": "off",
     "no-empty": ["error", { allowEmptyCatch: true }],
@@ -142,6 +129,18 @@ module.exports = {
         "@typescript-eslint/consistent-type-definitions": ["error", "type"],
         "@typescript-eslint/no-require-imports": "error",
         "@typescript-eslint/no-use-before-define": "warn",
+        "@typescript-eslint/naming-convention": [
+          "error",
+          { selector: "class", format: ["PascalCase"] },
+          { selector: "interface", format: ["PascalCase"] },
+          { selector: "enum", format: ["PascalCase"] },
+          { selector: "enumMember", format: ["UPPER_CASE"] },
+          { selector: "method", format: ["PascalCase", "camelCase"] },
+          {
+            selector: "variable",
+            format: ["PascalCase", "camelCase", "UPPER_CASE"],
+          },
+        ],
       },
     },
     {
