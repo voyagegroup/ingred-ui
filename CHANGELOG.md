@@ -1,8 +1,8 @@
 # Changelog
 
-## [v7.23.0](https://github.com/voyagegroup/ingred-ui/tree/v7.23.0) (2021-05-11)
+## [v7.24.0](https://github.com/voyagegroup/ingred-ui/tree/v7.24.0) (2021-05-18)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.22.1...v7.23.0)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.23.0...v7.24.0)
 
 **Implemented enhancements:**
 
@@ -14,7 +14,42 @@
 
 **Fixed bugs:**
 
+- \[MultipleFilter\]編集したときにonChangeが発火するように [\#343](https://github.com/voyagegroup/ingred-ui/pull/343) ([penicillin0](https://github.com/penicillin0))
 - react-hook-formをdependenciesへ [\#330](https://github.com/voyagegroup/ingred-ui/pull/330) ([penicillin0](https://github.com/penicillin0))
+
+**Closed issues:**
+
+- "react-hook-form"をdependenciesに移動する [\#327](https://github.com/voyagegroup/ingred-ui/issues/327)
+
+**Merged pull requests:**
+
+- Modify multiple filter [\#346](https://github.com/voyagegroup/ingred-ui/pull/346) ([penicillin0](https://github.com/penicillin0))
+- Tweak renovate.json [\#338](https://github.com/voyagegroup/ingred-ui/pull/338) ([youchann](https://github.com/youchann))
+- Update react monorepo to v17 \(major\) [\#336](https://github.com/voyagegroup/ingred-ui/pull/336) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency react-scripts to v4 [\#335](https://github.com/voyagegroup/ingred-ui/pull/335) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react-dom to v17 [\#334](https://github.com/voyagegroup/ingred-ui/pull/334) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react to v17 [\#333](https://github.com/voyagegroup/ingred-ui/pull/333) ([renovate[bot]](https://github.com/apps/renovate))
+- Pin dependencies [\#332](https://github.com/voyagegroup/ingred-ui/pull/332) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency scaffdog to v1 [\#325](https://github.com/voyagegroup/ingred-ui/pull/325) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency rollup-plugin-postcss to v4 [\#324](https://github.com/voyagegroup/ingred-ui/pull/324) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency react-select to v4 [\#323](https://github.com/voyagegroup/ingred-ui/pull/323) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency gh-pages to v3 [\#321](https://github.com/voyagegroup/ingred-ui/pull/321) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency eslint-config-prettier to v8 [\#320](https://github.com/voyagegroup/ingred-ui/pull/320) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cross-env to v7 [\#319](https://github.com/voyagegroup/ingred-ui/pull/319) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/react-dates to v21 [\#318](https://github.com/voyagegroup/ingred-ui/pull/318) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @testing-library/react to v11 [\#317](https://github.com/voyagegroup/ingred-ui/pull/317) ([renovate[bot]](https://github.com/apps/renovate))
+- Pin dependencies [\#316](https://github.com/voyagegroup/ingred-ui/pull/316) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @svgr/rollup to v5 [\#315](https://github.com/voyagegroup/ingred-ui/pull/315) ([renovate[bot]](https://github.com/apps/renovate))
+- Update non-major [\#314](https://github.com/voyagegroup/ingred-ui/pull/314) ([renovate[bot]](https://github.com/apps/renovate))
+- 新規コンポーネントを外側に出していなかったので、修正 [\#313](https://github.com/voyagegroup/ingred-ui/pull/313) ([penicillin0](https://github.com/penicillin0))
+- 本番のStorybookのfaviconを設定するためassetsディレクトリを含めてビルド [\#310](https://github.com/voyagegroup/ingred-ui/pull/310) ([deatiger](https://github.com/deatiger))
+- チェックボックスありのデータ行をクリック・タップするとチェックのON/OFFができるよう修正 [\#309](https://github.com/voyagegroup/ingred-ui/pull/309) ([deatiger](https://github.com/deatiger))
+- 日本語の部分を英語にする vol2 [\#252](https://github.com/voyagegroup/ingred-ui/pull/252) ([youchann](https://github.com/youchann))
+- Configure Renovate [\#1](https://github.com/voyagegroup/ingred-ui/pull/1) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.23.0](https://github.com/voyagegroup/ingred-ui/tree/v7.23.0) (2021-05-11)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.22.1...v7.23.0)
 
 **Closed issues:**
 
@@ -22,19 +57,6 @@
 - そろそろrenovate入れたい [\#238](https://github.com/voyagegroup/ingred-ui/issues/238)
 - 破壊的変更にポリシーを持つ [\#186](https://github.com/voyagegroup/ingred-ui/issues/186)
 - コメントアウト等を英語に切り替える [\#152](https://github.com/voyagegroup/ingred-ui/issues/152)
-
-**Merged pull requests:**
-
-- Tweak renovate.json [\#338](https://github.com/voyagegroup/ingred-ui/pull/338) ([youchann](https://github.com/youchann))
-- Pin dependencies [\#332](https://github.com/voyagegroup/ingred-ui/pull/332) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @testing-library/react to v11 [\#317](https://github.com/voyagegroup/ingred-ui/pull/317) ([renovate[bot]](https://github.com/apps/renovate))
-- Pin dependencies [\#316](https://github.com/voyagegroup/ingred-ui/pull/316) ([renovate[bot]](https://github.com/apps/renovate))
-- Update non-major [\#314](https://github.com/voyagegroup/ingred-ui/pull/314) ([renovate[bot]](https://github.com/apps/renovate))
-- 新規コンポーネントを外側に出していなかったので、修正 [\#313](https://github.com/voyagegroup/ingred-ui/pull/313) ([penicillin0](https://github.com/penicillin0))
-- 本番のStorybookのfaviconを設定するためassetsディレクトリを含めてビルド [\#310](https://github.com/voyagegroup/ingred-ui/pull/310) ([deatiger](https://github.com/deatiger))
-- チェックボックスありのデータ行をクリック・タップするとチェックのON/OFFができるよう修正 [\#309](https://github.com/voyagegroup/ingred-ui/pull/309) ([deatiger](https://github.com/deatiger))
-- 日本語の部分を英語にする vol2 [\#252](https://github.com/voyagegroup/ingred-ui/pull/252) ([youchann](https://github.com/youchann))
-- Configure Renovate [\#1](https://github.com/voyagegroup/ingred-ui/pull/1) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [v7.22.1](https://github.com/voyagegroup/ingred-ui/tree/v7.22.1) (2021-04-26)
 
