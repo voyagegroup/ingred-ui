@@ -25,7 +25,7 @@ export type MultipleFilterProps = {
    *   categoryName: string;
    *   filterName: string;
    *   filterType: Types;
-   *   filterCondtion: ControlType<Types>["options"];
+   *   filterCondition: ControlType<Types>["options"];
     }`
    */
   onChange?: (referedFilters: ReferedFilterType[]) => void;
@@ -147,8 +147,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     );
 
     const isEdited =
-      currentReferedFilters[editIndex].filterCondtion !==
-      editedFilter.filterCondtion;
+      currentReferedFilters[editIndex].filterCondition !==
+      editedFilter.filterCondition;
 
     if (isEdited) {
       currentReferedFilters[editIndex] = editedFilter;

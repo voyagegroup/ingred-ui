@@ -115,7 +115,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
       filterType: selectedFilter?.control.type as Types,
-      filterCondtion: data.condition,
+      filterCondition: data.condition,
     };
     onApply(newFilter);
   };
