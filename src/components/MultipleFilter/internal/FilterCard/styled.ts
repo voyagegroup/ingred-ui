@@ -16,7 +16,7 @@ export const FilterCardHeader = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.main};
 `;
 export const CloseIconContainer = styled.div`
   cursor: pointer;

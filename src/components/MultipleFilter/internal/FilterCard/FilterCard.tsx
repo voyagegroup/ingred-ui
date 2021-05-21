@@ -180,7 +180,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         )}
         <Divider
           orientation="horizontal"
-          color={theme.palette.divider}
+          color={theme.palette.gray.light}
           my={2}
         />
 

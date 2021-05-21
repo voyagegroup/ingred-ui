@@ -162,7 +162,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         <Spacer py={1} />
         <Divider
           orientation="horizontal"
-          color={theme.palette.divider}
+          color={theme.palette.gray.light}
           my={2}
         />
 
