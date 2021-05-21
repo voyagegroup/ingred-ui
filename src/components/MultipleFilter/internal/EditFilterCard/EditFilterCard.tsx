@@ -70,7 +70,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           <TextField
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? inputErrorText ?? "Please input" : ""}
+            errorText={errors.condition ? inputErrorText || "Please input" : ""}
           />
         );
       case "select":
@@ -119,7 +119,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     if (data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError(formErrorText ?? "Please fill in all fields.");
+      setSubmitError(formErrorText || "Please fill in all fields.");
       return;
     }
 
@@ -146,7 +146,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle ?? "Section"}
+          {selectedFilterPack?.sectionTitle || "Section"}
         </Typography>
         <Spacer py={0.5} />
         <TextField readOnly value={willEditFilter?.filterName} />
@@ -154,7 +154,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         <Typography weight="bold" size="lg">
           {selectedFilterPack?.filters.find(
             (filter) => filter.filterName === willEditFilter?.filterName,
-          )?.conditionTitle ?? "Condition"}
+          )?.conditionTitle || "Condition"}
         </Typography>
         <Spacer py={0.5} />
         {getInputField(
@@ -177,7 +177,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            {editButtonTitle ?? "Edit"}
+            {editButtonTitle || "Edit"}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>
