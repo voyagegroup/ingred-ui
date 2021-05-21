@@ -160,7 +160,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         </Typography>
         <Spacer py={0.5} />
         <Select
-          maxMenuHeight={240}
+          maxMenuHeight={250}
           options={getUnSelectedOption(options)}
           onChange={handleFilterChange}
         />

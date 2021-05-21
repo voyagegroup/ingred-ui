@@ -78,7 +78,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
         return (
           <Select
-            maxMenuHeight={240}
+            maxMenuHeight={250}
             options={options.map((option) => ({
               label: option,
               value: option,
