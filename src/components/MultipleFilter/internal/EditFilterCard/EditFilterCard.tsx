@@ -47,7 +47,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     shouldUnregister: false,
     defaultValues: {
       section: willEditFilter?.filterName,
-      condition: willEditFilter?.filterCondtion,
+      condition: willEditFilter?.filterCondition,
     },
   });
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -84,8 +84,8 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
               value: option,
             }))}
             defaultValue={{
-              label: willEditFilter?.filterCondtion as string,
-              value: willEditFilter?.filterCondtion as string,
+              label: willEditFilter?.filterCondition as string,
+              value: willEditFilter?.filterCondition as string,
             }}
             onChange={handleSelect}
           />
@@ -94,7 +94,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         return (
           <div>
             <RadioButton
-              defaultChecked={willEditFilter?.filterCondtion as boolean}
+              defaultChecked={willEditFilter?.filterCondition as boolean}
               inputRef={register()}
               name="condition"
               value="true"
@@ -103,7 +103,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             </RadioButton>
             <br />
             <RadioButton
-              defaultChecked={willEditFilter?.filterCondtion as boolean}
+              defaultChecked={willEditFilter?.filterCondition as boolean}
               inputRef={register()}
               name="condition"
               value="false"
@@ -124,7 +124,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     }
 
     const editedFilter: ReferedFilterType = {
-      filterCondtion: data.condition,
+      filterCondition: data.condition,
       filterType: willEditFilter?.filterType as Types,
       filterName: willEditFilter?.filterName as string,
       categoryName: willEditFilter?.categoryName as string,
