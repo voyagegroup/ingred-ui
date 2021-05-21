@@ -1,5 +1,6 @@
 export type FilterPackType = {
   categoryName: string;
+  sectionTitle?: string;
   filters: FilterType[];
 };
 
@@ -7,6 +8,7 @@ export type Types = "text" | "select" | "boolean";
 
 export type FilterType = {
   filterName: string;
+  conditionTitle?: string;
   control: ControlType<Types>;
 };
 

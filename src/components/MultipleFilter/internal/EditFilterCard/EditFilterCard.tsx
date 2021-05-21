@@ -23,9 +23,9 @@ export type Props = {
   onEdit: (editedReferedFilter: ReferedFilterType) => void;
   willEditFilter?: ReferedFilterType;
   selectedFilterPack?: FilterPackType;
-  sectionTitle: string | undefined;
-  conditionTitle: string | undefined;
-  editButtonTitle: string | undefined;
+  editButtonTitle?: string;
+  formErrorText?: string;
+  inputErrorText?: string;
 };
 
 type FormType = {
@@ -38,9 +38,9 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   onEdit,
   willEditFilter,
   selectedFilterPack,
-  sectionTitle,
-  conditionTitle,
   editButtonTitle,
+  formErrorText,
+  inputErrorText,
 }) => {
   const theme = useTheme();
   const { register, setValue, handleSubmit, errors } = useForm({
@@ -70,7 +70,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           <TextField
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? "Please input" : ""}
+            errorText={errors.condition ? inputErrorText ?? "Please input" : ""}
           />
         );
       case "select":
@@ -78,6 +78,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
         return (
           <Select
+            maxMenuHeight={240}
             options={options.map((option) => ({
               label: option,
               value: option,
@@ -118,7 +119,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     if (data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError("Please set the section and condition.");
+      setSubmitError(formErrorText ?? "Please fill in all fields.");
       return;
     }
 
@@ -145,13 +146,15 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {sectionTitle ?? "Section"}
+          {selectedFilterPack?.sectionTitle ?? "Section"}
         </Typography>
         <Spacer py={0.5} />
         <TextField readOnly value={willEditFilter?.filterName} />
         <Spacer py={1} />
         <Typography weight="bold" size="lg">
-          {conditionTitle ?? "Condition"}
+          {selectedFilterPack?.filters.find(
+            (filter) => filter.filterName === willEditFilter?.filterName,
+          )?.conditionTitle ?? "Condition"}
         </Typography>
         <Spacer py={0.5} />
         {getInputField(

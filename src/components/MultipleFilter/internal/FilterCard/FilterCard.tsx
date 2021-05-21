@@ -23,9 +23,9 @@ export type Props = {
   onApply: (newReferedFilter: ReferedFilterType) => void;
   selectedFilterPack?: FilterPackType;
   currentReferedFilters: ReferedFilterType[];
-  sectionTitle: string | undefined;
-  conditionTitle: string | undefined;
-  applyButtonTitle: string | undefined;
+  applyButtonTitle?: string;
+  formErrorText?: string;
+  inputErrorText?: string;
 };
 
 type FormType = {
@@ -38,9 +38,9 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   onApply,
   selectedFilterPack,
   currentReferedFilters,
-  sectionTitle,
-  conditionTitle,
   applyButtonTitle,
+  formErrorText,
+  inputErrorText,
 }) => {
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -75,7 +75,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           <TextField
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? "Please input" : ""}
+            errorText={errors.condition ? inputErrorText ?? "Please input" : ""}
           />
         );
       case "select":
@@ -108,7 +108,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     if (data.section && data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError("Please set the section and condition.");
+      setSubmitError(formErrorText ?? "Please fill in all fields.");
       return;
     }
     const newFilter = {
@@ -156,10 +156,11 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {sectionTitle ?? "Section"}
+          {selectedFilterPack?.sectionTitle ?? "Section"}
         </Typography>
         <Spacer py={0.5} />
         <Select
+          maxMenuHeight={240}
           options={getUnSelectedOption(options)}
           onChange={handleFilterChange}
         />
@@ -167,7 +168,9 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
-              {conditionTitle ?? "Condition"}
+              {selectedFilterPack?.filters.find(
+                (filter) => filter.filterName === selectedFilter.filterName,
+              )?.conditionTitle ?? "Condition"}
             </Typography>
             <Spacer py={0.5} />
             {getInputField(
