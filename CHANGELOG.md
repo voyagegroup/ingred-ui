@@ -1,5 +1,18 @@
 # Changelog
 
+## [v7.25.0](https://github.com/voyagegroup/ingred-ui/tree/v7.25.0) (2021-05-24)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.24.0...v7.25.0)
+
+**Fixed bugs:**
+
+- MultipleFilterラベルの編集が検知されない [\#342](https://github.com/voyagegroup/ingred-ui/issues/342)
+
+**Merged pull requests:**
+
+- \[MultipleFilter\]線の色を修正 [\#349](https://github.com/voyagegroup/ingred-ui/pull/349) ([penicillin0](https://github.com/penicillin0))
+- event delegationエラーの対応 [\#348](https://github.com/voyagegroup/ingred-ui/pull/348) ([youchann](https://github.com/youchann))
+
 ## [v7.24.0](https://github.com/voyagegroup/ingred-ui/tree/v7.24.0) (2021-05-18)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.23.0...v7.24.0)
