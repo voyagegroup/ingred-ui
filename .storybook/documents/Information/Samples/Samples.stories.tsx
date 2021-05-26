@@ -39,6 +39,7 @@ import {
   ScrollArea,
   FileUploader,
   DataTable,
+  MultipleFilter,
 } from "../../../../src/components";
 import { createTheme, Theme } from "../../../../src/themes";
 import { SnackbarContent } from "../../../../src/components/Snackbar/internal/SnackbarContent";
@@ -392,12 +393,7 @@ const componentList: Section[] = [
       {
         title: "ItemEmpty",
         content: (
-          <ItemEmpty
-            title="Title"
-            subtitle="Sub Title"
-            imageWidth={100}
-            imageHeight={100}
-          />
+          <ItemEmpty title="Title" subtitle="Sub Title" imageWidth={100} />
         ),
         row: 2,
       },
@@ -417,6 +413,88 @@ const componentList: Section[] = [
             <Spacer pt={1} />
             <Typography align="center">※Only for Mac x Chromium</Typography>
           </div>
+        ),
+      },
+      {
+        title: "MultipleFilter",
+        content: (
+          <MultipleFilter
+            filterPacks={[
+              {
+                categoryName: "Row name",
+                sectionTitle: "Filter by name",
+                filters: [
+                  {
+                    filterName: "Demand",
+                    conditionTitle: "Search word",
+                    control: {
+                      type: "text",
+                    },
+                  },
+                  {
+                    filterName: "Channel",
+                    conditionTitle: "Search word",
+                    control: {
+                      type: "text",
+                    },
+                  },
+                  {
+                    filterName: "Attribute",
+                    conditionTitle: "Search word",
+                    control: {
+                      type: "text",
+                    },
+                  },
+                  {
+                    filterName: "Type",
+                    conditionTitle: "Search word",
+                    control: {
+                      type: "text",
+                    },
+                  },
+                ],
+              },
+              {
+                categoryName: "Linking",
+                sectionTitle: "Target",
+                filters: [
+                  {
+                    filterName: "Device",
+                    conditionTitle: "Condition",
+                    control: {
+                      type: "select",
+                      options: ["Not selected", "Not Linking", "Linking"],
+                    },
+                  },
+                  {
+                    filterName: "Site",
+                    conditionTitle: "Condition",
+                    control: {
+                      type: "select",
+                      options: ["Not selected", "Not Linking", "Linking"],
+                    },
+                  },
+                ],
+              },
+              {
+                categoryName: "Condition",
+                filters: [
+                  {
+                    filterName: "Public",
+                    control: {
+                      type: "boolean",
+                    },
+                  },
+                  {
+                    filterName: "Active",
+                    control: {
+                      type: "boolean",
+                    },
+                  },
+                ],
+              },
+            ]}
+          />
         ),
       },
     ],
