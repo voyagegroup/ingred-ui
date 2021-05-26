@@ -6,6 +6,7 @@ export const Container = styled.div<{ isFocused: boolean }>`
       isFocused ? theme.palette.primary.main : theme.palette.divider};
   border-radius: ${({ theme }) => theme.radius}px;
   display: flex;
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const InputContiner = styled.div`
@@ -50,4 +51,5 @@ export const RightContainer = styled.div`
   align-items: center;
   padding-right: 19px;
 `;
+
 export const IconContainer = styled.div``;
