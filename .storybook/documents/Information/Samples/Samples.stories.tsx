@@ -393,12 +393,7 @@ const componentList: Section[] = [
       {
         title: "ItemEmpty",
         content: (
-          <ItemEmpty
-            title="Title"
-            subtitle="Sub Title"
-            imageWidth={100}
-            imageHeight={100}
-          />
+          <ItemEmpty title="Title" subtitle="Sub Title" imageWidth={100} />
         ),
         row: 2,
       },
