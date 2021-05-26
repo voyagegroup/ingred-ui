@@ -40,7 +40,7 @@ export const Label: React.FunctionComponent<Props> = ({
         <Typography size="sm" component="span">
           {filter.filterName}
           &nbsp;
-          {boolToString(filter.filterCondtion)}
+          {boolToString(filter.filterCondition)}
         </Typography>
       </Styled.LeftContainer>
       <Styled.RightContainer>

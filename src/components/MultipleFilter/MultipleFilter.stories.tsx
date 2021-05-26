@@ -26,15 +26,32 @@ You can get the conditions set via ReferedFilters.
 const filterPacksExample: FilterPackType[] = [
   {
     categoryName: "Row name",
+    sectionTitle: "Filter by name",
     filters: [
       {
         filterName: "Demand",
+        conditionTitle: "Search word",
         control: {
           type: "text",
         },
       },
       {
-        filterName: "channel",
+        filterName: "Channel",
+        conditionTitle: "Search word",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Attribute",
+        conditionTitle: "Search word",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Type",
+        conditionTitle: "Search word",
         control: {
           type: "text",
         },
@@ -43,9 +60,11 @@ const filterPacksExample: FilterPackType[] = [
   },
   {
     categoryName: "Linking",
+    sectionTitle: "Target",
     filters: [
       {
         filterName: "Device",
+        conditionTitle: "Condition",
         control: {
           type: "select",
           options: ["Not selected", "Not Linking", "Linking"],
@@ -53,6 +72,7 @@ const filterPacksExample: FilterPackType[] = [
       },
       {
         filterName: "Site",
+        conditionTitle: "Condition",
         control: {
           type: "select",
           options: ["Not selected", "Not Linking", "Linking"],
@@ -89,6 +109,8 @@ export const Example: Story<MultipleFilterProps> = (args) => {
     <MultipleFilter
       {...args}
       filterPacks={filterPacksExample}
+      formErrorText={"Form error text can be customized"}
+      inputErrorText={"Input error text can be customized"}
       onChange={handleChange}
     />
   );

@@ -17,7 +17,7 @@ export type MultipleFilterProps = {
    * `type FilterPackType = {
    *   categoryName: string;
    *   filters: FilterType[];
-    }`
+   *  }`
    */
   filterPacks?: FilterPackType[];
   /**
@@ -25,25 +25,25 @@ export type MultipleFilterProps = {
    *   categoryName: string;
    *   filterName: string;
    *   filterType: Types;
-   *   filterCondtion: ControlType<Types>["options"];
-    }`
+   *   filterCondition: ControlType<Types>["options"];
+   *  }`
    */
   onChange?: (referedFilters: ReferedFilterType[]) => void;
-  sectionTitle?: string;
-  conditionTitle?: string;
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
+  formErrorText?: string;
+  inputErrorText?: string;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   filterPacks,
   onChange,
-  sectionTitle,
-  conditionTitle,
   placeholder,
   editButtonTitle,
   applyButtonTitle,
+  formErrorText,
+  inputErrorText,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [
@@ -147,8 +147,8 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     );
 
     const isEdited =
-      currentReferedFilters[editIndex].filterCondtion !==
-      editedFilter.filterCondtion;
+      currentReferedFilters[editIndex].filterCondition !==
+      editedFilter.filterCondition;
 
     if (isEdited) {
       currentReferedFilters[editIndex] = editedFilter;
@@ -234,13 +234,13 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         >
           <FilterCard
             applyButtonTitle={applyButtonTitle}
-            sectionTitle={sectionTitle}
-            conditionTitle={conditionTitle}
             currentReferedFilters={currentReferedFilters}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
                 filterPack.categoryName === selectedFilterPack?.categoryName,
             )}
+            formErrorText={formErrorText}
+            inputErrorText={inputErrorText}
             onApply={handleApply}
             onClose={handleClose}
           />
@@ -254,13 +254,13 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         >
           <EditFilterCard
             editButtonTitle={editButtonTitle}
-            sectionTitle={sectionTitle}
-            conditionTitle={conditionTitle}
             willEditFilter={willEditFilter as ReferedFilterType}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
                 filterPack.categoryName === willEditFilter?.categoryName,
             )}
+            formErrorText={formErrorText}
+            inputErrorText={inputErrorText}
             onEdit={handleEdit}
             onClose={handleClose}
           />
