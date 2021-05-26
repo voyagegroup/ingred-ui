@@ -17,7 +17,7 @@ export type MultipleFilterProps = {
    * `type FilterPackType = {
    *   categoryName: string;
    *   filters: FilterType[];
-    }`
+   *  }`
    */
   filterPacks?: FilterPackType[];
   /**
@@ -26,7 +26,7 @@ export type MultipleFilterProps = {
    *   filterName: string;
    *   filterType: Types;
    *   filterCondition: ControlType<Types>["options"];
-    }`
+   *  }`
    */
   onChange?: (referedFilters: ReferedFilterType[]) => void;
   placeholder?: string;
