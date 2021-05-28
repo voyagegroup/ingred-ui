@@ -2,7 +2,11 @@
   "extends": ["config:base"],
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
-  "schedule": ["after 9:30 and before 18:30 every weekday"],
+  "schedule": [
+    "after 9:30am every weekday", 
+    "before 6:30pm every weekday",
+    "every weekend"
+  ],
   "pin": {
     "automerge": true
   },
