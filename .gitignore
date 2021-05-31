@@ -21,6 +21,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+release_note.md
+
 # storybook
 storybook-static
 

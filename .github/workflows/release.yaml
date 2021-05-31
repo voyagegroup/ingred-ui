@@ -3,7 +3,7 @@ name: release
 on:
   push:
     branches:
-      - 'release/**' 
+      - 'release/**'
 
 jobs:
   release:
@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
+      - name: Unshallow
+        run: git fetch --prune --unshallow --tags
       - name: Use Node.js 15.x
         uses: actions/setup-node@v2
         with:
@@ -52,7 +54,12 @@ jobs:
           body: |
             ## Check List
             - [ ] CHANGELOGの確認
-            - [ ] [draftのリリースノート](https://github.com/voyagegroup/ingred-ui/releases/)の変更内容を編集してpublish
+            - [ ] [v${{ env.RELEASE_VERSION }}のdraftリリースノート](https://github.com/ryokosuge/changelog-generator-sample/releases)をpublish
+
+            ## releaseを取り消す場合
+            1. [v${{ env.RELEASE_VERSION }}のdraftリリース](https://github.com/ryokosuge/changelog-generator-sample/releases)を削除
+            2. このPRを閉じる
+            3. ブランチを削除
           labels: release
           base: master
           branch: ${{ env.RELEASE_BRANCH }}
@@ -63,6 +70,12 @@ jobs:
       - name: Get HEAD Hash
         id: get_last_commit_hash
         run: echo "::set-output name=HASH::$(git rev-parse HEAD)"
+      - name: Create Release Note
+        run: make -f ci.mk release_note
+        env:
+          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          OUTPUT_FILE: release_note.md
+          GITHUB_TOKEN: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
       - name: Create Tag & Release
         uses: ncipollo/release-action@v1
         with:
@@ -72,7 +85,6 @@ jobs:
           token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
           commit: ${{ steps.get_last_commit_hash.outputs.HASH }}
           draft: true
+          bodyFile: release_note.md
         env:
-          RELEASE_BRANCH: ${{ steps.extract_branch.outputs.BRANCH }}
-          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
           RELEASE_TAG_NAME: v${{ steps.get_version.outputs.VERSION }}
