@@ -54,10 +54,10 @@ jobs:
           body: |
             ## Check List
             - [ ] CHANGELOGの確認
-            - [ ] [v${{ env.RELEASE_VERSION }}のdraftリリースノート](https://github.com/ryokosuge/changelog-generator-sample/releases)をpublish
+            - [ ] [v${{ env.RELEASE_VERSION }}のdraftリリースノート](https://github.com/voyagegroup/ingred-ui/releases)をpublish
 
             ## releaseを取り消す場合
-            1. [v${{ env.RELEASE_VERSION }}のdraftリリース](https://github.com/ryokosuge/changelog-generator-sample/releases)を削除
+            1. [v${{ env.RELEASE_VERSION }}のdraftリリース](https://github.com/voyagegroup/ingred-ui/releases)を削除
             2. このPRを閉じる
             3. ブランチを削除
           labels: release
