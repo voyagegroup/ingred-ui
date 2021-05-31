@@ -1,5 +1,23 @@
 # Changelog
 
+## [v7.26.0](https://github.com/voyagegroup/ingred-ui/tree/v7.26.0) (2021-05-31)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.25.0...v7.26.0)
+
+**Implemented enhancements:**
+
+- \[MultipleFilter\]テキストをより自由に [\#351](https://github.com/voyagegroup/ingred-ui/pull/351) ([penicillin0](https://github.com/penicillin0))
+
+**Closed issues:**
+
+- \<MultipleFilter /\>をStorybookの”CodeRecipes"や”Samples”の方で表示する [\#340](https://github.com/voyagegroup/ingred-ui/issues/340)
+
+**Merged pull requests:**
+
+- Update renovate.json [\#363](https://github.com/voyagegroup/ingred-ui/pull/363) ([YOwatari](https://github.com/YOwatari))
+- \[Multiplefilter\]code recipeへ追加 [\#362](https://github.com/voyagegroup/ingred-ui/pull/362) ([penicillin0](https://github.com/penicillin0))
+- \[renovate\]vulnerabilityAlertsを有効化 [\#361](https://github.com/voyagegroup/ingred-ui/pull/361) ([penicillin0](https://github.com/penicillin0))
+
 ## [v7.25.0](https://github.com/voyagegroup/ingred-ui/tree/v7.25.0) (2021-05-24)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.24.0...v7.25.0)
