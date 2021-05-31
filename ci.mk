@@ -1,9 +1,9 @@
-.PHONY: install test lint changelog release_version publish
+.PHONY: install test lint changelog release_note release_version publish
 
-SEMVER :=
 RELEASE_VERSION ?=
 GITHUB_TOKEN ?=
 NPM_TOKEN ?=
+OUTPUT_FILE ?= release_note.md
 
 install:
 ifeq ($(CI), true)
@@ -27,6 +27,16 @@ changelog:
 		--project ingred-ui \
 		--exclude-labels release \
 		--future-release v${RELEASE_VERSION} \
+		--token ${GITHUB_TOKEN}
+
+release_note:
+	github_changelog_generator \
+		--user voyagegroup \
+		--project ingred-ui \
+		--exclude-labels release \
+		--future-release v${RELEASE_VERSION} \
+		--since-tag $(shell git tag | tail -n 1 | head -n 1) \
+		--output $(OUTPUT_FILE) \
 		--token ${GITHUB_TOKEN}
 
 release_version:
