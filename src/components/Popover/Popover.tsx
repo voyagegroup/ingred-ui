@@ -40,7 +40,7 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
     setPopperElement,
   ] = React.useState<HTMLDivElement | null>(null);
 
-  const { styles, attributes } = usePopper(baseElement, popperElement, {
+  const { styles, attributes, update } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],
     modifiers: [
       {
@@ -70,6 +70,13 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
       },
     ],
   });
+
+  React.useEffect(() => {
+    if (update !== null) {
+      update();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <Modal
