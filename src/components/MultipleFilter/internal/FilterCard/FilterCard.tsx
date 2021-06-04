@@ -26,6 +26,7 @@ export type Props = {
   applyButtonTitle?: string;
   formErrorText?: string;
   inputErrorText?: string;
+  formPlaceholder?: string;
 };
 
 type FormType = {
@@ -41,6 +42,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   applyButtonTitle,
   formErrorText,
   inputErrorText,
+  formPlaceholder,
 }) => {
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -73,6 +75,8 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       case "text":
         return (
           <TextField
+            placeholder={formPlaceholder || "search"}
+            icon="search"
             inputRef={register({ required: true })}
             name="condition"
             errorText={errors.condition ? inputErrorText || "Please input" : ""}
