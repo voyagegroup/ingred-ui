@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", ":enableVulnerabilityAlertsWithLabel(security)"],
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
   "schedule": [
@@ -8,10 +8,6 @@
   ],
   "pin": {
     "automerge": true
-  },
-  "vulnerabilityAlerts": {
-    "enabled": true,
-    "labels": ["renovate", "security"]
   },
   "packageRules": [
     {
