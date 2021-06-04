@@ -42,17 +42,20 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   children,
 }) => {
   const theme = useTheme();
-  const [
-    buttonElement,
-    setButtonElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  const [buttonElement, setButtonElement] = React.useState<
+    HTMLDivElement | HTMLButtonElement | null
+  >(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
 
-  const handleToggleContent = (showContent: boolean) => () => {
-    if (showContent && !split && onClick) {
+  const handleToggleContent = (
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+  ) => {
+    setButtonElement(event.currentTarget);
+
+    if (!showContent && !split && onClick) {
       onClick();
     }
-    setShowContent(showContent);
+    setShowContent(!showContent);
   };
 
   const setIconColor = (disabled: boolean, color: DropdownButtonColor) => {
@@ -67,7 +70,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
 
   return (
     <>
-      <Styled.ButtonContainer ref={setButtonElement} role="button">
+      <Styled.ButtonContainer role="button">
         {split ? (
           <>
             <Styled.MainButton
@@ -85,7 +88,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
               inline={true}
               disabled={disabled}
               data-testid="menu-toggle"
-              onClick={handleToggleContent(!showContent)}
+              onClick={handleToggleContent}
             >
               <Icon
                 name={"arrow_bottom"}
@@ -101,7 +104,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
             color={color}
             disabled={disabled}
             data-testid="menu-toggle"
-            onClick={handleToggleContent(!showContent)}
+            onClick={handleToggleContent}
           >
             {children}
             <Spacer pr={0.5} />
@@ -121,10 +124,7 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
         positionPriority={positionPriority}
         maxHeight={menuMaxHeight}
         {...menuProps}
-        onClose={createChainedFunction(
-          handleToggleContent(false),
-          menuProps?.onClose,
-        )}
+        onClose={createChainedFunction(handleToggleContent, menuProps?.onClose)}
       />
     </>
   );
