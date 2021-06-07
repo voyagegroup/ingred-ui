@@ -1,5 +1,22 @@
 # Changelog
 
+## [v7.27.0](https://github.com/voyagegroup/ingred-ui/tree/v7.27.0) (2021-06-07)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.26.0...v7.27.0)
+
+**Implemented enhancements:**
+
+- \[MultipleFilter\]カード内のDesignを修正 & placeholderを変更可能に [\#372](https://github.com/voyagegroup/ingred-ui/pull/372) ([penicillin0](https://github.com/penicillin0))
+
+**Fixed bugs:**
+
+- \[Popover\]モーダルを開くときに座標を更新するように [\#371](https://github.com/voyagegroup/ingred-ui/pull/371) ([penicillin0](https://github.com/penicillin0))
+- Release PRの説明文のリンクを修正 [\#368](https://github.com/voyagegroup/ingred-ui/pull/368) ([ryokosuge](https://github.com/ryokosuge))
+
+**Merged pull requests:**
+
+- Update renovate.json [\#373](https://github.com/voyagegroup/ingred-ui/pull/373) ([YOwatari](https://github.com/YOwatari))
+
 ## [v7.26.0](https://github.com/voyagegroup/ingred-ui/tree/v7.26.0) (2021-05-31)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.25.0...v7.26.0)
