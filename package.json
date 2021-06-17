@@ -29,7 +29,7 @@
     "@popperjs/core": "^2.4.0",
     "moment": "^2.29.1",
     "react-dates": "^21.8.0",
-    "react-hook-form": "6.13.1",
+    "react-hook-form": "7.8.8",
     "react-popper": "^2.2.3",
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1"
