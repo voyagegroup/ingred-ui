@@ -1,9 +1,13 @@
 {
   "includeForks": true,
   "extends": [
-    "config:base", 
-    ":enableVulnerabilityAlertsWithLabel(security)"
+    "config:base"
   ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"],
+    "schedule": "at any time"
+  },
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
   "schedule": [
