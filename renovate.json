@@ -14,16 +14,16 @@
   },
   "packageRules": [
     {
-      "groupName": "non-major",
-      "matchUpdateTypes": ["patch", "minor"]
-    },
-    {
       "matchPackagePatterns": ["^@types/"],
       "automerge": true
     },
     {
       "matchPackagePatterns": ["^@testing-library/"],
       "automerge": true
+    },
+    {
+      "groupName": "non-major",
+      "matchUpdateTypes": ["patch", "minor"]
     }
   ]
 }
