@@ -3,21 +3,21 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvaa jzeSQW"
+    class="sc-bdnxRM caeJzV"
   >
     <input
       multiple=""
       type="file"
     />
     <div
-      class="sc-gsDJrp"
+      class="sc-gtsrHT"
     >
       <div
-        class="sc-hKwCoD jgMlke"
+        class="sc-hKFxyN hOgKQa"
         display="flex"
       >
         <div
-          class="sc-eCImvq boDhba"
+          class="sc-eCApnc gWKzDf"
           size="18"
         >
           <svg
@@ -37,7 +37,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </svg>
         </div>
         <p
-          class="sc-dkPtyc dKIENK"
+          class="sc-dlnjwi bwdwSb"
           color="#0B82F4"
           font-size="14px"
         >

@@ -3,10 +3,10 @@
 exports[`Modal component testing Modal with background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvaa iVFxXI"
+    class="sc-bdnxRM cHCcYL"
   >
     <div
-      class="sc-gsDJrp dSNOsi sc-dkPtyc dofLgo fade-transition-appear fade-transition-appear-active"
+      class="sc-gtsrHT ePEOiK sc-dlnjwi eXJCvZ fade-transition-appear fade-transition-appear-active"
     />
     <div>
       hoge
@@ -18,10 +18,10 @@ exports[`Modal component testing Modal with background 1`] = `
 exports[`Modal component testing Modal without background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvaa iVFxXI"
+    class="sc-bdnxRM cHCcYL"
   >
     <div
-      class="sc-gsDJrp dSNOsi sc-dkPtyc dofLgo fade-transition-appear fade-transition-appear-active"
+      class="sc-gtsrHT ePEOiK sc-dlnjwi eXJCvZ fade-transition-appear fade-transition-appear-active"
     />
     <div>
       hoge
