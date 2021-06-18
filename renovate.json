@@ -9,6 +9,7 @@
     "after 9:30am every weekday", 
     "before 6:30pm every weekday"
   ],
+  "recreateClosed": true,
   "pin": {
     "automerge": true
   },
