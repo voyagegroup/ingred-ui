@@ -3,6 +3,7 @@ module.exports = {
   transform: {
     "^.+\\.tsx?$": "ts-jest",
   },
+  testPathIgnorePatterns: ["/node_modules/", "/testEnv/", "/examples/"],
   testRegex: "(/__tests__/.*)\\.test\\.tsx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   moduleNameMapper: {
