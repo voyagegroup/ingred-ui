@@ -17,7 +17,7 @@ export type MultipleFilterProps = {
    * `type FilterPackType = {
    *   categoryName: string;
    *   filters: FilterType[];
-    }`
+   *  }`
    */
   filterPacks?: FilterPackType[];
   /**
@@ -25,25 +25,27 @@ export type MultipleFilterProps = {
    *   categoryName: string;
    *   filterName: string;
    *   filterType: Types;
-   *   filterCondtion: ControlType<Types>["options"];
-    }`
+   *   filterCondition: ControlType<Types>["options"];
+   *  }`
    */
   onChange?: (referedFilters: ReferedFilterType[]) => void;
-  sectionTitle?: string;
-  conditionTitle?: string;
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
+  formErrorText?: string;
+  inputErrorText?: string;
+  formPlaceholder?: string;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   filterPacks,
   onChange,
-  sectionTitle,
-  conditionTitle,
   placeholder,
   editButtonTitle,
   applyButtonTitle,
+  formErrorText,
+  inputErrorText,
+  formPlaceholder,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [
@@ -71,12 +73,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     ReferedFilterType[]
   >([]);
 
-  React.useEffect(() => {
-    if (onChange !== undefined) {
-      onChange(currentReferedFilters);
-    }
-  }, [currentReferedFilters, onChange]);
-
   const handleOnFocus = () => {
     setIsFocus(true);
   };
@@ -103,6 +99,10 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const handleApply = (newReferedFilter: ReferedFilterType) => {
     const newReferedFilters = currentReferedFilters.concat([newReferedFilter]);
     setCurrentReferedFilters(newReferedFilters);
+    if (onChange !== undefined) {
+      onChange(newReferedFilters);
+    }
+
     setSelectedFilterPack(null);
     setIsFocus(false);
   };
@@ -112,10 +112,16 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
       (referedFilter) => referedFilter.filterName !== removedFilter.filterName,
     );
     setCurrentReferedFilters(newReferedFilters);
+    if (onChange !== undefined) {
+      onChange(newReferedFilters);
+    }
   };
 
   const handleClear = () => {
     setCurrentReferedFilters([]);
+    if (onChange !== undefined) {
+      onChange([] as ReferedFilterType[]);
+    }
   };
 
   const hasReferedFilter = (refoeredfilters: ReferedFilterType[]) => {
@@ -141,9 +147,21 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
     const editIndex = currentReferedFilters.findIndex(
       (referedfilter) => referedfilter.filterName === editedFilter.filterName,
     );
-    currentReferedFilters[editIndex] = editedFilter;
-    setCurrentReferedFilters(currentReferedFilters);
+
+    const isEdited =
+      currentReferedFilters[editIndex].filterCondition !==
+      editedFilter.filterCondition;
+
+    if (isEdited) {
+      currentReferedFilters[editIndex] = editedFilter;
+      setCurrentReferedFilters(currentReferedFilters.slice());
+      if (onChange !== undefined) {
+        onChange(currentReferedFilters);
+      }
+    }
+
     setIsFocus(false);
+    setSelectedFilterPack(null);
     setWillEditFilter(null);
   };
 
@@ -218,13 +236,14 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         >
           <FilterCard
             applyButtonTitle={applyButtonTitle}
-            sectionTitle={sectionTitle}
-            conditionTitle={conditionTitle}
             currentReferedFilters={currentReferedFilters}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
                 filterPack.categoryName === selectedFilterPack?.categoryName,
             )}
+            formErrorText={formErrorText}
+            inputErrorText={inputErrorText}
+            formPlaceholder={formPlaceholder}
             onApply={handleApply}
             onClose={handleClose}
           />
@@ -238,13 +257,14 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
         >
           <EditFilterCard
             editButtonTitle={editButtonTitle}
-            sectionTitle={sectionTitle}
-            conditionTitle={conditionTitle}
             willEditFilter={willEditFilter as ReferedFilterType}
             selectedFilterPack={filterPacks?.find(
               (filterPack) =>
                 filterPack.categoryName === willEditFilter?.categoryName,
             )}
+            formErrorText={formErrorText}
+            inputErrorText={inputErrorText}
+            formPlaceholder={formPlaceholder}
             onEdit={handleEdit}
             onClose={handleClose}
           />

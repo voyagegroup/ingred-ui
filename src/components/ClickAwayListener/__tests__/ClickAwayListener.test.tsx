@@ -19,6 +19,9 @@ describe("ClickAwayListener component testing", () => {
 
     expect(clickedAway).toBeFalsy();
 
+    // MEMO: Wait for mountedRef to be true.
+    await new Promise((r) => setTimeout(r, 1));
+
     await act(async () => {
       fireEvent.click(getByTestId("outer-listener"));
     });

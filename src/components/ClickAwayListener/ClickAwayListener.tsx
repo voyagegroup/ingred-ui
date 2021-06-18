@@ -11,9 +11,26 @@ const ClickAwayListener: React.FunctionComponent<ClickAwayListenerProps> = ({
   children,
 }) => {
   const childrenRef = React.useRef<HTMLElement>(null);
+  const mountedRef = React.useRef(false);
+
+  /**
+   * Prevents the bubbled event from getting triggered immediately
+   * https://github.com/facebook/react/issues/20074
+   */
+  React.useEffect(() => {
+    setTimeout(() => {
+      mountedRef.current = true;
+    }, 0);
+
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
+      if (!mountedRef.current) return;
+
       if (
         childrenRef.current != null &&
         !childrenRef.current.contains(event.target as Node)
