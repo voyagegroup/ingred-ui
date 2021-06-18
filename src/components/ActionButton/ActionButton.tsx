@@ -44,9 +44,8 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     };
 
     const colorForStyle = getColorByDisabled(color, disabled);
-    const normalBackgroundColor = getNormalBackgroundColor(theme)[
-      colorForStyle
-    ];
+    const normalBackgroundColor =
+      getNormalBackgroundColor(theme)[colorForStyle];
     const hoverBackgroundColor = getHoverBackgroundColor(theme)[colorForStyle];
     const textColor = getTextColor(theme)[colorForStyle];
 

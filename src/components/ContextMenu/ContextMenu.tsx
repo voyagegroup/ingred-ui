@@ -32,10 +32,8 @@ const ContextMenu: React.FunctionComponent<ContextMenuProps> = ({
   menuMaxHeight = "none",
   menuProps,
 }) => {
-  const [
-    iconWrapperElement,
-    setIconWrapperElement,
-  ] = React.useState<HTMLButtonElement | null>(null);
+  const [iconWrapperElement, setIconWrapperElement] =
+    React.useState<HTMLButtonElement | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const handleToggleOpen = (open: boolean) => () => {

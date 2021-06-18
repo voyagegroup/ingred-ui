@@ -7,10 +7,11 @@ const Component = styled.td<{ width: string }>`
   padding: ${({ theme }) => theme.spacing * 2}px;
 `;
 
-export type TableCellProps = React.TdHTMLAttributes<HTMLTableDataCellElement> & {
-  width?: string;
-  children?: React.ReactNode;
-};
+export type TableCellProps =
+  React.TdHTMLAttributes<HTMLTableDataCellElement> & {
+    width?: string;
+    children?: React.ReactNode;
+  };
 
 export const Cell: React.FunctionComponent<TableCellProps> = ({
   width = "auto",

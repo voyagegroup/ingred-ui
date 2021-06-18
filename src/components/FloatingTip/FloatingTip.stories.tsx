@@ -29,10 +29,8 @@ export default {
 };
 
 export const Sample: React.FunctionComponent<FloatingTipProps> = (args) => {
-  const [
-    iconWrapperElement,
-    setIconWrapperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  const [iconWrapperElement, setIconWrapperElement] =
+    React.useState<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const handleIsOpen = (isOpen: boolean) => () => {
     setIsOpen(isOpen);

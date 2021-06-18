@@ -9,10 +9,11 @@ const Component = styled.th<{ width: string }>`
   border-right: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
-export type TableHeaderCellProps = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
-  width?: string;
-  children?: React.ReactNode;
-};
+export type TableHeaderCellProps =
+  React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
+    width?: string;
+    children?: React.ReactNode;
+  };
 
 export const HeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
   width = "auto",

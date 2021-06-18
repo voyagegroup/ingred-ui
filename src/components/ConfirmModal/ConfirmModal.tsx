@@ -94,21 +94,21 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
 }) => {
   const theme = useTheme();
   const showFooter = !!onSubmit;
-  const [
-    iconWrapperElement,
-    setIconWrapperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  const [iconWrapperElement, setIconWrapperElement] =
+    React.useState<HTMLDivElement | null>(null);
   const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
 
   const handleIsTipOpen = (isTipOpen: boolean) => () => {
     setIsTipOpen(isTipOpen);
   };
 
-  const handleClose = (reason: ConfirmModalCloseReason) => (
-    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
-  ) => {
-    if (onClose) onClose(event, reason);
-  };
+  const handleClose =
+    (reason: ConfirmModalCloseReason) =>
+    (
+      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+    ) => {
+      if (onClose) onClose(event, reason);
+    };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} {...modalProps}>

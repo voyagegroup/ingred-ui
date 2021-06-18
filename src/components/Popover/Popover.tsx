@@ -35,10 +35,8 @@ const Popover: React.FunctionComponent<PopoverProps> = ({
   children,
   ...rest
 }) => {
-  const [
-    popperElement,
-    setPopperElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  const [popperElement, setPopperElement] =
+    React.useState<HTMLDivElement | null>(null);
 
   const { styles, attributes, update } = usePopper(baseElement, popperElement, {
     placement: positionPriority[0],

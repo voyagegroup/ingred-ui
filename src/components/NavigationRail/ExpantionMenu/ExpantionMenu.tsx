@@ -8,30 +8,31 @@ import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
 
-export type NavitagionRailExpantionMenuProps = React.ComponentPropsWithRef<"div"> & {
-  title: string;
-  /**
-   * If `true`, it is highlighted.
-   */
-  isActive?: boolean;
-  iconName: IconName;
-  /**
-   * If not `0`, the number is located on the upper right.
-   */
-  notificationCount?: number;
-  /**
-   * Array of `<NavagationRail.ExpantionMenu />` is expected.
-   */
-  expantionList?: React.ReactNode[];
-  /**
-   * If `true`, it is expanded as default.
-   */
-  defaultExpand?: boolean;
-  /**
-   * It can define callback function that triggered when this component is `expanded`.
-   */
-  onChangeExpand?: (isExpand: boolean) => void;
-};
+export type NavitagionRailExpantionMenuProps =
+  React.ComponentPropsWithRef<"div"> & {
+    title: string;
+    /**
+     * If `true`, it is highlighted.
+     */
+    isActive?: boolean;
+    iconName: IconName;
+    /**
+     * If not `0`, the number is located on the upper right.
+     */
+    notificationCount?: number;
+    /**
+     * Array of `<NavagationRail.ExpantionMenu />` is expected.
+     */
+    expantionList?: React.ReactNode[];
+    /**
+     * If `true`, it is expanded as default.
+     */
+    defaultExpand?: boolean;
+    /**
+     * It can define callback function that triggered when this component is `expanded`.
+     */
+    onChangeExpand?: (isExpand: boolean) => void;
+  };
 
 const ExpantionMenu: React.FC<NavitagionRailExpantionMenuProps> = ({
   title,

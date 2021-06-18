@@ -127,15 +127,13 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return getContentTypeStyles(theme, type);
     };
 
-    const handleClick = (
-      content: ContentProp,
-      disabled?: boolean,
-    ) => (): void => {
-      if (checkIsDisabled(content.type, disabled)) {
-        return;
-      }
-      content.onClick();
-    };
+    const handleClick =
+      (content: ContentProp, disabled?: boolean) => (): void => {
+        if (checkIsDisabled(content.type, disabled)) {
+          return;
+        }
+        content.onClick();
+      };
 
     const isGroupContent = (
       content: GroupContentProp | ContentProp,
