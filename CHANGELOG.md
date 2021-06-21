@@ -1,5 +1,22 @@
 # Changelog
 
+## [v7.28.0](https://github.com/voyagegroup/ingred-ui/tree/v7.28.0) (2021-06-21)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.27.0...v7.28.0)
+
+**Merged pull requests:**
+
+- build\(deps\): bump postcss from 7.0.35 to 7.0.36 [\#387](https://github.com/voyagegroup/ingred-ui/pull/387) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update non-major [\#386](https://github.com/voyagegroup/ingred-ui/pull/386) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump ws from 5.2.2 to 5.2.3 in /examples/create-react-app [\#378](https://github.com/voyagegroup/ingred-ui/pull/378) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump dns-packet from 1.3.1 to 1.3.4 in /examples/create-react-app [\#377](https://github.com/voyagegroup/ingred-ui/pull/377) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump merge-deep from 3.0.2 to 3.0.3 in /examples/create-react-app [\#376](https://github.com/voyagegroup/ingred-ui/pull/376) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ws from 6.2.1 to 6.2.2 in /testEnv [\#374](https://github.com/voyagegroup/ingred-ui/pull/374) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump elliptic from 6.5.3 to 6.5.4 in /examples/create-react-app [\#356](https://github.com/voyagegroup/ingred-ui/pull/356) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump hosted-git-info from 2.8.8 to 2.8.9 in /examples/create-react-app [\#355](https://github.com/voyagegroup/ingred-ui/pull/355) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump url-parse from 1.4.7 to 1.5.1 in /examples/create-react-app [\#354](https://github.com/voyagegroup/ingred-ui/pull/354) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump ssri from 6.0.1 to 6.0.2 in /examples/create-react-app [\#353](https://github.com/voyagegroup/ingred-ui/pull/353) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v7.27.0](https://github.com/voyagegroup/ingred-ui/tree/v7.27.0) (2021-06-07)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.26.0...v7.27.0)
