@@ -30,10 +30,8 @@ const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = ({
   error = false,
   ...rest
 }) => {
-  const [
-    focusedInput,
-    setFocusedInput,
-  ] = React.useState<FocusedInputShape | null>(null);
+  const [focusedInput, setFocusedInput] =
+    React.useState<FocusedInputShape | null>(null);
 
   return (
     <Styled.Container error={error}>

@@ -48,22 +48,16 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   formPlaceholder,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
-  const [
-    selectedFilterPack,
-    setSelectedFilterPack,
-  ] = React.useState<FilterPackType | null>(null);
+  const [selectedFilterPack, setSelectedFilterPack] =
+    React.useState<FilterPackType | null>(null);
   const theme = useTheme();
   const [inputElement, setInputElement] = React.useState<
     HTMLTextAreaElement | HTMLInputElement | null
   >(null);
-  const [
-    edittingLabelElement,
-    setEdittingLabelElement,
-  ] = React.useState<HTMLDivElement | null>(null);
-  const [
-    willEditFilter,
-    setWillEditFilter,
-  ] = React.useState<ReferedFilterType | null>(null);
+  const [edittingLabelElement, setEdittingLabelElement] =
+    React.useState<HTMLDivElement | null>(null);
+  const [willEditFilter, setWillEditFilter] =
+    React.useState<ReferedFilterType | null>(null);
   const currentStatus = getCurrentStatus(
     isFocus,
     selectedFilterPack,

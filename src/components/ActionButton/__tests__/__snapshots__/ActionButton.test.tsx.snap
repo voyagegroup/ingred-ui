@@ -3,13 +3,13 @@
 exports[`ActionButton component testing ActionButton 1`] = `
 <DocumentFragment>
   <button
-    class="sc-bdvvaa enRipp"
+    class="sc-bdnxRM JueWW"
   >
     <div
-      class="sc-gsDJrp jUzfiR"
+      class="sc-gtsrHT TSXlJ"
     >
       <div
-        class="sc-dkPtyc kAVcpe"
+        class="sc-dlnjwi dDeTRf"
         size="18"
       >
         <svg
@@ -29,7 +29,7 @@ exports[`ActionButton component testing ActionButton 1`] = `
       </div>
     </div>
     <p
-      class="sc-hKwCoD hHciTh"
+      class="sc-hKFxyN hFnlQN"
       color="#0B82F4"
       font-size="14px"
     />

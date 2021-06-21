@@ -42,10 +42,8 @@ const DropdownButton: React.FC<DropdownButtonProps> = ({
   children,
 }) => {
   const theme = useTheme();
-  const [
-    buttonElement,
-    setButtonElement,
-  ] = React.useState<HTMLDivElement | null>(null);
+  const [buttonElement, setButtonElement] =
+    React.useState<HTMLDivElement | null>(null);
   const [showContent, setShowContent] = React.useState<boolean>(false);
 
   const handleToggleContent = (showContent: boolean) => () => {

@@ -1,7 +1,6 @@
 {
   "extends": [
-    "config:base", 
-    ":enableVulnerabilityAlertsWithLabel(security)"
+    "config:base"
   ],
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
@@ -9,14 +8,11 @@
     "after 9:30am every weekday", 
     "before 6:30pm every weekday"
   ],
+  "recreateClosed": true,
   "pin": {
     "automerge": true
   },
   "packageRules": [
-    {
-      "groupName": "non-major",
-      "matchUpdateTypes": ["patch", "minor"]
-    },
     {
       "matchPackagePatterns": ["^@types/"],
       "automerge": true
@@ -24,6 +20,10 @@
     {
       "matchPackagePatterns": ["^@testing-library/"],
       "automerge": true
+    },
+    {
+      "groupName": "non-major",
+      "matchUpdateTypes": ["patch", "minor"]
     }
   ]
 }

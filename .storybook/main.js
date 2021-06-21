@@ -22,4 +22,8 @@ module.exports = {
     // TODO: fix warn "Rendered more hooks than during the previous render."
     // strictMode: true,
   },
+  // ref: https://github.com/styleguidist/react-docgen-typescript/issues/356#issuecomment-857887751
+  typescript: {
+    reactDocgen: "react-docgen",
+  },
 };

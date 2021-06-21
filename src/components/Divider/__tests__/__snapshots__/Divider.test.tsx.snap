@@ -3,7 +3,7 @@
 exports[`Divider component testing Divider 1`] = `
 <DocumentFragment>
   <hr
-    class="sc-bdvvaa cTKdgm"
+    class="sc-bdnxRM gTvduF"
     color="#B3BAC1"
     orientation="horizontal"
   />

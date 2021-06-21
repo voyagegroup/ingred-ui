@@ -18,7 +18,7 @@ const Input = React.forwardRef<
   <Styled.Input
     {...rest}
     ref={ref as any}
-    as={multiline ? "textarea" : "input"}
+    as={(multiline ? "textarea" : "input") as any}
     isError={error}
     resize={resize}
   />
