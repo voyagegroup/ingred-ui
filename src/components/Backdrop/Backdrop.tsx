@@ -3,7 +3,7 @@ import * as Styled from "./styled";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 
-export type BackdropProps = React.ComponentPropsWithRef<"div"> & {
+export type BackdropProps = React.ComponentPropsWithoutRef<"div"> & {
   isOpen?: boolean;
   invisible?: boolean;
   /**

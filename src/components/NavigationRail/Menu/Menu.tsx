@@ -9,7 +9,7 @@ import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
-export type NavigationRailMenuProps = React.ComponentPropsWithRef<"div"> & {
+export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
   title: string;
   /**
    * If `true`, it is highlighted.

@@ -25,7 +25,7 @@ const getColor = (key: BadgeColor, theme: Theme) => {
   }
 };
 
-export type BadgeProps = React.ComponentPropsWithRef<"a" | "span"> & {
+export type BadgeProps = React.ComponentPropsWithoutRef<"a" | "span"> & {
   color: BadgeColor;
   type?: Styled.BadgeType;
   fontSize?: string;

@@ -6,7 +6,7 @@ type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
   React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
     header?: boolean;
     selected?: boolean;
-    onClick?: React.ComponentPropsWithRef<"input">["onClick"];
+    onClick?: React.ComponentPropsWithoutRef<"input">["onClick"];
   };
 
 export const CellRadio: React.FunctionComponent<Props> = ({

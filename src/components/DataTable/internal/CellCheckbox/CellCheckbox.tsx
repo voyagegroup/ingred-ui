@@ -7,7 +7,7 @@ export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
     header?: boolean;
     indeterminate?: boolean;
     selected?: boolean;
-    onClick?: React.ComponentPropsWithRef<"input">["onClick"];
+    onClick?: React.ComponentPropsWithoutRef<"input">["onClick"];
   };
 
 export const CellCheckbox: React.FunctionComponent<Props> = ({

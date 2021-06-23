@@ -78,7 +78,7 @@ export const getContentTypeStyles = (
   }
 };
 
-export type ContentProp = React.ComponentPropsWithRef<"div"> & {
+export type ContentProp = React.ComponentPropsWithoutRef<"div"> & {
   text: string;
   onClick: () => void;
   divideTop?: boolean;
@@ -93,12 +93,12 @@ export type ContentProp = React.ComponentPropsWithRef<"div"> & {
   disabled?: boolean;
 };
 
-export type GroupContentProp = React.ComponentPropsWithRef<"div"> & {
+export type GroupContentProp = React.ComponentPropsWithoutRef<"div"> & {
   title: string;
   contents: ContentProp[];
 };
 
-export type MenuListProps = React.ComponentPropsWithRef<"div"> & {
+export type MenuListProps = React.ComponentPropsWithoutRef<"div"> & {
   inline?: boolean;
   contents: Array<ContentProp | GroupContentProp>;
   maxHeight?: Property.MaxHeight;

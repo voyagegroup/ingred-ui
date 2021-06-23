@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-export type CheckBoxProps = React.ComponentPropsWithRef<"input"> & {
+export type CheckBoxProps = React.ComponentPropsWithoutRef<"input"> & {
   indeterminate?: boolean;
   error?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
