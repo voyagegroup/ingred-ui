@@ -7,7 +7,7 @@ import { createChainedFunction } from "../../utils/createChainedFunction";
 
 export type ContextMenuProps = {
   /**
-   * `type ContentProp = React.ComponentPropsWithRef<"div"> & {
+   * `type ContentProp = React.ComponentPropsWithoutRef<"div"> & {
    *   text: string;
    *   onClick: () => void;
    *   divideTop?: boolean;

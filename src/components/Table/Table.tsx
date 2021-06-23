@@ -13,7 +13,7 @@ const Container = styled.table`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-export type TableProps = React.ComponentPropsWithRef<"table">;
+export type TableProps = React.ComponentPropsWithoutRef<"table">;
 
 const Table = ({ children }: TableProps) => <Container>{children}</Container>;
 

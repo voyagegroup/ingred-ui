@@ -50,7 +50,7 @@ const Component = styled.tr<RowProps>`
   }
 `;
 
-export type Props = React.ComponentPropsWithRef<"tr"> & Partial<RowProps>;
+export type Props = React.ComponentPropsWithoutRef<"tr"> & Partial<RowProps>;
 
 export const Row: React.FunctionComponent<Props> = ({
   highlighted = false,

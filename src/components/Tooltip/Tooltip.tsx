@@ -7,7 +7,7 @@ import Fade from "../Fade";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 
-export type TooltipProps = React.ComponentPropsWithRef<"div"> & {
+export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   content: React.ReactChild;
   open?: boolean;
   disableHoverListener?: boolean;

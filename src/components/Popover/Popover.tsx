@@ -4,7 +4,7 @@ import * as PopperJS from "@popperjs/core";
 import { usePopper } from "react-popper";
 import Modal, { ModalProps } from "../Modal";
 
-export type PopoverProps = React.ComponentPropsWithRef<"div"> & {
+export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
    * If `false`, children becomes `visibility: hidden`.
    */
