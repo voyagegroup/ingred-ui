@@ -193,6 +193,18 @@ export type DataTableProps<T> = {
    */
   defaultSortOrder?: "desc" | "asc";
   /**
+   * Specify checked rows.
+   * Not rerender when this prop is updated because it is used for initial value of state.
+   * **Please use with `onSelectRowsChange={true}`.**
+   */
+  defaultSelectedRows?: number[];
+  /**
+   * Specify checked row.
+   * Not rerender when this prop is updated because it is used for initial value of state.
+   * **Please use with `onSelectRowChange={true}`.**
+   */
+  defaultSelectedRow?: number;
+  /**
    * Add verticale line in table.
    */
   enableRuledLine?: boolean;
@@ -204,6 +216,7 @@ export type DataTableProps<T> = {
    * If `true` it, hidden both side border.
    */
   fullWidth?: boolean;
+  disableCheckWhenClickRow?: boolean;
   tableMaxHeight?: string;
   horizontalScrollable?: boolean;
   labelRowsPerPage?: string;
@@ -222,9 +235,12 @@ const DataTable = <T extends DataTableBaseData>({
   per,
   defaultSortField,
   defaultSortOrder = "desc",
+  defaultSelectedRows = [],
+  defaultSelectedRow,
   enableRuledLine = false,
   verticalSpacing = "medium",
   fullWidth = false,
+  disableCheckWhenClickRow = false,
   tableMaxHeight = "none",
   horizontalScrollable = false,
   labelRowsPerPage = "Rows per page:",
@@ -232,11 +248,14 @@ const DataTable = <T extends DataTableBaseData>({
 }: DataTableProps<T>) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
-  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+  const [selectedRows, setSelectedRows] =
+    React.useState<number[]>(defaultSelectedRows);
   const indeterminate = selectedRows.length > 0 && !allSelected;
 
   const showRadioButton = !!onRadioChange;
-  const [selectedRow, setSelectedRow] = React.useState<number | null>(null);
+  const [selectedRow, setSelectedRow] = React.useState<number | null>(
+    defaultSelectedRow || null,
+  );
 
   const showTabs = !!tabs;
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
@@ -452,7 +471,9 @@ const DataTable = <T extends DataTableBaseData>({
                                 selectedRow === item.id)
                             }
                             disableHoverHighlight={enableMergeCell}
-                            onClick={handleSelectCheckbox(item.id)}
+                            {...(!disableCheckWhenClickRow && {
+                              onClick: handleSelectCheckbox(item.id),
+                            })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
@@ -498,7 +519,9 @@ const DataTable = <T extends DataTableBaseData>({
                                 selectedRow === item.id)
                             }
                             disableHoverHighlight={enableMergeCell}
-                            onClick={handleSelectRadioButton(item.id)}
+                            {...(!disableCheckWhenClickRow && {
+                              onClick: handleSelectRadioButton(item.id),
+                            })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
