@@ -27,7 +27,7 @@ const getTextColor = (theme: Theme) => ({
 
 type ColorProp = "primary" | "warning";
 
-export type ActionButtonProps = React.ComponentPropsWithRef<"button"> & {
+export type ActionButtonProps = React.ComponentPropsWithoutRef<"button"> & {
   icon: IconName;
   color?: ColorProp;
 };
