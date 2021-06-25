@@ -1,8 +1,8 @@
 # Changelog
 
-## [v7.28.1](https://github.com/voyagegroup/ingred-ui/tree/v7.28.1) (2021-06-23)
+## [v7.29.0](https://github.com/voyagegroup/ingred-ui/tree/v7.29.0) (2021-06-25)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.28.0...v7.28.1)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.28.1...v7.29.0)
 
 **Fixed bugs:**
 
@@ -10,7 +10,13 @@
 
 **Merged pull requests:**
 
+- \<DataTable /\>でデフォルトチェックを有効にする [\#399](https://github.com/voyagegroup/ingred-ui/pull/399) ([youchann](https://github.com/youchann))
 - ComponentPropsWithRef -\> ComponentPropsWithoutRef [\#396](https://github.com/voyagegroup/ingred-ui/pull/396) ([youchann](https://github.com/youchann))
+- build\(deps\): bump color-string from 1.5.4 to 1.5.5 in /examples/create-react-app [\#395](https://github.com/voyagegroup/ingred-ui/pull/395) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v7.28.1](https://github.com/voyagegroup/ingred-ui/tree/v7.28.1) (2021-06-23)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.28.0...v7.28.1)
 
 ## [v7.28.0](https://github.com/voyagegroup/ingred-ui/tree/v7.28.0) (2021-06-21)
 
