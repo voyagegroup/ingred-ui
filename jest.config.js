@@ -11,4 +11,5 @@ module.exports = {
       "<rootDir>/__mocks__/fileMock.ts",
   },
   clearMocks: true,
+  testEnvironment: "jsdom",
 };
