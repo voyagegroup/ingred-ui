@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "7.27.0",
+  "version": "7.29.0",
   "description": "",
   "author": "voyagegroup",
   "license": "MIT",
@@ -41,10 +41,10 @@
   },
   "devDependencies": {
     "@storybook/addon-console": "1.2.3",
-    "@storybook/addon-essentials": "6.2.9",
-    "@storybook/addon-links": "6.2.9",
-    "@storybook/addon-storysource": "6.2.9",
-    "@storybook/react": "6.2.9",
+    "@storybook/addon-essentials": "6.3.0-rc.7",
+    "@storybook/addon-links": "6.3.0-rc.7",
+    "@storybook/addon-storysource": "6.3.0-rc.7",
+    "@storybook/react": "6.3.0-rc.7",
     "@svgr/rollup": "5.5.0",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "11.2.7",

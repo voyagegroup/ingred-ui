@@ -9,7 +9,7 @@ import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
 
 export type NavitagionRailExpantionMenuProps =
-  React.ComponentPropsWithRef<"div"> & {
+  React.ComponentPropsWithoutRef<"div"> & {
     title: string;
     /**
      * If `true`, it is highlighted.

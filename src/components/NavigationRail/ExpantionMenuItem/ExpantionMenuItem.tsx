@@ -7,7 +7,7 @@ import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 
 export type NavigationRailExpantionMenuItemProps =
-  React.ComponentPropsWithRef<"div"> & {
+  React.ComponentPropsWithoutRef<"div"> & {
     title: string;
     /**
      * If it props exists, replace `title` props with it.

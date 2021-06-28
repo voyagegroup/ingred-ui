@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export type Props = React.ComponentPropsWithRef<"button">;
+export type Props = React.ComponentPropsWithoutRef<"button">;
 
 export const BaseButton = styled.button`
   margin: 0;

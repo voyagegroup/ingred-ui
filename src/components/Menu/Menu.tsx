@@ -8,15 +8,15 @@ import { createChainedFunction } from "../../utils/createChainedFunction";
 export type MenuCloseReason = "clickMenuList";
 
 // TODO: need breaking change(#211)
-//       remove 'React.ComponentPropsWithRef<"div">' because it is included menuListProps
-export type MenuProps = React.ComponentPropsWithRef<"div"> & {
+//       remove 'React.ComponentPropsWithoutRef<"div">' because it is included menuListProps
+export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
   isOpen?: boolean;
   /**
    * Basis of `<Menu />` position.
    */
   baseElement?: HTMLElement | null;
   /**
-   * `type ContentProp = React.ComponentPropsWithRef<"div"> & {
+   * `type ContentProp = React.ComponentPropsWithoutRef<"div"> & {
    *   text: string;
    *   onClick: () => void;
    *   divideTop?: boolean;
