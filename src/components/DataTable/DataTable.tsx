@@ -532,9 +532,7 @@ const DataTable = <T extends DataTableBaseData>({
                                 <CellRadio
                                   selected={item.id === selectedRow}
                                   rowSpan={calculateRowSpan(displayData, index)}
-                                  {...(disableCheckWhenClickRow && {
-                                    onClick: handleSelectRadioButton(item.id),
-                                  })}
+                                  onClick={handleSelectRadioButton(item.id)}
                                 />
                               )}
                             {columns.map((column) =>
