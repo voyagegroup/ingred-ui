@@ -481,6 +481,9 @@ const DataTable = <T extends DataTableBaseData>({
                                 <CellCheckbox
                                   selected={selectedRows.includes(item.id)}
                                   rowSpan={calculateRowSpan(displayData, index)}
+                                  {...(disableCheckWhenClickRow && {
+                                    onClick: handleSelectCheckbox(item.id),
+                                  })}
                                 />
                               )}
                             {columns.map((column) =>

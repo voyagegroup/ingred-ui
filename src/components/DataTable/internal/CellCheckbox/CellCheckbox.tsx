@@ -18,8 +18,8 @@ export const CellCheckbox: React.FunctionComponent<Props> = ({
   ...rest
 }) => {
   const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
-    if (onClick) return onClick(event);
-    return event.stopPropagation();
+    event.stopPropagation();
+    if (onClick) onClick(event);
   };
   const Component = header ? Styled.HeaderCell : Styled.StandardCell;
   return (
