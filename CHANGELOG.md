@@ -1,11 +1,12 @@
 # Changelog
 
-## [v7.29.0](https://github.com/voyagegroup/ingred-ui/tree/v7.29.0) (2021-06-25)
+## [v7.29.1](https://github.com/voyagegroup/ingred-ui/tree/v7.29.1) (2021-06-29)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.28.1...v7.29.0)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.29.0...v7.29.1)
 
 **Fixed bugs:**
 
+- \<DataTable /\>チェックまわりのバグ改修 [\#401](https://github.com/voyagegroup/ingred-ui/pull/401) ([youchann](https://github.com/youchann))
 - Storybookで型が表示されない問題を対応 [\#394](https://github.com/voyagegroup/ingred-ui/pull/394) ([youchann](https://github.com/youchann))
 
 **Merged pull requests:**
@@ -13,6 +14,11 @@
 - \<DataTable /\>でデフォルトチェックを有効にする [\#399](https://github.com/voyagegroup/ingred-ui/pull/399) ([youchann](https://github.com/youchann))
 - ComponentPropsWithRef -\> ComponentPropsWithoutRef [\#396](https://github.com/voyagegroup/ingred-ui/pull/396) ([youchann](https://github.com/youchann))
 - build\(deps\): bump color-string from 1.5.4 to 1.5.5 in /examples/create-react-app [\#395](https://github.com/voyagegroup/ingred-ui/pull/395) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dependency ts-jest to v27 [\#393](https://github.com/voyagegroup/ingred-ui/pull/393) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.29.0](https://github.com/voyagegroup/ingred-ui/tree/v7.29.0) (2021-06-25)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.28.1...v7.29.0)
 
 ## [v7.28.1](https://github.com/voyagegroup/ingred-ui/tree/v7.28.1) (2021-06-23)
 
