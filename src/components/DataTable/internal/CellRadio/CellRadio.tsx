@@ -15,10 +15,14 @@ export const CellRadio: React.FunctionComponent<Props> = ({
   onClick,
   ...rest
 }) => {
+  const handleClick = (event: React.MouseEvent<HTMLInputElement>) => {
+    event.stopPropagation();
+    if (onClick) onClick(event);
+  };
   const Component = header ? Styled.HeaderCell : Styled.StandardCell;
   return (
     <Component {...rest}>
-      {!header && <RadioButton checked={selected} onClick={onClick} />}
+      {!header && <RadioButton checked={selected} onClick={handleClick} />}
     </Component>
   );
 };

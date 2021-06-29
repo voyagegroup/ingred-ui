@@ -481,6 +481,9 @@ const DataTable = <T extends DataTableBaseData>({
                                 <CellCheckbox
                                   selected={selectedRows.includes(item.id)}
                                   rowSpan={calculateRowSpan(displayData, index)}
+                                  {...(disableCheckWhenClickRow && {
+                                    onClick: handleSelectCheckbox(item.id),
+                                  })}
                                 />
                               )}
                             {columns.map((column) =>
@@ -529,7 +532,9 @@ const DataTable = <T extends DataTableBaseData>({
                                 <CellRadio
                                   selected={item.id === selectedRow}
                                   rowSpan={calculateRowSpan(displayData, index)}
-                                  onClick={handleSelectRadioButton(item.id)}
+                                  {...(disableCheckWhenClickRow && {
+                                    onClick: handleSelectRadioButton(item.id),
+                                  })}
                                 />
                               )}
                             {columns.map((column) =>
