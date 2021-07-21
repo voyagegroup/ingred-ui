@@ -1,6 +1,7 @@
 [build]
   publish = "storybook-static"
   command = "yarn build-storybook"
+  environment = { NODE_VERSION = "14.16.0" }
 
 [[headers]]
   for = "/*"

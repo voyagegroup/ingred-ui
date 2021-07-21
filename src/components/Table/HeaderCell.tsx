@@ -6,7 +6,7 @@ const Component = styled.th<{ width: string }>`
   width: ${({ width }) => width};
   padding: ${({ theme }) => theme.spacing * 2}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-right: 1px solid ${({ theme }) => theme.palette.divider};
+  border: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 export type TableHeaderCellProps =
