@@ -17,6 +17,7 @@ export type FlexProps = {
   flexBasis?: Property.FlexBasis<TLengthStyledSystem>;
   justifySelf?: Property.JustifySelf;
   alignSelf?: Property.AlignSelf;
+  gap?: Property.Gap;
 };
 
 const camelToKebab = (string: string) => {
