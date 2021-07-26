@@ -1,22 +1,36 @@
 # Changelog
 
-## [v7.29.2](https://github.com/voyagegroup/ingred-ui/tree/v7.29.2) (2021-07-13)
+## [v7.30.0](https://github.com/voyagegroup/ingred-ui/tree/v7.30.0) (2021-07-26)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.29.1...v7.29.2)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.29.2...v7.30.0)
 
 **Fixed bugs:**
 
 - \<DataTable /\>チェックまわりのバグ改修 [\#401](https://github.com/voyagegroup/ingred-ui/pull/401) ([youchann](https://github.com/youchann))
 - Storybookで型が表示されない問題を対応 [\#394](https://github.com/voyagegroup/ingred-ui/pull/394) ([youchann](https://github.com/youchann))
 
+**Closed issues:**
+
+- \<Table /\>のボーダーを調整して柔軟なレイアウトに対応する [\#403](https://github.com/voyagegroup/ingred-ui/issues/403)
+- Enable to "gap" property to \<Flex /\> [\#350](https://github.com/voyagegroup/ingred-ui/issues/350)
+- Build without node built-in module\("utils"\) [\#328](https://github.com/voyagegroup/ingred-ui/issues/328)
+- Add "noPropertyAccessFromIndexSignature: true" to TypeScript configuration. [\#326](https://github.com/voyagegroup/ingred-ui/issues/326)
+
 **Merged pull requests:**
 
+- 細かいissueをあれこれ [\#408](https://github.com/voyagegroup/ingred-ui/pull/408) ([youchann](https://github.com/youchann))
+- Update non-major [\#406](https://github.com/voyagegroup/ingred-ui/pull/406) ([renovate[bot]](https://github.com/apps/renovate))
 - \<DataTable /\>でデフォルトチェックを有効にする [\#399](https://github.com/voyagegroup/ingred-ui/pull/399) ([youchann](https://github.com/youchann))
+- Update dependency @testing-library/react to v12 [\#398](https://github.com/voyagegroup/ingred-ui/pull/398) ([renovate[bot]](https://github.com/apps/renovate))
 - ComponentPropsWithRef -\> ComponentPropsWithoutRef [\#396](https://github.com/voyagegroup/ingred-ui/pull/396) ([youchann](https://github.com/youchann))
 - build\(deps\): bump color-string from 1.5.4 to 1.5.5 in /examples/create-react-app [\#395](https://github.com/voyagegroup/ingred-ui/pull/395) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency ts-jest to v27 [\#393](https://github.com/voyagegroup/ingred-ui/pull/393) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v14 [\#389](https://github.com/voyagegroup/ingred-ui/pull/389) ([renovate[bot]](https://github.com/apps/renovate))
 - Update non-major [\#388](https://github.com/voyagegroup/ingred-ui/pull/388) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.29.2](https://github.com/voyagegroup/ingred-ui/tree/v7.29.2) (2021-07-13)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.29.1...v7.29.2)
 
 ## [v7.29.1](https://github.com/voyagegroup/ingred-ui/tree/v7.29.1) (2021-06-29)
 
