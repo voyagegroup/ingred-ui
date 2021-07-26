@@ -17,7 +17,7 @@ export type FlexProps = {
   flexBasis?: Property.FlexBasis<TLengthStyledSystem>;
   justifySelf?: Property.JustifySelf;
   alignSelf?: Property.AlignSelf;
-  gap?: Property.Gap;
+  gap?: number;
 };
 
 const camelToKebab = (string: string) => {
@@ -36,6 +36,7 @@ export const flexbox = (payload: FlexProps) => {
 
 const Flex = styled.div<FlexProps>`
   ${flexbox};
+  ${({ theme, gap }) => gap && `gap: ${theme.spacing * gap}px`};
 `;
 
 export default Flex;
