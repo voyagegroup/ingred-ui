@@ -12,11 +12,11 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jSFjdj eOOexo"
+        class="sc-jSFjdj knYyzy"
         display="flex"
       >
         <div
-          class="sc-jSFjdj fgebGL"
+          class="sc-jSFjdj usPlx"
           display="flex"
         >
           <div
@@ -99,11 +99,11 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jSFjdj eOOexo"
+        class="sc-jSFjdj knYyzy"
         display="flex"
       >
         <div
-          class="sc-jSFjdj fgebGL"
+          class="sc-jSFjdj usPlx"
           display="flex"
         >
           <div
@@ -192,11 +192,11 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jSFjdj eOOexo"
+        class="sc-jSFjdj knYyzy"
         display="flex"
       >
         <div
-          class="sc-jSFjdj fgebGL"
+          class="sc-jSFjdj usPlx"
           display="flex"
         >
           <div
@@ -279,11 +279,11 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jSFjdj eOOexo"
+        class="sc-jSFjdj knYyzy"
         display="flex"
       >
         <div
-          class="sc-jSFjdj fgebGL"
+          class="sc-jSFjdj usPlx"
           display="flex"
         >
           <div
