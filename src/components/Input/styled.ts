@@ -20,7 +20,7 @@ export const Input = styled.input<{
   border-radius: ${({ theme }) => theme.radius}px;
   border-color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.divider};
-  overflow: hidden;
+  overflow: scroll;
   resize: ${({ resize }) => resize};
   /* MEMO: To take a place that display LastPass icon. */
   background-position: calc(100% - 35px) 50% !important;
