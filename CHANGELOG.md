@@ -1,8 +1,8 @@
 # Changelog
 
-## [v7.30.1](https://github.com/voyagegroup/ingred-ui/tree/v7.30.1) (2021-07-26)
+## [v7.30.2](https://github.com/voyagegroup/ingred-ui/tree/v7.30.2) (2021-07-29)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.0...v7.30.1)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.1...v7.30.2)
 
 **Fixed bugs:**
 
@@ -11,8 +11,10 @@
 
 **Merged pull requests:**
 
+- `<Input />`をscrollableに [\#413](https://github.com/voyagegroup/ingred-ui/pull/413) ([youchann](https://github.com/youchann))
 - `<Flex />`の微調整 [\#410](https://github.com/voyagegroup/ingred-ui/pull/410) ([youchann](https://github.com/youchann))
 - 細かいissueをあれこれ [\#408](https://github.com/voyagegroup/ingred-ui/pull/408) ([youchann](https://github.com/youchann))
+- Update non-major [\#407](https://github.com/voyagegroup/ingred-ui/pull/407) ([renovate[bot]](https://github.com/apps/renovate))
 - Update non-major [\#406](https://github.com/voyagegroup/ingred-ui/pull/406) ([renovate[bot]](https://github.com/apps/renovate))
 - \<DataTable /\>でデフォルトチェックを有効にする [\#399](https://github.com/voyagegroup/ingred-ui/pull/399) ([youchann](https://github.com/youchann))
 - Update dependency @testing-library/react to v12 [\#398](https://github.com/voyagegroup/ingred-ui/pull/398) ([renovate[bot]](https://github.com/apps/renovate))
@@ -21,6 +23,10 @@
 - Update dependency ts-jest to v27 [\#393](https://github.com/voyagegroup/ingred-ui/pull/393) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v14 [\#389](https://github.com/voyagegroup/ingred-ui/pull/389) ([renovate[bot]](https://github.com/apps/renovate))
 - Update non-major [\#388](https://github.com/voyagegroup/ingred-ui/pull/388) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.30.1](https://github.com/voyagegroup/ingred-ui/tree/v7.30.1) (2021-07-26)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.0...v7.30.1)
 
 ## [v7.30.0](https://github.com/voyagegroup/ingred-ui/tree/v7.30.0) (2021-07-26)
 
