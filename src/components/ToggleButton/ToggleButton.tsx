@@ -2,8 +2,8 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Typography from "../Typography";
 
-export type ToggleButtonProps = {
-  active?: boolean;
+export type ToggleButtonProps = React.ComponentPropsWithRef<"input"> & {
+  checked?: boolean;
   disabled?: boolean;
   onChange?: () => void;
   width?: string;
@@ -13,7 +13,7 @@ export type ToggleButtonProps = {
 };
 
 const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
-  active = false,
+  checked = false,
   disabled = false,
   onChange,
   width = "56px",
@@ -23,10 +23,10 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
 }) => {
   return (
     <Styled.Container width={width}>
-      <Styled.Label active={active} disabled={disabled} width={width}>
+      <Styled.Label checked={checked} disabled={disabled} width={width}>
         <Styled.HiddenInput
           ref={inputRef}
-          checked={active}
+          checked={checked}
           type="checkbox"
           // eslint-disable-next-line react/jsx-handler-names
           readOnly={onChange == undefined}
@@ -55,7 +55,7 @@ const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
             {inActiveText}
           </Typography>
         </Styled.InActiveLabelText>
-        <Styled.ToggleButton active={active} disabled={disabled} />
+        <Styled.ToggleButton checked={checked} disabled={disabled} />
       </Styled.Label>
     </Styled.Container>
   );

@@ -10,11 +10,11 @@ export default {
 };
 
 export const Example: Story<ToggleButtonProps> = (args) => {
-  const [active, setActive] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <ToggleButton
-      active={active}
-      onChange={() => setActive(!active)}
+      checked={checked}
+      onChange={() => setChecked(!checked)}
       {...args}
     />
   );
@@ -25,25 +25,25 @@ export const DesignSamples = () => (
     <div>
       <Typography weight="bold">Active</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={true} />
+      <ToggleButton checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Inactive</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={false} />
+      <ToggleButton checked={false} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Disabled & Active</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={true} />
+      <ToggleButton disabled={true} checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Disabled & Inactive</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={false} />
+      <ToggleButton disabled={true} checked={false} />
     </div>
   </Flex>
 );

@@ -9,7 +9,10 @@ export const Container = styled.div<{
   height: calc(1px * 2 + 22px);
 `;
 
-export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
+export const ToggleButton = styled.span<{
+  checked: boolean;
+  disabled: boolean;
+}>`
   position: absolute;
   top: 50%;
   left: 4px;
@@ -17,18 +20,20 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   width: 14px;
   height: 14px;
   border-radius: 14px;
-  background-color: ${({ active, disabled, theme }) => {
+  background-color: ${({ checked, disabled, theme }) => {
     let backgroundColor = theme.palette.background.default;
     if (disabled) {
       backgroundColor = theme.palette.gray.light;
-    } else if (active) {
+    } else if (checked) {
       backgroundColor = theme.palette.primary.main;
     }
     return backgroundColor;
   }};
   border: 1px solid
-    ${({ active, disabled, theme }) =>
-      active && !disabled ? theme.palette.primary.dark : theme.palette.divider};
+    ${({ checked, disabled, theme }) =>
+      checked && !disabled
+        ? theme.palette.primary.dark
+        : theme.palette.divider};
   box-shadow: ${({ theme }) =>
     `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0px 1px ${hexToRgba(
       theme.palette.black,
@@ -56,7 +61,7 @@ export const InActiveLabelText = styled(LabelText)`
 `;
 
 type LabelProps = {
-  active: boolean;
+  checked: boolean;
   disabled: boolean;
   width: string;
 };
@@ -71,25 +76,27 @@ export const Label = styled.label<LabelProps>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   width: ${({ width }) => width};
   height: calc(1px * 2 + 22px);
-  background-color: ${({ active, disabled, theme }) => {
+  background-color: ${({ checked, disabled, theme }) => {
     let backgroundColor = theme.palette.gray.highlight;
     if (disabled) {
       backgroundColor = theme.palette.gray.light;
-    } else if (active) {
+    } else if (checked) {
       backgroundColor = theme.palette.background.hint;
     }
     return backgroundColor;
   }};
   border: 1px solid
-    ${({ active, disabled, theme }) =>
-      active && !disabled ? theme.palette.primary.main : theme.palette.divider};
+    ${({ checked, disabled, theme }) =>
+      checked && !disabled
+        ? theme.palette.primary.main
+        : theme.palette.divider};
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
   transition: all 0.3s ease-in-out;
 
-  ${({ active }) =>
-    active &&
+  ${({ checked }) =>
+    checked &&
     css`
       & > ${ToggleButton} {
         left: calc(100% - 14px - 4px);
