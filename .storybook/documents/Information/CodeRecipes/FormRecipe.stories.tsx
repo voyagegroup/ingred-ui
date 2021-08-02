@@ -54,14 +54,6 @@ export const Overview: React.FC = () => {
       <Typography component="h1" size="xxxxxl" weight="bold">
         Form
       </Typography>
-      <Typography>
-        We recommend to use{" "}
-        <a href="http://react-hook-form.com/">react-hook-form</a>. It&apos;s the
-        easiest way to implement form feature.
-        <br />
-        Here is examples. Source code is written in &rdquo;Story&rdquo; Tab at
-        footer.
-      </Typography>
       <Spacer pt={5} />
 
       {/* Input */}
