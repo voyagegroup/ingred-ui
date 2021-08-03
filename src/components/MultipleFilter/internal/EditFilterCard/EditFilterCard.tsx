@@ -50,10 +50,10 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
   const handleSelect = (option: OptionType<string> | null) => {
     if (option === null) {
-      setCondition(undefined);
-    } else {
-      setCondition(option.value);
+      return setCondition(undefined);
     }
+
+    setCondition(option.value);
   };
 
   const validateInput = () => {
@@ -73,6 +73,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             icon="search"
             placeholder={formPlaceholder || "search"}
             name="condition"
+            value={condition as string}
             errorText={validateInput()}
             onChange={handleInput}
           />
@@ -121,13 +122,12 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = () => {
-    if (condition) {
-      setSubmitError(undefined);
-    } else {
+    if (!condition) {
       setSubmitError(formErrorText || "Please fill in all fields.");
       return;
     }
 
+    setSubmitError(undefined);
     const editedFilter: ReferredFilterType = {
       filterCondition: condition,
       filterType: willEditFilter?.filterType as Types,

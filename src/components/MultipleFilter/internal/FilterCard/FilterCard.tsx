@@ -40,6 +40,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 }) => {
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>();
@@ -50,7 +51,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   }));
 
   const validateInput = () => {
-    if (submitError && condition == "") {
+    if (isSubmitted && !condition) {
       return inputErrorText || "Please input";
     }
 
@@ -61,12 +62,13 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     setCondition(e.target.value);
   };
 
-  const handleSelect = (option: OptionType<any>) => {
+  const handleSelect = (option: OptionType<any> | null) => {
     if (option === null) {
       setCondition(undefined);
-    } else {
-      setCondition(option.value);
+      return;
     }
+
+    setCondition(option.value);
   };
 
   const getInputField = (filter: FilterType) => {
@@ -109,12 +111,19 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = () => {
-    if (section && condition) {
-      setSubmitError(undefined);
-    } else {
+    setIsSubmitted(true);
+
+    if (!section) {
       setSubmitError(formErrorText || "Please fill in all fields.");
       return;
     }
+
+    if (!condition) {
+      setSubmitError(undefined);
+      return;
+    }
+
+    setSubmitError(undefined);
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
@@ -125,16 +134,19 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleFilterChange = (option: OptionType<string> | null) => {
+    setIsSubmitted(false);
+
     if (option === null) {
       setSection(undefined);
       setSelectedFilter(undefined);
-    } else {
-      const filter = selectedFilterPack?.filters.find(
-        (f) => f.filterName === option.value,
-      );
-      setSection(filter?.filterName);
-      setSelectedFilter(filter);
+      return;
     }
+
+    const filter = selectedFilterPack?.filters.find(
+      (f) => f.filterName === option.value,
+    );
+    setSection(filter?.filterName);
+    setSelectedFilter(filter);
   };
 
   const getUnSelectedOption = (options: OptionType[] | undefined) => {
@@ -191,7 +203,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           my={2}
         />
 
-        {/* TODO: 空値で送信だけ押された時はinputのエラーだけ出す */}
         {submitError && (
           <Spacer py={2}>
             <ErrorText>{submitError}</ErrorText>
