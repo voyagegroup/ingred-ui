@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import MultipleFilter, { MultipleFilterProps } from ".";
-import { FilterPackType, ReferedFilterType } from "./types";
+import { FilterPackType, ReferredFilterType } from "./types";
 
 export default {
   title: "Components/Utils/MultipleFilter",
@@ -12,7 +12,7 @@ export default {
         component: `
 Set the condition by filterPacks.
 
-You can get the conditions set via ReferedFilters.
+You can get the conditions set via ReferredFilters.
 
 `,
       },
@@ -100,9 +100,9 @@ const filterPacksExample: FilterPackType[] = [
 ];
 
 export const Example: Story<MultipleFilterProps> = (args) => {
-  const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
-  const handleChange = (referedFilters: ReferedFilterType[]) => {
-    setFilters(referedFilters);
+  const setFilters = React.useState<ReferredFilterType[]>([])[1];
+  const handleChange = (referredFilters: ReferredFilterType[]) => {
+    setFilters(referredFilters);
   };
 
   return (

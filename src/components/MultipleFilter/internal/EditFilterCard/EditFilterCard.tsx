@@ -9,7 +9,7 @@ import Typography from "../../../Typography";
 import {
   FilterPackType,
   FilterType,
-  ReferedFilterType,
+  ReferredFilterType,
   Types,
 } from "../../types";
 import * as Styled from "./styled";
@@ -19,8 +19,8 @@ import RadioButton from "../../../RadioButton";
 
 export type Props = {
   onClose: () => void;
-  onEdit: (editedReferedFilter: ReferedFilterType) => void;
-  willEditFilter?: ReferedFilterType;
+  onEdit: (editedReferredFilter: ReferredFilterType) => void;
+  willEditFilter?: ReferredFilterType;
   selectedFilterPack?: FilterPackType;
   editButtonTitle?: string;
   formErrorText?: string;
@@ -40,7 +40,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 }) => {
   const theme = useTheme();
   const [condition, setCondition] = React.useState<
-    ReferedFilterType["filterCondition"] | undefined
+    ReferredFilterType["filterCondition"] | undefined
   >(willEditFilter?.filterCondition);
   const [submitError, setSubmitError] = React.useState<string | undefined>();
 
@@ -128,7 +128,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       return;
     }
 
-    const editedFilter: ReferedFilterType = {
+    const editedFilter: ReferredFilterType = {
       filterCondition: condition,
       filterType: willEditFilter?.filterType as Types,
       filterName: willEditFilter?.filterName as string,

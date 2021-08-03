@@ -9,7 +9,7 @@ import Typography from "../../../Typography";
 import {
   FilterPackType,
   FilterType,
-  ReferedFilterType,
+  ReferredFilterType,
   Types,
 } from "../../types";
 import * as Styled from "./styled";
@@ -19,9 +19,9 @@ import RadioButton from "../../../RadioButton";
 
 export type Props = {
   onClose: () => void;
-  onApply: (newReferedFilter: ReferedFilterType) => void;
+  onApply: (newReferredFilter: ReferredFilterType) => void;
   selectedFilterPack?: FilterPackType;
-  currentReferedFilters: ReferedFilterType[];
+  currentReferredFilters: ReferredFilterType[];
   applyButtonTitle?: string;
   formErrorText?: string;
   inputErrorText?: string;
@@ -32,7 +32,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   onClose,
   onApply,
   selectedFilterPack,
-  currentReferedFilters,
+  currentReferredFilters,
   applyButtonTitle,
   formErrorText,
   inputErrorText,
@@ -140,8 +140,8 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   const getUnSelectedOption = (options: OptionType[] | undefined) => {
     return options?.filter(
       (option) =>
-        !currentReferedFilters
-          .map((referedFilter) => referedFilter.filterName)
+        !currentReferredFilters
+          .map((referredFilter) => referredFilter.filterName)
           .includes(option.label),
     );
   };

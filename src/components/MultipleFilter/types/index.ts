@@ -23,7 +23,7 @@ export type ControlType<T extends Types> = {
     : any;
 };
 
-export type ReferedFilterType = {
+export type ReferredFilterType = {
   categoryName: string;
   filterName: string;
   filterType: Types;

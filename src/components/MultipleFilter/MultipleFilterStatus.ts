@@ -1,10 +1,10 @@
-import { FilterPackType, ReferedFilterType } from "./types";
+import { FilterPackType, ReferredFilterType } from "./types";
 
 export const Status = {
   Empty: 0,
   FilterSelecting: 1,
   ConditionSelecting: 2,
-  ConditionEditting: 3,
+  ConditionEditing: 3,
 } as const;
 
 export type Status = typeof Status[keyof typeof Status];
@@ -12,13 +12,13 @@ export type Status = typeof Status[keyof typeof Status];
 export const getCurrentStatus = (
   isFocus: boolean,
   selectedFilter: FilterPackType | null,
-  willEditFilter: ReferedFilterType | null,
+  willEditFilter: ReferredFilterType | null,
 ): Status => {
   if (!isFocus) {
     return Status.Empty;
   }
   if (willEditFilter) {
-    return Status.ConditionEditting;
+    return Status.ConditionEditing;
   }
   if (selectedFilter === null) {
     return Status.FilterSelecting;
