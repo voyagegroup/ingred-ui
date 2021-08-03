@@ -38,19 +38,28 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   inputErrorText,
   formPlaceholder,
 }) => {
+  const theme = useTheme();
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
-
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [submitError, setSubmitError] = React.useState<string | undefined>();
-  const theme = useTheme();
+
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
     value: filter.filterName,
   }));
 
-  const validateInput = () => {
-    if (submitError && condition == "") {
+  const validateCondition = () => {
+    return !condition ? true : false;
+  };
+
+  const validateSection = () => {
+    return !section ? true : false;
+  };
+
+  const getTextFieldErrorText = () => {
+    if (validateCondition() && isSubmitted) {
       return inputErrorText || "Please input";
     }
 
@@ -61,12 +70,13 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     setCondition(e.target.value);
   };
 
-  const handleSelect = (option: OptionType<any>) => {
+  const handleSelect = (option: OptionType<any> | null) => {
     if (option === null) {
       setCondition(undefined);
-    } else {
-      setCondition(option.value);
+      return;
     }
+
+    setCondition(option.value);
   };
 
   const getInputField = (filter: FilterType) => {
@@ -78,7 +88,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             placeholder={formPlaceholder || "search"}
             icon="search"
             name="condition"
-            errorText={validateInput()}
+            errorText={getTextFieldErrorText()}
             onChange={handleInput}
           />
         );
@@ -109,12 +119,23 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = () => {
-    if (section && condition) {
-      setSubmitError(undefined);
-    } else {
+    setIsSubmitted(true);
+
+    if (validateSection()) {
       setSubmitError(formErrorText || "Please fill in all fields.");
       return;
     }
+
+    if (validateCondition() && condition !== undefined) {
+      return;
+    }
+
+    if (validateCondition()) {
+      setSubmitError(formErrorText || "Please fill in all fields.");
+      return;
+    }
+
+    setSubmitError(undefined);
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
@@ -125,16 +146,19 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleFilterChange = (option: OptionType<string> | null) => {
+    setIsSubmitted(false);
+
     if (option === null) {
       setSection(undefined);
       setSelectedFilter(undefined);
-    } else {
-      const filter = selectedFilterPack?.filters.find(
-        (f) => f.filterName === option.value,
-      );
-      setSection(filter?.filterName);
-      setSelectedFilter(filter);
+      return;
     }
+
+    const filter = selectedFilterPack?.filters.find(
+      (f) => f.filterName === option.value,
+    );
+    setSection(filter?.filterName);
+    setSelectedFilter(filter);
   };
 
   const getUnSelectedOption = (options: OptionType[] | undefined) => {
@@ -191,7 +215,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           my={2}
         />
 
-        {/* TODO: 空値で送信だけ押された時はinputのエラーだけ出す */}
         {submitError && (
           <Spacer py={2}>
             <ErrorText>{submitError}</ErrorText>

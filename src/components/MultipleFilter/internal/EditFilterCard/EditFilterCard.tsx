@@ -14,7 +14,6 @@ import {
 } from "../../types";
 import * as Styled from "./styled";
 import TextField from "../../../TextField";
-import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
 
 export type Props = {
@@ -34,7 +33,6 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   willEditFilter,
   selectedFilterPack,
   editButtonTitle,
-  formErrorText,
   inputErrorText,
   formPlaceholder,
 }) => {
@@ -42,7 +40,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const [condition, setCondition] = React.useState<
     ReferredFilterType["filterCondition"] | undefined
   >(willEditFilter?.filterCondition);
-  const [submitError, setSubmitError] = React.useState<string | undefined>();
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
@@ -50,14 +48,18 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
   const handleSelect = (option: OptionType<string> | null) => {
     if (option === null) {
-      setCondition(undefined);
-    } else {
-      setCondition(option.value);
+      return setCondition(undefined);
     }
+
+    setCondition(option.value);
   };
 
-  const validateInput = () => {
-    if (submitError && condition == "") {
+  const validateCondition = () => {
+    return condition === "" ? true : false;
+  };
+
+  const getTextFieldErrorText = () => {
+    if (validateCondition() && isSubmitted) {
       return inputErrorText || "Please input";
     }
 
@@ -73,7 +75,8 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             icon="search"
             placeholder={formPlaceholder || "search"}
             name="condition"
-            errorText={validateInput()}
+            value={condition as string}
+            errorText={getTextFieldErrorText()}
             onChange={handleInput}
           />
         );
@@ -121,10 +124,9 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = () => {
-    if (condition) {
-      setSubmitError(undefined);
-    } else {
-      setSubmitError(formErrorText || "Please fill in all fields.");
+    setIsSubmitted(true);
+
+    if (validateCondition()) {
       return;
     }
 
@@ -173,13 +175,6 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           color={theme.palette.gray.light}
           my={2}
         />
-
-        {/* TODO: 空値で送信だけ押された時はinputのエラーだけ出す */}
-        {submitError && (
-          <Spacer py={2}>
-            <ErrorText>{submitError}</ErrorText>
-          </Spacer>
-        )}
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit}>
