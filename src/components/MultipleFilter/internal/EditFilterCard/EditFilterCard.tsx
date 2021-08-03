@@ -45,12 +45,8 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const [submitError, setSubmitError] = React.useState<string | undefined>(
     undefined,
   );
-  // TODO: shouldUnregisterとは
-  // const { errors } = useForm({
-  //   shouldUnregister: false,
-  // });
 
-  const handleChangeCondition = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
   };
 
@@ -80,7 +76,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             placeholder={formPlaceholder || "search"}
             name="condition"
             errorText={validateInput()}
-            onChange={handleChangeCondition}
+            onChange={handleInput}
           />
         );
       case "select":
@@ -107,7 +103,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
               name="condition"
               value="true"
               defaultChecked={willEditFilter?.filterCondition === "true"}
-              onChange={handleChangeCondition}
+              onChange={handleInput}
             >
               true
             </RadioButton>
@@ -117,7 +113,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
               name="condition"
               value="false"
               defaultChecked={willEditFilter?.filterCondition === "false"}
-              onChange={handleChangeCondition}
+              onChange={handleInput}
             >
               false
             </RadioButton>

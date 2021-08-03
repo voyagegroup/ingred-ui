@@ -53,7 +53,15 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     value: filter.filterName,
   }));
 
-  const handleChangeCondition = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const validateInput = () => {
+    if (submitError && condition == "") {
+      return inputErrorText || "Please input";
+    }
+
+    return "";
+  };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
   };
 
@@ -63,14 +71,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     } else {
       setCondition(option.value);
     }
-  };
-
-  const validateInput = () => {
-    if (submitError && condition == "") {
-      return inputErrorText || "Please input";
-    }
-
-    return "";
   };
 
   const getInputField = (filter: FilterType) => {
@@ -83,7 +83,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             icon="search"
             name="condition"
             errorText={validateInput()}
-            onChange={handleChangeCondition}
+            onChange={handleInput}
           />
         );
       case "select":
@@ -100,19 +100,11 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       case "boolean":
         return (
           <div>
-            <RadioButton
-              name="condition"
-              value="true"
-              onChange={handleChangeCondition}
-            >
+            <RadioButton name="condition" value="true" onChange={handleInput}>
               true
             </RadioButton>
             <br />
-            <RadioButton
-              name="condition"
-              value="false"
-              onChange={handleChangeCondition}
-            >
+            <RadioButton name="condition" value="false" onChange={handleInput}>
               false
             </RadioButton>
           </div>

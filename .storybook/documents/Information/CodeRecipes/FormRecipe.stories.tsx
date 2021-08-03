@@ -14,7 +14,6 @@ import {
   ToggleButton,
   Button,
 } from "../../../../src/components";
-import { Controller, useForm, UnpackNestedValue } from "react-hook-form";
 
 export default {
   title: "Information/CodeRecipes/Form",
@@ -23,30 +22,76 @@ export default {
   },
 };
 
-type FormType = {
+type Values = {
   input: string;
   textField: string;
-  checkbox: boolean;
+  checkbox: string;
   datePicker: moment.Moment;
-  dateRangePicker: { start: moment.Moment; end: moment.Moment };
-  fileUploader: FileList;
-  radioButton: "1" | "2" | "3";
-  select: "1" | "2" | "3";
+  dateRangePicker: {
+    start: moment.Moment;
+    end: moment.Moment;
+  };
+  fileUploader: FileList | undefined;
+  radioButton: string | number | readonly string[] | null;
+  select: OptionType | undefined;
   toggleButton: boolean;
 };
 
 export const Overview: React.FC = () => {
-  const { register, handleSubmit, control } = useForm<FormType>({
-    defaultValues: {
-      input: "hoge",
-      datePicker: moment(),
-      dateRangePicker: { start: moment(), end: moment() },
-      toggleButton: true,
-    },
+  const [values, setValues] = React.useState<Values>({
+    input: "hoge",
+    textField: "",
+    checkbox: "false",
+    datePicker: moment(),
+    dateRangePicker: { start: moment(), end: moment() },
+    fileUploader: undefined,
+    radioButton: null,
+    select: undefined,
+    toggleButton: true,
   });
 
-  const submit = (value: UnpackNestedValue<FormType>) => {
-    alert(`submitted values \n ${JSON.stringify(value)}`);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleDateChange = (date: moment.Moment) => {
+    setValues({ ...values, datePicker: date });
+  };
+
+  const handleDatesChange = (dates: {
+    startDate: moment.Moment;
+    endDate: moment.Moment;
+  }) => {
+    setValues({
+      ...values,
+      dateRangePicker: { start: dates.startDate, end: dates.endDate },
+    });
+  };
+
+  const handleSelectFiles = (files: FileList) => {
+    setValues({
+      ...values,
+      fileUploader: files,
+    });
+  };
+
+  // TODO: 型をどうにかする
+  const handleSelectChange = (value: any) => {
+    setValues({
+      ...values,
+      select: { label: value?.label, value: value?.value },
+    });
+  };
+
+  const handleToggleButton = () => {
+    setValues((prev) => ({ ...values, toggleButton: !prev.toggleButton }));
+  };
+
+  const handleSubmit = () => {
+    alert(`submitted values \n ${JSON.stringify(values)}`);
   };
 
   return (
@@ -58,59 +103,44 @@ export const Overview: React.FC = () => {
 
       {/* Input */}
       <Typography size="xxl">Input</Typography>
-      <Input ref={register} name="input" />
+      <Input value={values.input} name="input" onChange={handleInputChange} />
       <Spacer pt={2} />
 
       {/* TextField */}
       <Typography size="xxl">TextField</Typography>
-      <TextField inputRef={register} name="textField" />
+      <TextField
+        value={values.textField}
+        name="textField"
+        onChange={handleInputChange}
+      />
       <Spacer pt={2} />
 
       {/* Checkbox */}
       <Typography size="xxl">Checkbox</Typography>
-      <Checkbox inputRef={register} name="checkbox" />
+      <Checkbox
+        value={values.checkbox}
+        name="checkbox"
+        onChange={handleInputChange}
+      />
       <Spacer pt={2} />
 
       {/* DatePicker */}
       <Typography size="xxl">DatePicker</Typography>
-      <Controller
-        name="datePicker"
-        control={control}
-        render={(props) => (
-          <DatePicker
-            date={props.value}
-            onDateChange={(date) => props.onChange(date)}
-          />
-        )}
-      />
+      <DatePicker date={values.datePicker} onDateChange={handleDateChange} />
       <Spacer pt={2} />
 
       {/* DateRangePicker */}
       <Typography size="xxl">DateRangePicker</Typography>
-      <Controller
-        name="dateRangePicker"
-        control={control}
-        render={(props) => (
-          <DateRangePicker
-            startDate={props.value.start}
-            endDate={props.value.end}
-            onDatesChange={(dates) =>
-              props.onChange({ start: dates.startDate, end: dates.endDate })
-            }
-          />
-        )}
+      <DateRangePicker
+        startDate={values.dateRangePicker.start}
+        endDate={values.dateRangePicker.end}
+        onDatesChange={handleDatesChange}
       />
       <Spacer pt={2} />
 
       {/* FileUploader */}
       <Typography size="xxl">FileUploader</Typography>
-      <Controller
-        name="fileUploader"
-        control={control}
-        render={(props) => (
-          <FileUploader onSelectFiles={(_e, files) => props.onChange(files)} />
-        )}
-      />
+      <FileUploader onSelectFiles={(_e, files) => handleSelectFiles(files)} />
       <Spacer pt={2} />
 
       {/* RadioButton */}
@@ -118,9 +148,9 @@ export const Overview: React.FC = () => {
       {["1", "2", "3"].map((val) => (
         <RadioButton
           key={val}
-          inputRef={register}
           name="radioButton"
           value={val}
+          onChange={handleInputChange}
         >
           {val}
         </RadioButton>
@@ -129,34 +159,22 @@ export const Overview: React.FC = () => {
 
       {/* Select */}
       <Typography size="xxl">Select</Typography>
-      <Controller
-        name="select"
-        control={control}
-        render={(props) => (
-          <Select
-            closeMenuOnSelect={true}
-            options={["1", "2", "3"].map((val) => ({ label: val, value: val }))}
-            onChange={(value) => props.onChange(value)}
-          />
-        )}
+      <Select
+        closeMenuOnSelect={true}
+        options={["1", "2", "3"].map((val) => ({ label: val, value: val }))}
+        onChange={handleSelectChange}
       />
       <Spacer pt={2} />
 
       {/* ToggleButton */}
       <Typography size="xxl">ToggleButton</Typography>
-      <Controller
-        name="toggleButton"
-        control={control}
-        render={(props) => (
-          <ToggleButton
-            active={props.value}
-            onChange={() => props.onChange(!props.value)}
-          />
-        )}
+      <ToggleButton
+        active={values.toggleButton}
+        onChange={handleToggleButton}
       />
       <Spacer pt={2} />
 
-      <Button onClick={handleSubmit(submit)}>Submit</Button>
+      <Button onClick={handleSubmit}>Submit</Button>
     </>
   );
 };
