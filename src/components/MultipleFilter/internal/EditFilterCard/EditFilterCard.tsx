@@ -42,15 +42,13 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const [condition, setCondition] = React.useState<
     ReferedFilterType["filterCondition"] | undefined
   >(willEditFilter?.filterCondition);
-  const [submitError, setSubmitError] = React.useState<string | undefined>(
-    undefined,
-  );
+  const [submitError, setSubmitError] = React.useState<string | undefined>();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
   };
 
-  const handleSelect = (option: OptionType<any>) => {
+  const handleSelect = (option: OptionType<string> | null) => {
     if (option === null) {
       setCondition(undefined);
     } else {

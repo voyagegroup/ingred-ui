@@ -38,15 +38,11 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   inputErrorText,
   formPlaceholder,
 }) => {
-  const [section, setSection] = React.useState<string | undefined>(undefined);
-  const [condition, setCondition] = React.useState<string | undefined>(
-    undefined,
-  );
+  const [section, setSection] = React.useState<string | undefined>();
+  const [condition, setCondition] = React.useState<string | undefined>();
 
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
-  const [submitError, setSubmitError] = React.useState<string | undefined>(
-    undefined,
-  );
+  const [submitError, setSubmitError] = React.useState<string | undefined>();
   const theme = useTheme();
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
@@ -128,7 +124,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     onApply(newFilter);
   };
 
-  const handleFilterChange = (option: OptionType<string>) => {
+  const handleFilterChange = (option: OptionType<string> | null) => {
     if (option === null) {
       setSection(undefined);
       setSelectedFilter(undefined);
