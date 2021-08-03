@@ -29,3 +29,16 @@ export type ReferredFilterType = {
   filterType: Types;
   filterCondition: ControlType<Types>["options"];
 };
+
+/**
+ * @deprecated
+ *
+ * I'll delete it in the future.
+ * Please use "ReferredFilterType".
+ */
+export type ReferedFilterType = {
+  categoryName: string;
+  filterName: string;
+  filterType: Types;
+  filterCondition: ControlType<Types>["options"];
+};

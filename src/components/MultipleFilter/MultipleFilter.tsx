@@ -9,7 +9,7 @@ import { FilterCard } from "./internal/FilterCard";
 import { EditFilterCard } from "./internal/EditFilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
-import { FilterPackType, ReferredFilterType } from "./types";
+import { FilterPackType, ReferredFilterType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 
 export type MultipleFilterProps = {
@@ -28,7 +28,9 @@ export type MultipleFilterProps = {
    *   filterCondition: ControlType<Types>["options"];
    *  }`
    */
-  onChange?: (referredFilters: ReferredFilterType[]) => void;
+  onChange?: (
+    referredFilters: ReferredFilterType[] | ReferedFilterType[],
+  ) => void;
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
