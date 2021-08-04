@@ -14,7 +14,11 @@ import {
 } from "../../types";
 import * as Styled from "./styled";
 import TextField from "../../../TextField";
+import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
+
+const defaultTextFieldErrorText = "Please input";
+const defaultSubmitErrorText = "Please fill in all fields.";
 
 export type Props = {
   onClose: () => void;
@@ -33,6 +37,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   willEditFilter,
   selectedFilterPack,
   editButtonTitle,
+  formErrorText,
   inputErrorText,
   formPlaceholder,
 }) => {
@@ -40,10 +45,24 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const [condition, setCondition] = React.useState<
     ReferredFilterType["filterCondition"] | undefined
   >(willEditFilter?.filterCondition);
+  const [textFieldErrorText, setTextFieldErrorText] =
+    React.useState<string>("");
+  const [submitErrorText, setSubmitErrorText] = React.useState<string>("");
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+
+  const filter = selectedFilterPack?.filters.find(
+    (filter) => filter.filterName === willEditFilter?.filterName,
+  );
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
+
+    if (isSubmitted && !e.target.value) {
+      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
+      return;
+    }
+
+    setTextFieldErrorText("");
   };
 
   const handleSelect = (option: OptionType<string> | null) => {
@@ -52,18 +71,6 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     }
 
     setCondition(option.value);
-  };
-
-  const validateCondition = () => {
-    return condition === "" ? true : false;
-  };
-
-  const getTextFieldErrorText = () => {
-    if (validateCondition() && isSubmitted) {
-      return inputErrorText || "Please input";
-    }
-
-    return "";
   };
 
   const getInputField = (filter: FilterType) => {
@@ -76,7 +83,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
             placeholder={formPlaceholder || "search"}
             name="condition"
             value={condition as string}
-            errorText={getTextFieldErrorText()}
+            errorText={textFieldErrorText}
             onChange={handleInput}
           />
         );
@@ -126,9 +133,22 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const handleSubmit = () => {
     setIsSubmitted(true);
 
-    if (validateCondition()) {
+    if (!condition && filter?.control.type === "text") {
+      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
       return;
     }
+
+    if (!condition && filter?.control.type === "text") {
+      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
+      return;
+    }
+
+    if (!condition) {
+      setSubmitErrorText(formErrorText || defaultSubmitErrorText);
+      return;
+    }
+
+    setSubmitErrorText("");
 
     const editedFilter: ReferredFilterType = {
       filterCondition: condition,
@@ -159,22 +179,22 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         <TextField readOnly value={willEditFilter?.filterName} />
         <Spacer py={1} />
         <Typography weight="bold" size="lg">
-          {selectedFilterPack?.filters.find(
-            (filter) => filter.filterName === willEditFilter?.filterName,
-          )?.conditionTitle || "Condition"}
+          {filter?.conditionTitle || "Condition"}
         </Typography>
         <Spacer py={0.5} />
-        {getInputField(
-          selectedFilterPack?.filters.find(
-            (filter) => filter.filterName === willEditFilter?.filterName,
-          ) as FilterType,
-        )}
+        {filter && getInputField(filter)}
         <Spacer py={1} />
         <Divider
           orientation="horizontal"
           color={theme.palette.gray.light}
           my={2}
         />
+
+        {submitErrorText && (
+          <Spacer py={2}>
+            <ErrorText>{submitErrorText}</ErrorText>
+          </Spacer>
+        )}
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit}>

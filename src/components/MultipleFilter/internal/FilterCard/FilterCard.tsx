@@ -17,6 +17,9 @@ import TextField from "../../../TextField";
 import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
 
+const defaultTextFieldErrorText = "Please input";
+const defaultSubmitErrorText = "Please fill in all fields.";
+
 export type Props = {
   onClose: () => void;
   onApply: (newReferredFilter: ReferredFilterType) => void;
@@ -42,32 +45,28 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
+  const [textFieldErrorText, setTextFieldErrorText] =
+    React.useState<string>("");
+  const [submitErrorText, setSubmitErrorText] = React.useState<string>("");
   const [isSubmitted, setIsSubmitted] = React.useState(false);
-  const [submitError, setSubmitError] = React.useState<string | undefined>();
 
+  const filter = selectedFilterPack?.filters.find(
+    (filter) => filter.filterName === selectedFilter?.filterName,
+  );
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
     value: filter.filterName,
   }));
 
-  const validateCondition = () => {
-    return !condition ? true : false;
-  };
-
-  const validateSection = () => {
-    return !section ? true : false;
-  };
-
-  const getTextFieldErrorText = () => {
-    if (validateCondition() && isSubmitted) {
-      return inputErrorText || "Please input";
-    }
-
-    return "";
-  };
-
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCondition(e.target.value);
+
+    if (isSubmitted && !e.target.value) {
+      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
+      return;
+    }
+
+    setTextFieldErrorText("");
   };
 
   const handleSelect = (option: OptionType<any> | null) => {
@@ -88,7 +87,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             placeholder={formPlaceholder || "search"}
             icon="search"
             name="condition"
-            errorText={getTextFieldErrorText()}
+            errorText={textFieldErrorText}
             onChange={handleInput}
           />
         );
@@ -121,21 +120,23 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   const handleSubmit = () => {
     setIsSubmitted(true);
 
-    if (validateSection()) {
-      setSubmitError(formErrorText || "Please fill in all fields.");
+    if (!section) {
+      setSubmitErrorText(formErrorText || defaultSubmitErrorText);
       return;
     }
 
-    if (validateCondition() && condition !== undefined) {
+    if (!condition && filter?.control.type === "text") {
+      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
       return;
     }
 
-    if (validateCondition()) {
-      setSubmitError(formErrorText || "Please fill in all fields.");
+    if (!condition) {
+      setSubmitErrorText(formErrorText || defaultSubmitErrorText);
       return;
     }
 
-    setSubmitError(undefined);
+    setSubmitErrorText("");
+
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
@@ -146,8 +147,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleFilterChange = (option: OptionType<string> | null) => {
-    setIsSubmitted(false);
-
     if (option === null) {
       setSection(undefined);
       setSelectedFilter(undefined);
@@ -196,16 +195,10 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
-              {selectedFilterPack?.filters.find(
-                (filter) => filter.filterName === selectedFilter.filterName,
-              )?.conditionTitle || "Condition"}
+              {filter?.conditionTitle || "Condition"}
             </Typography>
             <Spacer py={0.5} />
-            {getInputField(
-              selectedFilterPack?.filters.find(
-                (filter) => filter.filterName === selectedFilter.filterName,
-              ) as FilterType,
-            )}
+            {filter && getInputField(filter)}
             <Spacer py={1} />
           </div>
         )}
@@ -215,9 +208,9 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           my={2}
         />
 
-        {submitError && (
+        {submitErrorText && (
           <Spacer py={2}>
-            <ErrorText>{submitError}</ErrorText>
+            <ErrorText>{submitErrorText}</ErrorText>
           </Spacer>
         )}
 

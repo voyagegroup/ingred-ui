@@ -119,7 +119,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   const handleClear = () => {
     setCurrentReferredFilters([]);
     if (onChange !== undefined) {
-      onChange([] as ReferredFilterType[]);
+      onChange([]);
     }
   };
 
