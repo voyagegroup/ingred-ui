@@ -54,10 +54,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     value: filter.filterName,
   }));
 
-  const checkIsDisabled = () => {
-    return !section || !condition ? true : false;
-  };
-
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextFieldErrorText("");
     setCondition(e.target.value);
@@ -148,6 +144,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
     if (option === null) {
       setSection(undefined);
+      setCondition(undefined);
       setSelectedFilter(undefined);
       return;
     }
@@ -212,7 +209,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           <Button
             size="small"
             inline={true}
-            disabled={checkIsDisabled()}
+            disabled={!section || !condition ? true : false}
             onClick={handleSubmit}
           >
             {applyButtonTitle || "Apply"}

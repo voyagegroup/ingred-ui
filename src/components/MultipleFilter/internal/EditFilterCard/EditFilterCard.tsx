@@ -50,10 +50,6 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     (filter) => filter.filterName === willEditFilter?.filterName,
   );
 
-  const checkIsDisabled = () => {
-    return !condition ? true : false;
-  };
-
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextFieldErrorText("");
     setCondition(e.target.value);
@@ -177,7 +173,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           <Button
             size="small"
             inline={true}
-            disabled={checkIsDisabled()}
+            disabled={!condition ? true : false}
             onClick={handleSubmit}
           >
             {editButtonTitle || "Edit"}
