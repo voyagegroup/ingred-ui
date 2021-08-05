@@ -44,6 +44,7 @@ export type MultipleFilterProps = {
   formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  width?: string;
 };
 
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
@@ -54,6 +55,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   applyButtonTitle,
   inputErrorText,
   formPlaceholder,
+  width,
 }) => {
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [selectedFilterPack, setSelectedFilterPack] =
@@ -248,6 +250,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
             )}
             inputErrorText={inputErrorText}
             formPlaceholder={formPlaceholder}
+            width={width}
             onApply={handleApply}
             onClose={handleClose}
           />
@@ -268,6 +271,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
             )}
             inputErrorText={inputErrorText}
             formPlaceholder={formPlaceholder}
+            width={width}
             onEdit={handleEdit}
             onClose={handleClose}
           />

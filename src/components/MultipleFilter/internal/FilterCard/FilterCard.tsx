@@ -26,6 +26,7 @@ export type Props = {
   applyButtonTitle?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  width?: string;
 };
 
 export const FilterCard: React.FunctionComponent<Props> = ({
@@ -36,6 +37,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   applyButtonTitle,
   inputErrorText,
   formPlaceholder,
+  width,
 }) => {
   const theme = useTheme();
   const [section, setSection] = React.useState<string | undefined>();
@@ -163,7 +165,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <Styled.FilterCard>
+    <Styled.FilterCard width={width}>
       <Styled.FilterCardHeader>
         <Typography weight="bold" size="xxl">
           {selectedFilterPack?.categoryName}

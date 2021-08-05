@@ -26,6 +26,7 @@ export type Props = {
   editButtonTitle?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  width?: string;
 };
 
 export const EditFilterCard: React.FunctionComponent<Props> = ({
@@ -36,6 +37,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   editButtonTitle,
   inputErrorText,
   formPlaceholder,
+  width,
 }) => {
   const theme = useTheme();
   const [condition, setCondition] = React.useState<
@@ -141,7 +143,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   };
 
   return (
-    <Styled.FilterCard>
+    <Styled.FilterCard width={width}>
       <Styled.FilterCardHeader>
         <Typography weight="bold" size="xxl">
           {willEditFilter?.categoryName}
