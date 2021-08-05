@@ -20,6 +20,7 @@ export type MultipleFilterProps = {
    *  }`
    */
   filterPacks?: FilterPackType[];
+
   /**
    * `type ReferredFilterType = {
    *   categoryName: string;
@@ -34,6 +35,12 @@ export type MultipleFilterProps = {
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
+
+  /**
+   * @deprecated
+   * I'll delete it in the future.
+   * Because formErrorText it will no longer be necessary.
+   */
   formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
@@ -45,7 +52,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   placeholder,
   editButtonTitle,
   applyButtonTitle,
-  formErrorText,
   inputErrorText,
   formPlaceholder,
 }) => {
@@ -240,7 +246,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               (filterPack) =>
                 filterPack.categoryName === selectedFilterPack?.categoryName,
             )}
-            formErrorText={formErrorText}
             inputErrorText={inputErrorText}
             formPlaceholder={formPlaceholder}
             onApply={handleApply}
@@ -261,7 +266,6 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               (filterPack) =>
                 filterPack.categoryName === willEditFilter?.categoryName,
             )}
-            formErrorText={formErrorText}
             inputErrorText={inputErrorText}
             formPlaceholder={formPlaceholder}
             onEdit={handleEdit}

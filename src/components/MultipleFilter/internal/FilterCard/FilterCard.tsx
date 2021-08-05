@@ -14,11 +14,9 @@ import {
 } from "../../types";
 import * as Styled from "./styled";
 import TextField from "../../../TextField";
-import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
 
 const defaultTextFieldErrorText = "Please input";
-const defaultSubmitErrorText = "Please fill in all fields.";
 
 export type Props = {
   onClose: () => void;
@@ -26,7 +24,6 @@ export type Props = {
   selectedFilterPack?: FilterPackType;
   currentReferredFilters: ReferredFilterType[];
   applyButtonTitle?: string;
-  formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
 };
@@ -37,7 +34,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   selectedFilterPack,
   currentReferredFilters,
   applyButtonTitle,
-  formErrorText,
   inputErrorText,
   formPlaceholder,
 }) => {
@@ -47,8 +43,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
-  const [submitErrorText, setSubmitErrorText] = React.useState<string>("");
-  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const filter = selectedFilterPack?.filters.find(
     (filter) => filter.filterName === selectedFilter?.filterName,
@@ -58,15 +52,20 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     value: filter.filterName,
   }));
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCondition(e.target.value);
+  const checkIsDisabled = () => {
+    return !section || !condition ? true : false;
+  };
 
-    if (isSubmitted && !e.target.value) {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTextFieldErrorText("");
+    setCondition(e.target.value);
+  };
+
+  const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
       setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
       return;
     }
-
-    setTextFieldErrorText("");
   };
 
   const handleSelect = (option: OptionType<any> | null) => {
@@ -88,7 +87,8 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             icon="search"
             name="condition"
             errorText={textFieldErrorText}
-            onChange={handleInput}
+            onChange={handleChangeInput}
+            onBlur={handleBlurInput}
           />
         );
       case "select":
@@ -105,11 +105,21 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       case "boolean":
         return (
           <div>
-            <RadioButton name="condition" value="true" onChange={handleInput}>
+            <RadioButton
+              name="condition"
+              value="true"
+              onChange={handleChangeInput}
+              onBlur={handleBlurInput}
+            >
               true
             </RadioButton>
             <br />
-            <RadioButton name="condition" value="false" onChange={handleInput}>
+            <RadioButton
+              name="condition"
+              value="false"
+              onChange={handleChangeInput}
+              onBlur={handleBlurInput}
+            >
               false
             </RadioButton>
           </div>
@@ -118,25 +128,6 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleSubmit = () => {
-    setIsSubmitted(true);
-
-    if (!section) {
-      setSubmitErrorText(formErrorText || defaultSubmitErrorText);
-      return;
-    }
-
-    if (!condition && filter?.control.type === "text") {
-      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
-      return;
-    }
-
-    if (!condition) {
-      setSubmitErrorText(formErrorText || defaultSubmitErrorText);
-      return;
-    }
-
-    setSubmitErrorText("");
-
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
@@ -147,6 +138,8 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const handleFilterChange = (option: OptionType<string> | null) => {
+    setTextFieldErrorText("");
+
     if (option === null) {
       setSection(undefined);
       setSelectedFilter(undefined);
@@ -208,14 +201,13 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           my={2}
         />
 
-        {submitErrorText && (
-          <Spacer py={2}>
-            <ErrorText>{submitErrorText}</ErrorText>
-          </Spacer>
-        )}
-
         <Styled.ButtonContainer>
-          <Button size="small" inline={true} onClick={handleSubmit}>
+          <Button
+            size="small"
+            inline={true}
+            disabled={checkIsDisabled()}
+            onClick={handleSubmit}
+          >
             {applyButtonTitle || "Apply"}
           </Button>
         </Styled.ButtonContainer>
