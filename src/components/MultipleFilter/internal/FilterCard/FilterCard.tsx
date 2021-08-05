@@ -89,6 +89,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             icon="search"
             name="condition"
             errorText={textFieldErrorText}
+            autoFocus={true}
             onChange={handleChangeInput}
             onBlur={handleBlurInput}
           />
@@ -101,6 +102,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
               label: option,
               value: option,
             }))}
+            autoFocus={true}
             onChange={handleSelect}
           />
         );
@@ -110,6 +112,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             <RadioButton
               name="condition"
               value="true"
+              autoFocus={true}
               onChange={handleChangeInput}
               onBlur={handleBlurInput}
             >
@@ -119,6 +122,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             <RadioButton
               name="condition"
               value="false"
+              autoFocus={true}
               onChange={handleChangeInput}
               onBlur={handleBlurInput}
             >
@@ -184,6 +188,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         <Select
           maxMenuHeight={250}
           options={getUnSelectedOption(options)}
+          autoFocus={true}
           onChange={handleFilterChange}
         />
         <Spacer py={1} />
