@@ -138,11 +138,6 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       return;
     }
 
-    if (!condition && filter?.control.type === "text") {
-      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
-      return;
-    }
-
     if (!condition) {
       setSubmitErrorText(formErrorText || defaultSubmitErrorText);
       return;
