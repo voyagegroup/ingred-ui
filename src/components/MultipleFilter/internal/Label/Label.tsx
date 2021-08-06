@@ -2,15 +2,15 @@ import * as React from "react";
 import { useTheme } from "../../../../themes";
 import Icon from "../../../Icon";
 import Typography from "../../../Typography";
-import { ReferedFilterType } from "../../types";
+import { ReferredFilterType } from "../../types";
 import * as Styled from "./styled";
 
 export type Props = {
-  filter: ReferedFilterType;
-  onRemove: (removedFilter: ReferedFilterType) => void;
+  filter: ReferredFilterType;
+  onRemove: (removedFilter: ReferredFilterType) => void;
   onClick: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    willEditFilter: ReferedFilterType,
+    willEditFilter: ReferredFilterType,
   ) => void;
 };
 
