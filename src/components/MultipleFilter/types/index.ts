@@ -23,12 +23,7 @@ export type ControlType<T extends Types> = {
     : any;
 };
 
-export type ReferredFilterType = {
-  categoryName: string;
-  filterName: string;
-  filterType: Types;
-  filterCondition: ControlType<Types>["options"];
-};
+export type ReferredFilterType = ReferedFilterType;
 
 /**
  * @deprecated
