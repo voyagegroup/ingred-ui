@@ -58,16 +58,11 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
       setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
-      return;
     }
   };
 
   const handleSelect = (option: OptionType<string> | null) => {
-    if (option === null) {
-      return setCondition(undefined);
-    }
-
-    setCondition(option.value);
+    setCondition(option?.value);
   };
 
   const getInputField = (filter: FilterType) => {
@@ -173,7 +168,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
           <Button
             size="small"
             inline={true}
-            disabled={!condition ? true : false}
+            disabled={!condition}
             onClick={handleSubmit}
           >
             {editButtonTitle || "Edit"}

@@ -62,17 +62,11 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
       setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
-      return;
     }
   };
 
   const handleSelect = (option: OptionType<any> | null) => {
-    if (option === null) {
-      setCondition(undefined);
-      return;
-    }
-
-    setCondition(option.value);
+    setCondition(option?.value);
   };
 
   const getInputField = (filter: FilterType) => {
@@ -157,11 +151,12 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   };
 
   const getUnSelectedOption = (options: OptionType[] | undefined) => {
+    const currentReferredFilterNames = currentReferredFilters.map(
+      (referredFilter) => referredFilter.filterName,
+    );
+
     return options?.filter(
-      (option) =>
-        !currentReferredFilters
-          .map((referredFilter) => referredFilter.filterName)
-          .includes(option.label),
+      (option) => !currentReferredFilterNames.includes(option.label),
     );
   };
 
@@ -209,7 +204,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
           <Button
             size="small"
             inline={true}
-            disabled={!section || !condition ? true : false}
+            disabled={!section || !condition}
             onClick={handleSubmit}
           >
             {applyButtonTitle || "Apply"}
