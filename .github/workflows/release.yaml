@@ -1,9 +1,11 @@
 name: release
 
 on:
-  push:
-    branches:
-      - 'release/**'
+  workflow_dispatch:
+    inputs:
+      release_version:
+        required: true
+        description:  release version
 
 jobs:
   release:
@@ -11,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.event.ref }}
       - name: Unshallow
         run: git fetch --prune --unshallow --tags
       - name: Use Node.js 15.x
@@ -30,50 +32,34 @@ jobs:
           ruby-version: 2.6
       - name: install github_changelog_generate
         run: gem install github_changelog_generator
-      - name: Get the version
-        id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/heads\/release\//}
-      - name: Extract branch name
-        shell: bash
-        run: echo ::set-output name=BRANCH::${GITHUB_REF/refs\/heads\//}
-        id: extract_branch
       - name: create CHANGELOG
         run: make -f ci.mk changelog
         env:
-          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
           GITHUB_TOKEN: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
       - name: npm version
         run: make -f ci.mk release_version
         env:
-          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
-          title: release v${{ env.RELEASE_VERSION }}
-          body: |
-            ## Check List
-            - [ ] CHANGELOGの確認
-            - [ ] [v${{ env.RELEASE_VERSION }}のdraftリリースノート](https://github.com/voyagegroup/ingred-ui/releases)をpublish
-
-            ## releaseを取り消す場合
-            1. [v${{ env.RELEASE_VERSION }}のdraftリリース](https://github.com/voyagegroup/ingred-ui/releases)を削除
-            2. このPRを閉じる
-            3. ブランチを削除
-          labels: release
-          base: master
-          branch: ${{ env.RELEASE_BRANCH }}
-          commit-message: "[ci skip] release v${{ env.RELEASE_VERSION }}"
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+      - name: git config
+        run: |
+          git config --local user.name ${{ secrets.FLUCT_MEMBER_GITHUB_USER_NAME }}
+          git config --local user.email ${{ secrets.FLUCT_MEMBER_GITHUB_USER_EMAIL }}
+      - name: git add & commit & push
+        run: |
+          git add CHANGELOG.md package.json
+          git commit -m "[ci skip] release v${{ env.RELEASE_VERSION }}"
+          git push
         env:
-          RELEASE_BRANCH: ${{ steps.extract_branch.outputs.BRANCH }}
-          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
-      - name: Get HEAD Hash
-        id: get_last_commit_hash
-        run: echo "::set-output name=HASH::$(git rev-parse HEAD)"
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
+      - name: npm publish
+        run: make -f ci.mk publish
+        env:
+          NPM_TOKEN: ${{ secrets.FLUCT_NPM_TOKEN }}
       - name: Create Release Note
         run: make -f ci.mk release_note
         env:
-          RELEASE_VERSION: ${{ steps.get_version.outputs.VERSION }}
+          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
           OUTPUT_FILE: release_note.md
           GITHUB_TOKEN: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
       - name: Create Tag & Release
@@ -83,8 +69,6 @@ jobs:
           name: Release ${{ env.RELEASE_TAG_NAME }}
           tag: ${{ env.RELEASE_TAG_NAME }}
           token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
-          commit: ${{ steps.get_last_commit_hash.outputs.HASH }}
-          draft: true
           bodyFile: release_note.md
         env:
-          RELEASE_TAG_NAME: v${{ steps.get_version.outputs.VERSION }}
+          RELEASE_TAG_NAME: v${{ github.event.inputs.release_version }}
