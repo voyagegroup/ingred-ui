@@ -1,9 +1,9 @@
 import typescript from "rollup-plugin-typescript2";
-import commonjs from "rollup-plugin-commonjs";
+import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import imagemin from "rollup-plugin-imagemin";
 import postcss from "rollup-plugin-postcss";
-import resolve from "rollup-plugin-node-resolve";
+import resolve from "@rollup/plugin-node-resolve";
 import url from "rollup-plugin-url";
 import svgr from "@svgr/rollup";
 
@@ -40,18 +40,6 @@ export default {
       rollupCommonJSResolveHack: true,
       clean: true,
     }),
-    commonjs({
-      namedExports: {
-        "node_modules/react-dates/index.js": [
-          "DateRangePicker",
-          "SingleDatePicker",
-        ],
-        "node_modules/react-toast-notifications/dist/index.js": [
-          "useToasts",
-          "ToastProvider",
-          "DefaultToastContainer",
-        ],
-      },
-    }),
+    commonjs(),
   ],
 };

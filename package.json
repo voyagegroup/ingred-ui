@@ -39,6 +39,8 @@
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "20.0.0",
+    "@rollup/plugin-node-resolve": "13.0.4",
     "@storybook/addon-console": "1.2.3",
     "@storybook/addon-essentials": "6.3.7",
     "@storybook/addon-links": "6.3.7",
@@ -73,9 +75,7 @@
     "react-dom": "17.0.2",
     "react-select": "4.3.1",
     "rollup": "2.54.0",
-    "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-imagemin": "0.4.1",
-    "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.0",
     "rollup-plugin-typescript2": "0.30.0",
