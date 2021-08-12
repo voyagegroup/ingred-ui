@@ -41,6 +41,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "20.0.0",
     "@rollup/plugin-node-resolve": "13.0.4",
+    "@rollup/plugin-url": "6.1.0",
     "@storybook/addon-console": "1.2.3",
     "@storybook/addon-essentials": "6.3.7",
     "@storybook/addon-links": "6.3.7",
@@ -79,7 +80,6 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "rollup-plugin-postcss": "4.0.0",
     "rollup-plugin-typescript2": "0.30.0",
-    "rollup-plugin-url": "3.0.1",
     "scaffdog": "1.0.1",
     "styled-components": "5.3.0",
     "ts-jest": "27.0.4",
