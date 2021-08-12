@@ -1,8 +1,8 @@
+import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import svgr from "@svgr/rollup";
-import typescript from "rollup-plugin-typescript2";
 import external from "rollup-plugin-peer-deps-external";
 import imagemin from "rollup-plugin-imagemin";
 import postcss from "rollup-plugin-postcss";
@@ -36,10 +36,7 @@ export default {
     resolve({
       preferBuiltins: false,
     }),
-    typescript({
-      rollupCommonJSResolveHack: true,
-      clean: true,
-    }),
+    typescript({ tsconfig: "./tsconfig.json" }),
     commonjs(),
   ],
 };
