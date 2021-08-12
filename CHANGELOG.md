@@ -1,5 +1,21 @@
 # Changelog
 
+## [v7.31.3](https://github.com/voyagegroup/ingred-ui/tree/v7.31.3) (2021-08-12)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.31.2...v7.31.3)
+
+**Implemented enhancements:**
+
+- releaseをworkflow\_dispatch経由で実行できるようにする [\#425](https://github.com/voyagegroup/ingred-ui/pull/425) ([ryokosuge](https://github.com/ryokosuge))
+
+**Fixed bugs:**
+
+- rollup周りのエラー対応 [\#426](https://github.com/voyagegroup/ingred-ui/pull/426) ([youchann](https://github.com/youchann))
+
+**Merged pull requests:**
+
+- Update non-major [\#417](https://github.com/voyagegroup/ingred-ui/pull/417) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.31.2](https://github.com/voyagegroup/ingred-ui/tree/v7.31.2) (2021-08-11)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.2...v7.31.2)
