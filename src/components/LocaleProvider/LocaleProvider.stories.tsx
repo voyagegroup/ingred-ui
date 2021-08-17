@@ -16,7 +16,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   };
 
   return (
-    <LocaleProvider value={{ locale: "ふがふが" }}>
+    <LocaleProvider locale="ja:jp">
       <div>Selected Locale: {args.locale} </div>
       <div>Toggle Button Example. </div>
       <ToggleButton active={active} onChange={() => setActive(!active)} />
