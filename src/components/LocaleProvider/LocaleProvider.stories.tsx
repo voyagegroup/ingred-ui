@@ -3,6 +3,8 @@ import { Story } from "@storybook/react/types-6-0";
 import LocaleProvider, { LocaleProviderProps } from ".";
 import { Button, ConfirmModal, ToggleButton } from "..";
 
+import { jaJP } from "../../constants/locale";
+
 export default {
   title: "Components/Data Display/LocaleProvider",
   component: LocaleProvider,
@@ -16,7 +18,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   };
 
   return (
-    <LocaleProvider locale="ja:jp">
+    <LocaleProvider locale={jaJP}>
       <div>Selected Locale: {args.locale} </div>
       <div>Toggle Button Example. </div>
       <ToggleButton active={active} onChange={() => setActive(!active)} />
