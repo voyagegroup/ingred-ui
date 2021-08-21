@@ -30,7 +30,7 @@ export type ConfirmModalProps = {
   cancelText?: string;
   onClose?: (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
-    reason: ModalCloseReason | ConfirmModalCloseReason
+    reason: ModalCloseReason | ConfirmModalCloseReason,
   ) => void;
   /**
    * If `undefined`, footer is removed.
@@ -109,7 +109,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = (inProps) => {
   const handleClose =
     (reason: ConfirmModalCloseReason) =>
     (
-      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>
+      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
     ) => {
       if (onClose) onClose(event, reason);
     };
