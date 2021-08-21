@@ -146,6 +146,9 @@ export * from "./ToggleButton";
 export { default as Tooltip } from "./Tooltip";
 export * from "./Tooltip";
 
+export { default as LocaleProvider } from "./LocaleProvider";
+export * from "./LocaleProvider";
+
 export { default as Typography } from "./Typography";
 export * from "./Typography";
 /* eslint-enable import/export */
