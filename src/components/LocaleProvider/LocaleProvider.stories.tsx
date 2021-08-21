@@ -3,14 +3,12 @@ import { Story } from "@storybook/react/types-6-0";
 import LocaleProvider, { LocaleProviderProps } from ".";
 import { Button, ConfirmModal, Select, ToggleButton } from "..";
 
-import { jaJP } from "../../constants/locale";
-
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
 
 export default {
-  title: "Components/Data Display/LocaleProvider",
+  title: "Components/Utils/LocaleProvider",
   component: LocaleProvider,
 };
 
