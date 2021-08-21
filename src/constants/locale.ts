@@ -33,10 +33,10 @@ export const jaJP: Localization = {
     },
     FileUploader: {
       defaultProps: {
-        title: "ファイルをドラッグドロップ、またはここをクリック",
+        title: "ファイルをドラッグ&ドロップ、またはここをクリック",
       },
     },
-    ItemEmpty: { defaultProps: { title: "タイトル" } },
+    ItemEmpty: { defaultProps: { title: "見つかりませんでした。" } },
   },
 };
 
@@ -45,6 +45,15 @@ export const zhCN: Localization = {
     ToggleButton: {
       defaultProps: { activeText: "开", inActiveText: "关" },
     },
+    ConfirmModal: {
+      defaultProps: { confirmText: "确认", cancelText: "取消" },
+    },
+    FileUploader: {
+      defaultProps: {
+        title: "把文件拖入,  同样支持点击上传。",
+      },
+    },
+    ItemEmpty: { defaultProps: { title: "未找到。" } },
   },
 };
 

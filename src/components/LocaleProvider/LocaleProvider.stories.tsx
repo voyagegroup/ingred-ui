@@ -41,12 +41,12 @@ export const Example: Story<LocaleProviderProps> = (args) => {
 
       <h2>ToggleButton</h2>
       <ToggleButton active={active} onChange={() => setActive(!active)} />
-      <hr />
+      <br />
 
       <h2>ConfirmModal</h2>
       <Button onClick={handleToggleButton}>Open Modal</Button>
       <ConfirmModal
-        title="ConfirmModal Example"
+        title="ConfirmModal Test"
         onClose={handleToggleButton}
         onSubmit={() => {
           /** void. Code to show the footer */
@@ -56,11 +56,11 @@ export const Example: Story<LocaleProviderProps> = (args) => {
       >
         Content
       </ConfirmModal>
-      <hr />
+      <br />
 
       <h2>FileUploader</h2>
-      <FileUploader />
-      <hr />
+      <FileUploader onSelectFiles={() => {}} />
+      <br />
 
       <h2>ItemEmpty</h2>
       <ItemEmpty />
