@@ -36,21 +36,22 @@ export const Example: Story<LocaleProviderProps> = (args) => {
         defaultValue={localeOptions[0]}
         onChange={handleLocationChange}
       />
-      <div>Toggle Button Example. </div>
+      <h2>ToggleButton</h2>
       <ToggleButton active={active} onChange={() => setActive(!active)} />
 
-      <label>
-        ConfirmModal
-        <Button onClick={handleToggleButton}>Open Modal</Button>
-        <ConfirmModal
-          title="ConfirmModal Example Title"
-          onClose={handleToggleButton}
-          {...args}
-          isOpen={isOpen}
-        >
-          Content
-        </ConfirmModal>{" "}
-      </label>
+      <h2>ConfirmModal</h2>
+      <Button onClick={handleToggleButton}>Open Modal</Button>
+      <ConfirmModal
+        title="ConfirmModal Example"
+        onClose={handleToggleButton}
+        onSubmit={() => {
+          /** void. Code to show the footer */
+        }}
+        {...args}
+        isOpen={isOpen}
+      >
+        Content
+      </ConfirmModal>
     </LocaleProvider>
   );
 };

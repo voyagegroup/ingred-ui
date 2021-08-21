@@ -2,7 +2,7 @@ import * as React from "react";
 import { enUS, Localization } from "../../constants/locale";
 
 export type LocaleProviderProps = {
-  locale: Localization;
+  locale?: Localization;
 };
 
 export const LocaleContext = React.createContext<LocaleProviderProps>({

@@ -14,6 +14,7 @@ import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
+import { useLocaleProps } from "../../utils/useLocaleProps";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
@@ -29,7 +30,7 @@ export type ConfirmModalProps = {
   cancelText?: string;
   onClose?: (
     event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
-    reason: ModalCloseReason | ConfirmModalCloseReason,
+    reason: ModalCloseReason | ConfirmModalCloseReason
   ) => void;
   /**
    * If `undefined`, footer is removed.
@@ -73,25 +74,28 @@ export type ConfirmModalProps = {
   children?: React.ReactNode;
 };
 
-const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
-  title,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
-  children,
-  onClose,
-  onSubmit,
-  buttonColor = "primary",
-  isOpen = true,
-  disabled,
-  loading,
-  fullSize = false,
-  overflowYScroll = true,
-  disableHorizontalPadding = false,
-  subActions = [],
-  tipElement,
-  modalProps,
-  fadeProps,
-}) => {
+const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = (inProps) => {
+  const props = useLocaleProps({ props: inProps, name: "ConfirmModal" });
+  const {
+    title,
+    confirmText = "Confirm",
+    cancelText = "Cancel",
+    children,
+    onClose,
+    onSubmit,
+    buttonColor = "primary",
+    isOpen = true,
+    disabled,
+    loading,
+    fullSize = false,
+    overflowYScroll = true,
+    disableHorizontalPadding = false,
+    subActions = [],
+    tipElement,
+    modalProps,
+    fadeProps,
+  } = props;
+
   const theme = useTheme();
   const showFooter = !!onSubmit;
   const [iconWrapperElement, setIconWrapperElement] =
@@ -105,7 +109,7 @@ const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
   const handleClose =
     (reason: ConfirmModalCloseReason) =>
     (
-      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>
     ) => {
       if (onClose) onClose(event, reason);
     };
