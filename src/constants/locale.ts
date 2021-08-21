@@ -31,7 +31,11 @@ export const jaJP: Localization = {
     ConfirmModal: {
       defaultProps: { confirmText: "確認", cancelText: "キャンセル" },
     },
-    FileUploader: { defaultProps: { title: "タイトル" } },
+    FileUploader: {
+      defaultProps: {
+        title: "ファイルをドラッグドロップ、またはここをクリック",
+      },
+    },
     ItemEmpty: { defaultProps: { title: "タイトル" } },
   },
 };

@@ -6,6 +6,8 @@ import { Button, ConfirmModal, Select, ToggleButton } from "..";
 import { jaJP } from "../../constants/locale";
 
 import * as locales from "../../constants/locale";
+import FileUploader from "../FileUploader";
+import ItemEmpty from "../ItemEmpty";
 
 export default {
   title: "Components/Data Display/LocaleProvider",
@@ -36,8 +38,10 @@ export const Example: Story<LocaleProviderProps> = (args) => {
         defaultValue={localeOptions[0]}
         onChange={handleLocationChange}
       />
+
       <h2>ToggleButton</h2>
       <ToggleButton active={active} onChange={() => setActive(!active)} />
+      <hr />
 
       <h2>ConfirmModal</h2>
       <Button onClick={handleToggleButton}>Open Modal</Button>
@@ -52,6 +56,14 @@ export const Example: Story<LocaleProviderProps> = (args) => {
       >
         Content
       </ConfirmModal>
+      <hr />
+
+      <h2>FileUploader</h2>
+      <FileUploader />
+      <hr />
+
+      <h2>ItemEmpty</h2>
+      <ItemEmpty />
     </LocaleProvider>
   );
 };
