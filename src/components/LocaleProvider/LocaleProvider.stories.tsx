@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import LocaleProvider, { LocaleProviderProps } from ".";
-import { Button, ConfirmModal, Select, ToggleButton } from "..";
+import { Button, ConfirmModal, Select, Spacer, ToggleButton } from "..";
 
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
@@ -17,6 +17,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
     label: _,
     value: _,
   }));
+  localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
   const [active, setActive] = React.useState<boolean>(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [localeOption, setLocaleOption] = React.useState(localeOptions[0]);
@@ -30,38 +31,46 @@ export const Example: Story<LocaleProviderProps> = (args) => {
 
   return (
     <LocaleProvider locale={locales[localeOption.value]}>
-      <div>Selected Locale: {localeOption.label} </div>
-      <Select
-        options={localeOptions}
-        defaultValue={localeOptions[0]}
-        onChange={handleLocationChange}
-      />
+      <Spacer pl={2} pt={2} pb={4}>
+        <div> Select a locale! </div>
+        <Select
+          options={localeOptions}
+          defaultValue={localeOptions[0]}
+          onChange={handleLocationChange}
+        />
+        <div>Selected locale: {localeOption.value} </div>
+      </Spacer>
 
       <h2>ToggleButton</h2>
-      <ToggleButton active={active} onChange={() => setActive(!active)} />
-      <br />
+      <Spacer pl={2} pt={2} pb={4}>
+        <ToggleButton active={active} onChange={() => setActive(!active)} />
+      </Spacer>
 
       <h2>ConfirmModal</h2>
-      <Button onClick={handleToggleButton}>Open Modal</Button>
-      <ConfirmModal
-        title="ConfirmModal Test"
-        onClose={handleToggleButton}
-        onSubmit={() => {
-          /** void. Code to show the footer */
-        }}
-        {...args}
-        isOpen={isOpen}
-      >
-        Content
-      </ConfirmModal>
-      <br />
+      <Spacer pl={2} pt={2} pb={4}>
+        <Button onClick={handleToggleButton}>Open Modal</Button>
+        <ConfirmModal
+          title="ConfirmModal Test"
+          onClose={handleToggleButton}
+          onSubmit={() => {
+            /** void. Code to show the footer */
+          }}
+          {...args}
+          isOpen={isOpen}
+        >
+          Content
+        </ConfirmModal>
+      </Spacer>
 
       <h2>FileUploader</h2>
-      <FileUploader onSelectFiles={() => {}} />
-      <br />
+      <Spacer pl={2} pt={2} pb={4}>
+        <FileUploader onSelectFiles={() => {}} />
+      </Spacer>
 
       <h2>ItemEmpty</h2>
-      <ItemEmpty />
+      <Spacer pl={2} pt={2} pb={4}>
+        <ItemEmpty />
+      </Spacer>
     </LocaleProvider>
   );
 };
