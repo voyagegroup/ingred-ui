@@ -14,7 +14,7 @@ import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
-import { useLocaleProps } from "../../utils/useLocaleProps";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 

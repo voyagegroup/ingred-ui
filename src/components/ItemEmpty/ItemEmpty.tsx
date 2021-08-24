@@ -3,7 +3,7 @@ import * as Styled from "./styled";
 import Spacer from "../Spacer";
 import Typography from "../Typography";
 import defaultEmptyImage from "../../../assets/emptyImage.png";
-import { useLocaleProps } from "../../utils/useLocaleProps";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type ItemEmptyProps = {
   title?: string;

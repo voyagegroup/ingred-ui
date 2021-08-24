@@ -5,7 +5,7 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
-import { useLocaleProps } from "../../utils/useLocaleProps";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type FileUploaderProps = {
   description?: string;

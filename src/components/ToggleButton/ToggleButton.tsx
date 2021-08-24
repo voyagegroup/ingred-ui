@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Typography from "../Typography";
-import { useLocaleProps } from "../../utils/useLocaleProps";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type ToggleButtonProps = {
   active?: boolean;
