@@ -17,9 +17,8 @@ export function useLocaleProps<T>(params: {
   // Resolve and merge locale props
   const output = { ...props };
   const defaultProps = locale?.components?.[name].defaultProps;
-  let propName;
 
-  for (propName in defaultProps) {
+  for (const propName in defaultProps) {
     if (output[propName] === undefined) {
       output[propName] = defaultProps[propName];
     }
