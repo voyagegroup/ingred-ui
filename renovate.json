@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "config:base"
-  ],
+  "extends": ["config:base"],
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
   "schedule": [
@@ -20,10 +18,6 @@
     {
       "matchPackagePatterns": ["^@testing-library/"],
       "automerge": true
-    },
-    {
-      "groupName": "non-major",
-      "matchUpdateTypes": ["patch", "minor"]
     }
   ]
 }
