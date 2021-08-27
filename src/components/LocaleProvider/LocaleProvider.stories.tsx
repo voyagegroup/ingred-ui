@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import LocaleProvider, { LocaleProviderProps } from ".";
-import { Button, ConfirmModal, Select, Spacer, ToggleButton } from "..";
+import { Button, Card, ConfirmModal, Select, Spacer, ToggleButton } from "..";
 
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
@@ -71,6 +71,38 @@ export const Example: Story<LocaleProviderProps> = (args) => {
       <Spacer pl={2} pt={2} pb={4}>
         <ItemEmpty />
       </Spacer>
+    </LocaleProvider>
+  );
+};
+
+export const CustomLocale: Story<LocaleProviderProps> = () => {
+  const koKR: locales.Localization = {
+    components: {
+      ToggleButton: {
+        defaultProps: { activeText: "온", inActiveText: "오프" },
+      },
+    },
+  };
+  const [active, setActive] = React.useState<boolean>(false);
+  return (
+    <LocaleProvider locale={koKR}>
+      <h2>Define Custom Locale</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <ToggleButton active={active} onChange={() => setActive(!active)} />
+      </Spacer>
+
+      <div>You can define a custom locale definition as follows.</div>
+      <br />
+      <Card>
+        <pre>
+          &#047;&#047; Custom Locale <br />
+          const koKR: locales.Localization = {JSON.stringify(koKR, null, 4)}
+          <br />
+          <br />
+          &#047;&#047; Apply to LocaleProvider <br />
+          {"<LocaleProvider locale={koKR}>"}
+        </pre>
+      </Card>
     </LocaleProvider>
   );
 };
