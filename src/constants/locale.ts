@@ -2,8 +2,11 @@ import {
   ConfirmModalProps,
   FileUploaderProps,
   ItemEmptyProps,
+  MultipleFilterProps,
   ToggleButtonProps,
 } from "..";
+import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
+import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCard/FilterCard";
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface Localization {
@@ -19,6 +22,34 @@ export interface Localization {
     };
     ItemEmpty?: {
       defaultProps: Pick<ItemEmptyProps, "title">;
+    };
+    Select?: {
+      defaultProps: Pick<MultipleFilterProps, "placeholder">;
+    };
+    MultipleFilter?: {
+      defaultProps: Pick<MultipleFilterProps, "placeholder">;
+    };
+    FilterCard?: {
+      defaultProps: Pick<
+        FilterCardProps,
+        | "applyButtonTitle"
+        | "formErrorText"
+        | "inputErrorText"
+        | "formPlaceholder"
+        | "sectionTitle"
+        | "conditionTitle"
+      >;
+    };
+    EditFilterCard?: {
+      defaultProps: Pick<
+        EditFilterCardProps,
+        | "editButtonTitle"
+        | "formErrorText"
+        | "inputErrorText"
+        | "formPlaceholder"
+        | "sectionTitle"
+        | "conditionTitle"
+      >;
     };
   };
 }
@@ -37,6 +68,23 @@ export const jaJP: Localization = {
       },
     },
     ItemEmpty: { defaultProps: { title: "見つかりませんでした。" } },
+    Select: {
+      defaultProps: { placeholder: "選択..." },
+    },
+    MultipleFilter: {
+      defaultProps: { placeholder: "新しいフィルターを追加してください" },
+    },
+    FilterCard: {
+      defaultProps: {
+        applyButtonTitle: "適用",
+        formErrorText: "すべてのフィールドを埋めてください",
+        inputErrorText: "入力してください",
+        formPlaceholder: "検索",
+        sectionTitle: "セクション",
+        conditionTitle: "条件",
+      },
+    },
+    EditFilterCard: { defaultProps: {} },
   },
 };
 

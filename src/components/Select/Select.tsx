@@ -10,6 +10,7 @@ import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { ClearIndicator } from "./internal/ClearIndicator";
 import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
   const overrideStyles: StylesConfig<OptionType<T>, boolean> = {
@@ -150,18 +151,25 @@ export type OptionType<T = string> = { label: string; value: T };
 export type SelectProps<T> = {
   limit?: number;
   minWidth?: string;
+  placeholder?: string;
   error?: boolean;
 } & ReactSelectProps<OptionType<T>, boolean>;
 
-const Select = <T,>({
-  limit,
-  onInputChange,
-  minWidth,
-  isDisabled,
-  error = false,
-  closeMenuOnSelect = true,
-  ...rest
-}: SelectProps<T>): React.ReactElement<SelectProps<T>> => {
+const Select = <T,>(
+  inProps: SelectProps<T>,
+): React.ReactElement<SelectProps<T>> => {
+  const props = useLocaleProps({ props: inProps, name: "Select" });
+  const {
+    limit,
+    onInputChange,
+    minWidth,
+    isDisabled,
+    error = false,
+    closeMenuOnSelect = true,
+    placeholder,
+    ...rest
+  } = props;
+
   const theme = useTheme();
   let i = 0;
   const filterOption: SelectProps<T>["filterOption"] = limit
@@ -184,6 +192,7 @@ const Select = <T,>({
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect<OptionType<T>, boolean>
         isClearable
+        placeholder={placeholder}
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={getEmptyMessage}
         isDisabled={isDisabled}

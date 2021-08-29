@@ -17,8 +17,9 @@ import { useForm } from "react-hook-form";
 import TextField from "../../../TextField";
 import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
+import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 
-export type Props = {
+export type EditFilterCardProps = {
   onClose: () => void;
   onEdit: (editedReferedFilter: ReferedFilterType) => void;
   willEditFilter?: ReferedFilterType;
@@ -36,18 +37,23 @@ type FormType = {
   condition: string;
 };
 
-export const EditFilterCard: React.FunctionComponent<Props> = ({
-  onClose,
-  onEdit,
-  willEditFilter,
-  selectedFilterPack,
-  editButtonTitle = "Edit",
-  formErrorText = "Please fill in all fields.",
-  inputErrorText = "Please input",
-  formPlaceholder = "search",
-  sectionTitle = "Section",
-  conditionTitle = "Condition",
-}) => {
+export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
+  inProps,
+) => {
+  const props = useLocaleProps({ props: inProps, name: "EditFilterCard" });
+  const {
+    onClose,
+    onEdit,
+    willEditFilter,
+    selectedFilterPack,
+    editButtonTitle = "Edit",
+    formErrorText = "Please fill in all fields.",
+    inputErrorText = "Please input",
+    formPlaceholder = "search",
+    sectionTitle = "Section",
+    conditionTitle = "Condition",
+  } = props;
+
   const theme = useTheme();
   const { register, setValue, handleSubmit, errors } = useForm({
     shouldUnregister: false,

@@ -17,8 +17,9 @@ import { useForm } from "react-hook-form";
 import TextField from "../../../TextField";
 import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
+import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 
-export type Props = {
+export type FilterCardProps = {
   onClose: () => void;
   onApply: (newReferedFilter: ReferedFilterType) => void;
   selectedFilterPack?: FilterPackType;
@@ -36,18 +37,23 @@ type FormType = {
   condition: string;
 };
 
-export const FilterCard: React.FunctionComponent<Props> = ({
-  onClose,
-  onApply,
-  selectedFilterPack,
-  currentReferedFilters,
-  applyButtonTitle = "Apply",
-  formErrorText = "Please fill in all fields.",
-  inputErrorText = "Please input",
-  formPlaceholder = "search",
-  sectionTitle = "Section",
-  conditionTitle = "Condition",
-}) => {
+export const FilterCard: React.FunctionComponent<FilterCardProps> = (
+  inProps,
+) => {
+  const props = useLocaleProps({ props: inProps, name: "FilterCard" });
+  const {
+    onClose,
+    onApply,
+    selectedFilterPack,
+    currentReferedFilters,
+    applyButtonTitle = "Apply",
+    formErrorText = "Please fill in all fields.",
+    inputErrorText = "Please input",
+    formPlaceholder = "search",
+    sectionTitle = "Section",
+    conditionTitle = "Condition",
+  } = props;
+
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
     undefined,

@@ -1,16 +1,93 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import LocaleProvider, { LocaleProviderProps } from ".";
-import { Button, Card, ConfirmModal, Select, Spacer, ToggleButton } from "..";
+import {
+  Button,
+  Card,
+  ConfirmModal,
+  MultipleFilter,
+  Select,
+  Spacer,
+  ToggleButton,
+} from "..";
 
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
+import { FilterPackType, ReferedFilterType } from "../MultipleFilter/types";
 
 export default {
   title: "Components/Utils/LocaleProvider",
   component: LocaleProvider,
 };
+
+const filterPacksExample: FilterPackType[] = [
+  {
+    categoryName: "Row name",
+    filters: [
+      {
+        filterName: "Demand",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Channel",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Attribute",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Type",
+        control: {
+          type: "text",
+        },
+      },
+    ],
+  },
+  {
+    categoryName: "Linking",
+    filters: [
+      {
+        filterName: "Device",
+        control: {
+          type: "select",
+          options: ["Not selected", "Not Linking", "Linking"],
+        },
+      },
+      {
+        filterName: "Site",
+        control: {
+          type: "select",
+          options: ["Not selected", "Not Linking", "Linking"],
+        },
+      },
+    ],
+  },
+  {
+    categoryName: "Condition",
+    filters: [
+      {
+        filterName: "Public",
+        control: {
+          type: "boolean",
+        },
+      },
+      {
+        filterName: "Active",
+        control: {
+          type: "boolean",
+        },
+      },
+    ],
+  },
+];
 
 export const Example: Story<LocaleProviderProps> = (args) => {
   const localeOptions = Object.keys(locales).map((_) => ({
@@ -27,6 +104,11 @@ export const Example: Story<LocaleProviderProps> = (args) => {
 
   const handleLocationChange = (v: { label: string; value: string }) => {
     setLocaleOption(v);
+  };
+
+  const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
+  const handleChange = (referedFilters: ReferedFilterType[]) => {
+    setFilters(referedFilters);
   };
 
   return (
@@ -70,6 +152,14 @@ export const Example: Story<LocaleProviderProps> = (args) => {
       <h2>ItemEmpty</h2>
       <Spacer pl={2} pt={2} pb={4}>
         <ItemEmpty />
+      </Spacer>
+
+      <h2>MultipleFilter</h2>
+      <Spacer pl={2} pt={2} pb={40}>
+        <MultipleFilter
+          filterPacks={filterPacksExample}
+          onChange={handleChange}
+        />
       </Spacer>
     </LocaleProvider>
   );
