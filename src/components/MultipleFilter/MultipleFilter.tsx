@@ -40,7 +40,7 @@ export type MultipleFilterProps = {
 const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
   filterPacks,
   onChange,
-  placeholder,
+  placeholder = "Add a new filter",
   editButtonTitle,
   applyButtonTitle,
   formErrorText,
@@ -199,7 +199,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               ref={setInputElement}
               readOnly
               type="text"
-              placeholder={placeholder ?? "Add a new filter"}
+              placeholder={placeholder}
               onFocus={handleOnFocus}
             />
           </Styled.InputContiner>

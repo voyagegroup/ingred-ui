@@ -27,6 +27,8 @@ export type Props = {
   formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  sectionTitle?: string;
+  conditionTitle?: string;
 };
 
 type FormType = {
@@ -39,10 +41,12 @@ export const FilterCard: React.FunctionComponent<Props> = ({
   onApply,
   selectedFilterPack,
   currentReferedFilters,
-  applyButtonTitle,
-  formErrorText,
-  inputErrorText,
-  formPlaceholder,
+  applyButtonTitle = "Apply",
+  formErrorText = "Please fill in all fields.",
+  inputErrorText = "Please input",
+  formPlaceholder = "search",
+  sectionTitle = "Section",
+  conditionTitle = "Condition",
 }) => {
   const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
   const [submitError, setSubmitError] = React.useState<string | undefined>(
@@ -75,11 +79,11 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       case "text":
         return (
           <TextField
-            placeholder={formPlaceholder || "search"}
+            placeholder={formPlaceholder}
             icon="search"
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? inputErrorText || "Please input" : ""}
+            errorText={errors.condition ? inputErrorText : ""}
           />
         );
       case "select":
@@ -112,7 +116,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
     if (data.section && data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError(formErrorText || "Please fill in all fields.");
+      setSubmitError(formErrorText);
       return;
     }
     const newFilter = {
@@ -160,7 +164,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle || "Section"}
+          {selectedFilterPack?.sectionTitle || sectionTitle}
         </Typography>
         <Spacer py={0.5} />
         <Select
@@ -174,7 +178,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             <Typography weight="bold" size="lg">
               {selectedFilterPack?.filters.find(
                 (filter) => filter.filterName === selectedFilter.filterName,
-              )?.conditionTitle || "Condition"}
+              )?.conditionTitle || conditionTitle}
             </Typography>
             <Spacer py={0.5} />
             {getInputField(
@@ -199,7 +203,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            {applyButtonTitle || "Apply"}
+            {applyButtonTitle}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>

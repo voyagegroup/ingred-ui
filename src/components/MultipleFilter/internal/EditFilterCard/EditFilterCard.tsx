@@ -27,6 +27,8 @@ export type Props = {
   formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  sectionTitle?: string;
+  conditionTitle?: string;
 };
 
 type FormType = {
@@ -39,10 +41,12 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
   onEdit,
   willEditFilter,
   selectedFilterPack,
-  editButtonTitle,
-  formErrorText,
-  inputErrorText,
-  formPlaceholder,
+  editButtonTitle = "Edit",
+  formErrorText = "Please fill in all fields.",
+  inputErrorText = "Please input",
+  formPlaceholder = "search",
+  sectionTitle = "Section",
+  conditionTitle = "Condition",
 }) => {
   const theme = useTheme();
   const { register, setValue, handleSubmit, errors } = useForm({
@@ -71,10 +75,10 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         return (
           <TextField
             icon="search"
-            placeholder={formPlaceholder || "search"}
+            placeholder={formPlaceholder}
             inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? inputErrorText || "Please input" : ""}
+            errorText={errors.condition ? inputErrorText : ""}
           />
         );
       case "select":
@@ -123,7 +127,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
     if (data.condition) {
       setSubmitError(undefined);
     } else {
-      setSubmitError(formErrorText || "Please fill in all fields.");
+      setSubmitError(formErrorText);
       return;
     }
 
@@ -150,7 +154,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle || "Section"}
+          {selectedFilterPack?.sectionTitle || sectionTitle}
         </Typography>
         <Spacer py={0.5} />
         <TextField readOnly value={willEditFilter?.filterName} />
@@ -158,7 +162,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
         <Typography weight="bold" size="lg">
           {selectedFilterPack?.filters.find(
             (filter) => filter.filterName === willEditFilter?.filterName,
-          )?.conditionTitle || "Condition"}
+          )?.conditionTitle || conditionTitle}
         </Typography>
         <Spacer py={0.5} />
         {getInputField(
@@ -181,7 +185,7 @@ export const EditFilterCard: React.FunctionComponent<Props> = ({
 
         <Styled.ButtonContainer>
           <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
-            {editButtonTitle || "Edit"}
+            {editButtonTitle}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>
