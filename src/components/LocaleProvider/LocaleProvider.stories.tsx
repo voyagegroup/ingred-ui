@@ -97,13 +97,13 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
   const [active, setActive] = React.useState<boolean>(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [localeOption, setLocaleOption] = React.useState(localeOptions[0]);
+  const [selectedLocale, setSelectedLocale] = React.useState(localeOptions[1]);
   const handleToggleButton = () => {
     setIsOpen(!isOpen);
   };
 
   const handleLocationChange = (v: { label: string; value: string }) => {
-    setLocaleOption(v);
+    setSelectedLocale(v);
   };
 
   const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
@@ -112,15 +112,15 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   };
 
   return (
-    <LocaleProvider locale={locales[localeOption.value]}>
+    <LocaleProvider locale={locales[selectedLocale.value]}>
       <Spacer pl={2} pt={2} pb={4}>
         <div> Select a locale! </div>
         <Select
           options={localeOptions}
-          defaultValue={localeOptions[0]}
+          defaultValue={selectedLocale}
           onChange={handleLocationChange}
         />
-        <div>Selected locale: {localeOption.value} </div>
+        <div>Selected locale: {selectedLocale.value} </div>
       </Spacer>
 
       <h2>ToggleButton</h2>

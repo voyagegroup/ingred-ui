@@ -5,6 +5,7 @@ import {
   MultipleFilterProps,
   ToggleButtonProps,
 } from "..";
+import { SelectProps } from "../components";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
 import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCard/FilterCard";
 
@@ -24,7 +25,7 @@ export interface Localization {
       defaultProps: Pick<ItemEmptyProps, "title">;
     };
     Select?: {
-      defaultProps: Pick<MultipleFilterProps, "placeholder">;
+      defaultProps: Pick<SelectProps<any>, "placeholder" | "emptyMessage">;
     };
     MultipleFilter?: {
       defaultProps: Pick<MultipleFilterProps, "placeholder">;
@@ -33,7 +34,6 @@ export interface Localization {
       defaultProps: Pick<
         FilterCardProps,
         | "applyButtonTitle"
-        | "formErrorText"
         | "inputErrorText"
         | "formPlaceholder"
         | "sectionTitle"
@@ -44,7 +44,6 @@ export interface Localization {
       defaultProps: Pick<
         EditFilterCardProps,
         | "editButtonTitle"
-        | "formErrorText"
         | "inputErrorText"
         | "formPlaceholder"
         | "sectionTitle"
@@ -69,7 +68,7 @@ export const jaJP: Localization = {
     },
     ItemEmpty: { defaultProps: { title: "見つかりませんでした。" } },
     Select: {
-      defaultProps: { placeholder: "選択..." },
+      defaultProps: { placeholder: "選択...", emptyMessage: "見つかりません" },
     },
     MultipleFilter: {
       defaultProps: { placeholder: "新しいフィルターを追加してください" },
@@ -77,7 +76,6 @@ export const jaJP: Localization = {
     FilterCard: {
       defaultProps: {
         applyButtonTitle: "適用",
-        formErrorText: "すべてのフィールドを埋めてください",
         inputErrorText: "入力してください",
         formPlaceholder: "検索",
         sectionTitle: "セクション",

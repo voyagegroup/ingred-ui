@@ -153,6 +153,7 @@ export type SelectProps<T> = {
   minWidth?: string;
   placeholder?: string;
   error?: boolean;
+  emptyMessage?: string;
 } & ReactSelectProps<OptionType<T>, boolean>;
 
 const Select = <T,>(
@@ -167,6 +168,7 @@ const Select = <T,>(
     error = false,
     closeMenuOnSelect = true,
     placeholder,
+    emptyMessage = "Not found",
     ...rest
   } = props;
 
@@ -185,16 +187,13 @@ const Select = <T,>(
     }
   };
 
-  const getEmptyMessage = () => {
-    return "Not found";
-  };
   return (
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect<OptionType<T>, boolean>
         isClearable
         placeholder={placeholder}
         closeMenuOnSelect={closeMenuOnSelect}
-        noOptionsMessage={getEmptyMessage}
+        noOptionsMessage={() => emptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles<T>(theme, error)}
         maxMenuHeight={150}
