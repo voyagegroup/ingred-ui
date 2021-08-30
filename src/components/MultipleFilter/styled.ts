@@ -9,7 +9,7 @@ export const Container = styled.div<{ isFocused: boolean }>`
   background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
-export const InputContiner = styled.div`
+export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;

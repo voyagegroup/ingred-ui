@@ -1,17 +1,52 @@
 # Changelog
 
-## [v7.30.2](https://github.com/voyagegroup/ingred-ui/tree/v7.30.2) (2021-07-29)
+## [v7.32.0](https://github.com/voyagegroup/ingred-ui/tree/v7.32.0) (2021-08-17)
 
-[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.1...v7.30.2)
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.31.3...v7.32.0)
+
+**Merged pull requests:**
+
+- Update dependency @types/react to v17.0.18 [\#433](https://github.com/voyagegroup/ingred-ui/pull/433) ([renovate[bot]](https://github.com/apps/renovate))
+- Update non-major [\#432](https://github.com/voyagegroup/ingred-ui/pull/432) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump path-parse from 1.0.6 to 1.0.7 in /testEnv [\#428](https://github.com/voyagegroup/ingred-ui/pull/428) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump path-parse from 1.0.6 to 1.0.7 in /examples/create-react-app [\#422](https://github.com/voyagegroup/ingred-ui/pull/422) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump url-parse from 1.5.1 to 1.5.3 in /examples/create-react-app [\#421](https://github.com/voyagegroup/ingred-ui/pull/421) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [v7.31.3](https://github.com/voyagegroup/ingred-ui/tree/v7.31.3) (2021-08-12)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.31.2...v7.31.3)
+
+**Implemented enhancements:**
+
+- releaseをworkflow\_dispatch経由で実行できるようにする [\#425](https://github.com/voyagegroup/ingred-ui/pull/425) ([ryokosuge](https://github.com/ryokosuge))
+
+**Fixed bugs:**
+
+- rollup周りのエラー対応 [\#426](https://github.com/voyagegroup/ingred-ui/pull/426) ([youchann](https://github.com/youchann))
+
+**Merged pull requests:**
+
+- Update non-major [\#417](https://github.com/voyagegroup/ingred-ui/pull/417) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.31.2](https://github.com/voyagegroup/ingred-ui/tree/v7.31.2) (2021-08-11)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.2...v7.31.2)
 
 **Fixed bugs:**
 
 - \<DataTable /\>チェックまわりのバグ改修 [\#401](https://github.com/voyagegroup/ingred-ui/pull/401) ([youchann](https://github.com/youchann))
 - Storybookで型が表示されない問題を対応 [\#394](https://github.com/voyagegroup/ingred-ui/pull/394) ([youchann](https://github.com/youchann))
 
+**Closed issues:**
+
+- potential security vulnerabilities in ingred-ui dependenciesを対応 [\#341](https://github.com/voyagegroup/ingred-ui/issues/341)
+
 **Merged pull requests:**
 
+- Update dependency @types/jest to v27 [\#420](https://github.com/voyagegroup/ingred-ui/pull/420) ([renovate[bot]](https://github.com/apps/renovate))
+- react-hook-formを剥がす＆MultipleFilterの挙動も変更 [\#416](https://github.com/voyagegroup/ingred-ui/pull/416) ([hirokikondo86](https://github.com/hirokikondo86))
 - `<Input />`をscrollableに [\#413](https://github.com/voyagegroup/ingred-ui/pull/413) ([youchann](https://github.com/youchann))
+- Update non-major [\#412](https://github.com/voyagegroup/ingred-ui/pull/412) ([renovate[bot]](https://github.com/apps/renovate))
 - `<Flex />`の微調整 [\#410](https://github.com/voyagegroup/ingred-ui/pull/410) ([youchann](https://github.com/youchann))
 - 細かいissueをあれこれ [\#408](https://github.com/voyagegroup/ingred-ui/pull/408) ([youchann](https://github.com/youchann))
 - Update non-major [\#407](https://github.com/voyagegroup/ingred-ui/pull/407) ([renovate[bot]](https://github.com/apps/renovate))
@@ -23,6 +58,10 @@
 - Update dependency ts-jest to v27 [\#393](https://github.com/voyagegroup/ingred-ui/pull/393) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v14 [\#389](https://github.com/voyagegroup/ingred-ui/pull/389) ([renovate[bot]](https://github.com/apps/renovate))
 - Update non-major [\#388](https://github.com/voyagegroup/ingred-ui/pull/388) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [v7.30.2](https://github.com/voyagegroup/ingred-ui/tree/v7.30.2) (2021-07-29)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.30.1...v7.30.2)
 
 ## [v7.30.1](https://github.com/voyagegroup/ingred-ui/tree/v7.30.1) (2021-07-26)
 

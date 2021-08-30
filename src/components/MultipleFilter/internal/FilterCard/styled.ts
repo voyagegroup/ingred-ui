@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { hexToRgba } from "../../../../utils/hexToRgba";
 import Card from "../../../Card";
 
-export const FilterCard = styled(Card)`
+export const FilterCard = styled(Card)<{ width?: string }>`
   box-shadow: 0px 0px 16px
     ${({ theme }) => hexToRgba(theme.palette.gray.main, 0.4)};
   min-width: 300px;
+  width: ${({ width }) => width};
   border-radius: ${({ theme }) => `${theme.radius}px`};
   background-color: ${({ theme }) => theme.palette.background.default};
 `;

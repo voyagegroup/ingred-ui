@@ -9,32 +9,25 @@ import Typography from "../../../Typography";
 import {
   FilterPackType,
   FilterType,
-  ReferedFilterType,
+  ReferredFilterType,
   Types,
 } from "../../types";
 import * as Styled from "./styled";
-import { useForm } from "react-hook-form";
 import TextField from "../../../TextField";
-import ErrorText from "../../../ErrorText";
 import RadioButton from "../../../RadioButton";
 import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 
 export type FilterCardProps = {
   onClose: () => void;
-  onApply: (newReferedFilter: ReferedFilterType) => void;
+  onApply: (newReferredFilter: ReferredFilterType) => void;
   selectedFilterPack?: FilterPackType;
-  currentReferedFilters: ReferedFilterType[];
+  currentReferredFilters: ReferredFilterType[];
   applyButtonTitle?: string;
-  formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
+  width?: string;
   sectionTitle?: string;
   conditionTitle?: string;
-};
-
-type FormType = {
-  section: string;
-  condition: string;
 };
 
 export const FilterCard: React.FunctionComponent<FilterCardProps> = (
@@ -45,38 +38,43 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
     onClose,
     onApply,
     selectedFilterPack,
-    currentReferedFilters,
     applyButtonTitle = "Apply",
-    formErrorText = "Please fill in all fields.",
     inputErrorText = "Please input",
     formPlaceholder = "search",
+    width,
+    currentReferredFilters,
     sectionTitle = "Section",
     conditionTitle = "Condition",
   } = props;
 
-  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
-  const [submitError, setSubmitError] = React.useState<string | undefined>(
-    undefined,
-  );
   const theme = useTheme();
+  const [section, setSection] = React.useState<string | undefined>();
+  const [condition, setCondition] = React.useState<string | undefined>();
+  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
+  const [textFieldErrorText, setTextFieldErrorText] =
+    React.useState<string>("");
+
+  const filter = selectedFilterPack?.filters.find(
+    (filter) => filter.filterName === selectedFilter?.filterName,
+  );
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
     value: filter.filterName,
   }));
-  const { register, setValue, handleSubmit, errors } = useForm({
-    shouldUnregister: false,
-    defaultValues: {
-      section: undefined,
-      condition: undefined,
-    },
-  });
 
-  const handleSelect = (option: OptionType<any>) => {
-    if (option === null) {
-      setValue("condition", undefined);
-    } else {
-      setValue("condition", option.value);
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTextFieldErrorText("");
+    setCondition(e.target.value);
+  };
+
+  const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setTextFieldErrorText(inputErrorText);
     }
+  };
+
+  const handleSelect = (option: OptionType<any> | null) => {
+    setCondition(option?.value);
   };
 
   const getInputField = (filter: FilterType) => {
@@ -87,9 +85,11 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           <TextField
             placeholder={formPlaceholder}
             icon="search"
-            inputRef={register({ required: true })}
             name="condition"
-            errorText={errors.condition ? inputErrorText : ""}
+            errorText={textFieldErrorText}
+            autoFocus={true}
+            onChange={handleChangeInput}
+            onBlur={handleBlurInput}
           />
         );
       case "select":
@@ -100,17 +100,30 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
               label: option,
               value: option,
             }))}
+            autoFocus={true}
             onChange={handleSelect}
           />
         );
       case "boolean":
         return (
           <div>
-            <RadioButton inputRef={register()} name="condition" value="true">
+            <RadioButton
+              name="condition"
+              value="true"
+              autoFocus={true}
+              onChange={handleChangeInput}
+              onBlur={handleBlurInput}
+            >
               true
             </RadioButton>
             <br />
-            <RadioButton inputRef={register()} name="condition" value="false">
+            <RadioButton
+              name="condition"
+              value="false"
+              autoFocus={true}
+              onChange={handleChangeInput}
+              onBlur={handleBlurInput}
+            >
               false
             </RadioButton>
           </div>
@@ -118,46 +131,45 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
     }
   };
 
-  const onSubmit = (data: FormType) => {
-    if (data.section && data.condition) {
-      setSubmitError(undefined);
-    } else {
-      setSubmitError(formErrorText);
-      return;
-    }
+  const handleSubmit = () => {
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
       filterName: selectedFilter?.filterName as string,
       filterType: selectedFilter?.control.type as Types,
-      filterCondition: data.condition,
+      filterCondition: condition,
     };
     onApply(newFilter);
   };
 
-  const handleFilterChange = (option: OptionType<string>) => {
+  const handleFilterChange = (option: OptionType<string> | null) => {
+    setTextFieldErrorText("");
+
     if (option === null) {
-      setValue("section", undefined);
+      setSection(undefined);
+      setCondition(undefined);
       setSelectedFilter(undefined);
-    } else {
-      const filter = selectedFilterPack?.filters.find(
-        (f) => f.filterName === option.value,
-      );
-      setValue("section", filter?.filterName);
-      setSelectedFilter(filter);
+      return;
     }
+
+    const filter = selectedFilterPack?.filters.find(
+      (f) => f.filterName === option.value,
+    );
+    setSection(filter?.filterName);
+    setSelectedFilter(filter);
   };
 
   const getUnSelectedOption = (options: OptionType[] | undefined) => {
+    const currentReferredFilterNames = currentReferredFilters.map(
+      (referredFilter) => referredFilter.filterName,
+    );
+
     return options?.filter(
-      (option) =>
-        !currentReferedFilters
-          .map((referedFilter) => referedFilter.filterName)
-          .includes(option.label),
+      (option) => !currentReferredFilterNames.includes(option.label),
     );
   };
 
   return (
-    <Styled.FilterCard>
+    <Styled.FilterCard width={width}>
       <Styled.FilterCardHeader>
         <Typography weight="bold" size="xxl">
           {selectedFilterPack?.categoryName}
@@ -176,22 +188,17 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
         <Select
           maxMenuHeight={250}
           options={getUnSelectedOption(options)}
+          autoFocus={true}
           onChange={handleFilterChange}
         />
         <Spacer py={1} />
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
-              {selectedFilterPack?.filters.find(
-                (filter) => filter.filterName === selectedFilter.filterName,
-              )?.conditionTitle || conditionTitle}
+              {filter?.conditionTitle || conditionTitle}
             </Typography>
             <Spacer py={0.5} />
-            {getInputField(
-              selectedFilterPack?.filters.find(
-                (filter) => filter.filterName === selectedFilter.filterName,
-              ) as FilterType,
-            )}
+            {filter && getInputField(filter)}
             <Spacer py={1} />
           </div>
         )}
@@ -201,14 +208,13 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           my={2}
         />
 
-        {submitError && (
-          <Spacer py={2}>
-            <ErrorText>{submitError}</ErrorText>
-          </Spacer>
-        )}
-
         <Styled.ButtonContainer>
-          <Button size="small" inline={true} onClick={handleSubmit(onSubmit)}>
+          <Button
+            size="small"
+            inline={true}
+            disabled={!section || !condition}
+            onClick={handleSubmit}
+          >
             {applyButtonTitle}
           </Button>
         </Styled.ButtonContainer>
