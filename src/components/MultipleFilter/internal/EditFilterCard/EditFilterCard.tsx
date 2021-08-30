@@ -31,11 +31,6 @@ export type EditFilterCardProps = {
   width?: string;
 };
 
-type FormType = {
-  section: string;
-  condition: string;
-};
-
 export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
   inProps,
 ) => {
