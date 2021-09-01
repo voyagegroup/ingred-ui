@@ -14,6 +14,7 @@ import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
@@ -73,25 +74,28 @@ export type ConfirmModalProps = {
   children?: React.ReactNode;
 };
 
-const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = ({
-  title,
-  confirmText = "Confirm",
-  cancelText = "Cancel",
-  children,
-  onClose,
-  onSubmit,
-  buttonColor = "primary",
-  isOpen = true,
-  disabled,
-  loading,
-  fullSize = false,
-  overflowYScroll = true,
-  disableHorizontalPadding = false,
-  subActions = [],
-  tipElement,
-  modalProps,
-  fadeProps,
-}) => {
+const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = (inProps) => {
+  const props = useLocaleProps({ props: inProps, name: "ConfirmModal" });
+  const {
+    title,
+    confirmText = "Confirm",
+    cancelText = "Cancel",
+    children,
+    onClose,
+    onSubmit,
+    buttonColor = "primary",
+    isOpen = true,
+    disabled,
+    loading,
+    fullSize = false,
+    overflowYScroll = true,
+    disableHorizontalPadding = false,
+    subActions = [],
+    tipElement,
+    modalProps,
+    fadeProps,
+  } = props;
+
   const theme = useTheme();
   const showFooter = !!onSubmit;
   const [iconWrapperElement, setIconWrapperElement] =

@@ -15,10 +15,9 @@ import {
 import * as Styled from "./styled";
 import TextField from "../../../TextField";
 import RadioButton from "../../../RadioButton";
+import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 
-const defaultTextFieldErrorText = "Please input";
-
-export type Props = {
+export type FilterCardProps = {
   onClose: () => void;
   onApply: (newReferredFilter: ReferredFilterType) => void;
   selectedFilterPack?: FilterPackType;
@@ -27,18 +26,27 @@ export type Props = {
   inputErrorText?: string;
   formPlaceholder?: string;
   width?: string;
+  sectionTitle?: string;
+  conditionTitle?: string;
 };
 
-export const FilterCard: React.FunctionComponent<Props> = ({
-  onClose,
-  onApply,
-  selectedFilterPack,
-  currentReferredFilters,
-  applyButtonTitle,
-  inputErrorText,
-  formPlaceholder,
-  width,
-}) => {
+export const FilterCard: React.FunctionComponent<FilterCardProps> = (
+  inProps,
+) => {
+  const props = useLocaleProps({ props: inProps, name: "FilterCard" });
+  const {
+    onClose,
+    onApply,
+    selectedFilterPack,
+    applyButtonTitle = "Apply",
+    inputErrorText = "Please input",
+    formPlaceholder = "search",
+    width,
+    currentReferredFilters,
+    sectionTitle = "Section",
+    conditionTitle = "Condition",
+  } = props;
+
   const theme = useTheme();
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
@@ -61,7 +69,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
 
   const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
-      setTextFieldErrorText(inputErrorText || defaultTextFieldErrorText);
+      setTextFieldErrorText(inputErrorText);
     }
   };
 
@@ -75,7 +83,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       case "text":
         return (
           <TextField
-            placeholder={formPlaceholder || "search"}
+            placeholder={formPlaceholder}
             icon="search"
             name="condition"
             errorText={textFieldErrorText}
@@ -174,7 +182,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle || "Section"}
+          {selectedFilterPack?.sectionTitle || sectionTitle}
         </Typography>
         <Spacer py={0.5} />
         <Select
@@ -187,7 +195,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
-              {filter?.conditionTitle || "Condition"}
+              {filter?.conditionTitle || conditionTitle}
             </Typography>
             <Spacer py={0.5} />
             {filter && getInputField(filter)}
@@ -207,7 +215,7 @@ export const FilterCard: React.FunctionComponent<Props> = ({
             disabled={!section || !condition}
             onClick={handleSubmit}
           >
-            {applyButtonTitle || "Apply"}
+            {applyButtonTitle}
           </Button>
         </Styled.ButtonContainer>
       </Styled.FilterContent>

@@ -5,6 +5,7 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type FileUploaderProps = {
   description?: string;
@@ -20,13 +21,15 @@ export type FileUploaderProps = {
   ) => void;
 };
 
-const FileUploader: React.FunctionComponent<FileUploaderProps> = ({
-  accept,
-  title = "Click or Drag & Drop file.",
-  width,
-  description,
-  onSelectFiles,
-}) => {
+const FileUploader: React.FunctionComponent<FileUploaderProps> = (inProps) => {
+  const props = useLocaleProps({ props: inProps, name: "FileUploader" });
+  const {
+    accept,
+    title = "Click or Drag & Drop file.",
+    width,
+    description,
+    onSelectFiles,
+  } = props;
   const fileRef = React.useRef<HTMLInputElement>(null);
   const [filesDraggedOver, setFilesDraggedOver] = React.useState(false);
 

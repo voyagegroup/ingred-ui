@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import Typography from "../Typography";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type ToggleButtonProps = {
   active?: boolean;
@@ -12,15 +13,17 @@ export type ToggleButtonProps = {
   inputRef?: React.Ref<HTMLInputElement>;
 };
 
-const ToggleButton: React.FunctionComponent<ToggleButtonProps> = ({
-  active = false,
-  disabled = false,
-  onChange,
-  width = "56px",
-  activeText = "ON",
-  inActiveText = "OFF",
-  inputRef,
-}) => {
+const ToggleButton: React.FunctionComponent<ToggleButtonProps> = (inProps) => {
+  const props = useLocaleProps({ props: inProps, name: "ToggleButton" });
+  const {
+    active = false,
+    disabled = false,
+    onChange,
+    width = "56px",
+    activeText = "ON",
+    inActiveText = "OFF",
+    inputRef,
+  } = props;
   return (
     <Styled.Container width={width}>
       <Styled.Label active={active} disabled={disabled} width={width}>

@@ -11,6 +11,7 @@ import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
 import { FilterPackType, ReferredFilterType, ReferedFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type MultipleFilterProps = {
   /**
@@ -47,16 +48,21 @@ export type MultipleFilterProps = {
   width?: string;
 };
 
-const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
-  filterPacks,
-  onChange,
-  placeholder,
-  editButtonTitle,
-  applyButtonTitle,
-  inputErrorText,
-  formPlaceholder,
-  width,
-}) => {
+const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = (
+  inProps,
+) => {
+  const props = useLocaleProps({ props: inProps, name: "MultipleFilter" });
+  const {
+    filterPacks,
+    onChange,
+    placeholder = "Add a new filter",
+    editButtonTitle,
+    applyButtonTitle,
+    inputErrorText,
+    formPlaceholder,
+    width,
+  } = props;
+
   const [isFocus, setIsFocus] = React.useState<boolean>(false);
   const [selectedFilterPack, setSelectedFilterPack] =
     React.useState<FilterPackType | null>(null);
@@ -212,7 +218,7 @@ const MultipleFilter: React.FunctionComponent<MultipleFilterProps> = ({
               ref={setInputElement}
               readOnly
               type="text"
-              placeholder={placeholder ?? "Add a new filter"}
+              placeholder={placeholder}
               onFocus={handleOnFocus}
             />
           </Styled.InputContainer>

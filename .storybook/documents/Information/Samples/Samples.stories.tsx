@@ -508,7 +508,7 @@ const undisplayedSections: UndisplayedSection[] = [
   },
   {
     title: "Utils",
-    components: [{ title: "Portal" }],
+    components: [{ title: "Portal" }, { title: "LocaleProvider" }],
   },
 ];
 
