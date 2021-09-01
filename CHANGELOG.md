@@ -1,5 +1,13 @@
 # Changelog
 
+## [v7.32.1](https://github.com/voyagegroup/ingred-ui/tree/v7.32.1) (2021-09-01)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.32.0...v7.32.1)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency eslint-plugin-prettier to v4 [\#438](https://github.com/voyagegroup/ingred-ui/pull/438) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.32.0](https://github.com/voyagegroup/ingred-ui/tree/v7.32.0) (2021-08-17)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.31.3...v7.32.0)
