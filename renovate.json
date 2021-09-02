@@ -7,10 +7,11 @@
     "before 6:30pm every weekday"
   ],
   "recreateClosed": true,
-  "pin": {
-    "automerge": true
-  },
   "packageRules": [
+    {
+      "matchUpdateTypes": ["pin", "patch"],
+      "automerge": true
+    },
     {
       "matchPackagePatterns": ["^@types/"],
       "automerge": true
