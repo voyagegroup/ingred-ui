@@ -3,7 +3,7 @@
   "labels": ["renovate"],
   "timezone": "Asia/Tokyo",
   "schedule": [
-    "after 9:30am every weekday", 
+    "after 9:30am every weekday",
     "before 6:30pm every weekday"
   ],
   "recreateClosed": true,
@@ -20,5 +20,6 @@
       "matchPackagePatterns": ["^@testing-library/"],
       "automerge": true
     }
-  ]
+  ],
+  "ignorePaths": ["testEnv/**"]
 }
