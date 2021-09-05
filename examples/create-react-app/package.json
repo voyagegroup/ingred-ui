@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/node": "14.17.14",
-    "@types/react": "17.0.19",
+    "@types/react": "17.0.20",
     "@types/react-dom": "17.0.9",
     "@types/styled-components": "5.1.5",
     "ingred-ui": "7.7.2",
