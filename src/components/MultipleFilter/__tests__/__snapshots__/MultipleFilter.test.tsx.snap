@@ -4,13 +4,13 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="sc-bdnxRM RPIjq"
+      class="sc-bdfBQB ftxHZV"
     >
       <div
-        class="sc-hKFxyN iryWLG"
+        class="sc-hKgJUU fhevtv"
       >
         <div
-          class="sc-hBMUJo ftcpie"
+          class="sc-hBEYId iJPHdT"
           size="18"
         >
           <svg
@@ -30,13 +30,13 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCApnc gIbSLu"
+        class="sc-eCstlR kQoUHO"
       >
         <div
-          class="sc-gtsrHT dWKPQE"
+          class="sc-gsTEea jJmzcG"
         >
           <input
-            class="sc-fnVZcZ gDFkCI"
+            class="sc-fodVek iCvqpV"
             placeholder="Add a new filter"
             readonly=""
             type="text"
@@ -44,7 +44,7 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
         </div>
       </div>
       <div
-        class="sc-jSFjdj XvfLa"
+        class="sc-jSgvzq iRuFLz"
       />
     </div>
   </div>

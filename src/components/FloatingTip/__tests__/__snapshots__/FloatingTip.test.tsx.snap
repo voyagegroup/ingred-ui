@@ -3,30 +3,30 @@
 exports[`FloatingTip component testing FloatingTip 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCApnc fJaNMq"
+    class="sc-eCstlR fFgkKS"
   >
     <div
-      class="sc-jSFjdj ddpnqy sc-gKAaRy iiYhys fade-transition-appear fade-transition-appear-active"
+      class="sc-jSgvzq eIAFzT sc-gKseQn btyyRf fade-transition-appear fade-transition-appear-active"
     />
     <div
-      class="sc-hKFxyN kLgCuS"
+      class="sc-hKgJUU jgnaaz"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
-        class="sc-bdnxRM BXsBU"
+        class="sc-bdfBQB cSXLXX"
       >
         <div
-          class="sc-gtsrHT bprZJa"
+          class="sc-gsTEea hnKumY"
         >
           <div>
             hoge
           </div>
         </div>
         <div
-          class="sc-dlnjwi gHIlCv"
+          class="sc-dlfnuX giUTGB"
         >
           <div
-            class="sc-iCoGMd cnvXVm"
+            class="sc-iBPTik dRFRd"
             size="18"
           >
             <svg
