@@ -52,6 +52,7 @@ import GrowSample from "./components/GrowSample";
 import PopoverSample from "./components/PopoverSample";
 import MenuSample from "./components/MenuSample";
 import FloatingTipSample from "./components/FloatingTipSample";
+import CreatableSelect from "../../../../src/components/CreatableSelect";
 
 type SectionTitle =
   | "Layout"
@@ -177,6 +178,19 @@ const componentList: Section[] = [
         title: "Select",
         content: (
           <Select
+            minWidth="200px"
+            placeholder="Select..."
+            options={[
+              { label: "option1", value: "1" },
+              { label: "option2", value: "2" },
+            ]}
+          />
+        ),
+      },
+      {
+        title: "CreatableSelect",
+        content: (
+          <CreatableSelect
             minWidth="200px"
             placeholder="Select..."
             options={[

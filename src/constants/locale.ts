@@ -6,6 +6,7 @@ import {
   ToggleButtonProps,
 } from "..";
 import { SelectProps } from "../components";
+import { CreatableSelectProps } from "../components/CreatableSelect";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
 import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCard/FilterCard";
 
@@ -26,6 +27,12 @@ export interface Localization {
     };
     Select?: {
       defaultProps: Pick<SelectProps<any>, "placeholder" | "emptyMessage">;
+    };
+    CreatableSelect?: {
+      defaultProps: Pick<
+        CreatableSelectProps<any>,
+        "placeholder" | "emptyMessage" | "addMessage"
+      >;
     };
     MultipleFilter?: {
       defaultProps: Pick<MultipleFilterProps, "placeholder">;
@@ -69,6 +76,13 @@ export const jaJP: Localization = {
     ItemEmpty: { defaultProps: { title: "見つかりませんでした。" } },
     Select: {
       defaultProps: { placeholder: "選択...", emptyMessage: "見つかりません" },
+    },
+    CreatableSelect: {
+      defaultProps: {
+        placeholder: "選択...",
+        emptyMessage: "見つかりません",
+        addMessage: "次の文字列を追加する",
+      },
     },
     MultipleFilter: {
       defaultProps: { placeholder: "新しいフィルターを追加してください" },
