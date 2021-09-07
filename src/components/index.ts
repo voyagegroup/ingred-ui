@@ -29,6 +29,9 @@ export * from "./ConfirmModal";
 export { default as ContextMenu } from "./ContextMenu";
 export * from "./ContextMenu";
 
+export { default as CreatableSelect } from "./CreatableSelect";
+export * from "./CreatableSelect";
+
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
