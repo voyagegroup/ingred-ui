@@ -1,5 +1,18 @@
 # Changelog
 
+## [v7.34.0](https://github.com/voyagegroup/ingred-ui/tree/v7.34.0) (2021-09-07)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.33.0...v7.34.0)
+
+**Implemented enhancements:**
+
+- Add `<CreatableSelect />` [\#464](https://github.com/voyagegroup/ingred-ui/pull/464) ([youchann](https://github.com/youchann))
+
+**Merged pull requests:**
+
+- chore\(deps\): update typescript-eslint monorepo to v4.31.0 [\#450](https://github.com/voyagegroup/ingred-ui/pull/450) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-mdx to v1.15.0 [\#446](https://github.com/voyagegroup/ingred-ui/pull/446) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.33.0](https://github.com/voyagegroup/ingred-ui/tree/v7.33.0) (2021-09-06)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.32.1...v7.33.0)
