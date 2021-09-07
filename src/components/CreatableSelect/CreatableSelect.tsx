@@ -2,7 +2,7 @@ import * as React from "react";
 import ReactCreatableSelect, {
   Props as ReactCreatableSelectProps,
 } from "react-select/creatable";
-import * as Styled from "./styled";
+import * as Styled from "../Select/styled";
 import { useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 import { OptionType } from "../Select";
