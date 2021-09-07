@@ -32,7 +32,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -103,7 +103,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -196,10 +196,10 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -298,10 +298,10 @@ exports[`CreatableSelect component testing Disable not CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -409,10 +409,10 @@ exports[`CreatableSelect component testing Disable one CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -493,7 +493,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -564,7 +564,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -652,14 +652,14 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-iCoGMd"
+            class="sc-jSFjdj"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -723,10 +723,10 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -824,10 +824,10 @@ exports[`CreatableSelect component testing Error not CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -930,14 +930,14 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-iCoGMd"
+            class="sc-jSFjdj"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1001,10 +1001,10 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1085,7 +1085,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1156,7 +1156,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
               class="css-p9ckie"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1244,14 +1244,14 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-iCoGMd"
+            class="sc-jSFjdj"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1315,10 +1315,10 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1416,10 +1416,10 @@ exports[`CreatableSelect component testing Normal not CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1522,14 +1522,14 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-iCoGMd"
+            class="sc-jSFjdj"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
@@ -1593,10 +1593,10 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-gKAaRy jqjoVM"
+              class="sc-eCApnc losssN"
             >
               <div
-                class="sc-jSFjdj jtqjPu"
+                class="sc-hKFxyN eXRJEH"
                 size="18"
               >
                 <svg
