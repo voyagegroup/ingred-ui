@@ -3,23 +3,23 @@
 exports[`Switch component testing Switch 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdnxRM bUlYYs"
+    class="sc-bdfBQB kLtllz"
   >
     <div
-      class="sc-gtsrHT eqtiEe"
+      class="sc-gsTEea gaGkuc"
     >
       <div
-        class="sc-jSFjdj eWDtQo"
+        class="sc-jSgvzq ctEDmF"
         style="left: 0px; width: 0px;"
       />
       <div
-        class="sc-dlnjwi eDQjv"
+        class="sc-dlfnuX etZNvJ"
       >
         <div
-          class="sc-eCApnc ciwgBK"
+          class="sc-eCstlR iJTlhi"
         >
           <span
-            class="sc-iCoGMd hrvDrf"
+            class="sc-iBPTik exNMGU"
             color="#596978"
             font-size="13px"
           >
@@ -27,10 +27,10 @@ exports[`Switch component testing Switch 1`] = `
           </span>
         </div>
         <div
-          class="sc-eCApnc ciwgBK"
+          class="sc-eCstlR iJTlhi"
         >
           <span
-            class="sc-iCoGMd gkrjAN"
+            class="sc-iBPTik WxWFS"
             color="#596978"
             font-size="13px"
           >
