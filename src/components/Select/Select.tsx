@@ -12,7 +12,7 @@ import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 
-const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
+export const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
   const overrideStyles: StylesConfig<OptionType<T>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
