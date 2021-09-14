@@ -1,5 +1,23 @@
 # Changelog
 
+## [v7.34.1](https://github.com/voyagegroup/ingred-ui/tree/v7.34.1) (2021-09-14)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.34.0...v7.34.1)
+
+**Merged pull requests:**
+
+- chore\(deps\): update typescript-eslint monorepo to v4.31.1 [\#470](https://github.com/voyagegroup/ingred-ui/pull/470) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @testing-library/react to v12.1.0 [\#468](https://github.com/voyagegroup/ingred-ui/pull/468) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency prettier to v2.4.0 [\#467](https://github.com/voyagegroup/ingred-ui/pull/467) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.15 [\#466](https://github.com/voyagegroup/ingred-ui/pull/466) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v7.34.0 [\#465](https://github.com/voyagegroup/ingred-ui/pull/465) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update react monorepo to v17 \(major\) [\#461](https://github.com/voyagegroup/ingred-ui/pull/461) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency react-scripts to v4 [\#460](https://github.com/voyagegroup/ingred-ui/pull/460) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v7.33.0 [\#458](https://github.com/voyagegroup/ingred-ui/pull/458) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.1.1 [\#449](https://github.com/voyagegroup/ingred-ui/pull/449) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump tar from 6.1.8 to 6.1.11 [\#448](https://github.com/voyagegroup/ingred-ui/pull/448) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): update dependency styled-components to v5.3.1 [\#445](https://github.com/voyagegroup/ingred-ui/pull/445) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.34.0](https://github.com/voyagegroup/ingred-ui/tree/v7.34.0) (2021-09-07)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.33.0...v7.34.0)
