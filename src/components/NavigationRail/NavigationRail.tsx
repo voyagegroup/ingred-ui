@@ -13,6 +13,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
+// TODO: Use React.forwardsRef without type error
 const NavigationRail = ({ children }: Props) => {
   const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
     NavigationRailContext,
