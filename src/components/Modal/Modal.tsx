@@ -36,56 +36,61 @@ export type ModalProps = {
   children: React.ReactElement;
 };
 
-const Modal: React.FunctionComponent<ModalProps> = ({
-  isOpen = true,
-  hasBackground = true,
-  backdropProps,
-  enableTransition = true,
-  onClose,
-  children,
-}) => {
-  const [exited, setExited] = React.useState<boolean>(true);
-
-  const handleBackDropClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      isOpen = true,
+      hasBackground = true,
+      backdropProps,
+      enableTransition = true,
+      onClose,
+      children,
+    },
+    ref,
   ) => {
-    if (onClose) onClose(event, "backdropClick");
-  };
+    const [exited, setExited] = React.useState<boolean>(true);
 
-  const handleEnter = () => {
-    setExited(false);
-  };
+    const handleBackDropClick = (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) => {
+      if (onClose) onClose(event, "backdropClick");
+    };
 
-  const handleExited = () => {
-    setExited(true);
-  };
+    const handleEnter = () => {
+      setExited(false);
+    };
 
-  const childProps: any = {};
-  if (enableTransition && getHasTransition(children.props)) {
-    childProps.onEnter = createChainedFunction(
-      handleEnter,
-      children.props.onEnter,
+    const handleExited = () => {
+      setExited(true);
+    };
+
+    const childProps: any = {};
+    if (enableTransition && getHasTransition(children.props)) {
+      childProps.onEnter = createChainedFunction(
+        handleEnter,
+        children.props.onEnter,
+      );
+      childProps.onExited = createChainedFunction(
+        handleExited,
+        children.props.onExited,
+      );
+    }
+
+    return (
+      <Portal>
+        <Styled.Container ref={ref} isHidden={!isOpen && exited}>
+          {hasBackground && (
+            <Backdrop
+              {...backdropProps}
+              isOpen={!enableTransition || isOpen}
+              onClick={handleBackDropClick}
+            />
+          )}
+          {React.cloneElement(children, childProps)}
+        </Styled.Container>
+      </Portal>
     );
-    childProps.onExited = createChainedFunction(
-      handleExited,
-      children.props.onExited,
-    );
-  }
-
-  return (
-    <Portal>
-      <Styled.Container isHidden={!isOpen && exited}>
-        {hasBackground && (
-          <Backdrop
-            {...backdropProps}
-            isOpen={!enableTransition || isOpen}
-            onClick={handleBackDropClick}
-          />
-        )}
-        {React.cloneElement(children, childProps)}
-      </Styled.Container>
-    </Portal>
-  );
-};
+  },
+);
 
 export default Modal;
