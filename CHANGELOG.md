@@ -1,5 +1,36 @@
 # Changelog
 
+## [v8.0.0](https://github.com/voyagegroup/ingred-ui/tree/v8.0.0) (2021-09-24)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.34.1...v8.0.0)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency react-select to v5 [\#494](https://github.com/voyagegroup/ingred-ui/pull/494) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-select to v4.0.18 [\#493](https://github.com/voyagegroup/ingred-ui/pull/493) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump tmpl from 1.0.4 to 1.0.5 in /testEnv [\#492](https://github.com/voyagegroup/ingred-ui/pull/492) ([dependabot[bot]](https://github.com/apps/dependabot))
+- build\(deps\): bump tmpl from 1.0.4 to 1.0.5 in /examples/create-react-app [\#490](https://github.com/voyagegroup/ingred-ui/pull/490) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.0.5 [\#489](https://github.com/voyagegroup/ingred-ui/pull/489) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.18 [\#488](https://github.com/voyagegroup/ingred-ui/pull/488) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump tmpl from 1.0.4 to 1.0.5 [\#487](https://github.com/voyagegroup/ingred-ui/pull/487) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): update dependency @types/react to v17.0.24 [\#486](https://github.com/voyagegroup/ingred-ui/pull/486) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/jest to v27.0.2 [\#484](https://github.com/voyagegroup/ingred-ui/pull/484) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v4.31.2 [\#483](https://github.com/voyagegroup/ingred-ui/pull/483) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.2.1 [\#482](https://github.com/voyagegroup/ingred-ui/pull/482) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.22 [\#481](https://github.com/voyagegroup/ingred-ui/pull/481) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-react to v7.25.3 [\#480](https://github.com/voyagegroup/ingred-ui/pull/480) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v24.4.2 [\#479](https://github.com/voyagegroup/ingred-ui/pull/479) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-react to v7.25.2 [\#478](https://github.com/voyagegroup/ingred-ui/pull/478) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.17 [\#477](https://github.com/voyagegroup/ingred-ui/pull/477) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-transition-group to v4.4.3 [\#476](https://github.com/voyagegroup/ingred-ui/pull/476) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency prettier to v2.4.1 [\#475](https://github.com/voyagegroup/ingred-ui/pull/475) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-mdx to v1.15.1 [\#474](https://github.com/voyagegroup/ingred-ui/pull/474) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.16 [\#473](https://github.com/voyagegroup/ingred-ui/pull/473) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.21 [\#472](https://github.com/voyagegroup/ingred-ui/pull/472) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v7.34.1 [\#471](https://github.com/voyagegroup/ingred-ui/pull/471) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.2.0 [\#469](https://github.com/voyagegroup/ingred-ui/pull/469) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency typescript to v4.4.3 [\#451](https://github.com/voyagegroup/ingred-ui/pull/451) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v7.34.1](https://github.com/voyagegroup/ingred-ui/tree/v7.34.1) (2021-09-14)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v7.34.0...v7.34.1)
