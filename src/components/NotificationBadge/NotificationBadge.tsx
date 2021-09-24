@@ -12,48 +12,56 @@ export type NotificationBadgeProps = {
   children: React.ReactNode;
 };
 
-const NotificationBadge: React.FunctionComponent<NotificationBadgeProps> = ({
-  variant = "normal",
-  badgeContent = "",
-  position = "top-right",
-  dotSize = "medium",
-  max = 99,
-  showZero = false,
-  invisible: invisibleProp = false,
-  children,
-}) => {
-  let invisible = invisibleProp;
+const NotificationBadge = React.forwardRef<
+  HTMLDivElement,
+  NotificationBadgeProps
+>(
+  (
+    {
+      variant = "normal",
+      badgeContent = "",
+      position = "top-right",
+      dotSize = "medium",
+      max = 99,
+      showZero = false,
+      invisible: invisibleProp = false,
+      children,
+    },
+    ref,
+  ) => {
+    let invisible = invisibleProp;
 
-  if (
-    (badgeContent === 0 && !showZero) ||
-    (badgeContent === "" && variant !== "dot")
-  ) {
-    invisible = true;
-  }
-
-  let displayValue: number | string = "";
-
-  if (variant !== "dot") {
-    if (typeof badgeContent === "number") {
-      displayValue = badgeContent > max ? `${max}+` : badgeContent;
-    } else {
-      displayValue = badgeContent;
+    if (
+      (badgeContent === 0 && !showZero) ||
+      (badgeContent === "" && variant !== "dot")
+    ) {
+      invisible = true;
     }
-  }
 
-  return (
-    <Styled.Container>
-      {children}
-      <Styled.Badge
-        variant={variant}
-        position={position}
-        size={dotSize}
-        invisible={invisible}
-      >
-        {displayValue}
-      </Styled.Badge>
-    </Styled.Container>
-  );
-};
+    let displayValue: number | string = "";
+
+    if (variant !== "dot") {
+      if (typeof badgeContent === "number") {
+        displayValue = badgeContent > max ? `${max}+` : badgeContent;
+      } else {
+        displayValue = badgeContent;
+      }
+    }
+
+    return (
+      <Styled.Container ref={ref}>
+        {children}
+        <Styled.Badge
+          variant={variant}
+          position={position}
+          size={dotSize}
+          invisible={invisible}
+        >
+          {displayValue}
+        </Styled.Badge>
+      </Styled.Container>
+    );
+  },
+);
 
 export default NotificationBadge;
