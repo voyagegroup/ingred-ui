@@ -17,8 +17,6 @@ export type CreatableSelectProps<T> = {
   error?: boolean;
   emptyMessage?: string;
   addMessage?: string;
-  // TODO: Remove this props with breaking change
-  closeMenuOnCreatableSelect?: boolean;
 } & CreatableProps<OptionType<T>, boolean, GroupBase<OptionType<T>>>;
 
 const CreatableSelect = <T,>(
@@ -32,7 +30,6 @@ const CreatableSelect = <T,>(
     isDisabled,
     error = false,
     closeMenuOnSelect = true,
-    closeMenuOnCreatableSelect = true,
     placeholder,
     emptyMessage = "Not found",
     addMessage = "Create",
@@ -59,7 +56,7 @@ const CreatableSelect = <T,>(
       <ReactCreatableSelect<OptionType<T>, boolean, GroupBase<OptionType<T>>>
         isClearable
         placeholder={placeholder}
-        closeMenuOnSelect={closeMenuOnSelect && closeMenuOnCreatableSelect}
+        closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={() => emptyMessage}
         formatCreateLabel={(text) => `${addMessage} "${text}"`}
         isDisabled={isDisabled}
