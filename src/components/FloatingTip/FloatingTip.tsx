@@ -26,38 +26,43 @@ export type FloatingTipProps = {
   ) => void;
 };
 
-const FloatingTip: React.FunctionComponent<FloatingTipProps> = ({
-  baseElement,
-  positionPriority = ["right-start"],
-  offset = [0, 10],
-  isOpen,
-  onClose,
-  children,
-}) => {
-  const theme = useTheme();
-
-  const handleClickCloseIcon = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
+  (
+    {
+      baseElement,
+      positionPriority = ["right-start"],
+      offset = [0, 10],
+      isOpen,
+      onClose,
+      children,
+    },
+    ref,
   ) => {
-    if (onClose) onClose(event, "clickCloseIcon");
-  };
+    const theme = useTheme();
 
-  return (
-    <Popover
-      isOpen={isOpen}
-      baseElement={baseElement}
-      positionPriority={positionPriority}
-      offset={offset}
-      onClose={onClose}
-    >
-      <Styled.Container>
-        <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
-        <Styled.IconWrapper onClick={handleClickCloseIcon}>
-          <Icon name="close" color={theme.palette.black} />
-        </Styled.IconWrapper>
-      </Styled.Container>
-    </Popover>
-  );
-};
+    const handleClickCloseIcon = (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) => {
+      if (onClose) onClose(event, "clickCloseIcon");
+    };
+
+    return (
+      <Popover
+        isOpen={isOpen}
+        baseElement={baseElement}
+        positionPriority={positionPriority}
+        offset={offset}
+        onClose={onClose}
+      >
+        <Styled.Container ref={ref}>
+          <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
+          <Styled.IconWrapper onClick={handleClickCloseIcon}>
+            <Icon name="close" color={theme.palette.black} />
+          </Styled.IconWrapper>
+        </Styled.Container>
+      </Popover>
+    );
+  },
+);
 
 export default FloatingTip;
