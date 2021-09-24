@@ -1,14 +1,15 @@
 import * as React from "react";
 
-// MEMO: React.LegacyRef<T> & "current" property is mutable;
+// MEMO: This type is React.LegacyRef<T> & "current" property is mutable
 type ReactRef<T> =
   | React.RefCallback<T>
   | React.MutableRefObject<T>
+  | React.ForwardedRef<T>
   | string
   | null
   | undefined;
 
-export function useMergeRefs<T>(...refs: ReactRef<T>[]): ReactRef<T> {
+export function useMergeRefs<T>(...refs: ReactRef<T>[]): React.Ref<T> {
   return React.useMemo(() => {
     if (refs.every((ref) => ref === null)) {
       return null;
