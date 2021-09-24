@@ -21,91 +21,94 @@ export type FileUploaderProps = {
   ) => void;
 };
 
-const FileUploader: React.FunctionComponent<FileUploaderProps> = (inProps) => {
-  const props = useLocaleProps({ props: inProps, name: "FileUploader" });
-  const {
-    accept,
-    title = "Click or Drag & Drop file.",
-    width,
-    description,
-    onSelectFiles,
-  } = props;
-  const fileRef = React.useRef<HTMLInputElement>(null);
-  const [filesDraggedOver, setFilesDraggedOver] = React.useState(false);
+const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
+  (inProps, ref) => {
+    const props = useLocaleProps({ props: inProps, name: "FileUploader" });
+    const {
+      accept,
+      title = "Click or Drag & Drop file.",
+      width,
+      description,
+      onSelectFiles,
+    } = props;
+    const fileRef = React.useRef<HTMLInputElement>(null);
+    const [filesDraggedOver, setFilesDraggedOver] = React.useState(false);
 
-  const handleDrop = React.useCallback(
-    (e: React.DragEvent<HTMLElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
+    const handleDrop = React.useCallback(
+      (e: React.DragEvent<HTMLElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setFilesDraggedOver(false);
+        onSelectFiles(e, e.dataTransfer.files);
+      },
+      [setFilesDraggedOver, onSelectFiles],
+    );
+
+    const handleDragOver = React.useCallback(
+      (e: React.DragEvent<HTMLElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setFilesDraggedOver(true);
+      },
+      [setFilesDraggedOver],
+    );
+
+    const handleDragLeave = React.useCallback(() => {
       setFilesDraggedOver(false);
-      onSelectFiles(e, e.dataTransfer.files);
-    },
-    [setFilesDraggedOver, onSelectFiles],
-  );
+    }, [setFilesDraggedOver]);
 
-  const handleDragOver = React.useCallback(
-    (e: React.DragEvent<HTMLElement>) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setFilesDraggedOver(true);
-    },
-    [setFilesDraggedOver],
-  );
+    const handleChange = React.useCallback(
+      (e: React.ChangeEvent<HTMLInputElement>) => {
+        onSelectFiles(e, e.target.files);
+      },
+      [onSelectFiles],
+    );
 
-  const handleDragLeave = React.useCallback(() => {
-    setFilesDraggedOver(false);
-  }, [setFilesDraggedOver]);
+    const handleClickZone = () => {
+      fileRef.current?.click();
+    };
 
-  const handleChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      onSelectFiles(e, e.target.files);
-    },
-    [onSelectFiles],
-  );
-
-  const handleClickZone = () => {
-    fileRef.current?.click();
-  };
-
-  return (
-    <Styled.Container
-      width={width}
-      filesDraggedOver={filesDraggedOver}
-      onDrop={handleDrop}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onClick={handleClickZone}
-    >
-      <input
-        ref={fileRef}
-        multiple
-        type="file"
-        accept={accept}
-        onChange={handleChange}
-      />
-      <Styled.TextContainer>
-        <Flex display="flex">
-          <Icon name="folder_open" size="md" color="active" />
-          <Typography weight="bold" color="primary">
-            {title}
-          </Typography>
-        </Flex>
-        {description && (
-          <>
-            <Spacer pt={2.5} />
-            <Typography
-              weight="bold"
-              align="center"
-              size="sm"
-              color="secondary"
-            >
-              {description}
+    return (
+      <Styled.Container
+        ref={ref}
+        width={width}
+        filesDraggedOver={filesDraggedOver}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onClick={handleClickZone}
+      >
+        <input
+          ref={fileRef}
+          multiple
+          type="file"
+          accept={accept}
+          onChange={handleChange}
+        />
+        <Styled.TextContainer>
+          <Flex display="flex">
+            <Icon name="folder_open" size="md" color="active" />
+            <Typography weight="bold" color="primary">
+              {title}
             </Typography>
-          </>
-        )}
-      </Styled.TextContainer>
-    </Styled.Container>
-  );
-};
+          </Flex>
+          {description && (
+            <>
+              <Spacer pt={2.5} />
+              <Typography
+                weight="bold"
+                align="center"
+                size="sm"
+                color="secondary"
+              >
+                {description}
+              </Typography>
+            </>
+          )}
+        </Styled.TextContainer>
+      </Styled.Container>
+    );
+  },
+);
 
 export default FileUploader;
