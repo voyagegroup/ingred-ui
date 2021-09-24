@@ -6,8 +6,12 @@ exports[`Select component testing Disable multiple selected 1`] = `
     class="sc-bdfBQB iVZBty"
   >
     <div
-      class=" css-14jk2my-container"
+      class=" css-3iigni-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-7-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -29,7 +33,9 @@ exports[`Select component testing Disable multiple selected 1`] = `
               hoge
             </div>
             <div
+              aria-label="Remove hoge"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -100,7 +106,9 @@ exports[`Select component testing Disable multiple selected 1`] = `
               huga
             </div>
             <div
+              aria-label="Remove huga"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -163,29 +171,28 @@ exports[`Select component testing Disable multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-5o626r-Input"
+            class=" css-xlxoad-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-7-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-7-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                disabled=""
-                id="react-select-7-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              disabled=""
+              id="react-select-7-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -223,6 +230,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-7-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
@@ -245,8 +253,12 @@ exports[`Select component testing Disable not selected 1`] = `
     class="sc-bdfBQB iVZBty"
   >
     <div
-      class=" css-14jk2my-container"
+      class=" css-3iigni-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-5-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -257,37 +269,38 @@ exports[`Select component testing Disable not selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-dcdqlp-placeholder"
+            class=" css-1rdz363-placeholder"
+            id="react-select-5-placeholder"
           >
             Select...
           </div>
           <div
-            class="css-5o626r-Input"
+            class=" css-xlxoad-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-5-listbox"
+              aria-describedby="react-select-5-placeholder"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-5-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                disabled=""
-                id="react-select-5-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              disabled=""
+              id="react-select-5-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -325,11 +338,13 @@ exports[`Select component testing Disable not selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-5-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-5-option-0"
             tabindex="-1"
@@ -337,6 +352,7 @@ exports[`Select component testing Disable not selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-5-option-1"
             tabindex="-1"
@@ -356,8 +372,12 @@ exports[`Select component testing Disable one selected 1`] = `
     class="sc-bdfBQB iVZBty"
   >
     <div
-      class=" css-14jk2my-container"
+      class=" css-3iigni-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-6-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -368,37 +388,36 @@ exports[`Select component testing Disable one selected 1`] = `
         class=" css-7n5mtx-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-10spk3r-singleValue"
+            class=" css-1aay4fx-singleValue"
           >
             hoge
           </div>
           <div
-            class="css-5o626r-Input"
+            class=" css-xlxoad-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-6-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-6-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                disabled=""
-                id="react-select-6-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              disabled=""
+              id="react-select-6-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -436,11 +455,13 @@ exports[`Select component testing Disable one selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-6-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-1sv3iew-option"
             id="react-select-6-option-0"
             tabindex="-1"
@@ -448,6 +469,7 @@ exports[`Select component testing Disable one selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-6-option-1"
             tabindex="-1"
@@ -467,8 +489,12 @@ exports[`Select component testing Error multiple selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-10-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -490,7 +516,9 @@ exports[`Select component testing Error multiple selected 1`] = `
               hoge
             </div>
             <div
+              aria-label="Remove hoge"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -561,7 +589,9 @@ exports[`Select component testing Error multiple selected 1`] = `
               huga
             </div>
             <div
+              aria-label="Remove huga"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -624,28 +654,27 @@ exports[`Select component testing Error multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-10-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-10-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-10-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-10-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -750,6 +779,7 @@ exports[`Select component testing Error multiple selected 1`] = `
       </div>
       <div
         class=" css-1j004f1-menu"
+        id="react-select-10-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
@@ -772,8 +802,12 @@ exports[`Select component testing Error not selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-8-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -784,36 +818,37 @@ exports[`Select component testing Error not selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-2rfliy-placeholder"
+            class=" css-1z0em1j-placeholder"
+            id="react-select-8-placeholder"
           >
             Select...
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-8-listbox"
+              aria-describedby="react-select-8-placeholder"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-8-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-8-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-8-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -851,11 +886,13 @@ exports[`Select component testing Error not selected 1`] = `
       </div>
       <div
         class=" css-1j004f1-menu"
+        id="react-select-8-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-8-option-0"
             tabindex="-1"
@@ -863,6 +900,7 @@ exports[`Select component testing Error not selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-8-option-1"
             tabindex="-1"
@@ -882,8 +920,12 @@ exports[`Select component testing Error one selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-9-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -894,36 +936,35 @@ exports[`Select component testing Error one selected 1`] = `
         class=" css-15ys67v-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-etdf8s-singleValue"
+            class=" css-1oadw9r-singleValue"
           >
             hoge
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-9-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-9-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-9-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-9-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -1028,11 +1069,13 @@ exports[`Select component testing Error one selected 1`] = `
       </div>
       <div
         class=" css-1j004f1-menu"
+        id="react-select-9-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-1sv3iew-option"
             id="react-select-9-option-0"
             tabindex="-1"
@@ -1040,6 +1083,7 @@ exports[`Select component testing Error one selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-9-option-1"
             tabindex="-1"
@@ -1059,8 +1103,12 @@ exports[`Select component testing Normal multiple selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-4-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -1082,7 +1130,9 @@ exports[`Select component testing Normal multiple selected 1`] = `
               hoge
             </div>
             <div
+              aria-label="Remove hoge"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -1153,7 +1203,9 @@ exports[`Select component testing Normal multiple selected 1`] = `
               huga
             </div>
             <div
+              aria-label="Remove huga"
               class="css-p9ckie"
+              role="button"
             >
               <div
                 class="sc-hKgJUU jUoEVG"
@@ -1216,28 +1268,27 @@ exports[`Select component testing Normal multiple selected 1`] = `
             </div>
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-4-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-4-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-4-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-4-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -1342,6 +1393,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-4-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
@@ -1364,8 +1416,12 @@ exports[`Select component testing Normal not selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-2-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -1376,36 +1432,37 @@ exports[`Select component testing Normal not selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-b1k5wd-placeholder"
+            class=" css-1evy0a-placeholder"
+            id="react-select-2-placeholder"
           >
             Select...
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-2-listbox"
+              aria-describedby="react-select-2-placeholder"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-2-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-2-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-2-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -1443,11 +1500,13 @@ exports[`Select component testing Normal not selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-2-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-2-option-0"
             tabindex="-1"
@@ -1455,6 +1514,7 @@ exports[`Select component testing Normal not selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-2-option-1"
             tabindex="-1"
@@ -1474,8 +1534,12 @@ exports[`Select component testing Normal one selected 1`] = `
     class="sc-bdfBQB USMjx"
   >
     <div
-      class=" css-2b097c-container"
+      class=" css-b62m3t-container"
     >
+      <span
+        class="css-1f43avz-a11yText-A11yText"
+        id="react-select-3-live-region"
+      />
       <span
         aria-atomic="false"
         aria-live="polite"
@@ -1486,36 +1550,35 @@ exports[`Select component testing Normal one selected 1`] = `
         class=" css-1ukuozi-control"
       >
         <div
-          class=" css-13pbuao-ValueContainer"
+          class=" css-tu06co-ValueContainer"
         >
           <div
-            class=" css-105lwrm-singleValue"
+            class=" css-19ootxb-singleValue"
           >
             hoge
           </div>
           <div
-            class="css-1knq81y-Input"
+            class=" css-3a9m0y-Input"
+            data-value=""
           >
-            <div
+            <input
+              aria-autocomplete="list"
+              aria-controls="react-select-3-listbox"
+              aria-expanded="true"
+              aria-haspopup="true"
+              aria-owns="react-select-3-listbox"
+              autocapitalize="none"
+              autocomplete="off"
+              autocorrect="off"
               class=""
-              style="display: inline-block;"
-            >
-              <input
-                aria-autocomplete="list"
-                autocapitalize="none"
-                autocomplete="off"
-                autocorrect="off"
-                id="react-select-3-input"
-                spellcheck="false"
-                style="box-sizing: content-box; width: 2px; border: 0px; opacity: 1; outline: 0; padding: 0px;"
-                tabindex="0"
-                type="text"
-                value=""
-              />
-              <div
-                style="position: absolute; top: 0px; left: 0px; visibility: hidden; height: 0px; overflow: scroll; white-space: pre; font-family: -webkit-small-control; letter-spacing: normal; text-transform: none;"
-              />
-            </div>
+              id="react-select-3-input"
+              role="combobox"
+              spellcheck="false"
+              style="opacity: 1; width: 100%; grid-area: 1 / 2; min-width: 2px; border: 0px; margin: 0px; outline: 0; padding: 0px;"
+              tabindex="0"
+              type="text"
+              value=""
+            />
           </div>
         </div>
         <div
@@ -1620,11 +1683,13 @@ exports[`Select component testing Normal one selected 1`] = `
       </div>
       <div
         class=" css-4b0kah-menu"
+        id="react-select-3-listbox"
       >
         <div
           class="sc-gsTEea foAwwt css-47qful-MenuList"
         >
           <div
+            aria-disabled="false"
             class=" css-1sv3iew-option"
             id="react-select-3-option-0"
             tabindex="-1"
@@ -1632,6 +1697,7 @@ exports[`Select component testing Normal one selected 1`] = `
             hoge
           </div>
           <div
+            aria-disabled="false"
             class=" css-64ovdt-option"
             id="react-select-3-option-1"
             tabindex="-1"

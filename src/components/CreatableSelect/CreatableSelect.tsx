@@ -1,7 +1,6 @@
 import * as React from "react";
-import ReactCreatableSelect, {
-  Props as ReactCreatableSelectProps,
-} from "react-select/creatable";
+import ReactCreatableSelect, { CreatableProps } from "react-select/creatable";
+import { GroupBase } from "react-select/src/types";
 import * as Styled from "../Select/styled";
 import { useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
@@ -18,7 +17,7 @@ export type CreatableSelectProps<T> = {
   error?: boolean;
   emptyMessage?: string;
   addMessage?: string;
-} & ReactCreatableSelectProps<OptionType<T>, boolean>;
+} & CreatableProps<OptionType<T>, boolean, GroupBase<OptionType<T>>>;
 
 const CreatableSelect = <T,>(
   inProps: CreatableSelectProps<T>,
@@ -30,7 +29,7 @@ const CreatableSelect = <T,>(
     minWidth,
     isDisabled,
     error = false,
-    closeMenuOnCreatableSelect = true,
+    closeMenuOnSelect = true,
     placeholder,
     emptyMessage = "Not found",
     addMessage = "Create",
@@ -54,10 +53,10 @@ const CreatableSelect = <T,>(
 
   return (
     <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
-      <ReactCreatableSelect<OptionType<T>, boolean>
+      <ReactCreatableSelect<OptionType<T>, boolean, GroupBase<OptionType<T>>>
         isClearable
         placeholder={placeholder}
-        closeMenuOnCreatableSelect={closeMenuOnCreatableSelect}
+        closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={() => emptyMessage}
         formatCreateLabel={(text) => `${addMessage} "${text}"`}
         isDisabled={isDisabled}

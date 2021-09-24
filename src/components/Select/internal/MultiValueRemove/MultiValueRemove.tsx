@@ -1,12 +1,16 @@
 import * as React from "react";
-import { components, GroupTypeBase } from "react-select";
+import { components, GroupBase } from "react-select";
 import Icon from "../../../Icon";
 import { useTheme } from "../../../../themes/useTheme";
 import { OptionType } from "../../";
 import { MultiValueRemoveProps } from "react-select/src/components/MultiValue";
 
 const MultiValueRemove = <T,>(
-  props: MultiValueRemoveProps<OptionType<T>, GroupTypeBase<OptionType<T>>>,
+  props: MultiValueRemoveProps<
+    OptionType<T>,
+    boolean,
+    GroupBase<OptionType<T>>
+  >,
 ) => {
   const theme = useTheme();
   return (
