@@ -21,6 +21,7 @@ export type CreatableSelectProps<T> = {
 
 const CreatableSelect = <T,>(
   inProps: CreatableSelectProps<T>,
+  ref: React.Ref<HTMLDivElement>,
 ): React.ReactElement<CreatableSelectProps<T>> => {
   const props = useLocaleProps({ props: inProps, name: "CreatableSelect" });
   const {
@@ -52,7 +53,7 @@ const CreatableSelect = <T,>(
   };
 
   return (
-    <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
+    <Styled.Container ref={ref} minWidth={minWidth} isDisabled={isDisabled}>
       <ReactCreatableSelect<OptionType<T>, boolean, GroupBase<OptionType<T>>>
         isClearable
         placeholder={placeholder}
@@ -85,4 +86,7 @@ const CreatableSelect = <T,>(
   );
 };
 
-export default CreatableSelect;
+// FIXME: Imprement without type assertion
+export default React.forwardRef(CreatableSelect) as <T>(
+  props: CreatableSelectProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+) => ReturnType<typeof CreatableSelect>;
