@@ -6,13 +6,15 @@ import * as Styled from "./styled";
 
 export type Props = {};
 
-const SplitAnnotation: React.FunctionComponent<Props> = ({ children }) => (
-  <Flex display="flex">
-    <Spacer pr={1} />
-    <Divider orientation="vertical" />
-    <Spacer pr={1} />
-    <Styled.Container>{children}</Styled.Container>
-  </Flex>
+const SplitAnnotation = React.forwardRef<HTMLDivElement, Props>(
+  ({ children }, ref) => (
+    <Flex ref={ref} display="flex">
+      <Spacer pr={1} />
+      <Divider orientation="vertical" />
+      <Spacer pr={1} />
+      <Styled.Container>{children}</Styled.Container>
+    </Flex>
+  ),
 );
 
 export default SplitAnnotation;
