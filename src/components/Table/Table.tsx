@@ -15,6 +15,7 @@ const Container = styled.table`
 
 export type TableProps = React.ComponentPropsWithoutRef<"table">;
 
+// TODO: Use React.forwardsRef without type error
 const Table = ({ children }: TableProps) => <Container>{children}</Container>;
 
 Table.Header = Header;
