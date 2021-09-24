@@ -59,7 +59,7 @@ const CreatableSelect = <T,>(
       <ReactCreatableSelect<OptionType<T>, boolean, GroupBase<OptionType<T>>>
         isClearable
         placeholder={placeholder}
-        closeMenuOnSelect={closeMenuOnSelect || closeMenuOnCreatableSelect}
+        closeMenuOnSelect={closeMenuOnSelect && closeMenuOnCreatableSelect}
         noOptionsMessage={() => emptyMessage}
         formatCreateLabel={(text) => `${addMessage} "${text}"`}
         isDisabled={isDisabled}
