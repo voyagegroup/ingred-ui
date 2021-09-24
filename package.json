@@ -30,6 +30,7 @@
     "moment": "^2.29.1",
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
+    "react-select": "^5.0.0",
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1"
   },
@@ -56,7 +57,6 @@
     "@types/react": "17.0.24",
     "@types/react-dates": "21.8.3",
     "@types/react-dom": "17.0.9",
-    "@types/react-select": "4.0.18",
     "@types/react-toast-notifications": "2.4.0",
     "@types/react-transition-group": "4.4.3",
     "@types/styled-components": "5.1.14",
@@ -75,7 +75,6 @@
     "prettier": "2.4.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-select": "5.0.0",
     "rollup": "2.56.3",
     "rollup-plugin-imagemin": "0.4.1",
     "rollup-plugin-peer-deps-external": "2.2.4",

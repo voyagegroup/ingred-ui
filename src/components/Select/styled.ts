@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { components, MenuListComponentProps } from "react-select";
+import { components, MenuListProps } from "react-select";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import { OptionType } from "./Select";
 
@@ -12,7 +12,7 @@ export const Container = styled.div<{
 `;
 
 export const ReactSelectMenuList = styled(components.MenuList)<
-  MenuListComponentProps<OptionType<any>, boolean>
+  MenuListProps<OptionType<any>, boolean>
 >`
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight: `${maxHeight}px` })}
 ` as any; // TODO: remove any
