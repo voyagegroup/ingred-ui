@@ -6,7 +6,7 @@ import { useTheme } from "../../themes";
 
 type GroupButtonSize = Exclude<ButtonSize, "large">;
 
-export type ButtonGroupProps = {
+export type ButtonGroupProps = React.ComponentPropsWithoutRef<"div"> & {
   size?: GroupButtonSize;
   disabled?: boolean;
 };
@@ -21,7 +21,7 @@ const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
 };
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ size = "medium", disabled = false, children }, ref) => {
+  ({ size = "medium", disabled = false, children, ...rest }, ref) => {
     const theme = useTheme();
     const horizontalPadding =
       size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
@@ -47,6 +47,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
         ref={ref}
         minWidth={buttonSize[size].minWidth}
         horizontalPadding={horizontalPadding}
+        {...rest}
       >
         {childrenWithProps}
       </Styled.ButtonGroupContainer>

@@ -1,7 +1,11 @@
 import * as React from "react";
 
-export type Props = {};
+export type Props = React.ComponentPropsWithoutRef<"tbody">;
 
 export const Body = React.forwardRef<HTMLTableSectionElement, Props>(
-  ({ children }, ref) => <tbody ref={ref}>{children}</tbody>,
+  ({ children, ...rest }, ref) => (
+    <tbody ref={ref} {...rest}>
+      {children}
+    </tbody>
+  ),
 );

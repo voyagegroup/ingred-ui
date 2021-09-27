@@ -16,94 +16,96 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
       <div
         class="sc-hKgJUU imbXLG"
       >
-        <div
-          class="sc-fodVek kcrJqf"
-        >
+        <div>
           <div
-            class="sc-bqyKOL hmDWhx"
+            class="sc-fodVek kcrJqf"
           >
             <div
-              class="sc-iBPTik eJjAIN"
-              size="24"
+              class="sc-bqyKOL hmDWhx"
             >
-              <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="sc-iBPTik eJjAIN"
+                size="24"
               >
-                <path
-                  d="M0 0h24v24H0z"
-                  fill="none"
-                />
-                <path
-                  d="M9.954,2.21a9.99,9.99,0,0,1,4.091,0,4,4,0,0,0,5.412,3.123A9.99,9.99,0,0,1,21.5,8.876a4,4,0,0,0,0,6.248,10.043,10.043,0,0,1-2.046,3.543,4,4,0,0,0-5.41,3.121,9.99,9.99,0,0,1-4.091,0,4,4,0,0,0-5.412-3.125A9.99,9.99,0,0,1,2.5,15.121a4,4,0,0,0,0-6.246A10.043,10.043,0,0,1,4.544,5.332a4,4,0,0,0,5.41-3.121ZM12,15a3,3,0,1,0-3-3A3,3,0,0,0,12,15Z"
-                  fill="#0B82F4"
-                />
-              </svg>
-            </div>
-            <span
-              class="sc-kstqJO gIgEep"
-            >
-              0
-            </span>
-          </div>
-          <div
-            class="sc-fFucqa bdJwxd"
-          >
-            <span
-              class="sc-kEjbQP eELKSs sc-bkzYnD bUgvVU"
-              color="#0B82F4"
-              font-size="13px"
-            >
-              Settings
-            </span>
-          </div>
-          <div
-            class="sc-idOiZg cElkDL"
-          >
-            <div
-              class="sc-iBPTik dRFRd"
-              size="18"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0 0h24v24H0z"
+                    fill="none"
+                  />
+                  <path
+                    d="M9.954,2.21a9.99,9.99,0,0,1,4.091,0,4,4,0,0,0,5.412,3.123A9.99,9.99,0,0,1,21.5,8.876a4,4,0,0,0,0,6.248,10.043,10.043,0,0,1-2.046,3.543,4,4,0,0,0-5.41,3.121,9.99,9.99,0,0,1-4.091,0,4,4,0,0,0-5.412-3.125A9.99,9.99,0,0,1,2.5,15.121a4,4,0,0,0,0-6.246A10.043,10.043,0,0,1,4.544,5.332a4,4,0,0,0,5.41-3.121ZM12,15a3,3,0,1,0-3-3A3,3,0,0,0,12,15Z"
+                    fill="#0B82F4"
+                  />
+                </svg>
+              </div>
+              <span
+                class="sc-kstqJO gIgEep"
               >
-                <path
-                  d="M0,0H24V24H0Z"
-                  fill="none"
-                />
-                <path
-                  d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
-                  fill="#0B82F4"
-                  transform="translate(-1.414 -1.114)"
-                />
-              </svg>
+                0
+              </span>
             </div>
-          </div>
-        </div>
-        <div
-          class="sc-dIUeWJ ckwzrl"
-          height="auto"
-        >
-          <div
-            class="sc-hHfuMS ktafEd"
-          >
             <div
-              class="sc-dmlqKv gFpnuU"
+              class="sc-fFucqa bdJwxd"
             >
               <span
-                class="sc-kEjbQP eELKSs sc-kfzBvY edpBle"
+                class="sc-kEjbQP eELKSs sc-bkzYnD bUgvVU"
                 color="#0B82F4"
                 font-size="13px"
               >
-                Account Setting
+                Settings
               </span>
             </div>
-            <span
-              class="sc-hBEYId iIUnyr"
+            <div
+              class="sc-idOiZg cElkDL"
             >
-              0
-            </span>
+              <div
+                class="sc-iBPTik dRFRd"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H24V24H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    fill="#0B82F4"
+                    transform="translate(-1.414 -1.114)"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-dIUeWJ ckwzrl"
+            height="auto"
+          >
+            <div
+              class="sc-hHfuMS ktafEd"
+            >
+              <div
+                class="sc-dmlqKv gFpnuU"
+              >
+                <span
+                  class="sc-kEjbQP eELKSs sc-kfzBvY edpBle"
+                  color="#0B82F4"
+                  font-size="13px"
+                >
+                  Account Setting
+                </span>
+              </div>
+              <span
+                class="sc-hBEYId iIUnyr"
+              >
+                0
+              </span>
+            </div>
           </div>
         </div>
         <div
