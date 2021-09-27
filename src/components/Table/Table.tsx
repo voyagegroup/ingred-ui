@@ -6,6 +6,15 @@ import { Header } from "./Header";
 import { Row } from "./Row";
 import { HeaderCell } from "./HeaderCell";
 
+type ExportedComponentType = {
+  (props: React.ComponentPropsWithRef<"table">): JSX.Element;
+  Header: typeof Header;
+  Body: typeof Body;
+  Row: typeof Row;
+  Cell: typeof Cell;
+  HeaderCell: typeof HeaderCell;
+};
+
 const Container = styled.table`
   width: 100%;
   border-collapse: collapse;
@@ -15,13 +24,20 @@ const Container = styled.table`
 
 export type TableProps = React.ComponentPropsWithoutRef<"table">;
 
-// TODO: Use React.forwardsRef without type error
-const Table = ({ children }: TableProps) => <Container>{children}</Container>;
+const Table = React.forwardRef<HTMLTableElement, TableProps>(
+  ({ children, ...rest }, ref) => (
+    <Container ref={ref} {...rest}>
+      {children}
+    </Container>
+  ),
+);
 
-Table.Header = Header;
-Table.Body = Body;
-Table.Row = Row;
-Table.Cell = Cell;
-Table.HeaderCell = HeaderCell;
+const ExportedComponent = Table as any;
 
-export default Table;
+ExportedComponent.Header = Header;
+ExportedComponent.Body = Body;
+ExportedComponent.Row = Row;
+ExportedComponent.Cell = Cell;
+ExportedComponent.HeaderCell = HeaderCell;
+
+export default ExportedComponent as ExportedComponentType;
