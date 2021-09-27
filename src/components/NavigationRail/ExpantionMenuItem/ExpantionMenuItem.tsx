@@ -62,7 +62,7 @@ const ExpantionMenuItem = React.forwardRef<
         disabled={!showTooltip}
         onMouseEnter={handleClose}
       >
-        <Styled.Container {...rest}>
+        <Styled.Container ref={ref} {...rest}>
           <Styled.TextContainer ref={textContainerElement}>
             <Styled.TextWrapper
               ref={textElement}

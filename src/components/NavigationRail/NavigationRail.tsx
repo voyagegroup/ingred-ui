@@ -9,36 +9,54 @@ import { Menu } from "./Menu";
 import { ExpantionMenu } from "./ExpantionMenu";
 import { ExpantionMenuItem } from "./ExpantionMenuItem";
 
+type ExportedComponentType = {
+  (props: Props & React.RefAttributes<HTMLDivElement>): JSX.Element;
+  Container: typeof NavigationRailContainer;
+  Header: typeof Header;
+  Content: typeof Content;
+  Footer: typeof Footer;
+  Menu: typeof Menu;
+  ExpantionMenu: typeof ExpantionMenu;
+  ExpantionMenuItem: typeof ExpantionMenuItem;
+  Fixture: typeof Fixture;
+  MainContent: typeof MainContent;
+};
+
 type Props = {
   children?: React.ReactNode;
 };
 
-// TODO: Use React.forwardsRef without type error
-const NavigationRail = ({ children }: Props) => {
-  const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
-    NavigationRailContext,
-  );
+const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
+  ({ children }, ref) => {
+    const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
+      NavigationRailContext,
+    );
 
-  return (
-    <Styled.Container
-      isOpen={isOpen}
-      isFixed={isFixed}
-      onMouseEnter={handleOpen}
-      onMouseLeave={handleClose}
-    >
-      {children}
-    </Styled.Container>
-  );
-};
+    return (
+      <Styled.Container
+        ref={ref}
+        isOpen={isOpen}
+        isFixed={isFixed}
+        onMouseEnter={handleOpen}
+        onMouseLeave={handleClose}
+      >
+        {children}
+      </Styled.Container>
+    );
+  },
+);
 
-NavigationRail.Container = NavigationRailContainer;
-NavigationRail.Header = Header;
-NavigationRail.Content = Content;
-NavigationRail.Footer = Footer;
-NavigationRail.Menu = Menu;
-NavigationRail.ExpantionMenu = ExpantionMenu;
-NavigationRail.ExpantionMenuItem = ExpantionMenuItem;
-NavigationRail.Fixture = Fixture;
-NavigationRail.MainContent = MainContent;
+const ExportedComponent = NavigationRail as any;
+ExportedComponent.Container = NavigationRailContainer;
 
-export default NavigationRail;
+ExportedComponent.Container = NavigationRailContainer;
+ExportedComponent.Header = Header;
+ExportedComponent.Content = Content;
+ExportedComponent.Footer = Footer;
+ExportedComponent.Menu = Menu;
+ExportedComponent.ExpantionMenu = ExpantionMenu;
+ExportedComponent.ExpantionMenuItem = ExpantionMenuItem;
+ExportedComponent.Fixture = Fixture;
+ExportedComponent.MainContent = MainContent;
+
+export default ExportedComponent as ExportedComponentType;
