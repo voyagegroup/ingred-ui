@@ -9,8 +9,10 @@ const getHasTransition = (props: React.PropsWithChildren<any>): boolean => {
   return props.hasOwnProperty("in");
 };
 
-// TODO: enable close with Escape key
-export type ModalCloseReason = "backdropClick";
+/**
+ * When keydown backdrop or esc, close modal.
+ */
+export type ModalCloseReason = "backdropClick" | "escapeKeyDown";
 
 export type ModalProps = {
   /**
@@ -30,9 +32,15 @@ export type ModalProps = {
    */
   enableTransition?: boolean;
   onClose?: (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | KeyboardEvent,
     reason: ModalCloseReason,
   ) => void;
+  /**
+   * If `true`, the modal will close when the `Esc` key is pressed
+   * @default true
+   */
+  closeOnEsc?: boolean;
+
   children: React.ReactElement;
 };
 
@@ -42,9 +50,28 @@ const Modal: React.FunctionComponent<ModalProps> = ({
   backdropProps,
   enableTransition = true,
   onClose,
+  closeOnEsc = true,
   children,
 }) => {
   const [exited, setExited] = React.useState<boolean>(true);
+
+  React.useEffect(() => {
+    addEventListener("keydown", handleKeyDown);
+    return () => removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key !== "Escape" || !isOpen) {
+      return;
+    }
+
+    if (closeOnEsc) {
+      event.stopPropagation();
+      if (onClose) {
+        onClose(event, "escapeKeyDown");
+      }
+    }
+  };
 
   const handleBackDropClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
