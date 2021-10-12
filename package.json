@@ -54,7 +54,7 @@
     "@testing-library/react": "12.1.2",
     "@types/jest": "27.0.2",
     "@types/moment": "2.13.0",
-    "@types/react": "17.0.28",
+    "@types/react": "17.0.29",
     "@types/react-dates": "21.8.3",
     "@types/react-dom": "17.0.9",
     "@types/react-toast-notifications": "2.4.0",
