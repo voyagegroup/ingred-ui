@@ -223,29 +223,32 @@ export type DataTableProps<T> = {
   labelDisplayedRows?: LabelDisplayRows;
 };
 
-const DataTable = <T extends DataTableBaseData>({
-  data: sourceData,
-  columns,
-  enablePagination = false,
-  onSelectRowsChange,
-  onRadioChange,
-  clearSelectedRows,
-  tabs,
-  itemEmptyProps,
-  per,
-  defaultSortField,
-  defaultSortOrder = "desc",
-  defaultSelectedRows = [],
-  defaultSelectedRow,
-  enableRuledLine = false,
-  verticalSpacing = "medium",
-  fullWidth = false,
-  disableCheckWhenClickRow = false,
-  tableMaxHeight = "none",
-  horizontalScrollable = false,
-  labelRowsPerPage = "Rows per page:",
-  labelDisplayedRows = ({ from, to, total }) => `${from}-${to} of ${total}`,
-}: DataTableProps<T>) => {
+const DataTable = <T extends DataTableBaseData>(
+  {
+    data: sourceData,
+    columns,
+    enablePagination = false,
+    onSelectRowsChange,
+    onRadioChange,
+    clearSelectedRows,
+    tabs,
+    itemEmptyProps,
+    per,
+    defaultSortField,
+    defaultSortOrder = "desc",
+    defaultSelectedRows = [],
+    defaultSelectedRow,
+    enableRuledLine = false,
+    verticalSpacing = "medium",
+    fullWidth = false,
+    disableCheckWhenClickRow = false,
+    tableMaxHeight = "none",
+    horizontalScrollable = false,
+    labelRowsPerPage = "Rows per page:",
+    labelDisplayedRows = ({ from, to, total }) => `${from}-${to} of ${total}`,
+  }: DataTableProps<T>,
+  ref?: React.ForwardedRef<HTMLDivElement>,
+) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
   const [selectedRows, setSelectedRows] =
@@ -403,7 +406,7 @@ const DataTable = <T extends DataTableBaseData>({
   };
 
   return (
-    <Styled.Container>
+    <Styled.Container ref={ref}>
       <Styled.BorderContainer fullWidth={fullWidth}>
         {!!tabs && (
           <TableTabs
@@ -645,4 +648,7 @@ const DataTable = <T extends DataTableBaseData>({
   );
 };
 
-export default DataTable;
+// FIXME: Imprement without type assertion
+export default React.forwardRef(DataTable) as <T>(
+  props: DataTableProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+) => ReturnType<typeof DataTable>;

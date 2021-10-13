@@ -24,51 +24,48 @@ export type DateRangePickerProps = Partial<DateRangePickerShape> & {
   error?: boolean;
 };
 
-const DateRangePicker: React.FunctionComponent<DateRangePickerProps> = ({
-  startDate,
-  endDate,
-  error = false,
-  ...rest
-}) => {
-  const [focusedInput, setFocusedInput] =
-    React.useState<FocusedInputShape | null>(null);
+const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
+  ({ startDate, endDate, error = false, ...rest }, ref) => {
+    const [focusedInput, setFocusedInput] =
+      React.useState<FocusedInputShape | null>(null);
 
-  return (
-    <Styled.Container error={error}>
-      <OriginalDateRangePicker
-        startDatePlaceholderText="FROM"
-        endDatePlaceholderText="TO"
-        isOutsideRange={isOutsideRange}
-        customArrowIcon={<Styled.CustomArrowIcon />}
-        numberOfMonths={2}
-        enableOutsideDays={true}
-        daySize={41}
-        weekDayFormat="ddd"
-        hideKeyboardShortcutsPanel={true}
-        startDateId="startDate"
-        endDateId="endDate"
-        navPrev={
-          <Styled.NavPrev>
-            <Spacer p={0.5}>
-              <Icon name="arrow_left" size="md" />
-            </Spacer>
-          </Styled.NavPrev>
-        }
-        navNext={
-          <Styled.NavNext>
-            <Spacer p={0.5}>
-              <Icon name="arrow_right" size="md" />
-            </Spacer>
-          </Styled.NavNext>
-        }
-        {...rest}
-        startDate={startDate}
-        endDate={endDate}
-        focusedInput={focusedInput}
-        onFocusChange={setFocusedInput}
-      />
-    </Styled.Container>
-  );
-};
+    return (
+      <Styled.Container ref={ref} error={error}>
+        <OriginalDateRangePicker
+          startDatePlaceholderText="FROM"
+          endDatePlaceholderText="TO"
+          isOutsideRange={isOutsideRange}
+          customArrowIcon={<Styled.CustomArrowIcon />}
+          numberOfMonths={2}
+          enableOutsideDays={true}
+          daySize={41}
+          weekDayFormat="ddd"
+          hideKeyboardShortcutsPanel={true}
+          startDateId="startDate"
+          endDateId="endDate"
+          navPrev={
+            <Styled.NavPrev>
+              <Spacer p={0.5}>
+                <Icon name="arrow_left" size="md" />
+              </Spacer>
+            </Styled.NavPrev>
+          }
+          navNext={
+            <Styled.NavNext>
+              <Spacer p={0.5}>
+                <Icon name="arrow_right" size="md" />
+              </Spacer>
+            </Styled.NavNext>
+          }
+          {...rest}
+          startDate={startDate}
+          endDate={endDate}
+          focusedInput={focusedInput}
+          onFocusChange={setFocusedInput}
+        />
+      </Styled.Container>
+    );
+  },
+);
 
 export default DateRangePicker;

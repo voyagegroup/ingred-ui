@@ -39,42 +39,48 @@ export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
   menuListProps?: Partial<MenuListProps>;
 };
 
-const Menu: React.FunctionComponent<MenuProps> = ({
-  isOpen = true,
-  baseElement = null,
-  contents,
-  positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
-  onClose,
-  maxHeight = "none",
-  menuListProps,
-  ...rest
-}) => {
-  const handleCloseMenuList = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
+  (
+    {
+      isOpen = true,
+      baseElement = null,
+      contents,
+      positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+      onClose,
+      maxHeight = "none",
+      menuListProps,
+      ...rest
+    },
+    ref,
   ) => {
-    if (onClose) onClose(event, "clickMenuList");
-  };
+    const handleCloseMenuList = (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) => {
+      if (onClose) onClose(event, "clickMenuList");
+    };
 
-  return (
-    <Popover
-      isOpen={isOpen}
-      baseElement={baseElement}
-      positionPriority={positionPriority}
-      onClose={onClose}
-    >
-      <MenuList
-        contents={contents}
-        maxHeight={maxHeight}
-        {...rest}
-        {...menuListProps}
-        onClick={createChainedFunction(
-          handleCloseMenuList,
-          rest.onClick,
-          menuListProps?.onClick,
-        )}
-      />
-    </Popover>
-  );
-};
+    return (
+      <Popover
+        isOpen={isOpen}
+        baseElement={baseElement}
+        positionPriority={positionPriority}
+        onClose={onClose}
+      >
+        <MenuList
+          ref={ref}
+          contents={contents}
+          maxHeight={maxHeight}
+          {...rest}
+          {...menuListProps}
+          onClick={createChainedFunction(
+            handleCloseMenuList,
+            rest.onClick,
+            menuListProps?.onClick,
+          )}
+        />
+      </Popover>
+    );
+  },
+);
 
 export default Menu;

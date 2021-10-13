@@ -15,16 +15,15 @@ export type TableHeaderCellProps =
     children?: React.ReactNode;
   };
 
-export const HeaderCell: React.FunctionComponent<TableHeaderCellProps> = ({
-  width = "auto",
-  children,
-  ...rest
-}) => {
+export const HeaderCell = React.forwardRef<
+  HTMLTableCellElement,
+  TableHeaderCellProps
+>(({ width = "auto", children, ...rest }, ref) => {
   return (
-    <Component width={width} {...rest}>
+    <Component ref={ref} width={width} {...rest}>
       <Typography component="div" weight="bold" size="md" lineHeight="normal">
         {children}
       </Typography>
     </Component>
   );
-};
+});

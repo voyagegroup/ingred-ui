@@ -115,45 +115,45 @@ export type RadioButtonProps = Omit<
   inputRef?: React.Ref<HTMLInputElement>;
 };
 
-class RadioButton extends React.PureComponent<RadioButtonProps> {
-  public static defaultProps: Partial<RadioButtonProps> = {
-    size: RadioButtonSize.MEDIUM,
-  };
-
-  public render(): React.ReactNode {
-    const { children, size, disabled, onChange, inputRef, ...rest } =
-      this.props;
-    const radioButtonSize = size as RadioButtonSize;
-
+const RadioButton = React.forwardRef<
+  HTMLLabelElement | HTMLSpanElement,
+  RadioButtonProps
+>(
+  (
+    {
+      size = RadioButtonSize.MEDIUM,
+      onChange,
+      inputRef,
+      children,
+      disabled,
+      ...rest
+    },
+    ref,
+  ) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (onChange) {
+        onChange(e, e.target.checked);
+      }
+    };
     return (
       <Wrapper
+        ref={ref}
         as={children == null ? "span" : "label"}
         disabled={disabled}
-        size={radioButtonSize}
+        size={size}
       >
         <input
           {...rest}
           ref={inputRef}
           disabled={disabled}
           type="radio"
-          onChange={this.handleChange}
+          onChange={handleChange}
         />
-        <Indicator
-          size={radioButtonSize}
-          {...indicatorSizes[radioButtonSize]}
-        />
+        <Indicator size={size} {...indicatorSizes[size]} />
         {children != null ? <Label>{children}</Label> : null}
       </Wrapper>
     );
-  }
-
-  private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { onChange } = this.props;
-
-    if (onChange) {
-      onChange(e, e.target.checked);
-    }
-  };
-}
+  },
+);
 
 export default RadioButton;

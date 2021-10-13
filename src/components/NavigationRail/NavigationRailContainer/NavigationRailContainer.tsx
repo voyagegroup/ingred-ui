@@ -18,12 +18,10 @@ export type NavigationRailContainerProps = {
   children: React.ReactNode;
 };
 
-const NavigationRailContainer: React.FC<NavigationRailContainerProps> = ({
-  defaultFixed = false,
-  onChangeOpen,
-  onChangeFixed,
-  children,
-}) => {
+const NavigationRailContainer = React.forwardRef<
+  HTMLDivElement,
+  NavigationRailContainerProps
+>(({ defaultFixed = false, onChangeOpen, onChangeFixed, children }, ref) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
 
@@ -62,9 +60,9 @@ const NavigationRailContainer: React.FC<NavigationRailContainerProps> = ({
         handleUnFixed,
       }}
     >
-      <Styled.Container>{children}</Styled.Container>
+      <Styled.Container ref={ref}>{children}</Styled.Container>
     </NavigationRailContext.Provider>
   );
-};
+});
 
 export { NavigationRailContainer };

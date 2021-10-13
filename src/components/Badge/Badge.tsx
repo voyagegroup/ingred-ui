@@ -33,29 +33,35 @@ export type BadgeProps = React.ComponentPropsWithoutRef<"a" | "span"> & {
   component?: "span" | "a";
 };
 
-const Badge: React.FunctionComponent<BadgeProps> = ({
-  color,
-  type = "normal",
-  component = "span",
-  fontSize = "0.65em",
-  fontWeight = "bold",
-  children,
-  ...rest
-}) => {
-  const theme = useTheme();
-  return (
-    <Styled.Container
-      as={component}
-      type={type}
-      color={theme.palette.text.white}
-      backgroundColor={getColor(color, theme)}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      {...rest}
-    >
-      {children}
-    </Styled.Container>
-  );
-};
+const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
+  (
+    {
+      color,
+      type = "normal",
+      component = "span",
+      fontSize = "0.65em",
+      fontWeight = "bold",
+      children,
+      ...rest
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    return (
+      <Styled.Container
+        ref={ref}
+        as={component}
+        type={type}
+        color={theme.palette.text.white}
+        backgroundColor={getColor(color, theme)}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        {...rest}
+      >
+        {children}
+      </Styled.Container>
+    );
+  },
+);
 
 export default Badge;

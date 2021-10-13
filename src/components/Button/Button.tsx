@@ -139,50 +139,56 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   href?: string;
 };
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  component,
-  children,
-  color = "primary",
-  inline = false,
-  size = "medium",
-  href,
-  ...rest
-}) => {
-  const theme = useTheme();
-  const colorStyle = getContainerColorStyles(theme)[color];
-  const horizontalPadding =
-    size === "small" ? `10px` : `${theme.spacing * 2}px`;
-
-  const isLink = !!href;
-  let anchorProps: any = {};
-  if (isLink) {
-    anchorProps = {
-      as: component || "a",
+const Button = React.forwardRef<HTMLElement, ButtonProps>(
+  (
+    {
+      component,
+      children,
+      color = "primary",
+      inline = false,
+      size = "medium",
       href,
-    };
-  }
+      ...rest
+    },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const colorStyle = getContainerColorStyles(theme)[color];
+    const horizontalPadding =
+      size === "small" ? `10px` : `${theme.spacing * 2}px`;
 
-  return (
-    <Styled.ButtonContainer
-      {...rest}
-      as={component || "button"}
-      {...anchorProps}
-      inline={inline}
-      verticalPadding={verticalPadding[size].padding}
-      horizontalPadding={horizontalPadding}
-      paddingTopAtActive={paddingAtActive[size].paddingTop}
-      paddingBottomAtActive={paddingAtActive[size].paddingBottom}
-      normal={{ ...colorStyle.normal }}
-      hover={{ ...colorStyle.hover }}
-      active={{ ...colorStyle.active }}
-      fontWeight={color === "secondary" ? "normal" : "bold"}
-      fontSize={
-        size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
-      }
-    >
-      {children}
-    </Styled.ButtonContainer>
-  );
-};
+    const isLink = !!href;
+    let anchorProps: any = {};
+    if (isLink) {
+      anchorProps = {
+        as: component || "a",
+        href,
+      };
+    }
+
+    return (
+      <Styled.ButtonContainer
+        ref={ref}
+        {...rest}
+        as={component || "button"}
+        {...anchorProps}
+        inline={inline}
+        verticalPadding={verticalPadding[size].padding}
+        horizontalPadding={horizontalPadding}
+        paddingTopAtActive={paddingAtActive[size].paddingTop}
+        paddingBottomAtActive={paddingAtActive[size].paddingBottom}
+        normal={{ ...colorStyle.normal }}
+        hover={{ ...colorStyle.hover }}
+        active={{ ...colorStyle.active }}
+        fontWeight={color === "secondary" ? "normal" : "bold"}
+        fontSize={
+          size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
+        }
+      >
+        {children}
+      </Styled.ButtonContainer>
+    );
+  },
+);
 
 export default Button;

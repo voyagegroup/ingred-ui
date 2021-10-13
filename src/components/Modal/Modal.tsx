@@ -44,75 +44,79 @@ export type ModalProps = {
   children: React.ReactElement;
 };
 
-const Modal: React.FunctionComponent<ModalProps> = ({
-  isOpen = true,
-  hasBackground = true,
-  backdropProps,
-  enableTransition = true,
-  onClose,
-  closeOnEsc = true,
-  children,
-}) => {
-  const [exited, setExited] = React.useState<boolean>(true);
-
-  React.useEffect(() => {
-    addEventListener("keydown", handleKeyDown);
-    return () => removeEventListener("keydown", handleKeyDown);
-  }, [isOpen]);
-
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key !== "Escape" || !isOpen) {
-      return;
-    }
-
-    if (closeOnEsc) {
-      event.stopPropagation();
-      if (onClose) {
-        onClose(event, "escapeKeyDown");
-      }
-    }
-  };
-
-  const handleBackDropClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      isOpen = true,
+      hasBackground = true,
+      backdropProps,
+      enableTransition = true,
+      onClose,
+      closeOnEsc = true,
+      children,
+    },
+    ref,
   ) => {
-    if (onClose) onClose(event, "backdropClick");
-  };
+    const [exited, setExited] = React.useState<boolean>(true);
 
-  const handleEnter = () => {
-    setExited(false);
-  };
+    React.useEffect(() => {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key !== "Escape" || !isOpen) {
+          return;
+        }
 
-  const handleExited = () => {
-    setExited(true);
-  };
+        if (closeOnEsc) {
+          event.stopPropagation();
+          if (onClose) {
+            onClose(event, "escapeKeyDown");
+          }
+        }
+      };
+      addEventListener("keydown", handleKeyDown);
+      return () => removeEventListener("keydown", handleKeyDown);
+    }, [isOpen, closeOnEsc, onClose]);
 
-  const childProps: any = {};
-  if (enableTransition && getHasTransition(children.props)) {
-    childProps.onEnter = createChainedFunction(
-      handleEnter,
-      children.props.onEnter,
+    const handleBackDropClick = (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    ) => {
+      if (onClose) onClose(event, "backdropClick");
+    };
+
+    const handleEnter = () => {
+      setExited(false);
+    };
+
+    const handleExited = () => {
+      setExited(true);
+    };
+
+    const childProps: any = {};
+    if (enableTransition && getHasTransition(children.props)) {
+      childProps.onEnter = createChainedFunction(
+        handleEnter,
+        children.props.onEnter,
+      );
+      childProps.onExited = createChainedFunction(
+        handleExited,
+        children.props.onExited,
+      );
+    }
+
+    return (
+      <Portal>
+        <Styled.Container ref={ref} isHidden={!isOpen && exited}>
+          {hasBackground && (
+            <Backdrop
+              {...backdropProps}
+              isOpen={!enableTransition || isOpen}
+              onClick={handleBackDropClick}
+            />
+          )}
+          {React.cloneElement(children, childProps)}
+        </Styled.Container>
+      </Portal>
     );
-    childProps.onExited = createChainedFunction(
-      handleExited,
-      children.props.onExited,
-    );
-  }
-
-  return (
-    <Portal>
-      <Styled.Container isHidden={!isOpen && exited}>
-        {hasBackground && (
-          <Backdrop
-            {...backdropProps}
-            isOpen={!enableTransition || isOpen}
-            onClick={handleBackDropClick}
-          />
-        )}
-        {React.cloneElement(children, childProps)}
-      </Styled.Container>
-    </Portal>
-  );
-};
+  },
+);
 
 export default Modal;

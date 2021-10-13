@@ -76,138 +76,140 @@ export type ConfirmModalProps = {
   children?: React.ReactNode;
 };
 
-const ConfirmModal: React.FunctionComponent<ConfirmModalProps> = (inProps) => {
-  const props = useLocaleProps({ props: inProps, name: "ConfirmModal" });
-  const {
-    title,
-    confirmText = "Confirm",
-    cancelText = "Cancel",
-    children,
-    onClose,
-    onSubmit,
-    buttonColor = "primary",
-    isOpen = true,
-    disabled,
-    loading,
-    fullSize = false,
-    overflowYScroll = true,
-    disableHorizontalPadding = false,
-    subActions = [],
-    tipElement,
-    modalProps,
-    fadeProps,
-  } = props;
+const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
+  (inProps, ref) => {
+    const props = useLocaleProps({ props: inProps, name: "ConfirmModal" });
+    const {
+      title,
+      confirmText = "Confirm",
+      cancelText = "Cancel",
+      children,
+      onClose,
+      onSubmit,
+      buttonColor = "primary",
+      isOpen = true,
+      disabled,
+      loading,
+      fullSize = false,
+      overflowYScroll = true,
+      disableHorizontalPadding = false,
+      subActions = [],
+      tipElement,
+      modalProps,
+      fadeProps,
+    } = props;
 
-  const theme = useTheme();
-  const showFooter = !!onSubmit;
-  const [iconWrapperElement, setIconWrapperElement] =
-    React.useState<HTMLDivElement | null>(null);
-  const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
+    const theme = useTheme();
+    const showFooter = !!onSubmit;
+    const [iconWrapperElement, setIconWrapperElement] =
+      React.useState<HTMLDivElement | null>(null);
+    const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
 
-  const handleIsTipOpen = (isTipOpen: boolean) => () => {
-    setIsTipOpen(isTipOpen);
-  };
-
-  const handleClose =
-    (reason: ConfirmModalCloseReason) =>
-    (
-      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
-    ) => {
-      if (onClose) onClose(event, reason);
+    const handleIsTipOpen = (isTipOpen: boolean) => () => {
+      setIsTipOpen(isTipOpen);
     };
 
-  return (
-    <Modal isOpen={isOpen} onClose={onClose} {...modalProps}>
-      <Fade in={isOpen} unmountOnExit={true} {...fadeProps}>
-        <Styled.ModalContainer fullSize={fullSize}>
-          <form onSubmit={onSubmit}>
-            <Styled.ModalHeader>
-              <Styled.LeftContainer>
-                <Typography weight="bold" size="xxxl">
-                  {title}
-                </Typography>
+    const handleClose =
+      (reason: ConfirmModalCloseReason) =>
+      (
+        event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+      ) => {
+        if (onClose) onClose(event, reason);
+      };
 
-                {tipElement && (
-                  <Styled.TipContainer>
-                    <Styled.IconContainer
-                      ref={setIconWrapperElement}
-                      onClick={handleIsTipOpen(!isTipOpen)}
-                    >
-                      <Icon name="question" type="fill" size="lg" />
-                    </Styled.IconContainer>
-                    <FloatingTip
-                      baseElement={iconWrapperElement}
-                      isOpen={isTipOpen}
-                      positionPriority={["right-start"]}
-                      onClose={handleIsTipOpen(false)}
-                    >
-                      <Styled.TipContentContainer>
-                        {tipElement}
-                      </Styled.TipContentContainer>
-                    </FloatingTip>
-                  </Styled.TipContainer>
-                )}
+    return (
+      <Modal isOpen={isOpen} onClose={onClose} {...modalProps}>
+        <Fade in={isOpen} unmountOnExit={true} {...fadeProps}>
+          <Styled.ModalContainer ref={ref} fullSize={fullSize}>
+            <form onSubmit={onSubmit}>
+              <Styled.ModalHeader>
+                <Styled.LeftContainer>
+                  <Typography weight="bold" size="xxxl">
+                    {title}
+                  </Typography>
 
-                <Spacer pr={2} />
-                {subActions.map(({ icon, action, title }) => (
-                  <Spacer key={title} pr={2}>
-                    {/* eslint-disable-next-line react/jsx-handler-names */}
-                    <ActionButton icon={icon} type="button" onClick={action}>
-                      {title}
-                    </ActionButton>
-                  </Spacer>
-                ))}
-              </Styled.LeftContainer>
-              <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
-                <Icon name="close" size="lg" color={theme.palette.black} />
-              </Styled.IconContainer>
-            </Styled.ModalHeader>
-            <Styled.ScrollContainer
-              overflowYScroll={overflowYScroll}
-              fullSize={fullSize}
-              showFooter={showFooter}
-            >
-              {disableHorizontalPadding ? (
-                children
-              ) : (
-                <Spacer px={3} pb={3}>
-                  {children}
-                </Spacer>
-              )}
-            </Styled.ScrollContainer>
-            {showFooter && (
-              <Styled.ModalFooter fullSize={fullSize}>
-                <Flex display="flex" alignItems="center">
-                  <Button
-                    type="button"
-                    color="secondary"
-                    inline={true}
-                    onClick={handleClose("clickCancelButton")}
-                  >
-                    {cancelText}
-                  </Button>
+                  {tipElement && (
+                    <Styled.TipContainer>
+                      <Styled.IconContainer
+                        ref={setIconWrapperElement}
+                        onClick={handleIsTipOpen(!isTipOpen)}
+                      >
+                        <Icon name="question" type="fill" size="lg" />
+                      </Styled.IconContainer>
+                      <FloatingTip
+                        baseElement={iconWrapperElement}
+                        isOpen={isTipOpen}
+                        positionPriority={["right-start"]}
+                        onClose={handleIsTipOpen(false)}
+                      >
+                        <Styled.TipContentContainer>
+                          {tipElement}
+                        </Styled.TipContentContainer>
+                      </FloatingTip>
+                    </Styled.TipContainer>
+                  )}
+
                   <Spacer pr={2} />
-                  <Button
-                    type="submit"
-                    color={buttonColor}
-                    disabled={disabled}
-                    inline={true}
-                  >
-                    {confirmText}
-                  </Button>
-                </Flex>
-              </Styled.ModalFooter>
+                  {subActions.map(({ icon, action, title }) => (
+                    <Spacer key={title} pr={2}>
+                      {/* eslint-disable-next-line react/jsx-handler-names */}
+                      <ActionButton icon={icon} type="button" onClick={action}>
+                        {title}
+                      </ActionButton>
+                    </Spacer>
+                  ))}
+                </Styled.LeftContainer>
+                <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
+                  <Icon name="close" size="lg" color={theme.palette.black} />
+                </Styled.IconContainer>
+              </Styled.ModalHeader>
+              <Styled.ScrollContainer
+                overflowYScroll={overflowYScroll}
+                fullSize={fullSize}
+                showFooter={showFooter}
+              >
+                {disableHorizontalPadding ? (
+                  children
+                ) : (
+                  <Spacer px={3} pb={3}>
+                    {children}
+                  </Spacer>
+                )}
+              </Styled.ScrollContainer>
+              {showFooter && (
+                <Styled.ModalFooter fullSize={fullSize}>
+                  <Flex display="flex" alignItems="center">
+                    <Button
+                      type="button"
+                      color="secondary"
+                      inline={true}
+                      onClick={handleClose("clickCancelButton")}
+                    >
+                      {cancelText}
+                    </Button>
+                    <Spacer pr={2} />
+                    <Button
+                      type="submit"
+                      color={buttonColor}
+                      disabled={disabled}
+                      inline={true}
+                    >
+                      {confirmText}
+                    </Button>
+                  </Flex>
+                </Styled.ModalFooter>
+              )}
+            </form>
+            {loading && (
+              <Styled.LoadingContainer>
+                <Spinner />
+              </Styled.LoadingContainer>
             )}
-          </form>
-          {loading && (
-            <Styled.LoadingContainer>
-              <Spinner />
-            </Styled.LoadingContainer>
-          )}
-        </Styled.ModalContainer>
-      </Fade>
-    </Modal>
-  );
-};
+          </Styled.ModalContainer>
+        </Fade>
+      </Modal>
+    );
+  },
+);
 
 export default ConfirmModal;
