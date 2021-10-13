@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 import * as Styled from "./styled";
 
 export type FixedPanelProps = {
@@ -14,26 +15,23 @@ export type FixedPanelProps = {
   offset?: number;
 };
 
-const FixedPanel: React.FunctionComponent<FixedPanelProps> = ({
-  isOpen,
-  placement = "top",
-  offset = 0,
-  children,
-}) => {
-  const [containerRef, setContainerRef] = React.useState<HTMLDivElement | null>(
-    null,
-  );
-  return (
-    <Styled.Container
-      ref={setContainerRef}
-      height={containerRef?.clientHeight || 0}
-      offset={offset}
-      isOpen={isOpen}
-      placement={placement}
-    >
-      {children}
-    </Styled.Container>
-  );
-};
+const FixedPanel = React.forwardRef<HTMLDivElement, FixedPanelProps>(
+  ({ isOpen, placement = "top", offset = 0, children }, ref) => {
+    const [containerRef, setContainerRef] =
+      React.useState<HTMLDivElement | null>(null);
+    const refs = useMergeRefs<HTMLDivElement>(ref, setContainerRef);
+    return (
+      <Styled.Container
+        ref={refs}
+        height={containerRef?.clientHeight || 0}
+        offset={offset}
+        isOpen={isOpen}
+        placement={placement}
+      >
+        {children}
+      </Styled.Container>
+    );
+  },
+);
 
 export default FixedPanel;

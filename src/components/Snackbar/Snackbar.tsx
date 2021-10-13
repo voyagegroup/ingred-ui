@@ -23,26 +23,31 @@ export type SnackbarProps = {
   onClose?: () => void;
 };
 
-const Snackbar: React.FunctionComponent<SnackbarProps> = ({
-  color = "default",
-  anchorOrigin: { vertical, horizontal } = {
-    vertical: "bottom",
-    horizontal: "right",
+const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>(
+  (
+    {
+      color = "default",
+      anchorOrigin: { vertical, horizontal } = {
+        vertical: "bottom",
+        horizontal: "right",
+      },
+      isOpen,
+      onClose,
+      children,
+    },
+    ref,
+  ) => {
+    if (!isOpen) {
+      return null;
+    }
+    return (
+      <Styled.Container ref={ref} vertical={vertical} horizontal={horizontal}>
+        <SnackbarContent color={color} onClose={onClose}>
+          {children}
+        </SnackbarContent>
+      </Styled.Container>
+    );
   },
-  isOpen,
-  onClose,
-  children,
-}) => {
-  if (!isOpen) {
-    return null;
-  }
-  return (
-    <Styled.Container vertical={vertical} horizontal={horizontal}>
-      <SnackbarContent color={color} onClose={onClose}>
-        {children}
-      </SnackbarContent>
-    </Styled.Container>
-  );
-};
+);
 
 export default Snackbar;

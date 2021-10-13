@@ -35,7 +35,7 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
     React.useEffect(() => {
       if (!buttonContainerRef.current) return;
       const observer = new IntersectionObserver((entries) => {
-        if (args.isOpen) setIsOpen(!entries[0].isIntersecting);
+        setIsOpen(!entries[0].isIntersecting);
       });
       observer.observe(buttonContainerRef.current);
       return () => {
@@ -47,7 +47,7 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
     };
     return (
       <div style={{ height: "200vh" }}>
-        <FixedPanel {...args} isOpen={isOpen}>
+        <FixedPanel {...args} isOpen={isOpen || args.isOpen}>
           <Flex display="flex" justifyContent="flex-end">
             <Spacer py={2}>
               <Button>Do Something!</Button>

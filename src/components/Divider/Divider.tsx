@@ -8,14 +8,19 @@ export type DividerProps = SpacerProps & {
   orientation?: "vertical" | "horizontal";
 };
 
-const Divider: React.FunctionComponent<DividerProps> = ({
-  color: colorProp,
-  orientation = "horizontal",
-  ...rest
-}) => {
-  const theme = useTheme();
-  const color = colorProp || theme.palette.divider;
-  return <Styled.Divider color={color} orientation={orientation} {...rest} />;
-};
+const Divider = React.forwardRef<HTMLHRElement, DividerProps>(
+  ({ color: colorProp, orientation = "horizontal", ...rest }, ref) => {
+    const theme = useTheme();
+    const color = colorProp || theme.palette.divider;
+    return (
+      <Styled.Divider
+        ref={ref}
+        color={color}
+        orientation={orientation}
+        {...rest}
+      />
+    );
+  },
+);
 
 export default Divider;

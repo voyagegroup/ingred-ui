@@ -13,12 +13,10 @@ export type TableCellProps =
     children?: React.ReactNode;
   };
 
-export const Cell: React.FunctionComponent<TableCellProps> = ({
-  width = "auto",
-  children,
-  ...rest
-}) => (
-  <Component width={width} {...rest}>
-    <Typography component="div">{children}</Typography>
-  </Component>
+export const Cell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
+  ({ width = "auto", children, ...rest }, ref) => (
+    <Component ref={ref} width={width} {...rest}>
+      <Typography component="div">{children}</Typography>
+    </Component>
+  ),
 );

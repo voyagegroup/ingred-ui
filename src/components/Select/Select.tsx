@@ -158,6 +158,7 @@ export type SelectProps<T> = {
 
 const Select = <T,>(
   inProps: SelectProps<T>,
+  ref: React.Ref<HTMLDivElement>,
 ): React.ReactElement<SelectProps<T>> => {
   const props = useLocaleProps({ props: inProps, name: "Select" });
   const {
@@ -188,7 +189,7 @@ const Select = <T,>(
   };
 
   return (
-    <Styled.Container minWidth={minWidth} isDisabled={isDisabled}>
+    <Styled.Container ref={ref} minWidth={minWidth} isDisabled={isDisabled}>
       <ReactSelect<OptionType<T>, boolean>
         isClearable
         placeholder={placeholder}
@@ -220,4 +221,7 @@ const Select = <T,>(
   );
 };
 
-export default Select;
+// FIXME: Implement without type assertion
+export default React.forwardRef(Select) as <T>(
+  props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+) => ReturnType<typeof Select>;

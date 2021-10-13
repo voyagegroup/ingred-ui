@@ -24,47 +24,45 @@ export type DatePickerProps = Partial<
     error?: boolean;
   };
 
-const DatePicker: React.FunctionComponent<DatePickerProps> = ({
-  date,
-  error = false,
-  ...rest
-}) => {
-  const [focused, setFocused] = React.useState<boolean>(false);
-  const onFocusChange = ({ focused }: { focused: boolean }) => {
-    setFocused(focused);
-  };
+const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
+  ({ date, error = false, ...rest }, ref) => {
+    const [focused, setFocused] = React.useState<boolean>(false);
+    const onFocusChange = ({ focused }: { focused: boolean }) => {
+      setFocused(focused);
+    };
 
-  return (
-    <Styled.Container error={error}>
-      <SingleDatePicker
-        id="datePicker"
-        focused={focused}
-        date={date}
-        isOutsideRange={isOutsideRange}
-        numberOfMonths={1}
-        enableOutsideDays={true}
-        daySize={41}
-        weekDayFormat="ddd"
-        hideKeyboardShortcutsPanel={true}
-        navPrev={
-          <Styled.NavPrev>
-            <Spacer p={0.5}>
-              <Icon name="arrow_left" size="md" />
-            </Spacer>
-          </Styled.NavPrev>
-        }
-        navNext={
-          <Styled.NavNext>
-            <Spacer p={0.5}>
-              <Icon name="arrow_right" size="md" />
-            </Spacer>
-          </Styled.NavNext>
-        }
-        onFocusChange={onFocusChange}
-        {...rest}
-      />
-    </Styled.Container>
-  );
-};
+    return (
+      <Styled.Container ref={ref} error={error}>
+        <SingleDatePicker
+          id="datePicker"
+          focused={focused}
+          date={date}
+          isOutsideRange={isOutsideRange}
+          numberOfMonths={1}
+          enableOutsideDays={true}
+          daySize={41}
+          weekDayFormat="ddd"
+          hideKeyboardShortcutsPanel={true}
+          navPrev={
+            <Styled.NavPrev>
+              <Spacer p={0.5}>
+                <Icon name="arrow_left" size="md" />
+              </Spacer>
+            </Styled.NavPrev>
+          }
+          navNext={
+            <Styled.NavNext>
+              <Spacer p={0.5}>
+                <Icon name="arrow_right" size="md" />
+              </Spacer>
+            </Styled.NavNext>
+          }
+          onFocusChange={onFocusChange}
+          {...rest}
+        />
+      </Styled.Container>
+    );
+  },
+);
 
 export default DatePicker;

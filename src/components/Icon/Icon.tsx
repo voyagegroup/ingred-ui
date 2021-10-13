@@ -239,18 +239,15 @@ export type Props = {
   color?: IconColor;
 };
 
-const Icon: React.FunctionComponent<Props> = ({
-  name,
-  type = "line",
-  size = "md",
-  color = "fill",
-}) => {
-  const theme = useTheme();
-  return (
-    <Styled.Container size={iconSize[size]}>
-      {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
-    </Styled.Container>
-  );
-};
+const Icon = React.forwardRef<HTMLDivElement, Props>(
+  ({ name, type = "line", size = "md", color = "fill" }, ref) => {
+    const theme = useTheme();
+    return (
+      <Styled.Container ref={ref} size={iconSize[size]}>
+        {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
+      </Styled.Container>
+    );
+  },
+);
 
 export default Icon;

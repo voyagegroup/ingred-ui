@@ -6,10 +6,16 @@ type Props = {
   children: React.ReactNode;
 };
 
-const MainContent: React.FC<Props> = ({ children }) => {
-  const { isFixed } = React.useContext(NavigationRailContext);
+const MainContent = React.forwardRef<HTMLDivElement, Props>(
+  ({ children }, ref) => {
+    const { isFixed } = React.useContext(NavigationRailContext);
 
-  return <Styled.Container isFixed={isFixed}>{children}</Styled.Container>;
-};
+    return (
+      <Styled.Container ref={ref} isFixed={isFixed}>
+        {children}
+      </Styled.Container>
+    );
+  },
+);
 
 export { MainContent };

@@ -15,53 +15,49 @@ export type TextFieldProps = InputProps & {
   inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
 };
 
-const TextField: React.FunctionComponent<TextFieldProps> = ({
-  errorText,
-  icon,
-  type,
-  inputRef,
-  ...rest
-}) => {
-  const [show, setShow] = React.useState(false);
-  const theme = useTheme();
-  const handleToggleShowPassword = () => {
-    setShow(!show);
-  };
+const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
+  ({ errorText, icon, type, inputRef, ...rest }, ref) => {
+    const [show, setShow] = React.useState(false);
+    const theme = useTheme();
+    const handleToggleShowPassword = () => {
+      setShow(!show);
+    };
 
-  return (
-    <Styled.Container>
-      <Styled.InputContainer
-        hasLeftIcon={icon != null}
-        hasRightIcon={type === "password"}
-      >
-        {icon != null && (
-          <Styled.LeftIconContainer onClick={handleToggleShowPassword}>
-            <Icon name={icon} size="md" color={theme.palette.gray.dark} />
-          </Styled.LeftIconContainer>
+    return (
+      <Styled.Container ref={ref}>
+        <Styled.InputContainer
+          hasLeftIcon={icon != null}
+          hasRightIcon={type === "password"}
+        >
+          {icon != null && (
+            <Styled.LeftIconContainer onClick={handleToggleShowPassword}>
+              <Icon name={icon} size="md" color={theme.palette.gray.dark} />
+            </Styled.LeftIconContainer>
+          )}
+          <Input
+            ref={inputRef}
+            {...rest}
+            error={!!errorText}
+            type={show ? "text" : type}
+          />
+          {type === "password" && (
+            <Styled.RightIconContainer onClick={handleToggleShowPassword}>
+              <Icon
+                name={show ? "eye" : "eye_off"}
+                size="md"
+                color={theme.palette.black}
+              />
+            </Styled.RightIconContainer>
+          )}
+        </Styled.InputContainer>
+        {errorText && (
+          <Spacer pt={1}>
+            <ErrorText>{errorText}</ErrorText>
+          </Spacer>
         )}
-        <Input
-          ref={inputRef}
-          {...rest}
-          error={!!errorText}
-          type={show ? "text" : type}
-        />
-        {type === "password" && (
-          <Styled.RightIconContainer onClick={handleToggleShowPassword}>
-            <Icon
-              name={show ? "eye" : "eye_off"}
-              size="md"
-              color={theme.palette.black}
-            />
-          </Styled.RightIconContainer>
-        )}
-      </Styled.InputContainer>
-      {errorText && (
-        <Spacer pt={1}>
-          <ErrorText>{errorText}</ErrorText>
-        </Spacer>
-      )}
-    </Styled.Container>
-  );
-};
+      </Styled.Container>
+    );
+  },
+);
 
 export default TextField;
