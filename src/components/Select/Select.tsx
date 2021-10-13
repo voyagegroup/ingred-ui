@@ -221,7 +221,7 @@ const Select = <T,>(
   );
 };
 
-// FIXME: Imprement without type assertion
+// FIXME: Implement without type assertion
 export default React.forwardRef(Select) as <T>(
   props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof Select>;
