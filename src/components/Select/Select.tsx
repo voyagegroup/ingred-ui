@@ -193,7 +193,7 @@ const Select = <T,>(
       <ReactSelect<OptionType<T>, boolean>
         isClearable
         placeholder={placeholder}
-        closeMenuOnSelect={closeMenuOnSelect}
+        closeMenuOnSelect={props.isMulti ? false : closeMenuOnSelect}
         noOptionsMessage={() => emptyMessage}
         isDisabled={isDisabled}
         styles={getOverrideStyles<T>(theme, error)}
