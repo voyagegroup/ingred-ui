@@ -1,5 +1,14 @@
 # Changelog
 
+## [v9.0.1](https://github.com/voyagegroup/ingred-ui/tree/v9.0.1) (2021-10-21)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.0.0...v9.0.1)
+
+**Merged pull requests:**
+
+- Table の Header に Props の型を追加 [\#547](https://github.com/voyagegroup/ingred-ui/pull/547) ([takurinton](https://github.com/takurinton))
+- chore\(deps\): update dependency @types/react to v17.0.31 [\#545](https://github.com/voyagegroup/ingred-ui/pull/545) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.0.0](https://github.com/voyagegroup/ingred-ui/tree/v9.0.0) (2021-10-21)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v8.0.0...v9.0.0)
