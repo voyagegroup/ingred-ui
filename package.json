@@ -30,7 +30,7 @@
     "moment": "^2.29.1",
     "react-dates": "^21.8.0",
     "react-popper": "^2.2.3",
-    "react-select": "^5.0.0",
+    "react-select": "^5.1.0",
     "react-toast-notifications": "^2.4.0",
     "react-transition-group": "^4.4.1"
   },
