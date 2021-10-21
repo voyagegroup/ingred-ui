@@ -1,6 +1,8 @@
 import * as React from "react";
-import ReactCreatableSelect, { CreatableProps } from "react-select/creatable";
-import { GroupBase } from "react-select/src/types";
+import ReactCreatableSelect, {
+  CreatableProps,
+} from "react-select/dist/declarations/src/creatable";
+import { GroupBase } from "react-select/dist/declarations/src/types";
 import * as Styled from "../Select/styled";
 import { useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
