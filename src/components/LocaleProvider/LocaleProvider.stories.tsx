@@ -106,7 +106,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
     setSelectedLocale(v);
   };
 
-  const [_, setFilters] = React.useState<ReferedFilterType[]>([]);
+  const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
   const handleChange = (referedFilters: ReferedFilterType[]) => {
     setFilters(referedFilters);
   };
