@@ -3,15 +3,15 @@
 exports[`Checkbox component testing Checkbox 1`] = `
 <DocumentFragment>
   <label
-    class="sc-gsTEea dlRoDj"
+    class="sc-gsDKAQ eDBaTH"
   >
     <input
-      class="sc-bdfBQB hvAoBd"
+      class="sc-bdvvtL lbDrac"
       readonly=""
       type="checkbox"
     />
     <span
-      class="sc-dlfnuX eLkQQm"
+      class="sc-dkPtRN jHrIXp"
     />
   </label>
 </DocumentFragment>
