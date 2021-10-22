@@ -3,22 +3,22 @@
 exports[`Spinner component testing Spinner 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdfBQB fSma-dU"
+    class="sc-bdvvtL dwAwYF"
     width="50px"
   >
     <svg
-      class="sc-gsTEea dwbtCZ"
+      class="sc-gsDKAQ htNwEJ"
       viewBox="25 25 50 50"
     >
       <circle
-        class="sc-dlfnuX kvoTOH"
+        class="sc-dkPtRN iJLnej"
         cx="50"
         cy="50"
         r="20"
         stroke="#E2E8EA"
       />
       <circle
-        class="sc-dlfnuX sc-hKgJUU kvoTOH fuyZGE"
+        class="sc-dkPtRN sc-hKwDye iJLnej CFLCo"
         cx="50"
         cy="50"
         r="20"
