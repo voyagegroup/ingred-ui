@@ -3,7 +3,7 @@ import { components, GroupBase } from "react-select";
 import Icon from "../../../Icon";
 import { useTheme } from "../../../../themes/useTheme";
 import { OptionType } from "../../";
-import { MultiValueRemoveProps } from "react-select/src/components/MultiValue";
+import { MultiValueRemoveProps } from "react-select/dist/declarations/src/components/MultiValue";
 
 const MultiValueRemove = <T,>(
   props: MultiValueRemoveProps<
