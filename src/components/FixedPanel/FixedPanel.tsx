@@ -13,7 +13,7 @@ export type FixedPanelProps = {
    * Define distance from top/bottom.
    */
   offset?: number;
-  children: React.ReactElement;
+  children?: React.ReactElement;
 };
 
 const FixedPanel = React.forwardRef<HTMLDivElement, FixedPanelProps>(

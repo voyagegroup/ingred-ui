@@ -171,7 +171,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
             </div>
           </div>
           <div
-            class=" css-xlxoad-Input"
+            class=" css-1wxet5o-Input"
             data-value=""
           >
             <input
@@ -278,7 +278,7 @@ exports[`Select component testing Disable not selected 1`] = `
             Select...
           </div>
           <div
-            class=" css-xlxoad-Input"
+            class=" css-1wxet5o-Input"
             data-value=""
           >
             <input
@@ -396,7 +396,7 @@ exports[`Select component testing Disable one selected 1`] = `
             hoge
           </div>
           <div
-            class=" css-xlxoad-Input"
+            class=" css-1wxet5o-Input"
             data-value=""
           >
             <input
@@ -654,7 +654,7 @@ exports[`Select component testing Error multiple selected 1`] = `
             </div>
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
@@ -827,7 +827,7 @@ exports[`Select component testing Error not selected 1`] = `
             Select...
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
@@ -944,7 +944,7 @@ exports[`Select component testing Error one selected 1`] = `
             hoge
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
@@ -1268,7 +1268,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
             </div>
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
@@ -1441,7 +1441,7 @@ exports[`Select component testing Normal not selected 1`] = `
             Select...
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
@@ -1558,7 +1558,7 @@ exports[`Select component testing Normal one selected 1`] = `
             hoge
           </div>
           <div
-            class=" css-3a9m0y-Input"
+            class=" css-1vl9mvl-Input"
             data-value=""
           >
             <input
