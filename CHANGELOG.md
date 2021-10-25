@@ -1,5 +1,34 @@
 # Changelog
 
+## [v9.0.2](https://github.com/voyagegroup/ingred-ui/tree/v9.0.2) (2021-10-25)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.0.1...v9.0.2)
+
+**Closed issues:**
+
+- Search component [\#549](https://github.com/voyagegroup/ingred-ui/issues/549)
+
+**Merged pull requests:**
+
+- GitHub Actions の Node.js のバージョンを修正 [\#559](https://github.com/voyagegroup/ingred-ui/pull/559) ([takurinton](https://github.com/takurinton))
+- \<FixedPanel /\> に children を追加 [\#557](https://github.com/voyagegroup/ingred-ui/pull/557) ([takurinton](https://github.com/takurinton))
+- chore\(deps\): update dependency eslint to v8.1.0 [\#556](https://github.com/voyagegroup/ingred-ui/pull/556) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.29 [\#555](https://github.com/voyagegroup/ingred-ui/pull/555) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.32 [\#554](https://github.com/voyagegroup/ingred-ui/pull/554) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-react-hooks to v4.2.1-alpha-fd5e01c2e-20210913 [\#553](https://github.com/voyagegroup/ingred-ui/pull/553) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): pin dependency eslint-plugin-react-hooks to v4.2.1-alpha-f6abf4b40-20211020 [\#552](https://github.com/voyagegroup/ingred-ui/pull/552) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v14.17.28 [\#551](https://github.com/voyagegroup/ingred-ui/pull/551) ([renovate[bot]](https://github.com/apps/renovate))
+- Update renovate.json [\#550](https://github.com/voyagegroup/ingred-ui/pull/550) ([youchann](https://github.com/youchann))
+- chore\(deps\): update dependency @types/react-transition-group to v4.4.4 [\#548](https://github.com/voyagegroup/ingred-ui/pull/548) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v9 [\#546](https://github.com/voyagegroup/ingred-ui/pull/546) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency styled-components to v5.3.3 [\#541](https://github.com/voyagegroup/ingred-ui/pull/541) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.3.1 [\#539](https://github.com/voyagegroup/ingred-ui/pull/539) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint to v8 [\#519](https://github.com/voyagegroup/ingred-ui/pull/519) ([renovate[bot]](https://github.com/apps/renovate))
+- build\(deps\): bump url-parse from 1.4.7 to 1.5.3 in /testEnv [\#516](https://github.com/voyagegroup/ingred-ui/pull/516) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): update dependency @rollup/plugin-commonjs to v21 [\#513](https://github.com/voyagegroup/ingred-ui/pull/513) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v24.7.0 [\#504](https://github.com/voyagegroup/ingred-ui/pull/504) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v4.33.0 [\#501](https://github.com/voyagegroup/ingred-ui/pull/501) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.0.1](https://github.com/voyagegroup/ingred-ui/tree/v9.0.1) (2021-10-21)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.0.0...v9.0.1)
