@@ -21,6 +21,7 @@ export type SnackbarProps = {
    * Callback function that triggered when clicked ✖︎ Icon.
    */
   onClose?: () => void;
+  children?: React.ReactNode;
 };
 
 const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>(
