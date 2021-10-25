@@ -3,37 +3,37 @@
 exports[`ConfirmModal component testing ConfirmModal 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fFucqa lpjfBz"
+    class="sc-fFeiMQ fJuGfT"
   >
     <div
-      class="sc-bkzYnD hIRPCl sc-idOiZg kYBNlg fade-transition-appear fade-transition-appear-active"
+      class="sc-bkkeKt fEwjBL sc-ieecCq ixODts fade-transition-appear fade-transition-appear-active"
     />
     <div
-      class="sc-gsTEea sc-hKgJUU keAjjo ioziAl sc-idOiZg kYBNlg fade-transition-appear fade-transition-appear-active"
+      class="sc-gsDKAQ sc-hKwDye dCDjlW cnIyXF sc-ieecCq ixODts fade-transition-appear fade-transition-appear-active"
     >
       <form>
         <div
-          class="sc-eCstlR bgPhZM"
+          class="sc-eCImPb hMUlJt"
         >
           <div
-            class="sc-jSgvzq hZpAqa"
+            class="sc-jRQBWg gNzDsc"
           >
             <p
-              class="sc-iqHYmW hVtSfg"
+              class="sc-iqseJM bkdyck"
               color="#041C33"
               font-size="20px"
             >
               Title
             </p>
             <div
-              class="sc-dQoVA IQjMW"
+              class="sc-egiyK haNrTA"
             />
           </div>
           <div
-            class="sc-fubCzh cYKLrl"
+            class="sc-furwcr enHelU"
           >
             <div
-              class="sc-crrszt dsUZIK"
+              class="sc-crHmcD hehbzV"
               size="24"
             >
               <svg
@@ -59,10 +59,10 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
           </div>
         </div>
         <div
-          class="sc-gKseQn gxLWJF"
+          class="sc-gKclnd dmgRET"
         >
           <div
-            class="sc-dQoVA gIVOhn"
+            class="sc-egiyK eHvOtZ"
           />
         </div>
       </form>
