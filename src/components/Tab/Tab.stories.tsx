@@ -8,22 +8,31 @@ export default {
 };
 
 export const Example = () => {
-  const [value, setValue] = React.useState('日別');
+  const [value, setValue] = React.useState("日別");
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  }
+  };
+  const options = {
+    data: [{ text: "日別" }, { text: "月別" }],
+  };
+
+  return <Tabs {...options} value={value} onChange={handleChange} />;
+};
+
+export const WithBadge = () => {
+  const [value, setValue] = React.useState("hoge");
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const options = {
     data: [
-      { text: "日別" },
-      { text: "月別" },
+      { text: "hoge", count: 5 },
+      { text: "fuga", count: 4 },
+      { text: "other", count: 0 },
     ],
   };
 
   return (
-    <Tabs
-      {...options} 
-      value={value} 
-      onChange={handleChange}
-    />
+    <Tabs {...options} value={value} withBadge={true} onChange={handleChange} />
   );
 };
