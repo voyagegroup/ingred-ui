@@ -20,16 +20,16 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: transparent;
+  font-weight: 600;
   border-bottom: ${({ selected }) =>
     selected
       ? ({ theme }) => `solid ${theme.palette.primary.main} 2px`
       : "none"};
-  cursor: pointer;
   color: ${({ selected }) =>
-    selected ? ({ theme }) => theme.palette.primary.main : "gray"}
+    selected ? ({ theme }) => theme.palette.primary.main : "gray"};
+  cursor: pointer;
   &:hover {
-    background-color {
-      color: rgb(0; 0; 0; 0.5);
-    }
+    background-color: rgb(0, 0, 0, 0.1);
+    transition: 0.5s;
   }
 `;
