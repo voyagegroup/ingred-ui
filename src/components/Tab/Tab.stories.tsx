@@ -20,15 +20,15 @@ export const Example = () => {
 };
 
 export const WithBadge = () => {
-  const [value, setValue] = React.useState("hoge");
+  const [value, setValue] = React.useState("全て");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const options = {
     data: [
-      { text: "hoge", count: 5 },
-      { text: "fuga", count: 4 },
-      { text: "other", count: 0 },
+      { text: "全て", count: 5 },
+      { text: "ユニット", count: 5 },
+      { text: "サイズ", count: 5 },
     ],
   };
 
