@@ -9,7 +9,10 @@ export default {
 
 export const Example = () => {
   const [value, setValue] = React.useState("日別");
-  const handleChange = (event, newValue) => {
+  const handleChange = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    newValue: string,
+  ) => {
     setValue(newValue);
   };
   const options = {
@@ -21,7 +24,10 @@ export const Example = () => {
 
 export const WithBadge = () => {
   const [value, setValue] = React.useState("全て");
-  const handleChange = (event, newValue) => {
+  const handleChange = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    newValue: string,
+  ) => {
     setValue(newValue);
   };
   const options = {

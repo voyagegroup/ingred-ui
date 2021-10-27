@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Badge } from "..";
 import { useTheme } from "../../themes";
-// import * as Styled from "./styled";
+import * as Styled from "./styled";
 
 type TabsProps = {
   data: {
@@ -9,7 +9,7 @@ type TabsProps = {
     count?: number;
   }[];
   value: any;
-  isBadge?: boolean;
+  withBadge?: boolean;
   onChange: (event: any, value: any) => void;
 };
 
@@ -20,16 +20,14 @@ type TabProps = {
   withBadge: boolean;
   onChange?: (event: any, value: any) => void;
   onClick?: (event: any) => void;
-  onFocus?: (event: any) => void;
 };
 
-// TODO Tabは props で貰った値を愚直に表示するだけにする
 const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
-  ({ text, count, withBadge, selected, onChange, onClick, onFocus }, ref) => {
+  ({ text, count, withBadge, selected, onChange, onClick }, ref) => {
     const theme = useTheme();
     const badgeColor = selected ? "primary" : "secondary";
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (!selected && onChange) {
         onChange(event, text);
       }
@@ -38,51 +36,13 @@ const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
       }
     };
 
-    const handleFocus = (event) => {
-      if (!selected && onChange) {
-        onChange(event, text);
-      }
-
-      if (onFocus) {
-        onFocus(event);
-      }
-    };
-
-    // TODO ロジック書く
-    const h: any = {
-      color: "gray",
-      flexDirection: "column",
-      flexShrink: 0,
-      fontWeight: 600,
-      lineHeight: 1.25,
-      maxWidth: 360,
-      minHeight: 48,
-      minWidth: 90,
-      overflow: "hidden",
-      margin: 0,
-      padding: "12px 16px",
-      position: "relative",
-      textAlign: "center",
-      alignItems: "center",
-      whiteSpace: "normal",
-      border: "none",
-      outline: "none",
-      backgroundColor: "transparent",
-      borderBottom: "none",
-    };
-
-    // TODO ロジック書き直す
-    if (selected) {
-      h.borderBottom = `solid ${theme.palette.primary.main} 2px`;
-      h.color = `${theme.palette.primary.main}`;
-    }
-
     return (
-      <button
+      <Styled.Button
         ref={ref}
         key={text}
-        style={h}
         tabIndex={selected ? 0 : -1}
+        theme={theme}
+        selected={selected}
         onClick={handleClick}
       >
         {text}{" "}
@@ -93,14 +53,13 @@ const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         ) : (
           ""
         )}
-      </button>
+      </Styled.Button>
     );
   },
 );
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
   ({ data, value, withBadge = false, onChange }, ref) => {
-    // return isBadge ? <div>badge</div> : <div>no badge</div>;
     return (
       <div>
         <div>
