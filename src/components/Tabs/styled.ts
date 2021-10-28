@@ -5,11 +5,13 @@ type ButtonProps = {
   selected: boolean;
 };
 
-export const Container = styled.div`
+export const Container = styled.div``;
+
+export const ChildContainer = styled.div`
   position: relative;
 `;
 
-export const ChildContainer = styled.div``;
+export const ChildrenContainer = styled.div``;
 
 export const Button = styled.button<ButtonProps>`
   flex-irection: column;

@@ -10,7 +10,7 @@ type TabsProps = {
   }[];
   value: any;
   withBadge?: boolean;
-  onChange: (event: any, value: any) => void;
+  onChange: (value: any) => void;
 };
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
@@ -95,28 +95,30 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
     }, [updateIndicatorState]);
 
     return (
-      <Styled.Container ref={tabsRef}>
-        <Styled.Indicator
-          style={{
-            ...indicatorStyle,
-          }}
-        />
-        <Styled.ChildContainer ref={childrenRef}>
-          {data.map((d, index) => {
-            const childValue = d.text ?? index;
-            valueToIndex.set(childValue, index);
-            return (
-              <Tab
-                key={d.text}
-                selected={value === d.text}
-                count={d.count}
-                withBadge={withBadge}
-                text={d.text}
-                onChange={(event) => onChange(event, d.text)}
-              />
-            );
-          })}
-          <Styled.Border />
+      <Styled.Container ref={ref}>
+        <Styled.ChildContainer ref={tabsRef}>
+          <Styled.Indicator
+            style={{
+              ...indicatorStyle,
+            }}
+          />
+          <Styled.ChildrenContainer ref={childrenRef}>
+            {data.map((d, index) => {
+              const childValue = d.text ?? index;
+              valueToIndex.set(childValue, index);
+              return (
+                <Tab
+                  key={d.text}
+                  selected={value === d.text}
+                  count={d.count}
+                  withBadge={withBadge}
+                  text={d.text}
+                  onChange={() => onChange(d.text)}
+                />
+              );
+            })}
+            <Styled.Border />
+          </Styled.ChildrenContainer>
         </Styled.ChildContainer>
       </Styled.Container>
     );
