@@ -1,6 +1,5 @@
 import * as React from "react";
-// import { Story } from "@storybook/react/types-6-0";
-import Tabs from "../Tab";
+import Tabs from ".";
 
 export default {
   title: "Components/Utils/Tab",
