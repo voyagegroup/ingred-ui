@@ -48,9 +48,7 @@ const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         onClick={handleClick}
       >
         <Flex display="flex" justifyContent="space-between" alignItems="center">
-          <Typography component="div" weight="bold" size="md">
-            {text}
-          </Typography>
+          <Styled.Text selected={selected}>{text} </Styled.Text>
           {withBadge ? (
             <Badge color={badgeColor} type="pill" fontWeight="bold">
               {count}

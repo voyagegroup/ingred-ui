@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Typography from "../Typography";
 
 type ButtonProps = {
   selected: boolean;
@@ -20,16 +21,20 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: transparent;
-  font-weight: 600;
   border-bottom: ${({ selected }) =>
     selected
       ? ({ theme }) => `solid ${theme.palette.primary.main} 2px`
       : "none"};
-  color: ${({ selected }) =>
-    selected ? ({ theme }) => theme.palette.primary.main : "gray"};
   cursor: pointer;
   &:hover {
     background-color: rgb(0, 0, 0, 0.1);
     transition: 0.5s;
   }
+`;
+
+export const Text = styled(Typography)<ButtonProps>`
+  padding-right: 2px;
+  font-weight: 600;
+  color: ${({ selected }) =>
+    selected ? ({ theme }) => theme.palette.primary.main : "gray"};
 `;
