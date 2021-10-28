@@ -45,7 +45,6 @@ export const Text = styled(Typography)<ButtonProps>`
 export const Indicator = styled.div`
   position: absolute;
   top: 0;
-  width: 100%;
   height: 100%;
   transition: all 0.3s ease-in-out;
   border-bottom: ${({ theme }) => `solid ${theme.palette.primary.main} 2px`};
