@@ -34,7 +34,7 @@ export const Button = styled.button<ButtonProps>`
 
 export const Text = styled(Typography)<ButtonProps>`
   padding-right: 2px;
-  font-weight: 600;
+  font-weight: ${({ selected }) => (selected ? 600 : 400)};
   color: ${({ selected }) =>
     selected ? ({ theme }) => theme.palette.primary.main : "gray"};
 `;
