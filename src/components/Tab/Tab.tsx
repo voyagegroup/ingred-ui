@@ -2,6 +2,8 @@ import * as React from "react";
 import { Badge } from "..";
 import { useTheme } from "../../themes";
 import * as Styled from "./styled";
+import Flex from "../Flex";
+import Typography from "../Typography";
 
 type TabsProps = {
   data: {
@@ -45,14 +47,18 @@ const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         selected={selected}
         onClick={handleClick}
       >
-        {text}{" "}
-        {withBadge ? (
-          <Badge color={badgeColor} type="pill">
-            {count}
-          </Badge>
-        ) : (
-          ""
-        )}
+        <Flex display="flex" justifyContent="space-between" alignItems="center">
+          <Typography component="div" weight="bold" size="md">
+            {text}
+          </Typography>
+          {withBadge ? (
+            <Badge color={badgeColor} type="pill" fontWeight="bold">
+              {count}
+            </Badge>
+          ) : (
+            ""
+          )}
+        </Flex>
       </Styled.Button>
     );
   },
