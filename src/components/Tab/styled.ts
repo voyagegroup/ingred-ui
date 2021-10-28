@@ -5,6 +5,12 @@ type ButtonProps = {
   selected: boolean;
 };
 
+export const Container = styled.div`
+  position: relative;
+`;
+
+export const ChildContainer = styled.div``;
+
 export const Button = styled.button<ButtonProps>`
   flex-irection: column;
   flex-shrink: 0;
@@ -21,20 +27,32 @@ export const Button = styled.button<ButtonProps>`
   border: none;
   outline: none;
   background-color: transparent;
-  border-bottom: ${({ selected }) =>
-    selected
-      ? ({ theme }) => `solid ${theme.palette.primary.main} 2px`
-      : "none"};
-  cursor: pointer;
+  cursor: ${({ selected }) => (selected ? "" : "pointer")};
   &:hover {
-    background-color: rgb(0, 0, 0, 0.1);
+    background-color: ${({ selected }) =>
+      !selected ? ({ theme }) => theme.palette.gray.highlight : ""};
     transition: 0.5s;
   }
 `;
 
 export const Text = styled(Typography)<ButtonProps>`
   padding-right: 2px;
-  font-weight: ${({ selected }) => (selected ? 600 : 400)};
+  font-weight: 600;
   color: ${({ selected }) =>
     selected ? ({ theme }) => theme.palette.primary.main : "gray"};
+`;
+
+export const Indicator = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  border-bottom: ${({ theme }) => `solid ${theme.palette.primary.main} 2px`};
+`;
+
+export const Border = styled.div`
+  height: 1px;
+  width: 100%;
+  background: ${({ theme }) => theme.palette.gray.main};
 `;
