@@ -9,7 +9,7 @@ type TabProps = {
   count?: number;
   selected: boolean;
   withBadge: boolean;
-  onChange?: (event: any, value: any) => void;
+  onChange?: (value: any) => void;
   onClick?: (event: any) => void;
 };
 
@@ -20,7 +20,7 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       if (!selected && onChange) {
-        onChange(event, text);
+        onChange(text);
       }
       if (onClick) {
         onClick(event);

@@ -10,7 +10,7 @@ type TabsProps = {
   }[];
   value: any;
   withBadge?: boolean;
-  onChange: (value: any) => void;
+  onChange?: (value: any) => void;
 };
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
@@ -113,7 +113,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                   count={d.count}
                   withBadge={withBadge}
                   text={d.text}
-                  onChange={() => onChange(d.text)}
+                  onChange={onChange}
                 />
               );
             })}
