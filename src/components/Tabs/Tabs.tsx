@@ -7,14 +7,16 @@ type TabsProps = {
   data: {
     text: string;
     count?: number;
+    value?: any;
   }[];
   value: any;
   withBadge?: boolean;
   onChange?: (value: any) => void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-  ({ data, value, withBadge = false, onChange }, ref) => {
+  ({ data, value, withBadge = false, onChange, onClick }, ref) => {
     const valueToIndex = new Map();
     const tabsRef = React.useRef<HTMLDivElement>(null);
     const childrenRef = React.useRef<HTMLDivElement>(null);
@@ -104,16 +106,19 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
           />
           <Styled.ChildrenContainer ref={childrenRef}>
             {data.map((d, index) => {
-              const childValue = d.text ?? index;
+              const childValue = d.value === undefined ? index : d.value;
+              const selected = childValue === value;
               valueToIndex.set(childValue, index);
               return (
                 <Tab
-                  key={d.text}
-                  selected={value === d.text}
+                  key={childValue}
+                  selected={selected}
+                  value={childValue}
                   count={d.count}
                   withBadge={withBadge}
                   text={d.text}
                   onChange={onChange}
+                  onClick={onClick}
                 />
               );
             })}

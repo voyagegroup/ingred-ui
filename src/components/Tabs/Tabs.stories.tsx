@@ -7,7 +7,7 @@ export default {
 };
 
 export const Example = () => {
-  const [value, setValue] = React.useState("日別");
+  const [value, setValue] = React.useState(0);
   const options = {
     data: [{ text: "日別" }, { text: "月別" }],
   };
@@ -16,7 +16,7 @@ export const Example = () => {
 };
 
 export const WithBadge = () => {
-  const [value, setValue] = React.useState("全て");
+  const [value, setValue] = React.useState(0);
   const options = {
     data: [
       { text: "全て", count: 5 },
