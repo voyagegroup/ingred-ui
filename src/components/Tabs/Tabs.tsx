@@ -2,6 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { Tab } from "./internal/Tab";
 import useEventCallback from "../../hooks/useEventCallback";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 type TabsProps<T> = {
   data: {
@@ -21,12 +22,13 @@ const Tabs = <T,>(
 ): React.ReactElement<TabsProps<T>> => {
   const { data, value, withBadge = false, onChange, onClick } = props;
   const valueToIndex = new Map<T, number>();
-  const tabsRef = React.useRef<HTMLDivElement>(null);
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = React.useState({});
+  const [tabs, setTabs] = React.useState<HTMLDivElement | null>(null);
+  const refs = useMergeRefs<HTMLDivElement>(ref, setTabs);
 
   const getTabsMeta = () => {
-    const tabsNode = tabsRef.current;
+    const tabsNode = tabs ?? undefined;
     let tabsMeta;
     if (tabsNode) {
       const rect = tabsNode.getBoundingClientRect();
@@ -101,35 +103,33 @@ const Tabs = <T,>(
   }, [updateIndicatorState]);
 
   return (
-    <Styled.Container ref={ref}>
-      <Styled.ChildContainer ref={tabsRef}>
-        <Styled.Indicator
-          style={{
-            ...indicatorStyle,
-          }}
-        />
-        <Styled.ChildrenContainer ref={childrenRef}>
-          {data.map((d, index) => {
-            const childValue = d.value === undefined ? index : d.value;
-            const selected = childValue === value;
-            valueToIndex.set(childValue as T, index);
-            return (
-              <Tab
-                key={childValue as React.Key}
-                selected={selected}
-                value={childValue}
-                count={d.count}
-                withBadge={withBadge}
-                text={d.text}
-                onChange={onChange}
-                onClick={onClick}
-              />
-            );
-          })}
-          <Styled.Border />
-        </Styled.ChildrenContainer>
-      </Styled.ChildContainer>
-    </Styled.Container>
+    <Styled.ChildContainer ref={refs}>
+      <Styled.Indicator
+        style={{
+          ...indicatorStyle,
+        }}
+      />
+      <Styled.ChildrenContainer ref={childrenRef}>
+        {data.map((d, index) => {
+          const childValue = d.value === undefined ? index : d.value;
+          const selected = childValue === value;
+          valueToIndex.set(childValue as T, index);
+          return (
+            <Tab
+              key={childValue as React.Key}
+              selected={selected}
+              value={childValue}
+              count={d.count}
+              withBadge={withBadge}
+              text={d.text}
+              onChange={onChange}
+              onClick={onClick}
+            />
+          );
+        })}
+        <Styled.Border />
+      </Styled.ChildrenContainer>
+    </Styled.ChildContainer>
   );
 };
 

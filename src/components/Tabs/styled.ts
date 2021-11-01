@@ -5,8 +5,6 @@ type ButtonProps = {
   selected: boolean;
 };
 
-export const Container = styled.div``;
-
 export const ChildContainer = styled.div`
   position: relative;
 `;
