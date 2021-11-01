@@ -40,6 +40,7 @@ import {
   FileUploader,
   DataTable,
   MultipleFilter,
+  Tabs,
 } from "../../../../src/components";
 import { createTheme, Theme } from "../../../../src/themes";
 import { SnackbarContent } from "../../../../src/components/Snackbar/internal/SnackbarContent";
@@ -508,6 +509,21 @@ const componentList: Section[] = [
                 ],
               },
             ]}
+          />
+        ),
+      },
+      {
+        title: "Tabs",
+        content: (
+          <Tabs
+            data={[
+              { text: "全て", count: 5 },
+              { text: "ユニット", count: 3 },
+              { text: "サイズ", count: 2 },
+            ]}
+            value={0}
+            withBadge={true}
+            onChange={action("changed 'Switch'")}
           />
         ),
       },
