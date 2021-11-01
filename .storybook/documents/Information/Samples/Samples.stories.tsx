@@ -523,7 +523,7 @@ const componentList: Section[] = [
             ]}
             value={0}
             withBadge={true}
-            onChange={action("changed 'Switch'")}
+            onChange={action("changed 'Tabs'")}
           />
         ),
       },
