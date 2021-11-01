@@ -255,6 +255,21 @@ const componentList: Section[] = [
           />
         ),
       },
+      {
+        title: "Tabs",
+        content: (
+          <Tabs
+            data={[
+              { text: "全て", count: 5, value: "全て" },
+              { text: "ユニット", count: 3, value: "ユニット" },
+              { text: "サイズ", count: 2, value: "サイズ" },
+            ]}
+            value={"全て"}
+            withBadge={true}
+            onChange={action("changed 'Tabs'")}
+          />
+        ),
+      },
     ],
   },
   {
@@ -509,21 +524,6 @@ const componentList: Section[] = [
                 ],
               },
             ]}
-          />
-        ),
-      },
-      {
-        title: "Tabs",
-        content: (
-          <Tabs
-            data={[
-              { text: "全て", count: 5 },
-              { text: "ユニット", count: 3 },
-              { text: "サイズ", count: 2 },
-            ]}
-            value={0}
-            withBadge={true}
-            onChange={action("changed 'Tabs'")}
           />
         ),
       },

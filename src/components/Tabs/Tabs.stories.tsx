@@ -2,7 +2,7 @@ import * as React from "react";
 import Tabs from ".";
 
 export default {
-  title: "Components/Utils/Tab",
+  title: "Components/Navigation/Tabs",
   component: Tabs,
 };
 
