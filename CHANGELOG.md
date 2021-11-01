@@ -1,5 +1,15 @@
 # Changelog
 
+## [v9.2.0](https://github.com/voyagegroup/ingred-ui/tree/v9.2.0) (2021-11-01)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.1.0...v9.2.0)
+
+**Merged pull requests:**
+
+- Add `<Tabs />` [\#569](https://github.com/voyagegroup/ingred-ui/pull/569) ([takurinton](https://github.com/takurinton))
+- fix\(deps\): update dependency ingred-ui to v9.1.0 [\#568](https://github.com/voyagegroup/ingred-ui/pull/568) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16 [\#566](https://github.com/voyagegroup/ingred-ui/pull/566) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.1.0](https://github.com/voyagegroup/ingred-ui/tree/v9.1.0) (2021-10-26)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.0.2...v9.1.0)
