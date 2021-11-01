@@ -33,14 +33,8 @@ const Tabs = <T,>(
     if (tabsNode) {
       const rect = tabsNode.getBoundingClientRect();
       tabsMeta = {
-        clientWidth: tabsNode.clientWidth,
         scrollLeft: tabsNode.scrollLeft,
-        scrollTop: tabsNode.scrollTop,
-        scrollWidth: tabsNode.scrollWidth,
-        top: rect.top,
-        bottom: rect.bottom,
         left: rect.left,
-        right: rect.right,
       };
     }
 
