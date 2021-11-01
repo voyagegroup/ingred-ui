@@ -8,9 +8,9 @@ type TabsProps<T> = {
   data: {
     text: string;
     count?: number;
-    value?: T;
+    value: T;
   }[];
-  value: any;
+  value: T;
   withBadge?: boolean;
   onChange?: (value: T) => void;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -39,7 +39,7 @@ const Tabs = <T,>(
     }
 
     let tabMeta;
-    if (tabsNode && value !== false) {
+    if (tabsNode && value) {
       if (childrenRef.current) {
         const children = childrenRef.current.children;
 
@@ -105,12 +105,12 @@ const Tabs = <T,>(
       />
       <Styled.ChildrenContainer ref={childrenRef}>
         {data.map((d, index) => {
-          const childValue = d.value === undefined ? index : d.value;
+          const childValue = d.value;
           const selected = childValue === value;
-          valueToIndex.set(childValue as T, index);
+          valueToIndex.set(childValue, index);
           return (
             <Tab
-              key={childValue as React.Key}
+              key={index.toString()}
               selected={selected}
               value={childValue}
               count={d.count}

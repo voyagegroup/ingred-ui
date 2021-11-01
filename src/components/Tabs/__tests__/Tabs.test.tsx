@@ -9,7 +9,10 @@ describe("Tabs component testing", () => {
 
   test("Tabs", () => {
     const options = {
-      data: [{ text: "hoge" }, { text: "fuga" }],
+      data: [
+        { text: "hoge", value: "hoge" },
+        { text: "fuga", value: "fuga" },
+      ],
     };
     const { asFragment } = renderWithThemeProvider(
       <Tabs {...options} value={"hoge"} />,
@@ -21,9 +24,9 @@ describe("Tabs component testing", () => {
   test("Tabs with badge", () => {
     const options = {
       data: [
-        { text: "hoge", count: 1 },
-        { text: "fuga", count: 2 },
-        { text: "piyo", count: 3 },
+        { text: "hoge", count: 1, value: "hoge" },
+        { text: "fuga", count: 2, value: "fuga" },
+        { text: "piyo", count: 3, value: "piyo" },
       ],
     };
     const { asFragment } = renderWithThemeProvider(
