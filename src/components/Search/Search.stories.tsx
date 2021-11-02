@@ -35,9 +35,17 @@ export const Example = () => {
   ];
 
   const tabData = [
-    { text: "全て", count: 5, value: "全て" },
-    { text: "ユニット", count: 5, value: "ユニット" },
-    { text: "サイズ", count: 5, value: "サイズ" },
+    { text: "全て", count: data.length, value: "all" },
+    {
+      text: "ユニット",
+      count: data.filter((d) => d.category == "unit").length,
+      value: "unit",
+    },
+    {
+      text: "サイズ",
+      count: data.filter((d) => d.category == "size").length,
+      value: "size",
+    },
   ];
 
   return (

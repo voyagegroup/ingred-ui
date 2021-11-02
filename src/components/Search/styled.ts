@@ -34,6 +34,11 @@ export const PagerContainer = styled.div`
   justify-content: center;
 `;
 
+export const AContainer = styled.a`
+  color: ${({ theme }) => theme.palette.black};
+  text-decoration: none;
+`;
+
 export const TextContainer = styled.p`
   margin: 12px 0;
   padding: 8px;

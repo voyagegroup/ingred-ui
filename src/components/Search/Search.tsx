@@ -7,6 +7,8 @@ import ScrollArea from "../ScrollArea";
 import Pager from "../Pager";
 import { useTheme } from "../../themes";
 import * as Styled from "./styled";
+import { NotResult } from "./internal/NoResult";
+import { Empty } from "./internal/Empty";
 
 export type SearchProps<T> = {
   tabData: {
@@ -16,7 +18,7 @@ export type SearchProps<T> = {
   }[];
   data: {
     text: string;
-    category: string;
+    category: T;
   }[];
   isOpen: boolean;
   onChange: (value: string) => void;
@@ -29,10 +31,12 @@ const Search = <T,>(
 ): React.ReactElement<SearchProps<T>> => {
   const { tabData, data, isOpen, onChange, handleToggleOpen } = props;
 
+  // const initialTab = tabData ? tabData[0].value : "全て";
   const inputRef = React.useRef<HTMLInputElement>(null);
   const theme = useTheme();
   const [tab, setTab] = React.useState<T>(tabData[0].value);
   const [page, setPage] = React.useState(1);
+  const [filterdData, setFilterdData] = React.useState(data);
 
   const handleChangeTabs = (value: T) => {
     setTab(value);
@@ -44,7 +48,11 @@ const Search = <T,>(
 
   React.useEffect(() => {
     inputRef.current?.focus();
-  }, []);
+
+    tab === "all"
+      ? setFilterdData(data)
+      : setFilterdData(data.filter((d) => d.category === tab));
+  }, [data, tab]);
 
   return (
     <Styled.Container ref={ref}>
@@ -64,16 +72,18 @@ const Search = <T,>(
             />
             <Styled.ScrollContainer>
               <ScrollArea style={{ height: "100%", width: "100%" }}>
-                <>
-                  {data.map(({ text }) => (
-                    <>
-                      <Styled.TextContainer key={text}>
-                        {text}
-                      </Styled.TextContainer>
-                      <Styled.UnderLineContainer />
-                    </>
-                  ))}
-                </>
+                <div>
+                  {filterdData.length === 0 ? (
+                    <Empty />
+                  ) : (
+                    filterdData.map(({ text }) => (
+                      <Styled.AContainer key={text} href="">
+                        <Styled.TextContainer>{text}</Styled.TextContainer>
+                        <Styled.UnderLineContainer />
+                      </Styled.AContainer>
+                    ))
+                  )}
+                </div>
               </ScrollArea>
             </Styled.ScrollContainer>
             <Styled.PagerContainer>
