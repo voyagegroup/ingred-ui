@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/node": "16.11.6",
     "@types/react": "17.0.34",
-    "@types/react-dom": "17.0.10",
+    "@types/react-dom": "17.0.11",
     "@types/styled-components": "5.1.15",
     "ingred-ui": "9.2.0",
     "react": "17.0.2",
