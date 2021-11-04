@@ -5,12 +5,18 @@ import TextField from "../TextField";
 import Tabs from "../Tabs";
 import ScrollArea from "../ScrollArea";
 import Pager from "../Pager";
+import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
 import * as Styled from "./styled";
 import { NotResult } from "./internal/NoResult";
 import { Empty } from "./internal/Empty";
 
+// TODO: option を増やす
 export type SearchProps<T> = {
+  inputValue: string;
+  isLoading: boolean;
+  perPage: number;
+  total: number;
   tabData: {
     text: string;
     count?: number;
@@ -29,14 +35,26 @@ const Search = <T,>(
   props: SearchProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ): React.ReactElement<SearchProps<T>> => {
-  const { tabData, data, isOpen, onChange, handleToggleOpen } = props;
+  const {
+    inputValue,
+    isLoading,
+    perPage,
+    total,
+    tabData,
+    data,
+    isOpen,
+    onChange,
+    handleToggleOpen,
+  } = props;
 
-  // const initialTab = tabData ? tabData[0].value : "全て";
   const inputRef = React.useRef<HTMLInputElement>(null);
   const theme = useTheme();
   const [tab, setTab] = React.useState<T>(tabData[0].value);
   const [page, setPage] = React.useState(1);
   const [filterdData, setFilterdData] = React.useState(data);
+  const [componentState, setComponentState] = React.useState<
+    JSX.Element | JSX.Element[]
+  >(<Empty />);
 
   const handleChangeTabs = (value: T) => {
     setTab(value);
@@ -46,13 +64,36 @@ const Search = <T,>(
     setPage(page);
   };
 
+  const handleChangeInputValue = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    onChange(event.target.value);
+  };
+
   React.useEffect(() => {
     inputRef.current?.focus();
 
+    // TODO: type safe に
     tab === "all"
       ? setFilterdData(data)
       : setFilterdData(data.filter((d) => d.category === tab));
-  }, [data, tab]);
+
+    if (inputValue === "") {
+      setComponentState(<Empty />);
+    } else if (filterdData.length === 0) {
+      setComponentState(<NotResult />);
+    } else {
+      // TODO: 分離する
+      setComponentState(
+        filterdData.map(({ text }) => (
+          <Styled.AContainer key={text} href="">
+            <Styled.TextContainer>{text}</Styled.TextContainer>
+            <Styled.UnderLineContainer />
+          </Styled.AContainer>
+        )),
+      );
+    }
+  }, [data, tab, filterdData, inputValue]);
 
   return (
     <Styled.Container ref={ref}>
@@ -62,7 +103,9 @@ const Search = <T,>(
             <TextField
               inputRef={inputRef}
               icon="search"
+              value={inputValue}
               placeholder="検索ワードを入力してください"
+              onChange={handleChangeInputValue}
             />
             <Tabs
               data={tabData}
@@ -72,24 +115,13 @@ const Search = <T,>(
             />
             <Styled.ScrollContainer>
               <ScrollArea style={{ height: "100%", width: "100%" }}>
-                <div>
-                  {filterdData.length === 0 ? (
-                    <Empty />
-                  ) : (
-                    filterdData.map(({ text }) => (
-                      <Styled.AContainer key={text} href="">
-                        <Styled.TextContainer>{text}</Styled.TextContainer>
-                        <Styled.UnderLineContainer />
-                      </Styled.AContainer>
-                    ))
-                  )}
-                </div>
+                <div>{isLoading ? <Spinner /> : componentState}</div>
               </ScrollArea>
             </Styled.ScrollContainer>
             <Styled.PagerContainer>
               <Pager
-                per={1}
-                total={4}
+                per={perPage}
+                total={total}
                 index={page}
                 onClick={handleChangePage}
               />

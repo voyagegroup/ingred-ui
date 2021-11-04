@@ -1,5 +1,4 @@
 import * as React from "react";
-// import { Story } from "@storybook/react/types-6-0";
 import Search from "./Search";
 
 export default {
@@ -8,8 +7,10 @@ export default {
 };
 
 export const Example = () => {
-  // ここデフォルトでは false にする
+  // const [data, setData] = React.useState<any[]>([{}]);
   const [isOpen, setIsOpen] = React.useState(true);
+  const [inputValue, setInputValue] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
@@ -50,11 +51,15 @@ export const Example = () => {
 
   return (
     <Search
+      inputValue={inputValue}
+      perPage={10}
+      total={data.length}
+      isLoading={isLoading}
       data={data}
       tabData={tabData}
       handleToggleOpen={handleToggleOpen}
       isOpen={isOpen}
-      onChange={(value) => console.log(value)}
+      onChange={setInputValue}
     />
   );
 };
