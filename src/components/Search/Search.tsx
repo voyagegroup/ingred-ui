@@ -73,12 +73,17 @@ const Search = <T,>(
 
   React.useEffect(() => {
     inputRef.current?.focus();
+  }, []);
 
-    // TODO: type safe に
-    tab === "all"
-      ? setFilterdData(data)
-      : setFilterdData(data.filter((d) => d.category === tab));
+  React.useEffect(() => {
+    if (typeof tab === "string" && tab === "all") {
+      setFilterdData(data);
+    } else {
+      setFilterdData(data.filter((d) => d.category === tab));
+    }
+  }, [data, tab]);
 
+  React.useEffect(() => {
     if (inputValue === "") {
       setComponentState(<Empty />);
     } else if (filterdData.length === 0) {
@@ -86,39 +91,41 @@ const Search = <T,>(
     } else {
       setComponentState(<Results filterdData={filterdData} />);
     }
-  }, [data, tab, filterdData, inputValue]);
+  }, [filterdData, inputValue]);
 
   return (
     <Styled.Container ref={ref}>
       <Modal isOpen={isOpen} onClose={handleToggleOpen}>
         <Fade in={true}>
           <Styled.FadeContainer>
-            <TextField
-              inputRef={inputRef}
-              icon="search"
-              value={inputValue}
-              placeholder="検索ワードを入力してください"
-              onChange={handleChangeInputValue}
-            />
-            <Tabs
-              data={tabData}
-              value={tab}
-              withBadge={true}
-              onChange={handleChangeTabs}
-            />
-            <Styled.ScrollContainer>
-              <ScrollArea style={{ height: "100%", width: "100%" }}>
-                <div>{isLoading ? <Spinner /> : componentState}</div>
-              </ScrollArea>
-            </Styled.ScrollContainer>
-            <Styled.PagerContainer>
-              <Pager
-                per={perPage}
-                total={total}
-                index={page}
-                onClick={handleChangePage}
+            <Styled.FieldContainer>
+              <TextField
+                inputRef={inputRef}
+                icon="search"
+                value={inputValue}
+                placeholder="検索ワードを入力してください"
+                onChange={handleChangeInputValue}
               />
-            </Styled.PagerContainer>
+              <Tabs
+                data={tabData}
+                value={tab}
+                withBadge={true}
+                onChange={handleChangeTabs}
+              />
+              <Styled.ScrollContainer>
+                <ScrollArea style={{ height: "100%", width: "100%" }}>
+                  <div>{isLoading ? <Spinner /> : componentState}</div>
+                </ScrollArea>
+              </Styled.ScrollContainer>
+              <Styled.PagerContainer>
+                <Pager
+                  per={perPage}
+                  total={total}
+                  index={page}
+                  onClick={handleChangePage}
+                />
+              </Styled.PagerContainer>
+            </Styled.FieldContainer>
           </Styled.FadeContainer>
         </Fade>
       </Modal>

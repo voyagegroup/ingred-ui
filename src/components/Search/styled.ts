@@ -10,7 +10,7 @@ export const ModalStyle = styled.div`
 // width: 50vw とか？
 export const FadeContainer = styled.div`
   position: absolute;
-  padding: 20px;
+  padding: 20px 20px 0;
   top: 50%;
   left: 50%;
   height: 70vh;
@@ -18,6 +18,11 @@ export const FadeContainer = styled.div`
   transform: translate(-50%, -50%);
   background-color: white;
   border-radius: 10px;
+`;
+
+export const FieldContainer = styled.div`
+  position: relative;
+  height: 100%;
 `;
 
 export const ScrollContainer = styled.div`
@@ -31,26 +36,10 @@ export const PagerContainer = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   display: flex;
+  background-color: white;
   justify-content: center;
-`;
-
-export const AContainer = styled.a`
-  color: ${({ theme }) => theme.palette.black};
-  text-decoration: none;
-`;
-
-export const TextContainer = styled.p`
-  margin: 12px 0;
-  padding: 8px;
-  font-size: 1rem;
-  border-radius: 10px;
-  &:hover {
-    background-color: ${({ theme }) => `${theme.palette.gray.light}`};
-    transition: 0.5s;
-  }
-`;
-
-export const UnderLineContainer = styled.div`
-  height: 0.1px;
-  background-color: ${({ theme }) => `${theme.palette.gray.light}`};
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
 `;
