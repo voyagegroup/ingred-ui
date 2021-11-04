@@ -28,3 +28,24 @@ export const BoldTextContainer = styled.p`
 export const TextContainer = styled.p`
   font-size: 1rem;
 `;
+
+export const AContainer = styled.a`
+  color: ${({ theme }) => theme.palette.black};
+  text-decoration: none;
+`;
+
+export const ContentTextContainer = styled.p`
+  margin: 12px 0;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 10px;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.palette.gray.light}`};
+    transition: 0.5s;
+  }
+`;
+
+export const UnderLineContainer = styled.div`
+  height: 0.1px;
+  background-color: ${({ theme }) => `${theme.palette.gray.light}`};
+`;

@@ -10,6 +10,7 @@ import { useTheme } from "../../themes";
 import * as Styled from "./styled";
 import { NotResult } from "./internal/NoResult";
 import { Empty } from "./internal/Empty";
+import { Results } from "./internal/Results";
 
 // TODO: option を増やす
 export type SearchProps<T> = {
@@ -83,15 +84,7 @@ const Search = <T,>(
     } else if (filterdData.length === 0) {
       setComponentState(<NotResult />);
     } else {
-      // TODO: 分離する
-      setComponentState(
-        filterdData.map(({ text }) => (
-          <Styled.AContainer key={text} href="">
-            <Styled.TextContainer>{text}</Styled.TextContainer>
-            <Styled.UnderLineContainer />
-          </Styled.AContainer>
-        )),
-      );
+      setComponentState(<Results filterdData={filterdData} />);
     }
   }, [data, tab, filterdData, inputValue]);
 
