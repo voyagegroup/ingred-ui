@@ -51,7 +51,7 @@
     "@svgr/rollup": "5.5.0",
     "@testing-library/jest-dom": "5.15.0",
     "@testing-library/react": "12.1.2",
-    "@types/jest": "27.0.2",
+    "@types/jest": "27.0.3",
     "@types/moment": "2.13.0",
     "@types/react": "17.0.35",
     "@types/react-dates": "21.8.3",
