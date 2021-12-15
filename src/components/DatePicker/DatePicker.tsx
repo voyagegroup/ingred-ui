@@ -9,6 +9,7 @@ import {
 } from "react-dates";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 function isOutsideRange() {
   return false;
@@ -25,7 +26,10 @@ export type DatePickerProps = Partial<
   };
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
-  ({ date, error = false, ...rest }, ref) => {
+  (inProps, ref) => {
+    const props = useLocaleProps({ props: inProps, name: "DatePicker" });
+    const { date, error = false, ...rest } = props;
+
     const [focused, setFocused] = React.useState<boolean>(false);
     const onFocusChange = ({ focused }: { focused: boolean }) => {
       setFocused(focused);
