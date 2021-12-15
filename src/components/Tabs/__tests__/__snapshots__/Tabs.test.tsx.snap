@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs component testing Tabs 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsDKAQ dFzOKQ"
+  >
+    <div
+      class="sc-jRQBWg bMRicj"
+      style="left: 0px; width: 0px;"
+    />
+    <div
+      class="sc-dkPtRN"
+    >
+      <button
+        class="sc-hKwDye hWgBEh"
+        tabindex="0"
+        value="hoge"
+      >
+        <div
+          class="sc-furwcr jaYMeI"
+          display="flex"
+        >
+          <p
+            class="sc-bdvvtL euPFjW sc-eCImPb dafOHH"
+            color="#041C33"
+            font-size="14px"
+          >
+            hoge 
+          </p>
+        </div>
+      </button>
+      <button
+        class="sc-hKwDye ctPsiR"
+        tabindex="-1"
+        value="fuga"
+      >
+        <div
+          class="sc-furwcr jaYMeI"
+          display="flex"
+        >
+          <p
+            class="sc-bdvvtL euPFjW sc-eCImPb euALer"
+            color="#041C33"
+            font-size="14px"
+          >
+            fuga 
+          </p>
+        </div>
+      </button>
+      <div
+        class="sc-gKclnd coYCXA"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Tabs component testing Tabs with badge 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-gsDKAQ dFzOKQ"
+  >
+    <div
+      class="sc-jRQBWg bMRicj"
+      style="left: 0px; width: 0px;"
+    />
+    <div
+      class="sc-dkPtRN"
+    >
+      <button
+        class="sc-hKwDye hWgBEh"
+        tabindex="0"
+        value="hoge"
+      >
+        <div
+          class="sc-furwcr eLUTHW"
+          display="flex"
+        >
+          <p
+            class="sc-bdvvtL euPFjW sc-eCImPb dafOHH"
+            color="#041C33"
+            font-size="14px"
+          >
+            hoge 
+          </p>
+          <span
+            class="sc-iCfMLu plEQf"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            1
+          </span>
+        </div>
+      </button>
+      <button
+        class="sc-hKwDye ctPsiR"
+        tabindex="-1"
+        value="fuga"
+      >
+        <div
+          class="sc-furwcr eLUTHW"
+          display="flex"
+        >
+          <p
+            class="sc-bdvvtL euPFjW sc-eCImPb euALer"
+            color="#041C33"
+            font-size="14px"
+          >
+            fuga 
+          </p>
+          <span
+            class="sc-iCfMLu jyvuZM"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            2
+          </span>
+        </div>
+      </button>
+      <button
+        class="sc-hKwDye ctPsiR"
+        tabindex="-1"
+        value="piyo"
+      >
+        <div
+          class="sc-furwcr eLUTHW"
+          display="flex"
+        >
+          <p
+            class="sc-bdvvtL euPFjW sc-eCImPb euALer"
+            color="#041C33"
+            font-size="14px"
+          >
+            piyo 
+          </p>
+          <span
+            class="sc-iCfMLu jyvuZM"
+            color="#FFFFFF"
+            font-size="0.65em"
+            font-weight="bold"
+            type="pill"
+          >
+            3
+          </span>
+        </div>
+      </button>
+      <div
+        class="sc-gKclnd coYCXA"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
