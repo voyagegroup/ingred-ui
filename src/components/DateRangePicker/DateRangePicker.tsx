@@ -9,6 +9,7 @@ import {
 } from "react-dates";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 function isOutsideRange() {
   return false;
@@ -25,7 +26,9 @@ export type DateRangePickerProps = Partial<DateRangePickerShape> & {
 };
 
 const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
-  ({ startDate, endDate, error = false, ...rest }, ref) => {
+  (inProps, ref) => {
+    const props = useLocaleProps({ props: inProps, name: "DateRangePicker" });
+    const { startDate, endDate, error = false, ...rest } = props;
     const [focusedInput, setFocusedInput] =
       React.useState<FocusedInputShape | null>(null);
 
