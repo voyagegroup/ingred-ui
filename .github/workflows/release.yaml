@@ -31,7 +31,7 @@ jobs:
         with:
           ruby-version: 2.7
       - name: install github_changelog_generate
-        run: gem install github_changelog_generator
+        run: gem install -N github_changelog_generator
       - name: create CHANGELOG
         run: make -f ci.mk changelog
         env:
