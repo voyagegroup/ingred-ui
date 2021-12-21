@@ -1,10 +1,10 @@
 import React from "react";
+import DefaultToast from "./DefaultToast";
+import ToastProvider from "./ToastProvider";
 import {
   useToasts,
   ToastProps as DefaultToastProps,
-} from "react-toast-notifications";
-import DefaultToast from "./DefaultToast";
-import ToastProvider from "./ToastProvider";
+} from "../../lib/react-toast-notification/src";
 
 export type ToastProps = DefaultToastProps;
 
@@ -19,7 +19,7 @@ const defaultToastProps: ToastProps = {
   placement: "top-center",
   transitionDuration: 0,
   transitionState: "entered",
-  children: null,
+  children: null as any,
 };
 
 const Toast = (props: Partial<ToastProps>) => (
