@@ -19,7 +19,7 @@ const defaultToastProps: ToastProps = {
   placement: "top-center",
   transitionDuration: 0,
   transitionState: "entered",
-  children: null as any,
+  children: null,
 };
 
 const Toast = (props: Partial<ToastProps>) => (
