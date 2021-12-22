@@ -59,7 +59,7 @@ export type ToastProviderProps = {
   // When true, insert new toasts at the top of the stack
   newestOnTop?: boolean;
   // Where, in relation to the viewport, to place the toasts
-  placement?: Placement;
+  placement: Placement;
   // Which element to attach the container's portal to, defaults to the `body`.
   portalTargetSelector?: string;
   // A convenience prop; the duration of the toast transition, in milliseconds.
@@ -115,10 +115,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
 
         {portalTarget ? (
           createPortal(
-            <ToastContainer
-              placement={placement as Placement}
-              hasToasts={hasToasts}
-            >
+            <ToastContainer placement={placement} hasToasts={hasToasts}>
               <TransitionGroup component={null}>
                 {toasts.map(
                   ({
@@ -164,10 +161,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
             portalTarget,
           )
         ) : (
-          <ToastContainer
-            placement={placement as Placement}
-            hasToasts={hasToasts}
-          /> // keep ReactDOM.hydrate happy
+          <ToastContainer placement={placement} hasToasts={hasToasts} /> // keep ReactDOM.hydrate happy
         )}
       </Provider>
     );
