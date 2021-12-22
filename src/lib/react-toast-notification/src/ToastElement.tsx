@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC } from "react";
+import React, { useEffect, useRef, useState, FC, ReactNode } from "react";
 
 import { keyframes } from "styled-components";
 
@@ -245,7 +245,7 @@ export type ToastProps = {
   appearance: AppearanceTypes;
   autoDismiss: boolean; // may be inherited from ToastProvider
   autoDismissTimeout: number; // inherited from ToastProvider
-  children: Node;
+  children: ReactNode;
   isRunning: boolean;
   onDismiss: typeof NOOP;
   onMouseEnter: HoverFn;
