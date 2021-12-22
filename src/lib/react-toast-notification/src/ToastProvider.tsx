@@ -51,22 +51,20 @@ type Components = {
 export type ToastProviderProps = {
   // A convenience prop; the time until a toast will be dismissed automatically, in milliseconds.
   // Note that specifying this will override any defaults set on individual children Toasts.
-  autoDismissTimeout: number;
+  autoDismissTimeout?: number;
   // Whether or not to dismiss the toast automatically after `autoDismissTimeout`.
-  autoDismiss: boolean;
-  // Unrelated app content
-  children: Node;
+  autoDismiss?: boolean;
   // Component replacement object
-  components: Components;
+  components?: Components;
   // When true, insert new toasts at the top of the stack
-  newestOnTop: boolean;
+  newestOnTop?: boolean;
   // Where, in relation to the viewport, to place the toasts
-  placement: Placement;
+  placement?: Placement;
   // Which element to attach the container's portal to, defaults to the `body`.
   portalTargetSelector?: string;
   // A convenience prop; the duration of the toast transition, in milliseconds.
   // Note that specifying this will override any defaults set on individual children Toasts.
-  transitionDuration: number;
+  transitionDuration?: number;
 };
 type State = { toasts: ToastsType };
 type Context = {
@@ -117,7 +115,10 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
 
         {portalTarget ? (
           createPortal(
-            <ToastContainer placement={placement} hasToasts={hasToasts}>
+            <ToastContainer
+              placement={placement as Placement}
+              hasToasts={hasToasts}
+            >
               <TransitionGroup component={null}>
                 {toasts.map(
                   ({
@@ -133,7 +134,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
                       appear
                       mountOnEnter
                       unmountOnExit
-                      timeout={transitionDuration}
+                      timeout={transitionDuration as number}
                     >
                       {(transitionState) => (
                         <ToastController
@@ -163,7 +164,10 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
             portalTarget,
           )
         ) : (
-          <ToastContainer placement={placement} hasToasts={hasToasts} /> // keep ReactDOM.hydrate happy
+          <ToastContainer
+            placement={placement as Placement}
+            hasToasts={hasToasts}
+          /> // keep ReactDOM.hydrate happy
         )}
       </Provider>
     );
