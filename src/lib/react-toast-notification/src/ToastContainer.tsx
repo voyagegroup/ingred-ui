@@ -1,16 +1,35 @@
 import React, { ReactNode } from "react";
+import styled, { css } from "styled-components";
 
 import type { Placement } from "./types";
 import { gutter } from "./ToastElement";
 
-const placements = {
-  "top-left": { top: 0, left: 0 },
-  "top-center": { top: 0, left: "50%", transform: "translateX(-50%)" },
-  "top-right": { top: 0, right: 0 },
-  "bottom-left": { bottom: 0, left: 0 },
-  "bottom-center": { bottom: 0, left: "50%", transform: "translateX(-50%)" },
-  "bottom-right": { bottom: 0, right: 0 },
-};
+const Div = styled.div<{ hasToasts: boolean; placement: Placement }>`
+  box-sizing: border-box;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: ${gutter}px;
+  pointer-events: ${({ hasToasts }) => (hasToasts ? undefined : "none")};
+  position: fixed;
+  z-index: 1000;
+  ${({ placement }) => {
+    switch (placement) {
+      case "top-left":
+        return css({ top: 0, left: 0 });
+      case "top-center":
+        return css({ top: 0, left: "50%", transform: "translateX(-50%)" });
+      case "top-right":
+        return css({ top: 0, right: 0 });
+      case "bottom-left":
+        return css({ bottom: 0, left: 0 });
+      case "bottom-center":
+        return css({ bottom: 0, left: "50%", transform: "translateX(-50%)" });
+      case "bottom-right":
+        return css({ bottom: 0, right: 0 });
+    }
+  }}
+`;
 
 export type ToastContainerProps = {
   children?: ReactNode;
@@ -23,19 +42,10 @@ export const ToastContainer = ({
   placement,
   ...props
 }: ToastContainerProps) => (
-  <div
+  <Div
     className="react-toast-notifications__container"
-    css={{
-      boxSizing: "border-box",
-      maxHeight: "100%",
-      maxWidth: "100%",
-      overflow: "hidden",
-      padding: gutter,
-      pointerEvents: hasToasts ? undefined : "none",
-      position: "fixed",
-      zIndex: 1000,
-      ...placements[placement],
-    }}
+    hasToasts={hasToasts}
+    placement={placement}
     {...props}
   />
 );
