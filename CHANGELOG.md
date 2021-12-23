@@ -1,5 +1,19 @@
 # Changelog
 
+## [v9.3.1](https://github.com/voyagegroup/ingred-ui/tree/v9.3.1) (2021-12-23)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.3.0...v9.3.1)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency eslint-plugin-react to v7.28.0 [\#642](https://github.com/voyagegroup/ingred-ui/pull/642) ([renovate[bot]](https://github.com/apps/renovate))
+- Insourcing `react-toast-notification` [\#641](https://github.com/voyagegroup/ingred-ui/pull/641) ([youchann](https://github.com/youchann))
+- fix\(deps\): update dependency @types/node to v16.11.15 [\#640](https://github.com/voyagegroup/ingred-ui/pull/640) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency scaffdog to v1.1.0 [\#639](https://github.com/voyagegroup/ingred-ui/pull/639) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency react-scripts to v5 [\#631](https://github.com/voyagegroup/ingred-ui/pull/631) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.8.0 [\#629](https://github.com/voyagegroup/ingred-ui/pull/629) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency typescript to v4.5.4 [\#590](https://github.com/voyagegroup/ingred-ui/pull/590) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.3.0](https://github.com/voyagegroup/ingred-ui/tree/v9.3.0) (2021-12-17)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.2.0...v9.3.0)
