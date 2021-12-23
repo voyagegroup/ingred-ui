@@ -57,16 +57,22 @@ Explanation of each prop is written in here's [README](https://github.com/jossma
 ### Colors
 
 <Canvas>
-  <Story name="info" args={{ appearance: "info" }}>
+  <Story name="info" args={{ appearance: "info", placement: "top-center" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story name="success" args={{ appearance: "success" }}>
+  <Story
+    name="success"
+    args={{ appearance: "success", placement: "top-center" }}
+  >
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story name="warning" args={{ appearance: "warning" }}>
+  <Story
+    name="warning"
+    args={{ appearance: "warning", placement: "top-center" }}
+  >
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
-  <Story name="error" args={{ appearance: "error" }}>
+  <Story name="error" args={{ appearance: "error", placement: "top-center" }}>
     {(args) => <Toast {...args}>{args.appearance}</Toast>}
   </Story>
 </Canvas>

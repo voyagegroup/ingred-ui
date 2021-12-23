@@ -3,7 +3,7 @@ import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
 import DefaultToast from "..";
 import { renderWithThemeProvider } from "../../../../utils/renderWithThemeProvider";
-import { ToastProps } from "react-toast-notifications";
+import { ToastProps } from "../../../../lib/react-toast-notification/src";
 
 const toastProps: Omit<ToastProps, "children"> = {
   appearance: "info",
