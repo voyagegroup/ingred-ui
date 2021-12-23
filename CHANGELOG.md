@@ -1,5 +1,13 @@
 # Changelog
 
+## [v9.3.2](https://github.com/voyagegroup/ingred-ui/tree/v9.3.2) (2021-12-23)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.3.1...v9.3.2)
+
+**Merged pull requests:**
+
+- Update `rollup-plugin-imagemin` to 0.5.0 [\#643](https://github.com/voyagegroup/ingred-ui/pull/643) ([youchann](https://github.com/youchann))
+
 ## [v9.3.1](https://github.com/voyagegroup/ingred-ui/tree/v9.3.1) (2021-12-23)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.3.0...v9.3.1)
