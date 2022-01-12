@@ -6,7 +6,7 @@
     "@types/node": "16.11.19",
     "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
-    "@types/styled-components": "5.1.19",
+    "@types/styled-components": "5.1.20",
     "ingred-ui": "9.3.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
