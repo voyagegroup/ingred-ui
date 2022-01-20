@@ -67,6 +67,7 @@ import { DownloadCloudIcon } from "./internal/DownloadCloudIcon";
 import { SaveIcon } from "./internal/SaveIcon";
 import { CloseCircleIcon } from "./internal/CloseCircleIcon";
 import { BidStrapIcon } from "./internal/BidStrapIcon";
+import { FluctIcon } from "./internal/FluctIcon";
 
 export type IconName =
   | "dashboard"
@@ -133,7 +134,8 @@ export type IconName =
   | "download_cloud"
   | "save"
   | "close_circle"
-  | "bid_strap";
+  | "bid_strap"
+  | "fluct";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -217,6 +219,7 @@ export const icons: {
   save: SaveIcon,
   close_circle: CloseCircleIcon,
   bid_strap: BidStrapIcon,
+  fluct: FluctIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
