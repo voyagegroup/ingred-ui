@@ -1,5 +1,43 @@
 # Changelog
 
+## [v9.4.0](https://github.com/voyagegroup/ingred-ui/tree/v9.4.0) (2022-01-20)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.3.2...v9.4.0)
+
+**Merged pull requests:**
+
+- Rubyのバージョンを3.0にあげる [\#676](https://github.com/voyagegroup/ingred-ui/pull/676) ([takurinton](https://github.com/takurinton))
+- data\_strap のアイコンを追加 [\#675](https://github.com/voyagegroup/ingred-ui/pull/675) ([takurinton](https://github.com/takurinton))
+- fluct のアイコンを追加 [\#674](https://github.com/voyagegroup/ingred-ui/pull/674) ([takurinton](https://github.com/takurinton))
+- bid\_strap のアイコンを追加 [\#673](https://github.com/voyagegroup/ingred-ui/pull/673) ([takurinton](https://github.com/takurinton))
+- fix\(deps\): update dependency @types/node to v16.11.21 [\#672](https://github.com/voyagegroup/ingred-ui/pull/672) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.10.0 [\#671](https://github.com/voyagegroup/ingred-ui/pull/671) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.20 [\#670](https://github.com/voyagegroup/ingred-ui/pull/670) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v25.7.0 [\#668](https://github.com/voyagegroup/ingred-ui/pull/668) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency ts-jest to v27.1.3 [\#667](https://github.com/voyagegroup/ingred-ui/pull/667) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/styled-components to v5.1.20 [\#664](https://github.com/voyagegroup/ingred-ui/pull/664) ([renovate[bot]](https://github.com/apps/renovate))
+- use colors.js 1.4.0 version  [\#663](https://github.com/voyagegroup/ingred-ui/pull/663) ([YOwatari](https://github.com/YOwatari))
+- chore\(deps\): update dependency jest to v27.4.7 [\#661](https://github.com/voyagegroup/ingred-ui/pull/661) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.1.3 [\#660](https://github.com/voyagegroup/ingred-ui/pull/660) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.4.6 [\#659](https://github.com/voyagegroup/ingred-ui/pull/659) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.19 [\#658](https://github.com/voyagegroup/ingred-ui/pull/658) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.9.1 [\#657](https://github.com/voyagegroup/ingred-ui/pull/657) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.18 [\#656](https://github.com/voyagegroup/ingred-ui/pull/656) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-import to v2.25.4 [\#655](https://github.com/voyagegroup/ingred-ui/pull/655) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v25.3.4 [\#653](https://github.com/voyagegroup/ingred-ui/pull/653) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.1.2 [\#652](https://github.com/voyagegroup/ingred-ui/pull/652) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/jest to v27.4.0 [\#651](https://github.com/voyagegroup/ingred-ui/pull/651) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v25.3.3 [\#650](https://github.com/voyagegroup/ingred-ui/pull/650) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v25.3.2 [\#649](https://github.com/voyagegroup/ingred-ui/pull/649) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.8.1 [\#648](https://github.com/voyagegroup/ingred-ui/pull/648) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.63.0 [\#647](https://github.com/voyagegroup/ingred-ui/pull/647) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/styled-components to v5.1.19 [\#646](https://github.com/voyagegroup/ingred-ui/pull/646) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.38 [\#645](https://github.com/voyagegroup/ingred-ui/pull/645) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.17 [\#644](https://github.com/voyagegroup/ingred-ui/pull/644) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint to v8.5.0 [\#638](https://github.com/voyagegroup/ingred-ui/pull/638) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v9.3.2 [\#637](https://github.com/voyagegroup/ingred-ui/pull/637) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.1.1 [\#627](https://github.com/voyagegroup/ingred-ui/pull/627) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.3.2](https://github.com/voyagegroup/ingred-ui/tree/v9.3.2) (2021-12-23)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.3.1...v9.3.2)
