@@ -2,11 +2,7 @@ import * as React from "react";
 import { IconProps } from "../../Icon";
 
 const BidStrapIcon: React.FunctionComponent<IconProps> = ({ fill }) => (
-  <svg
-    id="Icon-bid_strap"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-  >
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <defs>
       <clipPath>
         <rect width="13.729" height="20" fill={fill} />
