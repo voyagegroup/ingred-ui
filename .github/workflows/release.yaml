@@ -26,10 +26,10 @@ jobs:
         run: make -f ci.mk lint
       - name: test
         run: make -f ci.mk test
-      - name: Use Ruby 2.7
+      - name: Use Ruby 3.0
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.0
       - name: install github_changelog_generate
         run: gem install -N github_changelog_generator
       - name: create CHANGELOG
