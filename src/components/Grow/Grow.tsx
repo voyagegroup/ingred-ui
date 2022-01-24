@@ -8,15 +8,17 @@ const Grow: React.FunctionComponent<CSSTransitionProps> = ({
   children,
   ...rest
 }) => {
+  const nodeRef = React.useRef<HTMLDivElement>(null);
   return (
     <Styled.CSSTransition
+      nodeRef={nodeRef}
       appear={true}
       mountOnEnter={true}
       timeout={timeout}
       classNames={Styled.transitionClass}
       {...rest}
     >
-      {children}
+      <div ref={nodeRef}>{children}</div>
     </Styled.CSSTransition>
   );
 };
