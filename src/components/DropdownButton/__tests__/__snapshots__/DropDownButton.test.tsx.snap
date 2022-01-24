@@ -149,8 +149,12 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     class="sc-bqiRlB fgnFUF"
   >
     <div
-      class="sc-ksdxgE hJTxxA sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
-    />
+      class="sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
+    >
+      <div
+        class="sc-ksdxgE hJTxxA"
+      />
+    </div>
     <div
       class="sc-egiyK AIhFW"
       data-popper-escaped="true"
@@ -377,8 +381,12 @@ exports[`DropdownButton component testing splited enable 1`] = `
     class="sc-bqiRlB fgnFUF"
   >
     <div
-      class="sc-ksdxgE hJTxxA sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
-    />
+      class="sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
+    >
+      <div
+        class="sc-ksdxgE hJTxxA"
+      />
+    </div>
     <div
       class="sc-egiyK AIhFW"
       data-popper-escaped="true"

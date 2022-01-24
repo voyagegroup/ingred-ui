@@ -6,8 +6,12 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
     class="sc-eCImPb gEZCVL"
   >
     <div
-      class="sc-jRQBWg iRPcoZ sc-gKclnd frGHeV fade-transition-appear fade-transition-appear-active"
-    />
+      class="sc-gKclnd frGHeV fade-transition-appear fade-transition-appear-active"
+    >
+      <div
+        class="sc-jRQBWg iRPcoZ"
+      />
+    </div>
     <div
       class="sc-hKwDye kvypRT"
       style="position: absolute; left: 0px; top: 0px;"
