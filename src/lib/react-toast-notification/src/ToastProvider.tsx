@@ -76,6 +76,8 @@ type Context = {
 };
 
 export class ToastProvider extends Component<ToastProviderProps, State> {
+  nodeRef: React.RefObject<HTMLDivElement>;
+
   static defaultProps = {
     autoDismiss: false,
     autoDismissTimeout: 5000,
@@ -83,7 +85,13 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
     newestOnTop: false,
     placement: "top-right",
     transitionDuration: 220,
+    nodeRef: null,
   };
+
+  constructor(props: ToastProviderProps | Readonly<ToastProviderProps>) {
+    super(props);
+    this.nodeRef = React.createRef();
+  }
 
   state = { toasts: [] as State["toasts"] };
 
@@ -131,11 +139,11 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
                       appear
                       mountOnEnter
                       unmountOnExit
+                      nodeRef={this.nodeRef}
                       timeout={transitionDuration as number}
                     >
                       {(transitionState) => (
                         <ToastController
-                          key={id}
                           appearance={appearance}
                           autoDismiss={
                             autoDismiss !== undefined
