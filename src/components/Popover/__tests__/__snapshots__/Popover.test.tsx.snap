@@ -6,8 +6,12 @@ exports[`Popover component testing Popover 1`] = `
     class="sc-gsDKAQ gzCcYc"
   >
     <div
-      class="sc-dkPtRN jXTMGN sc-hKwDye dOfRKQ fade-transition-appear fade-transition-appear-active"
-    />
+      class="sc-hKwDye dOfRKQ fade-transition-appear fade-transition-appear-active"
+    >
+      <div
+        class="sc-dkPtRN jXTMGN"
+      />
+    </div>
     <div
       class="sc-bdvvtL wkcbx"
       style="position: absolute; left: 0px; top: 0px;"

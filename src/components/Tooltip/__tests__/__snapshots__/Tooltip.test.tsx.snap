@@ -6,14 +6,18 @@ exports[`Tooltip component testing Tooltip 1`] = `
     text
   </div>
   <div
-    class="sc-gsDKAQ chwUAn sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
-    style="position: absolute; left: 0px; top: 0px;"
+    class="sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
   >
-    tooltip text
     <div
-      class="sc-bdvvtL bIjFMV"
-      data-popper-arrow="true"
-    />
+      class="sc-gsDKAQ chwUAn"
+      style="position: absolute; left: 0px; top: 0px;"
+    >
+      tooltip text
+      <div
+        class="sc-bdvvtL bIjFMV"
+        data-popper-arrow="true"
+      />
+    </div>
   </div>
 </DocumentFragment>
 `;

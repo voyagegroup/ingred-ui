@@ -6,8 +6,12 @@ exports[`Modal component testing Modal with background 1`] = `
     class="sc-bdvvtL cttKBd"
   >
     <div
-      class="sc-gsDKAQ dLmdEA sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
-    />
+      class="sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
+    >
+      <div
+        class="sc-gsDKAQ dLmdEA"
+      />
+    </div>
     <div>
       hoge
     </div>
@@ -21,8 +25,12 @@ exports[`Modal component testing Modal without background 1`] = `
     class="sc-bdvvtL cttKBd"
   >
     <div
-      class="sc-gsDKAQ dLmdEA sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
-    />
+      class="sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
+    >
+      <div
+        class="sc-gsDKAQ dLmdEA"
+      />
+    </div>
     <div>
       hoge
     </div>
