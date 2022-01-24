@@ -9,6 +9,7 @@ const Grow: React.FunctionComponent<CSSTransitionProps> = ({
   ...rest
 }) => {
   const nodeRef = React.useRef<HTMLDivElement>(null);
+
   return (
     <Styled.CSSTransition
       nodeRef={nodeRef}
