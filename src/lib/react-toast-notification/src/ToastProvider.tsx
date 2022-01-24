@@ -188,10 +188,10 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
   };
   onDismiss =
     (id: Id, cb: Callback = NOOP) =>
-      () => {
-        cb(id);
-        this.remove(id);
-      };
+    () => {
+      cb(id);
+      this.remove(id);
+    };
 
   // Public API
   // ------------------------------
