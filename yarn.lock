@@ -1899,51 +1899,51 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@scaffdog/config@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-1.1.0.tgz#4f91133e88eb9c701bd11a1281bb0f0467c22aad"
-  integrity sha512-09Ofui93CWLnclnP/8kgFgcJWmjJaBS/qmFoV/EyDNTf5+Vu40D5tHG31y8W0g/W3WSavuvnIKqjGEuN16GfQw==
+"@scaffdog/config@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-1.2.0.tgz#b459711b1cf0c6c4f6246ecbb069f650df9dac17"
+  integrity sha512-RS4oE602p27Y1mrNcjnrXQsd2EEbqzT+V6dcr6SdvrC7jrd6q00RoRndPEzM00le9SBTGcjm9PIfpVfRxBfmsQ==
   dependencies:
-    "@scaffdog/types" "1.1.0"
+    "@scaffdog/types" "1.2.0"
     zod "^3.11.6"
 
-"@scaffdog/core@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-1.1.0.tgz#6b20491796cdc376719d633ff5a64894cebf168c"
-  integrity sha512-qCJATjVfNrZuI+ftrOGQh+3WhpnNdviTrgc3MH0/w6DC8IQx+gJMLWdKzFqtGEOdgo+LyjfdYSF2iW0HgvaiSw==
+"@scaffdog/core@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-1.2.0.tgz#9964901c2c1f456f3abcf123ad82840c31dff05d"
+  integrity sha512-4i+hvEy/yRJnRUoakmImcG1B/35ErBoySRp2Srp2XsgoMXbpcisfdlcEk3Unz8tOPPP4dX/M1/4ITQMaOvQWig==
   dependencies:
-    "@scaffdog/engine" "1.1.0"
-    "@scaffdog/types" "1.1.0"
+    "@scaffdog/engine" "1.2.0"
+    "@scaffdog/types" "1.2.0"
     mdast-util-to-string "^2.0.0"
     remark-parse "^9.0.0"
     unified "^9.2.1"
     unist-util-visit-parents "^3.1.1"
 
-"@scaffdog/engine@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-1.1.0.tgz#7ead4ec1da97e88b813207bd313592dc31b1015f"
-  integrity sha512-5m9yJyCtDMr7Utka38VhphJb09zTQzlHApP9NmM5hiasUIZltJ9MeUmOnT2am3+sA6Wlc/s4ne4Q7kSobbKsGQ==
+"@scaffdog/engine@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-1.2.0.tgz#e9e3de236ed158fd0639b7d6a61e9adc38cb96f0"
+  integrity sha512-nAwwXnDTVBpAD9t/nZ+Wdva9R6ro91DEZwREG7+QYrB/S4o3ryY3Mb7dxVs6nF5qWK4v6dVtK9BGWMsNalrJ/Q==
   dependencies:
-    "@scaffdog/error" "1.1.0"
-    "@scaffdog/types" "1.1.0"
+    "@scaffdog/error" "1.2.0"
+    "@scaffdog/types" "1.2.0"
     change-case "^4.1.2"
     dayjs "^1.10.4"
     esprima "^4.0.1"
     is-plain-object "^5.0.0"
     safe-eval "^0.4.1"
 
-"@scaffdog/error@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-1.1.0.tgz#a75ea88c0a0a6302cbb165495208d9908a5acdf0"
-  integrity sha512-5tHXQ3ST+PQg0O1mIQBvn8vyKcsAo+kBerC7zjvttUIUFHnqmQmgBpd4COkG3UtsCcn+rAt6Z053uTc/IGiCnA==
+"@scaffdog/error@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-1.2.0.tgz#282742a98bbaa75bbdd84f57ecb80f60fc07b473"
+  integrity sha512-3Bqylswu+3MyTwAZL9y7Fprr5k2g4SlAU9rVNdZ2BmHraZDohvpZqq9Sb0JPPx+lB3KuW7hfYIwzxtlY4t44DA==
   dependencies:
-    "@scaffdog/types" "1.1.0"
+    "@scaffdog/types" "1.2.0"
     chalk "^4.1.0"
 
-"@scaffdog/types@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-1.1.0.tgz#7c2e1a987e67077edf73a10e1ff463c917a5a514"
-  integrity sha512-3EZnGU+pGKRzyISpR1Iws3006/zcnnI6mE5XM6Ea40ojdPL+GC5COeIsWE9rQF9cO85LzmXXBqbxSqahA05ILA==
+"@scaffdog/types@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-1.2.0.tgz#09b0b32012414668fbe74fcc59b5b46b90a054a2"
+  integrity sha512-Mow4/QFGRMUsPjrwhjr0o+TyuBMQcxQGf7r2Kz+YPwvqnFmBIDnQdWuG2Etw9XPichEcOFJLvYFIyPWsFncK/A==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -12604,16 +12604,16 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-scaffdog@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-1.1.0.tgz#a7c78c86cde34e5facde6be89a32177d4db28436"
-  integrity sha512-niqeUJhRgCg/xM0SeXD7NiF7G17+EEzSicdDlDR1s3oeMTjR1pqirAVHjX+sYn/68xngFLq4hTGNBSHHQc51WA==
+scaffdog@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-1.2.0.tgz#d794934c17c20a7cc46134d56e97e910c9bcfa2b"
+  integrity sha512-4tbzlohUex/3K3Yvty1xYTbrHd9WEU+94TIU/FIr/CpN0khShGJ1cqGqQCojRgin9bDARpUEwGda7CcDElhnYA==
   dependencies:
-    "@scaffdog/config" "1.1.0"
-    "@scaffdog/core" "1.1.0"
-    "@scaffdog/engine" "1.1.0"
-    "@scaffdog/error" "1.1.0"
-    "@scaffdog/types" "1.1.0"
+    "@scaffdog/config" "1.2.0"
+    "@scaffdog/core" "1.2.0"
+    "@scaffdog/engine" "1.2.0"
+    "@scaffdog/error" "1.2.0"
+    "@scaffdog/types" "1.2.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
