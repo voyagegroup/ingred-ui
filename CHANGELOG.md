@@ -1,5 +1,26 @@
 # Changelog
 
+## [v9.4.2](https://github.com/voyagegroup/ingred-ui/tree/v9.4.2) (2022-02-10)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.4.1...v9.4.2)
+
+**Merged pull requests:**
+
+- minify  [\#701](https://github.com/voyagegroup/ingred-ui/pull/701) ([takurinton](https://github.com/takurinton))
+- chore\(deps\): update typescript-eslint monorepo to v5.11.0 [\#700](https://github.com/voyagegroup/ingred-ui/pull/700) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.67.1 [\#699](https://github.com/voyagegroup/ingred-ui/pull/699) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/styled-components to v5.1.22 [\#697](https://github.com/voyagegroup/ingred-ui/pull/697) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.39 [\#696](https://github.com/voyagegroup/ingred-ui/pull/696) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @testing-library/jest-dom to v5.16.2 [\#695](https://github.com/voyagegroup/ingred-ui/pull/695) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.67.0 [\#694](https://github.com/voyagegroup/ingred-ui/pull/694) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.22 [\#693](https://github.com/voyagegroup/ingred-ui/pull/693) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.10.2 [\#692](https://github.com/voyagegroup/ingred-ui/pull/692) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint to v8.8.0 [\#691](https://github.com/voyagegroup/ingred-ui/pull/691) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @svgr/rollup to v6.2.1 [\#690](https://github.com/voyagegroup/ingred-ui/pull/690) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency scaffdog to v1.2.0 [\#689](https://github.com/voyagegroup/ingred-ui/pull/689) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.66.1 [\#688](https://github.com/voyagegroup/ingred-ui/pull/688) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v9.4.1 [\#687](https://github.com/voyagegroup/ingred-ui/pull/687) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.4.1](https://github.com/voyagegroup/ingred-ui/tree/v9.4.1) (2022-01-25)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.4.0...v9.4.1)
