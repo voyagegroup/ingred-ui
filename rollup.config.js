@@ -10,6 +10,8 @@ import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default {
   input: "src/index.ts",
   output: [
@@ -39,6 +41,6 @@ export default {
     }),
     typescript({ tsconfig: "./tsconfig.json" }),
     commonjs(),
-    terser(),
+    isProduction && terser(),
   ],
 };
