@@ -4789,10 +4789,10 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-ingred-ui@9.4.1:
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/ingred-ui/-/ingred-ui-9.4.1.tgz#ae6038d6148da50e21203ae860c67d9b0d294ac3"
-  integrity sha512-73z0EUsWZ4FO3glmShKDOundEs/Mp4MpEQcNLDbqKxGx78PtwXDtbBQDb+VgU/AimKUrsYQdRCjm/POXHa3C8Q==
+ingred-ui@9.4.2:
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/ingred-ui/-/ingred-ui-9.4.2.tgz#7411bb2c401e2e6f9cf6350f33c9dbacba8bddf4"
+  integrity sha512-3HGdkiFpatp8Ol+051CMqgNIZp/x87hZP/E/eUFQzgu4Vjw2ThtC54RFCSoK1XlgFgxxfrGbe6rSYe5WvDJ9xQ==
   dependencies:
     "@popperjs/core" "^2.4.0"
     moment "^2.29.1"
