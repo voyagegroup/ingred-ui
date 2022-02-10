@@ -6,8 +6,11 @@ import svgr from "@svgr/rollup";
 import external from "rollup-plugin-peer-deps-external";
 import { imagemin } from "rollup-plugin-imagemin";
 import postcss from "rollup-plugin-postcss";
+import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
+
+const isProduction = process.env.NODE_ENV === "production";
 
 export default {
   input: "src/index.ts",
@@ -38,5 +41,6 @@ export default {
     }),
     typescript({ tsconfig: "./tsconfig.json" }),
     commonjs(),
+    isProduction && terser(),
   ],
 };
