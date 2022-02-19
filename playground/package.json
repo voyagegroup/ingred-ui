@@ -20,5 +20,8 @@
     "@vitejs/plugin-react": "^1.0.7",
     "typescript": "^4.5.4",
     "vite": "^2.8.0"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.33"
   }
 }
