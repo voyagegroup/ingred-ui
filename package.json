@@ -17,7 +17,7 @@
     "test:update": "jest --updateSnapshot",
     "build": "NODE_ENV=production rollup -c",
     "start": "rollup -c -w",
-    "playground": "yarn build && cd testEnv && yarn install && yarn start",
+    "playground": "yarn build && cd playground && yarn && yarn dev",
     "storybook": "start-storybook -s ./assets -p 6006",
     "build-storybook": "build-storybook -s ./assets",
     "lint": "eslint 'src/**/*.{ts,tsx,mdx}'",

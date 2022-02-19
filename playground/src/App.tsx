@@ -1,10 +1,5 @@
-import React from 'react';
-import {
-  ThemeProvider,
-  createTheme,
-  Typography,
-  Spacer
-} from 'ingred-ui';
+import React from "react";
+import { ThemeProvider, createTheme, Typography, Spacer } from "ingred-ui";
 
 function App() {
   const theme = createTheme();
@@ -19,7 +14,8 @@ function App() {
       </Typography>
       <Spacer pt={2} />
       <Typography color="secondary" size="xxl" align="center">
-        Copyright © <a href="https://ingred-ui.netlify.app/">Your Website</a> 2020.
+        Copyright © <a href="https://ingred-ui.netlify.app/">Your Website</a>{" "}
+        2020.
       </Typography>
     </ThemeProvider>
   );
