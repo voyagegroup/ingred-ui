@@ -7,7 +7,7 @@ import { Theme, useTheme } from "../../themes";
 import { hexToRgba } from "../../utils/hexToRgba";
 
 export type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "secondary" | "danger";
+export type ButtonColor = "primary" | "secondary" | "danger" | "clear";
 
 export type ButtonColorStyle = {
   normal: {
@@ -86,6 +86,22 @@ const getContainerColorStyles = (
       border: "none",
     },
   },
+  clear: {
+    normal: {
+      background: "none",
+      color: theme.palette.gray.deepDark,
+      boxShadow: "none",
+      border: "none",
+    },
+    hover: {
+      background: theme.palette.gray.light,
+      border: "none",
+    },
+    active: {
+      background: theme.palette.gray.main,
+      border: "none",
+    },
+  },
 });
 
 const verticalPadding: Record<ButtonSize, { padding: string }> = {
@@ -124,8 +140,8 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
    * Default: `<button />`
    */
   component?:
-    | keyof JSX.IntrinsicElements
-    | React.ComponentType<{ className: string }>;
+  | keyof JSX.IntrinsicElements
+  | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   /**
    * Control whether "inline" or "block" Element.
