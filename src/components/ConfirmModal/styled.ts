@@ -104,7 +104,7 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   width: 100%;
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
-  background-color: ${({ theme }) => theme.palette.gray.light};
+  background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-radius: ${({ fullSize, theme }) =>
     fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
   margin-bottom: ${({ fullSize }) => (fullSize ? "1.8vh" : "auto")};
