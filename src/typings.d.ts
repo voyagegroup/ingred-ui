@@ -22,8 +22,3 @@ declare module "*.svg" {
   export default svgUrl;
   export { svgComponent as ReactComponent };
 }
-
-// MEMO: from Redux
-type DeepPartial<T> = {
-  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
-};
