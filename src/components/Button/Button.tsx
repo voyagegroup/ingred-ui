@@ -140,8 +140,8 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
    * Default: `<button />`
    */
   component?:
-  | keyof JSX.IntrinsicElements
-  | React.ComponentType<{ className: string }>;
+    | keyof JSX.IntrinsicElements
+    | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   /**
    * Control whether "inline" or "block" Element.
