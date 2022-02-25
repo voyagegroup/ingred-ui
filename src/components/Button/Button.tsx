@@ -140,8 +140,8 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
    * Default: `<button />`
    */
   component?:
-    | keyof JSX.IntrinsicElements
-    | React.ComponentType<{ className: string }>;
+  | keyof JSX.IntrinsicElements
+  | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   /**
    * Control whether "inline" or "block" Element.
@@ -172,6 +172,13 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
     const colorStyle = getContainerColorStyles(theme)[color];
     const horizontalPadding =
       size === "small" ? `10px` : `${theme.spacing * 2}px`;
+    const clickAnimationProps = {
+      paddingTopAtActive:
+        color === "clear" ? "" : paddingAtActive[size].paddingTop,
+      paddingBottomAtActive:
+        color === "clear" ? "" : paddingAtActive[size].paddingBottom,
+      disableBoxShadow: color === "clear",
+    };
 
     const isLink = !!href;
     let anchorProps: any = {};
@@ -191,12 +198,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         inline={inline}
         verticalPadding={verticalPadding[size].padding}
         horizontalPadding={horizontalPadding}
-        paddingTopAtActive={
-          color === "clear" ? "" : paddingAtActive[size].paddingTop
-        }
-        paddingBottomAtActive={
-          color === "clear" ? "" : paddingAtActive[size].paddingBottom
-        }
+        paddingTopAtActive={clickAnimationProps.paddingTopAtActive}
+        paddingBottomAtActive={clickAnimationProps.paddingBottomAtActive}
         normal={{ ...colorStyle.normal }}
         hover={{ ...colorStyle.hover }}
         active={{ ...colorStyle.active }}
@@ -204,7 +207,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         fontSize={
           size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
         }
-        disableBoxShadow={color === "clear"}
+        disableBoxShadow={clickAnimationProps.disableBoxShadow}
       >
         {children}
       </Styled.ButtonContainer>
