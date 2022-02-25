@@ -2,7 +2,7 @@ import { Palette, createPalette } from "./palette";
 import { Radius, Space, Depth } from "../styles";
 import { DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
-import { DeepPartial } from "../types/types";
+import { DeepPartial } from "../types";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;
