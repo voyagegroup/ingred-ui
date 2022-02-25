@@ -15,6 +15,7 @@ export type ContainerProps = ButtonColorStyle & {
   paddingBottomAtActive: string;
   href?: string;
   disabled?: boolean;
+  disableBoxShadow: boolean;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
@@ -51,7 +52,9 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
     padding-top: ${({ paddingTopAtActive }) => paddingTopAtActive};
     padding-bottom: ${({ paddingBottomAtActive }) => paddingBottomAtActive};
     background: ${({ active }) => active.background};
-    box-shadow: ${({ theme }) =>
-      `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`};
+    box-shadow: ${({ theme, disableBoxShadow }) =>
+      disableBoxShadow
+        ? "none"
+        : `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`};
   }
 `;

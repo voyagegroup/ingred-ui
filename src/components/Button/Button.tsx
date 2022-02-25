@@ -200,6 +200,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         fontSize={
           size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
         }
+        disableBoxShadow={color === "clear"}
       >
         {children}
       </Styled.ButtonContainer>
