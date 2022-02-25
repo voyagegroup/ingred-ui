@@ -22,6 +22,7 @@ export type ButtonColorStyle = {
   };
   active: {
     background?: string;
+    boxShadow: string;
     border: string;
   };
 };
@@ -45,6 +46,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: "none",
     },
   },
@@ -64,6 +66,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -83,6 +86,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: "none",
     },
   },
@@ -99,6 +103,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.main,
+      boxShadow: "none",
       border: "none",
     },
   },
@@ -207,7 +212,6 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         fontSize={
           size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
         }
-        disableBoxShadow={clickAnimationProps.disableBoxShadow}
       >
         {children}
       </Styled.ButtonContainer>
