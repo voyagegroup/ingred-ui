@@ -191,8 +191,12 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         inline={inline}
         verticalPadding={verticalPadding[size].padding}
         horizontalPadding={horizontalPadding}
-        paddingTopAtActive={paddingAtActive[size].paddingTop}
-        paddingBottomAtActive={paddingAtActive[size].paddingBottom}
+        paddingTopAtActive={
+          color === "clear" ? "" : paddingAtActive[size].paddingTop
+        }
+        paddingBottomAtActive={
+          color === "clear" ? "" : paddingAtActive[size].paddingBottom
+        }
         normal={{ ...colorStyle.normal }}
         hover={{ ...colorStyle.hover }}
         active={{ ...colorStyle.active }}
