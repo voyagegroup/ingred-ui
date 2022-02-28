@@ -27,6 +27,12 @@ export type ButtonColorStyle = {
   };
 };
 
+export type Padding = {
+  theme: Theme;
+  buttonSize: ButtonSize;
+  buttonColor: ButtonColor;
+};
+
 const getContainerColorStyles = (
   theme: Theme,
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
@@ -139,6 +145,22 @@ const paddingAtActive: Record<
   },
 };
 
+const getPadding = ({ theme, buttonSize, buttonColor }: Padding) => {
+  const horizontalPadding =
+    buttonSize === "small" ? `10px` : `${theme.spacing * 2}px`;
+  const paddingTopAtActive =
+    buttonColor === "clear" ? "" : paddingAtActive[buttonSize].paddingTop;
+  const paddingBottomAtActive =
+    buttonColor === "clear" ? "" : paddingAtActive[buttonSize].paddingBottom;
+
+  return {
+    horizontalPadding,
+    verticalPadding: verticalPadding[buttonSize].padding,
+    paddingTopAtActive,
+    paddingBottomAtActive,
+  };
+};
+
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
    * The component used for the root node.
@@ -175,15 +197,16 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
   ) => {
     const theme = useTheme();
     const colorStyle = getContainerColorStyles(theme)[color];
-    const horizontalPadding =
-      size === "small" ? `10px` : `${theme.spacing * 2}px`;
-    const clickAnimationProps = {
-      paddingTopAtActive:
-        color === "clear" ? "" : paddingAtActive[size].paddingTop,
-      paddingBottomAtActive:
-        color === "clear" ? "" : paddingAtActive[size].paddingBottom,
-      disableBoxShadow: color === "clear",
-    };
+    const {
+      horizontalPadding,
+      verticalPadding,
+      paddingTopAtActive,
+      paddingBottomAtActive,
+    } = getPadding({
+      theme,
+      buttonSize: size,
+      buttonColor: color,
+    });
 
     const isLink = !!href;
     let anchorProps: any = {};
@@ -201,10 +224,10 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         as={component || "button"}
         {...anchorProps}
         inline={inline}
-        verticalPadding={verticalPadding[size].padding}
+        verticalPadding={verticalPadding}
         horizontalPadding={horizontalPadding}
-        paddingTopAtActive={clickAnimationProps.paddingTopAtActive}
-        paddingBottomAtActive={clickAnimationProps.paddingBottomAtActive}
+        paddingTopAtActive={paddingTopAtActive}
+        paddingBottomAtActive={paddingBottomAtActive}
         normal={{ ...colorStyle.normal }}
         hover={{ ...colorStyle.hover }}
         active={{ ...colorStyle.active }}
