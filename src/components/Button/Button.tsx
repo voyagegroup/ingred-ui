@@ -29,8 +29,8 @@ export type ButtonColorStyle = {
 
 export type Padding = {
   theme: Theme;
-  buttonSize: ButtonSize;
-  buttonColor: ButtonColor;
+  size: ButtonSize;
+  color: ButtonColor;
 };
 
 const getContainerColorStyles = (
@@ -115,18 +115,6 @@ const getContainerColorStyles = (
   },
 });
 
-const verticalPadding: Record<ButtonSize, { padding: string }> = {
-  small: {
-    padding: "6px",
-  },
-  medium: {
-    padding: "10px",
-  },
-  large: {
-    padding: "13px",
-  },
-};
-
 const paddingAtActive: Record<
   ButtonSize,
   { paddingTop: string; paddingBottom: string }
@@ -145,21 +133,25 @@ const paddingAtActive: Record<
   },
 };
 
-const getPadding = ({ theme, buttonSize, buttonColor }: Padding) => {
-  const horizontalPadding =
-    buttonSize === "small" ? `10px` : `${theme.spacing * 2}px`;
-  const paddingTopAtActive =
-    buttonColor === "clear" ? "" : paddingAtActive[buttonSize].paddingTop;
-  const paddingBottomAtActive =
-    buttonColor === "clear" ? "" : paddingAtActive[buttonSize].paddingBottom;
-
-  return {
-    horizontalPadding,
-    verticalPadding: verticalPadding[buttonSize].padding,
-    paddingTopAtActive,
-    paddingBottomAtActive,
-  };
+const verticalPadding: Record<ButtonSize, { padding: string }> = {
+  small: {
+    padding: "6px",
+  },
+  medium: {
+    padding: "10px",
+  },
+  large: {
+    padding: "13px",
+  },
 };
+
+const getPadding = ({ theme, size, color }: Padding) => ({
+  horizontalPadding: size === "small" ? `10px` : `${theme.spacing * 2}px`,
+  verticalPadding: verticalPadding[size].padding,
+  paddingTopAtActive: color === "clear" ? "" : paddingAtActive[size].paddingTop,
+  paddingBottomAtActive:
+    color === "clear" ? "" : paddingAtActive[size].paddingBottom,
+});
 
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
@@ -204,8 +196,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
       paddingBottomAtActive,
     } = getPadding({
       theme,
-      buttonSize: size,
-      buttonColor: color,
+      size,
+      color,
     });
 
     const isLink = !!href;
