@@ -1,5 +1,34 @@
 # Changelog
 
+## [v9.5.0](https://github.com/voyagegroup/ingred-ui/tree/v9.5.0) (2022-02-28)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.4.2...v9.5.0)
+
+**Merged pull requests:**
+
+- chore\(deps\): update actions/setup-node action to v3 [\#728](https://github.com/voyagegroup/ingred-ui/pull/728) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-react to v7.29.2 [\#727](https://github.com/voyagegroup/ingred-ui/pull/727) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.26 [\#726](https://github.com/voyagegroup/ingred-ui/pull/726) ([renovate[bot]](https://github.com/apps/renovate))
+- Fix: Bottom color of ConfirmModal [\#724](https://github.com/voyagegroup/ingred-ui/pull/724) ([takurinton](https://github.com/takurinton))
+- Add: Clear button [\#723](https://github.com/voyagegroup/ingred-ui/pull/723) ([takurinton](https://github.com/takurinton))
+- chore\(deps\): update dependency @rollup/plugin-typescript to v8.3.1 [\#722](https://github.com/voyagegroup/ingred-ui/pull/722) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-commonjs to v21.0.2 [\#721](https://github.com/voyagegroup/ingred-ui/pull/721) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/jest to v27.4.1 [\#720](https://github.com/voyagegroup/ingred-ui/pull/720) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.12.1 [\#718](https://github.com/voyagegroup/ingred-ui/pull/718) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.67.3 [\#715](https://github.com/voyagegroup/ingred-ui/pull/715) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/styled-components to v5.1.23 [\#713](https://github.com/voyagegroup/ingred-ui/pull/713) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @testing-library/react to v12.1.3 [\#712](https://github.com/voyagegroup/ingred-ui/pull/712) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v26.1.1 [\#711](https://github.com/voyagegroup/ingred-ui/pull/711) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.25 [\#710](https://github.com/voyagegroup/ingred-ui/pull/710) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.12.0 [\#709](https://github.com/voyagegroup/ingred-ui/pull/709) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint to v8.9.0 [\#706](https://github.com/voyagegroup/ingred-ui/pull/706) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v9.4.2 [\#705](https://github.com/voyagegroup/ingred-ui/pull/705) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.67.2 [\#704](https://github.com/voyagegroup/ingred-ui/pull/704) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.24 [\#703](https://github.com/voyagegroup/ingred-ui/pull/703) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): pin dependency rollup-plugin-terser to 7.0.2 [\#702](https://github.com/voyagegroup/ingred-ui/pull/702) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency jest to v27.5.1 [\#698](https://github.com/voyagegroup/ingred-ui/pull/698) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v26 [\#685](https://github.com/voyagegroup/ingred-ui/pull/685) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.4.2](https://github.com/voyagegroup/ingred-ui/tree/v9.4.2) (2022-02-10)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.4.1...v9.4.2)
