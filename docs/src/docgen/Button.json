@@ -1,0 +1,89 @@
+{
+    "Button": {
+        "methods": [],
+        "description": "",
+        "props": {
+            "component": {
+                "defaultValue": null,
+                "description": "The component used for the root node.\nDefault: `<button />`",
+                "name": "component",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/Button/Button.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": false,
+                "type": {
+                    "name": "keyof IntrinsicElements | ComponentType<{ className: string; }>"
+                }
+            },
+            "color": {
+                "defaultValue": {
+                    "value": "primary"
+                },
+                "description": "",
+                "name": "color",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/Button/Button.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": false,
+                "type": {
+                    "name": "ButtonColor"
+                }
+            },
+            "inline": {
+                "defaultValue": {
+                    "value": false
+                },
+                "description": "Control whether \"inline\" or \"block\" Element.",
+                "name": "inline",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/Button/Button.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": false,
+                "type": {
+                    "name": "boolean"
+                }
+            },
+            "size": {
+                "defaultValue": {
+                    "value": "medium"
+                },
+                "description": "",
+                "name": "size",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/Button/Button.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": false,
+                "type": {
+                    "name": "ButtonSize"
+                }
+            },
+            "href": {
+                "defaultValue": null,
+                "description": "If added this props, root node becomes `<a />`.",
+                "name": "href",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/Button/Button.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": false,
+                "type": {
+                    "name": "string"
+                }
+            }
+        }
+    }
+}

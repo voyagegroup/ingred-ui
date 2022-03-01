@@ -1,0 +1,23 @@
+{
+    "ActionButton": {
+        "methods": [],
+        "description": "",
+        "props": {
+            "icon": {
+                "defaultValue": null,
+                "description": "",
+                "name": "icon",
+                "declarations": [
+                    {
+                        "fileName": "../ingred-ui/src/components/ActionButton/ActionButton.tsx",
+                        "name": "TypeLiteral"
+                    }
+                ],
+                "required": true,
+                "type": {
+                    "name": "IconName"
+                }
+            }
+        }
+    }
+}
