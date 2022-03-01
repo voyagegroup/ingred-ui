@@ -6,7 +6,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'prettier' // prettierのextendsは他のextendsより後に記述する
+    'prettier'
   ],
   ignorePatterns: ['node_modules/**/*', '.docusaurus/**/*'],
   plugins: [],
@@ -14,9 +14,8 @@ module.exports = {
   parserOptions: {
     sourceType: 'module'
   },
-  root: true, // 上位ディレクトリにある他のeslintrcを参照しないようにする
+  root: true,
   rules: {
-    'no-unused-vars': 0,
     'no-irregular-whitespace': 0
   }
 };
