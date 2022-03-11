@@ -1,5 +1,23 @@
 # Changelog
 
+## [v9.6.0](https://github.com/voyagegroup/ingred-ui/tree/v9.6.0) (2022-03-11)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.5.0...v9.6.0)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency @types/react to v17.0.40 [\#743](https://github.com/voyagegroup/ingred-ui/pull/743) ([renovate[bot]](https://github.com/apps/renovate))
+- RadioButton と Checkbox の label のスペースを変更 [\#742](https://github.com/voyagegroup/ingred-ui/pull/742) ([takurinton](https://github.com/takurinton))
+- chore\(deps\): update dependency @testing-library/react to v12.1.4 [\#741](https://github.com/voyagegroup/ingred-ui/pull/741) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.14.0 [\#740](https://github.com/voyagegroup/ingred-ui/pull/740) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-react to v7.29.3 [\#739](https://github.com/voyagegroup/ingred-ui/pull/739) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-dom to v17.0.13 [\#738](https://github.com/voyagegroup/ingred-ui/pull/738) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/styled-components to v5.1.24 [\#736](https://github.com/voyagegroup/ingred-ui/pull/736) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-dom to v17.0.12 [\#735](https://github.com/voyagegroup/ingred-ui/pull/735) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.13.0 [\#732](https://github.com/voyagegroup/ingred-ui/pull/732) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency ingred-ui to v9.5.0 [\#731](https://github.com/voyagegroup/ingred-ui/pull/731) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.68.0 [\#719](https://github.com/voyagegroup/ingred-ui/pull/719) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.5.0](https://github.com/voyagegroup/ingred-ui/tree/v9.5.0) (2022-02-28)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.4.2...v9.5.0)
