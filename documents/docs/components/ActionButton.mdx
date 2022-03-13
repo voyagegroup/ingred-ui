@@ -1,0 +1,65 @@
+---
+sidebar_position: 1
+---
+
+import { Flex, Spacer, Typography, ActionButton } from "../../../src/components";
+import { ThemeProvider } from "../../src/components/ThemeProvider";
+
+# ActionButton
+
+## 種類
+
+### サイズ
+
+### 原則
+
+#### Good
+
+:::tip
+
+Use the power of React to create interactive blog posts.
+
+```js
+<ActionButton icon="pencil" color="primary">
+  Sample
+</ActionButton>
+```
+
+<ThemeProvider>
+  <Flex display="flex">
+    <Spacer mr={5}>
+      <Typography weight="bold">Primary</Typography>
+      <Spacer pt={1} />
+      <ActionButton icon="pencil" color="primary">
+        Edit
+      </ActionButton>
+    </Spacer>
+    <Spacer mr={5}>
+      <Typography weight="bold">Warning</Typography>
+      <Spacer pt={1} />
+      <ActionButton icon="pencil" color="warning">
+        Edit
+      </ActionButton>
+    </Spacer>
+    <Spacer mr={5}>
+      <Typography weight="bold">Disabled</Typography>
+      <Spacer pt={1} />
+      <ActionButton icon="pencil" disabled={true}>
+        Edit
+      </ActionButton>
+    </Spacer>
+  </Flex>
+</ThemeProvider>
+:::
+
+#### Bad
+
+:::warning
+
+```js
+<ActionButton icon="pencil" color="secondary">
+  Sample
+</ActionButton>
+```
+
+:::

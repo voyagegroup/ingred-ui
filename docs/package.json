@@ -22,7 +22,6 @@
     "@mdx-js/react": "^1.6.21",
     "axios": "^0.25.0",
     "clsx": "^1.1.1",
-    "ingred-ui": "^9.4.1",
     "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
