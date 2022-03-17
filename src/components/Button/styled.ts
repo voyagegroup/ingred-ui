@@ -51,7 +51,6 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
     padding-top: ${({ paddingTopAtActive }) => paddingTopAtActive};
     padding-bottom: ${({ paddingBottomAtActive }) => paddingBottomAtActive};
     background: ${({ active }) => active.background};
-    box-shadow: ${({ theme }) =>
-      `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`};
+    box-shadow: ${({ active }) => active.boxShadow};
   }
 `;

@@ -1,4 +1,5 @@
 import { colors } from "../styles/color";
+import { DeepPartial } from "../types";
 import { deepmerge } from "../utils/deepmerge";
 
 export type PaletteColor = {

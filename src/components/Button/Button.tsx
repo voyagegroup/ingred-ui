@@ -7,7 +7,7 @@ import { Theme, useTheme } from "../../themes";
 import { hexToRgba } from "../../utils/hexToRgba";
 
 export type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "secondary" | "danger";
+export type ButtonColor = "primary" | "secondary" | "danger" | "clear";
 
 export type ButtonColorStyle = {
   normal: {
@@ -22,8 +22,15 @@ export type ButtonColorStyle = {
   };
   active: {
     background?: string;
+    boxShadow: string;
     border: string;
   };
+};
+
+export type Padding = {
+  theme: Theme;
+  size: ButtonSize;
+  color: ButtonColor;
 };
 
 const getContainerColorStyles = (
@@ -45,6 +52,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: "none",
     },
   },
@@ -64,6 +72,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -83,22 +92,28 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
+      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
+      border: "none",
+    },
+  },
+  clear: {
+    normal: {
+      background: "none",
+      color: theme.palette.gray.deepDark,
+      boxShadow: "none",
+      border: "none",
+    },
+    hover: {
+      background: theme.palette.gray.light,
+      border: "none",
+    },
+    active: {
+      background: theme.palette.gray.main,
+      boxShadow: "none",
       border: "none",
     },
   },
 });
-
-const verticalPadding: Record<ButtonSize, { padding: string }> = {
-  small: {
-    padding: "6px",
-  },
-  medium: {
-    padding: "10px",
-  },
-  large: {
-    padding: "13px",
-  },
-};
 
 const paddingAtActive: Record<
   ButtonSize,
@@ -117,6 +132,26 @@ const paddingAtActive: Record<
     paddingBottom: "12px",
   },
 };
+
+const verticalPadding: Record<ButtonSize, { padding: string }> = {
+  small: {
+    padding: "6px",
+  },
+  medium: {
+    padding: "10px",
+  },
+  large: {
+    padding: "13px",
+  },
+};
+
+const getPadding = ({ theme, size, color }: Padding) => ({
+  horizontalPadding: size === "small" ? `10px` : `${theme.spacing * 2}px`,
+  verticalPadding: verticalPadding[size].padding,
+  paddingTopAtActive: color === "clear" ? "" : paddingAtActive[size].paddingTop,
+  paddingBottomAtActive:
+    color === "clear" ? "" : paddingAtActive[size].paddingBottom,
+});
 
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
@@ -154,8 +189,16 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
   ) => {
     const theme = useTheme();
     const colorStyle = getContainerColorStyles(theme)[color];
-    const horizontalPadding =
-      size === "small" ? `10px` : `${theme.spacing * 2}px`;
+    const {
+      horizontalPadding,
+      verticalPadding,
+      paddingTopAtActive,
+      paddingBottomAtActive,
+    } = getPadding({
+      theme,
+      size,
+      color,
+    });
 
     const isLink = !!href;
     let anchorProps: any = {};
@@ -173,10 +216,10 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         as={component || "button"}
         {...anchorProps}
         inline={inline}
-        verticalPadding={verticalPadding[size].padding}
+        verticalPadding={verticalPadding}
         horizontalPadding={horizontalPadding}
-        paddingTopAtActive={paddingAtActive[size].paddingTop}
-        paddingBottomAtActive={paddingAtActive[size].paddingBottom}
+        paddingTopAtActive={paddingTopAtActive}
+        paddingBottomAtActive={paddingBottomAtActive}
         normal={{ ...colorStyle.normal }}
         hover={{ ...colorStyle.hover }}
         active={{ ...colorStyle.active }}
