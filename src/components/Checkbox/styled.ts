@@ -58,7 +58,7 @@ export const Span = styled.span<{
       )}`};
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
-      hasChild ? `${theme.spacing}px` : "auto"};
+      hasChild ? `${theme.spacing / 2}px` : "auto"};
     transition: background-color 0.3s ease;
   }
   ${Checkbox}:disabled + & {
