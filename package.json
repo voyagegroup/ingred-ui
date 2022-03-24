@@ -79,7 +79,7 @@
     "rollup-plugin-terser": "7.0.2",
     "scaffdog": "1.2.0",
     "styled-components": "5.3.3",
-    "ts-jest": "27.1.3",
+    "ts-jest": "27.1.4",
     "typescript": "4.5.5"
   },
   "files": [
