@@ -70,8 +70,8 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "jest": "27.5.1",
     "prettier": "2.6.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
     "rollup": "2.70.1",
     "rollup-plugin-imagemin": "0.5.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
@@ -87,7 +87,7 @@
   ],
   "resolutions": {
     "colors": "1.4.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react": "18.0.0",
+    "react-dom": "18.0.0"
   }
 }
