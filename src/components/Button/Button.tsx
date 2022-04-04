@@ -153,6 +153,9 @@ const getPadding = ({ theme, size, color }: Padding) => ({
     color === "clear" ? "" : paddingAtActive[size].paddingBottom,
 });
 
+const getFontWeight = (color: ButtonColor) =>
+  color === "primary" || color === "secondary" ? "normal" : "bold";
+
 export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   /**
    * The component used for the root node.
@@ -223,7 +226,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         normal={{ ...colorStyle.normal }}
         hover={{ ...colorStyle.hover }}
         active={{ ...colorStyle.active }}
-        fontWeight={color === "secondary" ? "normal" : "bold"}
+        fontWeight={getFontWeight(color)}
         fontSize={
           size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
         }
