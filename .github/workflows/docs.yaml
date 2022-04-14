@@ -1,0 +1,23 @@
+name: Generate API documents
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'yarn'
+
+      - name: Install NPM packages
+        run: yarn install
+
+      # この配下にAPI情報生成用のstepを記述してください
