@@ -21,7 +21,7 @@ export const ArrowButton: React.FunctionComponent<Props> = ({
       <Icon
         name={isRight ? "arrow_right" : "arrow_left"}
         size="md"
-        aria-label={isRight ? 'arrow_right' : 'arrow_left'}
+        aria-label={isRight ? "arrow_right" : "arrow_left"}
         color={
           disabled ? theme.palette.text.disabled : theme.palette.icon.active
         }
