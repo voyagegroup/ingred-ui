@@ -14,7 +14,7 @@ jobs:
           node-version: 16.x
           cache: 'yarn'
       - name: Move directory
-        run: cd documents/
+        run: cd ./documents/ && ls -l
       - name: Install packages
         run: yarn install --frozen-lockfile
       - name: Install zx
