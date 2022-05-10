@@ -20,7 +20,7 @@ jobs:
       - name: Install zx
         run: yarn global add zx
       - name: Export JSON files for components API
-        run: zx docgen.mjs
+        run: zx ./docgen.mjs
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: add json file
