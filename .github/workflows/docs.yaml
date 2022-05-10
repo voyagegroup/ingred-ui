@@ -1,23 +1,26 @@
 name: Generate API documents
-
 on:
   push:
-    branches: [ master ]
-
+    branches: [ feature/generate-api-docs ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
           cache: 'yarn'
-
-      - name: Install NPM packages
-        run: yarn install
-
-      # この配下にAPI情報生成用のstepを記述してください
+      - name: Move directory
+        run: cd documents/
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+      - name: Install zx
+        run: yarn global add zx
+      - name: Export JSON files for components API
+        run: zx docgen.mjs
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: add json file
