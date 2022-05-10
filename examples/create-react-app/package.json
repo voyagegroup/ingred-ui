@@ -8,8 +8,8 @@
     "@types/react-dom": "18.0.3",
     "@types/styled-components": "5.1.24",
     "ingred-ui": "9.5.0",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "react-scripts": "5.0.1",
     "styled-components": "5.3.3",
     "typescript": "4.5.5"

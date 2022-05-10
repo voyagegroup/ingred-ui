@@ -67,11 +67,11 @@
     "eslint-plugin-mdx": "1.17.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.29.4",
-    "eslint-plugin-react-hooks": "4.4.0",
+    "eslint-plugin-react-hooks": "4.5.0",
     "jest": "27.5.1",
     "prettier": "2.6.2",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
     "rollup": "2.72.1",
     "rollup-plugin-imagemin": "0.5.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
@@ -87,7 +87,7 @@
   ],
   "resolutions": {
     "colors": "1.4.0",
-    "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
   }
 }
