@@ -1,5 +1,34 @@
 # Changelog
 
+## [v9.8.0](https://github.com/voyagegroup/ingred-ui/tree/v9.8.0) (2022-05-13)
+
+[Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.7.0...v9.8.0)
+
+**Closed issues:**
+
+- Primary buttonのfont-weightをnormalに変更する [\#772](https://github.com/voyagegroup/ingred-ui/issues/772)
+
+**Merged pull requests:**
+
+- stylesをexport [\#816](https://github.com/voyagegroup/ingred-ui/pull/816) ([horiy0125](https://github.com/horiy0125))
+- chore\(deps\): update react monorepo [\#811](https://github.com/voyagegroup/ingred-ui/pull/811) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react to v17.0.45 [\#809](https://github.com/voyagegroup/ingred-ui/pull/809) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.72.1 [\#808](https://github.com/voyagegroup/ingred-ui/pull/808) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/jest to v27.5.0 [\#807](https://github.com/voyagegroup/ingred-ui/pull/807) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @testing-library/react to v13.2.0 [\#806](https://github.com/voyagegroup/ingred-ui/pull/806) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.33 [\#805](https://github.com/voyagegroup/ingred-ui/pull/805) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-dom to v18.0.3 [\#804](https://github.com/voyagegroup/ingred-ui/pull/804) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint to v8.14.0 [\#801](https://github.com/voyagegroup/ingred-ui/pull/801) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update dependency @types/node to v16.11.28 [\#800](https://github.com/voyagegroup/ingred-ui/pull/800) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-jest to v26.1.5 [\#799](https://github.com/voyagegroup/ingred-ui/pull/799) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/react-dom to v18.0.2 [\#797](https://github.com/voyagegroup/ingred-ui/pull/797) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update typescript-eslint monorepo to v5.20.0 [\#796](https://github.com/voyagegroup/ingred-ui/pull/796) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @testing-library/react to v13.1.1 [\#795](https://github.com/voyagegroup/ingred-ui/pull/795) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-commonjs to v21.1.0 [\#794](https://github.com/voyagegroup/ingred-ui/pull/794) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency rollup to v2.70.2 [\#793](https://github.com/voyagegroup/ingred-ui/pull/793) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.3.0 [\#786](https://github.com/voyagegroup/ingred-ui/pull/786) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency eslint-plugin-import to v2.26.0 [\#775](https://github.com/voyagegroup/ingred-ui/pull/775) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v9.7.0](https://github.com/voyagegroup/ingred-ui/tree/v9.7.0) (2022-04-15)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.6.0...v9.7.0)
