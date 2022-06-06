@@ -12,8 +12,11 @@ import { MultiValueRemove } from "./internal/MultiValueRemove";
 import { Theme, useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 
-export const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
-  const overrideStyles: StylesConfig<OptionType<T>, boolean> = {
+export const getOverrideStyles = <OptionValue,>(
+  theme: Theme,
+  error: boolean,
+) => {
+  const overrideStyles: StylesConfig<OptionType<OptionValue>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
       boxShadow: "none",
@@ -148,18 +151,18 @@ export const getOverrideStyles = <T,>(theme: Theme, error: boolean) => {
 
 export type OptionType<T = string> = { label: string; value: T };
 
-export type SelectProps<T> = {
+export type SelectProps<OptionValue, IsMulti extends boolean> = {
   limit?: number;
   minWidth?: string;
   placeholder?: string;
   error?: boolean;
   emptyMessage?: string;
-} & ReactSelectProps<OptionType<T>, boolean>;
+} & ReactSelectProps<OptionType<OptionValue>, IsMulti>;
 
-const Select = <T,>(
-  inProps: SelectProps<T>,
+const Select = <OptionValue, IsMulti extends boolean>(
+  inProps: SelectProps<OptionValue, IsMulti>,
   ref: React.Ref<HTMLDivElement>,
-): React.ReactElement<SelectProps<T>> => {
+): React.ReactElement<SelectProps<OptionValue, IsMulti>> => {
   const props = useLocaleProps({ props: inProps, name: "Select" });
   const {
     limit,
@@ -175,13 +178,13 @@ const Select = <T,>(
 
   const theme = useTheme();
   let i = 0;
-  const filterOption: SelectProps<T>["filterOption"] = limit
+  const filterOption: SelectProps<OptionValue, IsMulti>["filterOption"] = limit
     ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
     : undefined;
-  const handleInputChange: SelectProps<T>["onInputChange"] = (
-    newValue,
-    actionMeta,
-  ) => {
+  const handleInputChange: SelectProps<
+    OptionValue,
+    IsMulti
+  >["onInputChange"] = (newValue, actionMeta) => {
     i = 0;
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
@@ -190,13 +193,13 @@ const Select = <T,>(
 
   return (
     <Styled.Container ref={ref} minWidth={minWidth} isDisabled={isDisabled}>
-      <ReactSelect<OptionType<T>, boolean>
+      <ReactSelect<OptionType<OptionValue>, IsMulti>
         isClearable
         placeholder={placeholder}
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={() => emptyMessage}
         isDisabled={isDisabled}
-        styles={getOverrideStyles<T>(theme, error)}
+        styles={getOverrideStyles<OptionValue>(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList
         theme={(originalTheme) => ({
@@ -222,6 +225,11 @@ const Select = <T,>(
 };
 
 // FIXME: Implement without type assertion
-export default React.forwardRef(Select) as <T>(
-  props: SelectProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+export default React.forwardRef(Select) as <
+  OptionValue,
+  IsMulti extends boolean = false,
+>(
+  props: SelectProps<OptionValue, IsMulti> & {
+    ref?: React.ForwardedRef<HTMLDivElement>;
+  },
 ) => ReturnType<typeof Select>;
