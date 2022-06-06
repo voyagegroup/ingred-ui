@@ -5,19 +5,19 @@ on:
     inputs:
       release_version:
         required: true
-        description:  release version
+        description: release version
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.ref }}
       - name: Unshallow
         run: git fetch --prune --unshallow --tags
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
       - name: install
@@ -26,12 +26,12 @@ jobs:
         run: make -f ci.mk lint
       - name: test
         run: make -f ci.mk test
-      - name: Use Ruby 2.6
+      - name: Use Ruby 3.0
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
+          ruby-version: 3.0
       - name: install github_changelog_generate
-        run: gem install github_changelog_generator
+        run: gem install -N github_changelog_generator
       - name: create CHANGELOG
         run: make -f ci.mk changelog
         env:

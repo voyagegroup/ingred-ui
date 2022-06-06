@@ -7,11 +7,11 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF govCnj sc-gKclnd bDhdBZ"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF bBxMiB sc-gKclnd bDhdBZ"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       Save
       <div
@@ -115,10 +115,10 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF klzIpQ sc-gKclnd bDhdBZ"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF gsvXIO sc-gKclnd bDhdBZ"
       data-testid="menu-toggle"
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       Save
       <div
@@ -149,8 +149,12 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     class="sc-bqiRlB fgnFUF"
   >
     <div
-      class="sc-ksdxgE hJTxxA sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
-    />
+      class="sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
+    >
+      <div
+        class="sc-ksdxgE hJTxxA"
+      />
+    </div>
     <div
       class="sc-egiyK AIhFW"
       data-popper-escaped="true"
@@ -228,19 +232,19 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF girpac sc-eCImPb cXxTDV"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF cQJnKK sc-eCImPb cXxTDV"
       disabled=""
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       Save
     </button>
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF girpac sc-jRQBWg chxDUC"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF cQJnKK sc-jRQBWg chxDUC"
       data-testid="menu-toggle"
       disabled=""
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       <div
         class="sc-iCfMLu bdvlpC"
@@ -340,17 +344,17 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF hrIhob sc-eCImPb cXxTDV"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF crhKNt sc-eCImPb cXxTDV"
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       Save
     </button>
     <button
-      class="sc-gsDKAQ sc-dkPtRN iVvbbF hrIhob sc-jRQBWg chxDUC"
+      class="sc-gsDKAQ sc-dkPtRN iVvbbF crhKNt sc-jRQBWg chxDUC"
       data-testid="menu-toggle"
       font-size="14px"
-      font-weight="bold"
+      font-weight="normal"
     >
       <div
         class="sc-iCfMLu bdvlpC"
@@ -377,8 +381,12 @@ exports[`DropdownButton component testing splited enable 1`] = `
     class="sc-bqiRlB fgnFUF"
   >
     <div
-      class="sc-ksdxgE hJTxxA sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
-    />
+      class="sc-hBUSln kZfwTK fade-transition-enter fade-transition-enter-active"
+    >
+      <div
+        class="sc-ksdxgE hJTxxA"
+      />
+    </div>
     <div
       class="sc-egiyK AIhFW"
       data-popper-escaped="true"

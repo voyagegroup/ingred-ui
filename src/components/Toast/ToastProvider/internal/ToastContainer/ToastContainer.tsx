@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { ToastContainerProps } from "react-toast-notifications";
 import Spacer from "../../../../Spacer";
+import { ToastContainerProps } from "../../../../../lib/react-toast-notification/src";
 
 const ToastContainer: React.FunctionComponent<ToastContainerProps> = ({
   children,

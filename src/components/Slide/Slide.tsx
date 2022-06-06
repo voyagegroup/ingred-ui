@@ -9,15 +9,18 @@ const Slide: React.FunctionComponent<CSSTransitionProps> = ({
   direction = "down",
   ...rest
 }) => {
+  const nodeRef = React.useRef<HTMLDivElement>(null);
+
   return (
     <Styled.CSSTransition
+      nodeRef={nodeRef}
       appear={true}
       timeout={timeout}
       direction={direction}
       classNames={Styled.transitionClass}
       {...rest}
     >
-      {children}
+      <div ref={nodeRef}>{children}</div>
     </Styled.CSSTransition>
   );
 };

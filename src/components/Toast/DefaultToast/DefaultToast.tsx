@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import {
-  ToastProps,
-  AppearanceTypes,
-  Placement,
-} from "react-toast-notifications";
 import Flex from "../../Flex";
 import Icon from "../../Icon";
 import Typography from "../../Typography";
 import { Theme, useTheme } from "../../../themes";
 import { hexToRgba } from "../../../utils/hexToRgba";
+import {
+  AppearanceTypes,
+  Placement,
+} from "../../../lib/react-toast-notification/src/types";
+import { ToastProps } from "../../../lib/react-toast-notification/src/ToastElement";
 
 type ToastStyle = {
   background: string;

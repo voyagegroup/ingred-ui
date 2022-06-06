@@ -92,7 +92,7 @@ const Indicator = styled.div<IndicatorProps>`
 
 export const Label = styled.span`
   flex: 0 1 auto;
-  margin-left: ${({ theme }) => theme.spacing}px;
+  margin-left: ${({ theme }) => theme.spacing / 2}px;
   font-size: 14px;
 
   input:disabled + div + & {

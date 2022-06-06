@@ -39,8 +39,12 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     class="sc-kDTinF cvlHxF"
   >
     <div
-      class="sc-iqseJM bDSzMX sc-crHmcD bXnuhj fade-transition-enter fade-transition-enter-active"
-    />
+      class="sc-crHmcD bXnuhj fade-transition-enter fade-transition-enter-active"
+    >
+      <div
+        class="sc-iqseJM bDSzMX"
+      />
+    </div>
     <div
       class="sc-jrQzAO jahegW"
       data-popper-escaped="true"
