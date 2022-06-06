@@ -3,17 +3,17 @@
 exports[`Button component testing ButtonGroup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL hfxIrv"
+    class="sc-bczRLJ cAklds"
   >
     <button
-      class="sc-dkPtRN sc-hKwDye iYzoKV FiWGy"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK ghQnsN"
       font-size="14px"
       font-weight="normal"
     >
       Edit
     </button>
     <button
-      class="sc-dkPtRN sc-hKwDye iYzoKV FiWGy"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK ghQnsN"
       font-size="14px"
       font-weight="normal"
     >

@@ -3,7 +3,7 @@
 exports[`Input component testing Input 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bdvvtL eCJnUk"
+    class="sc-bczRLJ hZfCmv"
   />
 </DocumentFragment>
 `;
@@ -11,7 +11,7 @@ exports[`Input component testing Input 1`] = `
 exports[`Input component testing Input disabled 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bdvvtL eCJnUk"
+    class="sc-bczRLJ hZfCmv"
     disabled=""
   />
 </DocumentFragment>
@@ -20,7 +20,7 @@ exports[`Input component testing Input disabled 1`] = `
 exports[`Input component testing Input error 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bdvvtL irtoAB"
+    class="sc-bczRLJ fCgycm"
   />
 </DocumentFragment>
 `;
@@ -28,7 +28,7 @@ exports[`Input component testing Input error 1`] = `
 exports[`Input component testing Input multiline 1`] = `
 <DocumentFragment>
   <textarea
-    class="sc-bdvvtL eCJnUk"
+    class="sc-bczRLJ hZfCmv"
   />
 </DocumentFragment>
 `;
