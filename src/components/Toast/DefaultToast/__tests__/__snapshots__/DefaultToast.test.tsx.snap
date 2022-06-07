@@ -3,27 +3,27 @@
 exports[`DefaultToast component testing DefaultToast error 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL Monau"
+    class="sc-bczRLJ ebIPid"
     style="height: 8px;"
   >
     <div
-      class="sc-gsDKAQ foyYFI"
+      class="sc-gsnTZi cnsXvQ"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jRQBWg cejAfR"
+        class="sc-jSMfEi lgNPem"
         display="flex"
       >
         <div
-          class="sc-jRQBWg ghqqWG"
+          class="sc-jSMfEi itoMZN"
           display="flex"
         >
           <div
-            class="sc-dkPtRN jkFIpl"
+            class="sc-dkzDqf eBhNAO"
           >
             <div
-              class="sc-gKclnd kTrEUX"
+              class="sc-gKXOVf kNytYv"
               size="24"
             >
               <svg
@@ -42,7 +42,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
             </div>
           </div>
           <p
-            class="sc-iCfMLu iUnSIe"
+            class="sc-iBkjds idbXdJ"
             color="#A90556"
             font-size="14px"
           >
@@ -50,10 +50,10 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           </p>
         </div>
         <div
-          class="sc-hKwDye kjnnxs"
+          class="sc-hKMtZM jCCKuz"
         >
           <div
-            class="sc-gKclnd edtajv"
+            class="sc-gKXOVf eQUwDP"
             size="18"
           >
             <svg
@@ -79,7 +79,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCImPb gEmtyD"
+        class="sc-eCYdqJ klZjQd"
         opacity="0"
       />
     </div>
@@ -90,27 +90,27 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
 exports[`DefaultToast component testing DefaultToast info 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL Monau"
+    class="sc-bczRLJ ebIPid"
     style="height: 8px;"
   >
     <div
-      class="sc-gsDKAQ hMnbFy"
+      class="sc-gsnTZi gMonra"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jRQBWg cejAfR"
+        class="sc-jSMfEi lgNPem"
         display="flex"
       >
         <div
-          class="sc-jRQBWg ghqqWG"
+          class="sc-jSMfEi itoMZN"
           display="flex"
         >
           <div
-            class="sc-dkPtRN lnGcAY"
+            class="sc-dkzDqf iHVcsf"
           >
             <div
-              class="sc-gKclnd edtajv"
+              class="sc-gKXOVf eQUwDP"
               size="18"
             >
               <svg
@@ -135,7 +135,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
             </div>
           </div>
           <p
-            class="sc-iCfMLu fxmbOw"
+            class="sc-iBkjds gATKuv"
             color="#054BAF"
             font-size="14px"
           >
@@ -143,10 +143,10 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
           </p>
         </div>
         <div
-          class="sc-hKwDye kjnnxs"
+          class="sc-hKMtZM jCCKuz"
         >
           <div
-            class="sc-gKclnd edtajv"
+            class="sc-gKXOVf eQUwDP"
             size="18"
           >
             <svg
@@ -172,7 +172,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCImPb jCBjVe"
+        class="sc-eCYdqJ kDDhKw"
         opacity="0"
       />
     </div>
@@ -183,27 +183,27 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
 exports[`DefaultToast component testing DefaultToast success 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL Monau"
+    class="sc-bczRLJ ebIPid"
     style="height: 8px;"
   >
     <div
-      class="sc-gsDKAQ jFdwci"
+      class="sc-gsnTZi bSWiSW"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jRQBWg cejAfR"
+        class="sc-jSMfEi lgNPem"
         display="flex"
       >
         <div
-          class="sc-jRQBWg ghqqWG"
+          class="sc-jSMfEi itoMZN"
           display="flex"
         >
           <div
-            class="sc-dkPtRN gPObHa"
+            class="sc-dkzDqf fMjWwB"
           >
             <div
-              class="sc-gKclnd kTrEUX"
+              class="sc-gKXOVf kNytYv"
               size="24"
             >
               <svg
@@ -222,7 +222,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
             </div>
           </div>
           <p
-            class="sc-iCfMLu eoKRge"
+            class="sc-iBkjds gATEzB"
             color="#338D13"
             font-size="14px"
           >
@@ -230,10 +230,10 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           </p>
         </div>
         <div
-          class="sc-hKwDye kjnnxs"
+          class="sc-hKMtZM jCCKuz"
         >
           <div
-            class="sc-gKclnd edtajv"
+            class="sc-gKXOVf eQUwDP"
             size="18"
           >
             <svg
@@ -259,7 +259,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCImPb cAOdnj"
+        class="sc-eCYdqJ fKPeOl"
         opacity="0"
       />
     </div>
@@ -270,27 +270,27 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
 exports[`DefaultToast component testing DefaultToast warning 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL Monau"
+    class="sc-bczRLJ ebIPid"
     style="height: 8px;"
   >
     <div
-      class="sc-gsDKAQ ikXnFi"
+      class="sc-gsnTZi dxuTyK"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
       <div
-        class="sc-jRQBWg cejAfR"
+        class="sc-jSMfEi lgNPem"
         display="flex"
       >
         <div
-          class="sc-jRQBWg ghqqWG"
+          class="sc-jSMfEi itoMZN"
           display="flex"
         >
           <div
-            class="sc-dkPtRN euxYHz"
+            class="sc-dkzDqf kYOQEc"
           >
             <div
-              class="sc-gKclnd edtajv"
+              class="sc-gKXOVf eQUwDP"
               size="18"
             >
               <svg
@@ -315,7 +315,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
             </div>
           </div>
           <p
-            class="sc-iCfMLu gzQbZH"
+            class="sc-iBkjds dLpBiE"
             color="#785F03"
             font-size="14px"
           >
@@ -323,10 +323,10 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
           </p>
         </div>
         <div
-          class="sc-hKwDye kjnnxs"
+          class="sc-hKMtZM jCCKuz"
         >
           <div
-            class="sc-gKclnd edtajv"
+            class="sc-gKXOVf eQUwDP"
             size="18"
           >
             <svg
@@ -352,7 +352,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
         </div>
       </div>
       <div
-        class="sc-eCImPb epUjoV"
+        class="sc-eCYdqJ jkVBoz"
         opacity="0"
       />
     </div>

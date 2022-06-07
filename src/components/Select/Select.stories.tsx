@@ -29,7 +29,7 @@ export const Example = () => {
     { label: "Two", value: 2 },
     { label: "Three", value: 3 },
   ];
-  const handleChange = (option: any) => {
+  const handleChange = (option: OptionType<number> | null) => {
     if (option?.label) setSelected(option.label);
   };
   return (
@@ -47,12 +47,8 @@ export const MultipleSelect = () => {
     { label: "Two", value: 2 },
     { label: "Three", value: 3 },
   ];
-  const handleChange = (options: any) => {
-    if (options == null) {
-      setSelected([]);
-      return;
-    }
-    setSelected(options.map((ops: OptionType<number>) => ops.label));
+  const handleChange = (options: OptionType<number>[]) => {
+    setSelected(options.map((ops) => ops.label));
   };
   return (
     <div style={{ height: "200px" }}>
@@ -72,8 +68,8 @@ export const WithAsyncSearch: Story = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [options, setOptions] = React.useState<OptionType<number>[]>([]);
 
-  const handleSelect = async (option: any) => {
-    if (option?.value) setSelected(option.value);
+  const handleSelect = async (newValue: OptionType<number> | null) => {
+    setSelected(`${newValue?.value || "null"}`);
   };
 
   const handleInputChange = async (input: string) => {
