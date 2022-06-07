@@ -164,11 +164,11 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
                         </ToastController>
                       )}
                     </Transition>
-                  )
+                  ),
                 )}
               </TransitionGroup>
             </ToastContainer>,
-            portalTarget
+            portalTarget,
           )
         ) : (
           <ToastContainer placement={placement} hasToasts={hasToasts} /> // keep ReactDOM.hydrate happy
@@ -277,7 +277,7 @@ export const useToasts = () => {
 
   if (!ctx) {
     throw Error(
-      "The `useToasts` hook must be called from a descendent of the `ToastProvider`."
+      "The `useToasts` hook must be called from a descendent of the `ToastProvider`.",
     );
   }
 

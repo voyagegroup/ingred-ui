@@ -13,7 +13,7 @@ type Props = {
 };
 
 const getSnackbarStyle = (
-  theme: Theme
+  theme: Theme,
 ): {
   [key in SnackbarColor]: {
     iconColor: string;
@@ -26,7 +26,7 @@ const getSnackbarStyle = (
       iconColor: theme.palette.black,
       boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
         theme.palette.gray.main,
-        0.4
+        0.4,
       )}`,
       background: theme.palette.background.default,
     },
@@ -34,7 +34,7 @@ const getSnackbarStyle = (
       iconColor: theme.palette.white,
       boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
         theme.palette.gray.deepDark,
-        0.4
+        0.4,
       )}`,
       background: theme.palette.gray.deepDark,
     },
@@ -42,7 +42,7 @@ const getSnackbarStyle = (
       iconColor: theme.palette.warning.deepDark,
       boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
         theme.palette.warning.highlight,
-        0.4
+        0.4,
       )}`,
       background: theme.palette.warning.highlight,
     },
