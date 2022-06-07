@@ -36,7 +36,10 @@ const getPerFromLocalStorage = () => {
 const setPerInLocalStorage = (per: number) =>
   localStorage.setItem(StorageKey.DISPLAY_LIST_COUNT, per.toString());
 
-function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
+function isCheckableTab<T extends DataTableBaseData>(
+  currentTabIndex: number,
+  tabs?: Tab<T>[],
+) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
@@ -77,7 +80,7 @@ function calculateRowSpan<T extends DataTableBaseData>(
   return rowSpan;
 }
 
-function getFilteredItemsByTab<T>({
+function getFilteredItemsByTab<T extends DataTableBaseData>({
   sourceData,
   tabs,
   currentTabIndex,
@@ -126,7 +129,7 @@ export type DataTableBaseData = {
   selectDisabled?: boolean;
 };
 
-export type Column<T> = {
+export type Column<T extends DataTableBaseData> = {
   name: string;
   selector: (data: T) => string | number;
   sortable?: boolean;
@@ -137,13 +140,13 @@ export type Column<T> = {
   enableMergeCell?: boolean;
 };
 
-type Tab<T> = {
+type Tab<T extends DataTableBaseData> = {
   label: string;
   filter: (data: T[]) => T[];
   disabledCheck?: boolean;
 };
 
-export type DataTableProps<T> = {
+export type DataTableProps<T extends DataTableBaseData> = {
   /**
    * Array of some object that has `id: number` property.
    */
@@ -649,6 +652,6 @@ const DataTable = <T extends DataTableBaseData>(
 };
 
 // FIXME: Imprement without type assertion
-export default React.forwardRef(DataTable) as <T>(
+export default React.forwardRef(DataTable) as <T extends DataTableBaseData>(
   props: DataTableProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof DataTable>;
