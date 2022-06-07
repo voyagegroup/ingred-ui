@@ -1,5 +1,9 @@
 # Changelog
 
+**このファイルはv9.9.0以降更新されません。**
+
+**[こちら](https://github.com/voyagegroup/ingred-ui/releases)を参考にしてください**
+
 ## [v9.9.0](https://github.com/voyagegroup/ingred-ui/tree/v9.9.0) (2022-05-26)
 
 [Full Changelog](https://github.com/voyagegroup/ingred-ui/compare/v9.8.0...v9.9.0)
