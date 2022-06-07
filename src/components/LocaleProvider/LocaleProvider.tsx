@@ -3,6 +3,7 @@ import { enUS, Localization } from "../../constants/locale";
 
 export type LocaleProviderProps = {
   locale?: Localization;
+  children?: React.ReactNode;
 };
 
 export const LocaleContext = React.createContext<LocaleProviderProps>({

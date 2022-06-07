@@ -65,6 +65,7 @@ export type ToastProviderProps = {
   // A convenience prop; the duration of the toast transition, in milliseconds.
   // Note that specifying this will override any defaults set on individual children Toasts.
   transitionDuration?: number;
+  children: React.ReactNode;
 };
 type State = { toasts: ToastsType };
 type Context = {
@@ -163,11 +164,11 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
                         </ToastController>
                       )}
                     </Transition>
-                  ),
+                  )
                 )}
               </TransitionGroup>
             </ToastContainer>,
-            portalTarget,
+            portalTarget
           )
         ) : (
           <ToastContainer placement={placement} hasToasts={hasToasts} /> // keep ReactDOM.hydrate happy
@@ -276,7 +277,7 @@ export const useToasts = () => {
 
   if (!ctx) {
     throw Error(
-      "The `useToasts` hook must be called from a descendent of the `ToastProvider`.",
+      "The `useToasts` hook must be called from a descendent of the `ToastProvider`."
     );
   }
 

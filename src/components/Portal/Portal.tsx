@@ -11,6 +11,7 @@ export type PortalProps = {
    * If it is `true`, portal component renders as it is.
    */
   disablePortal?: boolean;
+  children: React.ReactNode;
 };
 
 /**
