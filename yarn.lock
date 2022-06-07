@@ -3288,17 +3288,10 @@
     "@types/react-outside-click-handler" "*"
     moment "^2.26.0"
 
-"@types/react-dom@18.0.5":
+"@types/react-dom@18.0.5", "@types/react-dom@^18.0.0":
   version "18.0.5"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.5.tgz#330b2d472c22f796e5531446939eacef8378444a"
   integrity sha512-OWPWTUrY/NIrjsAPkAk1wW9LZeIjSvkXRhclsFO8CZcZGCOg2G0YZy4ft+rOyYxy8B7ui5iZzi9OkDebZ7/QSA==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-dom@^18.0.0":
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.0.0.tgz#b13f8d098e4b0c45df4f1ed123833143b0c71141"
-  integrity sha512-49897Y0UiCGmxZqpC8Blrf6meL8QUla6eb+BBhn69dTXlmuOlzkfr7HHY/O8J25e1lTUMs+YYxSlVDAaGHCOLg==
   dependencies:
     "@types/react" "*"
 
@@ -3323,16 +3316,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*":
-  version "17.0.37"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.37.tgz#6884d0aa402605935c397ae689deed115caad959"
-  integrity sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@18.0.12":
+"@types/react@*", "@types/react@18.0.12":
   version "18.0.12"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.12.tgz#cdaa209d0a542b3fcf69cf31a03976ec4cdd8840"
   integrity sha512-duF1OTASSBQtcigUvhuiTB1Ya3OvSy+xORCiEf20H0P0lzx+/KeVsA99U5UjLXSbyo1DRJDlLKqTeM1ngosqtg==
