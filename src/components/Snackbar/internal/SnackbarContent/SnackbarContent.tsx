@@ -9,6 +9,7 @@ import { hexToRgba } from "../../../../utils/hexToRgba";
 type Props = {
   color: SnackbarColor;
   onClose?: () => void;
+  children: React.ReactNode;
 };
 
 const getSnackbarStyle = (

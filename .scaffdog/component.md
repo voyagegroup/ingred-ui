@@ -22,6 +22,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 
 export type {{ inputs.name | pascal }}Props = {
+  children: React.ReactNode;
 }
 
 const {{ inputs.name | pascal }}: React.FunctionComponent<{{ inputs.name | pascal }}Props> = () => (
