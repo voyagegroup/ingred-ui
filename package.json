@@ -72,7 +72,7 @@
     "jest": "28.1.0",
     "jest-environment-jsdom": "28.1.0",
     "prettier": "2.6.2",
-    "react": "18.1.0",
+    "react": "18.2.0",
     "react-dom": "18.1.0",
     "rollup": "2.74.1",
     "rollup-plugin-imagemin": "0.5.0",
@@ -89,7 +89,7 @@
   ],
   "resolutions": {
     "colors": "1.4.0",
-    "react": "18.1.0",
+    "react": "18.2.0",
     "react-dom": "18.1.0",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5"
