@@ -56,11 +56,11 @@ export const DisablePartially: Story<ButtonGroupProps> = (args) => (
 );
 
 export const LinkMixed: Story<ButtonGroupProps> = (args) => {
-  const Link: React.FC<{ href: string; className: string }> = ({
-    href,
-    className,
-    children,
-  }) => (
+  const Link: React.FC<{
+    href: string;
+    className: string;
+    children: React.ReactNode;
+  }> = ({ href, className, children }) => (
     // MEMO: Add className props to apply style
     <a href={href} className={className}>
       {children}

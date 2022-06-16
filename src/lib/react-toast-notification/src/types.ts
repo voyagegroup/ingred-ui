@@ -31,7 +31,7 @@ export type Placement =
 
 export type ToastType = Options & {
   appearance: AppearanceTypes;
-  content: Node;
+  content: ReactNode;
   id: Id;
 };
 export type ToastsType = Array<ToastType>;

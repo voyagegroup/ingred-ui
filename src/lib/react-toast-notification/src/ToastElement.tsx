@@ -16,6 +16,7 @@ export const toastWidth = 360;
 const A11yText: FC<{
   className: string;
   tag?: keyof JSX.IntrinsicElements;
+  children: ReactNode;
 }> = ({ tag = "span", ...props }: any) => <Styled.Tag as={tag} {...props} />;
 
 // default appearances
@@ -48,7 +49,10 @@ const appearances = {
 };
 export type AppearanceTypes = keyof typeof appearances;
 
-const Button: FC<{ onClick: () => void }> = ({ children, ...rest }) => (
+const Button: FC<{ onClick: () => void; children: ReactNode }> = ({
+  children,
+  ...rest
+}) => (
   <Styled.Button
     role="button"
     className="react-toast-notifications__toast__dismiss-button"
@@ -59,7 +63,7 @@ const Button: FC<{ onClick: () => void }> = ({ children, ...rest }) => (
   </Styled.Button>
 );
 
-const Content: FC = (props) => (
+const Content: FC<{ children: ReactNode }> = (props) => (
   <Styled.Content
     className="react-toast-notifications__toast__content"
     gutter={gutter}
