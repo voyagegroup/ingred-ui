@@ -110,7 +110,7 @@ const Tabs = <T,>(
           valueToIndex.set(childValue, index);
           return (
             <Tab
-              key={index.toString()}
+              key={index.toString()} // eslint-disable-line react/no-array-index-key
               selected={selected}
               value={childValue}
               count={d.count}

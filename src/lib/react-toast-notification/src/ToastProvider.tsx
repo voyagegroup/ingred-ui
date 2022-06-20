@@ -197,7 +197,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
   // Public API
   // ------------------------------
 
-  add = (content: Node, options?: Options, cb: Callback = NOOP) => {
+  add = (content: ReactNode, options?: Options, cb: Callback = NOOP) => {
     const id = options?.id ? options.id : generateUEID();
     const callback = () => cb(id);
 
