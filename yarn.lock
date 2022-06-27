@@ -1730,51 +1730,51 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@scaffdog/config@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-1.2.0.tgz#b459711b1cf0c6c4f6246ecbb069f650df9dac17"
-  integrity sha512-RS4oE602p27Y1mrNcjnrXQsd2EEbqzT+V6dcr6SdvrC7jrd6q00RoRndPEzM00le9SBTGcjm9PIfpVfRxBfmsQ==
+"@scaffdog/config@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-1.4.0.tgz#76089a66a4f05c5a44f969d48352a60bd31ab761"
+  integrity sha512-iEsan2CWWRQFQ4uM29nU+N8ISFvEHxyWPB/LldqlLBpyoPBizoWiNp6myYhOmYMxouQlb7Q83+jR649cSDwJGw==
   dependencies:
-    "@scaffdog/types" "1.2.0"
+    "@scaffdog/types" "1.4.0"
     zod "^3.11.6"
 
-"@scaffdog/core@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-1.2.0.tgz#9964901c2c1f456f3abcf123ad82840c31dff05d"
-  integrity sha512-4i+hvEy/yRJnRUoakmImcG1B/35ErBoySRp2Srp2XsgoMXbpcisfdlcEk3Unz8tOPPP4dX/M1/4ITQMaOvQWig==
+"@scaffdog/core@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-1.4.0.tgz#92991e4963215d8ba7ea80d75722b364abbbea6f"
+  integrity sha512-0Ogt1aBozIIAREoPADYQT/Yh5W6GXY9rRq78xlXcmmwT012Gj1pB2Uoj1a9/wKozyzPNl9lqxqBgDDxFOeRLwg==
   dependencies:
-    "@scaffdog/engine" "1.2.0"
-    "@scaffdog/types" "1.2.0"
+    "@scaffdog/engine" "1.4.0"
+    "@scaffdog/types" "1.4.0"
     mdast-util-to-string "^2.0.0"
     remark-parse "^9.0.0"
     unified "^9.2.1"
     unist-util-visit-parents "^3.1.1"
 
-"@scaffdog/engine@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-1.2.0.tgz#e9e3de236ed158fd0639b7d6a61e9adc38cb96f0"
-  integrity sha512-nAwwXnDTVBpAD9t/nZ+Wdva9R6ro91DEZwREG7+QYrB/S4o3ryY3Mb7dxVs6nF5qWK4v6dVtK9BGWMsNalrJ/Q==
+"@scaffdog/engine@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-1.4.0.tgz#c5b8830edd455986afbf9bd41afc6b9aee59828e"
+  integrity sha512-MEja2vN8ODG8OWwSvj8oTAnczsy6TCPBibnVDJaALqyohaX+QYdg7Kle4Xpa2pxcQ3aQreCzduSxXXTsReMxLQ==
   dependencies:
-    "@scaffdog/error" "1.2.0"
-    "@scaffdog/types" "1.2.0"
+    "@scaffdog/error" "1.4.0"
+    "@scaffdog/types" "1.4.0"
     change-case "^4.1.2"
     dayjs "^1.10.4"
     esprima "^4.0.1"
     is-plain-object "^5.0.0"
     safe-eval "^0.4.1"
 
-"@scaffdog/error@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-1.2.0.tgz#282742a98bbaa75bbdd84f57ecb80f60fc07b473"
-  integrity sha512-3Bqylswu+3MyTwAZL9y7Fprr5k2g4SlAU9rVNdZ2BmHraZDohvpZqq9Sb0JPPx+lB3KuW7hfYIwzxtlY4t44DA==
+"@scaffdog/error@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-1.4.0.tgz#bb039118c69386e60c8a86d9ef61930f42feeac0"
+  integrity sha512-VzgYndep0b0k+VJkRFRKR6BW05B4aHOmjnSJ0vTWqvGbHndmTtjxscojXWr4DaEmoo0P/YD0BGcbh0oONEC66Q==
   dependencies:
-    "@scaffdog/types" "1.2.0"
+    "@scaffdog/types" "1.4.0"
     chalk "^4.1.0"
 
-"@scaffdog/types@1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-1.2.0.tgz#09b0b32012414668fbe74fcc59b5b46b90a054a2"
-  integrity sha512-Mow4/QFGRMUsPjrwhjr0o+TyuBMQcxQGf7r2Kz+YPwvqnFmBIDnQdWuG2Etw9XPichEcOFJLvYFIyPWsFncK/A==
+"@scaffdog/types@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-1.4.0.tgz#af29eea5e0271bc25cb9f4f2d312d2327335e3b4"
+  integrity sha512-qeI833JK1iYeT2eeq2bU3+bnIC4v0f6sBvm35ZKh49DScHghUGMe2getokt9n4G3D9kQr6TI0Qaqf4uUhoqp1Q==
 
 "@sinclair/typebox@^0.23.3":
   version "0.23.5"
@@ -3729,7 +3729,7 @@ ansi-colors@^3.0.0:
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
   integrity sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
 
-ansi-escapes@^4.2.1, ansi-escapes@^4.3.1, ansi-escapes@^4.3.2:
+ansi-escapes@^4.2.1, ansi-escapes@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
   integrity sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==
@@ -8160,16 +8160,16 @@ inline-style-parser@0.1.1:
   resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.1.1.tgz#ec8a3b429274e9c0a1f1c4ffa9453a7fef72cea1"
   integrity sha512-7NXolsK4CAS5+xvdj5OMMbI962hU/wvwoxk+LWR9Ek9bVtyuuYScDN6eS0rUm6TxApFpw7CX1o4uJzcd4AyD3Q==
 
-inquirer-autocomplete-prompt@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/inquirer-autocomplete-prompt/-/inquirer-autocomplete-prompt-1.4.0.tgz#e767592f747e3d5bb6336fe71fb4094352e4c317"
-  integrity sha512-qHgHyJmbULt4hI+kCmwX92MnSxDs/Yhdt4wPA30qnoa01OF6uTXV8yvH4hKXgdaTNmkZ9D01MHjqKYEuJN+ONw==
+inquirer-autocomplete-prompt@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/inquirer-autocomplete-prompt/-/inquirer-autocomplete-prompt-2.0.0.tgz#28d742e5bc411ce52c8ce21509279e12b21a76f3"
+  integrity sha512-c2LljLP3ewVJe4AUZzKdA6oWjqhpy5pfsisHAjh7mP3WUQ/O02x5OLMMqcLOYuRHx6i2hlVSIhUv0xYGyFxFYA==
   dependencies:
-    ansi-escapes "^4.3.1"
-    chalk "^4.0.0"
+    ansi-escapes "^4.3.2"
     figures "^3.2.0"
-    run-async "^2.4.0"
-    rxjs "^6.6.2"
+    picocolors "^1.0.0"
+    run-async "^2.4.1"
+    rxjs "^7.5.4"
 
 inquirer@^8.2.0:
   version "8.2.4"
@@ -12431,7 +12431,7 @@ rsvp@^4.8.4:
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
 
-run-async@^2.4.0:
+run-async@^2.4.0, run-async@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
@@ -12450,14 +12450,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.6.2:
-  version "6.6.7"
-  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
-  integrity sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==
-  dependencies:
-    tslib "^1.9.0"
-
-rxjs@^7.5.5:
+rxjs@^7.5.4, rxjs@^7.5.5:
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.5.tgz#2ebad89af0f560f460ad5cc4213219e1f7dd4e9f"
   integrity sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw==
@@ -12523,16 +12516,16 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-scaffdog@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-1.2.0.tgz#d794934c17c20a7cc46134d56e97e910c9bcfa2b"
-  integrity sha512-4tbzlohUex/3K3Yvty1xYTbrHd9WEU+94TIU/FIr/CpN0khShGJ1cqGqQCojRgin9bDARpUEwGda7CcDElhnYA==
+scaffdog@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-1.4.0.tgz#a009afb8b924a0589847b93bc1a55dadd7adb2a2"
+  integrity sha512-1XEJ/Aq9b/VxHRYez21rA6PeDKz6Y1ZDA9f8LVx/No/u873hNh5MUF3ExFBGyPNTYNrANS2MyfFxGtcRoaWpSg==
   dependencies:
-    "@scaffdog/config" "1.2.0"
-    "@scaffdog/core" "1.2.0"
-    "@scaffdog/engine" "1.2.0"
-    "@scaffdog/error" "1.2.0"
-    "@scaffdog/types" "1.2.0"
+    "@scaffdog/config" "1.4.0"
+    "@scaffdog/core" "1.4.0"
+    "@scaffdog/engine" "1.4.0"
+    "@scaffdog/error" "1.4.0"
+    "@scaffdog/types" "1.4.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
@@ -12543,7 +12536,7 @@ scaffdog@1.2.0:
     globby "^11.0.3"
     indent-string "^4.0.0"
     inquirer "^8.2.0"
-    inquirer-autocomplete-prompt "^1.4.0"
+    inquirer-autocomplete-prompt "^2.0.0"
     is-plain-object "^5.0.0"
     log-symbols "^4.1.0"
     micromatch "^4.0.4"
@@ -13720,7 +13713,7 @@ tsconfig-paths@^3.14.1:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
