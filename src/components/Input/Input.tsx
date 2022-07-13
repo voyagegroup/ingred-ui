@@ -24,7 +24,7 @@ const Input = React.forwardRef<
 
     const onKeyDown = (
       e: React.KeyboardEvent<HTMLInputElement> &
-        React.KeyboardEvent<HTMLTextAreaElement>
+        React.KeyboardEvent<HTMLTextAreaElement>,
     ) => {
       const n = Number(e.key);
 
