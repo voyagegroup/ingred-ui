@@ -11,7 +11,10 @@ export default {
   },
 };
 
-export const Example: Story<InputProps> = (args) => <Input {...args} />;
+// TODO: type="number" を外す
+export const Example: Story<InputProps> = (args) => (
+  <Input {...args} type="number" />
+);
 
 export const Textarea: Story<InputProps> = (args) => <Input {...args} />;
 Textarea.args = {
