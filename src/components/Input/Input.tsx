@@ -6,9 +6,18 @@ export type InputProps = (
   | React.ComponentPropsWithoutRef<"input">
   | React.ComponentPropsWithoutRef<"textarea">
 ) & {
+  type?: string;
   error?: boolean;
   multiline?: boolean;
   resize?: Property.Resize;
+};
+
+const isNumber = (n: string) => {
+  // empty or white space
+  if (n === "" || n === " ") {
+    return false;
+  }
+  return !isNaN(Number(n));
 };
 
 const Input = React.forwardRef<
@@ -16,22 +25,22 @@ const Input = React.forwardRef<
   InputProps
 >(({ error = false, multiline = false, resize = "both", ...rest }, ref) => {
   if (rest.type === "number") {
-    const onChange = (e: any) => {
-      const n = Number(e.target.value);
-      if (!Number.isFinite(n)) return;
-      if (rest.onChange) rest.onChange(e);
+    const onChange = (
+      event: React.ChangeEvent<HTMLInputElement> &
+        React.ChangeEvent<HTMLTextAreaElement>,
+    ) => {
+      if (!isNumber(event.target.value)) return;
+      if (rest.onChange) rest.onChange(event);
     };
 
     const onKeyDown = (
-      e: React.KeyboardEvent<HTMLInputElement> &
+      event: React.KeyboardEvent<HTMLInputElement> &
         React.KeyboardEvent<HTMLTextAreaElement>,
     ) => {
-      const n = Number(e.key);
-
-      if (!Number.isFinite(n) && !(e.key === "Backspace")) {
-        e.preventDefault();
+      if (!isNumber(event.key) && !(event.key === "Backspace")) {
+        event.preventDefault();
       }
-      if (rest.onKeyDown) rest.onKeyDown(e);
+      if (rest.onKeyDown) rest.onKeyDown(event);
     };
 
     return (
