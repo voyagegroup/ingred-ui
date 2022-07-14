@@ -33,7 +33,7 @@ const Input = React.forwardRef<
       resize={resize}
       onWheel={createChainedFunction(
         rest.type === "number" ? handleWheel : null,
-        rest.onWheel ? rest.onWheel : null,
+        rest.onWheel,
       )}
     />
   );
