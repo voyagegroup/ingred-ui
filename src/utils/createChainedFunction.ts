@@ -1,5 +1,5 @@
 /**
- * ref: https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/utils/createChainedFunction.js
+ * ref: https://github.com/mui/material-ui/blob/master/packages/mui-utils/src/createChainedFunction.ts
  * TODO: resolve "any" type assertion
  */
 export function createChainedFunction<F extends Function>(
