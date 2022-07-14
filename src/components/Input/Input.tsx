@@ -22,7 +22,6 @@ const Input = React.forwardRef<
       React.WheelEvent<HTMLTextAreaElement>,
   ) => {
     event.currentTarget.blur();
-    if (rest.onWheel) rest.onWheel(event);
   };
 
   return (
@@ -34,7 +33,7 @@ const Input = React.forwardRef<
       resize={resize}
       onWheel={createChainedFunction(
         rest.type === "number" ? handleWheel : null,
-        rest.onWheel
+        rest.onWheel ? rest.onWheel : null,
       )}
     />
   );
