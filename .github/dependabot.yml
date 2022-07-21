@@ -34,4 +34,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-patch"]
+    reviewers:
+      - "voyagegroup/fluct_ingred_ui_dev"
     open-pull-requests-limit: 10
