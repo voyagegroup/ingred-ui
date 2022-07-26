@@ -67,11 +67,11 @@ const getContainerColorStyles = (
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
-      background: theme.palette.gray.highlight,
+      background: theme.palette.secondary.highlight,
       border: `1px solid ${theme.palette.divider}`,
     },
     active: {
-      background: theme.palette.gray.highlight,
+      background: theme.palette.secondary.highlight,
       boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
       border: `1px solid ${theme.palette.divider}`,
     },
@@ -96,6 +96,7 @@ const getContainerColorStyles = (
       border: "none",
     },
   },
+  // クリアボタンは一旦考えないようにします
   clear: {
     normal: {
       background: "none",

@@ -104,7 +104,7 @@ export const ToastElementInner = styled.div<{
 }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: ${({ borderRadius }) => borderRadius}px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
   color: ${({ color }) => color};
   display: flex;
   margin-bottom: ${({ gutter }) => gutter}px;

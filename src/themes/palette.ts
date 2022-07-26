@@ -31,10 +31,24 @@ export type PaletteIcon = {
   line: string;
 };
 
+export type PaletteAction = {
+  active: string;
+  hover: string;
+  selected: string;
+  selectedOpacity: number;
+  disabled: string;
+  disabledBackground: string;
+  focus: string;
+  focusOpacity: number;
+  activeBackground: string;
+  hoverBackground: string;
+};
+
 export type Palette = {
   white: string;
   black: string;
   primary: PaletteColor;
+  secondary: PaletteColor;
   success: PaletteColor;
   warning: PaletteColor;
   danger: PaletteColor;
@@ -43,6 +57,10 @@ export type Palette = {
   background: PaletteBackground;
   divider: string;
   icon: PaletteIcon;
+
+  // =========================
+  action: PaletteAction;
+  border: PaletteColor;
 };
 
 export const palette: Palette = {
@@ -54,6 +72,13 @@ export const palette: Palette = {
     main: colors.blue[500],
     light: colors.blue[200],
     highlight: colors.blue[100],
+  },
+  secondary: {
+    deepDark: colors.basic[600],
+    dark: colors.basic[500],
+    main: colors.basic[300],
+    light: colors.basic[200],
+    highlight: colors.basic[100],
   },
   success: {
     deepDark: colors.green[700],
@@ -96,11 +121,35 @@ export const palette: Palette = {
     active: colors.blue[100],
     hint: colors.blue[50] as string, // TODO
   },
+  // divider は固定値でいい
   divider: colors.basic[400],
   icon: {
     active: colors.blue[500],
     fill: colors.basic[700],
     line: colors.basic[600],
+  },
+
+  // ======= proposal =======
+  // TODO: shadow
+  // WIP: 適当な候補だけ書いた
+  action: {
+    active: "rgba(0, 0, 0, 0.54)",
+    hover: "#F5F7F8", // basic[100]
+    selected: "rgba(0, 0, 0, 0.08)",
+    selectedOpacity: 0.08,
+    disabled: "rgba(0, 0, 0, 0.26)",
+    disabledBackground: colors.basic[200],
+    focus: "rgba(0, 0, 0, 0.12)",
+    focusOpacity: 0.12,
+    activeBackground: colors.basic[300],
+    hoverBackground: colors.basic[200],
+  },
+  border: {
+    deepDark: colors.basic[600],
+    dark: colors.basic[500],
+    main: colors.basic[300],
+    light: colors.basic[200],
+    highlight: colors.basic[100],
   },
 };
 

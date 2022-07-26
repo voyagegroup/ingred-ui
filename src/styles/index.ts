@@ -1,5 +1,6 @@
 export { Radius } from "./radius";
 export { Space } from "./space";
+export { Shadows } from "./shadows";
 export { BreakPoint } from "./breakPoint";
 export { colors } from "./color";
 export type { Color } from "./color";
