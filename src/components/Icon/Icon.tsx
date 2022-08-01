@@ -69,6 +69,9 @@ import { CloseCircleIcon } from "./internal/CloseCircleIcon";
 import { BidStrapIcon } from "./internal/BidStrapIcon";
 import { FluctIcon } from "./internal/FluctIcon";
 import { DataStrapIcon } from "./internal/DataStrapIcon";
+import { CompanyIcon } from "./internal/CompanyIcon";
+import { DocumentIcon } from "./internal/DocumentIcon";
+import { UserIcon } from "./internal/UserIcon";
 
 export type IconName =
   | "dashboard"
@@ -137,7 +140,10 @@ export type IconName =
   | "close_circle"
   | "bid_strap"
   | "fluct"
-  | "data_strap";
+  | "data_strap"
+  | "company"
+  | "document"
+  | "user";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -223,6 +229,9 @@ export const icons: {
   bid_strap: BidStrapIcon,
   fluct: FluctIcon,
   data_strap: DataStrapIcon,
+  company: CompanyIcon,
+  document: DocumentIcon,
+  user: UserIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {

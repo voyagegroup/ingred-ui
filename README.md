@@ -49,4 +49,4 @@ import "react-dates/lib/css/_datepicker.css";
 
 ## License
 
-MIT © [voyagegroup](https://github.com/voyagegroup)
+MIT © [CARTA HOLDINGS, Inc.](https://github.com/voyagegroup)
