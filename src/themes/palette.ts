@@ -23,6 +23,7 @@ export type PaletteBackground = {
   dark: string;
   active: string;
   hint: string;
+  disabled: string;
 };
 
 export type PaletteIcon = {
@@ -36,8 +37,6 @@ export type PaletteAction = {
   hover: string;
   selected: string;
   selectedOpacity: number;
-  disabled: string;
-  disabledBackground: string;
   focus: string;
   focusOpacity: number;
   activeBackground: string;
@@ -120,6 +119,7 @@ export const palette: Palette = {
     dark: colors.blue[40] as string, // TODO
     active: colors.blue[100],
     hint: colors.blue[50] as string, // TODO
+    disabled: colors.basic[200],
   },
   // divider は固定値でいい
   divider: colors.basic[400],
@@ -129,6 +129,7 @@ export const palette: Palette = {
     line: colors.basic[600],
   },
 
+  // opacity は全部 0.08 にする、
   // ======= proposal =======
   // TODO: shadow
   // WIP: 適当な候補だけ書いた
@@ -137,10 +138,8 @@ export const palette: Palette = {
     hover: "#F5F7F8", // basic[100]
     selected: "rgba(0, 0, 0, 0.08)",
     selectedOpacity: 0.08,
-    disabled: "rgba(0, 0, 0, 0.26)",
-    disabledBackground: colors.basic[200],
     focus: "rgba(0, 0, 0, 0.12)",
-    focusOpacity: 0.12,
+    focusOpacity: 0.08,
     activeBackground: colors.basic[300],
     hoverBackground: colors.basic[200],
   },

@@ -16,7 +16,7 @@ const getNormalBackgroundColor = (theme: Theme) => ({
 const getHoverBackgroundColor = (theme: Theme) => ({
   primary: theme.palette.primary.highlight,
   warning: colors.red[200],
-  disabled: theme.palette.gray.light,
+  disabled: theme.palette.background.disabled,
 });
 
 const getTextColor = (theme: Theme) => ({
@@ -38,7 +38,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
 
     const getColorByDisabled = (
       color: ColorProp,
-      disabled?: boolean,
+      disabled?: boolean
     ): ColorProp | "disabled" => {
       return disabled ? "disabled" : color;
     };
@@ -65,7 +65,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         </Typography>
       </Styled.Container>
     );
-  },
+  }
 );
 
 export default ActionButton;
