@@ -38,7 +38,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
 
     const getColorByDisabled = (
       color: ColorProp,
-      disabled?: boolean
+      disabled?: boolean,
     ): ColorProp | "disabled" => {
       return disabled ? "disabled" : color;
     };
@@ -65,7 +65,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         </Typography>
       </Styled.Container>
     );
-  }
+  },
 );
 
 export default ActionButton;

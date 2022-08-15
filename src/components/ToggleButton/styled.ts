@@ -72,13 +72,15 @@ export const Label = styled.label<LabelProps>`
   width: ${({ width }) => width};
   height: calc(1px * 2 + 22px);
   background-color: ${({ active, disabled, theme }) => {
-    let backgroundColor = theme.palette.gray.highlight;
-    if (disabled) {
-      backgroundColor = theme.palette.gray.light;
-    } else if (active) {
-      backgroundColor = theme.palette.background.hint;
+    switch (true) {
+      case disabled:
+        return theme.palette.background.disabled;
+      case active:
+        // MEMO: background には元々 active っていうプロパティがあるんだけど、こういうのも修正しないといけない
+        return theme.palette.background.hint;
+      default:
+        return theme.palette.gray.highlight;
     }
-    return backgroundColor;
   }};
   border: 1px solid
     ${({ active, disabled, theme }) =>
