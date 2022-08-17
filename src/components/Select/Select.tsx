@@ -19,7 +19,7 @@ export const getOverrideStyles = <OptionValue,>(
   const overrideStyles: StylesConfig<OptionType<OptionValue>, boolean> = {
     control: (base, { menuIsOpen }) => ({
       ...base,
-      boxShadow: "none",
+      boxShadow: theme.shadows[0],
       borderTopColor: theme.palette.divider,
       borderRightColor: theme.palette.divider,
       borderLeftColor: theme.palette.divider,
@@ -39,7 +39,7 @@ export const getOverrideStyles = <OptionValue,>(
     menu: (base) => ({
       ...base,
       marginTop: "-1px",
-      boxShadow: "none",
+      boxShadow: theme.shadows[0],
       borderRadius: `0 0 ${theme.radius}px ${theme.radius}px`,
       borderRight: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
