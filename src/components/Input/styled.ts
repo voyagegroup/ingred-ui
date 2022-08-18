@@ -38,7 +38,7 @@ export const Input = styled.input<{
   &:disabled {
     color: ${({ theme }) => theme.palette.text.disabled};
     border-color: ${({ theme }) => theme.palette.divider};
-    box-shadow: ${({ theme }) => theme.shadows[0]};
+    box-shadow: ${({ theme }) => theme.shadows.none};
     background-color: ${({ theme }) => theme.palette.gray.light};
     cursor: not-allowed;
   }

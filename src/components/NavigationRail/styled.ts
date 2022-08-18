@@ -27,7 +27,7 @@ export const Container = styled.div<ContaierProps>`
           theme.palette.gray.dark,
           0.33,
         )}`
-      : theme.shadows[0]};
+      : theme.shadows.none};
   box-sizing: content-box;
   overflow-x: hidden;
   z-index: ${({ theme }) => theme.depth.drawer};
