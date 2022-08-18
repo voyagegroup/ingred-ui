@@ -3,12 +3,13 @@ import { Radius, Space, Depth, Shadows } from "../styles";
 import { DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 import { DeepPartial } from "../types";
+import { ShadowsType } from "../styles/shadows";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;
   spacing?: number;
   radius?: number;
-  shadows?: string[];
+  shadows?: ShadowsType;
   depth?: DepthOptions;
 };
 
@@ -16,7 +17,7 @@ export type Theme = {
   palette: Palette;
   spacing: number;
   radius: number;
-  shadows: string[];
+  shadows: ShadowsType;
   depth: Depth;
 };
 

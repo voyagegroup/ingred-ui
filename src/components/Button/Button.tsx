@@ -40,10 +40,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.text.white,
-      boxShadow: `0px -2px ${hexToRgba(
-        theme.palette.black,
-        0.16,
-      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      boxShadow: theme.shadows.button,
       border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
@@ -52,7 +49,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
-      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
+      boxShadow: theme.shadows.buttonActive,
       border: "none",
     },
   },
@@ -60,10 +57,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.background.default,
       color: theme.palette.black,
-      boxShadow: `0px -2px ${hexToRgba(
-        theme.palette.black,
-        0.16,
-      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      boxShadow: theme.shadows.button,
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
@@ -72,7 +66,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
-      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
+      boxShadow: theme.shadows.buttonActive,
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -80,10 +74,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.text.white,
-      boxShadow: `0px -2px ${hexToRgba(
-        theme.palette.black,
-        0.16,
-      )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`,
+      boxShadow: theme.shadows.button,
       border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
@@ -92,7 +83,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
-      boxShadow: `inset 0 2px ${hexToRgba(theme.palette.black, 0.16)}`,
+      boxShadow: theme.shadows.buttonActive,
       border: "none",
     },
   },
@@ -100,7 +91,7 @@ const getContainerColorStyles = (
     normal: {
       background: "none",
       color: theme.palette.gray.deepDark,
-      boxShadow: "none",
+      boxShadow: theme.shadows.none,
       border: "none",
     },
     hover: {
@@ -109,7 +100,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.main,
-      boxShadow: "none",
+      boxShadow: theme.shadows.none,
       border: "none",
     },
   },
