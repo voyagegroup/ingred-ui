@@ -29,11 +29,7 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   border: 1px solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.dark : theme.palette.divider};
-  box-shadow: ${({ theme }) =>
-    `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0px 1px ${hexToRgba(
-      theme.palette.black,
-      0.08,
-    )}`};
+  box-shadow: ${({ theme }) => theme.shadows.toggle};
   transition: all 0.3s ease-in-out;
 `;
 
@@ -85,7 +81,8 @@ export const Label = styled.label<LabelProps>`
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
   border-radius: 56px;
   // TODO: トークンの規則的に当てづらいので一旦保留
-  box-shadow: ${({ theme }) => theme.shadows.toggle};
+  box-shadow: ${({ theme }) =>
+    `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
   transition: all 0.3s ease-in-out;
 
   ${({ active }) =>
