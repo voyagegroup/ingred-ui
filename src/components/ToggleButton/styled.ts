@@ -29,7 +29,7 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
   border: 1px solid
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.dark : theme.palette.divider};
-  box-shadow: ${({ theme }) => theme.shadows.toggle};
+  box-shadow: ${({ theme }) => theme.shadows[4]};
   transition: all 0.3s ease-in-out;
 `;
 

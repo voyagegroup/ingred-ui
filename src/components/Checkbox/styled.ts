@@ -51,7 +51,7 @@ export const Span = styled.span<{
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${({ theme }) => theme.radius * 0.5}px;
-    box-shadow: ${({ theme }) => theme.shadows.checkbox};
+    box-shadow: ${({ theme }) => theme.shadows[3]};
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing / 2}px` : "auto"};

@@ -46,7 +46,7 @@ const Indicator = styled.div<IndicatorProps>`
   border-radius: 50%;
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
-  box-shadow: ${({ theme }) => theme.shadows.radio};
+  box-shadow: ${({ theme }) => theme.shadows[3]};
   transition: all 0.3s ease;
   background: ${({ theme }) => theme.palette.background.default};
 

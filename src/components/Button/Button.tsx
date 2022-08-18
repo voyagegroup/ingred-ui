@@ -40,7 +40,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.text.white,
-      boxShadow: theme.shadows.button,
+      boxShadow: theme.shadows[1],
       border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
@@ -49,7 +49,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
-      boxShadow: theme.shadows.buttonActive,
+      boxShadow: theme.shadows[2],
       border: "none",
     },
   },
@@ -57,7 +57,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.background.default,
       color: theme.palette.black,
-      boxShadow: theme.shadows.button,
+      boxShadow: theme.shadows[1],
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
@@ -66,7 +66,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
-      boxShadow: theme.shadows.buttonActive,
+      boxShadow: theme.shadows[2],
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -74,7 +74,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.text.white,
-      boxShadow: theme.shadows.button,
+      boxShadow: theme.shadows[1],
       border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
@@ -83,7 +83,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
-      boxShadow: theme.shadows.buttonActive,
+      boxShadow: theme.shadows[2],
       border: "none",
     },
   },
@@ -91,7 +91,7 @@ const getContainerColorStyles = (
     normal: {
       background: "none",
       color: theme.palette.gray.deepDark,
-      boxShadow: theme.shadows.none,
+      boxShadow: theme.shadows[0],
       border: "none",
     },
     hover: {
@@ -100,7 +100,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.main,
-      boxShadow: theme.shadows.none,
+      boxShadow: theme.shadows[0],
       border: "none",
     },
   },
