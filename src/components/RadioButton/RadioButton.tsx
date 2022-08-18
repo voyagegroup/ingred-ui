@@ -46,11 +46,7 @@ const Indicator = styled.div<IndicatorProps>`
   border-radius: 50%;
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
-  box-shadow: ${({ theme }) =>
-    `0px -2px ${hexToRgba(
-      theme.palette.black,
-      0.16,
-    )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`};
+  box-shadow: ${({ theme }) => theme.shadows.radio};
   transition: all 0.3s ease;
   background: ${({ theme }) => theme.palette.background.default};
 
