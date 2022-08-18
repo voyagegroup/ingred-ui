@@ -84,8 +84,8 @@ export const Label = styled.label<LabelProps>`
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
   border-radius: 56px;
-  box-shadow: ${({ theme }) =>
-    `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
+  // TODO: トークンの規則的に当てづらいので一旦保留
+  box-shadow: ${({ theme }) => theme.shadows.toggle};
   transition: all 0.3s ease-in-out;
 
   ${({ active }) =>
