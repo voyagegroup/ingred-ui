@@ -5,6 +5,7 @@ import { NavigationRailTransitionDuration } from "../constants";
 import { NavigationRailContext } from "../utils";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
+import { createChainedFunction } from "../../../utils/createChainedFunction";
 
 export type NavigationRailExpantionMenuItemProps =
   React.ComponentPropsWithoutRef<"div"> & {
@@ -45,6 +46,8 @@ const ExpantionMenuItem = React.forwardRef<
     const textContainerElement = React.useRef<HTMLDivElement | null>(null);
     const textElement = React.useRef<HTMLSpanElement | null>(null);
 
+    const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
+
     React.useEffect(() => {
       textContainerElement.current?.addEventListener("mouseover", () => {
         if (!textContainerElement.current || !textElement.current) return;
@@ -60,7 +63,7 @@ const ExpantionMenuItem = React.forwardRef<
         positionPriority={["right"]}
         enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
-        onMouseEnter={handleClose}
+        onMouseEnter={handleMouseEnter}
       >
         <Styled.Container ref={ref} {...rest}>
           <Styled.TextContainer ref={textContainerElement}>
