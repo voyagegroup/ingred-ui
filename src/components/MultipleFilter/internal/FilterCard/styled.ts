@@ -3,8 +3,7 @@ import { hexToRgba } from "../../../../utils/hexToRgba";
 import Card from "../../../Card";
 
 export const FilterCard = styled(Card)<{ width?: string }>`
-  box-shadow: 0px 0px 16px
-    ${({ theme }) => hexToRgba(theme.palette.gray.main, 0.4)};
+  box-shadow: ${({ theme }) => theme.shadows[5]};
   min-width: 300px;
   width: ${({ width }) => width};
   border-radius: ${({ theme }) => `${theme.radius}px`};

@@ -42,6 +42,7 @@ export const Tooltip = styled.div<{ width?: string }>`
   background-color: ${({ theme }) => theme.palette.black};
   font-weight: bold;
   font-size: 12px;
+  box-shadow: ${({ theme }) => theme.shadows[5]};
   z-index: ${({ theme }) => theme.depth.tooltip};
 
   &[data-popper-placement^="top"] > ${Arrow} {

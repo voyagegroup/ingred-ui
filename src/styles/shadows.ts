@@ -29,7 +29,7 @@ export const Shadows: ShadowsType = [
     opacityBase * 2,
   )} inset, 0px 1px ${hexToRgba(colors.basic[900], opacityBase)}`, // radio and checkbox
   `0px 1px ${hexToRgba(colors.basic[900], opacityBase * 2)} inset`, // toggle
-  "", // tooltip, snackbar and dialog
+  `0px 0px 16px ${hexToRgba(colors.basic[900], opacityBase * 5)}`, // tooltip, snackbar and dialog
   // MEMO: Since "success" and "danger" are different colors here, you need to take an argument or create two different definitions.
   "", // toast
 ];
