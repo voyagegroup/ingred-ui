@@ -7,7 +7,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
     width="56px"
   >
     <label
-      class="sc-jSMfEi cTTsAr"
+      class="sc-jSMfEi iBlvXQ"
       width="56px"
     >
       <input
@@ -38,7 +38,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         </div>
       </div>
       <span
-        class="sc-gsnTZi bxCoXf"
+        class="sc-gsnTZi kuGkDb"
       />
     </label>
   </div>
