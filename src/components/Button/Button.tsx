@@ -1,10 +1,8 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
-
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
-import { hexToRgba } from "../../utils/hexToRgba";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger" | "clear";

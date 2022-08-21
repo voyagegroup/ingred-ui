@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { hexToRgba } from "../../utils/hexToRgba";
 
 export const Checkbox = styled.input<{
   indeterminate: boolean;
