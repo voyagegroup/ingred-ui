@@ -15,24 +15,11 @@ const OPACITY_BASE = 8;
 const opacityBase = OPACITY_BASE / 100;
 const shadowColor = colors.basic[900];
 
-const getColorFromOpacityAndBaseColor = (
-  opacity: number,
-  color = shadowColor,
-) => {
-  switch (opacity) {
-    case 1:
-      return hexToRgba(color, opacityBase);
-    case 2:
-      return hexToRgba(color, opacityBase * 2);
-    case 3:
-      return hexToRgba(color, opacityBase * 3);
-    case 4:
-      return hexToRgba(color, opacityBase * 4);
-    case 5:
-      return hexToRgba(color, opacityBase * 5);
-    default:
-      return "";
+const getColorFromOpacityAndBaseColor = (opacity = 0, color = shadowColor) => {
+  if (opacity === 0) {
+    return "none";
   }
+  return hexToRgba(color, opacity * opacityBase);
 };
 
 export const Shadows: ShadowsType = [
