@@ -10,7 +10,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jest/recommended",
-    "plugin:mdx/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -147,7 +146,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
+      files: ["*.stories.tsx", "*.test.ts", "*.test.tsx"],
       rules: {
         "react/jsx-handler-names": "off",
         "no-empty": "off",
@@ -168,10 +167,6 @@ module.exports = {
         camelcase: "off",
         "@typescript-eslint/no-var-requires": "off",
       },
-    },
-    {
-      files: ["*.mdx"],
-      extends: ["plugin:mdx/overrides"],
     },
   ],
 };
