@@ -9,7 +9,7 @@ import {
   Placement,
 } from "../../../lib/react-toast-notification/src/types";
 import { ToastProps } from "../../../lib/react-toast-notification/src/ToastElement";
-import { getShadowWithColor } from "../../../styles/shadows";
+import { getShadowWithColor } from "../../../utils/getShadowWithColor";
 
 type ToastStyle = {
   background: string;
@@ -24,10 +24,11 @@ type ToastStyle = {
 
 const getToastStyles = ({
   palette,
+  shadows,
 }: Theme): Record<AppearanceTypes, ToastStyle> => ({
   info: {
     background: palette.primary.highlight,
-    boxShadow: getShadowWithColor(5, palette.primary.highlight),
+    boxShadow: getShadowWithColor(shadows, 5, palette.primary.highlight),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.primary.main,
     countDownBackground: palette.primary.main,
@@ -37,7 +38,7 @@ const getToastStyles = ({
   },
   success: {
     background: palette.success.highlight,
-    boxShadow: getShadowWithColor(5, palette.success.highlight),
+    boxShadow: getShadowWithColor(shadows, 5, palette.success.highlight),
     icon: (
       <Icon
         name="checkbox_circle"
@@ -54,7 +55,7 @@ const getToastStyles = ({
   },
   warning: {
     background: palette.warning.highlight,
-    boxShadow: getShadowWithColor(5, palette.warning.highlight),
+    boxShadow: getShadowWithColor(shadows, 5, palette.warning.highlight),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.warning.main,
     countDownBackground: palette.warning.main,
@@ -64,7 +65,7 @@ const getToastStyles = ({
   },
   error: {
     background: palette.danger.highlight,
-    boxShadow: getShadowWithColor(5, palette.danger.highlight),
+    boxShadow: getShadowWithColor(shadows, 5, palette.danger.highlight),
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),
