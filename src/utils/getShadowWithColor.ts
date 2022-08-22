@@ -1,6 +1,7 @@
 import { ShadowsType } from "../styles/shadows";
 import { getColorWithOpacity } from "./getColorWithOpacity";
 
+// shadow の色を theme.shadows で定義した色から変更したいときに使う
 export const getShadowWithColor = (
   shadows: ShadowsType,
   tokenNumber: number,
