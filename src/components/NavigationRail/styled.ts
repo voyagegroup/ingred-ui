@@ -4,6 +4,7 @@ import {
   NavigationRailTransitionDuration,
 } from "./constants";
 import { hexToRgba } from "../../utils/hexToRgba";
+import { opacityBase } from "../../styles/shadows";
 
 type ContaierProps = {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export const Container = styled.div<ContaierProps>`
     isOpen && !isFixed
       ? `0px 0px ${theme.spacing * 2}px ${hexToRgba(
           theme.palette.gray.dark,
-          0.33,
+          opacityBase * 4,
         )}`
       : theme.shadows[0]};
   box-sizing: content-box;

@@ -11,9 +11,9 @@ export type ShadowsType = [
   string,
 ];
 
-const OPACITY_BASE = 8;
-const opacityBase = OPACITY_BASE / 100;
-const shadowColor = colors.basic[900];
+export const OPACITY_BASE = 8;
+export const opacityBase = OPACITY_BASE / 100;
+export const shadowColor = colors.basic[900];
 
 const getColorFromOpacityAndBaseColor = (opacity = 0, color = shadowColor) => {
   if (opacity === 0) {

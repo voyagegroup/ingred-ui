@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { opacityBase } from "../../styles/shadows";
 import { hexToRgba } from "../../utils/hexToRgba";
 
 export const Container = styled.div<{
@@ -80,9 +81,8 @@ export const Label = styled.label<LabelProps>`
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
   border-radius: 56px;
-  // TODO: トークンの規則的に当てづらいので一旦保留
   box-shadow: ${({ theme }) =>
-    `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
+    `0 2px ${hexToRgba(theme.palette.black, opacityBase)} inset`};
   transition: all 0.3s ease-in-out;
 
   ${({ active }) =>
