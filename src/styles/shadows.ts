@@ -1,15 +1,7 @@
 import { hexToRgba } from "../utils/hexToRgba";
 import { colors } from "./color";
 
-export type ShadowsType = [
-  "none",
-  string,
-  string,
-  string,
-  string,
-  string,
-  string,
-];
+export type ShadowsType = ["none", string, string, string, string, string];
 
 export const OPACITY_BASE = 8;
 export const opacityBase = OPACITY_BASE / 100;
@@ -35,12 +27,8 @@ export const Shadows: ShadowsType = [
   )} inset, 0px 1px ${getColorFromOpacityAndBaseColor(1)}`, // radio and checkbox
   `0px 1px ${getColorFromOpacityAndBaseColor(2)} inset`, // toggle
   `0px 0px 16px ${getColorFromOpacityAndBaseColor(5)}`, // tooltip, snackbar and dialog
-  // MEMO: Since "success" and "danger" are different colors here, you need to take an argument or create two different definitions.
-  "", // toast
 ];
 
-// box-shadow の色が固定ではない時に使う関数
-// 要リファクタリング
 export const getShadowWithColor = (tokenNumber: number, color?: string) => {
   if (color === undefined) return Shadows[tokenNumber];
 
