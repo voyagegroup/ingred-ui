@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { opacityBase } from "../../../../styles/shadows";
 import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type CellProps = {
