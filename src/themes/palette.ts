@@ -61,7 +61,6 @@ export type Palette = {
 
   // =========================
   action: PaletteAction;
-  border: PaletteColor;
 };
 
 export const palette: Palette = {
@@ -144,13 +143,6 @@ export const palette: Palette = {
     focusOpacity: 0.08,
     activeBackground: colors.basic[300],
     hoverBackground: colors.basic[200],
-  },
-  border: {
-    deepDark: colors.basic[600],
-    dark: colors.basic[500],
-    main: colors.basic[300],
-    light: colors.basic[200],
-    highlight: colors.basic[100],
   },
 };
 
