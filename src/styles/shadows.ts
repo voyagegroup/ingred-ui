@@ -19,5 +19,5 @@ export const Shadows: ShadowsType = [
   // Pattern 04
   `0px 1px ${getColorWithOpacity(2)} inset`,
   // Pattern 05
-  `0px 0px 16px ${getColorWithOpacity(5)}`,
+  `0px 0px 16px ${getColorWithOpacity(2)}`,
 ];
