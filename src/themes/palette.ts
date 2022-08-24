@@ -38,11 +38,7 @@ export type PaletteAction = {
   active: string;
   hover: string;
   selected: string;
-  selectedOpacity: number;
-  focus: string;
-  focusOpacity: number;
-  activeBackground: string;
-  hoverBackground: string;
+  disabled: string;
 };
 
 export type Palette = {
@@ -131,18 +127,11 @@ export const palette: Palette = {
     fill: colors.basic[700],
     line: colors.basic[600],
   },
-
-  // opacity は全部 0.08 にする、
-  // WIP: 適当な候補だけ書いた
   action: {
-    active: "rgba(0, 0, 0, 0.54)",
-    hover: "#F5F7F8", // basic[100]
-    selected: "rgba(0, 0, 0, 0.08)",
-    selectedOpacity: 0.08,
-    focus: "rgba(0, 0, 0, 0.12)",
-    focusOpacity: 0.08,
-    activeBackground: colors.basic[300],
-    hoverBackground: colors.basic[200],
+    active: colors.blue[50] as string,
+    hover: "",
+    selected: "",
+    disabled: colors.basic[200],
   },
 };
 
