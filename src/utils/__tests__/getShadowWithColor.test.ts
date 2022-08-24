@@ -9,7 +9,7 @@ describe("getShadowWithColor", () => {
     "0px 0px 0px 0px rgba(4, 28, 51, 0.16) inset, 0px 0px 0px 0px rgba(4, 28, 51, 0.08)",
     "0px 0px 0px 0px rgba(4, 28, 51, 0.16) inset, 0px 0px 0px 0px rgba(4, 28, 51, 0.08)",
     "0px 0px 0px 0px rgba(4, 28, 51, 0.16) inset",
-    "0px 0px 0px 0px rgba(4, 28, 51, 0.4)",
+    "0px 0px 0px 0px rgba(4, 28, 51, 0.16)",
   ];
 
   test.each<[number, string | undefined, string]>([
@@ -30,7 +30,7 @@ describe("getShadowWithColor", () => {
       "0px 0px 0px 0px rgba(11, 130, 244, 0.16) inset, 0px 0px 0px 0px rgba(11, 130, 244, 0.08)",
     ],
     [4, primary, "0px 0px 0px 0px rgba(11, 130, 244, 0.16) inset"],
-    [5, primary, "0px 0px 0px 0px rgba(11, 130, 244, 0.4)"],
+    [5, primary, "0px 0px 0px 0px rgba(11, 130, 244, 0.16)"],
     [1, undefined, shadows[1]],
   ])("getShadowWithColor(%i, %s) = %s", (tokenNumber, color, expected) => {
     expect(getShadowWithColor(shadows, tokenNumber, color)).toBe(expected);

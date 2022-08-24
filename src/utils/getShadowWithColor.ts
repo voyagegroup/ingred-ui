@@ -23,8 +23,8 @@ export const getShadowWithColor = (
       );
     case 5:
       return shadows[5].replace(
-        getColorWithOpacity(5),
-        getColorWithOpacity(5, color),
+        getColorWithOpacity(2),
+        getColorWithOpacity(2, color),
       );
     default:
       return "none";
