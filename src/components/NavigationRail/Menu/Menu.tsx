@@ -8,6 +8,7 @@ import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
+import { createChainedFunction } from "../../../utils/createChainedFunction";
 
 export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
   title: string;
@@ -42,6 +43,8 @@ const Menu = React.forwardRef<HTMLDivElement, NavigationRailMenuProps>(
     const textContainerElement = React.useRef<HTMLDivElement | null>(null);
     const textElement = React.useRef<HTMLSpanElement | null>(null);
 
+    const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
+
     React.useEffect(() => {
       textContainerElement.current?.addEventListener("transitionend", () => {
         if (!textContainerElement.current || !textElement.current) return;
@@ -57,7 +60,7 @@ const Menu = React.forwardRef<HTMLDivElement, NavigationRailMenuProps>(
         positionPriority={["right"]}
         enterDelay={NavigationRailTransitionDuration * 1000}
         disabled={!showTooltip}
-        onMouseEnter={handleClose}
+        onMouseEnter={handleMouseEnter}
       >
         <Styled.Container ref={ref} isActive={isActive} {...rest}>
           <NotificationBadge

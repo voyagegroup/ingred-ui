@@ -35,6 +35,10 @@ module.exports = {
     SharedArrayBuffer: "readonly",
   },
   rules: {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
+    ],
     "no-restricted-syntax": "off",
     "no-await-in-loop": "off",
     "no-empty": ["error", { allowEmptyCatch: true }],
@@ -123,7 +127,6 @@ module.exports = {
       rules: {
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/consistent-type-definitions": ["error", "type"],
