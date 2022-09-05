@@ -1,11 +1,8 @@
-import {
-  getColorWithOpacity,
-  opacityBase as _opacityBase,
-} from "../utils/getColorWithOpacity";
+import { getColorWithOpacity, opacityBase } from "../utils/getColorWithOpacity";
 
 export type ShadowsType = ["none", string, string, string, string, string];
 
-export const opacityBase = _opacityBase; // 0.08
+export { opacityBase };
 
 export const Shadows: ShadowsType = [
   // Pattern 00
