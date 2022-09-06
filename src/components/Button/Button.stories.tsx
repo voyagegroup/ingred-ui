@@ -27,31 +27,26 @@ export default {
           <ArgsTable of={Button} />
           <Stories includePrimary title="Samples" />
           <Description
-            // TODO: add md text
-            /**
-                ### Use "href" props
-
-                ### Use with router library like "react-router"
-
-                Here's an example code.
-
-                But We have plan to change like [Material-UI](https://material-ui.com/guides/composition/#link).
-
-                ```tsx
-                // Get "className" prop to enable <Button /> style.
-                const LinkToHome = ({ className, children }) => (
-                  // "href" prop defines not via <Button />
-                  <Link className={className} href="/home">
-                    {children}
-                  </Link>
-                );
-
-                const ButtonWithRouterLink = ({ children }) => (
-                  <Button component={LinkToHome}>{children}</Button>
-                );
-                ```
-             */
-            markdown={`### Use with router library like "react-router"`}
+            markdown={[
+              '### Use with router library like "react-router"',
+              "Here's an example code.  ",
+              "",
+              "But We have plan to change like [Material-UI](https://material-ui.com/guides/composition/#link).",
+              "",
+              "```tsx",
+              '// Get "className" prop to enable <Button /> style.',
+              "const LinkToHome = ({ className, children }) => (",
+              '// "href" prop defines not via <Button />',
+              '  <Link className={className} href="/home">',
+              "    {children}",
+              "  </Link>",
+              ");",
+              "",
+              "const ButtonWithRouterLink = ({ children }) => (",
+              "  <Button component={LinkToHome}>{children}</Button>",
+              ");",
+              "```",
+            ].join("\n")}
           />
         </>
       ),
