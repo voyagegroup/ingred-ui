@@ -7,15 +7,14 @@ import {
   ArgsTable,
   Stories,
 } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
 import Button, { ButtonProps } from "./";
 
 export default {
   title: "Components/Inputs/Button",
   components: Button,
   args: {
-    onClick: {
-      action: "clicked",
-    },
+    onClick: action("clicked"),
   },
   parameters: {
     docs: {
