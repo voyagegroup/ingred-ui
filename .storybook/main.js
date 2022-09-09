@@ -23,4 +23,8 @@ module.exports = {
     // TODO: fix warn "Rendered more hooks than during the previous render."
     // strictMode: true,
   },
+  babel: async (options) => ({
+    ...options,
+    plugins: [["@babel/plugin-proposal-class-properties", { loose: true }]],
+  }),
 };
