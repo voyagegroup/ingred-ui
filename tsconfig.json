@@ -20,8 +20,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "example", "testEnv", "rollup.config.js"]
+  "exclude": ["node_modules", "dist", "example", "testEnv", "rollup.config.ts"]
 }
