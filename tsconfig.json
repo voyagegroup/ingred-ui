@@ -23,9 +23,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  // rollup config も include に含める
-  // https://rollupjs.org/guide/en/#--configplugin-plugin
-  "include": ["src", "rollup.config.ts"],
-  // 型チェックはしたいけど dist には含めたくないので exclude にも入れておく
+  "include": ["src"],
   "exclude": ["node_modules", "dist", "example", "testEnv", "rollup.config.ts"]
 }

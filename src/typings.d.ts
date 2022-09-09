@@ -22,8 +22,3 @@ declare module "*.svg" {
   export default svgUrl;
   export { svgComponent as ReactComponent };
 }
-
-// for rollup.config.ts
-declare module "rollup-plugin-imagemin" {
-  export function imagemin(): any;
-}
