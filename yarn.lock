@@ -3556,7 +3556,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/rollup-plugin-peer-deps-external@^2.2.1":
+"@types/rollup-plugin-peer-deps-external@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@types/rollup-plugin-peer-deps-external/-/rollup-plugin-peer-deps-external-2.2.1.tgz#7711fe77727c2ec920d3e096fa4e61d02734a23d"
   integrity sha512-CUK4Mi3M3A/0coRUeo4McvUFOxR5H6UYd6Wt3D+K4c4fJupolMSoIxsZaBG1g/BJQOaujf78Pf7KhgfhrX1FZA==
