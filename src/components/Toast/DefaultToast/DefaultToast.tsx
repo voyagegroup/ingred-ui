@@ -28,7 +28,7 @@ const getToastStyles = ({
 }: Theme): Record<AppearanceTypes, ToastStyle> => ({
   info: {
     background: palette.primary.highlight,
-    boxShadow: getShadowWithColor(shadows, 5, palette.primary.light),
+    boxShadow: getShadowWithColor(shadows, palette, 5, palette.primary.light),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.primary.main,
     countDownBackground: palette.primary.main,
@@ -38,7 +38,7 @@ const getToastStyles = ({
   },
   success: {
     background: palette.success.highlight,
-    boxShadow: getShadowWithColor(shadows, 5, palette.success.light),
+    boxShadow: getShadowWithColor(shadows, palette, 5, palette.success.light),
     icon: (
       <Icon
         name="checkbox_circle"
@@ -55,7 +55,7 @@ const getToastStyles = ({
   },
   warning: {
     background: palette.warning.highlight,
-    boxShadow: getShadowWithColor(shadows, 5, palette.warning.light),
+    boxShadow: getShadowWithColor(shadows, palette, 5, palette.warning.light),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.warning.main,
     countDownBackground: palette.warning.main,
@@ -65,7 +65,7 @@ const getToastStyles = ({
   },
   error: {
     background: palette.danger.highlight,
-    boxShadow: getShadowWithColor(shadows, 5, palette.danger.light),
+    boxShadow: getShadowWithColor(shadows, palette, 5, palette.danger.light),
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),

@@ -1,11 +1,13 @@
 import { ShadowsType } from "../styles/shadows";
-import { getColorWithOpacity } from "./getColorWithOpacity";
+import { Palette } from "../themes";
+import { hexToRgba } from "./hexToRgba";
 
 /**
- * shadow の色を theme.shadows で定義した色から変更したいときに使う関数
+ * shadow の色を shadows で定義した色から変更したいときに使う関数
  */
 export const getShadowWithColor = (
   shadows: ShadowsType,
+  palette: Palette,
   tokenNumber: number,
   color?: string,
 ) => {
@@ -16,17 +18,22 @@ export const getShadowWithColor = (
     case 2:
     case 3:
       return shadows[tokenNumber]
-        .replace(getColorWithOpacity(2), getColorWithOpacity(2, color))
-        .replace(getColorWithOpacity(1), getColorWithOpacity(1, color));
+        .replace(
+          hexToRgba(
+            palette.action.shadowBase,
+            palette.action.shadowOpacity * 2,
+          ),
+          hexToRgba(color, palette.action.shadowOpacity * 2),
+        )
+        .replace(
+          hexToRgba(palette.action.shadowBase, palette.action.shadowOpacity),
+          hexToRgba(color, palette.action.shadowOpacity),
+        );
     case 4:
-      return shadows[4].replace(
-        getColorWithOpacity(2),
-        getColorWithOpacity(2, color),
-      );
     case 5:
-      return shadows[5].replace(
-        getColorWithOpacity(2),
-        getColorWithOpacity(2, color),
+      return shadows[tokenNumber].replace(
+        hexToRgba(palette.action.shadowBase, palette.action.shadowOpacity * 2),
+        hexToRgba(color, palette.action.shadowOpacity * 2),
       );
     default:
       return "none";

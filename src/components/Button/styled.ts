@@ -35,7 +35,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   font-size: ${({ fontSize }) => fontSize};
   box-shadow: ${({ normal, disabled, theme }) =>
     disabled
-      ? getShadowWithColor(theme.shadows, 1, theme.palette.black)
+      ? getShadowWithColor(theme.shadows, theme.palette, 1, theme.palette.black)
       : normal.boxShadow};
   transition: background 0.3s;
 

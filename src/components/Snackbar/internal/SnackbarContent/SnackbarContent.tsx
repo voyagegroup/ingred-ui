@@ -36,6 +36,7 @@ const getSnackbarStyle = (
       iconColor: theme.palette.warning.deepDark,
       boxShadow: getShadowWithColor(
         theme.shadows,
+        theme.palette,
         5,
         theme.palette.warning.highlight,
       ),
