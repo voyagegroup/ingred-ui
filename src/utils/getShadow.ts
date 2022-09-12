@@ -10,23 +10,23 @@ export const getShadow = (
   switch (token) {
     case 1:
       return `0px -3px ${hexToRgba(
-        color ?? "#041C33",
+        color,
         opacityBase * 2,
-      )} inset, 0px 2px ${hexToRgba(color ?? "#041C33", opacityBase)}`;
+      )} inset, 0px 2px ${hexToRgba(color, opacityBase)}`;
     case 2:
       return `0px 3px ${hexToRgba(
-        color ?? "#041C33",
+        color,
         opacityBase * 2,
-      )} inset, 0px 2px ${hexToRgba(color ?? "#041C33", opacityBase)}`;
+      )} inset, 0px 2px ${hexToRgba(color, opacityBase)}`;
     case 3:
       return `0px -2px ${hexToRgba(
-        color ?? "#041C33",
+        color,
         opacityBase * 2,
-      )} inset, 0px 1px ${hexToRgba(color ?? "#041C33", opacityBase)}`;
+      )} inset, 0px 1px ${hexToRgba(color, opacityBase)}`;
     case 4:
-      return `0px 1px ${hexToRgba(color ?? "#041C33", opacityBase * 2)} inset`;
+      return `0px 1px ${hexToRgba(color, opacityBase * 2)} inset`;
     case 5:
-      return `0px 0px 16px ${hexToRgba(color ?? "#041C33", opacityBase * 2)}`;
+      return `0px 0px 16px ${hexToRgba(color, opacityBase * 2)}`;
     default:
       return "none";
   }
