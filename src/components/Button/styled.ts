@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
-import { getShadowWithColor } from "../../utils/getShadowWithColor";
+import { getShadow } from "../../utils/getShadow";
 
 export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
@@ -35,7 +35,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   font-size: ${({ fontSize }) => fontSize};
   box-shadow: ${({ normal, disabled, theme }) =>
     disabled
-      ? getShadowWithColor(theme.shadows, theme.palette, 1, theme.palette.black)
+      ? getShadow(1, theme.palette.action.shadowOpacity, theme.palette.black)
       : normal.boxShadow};
   transition: background 0.3s;
 

@@ -3,6 +3,7 @@ import { fontSize } from "../Typography/Typography";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
+import { getShadow } from "../../utils/getShadow";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger" | "clear";
@@ -38,7 +39,11 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.text.white,
-      boxShadow: theme.shadows[1],
+      boxShadow: getShadow(
+        1,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
@@ -47,7 +52,11 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
-      boxShadow: theme.shadows[2],
+      boxShadow: getShadow(
+        2,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: "none",
     },
   },
@@ -55,7 +64,11 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.background.default,
       color: theme.palette.black,
-      boxShadow: theme.shadows[1],
+      boxShadow: getShadow(
+        1,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
@@ -64,7 +77,11 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
-      boxShadow: theme.shadows[2],
+      boxShadow: getShadow(
+        2,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: `1px solid ${theme.palette.divider}`,
     },
   },
@@ -72,7 +89,11 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.text.white,
-      boxShadow: theme.shadows[1],
+      boxShadow: getShadow(
+        1,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
@@ -81,7 +102,11 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
-      boxShadow: theme.shadows[2],
+      boxShadow: getShadow(
+        2,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       border: "none",
     },
   },
@@ -89,7 +114,7 @@ const getContainerColorStyles = (
     normal: {
       background: "none",
       color: theme.palette.gray.deepDark,
-      boxShadow: theme.shadows[0],
+      boxShadow: "none",
       border: "none",
     },
     hover: {
@@ -98,7 +123,7 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.main,
-      boxShadow: theme.shadows[0],
+      boxShadow: "none",
       border: "none",
     },
   },

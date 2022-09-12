@@ -1,9 +1,15 @@
 import styled from "styled-components";
+import { getShadow } from "../../../../utils/getShadow";
 
 import Card from "../../../Card";
 
 export const FilterCard = styled(Card)<{ width?: string }>`
-  box-shadow: ${({ theme }) => theme.shadows[5]};
+  box-shadow: ${({ theme }) =>
+    getShadow(
+      5,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   min-width: 300px;
   width: ${({ width }) => width};
   border-radius: ${({ theme }) => `${theme.radius}px`};

@@ -4,7 +4,7 @@ import Icon from "../../../Icon";
 import { SnackbarColor } from "../../Snackbar";
 import { Theme } from "../../../../themes";
 import { useTheme } from "../../../../themes/useTheme";
-import { getShadowWithColor } from "../../../../utils/getShadowWithColor";
+import { getShadow } from "../../../../utils/getShadow";
 
 type Props = {
   color: SnackbarColor;
@@ -24,20 +24,27 @@ const getSnackbarStyle = (
   return {
     default: {
       iconColor: theme.palette.black,
-      boxShadow: theme.shadows[5],
+      boxShadow: getShadow(
+        5,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       background: theme.palette.background.default,
     },
     dark: {
       iconColor: theme.palette.white,
-      boxShadow: theme.shadows[5],
+      boxShadow: getShadow(
+        5,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       background: theme.palette.gray.deepDark,
     },
     warning: {
       iconColor: theme.palette.warning.deepDark,
-      boxShadow: getShadowWithColor(
-        theme.shadows,
-        theme.palette,
+      boxShadow: getShadow(
         5,
+        theme.palette.action.shadowOpacity,
         theme.palette.warning.highlight,
       ),
       background: theme.palette.warning.highlight,

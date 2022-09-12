@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { getShadow } from "../../utils/getShadow";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
@@ -45,7 +46,12 @@ const Indicator = styled.div<IndicatorProps>`
   border-radius: 50%;
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
-  box-shadow: ${({ theme }) => theme.shadows[3]};
+  box-shadow: ${({ theme }) =>
+    getShadow(
+      3,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   transition: all 0.3s ease;
   background: ${({ theme }) => theme.palette.background.default};
 
