@@ -1,9 +1,6 @@
-import { opacityBase } from "../utils/getColorWithOpacity";
 import { hexToRgba } from "../utils/hexToRgba";
 
 export type ShadowsType = ["none", string, string, string, string, string];
-
-export { opacityBase };
 
 export const Shadows: ShadowsType = [
   // Pattern 00

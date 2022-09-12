@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { opacityBase } from "../../../../styles/shadows";
 import { hexToRgba } from "../../../../utils/hexToRgba";
 
 type CellProps = {
@@ -15,7 +14,11 @@ export const HeaderCell = styled.th<CellProps>`
   padding: ${({ theme }) => theme.spacing}px
     ${({ theme }) => theme.spacing * 2}px;
   box-shadow: 0 4px
-    ${({ theme }) => hexToRgba(theme.palette.gray.main, opacityBase * 3)};
+    ${({ theme }) =>
+      hexToRgba(
+        theme.palette.gray.main,
+        theme.palette.action.shadowOpacity * 3,
+      )};
   background-color: ${({ theme }) => theme.palette.background.default};
   border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 
