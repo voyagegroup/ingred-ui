@@ -27,7 +27,5 @@ export const getShadow = (
       return `0px 1px ${hexToRgba(color, opacityBase * 2)} inset`;
     case 5:
       return `0px 0px 16px ${hexToRgba(color, opacityBase * 2)}`;
-    default:
-      return "none";
   }
 };
