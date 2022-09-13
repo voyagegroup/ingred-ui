@@ -98,6 +98,9 @@ export * from "./NavigationRail";
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
 
+export { default as NewDateRangePicker } from "./NewDateRangePicker";
+export * from "./NewDateRangePicker";
+
 export { default as Pager } from "./Pager";
 export * from "./Pager";
 

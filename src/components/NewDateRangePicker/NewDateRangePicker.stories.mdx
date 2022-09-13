@@ -1,0 +1,97 @@
+import { Meta, Story, ArgsTable, Canvas } from "@storybook/addon-docs";
+import moment from "moment";
+import NewDateRangePicker from "./NewDateRangePicker";
+import "react-dates/lib/css/_datepicker.css";
+
+<Meta title="Components/Inputs/NewDateRangePicker" component={NewDateRangePicker} />
+
+# DateRangePicker
+
+The wrapper of [react-dates](https://github.com/airbnb/react-dates).
+
+For more detail props, please see [it](https://github.com/airbnb/react-dates#daterangepicker).
+
+<ArgsTable of={DateRangePicker} />
+
+## When the display is strange
+
+Please import css from `react-dates`.
+
+```tsx
+import "react-dates/lib/css/_datepicker.css";
+```
+
+## Samples
+
+### Basic
+
+<Canvas>
+  <Story name="Basic">
+    {() => {
+      {
+        /* MEMO: To be unaffected by "Localize" story. */
+      }
+      moment.locale("en");
+      const [startDate, setStartDate] = React.useState(moment().set("date", 1));
+      const [endDate, setEndDate] = React.useState(moment());
+      const handleChangeDates = ({ startDate, endDate }) => {
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      return (
+        <div style={{ height: "400px" }}>
+          <NewDateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            onDatesChange={handleChangeDates}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>
+
+### Error
+
+<Canvas>
+  <Story name="Error">
+    {() => (
+      <NewDateRangePicker
+        startDate={moment().set("date", 1)}
+        endDate={moment()}
+        error={true}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Localize
+
+<Canvas>
+  <Story name="Localize">
+    {() => {
+      moment.locale("ja", {
+        weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
+      });
+      const renderMonthText = (day) => day.format("YYYY年M月");
+      const displayFormat = () => "YYYY/MM/DD";
+      const [startDate, setStartDate] = React.useState(moment().set("date", 1));
+      const [endDate, setEndDate] = React.useState(moment());
+      const handleChangeDates = ({ startDate, endDate }) => {
+        setStartDate(startDate);
+        setEndDate(endDate);
+      };
+      return (
+        <div style={{ height: "400px" }}>
+          <NewDateRangePicker
+            startDate={startDate}
+            endDate={endDate}
+            displayFormat={displayFormat}
+            renderMonthText={renderMonthText}
+            onDatesChange={handleChangeDates}
+          />
+        </div>
+      );
+    }}
+  </Story>
+</Canvas>

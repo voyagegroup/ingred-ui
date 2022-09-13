@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateRangePicker component testing DateRangePicker 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ Wnlaq"
+  >
+    <div
+      class="DateRangePicker DateRangePicker_1"
+    >
+      <div>
+        <div
+          class="DateRangePickerInput DateRangePickerInput_1 DateRangePickerInput__withBorder DateRangePickerInput__withBorder_2"
+        >
+          <div
+            class="DateInput DateInput_1"
+          >
+            <input
+              aria-describedby="DateInput__screen-reader-message-startDate"
+              aria-label="FROM"
+              autocomplete="off"
+              class="DateInput_input DateInput_input_1"
+              id="startDate"
+              name="startDate"
+              placeholder="FROM"
+              type="text"
+              value=""
+            />
+            <p
+              class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+              id="DateInput__screen-reader-message-startDate"
+            >
+              Navigate forward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+            </p>
+          </div>
+          <div
+            aria-hidden="true"
+            class="DateRangePickerInput_arrow DateRangePickerInput_arrow_1"
+            role="presentation"
+          >
+            <div
+              class="sc-gsnTZi kNcpzL"
+            />
+          </div>
+          <div
+            class="DateInput DateInput_1"
+          >
+            <input
+              aria-describedby="DateInput__screen-reader-message-endDate"
+              aria-label="TO"
+              autocomplete="off"
+              class="DateInput_input DateInput_input_1"
+              id="endDate"
+              name="endDate"
+              placeholder="TO"
+              type="text"
+              value=""
+            />
+            <p
+              class="DateInput_screenReaderMessage DateInput_screenReaderMessage_1"
+              id="DateInput__screen-reader-message-endDate"
+            >
+              Navigate backward to interact with the calendar and select a date. Press the question mark key to get the keyboard shortcuts for changing dates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
