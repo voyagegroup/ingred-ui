@@ -32,7 +32,14 @@ const getToastStyles = ({
       palette.action.shadowOpacity,
       palette.primary.light,
     ),
-    icon: <Icon name="close" color={palette.white} />,
+    icon: (
+      <Icon
+        name="information"
+        type="fill"
+        size="lg"
+        color={palette.primary.main}
+      />
+    ),
     countDownBackground: palette.primary.main,
     titleColor: palette.primary.deepDark,
     contentColor: palette.primary.main,
@@ -65,7 +72,9 @@ const getToastStyles = ({
       palette.action.shadowOpacity,
       palette.warning.light,
     ),
-    icon: <Icon name="close" color={palette.white} />,
+    icon: (
+      <Icon name="alart" type="fill" size="lg" color={palette.warning.main} />
+    ),
     countDownBackground: palette.warning.main,
     titleColor: palette.warning.deepDark,
     contentColor: palette.warning.main,
