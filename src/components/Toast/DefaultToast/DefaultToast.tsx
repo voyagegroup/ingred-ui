@@ -16,7 +16,6 @@ type ToastStyle = {
   background: string;
   boxShadow: string;
   icon: JSX.Element;
-  iconBackground: string;
   countDownBackground: string;
   titleColor: string;
   contentColor: string;
@@ -34,7 +33,6 @@ const getToastStyles = ({
       palette.primary.light,
     ),
     icon: <Icon name="close" color={palette.white} />,
-    iconBackground: palette.primary.main,
     countDownBackground: palette.primary.main,
     titleColor: palette.primary.deepDark,
     contentColor: palette.primary.main,
@@ -55,7 +53,6 @@ const getToastStyles = ({
         color={palette.success.main}
       />
     ),
-    iconBackground: palette.success.highlight,
     countDownBackground: palette.success.main,
     titleColor: palette.success.deepDark,
     contentColor: palette.success.main,
@@ -69,7 +66,6 @@ const getToastStyles = ({
       palette.warning.light,
     ),
     icon: <Icon name="close" color={palette.white} />,
-    iconBackground: palette.warning.main,
     countDownBackground: palette.warning.main,
     titleColor: palette.warning.deepDark,
     contentColor: palette.warning.main,
@@ -81,7 +77,6 @@ const getToastStyles = ({
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),
-    iconBackground: palette.danger.highlight,
     countDownBackground: palette.danger.main,
     titleColor: palette.danger.deepDark,
     contentColor: palette.danger.main,
@@ -162,9 +157,7 @@ const DefaultToast: React.FunctionComponent<Props> = ({
           justifyContent="space-between"
         >
           <Flex display="flex" alignItems="center">
-            <Styled.IconContainer background={toastStyle.iconBackground}>
-              {toastStyle.icon}
-            </Styled.IconContainer>
+            <Styled.IconContainer>{toastStyle.icon}</Styled.IconContainer>
             <Typography color={toastStyle.titleColor} weight="bold">
               {children}
             </Typography>

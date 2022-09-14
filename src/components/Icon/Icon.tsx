@@ -72,6 +72,7 @@ import { DataStrapIcon } from "./internal/DataStrapIcon";
 import { CompanyIcon } from "./internal/CompanyIcon";
 import { DocumentIcon } from "./internal/DocumentIcon";
 import { UserIcon } from "./internal/UserIcon";
+import { InformationIcon } from "./internal/InformationIcon";
 
 export type IconName =
   | "dashboard"
@@ -143,7 +144,8 @@ export type IconName =
   | "data_strap"
   | "company"
   | "document"
-  | "user";
+  | "user"
+  | "information";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -232,6 +234,7 @@ export const icons: {
   company: CompanyIcon,
   document: DocumentIcon,
   user: UserIcon,
+  information: InformationIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
