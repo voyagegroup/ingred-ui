@@ -2,6 +2,10 @@ import { hexToRgba } from "./hexToRgba";
 
 export type TokenType = 1 | 2 | 3 | 4 | 5;
 
+/**
+ * shadow token から box-shadow を取得する関数。
+ * opacity と color 引数で box-shadow の濃さと色を調整できるようにしている。
+ */
 export const getShadow = (
   token: TokenType,
   opacityBase: number,
