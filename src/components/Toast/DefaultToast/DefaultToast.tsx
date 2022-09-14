@@ -4,12 +4,13 @@ import Flex from "../../Flex";
 import Icon from "../../Icon";
 import Typography from "../../Typography";
 import { Theme, useTheme } from "../../../themes";
-import { hexToRgba } from "../../../utils/hexToRgba";
 import {
   AppearanceTypes,
   Placement,
 } from "../../../lib/react-toast-notification/src/types";
 import { ToastProps } from "../../../lib/react-toast-notification/src/ToastElement";
+
+import { getShadow } from "../../../utils/getShadow";
 
 type ToastStyle = {
   background: string;
@@ -26,7 +27,11 @@ const getToastStyles = ({
 }: Theme): Record<AppearanceTypes, ToastStyle> => ({
   info: {
     background: palette.primary.highlight,
-    boxShadow: `0px 0px 16px ${hexToRgba(palette.primary.highlight, 0.4)}`,
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.primary.light,
+    ),
     icon: (
       <Icon
         name="information"
@@ -42,7 +47,11 @@ const getToastStyles = ({
   },
   success: {
     background: palette.success.highlight,
-    boxShadow: `0px 0px 16px ${hexToRgba(palette.success.highlight, 0.4)}`,
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.success.light,
+    ),
     icon: (
       <Icon
         name="checkbox_circle"
@@ -58,7 +67,11 @@ const getToastStyles = ({
   },
   warning: {
     background: palette.warning.highlight,
-    boxShadow: `0px 0px 16px ${hexToRgba(palette.warning.highlight, 0.4)}`,
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.warning.light,
+    ),
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.warning.main} />
     ),
@@ -69,7 +82,7 @@ const getToastStyles = ({
   },
   error: {
     background: palette.danger.highlight,
-    boxShadow: `0px 0px 16px ${hexToRgba(palette.danger.highlight, 0.4)}`,
+    boxShadow: getShadow(5, palette.action.shadowOpacity, palette.danger.light),
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),

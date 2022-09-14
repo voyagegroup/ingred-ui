@@ -31,6 +31,11 @@ export type PaletteIcon = {
   line: string;
 };
 
+export type PaletteAction = {
+  shadowOpacity: number;
+  shadowBase: string;
+};
+
 export type Palette = {
   white: string;
   black: string;
@@ -43,6 +48,7 @@ export type Palette = {
   background: PaletteBackground;
   divider: string;
   icon: PaletteIcon;
+  action: PaletteAction;
 };
 
 export const palette: Palette = {
@@ -101,6 +107,10 @@ export const palette: Palette = {
     active: colors.blue[500],
     fill: colors.basic[700],
     line: colors.basic[600],
+  },
+  action: {
+    shadowOpacity: 0.08,
+    shadowBase: colors.basic[900],
   },
 };
 
