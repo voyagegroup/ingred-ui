@@ -1,5 +1,6 @@
 import styled, { DefaultTheme } from "styled-components";
 import * as PopperJS from "@popperjs/core";
+import { getShadow } from "../../utils/getShadow";
 
 const getArrowPosition = (
   theme: DefaultTheme,
@@ -42,7 +43,12 @@ export const Tooltip = styled.div<{ width?: string }>`
   background-color: ${({ theme }) => theme.palette.black};
   font-weight: bold;
   font-size: 12px;
-  box-shadow: ${({ theme }) => theme.shadows[5]};
+  box-shadow: ${({ theme }) =>
+    getShadow(
+      5,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   z-index: ${({ theme }) => theme.depth.tooltip};
 
   &[data-popper-placement^="top"] > ${Arrow} {

@@ -1,15 +1,13 @@
 import { Palette, createPalette } from "./palette";
-import { Radius, Space, Depth, Shadows } from "../styles";
+import { Radius, Space, Depth } from "../styles";
 import { DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 import { DeepPartial } from "../types";
-import { ShadowsType } from "../styles/shadows";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;
   spacing?: number;
   radius?: number;
-  shadows?: ShadowsType;
   depth?: DepthOptions;
 };
 
@@ -17,7 +15,6 @@ export type Theme = {
   palette: Palette;
   spacing: number;
   radius: number;
-  shadows: ShadowsType;
   depth: Depth;
 };
 
@@ -26,16 +23,14 @@ export function createTheme(options: ThemeOptions = {}): Theme {
     palette: paletteInput = {},
     spacing: spacingInput,
     radius: radiusInput,
-    shadows: shadowInput,
     ...other
   } = options;
 
   const palette = createPalette(paletteInput);
   const spacing = spacingInput || Space;
   const radius = radiusInput || Radius;
-  const shadows = shadowInput || Shadows;
 
-  const theme = deepmerge({ palette, spacing, depth, radius, shadows }, other);
+  const theme = deepmerge({ palette, spacing, depth, radius }, other);
 
   return theme;
 }

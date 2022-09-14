@@ -15,10 +15,7 @@ export const HeaderCell = styled.th<CellProps>`
     ${({ theme }) => theme.spacing * 2}px;
   box-shadow: 0 4px
     ${({ theme }) =>
-      hexToRgba(
-        theme.palette.gray.main,
-        theme.palette.action.shadowOpacity * 3,
-      )};
+      hexToRgba(theme.palette.black, theme.palette.action.shadowOpacity / 2)};
   background-color: ${({ theme }) => theme.palette.background.default};
   border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 

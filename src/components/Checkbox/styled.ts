@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { getShadow } from "../../utils/getShadow";
 
 export const Checkbox = styled.input<{
   indeterminate: boolean;
@@ -50,7 +51,12 @@ export const Span = styled.span<{
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${({ theme }) => theme.radius * 0.5}px;
-    box-shadow: ${({ theme }) => theme.shadows[3]};
+    box-shadow: ${({ theme }) =>
+      getShadow(
+        3,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      )};
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing / 2}px` : "auto"};

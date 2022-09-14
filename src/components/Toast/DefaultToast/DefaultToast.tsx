@@ -9,7 +9,8 @@ import {
   Placement,
 } from "../../../lib/react-toast-notification/src/types";
 import { ToastProps } from "../../../lib/react-toast-notification/src/ToastElement";
-import { getShadowWithColor } from "../../../utils/getShadowWithColor";
+
+import { getShadow } from "../../../utils/getShadow";
 
 type ToastStyle = {
   background: string;
@@ -24,11 +25,14 @@ type ToastStyle = {
 
 const getToastStyles = ({
   palette,
-  shadows,
 }: Theme): Record<AppearanceTypes, ToastStyle> => ({
   info: {
     background: palette.primary.highlight,
-    boxShadow: getShadowWithColor(shadows, palette, 5, palette.primary.light),
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.primary.light,
+    ),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.primary.main,
     countDownBackground: palette.primary.main,
@@ -38,7 +42,11 @@ const getToastStyles = ({
   },
   success: {
     background: palette.success.highlight,
-    boxShadow: getShadowWithColor(shadows, palette, 5, palette.success.light),
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.success.light,
+    ),
     icon: (
       <Icon
         name="checkbox_circle"
@@ -55,7 +63,11 @@ const getToastStyles = ({
   },
   warning: {
     background: palette.warning.highlight,
-    boxShadow: getShadowWithColor(shadows, palette, 5, palette.warning.light),
+    boxShadow: getShadow(
+      5,
+      palette.action.shadowOpacity,
+      palette.warning.light,
+    ),
     icon: <Icon name="close" color={palette.white} />,
     iconBackground: palette.warning.main,
     countDownBackground: palette.warning.main,
@@ -65,7 +77,7 @@ const getToastStyles = ({
   },
   error: {
     background: palette.danger.highlight,
-    boxShadow: getShadowWithColor(shadows, palette, 5, palette.danger.light),
+    boxShadow: getShadow(5, palette.action.shadowOpacity, palette.danger.light),
     icon: (
       <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
     ),
