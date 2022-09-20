@@ -7,9 +7,7 @@ declare module "*.css" {
   export default content;
 }
 
-type SvgrComponent = {} & React.StatelessComponent<
-  React.SVGAttributes<SVGElement>
->;
+type SvgrComponent = {} & React.FC<React.SVGAttributes<SVGElement>>;
 
 declare module "*.png" {
   const value: any;
