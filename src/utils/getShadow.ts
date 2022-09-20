@@ -1,6 +1,18 @@
 import { hexToRgba } from "./hexToRgba";
 
-export type TokenType = 1 | 2 | 3 | 4 | 5;
+// token types reference: https://github.com/voyagegroup/ingred-ui/pull/940#issuecomment-1221712966
+type ButtonToken = 1;
+type ButtonActiveToken = 2;
+type FormToken = 3;
+type ToggleToken = 4;
+type TooltipToken = 5;
+
+export type TokenType =
+  | ButtonToken
+  | ButtonActiveToken
+  | FormToken
+  | ToggleToken
+  | TooltipToken;
 
 /**
  * shadow token から box-shadow を取得する関数。
