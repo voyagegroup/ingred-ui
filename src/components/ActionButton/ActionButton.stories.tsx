@@ -3,7 +3,7 @@ import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
 import { Flex, Spacer, Typography } from "..";
-import ActionButton, { ActionButtonProps } from "./";
+import ActionButton from "./";
 
 export default {
   title: "Components/Inputs/ActionButton",
@@ -26,7 +26,7 @@ export default {
   },
 };
 
-export const DesignSamples: Story<ActionButtonProps> = () => {
+export const DesignSamples: Story = () => {
   return (
     <Flex display="flex" gap={5}>
       <div>
