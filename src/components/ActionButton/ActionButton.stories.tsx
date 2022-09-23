@@ -28,28 +28,28 @@ export default {
 
 export const DesignSamples: Story<ActionButtonProps> = () => {
   return (
-    <Flex display="flex">
-      <Spacer mr={5}>
+    <Flex display="flex" gap={5}>
+      <div>
         <Typography weight="bold">Primary</Typography>
         <Spacer pt={1} />
         <ActionButton icon="pencil" color="primary">
           Edit
         </ActionButton>
-      </Spacer>
-      <Spacer mr={5}>
+      </div>
+      <div>
         <Typography weight="bold">Warning</Typography>
         <Spacer pt={1} />
         <ActionButton icon="pencil" color="warning">
           Edit
         </ActionButton>
-      </Spacer>
-      <Spacer mr={5}>
+      </div>
+      <div>
         <Typography weight="bold">Disabled</Typography>
         <Spacer pt={1} />
         <ActionButton icon="pencil" disabled={true}>
           Edit
         </ActionButton>
-      </Spacer>
+      </div>
     </Flex>
   );
 };
