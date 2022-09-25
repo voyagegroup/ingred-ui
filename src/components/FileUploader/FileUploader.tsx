@@ -17,7 +17,7 @@ export type FileUploaderProps = {
   width?: Property.Width;
   onSelectFiles: (
     event: React.DragEvent<HTMLElement> | React.ChangeEvent<HTMLElement>,
-    files: FileList | null
+    files: FileList | null,
   ) => void;
 };
 
@@ -41,7 +41,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         setFilesDraggedOver(false);
         onSelectFiles(e, e.dataTransfer.files);
       },
-      [setFilesDraggedOver, onSelectFiles]
+      [setFilesDraggedOver, onSelectFiles],
     );
 
     const handleDragOver = React.useCallback(
@@ -50,7 +50,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         e.stopPropagation();
         setFilesDraggedOver(true);
       },
-      [setFilesDraggedOver]
+      [setFilesDraggedOver],
     );
 
     const handleDragLeave = React.useCallback(() => {
@@ -61,7 +61,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
       (e: React.ChangeEvent<HTMLInputElement>) => {
         onSelectFiles(e, e.target.files);
       },
-      [onSelectFiles]
+      [onSelectFiles],
     );
 
     const handleClickZone = () => {
@@ -109,7 +109,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         </Styled.TextContainer>
       </Styled.Container>
     );
-  }
+  },
 );
 
 export default FileUploader;
