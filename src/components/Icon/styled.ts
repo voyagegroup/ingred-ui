@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ size: number }>`
+export const Container = styled.span<{ size: number }>`
+  display: block;
   position: relative;
   width: ${({ size }) => `${size}px`};
   height: ${({ size }) => `${size}px`};
