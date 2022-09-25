@@ -153,6 +153,12 @@ module.exports = {
           },
         ],
         "jsx-a11y/no-autofocus": "off", // We want to use `autoFocus` in a fluct optimized component <MultipleFilter />.
+        "jsx-a11y/control-has-associated-label": [
+          "error",
+          {
+            depth: 10,
+          },
+        ],
       },
     },
     {
