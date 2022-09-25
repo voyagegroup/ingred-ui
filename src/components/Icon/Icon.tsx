@@ -268,7 +268,7 @@ const Icon = React.forwardRef<HTMLDivElement, Props>(
         {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
       </Styled.Container>
     );
-  },
+  }
 );
 
 export default Icon;
