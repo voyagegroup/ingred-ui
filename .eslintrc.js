@@ -1,5 +1,12 @@
 module.exports = {
-  plugins: ["prettier", "@typescript-eslint", "react", "react-hooks", "jest"],
+  plugins: [
+    "prettier",
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "jest",
+  ],
   extends: [
     "eslint:recommended",
     "prettier",
@@ -11,6 +18,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:mdx/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -144,6 +152,7 @@ module.exports = {
             format: ["PascalCase", "camelCase", "UPPER_CASE"],
           },
         ],
+        "jsx-a11y/no-autofocus": "off", // We want to use `autoFocus` in a fluct optimized component <MultipleFilter />.
       },
     },
     {
@@ -158,6 +167,9 @@ module.exports = {
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react/no-multi-comp": "off",
+        // I realize it's silly of me, but I'll turn it off here for the sake of specs for once.
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
       },
     },
     {
