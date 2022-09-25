@@ -6,6 +6,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
     class="sc-bczRLJ gxuZtk"
   >
     <input
+      aria-label="file-uploader"
       multiple=""
       type="file"
     />
