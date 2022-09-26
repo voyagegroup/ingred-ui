@@ -37,8 +37,8 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -94,7 +94,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -110,8 +110,8 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -167,7 +167,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -205,8 +205,8 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -223,7 +223,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -313,8 +313,8 @@ exports[`CreatableSelect component testing Disable not CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -331,7 +331,7 @@ exports[`CreatableSelect component testing Disable not CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -430,8 +430,8 @@ exports[`CreatableSelect component testing Disable one CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -448,7 +448,7 @@ exports[`CreatableSelect component testing Disable one CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -520,8 +520,8 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -577,7 +577,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -593,8 +593,8 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -650,7 +650,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -687,8 +687,8 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -744,7 +744,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -754,8 +754,8 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -772,7 +772,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -861,8 +861,8 @@ exports[`CreatableSelect component testing Error not CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -879,7 +879,7 @@ exports[`CreatableSelect component testing Error not CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -977,8 +977,8 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1034,7 +1034,7 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1044,8 +1044,8 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1062,7 +1062,7 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1134,8 +1134,8 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1191,7 +1191,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1207,8 +1207,8 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1264,7 +1264,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1301,8 +1301,8 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1358,7 +1358,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1368,8 +1368,8 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1386,7 +1386,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1475,8 +1475,8 @@ exports[`CreatableSelect component testing Normal not CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1493,7 +1493,7 @@ exports[`CreatableSelect component testing Normal not CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1591,8 +1591,8 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1648,7 +1648,7 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1658,8 +1658,8 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
             <div
               class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKMtZM jjwhPN"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1676,7 +1676,7 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>

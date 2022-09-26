@@ -8,8 +8,8 @@ exports[`ActionButton component testing ActionButton 1`] = `
     <div
       class="sc-gsnTZi gXnMIX"
     >
-      <div
-        class="sc-dkzDqf eMgeuW"
+      <span
+        class="sc-dkzDqf kPdxGi"
         size="18"
       >
         <svg
@@ -26,7 +26,7 @@ exports[`ActionButton component testing ActionButton 1`] = `
             transform="translate(-0.75 -0.757)"
           />
         </svg>
-      </div>
+      </span>
     </div>
     <p
       class="sc-hKMtZM gKJkyD"

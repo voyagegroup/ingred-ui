@@ -39,8 +39,8 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
             <div
               class="sc-ftvSup uBGUH"
             >
-              <div
-                class="sc-crXcEl bpDtVj"
+              <span
+                class="sc-crXcEl jeqSVX"
                 size="24"
               >
                 <svg
@@ -62,7 +62,7 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
                     width="5.143"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div

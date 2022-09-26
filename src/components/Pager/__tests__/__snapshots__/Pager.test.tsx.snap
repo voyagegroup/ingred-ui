@@ -11,8 +11,8 @@ exports[`Pager component testing Pager 1`] = `
       disabled=""
       type="button"
     >
-      <div
-        class="sc-hKMtZM jjwhPN"
+      <span
+        class="sc-hKMtZM gLnfjV"
         size="18"
       >
         <svg
@@ -30,7 +30,7 @@ exports[`Pager component testing Pager 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
     <button
       class="sc-bczRLJ hFtSAg"
@@ -114,8 +114,8 @@ exports[`Pager component testing Pager 1`] = `
       class="sc-dkzDqf dWTLA"
       type="button"
     >
-      <div
-        class="sc-hKMtZM jjwhPN"
+      <span
+        class="sc-hKMtZM gLnfjV"
         size="18"
       >
         <svg
@@ -133,7 +133,7 @@ exports[`Pager component testing Pager 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
   </div>
 </DocumentFragment>
