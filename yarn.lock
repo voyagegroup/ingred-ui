@@ -2185,52 +2185,53 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@scaffdog/config@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-2.3.0.tgz#d3ff36cb15756ae849b0f058a6bf8d649cbe1afd"
-  integrity sha512-O90XZWMfHaJlGr7STpgLmuQC0R852zsabhVDX9xb5PDgnepfCp4z2xS7M4SjN5kvzEPWjMtO1Z9E7VUcnurbuQ==
+"@scaffdog/config@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/config/-/config-2.4.0.tgz#b69e02be0f9e60dce8581ed2d2eb7f32646afb30"
+  integrity sha512-hAa54XR5ySe6MfwtrDuR+dwVMVdEnKYDYIShxgZznkWJSDTmJtMFlP8wksIBz1Co9z7zZXWrxU94A4T0OA8kIQ==
   dependencies:
-    "@scaffdog/types" "2.3.0"
+    "@scaffdog/types" "2.4.0"
     jiti "^1.14.0"
     zod "^3.11.6"
 
-"@scaffdog/core@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-2.3.0.tgz#6e1010f2c7213ae9142c676fd813ca763ef836b3"
-  integrity sha512-aT3RI3ZxBz/mDK0NEzeggVGXeV/0MXEqaYnIesdlpLGQjH+jGGQXcVWLLqWIp99uv4xKRL1vQGHvRNjMEVbdCg==
+"@scaffdog/core@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/core/-/core-2.4.0.tgz#12f464eb396e7cbbf148ef5b8f06dcf0c49a13c6"
+  integrity sha512-87hmYgSB/PLHvMOpt0f8Gr/3BI/STAMaMIiDYwbDeNBGbcyPg5Wb/rM3rbKB5hByL6FIQs1L+XJZOPWsipJ5Bw==
   dependencies:
-    "@scaffdog/engine" "2.3.0"
-    "@scaffdog/types" "2.3.0"
+    "@scaffdog/engine" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     mdast-util-to-string "^2.0.0"
     remark-parse "^9.0.0"
     unified "^9.2.1"
     unist-util-visit-parents "^3.1.1"
 
-"@scaffdog/engine@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-2.3.0.tgz#db68c502b582d1dbc5de7af33d82c9aef3aed25f"
-  integrity sha512-578QVqiLoLTKBIoaGaTDWRqDPpV+Dg3wJ/nFstsjcQZZkFc+O15+4K0+3pnKxkQklQSeH4vwZh20yfR5XtUOoA==
+"@scaffdog/engine@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/engine/-/engine-2.4.0.tgz#60b387a216d1b84f7ca4e1f243683134cb45c470"
+  integrity sha512-S9ibYtwZ/hzW3O0tTEXncYEP1P66GvJOSY4VTDoviY6+r9y1I4tY0Ut9/4kwayzI2K3Q5VMSUqzKsbiDT4x+sg==
   dependencies:
-    "@scaffdog/error" "2.3.0"
-    "@scaffdog/types" "2.3.0"
+    "@scaffdog/error" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     change-case "^4.1.2"
     dayjs "^1.10.4"
     is-plain-object "^5.0.0"
+    plur "4.0.0"
     safe-eval "^0.4.1"
 
-"@scaffdog/error@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-2.3.0.tgz#bf7c258c9715c8090e8f5db00030d8b52e935561"
-  integrity sha512-Ac/cEuFW8zGYVBxTbhggul0hfarnGxL6wY6XppvKzh7565EkUPYdrUsZZUVONTjXucpwbEn/1gMfDKP/0rxURQ==
+"@scaffdog/error@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/error/-/error-2.4.0.tgz#973df5ef0346a68d78df9ab62aa971b81ac7b5d8"
+  integrity sha512-Zj2o/IFY5iWtLbjttKCYwZtzK73HbhC3ylegf+ytjChDORDYMvWyCo2ZJvYfSU+xJPjvsUfGGlFnXxC2VyY0bA==
   dependencies:
-    "@scaffdog/types" "2.3.0"
+    "@scaffdog/types" "2.4.0"
     chalk "^4.1.0"
     string-length "4.0.2"
 
-"@scaffdog/types@2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-2.3.0.tgz#279a1c185f9e118cfba9818b89a06a39b5476883"
-  integrity sha512-nhKoyOzfsTaON/45i+CNHTSjab4+6C6rqYjM3NTl5evNi4gJmK13pq6yChCJbH3kPXkv4KdFBUkeJnll19Pjdw==
+"@scaffdog/types@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@scaffdog/types/-/types-2.4.0.tgz#38031cbb808fe390f931a64db9e13d5a75dd87d0"
+  integrity sha512-VcwDK+YxNRrc/QV7BgnfTN4vP37xu6YNbYiuoycC9E8A0d8VFc03/CB6cUf4+e7uRs9q2dxE9YctJK2mAArhRA==
   dependencies:
     type-fest "2.19.0"
 
@@ -11542,7 +11543,7 @@ pkg-dir@^5.0.0:
   dependencies:
     find-up "^5.0.0"
 
-plur@^4.0.0:
+plur@4.0.0, plur@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/plur/-/plur-4.0.0.tgz#729aedb08f452645fe8c58ef115bf16b0a73ef84"
   integrity sha512-4UGewrYgqDFw9vV6zNV+ADmPAUAfJPKtGvb/VdpQAx25X5f3xXdGdyOEVFwkl8Hl/tl7+xbeHqSEM+D5/TirUg==
@@ -13033,16 +13034,16 @@ saxes@^6.0.0:
   dependencies:
     xmlchars "^2.2.0"
 
-scaffdog@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-2.3.0.tgz#b3c92bab27027e1799dc2adf7487669ac93397d2"
-  integrity sha512-sqZqa8tH9ZNbaQy8KTTrKaopLNkmWXJk30gAzt+faF2Bzs7W854nz/zBFX1go2CB6IZKSvyqBTQ0iGnZfDDghg==
+scaffdog@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/scaffdog/-/scaffdog-2.4.0.tgz#ba492cefb63f0942322ec88bf620974039474ae3"
+  integrity sha512-IDCi03hiUa4AKbzfsTbf9Zvsw44kqQ5Jedhp3WnjyaUPtBY2e87pJzdDHk8aYhLdOWIu1YDawc1DFhdEFb/ntQ==
   dependencies:
-    "@scaffdog/config" "2.3.0"
-    "@scaffdog/core" "2.3.0"
-    "@scaffdog/engine" "2.3.0"
-    "@scaffdog/error" "2.3.0"
-    "@scaffdog/types" "2.3.0"
+    "@scaffdog/config" "2.4.0"
+    "@scaffdog/core" "2.4.0"
+    "@scaffdog/engine" "2.4.0"
+    "@scaffdog/error" "2.4.0"
+    "@scaffdog/types" "2.4.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.0"
     cli-truncate "^2.1.0"
@@ -13062,7 +13063,6 @@ scaffdog@2.3.0:
     plur "^4.0.0"
     strip-ansi "6.0.0"
     term-size "^2.2.1"
-    typed-inject "^3.0.1"
     update-notifier "^5.1.0"
     valid-filename "^3.1.0"
     wrap-ansi "^7.0.0"
@@ -14320,11 +14320,6 @@ type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
-
-typed-inject@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/typed-inject/-/typed-inject-3.0.1.tgz#edd396d3e98ae27dd2f3a209bfee2ad2d447ac5f"
-  integrity sha512-5yr8inrNos7uo/irp5PZ7WNwmYGfoa0w1NiDdCWW6hhIxYH2NCqYwX9BUOXpZgxk964rb1ElEfvBtftuvIPpvw==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
