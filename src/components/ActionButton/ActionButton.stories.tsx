@@ -3,13 +3,14 @@ import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
 import { Flex, Spacer, Typography } from "..";
-import ActionButton from "./";
+import ActionButton, { ActionButtonProps } from "./";
 
 export default {
   title: "Components/Inputs/ActionButton",
   component: ActionButton,
   args: {
     onClick: action("clicked"),
+    icon: "pencil",
   },
   parameters: {
     docs: {
@@ -26,27 +27,27 @@ export default {
   },
 };
 
-export const DesignSamples: Story = () => {
+export const DesignSamples: Story<ActionButtonProps> = (args) => {
   return (
     <Flex display="flex" gap={5}>
       <div>
         <Typography weight="bold">Primary</Typography>
         <Spacer pt={1} />
-        <ActionButton icon="pencil" color="primary">
+        <ActionButton color="primary" {...args}>
           Edit
         </ActionButton>
       </div>
       <div>
         <Typography weight="bold">Warning</Typography>
         <Spacer pt={1} />
-        <ActionButton icon="pencil" color="warning">
+        <ActionButton color="warning" {...args}>
           Edit
         </ActionButton>
       </div>
       <div>
         <Typography weight="bold">Disabled</Typography>
         <Spacer pt={1} />
-        <ActionButton icon="pencil" disabled={true}>
+        <ActionButton disabled={true} {...args}>
           Edit
         </ActionButton>
       </div>
