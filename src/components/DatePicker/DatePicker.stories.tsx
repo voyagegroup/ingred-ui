@@ -25,8 +25,10 @@ export default {
             markdown={[
               "## When the display is strange",
               "",
+              "Please import css from `react-dates`.",
+              "",
               "```tsx",
-              "// Please import css from `react-dates`.",
+              "",
               'import "react-dates/lib/css/_datepicker.css";',
               "```",
             ].join("\n")}
