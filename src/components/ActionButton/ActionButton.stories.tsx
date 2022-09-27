@@ -2,7 +2,6 @@ import { action } from "@storybook/addon-actions";
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import { Flex, Spacer, Typography } from "..";
 import ActionButton, { ActionButtonProps } from "./";
 
 export default {
@@ -27,30 +26,26 @@ export default {
   },
 };
 
-export const DesignSamples: Story<ActionButtonProps> = (args) => {
+export const Primary: Story<ActionButtonProps> = (args) => {
   return (
-    <Flex display="flex" gap={5}>
-      <div>
-        <Typography weight="bold">Primary</Typography>
-        <Spacer pt={1} />
-        <ActionButton color="primary" {...args}>
-          Edit
-        </ActionButton>
-      </div>
-      <div>
-        <Typography weight="bold">Warning</Typography>
-        <Spacer pt={1} />
-        <ActionButton color="warning" {...args}>
-          Edit
-        </ActionButton>
-      </div>
-      <div>
-        <Typography weight="bold">Disabled</Typography>
-        <Spacer pt={1} />
-        <ActionButton disabled={true} {...args}>
-          Edit
-        </ActionButton>
-      </div>
-    </Flex>
+    <ActionButton color="primary" {...args}>
+      Edit
+    </ActionButton>
+  );
+};
+
+export const Warning: Story<ActionButtonProps> = (args) => {
+  return (
+    <ActionButton color="warning" {...args}>
+      Edit
+    </ActionButton>
+  );
+};
+
+export const Disabled: Story<ActionButtonProps> = (args) => {
+  return (
+    <ActionButton disabled={true} {...args}>
+      Edit
+    </ActionButton>
   );
 };
