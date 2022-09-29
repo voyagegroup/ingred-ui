@@ -32,7 +32,6 @@ export default {
 const Template: Story<DividerProps> = (args) => <Divider {...args} />;
 
 export const Normal = Template.bind({});
-Normal.args = {};
 
 export const WithSpace = Template.bind({});
 WithSpace.args = {
