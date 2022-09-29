@@ -12,7 +12,6 @@ import Divider, { DividerProps } from "./";
 export default {
   title: "Components/Data Display/Divider",
   components: Divider,
-  args: {},
   parameters: {
     docs: {
       source: { type: "code" },
