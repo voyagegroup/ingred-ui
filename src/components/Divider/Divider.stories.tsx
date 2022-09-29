@@ -1,6 +1,12 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import { Title, Subtitle, ArgsTable, Stories } from "@storybook/addon-docs";
+import {
+  Title,
+  Subtitle,
+  Description,
+  ArgsTable,
+  Stories,
+} from "@storybook/addon-docs";
 import Divider, { DividerProps } from "./";
 
 export default {
@@ -14,6 +20,7 @@ export default {
         <>
           <Title />
           <Subtitle />
+          <Description markdown="`<Divider />` is wrapper of `<hr />` tag that separate content into clear groups." />
           <ArgsTable of={Divider} />
           <Stories includePrimary title="Stories" />
         </>
@@ -31,6 +38,14 @@ export const WithSpace = Template.bind({});
 WithSpace.args = {
   m: 3,
   p: 1,
+};
+WithSpace.parameters = {
+  docs: {
+    description: {
+      story:
+        "It can define margin and padding like [`<Spacer />`](/?path=/docs/components-layout-spacer--example).",
+    },
+  },
 };
 
 export const OverrideColor = Template.bind({});
