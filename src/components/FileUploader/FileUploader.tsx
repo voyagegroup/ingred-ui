@@ -81,6 +81,7 @@ const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
         <input
           ref={fileRef}
           multiple
+          aria-label="file-uploader"
           type="file"
           accept={accept}
           onChange={handleChange}

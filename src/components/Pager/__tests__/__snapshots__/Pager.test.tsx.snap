@@ -7,6 +7,7 @@ exports[`Pager component testing Pager 1`] = `
     display="flex"
   >
     <button
+      aria-label="arrow_left"
       class="sc-dkzDqf irbZCc"
       disabled=""
       type="button"
@@ -111,6 +112,7 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
+      aria-label="arrow_right"
       class="sc-dkzDqf dWTLA"
       type="button"
     >
