@@ -9,8 +9,8 @@ exports[`ErrorText component testing ErrorText 1`] = `
     <div
       class="sc-gsnTZi cQnjyp"
     >
-      <div
-        class="sc-bczRLJ hVIYff"
+      <span
+        class="sc-bczRLJ gJuzRf"
         size="18"
       >
         <svg
@@ -27,7 +27,7 @@ exports[`ErrorText component testing ErrorText 1`] = `
             transform="translate(-0.25 -0.75)"
           />
         </svg>
-      </div>
+      </span>
     </div>
     <p
       class="sc-dkzDqf jceGiB"

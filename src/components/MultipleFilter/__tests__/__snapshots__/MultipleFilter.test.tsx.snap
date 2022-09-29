@@ -8,8 +8,8 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
     <div
       class="sc-hKMtZM fZVlmg"
     >
-      <div
-        class="sc-hAZoDl fnCvPo"
+      <span
+        class="sc-hAZoDl iIvdks"
         size="18"
       >
         <svg
@@ -26,7 +26,7 @@ exports[`MultipleFilter component testing MultipleFilter 1`] = `
             transform="translate(-0.5 -0.5)"
           />
         </svg>
-      </div>
+      </span>
     </div>
     <div
       class="sc-eCYdqJ lfunFR"

@@ -17,8 +17,8 @@ exports[`FileUploader component testing FileUploader 1`] = `
         class="sc-hKMtZM gmMVFG"
         display="flex"
       >
-        <div
-          class="sc-eCYdqJ gWXZjc"
+        <span
+          class="sc-eCYdqJ iymozk"
           size="18"
         >
           <svg
@@ -36,7 +36,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
               fill="#0B82F4"
             />
           </svg>
-        </div>
+        </span>
         <p
           class="sc-dkzDqf eEHJTS"
           color="#0B82F4"

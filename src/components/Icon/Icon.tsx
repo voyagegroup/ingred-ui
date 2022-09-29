@@ -260,7 +260,7 @@ export type Props = {
   color?: IconColor;
 };
 
-const Icon = React.forwardRef<HTMLDivElement, Props>(
+const Icon = React.forwardRef<HTMLSpanElement, Props>(
   ({ name, type = "line", size = "md", color = "fill" }, ref) => {
     const theme = useTheme();
     return (

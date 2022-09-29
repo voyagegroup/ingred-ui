@@ -17,8 +17,8 @@ exports[`DropdownButton component testing not splited disable 1`] = `
       <div
         class="sc-ftvSup junqHC"
       />
-      <div
-        class="sc-iBkjds eplxZV"
+      <span
+        class="sc-iBkjds kTxGwl"
         size="18"
       >
         <svg
@@ -35,7 +35,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
   </div>
   <div
@@ -124,8 +124,8 @@ exports[`DropdownButton component testing not splited enable 1`] = `
       <div
         class="sc-ftvSup junqHC"
       />
-      <div
-        class="sc-iBkjds eplxZV"
+      <span
+        class="sc-iBkjds kTxGwl"
         size="18"
       >
         <svg
@@ -142,7 +142,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
   </div>
   <div
@@ -246,8 +246,8 @@ exports[`DropdownButton component testing splited disable 1`] = `
       font-size="14px"
       font-weight="normal"
     >
-      <div
-        class="sc-iBkjds eplxZV"
+      <span
+        class="sc-iBkjds kTxGwl"
         size="18"
       >
         <svg
@@ -264,7 +264,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
   </div>
   <div
@@ -356,8 +356,8 @@ exports[`DropdownButton component testing splited enable 1`] = `
       font-size="14px"
       font-weight="normal"
     >
-      <div
-        class="sc-iBkjds eplxZV"
+      <span
+        class="sc-iBkjds kTxGwl"
         size="18"
       >
         <svg
@@ -374,7 +374,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
             transform="translate(-1.414 -1.114)"
           />
         </svg>
-      </div>
+      </span>
     </button>
   </div>
   <div

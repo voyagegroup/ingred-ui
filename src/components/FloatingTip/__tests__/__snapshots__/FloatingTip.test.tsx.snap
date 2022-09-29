@@ -29,8 +29,8 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
         <div
           class="sc-dkzDqf jAiQlO"
         >
-          <div
-            class="sc-iBkjds eplxZV"
+          <span
+            class="sc-iBkjds kTxGwl"
             size="18"
           >
             <svg
@@ -52,7 +52,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
                 width="5.143"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
     </div>

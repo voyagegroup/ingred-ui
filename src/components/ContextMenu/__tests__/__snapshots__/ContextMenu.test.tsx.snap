@@ -9,8 +9,8 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     <div
       class="sc-gsnTZi gXnMIX"
     >
-      <div
-        class="sc-dkzDqf eMgeuW"
+      <span
+        class="sc-dkzDqf kPdxGi"
         size="18"
       >
         <svg
@@ -27,7 +27,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
             transform="translate(-2.5 -0.75)"
           />
         </svg>
-      </div>
+      </span>
     </div>
     <p
       class="sc-hKMtZM gKJkyD"

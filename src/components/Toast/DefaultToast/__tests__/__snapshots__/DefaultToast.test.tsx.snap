@@ -22,8 +22,8 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           <div
             class="sc-dkzDqf kXpBi"
           >
-            <div
-              class="sc-gKXOVf kNytYv"
+            <span
+              class="sc-gKXOVf fmZGCL"
               size="24"
             >
               <svg
@@ -39,7 +39,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
                   fill="#EB0A4E"
                 />
               </svg>
-            </div>
+            </span>
           </div>
           <p
             class="sc-iBkjds idbXdJ"
@@ -52,8 +52,8 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
         <div
           class="sc-hKMtZM jCCKuz"
         >
-          <div
-            class="sc-gKXOVf eQUwDP"
+          <span
+            class="sc-gKXOVf kFgTzX"
             size="18"
           >
             <svg
@@ -75,7 +75,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
                 width="5.143"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
       <div
@@ -109,8 +109,8 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
           <div
             class="sc-dkzDqf kXpBi"
           >
-            <div
-              class="sc-gKXOVf kNytYv"
+            <span
+              class="sc-gKXOVf fmZGCL"
               size="24"
             >
               <svg
@@ -126,7 +126,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
                   transform="translate(-16711 -12642)"
                 />
               </svg>
-            </div>
+            </span>
           </div>
           <p
             class="sc-iBkjds gATKuv"
@@ -139,8 +139,8 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
         <div
           class="sc-hKMtZM jCCKuz"
         >
-          <div
-            class="sc-gKXOVf eQUwDP"
+          <span
+            class="sc-gKXOVf kFgTzX"
             size="18"
           >
             <svg
@@ -162,7 +162,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
                 width="5.143"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
       <div
@@ -196,8 +196,8 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           <div
             class="sc-dkzDqf kXpBi"
           >
-            <div
-              class="sc-gKXOVf kNytYv"
+            <span
+              class="sc-gKXOVf fmZGCL"
               size="24"
             >
               <svg
@@ -213,7 +213,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
                   fill="#63C427"
                 />
               </svg>
-            </div>
+            </span>
           </div>
           <p
             class="sc-iBkjds gATEzB"
@@ -226,8 +226,8 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
         <div
           class="sc-hKMtZM jCCKuz"
         >
-          <div
-            class="sc-gKXOVf eQUwDP"
+          <span
+            class="sc-gKXOVf kFgTzX"
             size="18"
           >
             <svg
@@ -249,7 +249,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
                 width="5.143"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
       <div
@@ -283,8 +283,8 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
           <div
             class="sc-dkzDqf kXpBi"
           >
-            <div
-              class="sc-gKXOVf kNytYv"
+            <span
+              class="sc-gKXOVf fmZGCL"
               size="24"
             >
               <svg
@@ -300,7 +300,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
                   fill="#FCD914"
                 />
               </svg>
-            </div>
+            </span>
           </div>
           <p
             class="sc-iBkjds dLpBiE"
@@ -313,8 +313,8 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
         <div
           class="sc-hKMtZM jCCKuz"
         >
-          <div
-            class="sc-gKXOVf eQUwDP"
+          <span
+            class="sc-gKXOVf kFgTzX"
             size="18"
           >
             <svg
@@ -336,7 +336,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
                 width="5.143"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
       <div
