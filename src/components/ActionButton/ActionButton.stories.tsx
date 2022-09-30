@@ -10,6 +10,7 @@ export default {
   args: {
     onClick: action("clicked"),
     icon: "pencil",
+    children: "Edit",
   },
   parameters: {
     docs: {
@@ -26,26 +27,19 @@ export default {
   },
 };
 
-export const Primary: Story<ActionButtonProps> = (args) => {
-  return (
-    <ActionButton color="primary" {...args}>
-      Edit
-    </ActionButton>
-  );
+const Template: Story<ActionButtonProps> = (args) => <ActionButton {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  color: "primary",
 };
 
-export const Warning: Story<ActionButtonProps> = (args) => {
-  return (
-    <ActionButton color="warning" {...args}>
-      Edit
-    </ActionButton>
-  );
+export const Warning = Template.bind({});
+Warning.args = {
+  color: "warning",
 };
 
-export const Disabled: Story<ActionButtonProps> = (args) => {
-  return (
-    <ActionButton disabled={true} {...args}>
-      Edit
-    </ActionButton>
-  );
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
 };
