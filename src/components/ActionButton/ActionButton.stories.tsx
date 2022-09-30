@@ -30,9 +30,6 @@ export default {
 const Template: Story<ActionButtonProps> = (args) => <ActionButton {...args} />;
 
 export const Primary = Template.bind({});
-Primary.args = {
-  color: "primary",
-};
 
 export const Warning = Template.bind({});
 Warning.args = {
