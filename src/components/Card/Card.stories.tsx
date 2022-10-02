@@ -1,7 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
-import Card from "./";
+import Card, { CardProps } from "./";
 
 export default {
   title: "Components/Layout/Card",
@@ -32,6 +32,6 @@ export default {
   },
 };
 
-const Template: Story = (args) => <Card {...args} />;
+const Template: Story<CardProps> = (args) => <Card {...args} />;
 
 export const Example = Template.bind({});
