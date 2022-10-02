@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Slide from "./";
 import Flex from "../Flex";
