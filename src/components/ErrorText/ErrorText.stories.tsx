@@ -23,6 +23,4 @@ export default {
   },
 };
 
-const Template: Story<ErrorTextProps> = (args) => <ErrorText {...args} />;
-
-export const Example = Template.bind({});
+export const Example: Story<ErrorTextProps> = (args) => <ErrorText {...args} />;
