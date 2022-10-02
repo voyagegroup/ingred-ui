@@ -2,7 +2,7 @@ import React from "react";
 import Badge from "../Badge";
 import Flex from "../Flex";
 import Typography from "../Typography";
-import Table from "./";
+import Table from "./Table";
 
 export default {
   title: "Components/Data Display/Table",

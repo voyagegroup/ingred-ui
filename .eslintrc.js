@@ -164,6 +164,19 @@ module.exports = {
     {
       files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
       rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            paths: [
+              {
+                name: "./",
+              },
+              {
+                name: ".",
+              },
+            ],
+          },
+        ],
         "react/jsx-handler-names": "off",
         "no-empty": "off",
         "no-console": "off",

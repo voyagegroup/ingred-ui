@@ -8,7 +8,7 @@ import {
   Stories,
 } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
-import Button, { ButtonProps } from "./";
+import Button, { ButtonProps } from "./Button";
 
 export default {
   title: "Components/Inputs/Button",
