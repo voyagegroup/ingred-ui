@@ -1,7 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Spinner , { SpinnerProps } from "./Spinner";
+import Spinner, { SpinnerProps } from "./Spinner";
 
 export default {
   title: "Components/Feedback/Spinner",
