@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import Typography from "./";
-import { TypographyProps } from "./Typography";
+import Typography, { TypographyProps } from "./Typography";
 
 export default {
   title: "Components/Data Display/Typography",

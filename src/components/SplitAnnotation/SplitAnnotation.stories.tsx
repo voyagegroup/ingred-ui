@@ -1,5 +1,5 @@
 import * as React from "react";
-import SplitAnnotation from ".";
+import SplitAnnotation from "./SplitAnnotation";
 import Typography from "../Typography";
 import Flex from "../Flex";
 

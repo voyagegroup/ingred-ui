@@ -1,5 +1,5 @@
 import * as React from "react";
-import DropdownButton, { DropdownButtonProps } from "./";
+import DropdownButton, { DropdownButtonProps } from "./DropdownButton";
 import { Story } from "@storybook/react/types-6-0";
 import { Flex, Spacer, Typography } from "..";
 import { ContentProp } from "../MenuList/MenuList";

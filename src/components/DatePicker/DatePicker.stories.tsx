@@ -2,7 +2,7 @@ import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import moment from "moment";
 import React from "react";
-import DatePicker from "./";
+import DatePicker from "./DatePicker";
 
 export default {
   title: "Components/Inputs/DatePicker",
