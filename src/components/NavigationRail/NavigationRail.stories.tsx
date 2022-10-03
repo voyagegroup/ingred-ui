@@ -1,7 +1,7 @@
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import NavigationRail from ".";
+import NavigationRail from "./NavigationRail";
 
 export default {
   title: "Components/Navigation/NavigationRail",
