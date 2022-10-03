@@ -1,9 +1,12 @@
-import { Meta, Story, ArgsTable } from "@storybook/addon-docs";
+import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
+import { Story } from "@storybook/react/types-6-0";
+import React from "react";
 import NavigationRail from "./NavigationRail";
 
-<Meta
-  title="Components/Navigation/NavigationRail"
-  subcomponents={{
+export default {
+  title: "Components/Navigation/NavigationRail",
+  component: NavigationRail,
+  subcomponents: {
     Container: NavigationRail.Container,
     Header: NavigationRail.Header,
     Content: NavigationRail.Content,
@@ -13,25 +16,34 @@ import NavigationRail from "./NavigationRail";
     Footer: NavigationRail.Footer,
     Fixture: NavigationRail.Fixture,
     MainContent: NavigationRail.MainContent,
-  }}
-  parameters={{
-    docs: { source: { type: "code" } },
+  },
+  parameters: {
     layout: "fullscreen",
-  }}
-/>
+    docs: {
+      source: { type: "code" },
+      disable: true,
+      page: () => (
+        <>
+          <Title />
+          <Description
+            markdown={[
+              "It implements like Sidebar UI.",
+              "",
+              "It consists of multiple components.",
+              "",
+              "Usage example is included in ”Canvas” Tab at header.",
+            ].join("\n")}
+          />
+          <ArgsTable of={NavigationRail} />
+          <Stories includePrimary title="Stories" />
+        </>
+      ),
+    },
+  },
+};
 
-# NavigationRail
-
-It implements like Sidebar UI.
-
-It consists of multiple components.
-
-Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
-
-<ArgsTable of={NavigationRail} />
-
-<Story name="Example" parameters={{ docs: { disable: true } }} args={{}}>
-  {() => (
+export const Example: Story = () => {
+  return (
     <NavigationRail.Container>
       <NavigationRail>
         <NavigationRail.Header>This is Header.</NavigationRail.Header>
@@ -73,5 +85,5 @@ Usage example is included in &rdquo;Canvas&rdquo; Tab at header.
         Source code is written in &rdquo;Story&rdquo; Tab at footer.
       </NavigationRail.MainContent>
     </NavigationRail.Container>
-  )}
-</Story>
+  );
+};
