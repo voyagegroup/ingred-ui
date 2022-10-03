@@ -99,7 +99,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,mdx}": [
-      "eslint --fix"
+      "yarn format"
     ]
   },
   "resolutions": {

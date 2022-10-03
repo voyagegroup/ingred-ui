@@ -26,7 +26,6 @@ export const WithBadge = () => {
       { text: "ユニット", count: 5, value: "ユニット" },
       { text: "サイズ", count: 5, value: "サイズ" },
     ],
-  };
 
   return (
     <Tabs {...options} value={value} withBadge={true} onChange={setValue} />

@@ -33,7 +33,7 @@ export type Padding = {
 };
 
 const getContainerColorStyles = (
-  theme: Theme,
+  theme: Theme
 ): { [P in ButtonColor]: ButtonColorStyle } => ({
   primary: {
     normal: {
@@ -42,7 +42,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         1,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: `1px solid ${theme.palette.primary.dark}`,
     },
@@ -55,7 +55,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         2,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: "none",
     },
@@ -67,7 +67,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         1,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: `1px solid ${theme.palette.divider}`,
     },
@@ -80,7 +80,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         2,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: `1px solid ${theme.palette.divider}`,
     },
@@ -92,7 +92,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         1,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: `1px solid ${theme.palette.danger.dark}`,
     },
@@ -105,7 +105,7 @@ const getContainerColorStyles = (
       boxShadow: getShadow(
         2,
         theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
+        theme.palette.action.shadowBase
       ),
       border: "none",
     },
@@ -199,7 +199,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
       href,
       ...rest
     },
-    ref,
+    ref
   ) => {
     const theme = useTheme();
     const colorStyle = getContainerColorStyles(theme)[color];
@@ -245,7 +245,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(
         {children}
       </Styled.ButtonContainer>
     );
-  },
+  }
 );
 
 export default Button;
