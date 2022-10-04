@@ -1,6 +1,6 @@
 import React from "react";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
-import Slide from "./";
+import Slide from "./Slide";
 import Flex from "../Flex";
 import ToggleButton from "../ToggleButton";
 import Spacer from "../Spacer";
