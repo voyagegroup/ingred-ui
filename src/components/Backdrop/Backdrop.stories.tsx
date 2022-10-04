@@ -1,7 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Backdrop, { BackdropProps } from "./";
+import Backdrop, { BackdropProps } from "./Backdrop";
 import Spinner from "../Spinner";
 import Button from "../Button";
 
