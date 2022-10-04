@@ -1,5 +1,5 @@
 import React from "react";
-import DataTable from "./";
+import DataTable, { DataTableProps } from "./DataTable";
 import Button from "../Button";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
@@ -8,7 +8,6 @@ import TextField from "../TextField";
 import Typography from "../Typography";
 import ActionButton from "../ActionButton";
 import { data } from "./mockData";
-import { DataTableProps } from "./DataTable";
 import { useTheme } from "../../themes/useTheme";
 import FloatingTip from "../FloatingTip";
 import { Story } from "@storybook/react/types-6-0";

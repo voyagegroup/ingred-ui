@@ -2,7 +2,7 @@ import { action } from "@storybook/addon-actions";
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
-import ActionButton, { ActionButtonProps } from "./";
+import ActionButton, { ActionButtonProps } from "./ActionButton";
 
 export default {
   title: "Components/Inputs/ActionButton",

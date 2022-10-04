@@ -1,5 +1,5 @@
 import * as React from "react";
-import NotificationBadge, { NotificationBadgeProps } from ".";
+import NotificationBadge, { NotificationBadgeProps } from "./NotificationBadge";
 import { Icon } from "..";
 import { Story } from "@storybook/react/types-6-0";
 

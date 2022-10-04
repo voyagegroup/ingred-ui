@@ -7,7 +7,7 @@ import {
   ArgsTable,
   Stories,
 } from "@storybook/addon-docs";
-import Divider, { DividerProps } from "./";
+import Divider, { DividerProps } from "./Divider";
 
 export default {
   title: "Components/Data Display/Divider",
