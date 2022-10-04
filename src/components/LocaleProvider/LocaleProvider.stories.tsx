@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import LocaleProvider, { LocaleProviderProps } from ".";
+import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 import {
   Button,
   Card,

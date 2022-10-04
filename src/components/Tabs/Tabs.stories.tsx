@@ -1,5 +1,5 @@
 import * as React from "react";
-import Tabs from ".";
+import Tabs from "./Tabs";
 
 export default {
   title: "Components/Navigation/Tabs",

@@ -1,6 +1,6 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import RadioButton, { RadioButtonProps, RadioButtonSize } from "./";
+import RadioButton, { RadioButtonProps, RadioButtonSize } from "./RadioButton";
 
 export default {
   title: "Components/Inputs/RadioButton",

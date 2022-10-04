@@ -1,5 +1,5 @@
 import * as React from "react";
-import CreatableSelect from ".";
+import CreatableSelect from "./CreatableSelect";
 
 export default {
   title: "Components/Inputs/CreatableSelect",
