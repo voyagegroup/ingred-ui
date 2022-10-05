@@ -5,7 +5,7 @@ import Toast, { ToastProps } from "./Toast";
 import Button from "../Button";
 
 export default {
-  title: "Components/Feedback/Toast2",
+  title: "Components/Feedback/Toast",
   component: Toast,
   args: {
     appearance: "info",
