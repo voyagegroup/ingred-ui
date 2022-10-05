@@ -11,6 +11,7 @@ export default {
     isOpen: false,
   },
   parameters: {
+    controls: { disabled: true },
     docs: {
       source: { type: "code" },
       page: () => (
