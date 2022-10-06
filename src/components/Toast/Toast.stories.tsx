@@ -8,7 +8,7 @@ export default {
   title: "Components/Feedback/Toast",
   component: Toast,
   args: {
-    appearance: "info",
+    placement: "top-center",
     autoDismiss: true,
     autoDismissTimeout: 3000,
     transitionDuration: 300,
