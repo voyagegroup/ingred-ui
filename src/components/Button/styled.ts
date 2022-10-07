@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
-
-import { hexToRgba } from "../../utils/hexToRgba";
+import { getShadow } from "../../utils/getShadow";
 
 export type ContainerProps = ButtonColorStyle & {
   inline: boolean;
@@ -36,10 +35,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   font-size: ${({ fontSize }) => fontSize};
   box-shadow: ${({ normal, disabled, theme }) =>
     disabled
-      ? `0px -2px ${hexToRgba(
-          theme.palette.black,
-          0.16,
-        )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`
+      ? getShadow(1, theme.palette.action.shadowOpacity, theme.palette.black)
       : normal.boxShadow};
   transition: background 0.3s;
 

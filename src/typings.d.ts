@@ -7,9 +7,7 @@ declare module "*.css" {
   export default content;
 }
 
-type SvgrComponent = {} & React.StatelessComponent<
-  React.SVGAttributes<SVGElement>
->;
+type SvgrComponent = {} & React.FC<React.SVGAttributes<SVGElement>>;
 
 declare module "*.png" {
   const value: any;
@@ -22,8 +20,3 @@ declare module "*.svg" {
   export default svgUrl;
   export { svgComponent as ReactComponent };
 }
-
-// MEMO: from Redux
-type DeepPartial<T> = {
-  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
-};

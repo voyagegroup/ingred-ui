@@ -69,6 +69,10 @@ import { CloseCircleIcon } from "./internal/CloseCircleIcon";
 import { BidStrapIcon } from "./internal/BidStrapIcon";
 import { FluctIcon } from "./internal/FluctIcon";
 import { DataStrapIcon } from "./internal/DataStrapIcon";
+import { CompanyIcon } from "./internal/CompanyIcon";
+import { DocumentIcon } from "./internal/DocumentIcon";
+import { UserIcon } from "./internal/UserIcon";
+import { InformationIcon } from "./internal/InformationIcon";
 
 export type IconName =
   | "dashboard"
@@ -137,7 +141,11 @@ export type IconName =
   | "close_circle"
   | "bid_strap"
   | "fluct"
-  | "data_strap";
+  | "data_strap"
+  | "company"
+  | "document"
+  | "user"
+  | "information";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -223,6 +231,10 @@ export const icons: {
   bid_strap: BidStrapIcon,
   fluct: FluctIcon,
   data_strap: DataStrapIcon,
+  company: CompanyIcon,
+  document: DocumentIcon,
+  user: UserIcon,
+  information: InformationIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
@@ -248,7 +260,7 @@ export type Props = {
   color?: IconColor;
 };
 
-const Icon = React.forwardRef<HTMLDivElement, Props>(
+const Icon = React.forwardRef<HTMLSpanElement, Props>(
   ({ name, type = "line", size = "md", color = "fill" }, ref) => {
     const theme = useTheme();
     return (

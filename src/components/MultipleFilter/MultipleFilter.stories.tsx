@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import MultipleFilter, { MultipleFilterProps } from ".";
+import MultipleFilter, { MultipleFilterProps } from "./MultipleFilter";
 import { FilterPackType, ReferredFilterType } from "./types";
 
 export default {

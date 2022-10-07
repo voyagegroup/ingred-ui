@@ -1,4 +1,4 @@
-.PHONY: install test lint changelog release_note release_version publish
+.PHONY: install test lint release_version publish
 
 RELEASE_VERSION ?=
 GITHUB_TOKEN ?=
@@ -20,24 +20,6 @@ test:
 
 lint:
 	yarn lint
-
-changelog:
-	github_changelog_generator \
-		--user voyagegroup \
-		--project ingred-ui \
-		--exclude-labels release \
-		--future-release v${RELEASE_VERSION} \
-		--token ${GITHUB_TOKEN}
-
-release_note:
-	github_changelog_generator \
-		--user voyagegroup \
-		--project ingred-ui \
-		--exclude-labels release \
-		--future-release v${RELEASE_VERSION} \
-		--since-tag $(shell git describe --abbrev=0 --tags) \
-		--output ${OUTPUT_FILE} \
-		--token ${GITHUB_TOKEN}
 
 release_version:
 	npm config set git-tag-version false

@@ -2,8 +2,8 @@
 
 exports[`Icon component testing Icon 1`] = `
 <DocumentFragment>
-  <div
-    class="sc-bdvvtL dmGhpc"
+  <span
+    class="sc-bczRLJ gJuzRf"
     size="18"
   >
     <svg
@@ -19,6 +19,6 @@ exports[`Icon component testing Icon 1`] = `
         fill="#596978"
       />
     </svg>
-  </div>
+  </span>
 </DocumentFragment>
 `;

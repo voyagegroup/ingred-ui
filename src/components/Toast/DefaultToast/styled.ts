@@ -32,7 +32,7 @@ export const Container = styled.div<ContainerProps>`
   overflow: hidden;
 `;
 
-export const IconContainer = styled.div<{ background: string }>`
+export const IconContainer = styled.div`
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -40,8 +40,6 @@ export const IconContainer = styled.div<{ background: string }>`
   width: 28px;
   height: 28px;
   margin-right: ${({ theme }) => theme.spacing * 2}px;
-  background: ${({ background }) => background};
-  border-radius: 50%;
 `;
 
 export const CloseIconContainer = styled.div`

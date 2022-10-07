@@ -4,6 +4,7 @@ import { Theme } from "./createTheme";
 
 type Props = {
   theme: Theme;
+  children: React.ReactNode;
 };
 const ThemeProvider: React.FunctionComponent<Props> = ({ children, theme }) => (
   <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>

@@ -1,8 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import FloatingTip from ".";
+import FloatingTip, { FloatingTipProps } from "./FloatingTip";
 import Icon from "../Icon";
-import { FloatingTipProps } from "./FloatingTip";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;

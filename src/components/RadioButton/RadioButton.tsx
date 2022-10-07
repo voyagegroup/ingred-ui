@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { hexToRgba } from "../../utils/hexToRgba";
+import { getShadow } from "../../utils/getShadow";
 
 export enum RadioButtonSize {
   // MEDIUM = "24px",
@@ -47,10 +47,11 @@ const Indicator = styled.div<IndicatorProps>`
   border: ${({ border }) => border} solid
     ${({ theme }) => theme.palette.divider};
   box-shadow: ${({ theme }) =>
-    `0px -2px ${hexToRgba(
-      theme.palette.black,
-      0.16,
-    )} inset, 0px 2px ${hexToRgba(theme.palette.black, 0.08)}`};
+    getShadow(
+      3,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   transition: all 0.3s ease;
   background: ${({ theme }) => theme.palette.background.default};
 
@@ -92,7 +93,7 @@ const Indicator = styled.div<IndicatorProps>`
 
 export const Label = styled.span`
   flex: 0 1 auto;
-  margin-left: ${({ theme }) => theme.spacing}px;
+  margin-left: ${({ theme }) => theme.spacing / 2}px;
   font-size: 14px;
 
   input:disabled + div + & {

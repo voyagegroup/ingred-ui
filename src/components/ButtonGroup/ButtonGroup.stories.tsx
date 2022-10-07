@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import ButtonGroup from ".";
 import Button from "../Button";
-import { ButtonGroupProps } from "./ButtonGroup";
+import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
 import { Flex, Spacer, Typography } from "..";
 
 export default {
@@ -56,11 +55,11 @@ export const DisablePartially: Story<ButtonGroupProps> = (args) => (
 );
 
 export const LinkMixed: Story<ButtonGroupProps> = (args) => {
-  const Link: React.FC<{ href: string; className: string }> = ({
-    href,
-    className,
-    children,
-  }) => (
+  const Link: React.FC<{
+    href: string;
+    className: string;
+    children: React.ReactNode;
+  }> = ({ href, className, children }) => (
     // MEMO: Add className props to apply style
     <a href={href} className={className}>
       {children}

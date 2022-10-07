@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { hexToRgba } from "../../utils/hexToRgba";
+import { getShadow } from "../../utils/getShadow";
 
 export const Container = styled.div<{
   width: string;
@@ -30,10 +30,11 @@ export const ToggleButton = styled.span<{ active: boolean; disabled: boolean }>`
     ${({ active, disabled, theme }) =>
       active && !disabled ? theme.palette.primary.dark : theme.palette.divider};
   box-shadow: ${({ theme }) =>
-    `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0px 1px ${hexToRgba(
-      theme.palette.black,
-      0.08,
-    )}`};
+    getShadow(
+      3,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   transition: all 0.3s ease-in-out;
 `;
 
@@ -85,7 +86,11 @@ export const Label = styled.label<LabelProps>`
       active && !disabled ? theme.palette.primary.main : theme.palette.divider};
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
-    `0 2px ${hexToRgba(theme.palette.black, 0.08)} inset`};
+    getShadow(
+      4,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
   transition: all 0.3s ease-in-out;
 
   ${({ active }) =>

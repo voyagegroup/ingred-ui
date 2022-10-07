@@ -3,16 +3,16 @@
 exports[`Snackbar component testing Snackbar 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL Gwvzb"
+    class="sc-bczRLJ ksUyTU"
   >
     <div
-      class="sc-gsDKAQ jzevRs"
+      class="sc-gsnTZi iCCSQp"
     >
       <div
-        class="sc-dkPtRN cDMOpe"
+        class="sc-dkzDqf chbnnt"
       >
-        <div
-          class="sc-hKwDye cPkzPO"
+        <span
+          class="sc-hKMtZM gLnfjV"
           size="18"
         >
           <svg
@@ -34,7 +34,7 @@ exports[`Snackbar component testing Snackbar 1`] = `
               width="5.143"
             />
           </svg>
-        </div>
+        </span>
       </div>
     </div>
   </div>

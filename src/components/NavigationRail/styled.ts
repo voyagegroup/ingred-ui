@@ -25,7 +25,7 @@ export const Container = styled.div<ContaierProps>`
     isOpen && !isFixed
       ? `0px 0px ${theme.spacing * 2}px ${hexToRgba(
           theme.palette.gray.dark,
-          0.33,
+          theme.palette.action.shadowOpacity * 4,
         )}`
       : "none"};
   box-sizing: content-box;

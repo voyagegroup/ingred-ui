@@ -6,7 +6,9 @@ import {
   ToastProviderProps as DefaultToastProviderProps,
 } from "../../../lib/react-toast-notification/src";
 
-export type ToastProviderProps = DefaultToastProviderProps;
+export type ToastProviderProps = DefaultToastProviderProps & {
+  children: React.ReactNode;
+};
 
 const ToastProvider: React.FunctionComponent<ToastProviderProps> = ({
   children,

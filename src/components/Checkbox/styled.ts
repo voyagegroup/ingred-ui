@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { hexToRgba } from "../../utils/hexToRgba";
+import { getShadow } from "../../utils/getShadow";
 
 export const Checkbox = styled.input<{
   indeterminate: boolean;
@@ -52,13 +52,14 @@ export const Span = styled.span<{
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${({ theme }) => theme.radius * 0.5}px;
     box-shadow: ${({ theme }) =>
-      `0 -2px ${hexToRgba(theme.palette.black, 0.16)} inset, 0 2px ${hexToRgba(
-        theme.palette.black,
-        0.08,
-      )}`};
+      getShadow(
+        3,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      )};
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
-      hasChild ? `${theme.spacing}px` : "auto"};
+      hasChild ? `${theme.spacing / 2}px` : "auto"};
     transition: background-color 0.3s ease;
   }
   ${Checkbox}:disabled + & {

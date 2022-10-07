@@ -12,5 +12,5 @@ export default function useEventCallback(fn: Function) {
     ref.current = fn;
   });
 
-  return React.useCallback((...args) => ref.current(...args), []);
+  return React.useCallback((...args: any[]) => ref.current(...args), []);
 }

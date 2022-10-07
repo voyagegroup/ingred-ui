@@ -1,5 +1,12 @@
 module.exports = {
-  plugins: ["prettier", "@typescript-eslint", "react", "react-hooks", "jest"],
+  plugins: [
+    "prettier",
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "jest",
+  ],
   extends: [
     "eslint:recommended",
     "prettier",
@@ -11,6 +18,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:mdx/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -35,6 +43,10 @@ module.exports = {
     SharedArrayBuffer: "readonly",
   },
   rules: {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { argsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" },
+    ],
     "no-restricted-syntax": "off",
     "no-await-in-loop": "off",
     "no-empty": ["error", { allowEmptyCatch: true }],
@@ -123,7 +135,6 @@ module.exports = {
       rules: {
         "@typescript-eslint/ban-types": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
-        "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/consistent-type-definitions": ["error", "type"],
@@ -141,11 +152,31 @@ module.exports = {
             format: ["PascalCase", "camelCase", "UPPER_CASE"],
           },
         ],
+        "jsx-a11y/no-autofocus": "off", // We want to use `autoFocus` in a fluct optimized component <MultipleFilter />.
+        "jsx-a11y/control-has-associated-label": [
+          "error",
+          {
+            depth: 10,
+          },
+        ],
       },
     },
     {
       files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
       rules: {
+        "no-restricted-imports": [
+          "error",
+          {
+            paths: [
+              {
+                name: "./",
+              },
+              {
+                name: ".",
+              },
+            ],
+          },
+        ],
         "react/jsx-handler-names": "off",
         "no-empty": "off",
         "no-console": "off",
@@ -155,6 +186,9 @@ module.exports = {
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react/no-multi-comp": "off",
+        // I realize it's silly of me, but I'll turn it off here for the sake of specs for once.
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
       },
     },
     {

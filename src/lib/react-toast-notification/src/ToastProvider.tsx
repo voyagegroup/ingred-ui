@@ -65,6 +65,7 @@ export type ToastProviderProps = {
   // A convenience prop; the duration of the toast transition, in milliseconds.
   // Note that specifying this will override any defaults set on individual children Toasts.
   transitionDuration?: number;
+  children: React.ReactNode;
 };
 type State = { toasts: ToastsType };
 type Context = {
@@ -196,7 +197,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
   // Public API
   // ------------------------------
 
-  add = (content: Node, options?: Options, cb: Callback = NOOP) => {
+  add = (content: ReactNode, options?: Options, cb: Callback = NOOP) => {
     const id = options?.id ? options.id : generateUEID();
     const callback = () => cb(id);
 

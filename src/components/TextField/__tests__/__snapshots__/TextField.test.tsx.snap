@@ -3,13 +3,13 @@
 exports[`TextField component testing TextField 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL"
+    class="sc-bczRLJ"
   >
     <div
-      class="sc-gsDKAQ iXEfkO"
+      class="sc-gsnTZi iTnnSW"
     >
       <input
-        class="sc-jRQBWg bfvJhB"
+        class="sc-jSMfEi cNRsja"
       />
     </div>
   </div>
@@ -19,20 +19,20 @@ exports[`TextField component testing TextField 1`] = `
 exports[`TextField component testing TextField passward 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL"
+    class="sc-bczRLJ"
   >
     <div
-      class="sc-gsDKAQ kJFxMN"
+      class="sc-gsnTZi jTsXKF"
     >
       <input
-        class="sc-jRQBWg bfvJhB"
+        class="sc-jSMfEi cNRsja"
         type="password"
       />
       <div
-        class="sc-dkPtRN sc-eCImPb fVDQHx vbNRz"
+        class="sc-dkzDqf sc-eCYdqJ ipdCxW lePLkB"
       >
-        <div
-          class="sc-gKclnd edtajv"
+        <span
+          class="sc-gKXOVf kFgTzX"
           size="18"
         >
           <svg
@@ -48,7 +48,7 @@ exports[`TextField component testing TextField passward 1`] = `
               fill="#041C33"
             />
           </svg>
-        </div>
+        </span>
       </div>
     </div>
   </div>
@@ -58,16 +58,16 @@ exports[`TextField component testing TextField passward 1`] = `
 exports[`TextField component testing TextField with icon 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL"
+    class="sc-bczRLJ"
   >
     <div
-      class="sc-gsDKAQ fomYWt"
+      class="sc-gsnTZi sAWNx"
     >
       <div
-        class="sc-dkPtRN sc-hKwDye fVDQHx bmmLIk"
+        class="sc-dkzDqf sc-hKMtZM ipdCxW eHVwRj"
       >
-        <div
-          class="sc-gKclnd edtajv"
+        <span
+          class="sc-gKXOVf kFgTzX"
           size="18"
         >
           <svg
@@ -84,10 +84,10 @@ exports[`TextField component testing TextField with icon 1`] = `
               transform="translate(-0.5 -0.5)"
             />
           </svg>
-        </div>
+        </span>
       </div>
       <input
-        class="sc-jRQBWg bfvJhB"
+        class="sc-jSMfEi cNRsja"
       />
     </div>
   </div>

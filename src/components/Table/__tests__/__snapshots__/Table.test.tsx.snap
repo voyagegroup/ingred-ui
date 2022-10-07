@@ -3,18 +3,18 @@
 exports[`Table component testing Table 1`] = `
 <DocumentFragment>
   <table
-    class="sc-eCImPb hTNeJW"
+    class="sc-eCYdqJ gCynDg"
   >
     <tbody>
       <tr
-        class="sc-dkPtRN gdWhAf"
+        class="sc-dkzDqf csKmfg"
       >
         <th
-          class="sc-hKwDye drDPGO"
+          class="sc-hKMtZM dBLJAh"
           width="177px"
         >
           <div
-            class="sc-bdvvtL enNbws"
+            class="sc-bczRLJ gxrEyT"
             color="#041C33"
             font-size="14px"
           >
@@ -22,11 +22,11 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-gsDKAQ chzLmV"
+          class="sc-gsnTZi bCtKCV"
           width="auto"
         >
           <div
-            class="sc-bdvvtL euPFjW"
+            class="sc-bczRLJ cTnYtN"
             color="#041C33"
             font-size="14px"
           >
@@ -35,14 +35,14 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-dkPtRN gdWhAf"
+        class="sc-dkzDqf csKmfg"
       >
         <th
-          class="sc-hKwDye drDPGO"
+          class="sc-hKMtZM dBLJAh"
           width="177px"
         >
           <div
-            class="sc-bdvvtL enNbws"
+            class="sc-bczRLJ gxrEyT"
             color="#041C33"
             font-size="14px"
           >
@@ -50,11 +50,11 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-gsDKAQ chzLmV"
+          class="sc-gsnTZi bCtKCV"
           width="auto"
         >
           <div
-            class="sc-bdvvtL euPFjW"
+            class="sc-bczRLJ cTnYtN"
             color="#041C33"
             font-size="14px"
           >
@@ -63,14 +63,14 @@ exports[`Table component testing Table 1`] = `
         </td>
       </tr>
       <tr
-        class="sc-dkPtRN gdWhAf"
+        class="sc-dkzDqf csKmfg"
       >
         <th
-          class="sc-hKwDye drDPGO"
+          class="sc-hKMtZM dBLJAh"
           width="177px"
         >
           <div
-            class="sc-bdvvtL enNbws"
+            class="sc-bczRLJ gxrEyT"
             color="#041C33"
             font-size="14px"
           >
@@ -78,11 +78,11 @@ exports[`Table component testing Table 1`] = `
           </div>
         </th>
         <td
-          class="sc-gsDKAQ chzLmV"
+          class="sc-gsnTZi bCtKCV"
           width="auto"
         >
           <div
-            class="sc-bdvvtL euPFjW"
+            class="sc-bczRLJ cTnYtN"
             color="#041C33"
             font-size="14px"
           >

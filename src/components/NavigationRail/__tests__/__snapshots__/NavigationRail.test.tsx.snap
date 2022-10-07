@@ -3,28 +3,28 @@
 exports[`NavigationRail component testing NavigationRail 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsDKAQ kAtCRR"
+    class="sc-gsnTZi laAFwV"
   >
     <div
-      class="sc-bdvvtL ghNiVx"
+      class="sc-bczRLJ ecywsS"
     >
       <div
-        class="sc-dkPtRN cOjqOr"
+        class="sc-dkzDqf iDKdTY"
       >
         Add logo here
       </div>
       <div
-        class="sc-hKwDye fJyQja"
+        class="sc-hKMtZM fjjllh"
       >
         <div>
           <div
-            class="sc-fotOHu jGUycf"
+            class="sc-fnykZs fkHtzZ"
           >
             <div
-              class="sc-bqiRlB gzQVYT"
+              class="sc-breuTD jDboYn"
             >
-              <div
-                class="sc-iCfMLu fBnhju"
+              <span
+                class="sc-iBkjds RltOZ"
                 size="24"
               >
                 <svg
@@ -40,18 +40,18 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                     fill="#0B82F4"
                   />
                 </svg>
-              </div>
+              </span>
               <span
-                class="sc-ksdxgE jIwSbV"
+                class="sc-ksZaOG enNxAq"
               >
                 0
               </span>
             </div>
             <div
-              class="sc-fFeiMQ hqxDRp"
+              class="sc-fEOsli idDBzt"
             >
               <span
-                class="sc-kDTinF kcjIkv sc-bkkeKt hGlUxK"
+                class="sc-kDDrLX iNgeLi sc-bjUoiL gRlQFT"
                 color="#0B82F4"
                 font-size="13px"
               >
@@ -59,10 +59,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </span>
             </div>
             <div
-              class="sc-ieecCq iAObSL"
+              class="sc-idiyUo kOEvVG"
             >
-              <div
-                class="sc-iCfMLu bdvlpC"
+              <span
+                class="sc-iBkjds kTxGwl"
                 size="18"
               >
                 <svg
@@ -79,21 +79,21 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
-            class="sc-dJjYzT hkWzkM"
+            class="sc-dIouRR dfztdq"
             height="auto"
           >
             <div
-              class="sc-hGPBjI jVjCQY"
+              class="sc-hHLeRK lfNIkk"
             >
               <div
-                class="sc-dlVxhl dCMCKx"
+                class="sc-dmRaPn fqFtvt"
               >
                 <span
-                  class="sc-kDTinF kcjIkv sc-kfPuZi bWbmWZ"
+                  class="sc-kDDrLX iNgeLi sc-kgflAQ fQnhdm"
                   color="#0B82F4"
                   font-size="13px"
                 >
@@ -101,7 +101,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 </span>
               </div>
               <span
-                class="sc-hBUSln iiriyw"
+                class="sc-hAZoDl fiXiWk"
               >
                 0
               </span>
@@ -109,13 +109,13 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-iqseJM ghZLFx"
+          class="sc-iqcoie exhfVO"
         >
           <div
-            class="sc-bqiRlB gzQVYT"
+            class="sc-breuTD jDboYn"
           >
-            <div
-              class="sc-iCfMLu fBnhju"
+            <span
+              class="sc-iBkjds RltOZ"
               size="24"
             >
               <svg
@@ -131,18 +131,18 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                   fill="#041C33"
                 />
               </svg>
-            </div>
+            </span>
             <span
-              class="sc-ksdxgE jIwSbV"
+              class="sc-ksZaOG enNxAq"
             >
               0
             </span>
           </div>
           <div
-            class="sc-crHmcD fPFdaO"
+            class="sc-crXcEl kLNHoM"
           >
             <span
-              class="sc-kDTinF htLNsP sc-egiyK dbOwLn"
+              class="sc-kDDrLX htuEbC sc-evZas jEoAKL"
               color="#041C33"
               font-size="13px"
             >
@@ -150,20 +150,20 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </span>
           </div>
           <span
-            class="sc-hBUSln iiriyw"
+            class="sc-hAZoDl fiXiWk"
           >
             0
           </span>
         </div>
       </div>
       <div
-        class="sc-eCImPb eQXZT"
+        class="sc-eCYdqJ cxoYtZ"
       >
         <div
-          class="sc-gKclnd eDCiOG"
+          class="sc-gKXOVf hakqLa"
         >
-          <div
-            class="sc-iCfMLu bdvlpC"
+          <span
+            class="sc-iBkjds kTxGwl"
             size="18"
           >
             <svg
@@ -185,12 +185,12 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 transform="translate(19.171 -2.829) rotate(90)"
               />
             </svg>
-          </div>
+          </span>
         </div>
       </div>
     </div>
     <div
-      class="sc-jRQBWg iuxkuB"
+      class="sc-jSMfEi cbaSoq"
     >
       hogehoge
     </div>

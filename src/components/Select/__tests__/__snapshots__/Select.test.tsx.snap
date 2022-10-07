@@ -3,7 +3,7 @@
 exports[`Select component testing Disable multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL gWtocb"
+    class="sc-bczRLJ gdZRVI"
   >
     <div
       class=" css-3iigni-container"
@@ -37,8 +37,8 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -94,7 +94,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -110,8 +110,8 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -167,7 +167,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -203,10 +203,10 @@ exports[`Select component testing Disable multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -223,7 +223,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -233,7 +233,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
         id="react-select-7-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             class=" css-10hvqfk-NoOptionsMessage"
@@ -250,7 +250,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
 exports[`Select component testing Disable not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL gWtocb"
+    class="sc-bczRLJ gdZRVI"
   >
     <div
       class=" css-3iigni-container"
@@ -311,10 +311,10 @@ exports[`Select component testing Disable not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -331,7 +331,7 @@ exports[`Select component testing Disable not selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -341,7 +341,7 @@ exports[`Select component testing Disable not selected 1`] = `
         id="react-select-5-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"
@@ -369,7 +369,7 @@ exports[`Select component testing Disable not selected 1`] = `
 exports[`Select component testing Disable one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL gWtocb"
+    class="sc-bczRLJ gdZRVI"
   >
     <div
       class=" css-3iigni-container"
@@ -428,10 +428,10 @@ exports[`Select component testing Disable one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -448,7 +448,7 @@ exports[`Select component testing Disable one selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -458,7 +458,7 @@ exports[`Select component testing Disable one selected 1`] = `
         id="react-select-6-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"
@@ -486,7 +486,7 @@ exports[`Select component testing Disable one selected 1`] = `
 exports[`Select component testing Error multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -520,8 +520,8 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -577,7 +577,7 @@ exports[`Select component testing Error multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -593,8 +593,8 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -650,7 +650,7 @@ exports[`Select component testing Error multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -681,14 +681,14 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jRQBWg"
+            class="sc-jSMfEi"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -744,7 +744,7 @@ exports[`Select component testing Error multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -752,10 +752,10 @@ exports[`Select component testing Error multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -772,7 +772,7 @@ exports[`Select component testing Error multiple selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -782,7 +782,7 @@ exports[`Select component testing Error multiple selected 1`] = `
         id="react-select-10-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             class=" css-10hvqfk-NoOptionsMessage"
@@ -799,7 +799,7 @@ exports[`Select component testing Error multiple selected 1`] = `
 exports[`Select component testing Error not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -859,10 +859,10 @@ exports[`Select component testing Error not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -879,7 +879,7 @@ exports[`Select component testing Error not selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -889,7 +889,7 @@ exports[`Select component testing Error not selected 1`] = `
         id="react-select-8-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"
@@ -917,7 +917,7 @@ exports[`Select component testing Error not selected 1`] = `
 exports[`Select component testing Error one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -971,14 +971,14 @@ exports[`Select component testing Error one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jRQBWg"
+            class="sc-jSMfEi"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1034,7 +1034,7 @@ exports[`Select component testing Error one selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1042,10 +1042,10 @@ exports[`Select component testing Error one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1062,7 +1062,7 @@ exports[`Select component testing Error one selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1072,7 +1072,7 @@ exports[`Select component testing Error one selected 1`] = `
         id="react-select-9-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"
@@ -1100,7 +1100,7 @@ exports[`Select component testing Error one selected 1`] = `
 exports[`Select component testing Normal multiple selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -1134,8 +1134,8 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1191,7 +1191,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1207,8 +1207,8 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="css-p9ckie"
               role="button"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1264,7 +1264,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1295,14 +1295,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jRQBWg"
+            class="sc-jSMfEi"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1358,7 +1358,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1366,10 +1366,10 @@ exports[`Select component testing Normal multiple selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1386,7 +1386,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1396,7 +1396,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
         id="react-select-4-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             class=" css-10hvqfk-NoOptionsMessage"
@@ -1413,7 +1413,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
 exports[`Select component testing Normal not selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -1473,10 +1473,10 @@ exports[`Select component testing Normal not selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1493,7 +1493,7 @@ exports[`Select component testing Normal not selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1503,7 +1503,7 @@ exports[`Select component testing Normal not selected 1`] = `
         id="react-select-2-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"
@@ -1531,7 +1531,7 @@ exports[`Select component testing Normal not selected 1`] = `
 exports[`Select component testing Normal one selected 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bdvvtL cRRzAU"
+    class="sc-bczRLJ jDqySb"
   >
     <div
       class=" css-b62m3t-container"
@@ -1585,14 +1585,14 @@ exports[`Select component testing Normal one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-jRQBWg"
+            class="sc-jSMfEi"
           >
             <div
               aria-hidden="true"
               class=" css-tlfecz-indicatorContainer"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1648,7 +1648,7 @@ exports[`Select component testing Normal one selected 1`] = `
                     </g>
                   </g>
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
           <div
@@ -1656,10 +1656,10 @@ exports[`Select component testing Normal one selected 1`] = `
             class=" css-tlfecz-indicatorContainer"
           >
             <div
-              class="sc-eCImPb hFHZzI"
+              class="sc-eCYdqJ hxHEPC"
             >
-              <div
-                class="sc-hKwDye cPkzPO"
+              <span
+                class="sc-hKMtZM gLnfjV"
                 size="18"
               >
                 <svg
@@ -1676,7 +1676,7 @@ exports[`Select component testing Normal one selected 1`] = `
                     transform="translate(-1.414 -1.114)"
                   />
                 </svg>
-              </div>
+              </span>
             </div>
           </div>
         </div>
@@ -1686,7 +1686,7 @@ exports[`Select component testing Normal one selected 1`] = `
         id="react-select-3-listbox"
       >
         <div
-          class="sc-gsDKAQ bpsSt css-47qful-MenuList"
+          class="sc-gsnTZi inqBSZ css-47qful-MenuList"
         >
           <div
             aria-disabled="false"

@@ -28,7 +28,10 @@ export interface Localization {
       defaultProps: Pick<ItemEmptyProps, "title">;
     };
     Select?: {
-      defaultProps: Pick<SelectProps<any>, "placeholder" | "emptyMessage">;
+      defaultProps: Pick<
+        SelectProps<any, boolean>,
+        "placeholder" | "emptyMessage"
+      >;
     };
     CreatableSelect?: {
       defaultProps: Pick<

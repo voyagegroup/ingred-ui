@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import LocaleProvider, { LocaleProviderProps } from ".";
+import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 import {
   Button,
   Card,
@@ -16,7 +16,7 @@ import {
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
-import { FilterPackType, ReferedFilterType } from "../MultipleFilter/types";
+import { FilterPackType, ReferredFilterType } from "../MultipleFilter/types";
 import moment from "moment";
 
 export default {
@@ -109,9 +109,9 @@ export const Example: Story<LocaleProviderProps> = (args) => {
     setSelectedLocale(v);
   };
 
-  const [filters, setFilters] = React.useState<ReferedFilterType[]>([]);
-  const handleChange = (referedFilters: ReferedFilterType[]) => {
-    setFilters(referedFilters);
+  const [_, setFilters] = React.useState<ReferredFilterType[]>([]); // eslint-disable-line @typescript-eslint/naming-convention
+  const handleChange = (referredFilters: ReferredFilterType[]) => {
+    setFilters(referredFilters);
   };
 
   return (

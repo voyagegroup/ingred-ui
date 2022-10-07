@@ -4,11 +4,12 @@ import Icon from "../../../Icon";
 import { SnackbarColor } from "../../Snackbar";
 import { Theme } from "../../../../themes";
 import { useTheme } from "../../../../themes/useTheme";
-import { hexToRgba } from "../../../../utils/hexToRgba";
+import { getShadow } from "../../../../utils/getShadow";
 
 type Props = {
   color: SnackbarColor;
   onClose?: () => void;
+  children: React.ReactNode;
 };
 
 const getSnackbarStyle = (
@@ -23,26 +24,29 @@ const getSnackbarStyle = (
   return {
     default: {
       iconColor: theme.palette.black,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
-        theme.palette.gray.main,
-        0.4,
-      )}`,
+      boxShadow: getShadow(
+        5,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       background: theme.palette.background.default,
     },
     dark: {
       iconColor: theme.palette.white,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
-        theme.palette.gray.deepDark,
-        0.4,
-      )}`,
+      boxShadow: getShadow(
+        5,
+        theme.palette.action.shadowOpacity,
+        theme.palette.action.shadowBase,
+      ),
       background: theme.palette.gray.deepDark,
     },
     warning: {
       iconColor: theme.palette.warning.deepDark,
-      boxShadow: `0px 0px ${theme.spacing * 2}px ${hexToRgba(
+      boxShadow: getShadow(
+        5,
+        theme.palette.action.shadowOpacity,
         theme.palette.warning.highlight,
-        0.4,
-      )}`,
+      ),
       background: theme.palette.warning.highlight,
     },
   };

@@ -6,15 +6,15 @@ exports[`Tooltip component testing Tooltip 1`] = `
     text
   </div>
   <div
-    class="sc-dkPtRN jMueqr fade-transition-appear fade-transition-appear-active"
+    class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
   >
     <div
-      class="sc-gsDKAQ chwUAn"
+      class="sc-gsnTZi cLFgxy"
       style="position: absolute; left: 0px; top: 0px;"
     >
       tooltip text
       <div
-        class="sc-bdvvtL bIjFMV"
+        class="sc-bczRLJ bHftOq"
         data-popper-arrow="true"
       />
     </div>
