@@ -1,10 +1,5 @@
-import {
-  ThemeProvider,
-  createTheme,
-  Typography,
-  Spacer
-} from 'ingred-ui';
-import { StrictMode } from 'react';
+import { ThemeProvider, createTheme, Typography, Spacer } from "ingred-ui";
+import React, { StrictMode } from "react";
 
 function App() {
   const theme = createTheme();
@@ -20,7 +15,8 @@ function App() {
         </Typography>
         <Spacer pt={2} />
         <Typography color="secondary" size="xxl" align="center">
-          Copyright © <a href="https://ingred-ui.netlify.app/">Your Website</a> 2020.
+          Copyright © <a href="https://ingred-ui.netlify.app/">Your Website</a>{" "}
+          2022.
         </Typography>
       </ThemeProvider>
     </StrictMode>
