@@ -7,7 +7,7 @@ import Spacer from "../Spacer";
 import Fade from "./Fade";
 
 export default {
-  title: "Components/Utils/Fade2",
+  title: "Components/Utils/Fade",
   component: Fade,
   args: {
     in: false,
