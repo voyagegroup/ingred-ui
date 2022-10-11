@@ -15,7 +15,6 @@ export default {
     },
   },
   parameters: {
-    controls: { disabled: true },
     docs: {
       source: { type: "code" },
       page: () => (
