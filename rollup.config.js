@@ -2,7 +2,6 @@ import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
-import svgr from "@svgr/rollup";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { imagemin } from "rollup-plugin-imagemin";
 import postcss from "rollup-plugin-postcss";
@@ -37,7 +36,6 @@ export default {
       modules: true,
     }),
     url(),
-    svgr(),
     imagemin(),
     resolve({
       preferBuiltins: false,
