@@ -13,9 +13,7 @@ export default {
         <>
           <Title />
           <Description
-            markdown={
-              "MenuList is a lower-level component that is leveraged [`<Menu />`](/?path=/docs/components-navigation-menu--example)."
-            }
+            markdown={`MenuList is a lower-level component that is leveraged [&lt;Menu /&gt;](${window.location.origin}/?path=/docs/components-navigation-menu--example).`}
           />
           <ArgsTable of={MenuList} />
           <Stories includePrimary title="Stories" />
