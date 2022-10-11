@@ -9,6 +9,10 @@ export default {
   component: Snackbar,
   args: {
     isOpen: false,
+    anchorOrigin: {
+      vertical: "top",
+      horizontal: "left",
+    },
   },
   parameters: {
     controls: { disabled: true },
@@ -26,7 +30,7 @@ export default {
   },
 };
 
-export const Example: Story<SnackbarProps> = (args) => {
+const Template: Story<SnackbarProps> = (args) => {
   const [isOpen, setIsOpen] = React.useState(args.isOpen);
 
   return (
@@ -34,42 +38,24 @@ export const Example: Story<SnackbarProps> = (args) => {
       <Button inline={true} onClick={() => setIsOpen(true)}>
         OPEN SNACKBAR
       </Button>
-      <Snackbar
-        {...args}
-        isOpen={isOpen}
-        color="default"
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
-        }}
-        onClose={() => setIsOpen(false)}
-      >
-        This is Snackbar(default color).
-      </Snackbar>
-      <Snackbar
-        {...args}
-        isOpen={isOpen}
-        color="dark"
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        onClose={() => setIsOpen(false)}
-      >
-        This is Snackbar(dark color).
-      </Snackbar>
-      <Snackbar
-        {...args}
-        isOpen={isOpen}
-        color="warning"
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "right",
-        }}
-        onClose={() => setIsOpen(false)}
-      >
-        This is Snackbar(warning color).
+      <Snackbar {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        This is Snackbar({args.color} color).
       </Snackbar>
     </>
   );
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  color: "default",
+};
+
+export const Dark = Template.bind({});
+Dark.args = {
+  color: "dark",
+};
+
+export const Warning = Template.bind({});
+Warning.args = {
+  color: "warning",
 };
