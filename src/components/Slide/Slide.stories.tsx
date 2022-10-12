@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Title, Description, Stories } from "@storybook/addon-docs";
 import Slide from "./Slide";
 import Flex from "../Flex";
 import ToggleButton from "../ToggleButton";
@@ -28,7 +28,6 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={Slide} />
           <Description
             markdown={[
               " The wrapper of `<CSSTransition />` that implemented in [react-transition-group](https://reactcommunity.org/react-transition-group).",
