@@ -1,6 +1,7 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { action } from "@storybook/addon-actions";
 import ContextMenu, { ContextMenuProps } from "./ContextMenu";
 
 export default {
@@ -29,11 +30,11 @@ Basic.args = {
   contents: [
     {
       text: "Edit",
-      onClick: () => {},
+      onClick: action('clicked "Edit"'),
     },
     {
       text: "Save",
-      onClick: () => {},
+      onClick: action('clicked "Save"'),
     },
   ],
 };
@@ -43,7 +44,7 @@ Disabled.args = {
   contents: [
     {
       text: "Edit",
-      onClick: () => {},
+      onClick: action('clicked "Edit"'),
     },
     {
       text: "Save",
@@ -58,11 +59,11 @@ Warning.args = {
   contents: [
     {
       text: "Edit",
-      onClick: () => {},
+      onClick: action('clicked "Edit"'),
     },
     {
       text: "Delete",
-      onClick: () => {},
+      onClick: action('clicked "Delete"'),
       type: "warning",
     },
   ],
