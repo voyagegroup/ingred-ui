@@ -22,9 +22,9 @@ export default {
           <Title />
           <Description
             markdown={[
-              "It implement like &rdquo;Header/Footer&rdquo; UI that is styled `position: fixed;`.",
+              "It implement like ”Header/Footer” UI that is styled `position: fixed;`.",
               "",
-              "Usage example is included in &rdquo;Canvas&rdquo; Tab at header.",
+              "Usage example is included in ”Canvas” Tab at header.",
             ].join("\n")}
           />
           <ArgsTable of={FixedPanel} />
