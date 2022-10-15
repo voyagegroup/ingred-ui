@@ -23,7 +23,7 @@ export default {
             ].join("\n")}
           />
           <ArgsTable of={ScrollArea} />
-          <Stories includePrimary title="Samples" />
+          <Stories includePrimary title="Stories" />
         </>
       ),
     },
