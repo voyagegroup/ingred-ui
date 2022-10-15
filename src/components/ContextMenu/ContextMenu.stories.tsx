@@ -28,15 +28,11 @@ export const Basic = Template.bind({});
 Basic.args = {
   contents: [
     {
-      text: "Apple",
+      text: "Edit",
       onClick: () => {},
     },
     {
-      text: "Banana",
-      onClick: () => {},
-    },
-    {
-      text: "Orange",
+      text: "Save",
       onClick: () => {},
     },
   ],
