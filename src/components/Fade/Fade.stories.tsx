@@ -10,7 +10,7 @@ export default {
   title: "Components/Utils/Fade",
   component: Fade,
   args: {
-    in: false,
+    in: true,
     timeout: 300,
   },
   parameters: {
