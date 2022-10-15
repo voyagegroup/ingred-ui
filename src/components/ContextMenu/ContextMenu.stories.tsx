@@ -6,7 +6,6 @@ import ContextMenu, { ContextMenuProps } from "./ContextMenu";
 export default {
   title: "Components/Navigation/ContextMenu",
   component: ContextMenu,
-  args: {},
   parameters: {
     docs: {
       source: { type: "code" },
