@@ -40,7 +40,7 @@ export const Example: Story<PopoverProps> = (args) => {
     <>
       <Spacer mt={16} />
       <Flex display="flex" justifyContent={"center"}>
-        <Button ref={setButtonElement} onClick={handleToggleOpen}>
+        <Button ref={setButtonElement} inline={true} onClick={handleToggleOpen}>
           Click me!
         </Button>
       </Flex>
