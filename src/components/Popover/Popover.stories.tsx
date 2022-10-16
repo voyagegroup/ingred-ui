@@ -4,6 +4,7 @@ import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Popover, { PopoverProps } from "./Popover";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
+import Button from "../Button";
 
 export default {
   title: "Components/Utils/Popover",
@@ -28,8 +29,10 @@ export default {
 
 export const Example: Story<PopoverProps> = (args) => {
   const [isOpen, setIsOpen] = React.useState(args.isOpen);
-  const [buttonElement, setButtonElement] =
-    React.useState<HTMLButtonElement | null>(null);
+  const [buttonElement, setButtonElement] = React.useState<HTMLElement | null>(
+    null,
+  );
+
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -37,9 +40,9 @@ export const Example: Story<PopoverProps> = (args) => {
     <>
       <Spacer mt={16} />
       <Flex display="flex" justifyContent={"center"}>
-        <button ref={setButtonElement} onClick={handleToggleOpen}>
+        <Button ref={setButtonElement} onClick={handleToggleOpen}>
           Click me!
-        </button>
+        </Button>
       </Flex>
       <Popover
         {...args}
