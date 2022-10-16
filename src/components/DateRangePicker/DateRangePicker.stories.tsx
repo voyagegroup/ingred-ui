@@ -22,6 +22,18 @@ export default {
             ].join("\n")}
           />
           <ArgsTable of={DateRangePicker} />
+          <Description
+            markdown={[
+              "## When the display is strange",
+              "",
+              "Please import css from `react-dates`.",
+              "",
+              "```tsx",
+              "",
+              'import "react-dates/lib/css/_datepicker.css";',
+              "```",
+            ].join("\n")}
+          />
           <Stories includePrimary title="Stories" />
         </>
       ),
