@@ -1,7 +1,6 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import moment from "moment";
-
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import DateRangePicker, { DateRangePickerProps } from "./DateRangePicker";
 
