@@ -3,6 +3,7 @@ import { Story } from "@storybook/react/types-6-0";
 import moment from "moment";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import DateRangePicker, { DateRangePickerProps } from "./DateRangePicker";
+import "react-dates/lib/css/_datepicker.css";
 
 export default {
   title: "Components/Inputs/DateRangePicker",
