@@ -16,7 +16,6 @@ export default {
       page: () => (
         <>
           <Title />
-
           <ArgsTable of={ItemEmpty} />
           <Stories includePrimary title="Stories" />
         </>
