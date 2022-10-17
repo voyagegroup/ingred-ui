@@ -4,11 +4,11 @@ import { ComponentStory } from "@storybook/react";
 import Flex from "../Flex";
 import ToggleButton from "../ToggleButton";
 import Spacer from "../Spacer";
-import Fade from "./Fade";
+import Grow from "./Grow";
 
 export default {
-  title: "Components/Utils/Fade",
-  component: Fade,
+  title: "Components/Utils/Grow",
+  component: Grow,
   args: {
     in: true,
     timeout: 300,
@@ -28,6 +28,7 @@ export default {
               "Props type is same as [this](https://reactcommunity.org/react-transition-group/transition#Transition-props).",
             ].join("\n")}
           />
+
           <Stories includePrimary title="Stories" />
         </>
       ),
@@ -35,7 +36,7 @@ export default {
   },
 };
 
-export const Example: ComponentStory<typeof Fade> = (args) => {
+export const Example: ComponentStory<typeof Grow> = (args) => {
   const [isOpen, setIsOpen] = React.useState(args.in);
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -45,7 +46,7 @@ export const Example: ComponentStory<typeof Fade> = (args) => {
       <Spacer pt={3} />
       <ToggleButton active={isOpen} onChange={handleToggle} />
       <Spacer pt={3} />
-      <Fade {...args} in={isOpen}>
+      <Grow {...args} in={isOpen}>
         <div
           style={{
             width: "100px",
@@ -53,7 +54,7 @@ export const Example: ComponentStory<typeof Fade> = (args) => {
             backgroundColor: "blue",
           }}
         />
-      </Fade>
+      </Grow>
     </Flex>
   );
 };
