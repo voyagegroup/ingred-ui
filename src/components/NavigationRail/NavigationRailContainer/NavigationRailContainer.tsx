@@ -25,6 +25,11 @@ const NavigationRailContainer = React.forwardRef<
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
 
+  React.useEffect(() => {
+    setIsOpen(defaultFixed);
+    setIsFixed(defaultFixed);
+  }, [defaultFixed]);
+
   const handleOpen = () => {
     if (!isFixed) {
       setIsOpen(true);

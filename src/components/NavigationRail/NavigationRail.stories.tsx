@@ -43,8 +43,14 @@ export default {
 };
 
 export const Example: Story = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsOpen(true);
+  }, []);
+
   return (
-    <NavigationRail.Container>
+    <NavigationRail.Container defaultFixed={true}>
       <NavigationRail>
         <NavigationRail.Header>This is Header.</NavigationRail.Header>
         <NavigationRail.Content>
@@ -64,6 +70,7 @@ export const Example: Story = () => {
             isActive={false}
             iconName="setting"
             notificationCount={2}
+            defaultExpand={isOpen} 
             expantionList={[
               <NavigationRail.ExpantionMenuItem
                 isActive={true}

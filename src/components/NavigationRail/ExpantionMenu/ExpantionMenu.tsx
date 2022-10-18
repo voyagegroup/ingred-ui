@@ -91,6 +91,10 @@ const ExpantionMenu = React.forwardRef<
     }, [isOpen]);
 
     React.useEffect(() => {
+      setIsExpand(defaultExpand);
+    }, [defaultExpand]);
+
+    React.useEffect(() => {
       setDelayTransition(false);
       if (onChangeExpand) onChangeExpand(isExpand);
     }, [isExpand, onChangeExpand]);
