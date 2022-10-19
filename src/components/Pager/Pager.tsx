@@ -62,7 +62,7 @@ export function getFilteredItems<T>(items: T[], { per, index }: FilterState) {
   return items.slice((index - 1) * per, index * per);
 }
 
-export const useFilterState = (per = 10, index = 1) =>
+export const useFilterState = (per = 100, index = 1) =>
   React.useState<FilterState>({ per, index });
 
 export default Pager;
