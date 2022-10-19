@@ -269,9 +269,7 @@ const DataTable = <T extends DataTableBaseData>(
     getValue: firstSortableColumn?.selector,
   });
 
-  const [filterState, setFilterState] = useFilterState(
-    per,
-  );
+  const [filterState, setFilterState] = useFilterState(per);
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
       sourceData,
