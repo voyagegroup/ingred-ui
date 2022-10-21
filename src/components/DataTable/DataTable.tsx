@@ -22,19 +22,9 @@ import Pager, {
   FilterState,
 } from "../Pager";
 import ItemEmpty, { ItemEmptyProps } from "../ItemEmpty";
-
-import { StorageKey } from "../../constants/storageKeys";
 import { TableTabs } from "./internal/TableTabs";
 import { useDidUpdate } from "../../hooks/useDidUpdate";
 import { VerticalSpacing } from "./internal/Table/Row";
-
-const getPerFromLocalStorage = () => {
-  const per = localStorage.getItem(StorageKey.DISPLAY_LIST_COUNT);
-  if (per) return parseInt(per, 10);
-  return 100;
-};
-const setPerInLocalStorage = (per: number) =>
-  localStorage.setItem(StorageKey.DISPLAY_LIST_COUNT, per.toString());
 
 function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
@@ -279,9 +269,7 @@ const DataTable = <T extends DataTableBaseData>(
     getValue: firstSortableColumn?.selector,
   });
 
-  const [filterState, setFilterState] = useFilterState(
-    per || getPerFromLocalStorage(),
-  );
+  const [filterState, setFilterState] = useFilterState(per);
   const [displayData, setDisplayData] = React.useState<T[]>(
     getDisplayData({
       sourceData,
@@ -375,7 +363,6 @@ const DataTable = <T extends DataTableBaseData>(
   };
 
   const handleCountChange = (per: number) => {
-    setPerInLocalStorage(per);
     setFilterState({ index: 1, per });
   };
 
