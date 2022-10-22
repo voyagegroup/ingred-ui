@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Story } from "@storybook/react/types-6-0";
 import moment from "moment";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
@@ -83,20 +83,21 @@ export const Localize: Story<DateRangePickerProps> = () => {
   });
   const renderMonthText = (day: moment.Moment) => day.format("YYYY年M月");
   const displayFormat = () => "YYYY/MM/DD";
-  const [startDate, setStartDate] = React.useState(moment().set("date", 1));
-  const [endDate, setEndDate] = React.useState(moment());
+  const [date, setDate] = useState({
+    startDate: moment().set("date", 1),
+    endDate: moment(),
+  });
   const handleChangeDates = (arg: {
     startDate: moment.Moment;
     endDate: moment.Moment;
   }) => {
-    setStartDate(arg.startDate);
-    setEndDate(arg.endDate);
+    setDate(arg);
   };
   return (
     <div style={{ height: "400px" }}>
       <DateRangePicker
-        startDate={startDate}
-        endDate={endDate}
+        startDate={date.startDate}
+        endDate={date.endDate}
         displayFormat={displayFormat}
         renderMonthText={renderMonthText}
         onDatesChange={handleChangeDates}
