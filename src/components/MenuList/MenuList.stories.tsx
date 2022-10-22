@@ -2,6 +2,7 @@ import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import MenuList, { MenuListProps } from "./MenuList";
+import { action } from "@storybook/addon-actions";
 
 export default {
   title: "Components/Navigation/MenuList",
@@ -34,10 +35,10 @@ const Template: Story<MenuListProps> = (args) => {
 export const Basic = Template.bind({});
 Basic.args = {
   contents: [
-    { text: "Save", onClick: () => {}, type: "default" },
-    { text: "Edit", onClick: () => {}, type: "default" },
+    { text: "Save", onClick: action('clicked "Save"'), type: "default" },
+    { text: "Edit", onClick: action('clicked "Save"'), type: "default" },
     { text: "Delete", onClick: () => {}, type: "disabled" },
-    { text: "Update", onClick: () => {}, type: "warning" },
+    { text: "Update", onClick: action('clicked "Update"'), type: "warning" },
   ],
   maxHeight: "100px",
 };
@@ -48,19 +49,19 @@ Group.args = {
     {
       title: "Fruits",
       contents: [
-        { text: "Apple", onClick: () => {} },
-        { text: "Peach", onClick: () => {} },
-        { text: "Orange", onClick: () => {} },
-        { text: "Strawberry", onClick: () => {} },
+        { text: "Apple", onClick: action('clicked "Apple"') },
+        { text: "Peach", onClick: action('clicked "Peach"') },
+        { text: "Orange", onClick: action('clicked "Orange"') },
+        { text: "Strawberry", onClick: action('clicked "Strawberry"') },
       ],
     },
     {
       title: "Vegetables",
       contents: [
-        { text: "Cabbage", onClick: () => {} },
-        { text: "Carrot", onClick: () => {} },
-        { text: "Radish", onClick: () => {} },
-        { text: "Cucumber", onClick: () => {} },
+        { text: "Cabbage", onClick: action('clicked "Cabbage"') },
+        { text: "Carrot", onClick: action('clicked "Carrot"') },
+        { text: "Radish", onClick: action('clicked "Radish"') },
+        { text: "Cucumber", onClick: action('clicked "Cucumber"') },
       ],
     },
   ],
