@@ -8,9 +8,10 @@ export default {
   title: "Components/Layout/Spacer",
   component: Spacer,
   args: {
-    pt: 3,
+    p: 3,
   },
   parameters: {
+    layout: "fullscreen",
     docs: {
       source: { type: "code" },
       page: () => (
@@ -55,13 +56,23 @@ export default {
 export const Example: Story<SpacerProps> = (args) => (
   <>
     <Spacer {...args}>
-      <div style={{ border: "solid" }}>
+      <div
+        style={{
+          border: "1px solid black",
+          padding: "8px",
+          borderRadius: "4px",
+        }}
+      >
         This Element is wrapped {"<Spacer />"}
         <br />
         And there is one more {"<Spacer />"} directly below.
       </div>
     </Spacer>
     <Spacer {...args} />
-    <div style={{ border: "solid" }}>hoge</div>
+    <div
+      style={{ border: "1px solid black", padding: "8px", borderRadius: "4px" }}
+    >
+      Under {"<Spacer />"}
+    </div>
   </>
 );
