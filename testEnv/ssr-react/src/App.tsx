@@ -1,37 +1,23 @@
-import { Link, Route, Routes } from "react-router-dom";
-
-// Auto generates routes from files under ./pages
-// https://vitejs.dev/guide/features.html#glob-import
-const pages = import.meta.glob("./pages/*.tsx", { eager: true });
-
-const routes = Object.keys(pages).map((path) => {
-  const name = path.match(/\.\/pages\/(.*)\.tsx$/)[1];
-  return {
-    name,
-    path: name === "Home" ? "/" : `/${name.toLowerCase()}`,
-    component: pages[path].default,
-  };
-});
+import { ThemeProvider, createTheme, Typography, Spacer } from "ingred-ui";
+import React from "react";
 
 export function App() {
+  const theme = createTheme();
+
   return (
-    <>
-      <nav>
-        <ul>
-          {routes.map(({ name, path }) => {
-            return (
-              <li key={path}>
-                <Link to={path}>{name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-      <Routes>
-        {routes.map(({ path, component: Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-      </Routes>
-    </>
+    <ThemeProvider theme={theme}>
+      <Typography component="h1" size="xxxxxl" align="center">
+        Create React App example
+      </Typography>
+      <Spacer pt={2} />
+      <Typography color="secondary" size="xxl" align="center">
+        Write some components in this environment.
+      </Typography>
+      <Spacer pt={2} />
+      <Typography color="secondary" size="xxl" align="center">
+        Copyright © <a href="https://ingred-ui.netlify.app/">Your Website</a>{" "}
+        2022.
+      </Typography>
+    </ThemeProvider>
   );
 }
