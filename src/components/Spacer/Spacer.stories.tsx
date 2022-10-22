@@ -63,7 +63,7 @@ export const Example: Story<SpacerProps> = (args) => (
           borderRadius: "4px",
         }}
       >
-        This Element is wrapped {"<Spacer />"}
+        This Element is wrapped {"<Spacer />"}.
         <br />
         And there is one more {"<Spacer />"} directly below.
       </div>
