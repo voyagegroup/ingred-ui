@@ -6,6 +6,7 @@ import { action } from "@storybook/addon-actions";
 import Button from "../Button";
 import DataTable from "../DataTable";
 import { data } from "../DataTable/mockData";
+import Spacer from "../Spacer";
 
 export default {
   title: "Components/Utils/ConfirmModal",
@@ -31,7 +32,6 @@ export default {
 export const Basic: Story<ConfirmModalProps> = (args) => {
   const [isOpen, setIsOpen] = React.useState(args.isOpen);
   const handleToggleButton = () => {
-    action("close");
     setIsOpen(!isOpen);
   };
   return (
@@ -156,9 +156,11 @@ export const OverflowYScroll: Story<ConfirmModalProps> = (args) => {
       <ConfirmModal
         overflowYScroll={true}
         onClose={handleToggleButton}
+        onSubmit={action("submitted")}
         {...args}
         isOpen={isOpen}
       >
+        <Spacer my={2} />
         <DataTable
           data={data}
           columns={[
