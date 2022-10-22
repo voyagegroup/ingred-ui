@@ -44,20 +44,21 @@ export default {
 export const Basic: Story<DateRangePickerProps> = () => {
   // MEMO: To be unaffected by "Localize" story.
   moment.locale("en");
-  const [startDate, setStartDate] = React.useState(moment().set("date", 1));
-  const [endDate, setEndDate] = React.useState(moment());
+  const [date, setDate] = useState({
+    startDate: moment().set("date", 1),
+    endDate: moment(),
+  });
   const handleChangeDates = (arg: {
     startDate: moment.Moment;
     endDate: moment.Moment;
   }) => {
-    setStartDate(arg.startDate);
-    setEndDate(arg.endDate);
+    setDate(arg);
   };
   return (
     <div style={{ height: "400px" }}>
       <DateRangePicker
-        startDate={startDate}
-        endDate={endDate}
+        startDate={date.startDate}
+        endDate={date.endDate}
         onDatesChange={handleChangeDates}
       />
     </div>
