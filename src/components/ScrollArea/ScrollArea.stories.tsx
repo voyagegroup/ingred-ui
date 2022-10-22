@@ -35,7 +35,6 @@ export const Example: Story<ScrollAreaProps> = (args) => (
   <div style={{ border: "1px solid black" }}>
     <ScrollArea {...args}>
       <Spacer p={5}>
-        <Spacer my={1} />
         <p style={{ fontSize: "28px", lineHeight: 2 }}>
           <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing
           elit, sed do eiusmod tempor incididunt ut labore et dolore magna
