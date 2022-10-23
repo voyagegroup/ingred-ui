@@ -1,12 +1,13 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
-import MenuList, { MenuListProps } from "./MenuList";
+import Menu, { MenuProps } from "./Menu";
+import Button from "../Button";
 import { action } from "@storybook/addon-actions";
 
 export default {
-  title: "Components/Navigation/MenuList",
-  component: MenuList,
+  title: "Components/Navigation/Menu",
+  component: Menu,
   parameters: {
     docs: {
       source: { type: "code" },
@@ -14,9 +15,11 @@ export default {
         <>
           <Title />
           <Description
-            markdown={`MenuList is a lower-level component that is leveraged [&lt;Menu /&gt;](${window.location.origin}/?path=/docs/components-navigation-menu--example).`}
+            markdown={
+              "A Menu displays a list of choices. It appears when the user interacts with a button, or other control."
+            }
           />
-          <ArgsTable of={MenuList} />
+          <ArgsTable of={Menu} />
           <Stories includePrimary title="Stories" />
         </>
       ),
@@ -24,11 +27,27 @@ export default {
   },
 };
 
-const Template: Story<MenuListProps> = (args) => {
+const Template: Story<MenuProps> = (args) => {
+  const [buttonElement, setButtonElement] = React.useState<HTMLElement | null>(
+    null,
+  );
+  const [showMenu, setShowMenu] = React.useState(false);
+  const handleToggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
   return (
-    <div style={{ backgroundColor: "silver", padding: "10px" }}>
-      <MenuList {...args} />
-    </div>
+    <>
+      <Button ref={setButtonElement} inline={true} onClick={handleToggleMenu}>
+        Click me!!
+      </Button>
+      {showMenu && (
+        <Menu
+          {...args}
+          baseElement={buttonElement}
+          onClose={handleToggleMenu}
+        />
+      )}
+    </>
   );
 };
 
