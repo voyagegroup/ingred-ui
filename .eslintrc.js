@@ -17,7 +17,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jest/recommended",
-    "plugin:mdx/recommended",
     "plugin:jsx-a11y/recommended",
   ],
   parser: "@typescript-eslint/parser",
@@ -162,7 +161,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
+      files: ["*.stories.tsx", "*.test.ts", "*.test.tsx"],
       rules: {
         "no-restricted-imports": [
           "error",
@@ -199,10 +198,6 @@ module.exports = {
         camelcase: "off",
         "@typescript-eslint/no-var-requires": "off",
       },
-    },
-    {
-      files: ["*.mdx"],
-      extends: ["plugin:mdx/overrides"],
     },
   ],
 };
