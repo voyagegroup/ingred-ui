@@ -4,5 +4,7 @@
   },
   "eslint.options": {
     "extensions": [".js", ".jsx", ".md", ".ts", ".tsx"]
-  }
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }

@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
-import moment from "moment";
+import dayjs from "dayjs";
+import { dayjsToMoment, momentToDayjs } from "../../utils/time";
 import {
   RenderMonthProps,
   SingleDatePicker,
@@ -16,23 +17,45 @@ function isOutsideRange() {
 }
 
 export type DatePickerProps = Partial<
-  Omit<SingleDatePickerShape, "date" | "onFocusChange">
+  Omit<
+    SingleDatePickerShape,
+    "date" | "onFocusChange" | "onDateChange" | "renderMonthText"
+  >
 > &
   // MEMO: Add RenderMonthProps to pass type check.
-  RenderMonthProps & {
-    date: moment.Moment | null;
-    onDateChange: (date: moment.Moment | null) => void;
+  Omit<RenderMonthProps, "renderMonthText"> & {
+    date: dayjs.Dayjs | null;
+    onDateChange: (date: dayjs.Dayjs | null) => void;
+    renderMonthText?:
+      | ((month: dayjs.Dayjs) => React.ReactNode)
+      | null
+      | undefined;
     error?: boolean;
   };
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
   (inProps, ref) => {
     const props = useLocaleProps({ props: inProps, name: "DatePicker" });
-    const { date, error = false, ...rest } = props;
+    const {
+      date,
+      error = false,
+      onDateChange,
+      renderMonthText,
+      ...rest
+    } = props;
 
     const [focused, setFocused] = React.useState<boolean>(false);
     const onFocusChange = ({ focused }: { focused: boolean }) => {
       setFocused(focused);
+    };
+    const handleDateChange = (date: moment.Moment | null) => {
+      const dayjsize = momentToDayjs(date);
+      onDateChange(dayjsize);
+    };
+    const handleRenderMonthText = (month: moment.Moment) => {
+      const dayjsize = momentToDayjs(month);
+      if (!renderMonthText || !dayjsize) return;
+      return renderMonthText(dayjsize);
     };
 
     return (
@@ -40,7 +63,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
         <SingleDatePicker
           id="datePicker"
           focused={focused}
-          date={date}
+          date={dayjsToMoment(date)}
           isOutsideRange={isOutsideRange}
           numberOfMonths={1}
           enableOutsideDays={true}
@@ -61,7 +84,10 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
               </Spacer>
             </Styled.NavNext>
           }
+          // eslint-disable-next-line react/jsx-handler-names
+          renderMonthText={handleRenderMonthText}
           onFocusChange={onFocusChange}
+          onDateChange={handleDateChange}
           {...rest}
         />
       </Styled.Container>

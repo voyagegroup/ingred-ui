@@ -1,6 +1,6 @@
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
-import moment from "moment";
+import dayjs from "dayjs";
 import React from "react";
 import DatePicker from "./DatePicker";
 
@@ -41,9 +41,9 @@ export default {
 };
 
 export const Basic: Story = () => {
-  moment.locale("en");
-  const [date, setDate] = React.useState(moment());
-  const handleChangeDate = (date: moment.Moment | null) => {
+  dayjs.locale("en");
+  const [date, setDate] = React.useState(dayjs());
+  const handleChangeDate = (date: dayjs.Dayjs | null) => {
     if (date === null) {
       return;
     }
@@ -57,17 +57,17 @@ export const Basic: Story = () => {
 };
 
 export const Error: Story = () => {
-  return <DatePicker date={moment()} error={true} onDateChange={() => {}} />;
+  return <DatePicker date={dayjs()} error={true} onDateChange={() => {}} />;
 };
 
 export const Localize: Story = () => {
-  moment.locale("ja", {
+  dayjs.locale("ja", {
     weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
   });
-  const renderMonthText = (day: moment.Moment) => day.format("YYYY年M月");
+  const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
   const displayFormat = () => "YYYY/MM/DD";
-  const [date, setDate] = React.useState(moment());
-  const handleChangeDate = (date: moment.Moment | null) => {
+  const [date, setDate] = React.useState(dayjs());
+  const handleChangeDate = (date: dayjs.Dayjs | null) => {
     if (date === null) {
       return;
     }
