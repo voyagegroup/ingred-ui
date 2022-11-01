@@ -26,10 +26,7 @@ export type DatePickerProps = Partial<
   Omit<RenderMonthProps, "renderMonthText"> & {
     date: dayjs.Dayjs | null;
     onDateChange: (date: dayjs.Dayjs | null) => void;
-    renderMonthText?:
-      | ((month: dayjs.Dayjs) => React.ReactNode)
-      | null
-      | undefined;
+    renderMonthText?: ((month: dayjs.Dayjs) => React.ReactNode) | null;
     error?: boolean;
   };
 
@@ -40,7 +37,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       date,
       error = false,
       onDateChange,
-      renderMonthText,
+      renderMonthText: renderMonthTextProps,
+      renderMonthElement,
       ...rest
     } = props;
 
@@ -54,8 +52,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
     };
     const handleRenderMonthText = (month: moment.Moment) => {
       const dayjsize = momentToDayjs(month);
-      if (!renderMonthText || !dayjsize) return;
-      return renderMonthText(dayjsize);
+      if (!renderMonthTextProps || !dayjsize) return;
+      return renderMonthTextProps(dayjsize);
     };
 
     return (
@@ -85,7 +83,10 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
             </Styled.NavNext>
           }
           // eslint-disable-next-line react/jsx-handler-names
-          renderMonthText={handleRenderMonthText}
+          renderMonthText={
+            renderMonthTextProps ? handleRenderMonthText : renderMonthTextProps
+          }
+          renderMonthElement={renderMonthElement as never}
           onFocusChange={onFocusChange}
           onDateChange={handleDateChange}
           {...rest}
