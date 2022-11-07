@@ -3,6 +3,7 @@ import { Story } from "@storybook/react/types-6-0";
 import dayjs from "dayjs";
 import React from "react";
 import DatePicker from "./DatePicker";
+import "dayjs/locale/ja";
 
 export default {
   title: "Components/Inputs/DatePicker",
@@ -61,9 +62,7 @@ export const Error: Story = () => {
 };
 
 export const Localize: Story = () => {
-  dayjs.locale("ja", {
-    weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
-  });
+  dayjs.locale("ja");
   const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
   const displayFormat = () => "YYYY/MM/DD";
   const [date, setDate] = React.useState(dayjs());
@@ -77,6 +76,8 @@ export const Localize: Story = () => {
     <div style={{ height: "400px" }}>
       <DatePicker
         date={date}
+        locale={"ja"}
+        weekdaysShort={["日", "月", "火", "水", "木", "金", "土"]}
         displayFormat={displayFormat}
         renderMonthText={renderMonthText}
         onDateChange={handleChangeDate}
