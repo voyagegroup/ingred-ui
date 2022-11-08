@@ -1,9 +1,13 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
-import dayjs from "dayjs";
+import dayjs, { InstanceLocaleDataReturn } from "dayjs";
 import moment from "moment";
-import { dayjsToMoment, momentToDayjs } from "../../utils/time";
+import {
+  dayjsToMoment,
+  momentToDayjs,
+  convertDayjsLocaleDataToObject,
+} from "../../utils/time";
 import {
   RenderMonthProps,
   SingleDatePicker,
@@ -29,7 +33,7 @@ export type DatePickerProps = Partial<
     onDateChange: (date: dayjs.Dayjs | null) => void;
     renderMonthText?: ((month: dayjs.Dayjs) => React.ReactNode) | null;
     locale?: string;
-    weekdaysShort?: string[];
+    localeData?: InstanceLocaleDataReturn;
     error?: boolean;
   };
 
@@ -43,7 +47,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       renderMonthText: renderMonthTextProps,
       renderMonthElement,
       locale = "en",
-      weekdaysShort,
+      localeData,
       ...rest
     } = props;
 
@@ -61,10 +65,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       return renderMonthTextProps(dayjsize);
     };
 
-    if (weekdaysShort) {
-      moment.locale(locale, {
-        weekdaysShort: weekdaysShort,
-      });
+    if (localeData) {
+      moment.locale(locale, convertDayjsLocaleDataToObject(localeData));
     } else {
       moment.locale(locale);
     }
