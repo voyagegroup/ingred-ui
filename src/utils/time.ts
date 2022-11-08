@@ -15,6 +15,7 @@ export function momentToDayjs(date: moment.Moment | null): dayjs.Dayjs | null {
   return dayjs(dateString);
 }
 
+// dayjsのlocaleDataをmomentjs用に変換するメソッド
 export function convertDayjsLocaleDataToObject(
   localeData: InstanceLocaleDataReturn,
 ) {
