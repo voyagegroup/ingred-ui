@@ -60,7 +60,7 @@
     "@types/rollup-plugin-peer-deps-external": "2.2.1",
     "@types/styled-components": "5.1.25",
     "@typescript-eslint/eslint-plugin": "5.42.0",
-    "@typescript-eslint/parser": "5.41.0",
+    "@typescript-eslint/parser": "5.42.1",
     "cross-env": "7.0.3",
     "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
