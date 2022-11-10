@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Story } from "@storybook/react/types-6-0";
-import moment from "moment";
+import dayjs from "dayjs";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import DateRangePicker, { DateRangePickerProps } from "./DateRangePicker";
 import "react-dates/lib/css/_datepicker.css";
+import "dayjs/locale/ja";
+import localeData from "dayjs/plugin/localeData";
 
 export default {
   title: "Components/Inputs/DateRangePicker",
@@ -43,14 +45,14 @@ export default {
 
 export const Basic: Story<DateRangePickerProps> = () => {
   // MEMO: To be unaffected by "Localize" story.
-  moment.locale("en");
+  dayjs.locale("en");
   const [date, setDate] = useState({
-    startDate: moment().set("date", 1),
-    endDate: moment(),
+    startDate: dayjs().set("date", 1),
+    endDate: dayjs(),
   });
   const handleChangeDates = (arg: {
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: dayjs.Dayjs;
+    endDate: dayjs.Dayjs;
   }) => {
     setDate(arg);
   };
@@ -67,11 +69,11 @@ export const Basic: Story<DateRangePickerProps> = () => {
 
 export const Error: Story<DateRangePickerProps> = () => {
   // MEMO: To be unaffected by "Localize" story.
-  moment.locale("en");
+  dayjs.locale("en");
   return (
     <DateRangePicker
-      startDate={moment().set("date", 1)}
-      endDate={moment()}
+      startDate={dayjs().set("date", 1)}
+      endDate={dayjs()}
       error={true}
       onDatesChange={() => {}}
     />
@@ -79,18 +81,17 @@ export const Error: Story<DateRangePickerProps> = () => {
 };
 
 export const Localize: Story<DateRangePickerProps> = () => {
-  moment.locale("ja", {
-    weekdaysShort: ["日", "月", "火", "水", "木", "金", "土"],
-  });
-  const renderMonthText = (day: moment.Moment) => day.format("YYYY年M月");
+  dayjs.locale("ja");
+  dayjs.extend(localeData);
+  const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
   const displayFormat = () => "YYYY/MM/DD";
   const [date, setDate] = useState({
-    startDate: moment().set("date", 1),
-    endDate: moment(),
+    startDate: dayjs().set("date", 1),
+    endDate: dayjs(),
   });
   const handleChangeDates = (arg: {
-    startDate: moment.Moment;
-    endDate: moment.Moment;
+    startDate: dayjs.Dayjs;
+    endDate: dayjs.Dayjs;
   }) => {
     setDate(arg);
   };
@@ -99,6 +100,8 @@ export const Localize: Story<DateRangePickerProps> = () => {
       <DateRangePicker
         startDate={date.startDate}
         endDate={date.endDate}
+        locale={"ja"}
+        localeData={dayjs().localeData()}
         displayFormat={displayFormat}
         renderMonthText={renderMonthText}
         onDatesChange={handleChangeDates}
