@@ -1,12 +1,5 @@
 module.exports = {
-  plugins: [
-    "prettier",
-    "@typescript-eslint",
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "jest",
-  ],
+  plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest"],
   extends: [
     "eslint:recommended",
     "prettier",
@@ -59,19 +52,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        singleQuote: false,
-        useTabs: false,
-        tabWidth: 2,
-        semi: true,
-        bracketSpacing: true,
-        trailingComma: "all",
-        arrowParens: "always",
-      },
-    ],
-
     "react/jsx-handler-names": [
       "error",
       {
