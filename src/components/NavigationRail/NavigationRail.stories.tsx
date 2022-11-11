@@ -10,8 +10,8 @@ export default {
     Container: NavigationRail.Container,
     Header: NavigationRail.Header,
     Content: NavigationRail.Content,
-    ExpantionMenu: NavigationRail.ExpantionMenu,
-    ExpantionMenuItem: NavigationRail.ExpantionMenuItem,
+    ExpansionMenu: NavigationRail.ExpansionMenu,
+    ExpansionMenuItem: NavigationRail.ExpansionMenuItem,
     Menu: NavigationRail.Menu,
     Footer: NavigationRail.Footer,
     Fixture: NavigationRail.Fixture,
@@ -59,18 +59,18 @@ export const Example: Story = () => {
             isActive={false}
             iconName="bar_chart"
           />
-          <NavigationRail.ExpantionMenu
+          <NavigationRail.ExpansionMenu
             title="Setting"
             isActive={false}
             iconName="setting"
             notificationCount={2}
-            expantionList={[
-              <NavigationRail.ExpantionMenuItem
+            expansionList={[
+              <NavigationRail.ExpansionMenuItem
                 isActive={true}
                 title="Detail setting"
                 notificationCount={2}
               />,
-              <NavigationRail.ExpantionMenuItem
+              <NavigationRail.ExpansionMenuItem
                 isActive={false}
                 title="Account setting"
               />,

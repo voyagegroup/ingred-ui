@@ -9,7 +9,7 @@ import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
 import { createChainedFunction } from "../../../utils/createChainedFunction";
 
-export type NavitagionRailExpantionMenuProps =
+export type NavigationRailExpansionMenuProps =
   React.ComponentPropsWithoutRef<"div"> & {
     title: string;
     /**
@@ -22,9 +22,9 @@ export type NavitagionRailExpantionMenuProps =
      */
     notificationCount?: number;
     /**
-     * Array of `<NavagationRail.ExpantionMenu />` is expected.
+     * Array of `<NavagationRail.ExpansionMenu />` is expected.
      */
-    expantionList?: React.ReactNode[];
+    expansionList?: React.ReactNode[];
     /**
      * If `true`, it is expanded as default.
      */
@@ -35,16 +35,16 @@ export type NavitagionRailExpantionMenuProps =
     onChangeExpand?: (isExpand: boolean) => void;
   };
 
-const ExpantionMenu = React.forwardRef<
+const ExpansionMenu = React.forwardRef<
   HTMLDivElement,
-  NavitagionRailExpantionMenuProps
+  NavigationRailExpansionMenuProps
 >(
   (
     {
       title,
       isActive = false,
       iconName,
-      expantionList = [],
+      expansionList: expansionList = [],
       defaultExpand = false,
       notificationCount = 0,
       onChangeExpand,
@@ -60,13 +60,13 @@ const ExpantionMenu = React.forwardRef<
     const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
     const [delayTransition, setDelayTransition] =
       React.useState<boolean>(false);
-    const [expantionHeight, setExpantionHeight] =
+    const [expansionHeight, setExpansionHeight] =
       React.useState<string>("auto");
     const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
     const textContainerElement = React.useRef<HTMLDivElement | null>(null);
     const textElement = React.useRef<HTMLSpanElement | null>(null);
-    const expantionElement = React.useRef<HTMLDivElement | null>(null);
+    const expansionElement = React.useRef<HTMLDivElement | null>(null);
 
     const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
 
@@ -82,7 +82,7 @@ const ExpantionMenu = React.forwardRef<
     const handleClick = (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     ) => {
-      if (expantionList.length !== 0) setIsExpand(!isExpand);
+      if (expansionList.length !== 0) setIsExpand(!isExpand);
       if (onClick) onClick(event);
     };
 
@@ -96,10 +96,10 @@ const ExpantionMenu = React.forwardRef<
     }, [isExpand, onChangeExpand]);
 
     React.useEffect(() => {
-      if (!expantionElement.current) return;
+      if (!expansionElement.current) return;
       // MEMO: Get height for CSS transition
-      const { height } = expantionElement.current.getBoundingClientRect();
-      if (height !== 0) setExpantionHeight(`${height}px`);
+      const { height } = expansionElement.current.getBoundingClientRect();
+      if (height !== 0) setExpansionHeight(`${height}px`);
     }, []);
 
     return (
@@ -143,20 +143,20 @@ const ExpantionMenu = React.forwardRef<
             </Styled.ArrowIconWrapper>
           </Styled.Container>
         </Tooltip>
-        <Styled.Expantion
-          ref={expantionElement}
-          isExpand={(isExpand && isOpen) || expantionHeight === "auto"}
-          height={expantionHeight}
+        <Styled.Expansion
+          ref={expansionElement}
+          isExpand={(isExpand && isOpen) || expansionHeight === "auto"}
+          height={expansionHeight}
           delay={delayTransition}
         >
-          {expantionList.map((node, index) => (
+          {expansionList.map((node, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <React.Fragment key={index}>{node}</React.Fragment>
           ))}
-        </Styled.Expantion>
+        </Styled.Expansion>
       </div>
     );
   },
 );
 
-export { ExpantionMenu };
+export { ExpansionMenu };
