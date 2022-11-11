@@ -22,7 +22,7 @@ export type NavigationRailExpansionMenuProps =
      */
     notificationCount?: number;
     /**
-     * Array of `<NavagationRail.ExpansionMenu />` is expected.
+     * Array of `<NavigationRail.ExpansionMenu />` is expected.
      */
     expansionList?: React.ReactNode[];
     /**
