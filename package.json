@@ -25,17 +25,17 @@
     "generate": "yarn scaffdog generate"
   },
   "dependencies": {
-    "@popperjs/core": "^2.4.0",
-    "dayjs": "^1.11.6",
-    "moment": "^2.29.3",
-    "react-dates": "^21.8.0",
-    "react-popper": "^2.3.0",
-    "react-select": "^5.3.0",
-    "react-transition-group": "^4.4.1"
+    "@popperjs/core": "2.4.0",
+    "dayjs": "1.11.6",
+    "moment": "2.29.3",
+    "react-dates": "21.8.0",
+    "react-popper": "2.3.0",
+    "react-select": "5.3.0",
+    "react-transition-group": "4.4.1"
   },
   "peerDependencies": {
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0",
+    "react": "17.0.0 || 18.0.0",
+    "react-dom": "17.0.0 || 18.0.0",
     "styled-components": ">= 5.X"
   },
   "devDependencies": {
