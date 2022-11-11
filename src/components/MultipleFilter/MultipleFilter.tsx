@@ -36,13 +36,6 @@ export type MultipleFilterProps = {
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
-
-  /**
-   * @deprecated
-   * I'll delete it in the future.
-   * Because formErrorText it will no longer be necessary.
-   */
-  formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
   width?: string;
