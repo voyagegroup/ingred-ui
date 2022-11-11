@@ -1,2 +1,2 @@
 export { ExpansionMenuItem } from "./ExpansionMenuItem";
-export type { NavigationRailExpansionMenuItemProps as NavigationRailExpansionMenuItemProps } from "./ExpansionMenuItem";
+export type { NavigationRailExpansionMenuItemProps } from "./ExpansionMenuItem";
