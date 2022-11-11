@@ -44,7 +44,7 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       date,
       error = false,
       onDateChange,
-      renderMonthText: renderMonthTextProps,
+      renderMonthText,
       renderMonthElement,
       locale = "en",
       localeData,
@@ -60,9 +60,10 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       onDateChange(dayjsize);
     };
     const handleRenderMonthText = (month: moment.Moment) => {
+      if (renderMonthText == undefined || null) return;
       const dayjsize = momentToDayjs(month);
-      if (!renderMonthTextProps || !dayjsize) return;
-      return renderMonthTextProps(dayjsize);
+      if (dayjsize == null) return;
+      return renderMonthText(dayjsize);
     };
 
     if (localeData) {
@@ -97,9 +98,8 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
               </Spacer>
             </Styled.NavNext>
           }
-          // eslint-disable-next-line react/jsx-handler-names
           renderMonthText={
-            renderMonthTextProps ? handleRenderMonthText : renderMonthTextProps
+            renderMonthText ? handleRenderMonthText : renderMonthText
           }
           renderMonthElement={renderMonthElement as never}
           onFocusChange={onFocusChange}
