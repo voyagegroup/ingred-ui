@@ -60,9 +60,9 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
       onDateChange(dayjsize);
     };
     const handleRenderMonthText = (month: moment.Moment) => {
-      if (renderMonthText == undefined || null) return;
+      if (renderMonthText == undefined) return;
       const dayjsize = momentToDayjs(month);
-      if (dayjsize == null) return;
+      if (dayjsize === null) return;
       return renderMonthText(dayjsize);
     };
 
