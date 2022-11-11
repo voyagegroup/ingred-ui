@@ -5,5 +5,4 @@
   "eslint.options": {
     "extensions": [".js", ".jsx", ".md", ".ts", ".tsx"]
   },
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }
