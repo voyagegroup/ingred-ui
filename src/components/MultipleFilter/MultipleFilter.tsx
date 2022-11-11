@@ -30,9 +30,7 @@ export type MultipleFilterProps = {
    *   filterCondition: ControlType<Types>["options"];
    *  }`
    */
-  onChange?: (
-    referredFilters: ReferredFilterType[],
-  ) => void;
+  onChange?: (referredFilters: ReferredFilterType[]) => void;
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
