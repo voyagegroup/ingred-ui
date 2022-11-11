@@ -47,7 +47,7 @@ const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
       endDate,
       error = false,
       onDatesChange,
-      renderMonthText: renderMonthTextProps,
+      renderMonthText,
       renderMonthElement,
       locale = "en",
       localeData,
@@ -67,9 +67,10 @@ const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
       onDatesChange(dayjsize);
     };
     const handleRenderMonthText = (month: moment.Moment) => {
+      if (renderMonthText == undefined || null) return;
       const dayjsize = momentToDayjs(month);
-      if (!renderMonthTextProps || !dayjsize) return;
-      return renderMonthTextProps(dayjsize);
+      if (dayjsize == null) return;
+      return renderMonthText(dayjsize);
     };
 
     if (localeData) {
@@ -108,9 +109,8 @@ const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
           }
           startDate={dayjsToMoment(startDate)}
           endDate={dayjsToMoment(endDate)}
-          // eslint-disable-next-line react/jsx-handler-names
           renderMonthText={
-            renderMonthTextProps ? handleRenderMonthText : renderMonthTextProps
+            renderMonthText ? handleRenderMonthText : renderMonthText
           }
           renderMonthElement={renderMonthElement as never}
           focusedInput={focusedInput}
