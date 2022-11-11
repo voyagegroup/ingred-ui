@@ -1,7 +1,13 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import "react-dates/initialize";
+import dayjs, { InstanceLocaleDataReturn } from "dayjs";
 import moment from "moment";
+import {
+  dayjsToMoment,
+  momentToDayjs,
+  convertDayjsLocaleDataToObject,
+} from "../../utils/time";
 import {
   FocusedInputShape,
   DateRangePicker as OriginalDateRangePicker,
@@ -15,22 +21,63 @@ function isOutsideRange() {
   return false;
 }
 
-export type DateRangePickerProps = Partial<DateRangePickerShape> & {
-  startDate: moment.Moment | null;
-  endDate: moment.Moment | null;
+export type DateRangePickerProps = Partial<
+  Omit<
+    DateRangePickerShape,
+    "startDate" | "endDate" | "onDatesChange" | "renderMonthText"
+  >
+> & {
+  startDate: dayjs.Dayjs | null;
+  endDate: dayjs.Dayjs | null;
   onDatesChange: (arg: {
-    startDate: moment.Moment | null;
-    endDate: moment.Moment | null;
+    startDate: dayjs.Dayjs | null;
+    endDate: dayjs.Dayjs | null;
   }) => void;
+  renderMonthText?: ((month: dayjs.Dayjs) => React.ReactNode) | null;
+  locale?: string;
+  localeData?: InstanceLocaleDataReturn;
   error?: boolean;
 };
 
 const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
   (inProps, ref) => {
     const props = useLocaleProps({ props: inProps, name: "DateRangePicker" });
-    const { startDate, endDate, error = false, ...rest } = props;
+    const {
+      startDate,
+      endDate,
+      error = false,
+      onDatesChange,
+      renderMonthText,
+      renderMonthElement,
+      locale = "en",
+      localeData,
+      ...rest
+    } = props;
     const [focusedInput, setFocusedInput] =
       React.useState<FocusedInputShape | null>(null);
+
+    const handleDatesChange = (arg: {
+      startDate: moment.Moment | null;
+      endDate: moment.Moment | null;
+    }) => {
+      const dayjsize = {
+        startDate: momentToDayjs(arg.startDate),
+        endDate: momentToDayjs(arg.endDate),
+      };
+      onDatesChange(dayjsize);
+    };
+    const handleRenderMonthText = (month: moment.Moment) => {
+      if (renderMonthText == undefined) return;
+      const dayjsize = momentToDayjs(month);
+      if (dayjsize === null) return;
+      return renderMonthText(dayjsize);
+    };
+
+    if (localeData) {
+      moment.locale(locale, convertDayjsLocaleDataToObject(localeData));
+    } else {
+      moment.locale(locale);
+    }
 
     return (
       <Styled.Container ref={ref} error={error}>
@@ -60,11 +107,16 @@ const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
               </Spacer>
             </Styled.NavNext>
           }
-          {...rest}
-          startDate={startDate}
-          endDate={endDate}
+          startDate={dayjsToMoment(startDate)}
+          endDate={dayjsToMoment(endDate)}
+          renderMonthText={
+            renderMonthText ? handleRenderMonthText : renderMonthText
+          }
+          renderMonthElement={renderMonthElement as never}
           focusedInput={focusedInput}
           onFocusChange={setFocusedInput}
+          onDatesChange={handleDatesChange}
+          {...rest}
         />
       </Styled.Container>
     );
