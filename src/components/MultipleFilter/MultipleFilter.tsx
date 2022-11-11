@@ -9,7 +9,7 @@ import { FilterCard } from "./internal/FilterCard";
 import { EditFilterCard } from "./internal/EditFilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
-import { FilterPackType, ReferredFilterType, ReferedFilterType } from "./types";
+import { FilterPackType, ReferredFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 
@@ -31,7 +31,7 @@ export type MultipleFilterProps = {
    *  }`
    */
   onChange?: (
-    referredFilters: ReferredFilterType[] | ReferedFilterType[],
+    referredFilters: ReferredFilterType[],
   ) => void;
   placeholder?: string;
   editButtonTitle?: string;
