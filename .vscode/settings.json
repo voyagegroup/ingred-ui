@@ -4,5 +4,5 @@
   },
   "eslint.options": {
     "extensions": [".js", ".jsx", ".md", ".ts", ".tsx"]
-  },
+  }
 }
