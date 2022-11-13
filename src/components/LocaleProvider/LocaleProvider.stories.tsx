@@ -17,7 +17,7 @@ import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
 import { FilterPackType, ReferredFilterType } from "../MultipleFilter/types";
-import moment from "moment";
+import dayjs from "dayjs";
 
 export default {
   title: "Components/Utils/LocaleProvider",
@@ -170,7 +170,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
         ※ Needs locale import (e.g. import &apos;moment/locale/ja&apos;).
       </Typography>
       <Spacer pl={2} pt={2} pb={40}>
-        <DatePicker date={moment()} onDateChange={() => {}} />
+        <DatePicker date={dayjs()} onDateChange={() => {}} />
       </Spacer>
     </LocaleProvider>
   );

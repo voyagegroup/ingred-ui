@@ -1,12 +1,5 @@
 module.exports = {
-  plugins: [
-    "prettier",
-    "@typescript-eslint",
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "jest",
-  ],
+  plugins: ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "jest"],
   extends: [
     "eslint:recommended",
     "prettier",
@@ -17,7 +10,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:jest/recommended",
-    "plugin:mdx/recommended",
     "plugin:jsx-a11y/recommended",
   ],
   parser: "@typescript-eslint/parser",
@@ -60,19 +52,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-unresolved": "off",
-    "prettier/prettier": [
-      "error",
-      {
-        singleQuote: false,
-        useTabs: false,
-        tabWidth: 2,
-        semi: true,
-        bracketSpacing: true,
-        trailingComma: "all",
-        arrowParens: "always",
-      },
-    ],
-
     "react/jsx-handler-names": [
       "error",
       {
@@ -162,7 +141,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.stories.tsx", "*.stories.mdx", "*.test.ts", "*.test.tsx"],
+      files: ["*.stories.tsx", "*.test.ts", "*.test.tsx"],
       rules: {
         "no-restricted-imports": [
           "error",
@@ -199,10 +178,6 @@ module.exports = {
         camelcase: "off",
         "@typescript-eslint/no-var-requires": "off",
       },
-    },
-    {
-      files: ["*.mdx"],
-      extends: ["plugin:mdx/overrides"],
     },
   ],
 };

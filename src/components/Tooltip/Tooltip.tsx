@@ -45,11 +45,15 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     },
     ref,
   ) => {
-    /* eslint-disable prettier/prettier */
-  const [baseElement, setBaseElement] = React.useState<HTMLElement | null>(null);
-  const [arrowElement, setArrowElement] = React.useState<HTMLElement | null>(null);
-  const [popperElement, setPopperElement] = React.useState<HTMLElement | null>(null);
-  /* eslint-enable prettier/prettier */
+    const [baseElement, setBaseElement] = React.useState<HTMLElement | null>(
+      null,
+    );
+    const [arrowElement, setArrowElement] = React.useState<HTMLElement | null>(
+      null,
+    );
+    const [popperElement, setPopperElement] =
+      React.useState<HTMLElement | null>(null);
+
     const [open, setOpen] = React.useState<boolean>(false);
     const [openTimer, setOpenTimer] = React.useState<number | null>(null);
     const [closeTimer, setCloseTimer] = React.useState<number | null>(null);
