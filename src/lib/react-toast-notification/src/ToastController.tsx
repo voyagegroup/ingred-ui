@@ -22,6 +22,7 @@ class Timer {
     this.callback = callback;
     this.start = delay;
     this.remaining = delay;
+    this.timerId = setTimeout(callback, delay);
     this.resume();
   }
 
@@ -42,10 +43,22 @@ class Timer {
 }
 
 export class ToastController extends Component<Props, State> {
-  timeout: typeof TimerType;
+  timeout: typeof TimerType = {
+    clear: () => {
+      // noop
+    },
+    pause: () => {
+      // noop
+    },
+    resume: () => {
+      // noop
+    },
+  };
+
   state = {
     isRunning: Boolean(this.props.autoDismiss),
   };
+
   static defaultProps = {
     autoDismiss: false,
   };

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
 import { Story } from "@storybook/react/types-6-0";
 import Select, { OptionType } from "./Select";
+import { MultiValue } from "react-select";
 
 export default {
   title: "Components/Inputs/Select",
@@ -47,8 +48,12 @@ export const MultipleSelect = () => {
     { label: "Two", value: 2 },
     { label: "Three", value: 3 },
   ];
-  const handleChange = (options: OptionType<number>[]) => {
-    setSelected(options.map((ops) => ops.label));
+  const handleChange = (options: MultiValue<OptionType<number>>) => {
+    if (options === null) {
+      setSelected([]);
+    } else {
+      setSelected(options.map((option) => option.label));
+    }
   };
   return (
     <div style={{ height: "200px" }}>

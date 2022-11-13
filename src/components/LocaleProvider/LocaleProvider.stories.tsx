@@ -7,6 +7,7 @@ import {
   ConfirmModal,
   DatePicker,
   MultipleFilter,
+  OptionType,
   Select,
   Spacer,
   ToggleButton,
@@ -100,12 +101,14 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
   const [active, setActive] = React.useState<boolean>(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedLocale, setSelectedLocale] = React.useState(localeOptions[1]);
+  const [selectedLocale, setSelectedLocale] = React.useState<OptionType | null>(
+    localeOptions[1],
+  );
   const handleToggleButton = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLocationChange = (v: { label: string; value: string }) => {
+  const handleLocationChange = (v: OptionType | null) => {
     setSelectedLocale(v);
   };
 
@@ -115,7 +118,9 @@ export const Example: Story<LocaleProviderProps> = (args) => {
   };
 
   return (
-    <LocaleProvider locale={locales[selectedLocale.value]}>
+    <LocaleProvider
+      locale={locales[selectedLocale !== null ? selectedLocale.value : ""]}
+    >
       <Spacer pl={2} pt={2} pb={4}>
         <div> Select a locale! </div>
         <Select
@@ -123,7 +128,9 @@ export const Example: Story<LocaleProviderProps> = (args) => {
           defaultValue={selectedLocale}
           onChange={handleLocationChange}
         />
-        <div>Selected locale: {selectedLocale.value} </div>
+        <div>
+          Selected locale: {selectedLocale !== null ? selectedLocale.value : ""}
+        </div>
       </Spacer>
 
       <h2>ToggleButton</h2>

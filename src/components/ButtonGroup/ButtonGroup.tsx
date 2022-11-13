@@ -27,7 +27,8 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
       size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
 
     const childrenWithProps = React.Children.map(
-      children,
+      // uhh...
+      children as React.ReactElement[],
       (child: React.ReactElement) => {
         const Button = React.cloneElement(child, {
           ...child.props,
