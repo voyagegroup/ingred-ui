@@ -94,9 +94,9 @@ const filterPacksExample: FilterPackType[] = [
 ];
 
 export const Example: Story<LocaleProviderProps> = (args) => {
-  const localeOptions = Object.keys(locales).map((_) => ({
-    label: _,
-    value: _,
+  const localeOptions = Object.keys(locales).map((locale) => ({
+    label: locale,
+    value: locale,
   }));
   localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
   const [active, setActive] = React.useState<boolean>(false);
@@ -108,11 +108,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
     setIsOpen(!isOpen);
   };
 
-  const handleLocationChange = (v: OptionType | null) => {
-    setSelectedLocale(v);
-  };
-
-  const [_, setFilters] = React.useState<ReferredFilterType[]>([]); // eslint-disable-line @typescript-eslint/naming-convention
+  const setFilters = React.useState<ReferredFilterType[]>([])[1];
   const handleChange = (referredFilters: ReferredFilterType[]) => {
     setFilters(referredFilters);
   };
@@ -126,7 +122,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
         <Select
           options={localeOptions}
           defaultValue={selectedLocale}
-          onChange={handleLocationChange}
+          onChange={setSelectedLocale}
         />
         <div>
           Selected locale: {selectedLocale !== null ? selectedLocale.value : ""}
