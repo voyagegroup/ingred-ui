@@ -26,6 +26,5 @@ export function convertDayjsLocaleDataToObject(
     weekdaysShort: localeData.weekdaysShort(),
     weekdaysMin: localeData.weekdaysMin(),
     meridiem: localeData.meridiem,
-    ordinal: localeData.ordinal,
   };
 }
