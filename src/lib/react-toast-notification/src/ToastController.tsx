@@ -15,14 +15,13 @@ const TimerType = {
 class Timer {
   start: number;
   remaining: number;
-  timerId: NodeJS.Timeout;
+  timerId?: NodeJS.Timeout;
   callback: () => void;
 
   constructor(callback: () => void, delay: number) {
     this.callback = callback;
     this.start = delay;
     this.remaining = delay;
-    this.timerId = setTimeout(callback, delay);
     this.resume();
   }
 
