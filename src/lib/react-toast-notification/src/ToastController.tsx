@@ -42,18 +42,7 @@ class Timer {
 }
 
 export class ToastController extends Component<Props, State> {
-  timeout: typeof TimerType = {
-    clear: () => {
-      // noop
-    },
-    pause: () => {
-      // noop
-    },
-    resume: () => {
-      // noop
-    },
-  };
-
+  timeout?: typeof TimerType;
   state = {
     isRunning: Boolean(this.props.autoDismiss),
   };
