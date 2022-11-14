@@ -35,7 +35,8 @@ export const Span = styled.span<{
   indeterminate: boolean;
   error: boolean;
 }>`
-  display: table;
+  display: inline-flex;
+  vertical-align: middle;
   align-items: center;
   color: ${({ error }) =>
     error
