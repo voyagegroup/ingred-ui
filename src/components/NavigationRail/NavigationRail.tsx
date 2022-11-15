@@ -6,8 +6,8 @@ import { Header, Content, Footer } from "./Inner";
 import { MainContent } from "./MainContent";
 import { Fixture } from "./Fixture";
 import { Menu } from "./Menu";
-import { ExpantionMenu } from "./ExpantionMenu";
-import { ExpantionMenuItem } from "./ExpantionMenuItem";
+import { ExpansionMenu } from "./ExpansionMenu";
+import { ExpansionMenuItem } from "./ExpansionMenuItem";
 
 type ExportedComponentType = {
   (props: Props & React.RefAttributes<HTMLDivElement>): JSX.Element;
@@ -16,8 +16,8 @@ type ExportedComponentType = {
   Content: typeof Content;
   Footer: typeof Footer;
   Menu: typeof Menu;
-  ExpantionMenu: typeof ExpantionMenu;
-  ExpantionMenuItem: typeof ExpantionMenuItem;
+  ExpansionMenu: typeof ExpansionMenu;
+  ExpansionMenuItem: typeof ExpansionMenuItem;
   Fixture: typeof Fixture;
   MainContent: typeof MainContent;
 };
@@ -54,8 +54,8 @@ ExportedComponent.Header = Header;
 ExportedComponent.Content = Content;
 ExportedComponent.Footer = Footer;
 ExportedComponent.Menu = Menu;
-ExportedComponent.ExpantionMenu = ExpantionMenu;
-ExportedComponent.ExpantionMenuItem = ExpantionMenuItem;
+ExportedComponent.ExpansionMenu = ExpansionMenu;
+ExportedComponent.ExpansionMenuItem = ExpansionMenuItem;
 ExportedComponent.Fixture = Fixture;
 ExportedComponent.MainContent = MainContent;
 
