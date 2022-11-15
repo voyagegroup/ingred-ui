@@ -9,7 +9,7 @@ import { FilterCard } from "./internal/FilterCard";
 import { EditFilterCard } from "./internal/EditFilterCard";
 import { Status, getCurrentStatus } from "./MultipleFilterStatus";
 import { Label } from "./internal/Label";
-import { FilterPackType, ReferredFilterType, ReferedFilterType } from "./types";
+import { FilterPackType, ReferredFilterType } from "./types";
 import { ContentProp } from "../MenuList/MenuList";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 
@@ -30,19 +30,10 @@ export type MultipleFilterProps = {
    *   filterCondition: ControlType<Types>["options"];
    *  }`
    */
-  onChange?: (
-    referredFilters: ReferredFilterType[] | ReferedFilterType[],
-  ) => void;
+  onChange?: (referredFilters: ReferredFilterType[]) => void;
   placeholder?: string;
   editButtonTitle?: string;
   applyButtonTitle?: string;
-
-  /**
-   * @deprecated
-   * I'll delete it in the future.
-   * Because formErrorText it will no longer be necessary.
-   */
-  formErrorText?: string;
   inputErrorText?: string;
   formPlaceholder?: string;
   width?: string;

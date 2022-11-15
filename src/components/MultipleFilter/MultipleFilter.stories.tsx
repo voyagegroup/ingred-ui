@@ -109,7 +109,6 @@ export const Example: Story<MultipleFilterProps> = (args) => {
     <MultipleFilter
       {...args}
       filterPacks={filterPacksExample}
-      formErrorText={"Form error text can be customized"}
       inputErrorText={"Input error text can be customized"}
       formPlaceholder={"Placeholder can be customized"}
       onChange={handleChange}
