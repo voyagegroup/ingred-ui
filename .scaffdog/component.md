@@ -3,7 +3,7 @@ name: "component"
 questions:
   name: "Please enter component name."
 root: "src/components"
-output: '**/*'
+output: "**/*"
 ignore: []
 ---
 
@@ -41,7 +41,6 @@ export default {{ inputs.name | pascal }};
 import styled from "styled-components";
 
 export const Container = styled.div``;
-
 ```
 
 # `{{ inputs.name | pascal }}/__tests__/{{ inputs.name | pascal }}.test.tsx`
@@ -69,7 +68,7 @@ describe("{{ inputs.name | pascal }} component testing", () => {
 ```typescript
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import {{ inputs.name | pascal }}, { {{ inputs.name | pascal }}Props } from ".";
+import {{ inputs.name | pascal }}, { {{ inputs.name | pascal }}Props } from "./{{ inputs.name | pascal }}";
 
 export default {
   title: "Components/〇〇/{{ inputs.name | pascal }}",

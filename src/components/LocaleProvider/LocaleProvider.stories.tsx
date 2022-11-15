@@ -1,12 +1,13 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import LocaleProvider, { LocaleProviderProps } from ".";
+import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 import {
   Button,
   Card,
   ConfirmModal,
   DatePicker,
   MultipleFilter,
+  OptionType,
   Select,
   Spacer,
   ToggleButton,
@@ -17,7 +18,7 @@ import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
 import { FilterPackType, ReferredFilterType } from "../MultipleFilter/types";
-import moment from "moment";
+import dayjs from "dayjs";
 
 export default {
   title: "Components/Utils/LocaleProvider",
@@ -93,37 +94,39 @@ const filterPacksExample: FilterPackType[] = [
 ];
 
 export const Example: Story<LocaleProviderProps> = (args) => {
-  const localeOptions = Object.keys(locales).map((_) => ({
-    label: _,
-    value: _,
+  const localeOptions = Object.keys(locales).map((locale) => ({
+    label: locale,
+    value: locale,
   }));
   localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
   const [active, setActive] = React.useState<boolean>(false);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [selectedLocale, setSelectedLocale] = React.useState(localeOptions[1]);
+  const [selectedLocale, setSelectedLocale] = React.useState<OptionType | null>(
+    localeOptions[1],
+  );
   const handleToggleButton = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLocationChange = (v: { label: string; value: string }) => {
-    setSelectedLocale(v);
-  };
-
-  const [_, setFilters] = React.useState<ReferredFilterType[]>([]); // eslint-disable-line @typescript-eslint/naming-convention
+  const setFilters = React.useState<ReferredFilterType[]>([])[1];
   const handleChange = (referredFilters: ReferredFilterType[]) => {
     setFilters(referredFilters);
   };
 
   return (
-    <LocaleProvider locale={locales[selectedLocale.value]}>
+    <LocaleProvider
+      locale={locales[selectedLocale !== null ? selectedLocale.value : ""]}
+    >
       <Spacer pl={2} pt={2} pb={4}>
         <div> Select a locale! </div>
         <Select
           options={localeOptions}
           defaultValue={selectedLocale}
-          onChange={handleLocationChange}
+          onChange={setSelectedLocale}
         />
-        <div>Selected locale: {selectedLocale.value} </div>
+        <div>
+          Selected locale: {selectedLocale !== null ? selectedLocale.value : ""}
+        </div>
       </Spacer>
 
       <h2>ToggleButton</h2>
@@ -170,7 +173,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
         ※ Needs locale import (e.g. import &apos;moment/locale/ja&apos;).
       </Typography>
       <Spacer pl={2} pt={2} pb={40}>
-        <DatePicker date={moment()} onDateChange={() => {}} />
+        <DatePicker date={dayjs()} onDateChange={() => {}} />
       </Spacer>
     </LocaleProvider>
   );

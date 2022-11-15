@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import ButtonGroup from ".";
 import Button from "../Button";
-import { ButtonGroupProps } from "./ButtonGroup";
+import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
 import { Flex, Spacer, Typography } from "..";
 
 export default {
@@ -68,6 +67,8 @@ export const LinkMixed: Story<ButtonGroupProps> = (args) => {
   );
   return (
     <ButtonGroup {...args}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <Button component={Link} href="#">
         Link via {`<Link />`} Component
       </Button>

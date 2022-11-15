@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import Pager, { useFilterState, getFilteredItems, PagerProps } from "./";
+import Pager, { useFilterState, getFilteredItems, PagerProps } from "./Pager";
 import { Story } from "@storybook/react/types-6-0";
 import Typography from "../Typography";
 import Spacer from "../Spacer";
