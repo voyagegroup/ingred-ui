@@ -15,7 +15,7 @@ const ConfirmModalSample: React.FC = () => {
         isOpen={isOpen}
         title="Title"
         confirmText="ConfirmText"
-        cancelText="CanselText"
+        cancelText="CancelText"
         onClose={handleToggleButton}
         onSubmit={action("submit")}
       >
