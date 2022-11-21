@@ -9,6 +9,7 @@ import {
 } from "..";
 import { SelectProps } from "../components";
 import { CreatableSelectProps } from "../components/CreatableSelect";
+import { FullSizeModalProps } from "../components/FullSizeModal";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
 import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCard/FilterCard";
 
@@ -20,6 +21,9 @@ export interface Localization {
     };
     ConfirmModal?: {
       defaultProps: Pick<ConfirmModalProps, "confirmText" | "cancelText">;
+    };
+    FullSizeModal?: {
+      defaultProps: Pick<FullSizeModalProps, "confirmText" | "cancelText">;
     };
     FileUploader?: {
       defaultProps: Pick<FileUploaderProps, "title">;
@@ -79,6 +83,9 @@ export const jaJP: Localization = {
     ConfirmModal: {
       defaultProps: { confirmText: "確認", cancelText: "キャンセル" },
     },
+    FullSizeModal: {
+      defaultProps: { confirmText: "確認", cancelText: "キャンセル" },
+    },
     FileUploader: {
       defaultProps: {
         title: "ファイルをドラッグ&ドロップ、またはここをクリック",
@@ -123,6 +130,9 @@ export const zhCN: Localization = {
       defaultProps: { activeText: "开", inActiveText: "关" },
     },
     ConfirmModal: {
+      defaultProps: { confirmText: "确认", cancelText: "取消" },
+    },
+    FullSizeModal: {
       defaultProps: { confirmText: "确认", cancelText: "取消" },
     },
     FileUploader: {
