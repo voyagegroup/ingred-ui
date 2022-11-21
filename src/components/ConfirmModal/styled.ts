@@ -1,6 +1,7 @@
 import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
+import Typography from "../Typography";
 
 const fadeIn = keyframes`
   0% {
@@ -30,27 +31,17 @@ const slideIn = keyframes`
   }
 `;
 
-const FullSizeSlideIn = keyframes`
-  0% {
-    transform: translate(-50%, 0%);
-  }
-  100% {
-    transform: translate(-50%, -48%);
-  }
-`;
-export const ModalContainer = styled(Card)<{ fullSize: boolean }>`
+export const ModalContainer = styled(Card)`
   position: absolute;
   top: 50%;
   left: 50%;
   min-width: 400px;
-  width: ${({ fullSize }) => (fullSize ? "100vw" : "auto")};
-  height: ${({ fullSize }) => (fullSize ? "100vh" : "auto")};
-  transform: ${({ fullSize }) =>
-    fullSize ? `translate(-50%, -48%);` : `translate(-50%, -50%);`};
-  border-radius: ${({ fullSize, theme }) =>
-    fullSize ? `8px 8px 0 0` : `${theme.radius}px`};
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  border-radius: ${({ theme }) => `${theme.radius}px`};
   background-color: ${({ theme }) => theme.palette.background.default};
-  animation: ${({ fullSize }) => (fullSize ? FullSizeSlideIn : slideIn)} 0.4s;
+  animation: ${slideIn} 0.4s;
   overflow: hidden;
 `;
 
@@ -69,32 +60,32 @@ export const LeftContainer = styled.div`
   max-width: 70%;
 `;
 
+export const TitleContainer = styled(Typography)`
+  word-break: normal;
+`;
+
 type ScrollContainerProps = {
   overflowYScroll: boolean;
-  fullSize: boolean;
   showFooter: boolean;
 };
 
 export const ScrollContainer = styled.div<ScrollContainerProps>`
-  height: ${({ fullSize, showFooter, theme }) =>
-    fullSize
-      ? `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`
-      : "auto"};
-  margin-bottom: ${({ fullSize, showFooter, theme }) =>
+  height: auto;
+  margin-bottom: ${({ showFooter, theme }) =>
     /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
-    fullSize || !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
-  ${({ overflowYScroll, fullSize }) =>
+    !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
+  ${({ overflowYScroll }) =>
     overflowYScroll
       ? addScrollbarProperties({
-          maxHeight: fullSize ? "auto" : "calc(80vh - 61px)",
+          maxHeight: "calc(80vh - 61px)",
         })
       : css`
           overflow-y: visible;
-          max-height: ${fullSize ? "auto" : "calc(80vh - 61px)"};
+          max-height: "calc(80vh - 61px)";
         `}
 `;
 
-export const ModalFooter = styled.div<{ fullSize: boolean }>`
+export const ModalFooter = styled.div`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -105,9 +96,8 @@ export const ModalFooter = styled.div<{ fullSize: boolean }>`
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-radius: ${({ fullSize, theme }) =>
-    fullSize ? 0 : `0 0 ${theme.radius}px ${theme.radius}px`};
-  margin-bottom: ${({ fullSize }) => (fullSize ? "1.8vh" : "auto")};
+  border-radius: ${({ theme }) => `0 0 ${theme.radius}px ${theme.radius}px`};
+  margin-bottom: auto;
 `;
 
 export const IconContainer = styled.div`

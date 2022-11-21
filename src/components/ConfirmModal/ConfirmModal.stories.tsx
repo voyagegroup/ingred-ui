@@ -50,13 +50,6 @@ Basic.args = {
   onSubmit: action("submitted"),
 };
 
-export const FullSize = Template.bind({});
-FullSize.args = {
-  children: "Content",
-  onSubmit: action("submitted"),
-  fullSize: true,
-};
-
 export const WithTips = Template.bind({});
 WithTips.args = {
   children: "Content",
@@ -68,7 +61,6 @@ export const WithSubActions = Template.bind({});
 WithSubActions.args = {
   children: "Content",
   onSubmit: action("submitted"),
-  fullSize: true,
   subActions: [
     {
       title: "Download in CSV format",

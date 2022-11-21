@@ -80,7 +80,7 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
         })
       : css`
           overflow-y: visible;
-          max-height: "auto";
+          max-height: auto;
         `}
 `;
 
@@ -96,7 +96,7 @@ export const ModalFooter = styled.div`
     ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
   border-radius: 0;
-  margin-bottom: "1.8vh";
+  margin-bottom: 1.8vh;
 `;
 
 export const IconContainer = styled.div`
