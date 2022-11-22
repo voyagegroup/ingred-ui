@@ -30,7 +30,7 @@
     "moment": "^2.29.3",
     "react-dates": "^21.8.0",
     "react-popper": "^2.3.0",
-    "react-select": "^5.3.0",
+    "react-select": "^5.6.0",
     "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
