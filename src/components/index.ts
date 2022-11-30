@@ -74,6 +74,9 @@ export * from "./Icon";
 export { default as Input } from "./Input";
 export * from "./Input";
 
+export { default as CalenderInput } from "./CalenderInput";
+export * from "./CalenderInput";
+
 export { default as ItemEmpty } from "./ItemEmpty";
 export * from "./ItemEmpty";
 
