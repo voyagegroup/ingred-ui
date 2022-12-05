@@ -11,7 +11,7 @@ exports[`Checkbox component testing Checkbox 1`] = `
       type="checkbox"
     />
     <span
-      class="sc-dkzDqf dfSLkU"
+      class="sc-dkzDqf iprZFs"
     />
   </label>
 </DocumentFragment>
