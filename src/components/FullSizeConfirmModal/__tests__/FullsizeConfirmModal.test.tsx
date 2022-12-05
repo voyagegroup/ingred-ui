@@ -1,8 +1,8 @@
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
-import FullSizeModal from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
+import FullSizeConfirmModal from "../FullSizeConfirmModal";
 
 jest.mock("react-dom", () => {
   const original = jest.requireActual("react-dom");
@@ -12,12 +12,12 @@ jest.mock("react-dom", () => {
   };
 });
 
-describe("FullSizeModal component testing", () => {
+describe("FullSizeConfirmModal component testing", () => {
   afterEach(cleanup);
 
-  test("FullSizeModal", () => {
+  test("FullSizeConfirmModal", () => {
     const { asFragment } = renderWithThemeProvider(
-      <FullSizeModal title="Title" />,
+      <FullSizeConfirmModal title="Title" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
