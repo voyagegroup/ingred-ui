@@ -632,7 +632,7 @@ const DataTable = <T extends DataTableBaseData>(
   );
 };
 
-// FIXME: Imprement without type assertion
+// FIXME: Implement without type assertion
 export default React.forwardRef(DataTable) as <T extends DataTableBaseData>(
   props: DataTableProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof DataTable>;
