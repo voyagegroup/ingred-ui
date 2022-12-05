@@ -185,7 +185,7 @@ export type DataTableProps<T> = {
   /**
    * Specify checked rows.
    */
-  defaultSelectedRows?: number[];
+  selectedRows?: number[];
   /**
    * Specify checked row.
    */
@@ -222,7 +222,7 @@ const DataTable = <T extends DataTableBaseData>(
     per,
     defaultSortField,
     defaultSortOrder = "desc",
-    defaultSelectedRows = [],
+    selectedRows = [],
     selectedRow,
     enableRuledLine = false,
     verticalSpacing = "medium",
@@ -237,8 +237,6 @@ const DataTable = <T extends DataTableBaseData>(
 ) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
-  const [selectedRows, setSelectedRows] =
-    React.useState<number[]>(defaultSelectedRows);
   const indeterminate = selectedRows.length > 0 && !allSelected;
 
   const showRadioButton = !!onRadioChange;
@@ -324,24 +322,10 @@ const DataTable = <T extends DataTableBaseData>(
 
   // MEMO: Clear selected items.
   React.useEffect(() => {
-    if (clearSelectedRows) {
-      setSelectedRows([]);
-      if (onSelectRowsChange) {
-        onSelectRowsChange([]);
-      }
+    if (clearSelectedRows && onSelectRowsChange) {
+      onSelectRowsChange([]);
     }
   }, [clearSelectedRows, onSelectRowsChange]);
-
-  React.useEffect(() => {
-    if (onSelectRowsChange) {
-      onSelectRowsChange(selectedRows);
-    }
-  }, [selectedRows, onSelectRowsChange]);
-  React.useEffect(() => {
-    if (onRadioChange) {
-      onRadioChange(selectedRow as number);
-    }
-  }, [selectedRow, onRadioChange]);
 
   const handleTabChange = (tabIndex: number) => {
     setCurrentTabIndex(tabIndex);
@@ -360,10 +344,15 @@ const DataTable = <T extends DataTableBaseData>(
   };
 
   const handleSelectCheckbox = (id: number) => () => {
+    if (!onSelectRowsChange) {
+      return;
+    }
     if (selectedRows.includes(id)) {
-      setSelectedRows(selectedRows.filter((selectedId) => selectedId !== id));
+      onSelectRowsChange(
+        selectedRows.filter((selectedId) => selectedId !== id),
+      );
     } else {
-      setSelectedRows([...selectedRows, id]);
+      onSelectRowsChange([...selectedRows, id]);
     }
   };
 
@@ -374,11 +363,14 @@ const DataTable = <T extends DataTableBaseData>(
   };
 
   const handleToggleCheckAll = () => {
+    if (!onSelectRowsChange) {
+      return;
+    }
     if (selectedRows.length > 0) {
-      setSelectedRows([]);
+      onSelectRowsChange([]);
       setAllSelected(false);
     } else {
-      setSelectedRows(
+      onSelectRowsChange(
         displayData
           .filter((data) => !data.selectDisabled)
           .map((data) => data.id),
