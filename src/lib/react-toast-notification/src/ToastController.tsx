@@ -15,7 +15,7 @@ const TimerType = {
 class Timer {
   start: number;
   remaining: number;
-  timerId: NodeJS.Timeout;
+  timerId?: NodeJS.Timeout;
   callback: () => void;
 
   constructor(callback: () => void, delay: number) {
@@ -42,10 +42,11 @@ class Timer {
 }
 
 export class ToastController extends Component<Props, State> {
-  timeout: typeof TimerType;
+  timeout?: typeof TimerType;
   state = {
     isRunning: Boolean(this.props.autoDismiss),
   };
+
   static defaultProps = {
     autoDismiss: false,
   };
