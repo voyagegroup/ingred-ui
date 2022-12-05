@@ -47,6 +47,7 @@ import { SnackbarContent } from "../../../../src/components/Snackbar/internal/Sn
 import ToastSample from "./components/ToastSample";
 import ClickAwayListenerSample from "./components/ClickawayListenerSample";
 import ConfirmModalSample from "./components/ConfirmModalSample";
+import FullSizeConfirmModalSample from "./components/FullSizeConfirmModalSample";
 import ModalSample from "./components/ModalSample";
 import FadeSample from "./components/FadeSample";
 import GrowSample from "./components/GrowSample";
@@ -407,6 +408,10 @@ const componentList: Section[] = [
       {
         title: "ConfirmModal",
         content: <ConfirmModalSample />,
+      },
+      {
+        title: "FullSizeConfirmModal",
+        content: <FullSizeConfirmModalSample />,
       },
       {
         title: "Modal",
