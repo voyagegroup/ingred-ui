@@ -188,8 +188,6 @@ export type DataTableProps<T> = {
   defaultSelectedRows?: number[];
   /**
    * Specify checked row.
-   * Not rerender when this prop is updated because it is used for initial value of state.
-   * **Please use with `onSelectRowChange={true}`.**
    */
   selectedRow?: number;
   /**
