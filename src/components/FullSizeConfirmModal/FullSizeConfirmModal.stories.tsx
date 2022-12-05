@@ -67,7 +67,6 @@ export const WithSubActions = Template.bind({});
 WithSubActions.args = {
   children: "Content",
   onSubmit: action("submitted"),
-  fullSize: true,
   subActions: [
     {
       title: "Download in CSV format",
