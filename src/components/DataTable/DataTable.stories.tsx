@@ -145,7 +145,7 @@ export const SelectableRows: Story<DataTableProps<any>> = (args) => {
 };
 
 export const SelectableRow: Story<DataTableProps<any>> = (args) => {
-  const [selectedRow, setSelectedRow] = React.useState<number>();
+  const [selectedRow, setSelectedRow] = React.useState<number>(32205);
   const handleClick = () => {
     alert(selectedRow);
   };
@@ -154,7 +154,7 @@ export const SelectableRow: Story<DataTableProps<any>> = (args) => {
       <Button onClick={handleClick}>選択したアイテムを表示</Button>
       <DataTable
         {...args}
-        defaultSelectedRow={32205}
+        selectedRow={selectedRow}
         onRadioChange={setSelectedRow}
       />
     </>

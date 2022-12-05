@@ -184,8 +184,6 @@ export type DataTableProps<T> = {
   defaultSortOrder?: "desc" | "asc";
   /**
    * Specify checked rows.
-   * Not rerender when this prop is updated because it is used for initial value of state.
-   * **Please use with `onSelectRowsChange={true}`.**
    */
   defaultSelectedRows?: number[];
   /**
@@ -193,7 +191,7 @@ export type DataTableProps<T> = {
    * Not rerender when this prop is updated because it is used for initial value of state.
    * **Please use with `onSelectRowChange={true}`.**
    */
-  defaultSelectedRow?: number;
+  selectedRow?: number;
   /**
    * Add verticale line in table.
    */
@@ -227,7 +225,7 @@ const DataTable = <T extends DataTableBaseData>(
     defaultSortField,
     defaultSortOrder = "desc",
     defaultSelectedRows = [],
-    defaultSelectedRow,
+    selectedRow,
     enableRuledLine = false,
     verticalSpacing = "medium",
     fullWidth = false,
@@ -246,9 +244,6 @@ const DataTable = <T extends DataTableBaseData>(
   const indeterminate = selectedRows.length > 0 && !allSelected;
 
   const showRadioButton = !!onRadioChange;
-  const [selectedRow, setSelectedRow] = React.useState<number | null>(
-    defaultSelectedRow || null,
-  );
 
   const showTabs = !!tabs;
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
@@ -375,7 +370,9 @@ const DataTable = <T extends DataTableBaseData>(
   };
 
   const handleSelectRadioButton = (id: number) => () => {
-    setSelectedRow(id);
+    if (onRadioChange) {
+      onRadioChange(id);
+    }
   };
 
   const handleToggleCheckAll = () => {
