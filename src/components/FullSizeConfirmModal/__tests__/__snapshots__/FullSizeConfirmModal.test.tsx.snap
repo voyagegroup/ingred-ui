@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FullSizeModal component testing FullSizeModal 1`] = `
+exports[`FullSizeConfirmModal component testing FullSizeConfirmModal 1`] = `
 <DocumentFragment>
   <div
     class="sc-fEOsli isNjsf"
