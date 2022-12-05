@@ -164,7 +164,7 @@ export type DataTableProps<T> = {
    */
   tabs?: Tab<T>[];
   /**
-   * props of [ItemEnpty](/?path=/docs/components-utils-itemempty)
+   * props of [ItemEmpty](/?path=/docs/components-utils-itemEmpty)
    */
   itemEmptyProps?: ItemEmptyProps;
   /**
