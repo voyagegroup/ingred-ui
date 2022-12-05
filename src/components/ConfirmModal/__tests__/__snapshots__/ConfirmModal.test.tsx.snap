@@ -3,44 +3,44 @@
 exports[`ConfirmModal component testing ConfirmModal 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bjUoiL PYIKG"
+    class="sc-fnykZs dDCXYC"
   >
     <div
-      class="sc-dIouRR jvBtPZ fade-transition-appear fade-transition-appear-active"
+      class="sc-bjUoiL iQQjZl fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-idiyUo kOLlFS"
+        class="sc-fEOsli dQTjDb"
       />
     </div>
     <div
-      class="sc-dIouRR jvBtPZ fade-transition-appear fade-transition-appear-active"
+      class="sc-bjUoiL iQQjZl fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-gsnTZi sc-eCYdqJ eLlhHs gKLxYE"
+        class="sc-gsnTZi sc-hKMtZM eLlhHs fuvkzh"
       >
         <form>
           <div
-            class="sc-jSMfEi cePNPt"
+            class="sc-eCYdqJ fvJTaz"
           >
             <div
-              class="sc-gKXOVf llXxLy"
+              class="sc-jSMfEi iAOTOP"
             >
               <p
-                class="sc-dkzDqf gxfJIJ sc-iBkjds hiySHu"
+                class="sc-idiyUo jxGDeA"
                 color="#041C33"
                 font-size="20px"
               >
                 Title
               </p>
               <div
-                class="sc-breuTD kYrQXn"
+                class="sc-crXcEl fgriGY"
               />
             </div>
             <div
-              class="sc-jqUVSM jMxhbj"
+              class="sc-ftvSup uBGUH"
             >
               <span
-                class="sc-evZas inojXH"
+                class="sc-iqcoie kMvdeg"
                 size="24"
               >
                 <svg
@@ -66,10 +66,10 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
             </div>
           </div>
           <div
-            class="sc-ftvSup dkrQId"
+            class="sc-gKXOVf cWjMys"
           >
             <div
-              class="sc-breuTD fRIMzS"
+              class="sc-crXcEl escQkl"
             />
           </div>
         </form>
