@@ -35,16 +35,21 @@ export const Span = styled.span<{
   indeterminate: boolean;
   error: boolean;
 }>`
-  display: inline-flex;
-  vertical-align: middle;
-  align-items: center;
+  &:empty {
+    display: block;
+    &::before {
+      display: block;
+      vertical-align: middle;
+    }
+  }
   color: ${({ error }) =>
     error
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
   &::before {
     flex-shrink: 0;
-    display: block;
+    display: inline-flex;
+    vertical-align: middle;
     content: "";
     width: 18px;
     height: 18px;

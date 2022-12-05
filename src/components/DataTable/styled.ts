@@ -29,4 +29,7 @@ export const TableContainer = styled.div<{
           overflow-y: visible;
           max-height: ${maxHeight};
         `}
+  td > p {
+    line-height: 18px;
+  }
 `;
