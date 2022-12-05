@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: "flex";
   width: 140px;
-  padding: 10px 8px;
-  border: 0;
+  padding: 8px 8px;
+
   font-size: 14px;
   background-color: ${({ theme }) => theme.palette.background.default};
   border: 1px solid ${({ theme }) => theme.palette.divider};
@@ -13,6 +13,13 @@ export const Container = styled.div`
 `;
 
 export const Input = styled.input<{ letterCount: number }>`
+  text-align: right;
   border: none;
   width: ${({ letterCount }) => 8 * letterCount}px;
+  padding: 2px 0px;
+  &:focus {
+    background-color: ${({ theme }) => theme.palette.primary.main};
+    color: ${({ theme }) => theme.palette.white};
+    outline: none;
+  }
 `;
