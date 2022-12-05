@@ -14,6 +14,7 @@ import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Typography from "../Typography";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
@@ -118,9 +119,9 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
             <form onSubmit={onSubmit}>
               <Styled.ModalHeader>
                 <Styled.LeftContainer>
-                  <Styled.TitleContainer weight="bold" size="xxxl">
+                  <Typography weight="bold" size="xxxl">
                     {title}
-                  </Styled.TitleContainer>
+                  </Typography>
                   {tipElement && (
                     <Styled.TipContainer>
                       <Styled.IconContainer

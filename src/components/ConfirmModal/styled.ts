@@ -1,7 +1,6 @@
 import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
-import Typography from "../Typography";
 
 const fadeIn = keyframes`
   0% {
@@ -58,10 +57,6 @@ export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   max-width: 70%;
-`;
-
-export const TitleContainer = styled(Typography)`
-  word-break: normal;
 `;
 
 type ScrollContainerProps = {
