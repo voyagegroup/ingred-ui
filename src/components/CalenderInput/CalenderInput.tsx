@@ -22,6 +22,12 @@ const CalenderInput: React.FC = () => {
     setDate(Number(event.target.value));
   };
 
+  const handleInputNumberOnly = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    event.target.value = event.target.value.replace(/[^0-9]+/i, "");
+  };
+
   const handleYearKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" || event.key === "ArrowRight")
       monthInput.current?.focus();
@@ -53,6 +59,7 @@ const CalenderInput: React.FC = () => {
         value={year}
         onChange={handleYearChange}
         onKeyDown={handleYearKeyPress}
+        onInput={handleInputNumberOnly}
       />
       /
       <Styled.Input
@@ -63,6 +70,7 @@ const CalenderInput: React.FC = () => {
         value={("00" + month).slice(-2)}
         onChange={handleMonthChange}
         onKeyDown={handleMonthKeyPress}
+        onInput={handleInputNumberOnly}
       />
       /
       <Styled.Input
@@ -73,6 +81,7 @@ const CalenderInput: React.FC = () => {
         value={("00" + date).slice(-2)}
         onChange={handleDateChange}
         onKeyDown={handleDateKeyPress}
+        onInput={handleInputNumberOnly}
       />
     </Styled.Container>
   );
