@@ -67,6 +67,8 @@ export const LinkMixed: Story<ButtonGroupProps> = (args) => {
   );
   return (
     <ButtonGroup {...args}>
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/* @ts-ignore */}
       <Button component={Link} href="#">
         Link via {`<Link />`} Component
       </Button>

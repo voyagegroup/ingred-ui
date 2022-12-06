@@ -7,7 +7,7 @@ import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
 import { createChainedFunction } from "../../../utils/createChainedFunction";
 
-export type NavigationRailExpantionMenuItemProps =
+export type NavigationRailExpansionMenuItemProps =
   React.ComponentPropsWithoutRef<"div"> & {
     title: string;
     /**
@@ -24,9 +24,9 @@ export type NavigationRailExpantionMenuItemProps =
     notificationCount?: number;
   };
 
-const ExpantionMenuItem = React.forwardRef<
+const ExpansionMenuItem = React.forwardRef<
   HTMLDivElement,
-  NavigationRailExpantionMenuItemProps
+  NavigationRailExpansionMenuItemProps
 >(
   (
     {
@@ -87,4 +87,4 @@ const ExpantionMenuItem = React.forwardRef<
   },
 );
 
-export { ExpantionMenuItem };
+export { ExpansionMenuItem };

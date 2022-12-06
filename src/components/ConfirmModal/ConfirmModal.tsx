@@ -29,7 +29,9 @@ export type ConfirmModalProps = {
   confirmText?: string;
   cancelText?: string;
   onClose?: (
-    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+    event:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | React.MouseEvent<Element, MouseEvent>,
     reason: ModalCloseReason | ConfirmModalCloseReason,
   ) => void;
   /**
@@ -107,7 +109,9 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
     const handleClose =
       (reason: ConfirmModalCloseReason) =>
       (
-        event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+        event:
+          | React.MouseEvent<HTMLButtonElement, MouseEvent>
+          | React.MouseEvent<Element, MouseEvent>,
       ) => {
         if (onClose) onClose(event, reason);
       };

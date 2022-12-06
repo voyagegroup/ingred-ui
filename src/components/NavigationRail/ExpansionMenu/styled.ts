@@ -47,13 +47,13 @@ export const ArrowIconWrapper = styled.div<{
   transition: transform 0.3s, opacity ${NavigationRailTransitionDuration}s;
 `;
 
-type ExpantionProps = {
+type ExpansionProps = {
   isExpand: boolean;
   delay: boolean;
   height: string;
 };
 
-export const Expantion = styled.div<ExpantionProps>`
+export const Expansion = styled.div<ExpansionProps>`
   overflow-y: hidden;
   max-height: ${({ isExpand, height }) => (isExpand ? height : "0px")};
   transition: max-height 0.3s
