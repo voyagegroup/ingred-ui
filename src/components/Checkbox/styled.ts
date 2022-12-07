@@ -39,7 +39,6 @@ export const Span = styled.span<{
     display: block;
     &::before {
       display: block;
-      vertical-align: middle;
     }
   }
   color: ${({ error }) =>
