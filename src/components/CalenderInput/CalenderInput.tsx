@@ -12,41 +12,56 @@ const CalenderInput: React.FC = () => {
   const monthInput = useRef<HTMLInputElement>(null);
   const dateInput = useRef<HTMLInputElement>(null);
 
-  const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setYear(Number(event.target.value));
-  };
-  const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setMonth(Number(event.target.value));
-  };
-  const handleDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(Number(event.target.value));
-  };
+  const handleOnChange =
+    (datePart: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (datePart === "year") setYear(Number(event.target.value));
+      if (datePart === "month") setMonth(Number(event.target.value));
+      if (datePart === "date") setDate(Number(event.target.value));
+    };
+
+  const handleOnKeyPress =
+    (datePart: string) => (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter" || event.key === "ArrowRight") {
+        if (datePart === "year") {
+          if (!yearInput.current || !yearInput.current.selectionStart) return;
+          if (yearInput.current.selectionStart === 4)
+            monthInput.current?.focus();
+        }
+        if (datePart === "month") {
+          if (!monthInput.current || !monthInput.current.selectionStart) return;
+          if (monthInput.current.selectionStart === 2)
+            dateInput.current?.focus();
+        }
+      }
+      if (event.key === "ArrowLeft") {
+        if (datePart === "month") {
+          if (!monthInput.current || !monthInput.current.selectionStart) return;
+          if (monthInput.current.selectionStart === 1)
+            yearInput.current?.focus();
+        }
+        if (datePart === "date") {
+          if (!dateInput.current || !dateInput.current.selectionStart) return;
+          if (dateInput.current.selectionStart === 1)
+            monthInput.current?.focus();
+        }
+      }
+      if (event.key === "ArrowUp") {
+        if (datePart === "year") setYear(year + 1);
+        if (datePart === "month") setMonth(month + 1);
+        if (datePart === "date") setDate(date + 1);
+      }
+
+      if (event.key === "ArrowDown") {
+        if (datePart === "year") setYear(year - 1);
+        if (datePart === "month") setMonth(month - 1);
+        if (datePart === "date") setDate(date - 1);
+      }
+    };
 
   const handleInputNumberOnly = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     event.target.value = event.target.value.replace(/[^0-9]+/i, "");
-  };
-
-  const handleYearKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter" || event.key === "ArrowRight")
-      monthInput.current?.focus();
-    if (event.key === "ArrowUp") setYear(year + 1);
-    if (event.key === "ArrowDown") setYear(year - 1);
-  };
-  const handleMonthKeyPress = (
-    event: React.KeyboardEvent<HTMLInputElement>,
-  ) => {
-    if (event.key === "Enter" || event.key === "ArrowRight")
-      dateInput.current?.focus();
-    if (event.key === "ArrowLeft") yearInput.current?.focus();
-    if (event.key === "ArrowUp" && month < 12) setMonth(month + 1);
-    if (event.key === "ArrowDown" && month > 1) setMonth(month - 1);
-  };
-  const handleDateKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "ArrowLeft") monthInput.current?.focus();
-    if (event.key === "ArrowUp" && date < 31) setDate(date + 1);
-    if (event.key === "ArrowDown" && date > 1) setDate(date - 1);
   };
 
   return (
@@ -57,8 +72,8 @@ const CalenderInput: React.FC = () => {
         type={"text"}
         aria-label="Year"
         value={year}
-        onChange={handleYearChange}
-        onKeyDown={handleYearKeyPress}
+        onChange={handleOnChange("year")}
+        onKeyDown={handleOnKeyPress("year")}
         onInput={handleInputNumberOnly}
       />
       /
@@ -68,8 +83,8 @@ const CalenderInput: React.FC = () => {
         type={"text"}
         aria-label="Month"
         value={("00" + month).slice(-2)}
-        onChange={handleMonthChange}
-        onKeyDown={handleMonthKeyPress}
+        onChange={handleOnChange("month")}
+        onKeyDown={handleOnKeyPress("month")}
         onInput={handleInputNumberOnly}
       />
       /
@@ -79,8 +94,8 @@ const CalenderInput: React.FC = () => {
         type={"text"}
         aria-label="Date"
         value={("00" + date).slice(-2)}
-        onChange={handleDateChange}
-        onKeyDown={handleDateKeyPress}
+        onChange={handleOnChange("date")}
+        onKeyDown={handleOnKeyPress("date")}
         onInput={handleInputNumberOnly}
       />
     </Styled.Container>
