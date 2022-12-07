@@ -48,7 +48,7 @@ export const Span = styled.span<{
   &::before {
     flex-shrink: 0;
     display: inline-flex;
-    vertical-align: middle;
+    vertical-align: bottom;
     content: "";
     width: 18px;
     height: 18px;
