@@ -47,14 +47,14 @@ const CalenderInput: React.FC = () => {
       }
       if (event.key === "ArrowUp") {
         if (datePart === "year") setYear(year + 1);
-        if (datePart === "month") setMonth(month + 1);
-        if (datePart === "date") setDate(date + 1);
+        if (datePart === "month" && month < 12) setMonth(month + 1);
+        if (datePart === "date" && date < 31) setDate(date + 1);
       }
 
       if (event.key === "ArrowDown") {
         if (datePart === "year") setYear(year - 1);
-        if (datePart === "month") setMonth(month - 1);
-        if (datePart === "date") setDate(date - 1);
+        if (datePart === "month" && month > 1) setMonth(month - 1);
+        if (datePart === "date" && date > 1) setDate(date - 1);
       }
     };
 
