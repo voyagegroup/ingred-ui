@@ -21,7 +21,7 @@ export const CellRadio: React.FunctionComponent<Props> = ({
   };
   const Component = header ? Styled.HeaderCell : Styled.StandardCell;
   return (
-    <Component {...rest}>
+    <Component {...rest} className="CellRadio">
       {!header && <RadioButton checked={selected} onClick={handleClick} />}
     </Component>
   );

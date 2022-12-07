@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { hexToRgba } from "../../../../utils/hexToRgba";
-
 const CELL_PADDING = 24;
 
 export const StandardCell = styled.td`
@@ -8,6 +7,9 @@ export const StandardCell = styled.td`
   width: ${CELL_PADDING + 18}px;
   padding-left: ${({ theme }) => theme.spacing * 2}px;
   border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  &.CellRadio > span {
+    display: block;
+  }
 `;
 
 export const HeaderCell = styled.th`
