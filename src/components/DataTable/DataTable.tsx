@@ -156,10 +156,6 @@ export type DataTableProps<T> = {
    */
   onRadioChange?: (radio: number) => void;
   /**
-   * Reset selected checkboxes when this props changed to `true`.
-   */
-  clearSelectedRows?: boolean;
-  /**
    * Define tabs of table. Please refer to the samples below.
    */
   tabs?: Tab<T>[];
@@ -216,7 +212,6 @@ const DataTable = <T extends DataTableBaseData>(
     enablePagination = false,
     onSelectRowsChange,
     onRadioChange,
-    clearSelectedRows,
     tabs,
     itemEmptyProps,
     per,
@@ -319,13 +314,6 @@ const DataTable = <T extends DataTableBaseData>(
     });
     setDisplayData(displayData);
   }, [sourceData, currentTabIndex]);
-
-  // MEMO: Clear selected items.
-  React.useEffect(() => {
-    if (clearSelectedRows && onSelectRowsChange) {
-      onSelectRowsChange([]);
-    }
-  }, [clearSelectedRows, onSelectRowsChange]);
 
   const handleTabChange = (tabIndex: number) => {
     setCurrentTabIndex(tabIndex);
