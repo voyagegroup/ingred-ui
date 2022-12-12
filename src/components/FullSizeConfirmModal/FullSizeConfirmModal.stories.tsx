@@ -9,6 +9,7 @@ import Button from "../Button";
 import DataTable from "../DataTable";
 import { data } from "../DataTable/mockData";
 import Spacer from "../Spacer";
+import ActionButton from "../ActionButton";
 
 export default {
   title: "Components/Utils/FullSizeConfirmModal",
@@ -68,16 +69,22 @@ WithSubActions.args = {
   children: "Content",
   onSubmit: action("submitted"),
   subActions: [
-    {
-      title: "Download in CSV format",
-      icon: "export",
-      action: action(`clicked "Download in CSV format"`),
-    },
-    {
-      title: "Add to dashboard",
-      icon: "export",
-      action: action(`clicked "Add to dashboard"`),
-    },
+    <Spacer mr={1}>
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Download in CSV format"`)}
+      >
+        Download in CSV format
+      </ActionButton>
+    </Spacer>,
+    <ActionButton
+      icon="export"
+      type="button"
+      onClick={action(`clicked "Add to dashboard"`)}
+    >
+      Add to dashboard
+    </ActionButton>,
   ],
 };
 
