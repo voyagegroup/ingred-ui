@@ -8,8 +8,6 @@ import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
-import ActionButton from "../ActionButton";
-import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
@@ -17,12 +15,6 @@ import { useLocaleProps } from "../../hooks/useLocaleProps";
 import Typography from "../Typography";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
-
-export type SubAction = {
-  title: string;
-  icon: IconName;
-  action: () => void;
-};
 
 export type ConfirmModalProps = {
   title: string;
@@ -50,16 +42,7 @@ export type ConfirmModalProps = {
    * If `true`, children is wrapped by `<Spacer px={3} pb={3} />`.
    */
   disableHorizontalPadding?: boolean;
-  /**
-   * ```
-   * type SubAction = {
-   *   title: string;
-   *   icon: IconName;
-   *   action: () => void;
-   * }
-   * ```
-   */
-  subActions?: SubAction[];
+  subActions?: React.ReactNode[];
   tipElement?: JSX.Element;
   /**
    * props of [Modal](/?path=/docs/components-utils-modal)
@@ -148,14 +131,7 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
                   )}
 
                   <Spacer pr={2} />
-                  {subActions.map(({ icon, action, title }) => (
-                    <Spacer key={title} pr={2}>
-                      {/* eslint-disable-next-line react/jsx-handler-names */}
-                      <ActionButton icon={icon} type="button" onClick={action}>
-                        {title}
-                      </ActionButton>
-                    </Spacer>
-                  ))}
+                  <Flex display="flex">{subActions.map((elm) => elm)}</Flex>
                 </Styled.LeftContainer>
                 <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
                   <Icon name="close" size="lg" color={theme.palette.black} />
