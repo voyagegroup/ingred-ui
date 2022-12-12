@@ -35,6 +35,10 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
               <div
                 class="sc-crXcEl fgriGY"
               />
+              <div
+                class="sc-bczRLJ iglPok"
+                display="flex"
+              />
             </div>
             <div
               class="sc-ftvSup uBGUH"
