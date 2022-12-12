@@ -31,7 +31,9 @@ export type FullSizeConfirmModalProps = {
   confirmText?: string;
   cancelText?: string;
   onClose?: (
-    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+    event:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | React.MouseEvent<Element, MouseEvent>,
     reason: ModalCloseReason | FullSizeConfirmModalCloseReason,
   ) => void;
   /**
@@ -114,7 +116,9 @@ const FullSizeConfirmModal = React.forwardRef<
   const handleClose =
     (reason: FullSizeConfirmModalCloseReason) =>
     (
-      event: React.MouseEvent<HTMLDivElement | HTMLButtonElement, MouseEvent>,
+      event:
+        | React.MouseEvent<HTMLButtonElement, MouseEvent>
+        | React.MouseEvent<Element, MouseEvent>,
     ) => {
       if (onClose) onClose(event, reason);
     };
