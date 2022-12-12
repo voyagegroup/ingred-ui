@@ -8,7 +8,7 @@ const CalenderInput: React.FC = () => {
   const [month, setMonth] = useState<number>(today.month() + 1);
   const [date, setDate] = useState<number>(today.date());
   const [isFocused, setIsFocused] = useState<boolean>(false);
-
+  const [isError] = useState<boolean>(false);
   const yearInput = useRef<HTMLInputElement>(null);
   const monthInput = useRef<HTMLInputElement>(null);
   const dateInput = useRef<HTMLInputElement>(null);
@@ -79,9 +79,10 @@ const CalenderInput: React.FC = () => {
   };
 
   return (
-    <Styled.Container isFocused={isFocused}>
+    <Styled.Container isFocused={isFocused} isError={isError}>
       <Styled.Input
         ref={yearInput}
+        isError={isError}
         letterCount={4}
         type={"text"}
         aria-label="Year"
@@ -95,6 +96,7 @@ const CalenderInput: React.FC = () => {
       /
       <Styled.Input
         ref={monthInput}
+        isError={isError}
         letterCount={2}
         type={"text"}
         aria-label="Month"
@@ -108,6 +110,7 @@ const CalenderInput: React.FC = () => {
       /
       <Styled.Input
         ref={dateInput}
+        isError={isError}
         letterCount={2}
         type={"text"}
         aria-label="Date"
