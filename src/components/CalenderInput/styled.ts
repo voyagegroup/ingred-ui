@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ isFocused: boolean }>`
   display: "flex";
   width: 140px;
   padding: 8px 8px;
-
   font-size: 14px;
   background-color: ${({ theme }) => theme.palette.background.default};
   border: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ theme }) => theme.radius}px;
-  border-color: ${({ theme }) => theme.palette.divider};
+  border-color: ${({ theme, isFocused }) =>
+    isFocused ? theme.palette.primary.main : theme.palette.divider};
 `;
 
 export const Input = styled.input<{ letterCount: number }>`

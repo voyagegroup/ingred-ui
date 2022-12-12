@@ -7,6 +7,7 @@ const CalenderInput: React.FC = () => {
   const [year, setYear] = useState<number>(today.year());
   const [month, setMonth] = useState<number>(today.month() + 1);
   const [date, setDate] = useState<number>(today.date());
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   const yearInput = useRef<HTMLInputElement>(null);
   const monthInput = useRef<HTMLInputElement>(null);
@@ -64,8 +65,21 @@ const CalenderInput: React.FC = () => {
     event.target.value = event.target.value.replace(/[^0-9]+/i, "");
   };
 
+  const handleOnFocus = () => {
+    setIsFocused(true);
+  };
+  const handleOnBlur = () => {
+    if (
+      yearInput.current !== document.activeElement &&
+      monthInput.current !== document.activeElement &&
+      dateInput.current !== document.activeElement
+    ) {
+      setIsFocused(false);
+    }
+  };
+
   return (
-    <Styled.Container>
+    <Styled.Container isFocused={isFocused}>
       <Styled.Input
         ref={yearInput}
         letterCount={4}
@@ -75,6 +89,8 @@ const CalenderInput: React.FC = () => {
         onChange={handleOnChange("year")}
         onKeyDown={handleOnKeyPress("year")}
         onInput={handleInputNumberOnly}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
       />
       /
       <Styled.Input
@@ -86,6 +102,8 @@ const CalenderInput: React.FC = () => {
         onChange={handleOnChange("month")}
         onKeyDown={handleOnKeyPress("month")}
         onInput={handleInputNumberOnly}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
       />
       /
       <Styled.Input
@@ -97,6 +115,8 @@ const CalenderInput: React.FC = () => {
         onChange={handleOnChange("date")}
         onKeyDown={handleOnKeyPress("date")}
         onInput={handleInputNumberOnly}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
       />
     </Styled.Container>
   );
