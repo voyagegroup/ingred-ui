@@ -65,8 +65,6 @@ type ScrollContainerProps = {
 };
 
 export const ScrollContainer = styled.div<ScrollContainerProps>`
-  height: ${({ showFooter, theme }) =>
-    `calc(100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px)`};
   margin-bottom: ${({ showFooter, theme }) =>
     /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
     !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
@@ -81,6 +79,9 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
       : css`
           overflow-y: visible;
           max-height: auto;
+          height: calc(
+            100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px
+          );
         `}
 `;
 
