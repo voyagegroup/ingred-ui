@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalenderRangeInput component testing CalenderRangeInput 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ fIyvYk"
+  >
+    <input
+      aria-label="startYear"
+      class="sc-gsnTZi rexAi"
+      type="text"
+      value="2022"
+    />
+    /
+    <input
+      aria-label="startMonth"
+      class="sc-gsnTZi kPbdrI"
+      type="text"
+      value="12"
+    />
+    /
+    <input
+      aria-label="startDate"
+      class="sc-gsnTZi kPbdrI"
+      type="text"
+      value="12"
+    />
+    <div
+      class="sc-dkzDqf ehnfnL"
+    >
+      -
+    </div>
+    <input
+      aria-label="endYear"
+      class="sc-gsnTZi rexAi"
+      type="text"
+      value="2022"
+    />
+    /
+    <input
+      aria-label="endMonth"
+      class="sc-gsnTZi kPbdrI"
+      type="text"
+      value="12"
+    />
+    /
+    <input
+      aria-label="endDate"
+      class="sc-gsnTZi kPbdrI"
+      type="text"
+      value="12"
+    />
+  </div>
+</DocumentFragment>
+`;

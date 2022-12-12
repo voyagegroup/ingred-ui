@@ -3,27 +3,27 @@
 exports[`CalenderInput component testing CalenderInput 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ cXjdoL"
+    class="sc-bczRLJ hOtffT"
   >
     <input
       aria-label="Year"
-      class="sc-gsnTZi fLtcnp"
+      class="sc-gsnTZi fKrwos"
       type="text"
       value="2022"
     />
     /
     <input
       aria-label="Month"
-      class="sc-gsnTZi cXdxLH"
+      class="sc-gsnTZi iVPPZG"
       type="text"
       value="12"
     />
     /
     <input
       aria-label="Date"
-      class="sc-gsnTZi cXdxLH"
+      class="sc-gsnTZi iVPPZG"
       type="text"
-      value="06"
+      value="12"
     />
   </div>
 </DocumentFragment>
