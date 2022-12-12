@@ -187,7 +187,7 @@ export type DataTableProps<T> = {
    */
   selectedRow?: number;
   /**
-   * Add verticale line in table.
+   * Add vertical line in table.
    */
   enableRuledLine?: boolean;
   /**
