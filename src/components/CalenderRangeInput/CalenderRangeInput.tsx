@@ -161,7 +161,7 @@ const CalenderRangeInput: React.FC = () => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
       />
-      <Styled.Slash>/</Styled.Slash>
+      /
       <Styled.Input
         ref={startMonthInput}
         isError={isError}
@@ -175,7 +175,7 @@ const CalenderRangeInput: React.FC = () => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
       />
-      <Styled.Slash>/</Styled.Slash>
+      /
       <Styled.Input
         ref={startDateInput}
         isError={isError}
@@ -203,7 +203,7 @@ const CalenderRangeInput: React.FC = () => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
       />
-      <Styled.Slash>/</Styled.Slash>
+      /
       <Styled.Input
         ref={endMonthInput}
         isError={isError}
@@ -217,7 +217,7 @@ const CalenderRangeInput: React.FC = () => {
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
       />
-      <Styled.Slash>/</Styled.Slash>
+      /
       <Styled.Input
         ref={endDateInput}
         isError={isError}

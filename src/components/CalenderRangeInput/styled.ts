@@ -28,6 +28,8 @@ export const Input = styled.input<{ letterCount: number; isError: boolean }>`
   text-align: right;
   border: none;
   font-size: 14px;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Proxima Nova",
+    Verdana, "游ゴシック", YuGothic, Meiryo, sans-serif;
   width: ${({ letterCount }) => 8 * letterCount}px;
   color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.black};
@@ -42,11 +44,5 @@ export const Hyphen = styled.div`
   text-align: center;
   height: 20px;
   padding: 0px 4px;
-  color: ${({ theme }) => theme.palette.gray.dark};
-`;
-
-export const Slash = styled.div`
-  text-align: center;
-  height: 20px;
-  font-size: 12px;
+  color: ${({ theme }) => theme.palette.gray.deepDark};
 `;

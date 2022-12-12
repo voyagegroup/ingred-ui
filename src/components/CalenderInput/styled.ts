@@ -11,10 +11,9 @@ const setBorderColor = (
 };
 
 export const Container = styled.div<{ isFocused: boolean; isError: boolean }>`
-  display: "flex";
+  display: flex;
   width: 140px;
   padding: 8px 8px;
-  font-size: 14px;
   color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.black};
   background-color: ${({ theme }) => theme.palette.background.default};
@@ -28,9 +27,12 @@ export const Input = styled.input<{ letterCount: number; isError: boolean }>`
   text-align: right;
   border: none;
   width: ${({ letterCount }) => 8 * letterCount}px;
-  padding: 2px 0px;
+
   color: ${({ theme, isError }) =>
     isError ? theme.palette.danger.main : theme.palette.black};
+  font-size: 14px;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Proxima Nova",
+    Verdana, "游ゴシック", YuGothic, Meiryo, sans-serif;
   &:focus {
     background-color: ${({ theme }) => theme.palette.primary.main};
     color: ${({ theme }) => theme.palette.white};
