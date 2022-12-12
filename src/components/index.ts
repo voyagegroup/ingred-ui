@@ -77,6 +77,9 @@ export * from "./Input";
 export { default as CalenderInput } from "./CalenderInput";
 export * from "./CalenderInput";
 
+export { default as CalenderRangeInput } from "./CalenderRangeInput";
+export * from "./CalenderRangeInput";
+
 export { default as ItemEmpty } from "./ItemEmpty";
 export * from "./ItemEmpty";
 

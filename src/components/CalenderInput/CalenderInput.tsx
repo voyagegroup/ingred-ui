@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import * as Styled from "./styled";
 import dayjs from "dayjs";
 
-const CalenderInput: React.FC = () => {
+const CalenderRangeInput: React.FC = () => {
   const today = dayjs();
   const [year, setYear] = useState<number>(today.year());
   const [month, setMonth] = useState<number>(today.month() + 1);
@@ -125,4 +125,4 @@ const CalenderInput: React.FC = () => {
   );
 };
 
-export default CalenderInput;
+export default CalenderRangeInput;
