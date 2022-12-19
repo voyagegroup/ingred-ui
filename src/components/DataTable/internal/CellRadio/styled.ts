@@ -7,7 +7,7 @@ export const StandardCell = styled.td`
   width: ${CELL_PADDING + 18}px;
   padding-left: ${({ theme }) => theme.spacing * 2}px;
   border-top: 1px solid ${({ theme }) => theme.palette.divider};
-  &.CellRadio > span {
+  & > span {
     display: block;
   }
 `;
