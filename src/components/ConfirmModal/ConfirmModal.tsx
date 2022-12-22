@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Typography from "../Typography";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
@@ -15,6 +14,7 @@ import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Typography from "../Typography";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 
@@ -46,7 +46,6 @@ export type ConfirmModalProps = {
   disabled?: boolean;
   loading?: boolean;
   overflowYScroll?: boolean;
-  fullSize?: boolean;
   /**
    * If `true`, children is wrapped by `<Spacer px={3} pb={3} />`.
    */
@@ -59,7 +58,6 @@ export type ConfirmModalProps = {
    *   action: () => void;
    * }
    * ```
-   * **Recommend to use with `fullSize={true}`**
    */
   subActions?: SubAction[];
   tipElement?: JSX.Element;
@@ -90,7 +88,6 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
       isOpen = true,
       disabled,
       loading,
-      fullSize = false,
       overflowYScroll = true,
       disableHorizontalPadding = false,
       subActions = [],
@@ -122,14 +119,13 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
     return (
       <Modal isOpen={isOpen} onClose={onClose} {...modalProps}>
         <Fade in={isOpen} unmountOnExit={true} {...fadeProps}>
-          <Styled.ModalContainer ref={ref} fullSize={fullSize}>
+          <Styled.ModalContainer ref={ref}>
             <form onSubmit={onSubmit}>
               <Styled.ModalHeader>
                 <Styled.LeftContainer>
                   <Typography weight="bold" size="xxxl">
                     {title}
                   </Typography>
-
                   {tipElement && (
                     <Styled.TipContainer>
                       <Styled.IconContainer
@@ -167,7 +163,6 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
               </Styled.ModalHeader>
               <Styled.ScrollContainer
                 overflowYScroll={overflowYScroll}
-                fullSize={fullSize}
                 showFooter={showFooter}
               >
                 {disableHorizontalPadding ? (
@@ -179,7 +174,7 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
                 )}
               </Styled.ScrollContainer>
               {showFooter && (
-                <Styled.ModalFooter fullSize={fullSize}>
+                <Styled.ModalFooter>
                   <Flex display="flex" alignItems="center">
                     <Button
                       type="button"

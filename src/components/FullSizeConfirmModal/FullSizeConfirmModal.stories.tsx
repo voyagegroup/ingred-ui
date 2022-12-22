@@ -1,7 +1,9 @@
 import React from "react";
 import { Story } from "@storybook/react/types-6-0";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import ConfirmModal, { ConfirmModalProps } from "./ConfirmModal";
+import FullSizeConfirmModal, {
+  FullSizeConfirmModalProps,
+} from "./FullSizeConfirmModal";
 import { action } from "@storybook/addon-actions";
 import Button from "../Button";
 import DataTable from "../DataTable";
@@ -9,8 +11,8 @@ import { data } from "../DataTable/mockData";
 import Spacer from "../Spacer";
 
 export default {
-  title: "Components/Utils/ConfirmModal",
-  component: ConfirmModal,
+  title: "Components/Utils/FullSizeConfirmModal",
+  component: FullSizeConfirmModal,
   args: {
     isOpen: false,
     title: "Title",
@@ -21,7 +23,7 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={ConfirmModal} />
+          <ArgsTable of={FullSizeConfirmModal} />
           <Stories includePrimary title="Stories" />
         </>
       ),
@@ -29,7 +31,7 @@ export default {
   },
 };
 
-const Template: Story<ConfirmModalProps> = (args) => {
+const Template: Story<FullSizeConfirmModalProps> = (args) => {
   const [isOpen, setIsOpen] = React.useState(args.isOpen);
   const handleToggleButton = () => {
     setIsOpen(!isOpen);
@@ -37,9 +39,13 @@ const Template: Story<ConfirmModalProps> = (args) => {
   return (
     <>
       <Button onClick={handleToggleButton}>Open Modal</Button>
-      <ConfirmModal onClose={handleToggleButton} {...args} isOpen={isOpen}>
+      <FullSizeConfirmModal
+        onClose={handleToggleButton}
+        {...args}
+        isOpen={isOpen}
+      >
         {args.children}
-      </ConfirmModal>
+      </FullSizeConfirmModal>
     </>
   );
 };

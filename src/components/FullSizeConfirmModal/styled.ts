@@ -21,12 +21,12 @@ export const ModalBackground = styled.div`
   animation: ${fadeIn} 0.4s;
 `;
 
-const slideIn = keyframes`
+const FullSizeSlideIn = keyframes`
   0% {
-    transform: translate(-50%, calc(-50% + 8px));
+    transform: translate(-50%, 0%);
   }
   100% {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -48%);
   }
 `;
 
@@ -35,12 +35,12 @@ export const ModalContainer = styled(Card)`
   top: 50%;
   left: 50%;
   min-width: 400px;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  border-radius: ${({ theme }) => `${theme.radius}px`};
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -48%);
+  border-radius: 8px 8px 0 0;
   background-color: ${({ theme }) => theme.palette.background.default};
-  animation: ${slideIn} 0.4s;
+  animation: ${FullSizeSlideIn} 0.4s;
   overflow: hidden;
 `;
 
@@ -65,18 +65,23 @@ type ScrollContainerProps = {
 };
 
 export const ScrollContainer = styled.div<ScrollContainerProps>`
-  height: auto;
   margin-bottom: ${({ showFooter, theme }) =>
     /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
     !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
-  ${({ overflowYScroll }) =>
+  ${({ overflowYScroll, showFooter, theme }) =>
     overflowYScroll
       ? addScrollbarProperties({
-          maxHeight: "calc(80vh - 61px)",
+          maxHeight: "auto",
+          height: `calc(100vh - ${
+            theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)
+          }px)`,
         })
       : css`
           overflow-y: visible;
-          max-height: "calc(80vh - 61px)";
+          max-height: auto;
+          height: calc(
+            100vh - ${theme.spacing * 2 * 2 + 42 + (showFooter ? 61 : 0)}px
+          );
         `}
 `;
 
@@ -91,8 +96,8 @@ export const ModalFooter = styled.div`
   padding: ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   background-color: ${({ theme }) => theme.palette.gray.highlight};
-  border-radius: ${({ theme }) => `0 0 ${theme.radius}px ${theme.radius}px`};
-  margin-bottom: auto;
+  border-radius: 0;
+  margin-bottom: 1.8vh;
 `;
 
 export const IconContainer = styled.div`
