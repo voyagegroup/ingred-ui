@@ -177,15 +177,30 @@ const Select = <OptionValue, IsMulti extends boolean>(
   } = props;
 
   const theme = useTheme();
-  let i = 0;
   const filterOption: SelectProps<OptionValue, IsMulti>["filterOption"] = limit
-    ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
+    ? ({ label }, query) => {
+        if (query === "") {
+          return true;
+        }
+
+        const candidates =
+          props.options
+            ?.filter((option) => option.label?.includes(query))
+            .map((option) => option.label)
+            .filter((label): label is string => label !== undefined) ?? [];
+
+        if (candidates.includes(label) && candidates.indexOf(label) < limit) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     : undefined;
+
   const handleInputChange: SelectProps<
     OptionValue,
     IsMulti
   >["onInputChange"] = (newValue, actionMeta) => {
-    i = 0;
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
     }
