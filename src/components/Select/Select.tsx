@@ -3,14 +3,14 @@ import ReactSelect, {
   Props as ReactSelectProps,
   StylesConfig,
 } from "react-select";
-import * as Styled from "./styled";
-import { Space } from "../../styles";
-import { fontSize } from "../Typography/Typography";
-import { DropdownIndicator } from "./internal/DropdownIndicator";
-import { ClearIndicator } from "./internal/ClearIndicator";
-import { MultiValueRemove } from "./internal/MultiValueRemove";
-import { Theme, useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { Space } from "../../styles";
+import { Theme, useTheme } from "../../themes";
+import { fontSize } from "../Typography/Typography";
+import { ClearIndicator } from "./internal/ClearIndicator";
+import { DropdownIndicator } from "./internal/DropdownIndicator";
+import { MultiValueRemove } from "./internal/MultiValueRemove";
+import * as Styled from "./styled";
 
 export const getOverrideStyles = <OptionValue,>(
   theme: Theme,
@@ -185,9 +185,9 @@ const Select = <OptionValue, IsMulti extends boolean>(
 
         const candidates =
           props.options
-            ?.filter((option) => option.label?.includes(query))
-            .map((option) => option.label)
-            .filter((label): label is string => label !== undefined) ?? [];
+            ?.map((option) => option.label)
+            .filter((label): label is string => label !== undefined)
+            .filter((label) => label.includes(query)) ?? [];
 
         if (candidates.includes(label) && candidates.indexOf(label) < limit) {
           return true;
