@@ -183,20 +183,19 @@ const Select = <OptionValue, IsMulti extends boolean>(
           return true;
         }
 
-        const candidates =
-          props.options
-            ?.map((option) => option.label?.toLowerCase())
-            .filter((label): label is string => label !== undefined)
-            .filter((label) => label.includes(query.toLowerCase())) ?? [];
-
-        if (
-          candidates.includes(label.toLowerCase()) &&
-          candidates.indexOf(label.toLowerCase()) < limit
-        ) {
-          return true;
-        } else {
+        if (!props.options) {
           return false;
         }
+
+        const candidates = props.options
+          .map((option) => option.label?.toLocaleLowerCase())
+          .filter((label): label is string => label !== undefined)
+          .filter((label) => label.includes(query.toLowerCase()));
+
+        return (
+          candidates.includes(label.toLowerCase()) &&
+          candidates.indexOf(label.toLowerCase()) < limit
+        );
       }
     : undefined;
 
