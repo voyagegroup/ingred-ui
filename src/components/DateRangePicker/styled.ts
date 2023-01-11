@@ -30,8 +30,6 @@ export const Container = styled.div<{ error: boolean }>`
         ? ({ theme }) => theme.palette.danger.main
         : ({ theme }) => theme.palette.black};
     background-color: transparent;
-    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Proxima Nova",
-      Verdana, "游ゴシック", YuGothic, Meiryo, sans-serif;
   }
   .DateInput_input__focused {
     border-bottom-color: ${({ theme }) => theme.palette.primary.main};
