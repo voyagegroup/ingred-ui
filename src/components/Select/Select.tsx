@@ -152,7 +152,6 @@ export const getOverrideStyles = <OptionValue,>(
 export type OptionType<T = string> = { label: string; value: T };
 
 export type SelectProps<OptionValue, IsMulti extends boolean> = {
-  limit?: number;
   minWidth?: string;
   placeholder?: string;
   error?: boolean;
@@ -165,7 +164,6 @@ const Select = <OptionValue, IsMulti extends boolean>(
 ): React.ReactElement<SelectProps<OptionValue, IsMulti>> => {
   const props = useLocaleProps({ props: inProps, name: "Select" });
   const {
-    limit,
     onInputChange,
     minWidth,
     isDisabled,
@@ -177,27 +175,6 @@ const Select = <OptionValue, IsMulti extends boolean>(
   } = props;
 
   const theme = useTheme();
-  const filterOption: SelectProps<OptionValue, IsMulti>["filterOption"] = limit
-    ? ({ label }, query) => {
-        if (query === "") {
-          return true;
-        }
-
-        if (!props.options) {
-          return false;
-        }
-
-        const candidates = props.options
-          .map((option) => option.label?.toLocaleLowerCase())
-          .filter((label): label is string => label !== undefined)
-          .filter((label) => label.includes(query.toLowerCase()));
-
-        return (
-          candidates.includes(label.toLowerCase()) &&
-          candidates.indexOf(label.toLowerCase()) < limit
-        );
-      }
-    : undefined;
 
   const handleInputChange: SelectProps<
     OptionValue,
@@ -223,7 +200,6 @@ const Select = <OptionValue, IsMulti extends boolean>(
           ...originalTheme,
           palette: theme.palette,
         })}
-        filterOption={filterOption}
         {...rest}
         components={{
           DropdownIndicator: (props) => (
