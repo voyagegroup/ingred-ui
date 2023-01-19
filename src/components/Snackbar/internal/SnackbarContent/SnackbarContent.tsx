@@ -19,7 +19,7 @@ const getSnackbarStyle = (
     iconColor: string;
     boxShadow: string;
     background: string;
-    text?: string;
+    textColor?: string;
   };
 } => {
   return {
@@ -42,7 +42,7 @@ const getSnackbarStyle = (
       // theme.palette.black だと palette 経由での dark の変更が難しい
       // 現状の palette だとこの部分の自由度が足りず表現できないので一旦 theme.palette.black で固定
       background: theme.palette.black,
-      text: theme.palette.text.white,
+      textColor: theme.palette.text.white,
     },
     warning: {
       iconColor: theme.palette.warning.deepDark,
