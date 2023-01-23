@@ -4,12 +4,10 @@ import Typography from "../Typography";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
-import FloatingTip from "../FloatingTip";
 import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
 import Spinner from "../Spinner";
 import { useTheme } from "../../themes";
-import ActionButton from "../ActionButton";
 import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
@@ -52,17 +50,7 @@ export type FullSizeConfirmModalProps = {
    * If `true`, children is wrapped by `<Spacer px={3} pb={3} />`.
    */
   disableHorizontalPadding?: boolean;
-  /**
-   * ```
-   * type SubAction = {
-   *   title: string;
-   *   icon: IconName;
-   *   action: () => void;
-   * }
-   * ```
-   */
-  subActions?: SubAction[];
-  tipElement?: JSX.Element;
+  subActions?: React.ReactNode;
   /**
    * props of [Modal](/?path=/docs/components-utils-modal)
    */
@@ -97,21 +85,13 @@ const FullSizeConfirmModal = React.forwardRef<
     loading,
     overflowYScroll = true,
     disableHorizontalPadding = false,
-    subActions = [],
-    tipElement,
+    subActions,
     modalProps,
     fadeProps,
   } = props;
 
   const theme = useTheme();
   const showFooter = !!onSubmit;
-  const [iconWrapperElement, setIconWrapperElement] =
-    React.useState<HTMLDivElement | null>(null);
-  const [isTipOpen, setIsTipOpen] = React.useState<boolean>(false);
-
-  const handleIsTipOpen = (isTipOpen: boolean) => () => {
-    setIsTipOpen(isTipOpen);
-  };
 
   const handleClose =
     (reason: FullSizeConfirmModalCloseReason) =>
@@ -133,37 +113,8 @@ const FullSizeConfirmModal = React.forwardRef<
                 <Typography weight="bold" size="xxxl">
                   {title}
                 </Typography>
-
-                {tipElement && (
-                  <Styled.TipContainer>
-                    <Styled.IconContainer
-                      ref={setIconWrapperElement}
-                      onClick={handleIsTipOpen(!isTipOpen)}
-                    >
-                      <Icon name="question" type="fill" size="lg" />
-                    </Styled.IconContainer>
-                    <FloatingTip
-                      baseElement={iconWrapperElement}
-                      isOpen={isTipOpen}
-                      positionPriority={["right-start"]}
-                      onClose={handleIsTipOpen(false)}
-                    >
-                      <Styled.TipContentContainer>
-                        {tipElement}
-                      </Styled.TipContentContainer>
-                    </FloatingTip>
-                  </Styled.TipContainer>
-                )}
-
                 <Spacer pr={2} />
-                {subActions.map(({ icon, action, title }) => (
-                  <Spacer key={title} pr={2}>
-                    {/* eslint-disable-next-line react/jsx-handler-names */}
-                    <ActionButton icon={icon} type="button" onClick={action}>
-                      {title}
-                    </ActionButton>
-                  </Spacer>
-                ))}
+                {subActions}
               </Styled.LeftContainer>
               <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
                 <Icon name="close" size="lg" color={theme.palette.black} />
