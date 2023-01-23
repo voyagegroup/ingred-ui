@@ -11,7 +11,6 @@ import { ClearIndicator } from "../Select/internal/ClearIndicator";
 import { MultiValueRemove } from "../Select/internal/MultiValueRemove";
 
 export type CreatableSelectProps<T> = {
-  limit?: number;
   minWidth?: string;
   placeholder?: string;
   error?: boolean;
@@ -25,7 +24,6 @@ const CreatableSelect = <T,>(
 ): React.ReactElement<CreatableSelectProps<T>> => {
   const props = useLocaleProps({ props: inProps, name: "CreatableSelect" });
   const {
-    limit,
     onInputChange,
     minWidth,
     isDisabled,
@@ -38,15 +36,10 @@ const CreatableSelect = <T,>(
   } = props;
 
   const theme = useTheme();
-  let i = 0;
-  const filterOption: CreatableSelectProps<T>["filterOption"] = limit
-    ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
-    : undefined;
   const handleInputChange: CreatableSelectProps<T>["onInputChange"] = (
     newValue,
     actionMeta,
   ) => {
-    i = 0;
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
     }
@@ -68,7 +61,6 @@ const CreatableSelect = <T,>(
           ...originalTheme,
           palette: theme.palette,
         })}
-        filterOption={filterOption}
         {...rest}
         components={{
           DropdownIndicator: (props) => (
