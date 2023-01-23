@@ -113,7 +113,6 @@ const FullSizeConfirmModal = React.forwardRef<
                 <Typography weight="bold" size="xxxl">
                   {title}
                 </Typography>
-                <Spacer pr={2} />
                 {subActions}
               </Styled.LeftContainer>
               <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>

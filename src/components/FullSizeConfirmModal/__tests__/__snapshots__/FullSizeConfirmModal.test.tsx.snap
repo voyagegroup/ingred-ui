@@ -32,9 +32,6 @@ exports[`FullSizeConfirmModal component testing FullSizeConfirmModal 1`] = `
               >
                 Title
               </p>
-              <div
-                class="sc-evZas bLohbg"
-              />
             </div>
             <div
               class="sc-ftvSup uBGUH"
