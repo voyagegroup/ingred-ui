@@ -115,14 +115,3 @@ export const LoadingContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-export const TipContainer = styled.div`
-  padding-left: ${({ theme }) => theme.spacing * 0.5}px;
-`;
-
-export const TipContentContainer = styled.div`
-  min-width: ${({ theme }) =>
-    360 - (theme.spacing * 2 * 2 + theme.spacing * 2 + 18)}px;
-  max-width: ${({ theme }) =>
-    512 - (theme.spacing * 2 * 2 + theme.spacing * 2 + 18)}px;
-`;
