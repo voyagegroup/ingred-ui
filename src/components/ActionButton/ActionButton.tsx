@@ -23,7 +23,7 @@ const getBorderColor = (theme: Theme) => ({
   primary: theme.palette.primary.light,
   warning: colors.red[200],
   disabled: colors.basic[400],
-})
+});
 
 const getTextColor = (theme: Theme) => ({
   primary: theme.palette.primary.main,
