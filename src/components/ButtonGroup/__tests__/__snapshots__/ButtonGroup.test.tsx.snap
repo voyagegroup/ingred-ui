@@ -6,14 +6,14 @@ exports[`Button component testing ButtonGroup 1`] = `
     class="sc-bczRLJ cAklds"
   >
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK hInGaU"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK fuZdQF"
       font-size="14px"
       font-weight="normal"
     >
       Edit
     </button>
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK hInGaU"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK fuZdQF"
       font-size="14px"
       font-weight="normal"
     >
