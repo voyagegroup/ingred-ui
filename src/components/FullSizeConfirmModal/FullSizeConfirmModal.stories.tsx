@@ -57,19 +57,33 @@ Basic.args = {
   onSubmit: action("submitted"),
 };
 
-export const WithSubActions = Template.bind({});
-WithSubActions.args = {
+export const WithOneSubAction = Template.bind({});
+WithOneSubAction.args = {
   children: "Content",
   onSubmit: action("submitted"),
-  subActions: (
+  subActions: [
+    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
+      Add
+    </ActionButton>,
+  ],
+};
+
+export const WithTwoSubAction = Template.bind({});
+WithTwoSubAction.args = {
+  children: "Content",
+  onSubmit: action("submitted"),
+  subActions: [
+    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
+      Add
+    </ActionButton>,
     <ActionButton
       icon="export"
       type="button"
-      onClick={action(`clicked "Add to dashboard"`)}
+      onClick={action(`clicked "Download"`)}
     >
-      Add to dashboard
-    </ActionButton>
-  ),
+      Download
+    </ActionButton>,
+  ],
 };
 
 export const Loading = Template.bind({});
