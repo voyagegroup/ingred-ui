@@ -51,8 +51,19 @@ Basic.args = {
   onSubmit: action("submitted"),
 };
 
-export const WithSubActions = Template.bind({});
-WithSubActions.args = {
+export const WithOneSubAction = Template.bind({});
+WithOneSubAction.args = {
+  children: "Content",
+  onSubmit: action("submitted"),
+  subActions: [
+    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
+      Add
+    </ActionButton>,
+  ],
+};
+
+export const WithTwoSubAction = Template.bind({});
+WithTwoSubAction.args = {
   children: "Content",
   onSubmit: action("submitted"),
   subActions: [
