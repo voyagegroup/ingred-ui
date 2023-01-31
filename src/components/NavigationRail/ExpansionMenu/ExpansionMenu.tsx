@@ -3,11 +3,8 @@ import * as Styled from "./styled";
 import Icon from "../../Icon";
 import { IconName } from "../../Icon/Icon";
 import { NavigationRailContext } from "../utils";
-import Tooltip from "../../Tooltip";
-import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { useTheme } from "../../../themes";
-import { createChainedFunction } from "../../../utils/createChainedFunction";
 
 export type NavigationRailExpansionMenuProps =
   React.ComponentPropsWithoutRef<"div"> & {
@@ -49,33 +46,26 @@ const ExpansionMenu = React.forwardRef<
       notificationCount = 0,
       onChangeExpand,
       onClick,
-      onMouseEnter,
       ...rest
     },
     ref,
   ) => {
     const theme = useTheme();
-    const { isOpen, handleClose } = React.useContext(NavigationRailContext);
+    const { isOpen } = React.useContext(NavigationRailContext);
 
     const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
     const [delayTransition, setDelayTransition] =
       React.useState<boolean>(false);
     const [expansionHeight, setExpansionHeight] =
       React.useState<string>("auto");
-    const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
 
     const textContainerElement = React.useRef<HTMLDivElement | null>(null);
     const textElement = React.useRef<HTMLSpanElement | null>(null);
     const expansionElement = React.useRef<HTMLDivElement | null>(null);
 
-    const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
-
     React.useEffect(() => {
       textContainerElement.current?.addEventListener("transitionend", () => {
         if (!textContainerElement.current || !textElement.current) return;
-        const containerWidth = textContainerElement.current.offsetWidth;
-        const textWidth = textElement.current.offsetWidth;
-        setShowTooltip(containerWidth <= textWidth);
       });
     }, [textContainerElement, textElement]);
 
@@ -104,45 +94,37 @@ const ExpansionMenu = React.forwardRef<
 
     return (
       <div ref={ref}>
-        <Tooltip
-          content={title}
-          positionPriority={["right"]}
-          enterDelay={NavigationRailTransitionDuration * 1000}
-          disabled={!showTooltip}
-          onMouseEnter={handleMouseEnter}
-        >
-          <Styled.Container isActive={isActive} onClick={handleClick} {...rest}>
-            <NotificationBadge
-              badgeContent={notificationCount}
-              position="top-left"
+        <Styled.Container isActive={isActive} onClick={handleClick} {...rest}>
+          <NotificationBadge
+            badgeContent={notificationCount}
+            position="top-left"
+          >
+            <Icon
+              name={iconName}
+              size="lg"
+              type={isActive ? "fill" : "line"}
+              color={isActive ? "active" : theme.palette.black}
+            />
+          </NotificationBadge>
+          <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
+            <Styled.TextWrapper
+              ref={textElement}
+              component="span"
+              color={isActive ? "primary" : "initial"}
+              weight="bold"
+              size="sm"
             >
-              <Icon
-                name={iconName}
-                size="lg"
-                type={isActive ? "fill" : "line"}
-                color={isActive ? "active" : theme.palette.black}
-              />
-            </NotificationBadge>
-            <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
-              <Styled.TextWrapper
-                ref={textElement}
-                component="span"
-                color={isActive ? "primary" : "initial"}
-                weight="bold"
-                size="sm"
-              >
-                {title}
-              </Styled.TextWrapper>
-            </Styled.TextContainer>
-            <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
-              <Icon
-                name="arrow_bottom"
-                color={isActive ? "active" : theme.palette.black}
-                size="md"
-              />
-            </Styled.ArrowIconWrapper>
-          </Styled.Container>
-        </Tooltip>
+              {title}
+            </Styled.TextWrapper>
+          </Styled.TextContainer>
+          <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
+            <Icon
+              name="arrow_bottom"
+              color={isActive ? "active" : theme.palette.black}
+              size="md"
+            />
+          </Styled.ArrowIconWrapper>
+        </Styled.Container>
         <Styled.Expansion
           ref={expansionElement}
           isExpand={(isExpand && isOpen) || expansionHeight === "auto"}
