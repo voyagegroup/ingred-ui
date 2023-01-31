@@ -62,8 +62,8 @@ WithOneSubAction.args = {
   ],
 };
 
-export const WithTwoSubAction = Template.bind({});
-WithTwoSubAction.args = {
+export const WithTwoSubActions = Template.bind({});
+WithTwoSubActions.args = {
   children: "Content",
   onSubmit: action("submitted"),
   subActions: [
