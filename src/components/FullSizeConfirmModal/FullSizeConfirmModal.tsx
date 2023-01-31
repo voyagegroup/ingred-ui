@@ -50,7 +50,7 @@ export type FullSizeConfirmModalProps = {
    * If `true`, children is wrapped by `<Spacer px={3} pb={3} />`.
    */
   disableHorizontalPadding?: boolean;
-  subActions?: React.ReactNode;
+  subActions?: React.ReactNode[];
   /**
    * props of [Modal](/?path=/docs/components-utils-modal)
    */
@@ -113,7 +113,16 @@ const FullSizeConfirmModal = React.forwardRef<
                 <Typography weight="bold" size="xxxl">
                   {title}
                 </Typography>
-                {subActions}
+                {subActions && (
+                  <Spacer pl={2}>
+                    <Flex display="flex" alignItems="center" gap={1}>
+                      {subActions.map((action, index) => (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <React.Fragment key={index}>{action}</React.Fragment>
+                      ))}
+                    </Flex>
+                  </Spacer>
+                )}
               </Styled.LeftContainer>
               <Styled.IconContainer onClick={handleClose("clickCloseIcon")}>
                 <Icon name="close" size="lg" color={theme.palette.black} />
