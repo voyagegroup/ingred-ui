@@ -59,15 +59,7 @@ const ExpansionMenu = React.forwardRef<
     const [expansionHeight, setExpansionHeight] =
       React.useState<string>("auto");
 
-    const textContainerElement = React.useRef<HTMLDivElement | null>(null);
-    const textElement = React.useRef<HTMLSpanElement | null>(null);
     const expansionElement = React.useRef<HTMLDivElement | null>(null);
-
-    React.useEffect(() => {
-      textContainerElement.current?.addEventListener("transitionend", () => {
-        if (!textContainerElement.current || !textElement.current) return;
-      });
-    }, [textContainerElement, textElement]);
 
     const handleClick = (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -106,9 +98,8 @@ const ExpansionMenu = React.forwardRef<
               color={isActive ? "active" : theme.palette.black}
             />
           </NotificationBadge>
-          <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
+          <Styled.TextContainer isOpen={isOpen}>
             <Styled.TextWrapper
-              ref={textElement}
               component="span"
               color={isActive ? "primary" : "initial"}
               weight="bold"
