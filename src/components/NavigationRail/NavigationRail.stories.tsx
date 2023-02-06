@@ -1,6 +1,8 @@
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { Story } from "@storybook/react/types-6-0";
 import React from "react";
+import Flex from "../Flex";
+import Icon from "../Icon";
 import NavigationRail from "./NavigationRail";
 
 export default {
@@ -72,7 +74,12 @@ export const Example: Story = () => {
               />,
               <NavigationRail.ExpansionMenuItem
                 isActive={false}
-                title="Account setting"
+                title={
+                  <Flex display="flex" alignItems="center" gap={1}>
+                    <Icon name="user" />
+                    Account setting
+                  </Flex>
+                }
               />,
             ]}
           />
