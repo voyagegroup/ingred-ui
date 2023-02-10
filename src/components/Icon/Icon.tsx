@@ -73,6 +73,7 @@ import { CompanyIcon } from "./internal/CompanyIcon";
 import { DocumentIcon } from "./internal/DocumentIcon";
 import { UserIcon } from "./internal/UserIcon";
 import { InformationIcon } from "./internal/InformationIcon";
+import { AnalyticsIcon } from "./internal/AnalyticsIcon";
 
 export type IconName =
   | "dashboard"
@@ -145,7 +146,8 @@ export type IconName =
   | "company"
   | "document"
   | "user"
-  | "information";
+  | "information"
+  | "analytics";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -235,6 +237,7 @@ export const icons: {
   document: DocumentIcon,
   user: UserIcon,
   information: InformationIcon,
+  analytics: AnalyticsIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
