@@ -30,10 +30,7 @@ export const getShadow = (
         opacityBase * 2,
       )} inset, 0px 2px ${hexToRgba(color, opacityBase)}`;
     case 2:
-      return `0px 3px ${hexToRgba(
-        color,
-        opacityBase * 2,
-      )} inset, 0px 2px ${hexToRgba(color, opacityBase)}`;
+      return `0px 3px ${hexToRgba(color, opacityBase * 2)} inset`;
     case 3:
       return `0px -2px ${hexToRgba(
         color,

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div<{
   boxShadow: string;
   background: string;
+  textColor?: string;
 }>`
   position: relative;
   min-width: 320px;
@@ -14,6 +15,7 @@ export const Container = styled.div<{
   background: ${({ background }) => background};
   box-shadow: ${({ boxShadow }) => boxShadow};
   border-radius: ${({ theme }) => theme.radius}px;
+  color: ${({ textColor }) => (!textColor ? "inherit" : textColor)};
 `;
 
 export const IconContainer = styled.div`
