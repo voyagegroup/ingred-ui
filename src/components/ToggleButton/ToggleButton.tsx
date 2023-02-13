@@ -1,10 +1,9 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Typography from "../Typography";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Typography from "../Typography";
+import * as Styled from "./styled";
 
-export type ToggleButtonProps = {
-  active?: boolean;
+export type ToggleButtonProps = React.ComponentPropsWithRef<"input"> & {
   disabled?: boolean;
   onChange?: () => void;
   width?: string;
@@ -17,7 +16,7 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
   (inProps, ref) => {
     const props = useLocaleProps({ props: inProps, name: "ToggleButton" });
     const {
-      active = false,
+      checked = false,
       disabled = false,
       onChange,
       width = "56px",
@@ -27,10 +26,10 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
     } = props;
     return (
       <Styled.Container ref={ref} width={width}>
-        <Styled.Label active={active} disabled={disabled} width={width}>
+        <Styled.Label active={checked} disabled={disabled} width={width}>
           <Styled.HiddenInput
             ref={inputRef}
-            checked={active}
+            checked={checked}
             type="checkbox"
             // eslint-disable-next-line react/jsx-handler-names
             readOnly={onChange == undefined}
@@ -59,7 +58,7 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
               {inActiveText}
             </Typography>
           </Styled.InActiveLabelText>
-          <Styled.ToggleButton active={active} disabled={disabled} />
+          <Styled.ToggleButton active={checked} disabled={disabled} />
         </Styled.Label>
       </Styled.Container>
     );

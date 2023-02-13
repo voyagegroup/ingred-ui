@@ -1,6 +1,5 @@
-import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
+import * as React from "react";
 import {
   Button,
   Card,
@@ -13,12 +12,13 @@ import {
   ToggleButton,
   Typography,
 } from "..";
+import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 
+import dayjs from "dayjs";
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
 import { FilterPackType, ReferredFilterType } from "../MultipleFilter/types";
-import dayjs from "dayjs";
 
 export default {
   title: "Components/Utils/LocaleProvider",
@@ -131,7 +131,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
 
       <h2>ToggleButton</h2>
       <Spacer pl={2} pt={2} pb={4}>
-        <ToggleButton active={active} onChange={() => setActive(!active)} />
+        <ToggleButton checked={active} onChange={() => setActive(!active)} />
       </Spacer>
 
       <h2>ConfirmModal</h2>
@@ -192,7 +192,7 @@ export const CustomLocale: Story<LocaleProviderProps> = () => {
     <LocaleProvider locale={koKR}>
       <h2>Define Custom Locale</h2>
       <Spacer pl={2} pt={2} pb={4}>
-        <ToggleButton active={active} onChange={() => setActive(!active)} />
+        <ToggleButton checked={active} onChange={() => setActive(!active)} />
       </Spacer>
 
       <div>You can define a custom locale definition as follows.</div>

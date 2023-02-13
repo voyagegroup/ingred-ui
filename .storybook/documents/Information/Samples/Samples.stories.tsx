@@ -220,7 +220,7 @@ const componentList: Section[] = [
         title: "ToggleButton",
         content: (
           <ToggleButton
-            active={true}
+            checked={true}
             onChange={action("changed 'ToggleButton'")}
           />
         ),

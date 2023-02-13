@@ -1,10 +1,10 @@
-import React from "react";
-import { Title, Description, Stories } from "@storybook/addon-docs";
-import Slide from "./Slide";
-import Flex from "../Flex";
-import ToggleButton from "../ToggleButton";
-import Spacer from "../Spacer";
+import { Description, Stories, Title } from "@storybook/addon-docs";
 import { ComponentStory } from "@storybook/react";
+import React from "react";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
+import ToggleButton from "../ToggleButton";
+import Slide from "./Slide";
 
 export default {
   title: "Components/Utils/Slide",
@@ -52,7 +52,7 @@ export const Example: ComponentStory<typeof Slide> = (args) => {
   return (
     <Flex display="flex" flexDirection="column" alignItems="center">
       <Spacer pt={3} />
-      <ToggleButton active={isOpen} onChange={handleToggle} />
+      <ToggleButton checked={isOpen} onChange={handleToggle} />
       <Spacer pt={3} />
       <Slide {...args} in={isOpen}>
         <div

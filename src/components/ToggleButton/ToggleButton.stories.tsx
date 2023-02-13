@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import ToggleButton, { ToggleButtonProps } from "./ToggleButton";
+import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
+import ToggleButton, { ToggleButtonProps } from "./ToggleButton";
 
 export default {
   title: "Components/Inputs/ToggleButton",
@@ -13,7 +13,7 @@ export const Example: Story<ToggleButtonProps> = (args) => {
   const [active, setActive] = React.useState<boolean>(false);
   return (
     <ToggleButton
-      active={active}
+      checked={active}
       onChange={() => setActive(!active)}
       {...args}
     />
@@ -25,25 +25,25 @@ export const DesignSamples = () => (
     <div>
       <Typography weight="bold">Active</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={true} />
+      <ToggleButton checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Inactive</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={false} />
+      <ToggleButton checked={false} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Disabled & Active</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={true} />
+      <ToggleButton disabled={true} checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
       <Typography weight="bold">Disabled & Inactive</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={false} />
+      <ToggleButton disabled={true} checked={false} />
     </div>
   </Flex>
 );
