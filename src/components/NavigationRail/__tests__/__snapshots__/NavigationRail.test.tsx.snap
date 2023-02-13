@@ -24,7 +24,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               class="sc-breuTD jDboYn"
             >
               <span
-                class="sc-iBkjds RltOZ"
+                class="sc-gKXOVf fmZGCL"
                 size="24"
               >
                 <svg
@@ -62,7 +62,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               class="sc-idiyUo kOEvVG"
             >
               <span
-                class="sc-iBkjds kTxGwl"
+                class="sc-gKXOVf kFgTzX"
                 size="18"
               >
                 <svg
@@ -90,15 +90,11 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               class="sc-hHLeRK lfNIkk"
             >
               <div
-                class="sc-dmRaPn fqFtvt"
+                class="sc-kDDrLX iNgeLi sc-dmRaPn iuBMmO"
+                color="#0B82F4"
+                font-size="13px"
               >
-                <span
-                  class="sc-kDDrLX iNgeLi sc-kgflAQ fQnhdm"
-                  color="#0B82F4"
-                  font-size="13px"
-                >
-                  Account Setting
-                </span>
+                Account Setting
               </div>
               <span
                 class="sc-hAZoDl fiXiWk"
@@ -115,7 +111,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             class="sc-breuTD jDboYn"
           >
             <span
-              class="sc-iBkjds RltOZ"
+              class="sc-gKXOVf fmZGCL"
               size="24"
             >
               <svg
@@ -160,10 +156,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
         class="sc-eCYdqJ cxoYtZ"
       >
         <div
-          class="sc-gKXOVf hakqLa"
+          class="sc-jqUVSM gEFcGj"
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-gKXOVf kFgTzX"
             size="18"
           >
             <svg
