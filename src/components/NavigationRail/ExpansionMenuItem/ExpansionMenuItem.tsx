@@ -1,7 +1,7 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
+import { SideNotificationBadge } from "../internal/SideNotificationBadge";
+import * as Styled from "./styled";
 
 export type NavigationRailExpansionMenuItemProps = Omit<
   React.ComponentPropsWithoutRef<"div">,
@@ -26,16 +26,14 @@ const ExpansionMenuItem = React.forwardRef<
 
   return (
     <Styled.Container ref={ref} {...rest}>
-      <Styled.TextContainer>
-        <Styled.TextWrapper
-          component="span"
-          weight={isActive ? "bold" : "normal"}
-          color={isActive ? "primary" : theme.palette.black}
-          size="sm"
-        >
-          {title}
-        </Styled.TextWrapper>
-      </Styled.TextContainer>
+      <Styled.TitleWrapper
+        component="div"
+        weight={isActive ? "bold" : "normal"}
+        color={isActive ? "primary" : theme.palette.black}
+        size="sm"
+      >
+        {title}
+      </Styled.TitleWrapper>
       <SideNotificationBadge
         notificationCount={notificationCount}
         invisible={notificationCount === 0}
