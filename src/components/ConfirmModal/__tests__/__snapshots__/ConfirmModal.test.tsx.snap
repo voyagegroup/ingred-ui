@@ -16,31 +16,28 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
       class="sc-bjUoiL iQQjZl fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-gsnTZi sc-hKMtZM eLlhHs fuvkzh"
+        class="sc-gsnTZi sc-dkzDqf eLlhHs iQTNJK"
       >
         <form>
           <div
-            class="sc-eCYdqJ fvJTaz"
+            class="sc-hKMtZM koxoie"
           >
             <div
-              class="sc-jSMfEi iAOTOP"
+              class="sc-eCYdqJ ifFEiN"
             >
               <p
-                class="sc-idiyUo jxGDeA"
+                class="sc-kDDrLX bhueFe"
                 color="#041C33"
                 font-size="20px"
               >
                 Title
               </p>
-              <div
-                class="sc-crXcEl fgriGY"
-              />
             </div>
             <div
-              class="sc-ftvSup uBGUH"
+              class="sc-iBkjds dNFTDc"
             >
               <span
-                class="sc-iqcoie kMvdeg"
+                class="sc-papXJ juDAzz"
                 size="24"
               >
                 <svg
@@ -66,10 +63,10 @@ exports[`ConfirmModal component testing ConfirmModal 1`] = `
             </div>
           </div>
           <div
-            class="sc-gKXOVf cWjMys"
+            class="sc-jSMfEi crWOh"
           >
             <div
-              class="sc-crXcEl escQkl"
+              class="sc-jqUVSM iIbTiM"
             />
           </div>
         </form>

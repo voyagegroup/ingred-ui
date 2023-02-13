@@ -2,25 +2,6 @@ import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-export const ModalBackground = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* TODO: color */
-  background-color: #001326cb;
-  animation: ${fadeIn} 0.4s;
-`;
-
 const FullSizeSlideIn = keyframes`
   0% {
     transform: translate(-50%, 0%);
@@ -114,15 +95,4 @@ export const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const TipContainer = styled.div`
-  padding-left: ${({ theme }) => theme.spacing * 0.5}px;
-`;
-
-export const TipContentContainer = styled.div`
-  min-width: ${({ theme }) =>
-    360 - (theme.spacing * 2 * 2 + theme.spacing * 2 + 18)}px;
-  max-width: ${({ theme }) =>
-    512 - (theme.spacing * 2 * 2 + theme.spacing * 2 + 18)}px;
 `;
