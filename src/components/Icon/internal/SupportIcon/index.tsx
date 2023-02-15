@@ -1,7 +1,7 @@
 import * as React from "react";
-import {IconProps} from "../../Icon";
+import { IconProps } from "../../Icon";
 
-const SupportIcon: React.FunctionComponent<IconProps> = ({type, fill}) => {
+const SupportIcon: React.FunctionComponent<IconProps> = ({ type, fill }) => {
   switch (type) {
     case "fill":
       return (
@@ -24,4 +24,4 @@ const SupportIcon: React.FunctionComponent<IconProps> = ({type, fill}) => {
   }
 };
 
-export {SupportIcon};
+export { SupportIcon };
