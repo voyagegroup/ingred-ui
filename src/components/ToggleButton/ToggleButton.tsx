@@ -7,8 +7,8 @@ export type ToggleButtonProps = React.ComponentPropsWithRef<"input"> & {
   disabled?: boolean;
   onChange?: () => void;
   width?: string;
-  activeText?: string;
-  inActiveText?: string;
+  checkedText?: string;
+  unCheckedText?: string;
   inputRef?: React.Ref<HTMLInputElement>;
 };
 
@@ -20,13 +20,13 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
       disabled = false,
       onChange,
       width = "56px",
-      activeText = "ON",
-      inActiveText = "OFF",
+      checkedText = "ON",
+      unCheckedText = "OFF",
       inputRef,
     } = props;
     return (
       <Styled.Container ref={ref} width={width}>
-        <Styled.Label active={checked} disabled={disabled} width={width}>
+        <Styled.Label checked={checked} disabled={disabled} width={width}>
           <Styled.HiddenInput
             ref={inputRef}
             checked={checked}
@@ -36,7 +36,7 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
             disabled={disabled}
             onChange={onChange}
           />
-          <Styled.ActiveLabelText>
+          <Styled.CheckedLabelText>
             <Typography
               component="div"
               color={disabled ? "disabled" : "primary"}
@@ -44,10 +44,10 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
               size="xs"
               weight="bold"
             >
-              {activeText}
+              {checkedText}
             </Typography>
-          </Styled.ActiveLabelText>
-          <Styled.InActiveLabelText>
+          </Styled.CheckedLabelText>
+          <Styled.UnCheckedLabelText>
             <Typography
               component="div"
               color={disabled ? "disabled" : "secondary"}
@@ -55,10 +55,10 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
               size="xs"
               weight="bold"
             >
-              {inActiveText}
+              {unCheckedText}
             </Typography>
-          </Styled.InActiveLabelText>
-          <Styled.ToggleButton active={checked} disabled={disabled} />
+          </Styled.UnCheckedLabelText>
+          <Styled.ToggleButton checked={checked} disabled={disabled} />
         </Styled.Label>
       </Styled.Container>
     );

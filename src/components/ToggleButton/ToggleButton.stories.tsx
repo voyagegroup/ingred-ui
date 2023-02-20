@@ -10,11 +10,11 @@ export default {
 };
 
 export const Example: Story<ToggleButtonProps> = (args) => {
-  const [active, setActive] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <ToggleButton
-      checked={active}
-      onChange={() => setActive(!active)}
+      checked={checked}
+      onChange={() => setChecked(!checked)}
       {...args}
     />
   );
