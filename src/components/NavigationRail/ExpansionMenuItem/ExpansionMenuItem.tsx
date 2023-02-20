@@ -1,90 +1,45 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Tooltip from "../../Tooltip";
-import { NavigationRailTransitionDuration } from "../constants";
-import { NavigationRailContext } from "../utils";
-import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
-import { createChainedFunction } from "../../../utils/createChainedFunction";
+import { SideNotificationBadge } from "../internal/SideNotificationBadge";
+import * as Styled from "./styled";
 
-export type NavigationRailExpansionMenuItemProps =
-  React.ComponentPropsWithoutRef<"div"> & {
-    title: string;
-    /**
-     * If it props exists, replace `title` props with it.
-     */
-    titleElement?: JSX.Element;
-    /**
-     * If `true`, it is highlighted.
-     */
-    isActive?: boolean;
-    /**
-     * If not `0`, the number is located on the right.
-     */
-    notificationCount?: number;
-  };
+export type NavigationRailExpansionMenuItemProps = Omit<
+  React.ComponentPropsWithoutRef<"div">,
+  "title"
+> & {
+  title: React.ReactNode;
+  /**
+   * If `true`, it is highlighted.
+   */
+  isActive?: boolean;
+  /**
+   * If not `0`, the number is located on the right.
+   */
+  notificationCount?: number;
+};
 
 const ExpansionMenuItem = React.forwardRef<
   HTMLDivElement,
   NavigationRailExpansionMenuItemProps
->(
-  (
-    {
-      title,
-      titleElement,
-      isActive = false,
-      onMouseEnter,
-      notificationCount = 0,
-      ...rest
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const { handleClose } = React.useContext(NavigationRailContext);
-    const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
+>(({ title, isActive = false, notificationCount = 0, ...rest }, ref) => {
+  const theme = useTheme();
 
-    const textContainerElement = React.useRef<HTMLDivElement | null>(null);
-    const textElement = React.useRef<HTMLSpanElement | null>(null);
-
-    const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
-
-    React.useEffect(() => {
-      textContainerElement.current?.addEventListener("mouseover", () => {
-        if (!textContainerElement.current || !textElement.current) return;
-        const containerWidth = textContainerElement.current.offsetWidth;
-        const textWidth = textElement.current.offsetWidth;
-        setShowTooltip(containerWidth <= textWidth);
-      });
-    }, [textContainerElement, textElement]);
-
-    return (
-      <Tooltip
-        content={title}
-        positionPriority={["right"]}
-        enterDelay={NavigationRailTransitionDuration * 1000}
-        disabled={!showTooltip}
-        onMouseEnter={handleMouseEnter}
+  return (
+    <Styled.Container ref={ref} {...rest}>
+      <Styled.TitleWrapper
+        component="div"
+        weight={isActive ? "bold" : "normal"}
+        color={isActive ? "primary" : theme.palette.black}
+        size="sm"
       >
-        <Styled.Container ref={ref} {...rest}>
-          <Styled.TextContainer ref={textContainerElement}>
-            <Styled.TextWrapper
-              ref={textElement}
-              component="span"
-              weight={isActive ? "bold" : "normal"}
-              color={isActive ? "primary" : theme.palette.black}
-              size="sm"
-            >
-              {titleElement ? titleElement : title}
-            </Styled.TextWrapper>
-          </Styled.TextContainer>
-          <SideNotificationBadge
-            notificationCount={notificationCount}
-            invisible={notificationCount === 0}
-          />
-        </Styled.Container>
-      </Tooltip>
-    );
-  },
-);
+        {title}
+      </Styled.TitleWrapper>
+      <SideNotificationBadge
+        notificationCount={notificationCount}
+        invisible={notificationCount === 0}
+      />
+    </Styled.Container>
+  );
+});
 
 export { ExpansionMenuItem };

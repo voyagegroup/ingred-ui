@@ -90,15 +90,11 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               class="sc-hHLeRK lfNIkk"
             >
               <div
-                class="sc-dmRaPn fqFtvt"
+                class="sc-kDDrLX iNgeLi sc-dmRaPn iuBMmO"
+                color="#0B82F4"
+                font-size="13px"
               >
-                <span
-                  class="sc-kDDrLX iNgeLi sc-kgflAQ fQnhdm"
-                  color="#0B82F4"
-                  font-size="13px"
-                >
-                  Account Setting
-                </span>
+                Account Setting
               </div>
               <span
                 class="sc-hAZoDl fiXiWk"

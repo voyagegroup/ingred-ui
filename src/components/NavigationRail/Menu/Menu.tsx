@@ -2,13 +2,10 @@ import * as React from "react";
 import * as Styled from "./styled";
 import Icon from "../../Icon";
 import { IconName } from "../../Icon/Icon";
-import Tooltip from "../../Tooltip";
 import { NavigationRailContext } from "../utils";
-import { NavigationRailTransitionDuration } from "../constants";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
 import { useTheme } from "../../../themes";
-import { createChainedFunction } from "../../../utils/createChainedFunction";
 
 export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
   title: string;
@@ -25,73 +22,41 @@ export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
 
 const Menu = React.forwardRef<HTMLDivElement, NavigationRailMenuProps>(
   (
-    {
-      title,
-      isActive = false,
-      iconName,
-      notificationCount = 0,
-      onMouseEnter,
-      ...rest
-    },
+    { title, isActive = false, iconName, notificationCount = 0, ...rest },
     ref,
   ) => {
     const theme = useTheme();
-    const { isOpen, handleClose } = React.useContext(NavigationRailContext);
-
-    const [showTooltip, setShowTooltip] = React.useState<boolean>(false);
-
-    const textContainerElement = React.useRef<HTMLDivElement | null>(null);
-    const textElement = React.useRef<HTMLSpanElement | null>(null);
-
-    const handleMouseEnter = createChainedFunction(onMouseEnter, handleClose);
-
-    React.useEffect(() => {
-      textContainerElement.current?.addEventListener("transitionend", () => {
-        if (!textContainerElement.current || !textElement.current) return;
-        const containerWidth = textContainerElement.current.offsetWidth;
-        const textWidth = textElement.current.offsetWidth;
-        setShowTooltip(containerWidth <= textWidth);
-      });
-    }, [textContainerElement, textElement]);
+    const { isOpen } = React.useContext(NavigationRailContext);
 
     return (
-      <Tooltip
-        content={title}
-        positionPriority={["right"]}
-        enterDelay={NavigationRailTransitionDuration * 1000}
-        disabled={!showTooltip}
-        onMouseEnter={handleMouseEnter}
-      >
-        <Styled.Container ref={ref} isActive={isActive} {...rest}>
-          <NotificationBadge
-            badgeContent={notificationCount}
-            position="top-left"
-            invisible={isOpen}
-          >
-            <Icon
-              name={iconName}
-              size="lg"
-              type={isActive ? "fill" : "line"}
-              color={isActive ? "active" : theme.palette.black}
-            />
-          </NotificationBadge>
-          <Styled.TextContainer ref={textContainerElement} isOpen={isOpen}>
-            <Styled.TextWrapper
-              ref={textElement}
-              component="span"
-              color={isActive ? "primary" : "initial"}
-              weight="bold"
-              size="sm"
-            >
-              {title}
-            </Styled.TextWrapper>
-          </Styled.TextContainer>
-          <SideNotificationBadge
-            notificationCount={notificationCount}
-            invisible={notificationCount === 0 || !isOpen}
+      <Styled.Container ref={ref} isActive={isActive} {...rest}>
+        <NotificationBadge
+          badgeContent={notificationCount}
+          position="top-left"
+          invisible={isOpen}
+        >
+          <Icon
+            name={iconName}
+            size="lg"
+            type={isActive ? "fill" : "line"}
+            color={isActive ? "active" : theme.palette.black}
           />
-        </Styled.Container>
-      </Tooltip>
+        </NotificationBadge>
+        <Styled.TextContainer isOpen={isOpen}>
+          <Styled.TextWrapper
+            component="span"
+            color={isActive ? "primary" : "initial"}
+            weight="bold"
+            size="sm"
+          >
+            {title}
+          </Styled.TextWrapper>
+        </Styled.TextContainer>
+        <SideNotificationBadge
+          notificationCount={notificationCount}
+          invisible={notificationCount === 0 || !isOpen}
+        />
+      </Styled.Container>
     );
   },
 );
