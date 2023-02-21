@@ -69,7 +69,6 @@ export const getOverrideStyles = <OptionValue,>(
       } else if (isFocused) {
         backgroundColor = theme.palette.gray.light;
       } else if (isDisabled) {
-        backgroundColor = theme.palette.gray.highlight;
         color = theme.palette.text.disabled;
       }
       return {
