@@ -125,7 +125,11 @@ So when you want to use with async callback, please implement as follows.
 };
 
 export const DesignSamples = () => {
-  const options = [
+  const options: {
+    label: string;
+    value: number;
+    isDisabled?: boolean;
+  }[] = [
     { label: "One", value: 1 },
     { label: "Two", value: 2 },
     { label: "Three", value: 3 },
@@ -170,6 +174,22 @@ export const DesignSamples = () => {
           <Typography weight="bold">Multiple</Typography>
           <Spacer pt={2} />
           <Select isMulti={true} minWidth="200px" options={options} />
+        </div>
+        <Spacer pl={3} />
+        <div>
+          <Typography weight="bold">Disable option</Typography>
+          <Spacer pt={2} />
+          <Select
+            minWidth="200px"
+            options={[
+              {
+                label: "Disabled",
+                value: 0,
+                isDisabled: true,
+              },
+              ...options,
+            ]}
+          />
         </div>
       </Flex>
     </div>
