@@ -66,10 +66,10 @@ export const getOverrideStyles = <OptionValue,>(
       let color = isSelected ? theme.palette.white : theme.palette.black;
       if (isSelected) {
         backgroundColor = theme.palette.primary.main;
-      } else if (isFocused) {
-        backgroundColor = theme.palette.gray.light;
       } else if (isDisabled) {
         color = theme.palette.text.disabled;
+      } else if (isFocused) {
+        backgroundColor = theme.palette.gray.light;
       }
       return {
         ...base,
