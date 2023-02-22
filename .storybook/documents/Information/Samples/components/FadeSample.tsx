@@ -15,7 +15,7 @@ const FadeSample: React.FC = () => {
   };
   return (
     <>
-      <ToggleButton active={isOpen} onChange={handleToggle} />
+      <ToggleButton checked={isOpen} onChange={handleToggle} />
       <Spacer pl={5} />
       <Fade in={isOpen}>
         <Box />

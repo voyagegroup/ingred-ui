@@ -1,6 +1,5 @@
-import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
+import * as React from "react";
 import {
   Button,
   Card,
@@ -13,12 +12,13 @@ import {
   ToggleButton,
   Typography,
 } from "..";
+import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 
+import dayjs from "dayjs";
 import * as locales from "../../constants/locale";
 import FileUploader from "../FileUploader";
 import ItemEmpty from "../ItemEmpty";
 import { FilterPackType, ReferredFilterType } from "../MultipleFilter/types";
-import dayjs from "dayjs";
 
 export default {
   title: "Components/Utils/LocaleProvider",
@@ -99,7 +99,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
     value: locale,
   }));
   localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
-  const [active, setActive] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   const [isOpen, setIsOpen] = React.useState(false);
   const [selectedLocale, setSelectedLocale] = React.useState<OptionType | null>(
     localeOptions[1],
@@ -131,7 +131,7 @@ export const Example: Story<LocaleProviderProps> = (args) => {
 
       <h2>ToggleButton</h2>
       <Spacer pl={2} pt={2} pb={4}>
-        <ToggleButton active={active} onChange={() => setActive(!active)} />
+        <ToggleButton checked={checked} onChange={() => setChecked(!checked)} />
       </Spacer>
 
       <h2>ConfirmModal</h2>
@@ -183,16 +183,16 @@ export const CustomLocale: Story<LocaleProviderProps> = () => {
   const koKR: locales.Localization = {
     components: {
       ToggleButton: {
-        defaultProps: { activeText: "온", inActiveText: "오프" },
+        defaultProps: { checkedText: "온", unCheckedText: "오프" },
       },
     },
   };
-  const [active, setActive] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <LocaleProvider locale={koKR}>
       <h2>Define Custom Locale</h2>
       <Spacer pl={2} pt={2} pb={4}>
-        <ToggleButton active={active} onChange={() => setActive(!active)} />
+        <ToggleButton checked={checked} onChange={() => setChecked(!checked)} />
       </Spacer>
 
       <div>You can define a custom locale definition as follows.</div>

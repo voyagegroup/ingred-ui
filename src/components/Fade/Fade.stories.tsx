@@ -1,9 +1,9 @@
-import React from "react";
-import { Title, Description, Stories } from "@storybook/addon-docs";
+import { Description, Stories, Title } from "@storybook/addon-docs";
 import { ComponentStory } from "@storybook/react";
+import React from "react";
 import Flex from "../Flex";
-import ToggleButton from "../ToggleButton";
 import Spacer from "../Spacer";
+import ToggleButton from "../ToggleButton";
 import Fade from "./Fade";
 
 export default {
@@ -43,7 +43,7 @@ export const Example: ComponentStory<typeof Fade> = (args) => {
   return (
     <Flex display="flex" flexDirection="column" alignItems="center">
       <Spacer pt={3} />
-      <ToggleButton active={isOpen} onChange={handleToggle} />
+      <ToggleButton checked={isOpen} onChange={handleToggle} />
       <Spacer pt={3} />
       <Fade {...args} in={isOpen}>
         <div

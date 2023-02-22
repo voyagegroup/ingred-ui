@@ -15,7 +15,7 @@ const GrowSample: React.FC = () => {
   };
   return (
     <>
-      <ToggleButton active={isOpen} onChange={handleToggle} />
+      <ToggleButton checked={isOpen} onChange={handleToggle} />
       <Spacer pl={5} />
       <Grow in={isOpen}>
         <Box />
