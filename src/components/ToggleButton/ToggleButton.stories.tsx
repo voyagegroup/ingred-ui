@@ -23,25 +23,25 @@ export const Example: Story<ToggleButtonProps> = (args) => {
 export const DesignSamples = () => (
   <Flex display="flex">
     <div>
-      <Typography weight="bold">Active</Typography>
+      <Typography weight="bold">Checked</Typography>
       <Spacer pt={2} />
       <ToggleButton checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Inactive</Typography>
+      <Typography weight="bold">Unchecked</Typography>
       <Spacer pt={2} />
       <ToggleButton checked={false} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Disabled & Active</Typography>
+      <Typography weight="bold">Disabled & Checked</Typography>
       <Spacer pt={2} />
       <ToggleButton disabled={true} checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Disabled & Inactive</Typography>
+      <Typography weight="bold">Disabled & Unchecked</Typography>
       <Spacer pt={2} />
       <ToggleButton disabled={true} checked={false} />
     </div>
