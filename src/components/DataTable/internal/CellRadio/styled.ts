@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { hexToRgba } from "../../../../utils/hexToRgba";
+
 const CELL_PADDING = 24;
 
 export const StandardCell = styled.td`
