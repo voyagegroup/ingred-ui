@@ -84,7 +84,7 @@ export const WithTabs: Story<DataTableProps<any>> = (args) => (
     data={data}
     columns={[
       ...args.columns,
-      ...[...Array(10)].map((_, i) => ({
+      ...Array.from(Array(10), (_, i) => ({
         name: `サンプル列${i}`,
         selector: () => `${i}`,
       })),

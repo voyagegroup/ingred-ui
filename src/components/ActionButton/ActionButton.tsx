@@ -19,6 +19,12 @@ const getHoverBackgroundColor = (theme: Theme) => ({
   disabled: theme.palette.gray.light,
 });
 
+const getBorderColor = (theme: Theme) => ({
+  primary: theme.palette.primary.light,
+  warning: colors.red[200],
+  disabled: colors.basic[400],
+});
+
 const getTextColor = (theme: Theme) => ({
   primary: theme.palette.primary.main,
   warning: theme.palette.danger.main,
@@ -44,6 +50,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
     };
 
     const colorForStyle = getColorByDisabled(color, disabled);
+    const borderColor = getBorderColor(theme)[colorForStyle];
     const normalBackgroundColor =
       getNormalBackgroundColor(theme)[colorForStyle];
     const hoverBackgroundColor = getHoverBackgroundColor(theme)[colorForStyle];
@@ -53,6 +60,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
       <Styled.Container
         {...rest}
         ref={ref}
+        borderColor={borderColor}
         normalBackgroundColor={normalBackgroundColor}
         hoverBackgroundColor={hoverBackgroundColor}
         disabled={disabled}

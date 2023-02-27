@@ -46,13 +46,16 @@ export default {
 export const Basic: Story<DateRangePickerProps> = () => {
   // MEMO: To be unaffected by "Localize" story.
   dayjs.locale("en");
-  const [date, setDate] = useState({
+  const [date, setDate] = useState<{
+    startDate: dayjs.Dayjs | null;
+    endDate: dayjs.Dayjs | null;
+  }>({
     startDate: dayjs().set("date", 1),
     endDate: dayjs(),
   });
   const handleChangeDates = (arg: {
-    startDate: dayjs.Dayjs;
-    endDate: dayjs.Dayjs;
+    startDate: dayjs.Dayjs | null;
+    endDate: dayjs.Dayjs | null;
   }) => {
     setDate(arg);
   };
@@ -85,13 +88,16 @@ export const Localize: Story<DateRangePickerProps> = () => {
   dayjs.extend(localeData);
   const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
   const displayFormat = () => "YYYY/MM/DD";
-  const [date, setDate] = useState({
+  const [date, setDate] = useState<{
+    startDate: dayjs.Dayjs | null;
+    endDate: dayjs.Dayjs | null;
+  }>({
     startDate: dayjs().set("date", 1),
     endDate: dayjs(),
   });
   const handleChangeDates = (arg: {
-    startDate: dayjs.Dayjs;
-    endDate: dayjs.Dayjs;
+    startDate: dayjs.Dayjs | null;
+    endDate: dayjs.Dayjs | null;
   }) => {
     setDate(arg);
   };

@@ -78,7 +78,7 @@ export const getContentTypeStyles = (
   }
 };
 
-export type ContentProp = React.ComponentPropsWithoutRef<"div"> & {
+export type SingleContentProp = React.ComponentPropsWithoutRef<"div"> & {
   text: string;
   onClick: () => void;
   divideTop?: boolean;
@@ -95,12 +95,14 @@ export type ContentProp = React.ComponentPropsWithoutRef<"div"> & {
 
 export type GroupContentProp = React.ComponentPropsWithoutRef<"div"> & {
   title: string;
-  contents: ContentProp[];
+  contents: SingleContentProp[];
 };
+
+export type ContentProp = SingleContentProp | GroupContentProp;
 
 export type MenuListProps = React.ComponentPropsWithoutRef<"div"> & {
   inline?: boolean;
-  contents: Array<ContentProp | GroupContentProp>;
+  contents: Array<ContentProp>;
   maxHeight?: Property.MaxHeight;
 };
 
@@ -128,7 +130,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
     };
 
     const handleClick =
-      (content: ContentProp, disabled?: boolean) => (): void => {
+      (content: SingleContentProp, disabled?: boolean) => (): void => {
         if (checkIsDisabled(content.type, disabled)) {
           return;
         }
@@ -142,7 +144,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return !!content.title;
     };
 
-    const renderContent = (content: ContentProp) => (
+    const renderContent = (content: SingleContentProp) => (
       <React.Fragment key={content.text}>
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
