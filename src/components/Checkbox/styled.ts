@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { getShadow } from "../../utils/getShadow";
 
+export const CheckboxContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const Checkbox = styled.input<{
   indeterminate: boolean;
   error: boolean;
@@ -35,20 +40,14 @@ export const Span = styled.span<{
   indeterminate: boolean;
   error: boolean;
 }>`
-  &:empty {
-    display: block;
-    &::before {
-      display: block;
-    }
-  }
+  display: inline-flex;
+  align-items: center;
   color: ${({ error }) =>
     error
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
   &::before {
     flex-shrink: 0;
-    display: inline-flex;
-    vertical-align: bottom;
     content: "";
     width: 18px;
     height: 18px;
