@@ -28,6 +28,8 @@ export const Checkbox = styled.input<{
 
 export const Container = styled.label<{ disabled: boolean }>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  display: flex;
+  align-items: center;
 `;
 
 export const Span = styled.span<{
@@ -43,7 +45,6 @@ export const Span = styled.span<{
       : ({ theme }) => theme.palette.black};
   &::before {
     flex-shrink: 0;
-    display: block;
     content: "";
     width: 18px;
     height: 18px;
