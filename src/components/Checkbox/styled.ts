@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { getShadow } from "../../utils/getShadow";
 
-export const CheckboxContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
 export const Checkbox = styled.input<{
   indeterminate: boolean;
   error: boolean;
@@ -33,6 +28,8 @@ export const Checkbox = styled.input<{
 
 export const Container = styled.label<{ disabled: boolean }>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  display: flex;
+  align-items: center;
 `;
 
 export const Span = styled.span<{
