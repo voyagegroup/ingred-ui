@@ -1,10 +1,11 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
-import { ContentProp } from "../MenuList/MenuList";
-import Menu, { MenuProps } from "../Menu";
-import { createChainedFunction } from "../../utils/createChainedFunction";
+import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { createChainedFunction } from "../../utils/createChainedFunction";
+import { ActionButtonProps } from "../ActionButton";
+import Menu, { MenuProps } from "../Menu";
+import { ContentProp } from "../MenuList/MenuList";
+import * as Styled from "./styled";
 
 export type ContextMenuProps = {
   /**
@@ -25,6 +26,7 @@ export type ContextMenuProps = {
    * props of [Menu](/?path=/docs/components-navigation-menu)
    */
   menuProps?: Partial<MenuProps>;
+  actionButtonProps?: Partial<ActionButtonProps>;
 };
 
 const ContextMenu = React.forwardRef<HTMLButtonElement, ContextMenuProps>(
@@ -34,6 +36,7 @@ const ContextMenu = React.forwardRef<HTMLButtonElement, ContextMenuProps>(
       positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
       menuMaxHeight = "none",
       menuProps,
+      actionButtonProps,
     },
     ref,
   ) => {
@@ -54,6 +57,7 @@ const ContextMenu = React.forwardRef<HTMLButtonElement, ContextMenuProps>(
           data-testid="icon-wrapper"
           icon="more_vert"
           onClick={handleToggleOpen(!isOpen)}
+          {...actionButtonProps}
         />
         <Menu
           isOpen={isOpen}
