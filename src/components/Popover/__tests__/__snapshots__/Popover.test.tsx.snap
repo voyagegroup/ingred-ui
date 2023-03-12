@@ -3,17 +3,17 @@
 exports[`Popover component testing Popover 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi lEmOA"
+    class="sc-bczRLJ gkusWi"
   >
     <div
-      class="sc-hKMtZM kldEOn fade-transition-appear fade-transition-appear-active"
+      class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-dkzDqf eOrlky"
+        class="sc-gsnTZi cqlNGB"
       />
     </div>
     <div
-      class="sc-bczRLJ jRMOjB"
+      class="sc-hKMtZM gjwEVb"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div>
