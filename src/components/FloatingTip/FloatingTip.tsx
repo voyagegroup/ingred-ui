@@ -24,7 +24,7 @@ export type FloatingTipProps = {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | FloatingTipCloseReason,
   ) => void;
-  popOverProps?: Partial<PopoverProps>;
+  popoverProps?: Partial<PopoverProps>;
 };
 
 const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
@@ -35,7 +35,7 @@ const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
       offset = [0, 10],
       isOpen,
       onClose,
-      popOverProps,
+      popoverProps,
       children,
     },
     ref,
@@ -55,7 +55,7 @@ const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
         positionPriority={positionPriority}
         offset={offset}
         onClose={onClose}
-        {...popOverProps}
+        {...popoverProps}
       >
         <Styled.Container ref={ref}>
           <Styled.ContentWrapper>{children}</Styled.ContentWrapper>

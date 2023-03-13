@@ -37,7 +37,7 @@ export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
    * props of [MenuList](/?path=/docs/components-navigation-menulist)
    */
   menuListProps?: Partial<MenuListProps>;
-  popOverProps?: Partial<PopoverProps>;
+  popoverProps?: Partial<PopoverProps>;
 };
 
 const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
@@ -50,7 +50,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       onClose,
       maxHeight = "none",
       menuListProps,
-      popOverProps,
+      popoverProps,
       ...rest
     },
     ref,
@@ -67,7 +67,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
         baseElement={baseElement}
         positionPriority={positionPriority}
         onClose={onClose}
-        {...popOverProps}
+        {...popoverProps}
       >
         <MenuList
           ref={ref}
