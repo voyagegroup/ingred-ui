@@ -24,7 +24,6 @@ const NavigationRailContainer = React.forwardRef<
 >(({ defaultFixed = false, onChangeOpen, onChangeFixed, children }, ref) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
-  const [isHoverFixture, setIsHoverFixture] = React.useState<boolean>(false);
 
   const handleOpen = () => {
     if (!isFixed) {
@@ -50,24 +49,12 @@ const NavigationRailContainer = React.forwardRef<
     if (onChangeFixed) onChangeFixed(false);
   };
 
-  const handleHoverFixture = () => {
-    setIsHoverFixture(true);
-  };
-
-  const handleLeaveFixture = () => {
-    setIsHoverFixture(false);
-  };
-
   const handleClickFixture = () => {
     if (isFixed) {
-      if (isHoverFixture) {
-        setIsOpen(false);
-      }
+      setIsOpen(false);
       handleUnFixed();
     } else {
-      if (isHoverFixture) {
-        setIsOpen(true);
-      }
+      setIsOpen(true);
       handleFixed();
     }
   };
@@ -81,8 +68,6 @@ const NavigationRailContainer = React.forwardRef<
         handleClose,
         handleFixed,
         handleUnFixed,
-        handleHoverFixture,
-        handleLeaveFixture,
         handleClickFixture,
       }}
     >

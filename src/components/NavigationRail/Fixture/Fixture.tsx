@@ -21,12 +21,9 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
     ref,
   ) => {
     const theme = useTheme();
-    const {
-      isFixed,
-      handleHoverFixture,
-      handleLeaveFixture,
-      handleClickFixture,
-    } = React.useContext(NavigationRailContext);
+    const { isFixed, handleClickFixture } = React.useContext(
+      NavigationRailContext,
+    );
 
     return (
       <Tooltip
@@ -39,8 +36,6 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
           ref={ref}
           isFixed={isFixed}
           onClick={handleClickFixture}
-          onMouseEnter={handleHoverFixture}
-          onMouseLeave={handleLeaveFixture}
         >
           <Icon name="arrow_double_left" />
         </Styled.Container>

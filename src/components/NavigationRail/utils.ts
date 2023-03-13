@@ -7,8 +7,6 @@ export type NavigationRailContextValues = {
   handleClose?: () => void;
   handleFixed?: () => void;
   handleUnFixed?: () => void;
-  handleHoverFixture?: () => void;
-  handleLeaveFixture?: () => void;
   handleClickFixture?: () => void;
 };
 
