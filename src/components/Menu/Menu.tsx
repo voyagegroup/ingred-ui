@@ -37,6 +37,9 @@ export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
    * props of [MenuList](/?path=/docs/components-navigation-menulist)
    */
   menuListProps?: Partial<MenuListProps>;
+  /**
+   * props of [Popover](/?path=/docs/components-utils-popover)
+   */
   popoverProps?: Partial<PopoverProps>;
 };
 

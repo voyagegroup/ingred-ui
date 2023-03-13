@@ -24,6 +24,9 @@ export type FloatingTipProps = {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | FloatingTipCloseReason,
   ) => void;
+  /**
+   * props of [Popover](/?path=/docs/components-utils-popover)
+   */
   popoverProps?: Partial<PopoverProps>;
 };
 

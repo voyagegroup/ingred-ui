@@ -26,6 +26,9 @@ export type ContextMenuProps = {
    * props of [Menu](/?path=/docs/components-navigation-menu)
    */
   menuProps?: Partial<MenuProps>;
+  /**
+   * props of [ActionButton](/?path=/docs/components-inputs-actionbutton)
+   */
   actionButtonProps?: Partial<ActionButtonProps>;
 };
 

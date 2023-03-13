@@ -20,6 +20,9 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
    */
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
+  /**
+   * props of [Modal](/?path=/docs/components-utils-modal)
+   */
   modalProps?: Partial<ModalProps>;
   children: React.ComponentElement<HTMLElement, any>;
 };
