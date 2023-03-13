@@ -1,9 +1,9 @@
-import * as React from "react";
 import * as PopperJS from "@popperjs/core";
-import MenuList, { ContentProp, MenuListProps } from "../MenuList/MenuList";
-import Popover from "../Popover";
-import { ModalCloseReason } from "../Modal";
+import * as React from "react";
 import { createChainedFunction } from "../../utils/createChainedFunction";
+import MenuList, { ContentProp, MenuListProps } from "../MenuList/MenuList";
+import { ModalCloseReason } from "../Modal";
+import Popover, { PopoverProps } from "../Popover";
 
 export type MenuCloseReason = "clickMenuList";
 
@@ -37,6 +37,10 @@ export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
    * props of [MenuList](/?path=/docs/components-navigation-menulist)
    */
   menuListProps?: Partial<MenuListProps>;
+  /**
+   * props of [Popover](/?path=/docs/components-utils-popover)
+   */
+  popoverProps?: Partial<PopoverProps>;
 };
 
 const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
@@ -49,6 +53,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
       onClose,
       maxHeight = "none",
       menuListProps,
+      popoverProps,
       ...rest
     },
     ref,
@@ -65,6 +70,7 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
         baseElement={baseElement}
         positionPriority={positionPriority}
         onClose={onClose}
+        {...popoverProps}
       >
         <MenuList
           ref={ref}

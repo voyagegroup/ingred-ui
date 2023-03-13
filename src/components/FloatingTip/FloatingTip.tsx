@@ -1,10 +1,10 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
-import Popover from "../Popover";
+import * as React from "react";
+import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import { ModalCloseReason } from "../Modal";
-import { useTheme } from "../../themes";
+import Popover, { PopoverProps } from "../Popover";
+import * as Styled from "./styled";
 
 export type FloatingTipCloseReason = "clickCloseIcon";
 
@@ -24,6 +24,10 @@ export type FloatingTipProps = {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | FloatingTipCloseReason,
   ) => void;
+  /**
+   * props of [Popover](/?path=/docs/components-utils-popover)
+   */
+  popoverProps?: Partial<PopoverProps>;
 };
 
 const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
@@ -34,6 +38,7 @@ const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
       offset = [0, 10],
       isOpen,
       onClose,
+      popoverProps,
       children,
     },
     ref,
@@ -53,6 +58,7 @@ const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
         positionPriority={positionPriority}
         offset={offset}
         onClose={onClose}
+        {...popoverProps}
       >
         <Styled.Container ref={ref}>
           <Styled.ContentWrapper>{children}</Styled.ContentWrapper>
