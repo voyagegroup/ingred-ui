@@ -25,8 +25,6 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
       NavigationRailContext,
     );
 
-    const handleOnClick = isFixed ? handleUnFixed : handleFixed;
-
     return (
       <Tooltip
         content={labelFixtureTooltip(isFixed)}
@@ -34,7 +32,12 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
         offset={[0, theme.spacing * 2.5]}
         enterDelay={NavigationRailTransitionDuration}
       >
-        <Styled.Container ref={ref} isFixed={isFixed} onClick={handleOnClick}>
+        <Styled.Container
+          ref={ref}
+          isFixed={isFixed}
+          // eslint-disable-next-line react/jsx-handler-names
+          onClick={isFixed ? handleUnFixed : handleFixed}
+        >
           <Icon name="arrow_double_left" />
         </Styled.Container>
       </Tooltip>
