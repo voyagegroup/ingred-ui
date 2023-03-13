@@ -21,9 +21,12 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
     ref,
   ) => {
     const theme = useTheme();
-    const { isFixed, handleFixed, handleUnFixed } = React.useContext(
-      NavigationRailContext,
-    );
+    const {
+      isFixed,
+      handleHoverFixture,
+      handleLeaveFixture,
+      handleClickFixture,
+    } = React.useContext(NavigationRailContext);
 
     return (
       <Tooltip
@@ -35,8 +38,9 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
         <Styled.Container
           ref={ref}
           isFixed={isFixed}
-          // eslint-disable-next-line react/jsx-handler-names
-          onClick={isFixed ? handleUnFixed : handleFixed}
+          onClick={handleClickFixture}
+          onMouseEnter={handleHoverFixture}
+          onMouseLeave={handleLeaveFixture}
         >
           <Icon name="arrow_double_left" />
         </Styled.Container>
