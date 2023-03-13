@@ -40,11 +40,13 @@ const NavigationRailContainer = React.forwardRef<
   };
 
   const handleFixed = () => {
+    setIsOpen(true);
     setIsFixed(true);
     if (onChangeFixed) onChangeFixed(true);
   };
 
   const handleUnFixed = () => {
+    setIsOpen(false);
     setIsFixed(false);
     if (onChangeFixed) onChangeFixed(false);
   };
