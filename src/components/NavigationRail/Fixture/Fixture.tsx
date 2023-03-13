@@ -21,9 +21,11 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
     ref,
   ) => {
     const theme = useTheme();
-    const { isFixed, handleClickFixture } = React.useContext(
+    const { isFixed, handleFixed, handleUnFixed } = React.useContext(
       NavigationRailContext,
     );
+
+    const handleOnClick = isFixed ? handleUnFixed : handleFixed;
 
     return (
       <Tooltip
@@ -32,11 +34,7 @@ const Fixture = React.forwardRef<HTMLDivElement, Props>(
         offset={[0, theme.spacing * 2.5]}
         enterDelay={NavigationRailTransitionDuration}
       >
-        <Styled.Container
-          ref={ref}
-          isFixed={isFixed}
-          onClick={handleClickFixture}
-        >
+        <Styled.Container ref={ref} isFixed={isFixed} onClick={handleOnClick}>
           <Icon name="arrow_double_left" />
         </Styled.Container>
       </Tooltip>

@@ -40,23 +40,15 @@ const NavigationRailContainer = React.forwardRef<
   };
 
   const handleFixed = () => {
+    setIsOpen(true);
     setIsFixed(true);
     if (onChangeFixed) onChangeFixed(true);
   };
 
   const handleUnFixed = () => {
+    setIsOpen(false);
     setIsFixed(false);
     if (onChangeFixed) onChangeFixed(false);
-  };
-
-  const handleClickFixture = () => {
-    if (isFixed) {
-      setIsOpen(false);
-      handleUnFixed();
-    } else {
-      setIsOpen(true);
-      handleFixed();
-    }
   };
 
   return (
@@ -68,7 +60,6 @@ const NavigationRailContainer = React.forwardRef<
         handleClose,
         handleFixed,
         handleUnFixed,
-        handleClickFixture,
       }}
     >
       <Styled.Container ref={ref}>{children}</Styled.Container>

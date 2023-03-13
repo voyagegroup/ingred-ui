@@ -7,7 +7,6 @@ export type NavigationRailContextValues = {
   handleClose?: () => void;
   handleFixed?: () => void;
   handleUnFixed?: () => void;
-  handleClickFixture?: () => void;
 };
 
 export const NavigationRailContext =
