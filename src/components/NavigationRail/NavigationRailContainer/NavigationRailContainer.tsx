@@ -77,7 +77,6 @@ const NavigationRailContainer = React.forwardRef<
       value={{
         isOpen,
         isFixed,
-        isHoverFixture,
         handleOpen,
         handleClose,
         handleFixed,
