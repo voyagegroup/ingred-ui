@@ -1,113 +1,112 @@
-import * as PopperJS from "@popperjs/core";
+import { type Placement } from "@floating-ui/core";
 import * as React from "react";
-import { usePopper } from "react-popper";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
-import Modal, { ModalProps } from "../Modal";
 import * as Styled from "./styled";
+import {
+  useFloating,
+  autoUpdate,
+  offset as floatingOffset,
+  shift,
+  FloatingFocusManager,
+  useDismiss,
+  useRole,
+  useClick,
+  useInteractions,
+  autoPlacement,
+  flip,
+} from "@floating-ui/react";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
-   * If `false`, children becomes `visibility: hidden`.
+   * If `false`, this component return `null`.
    */
   isOpen?: boolean;
-  onClose?: ModalProps["onClose"];
+  onClose?: (open: boolean) => void;
   /**
    * That becomes position reference of this component.
    */
   baseElement: HTMLElement | null;
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/flip#fallbackplacements).
+   * If not specified, it will be auto.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: Placement[];
   offset?: [number, number];
-  /**
-   * props of [Modal](/?path=/docs/components-utils-modal)
-   */
-  modalProps?: Partial<ModalProps>;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
-// TODO: Must decide detail transition (e.g. easing, transform-origin)
-// MEMO: We will add transition to this component.
-//       ref https://github.com/voyagegroup/ingred-ui/issues/191
-//       ref e10d4db15b36488922651ee3128df89d3006f82f
 const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
   (
     {
-      isOpen = true,
+      isOpen = false,
       onClose,
       baseElement,
       offset = [0, 0],
-      positionPriority = ["auto"],
-      modalProps,
+      positionPriority = ["left"],
       children,
       ...rest
     },
     ref,
   ) => {
-    const [popperElement, setPopperElement] =
-      React.useState<HTMLDivElement | null>(null);
-
-    const { styles, attributes, update } = usePopper(
-      baseElement,
-      popperElement,
-      {
-        placement: positionPriority[0],
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset,
-            },
-          },
-          {
-            name: "flip",
-            options: {
+    const {
+      x,
+      y,
+      refs: floatingRef,
+      strategy,
+      context,
+    } = useFloating({
+      placement: positionPriority[0],
+      open: isOpen,
+      onOpenChange: onClose,
+      middleware: [
+        positionPriority.length > 0
+          ? flip({
               padding: 24,
               fallbackPlacements: positionPriority,
-            },
-          },
-          {
-            name: "preventOverflow",
-            options: {
-              mainAxis: false,
-            },
-          },
-          {
-            name: "computeStyles",
-            options: {
-              gpuAcceleration: false, // MEMO: To disable override CSS property "transform"
-            },
-          },
-        ],
-      },
-    );
+            })
+          : autoPlacement(),
+        floatingOffset({
+          mainAxis: offset[1],
+          crossAxis: offset[0],
+        }),
+        shift({
+          mainAxis: false,
+        }),
+      ],
+      whileElementsMounted: autoUpdate,
+    });
+
+    const click = useClick(context);
+    const dismiss = useDismiss(context);
+    const role = useRole(context);
+
+    const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
     React.useEffect(() => {
-      if (update !== null) {
-        update();
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isOpen]);
+      floatingRef.setReference(baseElement);
+    }, [baseElement, floatingRef]);
 
-    const refs = useMergeRefs<HTMLDivElement>(ref, setPopperElement);
+    const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
+
+    if (!isOpen) {
+      return null;
+    }
 
     return (
-      <Modal
-        isOpen={isOpen}
-        backdropProps={{ invisible: true }}
-        onClose={onClose}
-        {...modalProps}
-      >
+      <FloatingFocusManager context={context} modal={false}>
         <Styled.Container
           ref={refs}
-          style={styles.popper}
-          {...attributes.popper}
+          style={{
+            position: strategy,
+            top: y ?? 0,
+            left: x ?? 0,
+          }}
+          {...getFloatingProps()}
           {...rest}
         >
           {children}
         </Styled.Container>
-      </Modal>
+      </FloatingFocusManager>
     );
   },
 );

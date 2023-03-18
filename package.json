@@ -25,6 +25,8 @@
     "generate": "yarn scaffdog generate"
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.2.4",
+    "@floating-ui/react": "^0.21.1",
     "@popperjs/core": "^2.11.6",
     "dayjs": "^1.11.6",
     "moment": "^2.29.3",
