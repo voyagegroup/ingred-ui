@@ -15,13 +15,14 @@ import {
   autoPlacement,
   flip,
 } from "@floating-ui/react";
+import Modal, { type ModalProps } from "../Modal";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
    * If `false`, this component return `null`.
    */
   isOpen?: boolean;
-  onClose?: (open: boolean) => void;
+  onClose?: ModalProps["onClose"];
   /**
    * That becomes position reference of this component.
    */
@@ -57,7 +58,6 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
     } = useFloating({
       placement: positionPriority[0],
       open: isOpen,
-      onOpenChange: onClose,
       middleware: [
         positionPriority.length > 0
           ? flip({
@@ -88,25 +88,27 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
 
     const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
 
-    if (!isOpen) {
-      return null;
-    }
-
     return (
-      <FloatingFocusManager context={context} modal={false}>
-        <Styled.Container
-          ref={refs}
-          style={{
-            position: strategy,
-            top: y ?? 0,
-            left: x ?? 0,
-          }}
-          {...getFloatingProps()}
-          {...rest}
-        >
-          {children}
-        </Styled.Container>
-      </FloatingFocusManager>
+      <Modal
+        isOpen={isOpen}
+        backdropProps={{ invisible: true }}
+        onClose={onClose}
+      >
+        <FloatingFocusManager context={context} modal={false}>
+          <Styled.Container
+            ref={refs}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+            }}
+            {...getFloatingProps()}
+            {...rest}
+          >
+            {children}
+          </Styled.Container>
+        </FloatingFocusManager>
+      </Modal>
     );
   },
 );
