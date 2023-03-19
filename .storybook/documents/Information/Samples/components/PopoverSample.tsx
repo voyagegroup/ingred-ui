@@ -9,10 +9,8 @@ const Content = styled.div`
 
 const PopoverSample: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(true);
-  const [
-    buttonElement,
-    setButtonElement,
-  ] = React.useState<HTMLButtonElement | null>(null);
+  const [buttonElement, setButtonElement] =
+    React.useState<HTMLButtonElement | null>(null);
 
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
