@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as PopperJS from "@popperjs/core";
+import { Placement } from "@floating-ui/core";
 import { usePopper } from "react-popper";
 import * as Styled from "./styled";
 import Portal from "../Portal";
@@ -14,9 +14,10 @@ export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   enterDelay?: number;
   leaveDelay?: number;
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/flip#fallbackplacements).
+   * If not specified, it will be auto.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: Placement[];
   offset?: [number, number];
   width?: string;
   disabled?: boolean;

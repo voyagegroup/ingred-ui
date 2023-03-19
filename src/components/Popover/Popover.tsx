@@ -1,4 +1,4 @@
-import { type Placement } from "@floating-ui/core";
+import { Placement } from "@floating-ui/core";
 import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 import * as Styled from "./styled";
@@ -15,7 +15,7 @@ import {
   autoPlacement,
   flip,
 } from "@floating-ui/react";
-import Modal, { type ModalProps } from "../Modal";
+import Modal, { ModalProps } from "../Modal";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**

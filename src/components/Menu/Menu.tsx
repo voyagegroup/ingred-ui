@@ -1,4 +1,4 @@
-import * as PopperJS from "@popperjs/core";
+import { Placement } from "@floating-ui/dom";
 import * as React from "react";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 import MenuList, { ContentProp, MenuListProps } from "../MenuList/MenuList";
@@ -25,9 +25,10 @@ export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
    */
   contents: ContentProp[];
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/flip#fallbackplacements).
+   * If not specified, it will be auto.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: Placement[];
   onClose?: (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason | MenuCloseReason,
