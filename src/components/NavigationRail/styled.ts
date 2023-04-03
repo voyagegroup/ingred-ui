@@ -5,12 +5,12 @@ import {
 } from "./constants";
 import { hexToRgba } from "../../utils/hexToRgba";
 
-type ContaierProps = {
+type ContainerProps = {
   isOpen: boolean;
   isFixed: boolean;
 };
 
-export const Container = styled.div<ContaierProps>`
+export const Container = styled.div<ContainerProps>`
   position: fixed;
   display: flex;
   flex-direction: column;

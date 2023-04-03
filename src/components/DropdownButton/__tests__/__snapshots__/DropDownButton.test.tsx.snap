@@ -39,10 +39,10 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     </button>
   </div>
   <div
-    class="sc-breuTD fpPBKZ"
+    class="sc-evZas kgXVOO"
   >
     <div
-      class="sc-evZas jOgJil"
+      class="sc-hAZoDl iAkEdy"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
@@ -146,17 +146,17 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-breuTD fAlMkp"
+    class="sc-evZas gACLam"
   >
     <div
-      class="sc-hAZoDl hRNplO fade-transition-enter fade-transition-enter-active"
+      class="sc-ksZaOG giEGhF fade-transition-enter fade-transition-enter-active"
     >
       <div
-        class="sc-ksZaOG irMArj"
+        class="sc-breuTD btMEjY"
       />
     </div>
     <div
-      class="sc-evZas jOgJil"
+      class="sc-hAZoDl iAkEdy"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"
@@ -268,10 +268,10 @@ exports[`DropdownButton component testing splited disable 1`] = `
     </button>
   </div>
   <div
-    class="sc-breuTD fpPBKZ"
+    class="sc-evZas kgXVOO"
   >
     <div
-      class="sc-evZas jOgJil"
+      class="sc-hAZoDl iAkEdy"
       style="position: absolute; left: 0px; top: 0px;"
     >
       <div
@@ -378,17 +378,17 @@ exports[`DropdownButton component testing splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-breuTD fAlMkp"
+    class="sc-evZas gACLam"
   >
     <div
-      class="sc-hAZoDl hRNplO fade-transition-enter fade-transition-enter-active"
+      class="sc-ksZaOG giEGhF fade-transition-enter fade-transition-enter-active"
     >
       <div
-        class="sc-ksZaOG irMArj"
+        class="sc-breuTD btMEjY"
       />
     </div>
     <div
-      class="sc-evZas jOgJil"
+      class="sc-hAZoDl iAkEdy"
       data-popper-escaped="true"
       data-popper-placement="bottom-start"
       data-popper-reference-hidden="true"

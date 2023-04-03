@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Story } from "@storybook/react/types-6-0";
-import ToggleButton, { ToggleButtonProps } from "./ToggleButton";
+import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
+import ToggleButton, { ToggleButtonProps } from "./ToggleButton";
 
 export default {
   title: "Components/Inputs/ToggleButton",
@@ -10,11 +10,11 @@ export default {
 };
 
 export const Example: Story<ToggleButtonProps> = (args) => {
-  const [active, setActive] = React.useState<boolean>(false);
+  const [checked, setChecked] = React.useState<boolean>(false);
   return (
     <ToggleButton
-      active={active}
-      onChange={() => setActive(!active)}
+      checked={checked}
+      onChange={() => setChecked(!checked)}
       {...args}
     />
   );
@@ -23,27 +23,27 @@ export const Example: Story<ToggleButtonProps> = (args) => {
 export const DesignSamples = () => (
   <Flex display="flex">
     <div>
-      <Typography weight="bold">Active</Typography>
+      <Typography weight="bold">Checked</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={true} />
+      <ToggleButton checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Inactive</Typography>
+      <Typography weight="bold">Unchecked</Typography>
       <Spacer pt={2} />
-      <ToggleButton active={false} />
+      <ToggleButton checked={false} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Disabled & Active</Typography>
+      <Typography weight="bold">Disabled & Checked</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={true} />
+      <ToggleButton disabled={true} checked={true} />
     </div>
     <Spacer pl={3} />
     <div>
-      <Typography weight="bold">Disabled & Inactive</Typography>
+      <Typography weight="bold">Disabled & Unchecked</Typography>
       <Spacer pt={2} />
-      <ToggleButton disabled={true} active={false} />
+      <ToggleButton disabled={true} checked={false} />
     </div>
   </Flex>
 );

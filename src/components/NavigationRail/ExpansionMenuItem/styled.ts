@@ -19,15 +19,12 @@ export const Container = styled.div`
   }
 `;
 
-export const TextContainer = styled.div`
+export const TitleWrapper = styled(Typography)`
   flex-shrink: 1;
   flex-grow: 1;
   display: flex;
   align-items: center;
   min-width: 0;
-`;
-
-export const TextWrapper = styled(Typography)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -156,15 +156,11 @@ export type DataTableProps<T> = {
    */
   onRadioChange?: (radio: number) => void;
   /**
-   * Reset selected checkboxes when this props changed to `true`.
-   */
-  clearSelectedRows?: boolean;
-  /**
    * Define tabs of table. Please refer to the samples below.
    */
   tabs?: Tab<T>[];
   /**
-   * props of [ItemEnpty](/?path=/docs/components-utils-itemempty)
+   * props of [ItemEmpty](/?path=/docs/components-utils-itemEmpty)
    */
   itemEmptyProps?: ItemEmptyProps;
   /**
@@ -184,18 +180,14 @@ export type DataTableProps<T> = {
   defaultSortOrder?: "desc" | "asc";
   /**
    * Specify checked rows.
-   * Not rerender when this prop is updated because it is used for initial value of state.
-   * **Please use with `onSelectRowsChange={true}`.**
    */
-  defaultSelectedRows?: number[];
+  selectedRows?: number[];
   /**
    * Specify checked row.
-   * Not rerender when this prop is updated because it is used for initial value of state.
-   * **Please use with `onSelectRowChange={true}`.**
    */
-  defaultSelectedRow?: number;
+  selectedRow?: number;
   /**
-   * Add verticale line in table.
+   * Add vertical line in table.
    */
   enableRuledLine?: boolean;
   /**
@@ -220,14 +212,13 @@ const DataTable = <T extends DataTableBaseData>(
     enablePagination = false,
     onSelectRowsChange,
     onRadioChange,
-    clearSelectedRows,
     tabs,
     itemEmptyProps,
     per,
     defaultSortField,
     defaultSortOrder = "desc",
-    defaultSelectedRows = [],
-    defaultSelectedRow,
+    selectedRows = [],
+    selectedRow,
     enableRuledLine = false,
     verticalSpacing = "medium",
     fullWidth = false,
@@ -241,14 +232,9 @@ const DataTable = <T extends DataTableBaseData>(
 ) => {
   const showCheckbox = !!onSelectRowsChange;
   const [allSelected, setAllSelected] = React.useState(false);
-  const [selectedRows, setSelectedRows] =
-    React.useState<number[]>(defaultSelectedRows);
   const indeterminate = selectedRows.length > 0 && !allSelected;
 
   const showRadioButton = !!onRadioChange;
-  const [selectedRow, setSelectedRow] = React.useState<number | null>(
-    defaultSelectedRow || null,
-  );
 
   const showTabs = !!tabs;
   const [currentTabIndex, setCurrentTabIndex] = React.useState(0);
@@ -329,27 +315,6 @@ const DataTable = <T extends DataTableBaseData>(
     setDisplayData(displayData);
   }, [sourceData, currentTabIndex]);
 
-  // MEMO: Clear selected items.
-  React.useEffect(() => {
-    if (clearSelectedRows) {
-      setSelectedRows([]);
-      if (onSelectRowsChange) {
-        onSelectRowsChange([]);
-      }
-    }
-  }, [clearSelectedRows, onSelectRowsChange]);
-
-  React.useEffect(() => {
-    if (onSelectRowsChange) {
-      onSelectRowsChange(selectedRows);
-    }
-  }, [selectedRows, onSelectRowsChange]);
-  React.useEffect(() => {
-    if (onRadioChange) {
-      onRadioChange(selectedRow as number);
-    }
-  }, [selectedRow, onRadioChange]);
-
   const handleTabChange = (tabIndex: number) => {
     setCurrentTabIndex(tabIndex);
   };
@@ -367,23 +332,33 @@ const DataTable = <T extends DataTableBaseData>(
   };
 
   const handleSelectCheckbox = (id: number) => () => {
+    if (!onSelectRowsChange) {
+      return;
+    }
     if (selectedRows.includes(id)) {
-      setSelectedRows(selectedRows.filter((selectedId) => selectedId !== id));
+      onSelectRowsChange(
+        selectedRows.filter((selectedId) => selectedId !== id),
+      );
     } else {
-      setSelectedRows([...selectedRows, id]);
+      onSelectRowsChange([...selectedRows, id]);
     }
   };
 
   const handleSelectRadioButton = (id: number) => () => {
-    setSelectedRow(id);
+    if (onRadioChange) {
+      onRadioChange(id);
+    }
   };
 
   const handleToggleCheckAll = () => {
+    if (!onSelectRowsChange) {
+      return;
+    }
     if (selectedRows.length > 0) {
-      setSelectedRows([]);
+      onSelectRowsChange([]);
       setAllSelected(false);
     } else {
-      setSelectedRows(
+      onSelectRowsChange(
         displayData
           .filter((data) => !data.selectDisabled)
           .map((data) => data.id),
@@ -635,7 +610,7 @@ const DataTable = <T extends DataTableBaseData>(
   );
 };
 
-// FIXME: Imprement without type assertion
+// FIXME: Implement without type assertion
 export default React.forwardRef(DataTable) as <T extends DataTableBaseData>(
   props: DataTableProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof DataTable>;

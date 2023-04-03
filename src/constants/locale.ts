@@ -1,14 +1,15 @@
 import {
   ConfirmModalProps,
+  DatePickerProps,
+  DateRangePickerProps,
   FileUploaderProps,
   ItemEmptyProps,
   MultipleFilterProps,
   ToggleButtonProps,
-  DatePickerProps,
-  DateRangePickerProps,
 } from "..";
 import { SelectProps } from "../components";
 import { CreatableSelectProps } from "../components/CreatableSelect";
+import { FullSizeConfirmModalProps } from "../components/FullSizeConfirmModal";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
 import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCard/FilterCard";
 
@@ -16,10 +17,16 @@ import { FilterCardProps } from "../components/MultipleFilter/internal/FilterCar
 export interface Localization {
   components?: {
     ToggleButton?: {
-      defaultProps: Pick<ToggleButtonProps, "activeText" | "inActiveText">;
+      defaultProps: Pick<ToggleButtonProps, "checkedText" | "unCheckedText">;
     };
     ConfirmModal?: {
       defaultProps: Pick<ConfirmModalProps, "confirmText" | "cancelText">;
+    };
+    FullSizeConfirmModal?: {
+      defaultProps: Pick<
+        FullSizeConfirmModalProps,
+        "confirmText" | "cancelText"
+      >;
     };
     FileUploader?: {
       defaultProps: Pick<FileUploaderProps, "title">;
@@ -74,9 +81,12 @@ export interface Localization {
 export const jaJP: Localization = {
   components: {
     ToggleButton: {
-      defaultProps: { activeText: "オン", inActiveText: "オフ" },
+      defaultProps: { checkedText: "オン", unCheckedText: "オフ" },
     },
     ConfirmModal: {
+      defaultProps: { confirmText: "確認", cancelText: "キャンセル" },
+    },
+    FullSizeConfirmModal: {
       defaultProps: { confirmText: "確認", cancelText: "キャンセル" },
     },
     FileUploader: {
@@ -120,9 +130,12 @@ export const jaJP: Localization = {
 export const zhCN: Localization = {
   components: {
     ToggleButton: {
-      defaultProps: { activeText: "开", inActiveText: "关" },
+      defaultProps: { checkedText: "开", unCheckedText: "关" },
     },
     ConfirmModal: {
+      defaultProps: { confirmText: "确认", cancelText: "取消" },
+    },
+    FullSizeConfirmModal: {
       defaultProps: { confirmText: "确认", cancelText: "取消" },
     },
     FileUploader: {

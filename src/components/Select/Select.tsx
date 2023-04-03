@@ -3,14 +3,14 @@ import ReactSelect, {
   Props as ReactSelectProps,
   StylesConfig,
 } from "react-select";
-import * as Styled from "./styled";
-import { Space } from "../../styles";
-import { fontSize } from "../Typography/Typography";
-import { DropdownIndicator } from "./internal/DropdownIndicator";
-import { ClearIndicator } from "./internal/ClearIndicator";
-import { MultiValueRemove } from "./internal/MultiValueRemove";
-import { Theme, useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { Space } from "../../styles";
+import { Theme, useTheme } from "../../themes";
+import { fontSize } from "../Typography/Typography";
+import { ClearIndicator } from "./internal/ClearIndicator";
+import { DropdownIndicator } from "./internal/DropdownIndicator";
+import { MultiValueRemove } from "./internal/MultiValueRemove";
+import * as Styled from "./styled";
 
 export const getOverrideStyles = <OptionValue,>(
   theme: Theme,
@@ -155,7 +155,6 @@ export const getOverrideStyles = <OptionValue,>(
 export type OptionType<T = string> = { label: string; value: T };
 
 export type SelectProps<OptionValue, IsMulti extends boolean> = {
-  limit?: number;
   minWidth?: string;
   placeholder?: string;
   error?: boolean;
@@ -168,7 +167,6 @@ const Select = <OptionValue, IsMulti extends boolean>(
 ): React.ReactElement<SelectProps<OptionValue, IsMulti>> => {
   const props = useLocaleProps({ props: inProps, name: "Select" });
   const {
-    limit,
     onInputChange,
     minWidth,
     isDisabled,
@@ -180,15 +178,11 @@ const Select = <OptionValue, IsMulti extends boolean>(
   } = props;
 
   const theme = useTheme();
-  let i = 0;
-  const filterOption: SelectProps<OptionValue, IsMulti>["filterOption"] = limit
-    ? ({ label }, query) => label.indexOf(query) >= 0 && i++ < limit
-    : undefined;
+
   const handleInputChange: SelectProps<
     OptionValue,
     IsMulti
   >["onInputChange"] = (newValue, actionMeta) => {
-    i = 0;
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
     }
@@ -209,7 +203,6 @@ const Select = <OptionValue, IsMulti extends boolean>(
           ...originalTheme,
           palette: theme.palette,
         })}
-        filterOption={filterOption}
         {...rest}
         components={{
           DropdownIndicator: (props) => (

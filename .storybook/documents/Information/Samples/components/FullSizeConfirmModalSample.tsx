@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Button, ConfirmModal } from "../../../../../src/components";
+import { Button, FullSizeConfirmModal } from "../../../../../src/components";
 import { action } from "@storybook/addon-actions";
 
 /* eslint-disable react/jsx-handler-names */
-const ConfirmModalSample: React.FC = () => {
+const FullSizeConfirmModalSample: React.FC = () => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const handleToggleButton = () => {
     setIsOpen(!isOpen);
@@ -11,18 +11,16 @@ const ConfirmModalSample: React.FC = () => {
   return (
     <div>
       <Button onClick={handleToggleButton}>Open Modal</Button>
-      <ConfirmModal
+      <FullSizeConfirmModal
         isOpen={isOpen}
         title="Title"
-        confirmText="ConfirmText"
-        cancelText="CancelText"
         onClose={handleToggleButton}
         onSubmit={action("submit")}
       >
         Contents
-      </ConfirmModal>
+      </FullSizeConfirmModal>
     </div>
   );
 };
 
-export default ConfirmModalSample;
+export default FullSizeConfirmModalSample;

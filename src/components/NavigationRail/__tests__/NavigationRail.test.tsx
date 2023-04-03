@@ -13,12 +13,12 @@ describe("NavigationRail component testing", () => {
         <NavigationRail>
           <NavigationRail.Header>Add logo here</NavigationRail.Header>
           <NavigationRail.Content>
-            <NavigationRail.ExpantionMenu
+            <NavigationRail.ExpansionMenu
               title="Settings"
               isActive={true}
               iconName="setting"
-              expantionList={[
-                <NavigationRail.ExpantionMenuItem
+              expansionList={[
+                <NavigationRail.ExpansionMenuItem
                   isActive={true}
                   title="Account Setting"
                 />,

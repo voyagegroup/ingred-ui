@@ -26,6 +26,9 @@ export * from "./ClickAwayListener";
 export { default as ConfirmModal } from "./ConfirmModal";
 export * from "./ConfirmModal";
 
+export { default as FullSizeConfirmModal } from "./FullSizeConfirmModal";
+export * from "./FullSizeConfirmModal";
+
 export { default as ContextMenu } from "./ContextMenu";
 export * from "./ContextMenu";
 

@@ -1,9 +1,9 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import * as PopperJS from "@popperjs/core";
+import * as React from "react";
 import { usePopper } from "react-popper";
-import Modal, { ModalProps } from "../Modal";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import Modal, { ModalProps } from "../Modal";
+import * as Styled from "./styled";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
@@ -20,6 +20,10 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
    */
   positionPriority?: PopperJS.Placement[];
   offset?: [number, number];
+  /**
+   * props of [Modal](/?path=/docs/components-utils-modal)
+   */
+  modalProps?: Partial<ModalProps>;
   children: React.ComponentElement<HTMLElement, any>;
 };
 
@@ -35,6 +39,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       baseElement,
       offset = [0, 0],
       positionPriority = ["auto"],
+      modalProps,
       children,
       ...rest
     },
@@ -92,6 +97,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
         isOpen={isOpen}
         backdropProps={{ invisible: true }}
         onClose={onClose}
+        {...modalProps}
       >
         <Styled.Container
           ref={refs}
