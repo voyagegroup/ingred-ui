@@ -61,17 +61,20 @@ export const getOverrideStyles = <OptionValue,>(
       fontSize: `${fontSize.sm}px`,
       color: theme.palette.text.hint,
     }),
-    option: (base, { isSelected, isFocused }) => {
+    option: (base, { isSelected, isFocused, isDisabled }) => {
       let backgroundColor = "transparent";
+      let color = isSelected ? theme.palette.white : theme.palette.black;
       if (isSelected) {
         backgroundColor = theme.palette.primary.main;
+      } else if (isDisabled) {
+        color = theme.palette.text.disabled;
       } else if (isFocused) {
         backgroundColor = theme.palette.gray.light;
       }
       return {
         ...base,
         padding: `4px ${Space}px 5px`,
-        color: isSelected ? theme.palette.white : theme.palette.black,
+        color,
         fontSize: `${fontSize.sm}px`,
         ":active": {
           backgroundColor: theme.palette.gray.main,

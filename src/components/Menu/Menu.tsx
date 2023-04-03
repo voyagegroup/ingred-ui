@@ -7,9 +7,7 @@ import Popover, { PopoverProps } from "../Popover";
 
 export type MenuCloseReason = "clickMenuList";
 
-// TODO: need breaking change(#211)
-//       remove 'React.ComponentPropsWithoutRef<"div">' because it is included menuListProps
-export type MenuProps = React.ComponentPropsWithoutRef<"div"> & {
+export type MenuProps = {
   isOpen?: boolean;
   /**
    * Basis of `<Menu />` position.
@@ -80,7 +78,6 @@ const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
           {...menuListProps}
           onClick={createChainedFunction(
             handleCloseMenuList,
-            rest.onClick,
             menuListProps?.onClick,
           )}
         />
