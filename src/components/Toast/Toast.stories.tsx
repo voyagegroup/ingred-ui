@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Toast, { ToastProps } from "./Toast";
 import Button from "../Button";
@@ -34,43 +34,53 @@ export default {
   },
 };
 
-const Template: Story<ToastProps> = (args) => {
-  const ToastSample = () => {
-    const { addToast } = Toast.useToasts();
-    const handleClick = () => {
-      addToast(args.appearance, args);
+const Template: StoryObj<ToastProps> = {
+  render: (args) => {
+    const ToastSample = () => {
+      const { addToast } = Toast.useToasts();
+      const handleClick = () => {
+        addToast(args.appearance, args);
+      };
+      return (
+        <div>
+          <Button inline onClick={handleClick}>
+            Show Toast
+          </Button>
+        </div>
+      );
     };
     return (
-      <div>
-        <Button inline onClick={handleClick}>
-          Show Toast
-        </Button>
-      </div>
+      <Toast.Provider {...args}>
+        <ToastSample />
+      </Toast.Provider>
     );
-  };
-  return (
-    <Toast.Provider {...args}>
-      <ToastSample />
-    </Toast.Provider>
-  );
+  },
 };
 
-export const Info = Template.bind({});
-Info.args = {
-  appearance: "info",
+export const Info = {
+  ...Template,
+  args: {
+    appearance: "info",
+  },
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  appearance: "success",
+export const Success = {
+  ...Template,
+  args: {
+    appearance: "success",
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  appearance: "warning",
+export const Warning = {
+  ...Template,
+  args: {
+    appearance: "warning",
+  },
 };
 
-export const Error = Template.bind({});
-Error.args = {
-  appearance: "error",
+export const Error = {
+  ...Template,
+  args: {
+    appearance: "error",
+  },
 };

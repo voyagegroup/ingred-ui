@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Snackbar, { SnackbarProps } from "./Snackbar";
 import Button from "../Button";
@@ -29,32 +29,40 @@ export default {
   },
 };
 
-const Template: Story<SnackbarProps> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(args.isOpen);
+const Template: StoryObj<SnackbarProps> = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(args.isOpen);
 
-  return (
-    <>
-      <Button inline={true} onClick={() => setIsOpen(true)}>
-        OPEN SNACKBAR
-      </Button>
-      <Snackbar {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        This is Snackbar({args.color} color).
-      </Snackbar>
-    </>
-  );
+    return (
+      <>
+        <Button inline={true} onClick={() => setIsOpen(true)}>
+          OPEN SNACKBAR
+        </Button>
+        <Snackbar {...args} isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          This is Snackbar({args.color} color).
+        </Snackbar>
+      </>
+    );
+  },
 };
 
-export const Default = Template.bind({});
-Default.args = {
-  color: "default",
+export const Default = {
+  ...Template,
+  args: {
+    color: "default",
+  },
 };
 
-export const Dark = Template.bind({});
-Dark.args = {
-  color: "dark",
+export const Dark = {
+  ...Template,
+  args: {
+    color: "dark",
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  color: "warning",
+export const Warning = {
+  ...Template,
+  args: {
+    color: "warning",
+  },
 };

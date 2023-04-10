@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import ErrorText, { ErrorTextProps } from "./ErrorText";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 
@@ -23,4 +23,4 @@ export default {
   },
 };
 
-export const Example: Story<ErrorTextProps> = (args) => <ErrorText {...args} />;
+export const Example: StoryObj<ErrorTextProps> = {};

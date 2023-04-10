@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import {
   Title,
   Subtitle,
@@ -53,57 +53,77 @@ export default {
   },
 };
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  children: "primary",
+const Template: StoryObj<ButtonProps> = {
+  render: (args) => <Button {...args} />,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  children: "secondary",
-  color: "secondary",
+export const Primary: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "primary",
+  },
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-  children: "danger",
-  color: "danger",
+export const Secondary: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "secondary",
+    color: "secondary",
+  },
 };
 
-export const Clear = Template.bind({});
-Clear.args = {
-  children: "clear",
-  color: "clear",
+export const Danger: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "danger",
+    color: "danger",
+  },
 };
 
-export const Small = Template.bind({});
-Small.args = {
-  children: "small",
-  size: "small",
+export const Clear: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "clear",
+    color: "clear",
+  },
 };
 
-export const Medium = Template.bind({});
-Medium.args = {
-  children: "medium",
-  size: "medium",
+export const Small: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "small",
+    size: "small",
+  },
 };
 
-export const Large = Template.bind({});
-Large.args = {
-  children: "large",
-  size: "large",
+export const Medium: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "medium",
+    size: "medium",
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  children: "disabled",
-  disabled: true,
+export const Large: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "large",
+    size: "large",
+  },
 };
 
-export const UseHrefProps = Template.bind({});
-UseHrefProps.args = {
-  children: "use href props",
-  href: "https://www.google.com",
+export const Disabled: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "disabled",
+    disabled: true,
+  },
+};
+
+export const UseHrefProps: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "use href props",
+    href: "https://www.google.com",
+  },
 };

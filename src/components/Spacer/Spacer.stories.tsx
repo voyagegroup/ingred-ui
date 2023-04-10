@@ -1,7 +1,7 @@
 import React from "react";
 import { Title, Description, Stories, ArgsTable } from "@storybook/addon-docs";
 import Spacer from "../Spacer";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { SpacerProps } from "../../utils/spacer";
 
 export default {
@@ -53,9 +53,23 @@ export default {
   },
 };
 
-export const Example: Story<SpacerProps> = (args) => (
-  <>
-    <Spacer {...args}>
+export const Example: StoryObj<SpacerProps> = {
+  render: (args) => (
+    <>
+      <Spacer {...args}>
+        <div
+          style={{
+            border: "1px solid black",
+            padding: "8px",
+            borderRadius: "4px",
+          }}
+        >
+          This Element is wrapped {"<Spacer />"}.
+          <br />
+          And there is one more {"<Spacer />"} directly below.
+        </div>
+      </Spacer>
+      <Spacer {...args} />
       <div
         style={{
           border: "1px solid black",
@@ -63,16 +77,8 @@ export const Example: Story<SpacerProps> = (args) => (
           borderRadius: "4px",
         }}
       >
-        This Element is wrapped {"<Spacer />"}.
-        <br />
-        And there is one more {"<Spacer />"} directly below.
+        Under {"<Spacer />"}
       </div>
-    </Spacer>
-    <Spacer {...args} />
-    <div
-      style={{ border: "1px solid black", padding: "8px", borderRadius: "4px" }}
-    >
-      Under {"<Spacer />"}
-    </div>
-  </>
-);
+    </>
+  ),
+};
