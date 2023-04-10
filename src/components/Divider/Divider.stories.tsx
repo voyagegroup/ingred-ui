@@ -1,12 +1,6 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import {
-  Title,
-  Subtitle,
-  Description,
-  ArgsTable,
-  Stories,
-} from "@storybook/addon-docs";
+import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Divider, { DividerProps } from "./Divider";
 
 export default {
