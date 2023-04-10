@@ -22,7 +22,6 @@ export default {
       page: () => (
         <>
           <Title />
-          <Subtitle />
           <ArgsTable of={Button} />
           <Stories includePrimary title="Samples" />
           <Description

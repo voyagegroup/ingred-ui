@@ -18,7 +18,6 @@ export default {
       page: () => (
         <>
           <Title />
-          <Subtitle />
           <Description markdown="`<Divider />` is wrapper of `<hr />` tag that separate content into clear groups." />
           <ArgsTable of={Divider} />
           <Stories includePrimary title="Stories" />

@@ -12,7 +12,6 @@ export default {
       page: () => (
         <>
           <Title />
-          <Subtitle />
           <ArgsTable of={Badge} />
           <Stories includePrimary title="Stories" />
         </>
