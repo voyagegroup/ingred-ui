@@ -47,11 +47,21 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
     <div ref={ref} {...rest}>
       <Styled.AccordionTitle
         display="flex"
+        tabIndex={disabled ? -1 : 0}
+        role="button"
+        aria-expanded={expandedState}
+        aria-controls={`accordion-content-${title}`}
         expanded={expandedState}
         disabled={disabled}
         // eslint-disable-next-line react/jsx-handler-names
         onClick={(event) => {
           handleChange(event, !expandedState);
+        }}
+        // eslint-disable-next-line react/jsx-handler-names
+        onKeyDown={(event) => {
+          if (event.key === "Enter") {
+            handleChange(event, !expandedState);
+          }
         }}
       >
         <Styled.AccordionTitleChildren>{title}</Styled.AccordionTitleChildren>
