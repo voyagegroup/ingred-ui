@@ -5,14 +5,11 @@ import Accordion, { AccordionProps } from "./Accordion";
 export default {
   title: "Components/utils/Accordion",
   component: Accordion,
-  args: {
-    title: "Accordion Title",
-  },
 };
 
-export const Example: Story<AccordionProps> = (args) => (
+export const Example: Story<AccordionProps> = () => (
   <>
-    <Accordion {...args}>
+    <Accordion title="title1">
       <div style={{ padding: "4px 8px" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc velit
         magna, dictum vel elementum ac, fermentum quis lorem. Aliquam sapien
@@ -21,7 +18,7 @@ export const Example: Story<AccordionProps> = (args) => (
         et aliquet velit hendrerit ac. Morbi tincidunt eleifend elit.
       </div>
     </Accordion>
-    <Accordion {...args}>
+    <Accordion title="title2">
       <div style={{ padding: "4px 8px" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc velit
         magna, dictum vel elementum ac, fermentum quis lorem. Aliquam sapien
@@ -30,7 +27,7 @@ export const Example: Story<AccordionProps> = (args) => (
         et aliquet velit hendrerit ac. Morbi tincidunt eleifend elit.
       </div>
     </Accordion>
-    <Accordion {...args}>
+    <Accordion disabled title="disabled">
       <div style={{ padding: "4px 8px" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc velit
         magna, dictum vel elementum ac, fermentum quis lorem. Aliquam sapien

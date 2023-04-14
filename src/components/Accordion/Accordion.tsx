@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import * as Styled from "./styled";
 
@@ -21,6 +22,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
   { title, expanded = false, disabled = false, onChange, children, ...rest },
   ref,
 ) {
+  const theme = useTheme();
   const [expandedState, setExpandedState] = useState(expanded);
   const accordionContentContainerRef = useRef<HTMLDivElement>(null);
 
@@ -55,7 +57,11 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
         <Styled.AccordionTitleChildren>{title}</Styled.AccordionTitleChildren>
         <Styled.DropdownIndicator>
           <Styled.IconButton expanded={expandedState}>
-            <Icon name="arrow_bottom" size="md" color="black" />
+            <Icon
+              name="arrow_bottom"
+              size="md"
+              color={disabled ? theme.palette.text.disabled : "black"}
+            />
           </Styled.IconButton>
         </Styled.DropdownIndicator>
       </Styled.AccordionTitle>

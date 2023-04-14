@@ -8,7 +8,7 @@ export const AccordionTitle = styled(Flex)<{
   background-color: ${({ expanded, disabled, theme }) =>
     // eslint-disable-next-line no-nested-ternary
     disabled
-      ? theme.palette.text.disabled
+      ? theme.palette.gray.light
       : expanded
       ? theme.palette.primary.highlight
       : theme.palette.gray.highlight};
