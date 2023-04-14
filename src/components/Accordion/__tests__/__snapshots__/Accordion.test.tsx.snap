@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion component testing Accordion 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-gsnTZi sc-dkzDqf iFjddk khxAjh"
+      display="flex"
+    >
+      <div
+        class="sc-hKMtZM hWStLy"
+      >
+        Accordion Title
+      </div>
+      <div
+        class="sc-gKXOVf iwyGgb"
+      >
+        <div
+          class="sc-jSMfEi jmkEMm"
+        >
+          <span
+            class="sc-bczRLJ gJuzRf"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0,0H24V24H0Z"
+                fill="none"
+              />
+              <path
+                d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                fill="black"
+                transform="translate(-1.414 -1.114)"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-iBkjds gfHllz"
+      height="0"
+    >
+      Accordion Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
