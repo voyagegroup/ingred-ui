@@ -39,6 +39,16 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
     onChange && onChange(event, expanded);
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    handleChange(event, !expandedState);
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      handleChange(event, !expandedState);
+    }
+  };
+
   useEffect(() => {
     setExpandedState(expanded);
   }, [expanded]);
@@ -53,16 +63,8 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
         aria-controls={`accordion-content-${title}`}
         expanded={expandedState}
         disabled={disabled}
-        // eslint-disable-next-line react/jsx-handler-names
-        onClick={(event) => {
-          handleChange(event, !expandedState);
-        }}
-        // eslint-disable-next-line react/jsx-handler-names
-        onKeyDown={(event) => {
-          if (event.key === "Enter") {
-            handleChange(event, !expandedState);
-          }
-        }}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
       >
         <Styled.AccordionTitleChildren>{title}</Styled.AccordionTitleChildren>
         <Styled.DropdownIndicator>
