@@ -13,4 +13,13 @@ describe("Accordion component testing", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test("Disable Accordion", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <Accordion disabled title="Accordion Title">
+        Accordion Content
+      </Accordion>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
