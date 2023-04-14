@@ -3,7 +3,7 @@ import { Story } from "@storybook/react/types-6-0";
 import Accordion, { AccordionProps } from "./Accordion";
 
 export default {
-  title: "Components/utils/Accordion",
+  title: "Components/navigation/Accordion",
   component: Accordion,
 };
 
