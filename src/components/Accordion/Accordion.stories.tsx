@@ -5,9 +5,27 @@ import Accordion, { AccordionProps } from "./Accordion";
 export default {
   title: "Components/navigation/Accordion",
   component: Accordion,
+  args: {
+    title: "title",
+    children: "Lorem ipsum dolor sit amet",
+    disabled: false,
+    expanded: false,
+  },
 };
 
-export const Example: Story<AccordionProps> = () => (
+export const Example: Story<AccordionProps> = (args) => (
+  <>
+    <Accordion
+      title={args.title}
+      disabled={args.disabled}
+      expanded={args.expanded}
+    >
+      <div style={{ padding: "4px 8px" }}>{args.children}</div>
+    </Accordion>
+  </>
+);
+
+export const Multiple: Story<AccordionProps> = () => (
   <>
     <Accordion title="title1">
       <div style={{ padding: "4px 8px" }}>
@@ -39,7 +57,7 @@ export const Example: Story<AccordionProps> = () => (
   </>
 );
 
-export const ControlledAccordion: Story<AccordionProps> = () => {
+export const Controlled: Story<AccordionProps> = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
