@@ -18,7 +18,7 @@ export default {
   parameters: {
     docs: {
       source: {
-        type: "code",
+        language: "tsx",
       },
     },
   },

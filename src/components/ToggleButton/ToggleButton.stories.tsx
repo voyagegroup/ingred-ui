@@ -6,7 +6,7 @@ import ToggleButton, { ToggleButtonProps } from "./ToggleButton";
 export default {
   title: "Components/Inputs/ToggleButton",
   component: ToggleButton,
-  parameters: { docs: { source: { type: "code" } } },
+  parameters: { docs: { source: { language: "tsx" } } },
 };
 
 export const Example: StoryObj<ToggleButtonProps> = {

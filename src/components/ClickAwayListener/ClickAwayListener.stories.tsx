@@ -10,7 +10,7 @@ export default {
   component: ClickAwayListener,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />

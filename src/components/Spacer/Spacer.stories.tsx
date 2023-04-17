@@ -13,7 +13,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />

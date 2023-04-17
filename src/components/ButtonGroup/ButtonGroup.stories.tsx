@@ -85,4 +85,4 @@ export const LinkMixed: StoryObj<ButtonGroupProps> = {
   },
 };
 
-LinkMixed.parameters = { docs: { source: { type: "code" } } };
+LinkMixed.parameters = { docs: { source: { language: "tsx" } } };

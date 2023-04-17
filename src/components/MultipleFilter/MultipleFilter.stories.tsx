@@ -17,7 +17,7 @@ You can get the conditions set via ReferredFilters.
 `,
       },
       source: {
-        type: "code",
+        language: "tsx",
       },
     },
   },

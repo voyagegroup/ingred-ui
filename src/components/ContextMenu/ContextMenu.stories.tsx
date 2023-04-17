@@ -9,7 +9,7 @@ export default {
   component: ContextMenu,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />

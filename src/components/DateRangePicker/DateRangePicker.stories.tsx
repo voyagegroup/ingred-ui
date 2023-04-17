@@ -12,7 +12,7 @@ export default {
   component: DateRangePicker,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />

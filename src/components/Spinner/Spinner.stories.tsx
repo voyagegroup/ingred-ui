@@ -8,7 +8,7 @@ export default {
   component: Spinner,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />

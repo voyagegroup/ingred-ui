@@ -17,7 +17,7 @@ For more detail props, please see [it](https://react-select.com/props).
 `,
       },
       source: {
-        type: "code",
+        language: "tsx",
       },
     },
   },

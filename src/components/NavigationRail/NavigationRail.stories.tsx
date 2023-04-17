@@ -22,7 +22,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       disable: true,
       page: () => (
         <>
