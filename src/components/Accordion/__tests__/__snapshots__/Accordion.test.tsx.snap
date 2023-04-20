@@ -45,7 +45,7 @@ exports[`Accordion component testing Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-iBkjds gfHllz"
+      class="sc-iBkjds cEjDqL"
       height="0"
     >
       Accordion Content
@@ -100,7 +100,7 @@ exports[`Accordion component testing Disable Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-iBkjds gfHllz"
+      class="sc-iBkjds cEjDqL"
       height="0"
     >
       Accordion Content
