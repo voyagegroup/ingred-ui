@@ -54,4 +54,5 @@ export const AccordionContent = styled.div<{
   height: ${({ height }) => height}px;
   overflow: hidden;
   transition: 0.3s all;
+  background-color: ${({ theme }) => theme.palette.white};
 `;
