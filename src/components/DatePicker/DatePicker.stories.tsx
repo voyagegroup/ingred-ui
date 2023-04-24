@@ -1,5 +1,5 @@
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import dayjs from "dayjs";
 import React from "react";
 import DatePicker from "./DatePicker";
@@ -11,7 +11,7 @@ export default {
   component: DatePicker,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />
@@ -42,48 +42,54 @@ export default {
   },
 };
 
-export const Basic: Story = () => {
-  dayjs.locale("en");
-  const [date, setDate] = React.useState(dayjs());
-  const handleChangeDate = (date: dayjs.Dayjs | null) => {
-    if (date === null) {
-      return;
-    }
-    setDate(date);
-  };
-  return (
-    <div style={{ height: "400px" }}>
-      <DatePicker date={date} onDateChange={handleChangeDate} />
-    </div>
-  );
+export const Basic: StoryObj = {
+  render: () => {
+    dayjs.locale("en");
+    const [date, setDate] = React.useState(dayjs());
+    const handleChangeDate = (date: dayjs.Dayjs | null) => {
+      if (date === null) {
+        return;
+      }
+      setDate(date);
+    };
+    return (
+      <div style={{ height: "400px" }}>
+        <DatePicker date={date} onDateChange={handleChangeDate} />
+      </div>
+    );
+  },
 };
 
-export const Error: Story = () => {
-  return <DatePicker date={dayjs()} error={true} onDateChange={() => {}} />;
+export const Error: StoryObj = {
+  render: () => {
+    return <DatePicker date={dayjs()} error={true} onDateChange={() => {}} />;
+  },
 };
 
-export const Localize: Story = () => {
-  dayjs.locale("ja");
-  dayjs.extend(localeData);
-  const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
-  const displayFormat = () => "YYYY/MM/DD";
-  const [date, setDate] = React.useState(dayjs());
-  const handleChangeDate = (date: dayjs.Dayjs | null) => {
-    if (date === null) {
-      return;
-    }
-    setDate(date);
-  };
-  return (
-    <div style={{ height: "400px" }}>
-      <DatePicker
-        date={date}
-        locale={"ja"}
-        localeData={dayjs().localeData()}
-        displayFormat={displayFormat}
-        renderMonthText={renderMonthText}
-        onDateChange={handleChangeDate}
-      />
-    </div>
-  );
+export const Localize: StoryObj = {
+  render: () => {
+    dayjs.locale("ja");
+    dayjs.extend(localeData);
+    const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
+    const displayFormat = () => "YYYY/MM/DD";
+    const [date, setDate] = React.useState(dayjs());
+    const handleChangeDate = (date: dayjs.Dayjs | null) => {
+      if (date === null) {
+        return;
+      }
+      setDate(date);
+    };
+    return (
+      <div style={{ height: "400px" }}>
+        <DatePicker
+          date={date}
+          locale={"ja"}
+          localeData={dayjs().localeData()}
+          displayFormat={displayFormat}
+          renderMonthText={renderMonthText}
+          onDateChange={handleChangeDate}
+        />
+      </div>
+    );
+  },
 };

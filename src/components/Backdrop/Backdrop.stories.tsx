@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Backdrop, { BackdropProps } from "./Backdrop";
 import Spinner from "../Spinner";
@@ -13,7 +13,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />
@@ -25,17 +25,23 @@ export default {
   },
 };
 
-export const Example: Story<BackdropProps> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-  return (
-    <>
-      <Button onClick={handleToggle}>Toggle Show Backdrop & Spinner</Button>
-      <Backdrop {...args} isOpen={isOpen || args.isOpen} onClick={handleToggle}>
-        <Spinner />
-      </Backdrop>
-    </>
-  );
+export const Example: StoryObj<BackdropProps> = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    const handleToggle = () => {
+      setIsOpen(!isOpen);
+    };
+    return (
+      <>
+        <Button onClick={handleToggle}>Toggle Show Backdrop & Spinner</Button>
+        <Backdrop
+          {...args}
+          isOpen={isOpen || args.isOpen}
+          onClick={handleToggle}
+        >
+          <Spinner />
+        </Backdrop>
+      </>
+    );
+  },
 };

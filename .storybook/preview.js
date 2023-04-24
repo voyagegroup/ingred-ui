@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "../src/themes";
-import "@storybook/addon-console";
 
 const theme = createTheme();
 
