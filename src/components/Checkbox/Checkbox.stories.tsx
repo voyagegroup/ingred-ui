@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import Checkbox, { CheckBoxProps } from "./Checkbox";
 import { Flex } from "..";
 
@@ -11,22 +11,24 @@ export default {
   },
 };
 
-export const Example: Story<CheckBoxProps> = (args) => (
-  <Checkbox {...args}>Checkbox</Checkbox>
-);
+export const Example: StoryObj<CheckBoxProps> = {
+  render: (args) => <Checkbox {...args}>Checkbox</Checkbox>,
+};
 
-export const DesignSamples = () => (
-  <Flex display="flex" flexDirection="column">
-    <Checkbox checked={false}>Not checked</Checkbox>
-    <Checkbox checked={true}>Checked</Checkbox>
-    <Checkbox indeterminate={true} checked={true}>
-      Checked(indeterminate)
-    </Checkbox>
-    <Checkbox disabled checked={false}>
-      Not checked(disabled)
-    </Checkbox>
-    <Checkbox disabled checked={true}>
-      Checked(disabled)
-    </Checkbox>
-  </Flex>
-);
+export const DesignSamples: StoryObj = {
+  render: () => (
+    <Flex display="flex" flexDirection="column">
+      <Checkbox checked={false}>Not checked</Checkbox>
+      <Checkbox checked={true}>Checked</Checkbox>
+      <Checkbox indeterminate={true} checked={true}>
+        Checked(indeterminate)
+      </Checkbox>
+      <Checkbox disabled checked={false}>
+        Not checked(disabled)
+      </Checkbox>
+      <Checkbox disabled checked={true}>
+        Checked(disabled)
+      </Checkbox>
+    </Flex>
+  ),
+};

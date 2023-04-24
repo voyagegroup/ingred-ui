@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import FileUploader, { FileUploaderProps } from "./index";
 
 export default {
@@ -10,11 +9,9 @@ export default {
   },
 };
 
-export const Example: Story<FileUploaderProps> = (args) => (
-  <FileUploader {...args} />
-);
-
-Example.args = {
-  title: "Click or Drag & Drop file.",
-  description: "description",
+export const Example: StoryObj<FileUploaderProps> = {
+  args: {
+    title: "Click or Drag & Drop file.",
+    description: "description",
+  },
 };

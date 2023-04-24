@@ -8,26 +8,25 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-links",
     "@storybook/addon-storysource",
-    "@storybook/addon-postcss",
     {
       // MEMO: included in addon-essentials
       name: "@storybook/addon-docs",
       options: {
-        sourceLoaderOptions: {
+        csfPluginOptions: {
           injectStoryParameters: false,
         },
       },
     },
+    "@storybook/addon-mdx-gfm",
   ],
-  reactOptions: {
-    // TODO: fix warn "Rendered more hooks than during the previous render."
-    // strictMode: true,
+  features: {
+    babelModeV7: true,
   },
-  babel: async (options) => ({
-    ...options,
-    plugins: [["@babel/plugin-proposal-class-properties", { loose: true }]],
-  }),
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {},
+  },
+  docs: {
+    autodocs: true,
   },
 };
