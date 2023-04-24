@@ -63,8 +63,7 @@ export const Controlled: StoryObj<AccordionProps> = {
   render: () => {
     const [expanded, setExpanded] = React.useState<string | false>(false);
     const handleChange =
-      (panel: string) =>
-      (event: React.SyntheticEvent, newExpanded: boolean) => {
+      (panel: string) => (_: React.SyntheticEvent, newExpanded: boolean) => {
         setExpanded(newExpanded ? panel : false);
       };
 
