@@ -75,7 +75,7 @@ export default {
   component: {{ inputs.name | pascal }},
 };
 
-export const Example: StoryStoryObj<{{ inputs.name | pascal }}Props> = {
+export const Example: StoryObj<{{ inputs.name | pascal }}Props> = {
   render: (args) => (
     <{{ inputs.name | pascal }} {...args} />
   )
