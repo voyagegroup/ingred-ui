@@ -203,7 +203,7 @@ export type DataTableProps<T, K extends keyof T> = {
   labelDisplayedRows?: LabelDisplayRows;
 };
 
-const DataTable = <T extends {selectDisabled?: boolean}, K extends keyof T>(
+const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
   {
     data: sourceData,
     key = "id" as K,
@@ -444,7 +444,11 @@ const DataTable = <T extends {selectDisabled?: boolean}, K extends keyof T>(
                               !isMergedCell(displayData, key, index) && (
                                 <CellCheckbox
                                   selected={selectedRows.includes(item[key])}
-                                  rowSpan={calculateRowSpan(displayData, key, index)}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    key,
+                                    index,
+                                  )}
                                   {...(disableCheckWhenClickRow && {
                                     onClick: handleSelectCheckbox(item[key]),
                                   })}
@@ -497,7 +501,11 @@ const DataTable = <T extends {selectDisabled?: boolean}, K extends keyof T>(
                               !isMergedCell(displayData, key, index) && (
                                 <CellRadio
                                   selected={item[key] === selectedRow}
-                                  rowSpan={calculateRowSpan(displayData, key, index)}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    key,
+                                    index,
+                                  )}
                                   onClick={handleSelectRadioButton(item[key])}
                                 />
                               )}
@@ -542,7 +550,12 @@ const DataTable = <T extends {selectDisabled?: boolean}, K extends keyof T>(
                         disableHoverHighlight={enableMergeCell}
                       >
                         {columns.map((column) =>
-                          isMergedCell(displayData, key, index, column) ? null : (
+                          isMergedCell(
+                            displayData,
+                            key,
+                            index,
+                            column,
+                          ) ? null : (
                             <Table.Cell
                               key={column.name}
                               enableRuledLine={enableRuledLine}
