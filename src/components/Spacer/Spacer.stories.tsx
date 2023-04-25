@@ -1,7 +1,7 @@
 import React from "react";
 import { Title, Description, Stories, ArgsTable } from "@storybook/addon-docs";
 import Spacer from "../Spacer";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import { SpacerProps } from "../../utils/spacer";
 
 export default {
@@ -13,7 +13,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
@@ -53,23 +53,9 @@ export default {
   },
 };
 
-export const Example: StoryObj<SpacerProps> = {
-  render: (args) => (
-    <>
-      <Spacer {...args}>
-        <div
-          style={{
-            border: "1px solid black",
-            padding: "8px",
-            borderRadius: "4px",
-          }}
-        >
-          This Element is wrapped {"<Spacer />"}.
-          <br />
-          And there is one more {"<Spacer />"} directly below.
-        </div>
-      </Spacer>
-      <Spacer {...args} />
+export const Example: Story<SpacerProps> = (args) => (
+  <>
+    <Spacer {...args}>
       <div
         style={{
           border: "1px solid black",
@@ -77,8 +63,16 @@ export const Example: StoryObj<SpacerProps> = {
           borderRadius: "4px",
         }}
       >
-        Under {"<Spacer />"}
+        This Element is wrapped {"<Spacer />"}.
+        <br />
+        And there is one more {"<Spacer />"} directly below.
       </div>
-    </>
-  ),
-};
+    </Spacer>
+    <Spacer {...args} />
+    <div
+      style={{ border: "1px solid black", padding: "8px", borderRadius: "4px" }}
+    >
+      Under {"<Spacer />"}
+    </div>
+  </>
+);

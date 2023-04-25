@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Card, { CardProps } from "./Card";
 
@@ -13,7 +13,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
@@ -32,4 +32,4 @@ export default {
   },
 };
 
-export const Example: StoryObj<CardProps> = {};
+export const Example: Story<CardProps> = (args) => <Card {...args} />;

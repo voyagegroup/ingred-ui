@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import ItemEmpty, { ItemEmptyProps } from "./ItemEmpty";
 
@@ -12,7 +12,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
@@ -24,4 +24,4 @@ export default {
   },
 };
 
-export const Example: StoryObj<ItemEmptyProps> = {};
+export const Example: Story<ItemEmptyProps> = (args) => <ItemEmpty {...args} />;

@@ -8,7 +8,7 @@ export default {
   component: LoadingBar,
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
