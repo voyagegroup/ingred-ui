@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import FullSizeConfirmModal, {
   FullSizeConfirmModalProps,
@@ -20,7 +20,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />
@@ -32,93 +32,115 @@ export default {
   },
 };
 
-const Template: Story<FullSizeConfirmModalProps> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(args.isOpen);
-  const handleToggleButton = () => {
-    setIsOpen(!isOpen);
-  };
-  return (
-    <>
-      <Button onClick={handleToggleButton}>Open Modal</Button>
-      <FullSizeConfirmModal
-        onClose={handleToggleButton}
-        {...args}
-        isOpen={isOpen}
+const Template: StoryObj<FullSizeConfirmModalProps> = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(args.isOpen);
+    const handleToggleButton = () => {
+      setIsOpen(!isOpen);
+    };
+    return (
+      <>
+        <Button onClick={handleToggleButton}>Open Modal</Button>
+        <FullSizeConfirmModal
+          onClose={handleToggleButton}
+          {...args}
+          isOpen={isOpen}
+        >
+          {args.children}
+        </FullSizeConfirmModal>
+      </>
+    );
+  },
+};
+
+export const Basic = {
+  ...Template,
+  args: {
+    children: "Content",
+    onSubmit: action("submitted"),
+  },
+};
+
+export const WithOneSubAction = {
+  ...Template,
+  args: {
+    children: "Content",
+    onSubmit: action("submitted"),
+    subActions: [
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Add"`)}
       >
-        {args.children}
-      </FullSizeConfirmModal>
-    </>
-  );
+        Add
+      </ActionButton>,
+    ],
+  },
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  children: "Content",
-  onSubmit: action("submitted"),
+export const WithTwoSubActions = {
+  ...Template,
+  args: {
+    children: "Content",
+    onSubmit: action("submitted"),
+    subActions: [
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Add"`)}
+      >
+        Add
+      </ActionButton>,
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Download"`)}
+      >
+        Download
+      </ActionButton>,
+    ],
+  },
 };
 
-export const WithOneSubAction = Template.bind({});
-WithOneSubAction.args = {
-  children: "Content",
-  onSubmit: action("submitted"),
-  subActions: [
-    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
-      Add
-    </ActionButton>,
-  ],
+export const Loading = {
+  ...Template,
+  args: {
+    children: "Content",
+    onSubmit: () => {},
+    loading: true,
+  },
 };
 
-export const WithTwoSubActions = Template.bind({});
-WithTwoSubActions.args = {
-  children: "Content",
-  onSubmit: action("submitted"),
-  subActions: [
-    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
-      Add
-    </ActionButton>,
-    <ActionButton
-      icon="export"
-      type="button"
-      onClick={action(`clicked "Download"`)}
-    >
-      Download
-    </ActionButton>,
-  ],
+export const OverflowYScroll = {
+  ...Template,
+  args: {
+    children: (
+      <>
+        <Spacer my={3} />
+        <DataTable
+          data={data}
+          columns={[
+            {
+              name: "ID",
+              selector: (data) => data.id,
+            },
+            {
+              name: "name",
+              selector: (data) => data.date,
+            },
+          ]}
+        />
+      </>
+    ),
+    onSubmit: action("submitted"),
+    overflowYScroll: true,
+  },
 };
 
-export const Loading = Template.bind({});
-Loading.args = {
-  children: "Content",
-  onSubmit: () => {},
-  loading: true,
-};
-
-export const OverflowYScroll = Template.bind({});
-OverflowYScroll.args = {
-  children: (
-    <>
-      <Spacer my={3} />
-      <DataTable
-        data={data}
-        columns={[
-          {
-            name: "ID",
-            selector: (data) => data.id,
-          },
-          {
-            name: "name",
-            selector: (data) => data.date,
-          },
-        ]}
-      />
-    </>
-  ),
-  onSubmit: action("submitted"),
-  overflowYScroll: true,
-};
-
-export const WithoutFooter = Template.bind({});
-WithoutFooter.args = {
-  children: "Content",
-  onSubmit: undefined,
+export const WithoutFooter = {
+  ...Template,
+  args: {
+    children: "Content",
+    onSubmit: undefined,
+  },
 };

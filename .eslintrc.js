@@ -168,6 +168,7 @@ module.exports = {
         // I realize it's silly of me, but I'll turn it off here for the sake of specs for once.
         "jsx-a11y/click-events-have-key-events": "off",
         "jsx-a11y/no-static-element-interactions": "off",
+        "react-hooks/rules-of-hooks": "off",
       },
     },
     {
