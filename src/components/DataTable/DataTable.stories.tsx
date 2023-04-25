@@ -24,6 +24,7 @@ export default {
   },
   args: {
     data: data.slice(0, 4),
+    dataKey: "id",
     columns: [
       {
         name: "ID",
@@ -197,6 +198,7 @@ export const CustomCell: StoryObj<DataTableProps<typeof data[number], "id">> = {
     return (
       <DataTable
         data={data}
+        dataKey="id"
         enablePagination={true}
         columns={[
           {

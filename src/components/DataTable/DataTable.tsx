@@ -137,9 +137,8 @@ export type DataTableProps<T, K extends keyof T> = {
   data: T[];
   /**
    * Specifies a unique key for each object in the `data`. This key is used to identify each object.
-   * If no `key` is specified, the default value is `"id"`.
    */
-  key?: K;
+  dataKey: K;
   /**
    * Define column of table. Please refer to the samples below.
    */
@@ -208,7 +207,7 @@ export type DataTableProps<T, K extends keyof T> = {
 const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
   {
     data: sourceData,
-    key = "id" as K,
+    dataKey,
     columns,
     enablePagination = false,
     onSelectRowsChange,
@@ -332,7 +331,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
     setFilterState({ index: 1, per });
   };
 
-  const handleSelectCheckbox = (id: T[typeof key]) => () => {
+  const handleSelectCheckbox = (id: T[typeof dataKey]) => () => {
     if (!onSelectRowsChange) {
       return;
     }
@@ -345,7 +344,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
     }
   };
 
-  const handleSelectRadioButton = (id: T[typeof key]) => () => {
+  const handleSelectRadioButton = (id: T[typeof dataKey]) => () => {
     if (onRadioChange) {
       onRadioChange(id);
     }
@@ -362,7 +361,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
       onSelectRowsChange(
         displayData
           .filter((data) => !data.selectDisabled)
-          .map((data) => data[key]),
+          .map((data) => data[dataKey]),
       );
       setAllSelected(true);
     }
@@ -433,33 +432,33 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                             verticalSpacing={verticalSpacing}
                             highlighted={
                               !item.selectDisabled &&
-                              (selectedRows.includes(item[key]) ||
-                                selectedRow === item[key])
+                              (selectedRows.includes(item[dataKey]) ||
+                                selectedRow === item[dataKey])
                             }
                             disableHoverHighlight={enableMergeCell}
                             {...(!disableCheckWhenClickRow && {
-                              onClick: handleSelectCheckbox(item[key]),
+                              onClick: handleSelectCheckbox(item[dataKey]),
                             })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
-                              !isMergedCell(displayData, key, index) && (
+                              !isMergedCell(displayData, dataKey, index) && (
                                 <CellCheckbox
-                                  selected={selectedRows.includes(item[key])}
+                                  selected={selectedRows.includes(item[dataKey])}
                                   rowSpan={calculateRowSpan(
                                     displayData,
-                                    key,
+                                    dataKey,
                                     index,
                                   )}
                                   {...(disableCheckWhenClickRow && {
-                                    onClick: handleSelectCheckbox(item[key]),
+                                    onClick: handleSelectCheckbox(item[dataKey]),
                                   })}
                                 />
                               )}
                             {columns.map((column) =>
                               isMergedCell(
                                 displayData,
-                                key,
+                                dataKey,
                                 index,
                                 column,
                               ) ? null : (
@@ -468,7 +467,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                                   enableRuledLine={enableRuledLine}
                                   rowSpan={calculateRowSpan(
                                     displayData,
-                                    key,
+                                    dataKey,
                                     index,
                                     column,
                                   )}
@@ -490,31 +489,31 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                             verticalSpacing={verticalSpacing}
                             highlighted={
                               !item.selectDisabled &&
-                              (selectedRows.includes(item[key]) ||
-                                selectedRow === item[key])
+                              (selectedRows.includes(item[dataKey]) ||
+                                selectedRow === item[dataKey])
                             }
                             disableHoverHighlight={enableMergeCell}
                             {...(!disableCheckWhenClickRow && {
-                              onClick: handleSelectRadioButton(item[key]),
+                              onClick: handleSelectRadioButton(item[dataKey]),
                             })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
-                              !isMergedCell(displayData, key, index) && (
+                              !isMergedCell(displayData, dataKey, index) && (
                                 <CellRadio
-                                  selected={item[key] === selectedRow}
+                                  selected={item[dataKey] === selectedRow}
                                   rowSpan={calculateRowSpan(
                                     displayData,
-                                    key,
+                                    dataKey,
                                     index,
                                   )}
-                                  onClick={handleSelectRadioButton(item[key])}
+                                  onClick={handleSelectRadioButton(item[dataKey])}
                                 />
                               )}
                             {columns.map((column) =>
                               isMergedCell(
                                 displayData,
-                                key,
+                                dataKey,
                                 index,
                                 column,
                               ) ? null : (
@@ -523,7 +522,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                                   enableRuledLine={enableRuledLine}
                                   rowSpan={calculateRowSpan(
                                     displayData,
-                                    key,
+                                    dataKey,
                                     index,
                                     column,
                                   )}
@@ -546,15 +545,15 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                         verticalSpacing={verticalSpacing}
                         highlighted={
                           !item.selectDisabled &&
-                          (selectedRows.includes(item[key]) ||
-                            selectedRow === item[key])
+                          (selectedRows.includes(item[dataKey]) ||
+                            selectedRow === item[dataKey])
                         }
                         disableHoverHighlight={enableMergeCell}
                       >
                         {columns.map((column) =>
                           isMergedCell(
                             displayData,
-                            key,
+                            dataKey,
                             index,
                             column,
                           ) ? null : (
@@ -563,7 +562,7 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                               enableRuledLine={enableRuledLine}
                               rowSpan={calculateRowSpan(
                                 displayData,
-                                key,
+                                dataKey,
                                 index,
                                 column,
                               )}
