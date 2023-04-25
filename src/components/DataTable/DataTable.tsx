@@ -132,9 +132,13 @@ type Tab<T> = {
 
 export type DataTableProps<T, K extends keyof T> = {
   /**
-   * Array of some object that has `id: number` property.
+   * Array of some object that has unique property.
    */
   data: T[];
+  /**
+   * Specifies a unique key for each object in the `data`. This key is used to identify each object.
+   * If no `key` is specified, the default value is `"id"`.
+   */
   key?: K;
   /**
    * Define column of table. Please refer to the samples below.
@@ -143,13 +147,11 @@ export type DataTableProps<T, K extends keyof T> = {
   enablePagination?: boolean;
   /**
    * Enable to use checkbox in table.
-   * The argument `rows` is array of `id: number` defined in `data` props.
    * **Don't use with `onRadioChange={true}`**
    */
   onSelectRowsChange?: (rows: T[K][]) => void;
   /**
    * Enable to use radio button in table.
-   * The argument `radio` is `id: number` defined in `data` props.
    * **Don't use with `onSelectRowsChange={true}`**
    */
   onRadioChange?: (radio: T[K]) => void;
