@@ -1,4 +1,5 @@
-import { StoryObj } from "@storybook/react";
+import * as React from "react";
+import { Story } from "@storybook/react/types-6-0";
 import Typography, { TypographyProps } from "./Typography";
 
 export default {
@@ -21,8 +22,6 @@ export default {
   },
 };
 
-export const Example: StoryObj<TypographyProps> = {
-  args: {
-    children: "Typography",
-  },
-};
+export const Example: Story<TypographyProps> = (args) => (
+  <Typography {...args}>Typography</Typography>
+);

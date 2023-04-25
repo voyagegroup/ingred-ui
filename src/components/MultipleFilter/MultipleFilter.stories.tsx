@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import MultipleFilter, { MultipleFilterProps } from "./MultipleFilter";
 import { FilterPackType, ReferredFilterType } from "./types";
 
@@ -17,7 +17,7 @@ You can get the conditions set via ReferredFilters.
 `,
       },
       source: {
-        language: "tsx",
+        type: "code",
       },
     },
   },
@@ -99,21 +99,19 @@ const filterPacksExample: FilterPackType[] = [
   },
 ];
 
-export const Example: StoryObj<MultipleFilterProps> = {
-  render: (args) => {
-    const [, setFilters] = React.useState<ReferredFilterType[]>([]);
-    const handleChange = (referredFilters: ReferredFilterType[]) => {
-      setFilters(referredFilters);
-    };
+export const Example: Story<MultipleFilterProps> = (args) => {
+  const [, setFilters] = React.useState<ReferredFilterType[]>([]);
+  const handleChange = (referredFilters: ReferredFilterType[]) => {
+    setFilters(referredFilters);
+  };
 
-    return (
-      <MultipleFilter
-        {...args}
-        filterPacks={filterPacksExample}
-        inputErrorText={"Input error text can be customized"}
-        formPlaceholder={"Placeholder can be customized"}
-        onChange={handleChange}
-      />
-    );
-  },
+  return (
+    <MultipleFilter
+      {...args}
+      filterPacks={filterPacksExample}
+      inputErrorText={"Input error text can be customized"}
+      formPlaceholder={"Placeholder can be customized"}
+      onChange={handleChange}
+    />
+  );
 };

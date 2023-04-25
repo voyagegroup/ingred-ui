@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import RadioButton, { RadioButtonProps, RadioButtonSize } from "./RadioButton";
 
 export default {
@@ -10,31 +10,28 @@ export default {
   },
 };
 
-export const Example: StoryObj<RadioButtonProps> = {
-  args: {
-    name: "example",
-  },
-  render: (args) => (
-    <>
-      <RadioButton {...args}>One</RadioButton>
-      <br />
-      <RadioButton {...args}>Two</RadioButton>
-    </>
-  ),
+export const Example: Story<RadioButtonProps> = (args) => (
+  <>
+    <RadioButton {...args}>One</RadioButton>
+    <br />
+    <RadioButton {...args}>Two</RadioButton>
+  </>
+);
+
+Example.args = {
+  name: "example",
 };
 
-export const DesignSamples: StoryObj = {
-  render: () => (
-    <>
-      <RadioButton>Basic</RadioButton>
-      <br />
-      <RadioButton checked={true}>Selected</RadioButton>
-      <br />
-      <RadioButton disabled={true}>Disabled</RadioButton>
-      <br />
-      <RadioButton disabled={true} checked={true}>
-        Disabled(checked)
-      </RadioButton>
-    </>
-  ),
-};
+export const DesignSamples = () => (
+  <>
+    <RadioButton>Basic</RadioButton>
+    <br />
+    <RadioButton checked={true}>Selected</RadioButton>
+    <br />
+    <RadioButton disabled={true}>Disabled</RadioButton>
+    <br />
+    <RadioButton disabled={true} checked={true}>
+      Disabled(checked)
+    </RadioButton>
+  </>
+);

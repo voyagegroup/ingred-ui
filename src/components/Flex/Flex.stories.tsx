@@ -1,5 +1,5 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
 import Flex, { FlexProps } from "./Flex";
 
@@ -12,7 +12,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
@@ -29,15 +29,13 @@ export default {
   },
 };
 
-export const Example: StoryObj<FlexProps> = {
-  render: (args) => (
-    <Flex {...args}>
-      {Array.from({ length: 3 }, (_, i) => (
-        <div
-          key={i}
-          style={{ width: "100px", height: "100px", backgroundColor: "blue" }}
-        />
-      ))}
-    </Flex>
-  ),
-};
+export const Example: Story<FlexProps> = (args) => (
+  <Flex {...args}>
+    {Array.from({ length: 3 }, (_, i) => (
+      <div
+        key={i}
+        style={{ width: "100px", height: "100px", backgroundColor: "blue" }}
+      />
+    ))}
+  </Flex>
+);

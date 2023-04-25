@@ -24,7 +24,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />

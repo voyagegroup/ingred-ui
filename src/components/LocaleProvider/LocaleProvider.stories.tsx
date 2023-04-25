@@ -1,4 +1,4 @@
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import * as React from "react";
 import {
   Button,
@@ -93,133 +93,120 @@ const filterPacksExample: FilterPackType[] = [
   },
 ];
 
-export const Example: StoryObj<LocaleProviderProps> = {
-  render: (args) => {
-    const localeOptions = Object.keys(locales).map((locale) => ({
-      label: locale,
-      value: locale,
-    }));
-    localeOptions.unshift({
-      label: "Unspecified(default behavior)",
-      value: "",
-    });
-    const [checked, setChecked] = React.useState<boolean>(false);
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [selectedLocale, setSelectedLocale] =
-      React.useState<OptionType | null>(localeOptions[1]);
-    const handleToggleButton = () => {
-      setIsOpen(!isOpen);
-    };
+export const Example: Story<LocaleProviderProps> = (args) => {
+  const localeOptions = Object.keys(locales).map((locale) => ({
+    label: locale,
+    value: locale,
+  }));
+  localeOptions.unshift({ label: "Unspecified(default behavior)", value: "" });
+  const [checked, setChecked] = React.useState<boolean>(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [selectedLocale, setSelectedLocale] = React.useState<OptionType | null>(
+    localeOptions[1],
+  );
+  const handleToggleButton = () => {
+    setIsOpen(!isOpen);
+  };
 
-    const setFilters = React.useState<ReferredFilterType[]>([])[1];
-    const handleChange = (referredFilters: ReferredFilterType[]) => {
-      setFilters(referredFilters);
-    };
+  const setFilters = React.useState<ReferredFilterType[]>([])[1];
+  const handleChange = (referredFilters: ReferredFilterType[]) => {
+    setFilters(referredFilters);
+  };
 
-    return (
-      <LocaleProvider
-        locale={locales[selectedLocale !== null ? selectedLocale.value : ""]}
-      >
-        <Spacer pl={2} pt={2} pb={4}>
-          <div> Select a locale! </div>
-          <Select
-            options={localeOptions}
-            defaultValue={selectedLocale}
-            onChange={setSelectedLocale}
-          />
-          <div>
-            Selected locale:{" "}
-            {selectedLocale !== null ? selectedLocale.value : ""}
-          </div>
-        </Spacer>
+  return (
+    <LocaleProvider
+      locale={locales[selectedLocale !== null ? selectedLocale.value : ""]}
+    >
+      <Spacer pl={2} pt={2} pb={4}>
+        <div> Select a locale! </div>
+        <Select
+          options={localeOptions}
+          defaultValue={selectedLocale}
+          onChange={setSelectedLocale}
+        />
+        <div>
+          Selected locale: {selectedLocale !== null ? selectedLocale.value : ""}
+        </div>
+      </Spacer>
 
-        <h2>ToggleButton</h2>
-        <Spacer pl={2} pt={2} pb={4}>
-          <ToggleButton
-            checked={checked}
-            onChange={() => setChecked(!checked)}
-          />
-        </Spacer>
+      <h2>ToggleButton</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <ToggleButton checked={checked} onChange={() => setChecked(!checked)} />
+      </Spacer>
 
-        <h2>ConfirmModal</h2>
-        <Spacer pl={2} pt={2} pb={4}>
-          <Button onClick={handleToggleButton}>Open Modal</Button>
-          <ConfirmModal
-            title="ConfirmModal Test"
-            onClose={handleToggleButton}
-            onSubmit={() => {
-              /** void. Code to show the footer */
-            }}
-            {...args}
-            isOpen={isOpen}
-          >
-            Content
-          </ConfirmModal>
-        </Spacer>
+      <h2>ConfirmModal</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <Button onClick={handleToggleButton}>Open Modal</Button>
+        <ConfirmModal
+          title="ConfirmModal Test"
+          onClose={handleToggleButton}
+          onSubmit={() => {
+            /** void. Code to show the footer */
+          }}
+          {...args}
+          isOpen={isOpen}
+        >
+          Content
+        </ConfirmModal>
+      </Spacer>
 
-        <h2>FileUploader</h2>
-        <Spacer pl={2} pt={2} pb={4}>
-          <FileUploader onSelectFiles={() => {}} />
-        </Spacer>
+      <h2>FileUploader</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <FileUploader onSelectFiles={() => {}} />
+      </Spacer>
 
-        <h2>ItemEmpty</h2>
-        <Spacer pl={2} pt={2} pb={4}>
-          <ItemEmpty />
-        </Spacer>
+      <h2>ItemEmpty</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <ItemEmpty />
+      </Spacer>
 
-        <h2>MultipleFilter</h2>
-        <Spacer pl={2} pt={2} pb={40}>
-          <MultipleFilter
-            filterPacks={filterPacksExample}
-            onChange={handleChange}
-          />
-        </Spacer>
+      <h2>MultipleFilter</h2>
+      <Spacer pl={2} pt={2} pb={40}>
+        <MultipleFilter
+          filterPacks={filterPacksExample}
+          onChange={handleChange}
+        />
+      </Spacer>
 
-        <h2>DatePicker</h2>
-        <Typography>
-          ※ Needs locale import (e.g. import &apos;moment/locale/ja&apos;).
-        </Typography>
-        <Spacer pl={2} pt={2} pb={40}>
-          <DatePicker date={dayjs()} onDateChange={() => {}} />
-        </Spacer>
-      </LocaleProvider>
-    );
-  },
+      <h2>DatePicker</h2>
+      <Typography>
+        ※ Needs locale import (e.g. import &apos;moment/locale/ja&apos;).
+      </Typography>
+      <Spacer pl={2} pt={2} pb={40}>
+        <DatePicker date={dayjs()} onDateChange={() => {}} />
+      </Spacer>
+    </LocaleProvider>
+  );
 };
 
-export const CustomLocale: StoryObj = {
-  render: () => {
-    const koKR: locales.Localization = {
-      components: {
-        ToggleButton: {
-          defaultProps: { checkedText: "온", unCheckedText: "오프" },
-        },
+export const CustomLocale: Story<LocaleProviderProps> = () => {
+  const koKR: locales.Localization = {
+    components: {
+      ToggleButton: {
+        defaultProps: { checkedText: "온", unCheckedText: "오프" },
       },
-    };
-    const [checked, setChecked] = React.useState<boolean>(false);
-    return (
-      <LocaleProvider locale={koKR}>
-        <h2>Define Custom Locale</h2>
-        <Spacer pl={2} pt={2} pb={4}>
-          <ToggleButton
-            checked={checked}
-            onChange={() => setChecked(!checked)}
-          />
-        </Spacer>
+    },
+  };
+  const [checked, setChecked] = React.useState<boolean>(false);
+  return (
+    <LocaleProvider locale={koKR}>
+      <h2>Define Custom Locale</h2>
+      <Spacer pl={2} pt={2} pb={4}>
+        <ToggleButton checked={checked} onChange={() => setChecked(!checked)} />
+      </Spacer>
 
-        <div>You can define a custom locale definition as follows.</div>
-        <br />
-        <Card>
-          <pre>
-            &#047;&#047; Custom Locale <br />
-            const koKR: locales.Localization = {JSON.stringify(koKR, null, 4)}
-            <br />
-            <br />
-            &#047;&#047; Apply to LocaleProvider <br />
-            {"<LocaleProvider locale={koKR}>"}
-          </pre>
-        </Card>
-      </LocaleProvider>
-    );
-  },
+      <div>You can define a custom locale definition as follows.</div>
+      <br />
+      <Card>
+        <pre>
+          &#047;&#047; Custom Locale <br />
+          const koKR: locales.Localization = {JSON.stringify(koKR, null, 4)}
+          <br />
+          <br />
+          &#047;&#047; Apply to LocaleProvider <br />
+          {"<LocaleProvider locale={koKR}>"}
+        </pre>
+      </Card>
+    </LocaleProvider>
+  );
 };

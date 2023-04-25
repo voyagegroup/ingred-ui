@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
+import { Story } from "@storybook/react/types-6-0";
 import React from "react";
 import ActionButton, { ActionButtonProps } from "./ActionButton";
 
@@ -14,7 +14,7 @@ export default {
   },
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
@@ -27,20 +27,16 @@ export default {
   },
 };
 
-export const Primary: StoryObj<ActionButtonProps> = {
-  args: {
-    color: "primary",
-  },
+const Template: Story<ActionButtonProps> = (args) => <ActionButton {...args} />;
+
+export const Primary = Template.bind({});
+
+export const Warning = Template.bind({});
+Warning.args = {
+  color: "warning",
 };
 
-export const Warning: StoryObj<ActionButtonProps> = {
-  args: {
-    color: "warning",
-  },
-};
-
-export const Disabled: StoryObj<ActionButtonProps> = {
-  args: {
-    disabled: true,
-  },
+export const Disabled = Template.bind({});
+Disabled.args = {
+  disabled: true,
 };
