@@ -444,14 +444,18 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                               isCheckableTab(currentTabIndex, tabs)) &&
                               !isMergedCell(displayData, dataKey, index) && (
                                 <CellCheckbox
-                                  selected={selectedRows.includes(item[dataKey])}
+                                  selected={selectedRows.includes(
+                                    item[dataKey],
+                                  )}
                                   rowSpan={calculateRowSpan(
                                     displayData,
                                     dataKey,
                                     index,
                                   )}
                                   {...(disableCheckWhenClickRow && {
-                                    onClick: handleSelectCheckbox(item[dataKey]),
+                                    onClick: handleSelectCheckbox(
+                                      item[dataKey],
+                                    ),
                                   })}
                                 />
                               )}
@@ -507,7 +511,9 @@ const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
                                     dataKey,
                                     index,
                                   )}
-                                  onClick={handleSelectRadioButton(item[dataKey])}
+                                  onClick={handleSelectRadioButton(
+                                    item[dataKey],
+                                  )}
                                 />
                               )}
                             {columns.map((column) =>
