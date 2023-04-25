@@ -1,5 +1,5 @@
 import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import React from "react";
 import Flex from "../Flex";
 import Icon from "../Icon";
@@ -22,7 +22,7 @@ export default {
   parameters: {
     layout: "fullscreen",
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       disable: true,
       page: () => (
         <>
@@ -44,53 +44,55 @@ export default {
   },
 };
 
-export const Example: Story = () => {
-  return (
-    <NavigationRail.Container>
-      <NavigationRail>
-        <NavigationRail.Header>This is Header.</NavigationRail.Header>
-        <NavigationRail.Content>
-          <NavigationRail.Menu
-            title="Dashboard"
-            isActive={true}
-            iconName="dashboard"
-            notificationCount={2}
-          />
-          <NavigationRail.Menu
-            title="Chart"
-            isActive={false}
-            iconName="bar_chart"
-          />
-          <NavigationRail.ExpansionMenu
-            title="Setting"
-            isActive={false}
-            iconName="setting"
-            notificationCount={2}
-            expansionList={[
-              <NavigationRail.ExpansionMenuItem
-                isActive={true}
-                title="Detail setting"
-                notificationCount={2}
-              />,
-              <NavigationRail.ExpansionMenuItem
-                isActive={false}
-                title={
-                  <Flex display="flex" alignItems="center" gap={1}>
-                    <Icon name="user" />
-                    Account setting
-                  </Flex>
-                }
-              />,
-            ]}
-          />
-        </NavigationRail.Content>
-        <NavigationRail.Footer>
-          <NavigationRail.Fixture />
-        </NavigationRail.Footer>
-      </NavigationRail>
-      <NavigationRail.MainContent>
-        Source code is written in &rdquo;Story&rdquo; Tab at footer.
-      </NavigationRail.MainContent>
-    </NavigationRail.Container>
-  );
+export const Example: StoryObj = {
+  render: () => {
+    return (
+      <NavigationRail.Container>
+        <NavigationRail>
+          <NavigationRail.Header>This is Header.</NavigationRail.Header>
+          <NavigationRail.Content>
+            <NavigationRail.Menu
+              title="Dashboard"
+              isActive={true}
+              iconName="dashboard"
+              notificationCount={2}
+            />
+            <NavigationRail.Menu
+              title="Chart"
+              isActive={false}
+              iconName="bar_chart"
+            />
+            <NavigationRail.ExpansionMenu
+              title="Setting"
+              isActive={false}
+              iconName="setting"
+              notificationCount={2}
+              expansionList={[
+                <NavigationRail.ExpansionMenuItem
+                  isActive={true}
+                  title="Detail setting"
+                  notificationCount={2}
+                />,
+                <NavigationRail.ExpansionMenuItem
+                  isActive={false}
+                  title={
+                    <Flex display="flex" alignItems="center" gap={1}>
+                      <Icon name="user" />
+                      Account setting
+                    </Flex>
+                  }
+                />,
+              ]}
+            />
+          </NavigationRail.Content>
+          <NavigationRail.Footer>
+            <NavigationRail.Fixture />
+          </NavigationRail.Footer>
+        </NavigationRail>
+        <NavigationRail.MainContent>
+          Source code is written in &rdquo;Story&rdquo; Tab at footer.
+        </NavigationRail.MainContent>
+      </NavigationRail.Container>
+    );
+  },
 };
