@@ -93,6 +93,7 @@ OverflowYScroll.args = {
     <>
       <Spacer my={3} />
       <DataTable
+        dataKey="id"
         data={data}
         columns={[
           {
