@@ -1,11 +1,14 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Badge, { BadgeProps } from "./Badge";
+import Badge from "./Badge";
 
 export default {
   title: "Components/Data Display/Badge",
   components: Badge,
+  args: {
+    color: "primary",
+  },
   parameters: {
     docs: {
       source: { language: "tsx" },
@@ -20,11 +23,11 @@ export default {
   },
 };
 
-const Template: StoryObj<BadgeProps> = {
+const Template: StoryObj<typeof Badge> = {
   render: (args) => <Badge {...args} />,
 };
 
-export const Primary: StoryObj<BadgeProps> = {
+export const Primary: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "primary",
@@ -32,14 +35,14 @@ export const Primary: StoryObj<BadgeProps> = {
   },
 };
 
-export const Secondary: StoryObj<BadgeProps> = {
+export const Secondary: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "secondary",
     children: "secondary",
   },
 };
-export const Success: StoryObj<BadgeProps> = {
+export const Success: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "success",
@@ -47,7 +50,7 @@ export const Success: StoryObj<BadgeProps> = {
   },
 };
 
-export const Warning: StoryObj<BadgeProps> = {
+export const Warning: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "warning",
@@ -55,7 +58,7 @@ export const Warning: StoryObj<BadgeProps> = {
   },
 };
 
-export const Danger: StoryObj<BadgeProps> = {
+export const Danger: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "danger",
