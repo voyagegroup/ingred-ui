@@ -48,17 +48,23 @@ export const Overview: StoryObj<DataTableProps<typeof data[number], "id">> = {
   },
 };
 
-export const WithVerticalLine: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const WithVerticalLine: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     return <DataTable {...args} enableRuledLine={true} />;
   },
 };
 
-export const WithPagination: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const WithPagination: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => <DataTable {...args} enablePagination={true} data={data} />,
 };
 
-export const WithStickyHeader: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const WithStickyHeader: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => <DataTable {...args} tableMaxHeight="300px" data={data} />,
 };
 
@@ -119,7 +125,9 @@ export const WithSearch: StoryObj<DataTableProps<typeof data[number], "id">> = {
   },
 };
 
-export const SelectableRows: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const SelectableRows: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     const [selectedRows, setSelectedRows] = React.useState<number[]>([32205]);
     const handleClick = () => {
@@ -157,7 +165,9 @@ export const SelectableRows: StoryObj<DataTableProps<typeof data[number], "id">>
   },
 };
 
-export const SelectableRow: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const SelectableRow: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     const [selectedRow, setSelectedRow] = React.useState<number>(32205);
     const handleClick = () => {
@@ -248,7 +258,9 @@ export const CustomCell: StoryObj<DataTableProps<typeof data[number], "id">> = {
   },
 };
 
-export const WithEmptyTable: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const WithEmptyTable: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => (
     <DataTable
       {...args}
