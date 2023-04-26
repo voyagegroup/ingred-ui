@@ -176,7 +176,7 @@ export const SelectableRow: StoryObj<DataTableProps<any>> = {
 };
 
 export const CustomCell: StoryObj<DataTableProps<any>> = {
-  render: (_args) => {
+  render: () => {
     const theme = useTheme();
     const [iconWrapperElement, setIconWrapperElement] =
       React.useState<HTMLDivElement | null>(null);
