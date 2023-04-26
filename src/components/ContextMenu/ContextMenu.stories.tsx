@@ -1,5 +1,5 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
 import ContextMenu, { ContextMenuProps } from "./ContextMenu";
@@ -9,7 +9,7 @@ export default {
   component: ContextMenu,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />
@@ -21,50 +21,49 @@ export default {
   },
 };
 
-const Template: Story<ContextMenuProps> = (args) => {
-  return <ContextMenu {...args} />;
+export const Basic: StoryObj<ContextMenuProps> = {
+  args: {
+    contents: [
+      {
+        text: "Edit",
+        onClick: action('clicked "Edit"'),
+      },
+      {
+        text: "Save",
+        onClick: action('clicked "Save"'),
+      },
+    ],
+  },
 };
 
-export const Basic = Template.bind({});
-Basic.args = {
-  contents: [
-    {
-      text: "Edit",
-      onClick: action('clicked "Edit"'),
-    },
-    {
-      text: "Save",
-      onClick: action('clicked "Save"'),
-    },
-  ],
+export const Disabled: StoryObj<ContextMenuProps> = {
+  args: {
+    contents: [
+      {
+        text: "Edit",
+        onClick: action('clicked "Edit"'),
+      },
+      {
+        text: "Save",
+        onClick: () => {},
+        type: "disabled",
+      },
+    ],
+  },
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  contents: [
-    {
-      text: "Edit",
-      onClick: action('clicked "Edit"'),
-    },
-    {
-      text: "Save",
-      onClick: () => {},
-      type: "disabled",
-    },
-  ],
-};
-
-export const Warning = Template.bind({});
-Warning.args = {
-  contents: [
-    {
-      text: "Edit",
-      onClick: action('clicked "Edit"'),
-    },
-    {
-      text: "Delete",
-      onClick: action('clicked "Delete"'),
-      type: "warning",
-    },
-  ],
+export const Warning: StoryObj<ContextMenuProps> = {
+  args: {
+    contents: [
+      {
+        text: "Edit",
+        onClick: action('clicked "Edit"'),
+      },
+      {
+        text: "Delete",
+        onClick: action('clicked "Delete"'),
+        type: "warning",
+      },
+    ],
+  },
 };

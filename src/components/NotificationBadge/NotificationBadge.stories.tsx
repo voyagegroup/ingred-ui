@@ -1,39 +1,30 @@
 import * as React from "react";
 import NotificationBadge, { NotificationBadgeProps } from "./NotificationBadge";
 import { Icon } from "..";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 
 export default {
   title: "Components/Data Display/NotificationBadge",
   component: NotificationBadge,
 };
 
-export const Number: Story<NotificationBadgeProps> = (args) => (
-  <NotificationBadge {...args}>
-    <Icon name="setting" type="fill" size="lg" />
-  </NotificationBadge>
-);
-
-Number.args = {
-  badgeContent: 100,
+export const Number: StoryObj<NotificationBadgeProps> = {
+  args: {
+    badgeContent: 100,
+    children: <Icon name="setting" type="fill" size="lg" />,
+  },
 };
 
-export const Text: Story<NotificationBadgeProps> = (args) => (
-  <NotificationBadge {...args}>
-    <Icon name="setting" type="fill" size="lg" />
-  </NotificationBadge>
-);
-
-Text.args = {
-  badgeContent: "New",
+export const Text: StoryObj<NotificationBadgeProps> = {
+  args: {
+    badgeContent: "New",
+    children: <Icon name="setting" type="fill" size="lg" />,
+  },
 };
 
-export const Dot: Story<NotificationBadgeProps> = (args) => (
-  <NotificationBadge {...args}>
-    <Icon name="setting" type="fill" size="lg" />
-  </NotificationBadge>
-);
-
-Dot.args = {
-  variant: "dot",
+export const Dot: StoryObj<NotificationBadgeProps> = {
+  args: {
+    variant: "dot",
+    children: <Icon name="setting" type="fill" size="lg" />,
+  },
 };

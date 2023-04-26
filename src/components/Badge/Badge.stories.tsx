@@ -1,18 +1,17 @@
 import React from "react";
-import { Story } from "@storybook/react/types-6-0";
-import { Title, Subtitle, ArgsTable, Stories } from "@storybook/addon-docs";
-import Badge, { BadgeProps } from "./Badge";
+import { StoryObj } from "@storybook/react";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import Badge from "./Badge";
 
 export default {
   title: "Components/Data Display/Badge",
   components: Badge,
   parameters: {
     docs: {
-      source: { type: "code" },
+      source: { language: "tsx" },
       page: () => (
         <>
           <Title />
-          <Subtitle />
           <ArgsTable of={Badge} />
           <Stories includePrimary title="Stories" />
         </>
@@ -21,34 +20,45 @@ export default {
   },
 };
 
-const Template: Story<BadgeProps> = (args) => <Badge {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-  color: "primary",
-  children: "primary",
+const Template: StoryObj<typeof Badge> = {
+  render: (args) => <Badge {...args} />,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  color: "secondary",
-  children: "secondary",
+export const Primary: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "primary",
+    children: "primary",
+  },
 };
 
-export const Success = Template.bind({});
-Success.args = {
-  color: "success",
-  children: "success",
+export const Secondary: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "secondary",
+    children: "secondary",
+  },
+};
+export const Success: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "success",
+    children: "success",
+  },
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  color: "warning",
-  children: "warning",
+export const Warning: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "warning",
+    children: "warning",
+  },
 };
 
-export const Danger = Template.bind({});
-Danger.args = {
-  color: "danger",
-  children: "danger",
+export const Danger: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "danger",
+    children: "danger",
+  },
 };

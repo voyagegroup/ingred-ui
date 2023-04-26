@@ -67,7 +67,7 @@ describe("{{ inputs.name | pascal }} component testing", () => {
 
 ```typescript
 import * as React from "react";
-import { Story } from "@storybook/react/types-6-0";
+import { StoryObj } from "@storybook/react";
 import {{ inputs.name | pascal }}, { {{ inputs.name | pascal }}Props } from "./{{ inputs.name | pascal }}";
 
 export default {
@@ -75,7 +75,9 @@ export default {
   component: {{ inputs.name | pascal }},
 };
 
-export const Example: Story<{{ inputs.name | pascal }}Props> = (args) => (
-  <{{ inputs.name | pascal }} {...args} />
-);
+export const Example: StoryObj<{{ inputs.name | pascal }}Props> = {
+  render: (args) => (
+    <{{ inputs.name | pascal }} {...args} />
+  )
+};
 ```

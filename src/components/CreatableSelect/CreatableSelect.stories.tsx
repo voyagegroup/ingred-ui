@@ -5,7 +5,7 @@ export default {
   title: "Components/Inputs/CreatableSelect",
   component: CreatableSelect,
   source: {
-    type: "code",
+    language: "tsx",
   },
 };
 
