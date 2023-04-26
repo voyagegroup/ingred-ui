@@ -48,7 +48,6 @@
     "@rollup/plugin-url": "8.0.0",
     "@storybook/addon-essentials": "7.1.0-alpha.9",
     "@storybook/addon-links": "7.1.0-alpha.9",
-    "@storybook/addon-mdx-gfm": "7.1.0-alpha.9",
     "@storybook/addon-storysource": "7.1.0-alpha.9",
     "@storybook/react": "7.1.0-alpha.9",
     "@storybook/react-webpack5": "7.1.0-alpha.9",
