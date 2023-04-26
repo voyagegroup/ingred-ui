@@ -157,6 +157,8 @@ const DefaultToast: React.FunctionComponent<Props> = ({
         background={toastStyle.background}
         boxShadow={toastStyle.boxShadow}
         transitionDuration={transitionDuration}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         {...toastStates(placement)[transitionState]}
       >
         <Flex
