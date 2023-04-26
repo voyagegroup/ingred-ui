@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const DomainBlockIcon: React.FunctionComponent<IconProps> = ({ type, fill }) => {
+const AdBlockIcon: React.FunctionComponent<IconProps> = ({ type, fill }) => {
   switch (type) {
     case "fill":
       return (
@@ -36,4 +36,4 @@ const DomainBlockIcon: React.FunctionComponent<IconProps> = ({ type, fill }) => 
   }
 };
 
-export { DomainBlockIcon };
+export { AdBlockIcon };
