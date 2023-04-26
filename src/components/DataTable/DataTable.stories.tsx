@@ -24,6 +24,7 @@ export default {
   },
   args: {
     data: data.slice(0, 4),
+    dataKey: "id",
     columns: [
       {
         name: "ID",
@@ -41,27 +42,33 @@ export default {
   },
 };
 
-export const Overview: StoryObj<DataTableProps<any>> = {
+export const Overview: StoryObj<DataTableProps<typeof data[number], "id">> = {
   render: (args) => {
     return <DataTable {...args} />;
   },
 };
 
-export const WithVerticalLine: StoryObj<DataTableProps<any>> = {
+export const WithVerticalLine: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     return <DataTable {...args} enableRuledLine={true} />;
   },
 };
 
-export const WithPagination: StoryObj<DataTableProps<any>> = {
+export const WithPagination: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => <DataTable {...args} enablePagination={true} data={data} />,
 };
 
-export const WithStickyHeader: StoryObj<DataTableProps<any>> = {
+export const WithStickyHeader: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => <DataTable {...args} tableMaxHeight="300px" data={data} />,
 };
 
-export const WithTabs: StoryObj<DataTableProps<any>> = {
+export const WithTabs: StoryObj<DataTableProps<typeof data[number], "id">> = {
   render: (args) => (
     <DataTable
       {...args}
@@ -98,7 +105,7 @@ export const WithTabs: StoryObj<DataTableProps<any>> = {
   ),
 };
 
-export const WithSearch: StoryObj<DataTableProps<any>> = {
+export const WithSearch: StoryObj<DataTableProps<typeof data[number], "id">> = {
   render: (args) => {
     const [searchText, setSearchText] = React.useState("");
     const searchedItems = data.filter((item) =>
@@ -118,7 +125,9 @@ export const WithSearch: StoryObj<DataTableProps<any>> = {
   },
 };
 
-export const SelectableRows: StoryObj<DataTableProps<any>> = {
+export const SelectableRows: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     const [selectedRows, setSelectedRows] = React.useState<number[]>([32205]);
     const handleClick = () => {
@@ -156,7 +165,9 @@ export const SelectableRows: StoryObj<DataTableProps<any>> = {
   },
 };
 
-export const SelectableRow: StoryObj<DataTableProps<any>> = {
+export const SelectableRow: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => {
     const [selectedRow, setSelectedRow] = React.useState<number>(32205);
     const handleClick = () => {
@@ -175,7 +186,7 @@ export const SelectableRow: StoryObj<DataTableProps<any>> = {
   },
 };
 
-export const CustomCell: StoryObj<DataTableProps<any>> = {
+export const CustomCell: StoryObj<DataTableProps<typeof data[number], "id">> = {
   render: () => {
     const theme = useTheme();
     const [iconWrapperElement, setIconWrapperElement] =
@@ -187,6 +198,7 @@ export const CustomCell: StoryObj<DataTableProps<any>> = {
     return (
       <DataTable
         data={data}
+        dataKey="id"
         enablePagination={true}
         columns={[
           {
@@ -246,7 +258,9 @@ export const CustomCell: StoryObj<DataTableProps<any>> = {
   },
 };
 
-export const WithEmptyTable: StoryObj<DataTableProps<any>> = {
+export const WithEmptyTable: StoryObj<
+  DataTableProps<typeof data[number], "id">
+> = {
   render: (args) => (
     <DataTable
       {...args}

@@ -30,8 +30,9 @@ function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;
 }
 
-function isMergedCell<T extends DataTableBaseData>(
+function isMergedCell<T>(
   displayData: T[],
+  key: keyof T,
   index: number,
   column?: Column<T>,
 ): boolean {
@@ -42,13 +43,14 @@ function isMergedCell<T extends DataTableBaseData>(
   const previousCell = column?.selector(previousRow);
   return (
     (!column || !!column.enableMergeCell) &&
-    baseRow.id === previousRow.id &&
+    baseRow[key] === previousRow[key] &&
     baseCell === previousCell
   );
 }
 
-function calculateRowSpan<T extends DataTableBaseData>(
+function calculateRowSpan<T>(
   displayData: T[],
+  key: keyof T,
   startIndex: number,
   column?: Column<T>,
 ): number {
@@ -59,7 +61,7 @@ function calculateRowSpan<T extends DataTableBaseData>(
   for (let idx = startIndex + 1; idx < displayData.length; idx++) {
     const comparisonRow = displayData[idx];
     const comparisonCell = column?.selector(comparisonRow);
-    if (comparisonRow.id !== baseRow.id || comparisonCell !== baseCell) {
+    if (comparisonRow[key] !== baseRow[key] || comparisonCell !== baseCell) {
       break;
     }
     rowSpan++;
@@ -83,7 +85,7 @@ function getFilteredItemsByTab<T>({
   return data;
 }
 
-function getDisplayData<T extends DataTableBaseData>({
+function getDisplayData<T>({
   sourceData,
   sortState,
   filterState,
@@ -111,11 +113,6 @@ function getDisplayData<T extends DataTableBaseData>({
   return sortedData;
 }
 
-export type DataTableBaseData = {
-  id: number;
-  selectDisabled?: boolean;
-};
-
 export type Column<T> = {
   name: string;
   selector: (data: T) => string | number;
@@ -133,11 +130,15 @@ type Tab<T> = {
   disabledCheck?: boolean;
 };
 
-export type DataTableProps<T> = {
+export type DataTableProps<T, K extends keyof T> = {
   /**
-   * Array of some object that has `id: number` property.
+   * Array of some object that has unique property.
    */
   data: T[];
+  /**
+   * Specifies a unique key for each object in the `data`. This key is used to identify each object.
+   */
+  dataKey: K;
   /**
    * Define column of table. Please refer to the samples below.
    */
@@ -145,16 +146,14 @@ export type DataTableProps<T> = {
   enablePagination?: boolean;
   /**
    * Enable to use checkbox in table.
-   * The argument `rows` is array of `id: number` defined in `data` props.
    * **Don't use with `onRadioChange={true}`**
    */
-  onSelectRowsChange?: (rows: number[]) => void;
+  onSelectRowsChange?: (rows: T[K][]) => void;
   /**
    * Enable to use radio button in table.
-   * The argument `radio` is `id: number` defined in `data` props.
    * **Don't use with `onSelectRowsChange={true}`**
    */
-  onRadioChange?: (radio: number) => void;
+  onRadioChange?: (radio: T[K]) => void;
   /**
    * Define tabs of table. Please refer to the samples below.
    */
@@ -181,11 +180,11 @@ export type DataTableProps<T> = {
   /**
    * Specify checked rows.
    */
-  selectedRows?: number[];
+  selectedRows?: T[K][];
   /**
    * Specify checked row.
    */
-  selectedRow?: number;
+  selectedRow?: T[K];
   /**
    * Add vertical line in table.
    */
@@ -205,9 +204,10 @@ export type DataTableProps<T> = {
   labelDisplayedRows?: LabelDisplayRows;
 };
 
-const DataTable = <T extends DataTableBaseData>(
+const DataTable = <T extends { selectDisabled?: boolean }, K extends keyof T>(
   {
     data: sourceData,
+    dataKey,
     columns,
     enablePagination = false,
     onSelectRowsChange,
@@ -227,7 +227,7 @@ const DataTable = <T extends DataTableBaseData>(
     horizontalScrollable = false,
     labelRowsPerPage = "Rows per page:",
     labelDisplayedRows = ({ from, to, total }) => `${from}-${to} of ${total}`,
-  }: DataTableProps<T>,
+  }: DataTableProps<T, K>,
   ref?: React.ForwardedRef<HTMLDivElement>,
 ) => {
   const showCheckbox = !!onSelectRowsChange;
@@ -331,7 +331,7 @@ const DataTable = <T extends DataTableBaseData>(
     setFilterState({ index: 1, per });
   };
 
-  const handleSelectCheckbox = (id: number) => () => {
+  const handleSelectCheckbox = (id: T[typeof dataKey]) => () => {
     if (!onSelectRowsChange) {
       return;
     }
@@ -344,7 +344,7 @@ const DataTable = <T extends DataTableBaseData>(
     }
   };
 
-  const handleSelectRadioButton = (id: number) => () => {
+  const handleSelectRadioButton = (id: T[typeof dataKey]) => () => {
     if (onRadioChange) {
       onRadioChange(id);
     }
@@ -361,7 +361,7 @@ const DataTable = <T extends DataTableBaseData>(
       onSelectRowsChange(
         displayData
           .filter((data) => !data.selectDisabled)
-          .map((data) => data.id),
+          .map((data) => data[dataKey]),
       );
       setAllSelected(true);
     }
@@ -432,28 +432,37 @@ const DataTable = <T extends DataTableBaseData>(
                             verticalSpacing={verticalSpacing}
                             highlighted={
                               !item.selectDisabled &&
-                              (selectedRows.includes(item.id) ||
-                                selectedRow === item.id)
+                              (selectedRows.includes(item[dataKey]) ||
+                                selectedRow === item[dataKey])
                             }
                             disableHoverHighlight={enableMergeCell}
                             {...(!disableCheckWhenClickRow && {
-                              onClick: handleSelectCheckbox(item.id),
+                              onClick: handleSelectCheckbox(item[dataKey]),
                             })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
-                              !isMergedCell(displayData, index) && (
+                              !isMergedCell(displayData, dataKey, index) && (
                                 <CellCheckbox
-                                  selected={selectedRows.includes(item.id)}
-                                  rowSpan={calculateRowSpan(displayData, index)}
+                                  selected={selectedRows.includes(
+                                    item[dataKey],
+                                  )}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    dataKey,
+                                    index,
+                                  )}
                                   {...(disableCheckWhenClickRow && {
-                                    onClick: handleSelectCheckbox(item.id),
+                                    onClick: handleSelectCheckbox(
+                                      item[dataKey],
+                                    ),
                                   })}
                                 />
                               )}
                             {columns.map((column) =>
                               isMergedCell(
                                 displayData,
+                                dataKey,
                                 index,
                                 column,
                               ) ? null : (
@@ -462,6 +471,7 @@ const DataTable = <T extends DataTableBaseData>(
                                   enableRuledLine={enableRuledLine}
                                   rowSpan={calculateRowSpan(
                                     displayData,
+                                    dataKey,
                                     index,
                                     column,
                                   )}
@@ -483,26 +493,33 @@ const DataTable = <T extends DataTableBaseData>(
                             verticalSpacing={verticalSpacing}
                             highlighted={
                               !item.selectDisabled &&
-                              (selectedRows.includes(item.id) ||
-                                selectedRow === item.id)
+                              (selectedRows.includes(item[dataKey]) ||
+                                selectedRow === item[dataKey])
                             }
                             disableHoverHighlight={enableMergeCell}
                             {...(!disableCheckWhenClickRow && {
-                              onClick: handleSelectRadioButton(item.id),
+                              onClick: handleSelectRadioButton(item[dataKey]),
                             })}
                           >
                             {(!showTabs ||
                               isCheckableTab(currentTabIndex, tabs)) &&
-                              !isMergedCell(displayData, index) && (
+                              !isMergedCell(displayData, dataKey, index) && (
                                 <CellRadio
-                                  selected={item.id === selectedRow}
-                                  rowSpan={calculateRowSpan(displayData, index)}
-                                  onClick={handleSelectRadioButton(item.id)}
+                                  selected={item[dataKey] === selectedRow}
+                                  rowSpan={calculateRowSpan(
+                                    displayData,
+                                    dataKey,
+                                    index,
+                                  )}
+                                  onClick={handleSelectRadioButton(
+                                    item[dataKey],
+                                  )}
                                 />
                               )}
                             {columns.map((column) =>
                               isMergedCell(
                                 displayData,
+                                dataKey,
                                 index,
                                 column,
                               ) ? null : (
@@ -511,6 +528,7 @@ const DataTable = <T extends DataTableBaseData>(
                                   enableRuledLine={enableRuledLine}
                                   rowSpan={calculateRowSpan(
                                     displayData,
+                                    dataKey,
                                     index,
                                     column,
                                   )}
@@ -533,18 +551,24 @@ const DataTable = <T extends DataTableBaseData>(
                         verticalSpacing={verticalSpacing}
                         highlighted={
                           !item.selectDisabled &&
-                          (selectedRows.includes(item.id) ||
-                            selectedRow === item.id)
+                          (selectedRows.includes(item[dataKey]) ||
+                            selectedRow === item[dataKey])
                         }
                         disableHoverHighlight={enableMergeCell}
                       >
                         {columns.map((column) =>
-                          isMergedCell(displayData, index, column) ? null : (
+                          isMergedCell(
+                            displayData,
+                            dataKey,
+                            index,
+                            column,
+                          ) ? null : (
                             <Table.Cell
                               key={column.name}
                               enableRuledLine={enableRuledLine}
                               rowSpan={calculateRowSpan(
                                 displayData,
+                                dataKey,
                                 index,
                                 column,
                               )}
@@ -611,6 +635,6 @@ const DataTable = <T extends DataTableBaseData>(
 };
 
 // FIXME: Implement without type assertion
-export default React.forwardRef(DataTable) as <T extends DataTableBaseData>(
-  props: DataTableProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+export default React.forwardRef(DataTable) as <T, K extends keyof T>(
+  props: DataTableProps<T, K> & { ref?: React.ForwardedRef<HTMLDivElement> },
 ) => ReturnType<typeof DataTable>;

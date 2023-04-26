@@ -103,6 +103,7 @@ export const OverflowYScroll = {
         <Spacer my={3} />
         <DataTable
           data={data}
+          dataKey="id"
           columns={[
             {
               name: "ID",
