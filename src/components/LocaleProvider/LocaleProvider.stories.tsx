@@ -97,16 +97,17 @@ export const Example: StoryObj<LocaleProviderProps> = {
   render: (args) => {
     const localeOptions = Object.keys(locales).map((locale) => ({
       label: locale,
-      value: locale,
+      value: locale as keyof typeof locales,
     }));
     localeOptions.unshift({
       label: "Unspecified(default behavior)",
-      value: "",
+      value: "" as any,
     });
     const [checked, setChecked] = React.useState<boolean>(false);
     const [isOpen, setIsOpen] = React.useState(false);
-    const [selectedLocale, setSelectedLocale] =
-      React.useState<OptionType | null>(localeOptions[1]);
+    const [selectedLocale, setSelectedLocale] = React.useState<
+      OptionType<keyof typeof locales>
+    >(localeOptions[1]);
     const handleToggleButton = () => {
       setIsOpen(!isOpen);
     };
@@ -117,15 +118,16 @@ export const Example: StoryObj<LocaleProviderProps> = {
     };
 
     return (
-      <LocaleProvider
-        locale={locales[selectedLocale !== null ? selectedLocale.value : ""]}
-      >
+      <LocaleProvider locale={locales[selectedLocale?.value]}>
         <Spacer pl={2} pt={2} pb={4}>
           <div> Select a locale! </div>
           <Select
             options={localeOptions}
             defaultValue={selectedLocale}
-            onChange={setSelectedLocale}
+            onChange={(option) => {
+              if (!option) return;
+              setSelectedLocale(option);
+            }}
           />
           <div>
             Selected locale:{" "}
