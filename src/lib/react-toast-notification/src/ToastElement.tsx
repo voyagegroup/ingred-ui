@@ -95,6 +95,8 @@ const Icon = ({
   autoDismissTimeout,
   isRunning,
 }: any) => {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const meta = appearances[appearance];
   const Glyph = meta.icon;
 
@@ -148,8 +150,12 @@ const ToastElement = ({
     >
       <Styled.ToastElementInner
         className={`react-toast-notifications__toast react-toast-notifications__toast--${appearance}`}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         backgroundColor={appearances[appearance].bg}
         borderRadius={borderRadius}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         color={appearances[appearance].text}
         gutter={gutter}
         placement={placement}
