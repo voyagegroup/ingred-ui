@@ -20,6 +20,11 @@ export type SwitchProps = {
   onChange?: (value: any) => void;
 };
 
+export type IndicatorStyle = {
+  width: number;
+  left: number;
+};
+
 const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(
   ({ cases, value, onChange }, ref) => {
     const items = cases as {
@@ -30,7 +35,8 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(
     const valueToIndex = new Map();
     const tabsRef = React.useRef<HTMLDivElement>(null);
     const childrenWrapperRef = React.useRef<HTMLDivElement>(null);
-    const [indicatorStyle, setIndicatorStyle] = React.useState({});
+    const [indicatorStyle, setIndicatorStyle] =
+      React.useState<IndicatorStyle>();
     const handleChange = (value: any) => () => {
       if (onChange) {
         onChange(value);
@@ -82,15 +88,11 @@ const Switch = React.forwardRef<HTMLDivElement, SwitchProps>(
         width: tabMeta ? tabMeta.width : 0,
       };
 
-      if (isNaN(indicatorStyle["left"]) || isNaN(indicatorStyle["width"])) {
+      if (!indicatorStyle?.left || !indicatorStyle?.width) {
         setIndicatorStyle(newIndicatorStyle);
       } else {
-        const dStart = Math.abs(
-          indicatorStyle["left"] - newIndicatorStyle["left"],
-        );
-        const dSize = Math.abs(
-          indicatorStyle["width"] - newIndicatorStyle["width"],
-        );
+        const dStart = Math.abs(indicatorStyle.left - newIndicatorStyle.left);
+        const dSize = Math.abs(indicatorStyle?.width - newIndicatorStyle.width);
 
         if (dStart >= 1 || dSize >= 1) {
           setIndicatorStyle(newIndicatorStyle);
