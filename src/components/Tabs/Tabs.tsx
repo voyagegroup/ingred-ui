@@ -5,8 +5,8 @@ import useEventCallback from "../../hooks/useEventCallback";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 type IndicatorStyle = {
-  width: number;
-  left: number;
+  left?: number;
+  width?: number;
 };
 
 type TabsProps<T> = {
@@ -28,7 +28,9 @@ const Tabs = <T,>(
   const { data, value, withBadge = false, onChange, onClick } = props;
   const valueToIndex = new Map<T, number>();
   const childrenRef = React.useRef<HTMLDivElement>(null);
-  const [indicatorStyle, setIndicatorStyle] = React.useState<IndicatorStyle>();
+  const [indicatorStyle, setIndicatorStyle] = React.useState<IndicatorStyle>(
+    {},
+  );
   const [tabs, setTabs] = React.useState<HTMLDivElement | null>(null);
   const refs = useMergeRefs<HTMLDivElement>(ref, setTabs);
 
@@ -72,7 +74,10 @@ const Tabs = <T,>(
       width: tabMeta ? tabMeta.width : 0,
     };
 
-    if (!indicatorStyle?.left || !indicatorStyle?.width) {
+    if (
+      indicatorStyle.left === undefined ||
+      indicatorStyle.width === undefined
+    ) {
       setIndicatorStyle(newIndicatorStyle);
     } else {
       const start = Math.abs(indicatorStyle.left - newIndicatorStyle.left);
