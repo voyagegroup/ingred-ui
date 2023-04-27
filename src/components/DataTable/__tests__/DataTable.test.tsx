@@ -14,6 +14,7 @@ describe("DataTable component testing", () => {
           { selector: (row) => row.name, name: "A" },
           { selector: (row) => row.name, name: "B" },
         ]}
+        dataKey="id"
         data={[
           { id: 1, name: "name1" },
           { id: 2, name: "name2" },
