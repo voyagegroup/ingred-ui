@@ -6,9 +6,6 @@ import Badge from "./Badge";
 export default {
   title: "Components/Data Display/Badge",
   components: Badge,
-  args: {
-    color: "primary",
-  },
   parameters: {
     docs: {
       source: { language: "tsx" },
