@@ -30,7 +30,7 @@ describe("Tabs component testing", () => {
       ],
     };
     const { asFragment } = renderWithThemeProvider(
-      <Tabs {...options} value={"hoge"} withBadge={true} />,
+      <Tabs {...options} value={"hoge"} />,
     );
 
     expect(asFragment()).toMatchSnapshot();

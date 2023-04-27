@@ -9,13 +9,12 @@ type TabProps = {
   count?: number;
   value: any;
   selected: boolean;
-  withBadge: boolean;
   onChange?: (value: any) => void;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
-  ({ text, count, value, withBadge, selected, onChange, onClick }, ref) => {
+  ({ text, count, value, selected, onChange, onClick }, ref) => {
     const theme = useTheme();
     const badgeColor = selected ? "primary" : "secondary";
 
@@ -40,7 +39,7 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
       >
         <Flex display="flex" justifyContent="space-between" alignItems="center">
           <Styled.Text selected={selected}>{text} </Styled.Text>
-          {withBadge ? (
+          {count ? (
             <Badge color={badgeColor} type="pill" fontWeight="bold">
               {count}
             </Badge>

@@ -28,7 +28,5 @@ export const WithBadge = () => {
     ],
   };
 
-  return (
-    <Tabs {...options} value={value} withBadge={true} onChange={setValue} />
-  );
+  return <Tabs {...options} value={value} onChange={setValue} />;
 };
