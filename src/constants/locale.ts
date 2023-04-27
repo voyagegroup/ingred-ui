@@ -152,3 +152,5 @@ export const enUS: Localization = {
   // No localization needed.
   //
 };
+
+export type LocalizationComponentName = keyof (Localization["components"] & {});
