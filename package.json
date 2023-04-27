@@ -83,7 +83,7 @@
     "storybook": "7.1.0-alpha.9",
     "styled-components": "5.3.5",
     "ts-jest": "28.0.4",
-    "typescript": "5.0.3"
+    "typescript": "5.0.4"
   },
   "files": [
     "dist"
