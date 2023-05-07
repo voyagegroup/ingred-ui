@@ -1,15 +1,15 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import FullSizeConfirmModal, {
-  FullSizeConfirmModalProps,
-} from "./FullSizeConfirmModal";
 import { action } from "@storybook/addon-actions";
+import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
+import { StoryObj } from "@storybook/react";
+import React from "react";
+import ActionButton from "../ActionButton";
 import Button from "../Button";
 import DataTable from "../DataTable";
 import { data } from "../DataTable/mockData";
 import Spacer from "../Spacer";
-import ActionButton from "../ActionButton";
+import FullSizeConfirmModal, {
+  FullSizeConfirmModalProps,
+} from "./FullSizeConfirmModal";
 
 export default {
   title: "Components/Utils/FullSizeConfirmModal",
@@ -119,6 +119,7 @@ export const OverflowYScroll = {
         <Spacer my={3} />
         <DataTable
           data={data}
+          dataKey="id"
           columns={[
             {
               name: "ID",

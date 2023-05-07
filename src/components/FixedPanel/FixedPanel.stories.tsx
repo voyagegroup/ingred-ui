@@ -1,9 +1,9 @@
-import React from "react";
+import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable } from "@storybook/addon-docs";
+import React from "react";
+import Button from "../Button";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
-import Button from "../Button";
 import FixedPanel, { FixedPanelProps } from "./FixedPanel";
 
 export default {
@@ -28,6 +28,7 @@ export default {
             ].join("\n")}
           />
           <ArgsTable of={FixedPanel} />
+          <Stories includePrimary title="Stories" />
         </>
       ),
     },

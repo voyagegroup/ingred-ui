@@ -4,7 +4,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { imagemin } from "rollup-plugin-imagemin";
-import postcss from "rollup-plugin-postcss";
 import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
@@ -32,9 +31,6 @@ export default {
   ],
   plugins: [
     peerDepsExternal(),
-    postcss({
-      modules: true,
-    }),
     url(),
     imagemin(),
     resolve({
