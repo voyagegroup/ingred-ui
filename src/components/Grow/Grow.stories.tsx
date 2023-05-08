@@ -1,4 +1,5 @@
-import { Description, Stories, Title } from "@storybook/addon-docs";
+import { Stories, Title } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
 import { ComponentStory } from "@storybook/react";
 import React from "react";
 import Flex from "../Flex";
@@ -19,16 +20,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "The wrapper of `<CSSTransition />` that implemented in [react-transition-group](https://reactcommunity.org/react-transition-group).",
               "",
               "It makes easy to implement CSS transitions that uses `opacity`.",
               "",
               "Props type is same as [this](https://reactcommunity.org/react-transition-group/transition#Transition-props).",
             ].join("\n")}
-          />
-
+          </Markdown>
           <Stories includePrimary title="Stories" />
         </>
       ),
