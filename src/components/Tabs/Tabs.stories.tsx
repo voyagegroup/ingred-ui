@@ -28,7 +28,18 @@ export const WithBadge = () => {
     ],
   };
 
-  return (
-    <Tabs {...options} value={value} withBadge={true} onChange={setValue} />
-  );
+  return <Tabs {...options} value={value} onChange={setValue} />;
+};
+
+export const FixableBadge = () => {
+  const [value, setValue] = React.useState("home");
+  const options = {
+    data: [
+      { text: "ホーム", value: "home" },
+      { text: "タイムライン", value: "timeline" },
+      { text: "通知", count: 5, value: "notification" },
+    ],
+  };
+
+  return <Tabs {...options} value={value} onChange={setValue} />;
 };

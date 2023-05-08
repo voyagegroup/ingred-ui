@@ -16,7 +16,6 @@ type TabsProps<T> = {
     value: T;
   }[];
   value: T;
-  withBadge?: boolean;
   onChange?: (value: T) => void;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
@@ -25,7 +24,7 @@ const Tabs = <T,>(
   props: TabsProps<T>,
   ref: React.Ref<HTMLDivElement>,
 ): React.ReactElement<TabsProps<T>> => {
-  const { data, value, withBadge = false, onChange, onClick } = props;
+  const { data, value, onChange, onClick } = props;
   const valueToIndex = new Map<T, number>();
   const childrenRef = React.useRef<HTMLDivElement>(null);
   const [indicatorStyle, setIndicatorStyle] = React.useState<IndicatorStyle>(
@@ -120,7 +119,6 @@ const Tabs = <T,>(
               selected={selected}
               value={childValue}
               count={d.count}
-              withBadge={withBadge}
               text={d.text}
               onChange={onChange}
               onClick={onClick}
