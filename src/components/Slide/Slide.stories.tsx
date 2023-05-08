@@ -1,5 +1,5 @@
 import { Stories, Title } from "@storybook/addon-docs";
-import { ComponentStory } from "@storybook/react";
+import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
 import React from "react";
 import Flex from "../Flex";
@@ -45,25 +45,27 @@ export default {
   },
 };
 
-export const Example: ComponentStory<typeof Slide> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(args.in);
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-  return (
-    <Flex display="flex" flexDirection="column" alignItems="center">
-      <Spacer pt={3} />
-      <ToggleButton checked={isOpen} onChange={handleToggle} />
-      <Spacer pt={3} />
-      <Slide {...args} in={isOpen}>
-        <div
-          style={{
-            width: "100px",
-            height: "100px",
-            backgroundColor: "blue",
-          }}
-        />
-      </Slide>
-    </Flex>
-  );
+export const Example: StoryObj<typeof Slide> = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(args.in);
+    const handleToggle = () => {
+      setIsOpen(!isOpen);
+    };
+    return (
+      <Flex display="flex" flexDirection="column" alignItems="center">
+        <Spacer pt={3} />
+        <ToggleButton checked={isOpen} onChange={handleToggle} />
+        <Spacer pt={3} />
+        <Slide {...args} in={isOpen}>
+          <div
+            style={{
+              width: "100px",
+              height: "100px",
+              backgroundColor: "blue",
+            }}
+          />
+        </Slide>
+      </Flex>
+    );
+  },
 };
