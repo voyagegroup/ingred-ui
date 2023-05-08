@@ -84,7 +84,7 @@
     "styled-components": "5.3.5",
     "ts-jest": "29.1.0",
     "typescript": "5.0.4",
-    "vite": "4.3.5"
+    "vite": "4.3.1"
   },
   "files": [
     "dist"
