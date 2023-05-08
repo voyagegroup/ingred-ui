@@ -10,16 +10,6 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/addon-links",
     "@storybook/addon-storysource",
-    {
-      // MEMO: included in addon-essentials
-      name: "@storybook/addon-docs",
-      options: {
-        csfPluginOptions: {
-          injectStoryParameters: false,
-        },
-      },
-    },
-    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/react-vite",

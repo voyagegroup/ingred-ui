@@ -89,6 +89,8 @@ const getTranslate = (placement: Placement) => {
     top: "translate3d(0, -120%, 0)",
   };
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   return translateMap[relevantPlacement];
 };
 
