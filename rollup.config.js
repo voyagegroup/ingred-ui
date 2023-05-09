@@ -2,9 +2,9 @@ import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
+import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { imagemin } from "rollup-plugin-imagemin";
-import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
 
