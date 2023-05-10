@@ -604,10 +604,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.6.tgz#cee20bd55e68a1720bdab363ecf0c821ded4cd45"
   integrity sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw==
 
-"@tsconfig/vite-react@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-1.0.1.tgz#2d2e4e90a9d2b299d4c332fa6c080d3ab36d47cb"
-  integrity sha512-6Tv0UI88QPSkNobzoI8tMXjHX1j723yPBhrQ+z+gphvTIj7KcH0KF1MjUlPrIgh5TEpRMH8jF5ezZ5qQ0iHGvw==
+"@tsconfig/vite-react@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-2.0.0.tgz#dbc43a8e64162ff94242e1fafaf78061d4dc62f6"
+  integrity sha512-erT+k9yzjRYnqRn6Fmvz+Y8+AtE+/YE954frGGwwit2ifsoWzRzYaOTlGj9/z0xJyYiaKNnNiFhid312QdC4rw==
 
 "@types/hoist-non-react-statics@*":
   version "3.3.1"
@@ -1111,7 +1111,7 @@ import-fresh@^3.2.1:
     resolve-from "^4.0.0"
 
 ingred-ui@../:
-  version "12.1.0"
+  version "14.0.0"
   dependencies:
     "@popperjs/core" "^2.11.6"
     dayjs "^1.11.6"
