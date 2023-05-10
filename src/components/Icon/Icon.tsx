@@ -76,7 +76,7 @@ import { InformationIcon } from "./internal/InformationIcon";
 import { AnalyticsIcon } from "./internal/AnalyticsIcon";
 import { SupportIcon } from "./internal/SupportIcon";
 import { AppsIcon } from "./internal/AppsIcon";
-import { AdBlockIcon } from "./internal/AdBlockIcon";
+import { RtbBlockIcon } from "./internal/RtbBlockIcon";
 
 export type IconName =
   | "dashboard"
@@ -153,7 +153,7 @@ export type IconName =
   | "analytics"
   | "support"
   | "apps"
-  | "ad_block";
+  | "rtb_block";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -246,7 +246,7 @@ export const icons: {
   analytics: AnalyticsIcon,
   support: SupportIcon,
   apps: AppsIcon,
-  ad_block: AdBlockIcon,
+  rtb_block: RtbBlockIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
