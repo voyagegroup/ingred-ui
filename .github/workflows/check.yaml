@@ -4,7 +4,7 @@ on:
   pull_request:
 
 jobs:
-  test-and-lint:
+  test-lint-and-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,3 +18,5 @@ jobs:
         run: make -f ci.mk lint
       - name: test
         run: make -f ci.mk test
+      - name: build
+        run: make -f ci.mk build
