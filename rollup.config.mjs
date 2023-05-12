@@ -6,7 +6,7 @@ import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import { imagemin } from "rollup-plugin-imagemin";
 
-import pkg from "./package.json";
+import pkg from "./package.json" assert { type: "json" };
 
 const isProduction = process.env.NODE_ENV === "production";
 
