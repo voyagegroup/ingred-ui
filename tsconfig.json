@@ -22,5 +22,5 @@
     "skipLibCheck": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "example", "testEnv", "rollup.config.mjs"]
+  "exclude": ["node_modules", "dist", "example", "testEnv", "rollup.config.js"]
 }

@@ -15,7 +15,7 @@
     "test": "cross-env CI=1 jest --runInBand",
     "test:watch": "jest --watchAll",
     "test:update": "jest --updateSnapshot",
-    "build": "NODE_ENV=production rollup -c",
+    "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
     "start": "rollup -c -w",
     "playground": "yarn build && cd testEnv && yarn install && yarn start",
     "storybook": "storybook dev -p 6006",
