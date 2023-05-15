@@ -62,3 +62,11 @@ export const Danger: StoryObj<typeof Badge> = {
     children: "danger",
   },
 };
+
+export const Basic: StoryObj<typeof Badge> = {
+  ...Template,
+  args: {
+    color: "basic",
+    children: "basic",
+  },
+};
