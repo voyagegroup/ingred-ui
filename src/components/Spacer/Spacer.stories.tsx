@@ -1,7 +1,8 @@
 import React from "react";
-import { Title, Description, Stories, ArgsTable } from "@storybook/addon-docs";
+import { Title, Stories, ArgsTable } from "@storybook/addon-docs";
 import Spacer from "../Spacer";
 import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
 import { SpacerProps } from "../../utils/spacer";
 
 export default {
@@ -17,15 +18,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={
+          <Markdown>
+            {
               "Spacer can easier express `margin` & `padding` with simple props."
             }
-          />
+          </Markdown>
           <ArgsTable of={Spacer} />
           <Stories includePrimary title="Stories" />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "## Configuration",
               "",
               "`Margin` and `Padding` actually rendered is dependent on the theme configuration.",
@@ -46,7 +47,7 @@ export default {
               "```",
               "",
             ].join("\n")}
-          />
+          </Markdown>
         </>
       ),
     },

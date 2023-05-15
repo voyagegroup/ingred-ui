@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Card, { CardProps } from "./Card";
 
 export default {
@@ -17,13 +18,13 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "It is used when we want to express something gathering of information.",
               "",
               "It can contains `<Flex />`props & `<Spacer />`props.",
             ].join("\n")}
-          />
+          </Markdown>
           <ArgsTable of={Card} />
           <Stories includePrimary title="Stories" />
         </>
