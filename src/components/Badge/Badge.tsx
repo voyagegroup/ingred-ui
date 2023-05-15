@@ -8,7 +8,8 @@ export type BadgeColor =
   | "secondary"
   | "success"
   | "warning"
-  | "danger";
+  | "danger"
+  | "basic";
 
 const getColor = (key: BadgeColor, theme: Theme) => {
   switch (key) {
@@ -22,6 +23,8 @@ const getColor = (key: BadgeColor, theme: Theme) => {
       return theme.palette.warning.main;
     case "danger":
       return theme.palette.danger.main;
+    case "basic":
+      return theme.palette.black;
   }
 };
 
