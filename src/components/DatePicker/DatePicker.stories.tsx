@@ -1,5 +1,6 @@
-import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
+import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
 import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
 import dayjs from "dayjs";
 import React from "react";
 import DatePicker from "./DatePicker";
@@ -15,16 +16,16 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "The wrapper of [react-dates](https://github.com/airbnb/react-dates).",
               "",
               "For more detail props, please see [it](https://github.com/airbnb/react-dates#singledatepicker).",
             ].join("\n")}
-          />
+          </Markdown>
           <ArgsTable of={DatePicker} />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "## When the display is strange",
               "",
               "Please import css from `react-dates`.",
@@ -34,7 +35,7 @@ export default {
               'import "react-dates/lib/css/_datepicker.css";',
               "```",
             ].join("\n")}
-          />
+          </Markdown>
           <Stories includePrimary title="Stories" />
         </>
       ),

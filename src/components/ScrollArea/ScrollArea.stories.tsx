@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import ScrollArea, { ScrollAreaProps } from "./ScrollArea";
 import Spacer from "../Spacer";
 
@@ -16,13 +17,11 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
-              "Show scroll bar.",
-              "",
-              "**※Only for Mac x Chromium**",
-            ].join("\n")}
-          />
+          <Markdown>
+            {["Show scroll bar.", "", "**※Only for Mac x Chromium**"].join(
+              "\n",
+            )}
+          </Markdown>
           <ArgsTable of={ScrollArea} />
           <Stories includePrimary title="Stories" />
         </>

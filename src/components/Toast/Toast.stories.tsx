@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Toast, { ToastProps } from "./Toast";
 import Button from "../Button";
 
@@ -19,13 +20,13 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "`<Toast />` and related methods are the wrapper of [react-toast-notifications](https://github.com/jossmac/react-toast-notifications).",
               "",
               "The toast is used to show alerts on top of an overlay. The toast will close itself when the close button is clicked, or after a timeout.",
             ].join("\n")}
-          />
+          </Markdown>
           <ArgsTable of={Toast} />
           <Stories includePrimary title="Stories" />
         </>

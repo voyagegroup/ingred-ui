@@ -1,5 +1,6 @@
-import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
+import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
 import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
 import React from "react";
 import Flex from "../Flex";
 import Icon from "../Icon";
@@ -27,15 +28,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "It implements like Sidebar UI.",
               "",
               "It consists of multiple components.",
               "",
               "Usage example is included in ”Canvas” Tab at header.",
             ].join("\n")}
-          />
+          </Markdown>
           <ArgsTable of={NavigationRail} />
           <Stories includePrimary title="Stories" />
         </>

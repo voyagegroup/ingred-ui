@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Flex, { FlexProps } from "./Flex";
 
 export default {
@@ -16,11 +17,11 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={
+          <Markdown>
+            {
               "Flex can easier express CSS that related flexbox with simple props."
             }
-          />
+          </Markdown>
           <ArgsTable of={Flex} />
           <Stories includePrimary title="Stories" />
         </>
