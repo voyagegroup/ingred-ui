@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const ArrowPathIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
+const RefreshLineIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
   switch (type) {
     case "fill":
       return (
@@ -24,4 +24,4 @@ const ArrowPathIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
   }
 };
 
-export { ArrowPathIcon };
+export { RefreshLineIcon };
