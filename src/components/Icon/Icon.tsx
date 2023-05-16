@@ -77,6 +77,7 @@ import { AnalyticsIcon } from "./internal/AnalyticsIcon";
 import { SupportIcon } from "./internal/SupportIcon";
 import { AppsIcon } from "./internal/AppsIcon";
 import { AdBlockIcon } from "./internal/AdBlockIcon";
+import { ArrowPathIcon } from "./internal/ArrowPath";
 
 export type IconName =
   | "dashboard"
@@ -89,6 +90,7 @@ export type IconName =
   | "arrow_bottom"
   | "arrow_left"
   | "arrow_right"
+  | "arrow_path"
   | "pencil"
   | "delete_bin"
   | "close"
@@ -182,6 +184,7 @@ export const icons: {
   arrow_bottom: ArrowBottomIcon,
   arrow_left: ArrowLeftIcon,
   arrow_right: ArrowRightIcon,
+  arrow_path: ArrowPathIcon,
   pencil: PencilIcon,
   delete_bin: DeleteBinIcon,
   close: CloseIcon,
