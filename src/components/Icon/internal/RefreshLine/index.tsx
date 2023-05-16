@@ -1,7 +1,10 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const RefreshLineIcon: React.FunctionComponent<IconProps> = ({ fill, type }) => {
+const RefreshLineIcon: React.FunctionComponent<IconProps> = ({
+  fill,
+  type,
+}) => {
   switch (type) {
     case "fill":
       return (
