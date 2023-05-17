@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
 import Button, { ButtonProps } from "./Button";
 
@@ -18,8 +19,8 @@ export default {
           <Title />
           <ArgsTable of={Button} />
           <Stories includePrimary title="Samples" />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               '### Use with router library like "react-router"',
               "Here's an example code.  ",
               "",
@@ -39,7 +40,7 @@ export default {
               ");",
               "```",
             ].join("\n")}
-          />
+          </Markdown>
         </>
       ),
     },

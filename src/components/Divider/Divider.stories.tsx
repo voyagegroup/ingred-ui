@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Divider, { DividerProps } from "./Divider";
 
 export default {
@@ -8,11 +9,15 @@ export default {
   components: Divider,
   parameters: {
     docs: {
-      source: { language: "tsx" },
+      source: { type: "code" },
       page: () => (
         <>
           <Title />
-          <Description markdown="`<Divider />` is wrapper of `<hr />` tag that separate content into clear groups." />
+          <Markdown>
+            {
+              "`<Divider />` is wrapper of `<hr />` tag that separate content into clear groups."
+            }
+          </Markdown>
           <ArgsTable of={Divider} />
           <Stories includePrimary title="Stories" />
         </>

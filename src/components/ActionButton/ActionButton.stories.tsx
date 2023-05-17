@@ -1,6 +1,7 @@
 import { action } from "@storybook/addon-actions";
-import { ArgsTable, Description, Stories, Title } from "@storybook/addon-docs";
+import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
 import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
 import React from "react";
 import ActionButton, { ActionButtonProps } from "./ActionButton";
 
@@ -18,7 +19,7 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description markdown={"It can behave like a `<button />` tags."} />
+          <Markdown>{"It can behave like a `<button />` tags."}</Markdown>
           <ArgsTable of={ActionButton} />
           <Stories includePrimary title="Stories" />
         </>

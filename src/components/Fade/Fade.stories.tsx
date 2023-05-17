@@ -1,5 +1,6 @@
-import { Description, Stories, Title } from "@storybook/addon-docs";
-import { ComponentStory } from "@storybook/react";
+import { Stories, Title } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
 import React from "react";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
@@ -19,15 +20,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "The wrapper of `<CSSTransition />` that implemented in [react-transition-group](https://reactcommunity.org/react-transition-group).",
               "",
               "It makes easy to implement CSS transitions that uses `opacity`.",
               "",
               "Props type is same as [this](https://reactcommunity.org/react-transition-group/transition#Transition-props).",
             ].join("\n")}
-          />
+          </Markdown>
           <Stories includePrimary title="Stories" />
         </>
       ),
@@ -35,25 +36,27 @@ export default {
   },
 };
 
-export const Example: ComponentStory<typeof Fade> = (args) => {
-  const [isOpen, setIsOpen] = React.useState(args.in);
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-  return (
-    <Flex display="flex" flexDirection="column" alignItems="center">
-      <Spacer pt={3} />
-      <ToggleButton checked={isOpen} onChange={handleToggle} />
-      <Spacer pt={3} />
-      <Fade {...args} in={isOpen}>
-        <div
-          style={{
-            width: "100px",
-            height: "100px",
-            backgroundColor: "blue",
-          }}
-        />
-      </Fade>
-    </Flex>
-  );
+export const Example: StoryObj<typeof Fade> = {
+  render: (args) => {
+    const [isOpen, setIsOpen] = React.useState(args.in);
+    const handleToggle = () => {
+      setIsOpen(!isOpen);
+    };
+    return (
+      <Flex display="flex" flexDirection="column" alignItems="center">
+        <Spacer pt={3} />
+        <ToggleButton checked={isOpen} onChange={handleToggle} />
+        <Spacer pt={3} />
+        <Fade {...args} in={isOpen}>
+          <div
+            style={{
+              width: "100px",
+              height: "100px",
+              backgroundColor: "blue",
+            }}
+          />
+        </Fade>
+      </Flex>
+    );
+  },
 };
