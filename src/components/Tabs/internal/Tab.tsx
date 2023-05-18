@@ -39,7 +39,7 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
       >
         <Flex display="flex" justifyContent="space-between" alignItems="center">
           <Styled.Text selected={selected}>{text} </Styled.Text>
-          {count ? (
+          {count != null ? (
             <Badge color={badgeColor} type="pill" fontWeight="bold">
               {count}
             </Badge>

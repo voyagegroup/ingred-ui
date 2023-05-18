@@ -77,6 +77,7 @@ import { AnalyticsIcon } from "./internal/AnalyticsIcon";
 import { SupportIcon } from "./internal/SupportIcon";
 import { AppsIcon } from "./internal/AppsIcon";
 import { AdBlockIcon } from "./internal/AdBlockIcon";
+import { RefreshLineIcon } from "./internal/RefreshLine";
 
 export type IconName =
   | "dashboard"
@@ -106,6 +107,7 @@ export type IconName =
   | "sort_inactive"
   | "folder"
   | "folder_open"
+  | "refresh_line"
   | "return_line"
   | "link"
   | "unlink"
@@ -199,6 +201,7 @@ export const icons: {
   sort_inactive: SortInactiveIcon,
   folder: FolderIcon,
   folder_open: FolderOpenIcon,
+  refresh_line: RefreshLineIcon,
   return_line: ReturnLineIcon,
   link: LinkIcon,
   unlink: UnlinkIcon,

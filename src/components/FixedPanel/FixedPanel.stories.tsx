@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import Button from "../Button";
@@ -20,13 +21,13 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={[
+          <Markdown>
+            {[
               "It implement like ”Header/Footer” UI that is styled `position: fixed;`.",
               "",
               "Usage example is included in ”Canvas” Tab at header.",
             ].join("\n")}
-          />
+          </Markdown>
           <ArgsTable of={FixedPanel} />
           <Stories includePrimary title="Stories" />
         </>

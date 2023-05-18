@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, Description, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import MenuList, { MenuListProps } from "./MenuList";
 import { action } from "@storybook/addon-actions";
 
@@ -13,9 +14,9 @@ export default {
       page: () => (
         <>
           <Title />
-          <Description
-            markdown={`MenuList is a lower-level component that is leveraged [&lt;Menu /&gt;](${window.location.origin}/?path=/docs/components-navigation-menu--example).`}
-          />
+          <Markdown>
+            {`MenuList is a lower-level component that is leveraged [&lt;Menu /&gt;](${window.location.origin}/?path=/docs/components-navigation-menu--example).`}
+          </Markdown>
           <ArgsTable of={MenuList} />
           <Stories includePrimary title="Stories" />
         </>
