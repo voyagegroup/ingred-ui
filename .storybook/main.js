@@ -1,3 +1,5 @@
+import { mergeConfig } from "vite";
+
 module.exports = {
   staticDirs: ["../assets"],
   stories: [
@@ -9,12 +11,12 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-storysource",
   ],
-  features: {
-    babelModeV7: true,
-  },
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/react-vite",
     options: {},
+  },
+  async viteFinal(config) {
+    return mergeConfig(config, {});
   },
   docs: {
     autodocs: true,

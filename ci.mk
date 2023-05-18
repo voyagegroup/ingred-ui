@@ -21,6 +21,9 @@ test:
 lint:
 	yarn lint
 
+build:
+	yarn build
+
 release_version:
 	npm config set git-tag-version false
 	npm version ${RELEASE_VERSION}

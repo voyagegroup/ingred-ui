@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "14.0.0",
+  "version": "14.1.0",
   "description": "",
   "author": "CARTA HOLDINGS, Inc.",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "test": "cross-env CI=1 jest --runInBand",
     "test:watch": "jest --watchAll",
     "test:update": "jest --updateSnapshot",
-    "build": "NODE_ENV=production rollup -c",
+    "build": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
     "start": "rollup -c -w",
     "playground": "yarn build && cd testEnv && yarn install && yarn start",
     "storybook": "storybook dev -p 6006",
@@ -51,7 +51,7 @@
     "@storybook/addon-links": "7.1.0-alpha.9",
     "@storybook/addon-storysource": "7.1.0-alpha.9",
     "@storybook/react": "7.1.0-alpha.9",
-    "@storybook/react-webpack5": "7.1.0-alpha.9",
+    "@storybook/react-vite": "7.1.0-alpha.9",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "14.0.0",
     "@types/jest": "29.5.1",
@@ -76,14 +76,15 @@
     "prettier": "2.8.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "rollup": "2.79.0",
+    "rollup": "3.22.0",
     "rollup-plugin-imagemin": "0.5.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "scaffdog": "2.5.0",
     "storybook": "7.1.0-alpha.9",
     "styled-components": "5.3.5",
     "ts-jest": "29.1.0",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "vite": "4.3.5"
   },
   "files": [
     "dist"
