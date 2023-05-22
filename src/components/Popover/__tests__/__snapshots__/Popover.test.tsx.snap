@@ -3,18 +3,14 @@
 exports[`Popover component testing Popover 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ gkusWi"
+    class="sc-gsnTZi dwQPBs"
   >
     <div
-      class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
-    >
-      <div
-        class="sc-gsnTZi cqlNGB"
-      />
-    </div>
-    <div
-      class="sc-hKMtZM gjwEVb"
-      style="position: absolute; left: 0px; top: 0px;"
+      class="sc-bczRLJ jRMOjB"
+      id=":r0:"
+      role="dialog"
+      style="position: absolute; top: 0px; left: 0px;"
+      tabindex="0"
     >
       <div>
         hoge
