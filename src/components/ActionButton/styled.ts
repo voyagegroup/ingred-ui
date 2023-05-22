@@ -10,7 +10,8 @@ export const Container = styled.button<ContainerProps>`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing * 0.25}px;
-  padding: ${({ theme }) => `${theme.spacing * 0.75}px ${theme.spacing}px`};
+  height: 32px;
+  padding: ${({ theme }) => theme.spacing * 0.75}px;
   border: 1px solid ${({ borderColor }) => borderColor};
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;

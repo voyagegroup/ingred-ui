@@ -3,7 +3,7 @@
 exports[`ContextMenu component testing ContextMenu 1`] = `
 <DocumentFragment>
   <button
-    class="sc-jqUVSM bMQtWN sc-iqcoie kknLbS"
+    class="sc-jqUVSM fgabYI sc-iqcoie kknLbS"
     data-testid="icon-wrapper"
   >
     <span
