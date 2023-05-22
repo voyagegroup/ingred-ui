@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Space } from "../../styles";
 
 type ContainerProps = {
   borderColor: string;
@@ -10,7 +9,8 @@ type ContainerProps = {
 export const Container = styled.button<ContainerProps>`
   display: flex;
   align-items: center;
-  padding: ${Space * 0.75}px ${Space}px;
+  gap: ${({ theme }) => theme.spacing * 0.25}px;
+  padding: ${({ theme }) => `${theme.spacing * 0.75}px ${theme.spacing}px`};
   border: 1px solid ${({ borderColor }) => borderColor};
   cursor: pointer;
   border-radius: ${({ theme }) => theme.radius}px;

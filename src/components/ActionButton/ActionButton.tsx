@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import Spacer from "../Spacer";
 import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import Typography from "../Typography";
@@ -65,12 +64,12 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
         hoverBackgroundColor={hoverBackgroundColor}
         disabled={disabled}
       >
-        <Spacer pr={0.25}>
-          <Icon name={icon} color={textColor} />
-        </Spacer>
-        <Typography color={textColor} size="md">
-          {children}
-        </Typography>
+        <Icon name={icon} color={textColor} />
+        {children && (
+          <Typography color={textColor} size="md">
+            {children}
+          </Typography>
+        )}
       </Styled.Container>
     );
   },
