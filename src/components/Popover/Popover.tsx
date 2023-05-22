@@ -25,7 +25,7 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   onClose?: ModalProps["onClose"];
   baseElement: HTMLElement | null;
   /**
-   * Define priority of position. Please check [this](https://floating-ui.com/docs/flip#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
    * If not specified, it will be auto.
    */
   positionPriority?: Placement[];
