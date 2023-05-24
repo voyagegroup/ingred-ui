@@ -21,12 +21,14 @@ export default {
       format: "cjs",
       exports: "named",
       sourcemap: true,
+      interop: 'compat',
     },
     {
       file: pkg.module,
       format: "es",
       exports: "named",
       sourcemap: true,
+      interop: 'compat',
     },
   ],
   plugins: [
