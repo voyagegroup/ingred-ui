@@ -3,7 +3,7 @@ import { Placement } from "@floating-ui/react";
 export const autoPlacements = ["auto", "auto-start", "auto-end"] as const;
 export type AutoPlacement = typeof autoPlacements[number];
 
-export const usePlacement = (placements: (Placement | AutoPlacement)[]) => {
+export const extractAuto = (placements: (Placement | AutoPlacement)[]) => {
   const placementsWithoutAuto = placements.filter(
     (placement): placement is Placement =>
       !autoPlacements.includes(placement as AutoPlacement),

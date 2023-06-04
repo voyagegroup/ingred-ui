@@ -22,7 +22,7 @@ import {
   FloatingDelayGroup,
 } from "@floating-ui/react";
 import { useTheme } from "../../themes";
-import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
+import { AutoPlacement, extractAuto } from "../../utils/placement";
 
 export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   content: React.ReactNode;
@@ -62,7 +62,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     },
     ref,
   ) => {
-    const { placements, isAuto } = usePlacement(positionPriority);
+    const { placements, isAuto } = extractAuto(positionPriority);
     const arrowRef = React.useRef(null);
     const [open, setOpen] = React.useState<boolean>(false);
     const theme = useTheme();
