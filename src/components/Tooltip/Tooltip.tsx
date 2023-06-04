@@ -22,6 +22,7 @@ import {
   FloatingDelayGroup,
 } from "@floating-ui/react";
 import { useTheme } from "../../themes";
+import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
 
 export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   content: React.ReactNode;
@@ -32,7 +33,7 @@ export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
    * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
    */
-  positionPriority?: Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   offset?: [number, number];
   width?: string;
   disabled?: boolean;
@@ -61,6 +62,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     },
     ref,
   ) => {
+    const { placements, isAuto } = usePlacement(positionPriority);
     const arrowRef = React.useRef(null);
     const [open, setOpen] = React.useState<boolean>(false);
     const theme = useTheme();
@@ -73,13 +75,13 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       strategy,
       context,
     } = useFloating({
-      placement: positionPriority[0],
+      placement: placements[0],
       open: open,
       onOpenChange: setOpen,
       middleware: [
         positionPriority.length > 0
           ? flip({
-              fallbackPlacements: positionPriority,
+              fallbackPlacements: placements,
             })
           : autoPlacement(),
         floatingOffset({
@@ -93,7 +95,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
           element: arrowRef,
         }),
       ],
-      whileElementsMounted: autoUpdate,
+      whileElementsMounted: isAuto ? autoUpdate : undefined,
     });
 
     const hover = useHover(context, {
