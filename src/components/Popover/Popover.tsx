@@ -63,7 +63,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       placement: placements[0],
       open: isOpen,
       middleware: [
-        positionPriority.length > 0
+        positionPriority.length > 0 && isAuto
           ? flip({
               padding: 24,
               fallbackPlacements: placements,
@@ -77,7 +77,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
           mainAxis: false,
         }),
       ],
-      whileElementsMounted: isAuto ? autoUpdate : undefined,
+      whileElementsMounted: autoUpdate,
     });
 
     const click = useClick(context);

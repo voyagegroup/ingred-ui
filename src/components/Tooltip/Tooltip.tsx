@@ -79,7 +79,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       open: open,
       onOpenChange: setOpen,
       middleware: [
-        positionPriority.length > 0
+        positionPriority.length > 0 && isAuto
           ? flip({
               fallbackPlacements: placements,
             })
@@ -95,7 +95,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
           element: arrowRef,
         }),
       ],
-      whileElementsMounted: isAuto ? autoUpdate : undefined,
+      whileElementsMounted: autoUpdate,
     });
 
     const hover = useHover(context, {
