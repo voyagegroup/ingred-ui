@@ -16,6 +16,7 @@ import {
   flip,
 } from "@floating-ui/react";
 import Modal, { ModalProps } from "../Modal";
+import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
@@ -28,7 +29,7 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
    * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
    * If not specified, it will be auto.
    */
-  positionPriority?: Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   offset?: [number, number];
   /**
    * props of [Modal](/?path=/docs/components-utils-modal)
@@ -51,6 +52,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
     },
     ref,
   ) => {
+    const { placements, isAuto } = usePlacement(positionPriority);
     const {
       x,
       y,
@@ -58,13 +60,13 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       strategy,
       context,
     } = useFloating({
-      placement: positionPriority[0],
+      placement: placements[0],
       open: isOpen,
       middleware: [
         positionPriority.length > 0
           ? flip({
               padding: 24,
-              fallbackPlacements: positionPriority,
+              fallbackPlacements: placements,
             })
           : autoPlacement(),
         floatingOffset({
@@ -75,7 +77,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
           mainAxis: false,
         }),
       ],
-      whileElementsMounted: autoUpdate,
+      whileElementsMounted: isAuto ? autoUpdate : undefined,
     });
 
     const click = useClick(context);
