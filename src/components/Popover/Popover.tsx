@@ -20,7 +20,7 @@ import { extractAuto, AutoPlacement } from "../../utils/placement";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
-   * If `false`, this component return `null`.
+   * If `false`, children becomes `visibility: hidden`.
    */
   isOpen?: boolean;
   onClose?: ModalProps["onClose"];
@@ -99,7 +99,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
         {...modalProps}
         onClose={onClose}
       >
-        <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
+        <FloatingFocusManager context={context} modal={false}>
           <Styled.Container
             ref={refs}
             style={{
