@@ -3,17 +3,17 @@ import { renderHook } from "@testing-library/react";
 
 describe("usePlacement", () => {
   test("auto included", () => {
-    const { current } = renderHook(() =>
+    const { placements, isAuto } = renderHook(() =>
       usePlacement(["auto-start", "left", "auto", "right", "auto-end"]),
-    ).result;
-    expect(current.placements).toEqual(["left", "right"]);
-    expect(current.isAuto).toBe(true);
+    ).result.current;
+    expect(placements).toEqual(["left", "right"]);
+    expect(isAuto).toBe(true);
   });
   test("auto not included", () => {
-    const { current } = renderHook(() =>
+    const { placements, isAuto } = renderHook(() =>
       usePlacement(["left", "right"]),
-    ).result;
-    expect(current.placements).toEqual(["left", "right"]);
-    expect(current.isAuto).toBe(false);
+    ).result.current;
+    expect(placements).toEqual(["left", "right"]);
+    expect(isAuto).toBe(false);
   });
 });
