@@ -9,7 +9,7 @@ import { ContentProp } from "../MenuList/MenuList";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { Placement } from "@floating-ui/react";
-import { AutoPlacement } from "../../utils/placement";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 

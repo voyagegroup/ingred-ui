@@ -16,7 +16,7 @@ import {
   flip,
 } from "@floating-ui/react";
 import Modal, { ModalProps } from "../Modal";
-import { extractAuto, AutoPlacement } from "../../utils/placement";
+import { usePlacement, AutoPlacement } from "../../hooks/usePlacement";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**
@@ -52,7 +52,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
     },
     ref,
   ) => {
-    const { placements, isAuto } = extractAuto(positionPriority);
+    const { placements, isAuto } = usePlacement(positionPriority);
     const {
       x,
       y,

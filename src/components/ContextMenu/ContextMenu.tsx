@@ -6,7 +6,7 @@ import Menu, { MenuProps } from "../Menu";
 import { ContentProp } from "../MenuList/MenuList";
 import * as Styled from "./styled";
 import { Placement } from "@floating-ui/react";
-import { AutoPlacement } from "../../utils/placement";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type ContextMenuProps = {
   /**

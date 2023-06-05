@@ -4,7 +4,7 @@ import MenuList, { ContentProp, MenuListProps } from "../MenuList/MenuList";
 import { ModalCloseReason } from "../Modal";
 import Popover, { PopoverProps } from "../Popover";
 import { Placement } from "@floating-ui/react";
-import { AutoPlacement } from "../../utils/placement";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type MenuCloseReason = "clickMenuList";
 
