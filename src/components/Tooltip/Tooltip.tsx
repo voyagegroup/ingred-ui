@@ -79,7 +79,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       open: open,
       onOpenChange: setOpen,
       middleware: [
-        positionPriority.length > 0 && isAuto
+        positionPriority.length > 0 && !isAuto
           ? flip({
               fallbackPlacements: placements,
             })

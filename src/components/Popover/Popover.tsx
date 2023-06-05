@@ -63,7 +63,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       placement: placements[0],
       open: isOpen,
       middleware: [
-        positionPriority.length > 0 && isAuto
+        positionPriority.length > 0 && !isAuto
           ? flip({
               padding: 24,
               fallbackPlacements: placements,
