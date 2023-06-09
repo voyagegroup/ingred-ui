@@ -68,7 +68,7 @@ export const Basic = {
       {
         text: (
           <Flex display="flex" justifyContent="space-between" gap={1}>
-            <div style={{opacity: "0.5"}}>
+            <div style={{ opacity: "0.5" }}>
               <Icon name="delete_bin" />
             </div>
             Delete
@@ -80,7 +80,7 @@ export const Basic = {
       {
         text: (
           <Flex display="flex" justifyContent="space-between" gap={1}>
-              <Icon name="refresh_line" color="#EB0A4E" />
+            <Icon name="refresh_line" color="#EB0A4E" />
             Update
           </Flex>
         ),
