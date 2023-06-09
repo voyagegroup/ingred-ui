@@ -145,7 +145,9 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
     };
 
     const renderContent = (content: SingleContentProp, index: number) => (
-      <React.Fragment key={typeof content.text === "string" ? content.text : index}>
+      <React.Fragment
+        key={typeof content.text === "string" ? content.text : index}
+      >
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
         )}
@@ -199,7 +201,9 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   </Typography>
                 </Styled.TitleContainer>
               )}
-              {content.contents.map((content, index) => renderContent(content, index))}
+              {content.contents.map((content, index) =>
+                renderContent(content, index),
+              )}
             </React.Fragment>
           ) : (
             renderContent(content, index)
