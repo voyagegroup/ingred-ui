@@ -93,7 +93,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
         {...modalProps}
         onClose={onClose}
       >
-        <FloatingFocusManager context={context} modal={false}>
+        <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
           <Styled.Container
             ref={refs}
             style={{
