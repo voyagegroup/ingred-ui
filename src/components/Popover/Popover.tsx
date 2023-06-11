@@ -8,9 +8,7 @@ import {
   offset as floatingOffset,
   shift,
   FloatingFocusManager,
-  useDismiss,
   useRole,
-  useClick,
   useInteractions,
   autoPlacement,
   flip,
@@ -80,16 +78,12 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       whileElementsMounted: autoUpdate,
     });
 
-    const click = useClick(context);
-    const dismiss = useDismiss(context);
     const role = useRole(context);
-
-    const { getFloatingProps } = useInteractions([click, dismiss, role]);
+    const { getFloatingProps } = useInteractions([role]);
 
     React.useEffect(() => {
       floatingRef.setReference(baseElement);
     }, [baseElement, floatingRef]);
-
     const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
 
     return (

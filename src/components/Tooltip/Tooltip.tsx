@@ -12,12 +12,10 @@ import {
   shift,
   arrow,
   autoUpdate,
-  useDismiss,
   useRole,
   useInteractions,
   FloatingPortal,
   useHover,
-  useFocus,
   FloatingArrow,
   FloatingDelayGroup,
 } from "@floating-ui/react";
@@ -106,13 +104,9 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
         close: leaveDelay,
       },
     });
-    const focus = useFocus(context);
-    const dismiss = useDismiss(context);
     const role = useRole(context, { role: "tooltip" });
     const { getReferenceProps, getFloatingProps } = useInteractions([
       hover,
-      focus,
-      dismiss,
       role,
     ]);
 
