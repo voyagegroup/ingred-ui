@@ -52,7 +52,7 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       disableHoverListener = false,
       enterDelay = 0,
       leaveDelay = 0,
-      positionPriority = ["top-start"],
+      positionPriority = ["top"],
       offset = [0, 10],
       width,
       disabled = false,

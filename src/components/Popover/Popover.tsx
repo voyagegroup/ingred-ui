@@ -45,7 +45,7 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       onClose,
       baseElement,
       offset = [0, 0],
-      positionPriority = ["left"],
+      positionPriority = ["auto"],
       modalProps,
       children,
       ...rest
