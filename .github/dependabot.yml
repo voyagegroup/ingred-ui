@@ -7,7 +7,6 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    open-pull-requests-limit: 10
   - package-ecosystem: "npm"
     directory: "/testEnv"
     schedule:
@@ -15,7 +14,6 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    open-pull-requests-limit: 10
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -23,4 +21,3 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    open-pull-requests-limit: 10
