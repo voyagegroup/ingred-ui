@@ -39,7 +39,7 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
 const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
   (
     {
-      isOpen = false,
+      isOpen = true,
       onClose,
       baseElement,
       offset = [0, 0],
