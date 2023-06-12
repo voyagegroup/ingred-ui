@@ -58,6 +58,9 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
       strategy,
       context,
     } = useFloating({
+      elements: {
+        reference: baseElement,
+      },
       placement: placements[0],
       open: isOpen,
       middleware: [
@@ -81,9 +84,6 @@ const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
     const role = useRole(context);
     const { getFloatingProps } = useInteractions([role]);
 
-    React.useEffect(() => {
-      floatingRef.setReference(baseElement);
-    }, [baseElement, floatingRef]);
     const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
 
     return (
