@@ -57,7 +57,7 @@
     "@types/jest": "29.5.1",
     "@types/react": "18.0.12",
     "@types/react-dates": "21.8.3",
-    "@types/react-dom": "18.0.5",
+    "@types/react-dom": "18.2.5",
     "@types/react-transition-group": "4.4.4",
     "@types/rollup-plugin-peer-deps-external": "2.2.1",
     "@types/styled-components": "5.1.25",
@@ -75,7 +75,7 @@
     "jest-environment-jsdom": "29.5.0",
     "prettier": "2.8.0",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react-dom": "18.2.0",
     "rollup": "3.24.0",
     "rollup-plugin-imagemin": "0.5.0",
     "rollup-plugin-peer-deps-external": "2.2.4",
@@ -92,8 +92,8 @@
   "resolutions": {
     "colors": "1.4.0",
     "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react-dom": "18.2.0",
     "@types/react": "18.0.12",
-    "@types/react-dom": "18.0.5"
+    "@types/react-dom": "18.2.5"
   }
 }
