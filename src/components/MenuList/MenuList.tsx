@@ -79,7 +79,7 @@ export const getContentTypeStyles = (
 };
 
 export type SingleContentProp = React.ComponentPropsWithoutRef<"div"> & {
-  text: string | React.ReactNode;
+  text: string
   onClick: () => void;
   divideTop?: boolean;
   type?: ContentType;
@@ -144,9 +144,9 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return !!content.title;
     };
 
-    const renderContent = (content: SingleContentProp, index: number) => (
+    const renderContent = (content: SingleContentProp) => (
       <React.Fragment
-        key={typeof content.text === "string" ? content.text : index}
+        key={content.text}
       >
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
@@ -187,7 +187,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         {...rest}
         ref={ref}
       >
-        {contents.map((content, index) =>
+        {contents.map((content) =>
           isGroupContent(content) ? (
             <React.Fragment key={content.title}>
               {content.title && (
@@ -201,12 +201,12 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   </Typography>
                 </Styled.TitleContainer>
               )}
-              {content.contents.map((content, index) =>
-                renderContent(content, index),
+              {content.contents.map((content) =>
+                renderContent(content),
               )}
             </React.Fragment>
           ) : (
-            renderContent(content, index)
+            renderContent(content)
           ),
         )}
       </Styled.Container>
