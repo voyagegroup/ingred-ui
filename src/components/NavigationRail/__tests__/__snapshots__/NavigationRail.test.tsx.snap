@@ -18,10 +18,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
       >
         <div>
           <div
-            class="sc-fnykZs fkHtzZ"
+            class="sc-hAZoDl byaWhK"
           >
             <div
-              class="sc-breuTD jDboYn"
+              class="sc-evZas edbJfk"
             >
               <span
                 class="sc-iBkjds RltOZ"
@@ -42,16 +42,16 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 </svg>
               </span>
               <span
-                class="sc-ksZaOG enNxAq"
+                class="sc-breuTD ikPEph"
               >
                 0
               </span>
             </div>
             <div
-              class="sc-fEOsli idDBzt"
+              class="sc-fnykZs iZYGdc"
             >
               <span
-                class="sc-kDDrLX iNgeLi sc-bjUoiL gRlQFT"
+                class="sc-jqUVSM jjrUoV sc-fEOsli iuVyCe"
                 color="#0B82F4"
                 font-size="13px"
               >
@@ -59,7 +59,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </span>
             </div>
             <div
-              class="sc-idiyUo kOEvVG"
+              class="sc-bjUoiL djPItW"
             >
               <span
                 class="sc-iBkjds kTxGwl"
@@ -83,21 +83,21 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </div>
           </div>
           <div
-            class="sc-dIouRR dfztdq"
+            class="sc-idiyUo bEDjCm"
             height="auto"
           >
             <div
-              class="sc-hHLeRK lfNIkk"
+              class="sc-dIouRR bhDYLr"
             >
               <div
-                class="sc-kDDrLX iNgeLi sc-dmRaPn iuBMmO"
+                class="sc-jqUVSM jjrUoV sc-hHLeRK cHEVa"
                 color="#0B82F4"
                 font-size="13px"
               >
                 Account Setting
               </div>
               <span
-                class="sc-hAZoDl fiXiWk"
+                class="sc-ksZaOG bpKZyL"
               >
                 0
               </span>
@@ -105,10 +105,10 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-iqcoie exhfVO"
+          class="sc-kDDrLX bLjgCb"
         >
           <div
-            class="sc-breuTD jDboYn"
+            class="sc-evZas edbJfk"
           >
             <span
               class="sc-iBkjds RltOZ"
@@ -129,16 +129,16 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </svg>
             </span>
             <span
-              class="sc-ksZaOG enNxAq"
+              class="sc-breuTD ikPEph"
             >
               0
             </span>
           </div>
           <div
-            class="sc-crXcEl kLNHoM"
+            class="sc-iqcoie jIOSzb"
           >
             <span
-              class="sc-kDDrLX htuEbC sc-evZas jEoAKL"
+              class="sc-jqUVSM poCul sc-crXcEl bEFRWD"
               color="#041C33"
               font-size="13px"
             >
@@ -146,7 +146,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </span>
           </div>
           <span
-            class="sc-hAZoDl fiXiWk"
+            class="sc-ksZaOG bpKZyL"
           >
             0
           </span>

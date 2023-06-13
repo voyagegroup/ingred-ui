@@ -27,21 +27,21 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     </span>
   </button>
   <div
-    class="sc-gKXOVf hhzPZa"
+    class="sc-iBkjds dPXXBU"
   >
     <div
-      class="sc-ftvSup jRgaQQ fade-transition-enter fade-transition-enter-active"
+      class="sc-papXJ eSILSt fade-transition-enter fade-transition-enter-active"
     >
       <div
-        class="sc-iBkjds hSTJbN"
+        class="sc-ftvSup eAHRvq"
       />
     </div>
     <div
-      class="sc-papXJ eOlmTp"
-      data-popper-escaped="true"
-      data-popper-placement="bottom-start"
-      data-popper-reference-hidden="true"
-      style="position: absolute; left: 0px; top: 0px;"
+      class="sc-gKXOVf jJtTNV"
+      id=":r0:"
+      role="dialog"
+      style="position: absolute; top: 0px; left: 0px;"
+      tabindex="0"
     >
       <div
         class="sc-gsnTZi bHzWde"

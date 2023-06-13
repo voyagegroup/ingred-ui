@@ -1,22 +1,37 @@
 import * as React from "react";
-import * as PopperJS from "@popperjs/core";
-import { usePopper } from "react-popper";
 import * as Styled from "./styled";
-import Portal from "../Portal";
 import Fade from "../Fade";
+import { Placement } from "@floating-ui/core";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
+import {
+  autoPlacement,
+  flip,
+  useFloating,
+  offset as floatingOffset,
+  shift,
+  arrow,
+  autoUpdate,
+  useRole,
+  useInteractions,
+  FloatingPortal,
+  useHover,
+  FloatingArrow,
+  FloatingDelayGroup,
+} from "@floating-ui/react";
+import { useTheme } from "../../themes";
+import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
 
 export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
-  content: React.ReactChild;
+  content: React.ReactNode;
   open?: boolean;
   disableHoverListener?: boolean;
   enterDelay?: number;
   leaveDelay?: number;
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   offset?: [number, number];
   width?: string;
   disabled?: boolean;
@@ -45,158 +60,121 @@ const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     },
     ref,
   ) => {
-    const [baseElement, setBaseElement] = React.useState<HTMLElement | null>(
-      null,
-    );
-    const [arrowElement, setArrowElement] = React.useState<HTMLElement | null>(
-      null,
-    );
-    const [popperElement, setPopperElement] =
-      React.useState<HTMLElement | null>(null);
-
+    const { placements, isAuto } = usePlacement(positionPriority);
+    const arrowRef = React.useRef(null);
     const [open, setOpen] = React.useState<boolean>(false);
-    const [openTimer, setOpenTimer] = React.useState<number | null>(null);
-    const [closeTimer, setCloseTimer] = React.useState<number | null>(null);
+    const theme = useTheme();
 
-    React.useEffect(() => {
-      return () => {
-        if (openTimer != null) clearTimeout(openTimer);
-        if (closeTimer != null) clearTimeout(closeTimer);
-      };
-    }, [openTimer, closeTimer]);
+    const {
+      x,
+      y,
+      placement,
+      refs: floatingRef,
+      strategy,
+      context,
+    } = useFloating({
+      placement: placements[0],
+      open: open,
+      onOpenChange: setOpen,
+      middleware: [
+        positionPriority.length > 0 && !isAuto
+          ? flip({
+              fallbackPlacements: placements,
+            })
+          : autoPlacement(),
+        floatingOffset({
+          mainAxis: offset[1],
+          crossAxis: offset[0],
+        }),
+        shift({
+          mainAxis: false,
+        }),
+        arrow({
+          element: arrowRef,
+        }),
+      ],
+      whileElementsMounted: autoUpdate,
+    });
 
-    const { styles, attributes, state } = usePopper(
-      baseElement,
-      popperElement,
-      {
-        placement: positionPriority[0],
-        modifiers: [
-          {
-            name: "offset",
-            options: {
-              offset,
-            },
-          },
-          {
-            name: "flip",
-            options: {
-              fallbackPlacements: positionPriority,
-            },
-          },
-          {
-            name: "preventOverflow",
-            options: {
-              mainAxis: false,
-            },
-          },
-          {
-            name: "arrow",
-            options: {
-              element: arrowElement,
-              padding: 10,
-            },
-          },
-        ],
+    const hover = useHover(context, {
+      enabled: !disableHoverListener,
+      move: false,
+      delay: {
+        open: enterDelay,
+        close: leaveDelay,
       },
-    );
-
-    const handleEnter = (event: React.MouseEvent<HTMLElement>) => {
-      setBaseElement(event.currentTarget);
-      if (closeTimer != null) clearTimeout(closeTimer);
-      if (!disableHoverListener) {
-        if (enterDelay) {
-          setOpenTimer(
-            window.setTimeout(() => {
-              setOpen(true);
-            }, enterDelay),
-          );
-        } else {
-          setOpen(true);
-        }
-      }
-      if (children.props.onMouseEnter) {
-        children.props.onMouseEnter(event);
-      }
-    };
-
-    const handleLeave = (event: React.MouseEvent<HTMLElement>) => {
-      if (openTimer != null) clearTimeout(openTimer);
-      if (!disableHoverListener) {
-        if (leaveDelay) {
-          setCloseTimer(
-            window.setTimeout(() => {
-              setOpen(false);
-            }, leaveDelay),
-          );
-        } else {
-          setOpen(false);
-        }
-      }
-      if (children.props.onMouseLeave) {
-        children.props.onMouseLeave(event);
-      }
-    };
-
-    // MEMO: Not to propergate mouseOver/mouseOut event that defined in children
-    //       https://github.com/facebook/react/issues/11387
-    const stopPropagation = (event: React.MouseEvent<HTMLElement>) => {
-      event.stopPropagation();
-    };
+    });
+    const role = useRole(context, { role: "tooltip" });
+    const { getReferenceProps, getFloatingProps } = useInteractions([
+      hover,
+      role,
+    ]);
 
     const childrenProps = {
       ...children.props,
-      onMouseEnter: handleEnter,
-      onMouseLeave: handleLeave,
-      ref: useMergeRefs(setBaseElement, children.ref),
+      ...getReferenceProps(),
+      ref: useMergeRefs(floatingRef.setReference, children.ref),
     };
 
-    const refs = useMergeRefs<HTMLDivElement>(ref, setPopperElement);
+    const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
 
     return (
       <>
         {React.cloneElement(children, childrenProps)}
         {!disabled && (
-          <Portal>
-            <Fade
-              in={open || openProp}
-              unmountOnExit={true}
-              mountOnEnter={true}
-              {...fadeProps}
-            >
-              <Styled.Tooltip
-                ref={refs}
-                style={styles.popper}
-                {...attributes.popper}
-                // eslint-disable-next-line react/jsx-handler-names
-                onMouseOver={stopPropagation}
-                // eslint-disable-next-line react/jsx-handler-names
-                onMouseOut={stopPropagation}
-                {...rest}
-                width={width}
+          <FloatingDelayGroup delay={{ open: 10000, close: 200 }}>
+            <FloatingPortal>
+              <Fade
+                in={open || openProp}
+                unmountOnExit={true}
+                mountOnEnter={true}
+                {...fadeProps}
               >
-                {content}
-                <Styled.Arrow
-                  ref={setArrowElement}
-                  data-popper-arrow
-                  placement={state?.placement}
-                  // MEMO: The following placements use popperJS default styles
-                  style={
-                    [
-                      "auto",
-                      "auto-start",
-                      "auto-end",
-                      "top",
-                      "bottom",
-                      "right",
-                      "left",
-                    ].includes(state?.placement || "")
-                      ? styles.arrow
-                      : undefined
-                  }
-                />
-              </Styled.Tooltip>
-            </Fade>
-          </Portal>
+                <Styled.Tooltip
+                  ref={refs}
+                  style={{
+                    position: strategy,
+                    top: y,
+                    left: x,
+                  }}
+                  {...rest}
+                  {...getFloatingProps()}
+                  width={width}
+                >
+                  {content}
+                  <FloatingArrow
+                    ref={arrowRef}
+                    fill={theme.palette.black}
+                    context={context}
+                    width={8}
+                    height={8}
+                    staticOffset={(() => {
+                      if (
+                        [
+                          "top-start",
+                          "top-end",
+                          "bottom-start",
+                          "bottom-end",
+                        ].includes(placement)
+                      ) {
+                        return "10%";
+                      }
+                      if (
+                        [
+                          "bottom-start",
+                          "bottom-end",
+                          "left-start",
+                          "left-end",
+                        ].includes(placement)
+                      )
+                        return "30%";
+                      return undefined;
+                    })()}
+                  />
+                </Styled.Tooltip>
+              </Fade>
+            </FloatingPortal>
+          </FloatingDelayGroup>
         )}
       </>
     );
