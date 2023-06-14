@@ -17,10 +17,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ eGKyCI"
+      class="sc-jSMfEi essOUc"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
         color="#041C33"
         font-size="13px"
       >
@@ -28,15 +28,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-jSMfEi czosnH"
+      class="sc-gKXOVf iCDnFu"
       color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-eCYdqJ eGKyCI"
+      class="sc-jSMfEi essOUc"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
         color="#041C33"
         font-size="13px"
       >
@@ -44,10 +44,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ fAxLBD"
+      class="sc-jSMfEi kMTNHZ"
     >
       <p
-        class="sc-bczRLJ duOoMD sc-hKMtZM"
+        class="sc-bczRLJ duOoMD sc-eCYdqJ"
         color="#EB0A4E"
         font-size="13px"
       >
@@ -55,73 +55,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ fRhSPu"
+      class="sc-jSMfEi kYrdZz"
       disabled=""
     >
       <p
-        class="sc-bczRLJ iySyTU sc-hKMtZM"
+        class="sc-bczRLJ iySyTU sc-eCYdqJ"
         color="#B3BAC1"
         font-size="13px"
       >
         Cancel
-      </p>
-    </div>
-    <div
-      class="sc-eCYdqJ eGKyCI"
-    >
-      <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
-        color="#041C33"
-        font-size="13px"
-      >
-        <span>
-          Save
-        </span>
-      </p>
-    </div>
-    <hr
-      class="sc-jSMfEi czosnH"
-      color="#E2E8EA"
-      orientation="horizontal"
-    />
-    <div
-      class="sc-eCYdqJ eGKyCI"
-    >
-      <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
-        color="#041C33"
-        font-size="13px"
-      >
-        <span>
-          Save and execute
-        </span>
-      </p>
-    </div>
-    <div
-      class="sc-eCYdqJ fAxLBD"
-    >
-      <p
-        class="sc-bczRLJ duOoMD sc-hKMtZM"
-        color="#EB0A4E"
-        font-size="13px"
-      >
-        <span>
-          Save as draft
-        </span>
-      </p>
-    </div>
-    <div
-      class="sc-eCYdqJ fRhSPu"
-      disabled=""
-    >
-      <p
-        class="sc-bczRLJ iySyTU sc-hKMtZM"
-        color="#B3BAC1"
-        font-size="13px"
-      >
-        <span>
-          Cancel
-        </span>
       </p>
     </div>
   </div>

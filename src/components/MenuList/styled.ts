@@ -9,7 +9,11 @@ type ContainerProps = {
   maxHeight: Property.MaxHeight;
 };
 
-type TextContainerProps = ContentTypeStyle & {
+type IconProps = {
+  disabled: boolean;
+}
+
+type ListContainerProps = ContentTypeStyle & {
   disabled: boolean;
 };
 
@@ -30,9 +34,13 @@ export const TitleContainer = styled.div`
   padding: ${({ theme }) => theme.spacing}px;
 `;
 
+export const Icon = styled("div")<IconProps>`
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+`;
+
 export const Text = styled(Typography)``;
 
-export const TextContainer = styled.div<TextContainerProps>`
+export const ListContainer = styled.div<ListContainerProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
@@ -40,13 +48,21 @@ export const TextContainer = styled.div<TextContainerProps>`
   margin: 0 ${({ theme }) => theme.spacing}px;
   padding: 0 ${({ theme }) => theme.spacing}px;
   border-radius: ${({ theme }) => theme.radius}px;
+  &:disabled {
+    ${Icon} {
+      opacity: 0.5;
+    }
+  }
   &:hover {
+    background-color: ${({ hover }) => hover.background};
     ${Text} {
       color: ${({ hover }) => hover.color};
     }
-    background-color: ${({ hover }) => hover.background};
   }
   &:active {
     background-color: ${({ active }) => active.background};
+    ${Text} {
+      color: ${({ active }) => active.color};
+    }
   }
 `;

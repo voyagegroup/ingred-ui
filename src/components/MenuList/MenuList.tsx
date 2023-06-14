@@ -4,6 +4,8 @@ import { Property } from "csstype";
 import { Theme, useTheme } from "../../themes";
 import Divider from "../Divider";
 import Typography from "../Typography";
+import Icon, { IconName } from "../Icon";
+import Spacer from "../Spacer";
 
 export type ContentType = "default" | "warning" | "disabled";
 
@@ -79,10 +81,11 @@ export const getContentTypeStyles = (
 };
 
 export type SingleContentProp = React.ComponentPropsWithoutRef<"div"> & {
-  text: string
+  text: string;
   onClick: () => void;
   divideTop?: boolean;
   type?: ContentType;
+  iconName?: IconName;
 
   /**
    * @deprecated
@@ -144,41 +147,65 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return !!content.title;
     };
 
-    const renderContent = (content: SingleContentProp) => (
-      <React.Fragment
-        key={content.text}
-      >
-        {content.divideTop && (
-          <Divider my={1} mx={2} color={theme.palette.gray.light} />
-        )}
-        <Styled.TextContainer
-          disabled={checkIsDisabled(content.type, content.disabled)}
-          normal={
-            selectStyleInDisabledProp(theme, content.type, content.disabled)
-              .normal
-          }
-          hover={
-            selectStyleInDisabledProp(theme, content.type, content.disabled)
-              .hover
-          }
-          active={
-            selectStyleInDisabledProp(theme, content.type, content.disabled)
-              .active
-          }
-          onClick={handleClick(content, content.disabled)}
-        >
-          <Styled.Text
-            size="sm"
-            color={
+    const renderContent = (content: SingleContentProp) => {
+      const [isHover, setIsHover] = React.useState(false);
+      return (
+        <React.Fragment key={content.text}>
+          {content.divideTop && (
+            <Divider my={1} mx={2} color={theme.palette.gray.light} />
+          )}
+          <Styled.ListContainer
+            disabled={checkIsDisabled(content.type, content.disabled)}
+            normal={
               selectStyleInDisabledProp(theme, content.type, content.disabled)
-                .normal.color
+                .normal
             }
+            hover={
+              selectStyleInDisabledProp(theme, content.type, content.disabled)
+                .hover
+            }
+            active={
+              selectStyleInDisabledProp(theme, content.type, content.disabled)
+                .active
+            }
+            onClick={handleClick(content, content.disabled)}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
           >
-            {content.text}
-          </Styled.Text>
-        </Styled.TextContainer>
-      </React.Fragment>
-    );
+            {content.iconName && (
+              <>
+                <Styled.Icon disabled={checkIsDisabled(content.type, content.disabled)}>
+                  <Icon
+                    name={content.iconName}
+                    color={
+                      isHover ? selectStyleInDisabledProp(
+                        theme,
+                        content.type,
+                        content.disabled,
+                      ).hover.color : selectStyleInDisabledProp(
+                        theme,
+                        content.type,
+                        content.disabled,
+                      ).normal.color
+                    }
+                  />
+                </Styled.Icon>
+                <Spacer mr={1} />
+              </>
+            )}
+            <Styled.Text
+              size="sm"
+              color={
+                selectStyleInDisabledProp(theme, content.type, content.disabled)
+                  .normal.color
+              }
+            >
+              {content.text}
+            </Styled.Text>
+          </Styled.ListContainer>
+        </React.Fragment>
+      )
+    };
 
     return (
       <Styled.Container
@@ -201,9 +228,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   </Typography>
                 </Styled.TitleContainer>
               )}
-              {content.contents.map((content) =>
-                renderContent(content),
-              )}
+              {content.contents.map((content) => renderContent(content))}
             </React.Fragment>
           ) : (
             renderContent(content)

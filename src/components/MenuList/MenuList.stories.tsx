@@ -40,9 +40,33 @@ export const Basic = {
   args: {
     contents: [
       { text: "Save", onClick: action('clicked "Save"'), type: "default" },
-      { text: "Edit", onClick: action('clicked "Save"'), type: "default" },
+      { text: "Edit", onClick: action('clicked "Edit"'), type: "default" },
       { text: "Delete", onClick: () => {}, type: "disabled" },
       { text: "Update", onClick: action('clicked "Update"'), type: "warning" },
+      {
+        text: "Save",
+        onClick: action('clicked "Save"'),
+        type: "default",
+        iconName: "save",
+      },
+      {
+        text: "Edit",
+        onClick: action('clicked "Edit"'),
+        type: "default",
+        iconName: "pencil",
+      },
+      {
+        text: "Delete",
+        onClick: () => {},
+        type: "disabled",
+        iconName: "delete_bin",
+      },
+      {
+        text: "Update",
+        onClick: action('clicked "Update"'),
+        type: "warning",
+        iconName: "refresh_line",
+      },
     ],
     maxHeight: "100px",
   },
