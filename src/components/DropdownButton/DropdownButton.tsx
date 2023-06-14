@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import * as PopperJS from "@popperjs/core";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
@@ -9,6 +8,8 @@ import { ButtonSize, ButtonColor } from "../Button/Button";
 import { ContentProp } from "../MenuList/MenuList";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { Placement } from "@floating-ui/react";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 
@@ -23,9 +24,10 @@ export type DropdownButtonProps = {
   contents: ContentProp[];
   disabled?: boolean;
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
+   * For backward compatibility, `"auto" | "auto-start" | "auto-end"` are included in addition to the above positions.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   menuMaxHeight?: MenuProps["maxHeight"];
   menuProps?: Partial<MenuProps>;
   children?: React.ReactNode;

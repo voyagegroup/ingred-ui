@@ -6,17 +6,39 @@ exports[`Tooltip component testing Tooltip 1`] = `
     text
   </div>
   <div
-    class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
+    class="sc-gsnTZi PEcwf fade-transition-appear fade-transition-appear-active"
   >
     <div
-      class="sc-gsnTZi cLFgxy"
-      style="position: absolute; left: 0px; top: 0px;"
+      class="sc-bczRLJ BSATi"
+      id=":r0:"
+      role="tooltip"
+      style="position: absolute; top: 0px; left: 0px;"
+      tabindex="-1"
     >
       tooltip text
-      <div
-        class="sc-bczRLJ bHftOq"
-        data-popper-arrow="true"
-      />
+      <svg
+        aria-hidden="true"
+        fill="#041C33"
+        height="8"
+        style="position: absolute; pointer-events: none; top: 100%;"
+        viewBox="0 0 8 8"
+        width="8"
+      >
+        <path
+          d="M0,0 H8 L4,8 Q4,8 4,8 Z"
+          stroke="none"
+        />
+        <clippath
+          id=":r3:"
+        >
+          <rect
+            height="8"
+            width="8"
+            x="0"
+            y="0"
+          />
+        </clippath>
+      </svg>
     </div>
   </div>
 </DocumentFragment>

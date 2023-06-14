@@ -1,4 +1,3 @@
-import * as PopperJS from "@popperjs/core";
 import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { createChainedFunction } from "../../utils/createChainedFunction";
@@ -6,6 +5,8 @@ import { ActionButtonProps } from "../ActionButton";
 import Menu, { MenuProps } from "../Menu";
 import { ContentProp } from "../MenuList/MenuList";
 import * as Styled from "./styled";
+import { Placement } from "@floating-ui/react";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type ContextMenuProps = {
   /**
@@ -18,9 +19,10 @@ export type ContextMenuProps = {
    */
   contents: ContentProp[];
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
+   * For backward compatibility, `"auto" | "auto-start" | "auto-end"` are included in addition to the above positions.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   menuMaxHeight?: MenuProps["maxHeight"];
   /**
    * props of [Menu](/?path=/docs/components-navigation-menu)

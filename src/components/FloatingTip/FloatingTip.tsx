@@ -1,10 +1,11 @@
-import * as PopperJS from "@popperjs/core";
 import * as React from "react";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import { ModalCloseReason } from "../Modal";
 import Popover, { PopoverProps } from "../Popover";
 import * as Styled from "./styled";
+import { Placement } from "@floating-ui/react";
+import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type FloatingTipCloseReason = "clickCloseIcon";
 
@@ -14,9 +15,10 @@ export type FloatingTipProps = {
    */
   baseElement: HTMLElement | null;
   /**
-   * Define priority of position. Please check [this](https://popper.js.org/docs/v2/modifiers/flip/#fallbackplacements).
+   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
+   * For backward compatibility, `"auto" | "auto-start" | "auto-end"` are included in addition to the above positions.
    */
-  positionPriority?: PopperJS.Placement[];
+  positionPriority?: (Placement | AutoPlacement)[];
   offset?: [number, number];
   isOpen: boolean;
   children: React.ReactNode;

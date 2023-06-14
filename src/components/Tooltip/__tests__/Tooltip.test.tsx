@@ -12,6 +12,13 @@ jest.mock("react-dom", () => {
   };
 });
 
+// MEMO: ResizeObserver is not supported in jsdom
+global.ResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  unobserve: jest.fn(),
+  disconnect: jest.fn(),
+}));
+
 describe("Tooltip component testing", () => {
   afterEach(cleanup);
 
