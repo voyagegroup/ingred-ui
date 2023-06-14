@@ -11,7 +11,7 @@ type ContainerProps = {
 
 type IconProps = {
   disabled: boolean;
-}
+};
 
 type ListContainerProps = ContentTypeStyle & {
   disabled: boolean;

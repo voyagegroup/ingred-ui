@@ -149,6 +149,11 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
 
     const renderContent = (content: SingleContentProp) => {
       const [isHover, setIsHover] = React.useState(false);
+      const selectedStyle = selectStyleInDisabledProp(
+        theme,
+        content.type,
+        content.disabled,
+      )
       return (
         <React.Fragment key={content.text}>
           {content.divideTop && (
@@ -156,55 +161,32 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
           )}
           <Styled.ListContainer
             disabled={checkIsDisabled(content.type, content.disabled)}
-            normal={
-              selectStyleInDisabledProp(theme, content.type, content.disabled)
-                .normal
-            }
-            hover={
-              selectStyleInDisabledProp(theme, content.type, content.disabled)
-                .hover
-            }
-            active={
-              selectStyleInDisabledProp(theme, content.type, content.disabled)
-                .active
-            }
+            normal={selectedStyle.normal}
+            hover={selectedStyle.active}
+            active={selectedStyle.active}
             onClick={handleClick(content, content.disabled)}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
           >
             {content.iconName && (
               <>
-                <Styled.Icon disabled={checkIsDisabled(content.type, content.disabled)}>
+                <Styled.Icon
+                  disabled={checkIsDisabled(content.type, content.disabled)}
+                >
                   <Icon
                     name={content.iconName}
-                    color={
-                      isHover ? selectStyleInDisabledProp(
-                        theme,
-                        content.type,
-                        content.disabled,
-                      ).hover.color : selectStyleInDisabledProp(
-                        theme,
-                        content.type,
-                        content.disabled,
-                      ).normal.color
-                    }
+                    color={isHover ? selectedStyle.hover.color : selectedStyle.normal.color}
                   />
                 </Styled.Icon>
                 <Spacer mr={1} />
               </>
             )}
-            <Styled.Text
-              size="sm"
-              color={
-                selectStyleInDisabledProp(theme, content.type, content.disabled)
-                  .normal.color
-              }
-            >
+            <Styled.Text size="sm" color={selectedStyle.normal.color}>
               {content.text}
             </Styled.Text>
           </Styled.ListContainer>
         </React.Fragment>
-      )
+      );
     };
 
     return (
