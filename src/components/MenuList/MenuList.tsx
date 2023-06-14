@@ -153,7 +153,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         theme,
         content.type,
         content.disabled,
-      )
+      );
       return (
         <React.Fragment key={content.text}>
           {content.divideTop && (
@@ -175,7 +175,11 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                 >
                   <Icon
                     name={content.iconName}
-                    color={isHover ? selectedStyle.hover.color : selectedStyle.normal.color}
+                    color={
+                      isHover
+                        ? selectedStyle.hover.color
+                        : selectedStyle.normal.color
+                    }
                   />
                 </Styled.Icon>
                 <Spacer mr={1} />
