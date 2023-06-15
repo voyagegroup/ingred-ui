@@ -65,7 +65,7 @@ export const Basic = {
         text: "Update",
         onClick: action('clicked "Update"'),
         type: "warning",
-        iconName: "zoom_in",
+        iconName: "refresh_line",
       },
     ],
     maxHeight: "100px",
