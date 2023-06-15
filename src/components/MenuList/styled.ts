@@ -55,12 +55,18 @@ export const ListContainer = styled.div<ListContainerProps>`
   }
   &:hover {
     background-color: ${({ hover }) => hover.background};
+    ${Icon} path:last-child {
+      fill: ${({ hover }) => hover.color};
+    }
     ${Text} {
       color: ${({ hover }) => hover.color};
     }
   }
   &:active {
     background-color: ${({ active }) => active.background};
+    ${Icon} path:last-child {
+      fill: ${({ hover }) => hover.color};
+    }
     ${Text} {
       color: ${({ active }) => active.color};
     }
