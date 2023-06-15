@@ -30,6 +30,31 @@ const contents: Array<ContentProp | GroupContentProp> = [
         onClick: () => {},
         type: "disabled",
       },
+      {
+        text: "Save",
+        onClick: () => {},
+        type: "default",
+        iconName: "save",
+      },
+      {
+        text: "Save and execute",
+        onClick: () => {},
+        divideTop: true,
+        type: "default",
+        iconName: "save",
+      },
+      {
+        text: "Save as draft",
+        onClick: () => {},
+        type: "warning",
+        iconName: "save",
+      },
+      {
+        text: "Cancel",
+        onClick: () => {},
+        type: "disabled",
+        iconName: "save",
+      },
     ],
   },
 ];
