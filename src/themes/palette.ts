@@ -52,7 +52,7 @@ export type Palette = {
 };
 
 export const palette: Palette = {
-  white: colors.basic[50] as string, // TODO
+  white: colors.basic[50],
   black: colors.basic[900],
   primary: {
     deepDark: colors.blue[700],
@@ -98,9 +98,9 @@ export const palette: Palette = {
   },
   background: {
     default: "#FFFFFF",
-    dark: colors.blue[40] as string, // TODO
+    dark: colors.blue[40],
     active: colors.blue[100],
-    hint: colors.blue[50] as string, // TODO
+    hint: colors.blue[50],
   },
   divider: colors.basic[400],
   icon: {
