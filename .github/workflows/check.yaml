@@ -20,3 +20,5 @@ jobs:
         run: make -f ci.mk test
       - name: build
         run: make -f ci.mk build
+      - name: check changesets
+        run: make -f ci.mk check_changesets
