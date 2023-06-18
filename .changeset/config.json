@@ -7,5 +7,5 @@
     }
   ],
   "access": "public",
-  "baseBranch": "origin/master"
+  "baseBranch": "master"
 }
