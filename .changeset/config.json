@@ -6,8 +6,6 @@
       "repo": "voyagegroup/ingred-ui"
     }
   ],
-  "commit": false,
   "access": "public",
-  "baseBranch": "master",
-  "updateInternalDependencies": "patch"
+  "baseBranch": "master"
 }
