@@ -12,10 +12,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - name: check changesets
-        run: make -f ci.mk check_changesets
       - name: install
         run: make -f ci.mk install
+      - name: check changesets
+        run: make -f ci.mk check_changesets
       - name: lint
         run: make -f ci.mk lint
       - name: test
