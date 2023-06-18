@@ -12,6 +12,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
+      - name: check changesets
+        run: make -f ci.mk check_changesets
       - name: install
         run: make -f ci.mk install
       - name: lint
@@ -20,5 +22,3 @@ jobs:
         run: make -f ci.mk test
       - name: build
         run: make -f ci.mk build
-      - name: check changesets
-        run: make -f ci.mk check_changesets
