@@ -25,7 +25,7 @@ build:
 	yarn build
 
 check_changesets:
-	yarn changesets status
+	yarn changeset status
 
 release_version:
 	npm config set git-tag-version false
