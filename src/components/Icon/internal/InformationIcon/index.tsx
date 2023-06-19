@@ -25,8 +25,8 @@ const InformationIcon: React.FunctionComponent<IconProps> = ({
           <path fill={fill} d="M11 14V9H9V14H11Z" transform="translate(2 2)" />
           <path
             fill={fill}
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
             transform="translate(2 2)"
           />
