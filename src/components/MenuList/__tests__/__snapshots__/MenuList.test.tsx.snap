@@ -17,7 +17,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi erEesM"
+      class="sc-jSMfEi jMMyQj"
     >
       <p
         class="sc-bczRLJ dkTFVi sc-eCYdqJ"
@@ -33,7 +33,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       orientation="horizontal"
     />
     <div
-      class="sc-jSMfEi erEesM"
+      class="sc-jSMfEi jMMyQj"
     >
       <p
         class="sc-bczRLJ dkTFVi sc-eCYdqJ"
@@ -44,7 +44,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi cozonr"
+      class="sc-jSMfEi bAvCPi"
     >
       <p
         class="sc-bczRLJ duOoMD sc-eCYdqJ"
@@ -55,7 +55,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi edPvdO"
+      class="sc-jSMfEi kMvEJY"
       disabled=""
     >
       <p
@@ -67,7 +67,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi erEesM"
+      class="sc-jSMfEi jMMyQj"
     >
       <div
         class="sc-hKMtZM cvHByS"
@@ -104,7 +104,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       orientation="horizontal"
     />
     <div
-      class="sc-jSMfEi erEesM"
+      class="sc-jSMfEi jMMyQj"
     >
       <div
         class="sc-hKMtZM cvHByS"
@@ -136,7 +136,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi cozonr"
+      class="sc-jSMfEi bAvCPi"
     >
       <div
         class="sc-hKMtZM cvHByS"
@@ -168,7 +168,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi edPvdO"
+      class="sc-jSMfEi kMvEJY"
       disabled=""
     >
       <div
