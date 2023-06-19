@@ -67,7 +67,10 @@ export const ListContainer = styled.div<ListContainerProps>`
   }
   &:active {
     background-color: ${({ active }) => active.background};
-    ${Icon} path:last-child {
+    ${Icon} path:only-child {
+      fill: ${({ hover }) => hover.color};
+    }
+    ${Icon} path:not(:first-child) {
       fill: ${({ hover }) => hover.color};
     }
     ${Text} {

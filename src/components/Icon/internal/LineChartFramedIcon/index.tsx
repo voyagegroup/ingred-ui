@@ -8,21 +8,20 @@ const LineChartFramedIcon: React.FunctionComponent<IconProps> = ({
   switch (type) {
     case "line":
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M0,0H24V24H0Z" fill="none" />
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="none" />
           <path
-            style={{ fill }}
-            d="M18.454,6.293l1.214,1.214-4.9,4.9L12.193,9.832,8.507,13.517,7.293,12.3l4.9-4.9,2.576,2.575Z"
-            transform="translate(-1.429 2.273)"
-          />
-          <g
-            style={{ stroke: fill, strokeWidth: "2px" }}
-            fill="none"
+            fill={fill}
+            d="M16.238 6.77998L15.024 5.56598L11.339 9.24798L8.76304 6.67298L3.86304 11.573L5.07704 12.79L8.76304 9.10498L11.338 11.68L16.238 6.77998Z"
             transform="translate(2 3)"
-          >
-            <rect style={{ stroke: "none" }} width="20" height="18" rx="1" />
-            <rect fill="none" x="1" y="1" width="18" height="16" />
-          </g>
+          />
+          <path
+            fill={fill}
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M19 0H1C0.734784 0 0.48043 0.105357 0.292893 0.292893C0.105357 0.48043 0 0.734784 0 1V17C0 17.2652 0.105357 17.5196 0.292893 17.7071C0.48043 17.8946 0.734784 18 1 18H19C19.2652 18 19.5196 17.8946 19.7071 17.7071C19.8946 17.5196 20 17.2652 20 17V1C20 0.734784 19.8946 0.48043 19.7071 0.292893C19.5196 0.105357 19.2652 0 19 0ZM2 16V2H18V16H2Z"
+            transform="translate(2 3)"
+          />
         </svg>
       );
     case "fill":
