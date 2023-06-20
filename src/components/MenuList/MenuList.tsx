@@ -152,7 +152,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
         )}
-        <Styled.ListContainer
+        <Styled.MenuContainer
           disabled={checkIsDisabled(content.type, content.disabled)}
           normal={
             selectStyleInDisabledProp(theme, content.type, content.disabled)
@@ -169,7 +169,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
           onClick={handleClick(content, content.disabled)}
         >
           {content.iconName && (
-            <>
+            <Spacer mr={1}>
               <Styled.Icon
                 disabled={checkIsDisabled(content.type, content.disabled)}
               >
@@ -184,8 +184,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   }
                 />
               </Styled.Icon>
-              <Spacer mr={1} />
-            </>
+            </Spacer>
           )}
           <Styled.Text
             size="sm"
@@ -196,7 +195,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
           >
             {content.text}
           </Styled.Text>
-        </Styled.ListContainer>
+        </Styled.MenuContainer>
       </React.Fragment>
     );
 
@@ -221,7 +220,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   </Typography>
                 </Styled.TitleContainer>
               )}
-              {content.contents.map((content) => renderContent(content))}
+              {content.contents.map(renderContent)}
             </React.Fragment>
           ) : (
             renderContent(content)

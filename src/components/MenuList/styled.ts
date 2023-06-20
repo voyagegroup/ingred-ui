@@ -34,13 +34,13 @@ export const TitleContainer = styled.div`
   padding: ${({ theme }) => theme.spacing}px;
 `;
 
-export const Icon = styled("div")<IconProps>`
+export const Icon = styled.div<IconProps>`
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
 `;
 
 export const Text = styled(Typography)``;
 
-export const ListContainer = styled.div<ListContainerProps>`
+export const MenuContainer = styled.div<ListContainerProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
