@@ -29,7 +29,6 @@
     "dayjs": "^1.11.6",
     "moment": "^2.29.3",
     "react-dates": "^21.8.0",
-    "react-popper": "^2.3.0",
     "react-select": "^5.7.0",
     "react-transition-group": "^4.4.1"
   },
