@@ -13,7 +13,7 @@ type IconProps = {
   disabled: boolean;
 };
 
-type ListContainerProps = ContentTypeStyle & {
+type MenuContainerProps = ContentTypeStyle & {
   disabled: boolean;
 };
 
@@ -40,7 +40,7 @@ export const Icon = styled.div<IconProps>`
 
 export const Text = styled(Typography)``;
 
-export const MenuContainer = styled.div<ListContainerProps>`
+export const MenuContainer = styled.div<MenuContainerProps>`
   cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
   display: flex;
   align-items: center;
