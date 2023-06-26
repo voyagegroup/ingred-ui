@@ -17,10 +17,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ eGKyCI"
+      class="sc-jSMfEi jMMyQj"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
         color="#041C33"
         font-size="13px"
       >
@@ -28,15 +28,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-jSMfEi czosnH"
+      class="sc-gKXOVf iCDnFu"
       color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-eCYdqJ eGKyCI"
+      class="sc-jSMfEi jMMyQj"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-hKMtZM"
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
         color="#041C33"
         font-size="13px"
       >
@@ -44,10 +44,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ fAxLBD"
+      class="sc-jSMfEi bAvCPi"
     >
       <p
-        class="sc-bczRLJ duOoMD sc-hKMtZM"
+        class="sc-bczRLJ duOoMD sc-eCYdqJ"
         color="#EB0A4E"
         font-size="13px"
       >
@@ -55,11 +55,150 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-eCYdqJ fRhSPu"
+      class="sc-jSMfEi kMvEJY"
       disabled=""
     >
       <p
-        class="sc-bczRLJ iySyTU sc-hKMtZM"
+        class="sc-bczRLJ iySyTU sc-eCYdqJ"
+        color="#B3BAC1"
+        font-size="13px"
+      >
+        Cancel
+      </p>
+    </div>
+    <div
+      class="sc-jSMfEi jMMyQj"
+    >
+      <div
+        class="sc-ftvSup espOCS"
+      >
+        <div
+          class="sc-hKMtZM cvHByS"
+        >
+          <span
+            class="sc-iBkjds kTxGwl"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7,19V13H17v6h2V7.828L16.172,5H5V19ZM4,3H17l4,4V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3ZM9,15v4h6V15Z"
+                fill="#041C33"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <p
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        color="#041C33"
+        font-size="13px"
+      >
+        Save
+      </p>
+    </div>
+    <hr
+      class="sc-gKXOVf iCDnFu"
+      color="#E2E8EA"
+      orientation="horizontal"
+    />
+    <div
+      class="sc-jSMfEi jMMyQj"
+    >
+      <div
+        class="sc-ftvSup espOCS"
+      >
+        <div
+          class="sc-hKMtZM cvHByS"
+        >
+          <span
+            class="sc-iBkjds kTxGwl"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7,19V13H17v6h2V7.828L16.172,5H5V19ZM4,3H17l4,4V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3ZM9,15v4h6V15Z"
+                fill="#041C33"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <p
+        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        color="#041C33"
+        font-size="13px"
+      >
+        Save and execute
+      </p>
+    </div>
+    <div
+      class="sc-jSMfEi bAvCPi"
+    >
+      <div
+        class="sc-ftvSup espOCS"
+      >
+        <div
+          class="sc-hKMtZM cvHByS"
+        >
+          <span
+            class="sc-iBkjds kTxGwl"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7,19V13H17v6h2V7.828L16.172,5H5V19ZM4,3H17l4,4V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3ZM9,15v4h6V15Z"
+                fill="#EB0A4E"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <p
+        class="sc-bczRLJ duOoMD sc-eCYdqJ"
+        color="#EB0A4E"
+        font-size="13px"
+      >
+        Save as draft
+      </p>
+    </div>
+    <div
+      class="sc-jSMfEi kMvEJY"
+      disabled=""
+    >
+      <div
+        class="sc-ftvSup espOCS"
+      >
+        <div
+          class="sc-hKMtZM kgMPvs"
+          disabled=""
+        >
+          <span
+            class="sc-iBkjds kTxGwl"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7,19V13H17v6h2V7.828L16.172,5H5V19ZM4,3H17l4,4V20a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V4A1,1,0,0,1,4,3ZM9,15v4h6V15Z"
+                fill="disabled"
+              />
+            </svg>
+          </span>
+        </div>
+      </div>
+      <p
+        class="sc-bczRLJ iySyTU sc-eCYdqJ"
         color="#B3BAC1"
         font-size="13px"
       >

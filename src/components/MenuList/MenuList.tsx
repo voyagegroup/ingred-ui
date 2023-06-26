@@ -4,6 +4,8 @@ import { Property } from "csstype";
 import { Theme, useTheme } from "../../themes";
 import Divider from "../Divider";
 import Typography from "../Typography";
+import Icon, { IconName } from "../Icon";
+import Spacer from "../Spacer";
 
 export type ContentType = "default" | "warning" | "disabled";
 
@@ -83,6 +85,7 @@ export type SingleContentProp = React.ComponentPropsWithoutRef<"div"> & {
   onClick: () => void;
   divideTop?: boolean;
   type?: ContentType;
+  iconName?: IconName;
 
   /**
    * @deprecated
@@ -149,7 +152,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
         )}
-        <Styled.TextContainer
+        <Styled.MenuContainer
           disabled={checkIsDisabled(content.type, content.disabled)}
           normal={
             selectStyleInDisabledProp(theme, content.type, content.disabled)
@@ -165,6 +168,24 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
           }
           onClick={handleClick(content, content.disabled)}
         >
+          {content.iconName && (
+            <Spacer mr={1}>
+              <Styled.Icon
+                disabled={checkIsDisabled(content.type, content.disabled)}
+              >
+                <Icon
+                  name={content.iconName}
+                  color={
+                    selectStyleInDisabledProp(
+                      theme,
+                      content.type,
+                      content.disabled,
+                    ).normal.color
+                  }
+                />
+              </Styled.Icon>
+            </Spacer>
+          )}
           <Styled.Text
             size="sm"
             color={
@@ -174,7 +195,7 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
           >
             {content.text}
           </Styled.Text>
-        </Styled.TextContainer>
+        </Styled.MenuContainer>
       </React.Fragment>
     );
 

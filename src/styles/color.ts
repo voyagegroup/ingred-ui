@@ -1,19 +1,19 @@
 export type Color = {
-  40?: string; // TODO: Abolish this key or define all colors with this key
-  50?: string; // TODO: Abolish this key or define all colors with this key
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
-  1000?: string; // TODO: Abolish this key or define all colors with this key
+  40?: `#${string}`;
+  50?: `#${string}`;
+  100: `#${string}`;
+  200: `#${string}`;
+  300: `#${string}`;
+  400: `#${string}`;
+  500: `#${string}`;
+  600: `#${string}`;
+  700: `#${string}`;
+  800: `#${string}`;
+  900: `#${string}`;
+  1000?: `#${string}`;
 };
 
-export const colors: { [color: string]: Color } = {
+export const colors = {
   red: {
     100: "#FFE2E5",
     200: "#FFBAC3",
@@ -76,4 +76,4 @@ export const colors: { [color: string]: Color } = {
 
     1000: "#001326",
   },
-};
+} satisfies Record<string, Color>;

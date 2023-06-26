@@ -7,9 +7,6 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    reviewers:
-      - "voyagegroup/fluct_ingred_ui_dev"
-    open-pull-requests-limit: 10
   - package-ecosystem: "npm"
     directory: "/testEnv"
     schedule:
@@ -17,19 +14,6 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    reviewers:
-      - "voyagegroup/fluct_ingred_ui_dev"
-    open-pull-requests-limit: 10
-  - package-ecosystem: "npm"
-    directory: "/examples/create-react-app"
-    schedule:
-      interval: "daily"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
-    reviewers:
-      - "voyagegroup/fluct_ingred_ui_dev"
-    open-pull-requests-limit: 10
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -37,6 +21,3 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-patch"]
-    reviewers:
-      - "voyagegroup/fluct_ingred_ui_dev"
-    open-pull-requests-limit: 10
