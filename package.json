@@ -23,7 +23,7 @@
     "lint": "tsc && eslint 'src/**/*.{ts,tsx}' && prettier --check 'src/**/*.{ts,tsx}'",
     "format": "prettier --write 'src/**/*.{ts,tsx}'",
     "generate": "yarn scaffdog generate",
-    "release": "changeset publish"
+    "release": "changeset tag && changeset publish"
   },
   "dependencies": {
     "@floating-ui/react": "^0.24.3",
