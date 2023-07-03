@@ -34,8 +34,3 @@ export function createTheme(options: ThemeOptions = {}): Theme {
 
   return theme;
 }
-
-declare module "styled-components" {
-  // eslint-disable-next-line @typescript-eslint/consistent-type-definitions,@typescript-eslint/no-empty-interface
-  interface DefaultTheme extends Theme {}
-}
