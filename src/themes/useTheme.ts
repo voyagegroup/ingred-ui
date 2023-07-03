@@ -4,5 +4,6 @@ import { defaultTheme } from "./defaultTheme";
 import { Theme } from "./createTheme";
 
 export function useTheme(): Theme {
-  return React.useContext(ThemeContext) || defaultTheme;
+  const theme = React.useContext(ThemeContext) as Theme;
+  return theme ?? defaultTheme;
 }
