@@ -7,7 +7,7 @@ type DividerProps = SpacerProps & {
 };
 
 export const Divider = styled.hr<DividerProps>`
-  ${spacer}
+  ${({ theme }) => spacer({ ...theme, ...theme.divider })};
   width: ${({ orientation }) => (orientation === "vertical" ? "1px" : "auto")};
   height: ${({ orientation }) => (orientation === "vertical" ? "auto" : "1px")};
   border: none;
