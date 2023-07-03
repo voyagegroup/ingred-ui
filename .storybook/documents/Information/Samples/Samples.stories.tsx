@@ -1,6 +1,6 @@
 import * as React from "react";
+import dayjs from "dayjs";
 import * as Styled from "./styled";
-import moment from "moment";
 import { action } from "@storybook/addon-actions";
 import { linkTo } from "@storybook/addon-links";
 import {
@@ -55,6 +55,7 @@ import PopoverSample from "./components/PopoverSample";
 import MenuSample from "./components/MenuSample";
 import FloatingTipSample from "./components/FloatingTipSample";
 import CreatableSelect from "../../../../src/components/CreatableSelect";
+import "react-dates/lib/css/_datepicker.css";
 
 type SectionTitle =
   | "Layout"
@@ -135,7 +136,7 @@ const componentList: Section[] = [
         title: "DatePicker",
         content: (
           <DatePicker
-            date={moment()}
+            date={dayjs()}
             onDateChange={action("changed 'DatePicker'")}
           />
         ),
@@ -144,8 +145,8 @@ const componentList: Section[] = [
         title: "DateRangePicker",
         content: (
           <DateRangePicker
-            startDate={moment()}
-            endDate={moment()}
+            startDate={dayjs()}
+            endDate={dayjs().add(1, "day")}
             onDatesChange={action("changed 'DateRangePicker'")}
           />
         ),
@@ -266,7 +267,6 @@ const componentList: Section[] = [
               { text: "サイズ", count: 2, value: "サイズ" },
             ]}
             value={"全て"}
-            withBadge={true}
             onChange={action("changed 'Tabs'")}
           />
         ),
@@ -307,6 +307,7 @@ const componentList: Section[] = [
         title: "DataTable",
         content: (
           <DataTable
+            dataKey="id"
             data={[
               { id: 1, name: "1name" },
               { id: 2, name: "2name" },
@@ -579,20 +580,6 @@ export const Overview = () => {
   return (
     <Toast.Provider placement="top-center">
       <Styled.Container>
-        <Spacer pl={2} pt={4} pb={2}>
-          <Typography component="h2" weight="bold" size="xxxxxl">
-            Color
-          </Typography>
-        </Spacer>
-        <Styled.GridContainer>
-          {getColors(theme).map((item) => (
-            <Styled.Cell key={item.title}>
-              <Styled.Title>{item.title}</Styled.Title>
-              <Styled.ColorTile palette={item.palette} />
-            </Styled.Cell>
-          ))}
-        </Styled.GridContainer>
-
         {componentList.map((group) => (
           <React.Fragment key={group.title}>
             <Spacer pl={2} pt={4} pb={2}>
@@ -621,11 +608,26 @@ export const Overview = () => {
             </Styled.GridContainer>
           </React.Fragment>
         ))}
+
+        <Spacer pl={2} pt={4} pb={2}>
+          <Typography component="h2" weight="bold" size="xxxxxl">
+            Color
+          </Typography>
+        </Spacer>
+        <Styled.GridContainer>
+          {getColors(theme).map((item) => (
+            <Styled.Cell key={item.title}>
+              <Styled.Title>{item.title}</Styled.Title>
+              <Styled.ColorTile palette={item.palette} />
+            </Styled.Cell>
+          ))}
+        </Styled.GridContainer>
         <Spacer pl={2} pt={4} pb={2}>
           <Typography component="h2" weight="bold" size="xxxxxl">
             Others
           </Typography>
         </Spacer>
+
         {undisplayedSections.map((section) => (
           <React.Fragment key={section.title}>
             <Spacer pl={2} py={2}>
