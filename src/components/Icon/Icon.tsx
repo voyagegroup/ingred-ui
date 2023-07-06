@@ -80,6 +80,7 @@ import { AdBlockIcon } from "./internal/AdBlockIcon";
 import { RefreshLineIcon } from "./internal/RefreshLine";
 import { BuildingIcon } from "./internal/BuildingIcon";
 import { ImageIcon } from "./internal/ImageIcon";
+import { CalendarIcon } from "./internal/CalendarIcon";
 
 export type IconName =
   | "dashboard"
@@ -159,7 +160,8 @@ export type IconName =
   | "apps"
   | "ad_block"
   | "building"
-  | "image";
+  | "image"
+  | "calendar";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -256,6 +258,7 @@ export const icons: {
   ad_block: AdBlockIcon,
   building: BuildingIcon,
   image: ImageIcon,
+  calendar: CalendarIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
