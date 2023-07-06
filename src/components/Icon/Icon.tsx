@@ -90,6 +90,7 @@ import { PlayCircleIcon } from "./internal/PlayCircleIcon";
 import { SortAscIcon } from "./internal/SortAscIcon";
 import { SortDescIcon } from "./internal/SortDescIcon";
 import { BarChartSearchIcon } from "./internal/BarChartSearchIcon";
+import { CheckThinIcon } from "./internal/CheckThinIcon";
 
 export type IconName =
   | "dashboard"
@@ -179,7 +180,8 @@ export type IconName =
   | "play_circle"
   | "sort_asc"
   | "sort_desc"
-  | "bar_chart_search";
+  | "bar_chart_search"
+  | "check_thin";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -286,6 +288,7 @@ export const icons: {
   sort_asc: SortAscIcon,
   sort_desc: SortDescIcon,
   bar_chart_search: BarChartSearchIcon,
+  check_thin: CheckThinIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
