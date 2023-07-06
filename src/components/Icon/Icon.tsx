@@ -78,6 +78,19 @@ import { SupportIcon } from "./internal/SupportIcon";
 import { AppsIcon } from "./internal/AppsIcon";
 import { AdBlockIcon } from "./internal/AdBlockIcon";
 import { RefreshLineIcon } from "./internal/RefreshLine";
+import { BuildingIcon } from "./internal/BuildingIcon";
+import { ImageIcon } from "./internal/ImageIcon";
+import { CalendarIcon } from "./internal/CalendarIcon";
+import { MenuIcon } from "./internal/MenuIcon";
+import { FileListIcon } from "./internal/FileListIcon";
+import { DraftIcon } from "./internal/DraftIcon";
+import { TimeIcon } from "./internal/TimeIcon";
+import { StopCircleIcon } from "./internal/StopCircleIcon";
+import { PlayCircleIcon } from "./internal/PlayCircleIcon";
+import { SortAscIcon } from "./internal/SortAscIcon";
+import { SortDescIcon } from "./internal/SortDescIcon";
+import { BarChartSearchIcon } from "./internal/BarChartSearchIcon";
+import { CheckThinIcon } from "./internal/CheckThinIcon";
 
 export type IconName =
   | "dashboard"
@@ -155,7 +168,20 @@ export type IconName =
   | "analytics"
   | "support"
   | "apps"
-  | "ad_block";
+  | "ad_block"
+  | "building"
+  | "image"
+  | "calendar"
+  | "menu"
+  | "file_list"
+  | "draft"
+  | "time"
+  | "stop_circle"
+  | "play_circle"
+  | "sort_asc"
+  | "sort_desc"
+  | "bar_chart_search"
+  | "check_thin";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -250,6 +276,19 @@ export const icons: {
   support: SupportIcon,
   apps: AppsIcon,
   ad_block: AdBlockIcon,
+  building: BuildingIcon,
+  image: ImageIcon,
+  calendar: CalendarIcon,
+  menu: MenuIcon,
+  file_list: FileListIcon,
+  draft: DraftIcon,
+  time: TimeIcon,
+  stop_circle: StopCircleIcon,
+  play_circle: PlayCircleIcon,
+  sort_asc: SortAscIcon,
+  sort_desc: SortDescIcon,
+  bar_chart_search: BarChartSearchIcon,
+  check_thin: CheckThinIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
