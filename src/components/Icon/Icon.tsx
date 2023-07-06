@@ -89,6 +89,7 @@ import { StopCircleIcon } from "./internal/StopCircleIcon";
 import { PlayCircleIcon } from "./internal/PlayCircleIcon";
 import { SortAscIcon } from "./internal/SortAscIcon";
 import { SortDescIcon } from "./internal/SortDescIcon";
+import { BarChartSearchIcon } from "./internal/BarChartSearchIcon";
 
 export type IconName =
   | "dashboard"
@@ -177,7 +178,8 @@ export type IconName =
   | "stop_circle"
   | "play_circle"
   | "sort_asc"
-  | "sort_desc";
+  | "sort_desc"
+  | "bar_chart_search";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -283,6 +285,7 @@ export const icons: {
   play_circle: PlayCircleIcon,
   sort_asc: SortAscIcon,
   sort_desc: SortDescIcon,
+  bar_chart_search: BarChartSearchIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
