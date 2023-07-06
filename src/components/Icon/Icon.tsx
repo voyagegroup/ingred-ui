@@ -84,6 +84,7 @@ import { CalendarIcon } from "./internal/CalendarIcon";
 import { MenuIcon } from "./internal/MenuIcon";
 import { FileListIcon } from "./internal/FileListIcon";
 import { DraftIcon } from "./internal/DraftIcon";
+import { TimeIcon } from "./internal/TimeIcon";
 
 export type IconName =
   | "dashboard"
@@ -167,7 +168,8 @@ export type IconName =
   | "calendar"
   | "menu"
   | "file_list"
-  | "draft";
+  | "draft"
+  | "time";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -268,6 +270,7 @@ export const icons: {
   menu: MenuIcon,
   file_list: FileListIcon,
   draft: DraftIcon,
+  time: TimeIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
