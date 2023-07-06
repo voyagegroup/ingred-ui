@@ -87,6 +87,8 @@ import { DraftIcon } from "./internal/DraftIcon";
 import { TimeIcon } from "./internal/TimeIcon";
 import { StopCircleIcon } from "./internal/StopCircleIcon";
 import { PlayCircleIcon } from "./internal/PlayCircleIcon";
+import { SortAscIcon } from "./internal/SortAscIcon";
+import { SortDescIcon } from "./internal/SortDescIcon";
 
 export type IconName =
   | "dashboard"
@@ -173,7 +175,9 @@ export type IconName =
   | "draft"
   | "time"
   | "stop_circle"
-  | "play_circle";
+  | "play_circle"
+  | "sort_asc"
+  | "sort_desc";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -277,6 +281,8 @@ export const icons: {
   time: TimeIcon,
   stop_circle: StopCircleIcon,
   play_circle: PlayCircleIcon,
+  sort_asc: SortAscIcon,
+  sort_desc: SortDescIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
