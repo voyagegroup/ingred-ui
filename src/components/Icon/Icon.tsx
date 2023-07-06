@@ -86,6 +86,7 @@ import { FileListIcon } from "./internal/FileListIcon";
 import { DraftIcon } from "./internal/DraftIcon";
 import { TimeIcon } from "./internal/TimeIcon";
 import { StopCircleIcon } from "./internal/StopCircleIcon";
+import { PlayCircleIcon } from "./internal/PlayCircleIcon";
 
 export type IconName =
   | "dashboard"
@@ -171,7 +172,8 @@ export type IconName =
   | "file_list"
   | "draft"
   | "time"
-  | "stop_circle";
+  | "stop_circle"
+  | "play_circle";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -274,6 +276,7 @@ export const icons: {
   draft: DraftIcon,
   time: TimeIcon,
   stop_circle: StopCircleIcon,
+  play_circle: PlayCircleIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
