@@ -82,6 +82,7 @@ import { BuildingIcon } from "./internal/BuildingIcon";
 import { ImageIcon } from "./internal/ImageIcon";
 import { CalendarIcon } from "./internal/CalendarIcon";
 import { MenuIcon } from "./internal/MenuIcon";
+import { FileListIcon } from "./internal/FileListIcon";
 
 export type IconName =
   | "dashboard"
@@ -163,7 +164,8 @@ export type IconName =
   | "building"
   | "image"
   | "calendar"
-  | "menu";
+  | "menu"
+  | "file_list";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -262,6 +264,7 @@ export const icons: {
   image: ImageIcon,
   calendar: CalendarIcon,
   menu: MenuIcon,
+  file_list: FileListIcon,
 };
 
 const iconFactory = (name: IconName) => (props: IconProps) => {
