@@ -138,7 +138,7 @@ const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
                   <Flex display="flex" alignItems="center">
                     <Button
                       type="button"
-                      color="secondary"
+                      color="clear"
                       inline={true}
                       onClick={handleClose("clickCancelButton")}
                     >
