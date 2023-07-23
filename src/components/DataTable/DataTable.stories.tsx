@@ -42,14 +42,14 @@ export default {
   },
 };
 
-export const Overview: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const Overview: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
   render: (args) => {
     return <DataTable {...args} />;
   },
 };
 
 export const WithVerticalLine: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => {
     return <DataTable {...args} enableRuledLine={true} />;
@@ -57,18 +57,18 @@ export const WithVerticalLine: StoryObj<
 };
 
 export const WithPagination: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => <DataTable {...args} enablePagination={true} data={data} />,
 };
 
 export const WithStickyHeader: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => <DataTable {...args} tableMaxHeight="300px" data={data} />,
 };
 
-export const WithTabs: StoryObj<DataTableProps<typeof data[number], "id">> = {
+export const WithTabs: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
   render: (args) => (
     <DataTable
       {...args}
@@ -105,28 +105,29 @@ export const WithTabs: StoryObj<DataTableProps<typeof data[number], "id">> = {
   ),
 };
 
-export const WithSearch: StoryObj<DataTableProps<typeof data[number], "id">> = {
-  render: (args) => {
-    const [searchText, setSearchText] = React.useState("");
-    const searchedItems = data.filter((item) =>
-      `${item.id}`.includes(searchText),
-    );
-    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchText(event.target.value);
-    };
-    return (
-      <>
-        <Spacer mb={2}>
-          <TextField placeholder="IDで絞り込む" onChange={handleInput} />
-        </Spacer>
-        <DataTable {...args} enablePagination={true} data={searchedItems} />
-      </>
-    );
-  },
-};
+export const WithSearch: StoryObj<DataTableProps<(typeof data)[number], "id">> =
+  {
+    render: (args) => {
+      const [searchText, setSearchText] = React.useState("");
+      const searchedItems = data.filter((item) =>
+        `${item.id}`.includes(searchText),
+      );
+      const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchText(event.target.value);
+      };
+      return (
+        <>
+          <Spacer mb={2}>
+            <TextField placeholder="IDで絞り込む" onChange={handleInput} />
+          </Spacer>
+          <DataTable {...args} enablePagination={true} data={searchedItems} />
+        </>
+      );
+    },
+  };
 
 export const SelectableRows: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => {
     const [selectedRows, setSelectedRows] = React.useState<number[]>([32205]);
@@ -166,7 +167,7 @@ export const SelectableRows: StoryObj<
 };
 
 export const SelectableRow: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => {
     const [selectedRow, setSelectedRow] = React.useState<number>(32205);
@@ -186,80 +187,84 @@ export const SelectableRow: StoryObj<
   },
 };
 
-export const CustomCell: StoryObj<DataTableProps<typeof data[number], "id">> = {
-  render: () => {
-    const theme = useTheme();
-    const [iconWrapperElement, setIconWrapperElement] =
-      React.useState<HTMLDivElement | null>(null);
-    const [isOpen, setIsOpen] = React.useState<boolean>(false);
-    const handleIsOpen = (isOpen: boolean) => () => {
-      setIsOpen(isOpen);
-    };
-    return (
-      <DataTable
-        data={data}
-        dataKey="id"
-        enablePagination={true}
-        columns={[
-          {
-            name: "ID",
-            selector: (data) => data.id,
-            sortable: true,
-          },
-          {
-            name: "imp",
-            selector: (data) => data.imp,
-            sortable: true,
-            renderCell: (data) => (
-              <Flex display="flex" alignItems="center">
-                <Spacer pr={0.5}>
-                  <Icon name="folder" color={theme.palette.primary.main} />
-                </Spacer>
-                <Typography>{data.imp}</Typography>
-              </Flex>
-            ),
-          },
-          {
-            name: "操作",
-            selector: (data) => data.id,
-            headerCell: (
-              <>
+export const CustomCell: StoryObj<DataTableProps<(typeof data)[number], "id">> =
+  {
+    render: () => {
+      const theme = useTheme();
+      const [iconWrapperElement, setIconWrapperElement] =
+        React.useState<HTMLDivElement | null>(null);
+      const [isOpen, setIsOpen] = React.useState<boolean>(false);
+      const handleIsOpen = (isOpen: boolean) => () => {
+        setIsOpen(isOpen);
+      };
+      return (
+        <DataTable
+          data={data}
+          dataKey="id"
+          enablePagination={true}
+          columns={[
+            {
+              name: "ID",
+              selector: (data) => data.id,
+              sortable: true,
+            },
+            {
+              name: "imp",
+              selector: (data) => data.imp,
+              sortable: true,
+              renderCell: (data) => (
                 <Flex display="flex" alignItems="center">
-                  操作
-                  <Spacer pl={1} />
-                  <div ref={setIconWrapperElement} onClick={handleIsOpen(true)}>
-                    <Icon name="question" type="fill" />
-                  </div>
+                  <Spacer pr={0.5}>
+                    <Icon name="folder" color={theme.palette.primary.main} />
+                  </Spacer>
+                  <Typography>{data.imp}</Typography>
                 </Flex>
-                <FloatingTip
-                  baseElement={iconWrapperElement}
-                  isOpen={isOpen}
-                  positionPriority={["left"]}
-                  onClose={handleIsOpen(false)}
-                >
-                  <Typography size="sm" lineHeight="1.7">
-                    こんな感じで入れられます
-                  </Typography>
-                </FloatingTip>
-              </>
-            ),
-            renderCell: () => (
-              <Flex display="flex" alignItems="center">
-                <Spacer pr={0.5}>
-                  <ActionButton icon="pencil">変更</ActionButton>
-                </Spacer>
-                <ActionButton icon="delete_bin">削除</ActionButton>
-              </Flex>
-            ),
-          },
-        ]}
-      />
-    );
-  },
-};
+              ),
+            },
+            {
+              name: "操作",
+              selector: (data) => data.id,
+              headerCell: (
+                <>
+                  <Flex display="flex" alignItems="center">
+                    操作
+                    <Spacer pl={1} />
+                    <div
+                      ref={setIconWrapperElement}
+                      onClick={handleIsOpen(true)}
+                    >
+                      <Icon name="question" type="fill" />
+                    </div>
+                  </Flex>
+                  <FloatingTip
+                    baseElement={iconWrapperElement}
+                    isOpen={isOpen}
+                    positionPriority={["left"]}
+                    onClose={handleIsOpen(false)}
+                  >
+                    <Typography size="sm" lineHeight="1.7">
+                      こんな感じで入れられます
+                    </Typography>
+                  </FloatingTip>
+                </>
+              ),
+              renderCell: () => (
+                <Flex display="flex" alignItems="center">
+                  <Spacer pr={0.5}>
+                    <ActionButton icon="pencil">変更</ActionButton>
+                  </Spacer>
+                  <ActionButton icon="delete_bin">削除</ActionButton>
+                </Flex>
+              ),
+            },
+          ]}
+        />
+      );
+    },
+  };
 
 export const WithEmptyTable: StoryObj<
-  DataTableProps<typeof data[number], "id">
+  DataTableProps<(typeof data)[number], "id">
 > = {
   render: (args) => (
     <DataTable

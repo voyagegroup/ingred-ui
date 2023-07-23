@@ -44,7 +44,9 @@ export const ArrowIconWrapper = styled.div<{
   margin-right: ${({ theme }) => theme.spacing}px;
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   transform: rotate(${({ isExpand }) => (isExpand ? "180deg" : "none")});
-  transition: transform 0.3s, opacity ${NavigationRailTransitionDuration}s;
+  transition:
+    transform 0.3s,
+    opacity ${NavigationRailTransitionDuration}s;
 `;
 
 type ExpansionProps = {
