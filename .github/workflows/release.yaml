@@ -27,32 +27,13 @@ jobs:
         run: make -f ci.mk lint
       - name: test
         run: make -f ci.mk test
-      - name: npm version
-        run: make -f ci.mk release_version
-        env:
-          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
-      - name: git config
-        run: |
-          git config --local user.name ${{ secrets.FLUCT_MEMBER_GITHUB_USER_NAME }}
-          git config --local user.email ${{ secrets.FLUCT_MEMBER_GITHUB_USER_EMAIL }}
-      - name: git add & commit & push
-        run: |
-          git add package.json
-          git commit -m "[ci skip] release v${{ env.RELEASE_VERSION }}"
-          git push
-        env:
-          RELEASE_VERSION: ${{ github.event.inputs.release_version }}
-      - name: npm publish
-        run: make -f ci.mk publish
-        env:
-          NPM_TOKEN: ${{ secrets.FLUCT_NPM_TOKEN }}
-      - name: Create Tag & Release
-        uses: ncipollo/release-action@v1
+      - name: build
+        run: make -f ci.mk build
+      - name: Create Release Pull Request or Publish to npm
+        id: check_changesets
+        uses: changesets/action@v1
         with:
-          allowUpdates: true
-          name: Release ${{ env.RELEASE_TAG_NAME }}
-          tag: ${{ env.RELEASE_TAG_NAME }}
-          token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
-          generateReleaseNotes: true
+          publish: yarn release
         env:
-          RELEASE_TAG_NAME: v${{ github.event.inputs.release_version }}
+          GITHUB_TOKEN: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.FLUCT_NPM_TOKEN }}

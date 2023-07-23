@@ -24,6 +24,9 @@ lint:
 build:
 	yarn build
 
+check_changesets:
+	yarn changeset status --since origin/master
+
 release_version:
 	npm config set git-tag-version false
 	npm version ${RELEASE_VERSION}
