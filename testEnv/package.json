@@ -12,7 +12,7 @@
     "ingred-ui": "link:..",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "5.3.6"
+    "styled-components": "6.0.5"
   },
   "devDependencies": {
     "@tsconfig/vite-react": "2.0.0",
