@@ -77,6 +77,8 @@ jobs:
             await exec.exec('git push --force');
   test-lint-and-build:
     runs-on: ubuntu-latest
+    needs: [generate-changeset]
+    if: needs.generate-changeset.result == 'skipped' || needs.generate-changeset.result == 'success'
     steps:
       - uses: actions/checkout@v3
         with:
