@@ -21,6 +21,7 @@ jobs:
         run: make -f ci.mk install
       - name: check changesets
         run: make -f ci.mk check_changesets
+        if: github.actor != 'dependabot[bot]'
       - name: lint
         run: make -f ci.mk lint
       - name: test
