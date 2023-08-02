@@ -2,7 +2,7 @@ import { Placement } from "@floating-ui/react";
 import { useMemo } from "react";
 
 export const autoPlacements = ["auto", "auto-start", "auto-end"] as const;
-export type AutoPlacement = typeof autoPlacements[number];
+export type AutoPlacement = (typeof autoPlacements)[number];
 
 export const usePlacement = (placements: (Placement | AutoPlacement)[]) => {
   const placementsWithoutAuto = useMemo(

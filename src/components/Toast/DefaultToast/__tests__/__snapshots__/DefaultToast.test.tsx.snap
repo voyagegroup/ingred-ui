@@ -7,7 +7,7 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-gsnTZi jjiCjv"
+      class="sc-gsnTZi eoDwOP"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -85,7 +85,7 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-gsnTZi DfTjo"
+      class="sc-gsnTZi eJtHPo"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -163,7 +163,7 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-gsnTZi cisXGS"
+      class="sc-gsnTZi pCCCm"
       opacity="1"
       transform="translate3d(0,0,0)"
     >
@@ -241,7 +241,7 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
     style="height: 8px;"
   >
     <div
-      class="sc-gsnTZi eUBhES"
+      class="sc-gsnTZi WPFfa"
       opacity="1"
       transform="translate3d(0,0,0)"
     >

@@ -19,7 +19,9 @@ export const AccordionTitle = styled(Flex)<{
   justify-content: space-between;
   border-top: ${({ expanded, theme }) =>
     !expanded ? `1px solid ${theme.palette.divider}` : "none"};
-  transition: background-color 0.3s, border-top 0.3s;
+  transition:
+    background-color 0.3s,
+    border-top 0.3s;
 `;
 
 export const AccordionTitleChildren = styled.div`

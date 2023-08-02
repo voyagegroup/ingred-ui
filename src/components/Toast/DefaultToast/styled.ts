@@ -23,8 +23,8 @@ export const Container = styled.div<ContainerProps>`
   padding: 0 ${({ theme }) => theme.spacing * 2}px;
   background: ${({ background }) => background};
   box-shadow: ${({ boxShadow }) => boxShadow};
-  transition: transform ${({ transitionDuration }) => transitionDuration}ms
-      ease-in-out,
+  transition:
+    transform ${({ transitionDuration }) => transitionDuration}ms ease-in-out,
     opacity ${({ transitionDuration }) => transitionDuration}ms;
   transform: ${({ transform }) => transform};
   opacity: ${({ opacity }) => opacity};

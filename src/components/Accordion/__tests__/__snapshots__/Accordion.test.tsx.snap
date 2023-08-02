@@ -6,7 +6,7 @@ exports[`Accordion component testing Accordion 1`] = `
     <div
       aria-controls="accordion-content-Accordion Title"
       aria-expanded="false"
-      class="sc-gsnTZi sc-dkzDqf jUiVsm khxAjh"
+      class="sc-gsnTZi sc-dkzDqf jUiVsm cyzAVp"
       display="flex"
       role="button"
       tabindex="0"
@@ -60,7 +60,7 @@ exports[`Accordion component testing Disable Accordion 1`] = `
     <div
       aria-controls="accordion-content-Accordion Title"
       aria-expanded="false"
-      class="sc-gsnTZi sc-dkzDqf dfqrSd fhXfqR"
+      class="sc-gsnTZi sc-dkzDqf dfqrSd SuCNp"
       disabled=""
       display="flex"
       role="button"
