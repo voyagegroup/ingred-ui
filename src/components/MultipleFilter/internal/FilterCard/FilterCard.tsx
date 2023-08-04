@@ -1,10 +1,13 @@
 import * as React from "react";
 import { useTheme } from "styled-components";
+import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 import Button from "../../../Button";
 import { Divider } from "../../../Divider/styled";
 import Icon from "../../../Icon";
+import RadioButton from "../../../RadioButton";
 import Select, { OptionType } from "../../../Select";
 import Spacer from "../../../Spacer";
+import TextField from "../../../TextField";
 import Typography from "../../../Typography";
 import {
   FilterPackType,
@@ -13,9 +16,6 @@ import {
   Types,
 } from "../../types";
 import * as Styled from "./styled";
-import TextField from "../../../TextField";
-import RadioButton from "../../../RadioButton";
-import { useLocaleProps } from "../../../../hooks/useLocaleProps";
 
 export type FilterCardProps = {
   onClose: () => void;

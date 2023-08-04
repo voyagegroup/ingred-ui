@@ -1,7 +1,7 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
-import ErrorText, { ErrorTextProps } from "./ErrorText";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { StoryObj } from "@storybook/react";
+import React from "react";
+import ErrorText, { ErrorTextProps } from "./ErrorText";
 
 export default {
   title: "Components/Data Display/ErrorText",

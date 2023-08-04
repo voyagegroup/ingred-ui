@@ -1,7 +1,7 @@
-import React from "react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import LoadingBar from "./LoadingBar";
 import { StoryObj } from "@storybook/react";
+import React from "react";
+import LoadingBar from "./LoadingBar";
 
 export default {
   title: "Components/Feedback/LoadingBar",

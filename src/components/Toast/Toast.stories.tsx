@@ -1,9 +1,9 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Toast, { ToastProps } from "./Toast";
+import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Button from "../Button";
+import Toast, { ToastProps } from "./Toast";
 
 export default {
   title: "Components/Feedback/Toast",

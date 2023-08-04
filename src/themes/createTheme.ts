@@ -1,8 +1,8 @@
-import { Palette, createPalette } from "./palette";
 import { Radius, Space, Depth } from "../styles";
 import { DepthOptions, depth } from "../styles/depth";
-import { deepmerge } from "../utils/deepmerge";
 import { DeepPartial } from "../types";
+import { deepmerge } from "../utils/deepmerge";
+import { Palette, createPalette } from "./palette";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;

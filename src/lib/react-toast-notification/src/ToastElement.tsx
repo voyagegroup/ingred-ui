@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState, FC, ReactNode } from "react";
+import { TransitionStatus } from "react-transition-group";
+import colors from "./colors";
+import { CheckIcon, FlameIcon, InfoIcon, CloseIcon, AlertIcon } from "./icons";
 import * as Styled from "./styled";
 
-import { CheckIcon, FlameIcon, InfoIcon, CloseIcon, AlertIcon } from "./icons";
-import colors from "./colors";
 import type { HoverFn, Placement } from "./types";
 import { NOOP } from "./utils";
-import { TransitionStatus } from "react-transition-group";
 
 // common
 export const borderRadius = 4;

@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { components, MenuListProps } from "react-select";
+import styled from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import { OptionType } from "./Select";
 

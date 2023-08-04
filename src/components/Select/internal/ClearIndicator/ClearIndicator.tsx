@@ -1,9 +1,9 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import { ClearIndicatorProps, components, GroupBase } from "react-select";
-import Icon from "../../../Icon";
-import { useTheme } from "../../../../themes/useTheme";
 import { OptionType } from "../../";
+import { useTheme } from "../../../../themes/useTheme";
+import Icon from "../../../Icon";
+import * as Styled from "./styled";
 
 const ClearIndicator = <T,>(
   props: ClearIndicatorProps<OptionType<T>, boolean, GroupBase<OptionType<T>>>,

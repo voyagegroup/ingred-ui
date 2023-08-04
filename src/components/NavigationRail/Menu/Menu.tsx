@@ -1,11 +1,11 @@
 import * as React from "react";
-import * as Styled from "./styled";
+import { useTheme } from "../../../themes";
 import Icon from "../../Icon";
 import { IconName } from "../../Icon/Icon";
-import { NavigationRailContext } from "../utils";
 import NotificationBadge from "../../NotificationBadge";
 import { SideNotificationBadge } from "../internal/SideNotificationBadge";
-import { useTheme } from "../../../themes";
+import { NavigationRailContext } from "../utils";
+import * as Styled from "./styled";
 
 export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
   title: string;

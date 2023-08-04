@@ -1,5 +1,5 @@
-import * as React from "react";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
 import Switch from "./Switch";
 
 export default {

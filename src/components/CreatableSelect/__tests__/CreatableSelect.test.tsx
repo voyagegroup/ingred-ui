@@ -1,9 +1,9 @@
+import { cleanup } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup } from "@testing-library/react";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
-import CreatableSelect from "../CreatableSelect";
 import { OptionType } from "../../Select";
+import CreatableSelect from "../CreatableSelect";
 
 describe("CreatableSelect component testing", () => {
   afterEach(cleanup);

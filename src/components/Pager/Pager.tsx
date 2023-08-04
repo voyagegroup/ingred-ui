@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { NumberButton } from "./internal/NumberButton";
-import { ArrowButton } from "./internal/ArrowButton";
-import { PagerButtonsWithDottedLine } from "./internal/PagerButtonsWithDottedLine";
 import Flex from "../Flex";
+import { ArrowButton } from "./internal/ArrowButton";
+import { NumberButton } from "./internal/NumberButton";
+import { PagerButtonsWithDottedLine } from "./internal/PagerButtonsWithDottedLine";
 
 export type PagerProps = {
   per: number;

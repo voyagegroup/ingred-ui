@@ -1,12 +1,12 @@
+import { Placement } from "@floating-ui/react";
 import * as React from "react";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { AutoPlacement } from "../../hooks/usePlacement";
 import { createChainedFunction } from "../../utils/createChainedFunction";
 import { ActionButtonProps } from "../ActionButton";
 import Menu, { MenuProps } from "../Menu";
 import { ContentProp } from "../MenuList/MenuList";
 import * as Styled from "./styled";
-import { Placement } from "@floating-ui/react";
-import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type ContextMenuProps = {
   /**

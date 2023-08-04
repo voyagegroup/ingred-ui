@@ -1,17 +1,17 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Menu from "../Menu";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import Input from "../Input";
-import { useTheme } from "../../themes";
-import Popover from "../Popover";
-import { FilterCard } from "./internal/FilterCard";
-import { EditFilterCard } from "./internal/EditFilterCard";
-import { Status, getCurrentStatus } from "./MultipleFilterStatus";
-import { Label } from "./internal/Label";
-import { FilterPackType, ReferredFilterType } from "./types";
+import Menu from "../Menu";
 import { ContentProp } from "../MenuList/MenuList";
-import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Popover from "../Popover";
+import { Status, getCurrentStatus } from "./MultipleFilterStatus";
+import { EditFilterCard } from "./internal/EditFilterCard";
+import { FilterCard } from "./internal/FilterCard";
+import { Label } from "./internal/Label";
+import * as Styled from "./styled";
+import { FilterPackType, ReferredFilterType } from "./types";
 
 export type MultipleFilterProps = {
   /**

@@ -1,9 +1,9 @@
-import React from "react";
-import Spacer from "../Spacer";
-import Flex from "../Flex";
-import Tooltip from "./Tooltip";
-import { TooltipProps } from "..";
 import { StoryObj } from "@storybook/react";
+import React from "react";
+import { TooltipProps } from "..";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
+import Tooltip from "./Tooltip";
 
 export default {
   title: "Components/Data Display/Tooltip",

@@ -1,8 +1,8 @@
 import * as React from "react";
-import Badge from "../../Badge";
 import { useTheme } from "../../../themes";
-import * as Styled from "../styled";
+import Badge from "../../Badge";
 import Flex from "../../Flex";
+import * as Styled from "../styled";
 
 type TabProps = {
   text: string;

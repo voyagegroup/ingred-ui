@@ -1,7 +1,7 @@
-import * as React from "react";
-import DropdownButton, { DropdownButtonProps } from "./DropdownButton";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
+import DropdownButton, { DropdownButtonProps } from "./DropdownButton";
 
 export default {
   title: "Components/Inputs/DropdownButton",

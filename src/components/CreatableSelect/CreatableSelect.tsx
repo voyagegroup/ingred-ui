@@ -1,14 +1,14 @@
 import * as React from "react";
 import ReactCreatableSelect, { CreatableProps } from "react-select/creatable";
 import { GroupBase } from "react-select/dist/declarations/src/types";
-import * as Styled from "../Select/styled";
-import { useTheme } from "../../themes";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { useTheme } from "../../themes";
 import { OptionType } from "../Select";
 import { getOverrideStyles } from "../Select/Select";
-import { DropdownIndicator } from "../Select/internal/DropdownIndicator";
 import { ClearIndicator } from "../Select/internal/ClearIndicator";
+import { DropdownIndicator } from "../Select/internal/DropdownIndicator";
 import { MultiValueRemove } from "../Select/internal/MultiValueRemove";
+import * as Styled from "../Select/styled";
 
 export type CreatableSelectProps<T> = {
   minWidth?: string;

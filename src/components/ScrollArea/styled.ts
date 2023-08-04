@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Property } from "csstype";
+import styled from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 
 type ContainerProp = {

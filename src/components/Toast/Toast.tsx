@@ -1,10 +1,10 @@
 import React from "react";
-import DefaultToast from "./DefaultToast";
-import ToastProvider from "./ToastProvider";
 import {
   useToasts,
   ToastProps as DefaultToastProps,
 } from "../../lib/react-toast-notification/src";
+import DefaultToast from "./DefaultToast";
+import ToastProvider from "./ToastProvider";
 
 export type ToastProps = DefaultToastProps;
 

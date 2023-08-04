@@ -1,11 +1,11 @@
-import React from "react";
-import * as Styled from "./styled";
 import { Property } from "csstype";
+import React from "react";
 import { Theme, useTheme } from "../../themes";
 import Divider from "../Divider";
-import Typography from "../Typography";
 import Icon, { IconName } from "../Icon";
 import Spacer from "../Spacer";
+import Typography from "../Typography";
+import * as Styled from "./styled";
 
 export type ContentType = "default" | "warning" | "disabled";
 

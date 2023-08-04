@@ -1,8 +1,8 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import { Tab } from "./internal/Tab";
 import useEventCallback from "../../hooks/useEventCallback";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { Tab } from "./internal/Tab";
+import * as Styled from "./styled";
 
 type IndicatorStyle = {
   left?: number;

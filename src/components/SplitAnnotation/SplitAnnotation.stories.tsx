@@ -1,7 +1,7 @@
 import * as React from "react";
-import SplitAnnotation from "./SplitAnnotation";
-import Typography from "../Typography";
 import Flex from "../Flex";
+import Typography from "../Typography";
+import SplitAnnotation from "./SplitAnnotation";
 
 export default {
   title: "Components/Data Display/SplitAnnotation",

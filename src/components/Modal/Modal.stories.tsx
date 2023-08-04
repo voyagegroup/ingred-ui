@@ -1,9 +1,9 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Modal, { ModalProps } from "./Modal";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Button from "../Button";
 import Fade from "../Fade";
+import Modal, { ModalProps } from "./Modal";
 
 export default {
   title: "Components/Utils/Modal",

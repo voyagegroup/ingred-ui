@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import { Property } from "csstype";
+import styled from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
-import { ContentTypeStyle } from "./MenuList";
 import Typography from "../Typography";
+import { ContentTypeStyle } from "./MenuList";
 
 type ContainerProps = {
   inline: boolean;

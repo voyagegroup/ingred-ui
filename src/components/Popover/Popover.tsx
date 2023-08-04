@@ -1,7 +1,4 @@
 import { Placement } from "@floating-ui/core";
-import * as React from "react";
-import { useMergeRefs } from "../../hooks/useMergeRefs";
-import * as Styled from "./styled";
 import {
   useFloating,
   autoUpdate,
@@ -13,8 +10,11 @@ import {
   autoPlacement,
   flip,
 } from "@floating-ui/react";
-import Modal, { ModalProps } from "../Modal";
+import * as React from "react";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { usePlacement, AutoPlacement } from "../../hooks/usePlacement";
+import Modal, { ModalProps } from "../Modal";
+import * as Styled from "./styled";
 
 export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   /**

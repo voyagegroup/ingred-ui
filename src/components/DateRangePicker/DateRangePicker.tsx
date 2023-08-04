@@ -1,21 +1,21 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import "react-dates/initialize";
 import dayjs, { InstanceLocaleDataReturn } from "dayjs";
 import moment from "moment";
-import {
-  dayjsToMoment,
-  momentToDayjs,
-  convertDayjsLocaleDataToObject,
-} from "../../utils/time";
+import * as React from "react";
 import {
   FocusedInputShape,
   DateRangePicker as OriginalDateRangePicker,
   DateRangePickerShape,
 } from "react-dates";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
+import {
+  dayjsToMoment,
+  momentToDayjs,
+  convertDayjsLocaleDataToObject,
+} from "../../utils/time";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
-import { useLocaleProps } from "../../hooks/useLocaleProps";
+import * as Styled from "./styled";
 
 function isOutsideRange() {
   return false;

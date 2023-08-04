@@ -1,11 +1,11 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import { OrderStatus } from "../../sort";
 import Flex from "../../../Flex";
-import Typography from "../../../Typography";
 import Icon from "../../../Icon";
 import { IconName } from "../../../Icon/Icon";
 import Spacer from "../../../Spacer";
+import Typography from "../../../Typography";
+import { OrderStatus } from "../../sort";
+import * as Styled from "./styled";
 
 export type Props = React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {
   sortable?: boolean;

@@ -1,8 +1,7 @@
 import * as React from "react";
-import * as Styled from "./styled";
-
-import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
+import { ButtonSize } from "../Button/Button";
+import * as Styled from "./styled";
 
 type GroupButtonSize = Exclude<ButtonSize, "large">;
 

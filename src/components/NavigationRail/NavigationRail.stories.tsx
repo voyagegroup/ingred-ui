@@ -1,6 +1,6 @@
 import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
 import React from "react";
 import Flex from "../Flex";
 import Icon from "../Icon";

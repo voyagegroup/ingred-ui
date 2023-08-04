@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
+import * as Styled from "./styled";
 
 const Grow: React.FunctionComponent<CSSTransitionProps> = ({
   // TODO: define and get duration from theme

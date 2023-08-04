@@ -1,10 +1,10 @@
 import * as React from "react";
-import ToastContainer from "./internal/ToastContainer";
-import DefaultToast from "../DefaultToast";
 import {
   ToastProvider as DefaultToastProvider,
   ToastProviderProps as DefaultToastProviderProps,
 } from "../../../lib/react-toast-notification/src";
+import DefaultToast from "../DefaultToast";
+import ToastContainer from "./internal/ToastContainer";
 
 export type ToastProviderProps = DefaultToastProviderProps & {
   children: React.ReactNode;

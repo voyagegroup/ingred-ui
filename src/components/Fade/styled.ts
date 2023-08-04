@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { CSSTransition as OriginalCSSTransition } from "react-transition-group";
+import styled from "styled-components";
 import {
   CSSTransitionProps,
   getDuration,

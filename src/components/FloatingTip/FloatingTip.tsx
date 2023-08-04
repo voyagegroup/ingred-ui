@@ -1,11 +1,11 @@
+import { Placement } from "@floating-ui/react";
 import * as React from "react";
+import { AutoPlacement } from "../../hooks/usePlacement";
 import { useTheme } from "../../themes";
 import Icon from "../Icon";
 import { ModalCloseReason } from "../Modal";
 import Popover, { PopoverProps } from "../Popover";
 import * as Styled from "./styled";
-import { Placement } from "@floating-ui/react";
-import { AutoPlacement } from "../../hooks/usePlacement";
 
 export type FloatingTipCloseReason = "clickCloseIcon";
 

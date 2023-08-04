@@ -1,7 +1,7 @@
 import * as React from "react";
-import Spacer from "../Spacer";
 import Divider from "../Divider";
 import Flex from "../Flex";
+import Spacer from "../Spacer";
 import * as Styled from "./styled";
 
 export type Props = React.ComponentPropsWithoutRef<"div">;

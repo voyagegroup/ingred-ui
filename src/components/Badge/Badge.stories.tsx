@@ -1,6 +1,6 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Badge from "./Badge";
 
 export default {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { IconProps } from "../../Icon";
 import { colors } from "../../../../styles/color";
+import { IconProps } from "../../Icon";
 
 const SortUpIcon: React.FunctionComponent<IconProps> = ({ fill }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">

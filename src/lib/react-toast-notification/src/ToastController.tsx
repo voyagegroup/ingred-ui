@@ -1,7 +1,7 @@
 import React, { Component, ComponentType } from "react";
 
-import { NOOP } from "./utils";
 import type { ToastProps } from "./ToastElement";
+import { NOOP } from "./utils";
 
 type Props = ToastProps & { component: ComponentType<ToastProps> };
 type State = { isRunning: boolean };

@@ -1,15 +1,15 @@
-import * as React from "react";
-import * as Styled from "./styled";
-import { useTheme } from "../../themes";
-import Icon from "../Icon";
-import Spacer from "../Spacer";
-import Menu, { MenuProps } from "../Menu";
-import { ButtonSize, ButtonColor } from "../Button/Button";
-import { ContentProp } from "../MenuList/MenuList";
-import { createChainedFunction } from "../../utils/createChainedFunction";
-import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { Placement } from "@floating-ui/react";
+import * as React from "react";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { AutoPlacement } from "../../hooks/usePlacement";
+import { useTheme } from "../../themes";
+import { createChainedFunction } from "../../utils/createChainedFunction";
+import { ButtonSize, ButtonColor } from "../Button/Button";
+import Icon from "../Icon";
+import Menu, { MenuProps } from "../Menu";
+import { ContentProp } from "../MenuList/MenuList";
+import Spacer from "../Spacer";
+import * as Styled from "./styled";
 
 type DropdownButtonColor = Exclude<ButtonColor, "danger">;
 

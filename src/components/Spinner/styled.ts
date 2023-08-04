@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components";
 import { Property } from "csstype";
+import styled, { keyframes } from "styled-components";
 
 const rotate = keyframes`
   100% {

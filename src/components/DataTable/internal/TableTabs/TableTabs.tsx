@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import Typography from "../../../Typography";
+import * as Styled from "./styled";
 
 type ValueType = number;
 

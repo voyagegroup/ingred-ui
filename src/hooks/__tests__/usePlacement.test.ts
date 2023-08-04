@@ -1,5 +1,5 @@
-import { usePlacement } from "../usePlacement";
 import { renderHook } from "@testing-library/react";
+import { usePlacement } from "../usePlacement";
 
 describe("usePlacement", () => {
   test("auto included", () => {

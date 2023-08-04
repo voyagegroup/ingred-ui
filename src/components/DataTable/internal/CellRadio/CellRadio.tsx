@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import RadioButton from "../../../RadioButton";
+import * as Styled from "./styled";
 
 type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
   React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {

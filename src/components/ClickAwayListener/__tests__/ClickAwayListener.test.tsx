@@ -1,6 +1,6 @@
+import { cleanup, render, act, fireEvent } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup, render, act, fireEvent } from "@testing-library/react";
 import ClickAwayListener from "../ClickAwayListener";
 
 describe("ClickAwayListener component testing", () => {

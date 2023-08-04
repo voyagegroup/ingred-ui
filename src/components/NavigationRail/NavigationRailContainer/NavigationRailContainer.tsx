@@ -1,6 +1,6 @@
 import React from "react";
-import * as Styled from "./styled";
 import { NavigationRailContext } from "../utils";
+import * as Styled from "./styled";
 
 export type NavigationRailContainerProps = {
   /**

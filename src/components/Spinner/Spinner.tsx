@@ -1,7 +1,7 @@
-import * as React from "react";
 import { Property } from "csstype";
-import * as Styled from "./styled";
+import * as React from "react";
 import { useTheme } from "../../themes/useTheme";
+import * as Styled from "./styled";
 
 export type SpinnerProps = {
   width?: Property.Width;

@@ -1,11 +1,11 @@
 import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
 import dayjs from "dayjs";
+import localeData from "dayjs/plugin/localeData";
 import React from "react";
 import DatePicker from "./DatePicker";
 import "dayjs/locale/ja";
-import localeData from "dayjs/plugin/localeData";
 
 export default {
   title: "Components/Inputs/DatePicker",

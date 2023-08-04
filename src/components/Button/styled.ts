@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { BaseButton } from "./internal/BaseButton";
-import { ButtonColorStyle } from "./Button";
 import { getShadow } from "../../utils/getShadow";
+import { ButtonColorStyle } from "./Button";
+import { BaseButton } from "./internal/BaseButton";
 
 export type ContainerProps = ButtonColorStyle & {
   inline: boolean;

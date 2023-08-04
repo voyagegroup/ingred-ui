@@ -1,10 +1,10 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Popover, { PopoverProps } from "./Popover";
-import Spacer from "../Spacer";
-import Flex from "../Flex";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Button from "../Button";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
+import Popover, { PopoverProps } from "./Popover";
 
 export default {
   title: "Components/Utils/Popover",

@@ -8,12 +8,11 @@ import React, {
 import { createPortal } from "react-dom";
 import { Transition, TransitionGroup } from "react-transition-group";
 
-import { ToastController } from "./ToastController";
 import { ToastContainer, ToastContainerProps } from "./ToastContainer";
+import { ToastController } from "./ToastController";
 import { ToastProps, DefaultToast } from "./ToastElement";
 const defaultComponents = { Toast: DefaultToast, ToastContainer };
 
-import { generateUEID, NOOP } from "./utils";
 import type {
   AddFn,
   UpdateFn,
@@ -25,6 +24,7 @@ import type {
   Id,
   ToastType,
 } from "./types";
+import { generateUEID, NOOP } from "./utils";
 
 const ToastContext = React.createContext<Context>({
   add: () => "0", // MEMO: This is a dummy value.

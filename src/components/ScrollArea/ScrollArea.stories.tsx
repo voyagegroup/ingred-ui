@@ -1,9 +1,9 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import ScrollArea, { ScrollAreaProps } from "./ScrollArea";
+import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Spacer from "../Spacer";
+import ScrollArea, { ScrollAreaProps } from "./ScrollArea";
 
 export default {
   title: "Components/Utils/ScrollArea",

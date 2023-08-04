@@ -1,9 +1,9 @@
 import * as React from "react";
 import { components } from "react-select";
-import Icon from "../../../Icon";
-import * as Styled from "./styled";
 import { colors } from "../../../../styles/color";
 import { useTheme } from "../../../../themes/useTheme";
+import Icon from "../../../Icon";
+import * as Styled from "./styled";
 
 const DropdownIndicator = ({ isDisabled, error, ...rest }: any) => {
   const theme = useTheme();

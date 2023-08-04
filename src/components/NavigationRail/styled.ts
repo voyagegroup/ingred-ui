@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { hexToRgba } from "../../utils/hexToRgba";
 import {
   NavigationRailWidth,
   NavigationRailTransitionDuration,
 } from "./constants";
-import { hexToRgba } from "../../utils/hexToRgba";
 
 type ContainerProps = {
   isOpen: boolean;

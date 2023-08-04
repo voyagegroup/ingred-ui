@@ -1,9 +1,9 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Spacer from "../Spacer";
-import Typography from "../Typography";
 import defaultEmptyImage from "../../../assets/emptyImage.png";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Spacer from "../Spacer";
+import Typography from "../Typography";
+import * as Styled from "./styled";
 
 export type ItemEmptyProps = {
   title?: string;

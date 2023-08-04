@@ -1,9 +1,9 @@
+import { StoryObj } from "@storybook/react";
 import * as React from "react";
 import styled from "styled-components";
-import Pager, { useFilterState, getFilteredItems } from "./Pager";
-import { StoryObj } from "@storybook/react";
-import Typography from "../Typography";
 import Spacer from "../Spacer";
+import Typography from "../Typography";
+import Pager, { useFilterState, getFilteredItems } from "./Pager";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;

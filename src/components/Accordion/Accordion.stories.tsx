@@ -1,5 +1,5 @@
-import * as React from "react";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
 import Accordion, { AccordionProps } from "./Accordion";
 
 export default {

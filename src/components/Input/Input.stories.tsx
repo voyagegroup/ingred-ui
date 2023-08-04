@@ -1,7 +1,7 @@
-import * as React from "react";
-import Input, { InputProps } from "./Input";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
+import Input, { InputProps } from "./Input";
 
 export default {
   title: "Components/Inputs/Input",

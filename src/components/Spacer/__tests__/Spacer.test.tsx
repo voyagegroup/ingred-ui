@@ -1,6 +1,6 @@
+import { cleanup, render } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup, render } from "@testing-library/react";
 import Spacer from "../";
 import { Space } from "../../../styles/space";
 import { createTheme } from "../../../themes/createTheme";

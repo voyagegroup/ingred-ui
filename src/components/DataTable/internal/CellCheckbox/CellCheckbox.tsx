@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import Checkbox from "../../../Checkbox";
+import * as Styled from "./styled";
 
 export type Props = React.TdHTMLAttributes<HTMLTableDataCellElement> &
   React.ThHTMLAttributes<HTMLTableHeaderCellElement> & {

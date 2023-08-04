@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import { NumberButton } from "../NumberButton";
+import * as Styled from "./styled";
 
 const getCenterIndex = (pagerCount: number, index: number): number => {
   switch (true) {

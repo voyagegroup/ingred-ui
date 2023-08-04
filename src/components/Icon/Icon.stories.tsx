@@ -1,10 +1,10 @@
 import * as React from "react";
-import Icon, { icons, IconName, Props } from "./Icon";
-import Typography from "../Typography";
-import Flex from "../Flex";
-import Spacer from "../Spacer";
 import styled from "styled-components";
 import { useTheme } from "../../themes/useTheme";
+import Flex from "../Flex";
+import Spacer from "../Spacer";
+import Typography from "../Typography";
+import Icon, { icons, IconName, Props } from "./Icon";
 
 const Container = styled.div`
   padding: ${({ theme }) => theme.spacing * 3}px;

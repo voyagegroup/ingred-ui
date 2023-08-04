@@ -1,8 +1,8 @@
+import { cleanup } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup } from "@testing-library/react";
-import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 import MultipleFilter from "../";
+import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
 describe("MultipleFilter component testing", () => {
   afterEach(cleanup);

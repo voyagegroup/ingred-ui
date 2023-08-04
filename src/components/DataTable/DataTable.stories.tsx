@@ -1,16 +1,16 @@
+import { StoryObj } from "@storybook/react";
 import React from "react";
-import DataTable, { DataTableProps } from "./DataTable";
+import { useTheme } from "../../themes/useTheme";
+import ActionButton from "../ActionButton";
 import Button from "../Button";
 import Flex from "../Flex";
-import Spacer from "../Spacer";
+import FloatingTip from "../FloatingTip";
 import Icon from "../Icon";
+import Spacer from "../Spacer";
 import TextField from "../TextField";
 import Typography from "../Typography";
-import ActionButton from "../ActionButton";
+import DataTable, { DataTableProps } from "./DataTable";
 import { data } from "./mockData";
-import { useTheme } from "../../themes/useTheme";
-import FloatingTip from "../FloatingTip";
-import { StoryObj } from "@storybook/react";
 
 export default {
   title: "Components/Data Display/DataTable",

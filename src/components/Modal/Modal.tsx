@@ -1,8 +1,8 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Portal from "../Portal";
-import Backdrop, { BackdropProps } from "../Backdrop";
 import { createChainedFunction } from "../../utils/createChainedFunction";
+import Backdrop, { BackdropProps } from "../Backdrop";
+import Portal from "../Portal";
+import * as Styled from "./styled";
 
 const getHasTransition = (props: React.PropsWithChildren<any>): boolean => {
   // eslint-disable-next-line no-prototype-builtins

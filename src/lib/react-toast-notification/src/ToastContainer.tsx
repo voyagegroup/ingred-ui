@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 import styled, { css } from "styled-components";
 
-import type { Placement } from "./types";
 import { gutter } from "./ToastElement";
+import type { Placement } from "./types";
 
 const Div = styled.div<{ hasToasts: boolean; placement: Placement }>`
   box-sizing: border-box;

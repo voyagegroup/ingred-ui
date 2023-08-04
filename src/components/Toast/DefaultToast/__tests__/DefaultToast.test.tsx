@@ -1,9 +1,9 @@
+import { cleanup } from "@testing-library/react";
 import * as React from "react";
 import "@testing-library/jest-dom/extend-expect";
-import { cleanup } from "@testing-library/react";
 import DefaultToast from "..";
-import { renderWithThemeProvider } from "../../../../utils/renderWithThemeProvider";
 import { ToastProps } from "../../../../lib/react-toast-notification/src";
+import { renderWithThemeProvider } from "../../../../utils/renderWithThemeProvider";
 
 const toastProps: Omit<ToastProps, "children"> = {
   appearance: "info",

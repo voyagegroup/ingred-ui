@@ -1,12 +1,12 @@
 import * as React from "react";
-import * as Styled from "./styled";
+import { useTheme } from "../../themes";
+import ErrorText from "../ErrorText";
+import Icon from "../Icon";
+import { IconName } from "../Icon/Icon";
 import Input from "../Input";
 import { InputProps } from "../Input/Input";
-import ErrorText from "../ErrorText";
 import Spacer from "../Spacer";
-import Icon from "../Icon";
-import { useTheme } from "../../themes";
-import { IconName } from "../Icon/Icon";
+import * as Styled from "./styled";
 
 export type TextFieldProps = InputProps & {
   errorText?: string;

@@ -1,9 +1,9 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Snackbar, { SnackbarProps } from "./Snackbar";
+import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Button from "../Button";
+import Snackbar, { SnackbarProps } from "./Snackbar";
 
 export default {
   title: "Components/Feedback/Snackbar",

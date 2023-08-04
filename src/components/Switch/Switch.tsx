@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as Styled from "./styled";
+import useEventCallback from "../../hooks/useEventCallback";
 import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
-import Typography from "../Typography";
 import Tooltip from "../Tooltip";
-import useEventCallback from "../../hooks/useEventCallback";
+import Typography from "../Typography";
+import * as Styled from "./styled";
 
 type Case = {
   name: string;

@@ -1,13 +1,13 @@
 import React from "react";
-import * as Styled from "./styled";
-import { NavigationRailContext } from "./utils";
-import { NavigationRailContainer } from "./NavigationRailContainer";
-import { Header, Content, Footer } from "./Inner";
-import { MainContent } from "./MainContent";
-import { Fixture } from "./Fixture";
-import { Menu } from "./Menu";
 import { ExpansionMenu } from "./ExpansionMenu";
 import { ExpansionMenuItem } from "./ExpansionMenuItem";
+import { Fixture } from "./Fixture";
+import { Header, Content, Footer } from "./Inner";
+import { MainContent } from "./MainContent";
+import { Menu } from "./Menu";
+import { NavigationRailContainer } from "./NavigationRailContainer";
+import * as Styled from "./styled";
+import { NavigationRailContext } from "./utils";
 
 type ExportedComponentType = {
   (props: Props & React.RefAttributes<HTMLDivElement>): JSX.Element;

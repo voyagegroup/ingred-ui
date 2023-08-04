@@ -1,7 +1,7 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import { Property } from "csstype";
+import * as React from "react";
 import { createChainedFunction } from "../../utils/createChainedFunction";
+import * as Styled from "./styled";
 
 export type InputProps = (
   | React.ComponentPropsWithoutRef<"input">

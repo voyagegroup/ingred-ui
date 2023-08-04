@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import * as Styled from "./styled";
-import Icon from "../../../Icon";
 import { useTheme } from "../../../../themes";
+import Icon from "../../../Icon";
+import * as Styled from "./styled";
 
 type Props = {
   isRight: boolean;

@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as Styled from "./styled";
+import { colors } from "../../styles/color";
+import { Theme, useTheme } from "../../themes";
 import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import Typography from "../Typography";
-import { Theme, useTheme } from "../../themes";
-import { colors } from "../../styles/color";
+import * as Styled from "./styled";
 
 const getNormalBackgroundColor = (theme: Theme) => ({
   primary: theme.palette.background.hint,

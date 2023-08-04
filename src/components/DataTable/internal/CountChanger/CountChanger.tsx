@@ -2,9 +2,9 @@ import * as React from "react";
 
 import Flex from "../../../Flex";
 import Select from "../../../Select";
-import Typography from "../../../Typography";
-import Spacer from "../../../Spacer";
 import { OptionType } from "../../../Select/Select";
+import Spacer from "../../../Spacer";
+import Typography from "../../../Typography";
 
 const defaultOptions: OptionType<number>[] = [
   {

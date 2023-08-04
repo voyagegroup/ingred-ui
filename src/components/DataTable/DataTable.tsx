@@ -1,11 +1,21 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import { CountChanger, LabelDisplayRows } from "./internal/CountChanger";
-import { SortableHeaderCell } from "./internal/SortableHeaderCell";
+import { useDidUpdate } from "../../hooks/useDidUpdate";
+import Flex from "../Flex";
+import ItemEmpty, { ItemEmptyProps } from "../ItemEmpty";
+import Pager, {
+  useFilterState,
+  getFilteredItems as getFilteredItemsByPagination,
+  FilterState,
+} from "../Pager";
+import Spacer from "../Spacer";
+import Typography, { TypographyProps } from "../Typography";
 import { CellCheckbox } from "./internal/CellCheckbox";
 import { CellRadio } from "./internal/CellRadio";
+import { CountChanger, LabelDisplayRows } from "./internal/CountChanger";
+import { SortableHeaderCell } from "./internal/SortableHeaderCell";
 import { Table } from "./internal/Table";
-import Typography, { TypographyProps } from "../Typography";
+import { VerticalSpacing } from "./internal/Table/Row";
+import { TableTabs } from "./internal/TableTabs";
 import {
   changeOrderState,
   GetValue,
@@ -14,17 +24,7 @@ import {
   CurrentSortState,
   useOrderState,
 } from "./sort";
-import Spacer from "../Spacer";
-import Flex from "../Flex";
-import Pager, {
-  useFilterState,
-  getFilteredItems as getFilteredItemsByPagination,
-  FilterState,
-} from "../Pager";
-import ItemEmpty, { ItemEmptyProps } from "../ItemEmpty";
-import { TableTabs } from "./internal/TableTabs";
-import { useDidUpdate } from "../../hooks/useDidUpdate";
-import { VerticalSpacing } from "./internal/Table/Row";
+import * as Styled from "./styled";
 
 function isCheckableTab<T>(currentTabIndex: number, tabs?: Tab<T>[]) {
   return !!tabs && !tabs[currentTabIndex]?.disabledCheck;

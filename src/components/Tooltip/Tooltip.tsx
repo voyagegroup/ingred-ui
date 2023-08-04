@@ -1,9 +1,4 @@
-import * as React from "react";
-import * as Styled from "./styled";
-import Fade from "../Fade";
 import { Placement } from "@floating-ui/core";
-import { useMergeRefs } from "../../hooks/useMergeRefs";
-import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 import {
   autoPlacement,
   flip,
@@ -19,8 +14,13 @@ import {
   FloatingArrow,
   FloatingDelayGroup,
 } from "@floating-ui/react";
-import { useTheme } from "../../themes";
+import * as React from "react";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
+import { useTheme } from "../../themes";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
+import Fade from "../Fade";
+import * as Styled from "./styled";
 
 export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   content: React.ReactNode;

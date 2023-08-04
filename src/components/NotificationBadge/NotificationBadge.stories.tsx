@@ -1,7 +1,7 @@
-import * as React from "react";
-import NotificationBadge, { NotificationBadgeProps } from "./NotificationBadge";
-import { Icon } from "..";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
+import { Icon } from "..";
+import NotificationBadge, { NotificationBadgeProps } from "./NotificationBadge";
 
 export default {
   title: "Components/Data Display/NotificationBadge",

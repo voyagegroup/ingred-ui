@@ -1,7 +1,7 @@
-import * as React from "react";
 import { StoryObj } from "@storybook/react";
-import TextField, { TextFieldProps } from "./TextField";
+import * as React from "react";
 import { Flex, Spacer, Typography } from "..";
+import TextField, { TextFieldProps } from "./TextField";
 
 export default {
   title: "Components/Inputs/TextField",

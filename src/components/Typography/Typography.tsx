@@ -1,7 +1,7 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import { Theme } from "../../themes";
 import { useTheme } from "../../themes/useTheme";
+import * as Styled from "./styled";
 
 export type ColorType =
   | "initial"

@@ -1,5 +1,5 @@
-import Flex from "../Flex";
 import styled from "styled-components";
+import Flex from "../Flex";
 
 export const AccordionTitle = styled(Flex)<{
   expanded: boolean;

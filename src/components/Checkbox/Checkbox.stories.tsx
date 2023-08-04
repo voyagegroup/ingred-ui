@@ -1,7 +1,7 @@
-import React from "react";
 import { StoryObj } from "@storybook/react";
-import Checkbox, { CheckBoxProps } from "./Checkbox";
+import React from "react";
 import { Flex } from "..";
+import Checkbox, { CheckBoxProps } from "./Checkbox";
 
 export default {
   title: "Components/Inputs/Checkbox",

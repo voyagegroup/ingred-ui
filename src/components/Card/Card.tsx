@@ -1,8 +1,8 @@
-import styled from "styled-components";
 import { Property } from "csstype";
+import styled from "styled-components";
 
-import { flexbox, FlexProps } from "../Flex/Flex";
 import { spacer, SpacerProps } from "../../utils/spacer";
+import { flexbox, FlexProps } from "../Flex/Flex";
 
 export type CardProps = SpacerProps &
   FlexProps & {

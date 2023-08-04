@@ -1,9 +1,9 @@
 import * as React from "react";
+import { useTheme } from "../../themes/useTheme";
+import Flex from "../Flex";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
 import Typography from "../Typography";
-import Flex from "../Flex";
-import { useTheme } from "../../themes/useTheme";
 
 export type ErrorTextProps = {
   children: string;

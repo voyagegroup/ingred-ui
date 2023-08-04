@@ -1,11 +1,11 @@
-import * as React from "react";
-import * as Styled from "./styled";
 import { Property } from "csstype";
-import Typography from "../Typography";
+import * as React from "react";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 import Flex from "../Flex";
 import Icon from "../Icon";
 import Spacer from "../Spacer";
-import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Typography from "../Typography";
+import * as Styled from "./styled";
 
 export type FileUploaderProps = {
   description?: string;

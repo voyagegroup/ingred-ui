@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Flex, Spacer, Typography } from "..";
 import { StoryObj } from "@storybook/react";
-import Select, { OptionType } from "./Select";
+import * as React from "react";
 import { MultiValue } from "react-select";
+import { Flex, Spacer, Typography } from "..";
+import Select, { OptionType } from "./Select";
 
 export default {
   title: "Components/Inputs/Select",

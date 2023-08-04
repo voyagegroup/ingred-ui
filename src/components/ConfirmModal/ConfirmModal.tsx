@@ -1,18 +1,18 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Icon from "../Icon";
-import Spacer from "../Spacer";
-import Flex from "../Flex";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { useTheme } from "../../themes";
+import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 import Button from "../Button";
 import { ButtonColor } from "../Button/Button";
-import Spinner from "../Spinner";
-import { useTheme } from "../../themes";
+import Fade from "../Fade";
+import Flex from "../Flex";
+import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import Modal, { ModalCloseReason, ModalProps } from "../Modal";
-import Fade from "../Fade";
-import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
-import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Spacer from "../Spacer";
+import Spinner from "../Spinner";
 import Typography from "../Typography";
+import * as Styled from "./styled";
 
 export type ConfirmModalCloseReason = "clickCloseIcon" | "clickCancelButton";
 

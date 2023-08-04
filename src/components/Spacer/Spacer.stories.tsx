@@ -1,9 +1,9 @@
-import React from "react";
 import { Title, Stories, ArgsTable } from "@storybook/addon-docs";
-import Spacer from "../Spacer";
-import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import { SpacerProps } from "../../utils/spacer";
+import Spacer from "../Spacer";
 
 export default {
   title: "Components/Layout/Spacer",

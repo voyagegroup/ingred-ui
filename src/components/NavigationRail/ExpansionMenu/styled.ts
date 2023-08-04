@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { NavigationRailTransitionDuration } from "../constants";
 import Typography from "../../Typography";
+import { NavigationRailTransitionDuration } from "../constants";
 
 export const Container = styled.div<{ isActive: boolean }>`
   cursor: pointer;

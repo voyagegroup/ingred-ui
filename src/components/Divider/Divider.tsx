@@ -1,7 +1,7 @@
 import React from "react";
-import * as Styled from "./styled";
 import { useTheme } from "../../themes";
 import { SpacerProps } from "../../utils/spacer";
+import * as Styled from "./styled";
 
 export type DividerProps = SpacerProps & {
   color?: string;

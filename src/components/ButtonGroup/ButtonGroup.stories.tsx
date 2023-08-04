@@ -1,8 +1,8 @@
-import * as React from "react";
 import { StoryObj } from "@storybook/react";
+import * as React from "react";
+import { Flex, Spacer, Typography } from "..";
 import Button from "../Button";
 import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
-import { Flex, Spacer, Typography } from "..";
 
 export default {
   title: "Components/Inputs/ButtonGroup",

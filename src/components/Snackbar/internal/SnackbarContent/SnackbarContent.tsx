@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as Styled from "./styled";
-import Icon from "../../../Icon";
-import { SnackbarColor } from "../../Snackbar";
 import { Theme } from "../../../../themes";
 import { useTheme } from "../../../../themes/useTheme";
 import { getShadow } from "../../../../utils/getShadow";
+import Icon from "../../../Icon";
+import { SnackbarColor } from "../../Snackbar";
+import * as Styled from "./styled";
 
 type Props = {
   color: SnackbarColor;

@@ -1,6 +1,6 @@
 import * as React from "react";
-import * as Styled from "./styled";
 import { SnackbarContent } from "./internal/SnackbarContent";
+import * as Styled from "./styled";
 
 export type SnackbarColor = "default" | "dark" | "warning";
 

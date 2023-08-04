@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Body } from "./Body";
 import { Cell } from "./Cell";
 import { Header } from "./Header";
-import { Row } from "./Row";
 import { HeaderCell } from "./HeaderCell";
+import { Row } from "./Row";
 
 type ExportedComponentType = {
   (props: React.ComponentPropsWithRef<"table">): JSX.Element;

@@ -1,5 +1,5 @@
-import React from "react";
 import { StoryObj } from "@storybook/react";
+import React from "react";
 import RadioButton, { RadioButtonProps, RadioButtonSize } from "./RadioButton";
 
 export default {

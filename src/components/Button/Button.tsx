@@ -1,9 +1,9 @@
 import * as React from "react";
+import { Theme, useTheme } from "../../themes";
+import { getShadow } from "../../utils/getShadow";
 import { fontSize } from "../Typography/Typography";
 import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
-import { Theme, useTheme } from "../../themes";
-import { getShadow } from "../../utils/getShadow";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor = "primary" | "secondary" | "danger" | "clear";

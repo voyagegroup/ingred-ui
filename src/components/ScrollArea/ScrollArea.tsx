@@ -1,6 +1,6 @@
+import { Property } from "csstype";
 import * as React from "react";
 import * as Styled from "./styled";
-import { Property } from "csstype";
 
 export type ScrollAreaProps = React.ComponentPropsWithoutRef<"div"> & {
   height?: Property.Height;

@@ -1,9 +1,9 @@
-import React from "react";
-import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Backdrop, { BackdropProps } from "./Backdrop";
-import Spinner from "../Spinner";
+import { StoryObj } from "@storybook/react";
+import React from "react";
 import Button from "../Button";
+import Spinner from "../Spinner";
+import Backdrop, { BackdropProps } from "./Backdrop";
 
 export default {
   title: "Components/Feedback/Backdrop",

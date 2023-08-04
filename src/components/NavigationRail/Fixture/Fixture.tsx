@@ -1,10 +1,10 @@
 import React from "react";
-import * as Styled from "./styled";
+import { useTheme } from "../../../themes";
 import Icon from "../../Icon";
 import Tooltip from "../../Tooltip";
-import { NavigationRailContext } from "../utils";
-import { useTheme } from "../../../themes";
 import { NavigationRailTransitionDuration } from "../constants";
+import { NavigationRailContext } from "../utils";
+import * as Styled from "./styled";
 
 export type LabelFixtureTooltip = (isFixed: boolean) => string;
 
