@@ -3,7 +3,7 @@
 exports[`Pager component testing Pager 1`] = `
 <DocumentFragment>
   <div
-    class="sc-jSMfEi kmsKij"
+    class="sc-bczRLJ elDA-dC"
     display="flex"
   >
     <button
@@ -13,7 +13,7 @@ exports[`Pager component testing Pager 1`] = `
       type="button"
     >
       <span
-        class="sc-hKMtZM gLnfjV"
+        class="sc-gsnTZi ezZeqd"
         size="18"
       >
         <svg
@@ -34,12 +34,12 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-bczRLJ hFtSAg"
+      class="sc-eCYdqJ hnTqLD"
       disabled=""
       type="button"
     >
       <span
-        class="sc-gsnTZi hDkACN"
+        class="sc-hKMtZM khgWzt"
         color="#FFFFFF"
         font-size="12px"
       >
@@ -47,11 +47,11 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-bczRLJ ereHpM"
+      class="sc-eCYdqJ fFUTST"
       type="button"
     >
       <span
-        class="sc-gsnTZi gELrhb"
+        class="sc-hKMtZM fXVVsv"
         color="#0B82F4"
         font-size="12px"
       >
@@ -59,11 +59,11 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-bczRLJ ereHpM"
+      class="sc-eCYdqJ fFUTST"
       type="button"
     >
       <span
-        class="sc-gsnTZi gELrhb"
+        class="sc-hKMtZM fXVVsv"
         color="#0B82F4"
         font-size="12px"
       >
@@ -71,11 +71,11 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-bczRLJ ereHpM"
+      class="sc-eCYdqJ fFUTST"
       type="button"
     >
       <span
-        class="sc-gsnTZi gELrhb"
+        class="sc-hKMtZM fXVVsv"
         color="#0B82F4"
         font-size="12px"
       >
@@ -83,11 +83,11 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <button
-      class="sc-bczRLJ ereHpM"
+      class="sc-eCYdqJ fFUTST"
       type="button"
     >
       <span
-        class="sc-gsnTZi gELrhb"
+        class="sc-hKMtZM fXVVsv"
         color="#0B82F4"
         font-size="12px"
       >
@@ -95,16 +95,16 @@ exports[`Pager component testing Pager 1`] = `
       </span>
     </button>
     <div
-      class="sc-eCYdqJ bvZTgU"
+      class="sc-jSMfEi cOsDnu"
     >
       ...
     </div>
     <button
-      class="sc-bczRLJ ereHpM"
+      class="sc-eCYdqJ fFUTST"
       type="button"
     >
       <span
-        class="sc-gsnTZi gELrhb"
+        class="sc-hKMtZM fXVVsv"
         color="#0B82F4"
         font-size="12px"
       >
@@ -117,7 +117,7 @@ exports[`Pager component testing Pager 1`] = `
       type="button"
     >
       <span
-        class="sc-hKMtZM gLnfjV"
+        class="sc-gsnTZi ezZeqd"
         size="18"
       >
         <svg

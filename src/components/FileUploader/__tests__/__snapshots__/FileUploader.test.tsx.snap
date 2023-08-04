@@ -3,7 +3,7 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ gxuZtk"
+    class="sc-eCYdqJ eRYrDL"
   >
     <input
       aria-label="file-uploader"
@@ -11,14 +11,14 @@ exports[`FileUploader component testing FileUploader 1`] = `
       type="file"
     />
     <div
-      class="sc-gsnTZi"
+      class="sc-jSMfEi"
     >
       <div
-        class="sc-hKMtZM gmMVFG"
+        class="sc-bczRLJ iTgxlY"
         display="flex"
       >
         <span
-          class="sc-eCYdqJ iymozk"
+          class="sc-gsnTZi ezZeqd"
           size="18"
         >
           <svg
@@ -38,7 +38,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </svg>
         </span>
         <p
-          class="sc-dkzDqf eEHJTS"
+          class="sc-hKMtZM dVfDEd"
           color="#0B82F4"
           font-size="14px"
         >

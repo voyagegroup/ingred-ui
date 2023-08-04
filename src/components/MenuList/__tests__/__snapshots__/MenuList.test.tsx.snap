@@ -3,13 +3,13 @@
 exports[`MenuList component testing MenuList splited 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi bHzWde"
+    class="sc-eCYdqJ iXNtov"
   >
     <div
-      class="sc-dkzDqf krxAQa"
+      class="sc-jSMfEi gMfTnC"
     >
       <p
-        class="sc-bczRLJ JfGKz"
+        class="sc-hKMtZM ktLolp"
         color="#596978"
         font-size="12px"
       >
@@ -17,10 +17,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi jMMyQj"
+      class="sc-ftvSup ddlugd"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        class="sc-hKMtZM kkYdqw sc-iBkjds"
         color="#041C33"
         font-size="13px"
       >
@@ -28,15 +28,15 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-gKXOVf iCDnFu"
+      class="sc-bczRLJ cXKrEm"
       color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-jSMfEi jMMyQj"
+      class="sc-ftvSup ddlugd"
     >
       <p
-        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        class="sc-hKMtZM kkYdqw sc-iBkjds"
         color="#041C33"
         font-size="13px"
       >
@@ -44,10 +44,10 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi bAvCPi"
+      class="sc-ftvSup cnZXWM"
     >
       <p
-        class="sc-bczRLJ duOoMD sc-eCYdqJ"
+        class="sc-hKMtZM dnNjzt sc-iBkjds"
         color="#EB0A4E"
         font-size="13px"
       >
@@ -55,11 +55,11 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi kMvEJY"
+      class="sc-ftvSup kWonHa"
       disabled=""
     >
       <p
-        class="sc-bczRLJ iySyTU sc-eCYdqJ"
+        class="sc-hKMtZM lfSymG sc-iBkjds"
         color="#B3BAC1"
         font-size="13px"
       >
@@ -67,16 +67,16 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi jMMyQj"
+      class="sc-ftvSup ddlugd"
     >
       <div
-        class="sc-ftvSup espOCS"
+        class="sc-dkzDqf gEBnMa"
       >
         <div
-          class="sc-hKMtZM cvHByS"
+          class="sc-gKXOVf ifZYwI"
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-gsnTZi ezZeqd"
             size="18"
           >
             <svg
@@ -92,7 +92,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         </div>
       </div>
       <p
-        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        class="sc-hKMtZM kkYdqw sc-iBkjds"
         color="#041C33"
         font-size="13px"
       >
@@ -100,21 +100,21 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <hr
-      class="sc-gKXOVf iCDnFu"
+      class="sc-bczRLJ cXKrEm"
       color="#E2E8EA"
       orientation="horizontal"
     />
     <div
-      class="sc-jSMfEi jMMyQj"
+      class="sc-ftvSup ddlugd"
     >
       <div
-        class="sc-ftvSup espOCS"
+        class="sc-dkzDqf gEBnMa"
       >
         <div
-          class="sc-hKMtZM cvHByS"
+          class="sc-gKXOVf ifZYwI"
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-gsnTZi ezZeqd"
             size="18"
           >
             <svg
@@ -130,7 +130,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         </div>
       </div>
       <p
-        class="sc-bczRLJ dkTFVi sc-eCYdqJ"
+        class="sc-hKMtZM kkYdqw sc-iBkjds"
         color="#041C33"
         font-size="13px"
       >
@@ -138,16 +138,16 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi bAvCPi"
+      class="sc-ftvSup cnZXWM"
     >
       <div
-        class="sc-ftvSup espOCS"
+        class="sc-dkzDqf gEBnMa"
       >
         <div
-          class="sc-hKMtZM cvHByS"
+          class="sc-gKXOVf ifZYwI"
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-gsnTZi ezZeqd"
             size="18"
           >
             <svg
@@ -163,7 +163,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         </div>
       </div>
       <p
-        class="sc-bczRLJ duOoMD sc-eCYdqJ"
+        class="sc-hKMtZM dnNjzt sc-iBkjds"
         color="#EB0A4E"
         font-size="13px"
       >
@@ -171,18 +171,18 @@ exports[`MenuList component testing MenuList splited 1`] = `
       </p>
     </div>
     <div
-      class="sc-jSMfEi kMvEJY"
+      class="sc-ftvSup kWonHa"
       disabled=""
     >
       <div
-        class="sc-ftvSup espOCS"
+        class="sc-dkzDqf gEBnMa"
       >
         <div
-          class="sc-hKMtZM kgMPvs"
+          class="sc-gKXOVf elixvS"
           disabled=""
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-gsnTZi ezZeqd"
             size="18"
           >
             <svg
@@ -198,7 +198,7 @@ exports[`MenuList component testing MenuList splited 1`] = `
         </div>
       </div>
       <p
-        class="sc-bczRLJ iySyTU sc-eCYdqJ"
+        class="sc-hKMtZM lfSymG sc-iBkjds"
         color="#B3BAC1"
         font-size="13px"
       >

@@ -38,7 +38,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -111,7 +111,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -206,7 +206,7 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -314,7 +314,7 @@ exports[`Select component testing Disable not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -431,7 +431,7 @@ exports[`Select component testing Disable one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -521,7 +521,7 @@ exports[`Select component testing Error multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -594,7 +594,7 @@ exports[`Select component testing Error multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -681,14 +681,14 @@ exports[`Select component testing Error multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-gsnTZi"
+            class="sc-dkzDqf"
           >
             <div
               aria-hidden="true"
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -755,7 +755,7 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -862,7 +862,7 @@ exports[`Select component testing Error not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -971,14 +971,14 @@ exports[`Select component testing Error one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-gsnTZi"
+            class="sc-dkzDqf"
           >
             <div
               aria-hidden="true"
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1045,7 +1045,7 @@ exports[`Select component testing Error one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1135,7 +1135,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1208,7 +1208,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
               role="button"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1295,14 +1295,14 @@ exports[`Select component testing Normal multiple selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-gsnTZi"
+            class="sc-dkzDqf"
           >
             <div
               aria-hidden="true"
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1369,7 +1369,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1476,7 +1476,7 @@ exports[`Select component testing Normal not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1585,14 +1585,14 @@ exports[`Select component testing Normal one selected 1`] = `
           class=" css-1hb7zxy-IndicatorsContainer"
         >
           <div
-            class="sc-gsnTZi"
+            class="sc-dkzDqf"
           >
             <div
               aria-hidden="true"
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg
@@ -1659,7 +1659,7 @@ exports[`Select component testing Normal one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                class="sc-dkzDqf kPdxGi"
+                class="sc-gsnTZi ezZeqd"
                 size="18"
               >
                 <svg

@@ -3,26 +3,26 @@
 exports[`Tabs component testing Tabs 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi gFfhsY"
+    class="sc-hKMtZM gZcLXw"
   >
     <div
-      class="sc-jSMfEi cNWakk"
+      class="sc-iBkjds cNETuX"
       style="left: 0px; width: 0px;"
     />
     <div
-      class="sc-dkzDqf"
+      class="sc-eCYdqJ"
     >
       <button
-        class="sc-hKMtZM kcIAQG"
+        class="sc-jSMfEi enDSTx"
         tabindex="0"
         value="hoge"
       >
         <div
-          class="sc-ftvSup gIaYWH"
+          class="sc-gsnTZi bCRCvk"
           display="flex"
         >
           <p
-            class="sc-bczRLJ cTnYtN sc-eCYdqJ ifgxdx"
+            class="sc-dkzDqf fEWhKk sc-gKXOVf cNBPuO"
             color="#041C33"
             font-size="14px"
           >
@@ -31,16 +31,16 @@ exports[`Tabs component testing Tabs 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-jSMfEi cMzhBZ"
         tabindex="-1"
         value="fuga"
       >
         <div
-          class="sc-ftvSup gIaYWH"
+          class="sc-gsnTZi bCRCvk"
           display="flex"
         >
           <p
-            class="sc-bczRLJ cTnYtN sc-eCYdqJ gmlKiN"
+            class="sc-dkzDqf fEWhKk sc-gKXOVf dhvuZW"
             color="#041C33"
             font-size="14px"
           >
@@ -49,7 +49,7 @@ exports[`Tabs component testing Tabs 1`] = `
         </div>
       </button>
       <div
-        class="sc-gKXOVf hvjgAI"
+        class="sc-ftvSup dUdnnF"
       />
     </div>
   </div>
@@ -59,33 +59,33 @@ exports[`Tabs component testing Tabs 1`] = `
 exports[`Tabs component testing Tabs with badge 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi gFfhsY"
+    class="sc-hKMtZM gZcLXw"
   >
     <div
-      class="sc-jSMfEi cNWakk"
+      class="sc-iBkjds cNETuX"
       style="left: 0px; width: 0px;"
     />
     <div
-      class="sc-dkzDqf"
+      class="sc-eCYdqJ"
     >
       <button
-        class="sc-hKMtZM kcIAQG"
+        class="sc-jSMfEi enDSTx"
         tabindex="0"
         value="hoge"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-gsnTZi llJioq"
           display="flex"
         >
           <p
-            class="sc-bczRLJ cTnYtN sc-eCYdqJ ifgxdx"
+            class="sc-dkzDqf fEWhKk sc-gKXOVf cNBPuO"
             color="#041C33"
             font-size="14px"
           >
             hoge 
           </p>
           <span
-            class="sc-iBkjds ejurA"
+            class="sc-bczRLJ jZZUKS"
             color="#FFFFFF"
             font-size="0.65em"
             font-weight="bold"
@@ -96,23 +96,23 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-jSMfEi cMzhBZ"
         tabindex="-1"
         value="fuga"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-gsnTZi llJioq"
           display="flex"
         >
           <p
-            class="sc-bczRLJ cTnYtN sc-eCYdqJ gmlKiN"
+            class="sc-dkzDqf fEWhKk sc-gKXOVf dhvuZW"
             color="#041C33"
             font-size="14px"
           >
             fuga 
           </p>
           <span
-            class="sc-iBkjds qDogj"
+            class="sc-bczRLJ cxAKVN"
             color="#FFFFFF"
             font-size="0.65em"
             font-weight="bold"
@@ -123,23 +123,23 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-jSMfEi cMzhBZ"
         tabindex="-1"
         value="piyo"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-gsnTZi llJioq"
           display="flex"
         >
           <p
-            class="sc-bczRLJ cTnYtN sc-eCYdqJ gmlKiN"
+            class="sc-dkzDqf fEWhKk sc-gKXOVf dhvuZW"
             color="#041C33"
             font-size="14px"
           >
             piyo 
           </p>
           <span
-            class="sc-iBkjds qDogj"
+            class="sc-bczRLJ cxAKVN"
             color="#FFFFFF"
             font-size="0.65em"
             font-weight="bold"
@@ -150,7 +150,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         </div>
       </button>
       <div
-        class="sc-gKXOVf hvjgAI"
+        class="sc-ftvSup dUdnnF"
       />
     </div>
   </div>

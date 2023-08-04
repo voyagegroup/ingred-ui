@@ -3,18 +3,18 @@
 exports[`ItemEmpty component testing ItemEmpty 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ jWoGQu"
+    class="sc-dkzDqf dkGTRP"
   >
     <img
-      class="sc-gsnTZi kNskej"
+      class="sc-hKMtZM bnepOz"
       src=""
       width="80"
     />
     <div
-      class="sc-dkzDqf bDsRox"
+      class="sc-bczRLJ gdNHJQ"
     >
       <p
-        class="sc-hKMtZM DMRKh"
+        class="sc-gsnTZi fLDlUp"
         color="#041C33"
         font-size="14px"
       >
@@ -22,7 +22,7 @@ exports[`ItemEmpty component testing ItemEmpty 1`] = `
       </p>
     </div>
     <p
-      class="sc-hKMtZM kkYdqw"
+      class="sc-gsnTZi bWKIuM"
       color="#041C33"
       font-size="13px"
     >

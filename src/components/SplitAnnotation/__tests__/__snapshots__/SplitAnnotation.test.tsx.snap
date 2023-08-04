@@ -3,19 +3,19 @@
 exports[`SplitAnnotation component testing ActionButton 1`] = `
 <DocumentFragment>
   <div
-    class="sc-dkzDqf kOOBXZ"
+    class="sc-gsnTZi kKCLla"
     display="flex"
   >
     <div
-      class="sc-bczRLJ guevgz"
+      class="sc-dkzDqf bUYEUq"
     />
     <hr
-      class="sc-gsnTZi ddyAZm"
+      class="sc-bczRLJ bHAFuA"
       color="#B3BAC1"
       orientation="vertical"
     />
     <div
-      class="sc-bczRLJ guevgz"
+      class="sc-dkzDqf bUYEUq"
     />
     <div
       class="sc-hKMtZM krMSOe"
