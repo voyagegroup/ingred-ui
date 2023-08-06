@@ -1,5 +1,6 @@
-import { ThemedStyledProps } from "styled-components";
-import { Theme } from "../themes";
+import { ExecutionContext } from "styled-components";
+
+export type ThemedStyledProps<P> = P & ExecutionContext;
 
 export type SpacerProps = {
   /** margin */
@@ -33,7 +34,7 @@ export type SpacerProps = {
   py?: number;
 };
 
-export const getMargin = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
+export const getMargin = (payload: ThemedStyledProps<SpacerProps>) => {
   const space = payload.theme.spacing;
   const mt = payload.mt || payload.my || payload.m || 0;
   const mr = payload.mr || payload.mx || payload.m || 0;
@@ -44,7 +45,7 @@ export const getMargin = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
   }px`;
 };
 
-export const getPadding = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
+export const getPadding = (payload: ThemedStyledProps<SpacerProps>) => {
   const space = payload.theme.spacing;
   const pt = payload.pt || payload.py || payload.p || 0;
   const pr = payload.pr || payload.px || payload.p || 0;
@@ -55,7 +56,7 @@ export const getPadding = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
   }px`;
 };
 
-export const spacer = (payload: ThemedStyledProps<SpacerProps, Theme>) => {
+export const spacer = (payload: ThemedStyledProps<SpacerProps>) => {
   return `
     ${getMargin(payload)};
     ${getPadding(payload)};
