@@ -36,7 +36,7 @@
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
-    "styled-components": ">= 5.X"
+    "styled-components": ">= 6.X"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.21.4",
@@ -62,7 +62,6 @@
     "@types/react-dom": "18.0.5",
     "@types/react-transition-group": "4.4.4",
     "@types/rollup-plugin-peer-deps-external": "2.2.1",
-    "@types/styled-components": "5.1.25",
     "@typescript-eslint/eslint-plugin": "5.61.0",
     "@typescript-eslint/parser": "5.61.0",
     "cross-env": "7.0.3",
@@ -83,7 +82,7 @@
     "rollup-plugin-peer-deps-external": "2.2.4",
     "scaffdog": "2.5.0",
     "storybook": "7.2.0",
-    "styled-components": "5.3.5",
+    "styled-components": "6.0.7",
     "ts-jest": "29.1.0",
     "typescript": "5.1.6",
     "vite": "4.4.6"
