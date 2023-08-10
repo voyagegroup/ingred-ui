@@ -3,7 +3,10 @@ import Fade from "../components/Fade";
 import Grow from "../components/Grow";
 import Slide from "../components/Slide";
 
-export type CSSTransitionProps = Partial<OriginalCSSTransitionProps> & {
+export type CSSTransitionProps = Partial<
+  Omit<OriginalCSSTransitionProps, "nodeRef">
+> & {
+  nodeRef?: React.RefObject<HTMLElement>;
   children?: React.ComponentElement<HTMLElement, any>;
 };
 
