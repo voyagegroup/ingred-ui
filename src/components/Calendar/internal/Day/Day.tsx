@@ -13,6 +13,7 @@ export const Day: FC<Props> = memo(
   ({ selected, value, onClickDate, children }) => (
     <DayContainer
       selected={selected}
+      // eslint-disable-next-line react/jsx-handler-names
       onClick={() => {
         onClickDate?.(value);
       }}
