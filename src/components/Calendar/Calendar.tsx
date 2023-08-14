@@ -19,21 +19,19 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   onDateChange: (value: Dayjs) => void;
 };
 
-const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar({
-  date,
-  actions,
-  onDateChange,
-  ...rest
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { monthList } = useScroll(date, ref);
+const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
+  { date, actions, onDateChange, ...rest },
+  ref,
+) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { monthList } = useScroll(date, scrollRef);
 
   return (
     <Card ref={ref} display="flex" style={{ width: "fit-content" }} {...rest}>
       <Actions actions={actions} />
       <Container>
         <ScrollArea
-          ref={ref}
+          ref={scrollRef}
           minHeight={HEIGHT}
           maxHeight={HEIGHT}
           id="calendar"

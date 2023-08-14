@@ -63,12 +63,8 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
     );
 
     return (
-      <Flex ref={ref}>
-        <div
-          ref={refs.setReference}
-          {...getReferenceProps()}
-          style={{ width: "fit-content" }}
-        >
+      <Flex ref={ref} style={{ width: "fit-content" }}>
+        <div ref={refs.setReference} {...getReferenceProps()}>
           <DateField
             date={date}
             format={format}
@@ -83,8 +79,9 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
             actions={actions}
             style={{
               position: strategy,
-              left: x,
-              top: y,
+              top: y ?? 0,
+              left: x ?? 0,
+              zIndex: 100,
             }}
             onDateChange={handleClickDate}
             {...getFloatingProps()}
