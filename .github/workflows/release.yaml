@@ -1,11 +1,9 @@
 name: release
 
 on:
-  workflow_dispatch:
-    inputs:
-      release_version:
-        required: true
-        description: release version
+  push:
+    branches:
+      - master
 
 jobs:
   release:
