@@ -17,7 +17,7 @@ export * from "./Button";
 export { default as ButtonGroup } from "./ButtonGroup";
 export * from "./ButtonGroup";
 
-export { default as Calendar } from "./Calendar";
+export { Calendar, CalendarRange } from "./Calendar";
 export * from "./Calendar";
 
 export { default as Card } from "./Card";
