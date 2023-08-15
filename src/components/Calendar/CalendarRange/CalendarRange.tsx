@@ -18,10 +18,6 @@ export type CalendarRangeProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
-  /**
-   * date: { start: Dayjs; end: Dayjs; } にしたい
-   * ここは少し考える
-   */
   onDatesChange: ({
     startDate,
     endDate,
@@ -35,7 +31,6 @@ export type CalendarRangeProps = {
  * CalendarRange
  * Scrollable calendar UI.
  * Currently, one year from the currently selected date is displayed.
- * @todo forwardRef
  */
 export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
   function ({ startDate, endDate, actions, onDatesChange }, ref) {
