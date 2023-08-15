@@ -12,7 +12,7 @@ export default {
 export const Default: StoryObj<CalendarProps> = {
   render: () => {
     const [date, setDate] = React.useState(dayjs());
-    return <Calendar date={date} onChange={setDate} />;
+    return <Calendar date={date} onDateChange={setDate} />;
   },
 };
 
@@ -33,6 +33,6 @@ export const WithActions: StoryObj<CalendarProps> = {
         onClick: () => setDate(dayjs().add(1, "month")),
       },
     ];
-    return <Calendar date={date} actions={actions} onChange={setDate} />;
+    return <Calendar date={date} actions={actions} onDateChange={setDate} />;
   },
 };
