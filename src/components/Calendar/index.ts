@@ -1,1 +1,4 @@
-export { default } from "./Calendar";
+import Calendar from "./Calendar";
+import CalendarRange from "./CalendarRange";
+
+export { Calendar, CalendarRange };
