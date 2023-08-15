@@ -1,17 +1,17 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Card, ScrollArea, Typography } from "..";
+import { Card, ScrollArea, Typography } from "../..";
 import React, { forwardRef, memo, useRef } from "react";
 import { Day } from "./internal/Day";
-import { weekList, HEIGHT } from "./constants";
+import { weekList, HEIGHT } from "../constants";
 import {
   Container,
   CalendarContainer,
   DatePickerContainer,
   DayStyle,
   CalendarMonth,
-} from "./styled";
-import { useScroll } from "./hooks/useScroll";
-import { Action, Actions } from "./internal/Actions";
+} from "../styled";
+import { useScroll } from "../hooks/useScroll";
+import { Action, Actions } from "../internal/Actions";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   date: Dayjs;
