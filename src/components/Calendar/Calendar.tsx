@@ -13,26 +13,25 @@ import {
 import { useScroll } from "./hooks/useScroll";
 import { Action, Actions } from "./internal/Actions";
 
-export type CalendarProps = {
+export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   date: Dayjs;
   actions?: Action[];
-  onChange: (value: Dayjs) => void;
+  onDateChange: (value: Dayjs) => void;
 };
 
-const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar({
-  date,
-  actions,
-  onChange,
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { monthList } = useScroll(date, ref);
+const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
+  { date, actions, onDateChange, ...rest },
+  ref,
+) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { monthList } = useScroll(date, scrollRef);
 
   return (
-    <Card ref={ref} display="flex" style={{ width: "fit-content" }}>
+    <Card ref={ref} display="flex" style={{ width: "fit-content" }} {...rest}>
       <Actions actions={actions} />
       <Container>
         <ScrollArea
-          ref={ref}
+          ref={scrollRef}
           minHeight={HEIGHT}
           maxHeight={HEIGHT}
           id="calendar"
@@ -77,7 +76,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar({
                             "YYYY-MM-DD",
                           )
                         }
-                        onClickDate={onChange}
+                        onClickDate={onDateChange}
                       >
                         {day}
                       </Day>
