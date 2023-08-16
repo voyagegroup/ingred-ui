@@ -55,5 +55,5 @@ export const getSections = (formattedDate?: string | null) => {
 /**
  * 開始位置と終了位置と値を持つセクションをフォーマットされた日付に変換する
  */
-export const formatString = (sectionsWithCharactor: Sections[]) =>
-  sectionsWithCharactor.map((section) => section.value).join("");
+export const formatString = (sectionsWithCharacter: Sections[]) =>
+  sectionsWithCharacter.map((section) => section.value).join("");
