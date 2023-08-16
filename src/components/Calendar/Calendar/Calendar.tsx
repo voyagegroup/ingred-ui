@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Card, ScrollArea, Typography } from "../..";
+import { Card, Icon, ScrollArea, Typography } from "../..";
 import React, { forwardRef, memo, useRef } from "react";
 import { Day } from "./internal/Day";
 import { weekList, HEIGHT } from "../constants";
@@ -9,6 +9,7 @@ import {
   DatePickerContainer,
   DayStyle,
   CalendarMonth,
+  IconContainer,
 } from "../styled";
 import { useScroll } from "../hooks/useScroll";
 import { Action, Actions } from "../internal/Actions";
@@ -16,11 +17,16 @@ import { Action, Actions } from "../internal/Actions";
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   date: Dayjs;
   actions?: Action[];
+  /**
+   * 閉じるボタンを押したときの振る舞い
+   * この関数が渡されてないときは、閉じるボタンが表示されない
+   */
+  onClickCloseButton?: () => void;
   onDateChange: (value: Dayjs) => void;
 };
 
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
-  { date, actions, onDateChange, ...rest },
+  { date, actions, onClickCloseButton, onDateChange, ...rest },
   ref,
 ) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -88,6 +94,11 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
           </>
         </ScrollArea>
       </Container>
+      {onClickCloseButton && (
+        <IconContainer onClick={onClickCloseButton}>
+          <Icon name="close" />
+        </IconContainer>
+      )}
     </Card>
   );
 });

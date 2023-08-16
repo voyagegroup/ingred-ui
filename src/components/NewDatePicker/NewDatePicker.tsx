@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, useCallback, useState } from "react";
-import { Flex, Calendar, DateField, Icon } from "..";
+import { Flex, Calendar, DateField } from "..";
 // 後で export しておく
 import { Action } from "../Calendar/internal/Actions";
 import { Dayjs } from "dayjs";
@@ -11,7 +11,6 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
-import { IconContainer } from "./styled";
 
 export type NewDatePickerProps = {
   date: Dayjs;
@@ -63,6 +62,10 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       [onDateChange],
     );
 
+    const handleClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
     return (
       <Flex ref={ref} style={{ width: "fit-content" }}>
         <div ref={refs.setReference} {...getReferenceProps()}>
@@ -74,24 +77,20 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
           />
         </div>
         {open && (
-          <>
-            <Calendar
-              ref={refs.setFloating}
-              date={date}
-              actions={actions}
-              style={{
-                position: strategy,
-                top: y ?? 0,
-                left: x ?? 0,
-                zIndex: 100,
-              }}
-              onDateChange={handleClickDate}
-              {...getFloatingProps()}
-            />
-            <IconContainer onClick={() => setOpen(false)}>
-              <Icon name="close" />
-            </IconContainer>
-          </>
+          <Calendar
+            ref={refs.setFloating}
+            date={date}
+            actions={actions}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              zIndex: 100,
+            }}
+            onClickCloseButton={handleClose}
+            onDateChange={handleClickDate}
+            {...getFloatingProps()}
+          />
         )}
       </Flex>
     );
