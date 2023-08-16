@@ -15,7 +15,7 @@ import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
 
-export type CalendarRangeProps = {
+export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
@@ -44,7 +44,15 @@ export type CalendarRangeProps = {
  */
 export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
   function (
-    { startDate, endDate, actions, onClose, onClickCloseButton, onDatesChange },
+    {
+      startDate,
+      endDate,
+      actions,
+      onClose,
+      onClickCloseButton,
+      onDatesChange,
+      ...rest
+    },
     ref,
   ) {
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -78,7 +86,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     );
 
     return (
-      <Card ref={ref} display="flex" width="fit-content">
+      <Card ref={ref} display="flex" width="fit-content" {...rest}>
         <Actions actions={actions} />
         <Container>
           <ScrollArea
