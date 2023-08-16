@@ -1,7 +1,7 @@
 import { Dayjs } from "dayjs";
 import React, { FC, memo, ReactNode } from "react";
 import { DayStyle, DayBetween, DayEnd, DayStart } from "./styled";
-import { DayState, DayStateType } from "../../utils";
+import { DayState, DayStateType } from "../../constants";
 
 type Props = {
   state: DayStateType;

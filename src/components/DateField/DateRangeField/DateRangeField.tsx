@@ -4,7 +4,10 @@ import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
 import { useDateField } from "../useDateField";
-import { ClickState, ClickStateType } from "../../Calendar/CalendarRange/types";
+import {
+  ClickState,
+  ClickStateType,
+} from "../../Calendar/CalendarRange/constants";
 
 type Range = {
   startDate: Dayjs;

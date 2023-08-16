@@ -11,7 +11,10 @@ import {
 } from "@floating-ui/react";
 import { Dayjs } from "dayjs";
 import { Action, Actions } from "../Calendar/internal/Actions";
-import { ClickState, ClickStateType } from "../Calendar/CalendarRange/types";
+import {
+  ClickState,
+  ClickStateType,
+} from "../Calendar/CalendarRange/constants";
 
 export type NewDateRangePickerProps = {
   startDate: Dayjs;

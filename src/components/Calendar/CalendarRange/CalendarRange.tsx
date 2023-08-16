@@ -14,7 +14,7 @@ import {
 import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
-import { ClickState, ClickStateType } from "./types";
+import { ClickState, ClickStateType } from "./constants";
 
 export type CalendarRangeProps = {
   startDate: Dayjs;

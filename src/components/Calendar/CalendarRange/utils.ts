@@ -1,13 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-
-export const DayState = {
-  NONE: "none",
-  START: "start",
-  END: "end",
-  BETWEEN: "between",
-} as const;
-
-export type DayStateType = (typeof DayState)[keyof typeof DayState];
+import { DayState } from "./constants";
 
 const isStart = (startDate: Dayjs | null, month: Dayjs, day: number) =>
   startDate?.format("YYYY-MM-DD") ===
