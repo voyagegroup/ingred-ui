@@ -43,6 +43,12 @@ export const DateRangePicker = forwardRef<
     setOpen((prev) => !prev);
   };
 
+  const handleClose = (clickState: "start" | "end") => {
+    if (clickState === "end") {
+      setOpen(false);
+    }
+  };
+
   return (
     <Flex ref={ref}>
       <div
@@ -75,6 +81,7 @@ export const DateRangePicker = forwardRef<
           <CalendarRange
             startDate={startDate}
             endDate={endDate}
+            onClose={handleClose}
             onDatesChange={onDatesChange}
           />
         </Card>

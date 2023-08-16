@@ -18,6 +18,10 @@ export type CalendarRangeProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
+  /**
+   * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
+   */
+  onClose?: (clickState: "start" | "end") => void;
   onDatesChange: ({
     startDate,
     endDate,
@@ -33,13 +37,14 @@ export type CalendarRangeProps = {
  * Currently, one year from the currently selected date is displayed.
  */
 export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
-  function ({ startDate, endDate, actions, onDatesChange }, ref) {
+  function ({ startDate, endDate, actions, onClose, onDatesChange }, ref) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const { monthList } = useScroll(startDate ?? dayjs(), scrollRef);
     const [clickState, setClickState] = useState<"start" | "end">("start");
 
     const handleDateChange = useCallback(
       (value: Dayjs) => {
+        onClose && onClose(clickState);
         switch (clickState) {
           case "start":
             onDatesChange?.({
@@ -60,7 +65,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
             break;
         }
       },
-      [clickState, startDate, endDate, onDatesChange],
+      [onClose, clickState, onDatesChange, endDate, startDate],
     );
 
     return (
