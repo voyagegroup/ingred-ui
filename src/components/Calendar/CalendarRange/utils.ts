@@ -1,5 +1,14 @@
 import dayjs, { Dayjs } from "dayjs";
 
+export const DayState = {
+  NONE: "none",
+  START: "start",
+  END: "end",
+  BETWEEN: "between",
+} as const;
+
+export type DayStateType = (typeof DayState)[keyof typeof DayState];
+
 const isStart = (startDate: Dayjs | null, month: Dayjs, day: number) =>
   startDate?.format("YYYY-MM-DD") ===
   dayjs(new Date(month.year(), month.month(), day)).format("YYYY-MM-DD");
@@ -32,14 +41,14 @@ export const getDayState = (
   month: Dayjs,
   day: number,
 ) => {
-  if (isStart(startDate, month, day)) {
-    return "start";
+  switch (true) {
+    case isStart(startDate, month, day):
+      return DayState.START;
+    case isEnd(endDate, month, day):
+      return DayState.END;
+    case isBetween(startDate, endDate, month, day):
+      return DayState.BETWEEN;
+    default:
+      return DayState.NONE;
   }
-  if (isEnd(endDate, month, day)) {
-    return "end";
-  }
-  if (isBetween(startDate, endDate, month, day)) {
-    return "between";
-  }
-  return "none";
 };

@@ -1,9 +1,10 @@
 import { Dayjs } from "dayjs";
 import React, { FC, memo, ReactNode } from "react";
 import { DayStyle, DayBetween, DayEnd, DayStart } from "./styled";
+import { DayState, DayStateType } from "../../utils";
 
 type Props = {
-  state: "start" | "end" | "between" | "none";
+  state: DayStateType;
   value: Dayjs;
   onClickDate?: (value: Dayjs) => void;
   children: ReactNode;
@@ -16,11 +17,11 @@ export const Day: FC<Props> = memo(
     };
 
     switch (state) {
-      case "start":
+      case DayState.START:
         return <DayStart onClick={onClick}>{children}</DayStart>;
-      case "end":
+      case DayState.END:
         return <DayEnd onClick={onClick}>{children}</DayEnd>;
-      case "between":
+      case DayState.BETWEEN:
         return <DayBetween onClick={onClick}>{children}</DayBetween>;
       default:
         return <DayStyle onClick={onClick}>{children}</DayStyle>;
