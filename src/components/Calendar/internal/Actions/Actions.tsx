@@ -13,20 +13,21 @@ export const Actions = memo(({ actions }: { actions?: Action[] }) => {
   const theme = useTheme();
   const [clickedAction, setClickedAction] = useState<string | null>(null);
 
+  const handleClick = (action: Action) => () => {
+    setClickedAction(action.text);
+    action.onClick();
+  };
+
   return actions ? (
     <Flex display="flex">
       <ActionsContainer>
-        {actions.map(({ text, onClick }, i) => (
+        {actions.map((action, i) => (
           <Action
-            key={`${text}-${i.toString()}`}
-            clicked={clickedAction === text}
-            // eslint-disable-next-line react/jsx-handler-names
-            onClick={() => {
-              setClickedAction(text);
-              onClick();
-            }}
+            key={`${action.text}-${i.toString()}`}
+            clicked={clickedAction === action.text}
+            onClick={handleClick(action)}
           >
-            {text}
+            {action.text}
           </Action>
         ))}
       </ActionsContainer>
