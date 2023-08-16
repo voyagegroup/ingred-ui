@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Flex } from "..";
 
-// TODO: CalendarRange を実装時に移動する
 export const Container = styled.div`
   padding: 0 ${({ theme }) => theme.spacing * 3}px;
   position: relative;

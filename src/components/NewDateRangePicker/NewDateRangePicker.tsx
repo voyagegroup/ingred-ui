@@ -15,14 +15,18 @@ import {
   ClickState,
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
+import { DateRange } from "../Calendar/CalendarRange/types";
 
 export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
-  onDatesChange: (date: { startDate: Dayjs; endDate: Dayjs }) => void;
+  onDatesChange: (date: DateRange) => void;
 };
 
+/**
+ * @memo 次のメジャーリリースで DateRangePicker に変更。現行の DateRangePicker は削除。
+ */
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps

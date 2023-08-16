@@ -19,14 +19,7 @@ export type NewDatePickerProps = {
 };
 
 /**
- * @todo HTMLInputElementにする
- * @example
- * ```tsx
- * <DatePicker
- *   date={dayjs()}
- *   onDateChange={handleDateChange}
- * />
- * ```
+ * @memo 次のメジャーリリースで DatePicker に変更。現行の DatePicker は削除。
  */
 export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
   function DatePicker(

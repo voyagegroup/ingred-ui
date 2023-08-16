@@ -15,6 +15,7 @@ import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
+import { DateRange } from "./types";
 
 export type CalendarRangeProps = {
   startDate: Dayjs;
@@ -29,13 +30,7 @@ export type CalendarRangeProps = {
    * この関数が渡されてないときは、閉じるボタンが表示されない
    */
   onClickCloseButton?: () => void;
-  onDatesChange: ({
-    startDate,
-    endDate,
-  }: {
-    startDate: Dayjs;
-    endDate: Dayjs;
-  }) => void;
+  onDatesChange: ({ startDate, endDate }: DateRange) => void;
 };
 
 /**

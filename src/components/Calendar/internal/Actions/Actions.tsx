@@ -8,7 +8,6 @@ export type Action = {
   onClick: () => void;
 };
 
-// CalendarRange が実装されたら移動する
 export const Actions = memo(({ actions }: { actions?: Action[] }) => {
   const theme = useTheme();
   const [clickedAction, setClickedAction] = useState<string | null>(null);
