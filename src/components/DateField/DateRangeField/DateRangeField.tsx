@@ -1,6 +1,6 @@
 import React, { forwardRef, memo, useMemo } from "react";
 import { Icon, Input } from "../..";
-import { useMergeRefs } from "../utils";
+import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
 import { useDateField } from "../useDateField";
