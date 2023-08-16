@@ -44,7 +44,7 @@ export * from "./CreatableSelect";
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
 
-export { default as DateField } from "./DateField";
+export { DateField, DateRangeField } from "./DateField";
 export * from "./DateField";
 
 export { default as DatePicker } from "./DatePicker";
