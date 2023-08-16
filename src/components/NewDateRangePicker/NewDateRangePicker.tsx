@@ -11,6 +11,7 @@ import {
 } from "@floating-ui/react";
 import { Dayjs } from "dayjs";
 import { Action, Actions } from "../Calendar/internal/Actions";
+import { ClickState, ClickStateType } from "../Calendar/CalendarRange/types";
 
 export type NewDateRangePickerProps = {
   startDate: Dayjs;
@@ -43,8 +44,8 @@ export const DateRangePicker = forwardRef<
     setOpen((prev) => !prev);
   };
 
-  const handleClose = (clickState: "start" | "end") => {
-    if (clickState === "end") {
+  const handleClose = (clickState: ClickStateType) => {
+    if (clickState === ClickState.END) {
       setOpen(false);
     }
   };

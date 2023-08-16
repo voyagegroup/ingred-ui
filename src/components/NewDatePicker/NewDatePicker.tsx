@@ -1,6 +1,5 @@
 import React, { forwardRef, memo, useCallback, useState } from "react";
 import { Flex, Calendar, DateField } from "..";
-// 後で export しておく
 import { Action } from "../Calendar/internal/Actions";
 import { Dayjs } from "dayjs";
 import {

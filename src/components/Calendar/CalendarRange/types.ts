@@ -5,4 +5,9 @@ export type DateRange = {
   endDate: Dayjs;
 };
 
-export type ClickState = "start" | "end";
+export const ClickState = {
+  START: "start",
+  END: "end",
+};
+
+export type ClickStateType = (typeof ClickState)[keyof typeof ClickState];

@@ -14,6 +14,7 @@ import {
 import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
+import { ClickState, ClickStateType } from "./types";
 
 export type CalendarRangeProps = {
   startDate: Dayjs;
@@ -22,7 +23,7 @@ export type CalendarRangeProps = {
   /**
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
    */
-  onClose?: (clickState: "start" | "end") => void;
+  onClose?: (clickState: ClickStateType) => void;
   /**
    * 閉じるボタンを押したときの振る舞い
    * この関数が渡されてないときは、閉じるボタンが表示されない
@@ -49,25 +50,27 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
   ) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const { monthList } = useScroll(startDate ?? dayjs(), scrollRef);
-    const [clickState, setClickState] = useState<"start" | "end">("start");
+    const [clickState, setClickState] = useState<ClickStateType>(
+      ClickState.START,
+    );
 
     const handleDateChange = useCallback(
       (value: Dayjs) => {
         onClose && onClose(clickState);
         switch (clickState) {
-          case "start":
+          case ClickState.START:
             onDatesChange?.({
               startDate: value,
               endDate,
             });
-            setClickState("end");
+            setClickState(ClickState.END);
             break;
-          case "end":
+          case ClickState.END:
             onDatesChange?.({
               startDate,
               endDate: value,
             });
-            setClickState("start");
+            setClickState(ClickState.START);
             break;
           // Maybe, I will add other state.
           default:
