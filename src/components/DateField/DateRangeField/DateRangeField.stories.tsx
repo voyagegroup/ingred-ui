@@ -34,6 +34,6 @@ export const Custom: StoryObj<DateRangeFieldProps> = {
 export const Japanese: StoryObj<DateRangeFieldProps> = {
   ...Example,
   args: {
-    format: "YYYY月MM月DD日",
+    format: "YYYY年MM月DD日",
   },
 };
