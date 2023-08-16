@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Card, ScrollArea, Typography } from "../..";
+import { Card, Icon, ScrollArea, Typography } from "../..";
 import React, { forwardRef, memo, useCallback, useRef, useState } from "react";
 import { Day } from "./internal/Day";
 import { HEIGHT, weekList } from "../constants";
@@ -9,6 +9,7 @@ import {
   Container,
   DatePickerContainer,
   DayStyle,
+  IconContainer,
 } from "../styled";
 import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
@@ -22,6 +23,11 @@ export type CalendarRangeProps = {
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
    */
   onClose?: (clickState: "start" | "end") => void;
+  /**
+   * 閉じるボタンを押したときの振る舞い
+   * この関数が渡されてないときは、閉じるボタンが表示されない
+   */
+  onClickCloseButton?: () => void;
   onDatesChange: ({
     startDate,
     endDate,
@@ -37,7 +43,10 @@ export type CalendarRangeProps = {
  * Currently, one year from the currently selected date is displayed.
  */
 export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
-  function ({ startDate, endDate, actions, onClose, onDatesChange }, ref) {
+  function (
+    { startDate, endDate, actions, onClose, onClickCloseButton, onDatesChange },
+    ref,
+  ) {
     const scrollRef = useRef<HTMLDivElement>(null);
     const { monthList } = useScroll(startDate ?? dayjs(), scrollRef);
     const [clickState, setClickState] = useState<"start" | "end">("start");
@@ -123,6 +132,11 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
             </>
           </ScrollArea>
         </Container>
+        {onClickCloseButton && (
+          <IconContainer onClick={onClickCloseButton}>
+            <Icon name="close" />
+          </IconContainer>
+        )}
       </Card>
     );
   },

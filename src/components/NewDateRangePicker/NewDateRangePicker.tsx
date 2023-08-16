@@ -49,6 +49,10 @@ export const DateRangePicker = forwardRef<
     }
   };
 
+  const handleClickCloseButton = React.useCallback(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <Flex ref={ref}>
       <div
@@ -82,6 +86,7 @@ export const DateRangePicker = forwardRef<
             startDate={startDate}
             endDate={endDate}
             onClose={handleClose}
+            onClickCloseButton={handleClickCloseButton}
             onDatesChange={onDatesChange}
           />
         </Card>

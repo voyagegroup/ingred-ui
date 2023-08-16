@@ -62,6 +62,10 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       [onDateChange],
     );
 
+    const handleClose = useCallback(() => {
+      setOpen(false);
+    }, []);
+
     return (
       <Flex ref={ref} style={{ width: "fit-content" }}>
         <div ref={refs.setReference} {...getReferenceProps()}>
@@ -83,6 +87,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
               left: x ?? 0,
               zIndex: 100,
             }}
+            onClickCloseButton={handleClose}
             onDateChange={handleClickDate}
             {...getFloatingProps()}
           />
