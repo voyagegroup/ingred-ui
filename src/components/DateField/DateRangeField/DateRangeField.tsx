@@ -8,17 +8,13 @@ import {
   ClickState,
   ClickStateType,
 } from "../../Calendar/CalendarRange/constants";
-
-type Range = {
-  startDate: Dayjs;
-  endDate: Dayjs;
-};
+import { DateRange } from "../../Calendar/CalendarRange/types";
 
 export type DateRangeFieldProps = {
-  date: Range;
+  date: DateRange;
   format?: string;
   onClickCalendarIcon?: () => void;
-  onDatesChange?: (date: Range) => void;
+  onDatesChange?: (date: DateRange) => void;
 };
 
 const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(

@@ -18,8 +18,8 @@ import { ClickState, ClickStateType } from "./constants";
 import { DateRange } from "./types";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
-  startDate: Dayjs;
-  endDate: Dayjs;
+  startDate: Dayjs | null;
+  endDate: Dayjs | null;
   actions?: Action[];
   /**
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
@@ -58,7 +58,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     );
 
     const handleDateChange = useCallback(
-      (value: Dayjs) => {
+      (value: Dayjs | null) => {
         onClose && onClose(clickState);
         switch (clickState) {
           case ClickState.START:

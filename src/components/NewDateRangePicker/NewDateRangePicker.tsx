@@ -18,8 +18,8 @@ import {
 import { DateRange } from "../Calendar/CalendarRange/types";
 
 export type NewDateRangePickerProps = {
-  startDate: Dayjs;
-  endDate: Dayjs;
+  startDate: Dayjs | null;
+  endDate: Dayjs | null;
   actions?: Action[];
   onDatesChange: (date: DateRange) => void;
 };

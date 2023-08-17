@@ -4,6 +4,7 @@ import NewDateRangePicker, {
 } from "./NewDateRangePicker";
 import dayjs from "dayjs";
 import React, { useState } from "react";
+import { DateRange } from "../Calendar/CalendarRange/types";
 
 export default {
   title: "Components/Inputs/NewDateRangePicker",
@@ -15,7 +16,7 @@ export default {
 
 export const Example: StoryObj<NewDateRangePickerProps> = {
   render: (args) => {
-    const [date, setDate] = useState({
+    const [date, setDate] = useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
     });
@@ -33,7 +34,7 @@ export const Example: StoryObj<NewDateRangePickerProps> = {
 
 export const WithActions: StoryObj<NewDateRangePickerProps> = {
   render: (args) => {
-    const [date, setDate] = useState({
+    const [date, setDate] = useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
     });

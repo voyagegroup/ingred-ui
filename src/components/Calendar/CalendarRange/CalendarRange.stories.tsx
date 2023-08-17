@@ -3,6 +3,7 @@ import { StoryObj } from "@storybook/react";
 
 import CalendarRange, { CalendarRangeProps } from "./CalendarRange";
 import dayjs from "dayjs";
+import { DateRange } from "./types";
 
 export default {
   title: "Components/Inputs/CalendarRange",
@@ -11,15 +12,12 @@ export default {
 
 export const Default: StoryObj<CalendarRangeProps> = {
   render: () => {
-    const [date, setDate] = React.useState({
+    const [date, setDate] = React.useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
     });
 
-    const handleDatesChange = (date: {
-      startDate: dayjs.Dayjs;
-      endDate: dayjs.Dayjs;
-    }) => {
+    const handleDatesChange = (date: DateRange) => {
       setDate(date);
     };
 
@@ -35,7 +33,7 @@ export const Default: StoryObj<CalendarRangeProps> = {
 
 export const WithActions: StoryObj<CalendarRangeProps> = {
   render: () => {
-    const [date, setDate] = React.useState({
+    const [date, setDate] = React.useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
     });
@@ -58,10 +56,7 @@ export const WithActions: StoryObj<CalendarRangeProps> = {
       },
     ];
 
-    const handleDatesChange = (date: {
-      startDate: dayjs.Dayjs;
-      endDate: dayjs.Dayjs;
-    }) => {
+    const handleDatesChange = (date: DateRange) => {
       setDate(date);
     };
 

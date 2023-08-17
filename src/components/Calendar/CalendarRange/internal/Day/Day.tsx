@@ -5,8 +5,8 @@ import { DayState, DayStateType } from "../../constants";
 
 type Props = {
   state: DayStateType;
-  value: Dayjs;
-  onClickDate?: (value: Dayjs) => void;
+  value: Dayjs | null;
+  onClickDate?: (value: Dayjs | null) => void;
   children: ReactNode;
 };
 

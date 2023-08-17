@@ -2,6 +2,7 @@ import { StoryObj } from "@storybook/react";
 import DateRangeField, { DateRangeFieldProps } from "./DateRangeField";
 import dayjs from "dayjs";
 import React, { useState } from "react";
+import { DateRange } from "../../Calendar/CalendarRange/types";
 
 export default {
   title: "Components/Inputs/DateRangeField",
@@ -10,7 +11,7 @@ export default {
 
 export const Example: StoryObj<DateRangeFieldProps> = {
   render: (args) => {
-    const [date, setDate] = useState({
+    const [date, setDate] = useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "day"),
     });
@@ -23,7 +24,7 @@ export const Custom: StoryObj<DateRangeFieldProps> = {
     format: "MM/DD/YYYY",
   },
   render: (args) => {
-    const [date, setDate] = useState({
+    const [date, setDate] = useState<DateRange>({
       startDate: dayjs(),
       endDate: dayjs().add(1, "day"),
     });
