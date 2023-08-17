@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Flex, DateRangeField, CalendarRange, Card } from "..";
+import { Flex, DateRangeField, CalendarRange } from "..";
 import { forwardRef, useRef, useState } from "react";
 import {
   flip,
@@ -10,7 +10,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Dayjs } from "dayjs";
-import { Action, Actions } from "../Calendar/internal/Actions";
+import { Action } from "../Calendar/internal/Actions";
 import {
   ClickState,
   ClickStateType,
@@ -78,26 +78,22 @@ export const DateRangePicker = forwardRef<
         />
       </div>
       {open && (
-        <Card
+        <CalendarRange
           ref={refs.setFloating}
-          display="flex"
+          startDate={startDate}
+          endDate={endDate}
+          actions={actions}
           style={{
             position: strategy,
             top: y ?? 0,
             left: x ?? 0,
-            zIndex: 1,
+            zIndex: 100,
           }}
+          onClose={handleClose}
+          onClickCloseButton={handleClickCloseButton}
+          onDatesChange={onDatesChange}
           {...getFloatingProps()}
-        >
-          <Actions actions={actions} />
-          <CalendarRange
-            startDate={startDate}
-            endDate={endDate}
-            onClose={handleClose}
-            onClickCloseButton={handleClickCloseButton}
-            onDatesChange={onDatesChange}
-          />
-        </Card>
+        />
       )}
     </Flex>
   );
