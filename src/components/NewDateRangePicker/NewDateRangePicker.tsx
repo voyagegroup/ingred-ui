@@ -11,14 +11,22 @@ import {
 } from "@floating-ui/react";
 import { Dayjs } from "dayjs";
 import { Action } from "../Calendar/internal/Actions";
+import {
+  ClickState,
+  ClickStateType,
+} from "../Calendar/CalendarRange/constants";
+import { DateRange } from "../Calendar/CalendarRange/types";
 
 export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
-  onDatesChange: (date: { startDate: Dayjs; endDate: Dayjs }) => void;
+  onDatesChange: (date: DateRange) => void;
 };
 
+/**
+ * @memo 次のメジャーリリースで DateRangePicker に変更。現行の DateRangePicker は削除。
+ */
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
@@ -43,8 +51,8 @@ export const DateRangePicker = forwardRef<
     setOpen((prev) => !prev);
   };
 
-  const handleClose = (clickState: "start" | "end") => {
-    if (clickState === "end") {
+  const handleClose = (clickState: ClickStateType) => {
+    if (clickState === ClickState.END) {
       setOpen(false);
     }
   };

@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 type Sections = {
   start: number;
   end: number;
@@ -57,31 +55,5 @@ export const getSections = (formattedDate?: string | null) => {
 /**
  * 開始位置と終了位置と値を持つセクションをフォーマットされた日付に変換する
  */
-export const formatString = (sectionsWithCharactor: Sections[]) =>
-  sectionsWithCharactor.map((section) => section.value).join("");
-
-type ReactRef<T> =
-  | React.RefCallback<T>
-  | React.MutableRefObject<T>
-  | React.ForwardedRef<T>
-  | string
-  | null
-  | undefined;
-
-// from: https://github.com/voyagegroup/ingred-ui/blob/master/src/hooks/useMergeRefs.ts
-export function useMergeRefs<T>(...refs: ReactRef<T>[]): React.Ref<T> {
-  return useMemo(() => {
-    if (refs.every((ref) => ref === null)) {
-      return null;
-    }
-    return (refValue: T) => {
-      for (const ref of refs) {
-        if (typeof ref === "function") {
-          ref(refValue);
-        } else if (ref && typeof ref !== "string") {
-          ref.current = refValue;
-        }
-      }
-    };
-  }, [refs]);
-}
+export const formatString = (sectionsWithCharacter: Sections[]) =>
+  sectionsWithCharacter.map((section) => section.value).join("");

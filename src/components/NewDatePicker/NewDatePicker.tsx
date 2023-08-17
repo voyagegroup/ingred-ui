@@ -1,6 +1,5 @@
 import React, { forwardRef, memo, useCallback, useState } from "react";
 import { Flex, Calendar, DateField } from "..";
-// 後で export しておく
 import { Action } from "../Calendar/internal/Actions";
 import { Dayjs } from "dayjs";
 import {
@@ -20,14 +19,7 @@ export type NewDatePickerProps = {
 };
 
 /**
- * @todo HTMLInputElementにする
- * @example
- * ```tsx
- * <DatePicker
- *   date={dayjs()}
- *   onDateChange={handleDateChange}
- * />
- * ```
+ * @memo 次のメジャーリリースで DatePicker に変更。現行の DatePicker は削除。
  */
 export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
   function DatePicker(

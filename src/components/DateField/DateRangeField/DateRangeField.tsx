@@ -1,9 +1,13 @@
 import React, { forwardRef, memo, useMemo } from "react";
 import { Icon, Input } from "../..";
-import { useMergeRefs } from "../utils";
+import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
 import { useDateField } from "../useDateField";
+import {
+  ClickState,
+  ClickStateType,
+} from "../../Calendar/CalendarRange/constants";
 
 type Range = {
   startDate: Dayjs;
@@ -24,9 +28,9 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
   ) {
     const width = useMemo(() => format.length * 12, [format]);
 
-    const handleChange = (t: "start" | "end") => (date: Dayjs) => {
+    const handleChange = (t: ClickStateType) => (date: Dayjs) => {
       const { startDate, endDate } = rest.date;
-      if (t === "start") {
+      if (t === ClickState.START) {
         rest.onDatesChange?.({
           endDate,
           startDate: date,
@@ -43,14 +47,14 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
       ...rest,
       format,
       date: rest.date.startDate,
-      onDateChange: handleChange("start"),
+      onDateChange: handleChange(ClickState.START),
     });
 
     const { ref: endInputRef, ...endProps } = useDateField({
       ...rest,
       format,
       date: rest.date.endDate,
-      onDateChange: handleChange("end"),
+      onDateChange: handleChange(ClickState.END),
     });
 
     const startRef = useMergeRefs<HTMLInputElement>(propRef, startInputRef);
