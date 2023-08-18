@@ -78,3 +78,25 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
     );
   },
 };
+
+export const IsOutsideRange: StoryObj<NewDateRangePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState({
+      startDate: dayjs(),
+      endDate: dayjs().add(1, "week"),
+    });
+
+    const isOutsideRange = (day: dayjs.Dayjs) =>
+      day.isBefore(dayjs().subtract(1, "day"));
+
+    return (
+      <NewDateRangePicker
+        {...args}
+        startDate={date.startDate}
+        endDate={date.endDate}
+        isOutsideRange={isOutsideRange}
+        onDatesChange={setDate}
+      />
+    );
+  },
+};

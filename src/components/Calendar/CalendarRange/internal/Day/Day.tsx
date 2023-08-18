@@ -1,20 +1,31 @@
 import { Dayjs } from "dayjs";
 import React, { FC, memo, ReactNode } from "react";
-import { DayStyle, DayBetween, DayEnd, DayStart } from "./styled";
+import {
+  DayStyle,
+  DayBetween,
+  DayEnd,
+  DayStart,
+  DisableDayContainer,
+} from "./styled";
 import { DayState, DayStateType } from "../../constants";
 
 type Props = {
   state: DayStateType;
   value: Dayjs;
+  selectable: boolean;
   onClickDate?: (value: Dayjs) => void;
   children: ReactNode;
 };
 
 export const Day: FC<Props> = memo(
-  ({ state, value, onClickDate, children }) => {
+  ({ state, value, selectable, onClickDate, children }) => {
     const onClick = () => {
       onClickDate?.(value);
     };
+
+    if (!selectable) {
+      return <DisableDayContainer>{children}</DisableDayContainer>;
+    }
 
     switch (state) {
       case DayState.START:

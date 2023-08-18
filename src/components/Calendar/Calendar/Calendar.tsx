@@ -22,11 +22,24 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
    * この関数が渡されてないときは、閉じるボタンが表示されない
    */
   onClickCloseButton?: () => void;
+  /**
+   * 選択可能なカレンダーの領域を制限する
+   * true が返る場合は、選択不可となる
+   * @default () => false
+   */
+  isOutsideRange?: (date: Dayjs) => boolean;
   onDateChange: (value: Dayjs) => void;
 };
 
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
-  { date, actions, onClickCloseButton, onDateChange, ...rest },
+  {
+    date,
+    actions,
+    onClickCloseButton,
+    isOutsideRange = () => false,
+    onDateChange,
+    ...rest
+  },
   ref,
 ) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -70,23 +83,31 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
 
                   {/* 日付の表示 */}
                   {Array.from(new Array(m.daysInMonth()), (_, i) => i + 1).map(
-                    (day) => (
-                      <Day
-                        key={day}
-                        value={dayjs(new Date(m.year(), m.month(), day))}
-                        // ややこしいけど、ここでのselectedは、選択中の日付かどうかを判定している
-                        // つまり、選択中の日付の場合はtrueになり、style で色を変える
-                        selected={
-                          date.format("YYYY-MM-DD") ===
-                          dayjs(new Date(m.year(), m.month(), day)).format(
-                            "YYYY-MM-DD",
-                          )
-                        }
-                        onClickDate={onDateChange}
-                      >
-                        {day}
-                      </Day>
-                    ),
+                    (day) => {
+                      // ややこしいけど、ここでのselectedは、選択中の日付かどうかを判定している
+                      // つまり、選択中の日付の場合はtrueになり、style で色を変える
+                      const selected =
+                        date.format("YYYY-MM-DD") ===
+                        dayjs(new Date(m.year(), m.month(), day)).format(
+                          "YYYY-MM-DD",
+                        );
+
+                      const selectable = !isOutsideRange(
+                        dayjs(new Date(m.year(), m.month(), day)),
+                      );
+
+                      return (
+                        <Day
+                          key={day}
+                          value={dayjs(new Date(m.year(), m.month(), day))}
+                          selectable={selectable}
+                          selected={selected}
+                          onClickDate={onDateChange}
+                        >
+                          {day}
+                        </Day>
+                      );
+                    },
                   )}
                 </CalendarContainer>
               </DatePickerContainer>
