@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<{ disabled: boolean }>`
   display: flex;
   align-items: center;
   width: 150px;
@@ -25,13 +25,11 @@ export const InputContainer = styled.div`
   &::-ms-input-placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
   }
-  &:disabled {
-    color: ${({ theme }) => theme.palette.text.disabled};
-    border-color: ${({ theme }) => theme.palette.divider};
-    box-shadow: "none";
-    background-color: ${({ theme }) => theme.palette.gray.light};
-    cursor: not-allowed;
-  }
+  color: ${({ theme, disabled }) =>
+    disabled ? theme.palette.text.disabled : theme.palette.black};
+  background-color: ${({ theme, disabled }) =>
+    disabled ? theme.palette.gray.light : "transparent"};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "text")};
 `;
 
 export const CalendarIcon = styled.button`

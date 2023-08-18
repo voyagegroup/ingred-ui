@@ -17,13 +17,18 @@ type Range = {
 export type DateRangeFieldProps = {
   date: Range;
   format?: string;
+  /**
+   * 入力を無効にする
+   * @default false
+   */
+  disabled?: boolean;
   onClickCalendarIcon?: () => void;
   onDatesChange?: (date: Range) => void;
 };
 
 const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
   function DateRangeField(
-    { format = "YYYY-MM-DD", onClickCalendarIcon, ...rest },
+    { format = "YYYY-MM-DD", disabled = false, onClickCalendarIcon, ...rest },
     propRef,
   ) {
     const width = useMemo(() => format.length * 12, [format]);
@@ -61,11 +66,12 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
     const endRef = useMergeRefs<HTMLInputElement>(propRef, endInputRef);
 
     return (
-      <InputContainer>
+      <InputContainer disabled={disabled}>
         <>
           <Input
             ref={startRef}
             readOnly
+            disabled={disabled}
             width={width}
             style={{ border: "none", textAlign: "center" }}
             {...startProps}
@@ -74,6 +80,7 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
           <Input
             ref={endRef}
             readOnly
+            disabled={disabled}
             width={width}
             style={{ border: "none", textAlign: "center" }}
             {...endProps}

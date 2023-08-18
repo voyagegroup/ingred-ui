@@ -37,3 +37,10 @@ export const Japanese: StoryObj<DateRangeFieldProps> = {
     format: "YYYY年MM月DD日",
   },
 };
+
+export const Disable: StoryObj<DateRangeFieldProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};

@@ -21,6 +21,7 @@ export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
+  disabled?: boolean;
   onDatesChange: (date: DateRange) => void;
 };
 
@@ -30,7 +31,13 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker({ startDate, endDate, actions, onDatesChange }) {
+>(function DateRangePicker({
+  startDate,
+  endDate,
+  disabled = false,
+  actions,
+  onDatesChange,
+}) {
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -48,6 +55,7 @@ export const DateRangePicker = forwardRef<
   ]);
 
   const handleClickCalendarIcon = () => {
+    if (disabled) return;
     setOpen((prev) => !prev);
   };
 
@@ -73,6 +81,7 @@ export const DateRangePicker = forwardRef<
             startDate,
             endDate,
           }}
+          disabled={disabled}
           onDatesChange={onDatesChange}
           onClickCalendarIcon={handleClickCalendarIcon}
         />

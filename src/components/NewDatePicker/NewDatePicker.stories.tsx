@@ -52,3 +52,10 @@ export const WithActions: StoryObj<NewDatePickerProps> = {
     );
   },
 };
+
+export const Disabled: StoryObj<NewDatePickerProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};

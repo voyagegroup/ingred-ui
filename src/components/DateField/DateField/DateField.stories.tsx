@@ -31,3 +31,10 @@ export const Japanese: StoryObj<DateFieldProps> = {
     format: "YYYY月MM月DD日",
   },
 };
+
+export const Disable: StoryObj<DateFieldProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};

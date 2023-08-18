@@ -12,6 +12,11 @@ export type DateFieldProps = {
    */
   format?: string;
   /**
+   * 入力を無効にする
+   * @default false
+   */
+  disabled?: boolean;
+  /**
    * 日付が変更されたときに呼ばれる関数
    */
   onDateChange?: (date: Dayjs) => void;

@@ -15,6 +15,7 @@ export type NewDatePickerProps = {
   date: Dayjs;
   actions?: Action[];
   format?: string;
+  disabled?: boolean;
   onDateChange: (date: Dayjs) => void;
 };
 
@@ -23,7 +24,7 @@ export type NewDatePickerProps = {
  */
 export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
   function DatePicker(
-    { date, format = "YYYY-MM-DD", actions, onDateChange },
+    { date, format = "YYYY-MM-DD", disabled = false, actions, onDateChange },
     ref,
   ) {
     const [open, setOpen] = useState(false);
@@ -43,8 +44,9 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
     ]);
 
     const handleClickCalendarIcon = useCallback(() => {
+      if (disabled) return;
       setOpen((prev) => !prev);
-    }, []);
+    }, [disabled]);
 
     const handleClickDate = useCallback(
       (date: Dayjs) => {
@@ -64,6 +66,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
           <DateField
             date={date}
             format={format}
+            disabled={disabled}
             onClick={handleClickCalendarIcon}
             onDateChange={onDateChange}
           />
