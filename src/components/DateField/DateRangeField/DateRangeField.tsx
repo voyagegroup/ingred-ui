@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, useMemo } from "react";
-import { Icon, Input } from "../..";
+import { ErrorText, Icon, Input, Spacer } from "../..";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
@@ -17,13 +17,14 @@ type Range = {
 export type DateRangeFieldProps = {
   date: Range;
   format?: string;
+  errorText?: string;
   onClickCalendarIcon?: () => void;
   onDatesChange?: (date: Range) => void;
 };
 
 const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
   function DateRangeField(
-    { format = "YYYY-MM-DD", onClickCalendarIcon, ...rest },
+    { format = "YYYY-MM-DD", errorText, onClickCalendarIcon, ...rest },
     propRef,
   ) {
     const width = useMemo(() => format.length * 12, [format]);
@@ -61,12 +62,13 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
     const endRef = useMergeRefs<HTMLInputElement>(propRef, endInputRef);
 
     return (
-      <InputContainer>
-        <>
+      <>
+        <InputContainer error={!!errorText}>
           <Input
             ref={startRef}
             readOnly
             width={width}
+            error={!!errorText}
             style={{ border: "none", textAlign: "center" }}
             {...startProps}
           />
@@ -75,14 +77,20 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
             ref={endRef}
             readOnly
             width={width}
+            error={!!errorText}
             style={{ border: "none", textAlign: "center" }}
             {...endProps}
           />
           <CalendarIcon onClick={onClickCalendarIcon}>
             <Icon name="date_range" />
           </CalendarIcon>
-        </>
-      </InputContainer>
+        </InputContainer>
+        {errorText && (
+          <Spacer pt={1}>
+            <ErrorText>{errorText}</ErrorText>
+          </Spacer>
+        )}
+      </>
     );
   },
 );

@@ -12,6 +12,10 @@ export type DateFieldProps = {
    */
   format?: string;
   /**
+   * エラーメッセージのテキスト
+   */
+  errorText?: string;
+  /**
    * 日付が変更されたときに呼ばれる関数
    */
   onDateChange?: (date: Dayjs) => void;
