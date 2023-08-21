@@ -30,6 +30,12 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
    * この関数が渡されてないときは、閉じるボタンが表示されない
    */
   onClickCloseButton?: () => void;
+  /**
+   * 選択可能なカレンダーの領域を制限する
+   * true が返る場合は、選択不可となる
+   * @default () => false
+   */
+  isOutsideRange?: (date: Dayjs) => boolean;
   onDatesChange: ({ startDate, endDate }: DateRange) => void;
 };
 
@@ -45,6 +51,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
       endDate,
       actions,
       onClose,
+      isOutsideRange = () => false,
       onClickCloseButton,
       onDatesChange,
       ...rest
@@ -115,23 +122,30 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
                     {Array.from(
                       new Array(m.daysInMonth()),
                       (_, i) => i + 1,
-                    ).map((day) => (
-                      <div
-                        key={day}
-                        style={{
-                          position: "relative",
-                          zIndex: 1,
-                        }}
-                      >
-                        <Day
-                          value={dayjs(new Date(m.year(), m.month(), day))}
-                          state={getDayState(startDate, endDate, m, day)}
-                          onClickDate={handleDateChange}
+                    ).map((day) => {
+                      const selectable = !isOutsideRange(
+                        dayjs(new Date(m.year(), m.month(), day)),
+                      );
+
+                      return (
+                        <div
+                          key={day}
+                          style={{
+                            position: "relative",
+                            zIndex: 1,
+                          }}
                         >
-                          {day}
-                        </Day>
-                      </div>
-                    ))}
+                          <Day
+                            value={dayjs(new Date(m.year(), m.month(), day))}
+                            state={getDayState(startDate, endDate, m, day)}
+                            selectable={selectable}
+                            onClickDate={handleDateChange}
+                          >
+                            {day}
+                          </Day>
+                        </div>
+                      );
+                    })}
                   </CalendarContainer>
                 </DatePickerContainer>
               ))}

@@ -59,3 +59,20 @@ export const Disabled: StoryObj<NewDatePickerProps> = {
     disabled: true,
   },
 };
+
+export const IsOutsideRange: StoryObj<NewDatePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState(dayjs());
+    const isOutsideRange = (day: dayjs.Dayjs) =>
+      day.isBefore(dayjs().subtract(1, "day"));
+
+    return (
+      <NewDatePicker
+        {...args}
+        date={date}
+        isOutsideRange={isOutsideRange}
+        onDateChange={setDate}
+      />
+    );
+  },
+};
