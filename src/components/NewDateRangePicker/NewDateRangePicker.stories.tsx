@@ -79,6 +79,13 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
   },
 };
 
+export const Disabled: StoryObj<NewDateRangePickerProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};
+
 export const IsOutsideRange: StoryObj<NewDateRangePickerProps> = {
   render: (args) => {
     const [date, setDate] = useState({

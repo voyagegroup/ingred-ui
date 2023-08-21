@@ -21,6 +21,7 @@ export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
+  disabled?: boolean;
   /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
@@ -39,6 +40,7 @@ export const DateRangePicker = forwardRef<
 >(function DateRangePicker({
   startDate,
   endDate,
+  disabled = false,
   isOutsideRange = () => false,
   actions,
   onDatesChange,
@@ -60,6 +62,7 @@ export const DateRangePicker = forwardRef<
   ]);
 
   const handleClickCalendarIcon = () => {
+    if (disabled) return;
     setOpen((prev) => !prev);
   };
 
@@ -85,6 +88,7 @@ export const DateRangePicker = forwardRef<
             startDate,
             endDate,
           }}
+          disabled={disabled}
           onDatesChange={onDatesChange}
           onClickCalendarIcon={handleClickCalendarIcon}
         />

@@ -53,6 +53,13 @@ export const WithActions: StoryObj<NewDatePickerProps> = {
   },
 };
 
+export const Disabled: StoryObj<NewDatePickerProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};
+
 export const IsOutsideRange: StoryObj<NewDatePickerProps> = {
   render: (args) => {
     const [date, setDate] = useState(dayjs());
