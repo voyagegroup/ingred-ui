@@ -75,3 +75,31 @@ export const WithActions: StoryObj<CalendarRangeProps> = {
     );
   },
 };
+
+export const IsOutsideRange: StoryObj<CalendarRangeProps> = {
+  render: () => {
+    const [date, setDate] = React.useState({
+      startDate: dayjs(),
+      endDate: dayjs().add(1, "week"),
+    });
+
+    const handleDatesChange = (date: {
+      startDate: dayjs.Dayjs;
+      endDate: dayjs.Dayjs;
+    }) => {
+      setDate(date);
+    };
+
+    const isOutsideRange = (day: dayjs.Dayjs) =>
+      day.isBefore(dayjs().subtract(1, "day"));
+
+    return (
+      <CalendarRange
+        startDate={date.startDate}
+        endDate={date.endDate}
+        isOutsideRange={isOutsideRange}
+        onDatesChange={handleDatesChange}
+      />
+    );
+  },
+};

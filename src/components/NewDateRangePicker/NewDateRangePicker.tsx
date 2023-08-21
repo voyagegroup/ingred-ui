@@ -21,6 +21,12 @@ export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
   actions?: Action[];
+  /**
+   * 選択可能なカレンダーの領域を制限する
+   * true が返る場合は、選択不可となる
+   * @default () => false
+   */
+  isOutsideRange?: (date: Dayjs) => boolean;
   onDatesChange: (date: DateRange) => void;
 };
 
@@ -30,7 +36,13 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker({ startDate, endDate, actions, onDatesChange }) {
+>(function DateRangePicker({
+  startDate,
+  endDate,
+  isOutsideRange = () => false,
+  actions,
+  onDatesChange,
+}) {
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -89,6 +101,7 @@ export const DateRangePicker = forwardRef<
             left: x ?? 0,
             zIndex: 100,
           }}
+          isOutsideRange={isOutsideRange}
           onClose={handleClose}
           onClickCloseButton={handleClickCloseButton}
           onDatesChange={onDatesChange}

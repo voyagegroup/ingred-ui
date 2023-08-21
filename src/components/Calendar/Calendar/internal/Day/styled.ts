@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const DayContainer = styled.button<{ selected: boolean }>`
+const DayContainerBase = styled.button<{ selected?: boolean }>`
   background-color: ${({ selected, theme }) =>
     selected ? theme.palette.primary.main : "transparent"};
   color: ${({ selected, theme }) =>
@@ -14,5 +14,15 @@ export const DayContainer = styled.button<{ selected: boolean }>`
     background-color: ${({ selected, theme }) =>
       selected ? theme.palette.primary.main : theme.palette.primary.highlight};
     transition: 0.3s;
+  }
+`;
+
+export const DayContainer = styled(DayContainerBase)``;
+
+export const DisableDayContainer = styled(DayContainerBase)`
+  color: ${({ theme }) => theme.palette.gray.main};
+  cursor: not-allowed;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.gray.light};
   }
 `;

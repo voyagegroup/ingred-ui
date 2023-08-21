@@ -1,24 +1,27 @@
 import { Dayjs } from "dayjs";
 import React, { FC, memo, ReactNode } from "react";
-import { DayContainer } from "./styled";
+import { DayContainer, DisableDayContainer } from "./styled";
 
 type Props = {
   selected: boolean;
+  selectable: boolean;
   value: Dayjs;
   onClickDate?: (newDate: Dayjs) => void;
   children: ReactNode;
 };
 
 export const Day: FC<Props> = memo(
-  ({ selected, value, onClickDate, children }) => {
+  ({ selected, value, selectable, onClickDate, children }) => {
     const handleClick = () => {
       onClickDate?.(value);
     };
 
-    return (
+    return selectable ? (
       <DayContainer selected={selected} onClick={handleClick}>
         {children}
       </DayContainer>
+    ) : (
+      <DisableDayContainer>{children}</DisableDayContainer>
     );
   },
 );
