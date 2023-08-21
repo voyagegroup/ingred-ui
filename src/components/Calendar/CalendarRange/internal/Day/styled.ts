@@ -54,3 +54,11 @@ export const DayStart = styled(EdgeDate)`
 export const DayEnd = styled(EdgeDate)``;
 
 export const DayBetween = styled(SelectedDate)``;
+
+export const DisableDayContainer = styled(DayStyle)`
+  color: ${({ theme }) => theme.palette.gray.main};
+  cursor: not-allowed;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.gray.light};
+  }
+`;

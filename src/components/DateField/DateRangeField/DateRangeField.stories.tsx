@@ -44,3 +44,10 @@ export const Error: StoryObj<DateRangeFieldProps> = {
     errorText: "エラー",
   },
 };
+
+export const Disable: StoryObj<DateRangeFieldProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};
