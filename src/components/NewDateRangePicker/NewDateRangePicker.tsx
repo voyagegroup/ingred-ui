@@ -20,6 +20,7 @@ import { DateRange } from "../Calendar/CalendarRange/types";
 export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
+  errorText?: string;
   actions?: Action[];
   onDatesChange: (date: DateRange) => void;
 };
@@ -30,7 +31,13 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker({ startDate, endDate, actions, onDatesChange }) {
+>(function DateRangePicker({
+  startDate,
+  endDate,
+  errorText,
+  actions,
+  onDatesChange,
+}) {
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -73,6 +80,7 @@ export const DateRangePicker = forwardRef<
             startDate,
             endDate,
           }}
+          errorText={errorText}
           onDatesChange={onDatesChange}
           onClickCalendarIcon={handleClickCalendarIcon}
         />
