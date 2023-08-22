@@ -50,7 +50,7 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
    * 日付が変更されたときに呼ばれる関数
    */
-  onDatesChange: ({ startDate, endDate }: DateRange) => void;
+  onDatesChange: (dates: DateRange) => void;
 };
 
 /**

@@ -50,7 +50,7 @@ export type NewDateRangePickerProps = {
   /**
    * 日付が変更されたときに呼ばれる関数
    */
-  onDatesChange: (date: DateRange) => void;
+  onDatesChange: (dates: DateRange) => void;
 };
 
 /**
