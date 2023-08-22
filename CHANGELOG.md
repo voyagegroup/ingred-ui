@@ -1,8 +1,6 @@
 # Changelog
 
-**このファイルはv9.9.0以降更新されません。**
-
-**[こちら](https://github.com/voyagegroup/ingred-ui/releases)を参考にしてください**
+v9.9.1 から v14.4.1 までのリリースは [github releases](https://github.com/voyagegroup/ingred-ui/releases) を参照してください。
 
 ## [v9.9.0](https://github.com/voyagegroup/ingred-ui/tree/v9.9.0) (2022-05-26)
 
@@ -154,7 +152,7 @@
 
 **Merged pull requests:**
 
-- minify  [\#701](https://github.com/voyagegroup/ingred-ui/pull/701) ([takurinton](https://github.com/takurinton))
+- minify [\#701](https://github.com/voyagegroup/ingred-ui/pull/701) ([takurinton](https://github.com/takurinton))
 - chore\(deps\): update typescript-eslint monorepo to v5.11.0 [\#700](https://github.com/voyagegroup/ingred-ui/pull/700) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency rollup to v2.67.1 [\#699](https://github.com/voyagegroup/ingred-ui/pull/699) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @types/styled-components to v5.1.22 [\#697](https://github.com/voyagegroup/ingred-ui/pull/697) ([renovate[bot]](https://github.com/apps/renovate))
@@ -189,9 +187,9 @@
 - chore\(deps\): update dependency typescript to v4.5.5 [\#678](https://github.com/voyagegroup/ingred-ui/pull/678) ([renovate[bot]](https://github.com/apps/renovate))
 - fix\(deps\): update dependency ingred-ui to v9.4.0 [\#677](https://github.com/voyagegroup/ingred-ui/pull/677) ([renovate[bot]](https://github.com/apps/renovate))
 - Rubyのバージョンを3.0にあげる [\#676](https://github.com/voyagegroup/ingred-ui/pull/676) ([takurinton](https://github.com/takurinton))
-- data\_strap のアイコンを追加 [\#675](https://github.com/voyagegroup/ingred-ui/pull/675) ([takurinton](https://github.com/takurinton))
+- data_strap のアイコンを追加 [\#675](https://github.com/voyagegroup/ingred-ui/pull/675) ([takurinton](https://github.com/takurinton))
 - fluct のアイコンを追加 [\#674](https://github.com/voyagegroup/ingred-ui/pull/674) ([takurinton](https://github.com/takurinton))
-- bid\_strap のアイコンを追加 [\#673](https://github.com/voyagegroup/ingred-ui/pull/673) ([takurinton](https://github.com/takurinton))
+- bid_strap のアイコンを追加 [\#673](https://github.com/voyagegroup/ingred-ui/pull/673) ([takurinton](https://github.com/takurinton))
 - fix\(deps\): update dependency @types/node to v16.11.21 [\#672](https://github.com/voyagegroup/ingred-ui/pull/672) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update typescript-eslint monorepo to v5.10.0 [\#671](https://github.com/voyagegroup/ingred-ui/pull/671) ([renovate[bot]](https://github.com/apps/renovate))
 - fix\(deps\): update dependency @types/node to v16.11.20 [\#670](https://github.com/voyagegroup/ingred-ui/pull/670) ([renovate[bot]](https://github.com/apps/renovate))
@@ -199,7 +197,7 @@
 - chore\(deps\): update dependency eslint-plugin-jest to v25.7.0 [\#668](https://github.com/voyagegroup/ingred-ui/pull/668) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency ts-jest to v27.1.3 [\#667](https://github.com/voyagegroup/ingred-ui/pull/667) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @types/styled-components to v5.1.20 [\#664](https://github.com/voyagegroup/ingred-ui/pull/664) ([renovate[bot]](https://github.com/apps/renovate))
-- use colors.js 1.4.0 version  [\#663](https://github.com/voyagegroup/ingred-ui/pull/663) ([YOwatari](https://github.com/YOwatari))
+- use colors.js 1.4.0 version [\#663](https://github.com/voyagegroup/ingred-ui/pull/663) ([YOwatari](https://github.com/YOwatari))
 - chore\(deps\): update dependency @svgr/rollup to v6.2.0 [\#662](https://github.com/voyagegroup/ingred-ui/pull/662) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency jest to v27.4.7 [\#661](https://github.com/voyagegroup/ingred-ui/pull/661) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @rollup/plugin-node-resolve to v13.1.3 [\#660](https://github.com/voyagegroup/ingred-ui/pull/660) ([renovate[bot]](https://github.com/apps/renovate))
@@ -536,7 +534,7 @@
 
 **Implemented enhancements:**
 
-- releaseをworkflow\_dispatch経由で実行できるようにする [\#425](https://github.com/voyagegroup/ingred-ui/pull/425) ([ryokosuge](https://github.com/ryokosuge))
+- releaseをworkflow_dispatch経由で実行できるようにする [\#425](https://github.com/voyagegroup/ingred-ui/pull/425) ([ryokosuge](https://github.com/ryokosuge))
 
 **Fixed bugs:**
 
@@ -1127,7 +1125,7 @@
 
 **Fixed bugs:**
 
-- fix error: The inferred type of 'ReactSelectMenuList' cannot be named without a reference to 'styled-components/node\_modules/@types/react'. This is likely not portable. A type annotation is necessary. [\#216](https://github.com/voyagegroup/ingred-ui/pull/216) ([youchann](https://github.com/youchann))
+- fix error: The inferred type of 'ReactSelectMenuList' cannot be named without a reference to 'styled-components/node_modules/@types/react'. This is likely not portable. A type annotation is necessary. [\#216](https://github.com/voyagegroup/ingred-ui/pull/216) ([youchann](https://github.com/youchann))
 
 ## [v7.6.2](https://github.com/voyagegroup/ingred-ui/tree/v7.6.2) (2020-12-03)
 
@@ -1636,7 +1634,7 @@
 **Closed issues:**
 
 - プロダクト間で流用しているコンポーネントをingred-uiに導入する [\#111](https://github.com/voyagegroup/ingred-ui/issues/111)
-- arrow\_doubleアイコン消す [\#110](https://github.com/voyagegroup/ingred-ui/issues/110)
+- arrow_doubleアイコン消す [\#110](https://github.com/voyagegroup/ingred-ui/issues/110)
 
 **Merged pull requests:**
 
@@ -1665,7 +1663,7 @@
 
 **Closed issues:**
 
-- \<ExpantionMenu /\>でスクロールバー表示状態の時に、arrow\_bottomのアイコンが隠れてしまう [\#112](https://github.com/voyagegroup/ingred-ui/issues/112)
+- \<ExpantionMenu /\>でスクロールバー表示状態の時に、arrow_bottomのアイコンが隠れてしまう [\#112](https://github.com/voyagegroup/ingred-ui/issues/112)
 - publish時にbuildが２回走ってる [\#101](https://github.com/voyagegroup/ingred-ui/issues/101)
 
 **Merged pull requests:**
@@ -1678,7 +1676,7 @@
 
 **Merged pull requests:**
 
-- user\_settingsアイコンとcompany\_settingsアイコンを追加 [\#109](https://github.com/voyagegroup/ingred-ui/pull/109) ([kinokoruumu](https://github.com/kinokoruumu))
+- user_settingsアイコンとcompany_settingsアイコンを追加 [\#109](https://github.com/voyagegroup/ingred-ui/pull/109) ([kinokoruumu](https://github.com/kinokoruumu))
 
 ## [v3.21.2](https://github.com/voyagegroup/ingred-ui/tree/v3.21.2) (2020-07-07)
 
@@ -2178,7 +2176,7 @@
 
 **Merged pull requests:**
 
-- create add\_line icon [\#25](https://github.com/voyagegroup/ingred-ui/pull/25) ([kinokoruumu](https://github.com/kinokoruumu))
+- create add_line icon [\#25](https://github.com/voyagegroup/ingred-ui/pull/25) ([kinokoruumu](https://github.com/kinokoruumu))
 
 ## [v2.6.0](https://github.com/voyagegroup/ingred-ui/tree/v2.6.0) (2020-05-08)
 
@@ -2256,6 +2254,4 @@
 - DatePickerを移行する [\#5](https://github.com/voyagegroup/ingred-ui/pull/5) ([kinokoruumu](https://github.com/kinokoruumu))
 - DataTableを移行する [\#4](https://github.com/voyagegroup/ingred-ui/pull/4) ([kinokoruumu](https://github.com/kinokoruumu))
 
-
-
-\* *This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)*
+\* _This Changelog was automatically generated by [github_changelog_generator](https://github.com/github-changelog-generator/github-changelog-generator)_
