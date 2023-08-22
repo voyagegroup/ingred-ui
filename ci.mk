@@ -21,9 +21,6 @@ test:
 lint:
 	yarn lint
 
-build:
-	yarn build
-
 check_changesets:
 	yarn changeset status --since origin/master
 
