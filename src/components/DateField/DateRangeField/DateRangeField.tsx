@@ -8,6 +8,7 @@ import {
   ClickState,
   ClickStateType,
 } from "../../Calendar/CalendarRange/constants";
+import { DateRange } from "../../Calendar/CalendarRange/types";
 
 type Range = {
   startDate: Dayjs;
@@ -15,15 +16,32 @@ type Range = {
 };
 
 export type DateRangeFieldProps = {
-  date: Range;
+  /**
+   * 日付
+   * @default { startDate: dayjs(), endDate: dayjs() }
+   */
+  date: DateRange;
+  /**
+   * 指定したい format
+   * @default YYYY-MM-DD
+   */
   format?: string;
+  /**
+   * エラーメッセージのテキスト
+   */
   errorText?: string;
   /**
    * 入力を無効にする
    * @default false
    */
   disabled?: boolean;
+  /**
+   * カレンダーアイコンをクリックした時に呼ばれる関数
+   */
   onClickCalendarIcon?: () => void;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
   onDatesChange?: (date: Range) => void;
 };
 

@@ -18,8 +18,19 @@ import { ClickState, ClickStateType } from "./constants";
 import { DateRange } from "./types";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
+  /**
+   * 開始日
+   * @default dayjs()
+   */
   startDate: Dayjs;
+  /**
+   * 終了日
+   * @default dayjs()
+   */
   endDate: Dayjs;
+  /**
+   * カレンダーの左に表示するアクション
+   */
   actions?: Action[];
   /**
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
@@ -36,6 +47,9 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
    * @default () => false
    */
   isOutsideRange?: (date: Dayjs) => boolean;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
   onDatesChange: ({ startDate, endDate }: DateRange) => void;
 };
 

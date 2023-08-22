@@ -1,34 +1,4 @@
-import { Dayjs } from "dayjs";
-
-export type DateFieldProps = {
-  /**
-   * 日付
-   * @default dayjs()
-   */
-  date: Dayjs;
-  /**
-   * 指定したい format
-   * @default YYYY-MM-DD
-   */
-  format?: string;
-  /**
-   * エラーメッセージのテキスト
-   */
-  errorText?: string;
-  /**
-   * 入力を無効にする
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * 日付が変更されたときに呼ばれる関数
-   */
-  onDateChange?: (date: Dayjs) => void;
-  /**
-   * カレンダーアイコンをクリックした時に呼ばれる関数
-   */
-  onClick: () => void;
-};
+import { DateFieldProps } from "./DateField/DateField";
 
 export type UseDateFieldProps = Omit<DateFieldProps, "onClick">;
 
