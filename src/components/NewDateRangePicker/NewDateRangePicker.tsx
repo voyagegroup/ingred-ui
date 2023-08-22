@@ -15,6 +15,7 @@ import {
   ClickState,
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
+import { useMergeRefs } from "../../hooks/useMergeRefs";
 
 export type DateRange = {
   startDate: Dayjs;
@@ -63,15 +64,18 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker({
-  startDate,
-  endDate,
-  errorText,
-  disabled = false,
-  isOutsideRange = () => false,
-  actions,
-  onDatesChange,
-}) {
+>(function DateRangePicker(
+  {
+    startDate,
+    endDate,
+    errorText,
+    disabled = false,
+    isOutsideRange = () => false,
+    actions,
+    onDatesChange,
+  },
+  propRef,
+) {
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -79,7 +83,9 @@ export const DateRangePicker = forwardRef<
     onOpenChange: setOpen,
     middleware: [offset(10), flip()],
   });
-  const ref = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const ref = useMergeRefs(propRef, innerRef);
+
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
