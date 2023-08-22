@@ -15,7 +15,14 @@ import { useScroll } from "../hooks/useScroll";
 import { Action, Actions } from "../internal/Actions";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
+  /**
+   * 日付
+   * @default dayjs()
+   */
   date: Dayjs;
+  /**
+   * カレンダーの左に表示するアクション
+   */
   actions?: Action[];
   /**
    * 閉じるボタンを押したときの振る舞い
@@ -28,6 +35,9 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
    * @default () => false
    */
   isOutsideRange?: (date: Dayjs) => boolean;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
   onDateChange: (value: Dayjs) => void;
 };
 

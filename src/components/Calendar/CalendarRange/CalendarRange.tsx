@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Card, Icon, ScrollArea, Typography } from "../..";
+import { Card, Icon, ScrollArea, Typography, DateRange } from "../..";
 import React, { forwardRef, memo, useCallback, useRef, useState } from "react";
 import { Day } from "./internal/Day";
 import { HEIGHT, weekList } from "../constants";
@@ -15,11 +15,21 @@ import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
-import { DateRange } from "./types";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
+  /**
+   * 開始日
+   * @default dayjs()
+   */
   startDate: Dayjs;
+  /**
+   * 終了日
+   * @default dayjs()
+   */
   endDate: Dayjs;
+  /**
+   * カレンダーの左に表示するアクション
+   */
   actions?: Action[];
   /**
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
@@ -36,7 +46,10 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
    * @default () => false
    */
   isOutsideRange?: (date: Dayjs) => boolean;
-  onDatesChange: ({ startDate, endDate }: DateRange) => void;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
+  onDatesChange: (dates: DateRange) => void;
 };
 
 /**
@@ -162,4 +175,5 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
   },
 );
 
+export type { DateRange };
 export default memo(CalendarRange);

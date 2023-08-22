@@ -3,7 +3,37 @@ import { ErrorText, Icon, Input, Spacer } from "../..";
 import { useDateField } from "../useDateField";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
-import { DateFieldProps } from "../types";
+import { Dayjs } from "dayjs";
+
+export type DateFieldProps = {
+  /**
+   * 日付
+   * @default dayjs()
+   */
+  date: Dayjs;
+  /**
+   * 指定したい format
+   * @default YYYY-MM-DD
+   */
+  format?: string;
+  /**
+   * エラーメッセージのテキスト
+   */
+  errorText?: string;
+  /**
+   * 入力を無効にする
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
+  onDateChange?: (date: Dayjs) => void;
+  /**
+   * カレンダーアイコンをクリックした時に呼ばれる関数
+   */
+  onClick: () => void;
+};
 
 const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
   function DateField(
@@ -38,5 +68,4 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
   },
 );
 
-export type { DateFieldProps } from "../types";
 export default memo(DateField);

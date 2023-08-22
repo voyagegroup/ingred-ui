@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, useMemo } from "react";
-import { ErrorText, Icon, Input, Spacer } from "../..";
+import { ErrorText, Icon, Input, Spacer, DateRange } from "../..";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
@@ -9,22 +9,34 @@ import {
   ClickStateType,
 } from "../../Calendar/CalendarRange/constants";
 
-type Range = {
-  startDate: Dayjs;
-  endDate: Dayjs;
-};
-
 export type DateRangeFieldProps = {
-  date: Range;
+  /**
+   * 日付
+   * @default { startDate: dayjs(), endDate: dayjs() }
+   */
+  date: DateRange;
+  /**
+   * 指定したい format
+   * @default YYYY-MM-DD
+   */
   format?: string;
+  /**
+   * エラーメッセージのテキスト
+   */
   errorText?: string;
   /**
    * 入力を無効にする
    * @default false
    */
   disabled?: boolean;
+  /**
+   * カレンダーアイコンをクリックした時に呼ばれる関数
+   */
   onClickCalendarIcon?: () => void;
-  onDatesChange?: (date: Range) => void;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
+  onDatesChange?: (date: DateRange) => void;
 };
 
 const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(

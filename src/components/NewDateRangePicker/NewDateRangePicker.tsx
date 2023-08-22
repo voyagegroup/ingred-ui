@@ -15,13 +15,35 @@ import {
   ClickState,
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
-import { DateRange } from "../Calendar/CalendarRange/types";
 
-export type NewDateRangePickerProps = {
+export type DateRange = {
   startDate: Dayjs;
   endDate: Dayjs;
+};
+
+export type NewDateRangePickerProps = {
+  /**
+   * 開始日
+   * @default dayjs()
+   */
+  startDate: Dayjs;
+  /**
+   * 終了日
+   * @default dayjs()
+   */
+  endDate: Dayjs;
+  /**
+   * エラーメッセージのテキスト
+   */
   errorText?: string;
+  /**
+   * カレンダーの左に表示するアクション
+   */
   actions?: Action[];
+  /**
+   * 入力を無効にする
+   * @default false
+   */
   disabled?: boolean;
   /**
    * 選択可能なカレンダーの領域を制限する
@@ -29,7 +51,10 @@ export type NewDateRangePickerProps = {
    * @default () => false
    */
   isOutsideRange?: (date: Dayjs) => boolean;
-  onDatesChange: (date: DateRange) => void;
+  /**
+   * 日付が変更されたときに呼ばれる関数
+   */
+  onDatesChange: (dates: DateRange) => void;
 };
 
 /**
