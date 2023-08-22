@@ -15,7 +15,11 @@ import {
   ClickState,
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
-import { DateRange } from "../Calendar/CalendarRange/types";
+
+export type DateRange = {
+  startDate: Dayjs;
+  endDate: Dayjs;
+};
 
 export type NewDateRangePickerProps = {
   /**

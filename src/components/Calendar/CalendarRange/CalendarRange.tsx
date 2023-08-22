@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { Card, Icon, ScrollArea, Typography } from "../..";
+import { Card, Icon, ScrollArea, Typography, DateRange } from "../..";
 import React, { forwardRef, memo, useCallback, useRef, useState } from "react";
 import { Day } from "./internal/Day";
 import { HEIGHT, weekList } from "../constants";
@@ -15,7 +15,6 @@ import { useScroll } from "../hooks/useScroll";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
-import { DateRange } from "./types";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -176,4 +175,5 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
   },
 );
 
+export type { DateRange };
 export default memo(CalendarRange);
