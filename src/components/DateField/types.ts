@@ -12,6 +12,10 @@ export type DateFieldProps = {
    */
   format?: string;
   /**
+   * エラーメッセージのテキスト
+   */
+  errorText?: string;
+  /**
    * 入力を無効にする
    * @default false
    */

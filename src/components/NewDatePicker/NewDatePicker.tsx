@@ -15,6 +15,7 @@ export type NewDatePickerProps = {
   date: Dayjs;
   actions?: Action[];
   format?: string;
+  errorText?: string;
   disabled?: boolean;
   /**
    * 選択可能なカレンダーの領域を制限する
@@ -35,6 +36,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       format = "YYYY-MM-DD",
       disabled = false,
       isOutsideRange,
+      errorText,
       actions,
       onDateChange,
     },
@@ -79,6 +81,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
           <DateField
             date={date}
             format={format}
+            errorText={errorText}
             disabled={disabled}
             onClick={handleClickCalendarIcon}
             onDateChange={onDateChange}

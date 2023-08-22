@@ -32,6 +32,13 @@ export const Japanese: StoryObj<DateFieldProps> = {
   },
 };
 
+export const Error: StoryObj<DateFieldProps> = {
+  ...Example,
+  args: {
+    errorText: "エラー",
+  },
+};
+
 export const Disable: StoryObj<DateFieldProps> = {
   ...Example,
   args: {

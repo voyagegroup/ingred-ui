@@ -53,6 +53,13 @@ export const WithActions: StoryObj<NewDatePickerProps> = {
   },
 };
 
+export const Error: StoryObj<NewDatePickerProps> = {
+  ...Example,
+  args: {
+    errorText: "エラー",
+  },
+};
+
 export const Disabled: StoryObj<NewDatePickerProps> = {
   ...Example,
   args: {

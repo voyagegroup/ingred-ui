@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const InputContainer = styled.div<{ disabled: boolean }>`
+export const InputContainer = styled.div<{
+  disabled: boolean;
+  error?: boolean;
+}>`
   display: flex;
   align-items: center;
   width: 150px;
@@ -8,9 +11,17 @@ export const InputContainer = styled.div<{ disabled: boolean }>`
   padding: 0 8px 0 0;
   border: 0;
   font-size: 14px;
-  border: 1px solid ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme, error, disabled }) =>
+    // eslint-disable-next-line no-nested-ternary
+    disabled
+      ? theme.palette.gray.light
+      : error
+      ? theme.palette.danger.highlight
+      : theme.palette.background.default};
+  border: 1px solid
+    ${({ theme, error }) =>
+      error ? theme.palette.danger.main : theme.palette.divider};
   border-radius: ${({ theme }) => theme.radius}px;
-  border-color: ${({ theme }) => theme.palette.divider};
   overflow: scroll;
   /* MEMO: To take a place that display LastPass icon. */
   background-position: calc(100% - 35px) 50% !important;
@@ -27,8 +38,6 @@ export const InputContainer = styled.div<{ disabled: boolean }>`
   }
   color: ${({ theme, disabled }) =>
     disabled ? theme.palette.text.disabled : theme.palette.black};
-  background-color: ${({ theme, disabled }) =>
-    disabled ? theme.palette.gray.light : "transparent"};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "text")};
 `;
 

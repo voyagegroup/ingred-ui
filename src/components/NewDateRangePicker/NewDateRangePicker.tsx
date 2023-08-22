@@ -20,6 +20,7 @@ import { DateRange } from "../Calendar/CalendarRange/types";
 export type NewDateRangePickerProps = {
   startDate: Dayjs;
   endDate: Dayjs;
+  errorText?: string;
   actions?: Action[];
   disabled?: boolean;
   /**
@@ -40,6 +41,7 @@ export const DateRangePicker = forwardRef<
 >(function DateRangePicker({
   startDate,
   endDate,
+  errorText,
   disabled = false,
   isOutsideRange = () => false,
   actions,
@@ -88,6 +90,7 @@ export const DateRangePicker = forwardRef<
             startDate,
             endDate,
           }}
+          errorText={errorText}
           disabled={disabled}
           onDatesChange={onDatesChange}
           onClickCalendarIcon={handleClickCalendarIcon}

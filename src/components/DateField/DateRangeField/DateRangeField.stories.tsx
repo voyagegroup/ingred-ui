@@ -38,6 +38,13 @@ export const Japanese: StoryObj<DateRangeFieldProps> = {
   },
 };
 
+export const Error: StoryObj<DateRangeFieldProps> = {
+  ...Example,
+  args: {
+    errorText: "エラー",
+  },
+};
+
 export const Disable: StoryObj<DateRangeFieldProps> = {
   ...Example,
   args: {
