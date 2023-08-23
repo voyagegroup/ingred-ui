@@ -1,9 +1,15 @@
 import React from "react";
 import dayjs, { Dayjs } from "dayjs";
-import { Month, MonthContainer, YearContainer } from "./styled";
+import {
+  Month,
+  MonthContainer,
+  YearMonthTitleContainer,
+  YearContainer,
+  YearMonthsContainer,
+  IconButton,
+} from "./styled";
 import { useScrollYearMonths } from "../../hooks/useScrollYearMonths";
 import { Icon, ScrollArea, Typography } from "../../..";
-import { CalendarMonth, DatePickerContainer, IconButton } from "../../styled";
 import { useTheme } from "../../../../themes";
 
 type Props = {
@@ -25,31 +31,32 @@ export const YearMonths: React.FC<Props> = ({
   const ref = React.useRef<HTMLDivElement>(null);
   const { years } = useScrollYearMonths(current, ref);
 
-  const handleClick = (year: number, month: number) => {
+  const handleClick = (year: number, month: number) => () => {
     const newDate = dayjs(`${year}-${month}-01`);
     onClick(newDate);
   };
 
+  const handleYearIsOpen = () => {
+    onYearIsOpen(!yearIsOpen);
+  };
+
   return (
-    <DatePickerContainer id="year">
-      <CalendarMonth>
+    <YearMonthsContainer id="year">
+      <YearMonthTitleContainer>
         <Typography color="transparent" size="xl">
           {date.format("YYYY年MM月")}
         </Typography>
-        <IconButton
-          expanded={yearIsOpen}
-          onClick={() => onYearIsOpen(!yearIsOpen)}
-        >
+        <IconButton expanded={yearIsOpen} onClick={handleYearIsOpen}>
           <Icon name="arrow_bottom" size="lg" color={theme.palette.black} />
         </IconButton>
-      </CalendarMonth>
+      </YearMonthTitleContainer>
       <ScrollArea
         ref={ref}
         maxHeight="400px"
         minHeight="400px"
         id="year-months"
       >
-        <>
+        <div style={{ width: "250px" }}>
           {years.map((year) => {
             const months = Array.from(new Array(12), (_, i) => i + 1);
             return (
@@ -60,10 +67,7 @@ export const YearMonths: React.FC<Props> = ({
                 <MonthContainer>
                   {months.map((month) => {
                     return (
-                      <Month
-                        key={month}
-                        onClick={() => handleClick(year, month)}
-                      >
+                      <Month key={month} onClick={handleClick(year, month)}>
                         {month}月
                       </Month>
                     );
@@ -72,8 +76,8 @@ export const YearMonths: React.FC<Props> = ({
               </div>
             );
           })}
-        </>
+        </div>
       </ScrollArea>
-    </DatePickerContainer>
+    </YearMonthsContainer>
   );
 };

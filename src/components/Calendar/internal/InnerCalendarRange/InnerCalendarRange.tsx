@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
-import dayjs, { Dayjs } from "dayjs";
-import { Icon, ScrollArea } from "../../..";
-import { useTheme } from "styled-components";
-import { useScrollCalendar } from "../../hooks/useScrollCalendar";
 import { HEIGHT, weekList } from "../../constants";
+import { useTheme } from "../../../../themes";
+import { useScrollCalendar } from "../../hooks/useScrollCalendar";
+import { Icon, ScrollArea } from "../../../";
+import dayjs, { Dayjs } from "dayjs";
+import { getDayState } from "../../CalendarRange/utils";
 import {
   CalendarContainer,
   CalendarMonth,
@@ -12,18 +13,21 @@ import {
   IconButton,
   TitleContainer,
 } from "../../styled";
-import { Day } from "../../Calendar/internal/Day";
+import { Day } from "../../CalendarRange/internal/Day";
 
 type Props = {
-  date: Dayjs;
+  startDate: Dayjs;
+  endDate: Dayjs;
   current: Dayjs;
   yearIsOpen: boolean;
   onYearIsOpen: (yearIsOpen: boolean) => void;
   isOutsideRange: (date: Dayjs) => boolean;
   onDateChange: (value: Dayjs) => void;
 };
-export const InnerCalendar: React.FC<Props> = ({
-  date,
+
+export const InnerCalendarRange: React.FC<Props> = ({
+  startDate,
+  endDate,
   current,
   yearIsOpen,
   onYearIsOpen,
@@ -48,7 +52,6 @@ export const InnerCalendar: React.FC<Props> = ({
             id={m.format("YYYY-MM")}
             className={m.format("YYYY-MM")}
           >
-            {/* 年月の表示 */}
             <CalendarMonth expanded={yearIsOpen}>
               <TitleContainer expanded={yearIsOpen} weight="bold" size="xl">
                 {m.format("YYYY年MM月")}
@@ -64,44 +67,37 @@ export const InnerCalendar: React.FC<Props> = ({
                 />
               </IconButton>
             </CalendarMonth>
-
-            {/* カレンダーの表示 */}
             <CalendarContainer>
-              {/* 曜日の表示 */}
               {weekList["ja"].map((week) => (
                 <DayStyle key={week}>{week}</DayStyle>
               ))}
-
-              {/* 開始曜日まで空白をセット */}
               {Array.from(new Array(m.startOf("month").day()), (_, i) => (
                 <DayStyle key={i} />
               ))}
-
-              {/* 日付の表示 */}
               {Array.from(new Array(m.daysInMonth()), (_, i) => i + 1).map(
                 (day) => {
-                  // ややこしいけど、ここでのselectedは、選択中の日付かどうかを判定している
-                  // つまり、選択中の日付の場合はtrueになり、style で色を変える
-                  const selected =
-                    date.format("YYYY-MM-DD") ===
-                    dayjs(new Date(m.year(), m.month(), day)).format(
-                      "YYYY-MM-DD",
-                    );
-
                   const selectable = !isOutsideRange(
                     dayjs(new Date(m.year(), m.month(), day)),
                   );
 
                   return (
-                    <Day
+                    <div
                       key={day}
-                      value={dayjs(new Date(m.year(), m.month(), day))}
-                      selectable={selectable}
-                      selected={selected}
-                      onClickDate={onDateChange}
+                      style={{
+                        position: "relative",
+                        width: "fit-content",
+                        zIndex: 1,
+                      }}
                     >
-                      {day}
-                    </Day>
+                      <Day
+                        value={dayjs(new Date(m.year(), m.month(), day))}
+                        state={getDayState(startDate, endDate, m, day)}
+                        selectable={selectable}
+                        onClickDate={onDateChange}
+                      >
+                        {day}
+                      </Day>
+                    </div>
                   );
                 },
               )}

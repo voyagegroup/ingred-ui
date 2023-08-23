@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Flex } from "..";
+import { Flex, Typography } from "..";
 
 export const Container = styled.div`
   padding: 0 ${({ theme }) => theme.spacing * 3}px;
@@ -17,6 +17,7 @@ export const ScrollContainer = styled.div`
 
 export const DatePickerContainer = styled(Flex)`
   padding: ${({ theme }) => theme.spacing}px;
+  padding-top: 0;
   border: none;
   width: fit-content;
 `;
@@ -33,24 +34,34 @@ export const DayStyle = styled.span`
   color: ${({ theme }) => theme.palette.gray.dark};
 `;
 
-export const CalendarMonth = styled.div`
+export const TitleContainer = styled(Typography)<{ expanded: boolean }>`
+  color: ${({ theme, expanded }) =>
+    expanded ? "transparent" : theme.palette.black};
+  transition: color 300ms;
+`;
+
+export const CalendarMonth = styled.div<{ expanded: boolean }>`
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: ${({ theme }) => theme.palette.white};
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;
   align-items: center;
+  background-color: ${({ theme, expanded }) =>
+    expanded ? "transparent" : theme.palette.white};
+  transition: background-color 300ms;
 `;
 
-export const IconContainer = styled.button`
+export const IconContainer = styled.button<{ expanded: boolean }>`
   cursor: pointer;
   position: absolute;
   top: ${({ theme }) => theme.spacing}px;
   right: ${({ theme }) => theme.spacing}px;
   border: none;
   background: none;
+  opacity: ${({ expanded }) => (expanded ? 0 : 1)};
+  transition: opacity 300ms;
 `;
 
 export const IconButton = styled.div<{ expanded: boolean }>`

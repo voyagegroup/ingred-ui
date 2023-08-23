@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { Card, Icon } from "../..";
+import { Card, Icon, Slide } from "../..";
 import React, { forwardRef, memo, useEffect } from "react";
 import { Container, IconContainer } from "../styled";
 import { Action, Actions } from "../internal/Actions";
@@ -57,10 +57,15 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   }, [date]);
 
   return (
-    <Card ref={ref} display="flex" style={{ width: "fit-content" }} {...rest}>
+    <Card
+      ref={ref}
+      display="flex"
+      style={{ width: "fit-content", overflow: "hidden" }}
+      {...rest}
+    >
       <Actions actions={actions} />
       <Container>
-        {yearIsOpen ? (
+        <Slide unmountOnExit in={yearIsOpen} direction="up">
           <YearMonths
             date={date}
             current={date}
@@ -68,19 +73,18 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
             onYearIsOpen={setYearIsOpen}
             onClick={handleCloseYear}
           />
-        ) : (
-          <InnerCalendar
-            date={date}
-            current={current}
-            yearIsOpen={yearIsOpen}
-            isOutsideRange={isOutsideRange}
-            onYearIsOpen={setYearIsOpen}
-            onDateChange={onDateChange}
-          />
-        )}
+        </Slide>
+        <InnerCalendar
+          date={date}
+          current={current}
+          yearIsOpen={yearIsOpen}
+          isOutsideRange={isOutsideRange}
+          onYearIsOpen={setYearIsOpen}
+          onDateChange={onDateChange}
+        />
       </Container>
       {onClickCloseButton && (
-        <IconContainer onClick={onClickCloseButton}>
+        <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
           <Icon name="close" />
         </IconContainer>
       )}
