@@ -41,6 +41,7 @@ export const CalendarMonth = styled.div`
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;
+  align-items: center;
 `;
 
 export const IconContainer = styled.button`
@@ -50,4 +51,12 @@ export const IconContainer = styled.button`
   right: ${({ theme }) => theme.spacing}px;
   border: none;
   background: none;
+`;
+
+export const IconButton = styled.div<{ expanded: boolean }>`
+  padding: 0px ${({ theme }) => theme.spacing}px;
+  transition: transform 150ms;
+  transform-origin: center center;
+  transform: ${({ expanded }) => (expanded ? "rotate(180deg)" : "rotate(0)")};
+  cursor: pointer;
 `;
