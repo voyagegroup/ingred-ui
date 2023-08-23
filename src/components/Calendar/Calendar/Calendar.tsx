@@ -11,7 +11,7 @@ import {
   CalendarMonth,
   IconContainer,
 } from "../styled";
-import { useScroll } from "../hooks/useScroll";
+import { useScrollCalendar } from "../hooks/useScrollCalendar";
 import { Action, Actions } from "../internal/Actions";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -53,7 +53,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   ref,
 ) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { monthList } = useScroll(date, scrollRef);
+  const { monthList } = useScrollCalendar(date, scrollRef);
 
   return (
     <Card ref={ref} display="flex" style={{ width: "fit-content" }} {...rest}>

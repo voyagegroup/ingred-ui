@@ -11,7 +11,7 @@ import {
   DayStyle,
   IconContainer,
 } from "../styled";
-import { useScroll } from "../hooks/useScroll";
+import { useScrollCalendar } from "../hooks/useScrollCalendar";
 import { getDayState } from "./utils";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
@@ -72,7 +72,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     ref,
   ) {
     const scrollRef = useRef<HTMLDivElement>(null);
-    const { monthList } = useScroll(startDate ?? dayjs(), scrollRef);
+    const { monthList } = useScrollCalendar(startDate ?? dayjs(), scrollRef);
     const [clickState, setClickState] = useState<ClickStateType>(
       ClickState.START,
     );

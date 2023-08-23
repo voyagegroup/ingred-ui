@@ -17,7 +17,7 @@ export const getPrevMonthList = (date: Dayjs) =>
  * @param ref カレンダーの親要素のref、IntersectionObserverのrootに使う
  * @return monthList 表示する月のリスト
  */
-export const useScroll = (
+export const useScrollCalendar = (
   date: Dayjs,
   ref: React.RefObject<HTMLDivElement>,
 ) => {
