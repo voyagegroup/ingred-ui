@@ -1,6 +1,10 @@
 import { renderHook, act } from "@testing-library/react";
 import dayjs, { Dayjs } from "dayjs";
-import { useScroll, getNextMonthList, getPrevMonthList } from "../useScroll";
+import {
+  useScrollCalendar,
+  getNextMonthList,
+  getPrevMonthList,
+} from "../useScrollCalendar";
 
 (global as any).IntersectionObserver = jest.fn().mockImplementation(() => ({
   observe: () => jest.fn(),
@@ -18,7 +22,7 @@ describe("useScroll hook", () => {
   });
 
   test("loads next six months when reaching the bottom 10% of ScrollArea", () => {
-    const { result } = renderHook(() => useScroll(date, ref));
+    const { result } = renderHook(() => useScrollCalendar(date, ref));
 
     act(() => {
       //   const targets = document.getElementsByClassName(date.format("YYYY-MM"));
@@ -33,7 +37,7 @@ describe("useScroll hook", () => {
   });
 
   test("loads previous six months when reaching the top 10% of ScrollArea", () => {
-    const { result } = renderHook(() => useScroll(date, ref));
+    const { result } = renderHook(() => useScrollCalendar(date, ref));
 
     act(() => {
       //   const targets = document.getElementsByClassName(date.format("YYYY-MM"));
