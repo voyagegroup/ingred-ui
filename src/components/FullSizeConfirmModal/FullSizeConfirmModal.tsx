@@ -67,7 +67,7 @@ export type FullSizeConfirmModalProps = {
 const FullSizeConfirmModal = React.forwardRef<
   HTMLDivElement,
   FullSizeConfirmModalProps
->((inProps, ref) => {
+>(function FullSizeConfirmModal(inProps, ref) {
   const props = useLocaleProps({
     props: inProps,
     name: "FullSizeConfirmModal",

@@ -33,7 +33,7 @@ export type FloatingTipProps = {
 };
 
 const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
-  (
+  function FloatingTip(
     {
       baseElement,
       positionPriority = ["right-start"],
@@ -44,7 +44,7 @@ const FloatingTip = React.forwardRef<HTMLDivElement, FloatingTipProps>(
       children,
     },
     ref,
-  ) => {
+  ) {
     const theme = useTheme();
 
     const handleClickCloseIcon = (

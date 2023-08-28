@@ -17,7 +17,10 @@ export type FixedPanelProps = {
 };
 
 const FixedPanel = React.forwardRef<HTMLDivElement, FixedPanelProps>(
-  ({ isOpen, placement = "top", offset = 0, children }, ref) => {
+  function FixedPanel(
+    { isOpen, placement = "top", offset = 0, children },
+    ref,
+  ) {
     const [containerRef, setContainerRef] =
       React.useState<HTMLDivElement | null>(null);
     const refs = useMergeRefs<HTMLDivElement>(ref, setContainerRef);

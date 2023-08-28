@@ -7,7 +7,7 @@ type Props = {
 };
 
 const MainContent = React.forwardRef<HTMLDivElement, Props>(
-  ({ children }, ref) => {
+  function MainContent({ children }, ref) {
     const { isFixed } = React.useContext(NavigationRailContext);
 
     return (

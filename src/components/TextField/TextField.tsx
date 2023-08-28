@@ -16,7 +16,7 @@ export type TextFieldProps = InputProps & {
 };
 
 const TextField = React.forwardRef<HTMLDivElement, TextFieldProps>(
-  ({ errorText, icon, type, inputRef, ...rest }, ref) => {
+  function TextField({ errorText, icon, type, inputRef, ...rest }, ref) {
     const [show, setShow] = React.useState(false);
     const theme = useTheme();
     const handleToggleShowPassword = () => {

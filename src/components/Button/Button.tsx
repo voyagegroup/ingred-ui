@@ -188,64 +188,62 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   href?: string;
 };
 
-const Button = React.forwardRef<HTMLElement, ButtonProps>(
-  (
-    {
-      component,
-      children,
-      color = "primary",
-      inline = false,
-      size = "medium",
-      href,
-      ...rest
-    },
-    ref,
-  ) => {
-    const theme = useTheme();
-    const colorStyle = getContainerColorStyles(theme)[color];
-    const {
-      horizontalPadding,
-      verticalPadding,
-      paddingTopAtActive,
-      paddingBottomAtActive,
-    } = getPadding({
-      theme,
-      size,
-      color,
-    });
-
-    const isLink = !!href;
-    let anchorProps: any = {};
-    if (isLink) {
-      anchorProps = {
-        as: component || "a",
-        href,
-      };
-    }
-
-    return (
-      <Styled.ButtonContainer
-        ref={ref}
-        {...rest}
-        as={component || "button"}
-        {...anchorProps}
-        inline={inline}
-        verticalPadding={verticalPadding}
-        horizontalPadding={horizontalPadding}
-        paddingTopAtActive={paddingTopAtActive}
-        paddingBottomAtActive={paddingBottomAtActive}
-        normal={{ ...colorStyle.normal }}
-        hover={{ ...colorStyle.hover }}
-        active={{ ...colorStyle.active }}
-        fontWeight="normal"
-        fontSize={
-          size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
-        }
-      >
-        {children}
-      </Styled.ButtonContainer>
-    );
+const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
+  {
+    component,
+    children,
+    color = "primary",
+    inline = false,
+    size = "medium",
+    href,
+    ...rest
   },
-);
+  ref,
+) {
+  const theme = useTheme();
+  const colorStyle = getContainerColorStyles(theme)[color];
+  const {
+    horizontalPadding,
+    verticalPadding,
+    paddingTopAtActive,
+    paddingBottomAtActive,
+  } = getPadding({
+    theme,
+    size,
+    color,
+  });
+
+  const isLink = !!href;
+  let anchorProps: any = {};
+  if (isLink) {
+    anchorProps = {
+      as: component || "a",
+      href,
+    };
+  }
+
+  return (
+    <Styled.ButtonContainer
+      ref={ref}
+      {...rest}
+      as={component || "button"}
+      {...anchorProps}
+      inline={inline}
+      verticalPadding={verticalPadding}
+      horizontalPadding={horizontalPadding}
+      paddingTopAtActive={paddingTopAtActive}
+      paddingBottomAtActive={paddingBottomAtActive}
+      normal={{ ...colorStyle.normal }}
+      hover={{ ...colorStyle.hover }}
+      active={{ ...colorStyle.active }}
+      fontWeight="normal"
+      fontSize={
+        size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
+      }
+    >
+      {children}
+    </Styled.ButtonContainer>
+  );
+});
 
 export default Button;

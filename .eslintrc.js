@@ -84,7 +84,6 @@ module.exports = {
      * Disable some `plugin:react/recommended` settings.
      */
     "react-hooks/exhaustive-deps": "warn",
-    "react/display-name": "off",
     "react/prop-types": "off",
     "react/jsx-boolean-value": "off",
     "react/jsx-filename-extension": "off",

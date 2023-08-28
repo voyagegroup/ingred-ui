@@ -291,9 +291,14 @@ export const icons: {
   check_thin: CheckThinIcon,
 };
 
-const iconFactory = (name: IconName) => (props: IconProps) => {
-  const Component = icons[name];
-  return <Component {...props} />;
+const iconFactory = (name: IconName) => {
+  const IconComponent = (props: IconProps) => {
+    const Component = icons[name];
+    return <Component {...props} />;
+  };
+  IconComponent.displayName = `IconComponent(${name})`;
+
+  return IconComponent;
 };
 
 const getIconColor = (color: IconColor, theme: Theme) => {
@@ -314,15 +319,16 @@ export type Props = {
   color?: IconColor;
 };
 
-const Icon = React.forwardRef<HTMLSpanElement, Props>(
-  ({ name, type = "line", size = "md", color = "fill" }, ref) => {
-    const theme = useTheme();
-    return (
-      <Styled.Container ref={ref} size={iconSize[size]}>
-        {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
-      </Styled.Container>
-    );
-  },
-);
+const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
+  { name, type = "line", size = "md", color = "fill" },
+  ref,
+) {
+  const theme = useTheme();
+  return (
+    <Styled.Container ref={ref} size={iconSize[size]}>
+      {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
+    </Styled.Container>
+  );
+});
 
 export default Icon;

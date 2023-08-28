@@ -21,7 +21,10 @@ export type NavigationRailContainerProps = {
 const NavigationRailContainer = React.forwardRef<
   HTMLDivElement,
   NavigationRailContainerProps
->(({ defaultFixed = false, onChangeOpen, onChangeFixed, children }, ref) => {
+>(function NavigationRailContainer(
+  { defaultFixed = false, onChangeOpen, onChangeFixed, children },
+  ref,
+) {
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
 

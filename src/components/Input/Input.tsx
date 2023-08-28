@@ -16,7 +16,10 @@ export type InputProps = (
 const Input = React.forwardRef<
   HTMLTextAreaElement | HTMLInputElement,
   InputProps
->(({ error = false, multiline = false, resize = "both", ...rest }, ref) => {
+>(function Input(
+  { error = false, multiline = false, resize = "both", ...rest },
+  ref,
+) {
   const handleWheel = (
     event: React.WheelEvent<HTMLInputElement> &
       React.WheelEvent<HTMLTextAreaElement>,

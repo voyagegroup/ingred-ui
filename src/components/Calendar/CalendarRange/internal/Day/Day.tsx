@@ -45,12 +45,16 @@ const getDayStyle = ({
   }
 };
 
-export const Day: FC<Props> = memo(
-  ({ state, value, selectable, onClickDate, children }) => {
-    return (
-      <DayContainer>
-        {getDayStyle({ state, value, selectable, onClickDate, children })}
-      </DayContainer>
-    );
-  },
-);
+export const Day: FC<Props> = memo(function Day({
+  state,
+  value,
+  selectable,
+  onClickDate,
+  children,
+}) {
+  return (
+    <DayContainer>
+      {getDayStyle({ state, value, selectable, onClickDate, children })}
+    </DayContainer>
+  );
+});

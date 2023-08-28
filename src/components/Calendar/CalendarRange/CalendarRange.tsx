@@ -55,7 +55,7 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
  * Currently, one year from the currently selected date is displayed.
  */
 export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
-  function (
+  function CalendarRange(
     {
       startDate,
       endDate,

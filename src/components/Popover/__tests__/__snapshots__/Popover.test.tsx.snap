@@ -7,6 +7,7 @@ exports[`Popover component testing Popover 1`] = `
   >
     <div
       class="sc-hKMtZM kldEOn fade-transition-appear fade-transition-appear-active"
+      data-floating-ui-inert=""
     >
       <div
         class="sc-dkzDqf eOrlky"

@@ -13,7 +13,7 @@ export type ItemEmptyProps = {
 };
 
 const ItemEmpty = React.forwardRef<HTMLDivElement, ItemEmptyProps>(
-  (inProps, ref) => {
+  function ItemEmpty(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "ItemEmpty" });
     const {
       title = "Not found.",

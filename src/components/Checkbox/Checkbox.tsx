@@ -8,7 +8,7 @@ export type CheckBoxProps = React.ComponentPropsWithoutRef<"input"> & {
 };
 
 const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
-  (
+  function CheckBox(
     {
       children,
       indeterminate = false,
@@ -18,7 +18,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     return (
       <Styled.Container ref={ref} disabled={disabled}>
         <Styled.Checkbox

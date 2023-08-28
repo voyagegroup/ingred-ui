@@ -34,7 +34,7 @@ export type DropdownButtonProps = {
 };
 
 const DropdownButton = React.forwardRef<HTMLDivElement, DropdownButtonProps>(
-  (
+  function DropdownButton(
     {
       size = "medium",
       color = "primary",
@@ -48,7 +48,7 @@ const DropdownButton = React.forwardRef<HTMLDivElement, DropdownButtonProps>(
       children,
     },
     ref,
-  ) => {
+  ) {
     const theme = useTheme();
     const [buttonElement, setButtonElement] =
       React.useState<HTMLDivElement | null>(null);

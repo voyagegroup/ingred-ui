@@ -21,7 +21,10 @@ const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
 };
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ size = "medium", disabled = false, children, ...rest }, ref) => {
+  function ButtonGroup(
+    { size = "medium", disabled = false, children, ...rest },
+    ref,
+  ) {
     const theme = useTheme();
     const horizontalPadding =
       size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
