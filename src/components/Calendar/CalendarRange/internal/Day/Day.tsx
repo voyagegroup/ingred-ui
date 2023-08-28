@@ -6,6 +6,7 @@ import {
   DayEnd,
   DayStart,
   DisableDayContainer,
+  DayContainer,
 } from "./styled";
 import { DayState, DayStateType } from "../../constants";
 
@@ -17,25 +18,39 @@ type Props = {
   children: ReactNode;
 };
 
+const getDayStyle = ({
+  state,
+  value,
+  selectable,
+  onClickDate,
+  children,
+}: Props) => {
+  const onClick = () => {
+    onClickDate?.(value);
+  };
+
+  if (!selectable) {
+    return <DisableDayContainer>{children}</DisableDayContainer>;
+  }
+
+  switch (state) {
+    case DayState.START:
+      return <DayStart onClick={onClick}>{children}</DayStart>;
+    case DayState.END:
+      return <DayEnd onClick={onClick}>{children}</DayEnd>;
+    case DayState.BETWEEN:
+      return <DayBetween onClick={onClick}>{children}</DayBetween>;
+    default:
+      return <DayStyle onClick={onClick}>{children}</DayStyle>;
+  }
+};
+
 export const Day: FC<Props> = memo(
   ({ state, value, selectable, onClickDate, children }) => {
-    const onClick = () => {
-      onClickDate?.(value);
-    };
-
-    if (!selectable) {
-      return <DisableDayContainer>{children}</DisableDayContainer>;
-    }
-
-    switch (state) {
-      case DayState.START:
-        return <DayStart onClick={onClick}>{children}</DayStart>;
-      case DayState.END:
-        return <DayEnd onClick={onClick}>{children}</DayEnd>;
-      case DayState.BETWEEN:
-        return <DayBetween onClick={onClick}>{children}</DayBetween>;
-      default:
-        return <DayStyle onClick={onClick}>{children}</DayStyle>;
-    }
+    return (
+      <DayContainer>
+        {getDayStyle({ state, value, selectable, onClickDate, children })}
+      </DayContainer>
+    );
   },
 );

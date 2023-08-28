@@ -120,24 +120,28 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
       >
         <Actions actions={actions} />
         <Container>
-          <Slide unmountOnExit in={yearIsOpen} direction="up">
-            <YearMonths
-              date={startDate}
-              current={startDate}
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <Slide unmountOnExit in={yearIsOpen} direction="up">
+              <YearMonths
+                date={startDate}
+                current={startDate}
+                yearIsOpen={yearIsOpen}
+                onYearIsOpen={setYearIsOpen}
+                onClick={handleCloseYear}
+              />
+            </Slide>
+          </div>
+          <div style={{ position: "relative", zIndex: 0 }}>
+            <InnerCalendarRange
+              startDate={startDate}
+              endDate={endDate}
+              current={current}
               yearIsOpen={yearIsOpen}
+              isOutsideRange={isOutsideRange}
               onYearIsOpen={setYearIsOpen}
-              onClick={handleCloseYear}
+              onDateChange={handleDateChange}
             />
-          </Slide>
-          <InnerCalendarRange
-            startDate={startDate}
-            endDate={endDate}
-            current={current}
-            yearIsOpen={yearIsOpen}
-            isOutsideRange={isOutsideRange}
-            onYearIsOpen={setYearIsOpen}
-            onDateChange={handleDateChange}
-          />
+          </div>
         </Container>
         {onClickCloseButton && (
           <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>

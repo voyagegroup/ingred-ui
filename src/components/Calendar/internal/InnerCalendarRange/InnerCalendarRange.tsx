@@ -81,23 +81,15 @@ export const InnerCalendarRange: React.FC<Props> = ({
                   );
 
                   return (
-                    <div
+                    <Day
                       key={day}
-                      style={{
-                        position: "relative",
-                        width: "fit-content",
-                        zIndex: 1,
-                      }}
+                      value={dayjs(new Date(m.year(), m.month(), day))}
+                      state={getDayState(startDate, endDate, m, day)}
+                      selectable={selectable}
+                      onClickDate={onDateChange}
                     >
-                      <Day
-                        value={dayjs(new Date(m.year(), m.month(), day))}
-                        state={getDayState(startDate, endDate, m, day)}
-                        selectable={selectable}
-                        onClickDate={onDateChange}
-                      >
-                        {day}
-                      </Day>
-                    </div>
+                      {day}
+                    </Day>
                   );
                 },
               )}
