@@ -5,5 +5,7 @@ export type Props = {
 };
 
 export const Header = React.forwardRef<HTMLTableSectionElement, Props>(
-  ({ children }, ref) => <thead ref={ref}>{children}</thead>,
+  function Header({ children }, ref) {
+    return <thead ref={ref}>{children}</thead>;
+  },
 );

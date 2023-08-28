@@ -27,7 +27,7 @@ type Props = {
 };
 
 const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
-  ({ children }, ref) => {
+  function NavigationRail({ children }, ref) {
     const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
       NavigationRailContext,
     );

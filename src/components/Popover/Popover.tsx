@@ -36,80 +36,78 @@ export type PopoverProps = React.ComponentPropsWithoutRef<"div"> & {
   children: React.ComponentElement<HTMLElement, any>;
 };
 
-const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(
-  (
-    {
-      isOpen = true,
-      onClose,
-      baseElement,
-      offset = [0, 0],
-      positionPriority = ["auto"],
-      modalProps,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
-    const { placements, isAuto } = usePlacement(positionPriority);
-    const {
-      x,
-      y,
-      refs: floatingRef,
-      strategy,
-      context,
-    } = useFloating({
-      elements: {
-        reference: baseElement,
-      },
-      placement: placements[0],
-      open: isOpen,
-      middleware: [
-        positionPriority.length > 0 && !isAuto
-          ? flip({
-              padding: 24,
-              fallbackPlacements: placements,
-            })
-          : autoPlacement(),
-        floatingOffset({
-          mainAxis: offset[1],
-          crossAxis: offset[0],
-        }),
-        shift({
-          mainAxis: false,
-        }),
-      ],
-      whileElementsMounted: autoUpdate,
-    });
-
-    const role = useRole(context);
-    const { getFloatingProps } = useInteractions([role]);
-
-    const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
-
-    return (
-      <Modal
-        isOpen={isOpen}
-        backdropProps={{ invisible: true }}
-        {...modalProps}
-        onClose={onClose}
-      >
-        <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
-          <Styled.Container
-            ref={refs}
-            style={{
-              position: strategy,
-              top: y,
-              left: x,
-            }}
-            {...getFloatingProps()}
-            {...rest}
-          >
-            {children}
-          </Styled.Container>
-        </FloatingFocusManager>
-      </Modal>
-    );
+const Popover = React.forwardRef<HTMLDivElement, PopoverProps>(function Popover(
+  {
+    isOpen = true,
+    onClose,
+    baseElement,
+    offset = [0, 0],
+    positionPriority = ["auto"],
+    modalProps,
+    children,
+    ...rest
   },
-);
+  ref,
+) {
+  const { placements, isAuto } = usePlacement(positionPriority);
+  const {
+    x,
+    y,
+    refs: floatingRef,
+    strategy,
+    context,
+  } = useFloating({
+    elements: {
+      reference: baseElement,
+    },
+    placement: placements[0],
+    open: isOpen,
+    middleware: [
+      positionPriority.length > 0 && !isAuto
+        ? flip({
+            padding: 24,
+            fallbackPlacements: placements,
+          })
+        : autoPlacement(),
+      floatingOffset({
+        mainAxis: offset[1],
+        crossAxis: offset[0],
+      }),
+      shift({
+        mainAxis: false,
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
+
+  const role = useRole(context);
+  const { getFloatingProps } = useInteractions([role]);
+
+  const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
+
+  return (
+    <Modal
+      isOpen={isOpen}
+      backdropProps={{ invisible: true }}
+      {...modalProps}
+      onClose={onClose}
+    >
+      <FloatingFocusManager context={context} modal={false} initialFocus={-1}>
+        <Styled.Container
+          ref={refs}
+          style={{
+            position: strategy,
+            top: y,
+            left: x,
+          }}
+          {...getFloatingProps()}
+          {...rest}
+        >
+          {children}
+        </Styled.Container>
+      </FloatingFocusManager>
+    </Modal>
+  );
+});
 
 export default Popover;

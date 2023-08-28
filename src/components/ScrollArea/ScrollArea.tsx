@@ -15,7 +15,7 @@ export type ScrollAreaProps = React.ComponentPropsWithoutRef<"div"> & {
  * Plan to enable to add horizontal scrollbar.
  */
 const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
-  (
+  function ScrollArea(
     {
       height = "auto",
       maxHeight = "none",
@@ -24,17 +24,19 @@ const ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(
       ...rest
     },
     ref,
-  ) => (
-    <Styled.Container
-      height={height}
-      maxHeight={maxHeight}
-      minHeight={minHeight}
-      {...rest}
-      ref={ref}
-    >
-      {children}
-    </Styled.Container>
-  ),
+  ) {
+    return (
+      <Styled.Container
+        height={height}
+        maxHeight={maxHeight}
+        minHeight={minHeight}
+        {...rest}
+        ref={ref}
+      >
+        {children}
+      </Styled.Container>
+    );
+  },
 );
 
 export default ScrollArea;

@@ -14,9 +14,11 @@ export type TableCellProps =
   };
 
 export const Cell = React.forwardRef<HTMLTableCellElement, TableCellProps>(
-  ({ width = "auto", children, ...rest }, ref) => (
-    <Component ref={ref} width={width} {...rest}>
-      <Typography component="div">{children}</Typography>
-    </Component>
-  ),
+  function Cell({ width = "auto", children, ...rest }, ref) {
+    return (
+      <Component ref={ref} width={width} {...rest}>
+        <Typography component="div">{children}</Typography>
+      </Component>
+    );
+  },
 );

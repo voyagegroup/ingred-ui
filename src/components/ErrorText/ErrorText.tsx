@@ -10,7 +10,7 @@ export type ErrorTextProps = {
 };
 
 const ErrorText = React.forwardRef<HTMLDivElement, ErrorTextProps>(
-  ({ children }, ref) => {
+  function ErrorText({ children }, ref) {
     const theme = useTheme();
     return (
       <Flex ref={ref} display="flex" alignItems="center">

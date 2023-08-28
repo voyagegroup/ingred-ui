@@ -38,7 +38,7 @@ export type DatePickerProps = Partial<
   };
 
 const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>(
-  (inProps, ref) => {
+  function DatePicker(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "DatePicker" });
     const {
       date,

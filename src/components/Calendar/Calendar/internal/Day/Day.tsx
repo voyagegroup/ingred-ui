@@ -10,18 +10,22 @@ type Props = {
   children: ReactNode;
 };
 
-export const Day: FC<Props> = memo(
-  ({ selected, value, selectable, onClickDate, children }) => {
-    const handleClick = () => {
-      onClickDate?.(value);
-    };
+export const Day: FC<Props> = memo(function Day({
+  selected,
+  value,
+  selectable,
+  onClickDate,
+  children,
+}) {
+  const handleClick = () => {
+    onClickDate?.(value);
+  };
 
-    return selectable ? (
-      <DayContainer selected={selected} onClick={handleClick}>
-        {children}
-      </DayContainer>
-    ) : (
-      <DisableDayContainer>{children}</DisableDayContainer>
-    );
-  },
-);
+  return selectable ? (
+    <DayContainer selected={selected} onClick={handleClick}>
+      {children}
+    </DayContainer>
+  ) : (
+    <DisableDayContainer>{children}</DisableDayContainer>
+  );
+});

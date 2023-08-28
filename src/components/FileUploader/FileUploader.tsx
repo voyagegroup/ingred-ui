@@ -22,7 +22,7 @@ export type FileUploaderProps = {
 };
 
 const FileUploader = React.forwardRef<HTMLDivElement, FileUploaderProps>(
-  (inProps, ref) => {
+  function FileUploader(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "FileUploader" });
     const {
       accept,

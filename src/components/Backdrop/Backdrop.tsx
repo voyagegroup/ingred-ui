@@ -17,7 +17,7 @@ export type BackdropProps = React.ComponentPropsWithoutRef<"div"> & {
 };
 
 const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(
-  (
+  function Backdrop(
     {
       isOpen = true,
       invisible = false,
@@ -27,7 +27,7 @@ const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     return (
       <Fade
         in={isOpen}

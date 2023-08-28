@@ -21,7 +21,10 @@ export type NavigationRailExpansionMenuItemProps = Omit<
 const ExpansionMenuItem = React.forwardRef<
   HTMLDivElement,
   NavigationRailExpansionMenuItemProps
->(({ title, isActive = false, notificationCount = 0, ...rest }, ref) => {
+>(function ExpansionMenuItem(
+  { title, isActive = false, notificationCount = 0, ...rest },
+  ref,
+) {
   const theme = useTheme();
 
   return (

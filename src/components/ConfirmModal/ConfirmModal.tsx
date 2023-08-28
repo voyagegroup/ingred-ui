@@ -63,7 +63,7 @@ export type ConfirmModalProps = {
 };
 
 const ConfirmModal = React.forwardRef<HTMLDivElement, ConfirmModalProps>(
-  (inProps, ref) => {
+  function ConfirmModal(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "ConfirmModal" });
     const {
       title,

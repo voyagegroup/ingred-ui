@@ -25,7 +25,7 @@ export type SnackbarProps = {
 };
 
 const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>(
-  (
+  function Snackbar(
     {
       color = "default",
       anchorOrigin: { vertical, horizontal } = {
@@ -37,7 +37,7 @@ const Snackbar = React.forwardRef<HTMLDivElement, SnackbarProps>(
       children,
     },
     ref,
-  ) => {
+  ) {
     if (!isOpen) {
       return null;
     }

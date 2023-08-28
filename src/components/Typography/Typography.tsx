@@ -74,7 +74,7 @@ export type TypographyProps = {
 };
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  (
+  function Typography(
     {
       children,
       component: Component = "p",
@@ -86,7 +86,7 @@ const Typography = React.forwardRef<HTMLElement, TypographyProps>(
       className,
     },
     ref,
-  ) => {
+  ) {
     const theme = useTheme();
     return (
       <Styled.Container

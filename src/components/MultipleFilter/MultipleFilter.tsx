@@ -40,7 +40,7 @@ export type MultipleFilterProps = {
 };
 
 const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
-  (inProps, ref) => {
+  function MultipleFilter(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "MultipleFilter" });
     const {
       filterPacks,

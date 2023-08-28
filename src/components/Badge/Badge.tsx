@@ -37,7 +37,7 @@ export type BadgeProps = React.ComponentPropsWithoutRef<"a" | "span"> & {
 };
 
 const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
-  (
+  function Badge(
     {
       color,
       type = "normal",
@@ -48,7 +48,7 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
       ...rest
     },
     ref,
-  ) => {
+  ) {
     const theme = useTheme();
     return (
       <Styled.Container

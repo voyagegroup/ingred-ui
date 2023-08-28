@@ -12,46 +12,43 @@ export type PagerProps = {
   onClick: (index: number) => void;
 };
 
-const Pager = React.forwardRef<HTMLDivElement, PagerProps>(
-  ({ per, total, index = 1, onClick }, ref) => {
-    const pagerCount = Math.ceil(total / per);
-    const isFirst = index === 1 || total === 0;
-    const isLast = index === pagerCount || total === 0;
+const Pager = React.forwardRef<HTMLDivElement, PagerProps>(function Pager(
+  { per, total, index = 1, onClick },
+  ref,
+) {
+  const pagerCount = Math.ceil(total / per);
+  const isFirst = index === 1 || total === 0;
+  const isLast = index === pagerCount || total === 0;
 
-    const handleClick = (index: number) => () => onClick(index);
+  const handleClick = (index: number) => () => onClick(index);
 
-    return (
-      <Flex ref={ref} display="flex" alignItems="center">
-        <ArrowButton
-          isRight={false}
-          disabled={isFirst}
-          onClick={handleClick(index - 1)}
-        />
-        {pagerCount < 7 ? (
-          [...Array(pagerCount)].map((_, i) => (
-            <NumberButton
-              key={i} // eslint-disable-line react/no-array-index-key
-              index={i + 1}
-              isActiveIndex={index === i + 1}
-              onClick={handleClick(i + 1)}
-            />
-          ))
-        ) : (
-          <PagerButtonsWithDottedLine
-            pagerCount={pagerCount}
-            index={index}
-            onClick={onClick}
+  return (
+    <Flex ref={ref} display="flex" alignItems="center">
+      <ArrowButton
+        isRight={false}
+        disabled={isFirst}
+        onClick={handleClick(index - 1)}
+      />
+      {pagerCount < 7 ? (
+        [...Array(pagerCount)].map((_, i) => (
+          <NumberButton
+            key={i} // eslint-disable-line react/no-array-index-key
+            index={i + 1}
+            isActiveIndex={index === i + 1}
+            onClick={handleClick(i + 1)}
           />
-        )}
-        <ArrowButton
-          isRight
-          disabled={isLast}
-          onClick={handleClick(index + 1)}
+        ))
+      ) : (
+        <PagerButtonsWithDottedLine
+          pagerCount={pagerCount}
+          index={index}
+          onClick={onClick}
         />
-      </Flex>
-    );
-  },
-);
+      )}
+      <ArrowButton isRight disabled={isLast} onClick={handleClick(index + 1)} />
+    </Flex>
+  );
+});
 
 export type FilterState = {
   per: number;
