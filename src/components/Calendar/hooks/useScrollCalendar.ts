@@ -40,7 +40,7 @@ export const useScrollCalendar = (
     // 全てのカレンダーに 2023-06 のような名前の className を振ってある
     const targets = document.getElementsByClassName(date.format("YYYY-MM"));
     for (const target of Array.from(targets)) {
-      target.scrollIntoView({ block: "center" });
+      target.scrollIntoView({ block: "start" });
     }
   }, [date]);
 

@@ -1,18 +1,10 @@
-import dayjs, { Dayjs } from "dayjs";
-import { Card, Icon, ScrollArea, Typography } from "../..";
-import React, { forwardRef, memo, useRef } from "react";
-import { Day } from "./internal/Day";
-import { weekList, HEIGHT } from "../constants";
-import {
-  Container,
-  CalendarContainer,
-  DatePickerContainer,
-  DayStyle,
-  CalendarMonth,
-  IconContainer,
-} from "../styled";
-import { useScrollCalendar } from "../hooks/useScrollCalendar";
+import { Dayjs } from "dayjs";
+import { Card, Icon, Slide } from "../..";
+import React, { forwardRef, memo, useEffect } from "react";
+import { Container, IconContainer } from "../styled";
 import { Action, Actions } from "../internal/Actions";
+import { YearMonths } from "../internal/YearMonths";
+import { InnerCalendar } from "../internal/InnerCalendar";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -52,81 +44,47 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   },
   ref,
 ) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { monthList } = useScrollCalendar(date, scrollRef);
+  const [current, setCurrent] = React.useState<Dayjs>(date);
+  const [yearIsOpen, setYearIsOpen] = React.useState(false);
+
+  const handleCloseYear = (date: Dayjs) => {
+    setYearIsOpen(false);
+    setCurrent(date);
+  };
+
+  useEffect(() => {
+    setCurrent(date);
+  }, [date]);
 
   return (
-    <Card ref={ref} display="flex" style={{ width: "fit-content" }} {...rest}>
+    <Card
+      ref={ref}
+      display="flex"
+      style={{ width: "fit-content", overflow: "hidden" }}
+      {...rest}
+    >
       <Actions actions={actions} />
       <Container>
-        <ScrollArea
-          ref={scrollRef}
-          minHeight={HEIGHT}
-          maxHeight={HEIGHT}
-          id="calendar"
-        >
-          <>
-            {monthList.map((m) => (
-              <DatePickerContainer
-                key={m.format("YYYY-MM")}
-                id={m.format("YYYY-MM")}
-                className={m.format("YYYY-MM")}
-              >
-                {/* 年月の表示 */}
-                <CalendarMonth>
-                  <Typography weight="bold" size="xl">
-                    {m.format("YYYY年MM月")}
-                  </Typography>
-                </CalendarMonth>
-
-                {/* カレンダーの表示 */}
-                <CalendarContainer>
-                  {/* 曜日の表示 */}
-                  {weekList["ja"].map((week) => (
-                    <DayStyle key={week}>{week}</DayStyle>
-                  ))}
-
-                  {/* 開始曜日まで空白をセット */}
-                  {Array.from(new Array(m.startOf("month").day()), (_, i) => (
-                    <DayStyle key={i} />
-                  ))}
-
-                  {/* 日付の表示 */}
-                  {Array.from(new Array(m.daysInMonth()), (_, i) => i + 1).map(
-                    (day) => {
-                      // ややこしいけど、ここでのselectedは、選択中の日付かどうかを判定している
-                      // つまり、選択中の日付の場合はtrueになり、style で色を変える
-                      const selected =
-                        date.format("YYYY-MM-DD") ===
-                        dayjs(new Date(m.year(), m.month(), day)).format(
-                          "YYYY-MM-DD",
-                        );
-
-                      const selectable = !isOutsideRange(
-                        dayjs(new Date(m.year(), m.month(), day)),
-                      );
-
-                      return (
-                        <Day
-                          key={day}
-                          value={dayjs(new Date(m.year(), m.month(), day))}
-                          selectable={selectable}
-                          selected={selected}
-                          onClickDate={onDateChange}
-                        >
-                          {day}
-                        </Day>
-                      );
-                    },
-                  )}
-                </CalendarContainer>
-              </DatePickerContainer>
-            ))}
-          </>
-        </ScrollArea>
+        <Slide unmountOnExit in={yearIsOpen} direction="up">
+          <YearMonths
+            date={date}
+            current={date}
+            yearIsOpen={yearIsOpen}
+            onYearIsOpen={setYearIsOpen}
+            onClick={handleCloseYear}
+          />
+        </Slide>
+        <InnerCalendar
+          date={date}
+          current={current}
+          yearIsOpen={yearIsOpen}
+          isOutsideRange={isOutsideRange}
+          onYearIsOpen={setYearIsOpen}
+          onDateChange={onDateChange}
+        />
       </Container>
       {onClickCloseButton && (
-        <IconContainer onClick={onClickCloseButton}>
+        <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
           <Icon name="close" />
         </IconContainer>
       )}

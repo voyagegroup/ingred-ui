@@ -119,6 +119,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
               top: y ?? 0,
               left: x ?? 0,
               zIndex: 100,
+              overflow: "hidden",
             }}
             onClickCloseButton={handleClose}
             onDateChange={handleClickDate}

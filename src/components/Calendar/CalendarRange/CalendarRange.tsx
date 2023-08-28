@@ -1,20 +1,17 @@
-import dayjs, { Dayjs } from "dayjs";
-import { Card, Icon, ScrollArea, Typography, DateRange } from "../..";
-import React, { forwardRef, memo, useCallback, useRef, useState } from "react";
-import { Day } from "./internal/Day";
-import { HEIGHT, weekList } from "../constants";
-import {
-  CalendarContainer,
-  CalendarMonth,
-  Container,
-  DatePickerContainer,
-  DayStyle,
-  IconContainer,
-} from "../styled";
-import { useScrollCalendar } from "../hooks/useScrollCalendar";
-import { getDayState } from "./utils";
+import { Dayjs } from "dayjs";
+import { Card, Icon, DateRange, Slide } from "../..";
+import React, {
+  forwardRef,
+  memo,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
+import { Container, IconContainer } from "../styled";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
+import { InnerCalendarRange } from "../internal/InnerCalendarRange/InnerCalendarRange";
+import { YearMonths } from "../internal/YearMonths";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -71,8 +68,18 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     },
     ref,
   ) {
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const { monthList } = useScrollCalendar(startDate ?? dayjs(), scrollRef);
+    const [current, setCurrent] = React.useState<Dayjs>(startDate);
+    const [yearIsOpen, setYearIsOpen] = React.useState(false);
+
+    const handleCloseYear = (date: Dayjs) => {
+      setYearIsOpen(false);
+      setCurrent(date);
+    };
+
+    useEffect(() => {
+      setCurrent(startDate);
+    }, [startDate]);
+
     const [clickState, setClickState] = useState<ClickStateType>(
       ClickState.START,
     );
@@ -104,69 +111,40 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     );
 
     return (
-      <Card ref={ref} display="flex" width="fit-content" {...rest}>
+      <Card
+        ref={ref}
+        display="flex"
+        width="fit-content"
+        style={{ overflow: "hidden" }}
+        {...rest}
+      >
         <Actions actions={actions} />
         <Container>
-          <ScrollArea
-            ref={scrollRef}
-            minHeight={HEIGHT}
-            maxHeight={HEIGHT}
-            id="calendar"
-          >
-            <>
-              {monthList.map((m) => (
-                <DatePickerContainer
-                  key={m.format("YYYY-MM")}
-                  id={m.format("YYYY-MM")}
-                  className={m.format("YYYY-MM")}
-                >
-                  <CalendarMonth>
-                    <Typography weight="bold" size="xl">
-                      {m.format("YYYY年MM月")}
-                    </Typography>
-                  </CalendarMonth>
-                  <CalendarContainer>
-                    {weekList["ja"].map((week) => (
-                      <DayStyle key={week}>{week}</DayStyle>
-                    ))}
-                    {Array.from(new Array(m.startOf("month").day()), (_, i) => (
-                      <DayStyle key={i} />
-                    ))}
-                    {Array.from(
-                      new Array(m.daysInMonth()),
-                      (_, i) => i + 1,
-                    ).map((day) => {
-                      const selectable = !isOutsideRange(
-                        dayjs(new Date(m.year(), m.month(), day)),
-                      );
-
-                      return (
-                        <div
-                          key={day}
-                          style={{
-                            position: "relative",
-                            zIndex: 1,
-                          }}
-                        >
-                          <Day
-                            value={dayjs(new Date(m.year(), m.month(), day))}
-                            state={getDayState(startDate, endDate, m, day)}
-                            selectable={selectable}
-                            onClickDate={handleDateChange}
-                          >
-                            {day}
-                          </Day>
-                        </div>
-                      );
-                    })}
-                  </CalendarContainer>
-                </DatePickerContainer>
-              ))}
-            </>
-          </ScrollArea>
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <Slide unmountOnExit in={yearIsOpen} direction="up">
+              <YearMonths
+                date={startDate}
+                current={startDate}
+                yearIsOpen={yearIsOpen}
+                onYearIsOpen={setYearIsOpen}
+                onClick={handleCloseYear}
+              />
+            </Slide>
+          </div>
+          <div style={{ position: "relative", zIndex: 0 }}>
+            <InnerCalendarRange
+              startDate={startDate}
+              endDate={endDate}
+              current={current}
+              yearIsOpen={yearIsOpen}
+              isOutsideRange={isOutsideRange}
+              onYearIsOpen={setYearIsOpen}
+              onDateChange={handleDateChange}
+            />
+          </div>
         </Container>
         {onClickCloseButton && (
-          <IconContainer onClick={onClickCloseButton}>
+          <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
             <Icon name="close" />
           </IconContainer>
         )}

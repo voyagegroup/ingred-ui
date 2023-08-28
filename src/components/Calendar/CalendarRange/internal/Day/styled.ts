@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const DayContainer = styled.div`
+  position: relative;
+  z-index: 1;
+`;
+
 export const DayStyle = styled.button`
   background-color: transparent;
   border: none;

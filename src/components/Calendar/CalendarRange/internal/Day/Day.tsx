@@ -6,6 +6,7 @@ import {
   DayEnd,
   DayStart,
   DisableDayContainer,
+  DayContainer,
 } from "./styled";
 import { DayState, DayStateType } from "../../constants";
 
@@ -17,13 +18,13 @@ type Props = {
   children: ReactNode;
 };
 
-export const Day: FC<Props> = memo(function Day({
+const getDayStyle = ({
   state,
   value,
   selectable,
   onClickDate,
   children,
-}) {
+}: Props) => {
   const onClick = () => {
     onClickDate?.(value);
   };
@@ -42,4 +43,18 @@ export const Day: FC<Props> = memo(function Day({
     default:
       return <DayStyle onClick={onClick}>{children}</DayStyle>;
   }
+};
+
+export const Day: FC<Props> = memo(function Day({
+  state,
+  value,
+  selectable,
+  onClickDate,
+  children,
+}) {
+  return (
+    <DayContainer>
+      {getDayStyle({ state, value, selectable, onClickDate, children })}
+    </DayContainer>
+  );
 });
