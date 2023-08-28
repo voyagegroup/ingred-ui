@@ -24,13 +24,16 @@ const Container = styled.table`
 
 export type TableProps = React.ComponentPropsWithoutRef<"table">;
 
-const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ children, ...rest }, ref) => (
+const Table = React.forwardRef<HTMLTableElement, TableProps>(function Table(
+  { children, ...rest },
+  ref,
+) {
+  return (
     <Container ref={ref} {...rest}>
       {children}
     </Container>
-  ),
-);
+  );
+});
 
 const ExportedComponent = Table as any;
 

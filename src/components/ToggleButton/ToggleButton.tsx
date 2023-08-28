@@ -13,7 +13,7 @@ export type ToggleButtonProps = React.ComponentPropsWithRef<"input"> & {
 };
 
 const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
-  (inProps, ref) => {
+  function ToggleButton(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "ToggleButton" });
     const {
       checked = false,

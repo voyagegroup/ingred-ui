@@ -8,7 +8,11 @@ export type Action = {
   onClick: () => void;
 };
 
-export const Actions = memo(({ actions }: { actions?: Action[] }) => {
+export const Actions = memo(function Actions({
+  actions,
+}: {
+  actions?: Action[];
+}) {
   const theme = useTheme();
   const [clickedAction, setClickedAction] = useState<string | null>(null);
 

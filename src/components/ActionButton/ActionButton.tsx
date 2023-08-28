@@ -38,7 +38,10 @@ export type ActionButtonProps = React.ComponentPropsWithoutRef<"button"> & {
 };
 
 const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
-  ({ children, icon, color = "primary", disabled, ...rest }, ref) => {
+  function ActionButton(
+    { children, icon, color = "primary", disabled, ...rest },
+    ref,
+  ) {
     const theme = useTheme();
 
     const getColorByDisabled = (

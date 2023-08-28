@@ -18,7 +18,7 @@ export type TableHeaderCellProps =
 export const HeaderCell = React.forwardRef<
   HTMLTableCellElement,
   TableHeaderCellProps
->(({ width = "auto", children, ...rest }, ref) => {
+>(function HeaderCell({ width = "auto", children, ...rest }, ref) {
   return (
     <Component ref={ref} width={width} {...rest}>
       <Typography component="div" weight="bold" size="md" lineHeight="normal">

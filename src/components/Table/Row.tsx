@@ -27,10 +27,13 @@ const Component = styled.tr<RowProps>`
 
 export type Props = React.ComponentPropsWithoutRef<"tr"> & Partial<RowProps>;
 
-export const Row = React.forwardRef<HTMLTableRowElement, Props>(
-  ({ children, verticalSpacing = "medium", ...rest }, ref) => (
+export const Row = React.forwardRef<HTMLTableRowElement, Props>(function Row(
+  { children, verticalSpacing = "medium", ...rest },
+  ref,
+) {
+  return (
     <Component ref={ref} verticalSpacing={verticalSpacing} {...rest}>
       {children}
     </Component>
-  ),
-);
+  );
+});

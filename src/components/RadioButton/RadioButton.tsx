@@ -119,42 +119,40 @@ export type RadioButtonProps = Omit<
 const RadioButton = React.forwardRef<
   HTMLLabelElement | HTMLSpanElement,
   RadioButtonProps
->(
-  (
-    {
-      size = RadioButtonSize.MEDIUM,
-      onChange,
-      inputRef,
-      children,
-      disabled,
-      ...rest
-    },
-    ref,
-  ) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (onChange) {
-        onChange(e, e.target.checked);
-      }
-    };
-    return (
-      <Wrapper
-        ref={ref}
-        as={children == null ? "span" : "label"}
-        disabled={disabled}
-        size={size}
-      >
-        <input
-          {...rest}
-          ref={inputRef}
-          disabled={disabled}
-          type="radio"
-          onChange={handleChange}
-        />
-        <Indicator size={size} {...indicatorSizes[size]} />
-        {children != null ? <Label>{children}</Label> : null}
-      </Wrapper>
-    );
+>(function RadioButton(
+  {
+    size = RadioButtonSize.MEDIUM,
+    onChange,
+    inputRef,
+    children,
+    disabled,
+    ...rest
   },
-);
+  ref,
+) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e, e.target.checked);
+    }
+  };
+  return (
+    <Wrapper
+      ref={ref}
+      as={children == null ? "span" : "label"}
+      disabled={disabled}
+      size={size}
+    >
+      <input
+        {...rest}
+        ref={inputRef}
+        disabled={disabled}
+        type="radio"
+        onChange={handleChange}
+      />
+      <Indicator size={size} {...indicatorSizes[size]} />
+      {children != null ? <Label>{children}</Label> : null}
+    </Wrapper>
+  );
+});
 
 export default RadioButton;

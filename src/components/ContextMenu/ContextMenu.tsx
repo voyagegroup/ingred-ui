@@ -35,7 +35,7 @@ export type ContextMenuProps = {
 };
 
 const ContextMenu = React.forwardRef<HTMLButtonElement, ContextMenuProps>(
-  (
+  function ContextMenu(
     {
       contents,
       positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
@@ -44,7 +44,7 @@ const ContextMenu = React.forwardRef<HTMLButtonElement, ContextMenuProps>(
       actionButtonProps,
     },
     ref,
-  ) => {
+  ) {
     const [iconWrapperElement, setIconWrapperElement] =
       React.useState<HTMLButtonElement | null>(null);
     const [isOpen, setIsOpen] = React.useState<boolean>(false);

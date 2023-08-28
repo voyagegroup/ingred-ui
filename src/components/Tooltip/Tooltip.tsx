@@ -42,143 +42,141 @@ export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
   children: React.ComponentElement<HTMLElement, any>;
 };
 
-const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
-  (
-    {
-      content,
-      open: openProp = false,
-      disableHoverListener = false,
-      enterDelay = 0,
-      leaveDelay = 0,
-      positionPriority = ["top"],
-      offset = [0, 10],
-      width,
-      disabled = false,
-      fadeProps,
-      children,
-      ...rest
-    },
-    ref,
-  ) => {
-    const { placements, isAuto } = usePlacement(positionPriority);
-    const arrowRef = React.useRef(null);
-    const [open, setOpen] = React.useState<boolean>(false);
-    const theme = useTheme();
-
-    const {
-      x,
-      y,
-      placement,
-      refs: floatingRef,
-      strategy,
-      context,
-    } = useFloating({
-      placement: placements[0],
-      open: open,
-      onOpenChange: setOpen,
-      middleware: [
-        positionPriority.length > 0 && !isAuto
-          ? flip({
-              fallbackPlacements: placements,
-            })
-          : autoPlacement(),
-        floatingOffset({
-          mainAxis: offset[1],
-          crossAxis: offset[0],
-        }),
-        shift({
-          mainAxis: false,
-        }),
-        arrow({
-          element: arrowRef,
-        }),
-      ],
-      whileElementsMounted: autoUpdate,
-    });
-
-    const hover = useHover(context, {
-      enabled: !disableHoverListener,
-      move: false,
-      delay: {
-        open: enterDelay,
-        close: leaveDelay,
-      },
-    });
-    const role = useRole(context, { role: "tooltip" });
-    const { getReferenceProps, getFloatingProps } = useInteractions([
-      hover,
-      role,
-    ]);
-
-    const childrenProps = {
-      ...children.props,
-      ...getReferenceProps(),
-      ref: useMergeRefs(floatingRef.setReference, children.ref),
-    };
-
-    const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
-
-    return (
-      <>
-        {React.cloneElement(children, childrenProps)}
-        {!disabled && (
-          <FloatingDelayGroup delay={{ open: 10000, close: 200 }}>
-            <FloatingPortal>
-              <Fade
-                in={open || openProp}
-                unmountOnExit={true}
-                mountOnEnter={true}
-                {...fadeProps}
-              >
-                <Styled.Tooltip
-                  ref={refs}
-                  style={{
-                    position: strategy,
-                    top: y,
-                    left: x,
-                  }}
-                  {...rest}
-                  {...getFloatingProps()}
-                  width={width}
-                >
-                  {content}
-                  <FloatingArrow
-                    ref={arrowRef}
-                    fill={theme.palette.black}
-                    context={context}
-                    width={8}
-                    height={8}
-                    staticOffset={(() => {
-                      if (
-                        [
-                          "top-start",
-                          "top-end",
-                          "bottom-start",
-                          "bottom-end",
-                        ].includes(placement)
-                      ) {
-                        return "10%";
-                      }
-                      if (
-                        [
-                          "bottom-start",
-                          "bottom-end",
-                          "left-start",
-                          "left-end",
-                        ].includes(placement)
-                      )
-                        return "30%";
-                      return undefined;
-                    })()}
-                  />
-                </Styled.Tooltip>
-              </Fade>
-            </FloatingPortal>
-          </FloatingDelayGroup>
-        )}
-      </>
-    );
+const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(function Tooltip(
+  {
+    content,
+    open: openProp = false,
+    disableHoverListener = false,
+    enterDelay = 0,
+    leaveDelay = 0,
+    positionPriority = ["top"],
+    offset = [0, 10],
+    width,
+    disabled = false,
+    fadeProps,
+    children,
+    ...rest
   },
-);
+  ref,
+) {
+  const { placements, isAuto } = usePlacement(positionPriority);
+  const arrowRef = React.useRef(null);
+  const [open, setOpen] = React.useState<boolean>(false);
+  const theme = useTheme();
+
+  const {
+    x,
+    y,
+    placement,
+    refs: floatingRef,
+    strategy,
+    context,
+  } = useFloating({
+    placement: placements[0],
+    open: open,
+    onOpenChange: setOpen,
+    middleware: [
+      positionPriority.length > 0 && !isAuto
+        ? flip({
+            fallbackPlacements: placements,
+          })
+        : autoPlacement(),
+      floatingOffset({
+        mainAxis: offset[1],
+        crossAxis: offset[0],
+      }),
+      shift({
+        mainAxis: false,
+      }),
+      arrow({
+        element: arrowRef,
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
+
+  const hover = useHover(context, {
+    enabled: !disableHoverListener,
+    move: false,
+    delay: {
+      open: enterDelay,
+      close: leaveDelay,
+    },
+  });
+  const role = useRole(context, { role: "tooltip" });
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    hover,
+    role,
+  ]);
+
+  const childrenProps = {
+    ...children.props,
+    ...getReferenceProps(),
+    ref: useMergeRefs(floatingRef.setReference, children.ref),
+  };
+
+  const refs = useMergeRefs<HTMLDivElement>(ref, floatingRef.setFloating);
+
+  return (
+    <>
+      {React.cloneElement(children, childrenProps)}
+      {!disabled && (
+        <FloatingDelayGroup delay={{ open: 10000, close: 200 }}>
+          <FloatingPortal>
+            <Fade
+              in={open || openProp}
+              unmountOnExit={true}
+              mountOnEnter={true}
+              {...fadeProps}
+            >
+              <Styled.Tooltip
+                ref={refs}
+                style={{
+                  position: strategy,
+                  top: y,
+                  left: x,
+                }}
+                {...rest}
+                {...getFloatingProps()}
+                width={width}
+              >
+                {content}
+                <FloatingArrow
+                  ref={arrowRef}
+                  fill={theme.palette.black}
+                  context={context}
+                  width={8}
+                  height={8}
+                  staticOffset={(() => {
+                    if (
+                      [
+                        "top-start",
+                        "top-end",
+                        "bottom-start",
+                        "bottom-end",
+                      ].includes(placement)
+                    ) {
+                      return "10%";
+                    }
+                    if (
+                      [
+                        "bottom-start",
+                        "bottom-end",
+                        "left-start",
+                        "left-end",
+                      ].includes(placement)
+                    )
+                      return "30%";
+                    return undefined;
+                  })()}
+                />
+              </Styled.Tooltip>
+            </Fade>
+          </FloatingPortal>
+        </FloatingDelayGroup>
+      )}
+    </>
+  );
+});
 
 export default Tooltip;

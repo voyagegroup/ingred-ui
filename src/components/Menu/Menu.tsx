@@ -43,49 +43,47 @@ export type MenuProps = {
   popoverProps?: Partial<PopoverProps>;
 };
 
-const Menu = React.forwardRef<HTMLDivElement, MenuProps>(
-  (
-    {
-      isOpen = true,
-      baseElement = null,
-      contents,
-      positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
-      onClose,
-      maxHeight = "none",
-      menuListProps,
-      popoverProps,
-      ...rest
-    },
-    ref,
-  ) => {
-    const handleCloseMenuList = (
-      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    ) => {
-      if (onClose) onClose(event, "clickMenuList");
-    };
-
-    return (
-      <Popover
-        isOpen={isOpen}
-        baseElement={baseElement}
-        positionPriority={positionPriority}
-        onClose={onClose}
-        {...popoverProps}
-      >
-        <MenuList
-          ref={ref}
-          contents={contents}
-          maxHeight={maxHeight}
-          {...rest}
-          {...menuListProps}
-          onClick={createChainedFunction(
-            handleCloseMenuList,
-            menuListProps?.onClick,
-          )}
-        />
-      </Popover>
-    );
+const Menu = React.forwardRef<HTMLDivElement, MenuProps>(function Menu(
+  {
+    isOpen = true,
+    baseElement = null,
+    contents,
+    positionPriority = ["bottom-start", "bottom-end", "top-start", "top-end"],
+    onClose,
+    maxHeight = "none",
+    menuListProps,
+    popoverProps,
+    ...rest
   },
-);
+  ref,
+) {
+  const handleCloseMenuList = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if (onClose) onClose(event, "clickMenuList");
+  };
+
+  return (
+    <Popover
+      isOpen={isOpen}
+      baseElement={baseElement}
+      positionPriority={positionPriority}
+      onClose={onClose}
+      {...popoverProps}
+    >
+      <MenuList
+        ref={ref}
+        contents={contents}
+        maxHeight={maxHeight}
+        {...rest}
+        {...menuListProps}
+        onClick={createChainedFunction(
+          handleCloseMenuList,
+          menuListProps?.onClick,
+        )}
+      />
+    </Popover>
+  );
+});
 
 export default Menu;

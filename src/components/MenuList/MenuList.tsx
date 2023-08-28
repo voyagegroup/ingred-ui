@@ -110,7 +110,10 @@ export type MenuListProps = React.ComponentPropsWithoutRef<"div"> & {
 };
 
 const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
-  ({ inline = false, contents, maxHeight = "none", ...rest }, ref) => {
+  function MenuList(
+    { inline = false, contents, maxHeight = "none", ...rest },
+    ref,
+  ) {
     const theme = useTheme();
 
     const checkIsDisabled = (type?: ContentType, disabled?: boolean) => {

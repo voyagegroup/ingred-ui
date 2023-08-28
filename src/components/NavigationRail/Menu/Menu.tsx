@@ -21,10 +21,10 @@ export type NavigationRailMenuProps = React.ComponentPropsWithoutRef<"div"> & {
 };
 
 const Menu = React.forwardRef<HTMLDivElement, NavigationRailMenuProps>(
-  (
+  function Menu(
     { title, isActive = false, iconName, notificationCount = 0, ...rest },
     ref,
-  ) => {
+  ) {
     const theme = useTheme();
     const { isOpen } = React.useContext(NavigationRailContext);
 

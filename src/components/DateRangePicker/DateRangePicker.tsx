@@ -40,7 +40,7 @@ export type DateRangePickerProps = Partial<
 };
 
 const DateRangePicker = React.forwardRef<HTMLDivElement, DateRangePickerProps>(
-  (inProps, ref) => {
+  function DateRangePicker(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "DateRangePicker" });
     const {
       startDate,
