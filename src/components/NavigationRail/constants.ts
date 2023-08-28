@@ -5,6 +5,7 @@ export enum NavigationRailWidth {
 
 export enum NavigationRailContentHeight {
   HEADER = "72px",
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   FOOTER = "72px",
 }
 
