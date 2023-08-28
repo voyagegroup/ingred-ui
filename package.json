@@ -26,7 +26,7 @@
     "release": "changeset tag && changeset publish"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.24.3",
+    "@floating-ui/react": "^0.25.1",
     "dayjs": "^1.11.6",
     "moment": "^2.29.3",
     "react-dates": "^21.8.0",

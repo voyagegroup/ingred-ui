@@ -4,6 +4,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
 <DocumentFragment>
   <button
     class="sc-crXcEl fqlPTR sc-evZas iMmWcl"
+    data-floating-ui-inert=""
     data-testid="icon-wrapper"
   >
     <span
