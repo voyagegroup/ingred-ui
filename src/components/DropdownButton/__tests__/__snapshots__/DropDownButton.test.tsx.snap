@@ -4,6 +4,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
 <DocumentFragment>
   <div
     class="sc-hKMtZM gcJdvk"
+    data-floating-ui-inert=""
     role="button"
   >
     <button
@@ -115,6 +116,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
 <DocumentFragment>
   <div
     class="sc-hKMtZM gcJdvk"
+    data-floating-ui-inert=""
     role="button"
   >
     <button
@@ -232,6 +234,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
 <DocumentFragment>
   <div
     class="sc-hKMtZM gcJdvk"
+    data-floating-ui-inert=""
     role="button"
   >
     <button
@@ -347,6 +350,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
 <DocumentFragment>
   <div
     class="sc-hKMtZM gcJdvk"
+    data-floating-ui-inert=""
     role="button"
   >
     <button
