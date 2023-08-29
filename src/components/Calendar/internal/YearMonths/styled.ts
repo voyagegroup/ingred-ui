@@ -36,6 +36,11 @@ export const Month = styled.button`
   border: none;
   color: ${({ theme }) => theme.palette.black};
   background: white;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.highlight};
+    border-radius: ${({ theme }) => theme.radius}px;
+  }
 `;
 
 const hideAnimation = keyframes`
