@@ -64,6 +64,7 @@ export const DisableDayContainer = styled(DayStyle)`
   color: ${({ theme }) => theme.palette.gray.main};
   cursor: not-allowed;
   &:hover {
-    background-color: ${({ theme }) => theme.palette.gray.light};
+    background-color: transparent;
+    color: ${({ theme }) => theme.palette.gray.main};
   }
 `;
