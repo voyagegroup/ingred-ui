@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { Card, Icon, DateRange, Slide } from "../..";
+import { Icon, DateRange, Slide } from "../..";
 import React, {
   forwardRef,
   memo,
@@ -7,7 +7,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Container, IconContainer } from "../styled";
+import { Container, IconContainer, Card } from "../styled";
 import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
 import { InnerCalendarRange } from "../internal/InnerCalendarRange/InnerCalendarRange";
@@ -113,13 +113,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     );
 
     return (
-      <Card
-        ref={ref}
-        display="flex"
-        width="fit-content"
-        style={{ overflow: "hidden" }}
-        {...rest}
-      >
+      <Card ref={ref} {...rest}>
         <Actions actions={actions} />
         <Container>
           <div style={{ position: "relative", zIndex: 1 }}>

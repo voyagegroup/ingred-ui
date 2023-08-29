@@ -1,5 +1,20 @@
 import styled from "styled-components";
 import { Flex, Typography } from "..";
+import { getShadow } from "../../utils/getShadow";
+
+export const Card = styled(Flex)`
+  box-shadow: ${({ theme }) =>
+    getShadow(
+      5,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
+  border-radius: ${({ theme }) => theme.radius}px;
+  background-color: ${({ theme }) => theme.palette.white};
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+`;
 
 export const Container = styled.div`
   padding: 0 ${({ theme }) => theme.spacing * 3}px;

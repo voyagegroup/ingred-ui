@@ -1,7 +1,7 @@
 import { Dayjs } from "dayjs";
-import { Card, Icon, Slide } from "../..";
+import { Icon, Slide } from "../..";
 import React, { forwardRef, memo, useEffect } from "react";
-import { Container, IconContainer } from "../styled";
+import { Container, IconContainer, Card } from "../styled";
 import { Action, Actions } from "../internal/Actions";
 import { YearMonths } from "../internal/YearMonths";
 import { InnerCalendar } from "../internal/InnerCalendar";
@@ -59,12 +59,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   }, [date]);
 
   return (
-    <Card
-      ref={ref}
-      display="flex"
-      style={{ width: "fit-content", overflow: "hidden" }}
-      {...rest}
-    >
+    <Card ref={ref} {...rest}>
       <Actions actions={actions} />
       <Container>
         <Slide unmountOnExit in={yearIsOpen} direction="up">
