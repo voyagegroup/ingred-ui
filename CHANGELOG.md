@@ -1,5 +1,29 @@
 # Changelog
 
+## 14.6.0
+
+### Minor Changes
+
+- [#1385](https://github.com/voyagegroup/ingred-ui/pull/1385) [`531572b5`](https://github.com/voyagegroup/ingred-ui/commit/531572b5827a1523dda3a13bded030aaf00ac14a) Thanks [@takurinton](https://github.com/takurinton)! - feat year and month select component
+
+### Patch Changes
+
+- [#1389](https://github.com/voyagegroup/ingred-ui/pull/1389) [`788b8d64`](https://github.com/voyagegroup/ingred-ui/commit/788b8d648811f5c86ab431fccd3295e9efb6df0b) Thanks [@takurinton](https://github.com/takurinton)! - upgrade typescript-eslint to v6
+
+- [#1383](https://github.com/voyagegroup/ingred-ui/pull/1383) [`e69e7c98`](https://github.com/voyagegroup/ingred-ui/commit/e69e7c98e3951caf699ee3a710c7fcdd807fb80a) Thanks [@takurinton](https://github.com/takurinton)! - fix forget to use the ref parameter
+
+- [#1387](https://github.com/voyagegroup/ingred-ui/pull/1387) [`9e7fa17b`](https://github.com/voyagegroup/ingred-ui/commit/9e7fa17beb8c91a14e8f5b6b62576d9e2450a46d) Thanks [@takurinton](https://github.com/takurinton)! - Fix lint and enable react/display-name
+
+- [#1358](https://github.com/voyagegroup/ingred-ui/pull/1358) [`6682bd8e`](https://github.com/voyagegroup/ingred-ui/commit/6682bd8e4c019290cf19629616b9397a139c3f09) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump @floating-ui/react from 0.24.3 to 0.25.1
+
+- [#1395](https://github.com/voyagegroup/ingred-ui/pull/1395) [`50eca924`](https://github.com/voyagegroup/ingred-ui/commit/50eca924e9bd297568a5fdd57c1e4626e6092d7e) Thanks [@takurinton](https://github.com/takurinton)! - fix style of DatePicker and DateRangePicker
+
+- [#1388](https://github.com/voyagegroup/ingred-ui/pull/1388) [`83f8e6c5`](https://github.com/voyagegroup/ingred-ui/commit/83f8e6c503d0a514022204078b9635eac57bc2c3) Thanks [@takurinton](https://github.com/takurinton)! - chore(deps): bump word-wrap from 1.2.3 to 1.2.4
+
+- [#1381](https://github.com/voyagegroup/ingred-ui/pull/1381) [`a17cfec2`](https://github.com/voyagegroup/ingred-ui/commit/a17cfec238b6b03fd6509150d5963b354c36f8fa) Thanks [@takurinton](https://github.com/takurinton)! - fix Makefile
+
+- [#1384](https://github.com/voyagegroup/ingred-ui/pull/1384) [`88a9b1f8`](https://github.com/voyagegroup/ingred-ui/commit/88a9b1f8c3f859c20bd3035f3506c8868a82918d) Thanks [@takurinton](https://github.com/takurinton)! - rename `useScroll` to `useScrollCalendar`
+
 ## 14.5.0
 
 ### Minor Changes
