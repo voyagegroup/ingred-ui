@@ -14,6 +14,7 @@ export const Card = styled(Flex)`
   width: fit-content;
   overflow: hidden;
   position: relative;
+  display: flex;
 `;
 
 export const Container = styled.div`
