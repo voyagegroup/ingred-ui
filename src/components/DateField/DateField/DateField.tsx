@@ -57,7 +57,12 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
             {...props}
           />
           <CalendarIcon onClick={onClick}>
-            <Icon name="date_range" color={theme.palette.primary.main} />
+            <Icon
+              name="date_range"
+              color={
+                disabled ? theme.palette.gray.dark : theme.palette.text.primary
+              }
+            />
           </CalendarIcon>
         </InputContainer>
         {errorText && (
