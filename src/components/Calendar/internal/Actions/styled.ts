@@ -11,7 +11,7 @@ export const Action = styled.button<{ clicked: boolean }>`
     clicked ? theme.palette.primary.main : theme.palette.black};
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.gray.light};
+    background-color: ${({ theme }) => theme.palette.primary.highlight};
     border-radius: ${({ theme }) => theme.radius}px;
   }
 `;

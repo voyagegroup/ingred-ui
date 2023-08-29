@@ -4,6 +4,7 @@ import { useDateField } from "../useDateField";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
+import { useTheme } from "../../../themes";
 
 export type DateFieldProps = {
   /**
@@ -40,6 +41,7 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
     { errorText, disabled = false, onClick, ...rest },
     propRef,
   ) {
+    const theme = useTheme();
     const { ref: inputRef, ...props } = useDateField({ ...rest });
     const ref = useMergeRefs<HTMLInputElement>(propRef, inputRef);
 
@@ -54,8 +56,13 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
             disabled={disabled}
             {...props}
           />
-          <CalendarIcon onClick={onClick}>
-            <Icon name="date_range" />
+          <CalendarIcon disabled={disabled} onClick={onClick}>
+            <Icon
+              name="date_range"
+              color={
+                disabled ? theme.palette.gray.dark : theme.palette.text.primary
+              }
+            />
           </CalendarIcon>
         </InputContainer>
         {errorText && (

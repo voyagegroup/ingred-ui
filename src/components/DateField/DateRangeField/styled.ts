@@ -47,4 +47,8 @@ export const CalendarIcon = styled.button`
   background: none;
   outline: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;

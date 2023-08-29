@@ -8,6 +8,7 @@ import {
   ClickState,
   ClickStateType,
 } from "../../Calendar/CalendarRange/constants";
+import { useTheme } from "../../../themes";
 
 export type DateRangeFieldProps = {
   /**
@@ -50,6 +51,7 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
     },
     propRef,
   ) {
+    const theme = useTheme();
     const width = useMemo(() => format.length * 12, [format]);
 
     const handleChange = (t: ClickStateType) => (date: Dayjs) => {
@@ -106,8 +108,13 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
             style={{ border: "none", textAlign: "center" }}
             {...endProps}
           />
-          <CalendarIcon onClick={onClickCalendarIcon}>
-            <Icon name="date_range" />
+          <CalendarIcon disabled={disabled} onClick={onClickCalendarIcon}>
+            <Icon
+              name="date_range"
+              color={
+                disabled ? theme.palette.gray.dark : theme.palette.text.primary
+              }
+            />
           </CalendarIcon>
         </InputContainer>
         {errorText && (
