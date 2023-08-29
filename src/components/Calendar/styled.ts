@@ -56,8 +56,8 @@ export const CalendarMonth = styled.div<{ expanded: boolean }>`
 export const IconContainer = styled.button<{ expanded: boolean }>`
   cursor: pointer;
   position: absolute;
-  top: ${({ theme }) => theme.spacing}px;
-  right: ${({ theme }) => theme.spacing}px;
+  top: ${({ theme }) => theme.spacing * 2}px;
+  right: ${({ theme }) => theme.spacing * 2}px;
   border: none;
   background: none;
   opacity: ${({ expanded }) => (expanded ? 0 : 1)};
