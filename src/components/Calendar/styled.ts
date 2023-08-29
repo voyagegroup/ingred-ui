@@ -31,7 +31,7 @@ export const CalendarContainer = styled(Flex)`
 export const DayStyle = styled.span`
   padding: ${({ theme }) => theme.spacing}px 0;
   text-align: center;
-  color: ${({ theme }) => theme.palette.gray.dark};
+  color: ${({ theme }) => theme.palette.gray.deepDark};
 `;
 
 export const TitleContainer = styled(Typography)<{ expanded: boolean }>`
