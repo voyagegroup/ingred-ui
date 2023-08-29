@@ -7,12 +7,12 @@ export const YearMonthsContainer = styled(Flex)`
   width: fit-content;
   position: absolute;
   z-index: 100;
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const YearMonthTitleContainer = styled.div`
   top: 0;
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.background.default};
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;

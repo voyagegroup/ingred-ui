@@ -49,7 +49,7 @@ export const CalendarMonth = styled.div<{ expanded: boolean }>`
   padding: ${({ theme }) => theme.spacing * 2}px 0;
   align-items: center;
   background-color: ${({ theme, expanded }) =>
-    expanded ? "transparent" : theme.palette.white};
+    expanded ? "transparent" : theme.palette.background.default};
   transition: background-color 300ms;
 `;
 
