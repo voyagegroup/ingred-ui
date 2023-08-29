@@ -59,7 +59,7 @@ export const TitleContainer = styled(Typography)<{ expanded: boolean }>`
 export const CalendarMonth = styled.div<{ expanded: boolean }>`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;
