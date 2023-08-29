@@ -17,8 +17,7 @@ export const DayStyle = styled.button`
 
   &:hover {
     transition: 0.3s;
-    background-color: ${({ theme }) => theme.palette.primary.main};
-    color: ${({ theme }) => theme.palette.white};
+    background-color: ${({ theme }) => theme.palette.primary.highlight};
   }
 `;
 
@@ -54,9 +53,16 @@ export const DayStart = styled(EdgeDate)`
   &::before {
     transform: translateX(100%);
   }
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.main};
+  }
 `;
 
-export const DayEnd = styled(EdgeDate)``;
+export const DayEnd = styled(EdgeDate)`
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.main};
+  }
+`;
 
 export const DayBetween = styled(SelectedDate)``;
 
