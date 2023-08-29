@@ -39,15 +39,6 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
     });
     const actions = [
       {
-        text: "今日",
-        onClick: () => {
-          setDate({
-            startDate: dayjs(),
-            endDate: dayjs(),
-          });
-        },
-      },
-      {
         text: "明日",
         onClick: () => {
           setDate({
@@ -62,6 +53,15 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
           setDate({
             startDate: dayjs(),
             endDate: dayjs().add(1, "week"),
+          });
+        },
+      },
+      {
+        text: "先月",
+        onClick: () => {
+          setDate({
+            startDate: dayjs().subtract(1, "month"),
+            endDate: dayjs(),
           });
         },
       },
