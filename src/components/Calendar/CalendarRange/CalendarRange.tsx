@@ -12,6 +12,7 @@ import { Action, Actions } from "../internal/Actions";
 import { ClickState, ClickStateType } from "./constants";
 import { InnerCalendarRange } from "../internal/InnerCalendarRange/InnerCalendarRange";
 import { YearMonths } from "../internal/YearMonths";
+import { useTheme } from "../../../themes";
 
 export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -68,6 +69,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     },
     ref,
   ) {
+    const theme = useTheme();
     const [current, setCurrent] = React.useState<Dayjs>(startDate);
     const [yearIsOpen, setYearIsOpen] = React.useState(false);
 
@@ -145,7 +147,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
         </Container>
         {onClickCloseButton && (
           <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
-            <Icon name="close" />
+            <Icon name="close" color={theme.palette.black} />
           </IconContainer>
         )}
       </Card>

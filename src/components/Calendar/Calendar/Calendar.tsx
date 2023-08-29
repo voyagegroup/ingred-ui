@@ -5,6 +5,7 @@ import { Container, IconContainer } from "../styled";
 import { Action, Actions } from "../internal/Actions";
 import { YearMonths } from "../internal/YearMonths";
 import { InnerCalendar } from "../internal/InnerCalendar";
+import { useTheme } from "../../../themes";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -44,6 +45,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   },
   ref,
 ) {
+  const theme = useTheme();
   const [current, setCurrent] = React.useState<Dayjs>(date);
   const [yearIsOpen, setYearIsOpen] = React.useState(false);
 
@@ -85,7 +87,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
       </Container>
       {onClickCloseButton && (
         <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
-          <Icon name="close" />
+          <Icon name="close" color={theme.palette.black} />
         </IconContainer>
       )}
     </Card>
