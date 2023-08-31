@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { Icon, ScrollArea } from "../../..";
 import { useTheme } from "styled-components";
 import { useScrollCalendar } from "../../hooks/useScrollCalendar";
-import { HEIGHT, weekList } from "../../constants";
+import { HEIGHT } from "../../constants";
 import {
   CalendarContainer,
   CalendarMonth,
@@ -17,6 +17,7 @@ import { Day } from "../../Calendar/internal/Day";
 type Props = {
   date: Dayjs;
   monthFormat?: string;
+  weekList?: string[];
   current: Dayjs;
   yearIsOpen: boolean;
   onYearIsOpen: (yearIsOpen: boolean) => void;
@@ -25,6 +26,7 @@ type Props = {
 };
 export const InnerCalendar: React.FC<Props> = ({
   date,
+  weekList,
   monthFormat,
   current,
   yearIsOpen,
@@ -70,11 +72,7 @@ export const InnerCalendar: React.FC<Props> = ({
             {/* カレンダーの表示 */}
             <CalendarContainer>
               {/* 曜日の表示 */}
-              {weekList.map((week) => (
-                <DayStyle key={week.format("ddd")}>
-                  {week.format("ddd")}
-                </DayStyle>
-              ))}
+              {weekList?.map((week) => <DayStyle key={week}>{week}</DayStyle>)}
 
               {/* 開始曜日まで空白をセット */}
               {Array.from(new Array(m.startOf("month").day()), (_, i) => (

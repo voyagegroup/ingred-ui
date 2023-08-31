@@ -41,6 +41,11 @@ export type NewDatePickerProps = {
    */
   monthFormat?: string;
   /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
+  /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
    * @default () => false
@@ -63,6 +68,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       format = "YYYY-MM-DD",
       disabled = false,
       monthFormat = "MMM YYYY",
+      weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       isOutsideRange,
       errorText,
       actions,
@@ -119,6 +125,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
             ref={refs.setFloating}
             date={date}
             monthFormat={monthFormat}
+            weekList={weekList}
             actions={actions}
             isOutsideRange={isOutsideRange}
             style={{
