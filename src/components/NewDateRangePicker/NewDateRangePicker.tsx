@@ -16,6 +16,7 @@ import {
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type DateRange = {
   startDate: Dayjs;
@@ -47,6 +48,15 @@ export type NewDateRangePickerProps = {
    */
   disabled?: boolean;
   /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
+  /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
    * @default () => false
@@ -64,18 +74,23 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker(
-  {
+>(function DateRangePicker(inProps, propRef) {
+  const props = useLocaleProps({
+    props: inProps,
+    name: "NewDateRangePicker",
+  });
+  const {
     startDate,
     endDate,
     errorText,
     disabled = false,
+    monthFormat = "MMM YYYY",
+    weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     isOutsideRange = () => false,
     actions,
     onDatesChange,
-  },
-  propRef,
-) {
+  } = props;
+
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -133,6 +148,8 @@ export const DateRangePicker = forwardRef<
           startDate={startDate}
           endDate={endDate}
           actions={actions}
+          monthFormat={monthFormat}
+          weekList={weekList}
           style={{
             position: strategy,
             top: y ?? 0,

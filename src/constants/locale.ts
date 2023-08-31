@@ -76,10 +76,10 @@ export interface Localization {
       defaultProps: Pick<DateRangePickerProps, "displayFormat" | "monthFormat">;
     };
     NewDatePicker?: {
-      defaultProps: Pick<
-        NewDatePickerProps,
-        "format" | "monthFormat" | "weekList"
-      >;
+      defaultProps: Pick<NewDatePickerProps, "monthFormat" | "weekList">;
+    };
+    NewDateRangePicker?: {
+      defaultProps: Pick<NewDatePickerProps, "monthFormat" | "weekList">;
     };
   };
 }
@@ -131,6 +131,12 @@ export const jaJP: Localization = {
       defaultProps: { displayFormat: "YYYY/MM/DD", monthFormat: "YYYY年 M月" },
     },
     NewDatePicker: {
+      defaultProps: {
+        monthFormat: "YYYY年MM月",
+        weekList: ["日", "月", "火", "水", "木", "金", "土"],
+      },
+    },
+    NewDateRangePicker: {
       defaultProps: {
         monthFormat: "YYYY年MM月",
         weekList: ["日", "月", "火", "水", "木", "金", "土"],

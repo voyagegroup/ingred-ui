@@ -26,6 +26,15 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   endDate: Dayjs;
   /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
@@ -60,6 +69,8 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     {
       startDate,
       endDate,
+      monthFormat,
+      weekList,
       actions,
       onClose,
       isOutsideRange = () => false,
@@ -131,6 +142,8 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
             <InnerCalendarRange
               startDate={startDate}
               endDate={endDate}
+              monthFormat={monthFormat}
+              weekList={weekList}
               current={current}
               yearIsOpen={yearIsOpen}
               isOutsideRange={isOutsideRange}
