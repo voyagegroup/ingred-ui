@@ -16,6 +16,7 @@ import { Day } from "../../Calendar/internal/Day";
 
 type Props = {
   date: Dayjs;
+  monthFormat?: string;
   current: Dayjs;
   yearIsOpen: boolean;
   onYearIsOpen: (yearIsOpen: boolean) => void;
@@ -24,6 +25,7 @@ type Props = {
 };
 export const InnerCalendar: React.FC<Props> = ({
   date,
+  monthFormat,
   current,
   yearIsOpen,
   onYearIsOpen,
@@ -51,7 +53,7 @@ export const InnerCalendar: React.FC<Props> = ({
             {/* 年月の表示 */}
             <CalendarMonth expanded={yearIsOpen}>
               <TitleContainer expanded={yearIsOpen} weight="bold" size="xl">
-                {m.format("YYYY年MM月")}
+                {m.format(monthFormat)}
               </TitleContainer>
               <IconButton
                 expanded={yearIsOpen}
@@ -68,8 +70,10 @@ export const InnerCalendar: React.FC<Props> = ({
             {/* カレンダーの表示 */}
             <CalendarContainer>
               {/* 曜日の表示 */}
-              {weekList["ja"].map((week) => (
-                <DayStyle key={week}>{week}</DayStyle>
+              {weekList.map((week) => (
+                <DayStyle key={week.format("ddd")}>
+                  {week.format("ddd")}
+                </DayStyle>
               ))}
 
               {/* 開始曜日まで空白をセット */}

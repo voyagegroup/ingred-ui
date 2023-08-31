@@ -68,8 +68,10 @@ export const InnerCalendarRange: React.FC<Props> = ({
               </IconButton>
             </CalendarMonth>
             <CalendarContainer>
-              {weekList["ja"].map((week) => (
-                <DayStyle key={week}>{week}</DayStyle>
+              {weekList.map((week) => (
+                <DayStyle key={week.format("ddd")}>
+                  {week.format("ddd")}
+                </DayStyle>
               ))}
               {Array.from(new Array(m.startOf("month").day()), (_, i) => (
                 <DayStyle key={i} />

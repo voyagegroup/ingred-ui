@@ -10,6 +10,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type NewDatePickerProps = {
   /**
@@ -36,6 +37,10 @@ export type NewDatePickerProps = {
    */
   disabled?: boolean;
   /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
    * @default () => false
@@ -51,18 +56,19 @@ export type NewDatePickerProps = {
  * @memo 次のメジャーリリースで DatePicker に変更。現行の DatePicker は削除。
  */
 export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
-  function DatePicker(
-    {
+  function DatePicker(inProps, ref) {
+    const props = useLocaleProps({ props: inProps, name: "NewDatePicker" });
+    const {
       date,
       format = "YYYY-MM-DD",
       disabled = false,
+      monthFormat = "MMM YYYY",
       isOutsideRange,
       errorText,
       actions,
       onDateChange,
-    },
-    ref,
-  ) {
+    } = props;
+
     const [open, setOpen] = useState(false);
     const { context, refs, strategy, x, y } = useFloating({
       placement: "right-start",
@@ -112,6 +118,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
           <Calendar
             ref={refs.setFloating}
             date={date}
+            monthFormat={monthFormat}
             actions={actions}
             isOutsideRange={isOutsideRange}
             style={{

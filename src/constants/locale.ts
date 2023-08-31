@@ -7,7 +7,7 @@ import {
   MultipleFilterProps,
   ToggleButtonProps,
 } from "..";
-import { SelectProps } from "../components";
+import { NewDatePickerProps, SelectProps } from "../components";
 import { CreatableSelectProps } from "../components/CreatableSelect";
 import { FullSizeConfirmModalProps } from "../components/FullSizeConfirmModal";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
@@ -75,6 +75,9 @@ export interface Localization {
     DateRangePicker?: {
       defaultProps: Pick<DateRangePickerProps, "displayFormat" | "monthFormat">;
     };
+    NewDatePicker?: {
+      defaultProps: Pick<NewDatePickerProps, "format" | "monthFormat">;
+    };
   };
 }
 
@@ -123,6 +126,9 @@ export const jaJP: Localization = {
     },
     DateRangePicker: {
       defaultProps: { displayFormat: "YYYY/MM/DD", monthFormat: "YYYY年 M月" },
+    },
+    NewDatePicker: {
+      defaultProps: { monthFormat: "YYYY年MM月" },
     },
   },
 };

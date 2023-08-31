@@ -14,6 +14,10 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   date: Dayjs;
   /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
@@ -37,6 +41,7 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   {
     date,
+    monthFormat,
     actions,
     onClickCloseButton,
     isOutsideRange = () => false,
@@ -74,6 +79,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
         <InnerCalendar
           date={date}
           current={current}
+          monthFormat={monthFormat}
           yearIsOpen={yearIsOpen}
           isOutsideRange={isOutsideRange}
           onYearIsOpen={setYearIsOpen}
