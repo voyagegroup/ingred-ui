@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { HEIGHT, weekList } from "../../constants";
+import { HEIGHT } from "../../constants";
 import { useTheme } from "../../../../themes";
 import { useScrollCalendar } from "../../hooks/useScrollCalendar";
 import { Icon, ScrollArea } from "../../../";
@@ -18,6 +18,8 @@ import { Day } from "../../CalendarRange/internal/Day";
 type Props = {
   startDate: Dayjs;
   endDate: Dayjs;
+  monthFormat?: string;
+  weekList?: string[];
   current: Dayjs;
   yearIsOpen: boolean;
   onYearIsOpen: (yearIsOpen: boolean) => void;
@@ -28,6 +30,8 @@ type Props = {
 export const InnerCalendarRange: React.FC<Props> = ({
   startDate,
   endDate,
+  monthFormat,
+  weekList,
   current,
   yearIsOpen,
   onYearIsOpen,
@@ -54,7 +58,7 @@ export const InnerCalendarRange: React.FC<Props> = ({
           >
             <CalendarMonth expanded={yearIsOpen}>
               <TitleContainer expanded={yearIsOpen} weight="bold" size="xl">
-                {m.format("YYYY年MM月")}
+                {m.format(monthFormat)}
               </TitleContainer>
               <IconButton
                 expanded={yearIsOpen}
@@ -68,9 +72,7 @@ export const InnerCalendarRange: React.FC<Props> = ({
               </IconButton>
             </CalendarMonth>
             <CalendarContainer>
-              {weekList["ja"].map((week) => (
-                <DayStyle key={week}>{week}</DayStyle>
-              ))}
+              {weekList?.map((week) => <DayStyle key={week}>{week}</DayStyle>)}
               {Array.from(new Array(m.startOf("month").day()), (_, i) => (
                 <DayStyle key={i} />
               ))}

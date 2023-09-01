@@ -6,6 +6,7 @@ import {
   ConfirmModal,
   DatePicker,
   MultipleFilter,
+  NewDatePicker,
   OptionType,
   Select,
   Spacer,
@@ -183,6 +184,11 @@ export const Example: StoryObj<LocaleProviderProps> = {
         </Typography>
         <Spacer pl={2} pt={2} pb={40}>
           <DatePicker date={dayjs()} onDateChange={() => {}} />
+        </Spacer>
+
+        <h2>NewDatePicker</h2>
+        <Spacer pl={2} pt={2} pb={40}>
+          <NewDatePicker date={dayjs()} onDateChange={() => {}} />
         </Spacer>
       </LocaleProvider>
     );
