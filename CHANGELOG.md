@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.7.0
+
+### Minor Changes
+
+- [#1398](https://github.com/voyagegroup/ingred-ui/pull/1398) [`a61bcfe4`](https://github.com/voyagegroup/ingred-ui/commit/a61bcfe45013361d8a8a11baf008b1b2bf4a2a1b) Thanks [@takurinton](https://github.com/takurinton)! - Feat i18n support for DatePicker and DateRangePicker
+
 ## 14.6.0
 
 ### Minor Changes
