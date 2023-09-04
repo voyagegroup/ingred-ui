@@ -1,0 +1,17 @@
+name: need changeset
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - ".github/workflows/changeset.yaml"
+
+jobs:
+  changeset:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/setup-yarn
+      - name: check changesets
+        run: make -f ci.mk check_changesets
+        if: github.actor != 'dependabot[bot]' && github.actor != 'FluctMember'
