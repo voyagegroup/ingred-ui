@@ -46,7 +46,7 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   {
     date,
-    monthFormat,
+    monthFormat = "YYYY年M月",
     weekList,
     actions,
     onClickCloseButton,
