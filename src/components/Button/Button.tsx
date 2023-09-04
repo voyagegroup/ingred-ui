@@ -200,7 +200,6 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   },
   ref,
 ) {
-  console.log("hoge");
   const theme = useTheme();
   const colorStyle = getContainerColorStyles(theme)[color];
   const {
