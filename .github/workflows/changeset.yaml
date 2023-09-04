@@ -1,7 +1,10 @@
-name: PR Check
+name: need changeset
 
 on:
   pull_request:
+    paths:
+      - "src/**"
+      - ".github/workflows/changeset.yaml"
 
 jobs:
   test-lint-and-build:
@@ -17,9 +20,6 @@ jobs:
           node-version: 18.x
       - name: install
         run: make -f ci.mk install
-      - name: lint
-        run: make -f ci.mk lint
-      - name: test
-        run: make -f ci.mk test
-      - name: build
-        run: make -f ci.mk build
+      - name: check changesets
+        run: make -f ci.mk check_changesets
+        if: github.actor != 'dependabot[bot]' && github.actor != 'FluctMember'
