@@ -46,8 +46,8 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   {
     date,
-    monthFormat,
-    weekList,
+    monthFormat = "YYYY年M月",
+    weekList = ["日", "月", "火", "水", "木", "金", "土"],
     actions,
     onClickCloseButton,
     isOutsideRange = () => false,

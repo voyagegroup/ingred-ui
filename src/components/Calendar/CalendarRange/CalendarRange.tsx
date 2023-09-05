@@ -69,8 +69,8 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     {
       startDate,
       endDate,
-      monthFormat,
-      weekList,
+      monthFormat = "YYYY年M月",
+      weekList = ["日", "月", "火", "水", "木", "金", "土"],
       actions,
       onClose,
       isOutsideRange = () => false,
