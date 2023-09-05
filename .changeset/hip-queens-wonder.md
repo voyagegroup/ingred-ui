@@ -2,4 +2,4 @@
 "ingred-ui": patch
 ---
 
-Fix monthFormat default value
+Fix monthFormat and weekList default value
