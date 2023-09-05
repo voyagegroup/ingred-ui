@@ -13,6 +13,8 @@ export type ContainerProps = ButtonColorStyle & {
   paddingTopAtActive: string;
   paddingBottomAtActive: string;
   href?: string;
+  target?: string;
+  rel?: string;
   disabled?: boolean;
 };
 

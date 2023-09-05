@@ -186,6 +186,8 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
    * If added this props, root node becomes `<a />`.
    */
   href?: string;
+  target?: string;
+  rel?: string;
 };
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
@@ -196,6 +198,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     inline = false,
     size = "medium",
     href,
+    target,
+    rel,
     ...rest
   },
   ref,
@@ -219,6 +223,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     anchorProps = {
       as: component || "a",
       href,
+      target,
+      rel,
     };
   }
 
