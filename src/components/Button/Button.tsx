@@ -166,8 +166,7 @@ const getPadding = ({ theme, size, color }: Padding) => ({
   paddingBottomAtActive:
     color === "clear" ? "" : paddingAtActive[size].paddingBottom,
 });
-
-export type ButtonProps = Omit<BaseButtonProps, "color"> & {
+type baseProps = {
   /**
    * The component used for the root node.
    * Default: `<button />`
@@ -182,13 +181,13 @@ export type ButtonProps = Omit<BaseButtonProps, "color"> & {
   inline?: boolean;
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
-  /**
-   * If added this props, root node becomes `<a />`.
-   */
-  href?: string;
+};
+type basePropsWithHref = Omit<baseProps, "onClick"> & {
+  href: string;
   target?: string;
   rel?: string;
 };
+export type ButtonProps = Omit<BaseButtonProps, "color"> & (baseProps | basePropsWithHref)
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
@@ -197,9 +196,6 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     color = "primary",
     inline = false,
     size = "medium",
-    href,
-    target,
-    rel,
     ...rest
   },
   ref,
@@ -216,7 +212,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     size,
     color,
   });
-
+ // ButtonPropsがbasePropsWithHrefの場合、hrefが必須になる
+  const { href, target, rel } = rest as basePropsWithHref;
   const isLink = !!href;
   let anchorProps: any = {};
   if (isLink) {
