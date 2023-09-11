@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.7.1
+
+### Patch Changes
+
+- [#1408](https://github.com/voyagegroup/ingred-ui/pull/1408) [`c392ecda`](https://github.com/voyagegroup/ingred-ui/commit/c392ecda182d90e5d7f4d4bc92a5f60fab9021ce) Thanks [@takurinton](https://github.com/takurinton)! - Fix monthFormat and weekList default value
+
 ## 14.7.0
 
 ### Minor Changes
