@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.7.2
+
+### Patch Changes
+
+- [#1415](https://github.com/voyagegroup/ingred-ui/pull/1415) [`f13a1eea`](https://github.com/voyagegroup/ingred-ui/commit/f13a1eea4be7b1df076b5858bfc2689102f1b968) Thanks [@takurinton](https://github.com/takurinton)! - fix viewport issue when selecting date
+
 ## 14.7.1
 
 ### Patch Changes
