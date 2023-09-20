@@ -23,6 +23,10 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   weekList?: string[];
   /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
@@ -48,6 +52,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
     date,
     monthFormat = "YYYY年M月",
     weekList = ["日", "月", "火", "水", "木", "金", "土"],
+    defaultClickAction,
     actions,
     onClickCloseButton,
     isOutsideRange = () => false,
@@ -71,7 +76,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
 
   return (
     <Card ref={ref} {...rest}>
-      <Actions actions={actions} />
+      <Actions defaultClickAction={defaultClickAction} actions={actions} />
       <Container>
         <Slide unmountOnExit in={yearIsOpen} direction="up">
           <YearMonths

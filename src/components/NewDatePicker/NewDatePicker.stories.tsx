@@ -46,6 +46,7 @@ export const WithActions: StoryObj<NewDatePickerProps> = {
       <NewDatePicker
         {...args}
         date={date}
+        defaultClickAction="今日"
         actions={actions}
         onDateChange={setDate}
       />

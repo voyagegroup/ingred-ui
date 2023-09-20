@@ -9,12 +9,16 @@ export type Action = {
 };
 
 export const Actions = memo(function Actions({
+  defaultClickAction,
   actions,
 }: {
+  defaultClickAction?: string;
   actions?: Action[];
 }) {
   const theme = useTheme();
-  const [clickedAction, setClickedAction] = useState<string | null>(null);
+  const [clickedAction, setClickedAction] = useState<string | undefined>(
+    defaultClickAction,
+  );
 
   const handleClick = (action: Action) => () => {
     setClickedAction(action.text);
