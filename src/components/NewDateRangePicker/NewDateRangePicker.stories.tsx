@@ -4,7 +4,6 @@ import NewDateRangePicker, {
 } from "./NewDateRangePicker";
 import dayjs from "dayjs";
 import React, { useState } from "react";
-import { Action } from "../Calendar/internal/Actions";
 
 export default {
   title: "Components/Inputs/NewDateRangePicker",
@@ -118,10 +117,6 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps
         },
       ];
 
-      const handleActionClick = (action: Action) => () => {
-        setClickAction(action.text);
-      };
-
       return (
         <NewDateRangePicker
           {...args}
@@ -129,7 +124,7 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps
           startDate={date.startDate}
           endDate={date.endDate}
           defaultClickAction={clickAction}
-          onClickAction={handleActionClick}
+          onClickAction={(action) => setClickAction(action.text)}
           onDatesChange={setDate}
         />
       );
