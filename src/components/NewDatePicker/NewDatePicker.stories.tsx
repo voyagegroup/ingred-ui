@@ -1,6 +1,6 @@
 import { StoryObj } from "@storybook/react";
 import NewDatePicker, { NewDatePickerProps } from "./NewDatePicker";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import React, { useState } from "react";
 
 export default {
@@ -78,6 +78,11 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDatePickerProps> = {
       },
     ];
 
+    const handleDateChange = (date: Dayjs) => {
+      setDate(date);
+      setClickAction("");
+    };
+
     return (
       <NewDatePicker
         {...args}
@@ -85,7 +90,7 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDatePickerProps> = {
         defaultClickAction={clickAction}
         actions={actions}
         onClickAction={(action) => setClickAction(action.text)}
-        onDateChange={setDate}
+        onDateChange={handleDateChange}
       />
     );
   },

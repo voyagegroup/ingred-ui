@@ -117,6 +117,14 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps
         },
       ];
 
+      const handleDateChange = (dates: {
+        startDate: dayjs.Dayjs;
+        endDate: dayjs.Dayjs;
+      }) => {
+        setDate(dates);
+        setClickAction("");
+      };
+
       return (
         <NewDateRangePicker
           {...args}
@@ -125,7 +133,7 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps
           endDate={date.endDate}
           defaultClickAction={clickAction}
           onClickAction={(action) => setClickAction(action.text)}
-          onDatesChange={setDate}
+          onDatesChange={handleDateChange}
         />
       );
     },
