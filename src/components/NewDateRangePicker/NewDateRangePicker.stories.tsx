@@ -86,7 +86,7 @@ export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps
         startDate: dayjs(),
         endDate: dayjs().add(1, "week"),
       });
-      const [clickAction, setClickAction] = useState("今日");
+      const [clickAction, setClickAction] = useState("来週");
       const actions = [
         {
           text: "明日",
