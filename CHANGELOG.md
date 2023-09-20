@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.8.0
+
+### Minor Changes
+
+- [#1420](https://github.com/voyagegroup/ingred-ui/pull/1420) [`fe0c31e3`](https://github.com/voyagegroup/ingred-ui/commit/fe0c31e3d59e32eff19755f13d76db0f568e3483) Thanks [@takurinton](https://github.com/takurinton)! - feat action state and handler
+
 ## 14.7.2
 
 ### Patch Changes
