@@ -47,6 +47,10 @@ export type NewDateRangePickerProps = {
    */
   actions?: Action[];
   /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
+  /**
    * 入力を無効にする
    * @default false
    */
@@ -93,6 +97,7 @@ export const DateRangePicker = forwardRef<
     isOutsideRange = () => false,
     defaultClickAction,
     actions,
+    onClickAction,
     onDatesChange,
   } = props;
 
@@ -164,6 +169,7 @@ export const DateRangePicker = forwardRef<
             overflow: "hidden",
           }}
           isOutsideRange={isOutsideRange}
+          onClickAction={onClickAction}
           onClose={handleClose}
           onClickCloseButton={handleClickCloseButton}
           onDatesChange={onDatesChange}

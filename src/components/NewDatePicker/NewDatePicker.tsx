@@ -27,6 +27,10 @@ export type NewDatePickerProps = {
    */
   actions?: Action[];
   /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
+  /**
    * 指定したい format
    * @default YYYY-MM-DD
    */
@@ -77,6 +81,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       errorText,
       defaultClickAction,
       actions,
+      onClickAction,
       onDateChange,
     } = props;
 
@@ -141,6 +146,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
               zIndex: 100,
               overflow: "hidden",
             }}
+            onClickAction={onClickAction}
             onClickCloseButton={handleClose}
             onDateChange={handleClickDate}
             {...getFloatingProps()}

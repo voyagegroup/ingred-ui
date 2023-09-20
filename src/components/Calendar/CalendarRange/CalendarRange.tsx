@@ -43,6 +43,10 @@ export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   actions?: Action[];
   /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
+  /**
    * 親コンポーネントで calendar を任意のタイミングで閉じたい場合に使用する
    */
   onClose?: (clickState: ClickStateType) => void;
@@ -77,6 +81,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
       weekList = ["日", "月", "火", "水", "木", "金", "土"],
       defaultClickAction,
       actions,
+      onClickAction,
       onClose,
       isOutsideRange = () => false,
       onClickCloseButton,
@@ -130,7 +135,11 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
 
     return (
       <Card ref={ref} {...rest}>
-        <Actions defaultClickAction={defaultClickAction} actions={actions} />
+        <Actions
+          defaultClickAction={defaultClickAction}
+          actions={actions}
+          onClickAction={onClickAction}
+        />
         <Container>
           <div style={{ position: "relative", zIndex: 1 }}>
             <Slide unmountOnExit in={yearIsOpen} direction="up">

@@ -4,6 +4,7 @@ import NewDateRangePicker, {
 } from "./NewDateRangePicker";
 import dayjs from "dayjs";
 import React, { useState } from "react";
+import { Action } from "../Calendar/internal/Actions";
 
 export default {
   title: "Components/Inputs/NewDateRangePicker",
@@ -78,6 +79,62 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
     );
   },
 };
+
+export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps> =
+  {
+    render: (args) => {
+      const [date, setDate] = useState({
+        startDate: dayjs(),
+        endDate: dayjs().add(1, "week"),
+      });
+      const [clickAction, setClickAction] = useState("今日");
+      const actions = [
+        {
+          text: "明日",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "day"),
+            });
+          },
+        },
+        {
+          text: "来週",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "week"),
+            });
+          },
+        },
+        {
+          text: "先月",
+          onClick: () => {
+            setDate({
+              startDate: dayjs().subtract(1, "month"),
+              endDate: dayjs(),
+            });
+          },
+        },
+      ];
+
+      const handleActionClick = (action: Action) => () => {
+        setClickAction(action.text);
+      };
+
+      return (
+        <NewDateRangePicker
+          {...args}
+          actions={actions}
+          startDate={date.startDate}
+          endDate={date.endDate}
+          defaultClickAction={clickAction}
+          onClickAction={handleActionClick}
+          onDatesChange={setDate}
+        />
+      );
+    },
+  };
 
 export const Error: StoryObj<NewDateRangePickerProps> = {
   ...Example,
