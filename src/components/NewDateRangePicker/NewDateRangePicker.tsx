@@ -39,9 +39,17 @@ export type NewDateRangePickerProps = {
    */
   errorText?: string;
   /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
+  /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
   /**
    * 入力を無効にする
    * @default false
@@ -87,7 +95,9 @@ export const DateRangePicker = forwardRef<
     monthFormat = "MMM YYYY",
     weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     isOutsideRange = () => false,
+    defaultClickAction,
     actions,
+    onClickAction,
     onDatesChange,
   } = props;
 
@@ -147,6 +157,7 @@ export const DateRangePicker = forwardRef<
           ref={refs.setFloating}
           startDate={startDate}
           endDate={endDate}
+          defaultClickAction={defaultClickAction}
           actions={actions}
           monthFormat={monthFormat}
           weekList={weekList}
@@ -158,6 +169,7 @@ export const DateRangePicker = forwardRef<
             overflow: "hidden",
           }}
           isOutsideRange={isOutsideRange}
+          onClickAction={onClickAction}
           onClose={handleClose}
           onClickCloseButton={handleClickCloseButton}
           onDatesChange={onDatesChange}

@@ -9,16 +9,23 @@ export type Action = {
 };
 
 export const Actions = memo(function Actions({
+  defaultClickAction,
   actions,
+  onClickAction,
 }: {
+  defaultClickAction?: string;
   actions?: Action[];
+  onClickAction?: (action: Action) => void;
 }) {
   const theme = useTheme();
-  const [clickedAction, setClickedAction] = useState<string | null>(null);
+  const [clickedAction, setClickedAction] = useState<string | undefined>(
+    defaultClickAction,
+  );
 
   const handleClick = (action: Action) => () => {
     setClickedAction(action.text);
     action.onClick();
+    onClickAction?.(action);
   };
 
   return actions ? (

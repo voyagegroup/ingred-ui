@@ -19,9 +19,17 @@ export type NewDatePickerProps = {
    */
   date: Dayjs;
   /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
+  /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
   /**
    * 指定したい format
    * @default YYYY-MM-DD
@@ -71,7 +79,9 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
       weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       isOutsideRange,
       errorText,
+      defaultClickAction,
       actions,
+      onClickAction,
       onDateChange,
     } = props;
 
@@ -126,6 +136,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
             date={date}
             monthFormat={monthFormat}
             weekList={weekList}
+            defaultClickAction={defaultClickAction}
             actions={actions}
             isOutsideRange={isOutsideRange}
             style={{
@@ -135,6 +146,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
               zIndex: 100,
               overflow: "hidden",
             }}
+            onClickAction={onClickAction}
             onClickCloseButton={handleClose}
             onDateChange={handleClickDate}
             {...getFloatingProps()}
