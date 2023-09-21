@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, memo, useMemo } from "react";
 import { ErrorText, Icon, Input, Spacer } from "../..";
 import { useDateField } from "../useDateField";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
@@ -38,11 +38,12 @@ export type DateFieldProps = {
 
 const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
   function DateField(
-    { errorText, disabled = false, onClick, ...rest },
+    { errorText, format = "YYYY-MM-DD", disabled = false, onClick, ...rest },
     propRef,
   ) {
     const theme = useTheme();
-    const { ref: inputRef, ...props } = useDateField({ ...rest });
+    const width = useMemo(() => format.length * 10, [format]);
+    const { ref: inputRef, ...props } = useDateField({ format, ...rest });
     const ref = useMergeRefs<HTMLInputElement>(propRef, inputRef);
 
     return (
@@ -54,6 +55,7 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
             style={{ border: "none" }}
             error={!!errorText}
             disabled={disabled}
+            width={width}
             {...props}
           />
           <CalendarIcon disabled={disabled} onClick={onClick}>

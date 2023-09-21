@@ -6,7 +6,7 @@ export const InputContainer = styled.div<{
 }>`
   display: flex;
   align-items: center;
-  width: 150px;
+  width: fit-content;
   /* MEMO: for calendar icon */
   padding: 0 8px 0 0;
   border: 0;
