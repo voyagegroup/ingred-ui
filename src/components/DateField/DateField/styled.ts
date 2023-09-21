@@ -22,6 +22,7 @@ export const InputContainer = styled.div<{
     ${({ theme, error }) =>
       error ? theme.palette.danger.main : theme.palette.divider};
   border-radius: ${({ theme }) => theme.radius}px;
+  overflow: scroll;
   /* MEMO: To take a place that display LastPass icon. */
   background-position: calc(100% - 35px) 50% !important;
   &:focus {
