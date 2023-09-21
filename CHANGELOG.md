@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.8.1
+
+### Patch Changes
+
+- [#1422](https://github.com/voyagegroup/ingred-ui/pull/1422) [`e37770b7`](https://github.com/voyagegroup/ingred-ui/commit/e37770b7499fadb9521d06fa4123d959a86f606f) Thanks [@takurinton](https://github.com/takurinton)! - fix width DateField
+
 ## 14.8.0
 
 ### Minor Changes
