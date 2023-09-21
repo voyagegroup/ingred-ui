@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.8.2
+
+### Patch Changes
+
+- [#1424](https://github.com/voyagegroup/ingred-ui/pull/1424) [`bd6528e3`](https://github.com/voyagegroup/ingred-ui/commit/bd6528e3d576d26f13244f3230d4a45adf89fee1) Thanks [@takurinton](https://github.com/takurinton)! - remove overflow scroll in Input
+
 ## 14.8.1
 
 ### Patch Changes
