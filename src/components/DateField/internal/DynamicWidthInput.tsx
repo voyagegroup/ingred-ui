@@ -31,16 +31,8 @@ export const DynamicWidthInput = forwardRef<
   return (
     <InputContainer>
       <Input ref={ref} {...props} />
-      <Dummy
-        ref={spanRef}
-        style={{
-          position: "absolute",
-          whiteSpace: "pre",
-          visibility: "hidden",
-        }}
-      >
-        {props.value}
-      </Dummy>
+      {/* 横幅を求めるために置いているダミーの要素 */}
+      <Dummy ref={spanRef}>{props.value}</Dummy>
     </InputContainer>
   );
 });
