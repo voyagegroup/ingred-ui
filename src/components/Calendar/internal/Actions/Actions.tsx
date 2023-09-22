@@ -47,7 +47,8 @@ export const Actions = memo(function Actions({
         ml={1}
         mr={1}
         orientation="vertical"
-        color={theme.palette.divider}
+        // MEMO: divider デザイントークンで basic[200] に該当するものがないので、一旦 gray で代用
+        color={theme.palette.gray.light}
       />
     </Flex>
   ) : null;
