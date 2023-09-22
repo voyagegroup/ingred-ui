@@ -8,6 +8,8 @@ export const Action = styled.button<{ clicked: boolean }>`
   display: block;
   margin: 0;
   max-width: 130px;
+  width: 100%;
+  text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -22,6 +24,5 @@ export const Action = styled.button<{ clicked: boolean }>`
 `;
 
 export const ActionsContainer = styled(ScrollArea)`
-  overflow-x: hidden;
   padding: ${({ theme }) => `${theme.spacing}px ${theme.spacing * 2}px`};
 `;
