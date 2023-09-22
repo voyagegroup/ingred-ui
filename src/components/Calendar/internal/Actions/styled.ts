@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ScrollArea } from "../../../..";
+import ScrollArea from "../../../ScrollArea";
 
 export const Action = styled.button<{ clicked: boolean }>`
   cursor: pointer;
@@ -7,6 +7,10 @@ export const Action = styled.button<{ clicked: boolean }>`
   border: none;
   display: block;
   margin: 0;
+  max-width: 130px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   padding: ${({ theme }) => theme.spacing}px;
   color: ${({ clicked, theme }) =>
     clicked ? theme.palette.primary.main : theme.palette.black};
@@ -18,5 +22,6 @@ export const Action = styled.button<{ clicked: boolean }>`
 `;
 
 export const ActionsContainer = styled(ScrollArea)`
+  overflow-x: hidden;
   padding: ${({ theme }) => `${theme.spacing}px ${theme.spacing * 2}px`};
 `;
