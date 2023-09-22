@@ -1,5 +1,15 @@
 # Changelog
 
+## 14.8.3
+
+### Patch Changes
+
+- [#1428](https://github.com/voyagegroup/ingred-ui/pull/1428) [`55ad8c34`](https://github.com/voyagegroup/ingred-ui/commit/55ad8c348c17b5f607c36ea1f5148fa029096f35) Thanks [@takurinton](https://github.com/takurinton)! - fix action text too long
+
+- [#1426](https://github.com/voyagegroup/ingred-ui/pull/1426) [`bcd0c302`](https://github.com/voyagegroup/ingred-ui/commit/bcd0c3025ce64174c0921fc1b8a67ca5d872c7b9) Thanks [@takurinton](https://github.com/takurinton)! - fix scrollable actions
+
+- [#1429](https://github.com/voyagegroup/ingred-ui/pull/1429) [`06b8065f`](https://github.com/voyagegroup/ingred-ui/commit/06b8065f98c300343f3b7ecedb54fbf9b8a27284) Thanks [@takurinton](https://github.com/takurinton)! - fix calendar and actions divider color
+
 ## 14.8.2
 
 ### Patch Changes
