@@ -1,10 +1,11 @@
 import React, { forwardRef, memo, useMemo } from "react";
-import { ErrorText, Icon, Input, Spacer } from "../..";
+import { ErrorText, Icon, Spacer } from "../..";
 import { useDateField } from "../useDateField";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
 import { useTheme } from "../../../themes";
+import { DynamicWidthInput } from "../internal";
 
 export type DateFieldProps = {
   /**
@@ -49,7 +50,7 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
     return (
       <>
         <InputContainer disabled={disabled} error={!!errorText}>
-          <Input
+          <DynamicWidthInput
             ref={ref}
             readOnly
             style={{ border: "none" }}

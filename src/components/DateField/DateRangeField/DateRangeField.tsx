@@ -1,5 +1,5 @@
 import React, { forwardRef, memo, useMemo } from "react";
-import { ErrorText, Icon, Input, Spacer, DateRange } from "../..";
+import { ErrorText, Icon, Spacer, DateRange } from "../..";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
@@ -9,6 +9,7 @@ import {
   ClickStateType,
 } from "../../Calendar/CalendarRange/constants";
 import { useTheme } from "../../../themes";
+import { DynamicWidthInput } from "../internal";
 
 export type DateRangeFieldProps = {
   /**
@@ -89,7 +90,7 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
     return (
       <>
         <InputContainer error={!!errorText} disabled={disabled}>
-          <Input
+          <DynamicWidthInput
             ref={startRef}
             readOnly
             disabled={disabled}
@@ -99,7 +100,7 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
             {...startProps}
           />
           -
-          <Input
+          <DynamicWidthInput
             ref={endRef}
             readOnly
             disabled={disabled}
