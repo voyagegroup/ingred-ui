@@ -30,16 +30,18 @@ export const Actions = memo(function Actions({
 
   return actions ? (
     <Flex display="flex">
-      <ActionsContainer>
-        {actions.map((action, i) => (
-          <Action
-            key={`${action.text}-${i.toString()}`}
-            clicked={clickedAction === action.text}
-            onClick={handleClick(action)}
-          >
-            {action.text}
-          </Action>
-        ))}
+      <ActionsContainer height="380px">
+        <>
+          {actions.map((action, i) => (
+            <Action
+              key={`${action.text}-${i.toString()}`}
+              clicked={clickedAction === action.text}
+              onClick={handleClick(action)}
+            >
+              {action.text}
+            </Action>
+          ))}
+        </>
       </ActionsContainer>
       <Divider
         ml={1}
