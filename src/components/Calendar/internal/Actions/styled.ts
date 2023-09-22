@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ScrollArea } from "../../../..";
 
 export const Action = styled.button<{ clicked: boolean }>`
   cursor: pointer;
@@ -16,8 +17,6 @@ export const Action = styled.button<{ clicked: boolean }>`
   }
 `;
 
-export const ActionsContainer = styled.div`
-  width: 100%;
-  height: 100%;
+export const ActionsContainer = styled(ScrollArea)`
   padding: ${({ theme }) => `${theme.spacing}px ${theme.spacing * 2}px`};
 `;
