@@ -1,5 +1,15 @@
 # Changelog
 
+## 14.8.4
+
+### Patch Changes
+
+- [#1432](https://github.com/voyagegroup/ingred-ui/pull/1432) [`04af46d0`](https://github.com/voyagegroup/ingred-ui/commit/04af46d08230144fd59aa5b1e12e2a06ac12bebb) Thanks [@takurinton](https://github.com/takurinton)! - fix width multiple
+
+- [#1430](https://github.com/voyagegroup/ingred-ui/pull/1430) [`731383d3`](https://github.com/voyagegroup/ingred-ui/commit/731383d3d3c4d8db3b8acf338f52d6cab373371a) Thanks [@takurinton](https://github.com/takurinton)! - fix DateField and DateRangeField width
+
+- [#1412](https://github.com/voyagegroup/ingred-ui/pull/1412) [`73d1cfc5`](https://github.com/voyagegroup/ingred-ui/commit/73d1cfc5a733f7b93718025043a01f8c02f49796) Thanks [@dependabot](https://github.com/apps/dependabot)! - fix test cases using testing-library-jest
+
 ## 14.8.3
 
 ### Patch Changes
