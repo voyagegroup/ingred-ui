@@ -1,5 +1,5 @@
 import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
 import ItemEmpty from "../ItemEmpty";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
