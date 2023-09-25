@@ -1,5 +1,5 @@
 import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
 import { cleanup, fireEvent, act } from "@testing-library/react";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 import ContextMenu from "../ContextMenu";
