@@ -5,6 +5,7 @@ import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
 import { useTheme } from "../../../themes";
+import { getInputWidth } from "../internal/utils";
 
 export type DateFieldProps = {
   /**
@@ -42,7 +43,7 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
     propRef,
   ) {
     const theme = useTheme();
-    const width = useMemo(() => format.length * 10, [format]);
+    const width = useMemo(() => `${getInputWidth(format) * 10}px`, [format]);
     const { ref: inputRef, ...props } = useDateField({ format, ...rest });
     const ref = useMergeRefs<HTMLInputElement>(propRef, inputRef);
 
