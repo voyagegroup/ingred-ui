@@ -9,7 +9,7 @@ exports[`TextField component testing TextField 1`] = `
       class="sc-gsnTZi iTnnSW"
     >
       <input
-        class="sc-jSMfEi cNRsja"
+        class="sc-jSMfEi cfVjjk"
       />
     </div>
   </div>
@@ -25,7 +25,7 @@ exports[`TextField component testing TextField passward 1`] = `
       class="sc-gsnTZi jTsXKF"
     >
       <input
-        class="sc-jSMfEi cNRsja"
+        class="sc-jSMfEi cfVjjk"
         type="password"
       />
       <div
@@ -87,7 +87,7 @@ exports[`TextField component testing TextField with icon 1`] = `
         </span>
       </div>
       <input
-        class="sc-jSMfEi cNRsja"
+        class="sc-jSMfEi cfVjjk"
       />
     </div>
   </div>

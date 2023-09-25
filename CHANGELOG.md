@@ -1,5 +1,45 @@
 # Changelog
 
+## 14.8.3
+
+### Patch Changes
+
+- [#1428](https://github.com/voyagegroup/ingred-ui/pull/1428) [`55ad8c34`](https://github.com/voyagegroup/ingred-ui/commit/55ad8c348c17b5f607c36ea1f5148fa029096f35) Thanks [@takurinton](https://github.com/takurinton)! - fix action text too long
+
+- [#1426](https://github.com/voyagegroup/ingred-ui/pull/1426) [`bcd0c302`](https://github.com/voyagegroup/ingred-ui/commit/bcd0c3025ce64174c0921fc1b8a67ca5d872c7b9) Thanks [@takurinton](https://github.com/takurinton)! - fix scrollable actions
+
+- [#1429](https://github.com/voyagegroup/ingred-ui/pull/1429) [`06b8065f`](https://github.com/voyagegroup/ingred-ui/commit/06b8065f98c300343f3b7ecedb54fbf9b8a27284) Thanks [@takurinton](https://github.com/takurinton)! - fix calendar and actions divider color
+
+## 14.8.2
+
+### Patch Changes
+
+- [#1424](https://github.com/voyagegroup/ingred-ui/pull/1424) [`bd6528e3`](https://github.com/voyagegroup/ingred-ui/commit/bd6528e3d576d26f13244f3230d4a45adf89fee1) Thanks [@takurinton](https://github.com/takurinton)! - remove overflow scroll in Input
+
+## 14.8.1
+
+### Patch Changes
+
+- [#1422](https://github.com/voyagegroup/ingred-ui/pull/1422) [`e37770b7`](https://github.com/voyagegroup/ingred-ui/commit/e37770b7499fadb9521d06fa4123d959a86f606f) Thanks [@takurinton](https://github.com/takurinton)! - fix width DateField
+
+## 14.8.0
+
+### Minor Changes
+
+- [#1420](https://github.com/voyagegroup/ingred-ui/pull/1420) [`fe0c31e3`](https://github.com/voyagegroup/ingred-ui/commit/fe0c31e3d59e32eff19755f13d76db0f568e3483) Thanks [@takurinton](https://github.com/takurinton)! - feat action state and handler
+
+## 14.7.2
+
+### Patch Changes
+
+- [#1415](https://github.com/voyagegroup/ingred-ui/pull/1415) [`f13a1eea`](https://github.com/voyagegroup/ingred-ui/commit/f13a1eea4be7b1df076b5858bfc2689102f1b968) Thanks [@takurinton](https://github.com/takurinton)! - fix viewport issue when selecting date
+
+## 14.7.1
+
+### Patch Changes
+
+- [#1408](https://github.com/voyagegroup/ingred-ui/pull/1408) [`c392ecda`](https://github.com/voyagegroup/ingred-ui/commit/c392ecda182d90e5d7f4d4bc92a5f60fab9021ce) Thanks [@takurinton](https://github.com/takurinton)! - Fix monthFormat and weekList default value
+
 ## 14.7.0
 
 ### Minor Changes
