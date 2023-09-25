@@ -53,7 +53,7 @@ const DateRangeField = forwardRef<HTMLInputElement, DateRangeFieldProps>(
     propRef,
   ) {
     const theme = useTheme();
-    const width = useMemo(() => getInputWidth(format), [format]);
+    const width = useMemo(() => `${getInputWidth(format) * 10}px`, [format]);
 
     const handleChange = (t: ClickStateType) => (date: Dayjs) => {
       const { startDate, endDate } = rest.date;
