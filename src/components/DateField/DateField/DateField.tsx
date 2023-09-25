@@ -43,7 +43,7 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
     propRef,
   ) {
     const theme = useTheme();
-    const width = useMemo(() => `${getInputWidth(format) * 10}px`, [format]);
+    const width = useMemo(() => `${getInputWidth(format) * 9}px`, [format]);
     const { ref: inputRef, ...props } = useDateField({ format, ...rest });
     const ref = useMergeRefs<HTMLInputElement>(propRef, inputRef);
 
