@@ -135,13 +135,14 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
   return (
     <Styled.Container>
       <Styled.WeekTimeContainer>
+        <Styled.EmptyContainer />
         {timeList.map((time) => (
           <Styled.TimeContainer key={time}>{time}</Styled.TimeContainer>
         ))}
         {weekTimeList.map((time, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <Fragment key={index}>
-            <div>{weekList[index]}</div>
+            <Styled.WeekContainer>{weekList[index]}</Styled.WeekContainer>
             {time.map((t, i) => (
               <Styled.WeekTimeItem
                 // eslint-disable-next-line react/no-array-index-key
