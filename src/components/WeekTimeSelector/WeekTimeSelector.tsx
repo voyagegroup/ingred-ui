@@ -1,7 +1,7 @@
 import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { defaultHoverWeekTime, timeList, weekList } from "./constants";
+import { timeList, weekList } from "./constants";
 import {
   convertTargetSettingToHex,
   getNewWeekTimeList,
@@ -20,9 +20,6 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
   onChange,
 }) => {
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
-  const [hoverWeekTimeList, setHoverWeekTimeList] =
-    useState(defaultHoverWeekTime);
-
   const [startIndex, setStartIndex] = useState<{
     weekIndex: number;
     timeIndex: number;
@@ -52,7 +49,6 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
       setSelectState("none");
 
       onChange?.(convertTargetSettingToHex(newWeekTimeList));
-      setHoverWeekTimeList(defaultHoverWeekTime);
     } else if (selectState === "none") {
       setStartIndex({ weekIndex, timeIndex });
       setEndIndex({ weekIndex, timeIndex });
@@ -60,21 +56,28 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
     }
   };
 
+  const isWithinHoverRange = (weekIndex: number, timeIndex: number) => {
+    if (selectState === "choosing") {
+      const minWeekIndex = Math.min(startIndex.weekIndex, endIndex.weekIndex);
+      const maxWeekIndex = Math.max(startIndex.weekIndex, endIndex.weekIndex);
+      const minTimeIndex = Math.min(startIndex.timeIndex, endIndex.timeIndex);
+      const maxTimeIndex = Math.max(startIndex.timeIndex, endIndex.timeIndex);
+
+      return (
+        weekIndex >= minWeekIndex &&
+        weekIndex <= maxWeekIndex &&
+        timeIndex >= minTimeIndex &&
+        timeIndex <= maxTimeIndex
+      );
+    }
+    return false;
+  };
+
   const handleMouseOver = (weekIndex: number, timeIndex: number) => () => {
     if (selectState === "none") {
       return;
     }
 
-    const newWeekTimeList = getNewWeekTimeList(
-      startIndex.weekIndex,
-      startIndex.timeIndex,
-      weekIndex,
-      timeIndex,
-      "1",
-      [...defaultHoverWeekTime],
-    );
-
-    setHoverWeekTimeList(newWeekTimeList);
     setEndIndex({ weekIndex, timeIndex });
   };
 
@@ -107,21 +110,18 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
         {timeList.map((time) => (
           <Styled.TimeContainer key={time}>{time}</Styled.TimeContainer>
         ))}
-        {weekTimeList.map((time, index) => (
+        {weekTimeList.map((time, weekIndex) => (
           // eslint-disable-next-line react/no-array-index-key
-          <Fragment key={index}>
-            <Styled.WeekContainer>{weekList[index]}</Styled.WeekContainer>
-            {time.map((t, i) => (
+          <Fragment key={weekIndex}>
+            <Styled.WeekContainer>{weekList[weekIndex]}</Styled.WeekContainer>
+            {time.map((t, timeIndex) => (
               <Styled.WeekTimeItem
                 // eslint-disable-next-line react/no-array-index-key
-                key={`${index}-${i}`}
+                key={`${weekIndex}-${timeIndex}`}
                 active={t === "1"}
-                hover={
-                  hoverWeekTimeList[index] &&
-                  hoverWeekTimeList[index][i] === "1"
-                }
-                onMouseOver={handleMouseOver(index, i)}
-                onMouseDown={handleMouseDown(index, i, t)}
+                hover={isWithinHoverRange(weekIndex, timeIndex)}
+                onMouseOver={handleMouseOver(weekIndex, timeIndex)}
+                onMouseDown={handleMouseDown(weekIndex, timeIndex, t)}
               />
             ))}
           </Fragment>
