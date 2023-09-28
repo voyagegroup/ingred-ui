@@ -2,7 +2,11 @@ import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
 import React, { Fragment, useEffect, useState } from "react";
 import { defaultHoverWeekTime, timeList, weekList } from "./constants";
-import { convertTargetSettingToHex, getTargetSetting } from "./utils";
+import {
+  convertTargetSettingToHex,
+  getNewWeekTimeList,
+  getTargetSetting,
+} from "./utils";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -29,41 +33,6 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
   }>({ weekIndex: 0, timeIndex: 0 });
   const [selectState, setSelectState] = useState<"none" | "choosing">("none");
   const [toValue, setToValue] = useState<string>("1");
-
-  // 選択範囲内のセルをnewValueに更新する
-  const getNewWeekTimeList = (
-    startWeekIndex: number,
-    startTimeIndex: number,
-    endWeekIndex: number,
-    endTimeIndex: number,
-    newValue: string,
-    weekTimeList: string[][],
-  ) => {
-    const newWeekTimeList = [...weekTimeList];
-    const minWeekIndex = Math.min(startWeekIndex, endWeekIndex);
-    const maxWeekIndex = Math.max(startWeekIndex, endWeekIndex);
-    const minTimeIndex = Math.min(startTimeIndex, endTimeIndex);
-    const maxTimeIndex = Math.max(startTimeIndex, endTimeIndex);
-
-    for (let i = minWeekIndex; i <= maxWeekIndex; i++) {
-      const weekTime = newWeekTimeList[i];
-      const newWeekTime = weekTime.map((t, index) => {
-        if (
-          i >= minWeekIndex &&
-          i <= maxWeekIndex &&
-          index >= minTimeIndex &&
-          index <= maxTimeIndex
-        ) {
-          return newValue; // 選択範囲内のセルの場合、newValueに更新
-        }
-        return t;
-      });
-
-      newWeekTimeList[i] = newWeekTime;
-    }
-
-    return newWeekTimeList;
-  };
 
   const handleChangeWeekTime = (
     weekIndex: number,
