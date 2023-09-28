@@ -1,6 +1,6 @@
 import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { defaultHoverWeekTime, timeList, weekList } from "./constants";
 import {
   convertTargetSettingToHex,
@@ -19,7 +19,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
   errorText,
   onChange,
 }) => {
-  const [weekTimeList, setWeekTimeList] = useState(getTargetSetting(weekTime));
+  const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [hoverWeekTimeList, setHoverWeekTimeList] =
     useState(defaultHoverWeekTime);
 
@@ -49,7 +49,6 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
         [...weekTimeList],
       );
 
-      setWeekTimeList(newWeekTimeList);
       setSelectState("none");
 
       onChange?.(convertTargetSettingToHex(newWeekTimeList));
