@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.9.0
+
+### Minor Changes
+
+- [#1439](https://github.com/voyagegroup/ingred-ui/pull/1439) [`fc2d971b`](https://github.com/voyagegroup/ingred-ui/commit/fc2d971bfc59b758a96098f30cb21fb9541dc213) Thanks [@takurinton](https://github.com/takurinton)! - feat WeekTime selector
+
 ## 14.8.4
 
 ### Patch Changes
