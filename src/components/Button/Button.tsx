@@ -182,12 +182,16 @@ type baseProps = {
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 };
-type basePropsWithHref = Omit<baseProps, "onClick"> & {
+type hrefProps = Omit<baseProps, "onClick"> & {
+  /**
+   * If added this props, root node becomes `<a />`.
+   */
   href: string;
   target?: string;
   rel?: string;
 };
-export type ButtonProps = Omit<BaseButtonProps, "color"> & (baseProps | basePropsWithHref)
+export type ButtonProps = Omit<BaseButtonProps, "color"> &
+  (baseProps | hrefProps);
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
@@ -212,8 +216,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     size,
     color,
   });
- // ButtonPropsがbasePropsWithHrefの場合、hrefが必須になる
-  const { href, target, rel } = rest as basePropsWithHref;
+
+  const { href, target, rel } = rest as hrefProps;
   const isLink = !!href;
   let anchorProps: any = {};
   if (isLink) {
