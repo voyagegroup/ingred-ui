@@ -37,12 +37,20 @@ export const useScrollCalendar = (
   ]);
 
   useEffect(() => {
-    // 全てのカレンダーに 2023-06 のような名前の className を振ってある
+    if (ref.current === null) return;
     const targets = document.getElementsByClassName(date.format("YYYY-MM"));
     for (const target of Array.from(targets)) {
-      target.scrollIntoView({ block: "start" });
+      const containerHeight = ref.current.clientHeight;
+      // Element には offsetTop と offsetHeight がないので、型を HTMLElement に変換する
+      const t = target as HTMLElement;
+      const targetPositionFromTop = t.offsetTop;
+      const targetHeight = t.offsetHeight;
+
+      const desiredScrollTop =
+        targetPositionFromTop - containerHeight / 2 + targetHeight / 2;
+      ref.current.scrollTop = desiredScrollTop;
     }
-  }, [date]);
+  }, [date, ref]);
 
   useEffect(() => {
     setLoaded({

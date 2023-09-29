@@ -1,9 +1,11 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, memo, useMemo } from "react";
 import { ErrorText, Icon, Input, Spacer } from "../..";
 import { useDateField } from "../useDateField";
 import { useMergeRefs } from "../../../hooks/useMergeRefs";
 import { CalendarIcon, InputContainer } from "./styled";
 import { Dayjs } from "dayjs";
+import { useTheme } from "../../../themes";
+import { getInputWidth } from "../internal/utils";
 
 export type DateFieldProps = {
   /**
@@ -37,10 +39,12 @@ export type DateFieldProps = {
 
 const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
   function DateField(
-    { errorText, disabled = false, onClick, ...rest },
+    { errorText, format = "YYYY-MM-DD", disabled = false, onClick, ...rest },
     propRef,
   ) {
-    const { ref: inputRef, ...props } = useDateField({ ...rest });
+    const theme = useTheme();
+    const width = useMemo(() => `${getInputWidth(format) * 9}px`, [format]);
+    const { ref: inputRef, ...props } = useDateField({ format, ...rest });
     const ref = useMergeRefs<HTMLInputElement>(propRef, inputRef);
 
     return (
@@ -52,10 +56,16 @@ const DateField = forwardRef<HTMLInputElement, DateFieldProps>(
             style={{ border: "none" }}
             error={!!errorText}
             disabled={disabled}
+            width={width}
             {...props}
           />
-          <CalendarIcon onClick={onClick}>
-            <Icon name="date_range" />
+          <CalendarIcon disabled={disabled} onClick={onClick}>
+            <Icon
+              name="date_range"
+              color={
+                disabled ? theme.palette.gray.dark : theme.palette.text.primary
+              }
+            />
           </CalendarIcon>
         </InputContainer>
         {errorText && (

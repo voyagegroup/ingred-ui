@@ -1,6 +1,6 @@
-![logo.png](https://user-images.githubusercontent.com/8923331/105577508-78b10000-5dbd-11eb-8314-03910081af23.png)
+![logo.png](https://github.com/voyagegroup/ingred-ui/assets/50351271/6d5bfbbe-96ba-435a-96a3-9b3f022626db)
 INGRED UI is a design system developed to make it easy and quick for anyone to build a user interface.
-It is based on React and has a well thought out structure that works well with Type script.
+It is based on React and has a well thought out structure that works well with TypeScript.
 
 >
 
@@ -16,10 +16,16 @@ For npm users:
 npm install --save ingred-ui styled-components
 ```
 
-For Yarn users:
+For yarn users:
 
 ```bash
 yarn add ingred-ui styled-components
+```
+
+For pnpm users:
+
+```bash
+pnpm add ingred-ui styled-components
 ```
 
 ## Usage
@@ -29,16 +35,14 @@ import * as React from "react";
 
 import { ThemeProvider, createTheme, Button } from "ingred-ui";
 
-class Example extends React.Component {
-  render() {
-    const theme = createTheme();
-    return (
-      <ThemeProvider theme={theme}>
-        <Button>Sample</Button>
-      </ThemeProvider>
-    );
-  }
-}
+const App = () => {
+  const theme = createTheme();
+  return (
+    <ThemeProvider theme={theme}>
+      <Button>Sample</Button>
+    </ThemeProvider>
+  );
+};
 ```
 
 If you use `<DatePicker />` or `<DateRangePicker />` , add

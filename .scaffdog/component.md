@@ -47,7 +47,7 @@ export const Container = styled.div``;
 
 ```typescript
 import * as React from "react";
-import "@testing-library/jest-dom/extend-expect";
+import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 import {{ inputs.name | pascal }} from "../";

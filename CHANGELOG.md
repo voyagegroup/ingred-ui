@@ -1,5 +1,91 @@
 # Changelog
 
+## 14.9.0
+
+### Minor Changes
+
+- [#1439](https://github.com/voyagegroup/ingred-ui/pull/1439) [`fc2d971b`](https://github.com/voyagegroup/ingred-ui/commit/fc2d971bfc59b758a96098f30cb21fb9541dc213) Thanks [@takurinton](https://github.com/takurinton)! - feat WeekTime selector
+
+## 14.8.4
+
+### Patch Changes
+
+- [#1432](https://github.com/voyagegroup/ingred-ui/pull/1432) [`04af46d0`](https://github.com/voyagegroup/ingred-ui/commit/04af46d08230144fd59aa5b1e12e2a06ac12bebb) Thanks [@takurinton](https://github.com/takurinton)! - fix width multiple
+
+- [#1430](https://github.com/voyagegroup/ingred-ui/pull/1430) [`731383d3`](https://github.com/voyagegroup/ingred-ui/commit/731383d3d3c4d8db3b8acf338f52d6cab373371a) Thanks [@takurinton](https://github.com/takurinton)! - fix DateField and DateRangeField width
+
+- [#1412](https://github.com/voyagegroup/ingred-ui/pull/1412) [`73d1cfc5`](https://github.com/voyagegroup/ingred-ui/commit/73d1cfc5a733f7b93718025043a01f8c02f49796) Thanks [@dependabot](https://github.com/apps/dependabot)! - fix test cases using testing-library-jest
+
+## 14.8.3
+
+### Patch Changes
+
+- [#1428](https://github.com/voyagegroup/ingred-ui/pull/1428) [`55ad8c34`](https://github.com/voyagegroup/ingred-ui/commit/55ad8c348c17b5f607c36ea1f5148fa029096f35) Thanks [@takurinton](https://github.com/takurinton)! - fix action text too long
+
+- [#1426](https://github.com/voyagegroup/ingred-ui/pull/1426) [`bcd0c302`](https://github.com/voyagegroup/ingred-ui/commit/bcd0c3025ce64174c0921fc1b8a67ca5d872c7b9) Thanks [@takurinton](https://github.com/takurinton)! - fix scrollable actions
+
+- [#1429](https://github.com/voyagegroup/ingred-ui/pull/1429) [`06b8065f`](https://github.com/voyagegroup/ingred-ui/commit/06b8065f98c300343f3b7ecedb54fbf9b8a27284) Thanks [@takurinton](https://github.com/takurinton)! - fix calendar and actions divider color
+
+## 14.8.2
+
+### Patch Changes
+
+- [#1424](https://github.com/voyagegroup/ingred-ui/pull/1424) [`bd6528e3`](https://github.com/voyagegroup/ingred-ui/commit/bd6528e3d576d26f13244f3230d4a45adf89fee1) Thanks [@takurinton](https://github.com/takurinton)! - remove overflow scroll in Input
+
+## 14.8.1
+
+### Patch Changes
+
+- [#1422](https://github.com/voyagegroup/ingred-ui/pull/1422) [`e37770b7`](https://github.com/voyagegroup/ingred-ui/commit/e37770b7499fadb9521d06fa4123d959a86f606f) Thanks [@takurinton](https://github.com/takurinton)! - fix width DateField
+
+## 14.8.0
+
+### Minor Changes
+
+- [#1420](https://github.com/voyagegroup/ingred-ui/pull/1420) [`fe0c31e3`](https://github.com/voyagegroup/ingred-ui/commit/fe0c31e3d59e32eff19755f13d76db0f568e3483) Thanks [@takurinton](https://github.com/takurinton)! - feat action state and handler
+
+## 14.7.2
+
+### Patch Changes
+
+- [#1415](https://github.com/voyagegroup/ingred-ui/pull/1415) [`f13a1eea`](https://github.com/voyagegroup/ingred-ui/commit/f13a1eea4be7b1df076b5858bfc2689102f1b968) Thanks [@takurinton](https://github.com/takurinton)! - fix viewport issue when selecting date
+
+## 14.7.1
+
+### Patch Changes
+
+- [#1408](https://github.com/voyagegroup/ingred-ui/pull/1408) [`c392ecda`](https://github.com/voyagegroup/ingred-ui/commit/c392ecda182d90e5d7f4d4bc92a5f60fab9021ce) Thanks [@takurinton](https://github.com/takurinton)! - Fix monthFormat and weekList default value
+
+## 14.7.0
+
+### Minor Changes
+
+- [#1398](https://github.com/voyagegroup/ingred-ui/pull/1398) [`a61bcfe4`](https://github.com/voyagegroup/ingred-ui/commit/a61bcfe45013361d8a8a11baf008b1b2bf4a2a1b) Thanks [@takurinton](https://github.com/takurinton)! - Feat i18n support for DatePicker and DateRangePicker
+
+## 14.6.0
+
+### Minor Changes
+
+- [#1385](https://github.com/voyagegroup/ingred-ui/pull/1385) [`531572b5`](https://github.com/voyagegroup/ingred-ui/commit/531572b5827a1523dda3a13bded030aaf00ac14a) Thanks [@takurinton](https://github.com/takurinton)! - feat year and month select component
+
+### Patch Changes
+
+- [#1389](https://github.com/voyagegroup/ingred-ui/pull/1389) [`788b8d64`](https://github.com/voyagegroup/ingred-ui/commit/788b8d648811f5c86ab431fccd3295e9efb6df0b) Thanks [@takurinton](https://github.com/takurinton)! - upgrade typescript-eslint to v6
+
+- [#1383](https://github.com/voyagegroup/ingred-ui/pull/1383) [`e69e7c98`](https://github.com/voyagegroup/ingred-ui/commit/e69e7c98e3951caf699ee3a710c7fcdd807fb80a) Thanks [@takurinton](https://github.com/takurinton)! - fix forget to use the ref parameter
+
+- [#1387](https://github.com/voyagegroup/ingred-ui/pull/1387) [`9e7fa17b`](https://github.com/voyagegroup/ingred-ui/commit/9e7fa17beb8c91a14e8f5b6b62576d9e2450a46d) Thanks [@takurinton](https://github.com/takurinton)! - Fix lint and enable react/display-name
+
+- [#1358](https://github.com/voyagegroup/ingred-ui/pull/1358) [`6682bd8e`](https://github.com/voyagegroup/ingred-ui/commit/6682bd8e4c019290cf19629616b9397a139c3f09) Thanks [@dependabot](https://github.com/apps/dependabot)! - chore(deps): bump @floating-ui/react from 0.24.3 to 0.25.1
+
+- [#1395](https://github.com/voyagegroup/ingred-ui/pull/1395) [`50eca924`](https://github.com/voyagegroup/ingred-ui/commit/50eca924e9bd297568a5fdd57c1e4626e6092d7e) Thanks [@takurinton](https://github.com/takurinton)! - fix style of DatePicker and DateRangePicker
+
+- [#1388](https://github.com/voyagegroup/ingred-ui/pull/1388) [`83f8e6c5`](https://github.com/voyagegroup/ingred-ui/commit/83f8e6c503d0a514022204078b9635eac57bc2c3) Thanks [@takurinton](https://github.com/takurinton)! - chore(deps): bump word-wrap from 1.2.3 to 1.2.4
+
+- [#1381](https://github.com/voyagegroup/ingred-ui/pull/1381) [`a17cfec2`](https://github.com/voyagegroup/ingred-ui/commit/a17cfec238b6b03fd6509150d5963b354c36f8fa) Thanks [@takurinton](https://github.com/takurinton)! - fix Makefile
+
+- [#1384](https://github.com/voyagegroup/ingred-ui/pull/1384) [`88a9b1f8`](https://github.com/voyagegroup/ingred-ui/commit/88a9b1f8c3f859c20bd3035f3506c8868a82918d) Thanks [@takurinton](https://github.com/takurinton)! - rename `useScroll` to `useScrollCalendar`
+
 ## 14.5.0
 
 ### Minor Changes

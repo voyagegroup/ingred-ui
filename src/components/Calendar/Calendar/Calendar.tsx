@@ -1,10 +1,11 @@
 import { Dayjs } from "dayjs";
-import { Card, Icon, Slide } from "../..";
+import { Icon, Slide } from "../..";
 import React, { forwardRef, memo, useEffect } from "react";
-import { Container, IconContainer } from "../styled";
+import { Container, IconContainer, Card } from "../styled";
 import { Action, Actions } from "../internal/Actions";
 import { YearMonths } from "../internal/YearMonths";
 import { InnerCalendar } from "../internal/InnerCalendar";
+import { useTheme } from "../../../themes";
 
 export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
   /**
@@ -13,9 +14,26 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
    */
   date: Dayjs;
   /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
+  /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
+  /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
   /**
    * 閉じるボタンを押したときの振る舞い
    * この関数が渡されてないときは、閉じるボタンが表示されない
@@ -36,7 +54,11 @@ export type CalendarProps = React.HTMLAttributes<HTMLDivElement> & {
 const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   {
     date,
+    monthFormat = "YYYY年M月",
+    weekList = ["日", "月", "火", "水", "木", "金", "土"],
+    defaultClickAction,
     actions,
+    onClickAction,
     onClickCloseButton,
     isOutsideRange = () => false,
     onDateChange,
@@ -44,6 +66,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   },
   ref,
 ) {
+  const theme = useTheme();
   const [current, setCurrent] = React.useState<Dayjs>(date);
   const [yearIsOpen, setYearIsOpen] = React.useState(false);
 
@@ -57,13 +80,12 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   }, [date]);
 
   return (
-    <Card
-      ref={ref}
-      display="flex"
-      style={{ width: "fit-content", overflow: "hidden" }}
-      {...rest}
-    >
-      <Actions actions={actions} />
+    <Card ref={ref} {...rest}>
+      <Actions
+        defaultClickAction={defaultClickAction}
+        actions={actions}
+        onClickAction={onClickAction}
+      />
       <Container>
         <Slide unmountOnExit in={yearIsOpen} direction="up">
           <YearMonths
@@ -77,6 +99,8 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
         <InnerCalendar
           date={date}
           current={current}
+          monthFormat={monthFormat}
+          weekList={weekList}
           yearIsOpen={yearIsOpen}
           isOutsideRange={isOutsideRange}
           onYearIsOpen={setYearIsOpen}
@@ -85,7 +109,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
       </Container>
       {onClickCloseButton && (
         <IconContainer expanded={yearIsOpen} onClick={onClickCloseButton}>
-          <Icon name="close" />
+          <Icon name="close" color={theme.palette.black} />
         </IconContainer>
       )}
     </Card>

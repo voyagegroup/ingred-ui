@@ -16,6 +16,7 @@ import {
   ClickStateType,
 } from "../Calendar/CalendarRange/constants";
 import { useMergeRefs } from "../../hooks/useMergeRefs";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type DateRange = {
   startDate: Dayjs;
@@ -38,14 +39,31 @@ export type NewDateRangePickerProps = {
    */
   errorText?: string;
   /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
+  /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
   /**
    * 入力を無効にする
    * @default false
    */
   disabled?: boolean;
+  /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
   /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
@@ -64,18 +82,25 @@ export type NewDateRangePickerProps = {
 export const DateRangePicker = forwardRef<
   HTMLDivElement,
   NewDateRangePickerProps
->(function DateRangePicker(
-  {
+>(function DateRangePicker(inProps, propRef) {
+  const props = useLocaleProps({
+    props: inProps,
+    name: "NewDateRangePicker",
+  });
+  const {
     startDate,
     endDate,
     errorText,
     disabled = false,
+    monthFormat = "MMM YYYY",
+    weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     isOutsideRange = () => false,
+    defaultClickAction,
     actions,
+    onClickAction,
     onDatesChange,
-  },
-  propRef,
-) {
+  } = props;
+
   const [open, setOpen] = useState(false);
   const { context, refs, strategy, x, y } = useFloating({
     placement: "right-start",
@@ -132,7 +157,10 @@ export const DateRangePicker = forwardRef<
           ref={refs.setFloating}
           startDate={startDate}
           endDate={endDate}
+          defaultClickAction={defaultClickAction}
           actions={actions}
+          monthFormat={monthFormat}
+          weekList={weekList}
           style={{
             position: strategy,
             top: y ?? 0,
@@ -141,6 +169,7 @@ export const DateRangePicker = forwardRef<
             overflow: "hidden",
           }}
           isOutsideRange={isOutsideRange}
+          onClickAction={onClickAction}
           onClose={handleClose}
           onClickCloseButton={handleClickCloseButton}
           onDatesChange={onDatesChange}

@@ -10,6 +10,7 @@ import {
   useInteractions,
   useRole,
 } from "@floating-ui/react";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type NewDatePickerProps = {
   /**
@@ -18,9 +19,17 @@ export type NewDatePickerProps = {
    */
   date: Dayjs;
   /**
+   * デフォルトで選択されているアクション
+   */
+  defaultClickAction?: string;
+  /**
    * カレンダーの左に表示するアクション
    */
   actions?: Action[];
+  /**
+   * アクションをクリックしたときの挙動
+   */
+  onClickAction?: (action: Action) => void;
   /**
    * 指定したい format
    * @default YYYY-MM-DD
@@ -35,6 +44,15 @@ export type NewDatePickerProps = {
    * @default false
    */
   disabled?: boolean;
+  /**
+   * カレンダーに表示する年月のフォーマット
+   */
+  monthFormat?: string;
+  /**
+   * カレンダーに表示する曜日のリスト
+   * @memo dayjs().format("ddd") で対応したいが、階層が深くなったりするので一旦静的な値で対処
+   */
+  weekList?: string[];
   /**
    * 選択可能なカレンダーの領域を制限する
    * true が返る場合は、選択不可となる
@@ -51,18 +69,22 @@ export type NewDatePickerProps = {
  * @memo 次のメジャーリリースで DatePicker に変更。現行の DatePicker は削除。
  */
 export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
-  function DatePicker(
-    {
+  function DatePicker(inProps, ref) {
+    const props = useLocaleProps({ props: inProps, name: "NewDatePicker" });
+    const {
       date,
       format = "YYYY-MM-DD",
       disabled = false,
+      monthFormat = "MMM YYYY",
+      weekList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       isOutsideRange,
       errorText,
+      defaultClickAction,
       actions,
+      onClickAction,
       onDateChange,
-    },
-    ref,
-  ) {
+    } = props;
+
     const [open, setOpen] = useState(false);
     const { context, refs, strategy, x, y } = useFloating({
       placement: "right-start",
@@ -112,6 +134,9 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
           <Calendar
             ref={refs.setFloating}
             date={date}
+            monthFormat={monthFormat}
+            weekList={weekList}
+            defaultClickAction={defaultClickAction}
             actions={actions}
             isOutsideRange={isOutsideRange}
             style={{
@@ -121,6 +146,7 @@ export const NewDatePicker = forwardRef<HTMLDivElement, NewDatePickerProps>(
               zIndex: 100,
               overflow: "hidden",
             }}
+            onClickAction={onClickAction}
             onClickCloseButton={handleClose}
             onDateChange={handleClickDate}
             {...getFloatingProps()}

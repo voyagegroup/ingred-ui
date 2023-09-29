@@ -1,5 +1,21 @@
 import styled from "styled-components";
 import { Flex, Typography } from "..";
+import { getShadow } from "../../utils/getShadow";
+
+export const Card = styled(Flex)`
+  box-shadow: ${({ theme }) =>
+    getShadow(
+      5,
+      theme.palette.action.shadowOpacity,
+      theme.palette.action.shadowBase,
+    )};
+  border-radius: ${({ theme }) => theme.radius}px;
+  background-color: ${({ theme }) => theme.palette.white};
+  width: fit-content;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+`;
 
 export const Container = styled.div`
   padding: 0 ${({ theme }) => theme.spacing * 3}px;
@@ -31,7 +47,7 @@ export const CalendarContainer = styled(Flex)`
 export const DayStyle = styled.span`
   padding: ${({ theme }) => theme.spacing}px 0;
   text-align: center;
-  color: ${({ theme }) => theme.palette.gray.dark};
+  color: ${({ theme }) => theme.palette.gray.deepDark};
 `;
 
 export const TitleContainer = styled(Typography)<{ expanded: boolean }>`
@@ -43,21 +59,21 @@ export const TitleContainer = styled(Typography)<{ expanded: boolean }>`
 export const CalendarMonth = styled.div<{ expanded: boolean }>`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;
   align-items: center;
   background-color: ${({ theme, expanded }) =>
-    expanded ? "transparent" : theme.palette.white};
+    expanded ? "transparent" : theme.palette.background.default};
   transition: background-color 300ms;
 `;
 
 export const IconContainer = styled.button<{ expanded: boolean }>`
   cursor: pointer;
   position: absolute;
-  top: ${({ theme }) => theme.spacing}px;
-  right: ${({ theme }) => theme.spacing}px;
+  top: ${({ theme }) => theme.spacing * 2}px;
+  right: ${({ theme }) => theme.spacing * 2}px;
   border: none;
   background: none;
   opacity: ${({ expanded }) => (expanded ? 0 : 1)};

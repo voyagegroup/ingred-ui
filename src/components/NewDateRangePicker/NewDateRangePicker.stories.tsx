@@ -39,15 +39,6 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
     });
     const actions = [
       {
-        text: "今日",
-        onClick: () => {
-          setDate({
-            startDate: dayjs(),
-            endDate: dayjs(),
-          });
-        },
-      },
-      {
         text: "明日",
         onClick: () => {
           setDate({
@@ -65,6 +56,15 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
           });
         },
       },
+      {
+        text: "先月",
+        onClick: () => {
+          setDate({
+            startDate: dayjs().subtract(1, "month"),
+            endDate: dayjs(),
+          });
+        },
+      },
     ];
 
     return (
@@ -78,6 +78,66 @@ export const WithActions: StoryObj<NewDateRangePickerProps> = {
     );
   },
 };
+
+export const WithActionsWithDefaultClickAction: StoryObj<NewDateRangePickerProps> =
+  {
+    render: (args) => {
+      const [date, setDate] = useState({
+        startDate: dayjs(),
+        endDate: dayjs().add(1, "week"),
+      });
+      const [clickAction, setClickAction] = useState("来週");
+      const actions = [
+        {
+          text: "明日",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "day"),
+            });
+          },
+        },
+        {
+          text: "来週",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "week"),
+            });
+          },
+        },
+        {
+          text: "先月",
+          onClick: () => {
+            setDate({
+              startDate: dayjs().subtract(1, "month"),
+              endDate: dayjs(),
+            });
+          },
+        },
+      ];
+
+      const handleDateChange = (dates: {
+        startDate: dayjs.Dayjs;
+        endDate: dayjs.Dayjs;
+      }) => {
+        setDate(dates);
+        setClickAction("");
+      };
+
+      return (
+        <NewDateRangePicker
+          {...args}
+          actions={actions}
+          startDate={date.startDate}
+          endDate={date.endDate}
+          defaultClickAction={clickAction}
+          onClickAction={(action) => setClickAction(action.text)}
+          onDatesChange={handleDateChange}
+        />
+      );
+    },
+  };
 
 export const Error: StoryObj<NewDateRangePickerProps> = {
   ...Example,

@@ -7,12 +7,12 @@ export const YearMonthsContainer = styled(Flex)`
   width: fit-content;
   position: absolute;
   z-index: 100;
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 export const YearMonthTitleContainer = styled.div`
   top: 0;
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.background.default};
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.spacing * 2}px 0;
@@ -36,6 +36,11 @@ export const Month = styled.button`
   border: none;
   color: ${({ theme }) => theme.palette.black};
   background: white;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.highlight};
+    border-radius: ${({ theme }) => theme.radius}px;
+  }
 `;
 
 const hideAnimation = keyframes`
