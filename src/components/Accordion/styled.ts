@@ -26,6 +26,7 @@ export const AccordionTitle = styled(Flex)<{
 
 export const AccordionTitleChildren = styled.div`
   padding: ${({ theme }) => theme.spacing * 1.25}px;
+  width: 100%;
 `;
 
 export const IconContainer = styled.div`
