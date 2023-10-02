@@ -182,7 +182,7 @@ type baseProps = {
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 };
-type hrefProps = Omit<baseProps, "onClick"> & {
+type anchorProps = Omit<baseProps, "onClick"> & {
   /**
    * If added this props, root node becomes `<a />`.
    */
@@ -190,8 +190,9 @@ type hrefProps = Omit<baseProps, "onClick"> & {
   target?: string;
   rel?: string;
 };
-export type ButtonProps = Omit<BaseButtonProps, "color"> &
-  (baseProps | hrefProps);
+export type BaseProps = Omit<BaseButtonProps, "color"> & baseProps
+export type AnchorProps = Omit<BaseButtonProps, "color" | "onClick"> & anchorProps
+export type ButtonProps = BaseProps | AnchorProps
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
@@ -217,10 +218,9 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     color,
   });
 
-  const { href, target, rel } = rest as hrefProps;
-  const isLink = !!href;
   let anchorProps: any = {};
-  if (isLink) {
+  if ("href" in rest) {
+    const { href, target, rel } = rest as AnchorProps;
     anchorProps = {
       as: component || "a",
       href,
