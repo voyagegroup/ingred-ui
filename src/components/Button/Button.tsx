@@ -190,9 +190,10 @@ type anchorProps = Omit<baseProps, "onClick"> & {
   target?: string;
   rel?: string;
 };
-export type BaseProps = Omit<BaseButtonProps, "color"> & baseProps
-export type AnchorProps = Omit<BaseButtonProps, "color" | "onClick"> & anchorProps
-export type ButtonProps = BaseProps | AnchorProps
+export type BaseProps = Omit<BaseButtonProps, "color"> & baseProps;
+export type AnchorProps = Omit<BaseButtonProps, "color" | "onClick"> &
+  anchorProps;
+export type ButtonProps = BaseProps | AnchorProps;
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
