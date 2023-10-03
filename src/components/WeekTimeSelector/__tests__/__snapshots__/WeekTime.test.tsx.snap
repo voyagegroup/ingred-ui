@@ -134,7 +134,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        日
+        Sun
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -211,7 +211,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        月
+        Mon
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -288,7 +288,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        火
+        Tue
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -365,7 +365,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        水
+        Wed
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -442,7 +442,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        木
+        Thu
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -519,7 +519,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        金
+        Fri
       </div>
       <button
         class="sc-jqUVSM cxmRec"
@@ -596,7 +596,7 @@ exports[`WeekTime component testing WeekTime 1`] = `
       <div
         class="sc-gKXOVf sc-iBkjds hVDQsL feTYsA"
       >
-        土
+        Sat
       </div>
       <button
         class="sc-jqUVSM cxmRec"
