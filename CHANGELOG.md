@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.10.1
+
+### Patch Changes
+
+- [#1444](https://github.com/voyagegroup/ingred-ui/pull/1444) [`dc4a460b`](https://github.com/voyagegroup/ingred-ui/commit/dc4a460bb32d969e515f5503405d13d65d4b0913) Thanks [@Yutan0423](https://github.com/Yutan0423)! - fix navigation rail's style
+
 ## 14.10.0
 
 ### Minor Changes
