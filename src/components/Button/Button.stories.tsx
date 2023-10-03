@@ -119,5 +119,7 @@ export const UseHrefProps: StoryObj<ButtonProps> = {
   args: {
     children: "use href props",
     href: "https://www.google.com",
+    target: "_blank",
+    rel: "noopener noreferrer",
   },
 };
