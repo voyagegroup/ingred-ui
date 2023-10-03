@@ -8,6 +8,7 @@ import {
   getTargetSetting,
 } from "./utils";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Spacer from "../Spacer";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -131,7 +132,11 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
           </Fragment>
         ))}
       </Styled.WeekTimeContainer>
-      {errorText && <ErrorText>{errorText}</ErrorText>}
+      {errorText && (
+        <Spacer pt={1}>
+          <ErrorText>{errorText}</ErrorText>
+        </Spacer>
+      )}
     </Styled.Container>
   );
 };
