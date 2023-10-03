@@ -1,7 +1,7 @@
 import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { timeList, defaultWeekList, WeekList } from "./constants";
+import { timeList, defaultWeekList } from "./constants";
 import {
   convertTargetSettingToHex,
   getNewWeekTimeList,
@@ -12,7 +12,7 @@ export type WeekTimeSelectorProps = {
   weekTime: string;
   errorText?: string;
   onChange?: (weekTime: string) => void;
-  weekList?: WeekList;
+  weekList?: string[];
 };
 
 const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
