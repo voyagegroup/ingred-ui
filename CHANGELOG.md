@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.10.0
+
+### Minor Changes
+
+- [#1410](https://github.com/voyagegroup/ingred-ui/pull/1410) [`ce2fca04`](https://github.com/voyagegroup/ingred-ui/commit/ce2fca042fb23d5f4bdbbbfeff5e55197aacbb1f) Thanks [@Yutan0423](https://github.com/Yutan0423)! - add target attribute in button
+
 ## 14.9.0
 
 ### Minor Changes
