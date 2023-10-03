@@ -1,6 +1,5 @@
 import * as React from "react";
 import { fontSize } from "../Typography/Typography";
-import { Props as BaseButtonProps } from "./internal/BaseButton";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 import { getShadow } from "../../utils/getShadow";
@@ -181,8 +180,8 @@ type baseProps = {
   inline?: boolean;
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
-} & BaseButtonProps;
-type anchorProps = Omit<baseProps, "onClick"> & {
+} & React.ComponentPropsWithoutRef<"button">;
+type AnchorProps = Omit<baseProps, "onClick"> & {
   /**
    * If added this props, root node becomes `<a />`.
    */
@@ -190,10 +189,13 @@ type anchorProps = Omit<baseProps, "onClick"> & {
   target?: string;
   rel?: string;
 };
-  type baseButtonProps = baseProps & {href?: undefined, target?: undefined, rel?: undefined}
+type BaseButtonProps = baseProps & {
+  href?: undefined;
+  target?: undefined;
+  rel?: undefined;
+};
 
-
-export type ButtonProps = baseButtonProps | anchorProps;
+export type ButtonProps = BaseButtonProps | AnchorProps;
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
@@ -220,7 +222,9 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   });
 
   const anchorProps: {
-    as?: keyof JSX.IntrinsicElements | React.ComponentType<{ className: string }>;
+    as?:
+      | keyof JSX.IntrinsicElements
+      | React.ComponentType<{ className: string }>;
     href?: string;
     target?: string;
     rel?: string;
@@ -235,8 +239,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
       };
     }
     return {};
-  })()
-  
+  })();
+
   return (
     <Styled.ButtonContainer
       ref={ref}
