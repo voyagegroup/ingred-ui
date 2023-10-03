@@ -186,7 +186,7 @@ type AnchorProps = Omit<baseProps, "onClick"> & {
    * If added this props, root node becomes `<a />`.
    */
   href: string;
-  target?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
   rel?: string;
 };
 type BaseButtonProps = baseProps & {
@@ -226,7 +226,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
       | keyof JSX.IntrinsicElements
       | React.ComponentType<{ className: string }>;
     href?: string;
-    target?: string;
+    target?: "_blank" | "_self" | "_parent" | "_top";
     rel?: string;
   } = (() => {
     if (typeof rest.href === "string") {
