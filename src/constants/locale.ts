@@ -76,10 +76,19 @@ export interface Localization {
       defaultProps: Pick<DateRangePickerProps, "displayFormat" | "monthFormat">;
     };
     NewDatePicker?: {
-      defaultProps: Pick<NewDatePickerProps, "monthFormat" | "weekList">;
+      defaultProps: Pick<NewDatePickerProps, "monthFormat"> & {
+        weekList: string[];
+      };
     };
     NewDateRangePicker?: {
-      defaultProps: Pick<NewDatePickerProps, "monthFormat" | "weekList">;
+      defaultProps: Pick<NewDatePickerProps, "monthFormat"> & {
+        weekList: string[];
+      };
+    };
+    WeekTimeSelector?: {
+      defaultProps: {
+        weekList: string[];
+      };
     };
     WeekTimeSelector?: {
       defaultProps: Pick<NewDatePickerProps, "weekList">;
@@ -175,8 +184,25 @@ export const zhCN: Localization = {
 
 // default
 export const enUS: Localization = {
-  // No localization needed.
-  //
+  components: {
+    NewDatePicker: {
+      defaultProps: {
+        monthFormat: "MMM YYYY",
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
+    NewDateRangePicker: {
+      defaultProps: {
+        monthFormat: "MMM YYYY",
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
+    WeekTimeSelector: {
+      defaultProps: {
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
+  },
 };
 
 export type LocalizationComponentName = keyof (Localization["components"] & {});

@@ -1,7 +1,7 @@
 import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { timeList, defaultWeekList } from "./constants";
+import { timeList } from "./constants";
 import {
   convertTargetSettingToHex,
   getNewWeekTimeList,
@@ -17,8 +17,13 @@ export type WeekTimeSelectorProps = {
 };
 
 const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
-  const props = useLocaleProps({ props: inProps, name: "WeekTimeSelector" });
-  const { weekTime, errorText, onChange, weekList = defaultWeekList } = props;
+  const props = useLocaleProps({
+    props: inProps,
+    name: "WeekTimeSelector",
+  });
+
+  const { weekList, weekTime, errorText, onChange } = props;
+
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [startIndex, setStartIndex] = useState<{
     weekIndex: number;

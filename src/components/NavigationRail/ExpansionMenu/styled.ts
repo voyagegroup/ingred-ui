@@ -7,7 +7,7 @@ export const Container = styled.div<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   padding: ${({ theme }) =>
-    `${theme.spacing * 2}px 0 ${theme.spacing * 2}px ${theme.spacing * 3}px`};
+    `${theme.spacing * 2}px 0 ${theme.spacing * 2}px ${theme.spacing * 2}px`};
   background-color: ${({ isActive, theme }) =>
     isActive ? theme.palette.background.hint : "none"};
 
