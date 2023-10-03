@@ -181,7 +181,7 @@ type baseProps = {
   inline?: boolean;
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
-};
+} & BaseButtonProps;
 type anchorProps = Omit<baseProps, "onClick"> & {
   /**
    * If added this props, root node becomes `<a />`.
@@ -190,10 +190,10 @@ type anchorProps = Omit<baseProps, "onClick"> & {
   target?: string;
   rel?: string;
 };
-export type BaseProps = Omit<BaseButtonProps, "color"> & baseProps;
-export type AnchorProps = Omit<BaseButtonProps, "color" | "onClick"> &
-  anchorProps;
-export type ButtonProps = BaseProps | AnchorProps;
+  type baseButtonProps = baseProps & {href?: undefined, target?: undefined, rel?: undefined}
+
+
+export type ButtonProps = baseButtonProps | anchorProps;
 
 const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
   {
@@ -219,17 +219,24 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     color,
   });
 
-  let anchorProps: any = {};
-  if ("href" in rest) {
-    const { href, target, rel } = rest as AnchorProps;
-    anchorProps = {
-      as: component || "a",
-      href,
-      target,
-      rel,
-    };
-  }
-
+  const anchorProps: {
+    as?: keyof JSX.IntrinsicElements | React.ComponentType<{ className: string }>;
+    href?: string;
+    target?: string;
+    rel?: string;
+  } = (() => {
+    if (typeof rest.href === "string") {
+      const { href, target, rel } = rest;
+      return {
+        as: component || "a",
+        href,
+        target,
+        rel,
+      };
+    }
+    return {};
+  })()
+  
   return (
     <Styled.ButtonContainer
       ref={ref}
