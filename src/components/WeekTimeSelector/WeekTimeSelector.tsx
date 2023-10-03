@@ -13,7 +13,6 @@ export type WeekTimeSelectorProps = {
   weekTime: string;
   errorText?: string;
   onChange?: (weekTime: string) => void;
-  weekList?: string[];
 };
 
 const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {

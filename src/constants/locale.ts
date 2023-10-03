@@ -90,9 +90,6 @@ export interface Localization {
         weekList: string[];
       };
     };
-    WeekTimeSelector?: {
-      defaultProps: Pick<NewDatePickerProps, "weekList">;
-    };
   };
 }
 
