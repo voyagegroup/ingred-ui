@@ -1,5 +1,15 @@
 # Changelog
 
+## 14.11.0
+
+### Minor Changes
+
+- [#1447](https://github.com/voyagegroup/ingred-ui/pull/1447) [`3c3a58b1`](https://github.com/voyagegroup/ingred-ui/commit/3c3a58b1300f3f2f30449a4749d1433462f7fcf1) Thanks [@takurinton](https://github.com/takurinton)! - feat locale value without props
+
+### Patch Changes
+
+- [#1445](https://github.com/voyagegroup/ingred-ui/pull/1445) [`1d567259`](https://github.com/voyagegroup/ingred-ui/commit/1d567259fb889ac68bb31044cecce18990809703) Thanks [@Yutan0423](https://github.com/Yutan0423)! - rm padding in weektime
+
 ## 14.10.1
 
 ### Patch Changes
