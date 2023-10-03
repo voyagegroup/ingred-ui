@@ -81,6 +81,9 @@ export interface Localization {
     NewDateRangePicker?: {
       defaultProps: Pick<NewDatePickerProps, "monthFormat" | "weekList">;
     };
+    WeekTimeSelector?: {
+      defaultProps: Pick<NewDatePickerProps, "weekList">;
+    };
   };
 }
 
@@ -139,6 +142,11 @@ export const jaJP: Localization = {
     NewDateRangePicker: {
       defaultProps: {
         monthFormat: "YYYY年MM月",
+        weekList: ["日", "月", "火", "水", "木", "金", "土"],
+      },
+    },
+    WeekTimeSelector: {
+      defaultProps: {
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
       },
     },

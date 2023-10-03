@@ -7,6 +7,7 @@ import {
   getNewWeekTimeList,
   getTargetSetting,
 } from "./utils";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -15,12 +16,9 @@ export type WeekTimeSelectorProps = {
   weekList?: string[];
 };
 
-const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
-  weekTime,
-  errorText,
-  onChange,
-  weekList = defaultWeekList,
-}) => {
+const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
+  const props = useLocaleProps({ props: inProps, name: "WeekTimeSelector" });
+  const { weekTime, errorText, onChange, weekList = defaultWeekList } = props;
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [startIndex, setStartIndex] = useState<{
     weekIndex: number;
