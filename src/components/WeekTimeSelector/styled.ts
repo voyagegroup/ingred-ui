@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div``;
 
 export const WeekTimeContainer = styled.div`
-  padding: ${({ theme }) => theme.spacing * 2}px;
   display: grid;
   grid-template-columns: 38px repeat(24, 1fr);
   grid-gap: ${({ theme }) => theme.spacing / 2}px;
