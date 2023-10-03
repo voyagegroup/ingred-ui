@@ -8,7 +8,7 @@ import { LocalizationComponentName } from "../constants/locale";
  * @returns localized Props.
  */
 export function useLocaleProps<T>(params: {
-  props: React.PropsWithChildren<T>;
+  props: React.PropsWithChildren<T> & Record<string, any>;
   name: LocalizationComponentName;
 }) {
   const { name, props } = params;
