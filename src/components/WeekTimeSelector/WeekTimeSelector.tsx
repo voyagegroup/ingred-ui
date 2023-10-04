@@ -1,12 +1,14 @@
 import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
 import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { timeList, weekList } from "./constants";
+import { timeList } from "./constants";
 import {
   convertTargetSettingToHex,
   getNewWeekTimeList,
   getTargetSetting,
 } from "./utils";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
+import Spacer from "../Spacer";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -14,11 +16,14 @@ export type WeekTimeSelectorProps = {
   onChange?: (weekTime: string) => void;
 };
 
-const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
-  weekTime,
-  errorText,
-  onChange,
-}) => {
+const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
+  const props = useLocaleProps({
+    props: inProps,
+    name: "WeekTimeSelector",
+  });
+
+  const { weekList, weekTime, errorText, onChange } = props;
+
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [startIndex, setStartIndex] = useState<{
     weekIndex: number;
@@ -127,7 +132,11 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = ({
           </Fragment>
         ))}
       </Styled.WeekTimeContainer>
-      {errorText && <ErrorText>{errorText}</ErrorText>}
+      {errorText && (
+        <Spacer pt={1}>
+          <ErrorText>{errorText}</ErrorText>
+        </Spacer>
+      )}
     </Styled.Container>
   );
 };

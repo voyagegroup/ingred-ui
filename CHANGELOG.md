@@ -1,5 +1,27 @@
 # Changelog
 
+## 14.11.0
+
+### Minor Changes
+
+- [#1447](https://github.com/voyagegroup/ingred-ui/pull/1447) [`3c3a58b1`](https://github.com/voyagegroup/ingred-ui/commit/3c3a58b1300f3f2f30449a4749d1433462f7fcf1) Thanks [@takurinton](https://github.com/takurinton)! - feat locale value without props
+
+### Patch Changes
+
+- [#1445](https://github.com/voyagegroup/ingred-ui/pull/1445) [`1d567259`](https://github.com/voyagegroup/ingred-ui/commit/1d567259fb889ac68bb31044cecce18990809703) Thanks [@Yutan0423](https://github.com/Yutan0423)! - rm padding in weektime
+
+## 14.10.1
+
+### Patch Changes
+
+- [#1444](https://github.com/voyagegroup/ingred-ui/pull/1444) [`dc4a460b`](https://github.com/voyagegroup/ingred-ui/commit/dc4a460bb32d969e515f5503405d13d65d4b0913) Thanks [@Yutan0423](https://github.com/Yutan0423)! - fix navigation rail's style
+
+## 14.10.0
+
+### Minor Changes
+
+- [#1410](https://github.com/voyagegroup/ingred-ui/pull/1410) [`ce2fca04`](https://github.com/voyagegroup/ingred-ui/commit/ce2fca042fb23d5f4bdbbbfeff5e55197aacbb1f) Thanks [@Yutan0423](https://github.com/Yutan0423)! - add target attribute in button
+
 ## 14.9.0
 
 ### Minor Changes
