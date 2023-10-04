@@ -59,6 +59,9 @@ export * from "./Divider";
 export { default as DropdownButton } from "./DropdownButton";
 export * from "./DropdownButton";
 
+export { default as DualListBox } from "./DualListBox";
+export * from "./DualListBox";
+
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 

@@ -3,7 +3,7 @@ import { StoryObj } from "@storybook/react";
 import DualListBox, {
   Item,
   DualListBoxProps,
-  UnselectedItem,
+  ItemWithInverse,
 } from "./DualListBox";
 
 export default {
@@ -12,7 +12,7 @@ export default {
 };
 
 export const Example: StoryObj<DualListBoxProps> = {
-  render: (args) => {
+  render: () => {
     const [unselectedItems, setUnselectedItems] = React.useState([
       {
         id: "1",
@@ -87,7 +87,6 @@ export const Example: StoryObj<DualListBoxProps> = {
 
     return (
       <DualListBox
-        {...args}
         unselectedItems={unselectedItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
@@ -103,10 +102,8 @@ export const Example: StoryObj<DualListBoxProps> = {
  * ときにフラットにするのは利用者側で頑張ってもらう
  */
 export const Nested: StoryObj<DualListBoxProps> = {
-  render: (args) => {
-    const [unselectedItems, setUnselectedItems] = React.useState<
-      UnselectedItem[]
-    >([
+  render: () => {
+    const [unselectedItems, setUnselectedItems] = React.useState([
       {
         id: "1",
         label: "hoge",
@@ -114,7 +111,6 @@ export const Nested: StoryObj<DualListBoxProps> = {
       {
         id: "2",
         label: "fuga",
-        selected: true,
       },
       {
         id: "3",
@@ -132,7 +128,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
       },
     ]);
 
-    const [selectedItems, setSelectedItems] = React.useState<Item[]>([
+    const [selectedItems, setSelectedItems] = React.useState([
       {
         id: "2",
         label: "fuga",
@@ -221,7 +217,6 @@ export const Nested: StoryObj<DualListBoxProps> = {
 
     return (
       <DualListBox
-        {...args}
         unselectedItems={unselectedItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
@@ -232,7 +227,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
 };
 
 export const WithToggle: StoryObj<DualListBoxProps> = {
-  render: (args) => {
+  render: () => {
     const [unselectedItems, setUnselectedItems] = React.useState([
       {
         id: "1",
@@ -256,21 +251,23 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
       },
     ]);
 
-    const [selectedItems, setSelectedItems] = React.useState<Item[]>([
-      {
-        id: "3",
-        label: "hoge",
-        isInverse: true,
-      },
-      {
-        id: "4",
-        label: "fuga",
-        isInverse: true,
-      },
-    ]);
+    const [selectedItems, setSelectedItems] = React.useState<ItemWithInverse[]>(
+      [
+        {
+          id: "3",
+          label: "hoge",
+          isInverse: true,
+        },
+        {
+          id: "4",
+          label: "fuga",
+          isInverse: true,
+        },
+      ],
+    );
 
     const handleAdd = (id: string) => {
-      const targets: Item[] = [];
+      const targets: ItemWithInverse[] = [];
       const newUnselectedItems = unselectedItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -329,7 +326,6 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
 
     return (
       <DualListBox
-        {...args}
         unselectedItems={unselectedItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
