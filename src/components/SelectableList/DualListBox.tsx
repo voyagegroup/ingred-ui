@@ -1,24 +1,28 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { ListRenderer } from "./internal/ListRenderer";
+import { UnselectedRenderer } from "./internal/UnselectedRenderer";
 import { SelectedList } from "./internal/SelectedList";
+import Divider from "../Divider/Divider";
+import { useTheme } from "../../themes";
 
 export type Item = {
   id: string;
   label: string;
   items?: Item[];
+  isInverse?: boolean;
 };
 
+/**
+ * @memo 内部で状態を保持するための型
+ */
 export type UnselectedItem = Item & { selected?: boolean };
 
 export type DualListBoxProps = {
-  /** @todo 型定義を分割する */
-  unselectedItems: UnselectedItem[];
+  unselectedItems: Item[];
   selectedItems: Item[];
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
-  /** @todo */
-  // onToggleInverse: (id: string) => void;
+  onToggleInverse?: (id: string) => void;
 };
 
 /**
@@ -27,15 +31,28 @@ export type DualListBoxProps = {
  *       ちなみに、現時点で children を渡させる気はないので最終的にはこっちで回収する必要がある想定
  * @todo is_inverse の実装
  * @todo 未選択状態の検索機能
- * @todo selected/unselected の状態はこっちで持ってもいいかも？
- *       unselected の中に要素が存在したら checked にするとか？
  */
 const DualListBox: React.FunctionComponent<DualListBoxProps> = ({
-  unselectedItems,
+  unselectedItems: unselectedItemsProp,
   selectedItems,
   onAdd,
   onRemove,
+  onToggleInverse,
 }) => {
+  const theme = useTheme();
+
+  const unselectedItems: UnselectedItem[] = React.useMemo(() => {
+    return unselectedItemsProp.map((item) => {
+      if (selectedItems.some((selectedItem) => selectedItem.id === item.id)) {
+        return {
+          ...item,
+          selected: true,
+        };
+      }
+      return item;
+    });
+  }, [unselectedItemsProp, selectedItems]);
+
   const handleAdd = React.useCallback(
     (id: string) => {
       if (onAdd) {
@@ -56,12 +73,17 @@ const DualListBox: React.FunctionComponent<DualListBoxProps> = ({
 
   return (
     <Styled.Container>
-      <ListRenderer
+      <UnselectedRenderer
         items={unselectedItems}
         onAdd={handleAdd}
         onRemove={onRemove}
       />
-      <SelectedList items={selectedItems} onRemove={handleRemove} />
+      <Divider color={theme.palette.divider} orientation="vertical" />
+      <SelectedList
+        items={selectedItems}
+        onRemove={handleRemove}
+        onToggleInverse={onToggleInverse}
+      />
     </Styled.Container>
   );
 };

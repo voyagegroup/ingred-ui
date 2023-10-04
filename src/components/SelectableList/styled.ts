@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  background-color: ${({ theme }) => theme.palette.background.default};
+  border: 1px solid ${({ theme }) => theme.palette.divider};
+  border-radius: ${({ theme }) => theme.radius}px;
   display: flex;
-  border: 1px solid #000;
-  padding: 8px 0;
+  height: 512px;
+  max-width: 1056px;
 `;

@@ -2,6 +2,7 @@ import React from "react";
 import Flex from "../../../../../Flex/Flex";
 import { UnselectedItem } from "../../../../DualListBox";
 import Checkbox from "../../../../../Checkbox/Checkbox";
+import Typography from "../../../../../Typography/Typography";
 
 export const SelectLabel: React.FunctionComponent<{
   label: string;
@@ -11,7 +12,9 @@ export const SelectLabel: React.FunctionComponent<{
 }> = ({ label, item, onAdd, onRemove }) => {
   return (
     <Flex display="flex" justifyContent="space-between">
-      {!item.items && (
+      {item.items ? (
+        <Typography>{label}</Typography>
+      ) : (
         <Checkbox
           checked={item?.selected ?? false}
           // eslint-disable-next-line react/jsx-handler-names
@@ -22,9 +25,10 @@ export const SelectLabel: React.FunctionComponent<{
             }
             onAdd?.(item.id);
           }}
-        />
+        >
+          <Typography>{label}</Typography>
+        </Checkbox>
       )}
-      <p>{label}</p>
     </Flex>
   );
 };
