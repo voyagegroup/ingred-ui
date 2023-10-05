@@ -7,4 +7,5 @@ export const Container = styled.div`
   display: flex;
   height: 512px;
   max-width: 1056px;
+  overflow: hidden;
 `;
