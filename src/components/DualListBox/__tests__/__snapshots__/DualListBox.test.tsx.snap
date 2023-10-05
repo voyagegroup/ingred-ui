@@ -3,7 +3,7 @@
 exports[`DualListBox component testing DualListBox 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ivdLdZ"
+    class="sc-bczRLJ jKPMRM"
   >
     <ul
       class="sc-jqUVSM dYJtng"
@@ -45,7 +45,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
 exports[`DualListBox component testing DualListBox candidateItems 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ivdLdZ"
+    class="sc-bczRLJ jKPMRM"
   >
     <ul
       class="sc-jqUVSM dYJtng"
@@ -204,7 +204,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
 exports[`DualListBox component testing DualListBox candidateItems and selectedItems 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ivdLdZ"
+    class="sc-bczRLJ jKPMRM"
   >
     <ul
       class="sc-jqUVSM dYJtng"
@@ -508,7 +508,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
 exports[`DualListBox component testing DualListBox candidateItems and selectedItems with inverse 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ivdLdZ"
+    class="sc-bczRLJ jKPMRM"
   >
     <ul
       class="sc-jqUVSM dYJtng"
@@ -956,7 +956,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
 exports[`DualListBox component testing DualListBox selectedItems 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ivdLdZ"
+    class="sc-bczRLJ jKPMRM"
   >
     <ul
       class="sc-jqUVSM dYJtng"
