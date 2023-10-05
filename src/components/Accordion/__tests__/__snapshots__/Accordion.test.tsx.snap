@@ -2,25 +2,27 @@
 
 exports[`Accordion component testing Accordion 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="sc-dkzDqf fEGkmI"
+  >
     <div
       aria-controls="accordion-content-Accordion Title"
       aria-expanded="false"
-      class="sc-gsnTZi sc-dkzDqf jUiVsm cyzAVp"
+      class="sc-gsnTZi sc-hKMtZM jUiVsm jBPBwg"
       display="flex"
       role="button"
       tabindex="0"
     >
       <div
-        class="sc-hKMtZM cPkbyL"
+        class="sc-eCYdqJ PzAcW"
       >
         Accordion Title
       </div>
       <div
-        class="sc-gKXOVf iwyGgb"
+        class="sc-iBkjds eeHkwx"
       >
         <div
-          class="sc-jSMfEi jmkEMm"
+          class="sc-gKXOVf gIbCPD"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -45,7 +47,7 @@ exports[`Accordion component testing Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-iBkjds cEjDqL"
+      class="sc-ftvSup hGExZo"
       height="0"
     >
       Accordion Content
@@ -56,26 +58,28 @@ exports[`Accordion component testing Accordion 1`] = `
 
 exports[`Accordion component testing Disable Accordion 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="sc-dkzDqf fEGkmI"
+  >
     <div
       aria-controls="accordion-content-Accordion Title"
       aria-expanded="false"
-      class="sc-gsnTZi sc-dkzDqf dfqrSd SuCNp"
+      class="sc-gsnTZi sc-hKMtZM dfqrSd dGjGHA"
       disabled=""
       display="flex"
       role="button"
       tabindex="-1"
     >
       <div
-        class="sc-hKMtZM cPkbyL"
+        class="sc-eCYdqJ PzAcW"
       >
         Accordion Title
       </div>
       <div
-        class="sc-gKXOVf iwyGgb"
+        class="sc-iBkjds eeHkwx"
       >
         <div
-          class="sc-jSMfEi jmkEMm"
+          class="sc-gKXOVf gIbCPD"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -100,7 +104,7 @@ exports[`Accordion component testing Disable Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-iBkjds cEjDqL"
+      class="sc-ftvSup hGExZo"
       height="0"
     >
       Accordion Content
