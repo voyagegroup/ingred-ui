@@ -32,6 +32,7 @@ export const SelectedList: React.FunctionComponent<{
                 <ToggleButton
                   checkedText=""
                   unCheckedText=""
+                  width="48px"
                   checked={item.isInverse ?? false}
                   onChange={() => onToggleInverse(item.id)}
                 >
