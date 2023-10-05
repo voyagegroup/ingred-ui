@@ -6,7 +6,7 @@ import { Item } from "../../DualListBox";
 /**
  * @memo ネストした構造を持つものを扱う場合は、再帰的に処理する必要がある
  */
-export const UnselectedRenderer: React.FunctionComponent<{
+export const CandidateRenderer: React.FunctionComponent<{
   items: Item[];
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
@@ -30,7 +30,7 @@ export const UnselectedRenderer: React.FunctionComponent<{
                   </Styled.AccordionTitleWrapper>
                 }
               >
-                <UnselectedRenderer
+                <CandidateRenderer
                   items={item.items}
                   onAdd={onAdd}
                   onRemove={onRemove}

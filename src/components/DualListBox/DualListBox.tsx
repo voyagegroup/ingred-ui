@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { UnselectedRenderer } from "./internal/UnselectedRenderer";
+import { CandidateRenderer } from "./internal/CandidateRenderer";
 import { SelectedList } from "./internal/SelectedList";
 import Divider from "../Divider/Divider";
 import { useTheme } from "../../themes";
@@ -81,7 +81,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
 
     return (
       <Styled.Container>
-        <UnselectedRenderer
+        <CandidateRenderer
           items={candidateItems}
           onAdd={handleAdd}
           onRemove={onRemove}
