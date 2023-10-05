@@ -22,7 +22,6 @@ export const UnselectedRenderer: React.FunctionComponent<{
               <Accordion
                 style={{
                   borderTop: "none",
-                  borderBottom: "none",
                 }}
                 title={
                   <Styled.AccordionTitleWrapper>
