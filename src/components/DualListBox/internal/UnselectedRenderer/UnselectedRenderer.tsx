@@ -1,6 +1,5 @@
 import React from "react";
 import * as Styled from "./styled";
-import Accordion from "../../../Accordion/Accordion";
 import { SelectLabel } from "./internal/SelectLabel";
 import { Item } from "../../DualListBox";
 
@@ -19,10 +18,7 @@ export const UnselectedRenderer: React.FunctionComponent<{
         <>
           {item.items ? (
             <Styled.AccordionWrapper key={item.id}>
-              <Accordion
-                style={{
-                  borderTop: "none",
-                }}
+              <Styled.AccordionComponent
                 title={
                   <Styled.AccordionTitleWrapper>
                     <SelectLabel
@@ -39,7 +35,7 @@ export const UnselectedRenderer: React.FunctionComponent<{
                   onAdd={onAdd}
                   onRemove={onRemove}
                 />
-              </Accordion>
+              </Styled.AccordionComponent>
             </Styled.AccordionWrapper>
           ) : (
             <Styled.UnselectedItem key={item.id}>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Accordion from "../../../Accordion/Accordion";
 
 export const Container = styled.ul`
   flex: 1;
@@ -15,6 +16,10 @@ export const UnselectedItem = styled(UnselectedItemBase)`
 
 export const AccordionWrapper = styled(UnselectedItemBase)`
   border-bottom: none;
+`;
+
+export const AccordionComponent = styled(Accordion)`
+  border-top: none;
 `;
 
 export const AccordionTitleWrapper = styled.div`

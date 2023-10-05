@@ -16,19 +16,10 @@ export type AccordionProps = {
   disabled?: boolean;
   onChange?: (event: React.SyntheticEvent, expanded: boolean) => void;
   children: ReactNode | ReactNode[];
-  style?: React.CSSProperties;
 };
 
 const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
-  {
-    title,
-    expanded = false,
-    disabled = false,
-    style,
-    onChange,
-    children,
-    ...rest
-  },
+  { title, expanded = false, disabled = false, onChange, children, ...rest },
   ref,
 ) {
   const theme = useTheme();
@@ -63,7 +54,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
   }, [expanded]);
 
   return (
-    <div ref={ref} {...rest}>
+    <Styled.Container ref={ref} expanded={expandedState} {...rest}>
       <Styled.AccordionTitle
         display="flex"
         tabIndex={disabled ? -1 : 0}
@@ -72,7 +63,6 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
         aria-controls={`accordion-content-${title}`}
         expanded={expandedState}
         disabled={disabled}
-        style={style}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
@@ -94,7 +84,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
       >
         {children}
       </Styled.AccordionContent>
-    </div>
+    </Styled.Container>
   );
 });
 

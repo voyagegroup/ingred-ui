@@ -1,6 +1,11 @@
 import Flex from "../Flex";
 import styled from "styled-components";
 
+export const Container = styled.div<{ expanded: boolean }>`
+  border-top: ${({ expanded, theme }) =>
+    expanded ? "none" : `1px solid ${theme.palette.divider}`};
+`;
+
 export const AccordionTitle = styled(Flex)<{
   expanded: boolean;
   disabled?: boolean;
@@ -17,8 +22,6 @@ export const AccordionTitle = styled(Flex)<{
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
   justify-content: space-between;
-  border-top: ${({ expanded, theme }) =>
-    !expanded ? `1px solid ${theme.palette.divider}` : "none"};
   transition:
     background-color 0.3s,
     border-top 0.3s;
