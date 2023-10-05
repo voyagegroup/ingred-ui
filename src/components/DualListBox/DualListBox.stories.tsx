@@ -3,7 +3,7 @@ import { StoryObj } from "@storybook/react";
 import DualListBox, {
   Item,
   DualListBoxProps,
-  ItemWithInverse,
+  ItemWithToggle,
 } from "./DualListBox";
 
 export default {
@@ -13,7 +13,7 @@ export default {
 
 export const Example: StoryObj<DualListBoxProps> = {
   render: () => {
-    const [unselectedItems, setUnselectedItems] = React.useState([
+    const [candidateItems, setCandidateItems] = React.useState([
       {
         id: "1",
         label: "foo",
@@ -45,7 +45,7 @@ export const Example: StoryObj<DualListBoxProps> = {
 
     const handleAdd = (id: string) => {
       const targets: Item[] = [];
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -57,7 +57,7 @@ export const Example: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems([...selectedItems, ...targets]);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
     const handleRemove = (id: string) => {
@@ -70,7 +70,7 @@ export const Example: StoryObj<DualListBoxProps> = {
         return true;
       });
 
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -82,12 +82,12 @@ export const Example: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems(newSelectedItems);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
     return (
       <DualListBox
-        unselectedItems={unselectedItems}
+        candidateItems={candidateItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
         onRemove={handleRemove}
@@ -103,7 +103,7 @@ export const Example: StoryObj<DualListBoxProps> = {
  */
 export const Nested: StoryObj<DualListBoxProps> = {
   render: () => {
-    const [unselectedItems, setUnselectedItems] = React.useState([
+    const [candidateItems, setCandidateItems] = React.useState([
       {
         id: "1",
         label: "hoge",
@@ -137,7 +137,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
 
     const handleAdd = (id: string) => {
       const targets: Item[] = [];
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -168,7 +168,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems([...selectedItems, ...targets]);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
     const handleRemove = (id: string) => {
@@ -181,7 +181,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
         return true;
       });
 
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -212,12 +212,12 @@ export const Nested: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems(newSelectedItems);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
     return (
       <DualListBox
-        unselectedItems={unselectedItems}
+        candidateItems={candidateItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
         onRemove={handleRemove}
@@ -228,47 +228,45 @@ export const Nested: StoryObj<DualListBoxProps> = {
 
 export const WithToggle: StoryObj<DualListBoxProps> = {
   render: () => {
-    const [unselectedItems, setUnselectedItems] = React.useState([
+    const [candidateItems, setCandidateItems] = React.useState([
       {
         id: "1",
         label: "foo",
-        isInverse: false,
+        checked: false,
       },
       {
         id: "2",
         label: "bar",
-        isInverse: false,
+        checked: false,
       },
       {
         id: "3",
         label: "hoge",
-        isInverse: false,
+        checked: false,
       },
       {
         id: "4",
         label: "fuga",
-        isInverse: false,
+        checked: false,
       },
     ]);
 
-    const [selectedItems, setSelectedItems] = React.useState<ItemWithInverse[]>(
-      [
-        {
-          id: "3",
-          label: "hoge",
-          isInverse: true,
-        },
-        {
-          id: "4",
-          label: "fuga",
-          isInverse: true,
-        },
-      ],
-    );
+    const [selectedItems, setSelectedItems] = React.useState<ItemWithToggle[]>([
+      {
+        id: "3",
+        label: "hoge",
+        checked: true,
+      },
+      {
+        id: "4",
+        label: "fuga",
+        checked: true,
+      },
+    ]);
 
     const handleAdd = (id: string) => {
-      const targets: ItemWithInverse[] = [];
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const targets: ItemWithToggle[] = [];
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -280,7 +278,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems([...selectedItems, ...targets]);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
     const handleRemove = (id: string) => {
@@ -293,7 +291,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
         return true;
       });
 
-      const newUnselectedItems = unselectedItems.map((item) => {
+      const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
@@ -305,17 +303,17 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
       });
 
       setSelectedItems(newSelectedItems);
-      setUnselectedItems(newUnselectedItems);
+      setCandidateItems(newUnselectedItems);
     };
 
-    const handleToggleInverse = (id: string) => {
+    const handleToggleChange = (id: string) => {
       const targets: Item[] = [];
       const newSelectedItems = selectedItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
           return {
             ...item,
-            isInverse: !item.isInverse,
+            checked: !item.checked,
           };
         }
         return item;
@@ -326,11 +324,11 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
 
     return (
       <DualListBox
-        unselectedItems={unselectedItems}
+        candidateItems={candidateItems}
         selectedItems={selectedItems}
         onAdd={handleAdd}
         onRemove={handleRemove}
-        onToggleInverse={handleToggleInverse}
+        onToggleChange={handleToggleChange}
       />
     );
   },

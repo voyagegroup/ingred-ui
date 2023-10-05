@@ -9,8 +9,8 @@ import ToggleButton from "../../../ToggleButton/ToggleButton";
 export const SelectedList: React.FunctionComponent<{
   items: Item[];
   onRemove?: (id: string) => void;
-  onToggleInverse?: (id: string) => void;
-}> = ({ items, onRemove, onToggleInverse }) => {
+  onToggleChange?: (id: string) => void;
+}> = ({ items, onRemove, onToggleChange }) => {
   const theme = useTheme();
 
   return (
@@ -28,13 +28,13 @@ export const SelectedList: React.FunctionComponent<{
           <Styled.SelectedItem key={item.id}>
             <Typography>{item.label}</Typography>
             <Styled.Action>
-              {onToggleInverse && (
+              {onToggleChange && (
                 <ToggleButton
                   checkedText=""
                   unCheckedText=""
                   width="48px"
-                  checked={item.isInverse ?? false}
-                  onChange={() => onToggleInverse(item.id)}
+                  checked={item.checked ?? false}
+                  onChange={() => onToggleChange(item.id)}
                 >
                   aaa
                 </ToggleButton>

@@ -42,190 +42,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListBox component testing DualListBox selectedItems 1`] = `
-<DocumentFragment>
-  <div
-    class="sc-bczRLJ ivdLdZ"
-  >
-    <ul
-      class="sc-gsnTZi kqLuiH"
-    />
-    <hr
-      class="sc-iIPllB btAvIV"
-      color="#B3BAC1"
-      orientation="vertical"
-    />
-    <div
-      class="sc-fnykZs hDgkYN"
-    >
-      <div
-        class="sc-fEOsli erVSUI"
-      >
-        <p
-          class="sc-hAZoDl ckHyzv"
-          color="#041C33"
-          font-size="13px"
-        >
-          <span
-            class="sc-hAZoDl gfJSuf"
-            color="#0B82F4"
-            font-size="13px"
-          >
-            4個
-          </span>
-          選択済み
-        </p>
-      </div>
-      <ul
-        class="sc-bjUoiL"
-      >
-        <li
-          class="sc-idiyUo itCWpm"
-        >
-          <p
-            class="sc-hAZoDl flfcze"
-            color="#041C33"
-            font-size="14px"
-          >
-            foo
-          </p>
-          <div
-            class="sc-hHLeRK hSIurM"
-          >
-            <button
-              class="sc-dIouRR erhhxk"
-              type="button"
-            >
-              <span
-                class="sc-gKXOVf gvQRUn"
-                size="12"
-              >
-                <svg
-                  fill="none"
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
-                    fill="#041C33"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </li>
-        <li
-          class="sc-idiyUo itCWpm"
-        >
-          <p
-            class="sc-hAZoDl flfcze"
-            color="#041C33"
-            font-size="14px"
-          >
-            bar
-          </p>
-          <div
-            class="sc-hHLeRK hSIurM"
-          >
-            <button
-              class="sc-dIouRR erhhxk"
-              type="button"
-            >
-              <span
-                class="sc-gKXOVf gvQRUn"
-                size="12"
-              >
-                <svg
-                  fill="none"
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
-                    fill="#041C33"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </li>
-        <li
-          class="sc-idiyUo itCWpm"
-        >
-          <p
-            class="sc-hAZoDl flfcze"
-            color="#041C33"
-            font-size="14px"
-          >
-            hoge
-          </p>
-          <div
-            class="sc-hHLeRK hSIurM"
-          >
-            <button
-              class="sc-dIouRR erhhxk"
-              type="button"
-            >
-              <span
-                class="sc-gKXOVf gvQRUn"
-                size="12"
-              >
-                <svg
-                  fill="none"
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
-                    fill="#041C33"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </li>
-        <li
-          class="sc-idiyUo itCWpm"
-        >
-          <p
-            class="sc-hAZoDl flfcze"
-            color="#041C33"
-            font-size="14px"
-          >
-            fuga
-          </p>
-          <div
-            class="sc-hHLeRK hSIurM"
-          >
-            <button
-              class="sc-dIouRR erhhxk"
-              type="button"
-            >
-              <span
-                class="sc-gKXOVf gvQRUn"
-                size="12"
-              >
-                <svg
-                  fill="none"
-                  viewBox="0 0 16 16"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
-                    fill="#041C33"
-                  />
-                </svg>
-              </span>
-            </button>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`DualListBox component testing DualListBox unselectedItems 1`] = `
+exports[`DualListBox component testing DualListBox candidateItems 1`] = `
 <DocumentFragment>
   <div
     class="sc-bczRLJ ivdLdZ"
@@ -384,7 +201,7 @@ exports[`DualListBox component testing DualListBox unselectedItems 1`] = `
 </DocumentFragment>
 `;
 
-exports[`DualListBox component testing DualListBox unselectedItems and selectedItems 1`] = `
+exports[`DualListBox component testing DualListBox candidateItems and selectedItems 1`] = `
 <DocumentFragment>
   <div
     class="sc-bczRLJ ivdLdZ"
@@ -688,7 +505,7 @@ exports[`DualListBox component testing DualListBox unselectedItems and selectedI
 </DocumentFragment>
 `;
 
-exports[`DualListBox component testing DualListBox unselectedItems and selectedItems with inverse 1`] = `
+exports[`DualListBox component testing DualListBox candidateItems and selectedItems with inverse 1`] = `
 <DocumentFragment>
   <div
     class="sc-bczRLJ ivdLdZ"
@@ -1108,6 +925,189 @@ exports[`DualListBox component testing DualListBox unselectedItems and selectedI
                 />
               </label>
             </div>
+            <button
+              class="sc-dIouRR erhhxk"
+              type="button"
+            >
+              <span
+                class="sc-gKXOVf gvQRUn"
+                size="12"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DualListBox component testing DualListBox selectedItems 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ ivdLdZ"
+  >
+    <ul
+      class="sc-gsnTZi kqLuiH"
+    />
+    <hr
+      class="sc-iIPllB btAvIV"
+      color="#B3BAC1"
+      orientation="vertical"
+    />
+    <div
+      class="sc-fnykZs hDgkYN"
+    >
+      <div
+        class="sc-fEOsli erVSUI"
+      >
+        <p
+          class="sc-hAZoDl ckHyzv"
+          color="#041C33"
+          font-size="13px"
+        >
+          <span
+            class="sc-hAZoDl gfJSuf"
+            color="#0B82F4"
+            font-size="13px"
+          >
+            4個
+          </span>
+          選択済み
+        </p>
+      </div>
+      <ul
+        class="sc-bjUoiL"
+      >
+        <li
+          class="sc-idiyUo itCWpm"
+        >
+          <p
+            class="sc-hAZoDl flfcze"
+            color="#041C33"
+            font-size="14px"
+          >
+            foo
+          </p>
+          <div
+            class="sc-hHLeRK hSIurM"
+          >
+            <button
+              class="sc-dIouRR erhhxk"
+              type="button"
+            >
+              <span
+                class="sc-gKXOVf gvQRUn"
+                size="12"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </li>
+        <li
+          class="sc-idiyUo itCWpm"
+        >
+          <p
+            class="sc-hAZoDl flfcze"
+            color="#041C33"
+            font-size="14px"
+          >
+            bar
+          </p>
+          <div
+            class="sc-hHLeRK hSIurM"
+          >
+            <button
+              class="sc-dIouRR erhhxk"
+              type="button"
+            >
+              <span
+                class="sc-gKXOVf gvQRUn"
+                size="12"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </li>
+        <li
+          class="sc-idiyUo itCWpm"
+        >
+          <p
+            class="sc-hAZoDl flfcze"
+            color="#041C33"
+            font-size="14px"
+          >
+            hoge
+          </p>
+          <div
+            class="sc-hHLeRK hSIurM"
+          >
+            <button
+              class="sc-dIouRR erhhxk"
+              type="button"
+            >
+              <span
+                class="sc-gKXOVf gvQRUn"
+                size="12"
+              >
+                <svg
+                  fill="none"
+                  viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1.45456 1.45449C2.25788 0.65117 3.5605 0.651339 4.36403 1.45487L8.0005 5.09135L11.6374 1.45446C12.4405 0.651345 13.7426 0.651345 14.5457 1.45446L14.5465 1.45522C15.3496 2.25833 15.3496 3.56044 14.5465 4.36356L10.9096 8.00044L14.5447 11.6356C15.3483 12.4391 15.3484 13.7417 14.5451 14.545C13.7418 15.3484 12.4392 15.3482 11.6356 14.5447L8.0005 10.9095L4.36427 14.5458C3.56116 15.3489 2.25905 15.3489 1.45593 14.5458L1.45518 14.545C0.652059 13.7419 0.652059 12.4398 1.45517 11.6367L5.09141 8.00044L1.45493 4.36397C0.6514 3.56043 0.651231 2.25782 1.45456 1.45449Z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </li>
+        <li
+          class="sc-idiyUo itCWpm"
+        >
+          <p
+            class="sc-hAZoDl flfcze"
+            color="#041C33"
+            font-size="14px"
+          >
+            fuga
+          </p>
+          <div
+            class="sc-hHLeRK hSIurM"
+          >
             <button
               class="sc-dIouRR erhhxk"
               type="button"

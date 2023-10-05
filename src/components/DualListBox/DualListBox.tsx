@@ -10,49 +10,53 @@ export type ItemBase = {
   label: string;
 };
 
-export type ItemWithInverse = ItemBase & { isInverse: boolean } & {
-  items?: (ItemBase & { isInverse: boolean })[];
+export type ItemWithToggle = ItemBase & { checked: boolean } & {
+  items?: ItemWithToggle[];
 };
-export type ItemWithoutInverse = ItemBase & { isInverse?: undefined } & {
-  items?: (ItemBase & { isInverse?: undefined })[];
+export type ItemWithoutToggle = ItemBase & { checked?: undefined } & {
+  items?: ItemWithoutToggle[];
 };
 
-export type Item = ItemWithInverse | ItemWithoutInverse;
-
-/**
- * @memo 内部で状態を保持するための型
- */
-export type UnselectedItem = Item & { selected?: boolean };
+export type Item = ItemWithToggle | ItemWithoutToggle;
 
 type BaseProps = {
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
 };
 
+export type DualListBoxPropsWithToggle = BaseProps & {
+  candidateItems: ItemWithToggle[];
+  selectedItems: ItemWithToggle[];
+  onToggleChange?: (id: string) => void;
+};
+
+export type DualListBoxPropsWithoutToggle = BaseProps & {
+  candidateItems: ItemWithoutToggle[];
+  selectedItems: ItemWithoutToggle[];
+  onToggleChange?: undefined;
+};
+
 export type DualListBoxProps =
-  | (BaseProps & {
-      unselectedItems: ItemWithInverse[];
-      selectedItems: ItemWithInverse[];
-      onToggleInverse?: (id: string) => void;
-    })
-  | (BaseProps & {
-      unselectedItems: ItemWithoutInverse[];
-      selectedItems: ItemWithoutInverse[];
-      onToggleInverse?: undefined;
-    });
+  | DualListBoxPropsWithToggle
+  | DualListBoxPropsWithoutToggle;
+
+/**
+ * @memo 内部で状態を保持するための型
+ */
+export type CandidateItem = Item & { selected?: boolean };
 
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
   function DualListBox({
-    unselectedItems: unselectedItemsProp,
+    candidateItems: candidateItemsProp,
     selectedItems,
     onAdd,
     onRemove,
-    onToggleInverse,
+    onToggleChange,
   }) {
     const theme = useTheme();
 
-    const unselectedItems: UnselectedItem[] = React.useMemo(() => {
-      return unselectedItemsProp.map((item) => {
+    const candidateItems: CandidateItem[] = React.useMemo(() => {
+      return candidateItemsProp.map((item) => {
         if (selectedItems.some((selectedItem) => selectedItem.id === item.id)) {
           return {
             ...item,
@@ -61,30 +65,24 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
         }
         return item;
       });
-    }, [unselectedItemsProp, selectedItems]);
+    }, [candidateItemsProp, selectedItems]);
 
-    const handleAdd = React.useCallback(
-      (id: string) => {
-        if (onAdd) {
-          onAdd(id);
-        }
-      },
-      [onAdd],
-    );
+    const handleAdd = (id: string) => {
+      if (onAdd) {
+        onAdd(id);
+      }
+    };
 
-    const handleRemove = React.useCallback(
-      (id: string) => {
-        if (onRemove) {
-          onRemove(id);
-        }
-      },
-      [onRemove],
-    );
+    const handleRemove = (id: string) => {
+      if (onRemove) {
+        onRemove(id);
+      }
+    };
 
     return (
       <Styled.Container>
         <UnselectedRenderer
-          items={unselectedItems}
+          items={candidateItems}
           onAdd={handleAdd}
           onRemove={onRemove}
         />
@@ -92,7 +90,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
         <SelectedList
           items={selectedItems}
           onRemove={handleRemove}
-          onToggleInverse={onToggleInverse}
+          onToggleChange={onToggleChange}
         />
       </Styled.Container>
     );

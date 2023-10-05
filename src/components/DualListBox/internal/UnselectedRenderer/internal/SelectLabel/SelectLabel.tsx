@@ -1,12 +1,12 @@
 import React from "react";
 import Flex from "../../../../../Flex/Flex";
-import { UnselectedItem } from "../../../../DualListBox";
+import { CandidateItem } from "../../../../DualListBox";
 import Checkbox from "../../../../../Checkbox/Checkbox";
 import Typography from "../../../../../Typography/Typography";
 
 export const SelectLabel: React.FunctionComponent<{
   label: string;
-  item: UnselectedItem;
+  item: CandidateItem;
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
 }> = ({ label, item, onAdd, onRemove }) => {

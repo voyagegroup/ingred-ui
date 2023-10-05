@@ -9,15 +9,15 @@ describe("DualListBox component testing", () => {
 
   test("DualListBox", () => {
     const { asFragment } = renderWithThemeProvider(
-      <DualListBox unselectedItems={[]} selectedItems={[]} />,
+      <DualListBox candidateItems={[]} selectedItems={[]} />,
     );
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("DualListBox unselectedItems", () => {
+  test("DualListBox candidateItems", () => {
     const { asFragment } = renderWithThemeProvider(
       <DualListBox
-        unselectedItems={[
+        candidateItems={[
           {
             id: "1",
             label: "foo",
@@ -46,7 +46,7 @@ describe("DualListBox component testing", () => {
   test("DualListBox selectedItems", () => {
     const { asFragment } = renderWithThemeProvider(
       <DualListBox
-        unselectedItems={[]}
+        candidateItems={[]}
         selectedItems={[
           {
             id: "1",
@@ -72,10 +72,10 @@ describe("DualListBox component testing", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("DualListBox unselectedItems and selectedItems", () => {
+  test("DualListBox candidateItems and selectedItems", () => {
     const { asFragment } = renderWithThemeProvider(
       <DualListBox
-        unselectedItems={[
+        candidateItems={[
           {
             id: "1",
             label: "foo",
@@ -118,56 +118,56 @@ describe("DualListBox component testing", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("DualListBox unselectedItems and selectedItems with inverse", () => {
+  test("DualListBox candidateItems and selectedItems with inverse", () => {
     const { asFragment } = renderWithThemeProvider(
       <DualListBox
-        unselectedItems={[
+        candidateItems={[
           {
             id: "1",
             label: "foo",
-            isInverse: false,
+            checked: false,
           },
           {
             id: "2",
             label: "bar",
-            isInverse: false,
+            checked: false,
           },
           {
             id: "3",
             label: "hoge",
-            isInverse: false,
+            checked: false,
           },
           {
             id: "4",
             label: "fuga",
-            isInverse: false,
+            checked: false,
           },
         ]}
         selectedItems={[
           {
             id: "1",
             label: "foo",
-            isInverse: true,
+            checked: true,
           },
           {
             id: "2",
             label: "bar",
-            isInverse: true,
+            checked: true,
           },
           {
             id: "3",
             label: "hoge",
-            isInverse: true,
+            checked: true,
           },
           {
             id: "4",
             label: "fuga",
-            isInverse: true,
+            checked: true,
           },
         ]}
         onAdd={jest.fn()}
         onRemove={jest.fn()}
-        onToggleInverse={jest.fn()}
+        onToggleChange={jest.fn()}
       />,
     );
     expect(asFragment()).toMatchSnapshot();
