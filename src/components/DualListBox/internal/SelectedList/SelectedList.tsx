@@ -1,13 +1,13 @@
 import React from "react";
 import * as Styled from "./styled";
-import { Item } from "../../DualListBox";
+import { DualListBoxItem } from "../../DualListBox";
 import Icon from "../../../Icon/Icon";
 import { useTheme } from "../../../../themes";
 import Typography from "../../../Typography/Typography";
 import ToggleButton from "../../../ToggleButton/ToggleButton";
 
 export const SelectedList: React.FunctionComponent<{
-  items: Item[];
+  items: DualListBoxItem[];
   onRemove?: (id: string) => void;
   onToggleChange?: (id: string) => void;
 }> = ({ items, onRemove, onToggleChange }) => {

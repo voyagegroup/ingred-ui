@@ -1,9 +1,10 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
 import DualListBox, {
-  Item,
+  DualListBoxItem,
   DualListBoxProps,
-  ItemWithToggle,
+  DualListBoxCandidateItemWithToggle,
+  DualListBoxItemSelectedWithToggle,
 } from "./DualListBox";
 
 export default {
@@ -44,7 +45,7 @@ export const Example: StoryObj<DualListBoxProps> = {
     ]);
 
     const handleAdd = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -61,7 +62,7 @@ export const Example: StoryObj<DualListBoxProps> = {
     };
 
     const handleRemove = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newSelectedItems = selectedItems.filter((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -136,7 +137,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
     ]);
 
     const handleAdd = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -172,7 +173,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
     };
 
     const handleRemove = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newSelectedItems = selectedItems.filter((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -251,7 +252,9 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
       },
     ]);
 
-    const [selectedItems, setSelectedItems] = React.useState<ItemWithToggle[]>([
+    const [selectedItems, setSelectedItems] = React.useState<
+      DualListBoxItemSelectedWithToggle[]
+    >([
       {
         id: "3",
         label: "hoge",
@@ -265,7 +268,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     ]);
 
     const handleAdd = (id: string) => {
-      const targets: ItemWithToggle[] = [];
+      const targets: DualListBoxCandidateItemWithToggle[] = [];
       const newUnselectedItems = candidateItems.map((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -282,7 +285,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     };
 
     const handleRemove = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newSelectedItems = selectedItems.filter((item) => {
         if (item.id === id) {
           targets.push(item);
@@ -307,7 +310,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     };
 
     const handleToggleChange = (id: string) => {
-      const targets: Item[] = [];
+      const targets: DualListBoxItem[] = [];
       const newSelectedItems = selectedItems.map((item) => {
         if (item.id === id) {
           targets.push(item);

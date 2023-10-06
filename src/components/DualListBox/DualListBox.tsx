@@ -10,14 +10,34 @@ export type ItemBase = {
   label: string;
 };
 
-export type ItemWithToggle = ItemBase & { checked: boolean } & {
-  items?: ItemWithToggle[];
-};
-export type ItemWithoutToggle = ItemBase & { checked?: undefined } & {
-  items?: ItemWithoutToggle[];
+export type DualListBoxItemSelectedWithToggle = ItemBase & { checked: boolean };
+export type DualListBoxItemSelectedWithoutToggle = ItemBase & {
+  checked?: undefined;
 };
 
-export type Item = ItemWithToggle | ItemWithoutToggle;
+/**
+ * @memo DualListBoxItemSelectedWithToggle をネスト可能にしたものが DualListBoxCandidateItemWithToggle
+ */
+export type DualListBoxCandidateItemWithToggle =
+  DualListBoxItemSelectedWithToggle & {
+    items?: DualListBoxCandidateItemWithToggle[];
+  };
+
+/**
+ * @memo DualListBoxItemSelectedWithoutToggle をネスト可能にしたものが DualListBoxCandidateItemWithoutToggle
+ */
+export type DualListBoxCandidateItemWithoutToggle =
+  DualListBoxItemSelectedWithoutToggle & {
+    items?: DualListBoxCandidateItemWithoutToggle[];
+  };
+
+export type DualListBoxItem =
+  | DualListBoxCandidateItemWithToggle
+  | DualListBoxCandidateItemWithoutToggle;
+
+export type DualListBoxItemSelected =
+  | DualListBoxItemSelectedWithToggle
+  | DualListBoxItemSelectedWithoutToggle;
 
 type BaseProps = {
   onAdd?: (id: string) => void;
@@ -25,14 +45,14 @@ type BaseProps = {
 };
 
 export type DualListBoxPropsWithToggle = BaseProps & {
-  candidateItems: ItemWithToggle[];
-  selectedItems: ItemWithToggle[];
+  candidateItems: DualListBoxCandidateItemWithToggle[];
+  selectedItems: DualListBoxItemSelectedWithToggle[];
   onToggleChange?: (id: string) => void;
 };
 
 export type DualListBoxPropsWithoutToggle = BaseProps & {
-  candidateItems: ItemWithoutToggle[];
-  selectedItems: ItemWithoutToggle[];
+  candidateItems: DualListBoxCandidateItemWithoutToggle[];
+  selectedItems: DualListBoxItemSelectedWithoutToggle[];
   onToggleChange?: undefined;
 };
 
@@ -43,7 +63,7 @@ export type DualListBoxProps =
 /**
  * @memo 内部で状態を保持するための型
  */
-export type CandidateItem = Item & { selected?: boolean };
+export type CandidateItem = DualListBoxItem & { selected?: boolean };
 
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
   function DualListBox({

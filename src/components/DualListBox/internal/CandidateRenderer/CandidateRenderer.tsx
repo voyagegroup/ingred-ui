@@ -1,13 +1,13 @@
 import React from "react";
 import * as Styled from "./styled";
 import { SelectLabel } from "./internal/SelectLabel";
-import { Item } from "../../DualListBox";
+import { DualListBoxItem } from "../../DualListBox";
 
 /**
  * @memo ネストした構造を持つものを扱う場合は、再帰的に処理する必要がある
  */
 export const CandidateRenderer: React.FunctionComponent<{
-  items: Item[];
+  items: DualListBoxItem[];
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
 }> = ({ items, onAdd, onRemove }) => {

@@ -1,7 +1,9 @@
 export { default } from "./DualListBox";
 export type {
   DualListBoxProps,
-  ItemWithToggle,
-  ItemWithoutToggle,
-  Item,
+  DualListBoxCandidateItemWithToggle,
+  DualListBoxCandidateItemWithoutToggle,
+  DualListBoxItemSelectedWithToggle,
+  DualListBoxItemSelectedWithoutToggle,
+  DualListBoxItem,
 } from "./DualListBox";
