@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   flex: 1;
+  overflow-y: scroll;
 `;
 
 export const SelectedHeader = styled.div`

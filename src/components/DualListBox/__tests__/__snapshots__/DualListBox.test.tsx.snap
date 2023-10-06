@@ -6,7 +6,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
     class="sc-bczRLJ jKPMRM"
   >
     <ul
-      class="sc-jqUVSM dYJtng"
+      class="sc-jqUVSM bBFcLq"
     />
     <hr
       class="sc-ezWOiH jGjqaZ"
@@ -14,7 +14,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
       orientation="vertical"
     />
     <div
-      class="sc-bjUoiL ecBGZp"
+      class="sc-bjUoiL hkPZz"
     >
       <div
         class="sc-idiyUo gIEPRB"
@@ -48,7 +48,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
     class="sc-bczRLJ jKPMRM"
   >
     <ul
-      class="sc-jqUVSM dYJtng"
+      class="sc-jqUVSM bBFcLq"
     >
       <li
         class="sc-kDDrLX sc-iqcoie jZfdXG dcUJGp"
@@ -173,7 +173,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
       orientation="vertical"
     />
     <div
-      class="sc-bjUoiL ecBGZp"
+      class="sc-bjUoiL hkPZz"
     >
       <div
         class="sc-idiyUo gIEPRB"
@@ -207,7 +207,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
     class="sc-bczRLJ jKPMRM"
   >
     <ul
-      class="sc-jqUVSM dYJtng"
+      class="sc-jqUVSM bBFcLq"
     >
       <li
         class="sc-kDDrLX sc-iqcoie jZfdXG dcUJGp"
@@ -336,7 +336,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       orientation="vertical"
     />
     <div
-      class="sc-bjUoiL ecBGZp"
+      class="sc-bjUoiL hkPZz"
     >
       <div
         class="sc-idiyUo gIEPRB"
@@ -511,7 +511,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
     class="sc-bczRLJ jKPMRM"
   >
     <ul
-      class="sc-jqUVSM dYJtng"
+      class="sc-jqUVSM bBFcLq"
     >
       <li
         class="sc-kDDrLX sc-iqcoie jZfdXG dcUJGp"
@@ -640,7 +640,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       orientation="vertical"
     />
     <div
-      class="sc-bjUoiL ecBGZp"
+      class="sc-bjUoiL hkPZz"
     >
       <div
         class="sc-idiyUo gIEPRB"
@@ -959,7 +959,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
     class="sc-bczRLJ jKPMRM"
   >
     <ul
-      class="sc-jqUVSM dYJtng"
+      class="sc-jqUVSM bBFcLq"
     />
     <hr
       class="sc-ezWOiH jGjqaZ"
@@ -967,7 +967,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
       orientation="vertical"
     />
     <div
-      class="sc-bjUoiL ecBGZp"
+      class="sc-bjUoiL hkPZz"
     >
       <div
         class="sc-idiyUo gIEPRB"

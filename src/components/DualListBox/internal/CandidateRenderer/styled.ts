@@ -3,6 +3,7 @@ import Accordion from "../../../Accordion/Accordion";
 
 export const Container = styled.ul`
   flex: 1;
+  overflow-y: scroll;
 `;
 
 const UnselectedItemBase = styled.li`
