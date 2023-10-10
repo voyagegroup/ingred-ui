@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.12.0
+
+### Minor Changes
+
+- [#1455](https://github.com/voyagegroup/ingred-ui/pull/1455) [`a8c16b60`](https://github.com/voyagegroup/ingred-ui/commit/a8c16b6093fbe46c598b4d05764e3f7a51f4a56d) Thanks [@ryokosuge](https://github.com/ryokosuge)! - feat add image check icon
+
 ## 14.11.0
 
 ### Minor Changes
