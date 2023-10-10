@@ -35,10 +35,6 @@ export type DualListBoxItem =
   | DualListBoxCandidateItemWithToggle
   | DualListBoxCandidateItemWithoutToggle;
 
-export type DualListBoxItemSelected =
-  | DualListBoxItemSelectedWithToggle
-  | DualListBoxItemSelectedWithoutToggle;
-
 type BaseProps = {
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
