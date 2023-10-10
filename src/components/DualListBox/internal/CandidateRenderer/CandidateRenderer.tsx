@@ -13,7 +13,7 @@ export const CandidateRenderer: React.FunctionComponent<{
 }> = ({ items, onAdd, onRemove }) => {
   return (
     <Styled.Container>
-      {items.map((item) => (
+      {items.map((item, i) => (
         // eslint-disable-next-line react/jsx-no-useless-fragment
         <>
           {item.items ? (
@@ -38,7 +38,10 @@ export const CandidateRenderer: React.FunctionComponent<{
               </Styled.AccordionComponent>
             </Styled.AccordionWrapper>
           ) : (
-            <Styled.UnselectedItem key={item.id}>
+            <Styled.UnselectedItem
+              key={item.id}
+              isLastIndex={i + 1 === items.length}
+            >
               <SelectLabel
                 label={item.label}
                 item={item}

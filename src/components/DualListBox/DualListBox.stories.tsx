@@ -31,6 +31,86 @@ export const Example: StoryObj<DualListBoxProps> = {
         id: "4",
         label: "fuga",
       },
+      {
+        id: "1",
+        label: "foo",
+      },
+      {
+        id: "2",
+        label: "bar",
+      },
+      {
+        id: "3",
+        label: "hoge",
+      },
+      {
+        id: "4",
+        label: "fuga",
+      },
+      {
+        id: "1",
+        label: "foo",
+      },
+      {
+        id: "2",
+        label: "bar",
+      },
+      {
+        id: "3",
+        label: "hoge",
+      },
+      {
+        id: "4",
+        label: "fuga",
+      },
+      {
+        id: "1",
+        label: "foo",
+      },
+      {
+        id: "2",
+        label: "bar",
+      },
+      {
+        id: "3",
+        label: "hoge",
+      },
+      {
+        id: "4",
+        label: "fuga",
+      },
+      {
+        id: "1",
+        label: "foo",
+      },
+      {
+        id: "2",
+        label: "bar",
+      },
+      {
+        id: "3",
+        label: "hoge",
+      },
+      {
+        id: "4",
+        label: "fuga",
+      },
+      {
+        id: "1",
+        label: "foo",
+      },
+      {
+        id: "2",
+        label: "bar",
+      },
+      {
+        id: "3",
+        label: "hoge",
+      },
+      {
+        id: "4",
+        label: "fuga",
+      },
     ]);
 
     const [selectedItems, setSelectedItems] = React.useState([

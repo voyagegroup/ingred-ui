@@ -24,8 +24,11 @@ export const SelectedList: React.FunctionComponent<{
         </Typography>
       </Styled.SelectedHeader>
       <Styled.SelectedList>
-        {items.map((item) => (
-          <Styled.SelectedItem key={item.id}>
+        {items.map((item, i) => (
+          <Styled.SelectedItem
+            key={item.id}
+            isLastIndex={i + 1 === items.length}
+          >
             <Typography>{item.label}</Typography>
             <Styled.Action>
               {onToggleChange && (

@@ -6,8 +6,11 @@ export const Container = styled.ul`
   overflow-y: scroll;
 `;
 
-const UnselectedItemBase = styled.li`
-  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
+const UnselectedItemBase = styled.li<{ isLastIndex?: boolean }>`
+  border-bottom: ${({ isLastIndex, theme }) =>
+    isLastIndex && isLastIndex !== undefined
+      ? "none"
+      : `1px solid ${theme.palette.divider}`};
   list-style: none;
 `;
 

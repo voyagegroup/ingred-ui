@@ -16,8 +16,9 @@ export const SelectedHeader = styled.div`
 
 export const SelectedList = styled.ul``;
 
-export const SelectedItem = styled.li`
-  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
+export const SelectedItem = styled.li<{ isLastIndex: boolean }>`
+  border-bottom: ${({ isLastIndex, theme }) =>
+    isLastIndex ? "none" : `1px solid ${theme.palette.divider}`};
   padding: ${({ theme }) => theme.spacing * 2}px;
   list-style: none;
   display: flex;
