@@ -91,6 +91,7 @@ import { SortAscIcon } from "./internal/SortAscIcon";
 import { SortDescIcon } from "./internal/SortDescIcon";
 import { BarChartSearchIcon } from "./internal/BarChartSearchIcon";
 import { CheckThinIcon } from "./internal/CheckThinIcon";
+import { ImageCheckIcon } from "./internal/ImageCheckIcon";
 
 export type IconName =
   | "dashboard"
@@ -181,7 +182,8 @@ export type IconName =
   | "sort_asc"
   | "sort_desc"
   | "bar_chart_search"
-  | "check_thin";
+  | "check_thin"
+  | "image_check";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -289,6 +291,7 @@ export const icons: {
   sort_desc: SortDescIcon,
   bar_chart_search: BarChartSearchIcon,
   check_thin: CheckThinIcon,
+  image_check: ImageCheckIcon,
 };
 
 const iconFactory = (name: IconName) => {
