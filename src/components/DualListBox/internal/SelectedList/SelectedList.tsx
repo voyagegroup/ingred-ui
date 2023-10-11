@@ -1,13 +1,13 @@
 import React from "react";
 import * as Styled from "./styled";
-import { DualListBoxItem } from "../../DualListBox";
+import { SelectedItem } from "../../DualListBox";
 import Icon from "../../../Icon/Icon";
 import { useTheme } from "../../../../themes";
 import Typography from "../../../Typography/Typography";
 import ToggleButton from "../../../ToggleButton/ToggleButton";
 
 export const SelectedList: React.FunctionComponent<{
-  items: DualListBoxItem[];
+  items: SelectedItem[];
   onRemove?: (id: string) => void;
   onToggleChange?: (id: string) => void;
 }> = ({ items, onRemove, onToggleChange }) => {
@@ -36,11 +36,9 @@ export const SelectedList: React.FunctionComponent<{
                   checkedText=""
                   unCheckedText=""
                   width="48px"
-                  checked={item.checked ?? false}
+                  checked={item.checked}
                   onChange={() => onToggleChange(item.id)}
-                >
-                  aaa
-                </ToggleButton>
+                />
               )}
               {onRemove && (
                 <Styled.RemoveButton

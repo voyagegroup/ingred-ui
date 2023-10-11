@@ -7,7 +7,6 @@ import { useTheme } from "../../themes";
 
 export type ItemBase = {
   id: string;
-  label: string;
 };
 
 export type DualListBoxItemSelectedWithToggle = ItemBase & { checked: boolean };
@@ -18,22 +17,26 @@ export type DualListBoxItemSelectedWithoutToggle = ItemBase & {
 /**
  * @memo DualListBoxItemSelectedWithToggle をネスト可能にしたものが DualListBoxCandidateItemWithToggle
  */
-export type DualListBoxCandidateItemWithToggle =
-  DualListBoxItemSelectedWithToggle & {
-    items?: DualListBoxCandidateItemWithToggle[];
-  };
+export type DualListBoxCandidateItemWithToggle = ItemBase & {
+  label?: string;
+  items?: DualListBoxCandidateItemWithToggle[];
+};
 
 /**
  * @memo DualListBoxItemSelectedWithoutToggle をネスト可能にしたものが DualListBoxCandidateItemWithoutToggle
  */
-export type DualListBoxCandidateItemWithoutToggle =
-  DualListBoxItemSelectedWithoutToggle & {
-    items?: DualListBoxCandidateItemWithoutToggle[];
-  };
+export type DualListBoxCandidateItemWithoutToggle = ItemBase & {
+  label?: string;
+  items?: DualListBoxCandidateItemWithoutToggle[];
+};
 
 export type DualListBoxItem =
   | DualListBoxCandidateItemWithToggle
   | DualListBoxCandidateItemWithoutToggle;
+
+export type DualListSelectedItem =
+  | DualListBoxItemSelectedWithToggle
+  | DualListBoxItemSelectedWithoutToggle;
 
 type BaseProps = {
   onAdd?: (id: string) => void;
@@ -57,14 +60,23 @@ export type DualListBoxProps =
   | DualListBoxPropsWithoutToggle;
 
 /**
- * @memo 内部で状態を保持するための型
+ * @memo 内部で選択候補の状態を保持するための型
  */
-export type CandidateItem = DualListBoxItem & { selected?: boolean };
+export type CandidateItem = DualListBoxItem & {
+  selected?: boolean;
+};
+
+/**
+ * @memo 内部で選択済みの状態を保持するための型
+ */
+export type SelectedItem = DualListSelectedItem & {
+  label?: string;
+};
 
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
   function DualListBox({
     candidateItems: candidateItemsProp,
-    selectedItems,
+    selectedItems: selectedItemsProp,
     onAdd,
     onRemove,
     onToggleChange,
@@ -73,7 +85,9 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
 
     const candidateItems: CandidateItem[] = React.useMemo(() => {
       return candidateItemsProp.map((item) => {
-        if (selectedItems.some((selectedItem) => selectedItem.id === item.id)) {
+        if (
+          selectedItemsProp.some((selectedItem) => selectedItem.id === item.id)
+        ) {
           return {
             ...item,
             selected: true,
@@ -81,7 +95,22 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
         }
         return item;
       });
-    }, [candidateItemsProp, selectedItems]);
+    }, [candidateItemsProp, selectedItemsProp]);
+
+    const selectedItems: DualListSelectedItem[] = React.useMemo(() => {
+      return selectedItemsProp.map((item) => {
+        const targetItem = candidateItems.find(
+          (candidateItem) => candidateItem.id === item.id,
+        );
+        if (targetItem) {
+          return {
+            ...targetItem,
+            checked: item.checked,
+          };
+        }
+        return item;
+      });
+    }, [candidateItems, selectedItemsProp]);
 
     const handleAdd = (id: string) => {
       if (onAdd) {

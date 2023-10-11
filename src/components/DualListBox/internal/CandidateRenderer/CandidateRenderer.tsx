@@ -22,7 +22,7 @@ export const CandidateRenderer: React.FunctionComponent<{
                 title={
                   <Styled.AccordionTitleWrapper>
                     <SelectLabel
-                      label={item.label}
+                      label={item.label ?? ""}
                       item={item}
                       onAdd={onAdd}
                       onRemove={onRemove}
@@ -43,7 +43,7 @@ export const CandidateRenderer: React.FunctionComponent<{
               isLastIndex={i + 1 === items.length}
             >
               <SelectLabel
-                label={item.label}
+                label={item.label ?? ""}
                 item={item}
                 onAdd={onAdd}
                 onRemove={onRemove}
