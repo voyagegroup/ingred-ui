@@ -21,12 +21,9 @@ export const CandidateRenderer: React.FunctionComponent<{
               <Styled.AccordionComponent
                 title={
                   <Styled.AccordionTitleWrapper>
-                    <SelectLabel
-                      label={item.label ?? ""}
-                      item={item}
-                      onAdd={onAdd}
-                      onRemove={onRemove}
-                    />
+                    <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
+                      {item.label}
+                    </SelectLabel>
                   </Styled.AccordionTitleWrapper>
                 }
               >
@@ -42,12 +39,9 @@ export const CandidateRenderer: React.FunctionComponent<{
               key={item.id}
               isLastIndex={i + 1 === items.length}
             >
-              <SelectLabel
-                label={item.label ?? ""}
-                item={item}
-                onAdd={onAdd}
-                onRemove={onRemove}
-              />
+              <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
+                {item.label}
+              </SelectLabel>
             </Styled.UnselectedItem>
           )}
         </>

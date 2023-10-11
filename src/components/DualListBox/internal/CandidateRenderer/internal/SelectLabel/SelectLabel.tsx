@@ -5,15 +5,15 @@ import Checkbox from "../../../../../Checkbox/Checkbox";
 import Typography from "../../../../../Typography/Typography";
 
 export const SelectLabel: React.FunctionComponent<{
-  label: string;
   item: CandidateItem;
   onAdd?: (id: string) => void;
   onRemove?: (id: string) => void;
-}> = ({ label, item, onAdd, onRemove }) => {
+  children: React.ReactNode;
+}> = ({ children, item, onAdd, onRemove }) => {
   return (
     <Flex display="flex" justifyContent="space-between">
       {item.items ? (
-        <Typography>{label}</Typography>
+        <Typography>{children}</Typography>
       ) : (
         <Checkbox
           checked={item?.selected ?? false}
@@ -26,7 +26,7 @@ export const SelectLabel: React.FunctionComponent<{
             onAdd?.(item.id);
           }}
         >
-          <Typography>{label}</Typography>
+          <Typography>{children}</Typography>
         </Checkbox>
       )}
     </Flex>

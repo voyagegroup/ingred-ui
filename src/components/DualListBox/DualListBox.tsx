@@ -4,6 +4,7 @@ import { CandidateRenderer } from "./internal/CandidateRenderer";
 import { SelectedList } from "./internal/SelectedList";
 import Divider from "../Divider/Divider";
 import { useTheme } from "../../themes";
+import { getCandidateItems } from "./utils";
 
 export type ItemBase = {
   id: string;
@@ -71,39 +72,10 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
   }) {
     const theme = useTheme();
 
-    const candidateItems: CandidateItem[] = React.useMemo(() => {
-      return candidateItemsProp.map((item) => {
-        if (item.items) {
-          return {
-            ...item,
-            items: item.items.map((subItem) => {
-              if (
-                selectedItemsProp.some(
-                  (selectedItem) => selectedItem.id === subItem.id,
-                )
-              ) {
-                return {
-                  ...subItem,
-                  selected: true,
-                };
-              }
-              return subItem;
-            }),
-          };
-        }
-
-        if (
-          selectedItemsProp.some((selectedItem) => selectedItem.id === item.id)
-        ) {
-          return {
-            ...item,
-            selected: true,
-          };
-        }
-
-        return item;
-      });
-    }, [candidateItemsProp, selectedItemsProp]);
+    const candidateItems: CandidateItem[] = React.useMemo(
+      () => getCandidateItems(candidateItemsProp, selectedItemsProp),
+      [candidateItemsProp, selectedItemsProp],
+    );
 
     const selectedItems: DualListSelectedItem[] = React.useMemo(() => {
       return selectedItemsProp.map((item) => {
