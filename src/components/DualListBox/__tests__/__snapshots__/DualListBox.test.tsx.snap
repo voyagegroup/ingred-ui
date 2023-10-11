@@ -997,9 +997,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             class="sc-fEOsli irbPqM"
             color="#041C33"
             font-size="14px"
-          >
-            foo
-          </p>
+          />
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1032,9 +1030,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             class="sc-fEOsli irbPqM"
             color="#041C33"
             font-size="14px"
-          >
-            bar
-          </p>
+          />
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1067,9 +1063,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             class="sc-fEOsli irbPqM"
             color="#041C33"
             font-size="14px"
-          >
-            hoge
-          </p>
+          />
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1102,9 +1096,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             class="sc-fEOsli irbPqM"
             color="#041C33"
             font-size="14px"
-          >
-            fuga
-          </p>
+          />
           <div
             class="sc-kgflAQ hZAlxa"
           >
