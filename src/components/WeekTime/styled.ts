@@ -31,7 +31,7 @@ export const EmptyContainer = styled(ContainerBase)`
   border: none;
 `;
 
-export const WeekTimeItem = styled.button<{ active: boolean }>`
+export const WeekTimeItem = styled.span<{ active: boolean }>`
   background-color: ${({ active, theme }) =>
     active ? theme.palette.primary.main : theme.palette.white};
   border: 1px solid
