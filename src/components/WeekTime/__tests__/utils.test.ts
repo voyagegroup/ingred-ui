@@ -1,6 +1,4 @@
-import {
-  getTargetSetting,
-} from "../utils";
+import { getTargetSetting } from "../utils";
 
 describe("utils", () => {
   describe("getTargetSetting function", () => {

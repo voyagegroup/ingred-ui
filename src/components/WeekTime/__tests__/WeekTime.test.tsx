@@ -9,9 +9,7 @@ describe("WeekTime component testing", () => {
 
   test("WeekTime", () => {
     const { asFragment } = renderWithThemeProvider(
-      <WeekTime
-        weekTime="ffffffffffffffffffffffffffffffffffffffffff"
-      />,
+      <WeekTime weekTime="ffffffffffffffffffffffffffffffffffffffffff" />,
     );
     expect(asFragment()).toMatchSnapshot();
   });

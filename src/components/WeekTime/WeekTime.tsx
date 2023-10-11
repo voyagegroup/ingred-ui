@@ -1,9 +1,7 @@
 import * as Styled from "./styled";
 import React, { Fragment, useMemo } from "react";
 import { timeList } from "./constants";
-import {
-  getTargetSetting,
-} from "./utils";
+import { getTargetSetting } from "./utils";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type WeekTimeProps = {
