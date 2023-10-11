@@ -1,13 +1,11 @@
 import {
   ConfirmModalProps,
-  DatePickerProps,
-  DateRangePickerProps,
   FileUploaderProps,
   ItemEmptyProps,
   MultipleFilterProps,
   ToggleButtonProps,
 } from "..";
-import { NewDatePickerProps, SelectProps } from "../components";
+import { DatePickerProps, SelectProps } from "../components";
 import { CreatableSelectProps } from "../components/CreatableSelect";
 import { FullSizeConfirmModalProps } from "../components/FullSizeConfirmModal";
 import { EditFilterCardProps } from "../components/MultipleFilter/internal/EditFilterCard/EditFilterCard";
@@ -70,18 +68,12 @@ export interface Localization {
       >;
     };
     DatePicker?: {
-      defaultProps: Pick<DatePickerProps, "displayFormat" | "monthFormat">;
-    };
-    DateRangePicker?: {
-      defaultProps: Pick<DateRangePickerProps, "displayFormat" | "monthFormat">;
-    };
-    NewDatePicker?: {
-      defaultProps: Pick<NewDatePickerProps, "monthFormat"> & {
+      defaultProps: Pick<DatePickerProps, "monthFormat"> & {
         weekList: string[];
       };
     };
-    NewDateRangePicker?: {
-      defaultProps: Pick<NewDatePickerProps, "monthFormat"> & {
+    DateRangePicker?: {
+      defaultProps: Pick<DatePickerProps, "monthFormat"> & {
         weekList: string[];
       };
     };
@@ -134,18 +126,12 @@ export const jaJP: Localization = {
     },
     EditFilterCard: { defaultProps: {} },
     DatePicker: {
-      defaultProps: { displayFormat: "YYYY/MM/DD", monthFormat: "YYYY年 M月" },
-    },
-    DateRangePicker: {
-      defaultProps: { displayFormat: "YYYY/MM/DD", monthFormat: "YYYY年 M月" },
-    },
-    NewDatePicker: {
       defaultProps: {
         monthFormat: "YYYY年MM月",
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
       },
     },
-    NewDateRangePicker: {
+    DateRangePicker: {
       defaultProps: {
         monthFormat: "YYYY年MM月",
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
@@ -182,13 +168,13 @@ export const zhCN: Localization = {
 // default
 export const enUS: Localization = {
   components: {
-    NewDatePicker: {
+    DatePicker: {
       defaultProps: {
         monthFormat: "MMM YYYY",
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       },
     },
-    NewDateRangePicker: {
+    DateRangePicker: {
       defaultProps: {
         monthFormat: "MMM YYYY",
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],

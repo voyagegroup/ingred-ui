@@ -4,14 +4,12 @@ import {
   Button,
   Card,
   ConfirmModal,
-  DatePicker,
   MultipleFilter,
-  NewDatePicker,
+  DatePicker,
   OptionType,
   Select,
   Spacer,
   ToggleButton,
-  Typography,
 } from "..";
 import LocaleProvider, { LocaleProviderProps } from "./LocaleProvider";
 
@@ -179,16 +177,8 @@ export const Example: StoryObj<LocaleProviderProps> = {
         </Spacer>
 
         <h2>DatePicker</h2>
-        <Typography>
-          ※ Needs locale import (e.g. import &apos;moment/locale/ja&apos;).
-        </Typography>
         <Spacer pl={2} pt={2} pb={40}>
           <DatePicker date={dayjs()} onDateChange={() => {}} />
-        </Spacer>
-
-        <h2>NewDatePicker</h2>
-        <Spacer pl={2} pt={2} pb={40}>
-          <NewDatePicker date={dayjs()} onDateChange={() => {}} />
         </Spacer>
       </LocaleProvider>
     );

@@ -55,7 +55,6 @@ import PopoverSample from "./components/PopoverSample";
 import MenuSample from "./components/MenuSample";
 import FloatingTipSample from "./components/FloatingTipSample";
 import CreatableSelect from "../../../../src/components/CreatableSelect";
-import "react-dates/lib/css/_datepicker.css";
 
 type SectionTitle =
   | "Layout"
