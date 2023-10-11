@@ -8,7 +8,7 @@ export type WeekTimeProps = {
   weekTime: string;
 };
 
-const WeekTimeSelector: React.FC<WeekTimeProps> = (inProps) => {
+const WeekTime: React.FC<WeekTimeProps> = (inProps) => {
   const props = useLocaleProps({
     props: inProps,
     name: "WeekTimeSelector",
@@ -43,4 +43,4 @@ const WeekTimeSelector: React.FC<WeekTimeProps> = (inProps) => {
   );
 };
 
-export default WeekTimeSelector;
+export default WeekTime;
