@@ -3,9 +3,7 @@ import { StoryObj } from "@storybook/react";
 import DualListBox, {
   DualListBoxItem,
   DualListBoxProps,
-  DualListBoxCandidateItemWithToggle,
   DualListBoxItemSelectedWithToggle,
-  DualListBoxItemSelectedWithoutToggle,
 } from "./DualListBox";
 
 export default {
@@ -47,10 +45,7 @@ export const Example: StoryObj<DualListBoxProps> = {
     ]);
 
     const handleAdd = (id: string) => {
-      const target: DualListBoxItemSelectedWithoutToggle = candidateItems.find(
-        (item) => item.id === id,
-      ) as DualListBoxItemSelectedWithoutToggle;
-      setSelectedItems([...selectedItems, target]);
+      setSelectedItems([...selectedItems, { id }]);
     };
 
     const handleRemove = (id: string) => {
@@ -76,30 +71,33 @@ export const Example: StoryObj<DualListBoxProps> = {
  */
 export const Nested: StoryObj<DualListBoxProps> = {
   render: () => {
-    const [candidateItems, setCandidateItems] = React.useState([
-      {
-        id: "1",
-        label: "hoge",
-      },
-      {
-        id: "2",
-        label: "fuga",
-      },
-      {
-        id: "3",
-        label: "piyo",
-        items: [
-          {
-            id: "21",
-            label: "piyo1",
-          },
-          {
-            id: "22",
-            label: "piyo2",
-          },
-        ],
-      },
-    ]);
+    const candidateItems = React.useMemo(
+      () => [
+        {
+          id: "1",
+          label: "hoge",
+        },
+        {
+          id: "2",
+          label: "fuga",
+        },
+        {
+          id: "3",
+          label: "piyo",
+          items: [
+            {
+              id: "21",
+              label: "piyo1",
+            },
+            {
+              id: "22",
+              label: "piyo2",
+            },
+          ],
+        },
+      ],
+      [],
+    );
 
     const [selectedItems, setSelectedItems] = React.useState([
       {
@@ -107,84 +105,34 @@ export const Nested: StoryObj<DualListBoxProps> = {
       },
     ]);
 
-    const handleAdd = (id: string) => {
-      const targets: DualListBoxItem[] = [];
-      const newUnselectedItems = candidateItems.map((item) => {
+    const findItemById = (
+      items: DualListBoxItem[],
+      id: string,
+    ): DualListBoxItem | undefined => {
+      for (const item of items) {
         if (item.id === id) {
-          targets.push(item);
-          return {
-            ...item,
-            selected: true,
-          };
+          return item;
         }
-
         if (item.items) {
-          const newItems = item.items.map((subItem) => {
-            if (subItem.id === id) {
-              targets.push(subItem);
-              return {
-                ...subItem,
-                selected: true,
-              };
-            }
-            return subItem;
-          });
-
-          return {
-            ...item,
-            items: newItems,
-          };
+          const foundItem = findItemById(item.items, id);
+          if (foundItem) {
+            return foundItem;
+          }
         }
+      }
 
-        return item;
-      });
+      return undefined;
+    };
 
-      setSelectedItems([...selectedItems, ...targets]);
-      setCandidateItems(newUnselectedItems);
+    const handleAdd = (id: string) => {
+      const targetItem = findItemById(candidateItems, id);
+      if (targetItem) {
+        setSelectedItems([...selectedItems, targetItem]);
+      }
     };
 
     const handleRemove = (id: string) => {
-      const targets: DualListBoxItem[] = [];
-      const newSelectedItems = selectedItems.filter((item) => {
-        if (item.id === id) {
-          targets.push(item);
-          return false;
-        }
-        return true;
-      });
-
-      const newUnselectedItems = candidateItems.map((item) => {
-        if (item.id === id) {
-          targets.push(item);
-          return {
-            ...item,
-            selected: false,
-          };
-        }
-
-        if (item.items) {
-          const newItems = item.items.map((subItem) => {
-            if (subItem.id === id) {
-              targets.push(subItem);
-              return {
-                ...subItem,
-                selected: false,
-              };
-            }
-            return subItem;
-          });
-
-          return {
-            ...item,
-            items: newItems,
-          };
-        }
-
-        return item;
-      });
-
-      setSelectedItems(newSelectedItems);
-      setCandidateItems(newUnselectedItems);
+      setSelectedItems((prev) => prev.filter((item) => item.id !== id));
     };
 
     return (
@@ -205,22 +153,18 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
         {
           id: "1",
           label: "foo",
-          checked: false,
         },
         {
           id: "2",
           label: "bar",
-          checked: false,
         },
         {
           id: "3",
           label: "hoge",
-          checked: false,
         },
         {
           id: "4",
           label: "fuga",
-          checked: false,
         },
       ],
       [],
@@ -240,10 +184,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     ]);
 
     const handleAdd = (id: string) => {
-      const target: DualListBoxCandidateItemWithToggle = candidateItems.find(
-        (item) => item.id === id,
-      ) as DualListBoxCandidateItemWithToggle;
-      setSelectedItems([...selectedItems, target]);
+      setSelectedItems([...selectedItems, { id, checked: false }]);
     };
 
     const handleRemove = (id: string) => {
@@ -252,10 +193,8 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     };
 
     const handleToggleChange = (id: string) => {
-      const targets: DualListBoxItem[] = [];
       const newSelectedItems = selectedItems.map((item) => {
         if (item.id === id) {
-          targets.push(item);
           return {
             ...item,
             checked: !item.checked,
