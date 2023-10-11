@@ -85,6 +85,25 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
 
     const candidateItems: CandidateItem[] = React.useMemo(() => {
       return candidateItemsProp.map((item) => {
+        if (item.items) {
+          return {
+            ...item,
+            items: item.items.map((subItem) => {
+              if (
+                selectedItemsProp.some(
+                  (selectedItem) => selectedItem.id === subItem.id,
+                )
+              ) {
+                return {
+                  ...subItem,
+                  selected: true,
+                };
+              }
+              return subItem;
+            }),
+          };
+        }
+
         if (
           selectedItemsProp.some((selectedItem) => selectedItem.id === item.id)
         ) {
@@ -93,6 +112,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
             selected: true,
           };
         }
+
         return item;
       });
     }, [candidateItemsProp, selectedItemsProp]);
