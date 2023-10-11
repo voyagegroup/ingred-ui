@@ -17,22 +17,10 @@ export type DualListBoxItemSelectedWithoutToggle = ItemBase & {
 /**
  * @memo DualListBoxItemSelectedWithToggle をネスト可能にしたものが DualListBoxCandidateItemWithToggle
  */
-export type DualListBoxCandidateItemWithToggle = ItemBase & {
+export type DualListBoxItem = ItemBase & {
   label?: string;
-  items?: DualListBoxCandidateItemWithToggle[];
+  items?: DualListBoxItem[];
 };
-
-/**
- * @memo DualListBoxItemSelectedWithoutToggle をネスト可能にしたものが DualListBoxCandidateItemWithoutToggle
- */
-export type DualListBoxCandidateItemWithoutToggle = ItemBase & {
-  label?: string;
-  items?: DualListBoxCandidateItemWithoutToggle[];
-};
-
-export type DualListBoxItem =
-  | DualListBoxCandidateItemWithToggle
-  | DualListBoxCandidateItemWithoutToggle;
 
 export type DualListSelectedItem =
   | DualListBoxItemSelectedWithToggle
@@ -44,13 +32,13 @@ type BaseProps = {
 };
 
 export type DualListBoxPropsWithToggle = BaseProps & {
-  candidateItems: DualListBoxCandidateItemWithToggle[];
+  candidateItems: DualListBoxItem[];
   selectedItems: DualListBoxItemSelectedWithToggle[];
   onToggleChange?: (id: string) => void;
 };
 
 export type DualListBoxPropsWithoutToggle = BaseProps & {
-  candidateItems: DualListBoxCandidateItemWithoutToggle[];
+  candidateItems: DualListBoxItem[];
   selectedItems: DualListBoxItemSelectedWithoutToggle[];
   onToggleChange?: undefined;
 };
