@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { convertTargetSettingToHex, getNewWeekTimeList } from "./utils";
 import { getTargetSetting } from "../utils";
 import Spacer from "../../Spacer";
-import { WeekTimeElement } from "../_internal/WeekTimeElement";
+import { WeekTimeElement } from "../internal/WeekTimeElement";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;

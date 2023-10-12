@@ -1,6 +1,6 @@
 import * as Styled from "./styled";
 import React from "react";
-import { WeekTimeElement } from "../_internal/WeekTimeElement";
+import { WeekTimeElement } from "../internal/WeekTimeElement";
 
 export type WeekTimeProps = {
   weekTime: string;
