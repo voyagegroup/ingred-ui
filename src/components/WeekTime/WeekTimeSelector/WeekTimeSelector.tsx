@@ -69,7 +69,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
     return false;
   };
 
-  const handleMouseOver = (weekIndex: number, timeIndex: number) => () => {
+  const handleMouseOver = (weekIndex: number, timeIndex: number) => {
     if (selectState === "none") {
       return;
     }
@@ -78,7 +78,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
   };
 
   const handleMouseDown =
-    (weekIndex: number, timeIndex: number, time: string) => () => {
+    (weekIndex: number, timeIndex: number, time: string) => {
       const newValue = time === "1" ? "0" : "1";
       setToValue(newValue);
       handleChangeWeekTime(weekIndex, timeIndex, newValue);

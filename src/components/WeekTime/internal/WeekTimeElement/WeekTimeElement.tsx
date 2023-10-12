@@ -19,7 +19,15 @@ export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
   const { weekList, weekTime, isWithinHoverRange, onMouseOver, onMouseDown } =
     props;
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
-  const defaultHandler = () => {};
+
+  const handleMouseOver = (weekIndex: number, timeIndex: number) => () => {
+    onMouseOver?.(weekIndex, timeIndex);
+  };
+
+  const handleMouseDown =
+    (weekIndex: number, timeIndex: number, time: string) => () => {
+      onMouseDown?.(weekIndex, timeIndex, time);
+    };
 
   return (
     <Styled.WeekTimeContainer>
@@ -42,12 +50,8 @@ export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
                   ? isWithinHoverRange(weekIndex, timeIndex)
                   : false
               }
-              onMouseOver={
-                onMouseOver?.(weekIndex, timeIndex) ?? defaultHandler
-              }
-              onMouseDown={
-                onMouseDown?.(weekIndex, timeIndex, t) ?? defaultHandler
-              }
+              onMouseOver={handleMouseOver(weekIndex, timeIndex)}
+              onMouseDown={handleMouseDown(weekIndex, timeIndex, t)}
             />
           ))}
         </Fragment>
