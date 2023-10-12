@@ -1,5 +1,11 @@
 # Changelog
 
+## 14.13.0
+
+### Minor Changes
+
+- [#1442](https://github.com/voyagegroup/ingred-ui/pull/1442) [`ce425faa`](https://github.com/voyagegroup/ingred-ui/commit/ce425faab7ee1c45251fd38b395f85e4ac47c9af) Thanks [@takurinton](https://github.com/takurinton)! - feat `<DualListBox />` component
+
 ## 14.12.0
 
 ### Minor Changes
