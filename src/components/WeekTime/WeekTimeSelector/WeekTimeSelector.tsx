@@ -1,14 +1,11 @@
-import ErrorText from "../ErrorText";
 import * as Styled from "./styled";
-import React, { Fragment, useEffect, useMemo, useState } from "react";
-import { timeList } from "./constants";
-import {
-  convertTargetSettingToHex,
-  getNewWeekTimeList,
-  getTargetSetting,
-} from "./utils";
-import { useLocaleProps } from "../../hooks/useLocaleProps";
-import Spacer from "../Spacer";
+import ErrorText from "../../ErrorText";
+import React, { useEffect, useMemo, useState } from "react";
+import { convertTargetSettingToHex, getNewWeekTimeList } from "./utils";
+import { getTargetSetting } from "../utils";
+import { useLocaleProps } from "../../../hooks/useLocaleProps";
+import Spacer from "../../Spacer";
+import { WeekTimeElement } from "../_internal/WeekTimeElement";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -22,7 +19,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
     name: "WeekTimeSelector",
   });
 
-  const { weekList, weekTime, errorText, onChange } = props;
+  const { weekTime, errorText, onChange } = props;
 
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [startIndex, setStartIndex] = useState<{
@@ -110,28 +107,12 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
 
   return (
     <Styled.Container>
-      <Styled.WeekTimeContainer>
-        <Styled.EmptyContainer />
-        {timeList.map((time) => (
-          <Styled.TimeContainer key={time}>{time}</Styled.TimeContainer>
-        ))}
-        {weekTimeList.map((time, weekIndex) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Fragment key={weekIndex}>
-            <Styled.WeekContainer>{weekList[weekIndex]}</Styled.WeekContainer>
-            {time.map((t, timeIndex) => (
-              <Styled.WeekTimeItem
-                // eslint-disable-next-line react/no-array-index-key
-                key={`${weekIndex}-${timeIndex}`}
-                active={t === "1"}
-                hover={isWithinHoverRange(weekIndex, timeIndex)}
-                onMouseOver={handleMouseOver(weekIndex, timeIndex)}
-                onMouseDown={handleMouseDown(weekIndex, timeIndex, t)}
-              />
-            ))}
-          </Fragment>
-        ))}
-      </Styled.WeekTimeContainer>
+      <WeekTimeElement
+        weekTime={weekTime}
+        onHover={isWithinHoverRange}
+        onMouseOver={handleMouseOver}
+        onMouseDown={handleMouseDown}
+      />
       {errorText && (
         <Spacer pt={1}>
           <ErrorText>{errorText}</ErrorText>

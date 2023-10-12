@@ -1,2 +1,4 @@
-export { default } from "./WeekTime";
-export type { WeekTimeProps } from "./WeekTime";
+import WeekTime from "./WeekTime";
+import WeekTimeSelector from "./WeekTimeSelector";
+
+export { WeekTime, WeekTimeSelector };
