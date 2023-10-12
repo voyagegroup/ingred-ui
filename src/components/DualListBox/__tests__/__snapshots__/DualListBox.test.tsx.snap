@@ -29,9 +29,9 @@ exports[`DualListBox component testing DualListBox 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            0個
+            0 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -188,9 +188,9 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            0個
+            0 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -351,9 +351,9 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -655,9 +655,9 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -982,9 +982,9 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
