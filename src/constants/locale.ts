@@ -163,7 +163,7 @@ export const jaJP: Localization = {
     },
     WeekTimeSelector: {
       defaultProps: {
-        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        weekList: ["日", "月", "火", "水", "木", "金", "土"],
       },
     },
   },
