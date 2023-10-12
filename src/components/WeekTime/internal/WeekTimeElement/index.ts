@@ -1,1 +1,0 @@
-export { WeekTimeElement } from "./WeekTimeElement";
