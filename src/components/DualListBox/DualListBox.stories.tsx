@@ -31,9 +31,6 @@ export const Example: StoryObj<DualListBoxProps> = {
       {
         id: "3",
       },
-      {
-        id: "4",
-      },
     ]);
 
     const handleAdd = (id: string) => {
