@@ -1,8 +1,8 @@
-import { CandidateItem, SelectedItem } from "./DualListBox";
+import { CandidateItem, DualListBoxSelectedItem } from "./DualListBox";
 
 export const getCandidateItems = (
   candidateItems: CandidateItem[],
-  selectedItems: SelectedItem[],
+  selectedItems: DualListBoxSelectedItem[],
 ) => {
   const result: CandidateItem[] = [];
   candidateItems.forEach((candidateItem) => {

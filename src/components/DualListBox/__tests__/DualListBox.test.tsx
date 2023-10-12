@@ -50,15 +50,19 @@ describe("DualListBox component testing", () => {
         selectedItems={[
           {
             id: "1",
+            label: "foo",
           },
           {
             id: "2",
+            label: "bar",
           },
           {
             id: "3",
+            label: "hoge",
           },
           {
             id: "4",
+            label: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -92,15 +96,19 @@ describe("DualListBox component testing", () => {
         selectedItems={[
           {
             id: "1",
+            label: "foo",
           },
           {
             id: "2",
+            label: "bar",
           },
           {
             id: "3",
+            label: "hoge",
           },
           {
             id: "4",
+            label: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -134,18 +142,22 @@ describe("DualListBox component testing", () => {
         selectedItems={[
           {
             id: "1",
+            label: "foo",
             checked: true,
           },
           {
             id: "2",
+            label: "bar",
             checked: true,
           },
           {
             id: "3",
+            label: "hoge",
             checked: true,
           },
           {
             id: "4",
+            label: "fuga",
             checked: true,
           },
         ]}

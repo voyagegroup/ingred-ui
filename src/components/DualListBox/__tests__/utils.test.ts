@@ -26,7 +26,9 @@ describe("getCandidateItems", () => {
       { id: "2", label: "Item 2" },
       { id: "3", label: "Item 3" },
     ];
-    const selectedItems: DualListBoxSelectedItem[] = [{ id: "2" }];
+    const selectedItems: DualListBoxSelectedItem[] = [
+      { id: "2", label: "Item 2" },
+    ];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual([
       { id: "1", label: "Item 1" },
@@ -47,7 +49,9 @@ describe("getCandidateItems", () => {
       },
       { id: "4", label: "Item 4" },
     ];
-    const selectedItems: DualListBoxSelectedItem[] = [{ id: "2" }];
+    const selectedItems: DualListBoxSelectedItem[] = [
+      { id: "2", label: "Item 2" },
+    ];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual([
       {
