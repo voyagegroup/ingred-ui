@@ -3,7 +3,6 @@ import ErrorText from "../../ErrorText";
 import React, { useEffect, useMemo, useState } from "react";
 import { convertTargetSettingToHex, getNewWeekTimeList } from "./utils";
 import { getTargetSetting } from "../utils";
-import { useLocaleProps } from "../../../hooks/useLocaleProps";
 import Spacer from "../../Spacer";
 import { WeekTimeElement } from "../_internal/WeekTimeElement";
 
@@ -13,12 +12,7 @@ export type WeekTimeSelectorProps = {
   onChange?: (weekTime: string) => void;
 };
 
-const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (inProps) => {
-  const props = useLocaleProps({
-    props: inProps,
-    name: "WeekTimeSelector",
-  });
-
+const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
   const { weekTime, errorText, onChange } = props;
 
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);

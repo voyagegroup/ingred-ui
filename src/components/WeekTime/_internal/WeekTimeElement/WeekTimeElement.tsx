@@ -18,7 +18,7 @@ export type WeekTimeElementProps = {
 export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
   const props = useLocaleProps({
     props: inProps,
-    name: "WeekTime",
+    name: "WeekTimeElement",
   });
   const { weekList, weekTime, onHover,onMouseOver, onMouseDown } =
     props;
