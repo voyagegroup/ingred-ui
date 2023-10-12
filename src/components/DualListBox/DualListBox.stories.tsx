@@ -30,11 +30,17 @@ export const Example: StoryObj<DualListBoxProps> = {
     const [selectedItems, setSelectedItems] = React.useState([
       {
         id: "3",
+        label: "hoge",
       },
     ]);
 
     const handleAdd = (id: string) => {
-      setSelectedItems([...selectedItems, { id }]);
+      const targetItem = candidateItems.find((item) => item.id === id);
+      if (!targetItem) {
+        return;
+      }
+
+      setSelectedItems([...selectedItems, targetItem]);
     };
 
     const handleRemove = (id: string) => {
@@ -91,6 +97,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
     const [selectedItems, setSelectedItems] = React.useState([
       {
         id: "2",
+        label: "fuga",
       },
     ]);
 
@@ -115,9 +122,14 @@ export const Nested: StoryObj<DualListBoxProps> = {
 
     const handleAdd = (id: string) => {
       const targetItem = findItemById(candidateItems, id);
-      if (targetItem) {
-        setSelectedItems([...selectedItems, targetItem]);
+      if (!targetItem) {
+        return;
       }
+
+      setSelectedItems([
+        ...selectedItems,
+        { id: targetItem.id, label: targetItem.label },
+      ]);
     };
 
     const handleRemove = (id: string) => {
@@ -162,16 +174,22 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
     const [selectedItems, setSelectedItems] = React.useState([
       {
         id: "3",
+        label: "hoge",
         checked: true,
       },
       {
         id: "4",
+        label: "fuga",
         checked: true,
       },
     ]);
 
     const handleAdd = (id: string) => {
-      setSelectedItems([...selectedItems, { id, checked: false }]);
+      const targetItem = candidateItems.find((item) => item.id === id);
+      if (!targetItem) {
+        return;
+      }
+      setSelectedItems([...selectedItems, { ...targetItem, checked: false }]);
     };
 
     const handleRemove = (id: string) => {

@@ -10,17 +10,19 @@ type DualListBoxItemId = string;
 
 type DualListBoxItemSelectedWithToggle = {
   id: DualListBoxItemId;
+  label: string;
   checked: boolean;
 };
 
 type DualListBoxItemSelected = {
   id: DualListBoxItemId;
+  label: string;
   checked?: undefined;
 };
 
 export type DualListBoxItem = {
   id: DualListBoxItemId;
-  label?: string;
+  label: string;
   items?: DualListBoxItem[];
 };
 
@@ -53,17 +55,10 @@ export type CandidateItem = DualListBoxItem & {
   selected?: boolean;
 };
 
-/**
- * @memo 内部で選択済みの状態を保持するための型
- */
-export type SelectedItem = DualListBoxSelectedItem & {
-  label?: string;
-};
-
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
   function DualListBox({
     candidateItems: candidateItemsProp,
-    selectedItems: selectedItemsProp,
+    selectedItems: selectedItems,
     onAdd,
     onRemove,
     onToggleChange,
@@ -71,24 +66,9 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
     const theme = useTheme();
 
     const candidateItems: CandidateItem[] = React.useMemo(
-      () => getCandidateItems(candidateItemsProp, selectedItemsProp),
-      [candidateItemsProp, selectedItemsProp],
+      () => getCandidateItems(candidateItemsProp, selectedItems),
+      [candidateItemsProp, selectedItems],
     );
-
-    const selectedItems: DualListBoxSelectedItem[] = React.useMemo(() => {
-      return selectedItemsProp.map((item) => {
-        const targetItem = candidateItems.find(
-          (candidateItem) => candidateItem.id === item.id,
-        );
-        if (targetItem) {
-          return {
-            ...targetItem,
-            checked: item.checked,
-          };
-        }
-        return item;
-      });
-    }, [candidateItems, selectedItemsProp]);
 
     const handleAdd = (id: string) => {
       if (onAdd) {
