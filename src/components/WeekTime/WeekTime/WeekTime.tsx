@@ -6,13 +6,15 @@ export type WeekTimeProps = {
   weekTime: string;
 };
 
-const WeekTime: React.FC<WeekTimeProps> = (props) => {
-  const { weekTime } = props;
+const WeekTime = React.forwardRef<HTMLDivElement, WeekTimeProps>(
+  function WeekTime(props, ref) {
+    const { weekTime } = props;
   return (
     <Styled.Container>
-      <WeekTimeElement weekTime={weekTime} />
+      <WeekTimeElement weekTime={weekTime} ref={ref} />
     </Styled.Container>
   );
-};
+  }
+)
 
 export default WeekTime;

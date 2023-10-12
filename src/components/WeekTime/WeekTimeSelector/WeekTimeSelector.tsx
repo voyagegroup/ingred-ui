@@ -12,8 +12,9 @@ export type WeekTimeSelectorProps = {
   onChange?: (weekTime: string) => void;
 };
 
-const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
-  const { weekTime, errorText, onChange } = props;
+const WeekTimeSelector = React.forwardRef<HTMLDivElement, WeekTimeSelectorProps>(
+  function WeekTimeSelector(props, ref) {
+    const { weekTime, errorText, onChange } = props;
 
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
   const [startIndex, setStartIndex] = useState<{
@@ -109,6 +110,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
         isWithinHoverRange={isWithinHoverRange}
         onMouseOver={handleMouseOver}
         onMouseDown={handleMouseDown}
+        ref={ref}
       />
       {errorText && (
         <Spacer pt={1}>
@@ -117,6 +119,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
       )}
     </Styled.Container>
   );
-};
+  }
+)
 
 export default WeekTimeSelector;
