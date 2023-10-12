@@ -5,6 +5,7 @@ import { SelectedList } from "./internal/SelectedList";
 import Divider from "../Divider/Divider";
 import { useTheme } from "../../themes";
 import { getCandidateItems } from "./utils";
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 type DualListBoxItemId = string;
 
@@ -61,13 +62,16 @@ export type SelectedItem = DualListBoxSelectedItem & {
 };
 
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
-  function DualListBox({
-    candidateItems: candidateItemsProp,
-    selectedItems: selectedItemsProp,
-    onAdd,
-    onRemove,
-    onToggleChange,
-  }) {
+  function DualListBox(inProps) {
+    const {
+      candidateItems: candidateItemsProp,
+      selectedItems: selectedItemsProp,
+      selectedItemTitle,
+      onAdd,
+      onRemove,
+      onToggleChange,
+    } = useLocaleProps({ props: inProps, name: "DualListBox" });
+
     const theme = useTheme();
 
     const candidateItems: CandidateItem[] = React.useMemo(
@@ -112,6 +116,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
         <Divider color={theme.palette.divider} orientation="vertical" />
         <SelectedList
           items={selectedItems}
+          selectedItemTitle={selectedItemTitle}
           onRemove={handleRemove}
           onToggleChange={onToggleChange}
         />

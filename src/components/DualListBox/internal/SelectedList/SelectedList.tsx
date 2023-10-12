@@ -8,9 +8,10 @@ import ToggleButton from "../../../ToggleButton/ToggleButton";
 
 export const SelectedList: React.FunctionComponent<{
   items: SelectedItem[];
+  selectedItemTitle: string;
   onRemove?: (id: string) => void;
   onToggleChange?: (id: string) => void;
-}> = ({ items, onRemove, onToggleChange }) => {
+}> = ({ items, selectedItemTitle, onRemove, onToggleChange }) => {
   const theme = useTheme();
 
   return (
@@ -18,9 +19,9 @@ export const SelectedList: React.FunctionComponent<{
       <Styled.SelectedHeader>
         <Typography size="sm" weight="bold">
           <Typography color="primary" component="span" size="sm" weight="bold">
-            {items.length}個
+            {items.length}{" "}
           </Typography>
-          選択済み
+          {selectedItemTitle}
         </Typography>
       </Styled.SelectedHeader>
       <Styled.SelectedList>
