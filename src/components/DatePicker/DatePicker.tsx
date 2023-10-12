@@ -60,7 +60,7 @@ export type DatePickerProps = {
   onDateChange: (date: Dayjs) => void;
 };
 
-export const NewDatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
+export const DatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   function DatePicker(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "DatePicker" });
     const {
@@ -149,4 +149,4 @@ export const NewDatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   },
 );
 
-export default memo(NewDatePicker);
+export default memo(DatePicker);
