@@ -5,6 +5,7 @@ import {
   Card,
   ConfirmModal,
   DatePicker,
+  DualListBox,
   MultipleFilter,
   NewDatePicker,
   OptionType,
@@ -189,6 +190,11 @@ export const Example: StoryObj<LocaleProviderProps> = {
         <h2>NewDatePicker</h2>
         <Spacer pl={2} pt={2} pb={40}>
           <NewDatePicker date={dayjs()} onDateChange={() => {}} />
+        </Spacer>
+
+        <h2>aa</h2>
+        <Spacer pl={2} pt={2} pb={40}>
+          <DualListBox selectedItems={[]} candidateItems={[]} />
         </Spacer>
       </LocaleProvider>
     );
