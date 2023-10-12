@@ -1,10 +1,6 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
-import DualListBox, {
-  DualListBoxItem,
-  DualListBoxProps,
-  DualListBoxItemSelectedWithToggle,
-} from "./DualListBox";
+import DualListBox, { DualListBoxItem, DualListBoxProps } from "./DualListBox";
 
 export default {
   title: "Components/Data Display/DualListBox",
@@ -166,9 +162,7 @@ export const WithToggle: StoryObj<DualListBoxProps> = {
       [],
     );
 
-    const [selectedItems, setSelectedItems] = React.useState<
-      DualListBoxItemSelectedWithToggle[]
-    >([
+    const [selectedItems, setSelectedItems] = React.useState([
       {
         id: "3",
         checked: true,

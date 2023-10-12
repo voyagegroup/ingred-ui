@@ -1,10 +1,10 @@
-import { DualListBoxItem, DualListSelectedItem } from "../DualListBox";
+import { DualListBoxItem, DualListBoxSelectedItem } from "../DualListBox";
 import { getCandidateItems } from "../utils";
 
 describe("getCandidateItems", () => {
   it("should return an empty array when given empty arrays", () => {
     const candidateItems: DualListBoxItem[] = [];
-    const selectedItems: DualListSelectedItem[] = [];
+    const selectedItems: DualListBoxSelectedItem[] = [];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual([]);
   });
@@ -15,7 +15,7 @@ describe("getCandidateItems", () => {
       { id: "2", label: "Item 2" },
       { id: "3", label: "Item 3" },
     ];
-    const selectedItems: DualListSelectedItem[] = [];
+    const selectedItems: DualListBoxSelectedItem[] = [];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual(candidateItems);
   });
@@ -26,7 +26,7 @@ describe("getCandidateItems", () => {
       { id: "2", label: "Item 2" },
       { id: "3", label: "Item 3" },
     ];
-    const selectedItems: DualListSelectedItem[] = [{ id: "2" }];
+    const selectedItems: DualListBoxSelectedItem[] = [{ id: "2" }];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual([
       { id: "1", label: "Item 1" },
@@ -47,7 +47,7 @@ describe("getCandidateItems", () => {
       },
       { id: "4", label: "Item 4" },
     ];
-    const selectedItems: DualListSelectedItem[] = [{ id: "2" }];
+    const selectedItems: DualListBoxSelectedItem[] = [{ id: "2" }];
     const result = getCandidateItems(candidateItems, selectedItems);
     expect(result).toStrictEqual([
       {

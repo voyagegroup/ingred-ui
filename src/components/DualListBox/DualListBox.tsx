@@ -6,47 +6,45 @@ import Divider from "../Divider/Divider";
 import { useTheme } from "../../themes";
 import { getCandidateItems } from "./utils";
 
-export type ItemBase = {
-  id: string;
+type DualListBoxItemId = string;
+
+type DualListBoxItemSelectedWithToggle = {
+  id: DualListBoxItemId;
+  checked: boolean;
 };
 
-export type DualListBoxItemSelectedWithToggle = ItemBase & { checked: boolean };
-export type DualListBoxItemSelectedWithoutToggle = ItemBase & {
+type DualListBoxItemSelected = {
+  id: DualListBoxItemId;
   checked?: undefined;
 };
 
-/**
- * @memo DualListBoxItemSelectedWithToggle をネスト可能にしたものが DualListBoxCandidateItemWithToggle
- */
-export type DualListBoxItem = ItemBase & {
+export type DualListBoxItem = {
+  id: DualListBoxItemId;
   label?: string;
   items?: DualListBoxItem[];
 };
 
-export type DualListSelectedItem =
+export type DualListBoxSelectedItem =
   | DualListBoxItemSelectedWithToggle
-  | DualListBoxItemSelectedWithoutToggle;
+  | DualListBoxItemSelected;
 
 type BaseProps = {
-  onAdd?: (id: string) => void;
-  onRemove?: (id: string) => void;
-};
-
-export type DualListBoxPropsWithToggle = BaseProps & {
   candidateItems: DualListBoxItem[];
-  selectedItems: DualListBoxItemSelectedWithToggle[];
-  onToggleChange?: (id: string) => void;
+  onAdd?: (id: DualListBoxItemId) => void;
+  onRemove?: (id: DualListBoxItemId) => void;
 };
 
-export type DualListBoxPropsWithoutToggle = BaseProps & {
-  candidateItems: DualListBoxItem[];
-  selectedItems: DualListBoxItemSelectedWithoutToggle[];
-  onToggleChange?: undefined;
-};
-
-export type DualListBoxProps =
-  | DualListBoxPropsWithToggle
-  | DualListBoxPropsWithoutToggle;
+export type DualListBoxProps = BaseProps &
+  (
+    | {
+        selectedItems: DualListBoxItemSelected[];
+        onToggleChange?: undefined;
+      }
+    | {
+        selectedItems: DualListBoxItemSelectedWithToggle[];
+        onToggleChange: (id: DualListBoxItemId) => void;
+      }
+  );
 
 /**
  * @memo 内部で選択候補の状態を保持するための型
@@ -58,7 +56,7 @@ export type CandidateItem = DualListBoxItem & {
 /**
  * @memo 内部で選択済みの状態を保持するための型
  */
-export type SelectedItem = DualListSelectedItem & {
+export type SelectedItem = DualListBoxSelectedItem & {
   label?: string;
 };
 
@@ -77,7 +75,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
       [candidateItemsProp, selectedItemsProp],
     );
 
-    const selectedItems: DualListSelectedItem[] = React.useMemo(() => {
+    const selectedItems: DualListBoxSelectedItem[] = React.useMemo(() => {
       return selectedItemsProp.map((item) => {
         const targetItem = candidateItems.find(
           (candidateItem) => candidateItem.id === item.id,
