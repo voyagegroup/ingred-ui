@@ -6,13 +6,9 @@ import { timeList } from "../../constants";
 
 export type WeekTimeElementProps = {
   weekTime: string;
-  onHover?: (weekIndex: number, timeIndex: number) => boolean;
+  isWithinHoverRange?: (weekIndex: number, timeIndex: number) => boolean;
   onMouseOver?: (weekIndex: number, timeIndex: number) => void;
-  onMouseDown?: (
-    weekIndex: number,
-    timeIndex: number,
-    time: string,
-  ) => void;
+  onMouseDown?: (weekIndex: number, timeIndex: number, time: string) => void;
 };
 
 export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
@@ -20,10 +16,9 @@ export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
     props: inProps,
     name: "WeekTimeElement",
   });
-  const { weekList, weekTime, onHover,onMouseOver, onMouseDown } =
+  const { weekList, weekTime, isWithinHoverRange, onMouseOver, onMouseDown } =
     props;
   const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
-  
   const defaultHandler = () => {};
 
   return (
@@ -41,8 +36,12 @@ export const WeekTimeElement: React.FC<WeekTimeElementProps> = (inProps) => {
               // eslint-disable-next-line react/no-array-index-key
               key={`${weekIndex}-${timeIndex}`}
               active={t === "1"}
-              as={onHover === undefined ? "span" : "button"}
-              hover={onHover ? onHover(weekIndex, timeIndex) : false}
+              as={isWithinHoverRange ? "button" : "span"}
+              hover={
+                isWithinHoverRange
+                  ? isWithinHoverRange(weekIndex, timeIndex)
+                  : false
+              }
               onMouseOver={
                 onMouseOver?.(weekIndex, timeIndex) ?? defaultHandler
               }

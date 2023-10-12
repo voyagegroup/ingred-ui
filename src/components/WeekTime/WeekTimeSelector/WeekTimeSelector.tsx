@@ -103,7 +103,7 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
     <Styled.Container>
       <WeekTimeElement
         weekTime={weekTime}
-        onHover={isWithinHoverRange}
+        isWithinHoverRange={isWithinHoverRange}
         onMouseOver={handleMouseOver}
         onMouseDown={handleMouseDown}
       />
