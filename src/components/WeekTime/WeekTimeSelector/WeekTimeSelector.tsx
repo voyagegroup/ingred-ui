@@ -77,12 +77,15 @@ const WeekTimeSelector: React.FC<WeekTimeSelectorProps> = (props) => {
     setEndIndex({ weekIndex, timeIndex });
   };
 
-  const handleMouseDown =
-    (weekIndex: number, timeIndex: number, time: string) => {
-      const newValue = time === "1" ? "0" : "1";
-      setToValue(newValue);
-      handleChangeWeekTime(weekIndex, timeIndex, newValue);
-    };
+  const handleMouseDown = (
+    weekIndex: number,
+    timeIndex: number,
+    time: string,
+  ) => {
+    const newValue = time === "1" ? "0" : "1";
+    setToValue(newValue);
+    handleChangeWeekTime(weekIndex, timeIndex, newValue);
+  };
 
   // MEMO: button 以外の場所で mouseup したときの挙動を制御する
   const onMouseUp = () => {
