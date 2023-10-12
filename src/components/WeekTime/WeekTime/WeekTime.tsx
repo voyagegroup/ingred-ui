@@ -16,7 +16,7 @@ const WeekTime = React.forwardRef<HTMLDivElement, WeekTimeProps>(
     });
     const { weekList, weekTime } = props;
     const weekTimeList = useMemo(() => getTargetSetting(weekTime), [weekTime]);
-  
+
     return (
       <Styled.Container ref={ref}>
         <Styled.WeekTimeContainer>
