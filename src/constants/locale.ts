@@ -85,7 +85,12 @@ export interface Localization {
         weekList: string[];
       };
     };
-    WeekTimeElement?: {
+    WeekTime?: {
+      defaultProps: {
+        weekList: string[];
+      };
+    };
+    WeekTimeSelector?: {
       defaultProps: {
         weekList: string[];
       };
@@ -151,9 +156,14 @@ export const jaJP: Localization = {
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
       },
     },
-    WeekTimeElement: {
+    WeekTime: {
       defaultProps: {
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
+      },
+    },
+    WeekTimeSelector: {
+      defaultProps: {
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       },
     },
   },
@@ -194,7 +204,12 @@ export const enUS: Localization = {
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       },
     },
-    WeekTimeElement: {
+    WeekTime: {
+      defaultProps: {
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
+    WeekTimeSelector: {
       defaultProps: {
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       },
