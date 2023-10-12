@@ -60,9 +60,6 @@ export type DatePickerProps = {
   onDateChange: (date: Dayjs) => void;
 };
 
-/**
- * @memo 次のメジャーリリースで DatePicker に変更。現行の DatePicker は削除。
- */
 export const NewDatePicker = forwardRef<HTMLDivElement, DatePickerProps>(
   function DatePicker(inProps, ref) {
     const props = useLocaleProps({ props: inProps, name: "DatePicker" });

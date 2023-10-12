@@ -71,9 +71,6 @@ export type DateRangePickerProps = {
   onDatesChange: (dates: DateRange) => void;
 };
 
-/**
- * @memo 次のメジャーリリースで DateRangePicker に変更。現行の DateRangePicker は削除。
- */
 export const DateRangePicker = forwardRef<HTMLDivElement, DateRangePickerProps>(
   function DateRangePicker(inProps, propRef) {
     const props = useLocaleProps({
