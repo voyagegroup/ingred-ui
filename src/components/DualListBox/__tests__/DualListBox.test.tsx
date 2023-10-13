@@ -20,19 +20,19 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[]}
@@ -50,19 +50,19 @@ describe("DualListBox component testing", () => {
         selectedItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -78,37 +78,37 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -124,46 +124,41 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[
           {
             id: "1",
-            label: "foo",
-            checked: true,
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
-            checked: true,
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
-            checked: true,
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
-            checked: true,
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
         onRemove={jest.fn()}
-        onToggleChange={jest.fn()}
       />,
     );
     expect(asFragment()).toMatchSnapshot();

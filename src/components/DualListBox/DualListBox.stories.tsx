@@ -1,6 +1,10 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
-import DualListBox, { DualListBoxItem, DualListBoxProps } from "./DualListBox";
+import DualListBox, {
+  DualListBoxCandidateItem,
+  DualListBoxItem,
+  DualListBoxProps,
+} from "./DualListBox";
 
 export default {
   title: "Components/Data Display/DualListBox",
@@ -13,38 +17,37 @@ export const Example: StoryObj<DualListBoxProps> = {
       () => [
         {
           id: "1",
-          label: "foo",
+          content: "foo",
         },
         {
           id: "2",
-          label: "bar",
+          content: "bar",
         },
         {
           id: "3",
-          label: "hoge",
+          content: "hoge",
         },
       ],
       [],
     );
 
-    const [selectedItems, setSelectedItems] = React.useState([
-      {
-        id: "3",
-        label: "hoge",
-      },
-    ]);
+    const [selectedItems, setSelectedItems] = React.useState<DualListBoxItem[]>(
+      [
+        {
+          id: "3",
+          content: "hoge",
+        },
+      ],
+    );
 
-    const handleAdd = (id: string) => {
-      const targetItem = candidateItems.find((item) => item.id === id);
-      if (!targetItem) {
-        return;
-      }
-
-      setSelectedItems([...selectedItems, targetItem]);
+    const handleAdd = (item: DualListBoxItem) => {
+      setSelectedItems([...selectedItems, item]);
     };
 
-    const handleRemove = (id: string) => {
-      const newSelectedItems = selectedItems.filter((item) => item.id !== id);
+    const handleRemove = (item: DualListBoxItem) => {
+      const newSelectedItems = selectedItems.filter(
+        (selectedItem) => selectedItem.id !== item.id,
+      );
       setSelectedItems(newSelectedItems);
     };
 
@@ -70,23 +73,23 @@ export const Nested: StoryObj<DualListBoxProps> = {
       () => [
         {
           id: "1",
-          label: "hoge",
+          content: "hoge",
         },
         {
           id: "2",
-          label: "fuga",
+          content: "fuga",
         },
         {
           id: "3",
-          label: "piyo",
+          content: "piyo",
           items: [
             {
               id: "21",
-              label: "piyo1",
+              content: "piyo1",
             },
             {
               id: "22",
-              label: "piyo2",
+              content: "piyo2",
             },
           ],
         },
@@ -94,17 +97,19 @@ export const Nested: StoryObj<DualListBoxProps> = {
       [],
     );
 
-    const [selectedItems, setSelectedItems] = React.useState([
-      {
-        id: "2",
-        label: "fuga",
-      },
-    ]);
+    const [selectedItems, setSelectedItems] = React.useState<DualListBoxItem[]>(
+      [
+        {
+          id: "2",
+          content: "fuga",
+        },
+      ],
+    );
 
     const findItemById = (
-      items: DualListBoxItem[],
+      items: DualListBoxCandidateItem[],
       id: string,
-    ): DualListBoxItem | undefined => {
+    ): DualListBoxCandidateItem | undefined => {
       for (const item of items) {
         if (item.id === id) {
           return item;
@@ -120,20 +125,25 @@ export const Nested: StoryObj<DualListBoxProps> = {
       return undefined;
     };
 
-    const handleAdd = (id: string) => {
-      const targetItem = findItemById(candidateItems, id);
-      if (!targetItem) {
+    const handleAdd = (item: DualListBoxItem) => {
+      const foundItem = findItemById(candidateItems, item.id);
+      if (!foundItem) {
         return;
       }
 
-      setSelectedItems([
-        ...selectedItems,
-        { id: targetItem.id, label: targetItem.label },
-      ]);
+      const newSelectedItems = [...selectedItems, item];
+
+      if (foundItem.items) {
+        newSelectedItems.push(...foundItem.items);
+      }
+
+      setSelectedItems(newSelectedItems);
     };
 
-    const handleRemove = (id: string) => {
-      setSelectedItems((prev) => prev.filter((item) => item.id !== id));
+    const handleRemove = (item: DualListBoxItem) => {
+      setSelectedItems(
+        selectedItems.filter((selectedItem) => selectedItem.id !== item.id),
+      );
     };
 
     return (
@@ -142,82 +152,6 @@ export const Nested: StoryObj<DualListBoxProps> = {
         selectedItems={selectedItems}
         onAdd={handleAdd}
         onRemove={handleRemove}
-      />
-    );
-  },
-};
-
-export const WithToggle: StoryObj<DualListBoxProps> = {
-  render: () => {
-    const candidateItems = React.useMemo(
-      () => [
-        {
-          id: "1",
-          label: "foo",
-        },
-        {
-          id: "2",
-          label: "bar",
-        },
-        {
-          id: "3",
-          label: "hoge",
-        },
-        {
-          id: "4",
-          label: "fuga",
-        },
-      ],
-      [],
-    );
-
-    const [selectedItems, setSelectedItems] = React.useState([
-      {
-        id: "3",
-        label: "hoge",
-        checked: true,
-      },
-      {
-        id: "4",
-        label: "fuga",
-        checked: true,
-      },
-    ]);
-
-    const handleAdd = (id: string) => {
-      const targetItem = candidateItems.find((item) => item.id === id);
-      if (!targetItem) {
-        return;
-      }
-      setSelectedItems([...selectedItems, { ...targetItem, checked: false }]);
-    };
-
-    const handleRemove = (id: string) => {
-      const newSelectedItems = selectedItems.filter((item) => item.id !== id);
-      setSelectedItems(newSelectedItems);
-    };
-
-    const handleToggleChange = (id: string) => {
-      const newSelectedItems = selectedItems.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            checked: !item.checked,
-          };
-        }
-        return item;
-      });
-
-      setSelectedItems(newSelectedItems);
-    };
-
-    return (
-      <DualListBox
-        candidateItems={candidateItems}
-        selectedItems={selectedItems}
-        onAdd={handleAdd}
-        onRemove={handleRemove}
-        onToggleChange={handleToggleChange}
       />
     );
   },
