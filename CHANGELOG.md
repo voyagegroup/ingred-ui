@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.0.0
+
+### Major Changes
+
+- [#1464](https://github.com/voyagegroup/ingred-ui/pull/1464) [`7c6ee639`](https://github.com/voyagegroup/ingred-ui/commit/7c6ee639a4880927f2cdacd7d80cccb3ef3f3892) Thanks [@takurinton](https://github.com/takurinton)! - remove label prop and add content prop instead. content prop can receive ReactNode.
+
 ## 14.14.0
 
 ### Minor Changes
