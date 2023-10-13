@@ -20,19 +20,19 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[]}
@@ -50,15 +50,19 @@ describe("DualListBox component testing", () => {
         selectedItems={[
           {
             id: "1",
+            content: "foo",
           },
           {
             id: "2",
+            content: "bar",
           },
           {
             id: "3",
+            content: "hoge",
           },
           {
             id: "4",
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -74,33 +78,37 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[
           {
             id: "1",
+            content: "foo",
           },
           {
             id: "2",
+            content: "bar",
           },
           {
             id: "3",
+            content: "hoge",
           },
           {
             id: "4",
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
@@ -116,42 +124,41 @@ describe("DualListBox component testing", () => {
         candidateItems={[
           {
             id: "1",
-            label: "foo",
+            content: "foo",
           },
           {
             id: "2",
-            label: "bar",
+            content: "bar",
           },
           {
             id: "3",
-            label: "hoge",
+            content: "hoge",
           },
           {
             id: "4",
-            label: "fuga",
+            content: "fuga",
           },
         ]}
         selectedItems={[
           {
             id: "1",
-            checked: true,
+            content: "foo",
           },
           {
             id: "2",
-            checked: true,
+            content: "bar",
           },
           {
             id: "3",
-            checked: true,
+            content: "hoge",
           },
           {
             id: "4",
-            checked: true,
+            content: "fuga",
           },
         ]}
         onAdd={jest.fn()}
         onRemove={jest.fn()}
-        onToggleChange={jest.fn()}
       />,
     );
     expect(asFragment()).toMatchSnapshot();

@@ -1,17 +1,16 @@
 import React from "react";
 import * as Styled from "./styled";
-import { SelectedItem } from "../../DualListBox";
+import { DualListBoxItem } from "../../DualListBox";
 import Icon from "../../../Icon/Icon";
 import { useTheme } from "../../../../themes";
 import Typography from "../../../Typography/Typography";
-import ToggleButton from "../../../ToggleButton/ToggleButton";
 
 export const SelectedList: React.FunctionComponent<{
-  items: SelectedItem[];
+  items: DualListBoxItem[];
   selectedItemTitle: string;
-  onRemove?: (id: string) => void;
-  onToggleChange?: (id: string) => void;
-}> = ({ items, selectedItemTitle, onRemove, onToggleChange }) => {
+  onRemove?: (item: DualListBoxItem) => void;
+  onToggleChange?: (item: DualListBoxItem) => void;
+}> = ({ items, selectedItemTitle, onRemove }) => {
   const theme = useTheme();
 
   return (
@@ -30,21 +29,12 @@ export const SelectedList: React.FunctionComponent<{
             key={item.id}
             isLastIndex={i + 1 === items.length}
           >
-            <Typography>{item.label}</Typography>
+            {item.content}
             <Styled.Action>
-              {onToggleChange && (
-                <ToggleButton
-                  checkedText=""
-                  unCheckedText=""
-                  width="48px"
-                  checked={item.checked}
-                  onChange={() => onToggleChange(item.id)}
-                />
-              )}
               {onRemove && (
                 <Styled.RemoveButton
                   type={"button"}
-                  onClick={() => onRemove(item.id)}
+                  onClick={() => onRemove(item)}
                 >
                   <Icon name="close" size="sm" color={theme.palette.black} />
                 </Styled.RemoveButton>

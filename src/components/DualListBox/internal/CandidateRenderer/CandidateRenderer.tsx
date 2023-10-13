@@ -1,15 +1,15 @@
 import React from "react";
 import * as Styled from "./styled";
 import { SelectLabel } from "./internal/SelectLabel";
-import { DualListBoxItem } from "../../DualListBox";
+import { DualListBoxCandidateItem, DualListBoxItem } from "../../DualListBox";
 
 /**
  * @memo ネストした構造を持つものを扱う場合は、再帰的に処理する必要がある
  */
 export const CandidateRenderer: React.FunctionComponent<{
-  items: DualListBoxItem[];
-  onAdd?: (id: string) => void;
-  onRemove?: (id: string) => void;
+  items: DualListBoxCandidateItem[];
+  onAdd?: (item: DualListBoxItem) => void;
+  onRemove?: (item: DualListBoxItem) => void;
 }> = ({ items, onAdd, onRemove }) => {
   return (
     <Styled.Container>
@@ -22,7 +22,7 @@ export const CandidateRenderer: React.FunctionComponent<{
                 title={
                   <Styled.AccordionTitleWrapper>
                     <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
-                      {item.label}
+                      {item.content}
                     </SelectLabel>
                   </Styled.AccordionTitleWrapper>
                 }
@@ -40,7 +40,7 @@ export const CandidateRenderer: React.FunctionComponent<{
               isLastIndex={i + 1 === items.length}
             >
               <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
-                {item.label}
+                {item.content}
               </SelectLabel>
             </Styled.UnselectedItem>
           )}
