@@ -1,11 +1,11 @@
 import * as Styled from "./styled";
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { convertTargetSettingToHex, getNewWeekTimeList } from "./utils";
 import { useLocaleProps } from "../../../hooks/useLocaleProps";
 import { getTargetSetting } from "../utils";
-import { timeList } from "../constants";
 import Spacer from "../../Spacer";
 import ErrorText from "../../ErrorText";
+import { WeekTimeElement } from "../internal/WeekTimeElement";
 
 export type WeekTimeSelectorProps = {
   weekTime: string;
@@ -78,7 +78,7 @@ const WeekTimeSelector = React.forwardRef<
     return false;
   };
 
-  const handleMouseOver = (weekIndex: number, timeIndex: number) => () => {
+  const handleMouseOver = (weekIndex: number, timeIndex: number) => {
     if (selectState === "none") {
       return;
     }
@@ -86,12 +86,15 @@ const WeekTimeSelector = React.forwardRef<
     setEndIndex({ weekIndex, timeIndex });
   };
 
-  const handleMouseDown =
-    (weekIndex: number, timeIndex: number, time: string) => () => {
-      const newValue = time === "1" ? "0" : "1";
-      setToValue(newValue);
-      handleChangeWeekTime(weekIndex, timeIndex, newValue);
-    };
+  const handleMouseDown = (
+    weekIndex: number,
+    timeIndex: number,
+    time: string,
+  ) => {
+    const newValue = time === "1" ? "0" : "1";
+    setToValue(newValue);
+    handleChangeWeekTime(weekIndex, timeIndex, newValue);
+  };
 
   // MEMO: button 以外の場所で mouseup したときの挙動を制御する
   const onMouseUp = () => {
@@ -110,28 +113,14 @@ const WeekTimeSelector = React.forwardRef<
 
   return (
     <Styled.Container ref={ref}>
-      <Styled.WeekTimeContainer>
-        <Styled.EmptyContainer />
-        {timeList.map((time) => (
-          <Styled.TimeContainer key={time}>{time}</Styled.TimeContainer>
-        ))}
-        {weekTimeList.map((time, weekIndex) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Fragment key={weekIndex}>
-            <Styled.WeekContainer>{weekList[weekIndex]}</Styled.WeekContainer>
-            {time.map((t, timeIndex) => (
-              <Styled.WeekTimeItem
-                // eslint-disable-next-line react/no-array-index-key
-                key={`${weekIndex}-${timeIndex}`}
-                active={t === "1"}
-                hover={isWithinHoverRange(weekIndex, timeIndex)}
-                onMouseOver={handleMouseOver(weekIndex, timeIndex)}
-                onMouseDown={handleMouseDown(weekIndex, timeIndex, t)}
-              />
-            ))}
-          </Fragment>
-        ))}
-      </Styled.WeekTimeContainer>
+      <WeekTimeElement
+        weekTime={weekTime}
+        weekList={weekList}
+        WeekTimeItem={Styled.WeekTimeItem}
+        isWithinHoverRange={isWithinHoverRange}
+        onMouseOver={handleMouseOver}
+        onMouseDown={handleMouseDown}
+      />
       {errorText && (
         <Spacer pt={1}>
           <ErrorText>{errorText}</ErrorText>
