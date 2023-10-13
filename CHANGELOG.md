@@ -1,5 +1,15 @@
 # Changelog
 
+## 14.14.0
+
+### Minor Changes
+
+- [#1461](https://github.com/voyagegroup/ingred-ui/pull/1461) [`f207bad9`](https://github.com/voyagegroup/ingred-ui/commit/f207bad91bfc2b3ff942dad9f49b010e38e18f6a) Thanks [@Yutan0423](https://github.com/Yutan0423)! - add WeekTime in data display
+
+### Patch Changes
+
+- [#1465](https://github.com/voyagegroup/ingred-ui/pull/1465) [`a7c6edea`](https://github.com/voyagegroup/ingred-ui/commit/a7c6edeaeece7a9a5397eca2e7ccbcadce224c72) Thanks [@takurinton](https://github.com/takurinton)! - add locale to DualListBox
+
 ## 14.13.0
 
 ### Minor Changes
