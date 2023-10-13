@@ -179,6 +179,6 @@ export * from "./LocaleProvider";
 export { default as Typography } from "./Typography";
 export * from "./Typography";
 
-export { default as WeekTimeSelector } from "./WeekTimeSelector";
-export * from "./WeekTimeSelector";
+export { WeekTime, WeekTimeSelector } from "./WeekTime";
+export * from "./WeekTime";
 /* eslint-enable import/export */
