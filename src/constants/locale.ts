@@ -85,9 +85,19 @@ export interface Localization {
         weekList: string[];
       };
     };
+    WeekTime?: {
+      defaultProps: {
+        weekList: string[];
+      };
+    };
     WeekTimeSelector?: {
       defaultProps: {
         weekList: string[];
+      };
+    };
+    DualListBox?: {
+      defaultProps: {
+        selectedItemTitle: string;
       };
     };
   };
@@ -151,9 +161,19 @@ export const jaJP: Localization = {
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
       },
     },
+    WeekTime: {
+      defaultProps: {
+        weekList: ["日", "月", "火", "水", "木", "金", "土"],
+      },
+    },
     WeekTimeSelector: {
       defaultProps: {
         weekList: ["日", "月", "火", "水", "木", "金", "土"],
+      },
+    },
+    DualListBox: {
+      defaultProps: {
+        selectedItemTitle: "個選択済み",
       },
     },
   },
@@ -194,9 +214,19 @@ export const enUS: Localization = {
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       },
     },
+    WeekTime: {
+      defaultProps: {
+        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
     WeekTimeSelector: {
       defaultProps: {
         weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      },
+    },
+    DualListBox: {
+      defaultProps: {
+        selectedItemTitle: "selected",
       },
     },
   },
