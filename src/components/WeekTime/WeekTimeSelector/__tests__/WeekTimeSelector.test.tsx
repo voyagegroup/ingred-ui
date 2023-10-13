@@ -2,14 +2,14 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
 import { renderWithThemeProvider } from "../../../../utils/renderWithThemeProvider";
-import WeekTime from "..";
+import WeekTimeSelector from "..";
 
-describe("WeekTime component testing", () => {
+describe("WeekTimeSelector component testing", () => {
   afterEach(cleanup);
 
-  test("WeekTime", () => {
+  test("WeekTimeSelector", () => {
     const { asFragment } = renderWithThemeProvider(
-      <WeekTime
+      <WeekTimeSelector
         weekTime="ffffffffffffffffffffffffffffffffffffffffff"
         onChange={jest.fn()}
       />,
