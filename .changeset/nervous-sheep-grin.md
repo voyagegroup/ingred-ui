@@ -2,4 +2,4 @@
 "ingred-ui": major
 ---
 
-add DualListBox label prop to selectedItems
+remove label prop and add content prop instead. content prop can receive ReactNode.
