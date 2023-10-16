@@ -5,100 +5,57 @@ import { SelectedList } from "./internal/SelectedList";
 import Divider from "../Divider/Divider";
 import { useTheme } from "../../themes";
 import { getCandidateItems } from "./utils";
-
-type DualListBoxItemId = string;
-
-type DualListBoxItemSelectedWithToggle = {
-  id: DualListBoxItemId;
-  checked: boolean;
-};
-
-type DualListBoxItemSelected = {
-  id: DualListBoxItemId;
-  checked?: undefined;
-};
+import { useLocaleProps } from "../../hooks/useLocaleProps";
 
 export type DualListBoxItem = {
-  id: DualListBoxItemId;
-  label?: string;
-  items?: DualListBoxItem[];
+  id: string;
+  content: React.ReactNode;
 };
 
-export type DualListBoxSelectedItem =
-  | DualListBoxItemSelectedWithToggle
-  | DualListBoxItemSelected;
-
-type BaseProps = {
-  candidateItems: DualListBoxItem[];
-  onAdd?: (id: DualListBoxItemId) => void;
-  onRemove?: (id: DualListBoxItemId) => void;
+export type DualListBoxCandidateItem = DualListBoxItem & {
+  items?: DualListBoxCandidateItem[];
 };
 
-export type DualListBoxProps = BaseProps &
-  (
-    | {
-        selectedItems: DualListBoxItemSelected[];
-        onToggleChange?: undefined;
-      }
-    | {
-        selectedItems: DualListBoxItemSelectedWithToggle[];
-        onToggleChange: (id: DualListBoxItemId) => void;
-      }
-  );
+export type DualListBoxProps = {
+  candidateItems: DualListBoxCandidateItem[];
+  selectedItems: DualListBoxItem[];
+  onAdd?: (item: DualListBoxItem) => void;
+  onRemove?: (item: DualListBoxItem) => void;
+};
 
 /**
  * @memo 内部で選択候補の状態を保持するための型
  */
-export type CandidateItem = DualListBoxItem & {
+export type CandidateItem = DualListBoxCandidateItem & {
   selected?: boolean;
 };
 
-/**
- * @memo 内部で選択済みの状態を保持するための型
- */
-export type SelectedItem = DualListBoxSelectedItem & {
-  label?: string;
-};
-
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
-  function DualListBox({
-    candidateItems: candidateItemsProp,
-    selectedItems: selectedItemsProp,
-    onAdd,
-    onRemove,
-    onToggleChange,
-  }) {
+  function DualListBox(inProps) {
+    const {
+      candidateItems: candidateItemsProp,
+      selectedItems,
+      selectedItemTitle,
+      onAdd,
+      onRemove,
+    } = useLocaleProps({ props: inProps, name: "DualListBox" });
+
     const theme = useTheme();
 
     const candidateItems: CandidateItem[] = React.useMemo(
-      () => getCandidateItems(candidateItemsProp, selectedItemsProp),
-      [candidateItemsProp, selectedItemsProp],
+      () => getCandidateItems(candidateItemsProp, selectedItems),
+      [candidateItemsProp, selectedItems],
     );
 
-    const selectedItems: DualListBoxSelectedItem[] = React.useMemo(() => {
-      return selectedItemsProp.map((item) => {
-        const targetItem = candidateItems.find(
-          (candidateItem) => candidateItem.id === item.id,
-        );
-        if (targetItem) {
-          return {
-            ...targetItem,
-            checked: item.checked,
-          };
-        }
-        return item;
-      });
-    }, [candidateItems, selectedItemsProp]);
-
-    const handleAdd = (id: string) => {
+    const handleAdd = (item: DualListBoxItem) => {
       if (onAdd) {
-        onAdd(id);
+        onAdd(item);
       }
     };
 
-    const handleRemove = (id: string) => {
+    const handleRemove = (item: DualListBoxItem) => {
       if (onRemove) {
-        onRemove(id);
+        onRemove(item);
       }
     };
 
@@ -112,8 +69,8 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
         <Divider color={theme.palette.divider} orientation="vertical" />
         <SelectedList
           items={selectedItems}
+          selectedItemTitle={selectedItemTitle}
           onRemove={handleRemove}
-          onToggleChange={onToggleChange}
         />
       </Styled.Container>
     );

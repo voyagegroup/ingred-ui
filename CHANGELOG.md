@@ -1,5 +1,21 @@
 # Changelog
 
+## 15.0.0
+
+### Major Changes
+
+- [#1464](https://github.com/voyagegroup/ingred-ui/pull/1464) [`7c6ee639`](https://github.com/voyagegroup/ingred-ui/commit/7c6ee639a4880927f2cdacd7d80cccb3ef3f3892) Thanks [@takurinton](https://github.com/takurinton)! - remove label prop and add content prop instead. content prop can receive ReactNode.
+
+## 14.14.0
+
+### Minor Changes
+
+- [#1461](https://github.com/voyagegroup/ingred-ui/pull/1461) [`f207bad9`](https://github.com/voyagegroup/ingred-ui/commit/f207bad91bfc2b3ff942dad9f49b010e38e18f6a) Thanks [@Yutan0423](https://github.com/Yutan0423)! - add WeekTime in data display
+
+### Patch Changes
+
+- [#1465](https://github.com/voyagegroup/ingred-ui/pull/1465) [`a7c6edea`](https://github.com/voyagegroup/ingred-ui/commit/a7c6edeaeece7a9a5397eca2e7ccbcadce224c72) Thanks [@takurinton](https://github.com/takurinton)! - add locale to DualListBox
+
 ## 14.13.0
 
 ### Minor Changes

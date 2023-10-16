@@ -9,7 +9,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
       class="sc-jqUVSM bBFcLq"
     />
     <hr
-      class="sc-ezWOiH jGjqaZ"
+      class="sc-fLlhyt cCPNfc"
       color="#B3BAC1"
       orientation="vertical"
     />
@@ -29,9 +29,9 @@ exports[`DualListBox component testing DualListBox 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            0個
+            0 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -168,7 +168,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
       </li>
     </ul>
     <hr
-      class="sc-ezWOiH jGjqaZ"
+      class="sc-fLlhyt cCPNfc"
       color="#B3BAC1"
       orientation="vertical"
     />
@@ -188,9 +188,9 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            0個
+            0 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -331,7 +331,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       </li>
     </ul>
     <hr
-      class="sc-ezWOiH jGjqaZ"
+      class="sc-fLlhyt cCPNfc"
       color="#B3BAC1"
       orientation="vertical"
     />
@@ -351,9 +351,9 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -362,13 +362,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            foo
-          </p>
+          foo
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -397,13 +391,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            bar
-          </p>
+          bar
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -432,13 +420,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            hoge
-          </p>
+          hoge
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -467,13 +449,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK jXxJVM"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            fuga
-          </p>
+          fuga
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -635,7 +611,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       </li>
     </ul>
     <hr
-      class="sc-ezWOiH jGjqaZ"
+      class="sc-fLlhyt cCPNfc"
       color="#B3BAC1"
       orientation="vertical"
     />
@@ -655,9 +631,9 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -666,52 +642,10 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            foo
-          </p>
+          foo
           <div
             class="sc-kgflAQ hZAlxa"
           >
-            <div
-              class="sc-fLlhyt hgHhfW"
-              width="48px"
-            >
-              <label
-                class="sc-iIPllB chxyVR"
-                width="48px"
-              >
-                <input
-                  checked=""
-                  class="sc-gicCDI kGfdjO"
-                  type="checkbox"
-                />
-                <div
-                  class="sc-ivTmOn sc-cxabCf iBgEPQ nRCNg"
-                >
-                  <div
-                    class="sc-fEOsli jKDwmQ"
-                    color="#0B82F4"
-                    font-size="12px"
-                  />
-                </div>
-                <div
-                  class="sc-ivTmOn sc-llJcti iBgEPQ fBZjsP"
-                >
-                  <div
-                    class="sc-fEOsli fQjbrd"
-                    color="#596978"
-                    font-size="12px"
-                  />
-                </div>
-                <span
-                  class="sc-bBrHrO kOSjGo"
-                />
-              </label>
-            </div>
             <button
               class="sc-dmRaPn mhBDH"
               type="button"
@@ -737,52 +671,10 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            bar
-          </p>
+          bar
           <div
             class="sc-kgflAQ hZAlxa"
           >
-            <div
-              class="sc-fLlhyt hgHhfW"
-              width="48px"
-            >
-              <label
-                class="sc-iIPllB chxyVR"
-                width="48px"
-              >
-                <input
-                  checked=""
-                  class="sc-gicCDI kGfdjO"
-                  type="checkbox"
-                />
-                <div
-                  class="sc-ivTmOn sc-cxabCf iBgEPQ nRCNg"
-                >
-                  <div
-                    class="sc-fEOsli jKDwmQ"
-                    color="#0B82F4"
-                    font-size="12px"
-                  />
-                </div>
-                <div
-                  class="sc-ivTmOn sc-llJcti iBgEPQ fBZjsP"
-                >
-                  <div
-                    class="sc-fEOsli fQjbrd"
-                    color="#596978"
-                    font-size="12px"
-                  />
-                </div>
-                <span
-                  class="sc-bBrHrO kOSjGo"
-                />
-              </label>
-            </div>
             <button
               class="sc-dmRaPn mhBDH"
               type="button"
@@ -808,52 +700,10 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            hoge
-          </p>
+          hoge
           <div
             class="sc-kgflAQ hZAlxa"
           >
-            <div
-              class="sc-fLlhyt hgHhfW"
-              width="48px"
-            >
-              <label
-                class="sc-iIPllB chxyVR"
-                width="48px"
-              >
-                <input
-                  checked=""
-                  class="sc-gicCDI kGfdjO"
-                  type="checkbox"
-                />
-                <div
-                  class="sc-ivTmOn sc-cxabCf iBgEPQ nRCNg"
-                >
-                  <div
-                    class="sc-fEOsli jKDwmQ"
-                    color="#0B82F4"
-                    font-size="12px"
-                  />
-                </div>
-                <div
-                  class="sc-ivTmOn sc-llJcti iBgEPQ fBZjsP"
-                >
-                  <div
-                    class="sc-fEOsli fQjbrd"
-                    color="#596978"
-                    font-size="12px"
-                  />
-                </div>
-                <span
-                  class="sc-bBrHrO kOSjGo"
-                />
-              </label>
-            </div>
             <button
               class="sc-dmRaPn mhBDH"
               type="button"
@@ -879,52 +729,10 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
         <li
           class="sc-hHLeRK jXxJVM"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          >
-            fuga
-          </p>
+          fuga
           <div
             class="sc-kgflAQ hZAlxa"
           >
-            <div
-              class="sc-fLlhyt hgHhfW"
-              width="48px"
-            >
-              <label
-                class="sc-iIPllB chxyVR"
-                width="48px"
-              >
-                <input
-                  checked=""
-                  class="sc-gicCDI kGfdjO"
-                  type="checkbox"
-                />
-                <div
-                  class="sc-ivTmOn sc-cxabCf iBgEPQ nRCNg"
-                >
-                  <div
-                    class="sc-fEOsli jKDwmQ"
-                    color="#0B82F4"
-                    font-size="12px"
-                  />
-                </div>
-                <div
-                  class="sc-ivTmOn sc-llJcti iBgEPQ fBZjsP"
-                >
-                  <div
-                    class="sc-fEOsli fQjbrd"
-                    color="#596978"
-                    font-size="12px"
-                  />
-                </div>
-                <span
-                  class="sc-bBrHrO kOSjGo"
-                />
-              </label>
-            </div>
             <button
               class="sc-dmRaPn mhBDH"
               type="button"
@@ -962,7 +770,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
       class="sc-jqUVSM bBFcLq"
     />
     <hr
-      class="sc-ezWOiH jGjqaZ"
+      class="sc-fLlhyt cCPNfc"
       color="#B3BAC1"
       orientation="vertical"
     />
@@ -982,9 +790,9 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
             color="#0B82F4"
             font-size="13px"
           >
-            4個
+            4 
           </span>
-          選択済み
+          selected
         </p>
       </div>
       <ul
@@ -993,11 +801,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          />
+          foo
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1026,11 +830,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          />
+          bar
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1059,11 +859,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
         <li
           class="sc-hHLeRK dPqaSF"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          />
+          hoge
           <div
             class="sc-kgflAQ hZAlxa"
           >
@@ -1092,11 +888,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
         <li
           class="sc-hHLeRK jXxJVM"
         >
-          <p
-            class="sc-fEOsli irbPqM"
-            color="#041C33"
-            font-size="14px"
-          />
+          fuga
           <div
             class="sc-kgflAQ hZAlxa"
           >

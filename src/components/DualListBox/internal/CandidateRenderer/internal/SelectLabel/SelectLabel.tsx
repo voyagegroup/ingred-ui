@@ -1,13 +1,13 @@
 import React from "react";
 import Flex from "../../../../../Flex/Flex";
-import { CandidateItem } from "../../../../DualListBox";
+import { CandidateItem, DualListBoxItem } from "../../../../DualListBox";
 import Checkbox from "../../../../../Checkbox/Checkbox";
 import Typography from "../../../../../Typography/Typography";
 
 export const SelectLabel: React.FunctionComponent<{
   item: CandidateItem;
-  onAdd?: (id: string) => void;
-  onRemove?: (id: string) => void;
+  onAdd?: (item: DualListBoxItem) => void;
+  onRemove?: (item: DualListBoxItem) => void;
   children: React.ReactNode;
 }> = ({ children, item, onAdd, onRemove }) => {
   return (
@@ -20,10 +20,10 @@ export const SelectLabel: React.FunctionComponent<{
           // eslint-disable-next-line react/jsx-handler-names
           onClick={() => {
             if (item.selected) {
-              onRemove?.(item.id);
+              onRemove?.(item);
               return;
             }
-            onAdd?.(item.id);
+            onAdd?.(item);
           }}
         >
           <Typography>{children}</Typography>
