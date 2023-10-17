@@ -1,5 +1,17 @@
 # Changelog
 
+## 16.0.0
+
+### Major Changes
+
+- [#1462](https://github.com/voyagegroup/ingred-ui/pull/1462) [`5e0fa7b1`](https://github.com/voyagegroup/ingred-ui/commit/5e0fa7b1a73ba612cc847fb6f2a0aed50a791274) Thanks [@takurinton](https://github.com/takurinton)! - Replace NewDatePicker with DatePicker and drop the old DatePicker. Replace NewDateRangePicker with DateRangePicker and drop the old DateRangePicker. Drop moment.js and react-dates.
+
+### Patch Changes
+
+- [#1472](https://github.com/voyagegroup/ingred-ui/pull/1472) [`4959f9f1`](https://github.com/voyagegroup/ingred-ui/commit/4959f9f1ce770a5f77c31decd5ea75bc0c26b85b) Thanks [@takurinton](https://github.com/takurinton)! - remove unnecessary eslint-disable
+
+- [#1457](https://github.com/voyagegroup/ingred-ui/pull/1457) [`92ebcd2e`](https://github.com/voyagegroup/ingred-ui/commit/92ebcd2e01c39ba479a6e4951c482f3dc3ca3817) Thanks [@dependabot](https://github.com/apps/dependabot)! - updated snapshot along with floating-ui update
+
 ## 15.0.0
 
 ### Major Changes
