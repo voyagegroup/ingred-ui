@@ -110,12 +110,6 @@ export * from "./MultipleFilter";
 export { default as NavigationRail } from "./NavigationRail";
 export * from "./NavigationRail";
 
-export { default as NewDatePicker } from "./NewDatePicker";
-export * from "./NewDatePicker";
-
-export { default as NewDateRangePicker } from "./NewDateRangePicker";
-export * from "./NewDateRangePicker";
-
 export { default as NotificationBadge } from "./NotificationBadge";
 export * from "./NotificationBadge";
 

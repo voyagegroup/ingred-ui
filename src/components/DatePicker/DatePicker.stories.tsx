@@ -1,96 +1,128 @@
-import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
 import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import dayjs from "dayjs";
-import React from "react";
-import DatePicker from "./DatePicker";
-import "dayjs/locale/ja";
-import localeData from "dayjs/plugin/localeData";
+import DatePicker, { DatePickerProps } from "./DatePicker";
+import dayjs, { Dayjs } from "dayjs";
+import React, { useState } from "react";
 
 export default {
   title: "Components/Inputs/DatePicker",
   component: DatePicker,
-  parameters: {
-    docs: {
-      source: { language: "tsx" },
-      page: () => (
-        <>
-          <Title />
-          <Markdown>
-            {[
-              "The wrapper of [react-dates](https://github.com/airbnb/react-dates).",
-              "",
-              "For more detail props, please see [it](https://github.com/airbnb/react-dates#singledatepicker).",
-            ].join("\n")}
-          </Markdown>
-          <ArgsTable of={DatePicker} />
-          <Markdown>
-            {[
-              "## When the display is strange",
-              "",
-              "Please import css from `react-dates`.",
-              "",
-              "```tsx",
-              "",
-              'import "react-dates/lib/css/_datepicker.css";',
-              "```",
-            ].join("\n")}
-          </Markdown>
-          <Stories includePrimary title="Stories" />
-        </>
-      ),
-    },
+  args: {
+    format: "YYYY-MM-DD",
   },
 };
 
-export const Basic: StoryObj = {
-  render: () => {
-    dayjs.locale("en");
-    const [date, setDate] = React.useState(dayjs());
-    const handleChangeDate = (date: dayjs.Dayjs | null) => {
-      if (date === null) {
-        return;
-      }
-      setDate(date);
-    };
+export const Example: StoryObj<DatePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState(dayjs());
+    return <DatePicker {...args} date={date} onDateChange={setDate} />;
+  },
+};
+
+export const WithActions: StoryObj<DatePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState(dayjs());
+    const actions = [
+      {
+        text: "今日",
+        onClick: () => {
+          setDate(dayjs());
+        },
+      },
+      {
+        text: "明日",
+        onClick: () => {
+          setDate(dayjs().add(1, "day"));
+        },
+      },
+      {
+        text: "来週",
+        onClick: () => {
+          setDate(dayjs().add(1, "week"));
+        },
+      },
+    ];
+
     return (
-      <div style={{ height: "400px" }}>
-        <DatePicker date={date} onDateChange={handleChangeDate} />
-      </div>
+      <DatePicker
+        {...args}
+        date={date}
+        actions={actions}
+        onDateChange={setDate}
+      />
     );
   },
 };
 
-export const Error: StoryObj = {
-  render: () => {
-    return <DatePicker date={dayjs()} error={true} onDateChange={() => {}} />;
+export const WithActionsWithDefaultClickAction: StoryObj<DatePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState(dayjs());
+    const [clickAction, setClickAction] = useState("今日");
+    const actions = [
+      {
+        text: "今日",
+        onClick: () => {
+          setDate(dayjs());
+        },
+      },
+      {
+        text: "明日",
+        onClick: () => {
+          setDate(dayjs().add(1, "day"));
+        },
+      },
+      {
+        text: "来週",
+        onClick: () => {
+          setDate(dayjs().add(1, "week"));
+        },
+      },
+    ];
+
+    const handleDateChange = (date: Dayjs) => {
+      setDate(date);
+      setClickAction("");
+    };
+
+    return (
+      <DatePicker
+        {...args}
+        date={date}
+        defaultClickAction={clickAction}
+        actions={actions}
+        onClickAction={(action) => setClickAction(action.text)}
+        onDateChange={handleDateChange}
+      />
+    );
   },
 };
 
-export const Localize: StoryObj = {
-  render: () => {
-    dayjs.locale("ja");
-    dayjs.extend(localeData);
-    const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
-    const displayFormat = () => "YYYY/MM/DD";
-    const [date, setDate] = React.useState(dayjs());
-    const handleChangeDate = (date: dayjs.Dayjs | null) => {
-      if (date === null) {
-        return;
-      }
-      setDate(date);
-    };
+export const Error: StoryObj<DatePickerProps> = {
+  ...Example,
+  args: {
+    errorText: "エラー",
+  },
+};
+
+export const Disabled: StoryObj<DatePickerProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};
+
+export const IsOutsideRange: StoryObj<DatePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState(dayjs());
+    const isOutsideRange = (day: dayjs.Dayjs) =>
+      day.isBefore(dayjs().subtract(1, "day"));
+
     return (
-      <div style={{ height: "400px" }}>
-        <DatePicker
-          date={date}
-          locale={"ja"}
-          localeData={dayjs().localeData()}
-          displayFormat={displayFormat}
-          renderMonthText={renderMonthText}
-          onDateChange={handleChangeDate}
-        />
-      </div>
+      <DatePicker
+        {...args}
+        date={date}
+        isOutsideRange={isOutsideRange}
+        onDateChange={setDate}
+      />
     );
   },
 };

@@ -1,124 +1,174 @@
-import React, { useState } from "react";
 import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
+import DateRangePicker, { DateRangePickerProps } from "./DateRangePicker";
 import dayjs from "dayjs";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import DateRangePicker from "./DateRangePicker";
-import "react-dates/lib/css/_datepicker.css";
-import "dayjs/locale/ja";
-import localeData from "dayjs/plugin/localeData";
+import React, { useState } from "react";
 
 export default {
   title: "Components/Inputs/DateRangePicker",
   component: DateRangePicker,
-  parameters: {
-    docs: {
-      source: { language: "tsx" },
-      page: () => (
-        <>
-          <Title />
-          <Markdown>
-            {[
-              "The wrapper of [react-dates](https://github.com/airbnb/react-dates).",
-              "",
-              "For more detail props, please see [it](https://github.com/airbnb/react-dates#daterangepicker).",
-            ].join("\n")}
-          </Markdown>
-          <ArgsTable of={DateRangePicker} />
-          <Markdown>
-            {[
-              "## When the display is strange",
-              "",
-              "Please import css from `react-dates`.",
-              "",
-              "```tsx",
-              "",
-              'import "react-dates/lib/css/_datepicker.css";',
-              "```",
-            ].join("\n")}
-          </Markdown>
-          <Stories includePrimary title="Stories" />
-        </>
-      ),
-    },
+  args: {
+    format: "YYYY-MM-DD",
   },
 };
 
-export const Basic: StoryObj = {
-  render: () => {
-    // MEMO: To be unaffected by "Localize" story.
-    dayjs.locale("en");
-    const [date, setDate] = useState<{
-      startDate: dayjs.Dayjs | null;
-      endDate: dayjs.Dayjs | null;
-    }>({
-      startDate: dayjs().set("date", 1),
-      endDate: dayjs(),
+export const Example: StoryObj<DateRangePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState({
+      startDate: dayjs(),
+      endDate: dayjs().add(1, "week"),
     });
-    const handleChangeDates = (arg: {
-      startDate: dayjs.Dayjs | null;
-      endDate: dayjs.Dayjs | null;
-    }) => {
-      setDate(arg);
-    };
-    return (
-      <div style={{ height: "400px" }}>
-        <DateRangePicker
-          startDate={date.startDate}
-          endDate={date.endDate}
-          onDatesChange={handleChangeDates}
-        />
-      </div>
-    );
-  },
-};
 
-export const Error: StoryObj = {
-  render: () => {
-    // MEMO: To be unaffected by "Localize" story.
-    dayjs.locale("en");
     return (
       <DateRangePicker
-        startDate={dayjs().set("date", 1)}
-        endDate={dayjs()}
-        error={true}
-        onDatesChange={() => {}}
+        {...args}
+        startDate={date.startDate}
+        endDate={date.endDate}
+        onDatesChange={setDate}
       />
     );
   },
 };
 
-export const Localize: StoryObj = {
-  render: () => {
-    dayjs.locale("ja");
-    dayjs.extend(localeData);
-    const renderMonthText = (day: dayjs.Dayjs) => day.format("YYYY年M月");
-    const displayFormat = () => "YYYY/MM/DD";
-    const [date, setDate] = useState<{
-      startDate: dayjs.Dayjs | null;
-      endDate: dayjs.Dayjs | null;
-    }>({
-      startDate: dayjs().set("date", 1),
-      endDate: dayjs(),
+export const WithActions: StoryObj<DateRangePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState({
+      startDate: dayjs(),
+      endDate: dayjs().add(1, "week"),
     });
-    const handleChangeDates = (arg: {
-      startDate: dayjs.Dayjs | null;
-      endDate: dayjs.Dayjs | null;
-    }) => {
-      setDate(arg);
-    };
+    const actions = [
+      {
+        text: "明日",
+        onClick: () => {
+          setDate({
+            startDate: dayjs(),
+            endDate: dayjs().add(1, "day"),
+          });
+        },
+      },
+      {
+        text: "来週",
+        onClick: () => {
+          setDate({
+            startDate: dayjs(),
+            endDate: dayjs().add(1, "week"),
+          });
+        },
+      },
+      {
+        text: "先月",
+        onClick: () => {
+          setDate({
+            startDate: dayjs().subtract(1, "month"),
+            endDate: dayjs(),
+          });
+        },
+      },
+    ];
+
     return (
-      <div style={{ height: "400px" }}>
+      <DateRangePicker
+        {...args}
+        actions={actions}
+        startDate={date.startDate}
+        endDate={date.endDate}
+        onDatesChange={setDate}
+      />
+    );
+  },
+};
+
+export const WithActionsWithDefaultClickAction: StoryObj<DateRangePickerProps> =
+  {
+    render: (args) => {
+      const [date, setDate] = useState({
+        startDate: dayjs(),
+        endDate: dayjs().add(1, "week"),
+      });
+      const [clickAction, setClickAction] = useState("来週");
+      const actions = [
+        {
+          text: "明日",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "day"),
+            });
+          },
+        },
+        {
+          text: "来週",
+          onClick: () => {
+            setDate({
+              startDate: dayjs(),
+              endDate: dayjs().add(1, "week"),
+            });
+          },
+        },
+        {
+          text: "先月",
+          onClick: () => {
+            setDate({
+              startDate: dayjs().subtract(1, "month"),
+              endDate: dayjs(),
+            });
+          },
+        },
+      ];
+
+      const handleDateChange = (dates: {
+        startDate: dayjs.Dayjs;
+        endDate: dayjs.Dayjs;
+      }) => {
+        setDate(dates);
+        setClickAction("");
+      };
+
+      return (
         <DateRangePicker
+          {...args}
+          actions={actions}
           startDate={date.startDate}
           endDate={date.endDate}
-          locale={"ja"}
-          localeData={dayjs().localeData()}
-          displayFormat={displayFormat}
-          renderMonthText={renderMonthText}
-          onDatesChange={handleChangeDates}
+          defaultClickAction={clickAction}
+          onClickAction={(action) => setClickAction(action.text)}
+          onDatesChange={handleDateChange}
         />
-      </div>
+      );
+    },
+  };
+
+export const Error: StoryObj<DateRangePickerProps> = {
+  ...Example,
+  args: {
+    errorText: "エラー",
+  },
+};
+
+export const Disabled: StoryObj<DateRangePickerProps> = {
+  ...Example,
+  args: {
+    disabled: true,
+  },
+};
+
+export const IsOutsideRange: StoryObj<DateRangePickerProps> = {
+  render: (args) => {
+    const [date, setDate] = useState({
+      startDate: dayjs(),
+      endDate: dayjs().add(1, "week"),
+    });
+
+    const isOutsideRange = (day: dayjs.Dayjs) =>
+      day.isBefore(dayjs().subtract(1, "day"));
+
+    return (
+      <DateRangePicker
+        {...args}
+        startDate={date.startDate}
+        endDate={date.endDate}
+        isOutsideRange={isOutsideRange}
+        onDatesChange={setDate}
+      />
     );
   },
 };
