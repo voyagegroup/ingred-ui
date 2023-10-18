@@ -8,10 +8,10 @@ runs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
-    - name: Use Node.js 18.x
+    - name: Use Node.js 20.x
       uses: actions/setup-node@v3
       with:
-        node-version: 18.x
+        node-version: 20.x
     - name: install
       shell: bash
       run: make -f ci.mk install

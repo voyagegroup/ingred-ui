@@ -9,7 +9,7 @@
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
   "engines": {
-    "node": "^16.x || >=18.0.0"
+    "node": "^18.x || >=20.0.0"
   },
   "scripts": {
     "test": "cross-env CI=1 jest --runInBand",
