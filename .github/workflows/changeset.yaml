@@ -10,7 +10,7 @@ jobs:
   changeset:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-yarn
       - name: check changesets
         run: make -f ci.mk check_changesets
