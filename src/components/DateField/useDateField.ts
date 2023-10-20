@@ -67,9 +67,7 @@ export const useDateField = ({
     });
   }, [sections]);
 
-  const onFocus = useCallback(() => {
-    setCurrent();
-  }, [setCurrent]);
+  const onFocus = useCallback(() => {}, []);
 
   const onBlur = useCallback(() => {
     setPlacement((prev) => ({
