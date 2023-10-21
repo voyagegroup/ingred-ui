@@ -50,6 +50,13 @@ export const useDateField = ({
       );
 
       setPlacement((prev) => {
+        if (!sections[currentSectionIndex].editable) {
+          return {
+            ...prev,
+            current: currentSectionIndex + 1,
+          };
+        }
+
         if (prev.current === currentSectionIndex) {
           return prev;
         }
