@@ -17,7 +17,7 @@ export const Example: StoryObj<DateFieldProps> = {
 
 export const Custom: StoryObj<DateFieldProps> = {
   args: {
-    format: "MM/DD/YYYY",
+    format: "MM/DD/YYYY HH:mm:ss",
   },
   render: (args) => {
     const [date, setDate] = useState(dayjs());
