@@ -1,5 +1,17 @@
 # Changelog
 
+## 17.0.0
+
+### Major Changes
+
+- [#1482](https://github.com/voyagegroup/ingred-ui/pull/1482) [`353fc554`](https://github.com/voyagegroup/ingred-ui/commit/353fc55483b134a75543a05e31ba3057a1ba9345) Thanks [@takurinton](https://github.com/takurinton)! - drop Node.js version under 16
+
+### Patch Changes
+
+- [#1486](https://github.com/voyagegroup/ingred-ui/pull/1486) [`02c026bf`](https://github.com/voyagegroup/ingred-ui/commit/02c026bff8b1c6a3db3518288825d82ce913578d) Thanks [@takurinton](https://github.com/takurinton)! - Fix automatic decrement of time
+
+- [#1487](https://github.com/voyagegroup/ingred-ui/pull/1487) [`fa70e9aa`](https://github.com/voyagegroup/ingred-ui/commit/fa70e9aaf83d304bdd40946b5d48d791f469312b) Thanks [@takurinton](https://github.com/takurinton)! - Improved focus experience for useDateField
+
 ## 16.0.0
 
 ### Major Changes
