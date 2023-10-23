@@ -50,6 +50,13 @@ export const useDateField = ({
       );
 
       setPlacement((prev) => {
+        if (!sections[currentSectionIndex].editable) {
+          return {
+            ...prev,
+            current: currentSectionIndex + 1,
+          };
+        }
+
         if (prev.current === currentSectionIndex) {
           return prev;
         }
@@ -67,9 +74,7 @@ export const useDateField = ({
     });
   }, [sections]);
 
-  const onFocus = useCallback(() => {
-    setCurrent();
-  }, [setCurrent]);
+  const onFocus = useCallback(() => {}, []);
 
   const onBlur = useCallback(() => {
     setPlacement((prev) => ({
