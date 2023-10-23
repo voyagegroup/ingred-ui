@@ -9,7 +9,7 @@ const match1 = /\d/; // 0 - 9
 const match2 = /\d\d/; // 00 - 99
 const match3 = /\d{3}/; // 000 - 999
 const match4 = /\d{4}/; // 0000 - 9999
-const match1to2 = /\d\d?/; // 0 - 99
+const match1to2 = /-?\d\d?/; // -99 - 99
 const matchSigned = /[+-]?\d+/; // -inf - inf
 const matchOffset = /[+-]\d\d:?(\d\d)?|Z/; // +00:00 -00:00 +0000 or -0000 +00 or Z
 const matchWord = /\d*[^-_:/,()\s\d]+/; // Word
@@ -220,6 +220,7 @@ const parseFormattedInput = (input, format, utc) => {
     const parser = makeParser(format);
     const { year, month, day, hours, minutes, seconds, milliseconds, zone } =
       parser(input);
+
     const now = new Date();
     const y = year || now.getFullYear();
     // Date オブジェクトに渡す month は 0 から始まるため、ここで -1 する
