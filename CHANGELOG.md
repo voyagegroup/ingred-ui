@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.1.0
+
+### Minor Changes
+
+- [#1491](https://github.com/voyagegroup/ingred-ui/pull/1491) [`30b3aec0`](https://github.com/voyagegroup/ingred-ui/commit/30b3aec02482a2a12e6027a7a53785a7fe2e33df) Thanks [@shungenie](https://github.com/shungenie)! - add group2 icon
+
 ## 17.0.0
 
 ### Major Changes
