@@ -17,8 +17,10 @@ exports[`Select component testing Disable multiple selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
+        aria-disabled="true"
         class=" css-yw5jbj-control"
       >
         <div
@@ -175,11 +177,11 @@ exports[`Select component testing Disable multiple selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-7-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-7-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -230,10 +232,12 @@ exports[`Select component testing Disable multiple selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-7-listbox"
       >
         <div
+          aria-multiselectable="true"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-7-listbox"
+          role="listbox"
         >
           <div
             class=" css-1ufqtev-NoOptionsMessage"
@@ -264,8 +268,10 @@ exports[`Select component testing Disable not selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
+        aria-disabled="true"
         class=" css-yw5jbj-control"
       >
         <div
@@ -282,12 +288,12 @@ exports[`Select component testing Disable not selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-5-listbox"
               aria-describedby="react-select-5-placeholder"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-5-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -338,23 +344,29 @@ exports[`Select component testing Disable not selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-5-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-5-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-5-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-5-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
@@ -383,8 +395,10 @@ exports[`Select component testing Disable one selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
+        aria-disabled="true"
         class=" css-yw5jbj-control"
       >
         <div
@@ -400,11 +414,11 @@ exports[`Select component testing Disable one selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-6-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-6-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -455,23 +469,29 @@ exports[`Select component testing Disable one selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-6-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-6-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="true"
             class=" css-1hd25el-option"
             id="react-select-6-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-6-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
@@ -500,6 +520,7 @@ exports[`Select component testing Error multiple selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-q6ehzp-control"
@@ -658,11 +679,11 @@ exports[`Select component testing Error multiple selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-10-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-10-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -779,10 +800,12 @@ exports[`Select component testing Error multiple selected 1`] = `
       </div>
       <div
         class=" css-vcx9vk-menu"
-        id="react-select-10-listbox"
       >
         <div
+          aria-multiselectable="true"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-10-listbox"
+          role="listbox"
         >
           <div
             class=" css-1ufqtev-NoOptionsMessage"
@@ -813,6 +836,7 @@ exports[`Select component testing Error not selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-q6ehzp-control"
@@ -831,12 +855,12 @@ exports[`Select component testing Error not selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-8-listbox"
               aria-describedby="react-select-8-placeholder"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-8-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -886,23 +910,29 @@ exports[`Select component testing Error not selected 1`] = `
       </div>
       <div
         class=" css-vcx9vk-menu"
-        id="react-select-8-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-8-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-8-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-8-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
@@ -931,6 +961,7 @@ exports[`Select component testing Error one selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-q6ehzp-control"
@@ -948,11 +979,11 @@ exports[`Select component testing Error one selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-9-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-9-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -1069,23 +1100,29 @@ exports[`Select component testing Error one selected 1`] = `
       </div>
       <div
         class=" css-vcx9vk-menu"
-        id="react-select-9-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-9-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="true"
             class=" css-1hd25el-option"
             id="react-select-9-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-9-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
@@ -1114,6 +1151,7 @@ exports[`Select component testing Normal multiple selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-1oh1mzt-control"
@@ -1272,11 +1310,11 @@ exports[`Select component testing Normal multiple selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-4-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-4-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -1393,10 +1431,12 @@ exports[`Select component testing Normal multiple selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-4-listbox"
       >
         <div
+          aria-multiselectable="true"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-4-listbox"
+          role="listbox"
         >
           <div
             class=" css-1ufqtev-NoOptionsMessage"
@@ -1427,6 +1467,7 @@ exports[`Select component testing Normal not selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-1oh1mzt-control"
@@ -1445,12 +1486,12 @@ exports[`Select component testing Normal not selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-2-listbox"
               aria-describedby="react-select-2-placeholder"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-2-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -1500,23 +1541,29 @@ exports[`Select component testing Normal not selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-2-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-2-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-2-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-2-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
@@ -1545,6 +1592,7 @@ exports[`Select component testing Normal one selected 1`] = `
         aria-live="polite"
         aria-relevant="additions text"
         class="css-1f43avz-a11yText-A11yText"
+        role="log"
       />
       <div
         class=" css-1oh1mzt-control"
@@ -1562,11 +1610,11 @@ exports[`Select component testing Normal one selected 1`] = `
             data-value=""
           >
             <input
+              aria-activedescendant=""
               aria-autocomplete="list"
               aria-controls="react-select-3-listbox"
               aria-expanded="true"
               aria-haspopup="true"
-              aria-owns="react-select-3-listbox"
               autocapitalize="none"
               autocomplete="off"
               autocorrect="off"
@@ -1683,23 +1731,29 @@ exports[`Select component testing Normal one selected 1`] = `
       </div>
       <div
         class=" css-fqzh9e-menu"
-        id="react-select-3-listbox"
       >
         <div
+          aria-multiselectable="false"
           class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
+          id="react-select-3-listbox"
+          role="listbox"
         >
           <div
             aria-disabled="false"
+            aria-selected="true"
             class=" css-1hd25el-option"
             id="react-select-3-option-0"
+            role="option"
             tabindex="-1"
           >
             hoge
           </div>
           <div
             aria-disabled="false"
+            aria-selected="false"
             class=" css-1mw1c1j-option"
             id="react-select-3-option-1"
+            role="option"
             tabindex="-1"
           >
             huga
