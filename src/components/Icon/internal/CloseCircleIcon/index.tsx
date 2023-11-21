@@ -1,40 +1,30 @@
 import * as React from "react";
 import { IconProps } from "../../Icon";
 
-const CloseCircleIcon: React.FunctionComponent<IconProps> = ({ fill }) => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <g transform="translate(-657 -463)">
-        <path d="M0,0H24V24H0Z" transform="translate(657 463)" fill="none" />
-        <g transform="translate(659 465)">
-          <rect
-            width="17.143"
-            height="17.143"
-            transform="translate(1.429 1.429)"
-            fill="none"
+const CloseCircleIcon: React.FunctionComponent<IconProps> = ({
+  fill,
+  type = "fill",
+}) => {
+  switch (type) {
+    case "fill":
+      return (
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z"
+            fill={fill}
           />
-          <circle cx="10" cy="10" r="10" fill={fill} />
-          <g transform="translate(2 2)">
-            <rect width="16" height="16" fill="none" />
-            <rect
-              width="3.428"
-              height="15.428"
-              rx="1.714"
-              transform="translate(12.242 1.333) rotate(45)"
-              fill="#fff"
-            />
-            <rect
-              width="3.428"
-              height="15.428"
-              rx="1.714"
-              transform="translate(1.333 3.758) rotate(-45)"
-              fill="#fff"
-            />
-          </g>
-        </g>
-      </g>
-    </svg>
-  );
+        </svg>
+      );
+    case "line":
+      return (
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM12 10.5858L14.8284 7.75736L16.2426 9.17157L13.4142 12L16.2426 14.8284L14.8284 16.2426L12 13.4142L9.17157 16.2426L7.75736 14.8284L10.5858 12L7.75736 9.17157L9.17157 7.75736L12 10.5858Z"
+            fill={fill}
+          />
+        </svg>
+      );
+  }
 };
 
 export { CloseCircleIcon };

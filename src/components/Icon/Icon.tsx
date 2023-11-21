@@ -93,7 +93,6 @@ import { BarChartSearchIcon } from "./internal/BarChartSearchIcon";
 import { CheckThinIcon } from "./internal/CheckThinIcon";
 import { ImageCheckIcon } from "./internal/ImageCheckIcon";
 import { Group2Icon } from "./internal/Group2Icon";
-import { CloseCircle2Icon } from "./internal/CloseCircle2Icon";
 
 export type IconName =
   | "dashboard"
@@ -186,8 +185,7 @@ export type IconName =
   | "bar_chart_search"
   | "check_thin"
   | "image_check"
-  | "group2"
-  | "close_circle2";
+  | "group2";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -297,7 +295,6 @@ export const icons: {
   check_thin: CheckThinIcon,
   image_check: ImageCheckIcon,
   group2: Group2Icon,
-  close_circle2: CloseCircle2Icon,
 };
 
 const iconFactory = (name: IconName) => {
