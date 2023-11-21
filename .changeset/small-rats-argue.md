@@ -2,4 +2,4 @@
 "ingred-ui": minor
 ---
 
-Add close_circle2 icon
+Replace close_circle icon
