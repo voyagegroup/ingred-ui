@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.2.0
+
+### Minor Changes
+
+- [#1512](https://github.com/voyagegroup/ingred-ui/pull/1512) [`7846d6e8`](https://github.com/voyagegroup/ingred-ui/commit/7846d6e812bb4803fbc484b4d044ba8bc36655e1) Thanks [@deatiger](https://github.com/deatiger)! - Replace close_circle icon
+
 ## 17.1.0
 
 ### Minor Changes
