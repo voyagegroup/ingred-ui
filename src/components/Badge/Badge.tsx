@@ -43,7 +43,7 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
       type = "normal",
       component = "span",
       fontSize = "13px",
-      fontWeight = "bold",
+      fontWeight = "normal",
       children,
       ...rest
     },
