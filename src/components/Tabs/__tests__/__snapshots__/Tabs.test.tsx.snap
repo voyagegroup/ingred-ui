@@ -85,9 +85,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             hoge 
           </p>
           <span
-            class="sc-iBkjds ejurA"
+            class="sc-iBkjds dzlDKr"
             color="#FFFFFF"
-            font-size="0.65em"
+            font-size="13px"
             font-weight="bold"
             type="pill"
           >
@@ -112,9 +112,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             fuga 
           </p>
           <span
-            class="sc-iBkjds qDogj"
+            class="sc-iBkjds goPNhc"
             color="#FFFFFF"
-            font-size="0.65em"
+            font-size="13px"
             font-weight="bold"
             type="pill"
           >
@@ -139,9 +139,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             piyo 
           </p>
           <span
-            class="sc-iBkjds qDogj"
+            class="sc-iBkjds goPNhc"
             color="#FFFFFF"
-            font-size="0.65em"
+            font-size="13px"
             font-weight="bold"
             type="pill"
           >
