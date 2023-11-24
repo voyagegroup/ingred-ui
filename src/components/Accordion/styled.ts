@@ -5,14 +5,12 @@ export const Container = styled.div`
   border-top: ${({ theme }) => `1px solid ${theme.palette.divider}`};
 `;
 
-export const AccordionTitle = styled(Flex) <{
+export const AccordionTitle = styled(Flex)<{
   expanded: boolean;
   disabled?: boolean;
 }>`
   background-color: ${({ disabled, theme }) =>
-    disabled
-      ? theme.palette.gray.light
-      : theme.palette.gray.highlight};
+    disabled ? theme.palette.gray.light : theme.palette.gray.highlight};
   color: ${({ disabled, theme }) =>
     disabled ? theme.palette.text.disabled : "auto"};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
