@@ -54,7 +54,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
   }, [expanded]);
 
   return (
-    <Styled.Container ref={ref} expanded={expandedState} {...rest}>
+    <Styled.Container ref={ref} {...rest}>
       <Styled.AccordionTitle
         display="flex"
         tabIndex={disabled ? -1 : 0}

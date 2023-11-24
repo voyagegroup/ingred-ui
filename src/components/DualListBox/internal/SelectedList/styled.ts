@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const SelectedHeader = styled.div`
-  background-color: ${({ theme }) => theme.palette.gray.highlight};
+  background-color: ${({ theme }) => theme.palette.gray.light};
   border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: ${({ theme }) => `0 ${theme.spacing}px 0 0`};
   padding: ${({ theme }) => `${theme.spacing * 1.5}px ${theme.spacing * 2}px`};

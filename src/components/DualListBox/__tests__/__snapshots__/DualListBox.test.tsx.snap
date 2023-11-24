@@ -17,7 +17,7 @@ exports[`DualListBox component testing DualListBox 1`] = `
       class="sc-bjUoiL hkPZz"
     >
       <div
-        class="sc-idiyUo gIEPRB"
+        class="sc-idiyUo bKIXon"
       >
         <p
           class="sc-fEOsli fayFCh"
@@ -176,7 +176,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
       class="sc-bjUoiL hkPZz"
     >
       <div
-        class="sc-idiyUo gIEPRB"
+        class="sc-idiyUo bKIXon"
       >
         <p
           class="sc-fEOsli fayFCh"
@@ -339,7 +339,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       class="sc-bjUoiL hkPZz"
     >
       <div
-        class="sc-idiyUo gIEPRB"
+        class="sc-idiyUo bKIXon"
       >
         <p
           class="sc-fEOsli fayFCh"
@@ -619,7 +619,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       class="sc-bjUoiL hkPZz"
     >
       <div
-        class="sc-idiyUo gIEPRB"
+        class="sc-idiyUo bKIXon"
       >
         <p
           class="sc-fEOsli fayFCh"
@@ -778,7 +778,7 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
       class="sc-bjUoiL hkPZz"
     >
       <div
-        class="sc-idiyUo gIEPRB"
+        class="sc-idiyUo bKIXon"
       >
         <p
           class="sc-fEOsli fayFCh"
