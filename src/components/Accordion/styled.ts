@@ -1,21 +1,17 @@
 import Flex from "../Flex";
 import styled from "styled-components";
 
-export const Container = styled.div<{ expanded: boolean }>`
-  border-top: ${({ expanded, theme }) =>
-    expanded ? "none" : `1px solid ${theme.palette.divider}`};
+export const Container = styled.div`
+  border-top: ${({ theme }) => `1px solid ${theme.palette.divider}`};
 `;
 
-export const AccordionTitle = styled(Flex)<{
+export const AccordionTitle = styled(Flex) <{
   expanded: boolean;
   disabled?: boolean;
 }>`
-  background-color: ${({ expanded, disabled, theme }) =>
-    // eslint-disable-next-line no-nested-ternary
+  background-color: ${({ disabled, theme }) =>
     disabled
       ? theme.palette.gray.light
-      : expanded
-      ? theme.palette.primary.highlight
       : theme.palette.gray.highlight};
   color: ${({ disabled, theme }) =>
     disabled ? theme.palette.text.disabled : "auto"};
