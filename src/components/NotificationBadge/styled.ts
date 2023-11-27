@@ -33,12 +33,13 @@ export const Badge = styled.span<BadgeProps>`
   transform: ${({ invisible }) => (invisible ? "scale(0)" : "scale(1)")}
     translate(
       ${({ position }) =>
-    ["top-right", "bottom-right"].includes(position) ? "50%" : "-50%"},
+        ["top-right", "bottom-right"].includes(position) ? "50%" : "-50%"},
       ${({ position }) =>
-    ["bottom-right", "bottom-left"].includes(position) ? "50%" : "-50%"}
+        ["bottom-right", "bottom-left"].includes(position) ? "50%" : "-50%"}
     );
   transform-origin: ${({ position }) =>
-    `${["top-right", "bottom-right"].includes(position) ? "100%" : "0%"} ${["bottom-right", "bottom-left"].includes(position) ? "100%" : "0%"
+    `${["top-right", "bottom-right"].includes(position) ? "100%" : "0%"} ${
+      ["bottom-right", "bottom-left"].includes(position) ? "100%" : "0%"
     }`};
   display: flex;
   align-items: center;
