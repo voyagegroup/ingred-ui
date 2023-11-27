@@ -1,5 +1,15 @@
 # Changelog
 
+## 17.2.1
+
+### Patch Changes
+
+- [#1516](https://github.com/voyagegroup/ingred-ui/pull/1516) [`f087b5e7`](https://github.com/voyagegroup/ingred-ui/commit/f087b5e719c7acf16093fe8cf7b56001ece7f6a0) Thanks [@noronaoki](https://github.com/noronaoki)! - modify accordion and checkbox icon and dual listbox
+
+- [#1515](https://github.com/voyagegroup/ingred-ui/pull/1515) [`7a23650a`](https://github.com/voyagegroup/ingred-ui/commit/7a23650a8de28066f4b2c23310ab7261d76bfe29) Thanks [@noronaoki](https://github.com/noronaoki)! - Modify Badge font-size and font-weight
+
+- [#1519](https://github.com/voyagegroup/ingred-ui/pull/1519) [`18019b9f`](https://github.com/voyagegroup/ingred-ui/commit/18019b9fbc5dc1cc3911760c9eda08f8616700de) Thanks [@noronaoki](https://github.com/noronaoki)! - modify-notification-badge-styles
+
 ## 17.2.0
 
 ### Minor Changes
