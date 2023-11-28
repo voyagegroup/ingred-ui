@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.3.0
+
+### Minor Changes
+
+- [#1521](https://github.com/voyagegroup/ingred-ui/pull/1521) [`79ffd8cd`](https://github.com/voyagegroup/ingred-ui/commit/79ffd8cdfbb37dfed028d55652a39a3c8fe4b695) Thanks [@shungenie](https://github.com/shungenie)! - to nullable icon in ActionButton
+
 ## 17.2.1
 
 ### Patch Changes
