@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.3.1
+
+### Patch Changes
+
+- [#1500](https://github.com/voyagegroup/ingred-ui/pull/1500) [`1851b63c`](https://github.com/voyagegroup/ingred-ui/commit/1851b63c0be84c7a37bc5de28279c1f49f117ce8) Thanks [@dependabot](https://github.com/apps/dependabot)! - upgrade eslint-plugin
+
 ## 17.3.0
 
 ### Minor Changes
