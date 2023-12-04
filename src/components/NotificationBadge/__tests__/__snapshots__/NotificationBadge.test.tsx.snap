@@ -7,7 +7,7 @@ exports[`NotificationBadge component testing NotificationBadge dot 1`] = `
   >
     text
     <span
-      class="sc-gsnTZi dkYiBH"
+      class="sc-gsnTZi ljNXNg"
     />
   </div>
 </DocumentFragment>
@@ -20,7 +20,7 @@ exports[`NotificationBadge component testing NotificationBadge normal 1`] = `
   >
     text
     <span
-      class="sc-gsnTZi bodcSJ"
+      class="sc-gsnTZi hIELPk"
     >
       1
     </span>
