@@ -31,9 +31,9 @@ export const ToggleButton = styled.span<{
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-    checked && !disabled
-      ? theme.palette.primary.dark
-      : theme.palette.divider};
+      checked && !disabled
+        ? theme.palette.primary.dark
+        : theme.palette.divider};
   box-shadow: ${({ theme }) =>
     getShadow(
       3,
@@ -88,9 +88,9 @@ export const Label = styled.label<LabelProps>`
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-    checked && !disabled
-      ? theme.palette.primary.main
-      : theme.palette.divider};
+      checked && !disabled
+        ? theme.palette.primary.main
+        : theme.palette.divider};
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     getShadow(
