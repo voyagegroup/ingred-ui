@@ -19,9 +19,9 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
       checked = false,
       disabled = false,
       onChange,
-      width = "56px",
-      checkedText = "ON",
-      unCheckedText = "OFF",
+      width = "48px",
+      checkedText = "",
+      unCheckedText = "",
       inputRef,
     } = props;
     return (

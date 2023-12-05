@@ -17,8 +17,8 @@ export const ToggleButton = styled.span<{
   top: 50%;
   left: 4px;
   transform: translateY(-50%);
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 14px;
   background-color: ${({ checked, disabled, theme }) => {
     let backgroundColor = theme.palette.background.default;
@@ -31,9 +31,9 @@ export const ToggleButton = styled.span<{
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.dark
-        : theme.palette.divider};
+    checked && !disabled
+      ? theme.palette.primary.dark
+      : theme.palette.divider};
   box-shadow: ${({ theme }) =>
     getShadow(
       3,
@@ -88,9 +88,9 @@ export const Label = styled.label<LabelProps>`
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.main
-        : theme.palette.divider};
+    checked && !disabled
+      ? theme.palette.primary.main
+      : theme.palette.divider};
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     getShadow(
@@ -104,7 +104,7 @@ export const Label = styled.label<LabelProps>`
     checked &&
     css`
       & > ${ToggleButton} {
-        left: calc(100% - 14px - 4px);
+        left: calc(100% - 14px - 6px);
       }
       & > ${CheckedLabelText} {
         opacity: 1;
