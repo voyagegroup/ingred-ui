@@ -93,6 +93,20 @@ export const Nested: StoryObj<DualListBoxProps> = {
             },
           ],
         },
+        {
+          id: "4",
+          content: "huga",
+          items: [
+            {
+              id: "23",
+              content: "huga1",
+            },
+            {
+              id: "24",
+              content: "huga2",
+            },
+          ],
+        },
       ],
       [],
     );
