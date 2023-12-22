@@ -19,7 +19,7 @@ export const UnselectedItem = styled(UnselectedItemBase)`
 `;
 
 export const AccordionWrapper = styled(UnselectedItemBase)`
-border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
 export const AccordionComponent = styled(Accordion)`
