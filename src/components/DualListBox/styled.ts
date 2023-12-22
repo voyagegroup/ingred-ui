@@ -6,6 +6,5 @@ export const Container = styled.div`
   border-radius: ${({ theme }) => theme.radius}px;
   display: flex;
   height: 512px;
-  max-width: 1056px;
   overflow: hidden;
 `;
