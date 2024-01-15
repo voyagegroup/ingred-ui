@@ -1,5 +1,13 @@
 # Changelog
 
+## 17.3.2
+
+### Patch Changes
+
+- [#1529](https://github.com/voyagegroup/ingred-ui/pull/1529) [`3373f15f`](https://github.com/voyagegroup/ingred-ui/commit/3373f15fbc7e1db1ba0e1a472f4812b195d972fa) Thanks [@noronaoki](https://github.com/noronaoki)! - Modify toggle layout
+
+- [#1540](https://github.com/voyagegroup/ingred-ui/pull/1540) [`7f06a506`](https://github.com/voyagegroup/ingred-ui/commit/7f06a506da226b11764b170d6815d402d565e558) Thanks [@Yutan0423](https://github.com/Yutan0423)! - fix duallistbox design
+
 ## 17.3.1
 
 ### Patch Changes
