@@ -1,5 +1,11 @@
 # Changelog
 
+## 17.4.0
+
+### Minor Changes
+
+- [#1569](https://github.com/voyagegroup/ingred-ui/pull/1569) [`19b1236c`](https://github.com/voyagegroup/ingred-ui/commit/19b1236c442c066ee11c48a2be54a33e1174b38e) Thanks [@shungenie](https://github.com/shungenie)! - add key icon
+
 ## 17.3.2
 
 ### Patch Changes
