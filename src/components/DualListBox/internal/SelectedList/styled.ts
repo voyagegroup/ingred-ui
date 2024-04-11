@@ -26,11 +26,9 @@ export const SelectedItem = styled.li<{ isLastIndex: boolean }>`
 `;
 
 export const RemoveButton = styled.button`
-  background-color: ${({ theme }) => theme.palette.gray.light};
+  background: transparent;
   border: none;
-  border-radius: ${({ theme }) => theme.spacing * 0.5}px;
   cursor: pointer;
-  padding: ${({ theme }) => theme.spacing * 0.5}px;
 `;
 
 export const Action = styled.div`

@@ -33,10 +33,14 @@ export const SelectedList: React.FunctionComponent<{
             <Styled.Action>
               {onRemove && (
                 <Styled.RemoveButton
-                  type={"button"}
+                  type="button"
                   onClick={() => onRemove(item)}
                 >
-                  <Icon name="close" size="sm" color={theme.palette.black} />
+                  <Icon
+                    color={theme.palette.black}
+                    name="close_circle"
+                    type="fill"
+                  />
                 </Styled.RemoveButton>
               )}
             </Styled.Action>

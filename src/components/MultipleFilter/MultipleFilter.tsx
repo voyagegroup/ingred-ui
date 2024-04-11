@@ -226,7 +226,11 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
           <Styled.RightContainer>
             {hasReferredFilter(currentReferredFilters) && (
               <Styled.IconContainer onClick={handleClear}>
-                <Icon name="close_circle" color={theme.palette.black} />
+                <Icon
+                  name="close_circle"
+                  color={theme.palette.black}
+                  type="fill"
+                />
               </Styled.IconContainer>
             )}
           </Styled.RightContainer>

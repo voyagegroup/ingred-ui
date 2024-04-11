@@ -45,7 +45,7 @@ export const Label: React.FunctionComponent<Props> = ({
       </Styled.LeftContainer>
       <Styled.RightContainer>
         <Styled.IconContainer onClick={handleRemoveClick}>
-          <Icon name="close_circle" color={theme.palette.black} />
+          <Icon name="close_circle" color={theme.palette.black} type="fill" />
         </Styled.IconContainer>
       </Styled.RightContainer>
     </Styled.Container>
