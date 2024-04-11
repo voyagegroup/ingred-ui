@@ -19,6 +19,7 @@ export type DualListBoxCandidateItem = DualListBoxItem & {
 export type DualListBoxProps = {
   candidateItems: DualListBoxCandidateItem[];
   selectedItems: DualListBoxItem[];
+  disableCheckbox?: boolean;
   onAdd?: (item: DualListBoxItem) => void;
   onRemove?: (item: DualListBoxItem) => void;
 };
@@ -36,6 +37,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
       candidateItems: candidateItemsProp,
       selectedItems,
       selectedItemTitle,
+      disableCheckbox,
       onAdd: handleAdd,
       onRemove: handleRemove,
     } = useLocaleProps({ props: inProps, name: "DualListBox" });
@@ -50,6 +52,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
     return (
       <Styled.Container>
         <CandidateRenderer
+          disableCheckbox={disableCheckbox}
           items={candidateItems}
           onAdd={handleAdd}
           onRemove={handleRemove}

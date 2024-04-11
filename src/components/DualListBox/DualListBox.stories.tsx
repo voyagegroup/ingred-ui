@@ -5,7 +5,7 @@ import DualListBox, {
   DualListBoxItem,
   DualListBoxProps,
 } from "./DualListBox";
-import { ActionButton, Flex, Icon, Typography } from "..";
+import { ActionButton, Flex, Icon, Spacer, Typography } from "..";
 import { useTheme } from "../../themes";
 
 export default {
@@ -174,9 +174,8 @@ export const Nested: StoryObj<DualListBoxProps> = {
 };
 
 /**
- * props に onAdd / onRemove を渡さない
  * 規定の Checkbox による選択・選択解除ではなく
- * DualListBoxItem に Button を配置して選択・選択解除を行う
+ * DualListBoxItem に配置した Button による選択・選択解除を行う
  */
 export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
   render: () => {
@@ -200,12 +199,12 @@ export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
       [],
     );
 
-    const [selectedIds, setSelectedIds] = React.useState<string[]>([
-      items[2].id,
-    ]);
+    const [allowedIds, setAllowedIds] = React.useState<string[]>([items[2].id]);
 
-    const handleAdd = (id: string) => {
-      setSelectedIds((prevState) => {
+    const [disallowedIds, setDisallowedIds] = React.useState<string[]>([]);
+
+    const handleAllow = (id: string) => {
+      setAllowedIds((prevState) => {
         if (prevState.includes(id)) {
           return prevState;
         }
@@ -213,58 +212,102 @@ export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
       });
     };
 
-    const handleRemove = (id: string) => {
-      setSelectedIds((prevState) =>
-        prevState.filter((selectedId) => selectedId !== id),
+    const handleDisallow = (id: string) => {
+      setDisallowedIds((prevState) => {
+        if (prevState.includes(id)) {
+          return prevState;
+        }
+        return [...prevState, id];
+      });
+    };
+
+    const handleRemove = (item: DualListBoxItem) => {
+      setAllowedIds((prevState) =>
+        prevState.filter((selectedId) => selectedId !== item.id),
+      );
+      setDisallowedIds((prevState) =>
+        prevState.filter((selectedId) => selectedId !== item.id),
       );
     };
 
     const candidateItems = React.useMemo(
       () =>
         items
-          .filter((item) => !selectedIds.includes(item.id))
+          .filter(
+            (item) =>
+              !allowedIds.includes(item.id) && !disallowedIds.includes(item.id),
+          )
           .map((item) => ({
             id: item.id,
             content: (
-              <Flex alignItems="center" display="flex" gap={1}>
+              <Flex alignItems="center" display="flex" flex={1} gap={1}>
                 <Typography>{item.content}</Typography>
-                <ActionButton
-                  color="primary"
-                  onClick={() => handleAdd(item.id)}
+                <Flex
+                  alignItems="center"
+                  display="flex"
+                  flex={1}
+                  justifyContent="flex-end"
+                  gap={1}
                 >
-                  <Icon color="active" name="check_thin" />
-                </ActionButton>
+                  <ActionButton
+                    color="primary"
+                    onClick={() => handleAllow(item.id)}
+                  >
+                    <Icon color="active" name="check_thin" />
+                  </ActionButton>
+                  <ActionButton
+                    color="warning"
+                    onClick={() => handleDisallow(item.id)}
+                  >
+                    <Icon color={theme.palette.danger.main} name="forbid" />
+                  </ActionButton>
+                </Flex>
               </Flex>
             ),
           })),
-      [items, selectedIds],
+      [allowedIds, disallowedIds, items, theme.palette.danger.main],
     );
 
     const selectedItems = React.useMemo(
       () =>
         items
-          .filter((item) => selectedIds.includes(item.id))
+          .filter(
+            (item) =>
+              allowedIds.includes(item.id) || disallowedIds.includes(item.id),
+          )
           .map((item) => ({
             id: item.id,
             content: (
-              <Flex alignItems="center" display="flex" gap={1}>
+              <Flex alignItems="center" display="flex" flex={1} gap={1}>
                 <Typography>{item.content}</Typography>
-                <ActionButton
-                  color="warning"
-                  onClick={() => handleRemove(item.id)}
+                <Flex
+                  alignItems="center"
+                  display="flex"
+                  flex={1}
+                  justifyContent="flex-end"
+                  gap={1}
                 >
-                  <Icon color={theme.palette.danger.main} name="delete_bin" />
-                </ActionButton>
+                  <Spacer pr={2}>
+                    {allowedIds.includes(item.id) && (
+                      <Icon color="active" name="check_thin" />
+                    )}
+                    {disallowedIds.includes(item.id) && (
+                      <Icon color={theme.palette.danger.main} name="forbid" />
+                    )}
+                  </Spacer>
+                </Flex>
               </Flex>
             ),
           })),
-      [items, selectedIds, theme.palette.danger.main],
+      [allowedIds, disallowedIds, items, theme.palette.danger.main],
     );
 
     return (
       <DualListBox
         candidateItems={candidateItems}
+        disableCheckbox={true}
         selectedItems={selectedItems}
+        onRemove={handleRemove}
       />
     );
   },
