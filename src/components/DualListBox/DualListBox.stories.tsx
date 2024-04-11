@@ -174,6 +174,7 @@ export const Nested: StoryObj<DualListBoxProps> = {
 };
 
 /**
+ * props に onAdd / onRemove を渡さない
  * 規定の Checkbox による選択・選択解除ではなく
  * DualListBoxItem に Button を配置して選択・選択解除を行う
  */
