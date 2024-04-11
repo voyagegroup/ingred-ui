@@ -15,7 +15,7 @@ const ClearIndicator = <T,>(
         // TODO: remove any
         {...(props as ClearIndicatorProps<any, boolean, any>)}
       >
-        <Icon name="close_circle" color={theme.palette.black} />
+        <Icon name="close_circle" color={theme.palette.black} type="fill" />
       </components.ClearIndicator>
     </Styled.Container>
   );
