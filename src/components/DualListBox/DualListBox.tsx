@@ -36,8 +36,8 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
       candidateItems: candidateItemsProp,
       selectedItems,
       selectedItemTitle,
-      onAdd,
-      onRemove,
+      onAdd: handleAdd,
+      onRemove: handleRemove,
     } = useLocaleProps({ props: inProps, name: "DualListBox" });
 
     const theme = useTheme();
@@ -47,24 +47,12 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
       [candidateItemsProp, selectedItems],
     );
 
-    const handleAdd = (item: DualListBoxItem) => {
-      if (onAdd) {
-        onAdd(item);
-      }
-    };
-
-    const handleRemove = (item: DualListBoxItem) => {
-      if (onRemove) {
-        onRemove(item);
-      }
-    };
-
     return (
       <Styled.Container>
         <CandidateRenderer
           items={candidateItems}
           onAdd={handleAdd}
-          onRemove={onRemove}
+          onRemove={handleRemove}
         />
         <Divider color={theme.palette.divider} orientation="vertical" />
         <SelectedList

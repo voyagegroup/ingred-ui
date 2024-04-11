@@ -12,7 +12,7 @@ export const SelectLabel: React.FunctionComponent<{
 }> = ({ children, item, onAdd, onRemove }) => {
   return (
     <Flex display="flex" justifyContent="space-between">
-      {item.items ? (
+      {item.items || !onAdd ? (
         <Typography>{children}</Typography>
       ) : (
         <Checkbox

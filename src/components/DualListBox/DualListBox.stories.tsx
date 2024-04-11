@@ -5,6 +5,8 @@ import DualListBox, {
   DualListBoxItem,
   DualListBoxProps,
 } from "./DualListBox";
+import { ActionButton, Flex, Icon, Typography } from "..";
+import { useTheme } from "../../themes";
 
 export default {
   title: "Components/Data Display/DualListBox",
@@ -166,6 +168,102 @@ export const Nested: StoryObj<DualListBoxProps> = {
         selectedItems={selectedItems}
         onAdd={handleAdd}
         onRemove={handleRemove}
+      />
+    );
+  },
+};
+
+/**
+ * 規定の Checkbox による選択・選択解除ではなく
+ * DualListBoxItem に Button を配置して選択・選択解除を行う
+ */
+export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
+  render: () => {
+    const theme = useTheme();
+
+    const items = React.useMemo(
+      () => [
+        {
+          id: "1",
+          content: "foo",
+        },
+        {
+          id: "2",
+          content: "bar",
+        },
+        {
+          id: "3",
+          content: "hoge",
+        },
+      ],
+      [],
+    );
+
+    const [selectedIds, setSelectedIds] = React.useState<string[]>([
+      items[2].id,
+    ]);
+
+    const handleAdd = (id: string) => {
+      setSelectedIds((prevState) => {
+        if (prevState.includes(id)) {
+          return prevState;
+        }
+        return [...prevState, id];
+      });
+    };
+
+    const handleRemove = (id: string) => {
+      setSelectedIds((prevState) =>
+        prevState.filter((selectedId) => selectedId !== id),
+      );
+    };
+
+    const candidateItems = React.useMemo(
+      () =>
+        items
+          .filter((item) => !selectedIds.includes(item.id))
+          .map((item) => ({
+            id: item.id,
+            content: (
+              <Flex alignItems="center" display="flex" gap={1}>
+                <Typography>{item.content}</Typography>
+                <ActionButton
+                  color="primary"
+                  onClick={() => handleAdd(item.id)}
+                >
+                  <Icon color="active" name="check_thin" />
+                </ActionButton>
+              </Flex>
+            ),
+          })),
+      [items, selectedIds],
+    );
+
+    const selectedItems = React.useMemo(
+      () =>
+        items
+          .filter((item) => selectedIds.includes(item.id))
+          .map((item) => ({
+            id: item.id,
+            content: (
+              <Flex alignItems="center" display="flex" gap={1}>
+                <Typography>{item.content}</Typography>
+                <ActionButton
+                  color="warning"
+                  onClick={() => handleRemove(item.id)}
+                >
+                  <Icon color={theme.palette.danger.main} name="delete_bin" />
+                </ActionButton>
+              </Flex>
+            ),
+          })),
+      [items, selectedIds, theme.palette.danger.main],
+    );
+
+    return (
+      <DualListBox
+        candidateItems={candidateItems}
+        selectedItems={selectedItems}
       />
     );
   },
