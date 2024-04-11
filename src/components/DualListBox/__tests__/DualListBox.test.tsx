@@ -118,14 +118,10 @@ describe("DualListBox component testing", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test("DualListBox candidateItems and selectedItems with inverse", () => {
+  test("DualListBox candidateItems and selectedItems without checkbox", () => {
     const { asFragment } = renderWithThemeProvider(
       <DualListBox
         candidateItems={[
-          {
-            id: "1",
-            content: "foo",
-          },
           {
             id: "2",
             content: "bar",
@@ -144,20 +140,8 @@ describe("DualListBox component testing", () => {
             id: "1",
             content: "foo",
           },
-          {
-            id: "2",
-            content: "bar",
-          },
-          {
-            id: "3",
-            content: "hoge",
-          },
-          {
-            id: "4",
-            content: "fuga",
-          },
         ]}
-        onAdd={jest.fn()}
+        disableCheckbox={true}
         onRemove={jest.fn()}
       />,
     );

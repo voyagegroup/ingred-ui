@@ -2,18 +2,18 @@ import React from "react";
 import Flex from "../../../../../Flex/Flex";
 import { CandidateItem, DualListBoxItem } from "../../../../DualListBox";
 import Checkbox from "../../../../../Checkbox/Checkbox";
-import Typography from "../../../../../Typography/Typography";
 
 export const SelectLabel: React.FunctionComponent<{
   item: CandidateItem;
+  disableCheckbox?: boolean;
   onAdd?: (item: DualListBoxItem) => void;
   onRemove?: (item: DualListBoxItem) => void;
   children: React.ReactNode;
-}> = ({ children, item, onAdd, onRemove }) => {
+}> = ({ children, disableCheckbox = false, item, onAdd, onRemove }) => {
   return (
     <Flex display="flex" justifyContent="space-between">
-      {item.items ? (
-        <Typography>{children}</Typography>
+      {item.items || disableCheckbox ? (
+        children
       ) : (
         <Checkbox
           checked={item?.selected ?? false}
@@ -26,7 +26,7 @@ export const SelectLabel: React.FunctionComponent<{
             onAdd?.(item);
           }}
         >
-          <Typography>{children}</Typography>
+          {children}
         </Checkbox>
       )}
     </Flex>

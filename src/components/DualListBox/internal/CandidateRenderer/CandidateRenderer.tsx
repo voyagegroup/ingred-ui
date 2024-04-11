@@ -8,9 +8,10 @@ import { DualListBoxCandidateItem, DualListBoxItem } from "../../DualListBox";
  */
 export const CandidateRenderer: React.FunctionComponent<{
   items: DualListBoxCandidateItem[];
+  disableCheckbox?: boolean;
   onAdd?: (item: DualListBoxItem) => void;
   onRemove?: (item: DualListBoxItem) => void;
-}> = ({ items, onAdd, onRemove }) => {
+}> = ({ disableCheckbox, items, onAdd, onRemove }) => {
   return (
     <Styled.Container>
       {items.map((item, i) => (
@@ -39,7 +40,12 @@ export const CandidateRenderer: React.FunctionComponent<{
               key={item.id}
               isLastIndex={i + 1 === items.length}
             >
-              <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
+              <SelectLabel
+                disableCheckbox={disableCheckbox}
+                item={item}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              >
                 {item.content}
               </SelectLabel>
             </Styled.UnselectedItem>
