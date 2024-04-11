@@ -1,5 +1,15 @@
 # Changelog
 
+## 18.0.0
+
+### Major Changes
+
+- [#1595](https://github.com/voyagegroup/ingred-ui/pull/1595) [`39a4385f`](https://github.com/voyagegroup/ingred-ui/commit/39a4385fd44821a236c97bd07373cad9994b5559) Thanks [@deatiger](https://github.com/deatiger)! - Hide Checkbox and RemoveButton in DualListBox if no handler is passed
+
+### Patch Changes
+
+- [#1598](https://github.com/voyagegroup/ingred-ui/pull/1598) [`87326d3a`](https://github.com/voyagegroup/ingred-ui/commit/87326d3a735e2b8bb4812f77efb0a69c2e4772c8) Thanks [@deatiger](https://github.com/deatiger)! - Replace close circle line icon with close circle fill icon
+
 ## 17.4.0
 
 ### Minor Changes
