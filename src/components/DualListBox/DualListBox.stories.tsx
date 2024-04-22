@@ -240,20 +240,6 @@ export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
       );
     };
 
-    console.log(
-      items.some(
-        (item) =>
-          !allowedIds.includes(item.id) &&
-          !disallowedIds.includes(item.id) &&
-          item.items &&
-          item.items.every(
-            (nestedItem) =>
-              !allowedIds.includes(nestedItem.id) &&
-              !disallowedIds.includes(nestedItem.id),
-          ),
-      ),
-    );
-
     const candidateItems = React.useMemo(
       () =>
         items
