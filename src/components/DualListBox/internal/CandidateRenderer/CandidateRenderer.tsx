@@ -29,6 +29,7 @@ export const CandidateRenderer: React.FunctionComponent<{
                 }
               >
                 <CandidateRenderer
+                  disableCheckbox={disableCheckbox}
                   items={item.items}
                   onAdd={onAdd}
                   onRemove={onRemove}

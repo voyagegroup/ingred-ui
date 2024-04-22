@@ -190,6 +190,16 @@ export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
         {
           id: "2",
           content: "bar",
+          items: [
+            {
+              id: "21",
+              content: "bar1",
+            },
+            {
+              id: "22",
+              content: "bar2",
+            },
+          ],
         },
         {
           id: "3",
@@ -230,47 +240,119 @@ export const WithoutCheckbox: StoryObj<DualListBoxProps> = {
       );
     };
 
+    console.log(
+      items.some(
+        (item) =>
+          !allowedIds.includes(item.id) &&
+          !disallowedIds.includes(item.id) &&
+          item.items &&
+          item.items.every(
+            (nestedItem) =>
+              !allowedIds.includes(nestedItem.id) &&
+              !disallowedIds.includes(nestedItem.id),
+          ),
+      ),
+    );
+
     const candidateItems = React.useMemo(
       () =>
         items
           .filter(
             (item) =>
-              !allowedIds.includes(item.id) && !disallowedIds.includes(item.id),
+              (!item.items &&
+                !allowedIds.includes(item.id) &&
+                !disallowedIds.includes(item.id)) ||
+              item.items?.some(
+                (nestedItem) =>
+                  !allowedIds.includes(nestedItem.id) &&
+                  !disallowedIds.includes(nestedItem.id),
+              ),
           )
-          .map((item) => ({
-            id: item.id,
-            content: (
-              <Flex alignItems="center" display="flex" flex={1} gap={1}>
-                <Typography>{item.content}</Typography>
-                <Flex
-                  alignItems="center"
-                  display="flex"
-                  flex={1}
-                  justifyContent="flex-end"
-                  gap={1}
-                >
-                  <ActionButton
-                    color="primary"
-                    onClick={() => handleAllow(item.id)}
-                  >
-                    <Icon color="active" name="check_thin" />
-                  </ActionButton>
-                  <ActionButton
-                    color="warning"
-                    onClick={() => handleDisallow(item.id)}
-                  >
-                    <Icon color={theme.palette.danger.main} name="forbid" />
-                  </ActionButton>
-                </Flex>
-              </Flex>
-            ),
-          })),
+          .map((item) => {
+            if (item.items) {
+              return {
+                id: item.id,
+                content: item.content,
+                items: item.items
+                  .filter(
+                    (nestedItem) =>
+                      !allowedIds.includes(nestedItem.id) &&
+                      !disallowedIds.includes(nestedItem.id),
+                  )
+                  .map((nestedItem) => ({
+                    id: nestedItem.id,
+                    content: (
+                      <Flex alignItems="center" display="flex" flex={1} gap={1}>
+                        <Typography>{nestedItem.content}</Typography>
+                        <Flex
+                          alignItems="center"
+                          display="flex"
+                          flex={1}
+                          justifyContent="flex-end"
+                          gap={1}
+                        >
+                          <ActionButton
+                            color="primary"
+                            onClick={() => handleAllow(nestedItem.id)}
+                          >
+                            <Icon color="active" name="check_thin" />
+                          </ActionButton>
+                          <ActionButton
+                            color="warning"
+                            onClick={() => handleDisallow(nestedItem.id)}
+                          >
+                            <Icon
+                              color={theme.palette.danger.main}
+                              name="forbid"
+                            />
+                          </ActionButton>
+                        </Flex>
+                      </Flex>
+                    ),
+                  })),
+              };
+            } else {
+              return {
+                id: item.id,
+                content: (
+                  <Flex alignItems="center" display="flex" flex={1} gap={1}>
+                    <Typography>{item.content}</Typography>
+                    <Flex
+                      alignItems="center"
+                      display="flex"
+                      flex={1}
+                      justifyContent="flex-end"
+                      gap={1}
+                    >
+                      <ActionButton
+                        color="primary"
+                        onClick={() => handleAllow(item.id)}
+                      >
+                        <Icon color="active" name="check_thin" />
+                      </ActionButton>
+                      <ActionButton
+                        color="warning"
+                        onClick={() => handleDisallow(item.id)}
+                      >
+                        <Icon color={theme.palette.danger.main} name="forbid" />
+                      </ActionButton>
+                    </Flex>
+                  </Flex>
+                ),
+              };
+            }
+          }),
       [allowedIds, disallowedIds, items, theme.palette.danger.main],
     );
 
     const selectedItems = React.useMemo(
       () =>
         items
+          .reduce(
+            (prev: DualListBoxItem[], item) =>
+              item.items ? [...prev, ...item.items] : [...prev, item],
+            [],
+          )
           .filter(
             (item) =>
               allowedIds.includes(item.id) || disallowedIds.includes(item.id),
