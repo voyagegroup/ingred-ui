@@ -438,13 +438,90 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
       class="sc-jqUVSM bBFcLq"
     >
       <li
-        class="sc-kDDrLX sc-iqcoie kxcdly dcUJGp"
+        class="sc-kDDrLX sc-crXcEl kxcdly ijUaIR"
       >
         <div
-          class="sc-dkzDqf cyQQCs"
-          display="flex"
+          class="sc-hKMtZM iUXxdT sc-evZas eErWgj"
         >
-          bar
+          <div
+            aria-controls="accordion-content-[object Object]"
+            aria-expanded="false"
+            class="sc-dkzDqf sc-eCYdqJ bURUGj dPPTsR"
+            display="flex"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="sc-jSMfEi kusyTI"
+            >
+              <div
+                class="sc-breuTD dBXdmY"
+              >
+                <div
+                  class="sc-dkzDqf cyQQCs"
+                  display="flex"
+                >
+                  bar
+                </div>
+              </div>
+            </div>
+            <div
+              class="sc-ftvSup ecProy"
+            >
+              <div
+                class="sc-iBkjds ixDsgp"
+              >
+                <span
+                  class="sc-gsnTZi ezZeqd"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0,0H24V24H0Z"
+                      fill="none"
+                    />
+                    <path
+                      d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                      fill="black"
+                      transform="translate(-1.414 -1.114)"
+                    />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="sc-papXJ NpijN"
+            height="0"
+          >
+            <ul
+              class="sc-jqUVSM bBFcLq"
+            >
+              <li
+                class="sc-kDDrLX sc-iqcoie kxcdly dcUJGp"
+              >
+                <div
+                  class="sc-dkzDqf hmerDF"
+                  display="flex"
+                >
+                  bar1
+                </div>
+              </li>
+              <li
+                class="sc-kDDrLX sc-iqcoie hlbDuP dcUJGp"
+              >
+                <div
+                  class="sc-dkzDqf crcYbC"
+                  display="flex"
+                >
+                  bar2
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </li>
       <li
