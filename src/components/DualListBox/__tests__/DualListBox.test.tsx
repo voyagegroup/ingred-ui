@@ -125,6 +125,16 @@ describe("DualListBox component testing", () => {
           {
             id: "2",
             content: "bar",
+            items: [
+              {
+                id: "21",
+                content: "bar1",
+              },
+              {
+                id: "22",
+                content: "bar2",
+              },
+            ],
           },
           {
             id: "3",
