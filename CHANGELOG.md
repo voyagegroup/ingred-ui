@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.0.1
+
+### Patch Changes
+
+- [#1602](https://github.com/voyagegroup/ingred-ui/pull/1602) [`ba081c12`](https://github.com/voyagegroup/ingred-ui/commit/ba081c12074d63cb0d1d6c2ce4c2c0a2c2f037a5) Thanks [@deatiger](https://github.com/deatiger)! - Hide checkbox in nested candidate items of DualListBox
+
 ## 18.0.0
 
 ### Major Changes
