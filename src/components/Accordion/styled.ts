@@ -48,11 +48,11 @@ export const DropdownIndicator = styled.div`
 `;
 
 export const AccordionContent = styled.div<{
-  expanded: boolean;
-  height: number;
+  height: `${number}px` | "auto";
+  overflow: "hidden" | "visible";
 }>`
-  height: ${({ height }) => height}px;
-  overflow: hidden;
+  height: ${({ height }) => height};
+  overflow: ${({ overflow }) => overflow};
   transition: 0.3s all;
   background-color: ${({ theme }) => theme.palette.white};
 `;

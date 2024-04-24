@@ -1,6 +1,8 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
 import Accordion, { AccordionProps } from "./Accordion";
+import { useState } from "react";
+import { ActionButton, Flex } from "..";
 
 export default {
   title: "Components/navigation/Accordion",
@@ -112,6 +114,42 @@ export const Controlled: StoryObj<AccordionProps> = {
           </div>
         </Accordion>
       </>
+    );
+  },
+};
+
+export const DynamicHeight: StoryObj<AccordionProps> = {
+  render: (args) => {
+    const [rows, setRows] = useState<number>(1);
+    const handleAddRow = () => setRows((prevState) => prevState + 1);
+    const handleRemoveRow = () =>
+      setRows((prevState) => (prevState > 1 ? prevState - 1 : 1));
+    return (
+      <Flex display="flex" flexDirection="column" gap={2}>
+        <Flex display="flex" flexDirection="row" gap={2}>
+          <ActionButton color="primary" icon="add_line" onClick={handleAddRow}>
+            Add
+          </ActionButton>
+          <ActionButton
+            color="warning"
+            icon="delete_bin"
+            onClick={handleRemoveRow}
+          >
+            Remove
+          </ActionButton>
+        </Flex>
+        <Accordion
+          title={args.title}
+          disabled={args.disabled}
+          expanded={args.expanded}
+        >
+          {[...Array(rows)].map((_, index) => (
+            <div key={index} style={{ padding: "4px 8px" }}>
+              {args.children}
+            </div>
+          ))}
+        </Accordion>
+      </Flex>
     );
   },
 };
