@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.1.1
+
+### Patch Changes
+
+- [#1607](https://github.com/voyagegroup/ingred-ui/pull/1607) [`86c70f77`](https://github.com/voyagegroup/ingred-ui/commit/86c70f77783d7b63a70b7c1388f60c08da5d1486) Thanks [@deatiger](https://github.com/deatiger)! - :bug: Fix to open accordion by controlled state
+
 ## 18.1.0
 
 ### Minor Changes
