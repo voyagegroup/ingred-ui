@@ -27,9 +27,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
   const [overflow, setOverflow] = useState<"hidden" | "visible">("hidden");
   const accordionContentContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (event: React.SyntheticEvent, expanded: boolean) => {
-    setExpandedState(expanded);
-    onChange && onChange(event, expanded);
+  const setContentStyle = (expanded: boolean) => {
     if (expanded) {
       setHeight(`${accordionContentContainerRef.current?.scrollHeight ?? 0}px`);
     } else {
@@ -37,6 +35,12 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
       setOverflow("hidden");
       setTimeout(() => setHeight("0px"), 100);
     }
+  };
+
+  const handleChange = (event: React.SyntheticEvent, expanded: boolean) => {
+    setExpandedState(expanded);
+    setContentStyle(expanded);
+    onChange && onChange(event, expanded);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -58,6 +62,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
 
   useEffect(() => {
     setExpandedState(expanded);
+    setContentStyle(expanded);
   }, [expanded]);
 
   return (
