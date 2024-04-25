@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.1.0
+
+### Minor Changes
+
+- [#1605](https://github.com/voyagegroup/ingred-ui/pull/1605) [`30535627`](https://github.com/voyagegroup/ingred-ui/commit/30535627675a845176a0f02fb6d96169cc295a92) Thanks [@deatiger](https://github.com/deatiger)! - :lipstick: Accordion コンポーネント内のコンテンツの高さが可変の場合に対応
+
 ## 18.0.1
 
 ### Patch Changes
