@@ -63,7 +63,7 @@ export const Multiple: StoryObj<AccordionProps> = {
 
 export const Controlled: StoryObj<AccordionProps> = {
   render: () => {
-    const [expanded, setExpanded] = React.useState<string | false>(false);
+    const [expanded, setExpanded] = React.useState<string | false>("title1");
     const handleChange =
       (panel: string) => (_: React.SyntheticEvent, newExpanded: boolean) => {
         setExpanded(newExpanded ? panel : false);
