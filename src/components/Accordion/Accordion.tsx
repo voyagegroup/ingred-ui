@@ -2,7 +2,6 @@ import React, {
   ReactNode,
   forwardRef,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react";
@@ -24,19 +23,20 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
 ) {
   const theme = useTheme();
   const [expandedState, setExpandedState] = useState(expanded);
+  const [height, setHeight] = useState<`${number}px` | "auto">("0px");
+  const [overflow, setOverflow] = useState<"hidden" | "visible">("hidden");
   const accordionContentContainerRef = useRef<HTMLDivElement>(null);
-
-  const height = useMemo(() => {
-    if (expandedState && accordionContentContainerRef.current) {
-      return accordionContentContainerRef.current.scrollHeight;
-    }
-    return 0;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [expandedState, accordionContentContainerRef.current]);
 
   const handleChange = (event: React.SyntheticEvent, expanded: boolean) => {
     setExpandedState(expanded);
     onChange && onChange(event, expanded);
+    if (expanded) {
+      setHeight(`${accordionContentContainerRef.current?.scrollHeight ?? 0}px`);
+    } else {
+      setHeight(`${accordionContentContainerRef.current?.scrollHeight ?? 0}px`);
+      setOverflow("hidden");
+      setTimeout(() => setHeight("0px"), 100);
+    }
   };
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -46,6 +46,13 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter") {
       handleChange(event, !expandedState);
+    }
+  };
+
+  const handleTransitionEnd = () => {
+    if (expandedState) {
+      setHeight("auto");
+      setOverflow("visible");
     }
   };
 
@@ -79,8 +86,9 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
       </Styled.AccordionTitle>
       <Styled.AccordionContent
         ref={accordionContentContainerRef}
-        expanded={expandedState}
         height={height}
+        overflow={overflow}
+        onTransitionEnd={handleTransitionEnd}
       >
         {children}
       </Styled.AccordionContent>

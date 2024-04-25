@@ -494,8 +494,9 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
             </div>
           </div>
           <div
-            class="sc-papXJ NpijN"
-            height="0"
+            class="sc-papXJ gvktiO"
+            height="0px"
+            overflow="hidden"
           >
             <ul
               class="sc-jqUVSM bBFcLq"
