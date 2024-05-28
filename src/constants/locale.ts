@@ -149,12 +149,12 @@ export const jaJP: Localization = {
     },
     WeekTime: {
       defaultProps: {
-        weekList: ["日", "月", "火", "水", "木", "金", "土"],
+        weekList: ["月", "火", "水", "木", "金", "土", "日"],
       },
     },
     WeekTimeSelector: {
       defaultProps: {
-        weekList: ["日", "月", "火", "水", "木", "金", "土"],
+        weekList: ["月", "火", "水", "木", "金", "土", "日"],
       },
     },
     DualListBox: {
@@ -202,12 +202,12 @@ export const enUS: Localization = {
     },
     WeekTime: {
       defaultProps: {
-        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        weekList: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       },
     },
     WeekTimeSelector: {
       defaultProps: {
-        weekList: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        weekList: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       },
     },
     DualListBox: {
