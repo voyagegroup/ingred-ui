@@ -446,7 +446,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           <div
             aria-controls="accordion-content-[object Object]"
             aria-expanded="false"
-            class="sc-dkzDqf sc-eCYdqJ bURUGj dPPTsR"
+            class="sc-dkzDqf sc-eCYdqJ bURUGj gfrOjD"
             display="flex"
             role="button"
             tabindex="0"

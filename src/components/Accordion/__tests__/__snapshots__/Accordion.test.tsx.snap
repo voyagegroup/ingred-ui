@@ -8,7 +8,7 @@ exports[`Accordion component testing Accordion 1`] = `
     <div
       aria-controls="accordion-content-Accordion Title"
       aria-expanded="false"
-      class="sc-gsnTZi sc-hKMtZM jUiVsm jBPBwg"
+      class="sc-gsnTZi sc-hKMtZM jUiVsm bUQCIu"
       display="flex"
       role="button"
       tabindex="0"
