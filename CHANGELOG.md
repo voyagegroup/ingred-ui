@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.0.0
+
+### Major Changes
+
+- [#1622](https://github.com/voyagegroup/ingred-ui/pull/1622) [`09e28764`](https://github.com/voyagegroup/ingred-ui/commit/09e287648ceb53eb14e3038a97441797b51c7d7d) Thanks [@shungenie](https://github.com/shungenie)! - Set weektime component to start on Monday
+
 ## 18.1.1
 
 ### Patch Changes
