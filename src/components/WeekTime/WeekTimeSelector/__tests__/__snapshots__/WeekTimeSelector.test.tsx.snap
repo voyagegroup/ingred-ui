@@ -134,83 +134,6 @@ exports[`WeekTimeSelector component testing WeekTimeSelector 1`] = `
       <div
         class="sc-iBkjds sc-ftvSup ddDNOR fStWin"
       >
-        Sun
-      </div>
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <button
-        class="sc-gsnTZi ipHfAH"
-      />
-      <div
-        class="sc-iBkjds sc-ftvSup ddDNOR fStWin"
-      >
         Mon
       </div>
       <button
@@ -597,6 +520,83 @@ exports[`WeekTimeSelector component testing WeekTimeSelector 1`] = `
         class="sc-iBkjds sc-ftvSup ddDNOR fStWin"
       >
         Sat
+      </div>
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <button
+        class="sc-gsnTZi ipHfAH"
+      />
+      <div
+        class="sc-iBkjds sc-ftvSup ddDNOR fStWin"
+      >
+        Sun
       </div>
       <button
         class="sc-gsnTZi ipHfAH"
