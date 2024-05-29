@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.1.0
+
+### Minor Changes
+
+- [#1625](https://github.com/voyagegroup/ingred-ui/pull/1625) [`485ccff2`](https://github.com/voyagegroup/ingred-ui/commit/485ccff2a3e79159ed0a3b4aab0d50d4f5a4e239) Thanks [@shungenie](https://github.com/shungenie)! - change color of accordion title
+
 ## 19.0.0
 
 ### Major Changes
