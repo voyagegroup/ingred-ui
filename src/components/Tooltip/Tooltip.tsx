@@ -22,7 +22,7 @@ import {
 import { useTheme } from "../../themes";
 import { AutoPlacement, usePlacement } from "../../hooks/usePlacement";
 
-export type TooltipProps = React.ComponentPropsWithoutRef<"div"> & {
+export type TooltipProps = Omit<React.ComponentPropsWithoutRef<"div">, "content"> & {
   content: React.ReactNode;
   open?: boolean;
   disableHoverListener?: boolean;
