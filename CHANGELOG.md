@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.1.1
+
+### Patch Changes
+
+- [#1629](https://github.com/voyagegroup/ingred-ui/pull/1629) [`06331a1e`](https://github.com/voyagegroup/ingred-ui/commit/06331a1e53dc44a382c0e7f33ad27e11fc26ba38) Thanks [@toshi17](https://github.com/toshi17)! - fix the type information for the Tooltip component
+
 ## 19.1.0
 
 ### Minor Changes
