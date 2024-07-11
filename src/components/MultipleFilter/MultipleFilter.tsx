@@ -37,6 +37,7 @@ export type MultipleFilterProps = {
   inputErrorText?: string;
   formPlaceholder?: string;
   width?: string;
+  // skipFilterSection?: boolean;
 };
 
 const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
@@ -51,6 +52,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       inputErrorText,
       formPlaceholder,
       width,
+      // skipFilterSection,
     } = props;
 
     const [isFocus, setIsFocus] = React.useState<boolean>(false);
@@ -214,6 +216,10 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
               />
             </Styled.InputContainer>
             {currentStatus === Status.FilterSelecting && (
+              /* 
+                ポップアップ表示後、外側をクリックしても閉じないので要修正
+                Popoverで表示しているMenuの中でPopoverを使用して表示しているので、そこが原因かもしれない
+              */
               <Popover baseElement={inputElement}>
                 <Menu
                   contents={getMenuOption()}

@@ -2,6 +2,8 @@ export type FilterPackType = {
   categoryName: string;
   sectionTitle?: string;
   filters: FilterType[];
+  // categoryごとにステップを省略するためのフラグ(skipFilterSelection?: boolean)
+  skipFilterSection?: boolean;
 };
 
 export type Types = "text" | "select" | "boolean";
