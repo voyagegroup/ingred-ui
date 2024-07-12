@@ -55,7 +55,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       // skipFilterSection,
     } = props;
 
-    const [isFocus, setIsFocus] = React.useState<boolean>(false);
+    const [isClick, setIsClick] = React.useState<boolean>(false);
     const [selectedFilterPack, setSelectedFilterPack] =
       React.useState<FilterPackType | null>(null);
     const theme = useTheme();
@@ -67,7 +67,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
     const [willEditFilter, setWillEditFilter] =
       React.useState<ReferredFilterType | null>(null);
     const currentStatus = getCurrentStatus(
-      isFocus,
+      isClick,
       selectedFilterPack,
       willEditFilter,
     );
@@ -75,8 +75,8 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       ReferredFilterType[]
     >([]);
 
-    const handleOnFocus = () => {
-      setIsFocus(true);
+    const handleOnClick = () => {
+      setIsClick(true);
     };
 
     const handleSelect = (elem: FilterPackType) => () => {
@@ -85,7 +85,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
 
     const handleClose = () => {
       setSelectedFilterPack(null);
-      setIsFocus(false);
+      setIsClick(false);
       setWillEditFilter(null);
     };
 
@@ -94,7 +94,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       reason: "backdropClick" | "clickMenuList",
     ) => {
       if (reason === "backdropClick") {
-        setIsFocus(false);
+        setIsClick(false);
       }
     };
 
@@ -108,7 +108,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       }
 
       setSelectedFilterPack(null);
-      setIsFocus(false);
+      setIsClick(false);
     };
 
     const handleRemove = (removedFilter: ReferredFilterType) => {
@@ -142,7 +142,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       );
       if (willEditFilterPack) {
         setEditingLabelElement(event.currentTarget);
-        setIsFocus(true);
+        setIsClick(true);
         setSelectedFilterPack(willEditFilterPack);
         setWillEditFilter(referredFilter);
       }
@@ -166,7 +166,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
         }
       }
 
-      setIsFocus(false);
+      setIsClick(false);
       setSelectedFilterPack(null);
       setWillEditFilter(null);
     };
@@ -212,7 +212,7 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
                 readOnly
                 type="text"
                 placeholder={placeholder}
-                onFocus={handleOnFocus}
+                onClick={handleOnClick}
               />
             </Styled.InputContainer>
             {currentStatus === Status.FilterSelecting && (
