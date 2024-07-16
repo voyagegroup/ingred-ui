@@ -54,9 +54,11 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
 
-  const filter = selectedFilterPack?.filters.find(
-    (filter) => filter.filterName === selectedFilter?.filterName,
-  );
+  const filter = selectedFilterPack?.shouldSkipConditionSelecting
+    ? selectedFilterPack.filters[0]
+    : selectedFilterPack?.filters.find(
+        (filter) => filter.filterName === selectedFilter?.filterName,
+      );
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
     value: filter.filterName,
@@ -65,24 +67,6 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextFieldErrorText("");
     setCondition(e.target.value);
-    /* 
-        以下の点から、setSectionにselectedFilterPack.categoryName, setSelectedFilterには、categoryNameと同様のfilterNameを持つfilterを設定
-        1. ステップ省略する際、getUnSelectedOptionを使用して、選択されていないオプションに反映させるため、
-        2. applyButtonのdisabledを活性化する場合、sectionをスキップする時は明示的に設定する必要があるため
-      入力textの場合のデータ構造イメージ
-      {
-        categoryName: "タイトル",
-        filters: [
-            {
-              filterName: "タイトル", 
-              conditionTitle: "任意の文字列",
-              control: {
-              type: "text",
-            },
-          },
-        ],
-      },
-    */ 
   };
 
   const handleBlurInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -152,9 +136,10 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const handleSubmit = () => {
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
-      // ここもsectionスキップする場合は、firstFilterNameにcategoryNameを設定
-      filterName: selectedFilter?.filterName as string,
-      filterType: selectedFilter?.control.type as Types,
+      filterName: selectedFilterPack?.shouldSkipConditionSelecting
+        ? selectedFilterPack.categoryName
+        : (selectedFilter?.filterName as string),
+      filterType: filter?.control.type as Types,
       filterCondition: condition,
     };
     onApply(newFilter);
@@ -201,22 +186,11 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
         <Typography weight="bold" size="lg">
-              {selectedFilterPack?.sectionTitle || sectionTitle}
-            </Typography>
-            <Spacer py={0.5} />
-          {/* selectedFilterPackにステップ省略するskipSectionSelectionがある場合、 以下のSelect表示せず、直接getInputFieldを使用して入力項目表示*/}
-          {/* 
-            {!skipSectionSelection && (
-                <Select
-                  options={getUnSelectedOption(options)}
-                  autoFocus={true}
-                  onChange={handleFilterChange}
-                />
-              )}
-              {(skipSectionSelection || selectedFilter) && (
-                // 条件入力フィールドの表示
-              )}
-          */}
+          {selectedFilterPack?.sectionTitle || sectionTitle}
+        </Typography>
+        <Spacer py={0.5} />
+        {!selectedFilterPack?.shouldSkipConditionSelecting && (
+          <>
             <Select
               maxMenuHeight={250}
               options={getUnSelectedOption(options)}
@@ -224,7 +198,10 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
               onChange={handleFilterChange}
             />
             <Spacer py={1} />
-        {selectedFilter && (
+          </>
+        )}
+        {(selectedFilterPack?.shouldSkipConditionSelecting ||
+          selectedFilter) && (
           <div>
             <Typography weight="bold" size="lg">
               {filter?.conditionTitle || conditionTitle}
@@ -244,7 +221,10 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           <Button
             size="small"
             inline={true}
-            disabled={!section || !condition}
+            disabled={
+              (!selectedFilterPack?.shouldSkipConditionSelecting && !section) ||
+              !condition
+            }
             onClick={handleSubmit}
           >
             {applyButtonTitle}
