@@ -37,7 +37,6 @@ export type MultipleFilterProps = {
   inputErrorText?: string;
   formPlaceholder?: string;
   width?: string;
-  // skipFilterSection?: boolean;
 };
 
 const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
@@ -52,7 +51,6 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
       inputErrorText,
       formPlaceholder,
       width,
-      // skipFilterSection,
     } = props;
 
     const [isClick, setIsClick] = React.useState<boolean>(false);
