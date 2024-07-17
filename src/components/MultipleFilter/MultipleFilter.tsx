@@ -222,10 +222,6 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
               />
             </Styled.InputContainer>
             {currentStatus === Status.FilterSelecting && (
-              /* 
-                ポップアップ表示後、外側をクリックしても閉じないので要修正
-                Popoverで表示しているMenuの中でPopoverを使用して表示しているので、そこが原因かもしれない
-              */
               <Popover baseElement={inputElement}>
                 <Menu
                   contents={getMenuOption()}
