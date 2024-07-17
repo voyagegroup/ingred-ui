@@ -69,7 +69,7 @@ export const CalendarMonth = styled.div<{ expanded: boolean }>`
   transition: background-color 300ms;
 `;
 
-export const IconContainer = styled.button<{ expanded: boolean }>`
+export const IconContainer = styled.div<{ expanded: boolean }>`
   cursor: pointer;
   position: absolute;
   top: ${({ theme }) => theme.spacing * 2}px;
