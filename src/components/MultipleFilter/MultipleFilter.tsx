@@ -175,14 +175,14 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
           if (filterPack.shouldSkipConditionSelecting) {
             return !currentReferredFilters.some(
               (referredFilter) =>
-                referredFilter.categoryName === filterPack.categoryName
+                referredFilter.categoryName === filterPack.categoryName,
             );
           } else {
             return (
               filterPack.filters.length >
               currentReferredFilters.filter(
                 (referredFilter) =>
-                  referredFilter.categoryName === filterPack.categoryName
+                  referredFilter.categoryName === filterPack.categoryName,
               ).length
             );
           }

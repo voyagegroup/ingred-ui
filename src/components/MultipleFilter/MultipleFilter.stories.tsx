@@ -116,20 +116,20 @@ const skipFilterPacksExample: FilterPackType[] = [
     ],
   },
   {
-        categoryName: "Status",
-        sectionTitle: "",
-        shouldSkipConditionSelecting: true,
-        filters: [
-          {
-            filterName: "",
-            conditionTitle: "",
-            control: {
-              type: "select",
-              options: ["valid", "invalid"],
-            },
-          },
-        ],
+    categoryName: "Status",
+    sectionTitle: "",
+    shouldSkipConditionSelecting: true,
+    filters: [
+      {
+        filterName: "",
+        conditionTitle: "",
+        control: {
+          type: "select",
+          options: ["valid", "invalid"],
+        },
       },
+    ],
+  },
   {
     categoryName: "Condition",
     shouldSkipConditionSelecting: true,
@@ -152,7 +152,6 @@ const skipFilterPacksExample: FilterPackType[] = [
   },
 ];
 
-
 export const Example: StoryObj<MultipleFilterProps> = {
   render: (args) => {
     const [, setFilters] = React.useState<ReferredFilterType[]>([]);
@@ -167,13 +166,13 @@ export const Example: StoryObj<MultipleFilterProps> = {
           filterPacks={filterPacksExample}
           inputErrorText={"Input error text can be customized"}
           formPlaceholder={"Placeholder can be customized"}
-          onChange={handleChange} />
-          <Spacer mb={24} />
-        </>
+          onChange={handleChange}
+        />
+        <Spacer mb={24} />
+      </>
     );
   },
 };
-
 
 export const SkipExample: StoryObj<MultipleFilterProps> = {
   render: (args) => {
@@ -184,15 +183,15 @@ export const SkipExample: StoryObj<MultipleFilterProps> = {
 
     return (
       <>
-      <MultipleFilter
-        {...args}
-        filterPacks={skipFilterPacksExample}
-        inputErrorText={"Input error text can be customized"}
-        formPlaceholder={"Placeholder can be customized"}
-        onChange={handleChange}
-      />
-      <Spacer mb={24} />
-        </>
+        <MultipleFilter
+          {...args}
+          filterPacks={skipFilterPacksExample}
+          inputErrorText={"Input error text can be customized"}
+          formPlaceholder={"Placeholder can be customized"}
+          onChange={handleChange}
+        />
+        <Spacer mb={24} />
+      </>
     );
   },
 };
