@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.1.3
+
+### Patch Changes
+
+- [#1649](https://github.com/voyagegroup/ingred-ui/pull/1649) [`b99b3aa7`](https://github.com/voyagegroup/ingred-ui/commit/b99b3aa70b6feab775af59d66ce3ee2bf9d04be3) Thanks [@yowcow](https://github.com/yowcow)! - reverts 19.1.2 and fixes appropriate button
+
 ## 19.1.2
 
 ### Patch Changes
