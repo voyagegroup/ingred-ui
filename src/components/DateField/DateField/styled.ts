@@ -40,7 +40,9 @@ export const InputContainer = styled.div<{
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "text")};
 `;
 
-export const CalendarIcon = styled.button`
+export const CalendarIcon = styled.button.attrs({
+  type: "button",
+})`
   border: none;
   text-align: right;
   background: none;
