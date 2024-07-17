@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
 import MultipleFilter, { MultipleFilterProps } from "./MultipleFilter";
+import Spacer from "../Spacer";
 import { FilterPackType, ReferredFilterType } from "./types";
 
 export default {
@@ -99,6 +100,59 @@ const filterPacksExample: FilterPackType[] = [
   },
 ];
 
+const skipFilterPacksExample: FilterPackType[] = [
+  {
+    categoryName: "Row name",
+    shouldSkipConditionSelecting: true,
+    sectionTitle: "",
+    filters: [
+      {
+        filterName: "",
+        conditionTitle: "Arbitrary text input",
+        control: {
+          type: "text",
+        },
+      },
+    ],
+  },
+  {
+        categoryName: "Status",
+        sectionTitle: "",
+        shouldSkipConditionSelecting: true,
+        filters: [
+          {
+            filterName: "",
+            conditionTitle: "",
+            control: {
+              type: "select",
+              options: ["valid", "invalid"],
+            },
+          },
+        ],
+      },
+  {
+    categoryName: "Condition",
+    shouldSkipConditionSelecting: true,
+    filters: [
+      {
+        filterName: "",
+        conditionTitle: "",
+        control: {
+          type: "boolean",
+        },
+      },
+      {
+        filterName: "",
+        conditionTitle: "",
+        control: {
+          type: "boolean",
+        },
+      },
+    ],
+  },
+];
+
+
 export const Example: StoryObj<MultipleFilterProps> = {
   render: (args) => {
     const [, setFilters] = React.useState<ReferredFilterType[]>([]);
@@ -107,13 +161,38 @@ export const Example: StoryObj<MultipleFilterProps> = {
     };
 
     return (
+      <>
+        <MultipleFilter
+          {...args}
+          filterPacks={filterPacksExample}
+          inputErrorText={"Input error text can be customized"}
+          formPlaceholder={"Placeholder can be customized"}
+          onChange={handleChange} />
+          <Spacer mb={24} />
+        </>
+    );
+  },
+};
+
+
+export const SkipExample: StoryObj<MultipleFilterProps> = {
+  render: (args) => {
+    const [, setFilters] = React.useState<ReferredFilterType[]>([]);
+    const handleChange = (referredFilters: ReferredFilterType[]) => {
+      setFilters(referredFilters);
+    };
+
+    return (
+      <>
       <MultipleFilter
         {...args}
-        filterPacks={filterPacksExample}
+        filterPacks={skipFilterPacksExample}
         inputErrorText={"Input error text can be customized"}
         formPlaceholder={"Placeholder can be customized"}
         onChange={handleChange}
       />
+      <Spacer mb={24} />
+        </>
     );
   },
 };
