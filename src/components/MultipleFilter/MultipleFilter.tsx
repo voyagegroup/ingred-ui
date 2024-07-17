@@ -171,14 +171,22 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
 
     const getMenuOption = () => {
       return filterPacks
-        ?.filter(
-          (filterPack) =>
-            filterPack.filters.length !==
-            currentReferredFilters.filter(
+        ?.filter((filterPack) => {
+          if (filterPack.shouldSkipConditionSelecting) {
+            return !currentReferredFilters.some(
               (referredFilter) =>
-                referredFilter.categoryName === filterPack.categoryName,
-            ).length,
-        )
+                referredFilter.categoryName === filterPack.categoryName
+            );
+          } else {
+            return (
+              filterPack.filters.length >
+              currentReferredFilters.filter(
+                (referredFilter) =>
+                  referredFilter.categoryName === filterPack.categoryName
+              ).length
+            );
+          }
+        })
         .map((filterOption) => ({
           onClick: handleSelect(filterOption),
           text: filterOption.categoryName,

@@ -44,7 +44,7 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
     width,
     currentReferredFilters,
     sectionTitle = "Section",
-    conditionTitle = "Condition",
+    conditionTitle = "",
   } = props;
 
   const theme = useTheme();
@@ -185,12 +185,12 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
         </Styled.CloseIconContainer>
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
-        <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle || sectionTitle}
-        </Typography>
-        <Spacer py={0.5} />
         {!selectedFilterPack?.shouldSkipConditionSelecting && (
           <>
+            <Typography weight="bold" size="lg">
+              {selectedFilterPack?.sectionTitle || sectionTitle}
+            </Typography>
+            <Spacer py={0.5} />
             <Select
               maxMenuHeight={250}
               options={getUnSelectedOption(options)}

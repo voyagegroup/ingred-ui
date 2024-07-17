@@ -44,7 +44,7 @@ export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
     inputErrorText = "Please input",
     formPlaceholder = "search",
     sectionTitle = "Section",
-    conditionTitle = "Condition",
+    conditionTitle = "",
     width,
   } = props;
   const theme = useTheme();
@@ -164,12 +164,12 @@ export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
             <Spacer py={0.5} />
             <TextField readOnly value={willEditFilter?.filterName} />
             <Spacer py={1} />
-            <Typography weight="bold" size="lg">
-              {filter?.conditionTitle || conditionTitle}
-            </Typography>
-            <Spacer py={0.5} />
           </>
         )}
+        <Typography weight="bold" size="lg">
+          {filter?.conditionTitle || conditionTitle}
+        </Typography>
+        <Spacer py={0.5} />
         {filter && getInputField(filter)}
         <Spacer py={1} />
         <Divider
