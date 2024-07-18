@@ -54,9 +54,9 @@ export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
 
-  const filter = selectedFilterPack?.filters.find((filter) => {
-    return filter.filterName === willEditFilter?.filterName;
-  });
+  const filter = selectedFilterPack?.filters.find(
+    (filter) => filter.filterName === willEditFilter?.filterName,
+  );
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextFieldErrorText("");
