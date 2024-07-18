@@ -2,7 +2,6 @@ export type FilterPackType = {
   categoryName: string;
   sectionTitle?: string;
   filters: FilterType[];
-  shouldSkipConditionSelecting?: boolean;
 };
 
 export type Types = "text" | "select" | "boolean";

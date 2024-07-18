@@ -38,8 +38,7 @@ export const Label: React.FunctionComponent<Props> = ({
     <Styled.Container>
       <Styled.LeftContainer onClick={handleClick}>
         <Typography size="sm" component="span">
-          {`${filter.filterName}:`}
-          &nbsp;
+          {filter.filterName}: &nbsp;
         </Typography>
         <Typography size="sm" component="span" weight="bold">
           {boolToString(filter.filterCondition)}
