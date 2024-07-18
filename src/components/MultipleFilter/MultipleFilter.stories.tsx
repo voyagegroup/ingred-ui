@@ -103,8 +103,6 @@ const filterPacksExample: FilterPackType[] = [
 const skipFilterPacksExample: FilterPackType[] = [
   {
     categoryName: "Row name",
-    shouldSkipConditionSelecting: true,
-    sectionTitle: "",
     filters: [
       {
         filterName: "",
@@ -117,12 +115,9 @@ const skipFilterPacksExample: FilterPackType[] = [
   },
   {
     categoryName: "Status",
-    sectionTitle: "",
-    shouldSkipConditionSelecting: true,
     filters: [
       {
         filterName: "",
-        conditionTitle: "",
         control: {
           type: "select",
           options: ["valid", "invalid"],
@@ -132,18 +127,9 @@ const skipFilterPacksExample: FilterPackType[] = [
   },
   {
     categoryName: "Condition",
-    shouldSkipConditionSelecting: true,
     filters: [
       {
         filterName: "",
-        conditionTitle: "",
-        control: {
-          type: "boolean",
-        },
-      },
-      {
-        filterName: "",
-        conditionTitle: "",
         control: {
           type: "boolean",
         },

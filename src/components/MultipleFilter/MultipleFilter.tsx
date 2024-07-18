@@ -139,6 +139,10 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
         (filterPack) => filterPack.categoryName === referredFilter.categoryName,
       );
       if (willEditFilterPack) {
+        if (willEditFilterPack.filters.length === 1) {
+          willEditFilterPack.filters[0].filterName =
+            willEditFilterPack.categoryName;
+        }
         setEditingLabelElement(event.currentTarget);
         setIsClick(true);
         setSelectedFilterPack(willEditFilterPack);
@@ -171,22 +175,14 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
 
     const getMenuOption = () => {
       return filterPacks
-        ?.filter((filterPack) => {
-          if (filterPack.shouldSkipConditionSelecting) {
-            return !currentReferredFilters.some(
+        ?.filter(
+          (filterPack) =>
+            filterPack.filters.length !==
+            currentReferredFilters.filter(
               (referredFilter) =>
                 referredFilter.categoryName === filterPack.categoryName,
-            );
-          } else {
-            return (
-              filterPack.filters.length >
-              currentReferredFilters.filter(
-                (referredFilter) =>
-                  referredFilter.categoryName === filterPack.categoryName,
-              ).length
-            );
-          }
-        })
+            ).length,
+        )
         .map((filterOption) => ({
           onClick: handleSelect(filterOption),
           text: filterOption.categoryName,

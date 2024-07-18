@@ -54,11 +54,9 @@ export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
 
-  const filter = selectedFilterPack?.shouldSkipConditionSelecting
-    ? selectedFilterPack.filters[0]
-    : selectedFilterPack?.filters.find(
-        (filter) => filter.filterName === willEditFilter?.filterName,
-      );
+  const filter = selectedFilterPack?.filters.find((filter) => {
+    return filter.filterName === willEditFilter?.filterName;
+  });
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextFieldErrorText("");
@@ -156,16 +154,17 @@ export const EditFilterCard: React.FunctionComponent<EditFilterCardProps> = (
         </Styled.CloseIconContainer>
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
-        {!selectedFilterPack?.shouldSkipConditionSelecting && (
-          <>
-            <Typography weight="bold" size="lg">
-              {selectedFilterPack?.sectionTitle || sectionTitle}
-            </Typography>
-            <Spacer py={0.5} />
-            <TextField readOnly value={willEditFilter?.filterName} />
-            <Spacer py={1} />
-          </>
-        )}
+        {selectedFilterPack?.filters &&
+          selectedFilterPack?.filters.length > 1 && (
+            <>
+              <Typography weight="bold" size="lg">
+                {selectedFilterPack?.sectionTitle || sectionTitle}
+              </Typography>
+              <Spacer py={0.5} />
+              <TextField readOnly value={willEditFilter?.filterName} />
+              <Spacer py={1} />
+            </>
+          )}
         <Typography weight="bold" size="lg">
           {filter?.conditionTitle || conditionTitle}
         </Typography>

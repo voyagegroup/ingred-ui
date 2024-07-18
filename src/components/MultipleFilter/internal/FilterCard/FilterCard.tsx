@@ -50,15 +50,24 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const theme = useTheme();
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
-  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
+  const [selectedFilter, setSelectedFilter] = React.useState<
+    FilterType | undefined
+  >(
+    selectedFilterPack?.filters.length === 1
+      ? selectedFilterPack.filters[0]
+      : undefined,
+  );
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
+  const isMultipleFilters = selectedFilterPack?.filters.length !== 1;
+  const isSectionSelected = !!section;
+  const isConditionSet = !!condition;
+  const isApplyButtonDisabled =
+    (isMultipleFilters && !isSectionSelected) || !isConditionSet;
 
-  const filter = selectedFilterPack?.shouldSkipConditionSelecting
-    ? selectedFilterPack.filters[0]
-    : selectedFilterPack?.filters.find(
-        (filter) => filter.filterName === selectedFilter?.filterName,
-      );
+  const filter = selectedFilterPack?.filters.find(
+    (filter) => filter.filterName === selectedFilter?.filterName,
+  );
   const options = selectedFilterPack?.filters.map((filter) => ({
     label: filter.filterName,
     value: filter.filterName,
@@ -136,9 +145,10 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const handleSubmit = () => {
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
-      filterName: selectedFilterPack?.shouldSkipConditionSelecting
-        ? selectedFilterPack.categoryName
-        : (selectedFilter?.filterName as string),
+      filterName:
+        selectedFilterPack?.filters.length === 1
+          ? selectedFilterPack.categoryName
+          : (selectedFilter?.filterName as string),
       filterType: filter?.control.type as Types,
       filterCondition: condition,
     };
@@ -185,23 +195,23 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
         </Styled.CloseIconContainer>
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
-        {!selectedFilterPack?.shouldSkipConditionSelecting && (
-          <>
-            <Typography weight="bold" size="lg">
-              {selectedFilterPack?.sectionTitle || sectionTitle}
-            </Typography>
-            <Spacer py={0.5} />
-            <Select
-              maxMenuHeight={250}
-              options={getUnSelectedOption(options)}
-              autoFocus={true}
-              onChange={handleFilterChange}
-            />
-            <Spacer py={1} />
-          </>
-        )}
-        {(selectedFilterPack?.shouldSkipConditionSelecting ||
-          selectedFilter) && (
+        {selectedFilterPack?.filters &&
+          selectedFilterPack.filters.length > 1 && (
+            <>
+              <Typography weight="bold" size="lg">
+                {selectedFilterPack?.sectionTitle || sectionTitle}
+              </Typography>
+              <Spacer py={0.5} />
+              <Select
+                maxMenuHeight={250}
+                options={getUnSelectedOption(options)}
+                autoFocus={true}
+                onChange={handleFilterChange}
+              />
+              <Spacer py={1} />
+            </>
+          )}
+        {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
               {filter?.conditionTitle || conditionTitle}
@@ -221,10 +231,7 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           <Button
             size="small"
             inline={true}
-            disabled={
-              (!selectedFilterPack?.shouldSkipConditionSelecting && !section) ||
-              !condition
-            }
+            disabled={isApplyButtonDisabled}
             onClick={handleSubmit}
           >
             {applyButtonTitle}
