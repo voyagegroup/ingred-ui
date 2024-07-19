@@ -48,22 +48,14 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   } = props;
 
   const theme = useTheme();
+  const isMultipleFilters = (selectedFilterPack?.filters?.length ?? 0) > 1;
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
   const [selectedFilter, setSelectedFilter] = React.useState<
     FilterType | undefined
-  >(
-    selectedFilterPack?.filters.length === 1
-      ? selectedFilterPack.filters[0]
-      : undefined,
-  );
+  >(isMultipleFilters ? undefined : selectedFilterPack?.filters[0]);
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
-  const isMultipleFilters = selectedFilterPack?.filters.length !== 1;
-  const isSectionSelected = !!section;
-  const isConditionSet = !!condition;
-  const isApplyButtonDisabled =
-    (isMultipleFilters && !isSectionSelected) || !isConditionSet;
 
   const filter = selectedFilterPack?.filters.find(
     (filter) => filter.filterName === selectedFilter?.filterName,
@@ -145,11 +137,10 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const handleSubmit = () => {
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
-      filterName:
-        selectedFilterPack?.filters.length === 1
-          ? selectedFilterPack.categoryName
-          : (selectedFilter?.filterName as string),
-      filterType: filter?.control.type as Types,
+      filterName: isMultipleFilters
+        ? (selectedFilter?.filterName as string)
+        : (selectedFilterPack?.categoryName as string),
+      filterType: selectedFilter?.control.type as Types,
       filterCondition: condition,
     };
     onApply(newFilter);
@@ -195,22 +186,21 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
         </Styled.CloseIconContainer>
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
-        {selectedFilterPack?.filters &&
-          selectedFilterPack.filters.length > 1 && (
-            <>
-              <Typography weight="bold" size="lg">
-                {selectedFilterPack?.sectionTitle || sectionTitle}
-              </Typography>
-              <Spacer py={0.5} />
-              <Select
-                maxMenuHeight={250}
-                options={getUnSelectedOption(options)}
-                autoFocus={true}
-                onChange={handleFilterChange}
-              />
-              <Spacer py={1} />
-            </>
-          )}
+        {isMultipleFilters && (
+          <>
+            <Typography weight="bold" size="lg">
+              {selectedFilterPack?.sectionTitle || sectionTitle}
+            </Typography>
+            <Spacer py={0.5} />
+            <Select
+              maxMenuHeight={250}
+              options={getUnSelectedOption(options)}
+              autoFocus={true}
+              onChange={handleFilterChange}
+            />
+            <Spacer py={1} />
+          </>
+        )}
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
@@ -231,7 +221,7 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           <Button
             size="small"
             inline={true}
-            disabled={isApplyButtonDisabled}
+            disabled={(isMultipleFilters && !section) || !condition}
             onClick={handleSubmit}
           >
             {applyButtonTitle}
