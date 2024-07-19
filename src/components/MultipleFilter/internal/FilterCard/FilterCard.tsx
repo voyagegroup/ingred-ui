@@ -44,13 +44,16 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
     width,
     currentReferredFilters,
     sectionTitle = "Section",
-    conditionTitle = "Condition",
+    conditionTitle = "",
   } = props;
 
   const theme = useTheme();
+  const isMultipleFilters = (selectedFilterPack?.filters?.length ?? 0) > 1;
   const [section, setSection] = React.useState<string | undefined>();
   const [condition, setCondition] = React.useState<string | undefined>();
-  const [selectedFilter, setSelectedFilter] = React.useState<FilterType>();
+  const [selectedFilter, setSelectedFilter] = React.useState<
+    FilterType | undefined
+  >(isMultipleFilters ? undefined : selectedFilterPack?.filters[0]);
   const [textFieldErrorText, setTextFieldErrorText] =
     React.useState<string>("");
 
@@ -134,7 +137,9 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
   const handleSubmit = () => {
     const newFilter = {
       categoryName: selectedFilterPack?.categoryName as string,
-      filterName: selectedFilter?.filterName as string,
+      filterName: isMultipleFilters
+        ? (selectedFilter?.filterName as string)
+        : (selectedFilterPack?.categoryName as string),
       filterType: selectedFilter?.control.type as Types,
       filterCondition: condition,
     };
@@ -181,17 +186,21 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
         </Styled.CloseIconContainer>
       </Styled.FilterCardHeader>
       <Styled.FilterContent>
-        <Typography weight="bold" size="lg">
-          {selectedFilterPack?.sectionTitle || sectionTitle}
-        </Typography>
-        <Spacer py={0.5} />
-        <Select
-          maxMenuHeight={250}
-          options={getUnSelectedOption(options)}
-          autoFocus={true}
-          onChange={handleFilterChange}
-        />
-        <Spacer py={1} />
+        {isMultipleFilters && (
+          <>
+            <Typography weight="bold" size="lg">
+              {selectedFilterPack?.sectionTitle || sectionTitle}
+            </Typography>
+            <Spacer py={0.5} />
+            <Select
+              maxMenuHeight={250}
+              options={getUnSelectedOption(options)}
+              autoFocus={true}
+              onChange={handleFilterChange}
+            />
+            <Spacer py={1} />
+          </>
+        )}
         {selectedFilter && (
           <div>
             <Typography weight="bold" size="lg">
@@ -212,7 +221,7 @@ export const FilterCard: React.FunctionComponent<FilterCardProps> = (
           <Button
             size="small"
             inline={true}
-            disabled={!section || !condition}
+            disabled={(isMultipleFilters && !section) || !condition}
             onClick={handleSubmit}
           >
             {applyButtonTitle}
