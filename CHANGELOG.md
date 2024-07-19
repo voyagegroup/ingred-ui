@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.1.3
+
+### Patch Changes
+
+- [#1649](https://github.com/voyagegroup/ingred-ui/pull/1649) [`b99b3aa7`](https://github.com/voyagegroup/ingred-ui/commit/b99b3aa70b6feab775af59d66ce3ee2bf9d04be3) Thanks [@yowcow](https://github.com/yowcow)! - reverts 19.1.2 and fixes appropriate button
+
+## 19.1.2
+
+### Patch Changes
+
+- [#1647](https://github.com/voyagegroup/ingred-ui/pull/1647) [`2e3aff01`](https://github.com/voyagegroup/ingred-ui/commit/2e3aff01b2f0092d76e6f5f2a1359e807295021f) Thanks [@yowcow](https://github.com/yowcow)! - change calendar icon to div to prevent accidental form submit
+
 ## 19.1.1
 
 ### Patch Changes
