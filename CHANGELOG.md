@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.2.0
+
+### Minor Changes
+
+- [#1646](https://github.com/voyagegroup/ingred-ui/pull/1646) [`e5eb4f06`](https://github.com/voyagegroup/ingred-ui/commit/e5eb4f064643480e5c540a65a0b73d7259092396) Thanks [@trailstem](https://github.com/trailstem)! - Fix MultipleFilter bug and MultipleFilter options can be skipped.
+
 ## 19.1.3
 
 ### Patch Changes
