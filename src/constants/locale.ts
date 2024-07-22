@@ -131,7 +131,6 @@ export const jaJP: Localization = {
         inputErrorText: "入力してください",
         formPlaceholder: "検索",
         sectionTitle: "セクション",
-        conditionTitle: "条件",
       },
     },
     EditFilterCard: { defaultProps: {} },
