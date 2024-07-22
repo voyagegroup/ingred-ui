@@ -161,10 +161,13 @@ const MultipleFilter = React.forwardRef<HTMLDivElement, MultipleFilterProps>(
         editedFilter.filterCondition;
 
       if (isEdited) {
-        currentReferredFilters[editIndex] = editedFilter;
-        setCurrentReferredFilters(currentReferredFilters.slice());
+        const newReferredFilters = currentReferredFilters.slice();
+        newReferredFilters[editIndex] = editedFilter;
+
+        setCurrentReferredFilters(newReferredFilters);
+
         if (onChange !== undefined) {
-          onChange(currentReferredFilters);
+          onChange(newReferredFilters);
         }
       }
 
