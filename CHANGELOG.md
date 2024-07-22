@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.2.1
+
+### Patch Changes
+
+- [#1653](https://github.com/voyagegroup/ingred-ui/pull/1653) [`2a5cdcd2`](https://github.com/voyagegroup/ingred-ui/commit/2a5cdcd29b8273fdd4c242c8bd84a7cc987b7658) Thanks [@trailstem](https://github.com/trailstem)! - Remove unnecessary Japanese localisation default values.
+
 ## 19.2.0
 
 ### Minor Changes
