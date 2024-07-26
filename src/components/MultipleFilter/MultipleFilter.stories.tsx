@@ -1,47 +1,20 @@
 import * as React from "react";
 import { StoryObj } from "@storybook/react";
 import MultipleFilter, { MultipleFilterProps } from "./MultipleFilter";
-import { FilterPackType, ReferredFilterType } from "./types";
-import Flex from "../Flex";
 import Spacer from "../Spacer";
-import { Card } from "../Calendar/styled";
-import DataTable from "../DataTable";
-
-
-
-export const ContentNarrowDown = {
-  TITLE: "TITLE",
-  STATUS: "STATUS",
-  CONTENT_SOURCE: "CONTENT_SOURCE",
-} as const;
-
-export const ContentNarrowDownMap = {
-  [ContentNarrowDown.TITLE]: "タイトル",
-  [ContentNarrowDown.STATUS]: "ステータス",
-  [ContentNarrowDown.CONTENT_SOURCE]: "コンテンツソース",
-} as const;
-
-export type ContentNarrowDown = keyof typeof ContentNarrowDown;
-
-export const ContentStatus = {
-  ACTIVE: "ACTIVE",
-  BLOCKED: "BLOCKED",
-} as const;
-
-
-export const ContentStatusMap = {
-  [ContentStatus.ACTIVE]: "有効",
-  [ContentStatus.BLOCKED]: "無効",
-} as const;
+import { FilterPackType, ReferredFilterType } from "./types";
 
 export default {
-  title: "Components/Utils/MultipleFilterWithDataTable",
+  title: "Components/Utils/MultipleFilter",
   component: MultipleFilter,
   parameters: {
     docs: {
       description: {
         component: `
-Demonstrates the use of MultipleFilter with DataTable for content filtering.
+Set the condition by filterPacks.
+
+You can get the conditions set via ReferredFilters.
+
 `,
       },
       source: {
@@ -51,13 +24,35 @@ Demonstrates the use of MultipleFilter with DataTable for content filtering.
   },
 };
 
-const skipFilterPacksExample: FilterPackType[] = [
+const filterPacksExample: FilterPackType[] = [
   {
-    categoryName: "タイトル",
+    categoryName: "Row name",
+    sectionTitle: "Filter by name",
     filters: [
       {
-        filterName: "",
-        conditionTitle: "任意の文字列",
+        filterName: "Demand",
+        conditionTitle: "Search word",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Channel",
+        conditionTitle: "Search word",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Attribute",
+        conditionTitle: "Search word",
+        control: {
+          type: "text",
+        },
+      },
+      {
+        filterName: "Type",
+        conditionTitle: "Search word",
         control: {
           type: "text",
         },
@@ -65,144 +60,123 @@ const skipFilterPacksExample: FilterPackType[] = [
     ],
   },
   {
-    categoryName: "ステータス",
+    categoryName: "Linking",
+    sectionTitle: "Target",
     filters: [
       {
-        filterName: "",
+        filterName: "Device",
+        conditionTitle: "Condition",
         control: {
           type: "select",
-          options: ["有効", "無効"],
+          options: ["Not selected", "Not Linking", "Linking"],
+        },
+      },
+      {
+        filterName: "Site",
+        conditionTitle: "Condition",
+        control: {
+          type: "select",
+          options: ["Not selected", "Not Linking", "Linking"],
+        },
+      },
+    ],
+  },
+  {
+    categoryName: "Condition",
+    filters: [
+      {
+        filterName: "Public",
+        control: {
+          type: "boolean",
+        },
+      },
+      {
+        filterName: "Active",
+        control: {
+          type: "boolean",
         },
       },
     ],
   },
 ];
 
-const mockContents: any[] = [
+const skipFilterPacksExample: FilterPackType[] = [
   {
-    id: "1",
-    title: "title1",
-    duration: 100,
-    status: "ACTIVE",
-    publishedDate: "2021-01-01",
-    contentSource: {
-      id: "1",
-      name: "source1",
-      url: "https://source1.com",
-      cmsType: {
-        id: "1",
-        name: "type1",
+    categoryName: "Row name",
+    filters: [
+      {
+        filterName: "",
+        conditionTitle: "Arbitrary text input",
+        control: {
+          type: "text",
+        },
       },
-      isActive: true,
-      lastSyncedAt: "2021-01-01",
-      archivedAt: "2021-01-01",
-    },
+    ],
   },
   {
-    id: "2",
-    title: "title2",
-    duration: 200,
-    status: "BLOCKED",
-    publishedDate: "2021-01-02",
-    contentSource: {
-      id: "2",
-      name: "source2",
-      url: "https://source2.com",
-      cmsType: {
-        id: "2",
-        name: "type2",
+    categoryName: "Status",
+    filters: [
+      {
+        filterName: "",
+        control: {
+          type: "select",
+          options: ["valid", "invalid"],
+        },
       },
-      isActive: false,
-      lastSyncedAt: "2021-01-02",
-      archivedAt: "2021-01-02",
-    },
+    ],
+  },
+  {
+    categoryName: "Condition",
+    filters: [
+      {
+        filterName: "",
+        control: {
+          type: "boolean",
+        },
+      },
+    ],
   },
 ];
 
-export const FilterableDataTable: StoryObj<MultipleFilterProps> = {
+export const Example: StoryObj<MultipleFilterProps> = {
   render: (args) => {
-    const [filters, setFilters] = React.useState<ReferredFilterType[]>([]);
-    const [filteredData, setFilteredData] = React.useState<any[]>(mockContents);
-
-    const handleChange = (newFilters: ReferredFilterType[]) => {
-      console.log("Updated Filters:", newFilters);
-      setFilters(newFilters);
+    const [, setFilters] = React.useState<ReferredFilterType[]>([]);
+    const handleChange = (referredFilters: ReferredFilterType[]) => {
+      setFilters(referredFilters);
     };
-
-    const matchString = (value: string, condition: string): boolean => {
-      return value.toLowerCase().includes(condition.toLowerCase());
-    };
-
-    const matchFilters = React.useCallback(
-      (item: any, filters: ReferredFilterType[]): boolean => {
-        return filters.every((filter) => {
-          console.log("Matching Filter:", filter);
-          switch (filter.categoryName) {
-            case "タイトル":
-              return matchString(item.title, filter.filterCondition as string);
-            case "ステータス": {
-              const statusConditions = Array.isArray(filter.filterCondition)
-                ? filter.filterCondition
-                : [filter.filterCondition];
-              return statusConditions.some((condition) =>
-                matchString(ContentStatusMap[item.status], condition as string)
-              );
-            }
-            default:
-              return true;
-          }
-        });
-      },
-      []
-    );
-
-    React.useEffect(() => {
-      console.log("Filters changed:", filters);
-      const newFilteredContents = mockContents.filter((item) =>
-        matchFilters(item, filters)
-      );
-      console.log("Filtered Contents:", newFilteredContents);
-      setFilteredData(newFilteredContents);
-    }, [filters, matchFilters]);
 
     return (
       <>
-        <Flex
-          alignItems="center"
-          display="flex"
-          flexDirection="row"
-          gap={2}
-          justifyContent="flex-start"
-        >
-          <MultipleFilter
-            {...args}
-            filterPacks={skipFilterPacksExample}
-            onChange={handleChange}
-          />
-        </Flex>
-        <Spacer pt={2} />
-        <Card p={3}>
-          <DataTable
-            data={filteredData}
-            enablePagination={true}
-            dataKey="id"
-            columns={[
-              {
-                name: "Title",
-                selector: (a) => a.title,
-                sortable: true,
-                width: "auto",
-              },
-              {
-                name: "Status",
-                sortable: true,
-                width: "115px",
-                selector: (a) => a.status,
-                renderCell: (a) => ContentStatusMap[a.status],
-              },
-            ]}
-          />
-        </Card>
+        <MultipleFilter
+          {...args}
+          filterPacks={filterPacksExample}
+          inputErrorText={"Input error text can be customized"}
+          formPlaceholder={"Placeholder can be customized"}
+          onChange={handleChange}
+        />
+        <Spacer mb={24} />
+      </>
+    );
+  },
+};
+
+export const SkipExample: StoryObj<MultipleFilterProps> = {
+  render: (args) => {
+    const [, setFilters] = React.useState<ReferredFilterType[]>([]);
+    const handleChange = (referredFilters: ReferredFilterType[]) => {
+      setFilters(referredFilters);
+    };
+
+    return (
+      <>
+        <MultipleFilter
+          {...args}
+          filterPacks={skipFilterPacksExample}
+          inputErrorText={"Input error text can be customized"}
+          formPlaceholder={"Placeholder can be customized"}
+          onChange={handleChange}
+        />
+        <Spacer mb={24} />
       </>
     );
   },
