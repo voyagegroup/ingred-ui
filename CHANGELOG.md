@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.2.2
+
+### Patch Changes
+
+- [#1655](https://github.com/voyagegroup/ingred-ui/pull/1655) [`ef7817cd`](https://github.com/voyagegroup/ingred-ui/commit/ef7817cde9a16ba00025bad7acda2356edbf7a0a) Thanks [@trailstem](https://github.com/trailstem)! - MultipleFilter Condition not sensed correctly when editing the condition.
+
 ## 19.2.1
 
 ### Patch Changes
