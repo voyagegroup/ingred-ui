@@ -1,5 +1,35 @@
 # Changelog
 
+## 19.2.2
+
+### Patch Changes
+
+- [#1655](https://github.com/voyagegroup/ingred-ui/pull/1655) [`ef7817cd`](https://github.com/voyagegroup/ingred-ui/commit/ef7817cde9a16ba00025bad7acda2356edbf7a0a) Thanks [@trailstem](https://github.com/trailstem)! - MultipleFilter Condition not sensed correctly when editing the condition.
+
+## 19.2.1
+
+### Patch Changes
+
+- [#1653](https://github.com/voyagegroup/ingred-ui/pull/1653) [`2a5cdcd2`](https://github.com/voyagegroup/ingred-ui/commit/2a5cdcd29b8273fdd4c242c8bd84a7cc987b7658) Thanks [@trailstem](https://github.com/trailstem)! - Remove unnecessary Japanese localisation default values.
+
+## 19.2.0
+
+### Minor Changes
+
+- [#1646](https://github.com/voyagegroup/ingred-ui/pull/1646) [`e5eb4f06`](https://github.com/voyagegroup/ingred-ui/commit/e5eb4f064643480e5c540a65a0b73d7259092396) Thanks [@trailstem](https://github.com/trailstem)! - Fix MultipleFilter bug and MultipleFilter options can be skipped.
+
+## 19.1.3
+
+### Patch Changes
+
+- [#1649](https://github.com/voyagegroup/ingred-ui/pull/1649) [`b99b3aa7`](https://github.com/voyagegroup/ingred-ui/commit/b99b3aa70b6feab775af59d66ce3ee2bf9d04be3) Thanks [@yowcow](https://github.com/yowcow)! - reverts 19.1.2 and fixes appropriate button
+
+## 19.1.2
+
+### Patch Changes
+
+- [#1647](https://github.com/voyagegroup/ingred-ui/pull/1647) [`2e3aff01`](https://github.com/voyagegroup/ingred-ui/commit/2e3aff01b2f0092d76e6f5f2a1359e807295021f) Thanks [@yowcow](https://github.com/yowcow)! - change calendar icon to div to prevent accidental form submit
+
 ## 19.1.1
 
 ### Patch Changes
