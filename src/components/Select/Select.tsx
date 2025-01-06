@@ -214,6 +214,7 @@ const Select = <OptionValue, IsMulti extends boolean>(
           MenuList: Styled.ReactSelectMenuList,
           ...rest.components,
         }}
+        menuPortalTarget={document.body}
         onInputChange={handleInputChange}
       />
     </Styled.Container>
