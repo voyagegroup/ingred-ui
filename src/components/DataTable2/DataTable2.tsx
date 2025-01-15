@@ -294,7 +294,12 @@ export const DataTable2Column = styled(
       <th
         ref={thElement}
         className={className}
-        style={{ minWidth: minWidth, maxWidth: maxWidth }}
+        style={{
+          minWidth:
+            isFinite(minWidth) && minWidth <= maxWidth ? minWidth : undefined,
+          maxWidth:
+            isFinite(maxWidth) && minWidth <= maxWidth ? maxWidth : undefined,
+        }}
       >
         {children}
         {isResizable && (
