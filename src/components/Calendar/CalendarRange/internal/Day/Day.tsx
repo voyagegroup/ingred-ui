@@ -30,18 +30,34 @@ const getDayStyle = ({
   };
 
   if (!selectable) {
-    return <DisableDayContainer>{children}</DisableDayContainer>;
+    return <DisableDayContainer type="button">{children}</DisableDayContainer>;
   }
 
   switch (state) {
     case DayState.START:
-      return <DayStart onClick={onClick}>{children}</DayStart>;
+      return (
+        <DayStart type="button" onClick={onClick}>
+          {children}
+        </DayStart>
+      );
     case DayState.END:
-      return <DayEnd onClick={onClick}>{children}</DayEnd>;
+      return (
+        <DayEnd type="button" onClick={onClick}>
+          {children}
+        </DayEnd>
+      );
     case DayState.BETWEEN:
-      return <DayBetween onClick={onClick}>{children}</DayBetween>;
+      return (
+        <DayBetween type="button" onClick={onClick}>
+          {children}
+        </DayBetween>
+      );
     default:
-      return <DayStyle onClick={onClick}>{children}</DayStyle>;
+      return (
+        <DayStyle type="button" onClick={onClick}>
+          {children}
+        </DayStyle>
+      );
   }
 };
 

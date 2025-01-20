@@ -35,6 +35,7 @@ export const Actions = memo(function Actions({
           {actions.map((action, i) => (
             <Action
               key={`${action.text}-${i.toString()}`}
+              type="button"
               clicked={clickedAction === action.text}
               onClick={handleClick(action)}
             >
