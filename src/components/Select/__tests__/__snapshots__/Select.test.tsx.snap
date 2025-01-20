@@ -142,22 +142,6 @@ exports[`Select component testing Disable multiple selected 1`] = `
           </div>
         </div>
       </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-7-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -254,37 +238,6 @@ exports[`Select component testing Disable not selected 1`] = `
           </div>
         </div>
       </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-5-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-5-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-5-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -376,37 +329,6 @@ exports[`Select component testing Disable one selected 1`] = `
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-6-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-6-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-6-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -578,22 +500,6 @@ exports[`Select component testing Error multiple selected 1`] = `
           </div>
         </div>
       </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-10-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -685,37 +591,6 @@ exports[`Select component testing Error not selected 1`] = `
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-8-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-8-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-8-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -831,37 +706,6 @@ exports[`Select component testing Error one selected 1`] = `
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-9-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-9-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-9-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -1033,22 +877,6 @@ exports[`Select component testing Normal multiple selected 1`] = `
           </div>
         </div>
       </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-4-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -1140,37 +968,6 @@ exports[`Select component testing Normal not selected 1`] = `
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-2-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-2-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-2-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -1286,37 +1083,6 @@ exports[`Select component testing Normal one selected 1`] = `
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-jSMfEi kaCdOG css-1jcex0u-MenuList"
-          id="react-select-3-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-3-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-3-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
