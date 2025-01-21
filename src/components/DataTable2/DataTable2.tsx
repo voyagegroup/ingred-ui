@@ -205,6 +205,10 @@ const DragHandle = styled.button`
   border: 0;
   cursor: col-resize;
   background: red;
+
+  touch-action: none;
+  user-select: none;
+  webkit-user-select: none;
 `;
 
 const DragArea = styled.div`
@@ -256,6 +260,9 @@ export const DataTable2Column = styled(
       (event: PointerEvent) => {
         if (!onWidthChange) return;
         if (activePointerId.current !== event.pointerId) return;
+
+        if (event.cancelable) event.preventDefault();
+
         const accumulatedMouseMove = event.clientX - dragStartX.current;
         const newWidth = clamp(
           dragStartWidth.current + accumulatedMouseMove,
