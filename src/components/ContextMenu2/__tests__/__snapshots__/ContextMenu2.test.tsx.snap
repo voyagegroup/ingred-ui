@@ -79,7 +79,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       class="sc-ksZaOG bIKdBA"
     />
     <button
-      class="sc-gsnTZi gTZWEB"
+      class="sc-gsnTZi dDjMqP"
       tabindex="-1"
       type="button"
     >
@@ -109,14 +109,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       アイコンボタン
     </button>
     <button
-      class="sc-gsnTZi gTZWEB"
+      class="sc-gsnTZi dDjMqP"
       tabindex="-1"
       type="button"
     >
       ボタン
     </button>
     <button
-      class="sc-gsnTZi emAzFg"
+      class="sc-gsnTZi fuxSHT"
       color="danger"
       tabindex="-1"
       type="button"
@@ -265,7 +265,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </svg>
     </button>
     <button
-      class="sc-iBkjds dHXhFo"
+      class="sc-iBkjds hwbuCb"
       tabindex="-1"
       type="button"
     >
@@ -309,7 +309,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
     </ul>
     <button
-      class="sc-gsnTZi gTZWEB"
+      class="sc-gsnTZi dDjMqP"
       tabindex="-1"
       type="button"
     >
