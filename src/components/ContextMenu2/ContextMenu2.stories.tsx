@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { StoryObj } from "@storybook/react";
 import {
-  type ContextMenu2Props,
   ContextMenu2Container,
   ContextMenu2,
   ContextMenu2HeadingItem,
@@ -15,7 +15,6 @@ import {
 import Button from "../Button";
 import ActionButton from "../ActionButton";
 import Icon from "../Icon";
-import { StoryObj } from "@storybook/react";
 
 export default {
   title: "Components/Navigation/ContextMenu2",
@@ -27,141 +26,148 @@ export default {
       },
     },
   },
-  // args: {},
 };
 
-export const Overview: StoryObj<ContextMenu2Props> = {
+export const Overview: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [checkedIndex, setCheckedIndex] = useState<number>(0);
     const [textValue, setTextValue] = useState<string>("テキスト");
     return (
-      <ContextMenu2Container>
-        <ContextMenu2
-          trigger={<button type="button">trigger</button>}
-          width={316}
-        >
-          <ContextMenu2SwitchItem
-            checked={checkedIndex === 0}
-            onChange={(checked) => setCheckedIndex(checked ? 0 : 1)}
-          >
-            スイッチ1
-          </ContextMenu2SwitchItem>
-          <ContextMenu2ButtonItem
-            prepend={<Icon name="import" />}
-            onClick={() => alert("ダウンロード")}
-          >
-            ダウンロード
-          </ContextMenu2ButtonItem>
-          <ContextMenu2SeparatorItem />
-          <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
-          <ContextMenu2ButtonItem onClick={() => alert("有効")}>
-            有効にする
-          </ContextMenu2ButtonItem>
-          <ContextMenu2ButtonItem onClick={() => alert("アーカイブ")}>
-            アーカイブする
-          </ContextMenu2ButtonItem>
-          <ContextMenu2ButtonItem
-            color="danger"
-            onClick={() => alert("削除する")}
-          >
-            削除する
-          </ContextMenu2ButtonItem>
-          <ContextMenu2HeadingItem>入れ子</ContextMenu2HeadingItem>
+      <>
+        ContextMenu2 利用時は必ず、ContextMenu2 を ContextMenu2Container
+        で括って利用してください。
+        <br />
+        ContextMenu2 には、ContextMenu2***
+        コンポーネントを入れて利用してください。
+        <br />
+        <ContextMenu2Container>
           <ContextMenu2
-            trigger={
-              <ContextMenu2TriggerItem append={100}>
-                入れ子トリガー
-              </ContextMenu2TriggerItem>
-            }
+            trigger={<button type="button">trigger</button>}
+            width={316}
           >
+            <ContextMenu2SwitchItem
+              checked={checkedIndex === 0}
+              onChange={(checked) => setCheckedIndex(checked ? 0 : 1)}
+            >
+              スイッチ1
+            </ContextMenu2SwitchItem>
+            <ContextMenu2ButtonItem
+              prepend={<Icon name="import" />}
+              onClick={() => alert("ダウンロード")}
+            >
+              ダウンロード
+            </ContextMenu2ButtonItem>
+            <ContextMenu2SeparatorItem />
+            <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
+            <ContextMenu2ButtonItem onClick={() => alert("有効")}>
+              有効にする
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("アーカイブ")}>
+              アーカイブする
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem
+              color="danger"
+              onClick={() => alert("削除する")}
+            >
+              削除する
+            </ContextMenu2ButtonItem>
+            <ContextMenu2HeadingItem>入れ子</ContextMenu2HeadingItem>
             <ContextMenu2
               trigger={
                 <ContextMenu2TriggerItem append={100}>
-                  さらに入れ子トリガー
+                  入れ子トリガー
                 </ContextMenu2TriggerItem>
               }
             >
+              <ContextMenu2
+                trigger={
+                  <ContextMenu2TriggerItem append={100}>
+                    さらに入れ子トリガー
+                  </ContextMenu2TriggerItem>
+                }
+              >
+                {[...Array(10)].map((_, i) => (
+                  <ContextMenu2ButtonItem
+                    key={i}
+                    onClick={() => alert("さらに入れ子")}
+                  >
+                    さらに入れ子ボタン
+                  </ContextMenu2ButtonItem>
+                ))}
+              </ContextMenu2>
               {[...Array(10)].map((_, i) => (
-                <ContextMenu2ButtonItem
-                  key={i}
-                  onClick={() => alert("さらに入れ子")}
-                >
-                  さらに入れ子ボタン
+                <ContextMenu2ButtonItem key={i} onClick={() => alert("入れ子")}>
+                  入れ子ボタン
                 </ContextMenu2ButtonItem>
               ))}
             </ContextMenu2>
-            {[...Array(10)].map((_, i) => (
-              <ContextMenu2ButtonItem key={i} onClick={() => alert("入れ子")}>
-                入れ子ボタン
-              </ContextMenu2ButtonItem>
-            ))}
-          </ContextMenu2>
-          <ContextMenu2CheckItem
-            checked={checkedIndex === 0}
-            prepend={<Icon name="image" />}
-            onChange={(checked) => {
-              if (checked) setCheckedIndex(0);
-            }}
-          >
-            含む
-          </ContextMenu2CheckItem>
-          <ContextMenu2CheckItem
-            checked={checkedIndex === 1}
-            prepend={<Icon name="image" />}
-            onChange={(checked) => {
-              if (checked) setCheckedIndex(1);
-            }}
-          >
-            含まない
-          </ContextMenu2CheckItem>
-          <ContextMenu2CheckItem
-            checked={checkedIndex === 2}
-            prepend={<Icon name="image" />}
-            onChange={(checked) => {
-              if (checked) setCheckedIndex(2);
-            }}
-          >
-            いずれかを含む
-          </ContextMenu2CheckItem>
+            <ContextMenu2CheckItem
+              checked={checkedIndex === 0}
+              prepend={<Icon name="image" />}
+              onChange={(checked) => {
+                if (checked) setCheckedIndex(0);
+              }}
+            >
+              含む
+            </ContextMenu2CheckItem>
+            <ContextMenu2CheckItem
+              checked={checkedIndex === 1}
+              prepend={<Icon name="image" />}
+              onChange={(checked) => {
+                if (checked) setCheckedIndex(1);
+              }}
+            >
+              含まない
+            </ContextMenu2CheckItem>
+            <ContextMenu2CheckItem
+              checked={checkedIndex === 2}
+              prepend={<Icon name="image" />}
+              onChange={(checked) => {
+                if (checked) setCheckedIndex(2);
+              }}
+            >
+              いずれかを含む
+            </ContextMenu2CheckItem>
 
-          <ContextMenu2CheckItem
-            checked={checkedIndex === 3}
-            onChange={(checked) => {
-              if (checked) setCheckedIndex(3);
-            }}
-          >
-            アイコンなしチェック1
-          </ContextMenu2CheckItem>
-          <ContextMenu2CheckItem
-            checked={checkedIndex === 4}
-            onChange={(checked) => {
-              if (checked) setCheckedIndex(4);
-            }}
-          >
-            アイコンなしチェック2
-          </ContextMenu2CheckItem>
-          <ContextMenu2TextInputItem
-            value={textValue}
-            placeholder="プレイスホルダー"
-            onChange={(event) => setTextValue(event.target.value)}
-          />
-          <ContextMenu2SeparatorItem />
-          <ContextMenu2ButtonControlsItem>
-            <Button size="small" color="clear">
-              キャンセル
-            </Button>
-            <Button size="small">適用</Button>
-          </ContextMenu2ButtonControlsItem>
-          <ContextMenu2ButtonItem onClick={() => alert("最後の項目")}>
-            最後の項目
-          </ContextMenu2ButtonItem>
-        </ContextMenu2>
-      </ContextMenu2Container>
+            <ContextMenu2CheckItem
+              checked={checkedIndex === 3}
+              onChange={(checked) => {
+                if (checked) setCheckedIndex(3);
+              }}
+            >
+              アイコンなしチェック1
+            </ContextMenu2CheckItem>
+            <ContextMenu2CheckItem
+              checked={checkedIndex === 4}
+              onChange={(checked) => {
+                if (checked) setCheckedIndex(4);
+              }}
+            >
+              アイコンなしチェック2
+            </ContextMenu2CheckItem>
+            <ContextMenu2TextInputItem
+              value={textValue}
+              placeholder="プレイスホルダー"
+              onChange={(event) => setTextValue(event.target.value)}
+            />
+            <ContextMenu2SeparatorItem />
+            <ContextMenu2ButtonControlsItem>
+              <Button size="small" color="clear">
+                キャンセル
+              </Button>
+              <Button size="small">適用</Button>
+            </ContextMenu2ButtonControlsItem>
+            <ContextMenu2ButtonItem onClick={() => alert("最後の項目")}>
+              最後の項目
+            </ContextMenu2ButtonItem>
+          </ContextMenu2>
+        </ContextMenu2Container>
+      </>
     );
   },
 };
 
-export const Triggers: StoryObj<ContextMenu2Props> = {
+export const Triggers: StoryObj<typeof ContextMenu2> = {
   render: () => {
     return (
       <div style={{ display: "flex", gap: 16 }}>
@@ -194,7 +200,7 @@ export const Triggers: StoryObj<ContextMenu2Props> = {
   },
 };
 
-export const WithButton: StoryObj<ContextMenu2Props> = {
+export const WithButton: StoryObj<typeof ContextMenu2> = {
   render: () => {
     return (
       <ContextMenu2Container>
@@ -225,7 +231,7 @@ export const WithButton: StoryObj<ContextMenu2Props> = {
   },
 };
 
-export const WithCheck: StoryObj<ContextMenu2Props> = {
+export const WithCheck: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [checkedIndex, setCheckedIndex] = useState<number[]>([]);
     const handleCheck = (index: number) => {
@@ -280,7 +286,7 @@ export const WithCheck: StoryObj<ContextMenu2Props> = {
     );
   },
 };
-export const WithCheckAsRadio: StoryObj<ContextMenu2Props> = {
+export const WithCheckAsRadio: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [checkedIndex, setCheckedIndex] = useState<number>(0);
     return (
@@ -339,7 +345,7 @@ export const WithCheckAsRadio: StoryObj<ContextMenu2Props> = {
   },
 };
 
-export const WithSwitch: StoryObj<ContextMenu2Props> = {
+export const WithSwitch: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [checkedIndex, setCheckedIndex] = useState<number[]>([]);
     const handleCheck = (index: number) => {
@@ -386,7 +392,7 @@ export const WithSwitch: StoryObj<ContextMenu2Props> = {
   },
 };
 
-export const WithTextInput: StoryObj<ContextMenu2Props> = {
+export const WithTextInput: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [open, setOpen] = useState<boolean>(false);
     const [textValue, setTextValue] = useState<string>("テキスト");
@@ -430,7 +436,7 @@ export const WithTextInput: StoryObj<ContextMenu2Props> = {
   },
 };
 
-export const Nest: StoryObj<ContextMenu2Props> = {
+export const Nest: StoryObj<typeof ContextMenu2> = {
   render: () => {
     return (
       <ContextMenu2Container>

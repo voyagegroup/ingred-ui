@@ -43,7 +43,15 @@ const ContextMenu2Context = createContext({
   isRoot: false,
 });
 
+//
+// -----------------------------------------------------------------------------
+// <FloatingTree /> により、ContextMenu2 の入れ子の状態を管理するためのコンポーネント
+// ContextMenu2 を利用する際は、必ず <ContextMenu2Container /> で囲んで運用してもらう前提
+
 type ContextMenu2ContainerProps = {
+  /**
+   * ContextMenu2 を 1 つだけ含める
+   */
   children: ReactElement;
 };
 
@@ -70,16 +78,31 @@ export const ContextMenu2Container = ({
 
 //
 // -----------------------------------------------------------------------------
-export type ContextMenu2Props = {
+type ContextMenu2Props = {
+  /**
+   * コンテキストメニューを開くかどうか。省略時は内部で開閉状態を管理される
+   */
   open?: boolean;
+  /**
+   * 開閉トリガーとなるボタン要素
+   */
   trigger: ReactElement<
     ButtonHTMLAttributes<HTMLButtonElement> & {
       ref?: React.Ref<HTMLButtonElement>;
     },
     "button"
   >;
+  /**
+   * コンテキストメニューの幅（省略時は幅が内容にフィットする）
+   */
   width?: number;
+  /**
+   * メニュー内の項目。ContextMenu2*** のコンポーネントのみで構成する前提
+   */
   children: ReactNode;
+  /**
+   * 開閉状態が変更されたときのコールバック
+   */
   onOpenChange?: (open: boolean) => void;
 };
 
@@ -95,10 +118,6 @@ const ContextMenu2Panel = styled.div`
     outline: none;
   }
 `;
-
-const mql = window.matchMedia("(max-width: 480px)");
-const isSmallScreen = () => mql.matches;
-
 export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
   ({ open, trigger, width, children, onOpenChange }, ref) => {
     const { isRoot } = useContext(ContextMenu2Context);
@@ -142,10 +161,13 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
             };
           }
 
+          const mql = window.matchMedia("(max-width: 480px)");
+          const isSmallScreen = mql.matches;
+
           return {
             // 入れ子のフライアウトは左右に展開される
             // ただし、画面幅が狭い場合は余裕がないので上下に展開させる
-            allowedPlacements: isSmallScreen()
+            allowedPlacements: isSmallScreen
               ? // ? ["bottom-start", "top-start"]
                 ["bottom-start"] // 入れ子内で bottom, top の両方を許可すると、スクロールの挙動がおかしくなる。bottom のみに制限
               : ["right-start", "left-start"],
