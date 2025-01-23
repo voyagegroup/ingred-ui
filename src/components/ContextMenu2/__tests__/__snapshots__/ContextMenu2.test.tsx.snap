@@ -46,8 +46,37 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       ステータスを変更
     </p>
+    <div
+      class="sc-evZas gfJtYx"
+    >
+      <div>
+        <span
+          class="sc-ftvSup cgVcmC"
+          size="18"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <path
+              d="M12,22A10,10,0,1,1,22,12,10,10,0,0,1,12,22Zm0-2a8,8,0,1,0-8-8A8,8,0,0,0,12,20Zm-1-5h2v2H11Zm2-1.645V14H11V12.5a1,1,0,0,1,1-1,1.5,1.5,0,1,0-1.471-1.794L8.567,9.313A3.5,3.5,0,1,1,13,13.355Z"
+              fill="#596978"
+            />
+          </svg>
+        </span>
+      </div>
+      <p
+        class="sc-crXcEl ciWkcV"
+      >
+        ヘルプテキスト
+      </p>
+    </div>
     <hr
-      class="sc-evZas goUCYo"
+      class="sc-ksZaOG bIKdBA"
     />
     <button
       class="sc-gsnTZi gTZWEB"
@@ -250,7 +279,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <div
-      class="sc-crXcEl idXgpl"
+      class="sc-breuTD fskwhy"
     >
       <input
         placeholder="プレイスホルダー"
@@ -258,11 +287,11 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       />
     </div>
     <ul
-      class="sc-breuTD lmiVdB"
+      class="sc-hAZoDl bhqqpx"
     >
       <li>
         <button
-          class="sc-hAZoDl sc-fnykZs cZfguQ kuOmZp"
+          class="sc-fEOsli sc-bjUoiL kqzYQS kbhJht"
           font-size="12px"
           font-weight="normal"
         >
@@ -271,7 +300,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
       <li>
         <button
-          class="sc-hAZoDl sc-fnykZs cZfguQ dZjNCg"
+          class="sc-fEOsli sc-bjUoiL kqzYQS fNlivE"
           font-size="12px"
           font-weight="normal"
         >

@@ -6,6 +6,7 @@ import {
   ContextMenu2Container,
   ContextMenu2,
   ContextMenu2HeadingItem,
+  ContextMenu2HelpTextItem,
   ContextMenu2TriggerItem,
   ContextMenu2ButtonItem,
   ContextMenu2CheckItem,
@@ -47,6 +48,9 @@ describe("ContextMenu2 component testing", () => {
           width={316}
         >
           <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
+          <ContextMenu2HelpTextItem prepend={<Icon name="question" />}>
+            ヘルプテキスト
+          </ContextMenu2HelpTextItem>
           <ContextMenu2SeparatorItem />
           <ContextMenu2ButtonItem
             prepend={<Icon name="import" />}

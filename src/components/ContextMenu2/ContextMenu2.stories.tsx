@@ -4,6 +4,7 @@ import {
   ContextMenu2Container,
   ContextMenu2,
   ContextMenu2HeadingItem,
+  ContextMenu2HelpTextItem,
   ContextMenu2TriggerItem,
   ContextMenu2ButtonItem,
   ContextMenu2CheckItem,
@@ -51,6 +52,9 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
             >
               スイッチ1
             </ContextMenu2SwitchItem>
+            <ContextMenu2HelpTextItem prepend={<Icon name="question" />}>
+              ヘルプテキスト
+            </ContextMenu2HelpTextItem>
             <ContextMenu2ButtonItem
               prepend={<Icon name="import" />}
               onClick={() => alert("ダウンロード")}
@@ -386,6 +390,9 @@ export const WithSwitch: StoryObj<typeof ContextMenu2> = {
           >
             スイッチ4
           </ContextMenu2SwitchItem>
+          <ContextMenu2HelpTextItem prepend={<Icon name="question" />}>
+            フィルタの適用を変更します
+          </ContextMenu2HelpTextItem>
         </ContextMenu2>
       </ContextMenu2Container>
     );
