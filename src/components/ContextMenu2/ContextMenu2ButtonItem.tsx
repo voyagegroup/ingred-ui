@@ -57,8 +57,14 @@ export const ContextMenu2ButtonItem = styled(
     outline: none;
   }
 
-  &:hover,
-  &:focus {
-    background: ${colors.basic[200]};
+  &:disabled {
+    color: ${colors.basic[400]};
+  }
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    color: ${({ color }) => (color === "danger" ? "#fff" : colors.basic[900])};
+    background: ${({ color }) =>
+      color === "danger" ? colors.red[500] : colors.basic[200]};
   }
 `;
