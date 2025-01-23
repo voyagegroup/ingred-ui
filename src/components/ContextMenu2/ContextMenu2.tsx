@@ -174,7 +174,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
     const { getReferenceProps, getFloatingProps, getItemProps } =
       useInteractions([click, hover, dismiss, role, listNavigation]);
 
-    // 自分の名前も含めるために、自関数のスコープ内で定義。グローバルにできない。
+    // 自分の名前も含めるために、自関数のスコープ内で定義。トップレベルのスコープに出せない。
     const focusableItems = [
       ContextMenu2.displayName,
       ContextMenu2ButtonItem.displayName,
