@@ -45,39 +45,6 @@ const ContextMenu2Context = createContext({
 
 //
 // -----------------------------------------------------------------------------
-// <FloatingTree /> により、ContextMenu2 の入れ子の状態を管理するためのコンポーネント
-// ContextMenu2 を利用する際は、必ず <ContextMenu2Container /> で囲んで運用してもらう前提
-
-type ContextMenu2ContainerProps = {
-  /**
-   * ContextMenu2 を 1 つだけ含める
-   */
-  children: ReactElement;
-};
-
-export const ContextMenu2Container = ({
-  children,
-}: ContextMenu2ContainerProps) => {
-  if (
-    !isValidElement(children) ||
-    typeof children.type === "string" ||
-    !("displayName" in children.type) ||
-    children.type.displayName !== ContextMenu2.displayName
-  ) {
-    throw new Error(
-      "ContextMenu2Container には 1 つの ContextMenu2 しか入れられません",
-    );
-  }
-
-  return (
-    <ContextMenu2Context.Provider value={{ isRoot: true }}>
-      <FloatingTree>{children}</FloatingTree>
-    </ContextMenu2Context.Provider>
-  );
-};
-
-//
-// -----------------------------------------------------------------------------
 type ContextMenu2Props = {
   /**
    * コンテキストメニューを開くかどうか。省略時は内部で開閉状態を管理される
@@ -278,3 +245,36 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
   },
 );
 ContextMenu2.displayName = "ContextMenu2";
+
+//
+// -----------------------------------------------------------------------------
+// <FloatingTree /> により、ContextMenu2 の入れ子の状態を管理するためのコンポーネント
+// ContextMenu2 を利用する際は、必ず <ContextMenu2Container /> で囲んで運用してもらう前提
+
+type ContextMenu2ContainerProps = {
+  /**
+   * ContextMenu2 を 1 つだけ含める
+   */
+  children: ReactElement;
+};
+
+export const ContextMenu2Container = ({
+  children,
+}: ContextMenu2ContainerProps) => {
+  if (
+    !isValidElement(children) ||
+    typeof children.type === "string" ||
+    !("displayName" in children.type) ||
+    children.type.displayName !== ContextMenu2.displayName
+  ) {
+    throw new Error(
+      "ContextMenu2Container には 1 つの ContextMenu2 しか入れられません",
+    );
+  }
+
+  return (
+    <ContextMenu2Context.Provider value={{ isRoot: true }}>
+      <FloatingTree>{children}</FloatingTree>
+    </ContextMenu2Context.Provider>
+  );
+};
