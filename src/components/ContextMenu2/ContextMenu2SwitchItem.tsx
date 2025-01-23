@@ -147,8 +147,8 @@ export const ContextMenu2SwitchItem = styled(
     outline: none;
   }
 
-  &:hover:not(:disabled) {,
-  &:focus:not(:disabled)  {
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
     background: ${colors.basic[200]};
   }
 `;
