@@ -35,12 +35,6 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
     const [textValue, setTextValue] = useState<string>("テキスト");
     return (
       <>
-        ContextMenu2 利用時は必ず、ContextMenu2 を ContextMenu2Container
-        で括って利用してください。
-        <br />
-        ContextMenu2 には、ContextMenu2***
-        コンポーネントを入れて利用してください。
-        <br />
         <ContextMenu2Container>
           <ContextMenu2
             trigger={<button type="button">trigger</button>}
@@ -166,6 +160,57 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
             </ContextMenu2ButtonItem>
           </ContextMenu2>
         </ContextMenu2Container>
+        <p>
+          ContextMenu2 利用時は必ず、ContextMenu2 を ContextMenu2Container
+          で括って利用してください。
+        </p>
+        <p>
+          ContextMenu2 には、ContextMenu2***
+          コンポーネントを入れて利用してください。
+        </p>
+        <br />
+        <table>
+          <tbody>
+            <tr>
+              <th>ContextMenu2HeadingItem</th>
+              <td>ラベル見出し</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2HelpTextItem</th>
+              <td>ヘルプテキスト</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2SeparatorItem</th>
+              <td>区切り線</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2ButtonItem</th>
+              <td>ボタン（押下時コールバックあり）</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2CheckItem</th>
+              <td>チェックボックス（チェック時コールバックあり）</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2SwitchItem</th>
+              <td>スイッチ（切り替え時コールバックあり）</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2TextInputItem</th>
+              <td>テキスト入力欄（入力時コールバックあり）</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2ButtonControlsItem</th>
+              <td>Buttonコンポーネントを並べて利用するためのコンテナ</td>
+            </tr>
+            <tr>
+              <th>ContextMenu2TriggerItem</th>
+              <td>
+                ContextMenu2を入れ子にしたとき用のトリガー（押下時コールバックあり）
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </>
     );
   },
