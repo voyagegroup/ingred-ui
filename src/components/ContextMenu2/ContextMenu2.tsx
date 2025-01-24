@@ -10,7 +10,10 @@ import React, {
   type ReactNode,
   type ReactElement,
   type ButtonHTMLAttributes,
+  type Dispatch,
+  type SetStateAction,
   useMemo,
+  useEffect,
 } from "react";
 import {
   useFloating,
@@ -45,6 +48,31 @@ const ContextMenu2Context = createContext({
 
 //
 // -----------------------------------------------------------------------------
+
+export type ContextMenu2Anchor = {
+  x: number;
+  y: number;
+};
+
+export const useContextMenu2Anchor = (): {
+  position: ContextMenu2Anchor;
+  setPosition: Dispatch<
+    SetStateAction<{
+      x: number;
+      y: number;
+    }>
+  >;
+} => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  return { position, setPosition };
+};
+
+const isContextMenu2Anchor = (anchor: any): anchor is ContextMenu2Anchor => {
+  return typeof anchor === "object" && "x" in anchor && "y" in anchor;
+};
+
+//
+// -----------------------------------------------------------------------------
 type ContextMenu2Props = {
   /**
    * コンテキストメニューを開くかどうか。省略時は内部で開閉状態を管理される
@@ -53,12 +81,14 @@ type ContextMenu2Props = {
   /**
    * 開閉トリガーとなるボタン要素
    */
-  trigger: ReactElement<
-    ButtonHTMLAttributes<HTMLButtonElement> & {
-      ref?: React.Ref<HTMLButtonElement>;
-    },
-    "button"
-  >;
+  trigger:
+    | ReactElement<
+        ButtonHTMLAttributes<HTMLButtonElement> & {
+          ref?: React.Ref<HTMLButtonElement>;
+        },
+        "button"
+      >
+    | ContextMenu2Anchor;
   /**
    * コンテキストメニューの幅（省略時は幅が内容にフィットする）
    */
@@ -183,13 +213,36 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       ContextMenu2TriggerItem.displayName,
     ];
 
+    useEffect(() => {
+      if (isContextMenu2Anchor(trigger)) {
+        refs.setPositionReference({
+          getBoundingClientRect() {
+            return {
+              width: 0,
+              height: 0,
+              x: trigger.x,
+              y: trigger.y,
+              top: trigger.y,
+              left: trigger.x,
+              right: trigger.x,
+              bottom: trigger.y,
+            };
+          },
+        });
+      }
+    }, [trigger, ref, refs]);
+
+    const triggerRef = useMergeRefs([ref, refs.setReference]);
+
     return (
       <>
-        {cloneElement(trigger, {
-          ref: useMergeRefs([ref, refs.setReference]),
-          ...getReferenceProps(),
-          ...trigger.props,
-        })}
+        {isContextMenu2Anchor(trigger)
+          ? null
+          : cloneElement(trigger, {
+              ref: triggerRef,
+              ...getReferenceProps(),
+              ...trigger.props,
+            })}
         <FloatingNode id={nodeId}>
           {computedOpen && (
             <FloatingPortal>

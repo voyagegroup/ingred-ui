@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { StoryObj } from "@storybook/react";
 import {
   ContextMenu2Container,
   ContextMenu2,
+  useContextMenu2Anchor,
   ContextMenu2HeadingItem,
   ContextMenu2HelpTextItem,
   ContextMenu2TriggerItem,
@@ -536,6 +537,60 @@ export const Nest: StoryObj<typeof ContextMenu2> = {
           </ContextMenu2>
         </ContextMenu2>
       </ContextMenu2Container>
+    );
+  },
+};
+
+export const Anchor: StoryObj<typeof ContextMenu2> = {
+  render: () => {
+    const ref = useRef<HTMLDivElement>(null);
+    const { position, setPosition } = useContextMenu2Anchor();
+    const [open, setOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+      if (!ref.current) return;
+      const el = ref.current;
+      const onDocumentClick = (event: MouseEvent) => {
+        if (open) {
+          setOpen(false);
+          return;
+        }
+
+        setPosition({ x: event.clientX, y: event.clientY });
+        // 一更新前の状態でチラ見えしてしまうため、1フレーム後に切り替え
+        requestAnimationFrame(() => setOpen(true));
+      };
+
+      el.addEventListener("click", onDocumentClick);
+
+      return () => {
+        el.removeEventListener("click", onDocumentClick);
+      };
+    }, [open, setPosition]);
+    return (
+      <div ref={ref} style={{ height: 500, background: "orange" }}>
+        <p>領域内をクリックしてください</p>
+        {JSON.stringify(position)}
+        <ContextMenu2Container>
+          <ContextMenu2 open={open} trigger={position} width={316}>
+            <ContextMenu2HeadingItem>ルート</ContextMenu2HeadingItem>
+            <ContextMenu2
+              trigger={
+                <ContextMenu2TriggerItem append={100}>
+                  入れ子トリガー
+                </ContextMenu2TriggerItem>
+              }
+            >
+              <ContextMenu2HeadingItem>2段目</ContextMenu2HeadingItem>
+              {[...Array(10)].map((_, i) => (
+                <ContextMenu2ButtonItem key={i} onClick={() => alert("入れ子")}>
+                  入れ子ボタン
+                </ContextMenu2ButtonItem>
+              ))}
+            </ContextMenu2>
+          </ContextMenu2>
+        </ContextMenu2Container>
+      </div>
     );
   },
 };

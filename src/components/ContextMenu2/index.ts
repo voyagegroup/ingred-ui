@@ -1,4 +1,8 @@
-export { ContextMenu2, ContextMenu2Container } from "./ContextMenu2";
+export {
+  ContextMenu2,
+  ContextMenu2Container,
+  useContextMenu2Anchor,
+} from "./ContextMenu2";
 export { ContextMenu2HeadingItem } from "./ContextMenu2HeadingItem";
 export { ContextMenu2HelpTextItem } from "./ContextMenu2HelpTextItem";
 export { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
