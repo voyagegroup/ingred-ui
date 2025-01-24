@@ -23,9 +23,7 @@ const SwitchTruck = styled.span<{
   position: relative;
   top: 0;
   left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: block;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   width: 40px;
   height: calc(1px * 2 + 22px);
@@ -43,7 +41,7 @@ const SwitchTruck = styled.span<{
       checked && !disabled
         ? theme.palette.primary.main
         : theme.palette.divider};
-  border-radius: 56px;
+  border-radius: 999px;
   box-shadow: ${({ theme }) =>
     getShadow(
       4,
@@ -123,6 +121,7 @@ export const ContextMenu2SwitchItem = styled(
   InternalContextMenu2SwitchItem,
 )<Theme>`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 4px;
   box-sizing: border-box;

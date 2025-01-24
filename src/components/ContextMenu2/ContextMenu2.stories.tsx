@@ -263,6 +263,12 @@ export const WithButton: StoryObj<typeof ContextMenu2> = {
           >
             ダウンロード
           </ContextMenu2ButtonItem>
+          <ContextMenu2ButtonItem
+            prepend={<Icon name="refresh_line" color="active" />}
+            onClick={() => alert("色付きアイコン")}
+          >
+            色付きアイコン
+          </ContextMenu2ButtonItem>
           <ContextMenu2SeparatorItem />
           <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
           <ContextMenu2ButtonItem onClick={() => alert("有効")}>

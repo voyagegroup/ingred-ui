@@ -37,6 +37,7 @@ export const ContextMenu2ButtonItem = styled(
   InternalContextMenu2ButtonItem,
 )<Theme>`
   display: flex;
+  align-items: center;
   gap: 4px;
   box-sizing: border-box;
   width: 100%;

@@ -8,7 +8,7 @@ export const ContextMenu2HeadingItem = styled(({ className, children }) => {
   return <p className={className}>{children}</p>;
 })`
   padding: 4px 8px;
-  margin: 4px -8px;
+  margin: 8px -8px;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
