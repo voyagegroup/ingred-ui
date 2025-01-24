@@ -42,7 +42,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     tabindex="-1"
   >
     <p
-      class="sc-iqcoie khOSLE"
+      class="sc-iqcoie VJQVc"
     >
       ステータスを変更
     </p>
@@ -76,10 +76,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </p>
     </div>
     <hr
-      class="sc-ksZaOG bIKdBA"
+      class="sc-ksZaOG kMltaq"
     />
     <button
-      class="sc-gsnTZi dDjMqP"
+      class="sc-gsnTZi jJEItt"
       tabindex="-1"
       type="button"
     >
@@ -109,14 +109,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       アイコンボタン
     </button>
     <button
-      class="sc-gsnTZi dDjMqP"
+      class="sc-gsnTZi jJEItt"
       tabindex="-1"
       type="button"
     >
       ボタン
     </button>
     <button
-      class="sc-gsnTZi fuxSHT"
+      class="sc-gsnTZi lduipB"
       color="danger"
       tabindex="-1"
       type="button"
@@ -265,13 +265,13 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </svg>
     </button>
     <button
-      class="sc-iBkjds hwbuCb"
+      class="sc-iBkjds jWnDlR"
       tabindex="-1"
       type="button"
     >
       スイッチ
       <span
-        class="sc-jSMfEi iSQvIY"
+        class="sc-jSMfEi dLfzGA"
       >
         <span
           class="sc-gKXOVf bVQtsW"
@@ -279,7 +279,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <div
-      class="sc-breuTD fskwhy"
+      class="sc-breuTD kZmqvG"
     >
       <input
         placeholder="プレイスホルダー"
@@ -309,7 +309,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
     </ul>
     <button
-      class="sc-gsnTZi dDjMqP"
+      class="sc-gsnTZi jJEItt"
       tabindex="-1"
       type="button"
     >
