@@ -1,10 +1,10 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.options": {
     "extensions": [".js", ".jsx", ".md", ".ts", ".tsx"]
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true
 }
