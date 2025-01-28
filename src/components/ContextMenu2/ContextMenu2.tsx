@@ -41,6 +41,7 @@ import { ContextMenu2ButtonItem } from "./ContextMenu2ButtonItem";
 import { ContextMenu2CheckItem } from "./ContextMenu2CheckItem";
 import { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 import { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
+import { ContextMenu2SortableContext } from "./ContextMenu2SortableItem";
 
 const ContextMenu2Context = createContext({
   isRoot: false,
@@ -119,10 +120,17 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
   ({ open, trigger, width, children, onOpenChange }, ref) => {
     const { isRoot } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
-    const computedOpen = useMemo(
-      () => (open !== undefined ? open : isOpen),
-      [open, isOpen],
-    );
+    // ドラッグで移動できるパーツ（Sortable）を children として持っている場合は、
+    // ドラッグ時にパネル外にカーソルが出てしまう時がある。
+    // その時にパネルを閉じてしまうと、操作感として残念なので、
+    // ドラッグ中にマウスアウトしても閉じないようにするためのフラグ
+    const [isSorting, setIsSorting] = useState(false);
+
+    const computedOpen = useMemo(() => {
+      if (isSorting) return true;
+      if (open !== undefined) return open;
+      return isOpen;
+    }, [open, isOpen, isSorting]);
 
     const nodeId = useFloatingNodeId();
 
@@ -182,7 +190,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       mouseOnly: true,
       delay: {
         open: 100,
-        close: 250,
+        close: isSorting ? 999999 : 250,
       },
       restMs: 100,
       handleClose: safePolygon(),
@@ -253,40 +261,54 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
               >
                 <ContextMenu2Panel
                   ref={refs.setFloating}
-                  style={{ ...floatingStyles, width: width }}
+                  style={{
+                    ...floatingStyles,
+                    width,
+                    // ソートによるドラッグ移動中、overflow: auto にしていると、
+                    // 移動場所中にスクロール可・不可の切り替えが連続的に発生しガタツキが発生する。
+                    // ソートドラッグ中は overflow: auto を抑止する。
+                    overflow: isSorting ? "visible" : undefined,
+                  }}
                   {...getFloatingProps()}
                   tabIndex={-1}
                 >
                   <ContextMenu2Context.Provider value={{ isRoot: false }}>
-                    {/*
-                    上下矢印キーでメニュー内の項目を操作できるようにする
-                    このとき、上下移動の対象となるコンポーネントだけに
-                    tabIndex や Floating UI の props を暗黙で付与して child を返す。
-                    focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
-                   */}
-                    {Children.map(children, (child, index) => {
-                      if (!isValidElement(child)) return child;
+                    <ContextMenu2SortableContext.Provider
+                      value={{
+                        isSorting: isSorting,
+                        setIsSorting: setIsSorting,
+                      }}
+                    >
+                      {/*
+                        上下矢印キーでメニュー内の項目を操作できるようにする
+                        このとき、上下移動の対象となるコンポーネントだけに
+                        tabIndex や Floating UI の props を暗黙で付与して child を返す。
+                        focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
+                      */}
+                      {Children.map(children, (child, index) => {
+                        if (!isValidElement(child)) return child;
 
-                      if (
-                        typeof child.type === "string" ||
-                        !("displayName" in child.type) ||
-                        typeof child.type.displayName !== "string"
-                      ) {
-                        return child;
-                      }
+                        if (
+                          typeof child.type === "string" ||
+                          !("displayName" in child.type) ||
+                          typeof child.type.displayName !== "string"
+                        ) {
+                          return child;
+                        }
 
-                      if (!focusableItems.includes(child.type.displayName))
-                        return child;
+                        if (!focusableItems.includes(child.type.displayName))
+                          return child;
 
-                      return cloneElement(child, {
-                        tabIndex: activeIndex === index ? 0 : -1,
-                        ref: (el: HTMLElement) => {
-                          listRef.current[index] = el;
-                        },
-                        ...getItemProps(),
-                        ...child.props,
-                      });
-                    })}
+                        return cloneElement(child, {
+                          tabIndex: activeIndex === index ? 0 : -1,
+                          ref: (el: HTMLElement) => {
+                            listRef.current[index] = el;
+                          },
+                          ...getItemProps(),
+                          ...child.props,
+                        });
+                      })}
+                    </ContextMenu2SortableContext.Provider>
                   </ContextMenu2Context.Provider>
                 </ContextMenu2Panel>
               </FloatingFocusManager>

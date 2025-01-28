@@ -12,3 +12,7 @@ export { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 export { ContextMenu2TextInputItem } from "./ContextMenu2TextInputItem";
 export { ContextMenu2SeparatorItem } from "./ContextMenu2SeparatorItem";
 export { ContextMenu2ButtonControlsItem } from "./ContextMenu2ButtonControlsItem";
+export {
+  ContextMenu2SortableGroup,
+  ContextMenu2SortableItem,
+} from "./ContextMenu2SortableItem";
