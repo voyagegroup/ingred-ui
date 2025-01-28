@@ -120,7 +120,8 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
   ({ open, trigger, width, children, onOpenChange }, ref) => {
     const { isRoot } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
-    // ドラッグで移動できるパーツ（Sortable）を children として持っている場合は、
+    // 通常では、パネル外にカーソルが出ると自動で自パネルを閉じる。
+    // 一方で、ドラッグで移動できるパーツ（Sortable）を children として持っている場合は、
     // ドラッグ時にパネル外にカーソルが出てしまう時がある。
     // その時にパネルを閉じてしまうと、操作感として残念なので、
     // ドラッグ中にマウスアウトしても閉じないようにするためのフラグ
@@ -274,10 +275,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                 >
                   <ContextMenu2Context.Provider value={{ isRoot: false }}>
                     <ContextMenu2SortableContext.Provider
-                      value={{
-                        isSorting: isSorting,
-                        setIsSorting: setIsSorting,
-                      }}
+                      value={{ isSorting, setIsSorting }}
                     >
                       {/*
                         上下矢印キーでメニュー内の項目を操作できるようにする

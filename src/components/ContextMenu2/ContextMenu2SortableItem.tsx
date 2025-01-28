@@ -118,7 +118,6 @@ export const ContextMenu2SortableGroup = ({
               !("displayName" in child.type) ||
               child?.type?.displayName !== "ContextMenu2SortableItem"
             ) {
-              // ContextMenu2SortableItem 以外は受け付けない
               throw new Error(
                 "ContextMenu2SortableContainer には ContextMenu2SortableItem しか入れられません",
               );
