@@ -6,7 +6,8 @@ import { DashboardIcon } from "./internal/DashboardIcon";
 import { BarChartIcon } from "./internal/BarChartIcon";
 import { LogoutIcon } from "./internal/LogoutIcon";
 import { SettingIcon } from "./internal/SettingIcon";
-import { ArrowBottomIcon } from "./internal/ArrowBottomIcon";
+import { ArrowUpIcon } from "./internal/ArrowUpIcon";
+import { ArrowDownIcon } from "./internal/ArrowDownIcon";
 import { ArrowLeftIcon } from "./internal/ArrowLeftIcon";
 import { ArrowRightIcon } from "./internal/ArrowRightIcon";
 import { PencilIcon } from "./internal/PencilIcon";
@@ -95,6 +96,9 @@ import { ImageCheckIcon } from "./internal/ImageCheckIcon";
 import { Group2Icon } from "./internal/Group2Icon";
 import { KeyIcon } from "./internal/KeyIcon";
 
+/** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
+type DeprecatedArrowBottom = "arrow_bottom";
+
 export type IconName =
   | "dashboard"
   | "bar_chart"
@@ -103,7 +107,8 @@ export type IconName =
   | "multi_line_chart_framed"
   | "logout"
   | "setting"
-  | "arrow_bottom"
+  | "arrow_up"
+  | "arrow_down"
   | "arrow_left"
   | "arrow_right"
   | "pencil"
@@ -213,7 +218,8 @@ export const icons: {
   multi_line_chart_framed: MultiLineChartFramedIcon,
   logout: LogoutIcon,
   setting: SettingIcon,
-  arrow_bottom: ArrowBottomIcon,
+  arrow_up: ArrowUpIcon,
+  arrow_down: ArrowDownIcon,
   arrow_left: ArrowLeftIcon,
   arrow_right: ArrowRightIcon,
   pencil: PencilIcon,
@@ -300,12 +306,13 @@ export const icons: {
   key: KeyIcon,
 };
 
-const iconFactory = (name: IconName) => {
+const iconFactory = (name: IconName | DeprecatedArrowBottom) => {
+  const nameNormalized = name === "arrow_bottom" ? "arrow_down" : name;
   const IconComponent = (props: IconProps) => {
-    const Component = icons[name];
+    const Component = icons[nameNormalized];
     return <Component {...props} />;
   };
-  IconComponent.displayName = `IconComponent(${name})`;
+  IconComponent.displayName = `IconComponent(${nameNormalized})`;
 
   return IconComponent;
 };
@@ -321,12 +328,20 @@ const getIconColor = (color: IconColor, theme: Theme) => {
   }
 };
 
-export type Props = {
-  name: IconName;
-  type?: IconType;
-  size?: IconSize;
-  color?: IconColor;
-};
+export type Props =
+  | {
+      name: IconName;
+      type?: IconType;
+      size?: IconSize;
+      color?: IconColor;
+    }
+  | {
+      /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
+      name: DeprecatedArrowBottom;
+      type?: IconType;
+      size?: IconSize;
+      color?: IconColor;
+    };
 
 const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
   { name, type = "line", size = "md", color = "fill" },
