@@ -148,16 +148,23 @@ type ContextMenu2SortableItemProps = {
   children: ReactNode;
 };
 
-const SortableThumb = styled.button<{
+const SortableItem = styled.div<{
+  isGhost: boolean;
+}>`
+  display: flex;
+  align-items: center;
+  cursor: ${({ isGhost }) => (isGhost ? "grabbing" : "")};
+`;
+
+const SortableHandle = styled.button<{
   isDragging: boolean;
   isGhost: boolean;
   disabled?: boolean;
 }>`
   flex-shrink: 0;
-  width: 18px;
+  width: 24px;
   aspect-ratio: 1;
   border: 0;
-  color: ${colors.basic[900]};
   background: transparent;
   cursor: ${({ isGhost, disabled }) => {
     if (isGhost) return "grabbing";
@@ -173,14 +180,6 @@ const SortableContents = styled.div<{
 }>`
   flex-grow: 1;
   pointer-events: ${({ isGhost }) => (isGhost ? "none" : "auto")};
-`;
-
-const SortableItem = styled.div<{
-  isGhost: boolean;
-}>`
-  display: flex;
-  align-items: center;
-  cursor: ${({ isGhost }) => (isGhost ? "grabbing" : "")};
 `;
 
 export const ContextMenu2SortableItem = ({
@@ -212,7 +211,7 @@ export const ContextMenu2SortableItem = ({
         opacity: isDragging ? 0.25 : 1,
       }}
     >
-      <SortableThumb
+      <SortableHandle
         ref={setActivatorNodeRef}
         isGhost={isGhost}
         isDragging={isDragging}
@@ -220,8 +219,8 @@ export const ContextMenu2SortableItem = ({
         {...attributes}
         {...listeners}
       >
-        <Icon name="braille" />
-      </SortableThumb>
+        <Icon name="braille" size="lg" color={colors.basic[900]} />
+      </SortableHandle>
       <SortableContents isGhost={isGhost}>{children}</SortableContents>
     </SortableItem>
   );
