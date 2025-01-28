@@ -431,12 +431,12 @@ export const WithSwitch: StoryObj<typeof ContextMenu2> = {
           >
             スイッチ2
           </ContextMenu2SwitchItem>
-          <ContextMenu2SwitchItem
-            disabled
-            checked={checkedIndex.includes(2)}
-            onChange={() => handleCheck(2)}
-          >
-            スイッチ3（無効）
+          <ContextMenu2ButtonItem disabled>無効項目</ContextMenu2ButtonItem>
+          <ContextMenu2SwitchItem disabled checked={false}>
+            スイッチ（無効）
+          </ContextMenu2SwitchItem>
+          <ContextMenu2SwitchItem disabled checked={true}>
+            スイッチ（無効）
           </ContextMenu2SwitchItem>
           <ContextMenu2SwitchItem
             checked={checkedIndex.includes(3)}
@@ -601,7 +601,7 @@ export const Sortable: StoryObj<typeof ContextMenu2> = {
   render: () => {
     const [order, setOrder] = useState<(string | number)[]>(["3", "2", "4"]);
 
-    const [checkedIndex, setCheckedIndex] = useState<number[]>([]);
+    const [checkedIndex, setCheckedIndex] = useState<number[]>([2]);
     const handleCheck = (index: number) => {
       if (checkedIndex.includes(index)) {
         setCheckedIndex(checkedIndex.filter((i) => i !== index));
@@ -613,7 +613,7 @@ export const Sortable: StoryObj<typeof ContextMenu2> = {
     return (
       <>
         <p>order: {JSON.stringify(["1", ...order, "5"])}</p>
-        <p>on: {JSON.stringify(checkedIndex)}</p>
+        <p>on: {JSON.stringify([1, ...checkedIndex, 5])}</p>
         <ContextMenu2Container>
           <ContextMenu2
             trigger={<button type="button">trigger</button>}
@@ -629,10 +629,7 @@ export const Sortable: StoryObj<typeof ContextMenu2> = {
               width={264}
             >
               <ContextMenu2SortableItem disabled id="1">
-                <ContextMenu2SwitchItem
-                  checked={checkedIndex.includes(1)}
-                  onChange={() => handleCheck(1)}
-                >
+                <ContextMenu2SwitchItem disabled checked>
                   スイッチ 1
                 </ContextMenu2SwitchItem>
               </ContextMenu2SortableItem>
@@ -663,10 +660,7 @@ export const Sortable: StoryObj<typeof ContextMenu2> = {
                 </ContextMenu2SortableItem>
               </ContextMenu2SortableGroup>
               <ContextMenu2SortableItem disabled id="5">
-                <ContextMenu2SwitchItem
-                  checked={checkedIndex.includes(5)}
-                  onChange={() => handleCheck(5)}
-                >
+                <ContextMenu2SwitchItem disabled checked>
                   スイッチ 5
                 </ContextMenu2SwitchItem>
               </ContextMenu2SortableItem>
