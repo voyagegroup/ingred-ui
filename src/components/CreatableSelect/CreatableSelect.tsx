@@ -72,6 +72,7 @@ const CreatableSelect = <T,>(
           MenuList: Styled.ReactSelectMenuList,
           ...rest.components,
         }}
+        menuPortalTarget={document.body}
         onInputChange={handleInputChange}
       />
     </Styled.Container>
