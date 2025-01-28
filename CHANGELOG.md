@@ -1,5 +1,17 @@
 # Changelog
 
+## 19.3.0
+
+### Minor Changes
+
+- [#1699](https://github.com/voyagegroup/ingred-ui/pull/1699) [`e24e7190`](https://github.com/voyagegroup/ingred-ui/commit/e24e71903b21a2a0cbeaeb06bd9f6453f395fc86) Thanks [@yomotsu](https://github.com/yomotsu)! - add ContextMenu2 component with corresponding child components, renew direction icon shapes.
+
+### Patch Changes
+
+- [#1692](https://github.com/voyagegroup/ingred-ui/pull/1692) [`6a09e0b2`](https://github.com/voyagegroup/ingred-ui/commit/6a09e0b24e4d286fda9a3e9711efdc18be634b0f) Thanks [@yomotsu](https://github.com/yomotsu)! - fix: select dropdown was placed behind other elements
+
+- [#1695](https://github.com/voyagegroup/ingred-ui/pull/1695) [`bdb7f94a`](https://github.com/voyagegroup/ingred-ui/commit/bdb7f94aee871fd1457eeb82d7ccda7f8b905b6b) Thanks [@yomotsu](https://github.com/yomotsu)! - fix: Calender: remove submit type from button elements to avoid from the form submitting
+
 ## 19.2.2
 
 ### Patch Changes
