@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.4.0
+
+### Minor Changes
+
+- [#1703](https://github.com/voyagegroup/ingred-ui/pull/1703) [`66cf7575`](https://github.com/voyagegroup/ingred-ui/commit/66cf757566d1c2014601b7a6055ceea2c1d39877) Thanks [@yomotsu](https://github.com/yomotsu)! - add ContextMenu2SotableItem component
+
 ## 19.3.0
 
 ### Minor Changes
