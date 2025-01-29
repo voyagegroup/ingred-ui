@@ -13,6 +13,8 @@ import {
   ContextMenu2TextInputItem,
   ContextMenu2SeparatorItem,
   ContextMenu2ButtonControlsItem,
+  ContextMenu2SortableGroup,
+  ContextMenu2SortableItem,
 } from "./index";
 import Button from "../Button";
 import ActionButton from "../ActionButton";
@@ -429,12 +431,12 @@ export const WithSwitch: StoryObj<typeof ContextMenu2> = {
           >
             スイッチ2
           </ContextMenu2SwitchItem>
-          <ContextMenu2SwitchItem
-            disabled
-            checked={checkedIndex.includes(2)}
-            onChange={() => handleCheck(2)}
-          >
-            スイッチ3（無効）
+          <ContextMenu2ButtonItem disabled>無効項目</ContextMenu2ButtonItem>
+          <ContextMenu2SwitchItem disabled checked={false}>
+            スイッチ（無効）
+          </ContextMenu2SwitchItem>
+          <ContextMenu2SwitchItem disabled checked={true}>
+            スイッチ（無効）
           </ContextMenu2SwitchItem>
           <ContextMenu2SwitchItem
             checked={checkedIndex.includes(3)}
@@ -591,6 +593,81 @@ export const Anchor: StoryObj<typeof ContextMenu2> = {
           </ContextMenu2>
         </ContextMenu2Container>
       </div>
+    );
+  },
+};
+
+export const Sortable: StoryObj<typeof ContextMenu2> = {
+  render: () => {
+    const [order, setOrder] = useState<(string | number)[]>(["3", "2", "4"]);
+
+    const [checkedIndex, setCheckedIndex] = useState<number[]>([2]);
+    const handleCheck = (index: number) => {
+      if (checkedIndex.includes(index)) {
+        setCheckedIndex(checkedIndex.filter((i) => i !== index));
+      } else {
+        setCheckedIndex([...checkedIndex, index]);
+      }
+    };
+
+    return (
+      <>
+        <p>order: {JSON.stringify(["1", ...order, "5"])}</p>
+        <p>on: {JSON.stringify([1, ...checkedIndex, 5])}</p>
+        <ContextMenu2Container>
+          <ContextMenu2
+            trigger={<button type="button">trigger</button>}
+            width={316}
+          >
+            <ContextMenu2HeadingItem>ルート</ContextMenu2HeadingItem>
+            <ContextMenu2
+              trigger={
+                <ContextMenu2TriggerItem append={100}>
+                  入れ子トリガー
+                </ContextMenu2TriggerItem>
+              }
+              width={264}
+            >
+              <ContextMenu2SortableItem disabled id="1">
+                <ContextMenu2SwitchItem disabled checked>
+                  スイッチ 1
+                </ContextMenu2SwitchItem>
+              </ContextMenu2SortableItem>
+              <ContextMenu2SortableGroup order={order} onOrderChange={setOrder}>
+                <ContextMenu2SortableItem id="2">
+                  <ContextMenu2SwitchItem
+                    checked={checkedIndex.includes(2)}
+                    onChange={() => handleCheck(2)}
+                  >
+                    スイッチ 2
+                  </ContextMenu2SwitchItem>
+                </ContextMenu2SortableItem>
+                <ContextMenu2SortableItem id="3">
+                  <ContextMenu2SwitchItem
+                    checked={checkedIndex.includes(3)}
+                    onChange={() => handleCheck(3)}
+                  >
+                    スイッチ 3
+                  </ContextMenu2SwitchItem>
+                </ContextMenu2SortableItem>
+                <ContextMenu2SortableItem id="4">
+                  <ContextMenu2SwitchItem
+                    checked={checkedIndex.includes(4)}
+                    onChange={() => handleCheck(4)}
+                  >
+                    スイッチ 4
+                  </ContextMenu2SwitchItem>
+                </ContextMenu2SortableItem>
+              </ContextMenu2SortableGroup>
+              <ContextMenu2SortableItem disabled id="5">
+                <ContextMenu2SwitchItem disabled checked>
+                  スイッチ 5
+                </ContextMenu2SwitchItem>
+              </ContextMenu2SortableItem>
+            </ContextMenu2>
+          </ContextMenu2>
+        </ContextMenu2Container>
+      </>
     );
   },
 };

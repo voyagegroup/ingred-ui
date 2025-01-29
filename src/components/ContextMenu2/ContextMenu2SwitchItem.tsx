@@ -13,7 +13,7 @@ type ContextMenu2SwitchItemProps = {
   checked?: boolean;
   disabled?: boolean;
   children: ReactNode;
-  onChange: (checked: boolean) => void;
+  onChange?: (checked: boolean) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const SwitchTruck = styled.span<{
@@ -26,21 +26,15 @@ const SwitchTruck = styled.span<{
   display: block;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   width: 40px;
-  height: calc(1px * 2 + 22px);
+  height: 22px;
   background-color: ${({ checked, disabled, theme }) => {
-    let backgroundColor = theme.palette.gray.highlight;
-    if (disabled) {
-      backgroundColor = theme.palette.gray.light;
-    } else if (checked) {
-      backgroundColor = theme.palette.background.hint;
-    }
-    return backgroundColor;
+    if (disabled) return colors.basic[200];
+    if (checked) return theme.palette.background.hint;
+    return theme.palette.gray.highlight;
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.main
-        : theme.palette.divider};
+      checked && !disabled ? theme.palette.primary.main : colors.basic[400]};
   border-radius: 999px;
   box-shadow: ${({ theme }) =>
     getShadow(
@@ -49,10 +43,6 @@ const SwitchTruck = styled.span<{
       theme.palette.action.shadowBase,
     )};
   transition: all 0.3s ease-in-out;
-
-  &:where(button:disabled *) {
-    opacity: 0;
-  }
 `;
 
 const SwitchThumb = styled.span<{
@@ -61,25 +51,24 @@ const SwitchThumb = styled.span<{
 }>`
   position: absolute;
   top: 50%;
-  left: ${({ checked }) => (checked ? "calc(100% - 14px - 6px)" : "4px")};
+  left: ${({ checked }) => (checked ? "calc(100% - 14px - 5px)" : "3px")};
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
   border-radius: 14px;
   background-color: ${({ checked, disabled, theme }) => {
-    let backgroundColor = theme.palette.background.default;
-    if (disabled) {
-      backgroundColor = theme.palette.gray.light;
-    } else if (checked) {
-      backgroundColor = theme.palette.primary.main;
-    }
-    return backgroundColor;
+    if (disabled && !checked) return theme.palette.gray.light;
+    if (disabled && checked) return colors.blue[500];
+    if (checked) return theme.palette.primary.main;
+    return theme.palette.background.default;
   }};
+  opacity: ${({ checked, disabled }) => (checked && disabled ? 0.6 : null)};
   border: 1px solid
-    ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.dark
-        : theme.palette.divider};
+    ${({ checked, disabled }) => {
+      if (disabled && !checked) return colors.basic[400];
+      if (checked) return colors.blue[600];
+      return colors.basic[400];
+    }};
   box-shadow: ${({ theme }) =>
     getShadow(
       3,
@@ -94,7 +83,7 @@ const InternalContextMenu2SwitchItem = forwardRef<
   ContextMenu2SwitchItemProps
 >(({ checked = false, disabled = false, children, ...props }, ref) => {
   const handleOnClick = () => {
-    props.onChange(!checked);
+    props.onChange?.(!checked);
   };
 
   return (
