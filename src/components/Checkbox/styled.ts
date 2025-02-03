@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { getShadow } from "../../utils/getShadow";
+import { fontSize } from "../Typography/Typography";
 
 export const Checkbox = styled.input<{
   indeterminate: boolean;
   error: boolean;
+  disabled: boolean;
 }>`
   opacity: 0;
   -webkit-appearance: none;
@@ -33,6 +35,7 @@ export const Container = styled.label<{ disabled: boolean }>`
 `;
 
 export const Span = styled.span<{
+  checkBoxSize: string;
   hasChild: boolean;
   indeterminate: boolean;
   error: boolean;
@@ -43,11 +46,14 @@ export const Span = styled.span<{
     error
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
+  font-size: ${({ checkBoxSize }) =>
+    checkBoxSize === "small" ? `${fontSize.sm}px` : `${fontSize.md}px`};
   &::before {
     flex-shrink: 0;
     content: "";
-    width: 18px;
-    height: 18px;
+    aspect-ratio: 1;
+    width: ${({ checkBoxSize }) =>
+      checkBoxSize === "small" ? "16px" : "18px"};
     border: 1px solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};

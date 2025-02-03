@@ -7,6 +7,11 @@ export default {
   title: "Components/Inputs/Checkbox",
   component: Checkbox,
   argTypes: {
+    checkBoxSize: {
+      type: "select",
+      options: ["small", "medium"],
+    },
+    disabled: { control: "boolean" },
     onChange: { action: "changed" },
   },
 };
@@ -17,18 +22,39 @@ export const Example: StoryObj<CheckBoxProps> = {
 
 export const DesignSamples: StoryObj = {
   render: () => (
-    <Flex display="flex" flexDirection="column">
-      <Checkbox checked={false}>Not checked</Checkbox>
-      <Checkbox checked={true}>Checked</Checkbox>
-      <Checkbox indeterminate={true} checked={true}>
-        Checked(indeterminate)
-      </Checkbox>
-      <Checkbox disabled checked={false}>
-        Not checked(disabled)
-      </Checkbox>
-      <Checkbox disabled checked={true}>
-        Checked(disabled)
-      </Checkbox>
-    </Flex>
+    <>
+      <Flex display="flex" gap={3}>
+        <Flex display="flex" flexDirection="column" gap={1}>
+          <Checkbox checked={false} checkBoxSize="small">
+            Not checked
+          </Checkbox>
+          <Checkbox checked={true} checkBoxSize="small">
+            Checked
+          </Checkbox>
+          <Checkbox indeterminate={true} checked={true} checkBoxSize="small">
+            Checked(indeterminate)
+          </Checkbox>
+          <Checkbox disabled checked={false} checkBoxSize="small">
+            Not checked(disabled)
+          </Checkbox>
+          <Checkbox disabled checked={true} checkBoxSize="small">
+            Checked(disabled)
+          </Checkbox>
+        </Flex>
+        <Flex display="flex" flexDirection="column" gap={1}>
+          <Checkbox checked={false}>Not checked</Checkbox>
+          <Checkbox checked={true}>Checked</Checkbox>
+          <Checkbox indeterminate={true} checked={true}>
+            Checked(indeterminate)
+          </Checkbox>
+          <Checkbox disabled checked={false}>
+            Not checked(disabled)
+          </Checkbox>
+          <Checkbox disabled checked={true}>
+            Checked(disabled)
+          </Checkbox>
+        </Flex>
+      </Flex>
+    </>
   ),
 };

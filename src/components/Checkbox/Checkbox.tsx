@@ -5,6 +5,8 @@ export type CheckBoxProps = React.ComponentPropsWithoutRef<"input"> & {
   indeterminate?: boolean;
   error?: boolean;
   inputRef?: React.Ref<HTMLInputElement>;
+  disabled?: boolean;
+  checkBoxSize?: "small" | "medium";
 };
 
 const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
@@ -15,6 +17,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
       error = false,
       disabled = false,
       inputRef,
+      checkBoxSize = "medium",
       ...rest
     },
     ref,
@@ -31,6 +34,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
           {...rest}
         />
         <Styled.Span
+          checkBoxSize={checkBoxSize}
           error={error}
           indeterminate={indeterminate}
           hasChild={!!children}
