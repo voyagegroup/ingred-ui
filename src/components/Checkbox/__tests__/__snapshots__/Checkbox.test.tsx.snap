@@ -6,7 +6,7 @@ exports[`Checkbox component testing Checkbox 1`] = `
     class="sc-dkzDqf bwjwyU"
   >
     <input
-      class="sc-gsnTZi lbDqSh"
+      class="sc-gsnTZi dKUPCs"
       readonly=""
       type="checkbox"
     />

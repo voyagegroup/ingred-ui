@@ -61,7 +61,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -84,7 +84,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -107,7 +107,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -130,7 +130,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -197,7 +197,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -221,7 +221,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -245,7 +245,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
@@ -269,7 +269,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl kcKywM"
+              class="sc-hAZoDl gqGVtp"
               readonly=""
               type="checkbox"
             />
