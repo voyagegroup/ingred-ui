@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { getShadow } from "../../utils/getShadow";
 import { fontSize } from "../Typography/Typography";
+import { CheckboxSize } from "./Checkbox";
 
 export const Checkbox = styled.input<{
   indeterminate: boolean;
@@ -35,7 +36,7 @@ export const Container = styled.label<{ disabled: boolean }>`
 `;
 
 export const Span = styled.span<{
-  checkBoxSize: string;
+  size: CheckboxSize;
   hasChild: boolean;
   indeterminate: boolean;
   error: boolean;
@@ -46,14 +47,13 @@ export const Span = styled.span<{
     error
       ? ({ theme }) => theme.palette.danger.main
       : ({ theme }) => theme.palette.black};
-  font-size: ${({ checkBoxSize }) =>
-    checkBoxSize === "small" ? `${fontSize.sm}px` : `${fontSize.md}px`};
+  font-size: ${({ size }) =>
+    size === CheckboxSize.SMALL ? `${fontSize.sm}px` : `${fontSize.md}px`};
   &::before {
     flex-shrink: 0;
     content: "";
     aspect-ratio: 1;
-    width: ${({ checkBoxSize }) =>
-      checkBoxSize === "small" ? "16px" : "18px"};
+    width: ${({ size }) => (size === CheckboxSize.SMALL ? "16px" : "18px")};
     border: 1px solid
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
