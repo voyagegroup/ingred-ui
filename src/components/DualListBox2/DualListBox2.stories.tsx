@@ -7,6 +7,7 @@ import {
   DualListBox2Item,
   DualListBox2Accordion,
   DualListBox2Section,
+  toGroupedItems,
 } from "./index";
 import {
   ContextMenu2ButtonItem,
@@ -28,23 +29,6 @@ const generateItems = (start: number, length: number, groupName?: string) => {
     label: `リストアイテム${start + i}`,
     groupName,
   }));
-};
-
-type groupedItems = { groupName?: string; items: Item[] };
-const toGroupedItems = (items: Item[]) => {
-  const groupedItems: groupedItems[] = items.reduce(
-    (acc: groupedItems[], item) => {
-      const group = acc.find((group) => group.groupName === item.groupName);
-      if (group) {
-        group.items.push(item);
-      } else {
-        acc.push({ groupName: item.groupName, items: [item] });
-      }
-      return acc;
-    },
-    [],
-  );
-  return groupedItems;
 };
 
 /**

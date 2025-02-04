@@ -1,5 +1,6 @@
 import { createContext, Children, isValidElement, type ReactNode } from "react";
 import { DualListBox2Item } from "./DualListBox2Item";
+import type { Item } from "./types";
 
 export const DualListBox2Context = createContext<{
   filterWords: string[];
@@ -46,4 +47,21 @@ export const getAllIds = (children: ReactNode) => {
       allIds.push(child.props.id);
   });
   return allIds;
+};
+
+type groupedItems = { groupName?: string; items: Item[] };
+export const toGroupedItems = (items: Item[]) => {
+  const groupedItems: groupedItems[] = items.reduce(
+    (acc: groupedItems[], item) => {
+      const group = acc.find((group) => group.groupName === item.groupName);
+      if (group) {
+        group.items.push(item);
+      } else {
+        acc.push({ groupName: item.groupName, items: [item] });
+      }
+      return acc;
+    },
+    [],
+  );
+  return groupedItems;
 };

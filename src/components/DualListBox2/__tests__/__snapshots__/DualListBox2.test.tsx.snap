@@ -1,0 +1,1356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DualListBox2 component testing DualListBox2 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-ftvSup cvYNPx"
+  >
+    <ul
+      class="sc-papXJ fBSVzw"
+    >
+      <li>
+        <button
+          aria-expanded="true"
+          type="button"
+        >
+          リストアイテム
+        </button>
+      </li>
+      <li>
+        <button
+          aria-expanded="false"
+          type="button"
+        >
+          選択済みアイテム
+          <span
+            class="sc-jqUVSM jQEGOd"
+          >
+            2
+          </span>
+        </button>
+      </li>
+    </ul>
+    <div
+      class="sc-kDDrLX jxkZom"
+    >
+      <div
+        class="sc-iqcoie gdMasq"
+      >
+        <div
+          class="sc-evZas ixqDmZ"
+        >
+          <div
+            class="sc-breuTD dbfhtv"
+          >
+            <span
+              class="sc-hKMtZM eThDDF"
+              size="12"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h18v18H0z"
+                  fill="none"
+                />
+                <path
+                  d="M14.023,12.963l3.212,3.211-1.061,1.061-3.211-3.212a6.751,6.751,0,1,1,1.061-1.06Zm-1.5-.556a5.248,5.248,0,1,0-.112.112l.112-.112Z"
+                  fill="#778490"
+                  transform="translate(-0.5 -0.5)"
+                />
+              </svg>
+            </span>
+            <input
+              aria-label="検索"
+              placeholder="検索"
+              value=""
+            />
+          </div>
+          <button
+            aria-expanded="false"
+            aria-haspopup="dialog"
+            class="sc-ksZaOG ejykZA"
+            type="button"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h18v18H0z"
+                  fill="none"
+                />
+                <path
+                  d="M11.5,3A1.5,1.5,0,1,0,13,4.5,1.5,1.5,0,0,0,11.5,3Zm0,10.5A1.5,1.5,0,1,0,13,15,1.5,1.5,0,0,0,11.5,13.5Zm0-5.25A1.5,1.5,0,1,0,13,9.75,1.5,1.5,0,0,0,11.5,8.25Z"
+                  fill="#041C33"
+                  transform="translate(-2.5 -0.75)"
+                />
+              </svg>
+            </span>
+          </button>
+          <div
+            class="sc-hAZoDl fuykNH"
+          >
+            4件
+          </div>
+          <ul
+            class="sc-fnykZs isiYiW"
+          >
+            <li>
+              <button
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                      fill="#0B82F4"
+                    />
+                  </svg>
+                </span>
+                全て追加
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 18 18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0,0H18V18H0Z"
+                      fill="none"
+                    />
+                    <path
+                      d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                      fill="#EB0A4E"
+                      transform="translate(-6521.011 -4616.011)"
+                    />
+                  </svg>
+                </span>
+                全て除外
+              </button>
+            </li>
+          </ul>
+          <button
+            class="sc-fEOsli ixRHsO"
+            type="button"
+          >
+            さらに読み込む
+          </button>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <div
+            class="sc-bBrHrO kHSFUK"
+          >
+            <div>
+              リストアイテム1
+            </div>
+            <div
+              class="sc-fLlhyt klnOmx"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  aria-pressed="true"
+                  style="--color: #0B82F4;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  aria-pressed="false"
+                  style="--color: #EB0A4E;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="currentColor"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </div>
+          </div>
+          <div
+            class="sc-bBrHrO kHSFUK"
+          >
+            <div>
+              リストアイテム2
+            </div>
+            <div
+              class="sc-fLlhyt klnOmx"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  aria-pressed="false"
+                  style="--color: #0B82F4;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  aria-pressed="false"
+                  style="--color: #EB0A4E;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="currentColor"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </div>
+          </div>
+          <div
+            class="sc-bBrHrO kHSFUK"
+          >
+            <div>
+              リストアイテム3
+            </div>
+            <div
+              class="sc-fLlhyt klnOmx"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  aria-pressed="false"
+                  style="--color: #0B82F4;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  aria-pressed="false"
+                  style="--color: #EB0A4E;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="currentColor"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </div>
+          </div>
+          <div
+            class="sc-bBrHrO kHSFUK"
+          >
+            <div>
+              長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
+            </div>
+            <div
+              class="sc-fLlhyt klnOmx"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  aria-pressed="false"
+                  style="--color: #0B82F4;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  aria-pressed="true"
+                  style="--color: #EB0A4E;"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="currentColor"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-iqcoie fIFYXh"
+      >
+        <div
+          class="sc-bjUoiL bOveQu"
+        >
+          <div
+            class="sc-idiyUo euCWNV"
+          >
+            <div
+              class="sc-dIouRR jkSeU"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                    fill="#0B82F4"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+            <div
+              class="sc-hHLeRK kfrVCH"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 18 18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H18V18H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                    fill="#EB0A4E"
+                    transform="translate(-6521.011 -4616.011)"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+          </div>
+          <div
+            class="sc-dmRaPn ikUdix"
+          >
+            <button
+              class="sc-gsnTZi sc-dkzDqf bveZbV gplyQO"
+              font-size="12px"
+              font-weight="normal"
+              type="button"
+            >
+              選択をクリア
+            </button>
+          </div>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                  fill="#0B82F4"
+                />
+              </svg>
+            </span>
+            追加
+          </p>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            リストアイテム1
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,0H18V18H0Z"
+                  fill="none"
+                />
+                <path
+                  d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                  fill="#EB0A4E"
+                  transform="translate(-6521.011 -4616.011)"
+                />
+              </svg>
+            </span>
+            除外
+          </p>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-ftvSup cvYNPx"
+  >
+    <ul
+      class="sc-papXJ fBSVzw"
+    >
+      <li>
+        <button
+          aria-expanded="true"
+          type="button"
+        >
+          リストアイテム
+        </button>
+      </li>
+      <li>
+        <button
+          aria-expanded="false"
+          type="button"
+        >
+          選択済みアイテム
+          <span
+            class="sc-jqUVSM jQEGOd"
+          >
+            2
+          </span>
+        </button>
+      </li>
+    </ul>
+    <div
+      class="sc-kDDrLX jxkZom"
+    >
+      <div
+        class="sc-iqcoie gdMasq"
+      >
+        <div
+          class="sc-evZas ixqDmZ"
+        >
+          <div
+            class="sc-breuTD dbfhtv"
+          >
+            <span
+              class="sc-hKMtZM eThDDF"
+              size="12"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h18v18H0z"
+                  fill="none"
+                />
+                <path
+                  d="M14.023,12.963l3.212,3.211-1.061,1.061-3.211-3.212a6.751,6.751,0,1,1,1.061-1.06Zm-1.5-.556a5.248,5.248,0,1,0-.112.112l.112-.112Z"
+                  fill="#778490"
+                  transform="translate(-0.5 -0.5)"
+                />
+              </svg>
+            </span>
+            <input
+              aria-label="検索"
+              placeholder="検索"
+              value=""
+            />
+          </div>
+          <div
+            class="sc-hAZoDl fuykNH"
+          >
+            4件
+          </div>
+          <ul
+            class="sc-fnykZs isiYiW"
+          >
+            <li>
+              <button
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                      fill="#0B82F4"
+                    />
+                  </svg>
+                </span>
+                全て追加
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 18 18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0,0H18V18H0Z"
+                      fill="none"
+                    />
+                    <path
+                      d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                      fill="#EB0A4E"
+                      transform="translate(-6521.011 -4616.011)"
+                    />
+                  </svg>
+                </span>
+                全て除外
+              </button>
+            </li>
+          </ul>
+          <button
+            class="sc-fEOsli ixRHsO"
+            type="button"
+          >
+            さらに読み込む
+          </button>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <div
+            class="sc-llJcti ghOMXE"
+          >
+            <button
+              aria-expanded="false"
+              aria-label="アコーディオン1を開く"
+              class="sc-iIPllB gnuUvE"
+              type="button"
+            >
+              アコーディオン1
+            </button>
+            <ul
+              class="sc-gicCDI LXLJk"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="#0B82F4"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="#EB0A4E"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </ul>
+            <div
+              class="sc-ezWOiH enqBnK"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <div
+            class="sc-llJcti ghOMXE"
+          >
+            <button
+              aria-expanded="false"
+              aria-label="アコーディオン2を開く"
+              class="sc-iIPllB gnuUvE"
+              type="button"
+            >
+              アコーディオン2
+            </button>
+            <ul
+              class="sc-gicCDI LXLJk"
+            >
+              <li>
+                <button
+                  aria-label="追加"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                        fill="#0B82F4"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+              <li>
+                <button
+                  aria-label="除外"
+                  type="button"
+                >
+                  <span
+                    class="sc-hKMtZM gLnfjV"
+                    size="18"
+                  >
+                    <svg
+                      viewBox="0 0 18 18"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0,0H18V18H0Z"
+                        fill="none"
+                      />
+                      <path
+                        d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                        fill="#EB0A4E"
+                        transform="translate(-6521.011 -4616.011)"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </li>
+            </ul>
+            <div
+              class="sc-ezWOiH enqBnK"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-iqcoie fIFYXh"
+      >
+        <div
+          class="sc-bjUoiL bOveQu"
+        >
+          <div
+            class="sc-idiyUo euCWNV"
+          >
+            <div
+              class="sc-dIouRR jkSeU"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                    fill="#0B82F4"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+            <div
+              class="sc-hHLeRK kfrVCH"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 18 18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H18V18H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                    fill="#EB0A4E"
+                    transform="translate(-6521.011 -4616.011)"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+          </div>
+          <div
+            class="sc-dmRaPn ikUdix"
+          >
+            <button
+              class="sc-gsnTZi sc-dkzDqf bveZbV gplyQO"
+              font-size="12px"
+              font-weight="normal"
+              type="button"
+            >
+              選択をクリア
+            </button>
+          </div>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                  fill="#0B82F4"
+                />
+              </svg>
+            </span>
+            追加
+          </p>
+          <div
+            class="sc-cxabCf lmQuGt"
+          >
+            アコーディオン1
+          </div>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            リストアイテム1
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,0H18V18H0Z"
+                  fill="none"
+                />
+                <path
+                  d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                  fill="#EB0A4E"
+                  transform="translate(-6521.011 -4616.011)"
+                />
+              </svg>
+            </span>
+            除外
+          </p>
+          <div
+            class="sc-cxabCf lmQuGt"
+          >
+            アコーディオン2
+          </div>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-ftvSup cvYNPx"
+  >
+    <ul
+      class="sc-papXJ fBSVzw"
+    >
+      <li>
+        <button
+          aria-expanded="true"
+          type="button"
+        >
+          リストアイテム
+        </button>
+      </li>
+      <li>
+        <button
+          aria-expanded="false"
+          type="button"
+        >
+          選択済みアイテム
+          <span
+            class="sc-jqUVSM jQEGOd"
+          >
+            2
+          </span>
+        </button>
+      </li>
+    </ul>
+    <div
+      class="sc-kDDrLX jxkZom"
+    >
+      <div
+        class="sc-iqcoie gdMasq"
+      >
+        <div
+          class="sc-evZas ixqDmZ"
+        >
+          <div
+            class="sc-breuTD dbfhtv"
+          >
+            <span
+              class="sc-hKMtZM eThDDF"
+              size="12"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0h18v18H0z"
+                  fill="none"
+                />
+                <path
+                  d="M14.023,12.963l3.212,3.211-1.061,1.061-3.211-3.212a6.751,6.751,0,1,1,1.061-1.06Zm-1.5-.556a5.248,5.248,0,1,0-.112.112l.112-.112Z"
+                  fill="#778490"
+                  transform="translate(-0.5 -0.5)"
+                />
+              </svg>
+            </span>
+            <input
+              aria-label="検索"
+              disabled=""
+              placeholder="検索"
+              value=""
+            />
+          </div>
+          <div
+            class="sc-hAZoDl fuykNH"
+          >
+            -件
+          </div>
+          <ul
+            class="sc-fnykZs isiYiW"
+          >
+            <li>
+              <button
+                disabled=""
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                      fill="#0B82F4"
+                    />
+                  </svg>
+                </span>
+                全て追加
+              </button>
+            </li>
+            <li>
+              <button
+                disabled=""
+                type="button"
+              >
+                <span
+                  class="sc-hKMtZM gLnfjV"
+                  size="18"
+                >
+                  <svg
+                    viewBox="0 0 18 18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0,0H18V18H0Z"
+                      fill="none"
+                    />
+                    <path
+                      d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                      fill="#EB0A4E"
+                      transform="translate(-6521.011 -4616.011)"
+                    />
+                  </svg>
+                </span>
+                全て除外
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <button
+            aria-expanded="false"
+            aria-label="セクション1を開く"
+            class="sc-ikZpkk jeCrKy"
+            type="button"
+          >
+            <span
+              class="sc-bZkfAO epmSOM"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="m9.1 10 4.1 4.1-1.1 1.2L6.8 10 12 4.7l1.1 1.2z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </span>
+            <div>
+              セクション1
+            </div>
+            <span
+              class="sc-kLLXSd dsnjon"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10.9 10 6.8 5.9l1.1-1.2 5.3 5.3L8 15.3l-1.1-1.2z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+          <button
+            aria-expanded="false"
+            aria-label="セクション2を開く"
+            class="sc-ikZpkk jeCrKy"
+            type="button"
+          >
+            <span
+              class="sc-bZkfAO epmSOM"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="m9.1 10 4.1 4.1-1.1 1.2L6.8 10 12 4.7l1.1 1.2z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </span>
+            <div>
+              セクション2
+            </div>
+            <span
+              class="sc-kLLXSd dsnjon"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10.9 10 6.8 5.9l1.1-1.2 5.3 5.3L8 15.3l-1.1-1.2z"
+                    fill="#041C33"
+                  />
+                </svg>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="sc-iqcoie fIFYXh"
+      >
+        <div
+          class="sc-bjUoiL bOveQu"
+        >
+          <div
+            class="sc-idiyUo euCWNV"
+          >
+            <div
+              class="sc-dIouRR jkSeU"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                    fill="#0B82F4"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+            <div
+              class="sc-hHLeRK kfrVCH"
+            >
+              <span
+                class="sc-hKMtZM gLnfjV"
+                size="18"
+              >
+                <svg
+                  viewBox="0 0 18 18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0,0H18V18H0Z"
+                    fill="none"
+                  />
+                  <path
+                    d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                    fill="#EB0A4E"
+                    transform="translate(-6521.011 -4616.011)"
+                  />
+                </svg>
+              </span>
+              1
+            </div>
+          </div>
+          <div
+            class="sc-dmRaPn ikUdix"
+          >
+            <button
+              class="sc-gsnTZi sc-dkzDqf bveZbV gplyQO"
+              font-size="12px"
+              font-weight="normal"
+              type="button"
+            >
+              選択をクリア
+            </button>
+          </div>
+        </div>
+        <div
+          class="sc-crXcEl hOmhNx"
+        >
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
+                  fill="#0B82F4"
+                />
+              </svg>
+            </span>
+            追加
+          </p>
+          <div
+            class="sc-cxabCf lmQuGt"
+          >
+            セクション1
+          </div>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            リストアイテム1
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+          <p
+            class="sc-kgflAQ fiqxkQ"
+          >
+            <span
+              class="sc-hKMtZM gLnfjV"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 18 18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0,0H18V18H0Z"
+                  fill="none"
+                />
+                <path
+                  d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
+                  fill="#EB0A4E"
+                  transform="translate(-6521.011 -4616.011)"
+                />
+              </svg>
+            </span>
+            除外
+          </p>
+          <div
+            class="sc-cxabCf lmQuGt"
+          >
+            セクション2
+          </div>
+          <div
+            class="sc-ivTmOn gGUaeJ"
+          >
+            長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
+            <button
+              aria-label="解除"
+              type="button"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
