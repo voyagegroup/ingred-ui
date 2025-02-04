@@ -11,6 +11,7 @@ export default {
       type: "select",
       options: ["small", "medium"],
     },
+    checked: { control: "boolean" },
     disabled: { control: "boolean" },
     onChange: { action: "changed" },
   },
@@ -44,6 +45,14 @@ export const DesignSamples: StoryObj = {
           <Checkbox disabled checked={true} size={CheckboxSize.SMALL}>
             Checked(disabled)
           </Checkbox>
+          <Checkbox
+            disabled
+            checked={true}
+            indeterminate={true}
+            size={CheckboxSize.SMALL}
+          >
+            Checked(indeterminate, disabled)
+          </Checkbox>
         </Flex>
         <Flex display="flex" flexDirection="column" gap={1}>
           <Checkbox checked={false}>Not checked</Checkbox>
@@ -56,6 +65,9 @@ export const DesignSamples: StoryObj = {
           </Checkbox>
           <Checkbox disabled checked={true}>
             Checked(disabled)
+          </Checkbox>
+          <Checkbox disabled indeterminate={true} checked={true}>
+            Checked(indeterminate, disabled)
           </Checkbox>
         </Flex>
       </Flex>

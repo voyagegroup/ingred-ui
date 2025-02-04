@@ -26,6 +26,21 @@ export const Checkbox = styled.input<{
     background-repeat: no-repeat;
     background-position: center center;
   }
+  &:disabled + span::before {
+    color: ${({ theme }) => theme.palette.text.disabled};
+  }
+  &:disabled + span::before {
+    border: 1px solid ${({ theme }) => theme.palette.divider};
+    background-color: ${({ theme }) => theme.palette.gray.light};
+  }
+  &:disabled:checked + span::before {
+    background-image: ${({ indeterminate }) =>
+      indeterminate
+        ? `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMyIgdmlld0JveD0iMCAwIDEwIDMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHk9IjAuMzk4OTI2IiB3aWR0aD0iMTAiIGhlaWdodD0iMi4yMDIwNSIgZmlsbD0iI0IzQkFDMSIvPiA8L3N2Zz4=') !important`
+        : `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxwYXRoIGQ9Ik0zLjM2OTcgNy4xNTg5NEMzLjI1MjU1IDcuMDQxNzggMy4yNTI1NSA2Ljg1MTgzIDMuMzY5NyA2LjczNDY3TDEwLjAxNjUgMC4wODc4NjgxQzEwLjEzMzcgLTAuMDI5Mjg5MiAxMC4zMjM2IC0wLjAyOTI4OTQgMTAuNDQwOCAwLjA4Nzg2NzlMMTEuNTczNiAxLjIyMDY5QzExLjY5MDcgMS4zMzc4NSAxMS42OTA3IDEuNTI3OCAxMS41NzM2IDEuNjQ0OTVMNC45MjY3OSA4LjI5MTc2QzQuODA5NjMgOC40MDg5MSA0LjYxOTY4IDguNDA4OTEgNC41MDI1MiA4LjI5MTc2TDMuMzY5NyA3LjE1ODk0WiIgZmlsbD0iI0IzQkFDMSIvPiA8cGF0aCBkPSJNNC45MjY3OSA4LjI5MTc2QzQuODA5NjMgOC40MDg5MSA0LjYxOTY4IDguNDA4OTEgNC41MDI1MiA4LjI5MTc2TDAuOTMzMDgzIDQuNzIyMzJDMC44MTU5MjYgNC42MDUxNiAwLjgxNTkyNiA0LjQxNTIxIDAuOTMzMDgzIDQuMjk4MDVMMi4wNjU5IDMuMTY1MjNDMi4xODMwNiAzLjA0ODA3IDIuMzczMDEgMy4wNDgwNyAyLjQ5MDE3IDMuMTY1MjNMNi4wNTk2OCA2LjczNDc0QzYuMTc2ODQgNi44NTE5IDYuMTc2ODQgNy4wNDE4NSA2LjA1OTY4IDcuMTU5MDFMNC45MjY3OSA4LjI5MTc2WiIgZmlsbD0iI0IzQkFDMSIvPiA8L3N2Zz4=')`};
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 `;
 
 export const Container = styled.label<{ disabled: boolean }>`
@@ -62,20 +77,5 @@ export const Span = styled.span<{
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing / 2}px` : "auto"};
     transition: background-color 0.3s ease;
-  }
-  ${Checkbox}:disabled + & {
-    color: ${({ theme }) => theme.palette.text.disabled};
-  }
-  ${Checkbox}:disabled + &::before {
-    border: 1px solid ${({ theme }) => theme.palette.divider};
-    background-color: ${({ theme }) => theme.palette.gray.light};
-  }
-  ${Checkbox}:disabled:checked + &::before {
-    background-image: ${({ indeterminate }) =>
-      indeterminate
-        ? `url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%223%22%20viewBox%3D%220%200%2010%203%22%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill%3A%23b3bac1%3B%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Crect%20class%3D%22a%22%20width%3D%2210%22%20height%3D%223%22%20rx%3D%220.596%22%2F%3E%3C%2Fsvg%3E')`
-        : `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMyIgdmlld0JveD0iMCAwIDEwIDMiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxyZWN0IHg9IjAuNDU4OTg0IiB5PSIwLjUiIHdpZHRoPSI5LjA4MjUyIiBoZWlnaHQ9IjIuMDAwMDIiIGZpbGw9IiNCM0JBQzEiLz4gPC9zdmc+')`};
-    background-repeat: no-repeat;
-    background-position: center center;
   }
 `;
