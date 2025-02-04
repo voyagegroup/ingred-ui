@@ -66,7 +66,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               foo
             </span>
@@ -89,7 +89,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               bar
             </span>
@@ -112,7 +112,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               hoge
             </span>
@@ -135,7 +135,7 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               fuga
             </span>
@@ -202,7 +202,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               foo
             </span>
@@ -226,7 +226,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               bar
             </span>
@@ -250,7 +250,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               hoge
             </span>
@@ -274,7 +274,7 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="checkbox"
             />
             <span
-              class="sc-fEOsli fIXTsl"
+              class="sc-fEOsli jVsyuP"
             >
               fuga
             </span>
