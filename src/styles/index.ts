@@ -1,3 +1,4 @@
+export { Shadow } from "./shadow";
 export { Radius } from "./radius";
 export { Space } from "./space";
 export { BreakPoint } from "./breakPoint";

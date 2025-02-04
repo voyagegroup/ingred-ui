@@ -58,12 +58,7 @@ export const Span = styled.span<{
       ${({ error, theme }) =>
         error ? theme.palette.danger.main : theme.palette.divider};
     border-radius: ${({ theme }) => theme.radius * 0.5}px;
-    box-shadow: ${({ theme }) =>
-      getShadow(
-        3,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      )};
+    box-shadow: ${({ theme }) => theme.shadow["3dShadowPrimary"]};
     background-color: ${({ theme }) => theme.palette.background.default};
     margin-right: ${({ hasChild, theme }) =>
       hasChild ? `${theme.spacing / 2}px` : "auto"};
