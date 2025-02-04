@@ -61,12 +61,12 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               foo
             </span>
@@ -84,12 +84,12 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               bar
             </span>
@@ -107,12 +107,12 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               hoge
             </span>
@@ -130,12 +130,12 @@ exports[`DualListBox component testing DualListBox candidateItems 1`] = `
             class="sc-fnykZs irugyB"
           >
             <input
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               fuga
             </span>
@@ -197,12 +197,12 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               foo
             </span>
@@ -221,12 +221,12 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               bar
             </span>
@@ -245,12 +245,12 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               hoge
             </span>
@@ -269,12 +269,12 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
           >
             <input
               checked=""
-              class="sc-hAZoDl gqGVtp"
+              class="sc-hAZoDl kMDhuk"
               readonly=""
               type="checkbox"
             />
             <span
-              class="sc-fEOsli jVsyuP"
+              class="sc-fEOsli cbTaQr"
             >
               fuga
             </span>
