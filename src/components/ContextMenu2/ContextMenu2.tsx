@@ -42,6 +42,7 @@ import { ContextMenu2CheckItem } from "./ContextMenu2CheckItem";
 import { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 import { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
 import { ContextMenu2SortableContext } from "./ContextMenu2SortableItem";
+import { depth } from "../../styles/depth";
 
 const ContextMenu2Context = createContext({
   isRoot: false,
@@ -105,6 +106,7 @@ type ContextMenu2Props = {
 };
 
 const ContextMenu2Panel = styled.div`
+  z-index: ${depth.modal + 1};
   padding: 10px 8px;
   border: 1px solid ${colors.basic[200]};
   border-radius: 6px;

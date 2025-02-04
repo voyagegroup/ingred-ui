@@ -18,6 +18,7 @@ import { CheckIcon } from "./internal/CheckIcon";
 import { EyeIcon } from "./internal/EyeIcon";
 import { EyeOffIcon } from "./internal/EyeOffIcon";
 import { ExclamationIcon } from "./internal/ExclamationIcon";
+import { ExpandDiagonalSFillIcon } from "./internal/ExpandDiagonalSFillIcon";
 import { ArrowDoubleLeftIcon } from "./internal/ArrowDoubleLeftIcon";
 import { QuestionIcon } from "./internal/QuestionIcon";
 import { ZoomInIcon } from "./internal/ZoomInIcon";
@@ -67,6 +68,7 @@ import { LabelIcon } from "./internal/LabelIcon";
 import { DownloadCloudIcon } from "./internal/DownloadCloudIcon";
 import { SaveIcon } from "./internal/SaveIcon";
 import { CloseCircleIcon } from "./internal/CloseCircleIcon";
+import { CloseCircleFillIcon } from "./internal/CloseCircleFillIcon";
 import { BidStrapIcon } from "./internal/BidStrapIcon";
 import { FluctIcon } from "./internal/FluctIcon";
 import { DataStrapIcon } from "./internal/DataStrapIcon";
@@ -119,6 +121,7 @@ export type IconName =
   | "eye"
   | "eye_off"
   | "exclamation"
+  | "expand_diagonal_s_fill"
   | "arrow_double_left"
   | "arrow_double_right"
   | "question"
@@ -166,6 +169,7 @@ export type IconName =
   | "download_cloud"
   | "save"
   | "close_circle"
+  | "close_circle_fill"
   | "bid_strap"
   | "fluct"
   | "data_strap"
@@ -230,6 +234,7 @@ export const icons: {
   eye: EyeIcon,
   eye_off: EyeOffIcon,
   exclamation: ExclamationIcon,
+  expand_diagonal_s_fill: ExpandDiagonalSFillIcon,
   arrow_double_left: ArrowDoubleLeftIcon,
   arrow_double_right: ArrowDoubleRightIcon,
   question: QuestionIcon,
@@ -277,6 +282,7 @@ export const icons: {
   download_cloud: DownloadCloudIcon,
   save: SaveIcon,
   close_circle: CloseCircleIcon,
+  close_circle_fill: CloseCircleFillIcon,
   bid_strap: BidStrapIcon,
   fluct: FluctIcon,
   data_strap: DataStrapIcon,
