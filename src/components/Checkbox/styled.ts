@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { getShadow } from "../../utils/getShadow";
 import { fontSize } from "../Typography/Typography";
 import { CheckboxSize } from "./Checkbox";
 
