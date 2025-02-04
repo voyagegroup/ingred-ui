@@ -1,6 +1,13 @@
-import React, { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import React, {
+  type ReactElement,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  useCallback,
+} from "react";
 import * as styled from "./styled";
-import Icon, { type IconName } from "../Icon";
+import Icon from "../Icon";
 import {
   ContextMenu2,
   ContextMenu2CheckItem,
@@ -25,7 +32,7 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
         aria-label="削除"
         onClick={onRemove}
       >
-        <Icon name="close_circle_fill" color={colors.basic[900]} />
+        <Icon name="close_circle" type="fill" color={colors.basic[900]} />
       </styled.FilterTagButton>
     </styled.FilterTag>
   );
@@ -38,7 +45,7 @@ type FilterInputPanelProps = {
   isOpen: boolean;
   selectedIndex: number;
   values: string[];
-  selectOptions: { icon: IconName; label: string }[];
+  selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
 };
@@ -55,55 +62,63 @@ const FilterInputPanel = ({
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [userValues, setUserValues] = useState<string[]>([]);
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const inputEl = useRef<HTMLInputElement>(null);
 
-  const handleFocusTriggerClick = () => {
+  const handleSelectChange = useCallback((index: number) => {
+    setUserSelectedIndex(index);
+    setIsSelectOpen(false);
+  }, []);
+
+  const handleFocusTriggerClick = useCallback(() => {
     inputEl.current?.focus();
-  };
+  }, []);
 
-  const handleTagRemove = (index: number) => {
-    const newValues = [...userValues];
-    newValues.splice(index, 1);
-    setUserValues(newValues);
-  };
+  const handleTagRemove = useCallback(
+    (index: number) => {
+      const newValues = [...userValues];
+      newValues.splice(index, 1);
+      setUserValues(newValues);
+    },
+    [userValues],
+  );
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (isInlineComposing) return;
-    if (!(event.target instanceof HTMLInputElement)) return;
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (isInlineComposing) return;
+      if (!(event.target instanceof HTMLInputElement)) return;
 
-    // 0 文字目で backspace を押した場合は、最後の値を削除する
-    if (event.key === "Backspace" && event.target.selectionStart === 0) {
-      setUserValues(userValues.slice(0, -1));
-      return;
-    }
+      // 0 文字目で backspace を押した場合は、最後の値を削除する
+      if (event.key === "Backspace" && event.target.selectionStart === 0) {
+        setUserValues(userValues.slice(0, -1));
+        return;
+      }
 
-    const trimmedValue = event.target.value.trim();
-    if (trimmedValue === "" || userValues.includes(trimmedValue)) return;
+      const trimmedValue = event.target.value.trim();
+      if (trimmedValue === "" || userValues.includes(trimmedValue)) return;
 
-    if (event.key === "Enter") {
-      setUserValues([...userValues, trimmedValue]);
-      setInputValue("");
-    }
-  };
+      if (event.key === "Enter") {
+        setUserValues([...userValues, trimmedValue]);
+        setInputValue("");
+      }
+    },
+    [userValues, setUserValues, isInlineComposing],
+  );
 
-  const handleClearButtonClick = () => {
+  const handleClearButtonClick = useCallback(() => {
     setUserValues([]);
     setInputValue("");
-  };
+  }, []);
 
-  const handleChancelClick = () => {
-    setUserValues(values);
-    setUserSelectedIndex(selectedIndex);
-    setUserValues([]);
+  const handleChancelClick = useCallback(() => {
     onClose();
-  };
+  }, [onClose]);
 
-  const handleApplyClick = () => {
+  const handleApplyClick = useCallback(() => {
     onApply(userValues, userSelectedIndex);
-    setUserValues([]);
     onClose();
-  };
+  }, [userValues, userSelectedIndex, onApply, onClose]);
 
   // isOpen が true になったら、現状の値を初期値としてセットする
   // 「適用」するまでは、親に値を返さない
@@ -122,23 +137,25 @@ const FilterInputPanel = ({
             <styled.PanelLabel>条件</styled.PanelLabel>
             <ContextMenu2Container>
               <ContextMenu2
+                open={isSelectOpen}
                 trigger={
                   <styled.PanelSelectTrigger>
                     <styled.PanelSelectTriggerLabel>
-                      いずれかを含むいずれかを含む
+                      {selectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
                       <Icon name="arrow_down" color={colors.basic[900]} />
                     </styled.PanelSelectTriggerIcon>
                   </styled.PanelSelectTrigger>
                 }
+                onOpenChange={(open) => setIsSelectOpen(open)}
               >
                 {selectOptions.map(({ label, icon }, i) => (
                   <ContextMenu2CheckItem
                     key={label}
-                    prepend={<Icon name={icon} />}
+                    prepend={icon}
                     checked={userSelectedIndex === i}
-                    onChange={() => setUserSelectedIndex(i)}
+                    onChange={() => handleSelectChange(i)}
                   >
                     {label}
                   </ContextMenu2CheckItem>
@@ -177,7 +194,11 @@ const FilterInputPanel = ({
                 type="button"
                 onClick={handleClearButtonClick}
               >
-                <Icon name="close_circle_fill" color={colors.basic[900]} />
+                <Icon
+                  name="close_circle"
+                  type="fill"
+                  color={colors.basic[900]}
+                />
               </styled.PanelClearButton>
             </styled.PanelTagField>
           </styled.PanelRight>
@@ -205,7 +226,7 @@ const FilterInputPanel = ({
 type FilterTagInputProps = {
   values: string[];
   selectedIndex: number;
-  selectOptions: { icon: IconName; label: string }[];
+  selectOptions: { icon: ReactElement; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
 };
@@ -219,6 +240,7 @@ export const FilterTagInput = ({
   const [inputValue, setInputValue] = useState("");
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
+  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
   // styled-components v6 未満では未対応
@@ -231,17 +253,17 @@ export const FilterTagInput = ({
 
   // inlineFieldEl の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
-  const checkInlineOverflow = () => {
+  const checkInlineOverflow = useCallback(() => {
     if (!inlineFieldEl.current || !inlineInputEl.current) return;
 
     setIsInlineOverflowing(
       inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
     );
-  };
+  }, []);
 
   // inlineFieldEl が狭すぎる場合は、モーダルパネル内で入力させる。
   // その判定。
-  const computeInlineFieldVisibleWidth = () => {
+  const computeInlineFieldVisibleWidth = useCallback(() => {
     if (!inlineFieldEl.current || !inlineInputEl.current) return;
 
     // inlineInputEl がどれくらい見えているか？
@@ -255,53 +277,82 @@ export const FilterTagInput = ({
     const visibleWidth =
       inlineFieldRect.right - inlineFieldPaddingRight - inlineInputRect.left;
     return visibleWidth;
-  };
+  }, []);
 
-  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (isInlineComposing) return;
-    if (!(event.target instanceof HTMLInputElement)) return;
+  const handleSelectChange = useCallback(
+    (index: number) => {
+      onSelectChange(index);
+      setIsSelectOpen(false);
+    },
+    [onSelectChange, setIsSelectOpen],
+  );
 
-    // 0 文字目で backspace を押した場合は、最後の値を削除する
-    if (event.key === "Backspace" && event.target.selectionStart === 0) {
-      onChange(values.slice(0, -1));
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (isInlineComposing) return;
+      if (!(event.target instanceof HTMLInputElement)) return;
+
+      // 0 文字目で backspace を押した場合は、最後の値を削除する
+      if (event.key === "Backspace" && event.target.selectionStart === 0) {
+        onChange(values.slice(0, -1));
+        requestAnimationFrame(() => {
+          checkInlineOverflow();
+          computeInlineFieldVisibleWidth();
+        });
+        return;
+      }
+
+      const trimmedValue = event.target.value.trim();
+      if (trimmedValue === "" || values.includes(trimmedValue)) return;
+
+      if (event.key === "Enter") {
+        onChange([...values, trimmedValue]);
+        setInputValue("");
+        requestAnimationFrame(() => {
+          checkInlineOverflow();
+          computeInlineFieldVisibleWidth();
+        });
+      }
+    },
+    [
+      values,
+      onChange,
+      setInputValue,
+      isInlineComposing,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+    ],
+  );
+
+  const handleTagRemove = useCallback(
+    (index: number) => {
+      const newValues = [...values];
+      newValues.splice(index, 1);
+      onChange(newValues);
       requestAnimationFrame(() => {
         checkInlineOverflow();
         computeInlineFieldVisibleWidth();
       });
-      return;
-    }
+    },
+    [values, onChange, checkInlineOverflow, computeInlineFieldVisibleWidth],
+  );
 
-    const trimmedValue = event.target.value.trim();
-    if (trimmedValue === "" || values.includes(trimmedValue)) return;
-
-    if (event.key === "Enter") {
-      onChange([...values, trimmedValue]);
-      setInputValue("");
+  const handlePanelApply = useCallback(
+    (newValues: string[], newSelectedIndex: number) => {
+      onChange(newValues);
+      onSelectChange(newSelectedIndex);
       requestAnimationFrame(() => {
         checkInlineOverflow();
         computeInlineFieldVisibleWidth();
       });
-    }
-  };
-
-  const handleTagRemove = (index: number) => {
-    const newValues = [...values];
-    newValues.splice(index, 1);
-    onChange(newValues);
-    requestAnimationFrame(() => {
-      checkInlineOverflow();
-      computeInlineFieldVisibleWidth();
-    });
-  };
-
-  const handlePanelApply = (newValues: string[], newSelectedIndex: number) => {
-    onChange(newValues);
-    onSelectChange(newSelectedIndex);
-    requestAnimationFrame(() => {
-      checkInlineOverflow();
-      computeInlineFieldVisibleWidth();
-    });
-  };
+    },
+    [
+      onChange,
+      onSelectChange,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+    ],
+  );
 
   useEffect(() => {
     const resizeObserver1 = new ResizeObserver(() => {
@@ -323,7 +374,7 @@ export const FilterTagInput = ({
       resizeObserver1.disconnect();
       resizeObserver2.disconnect();
     };
-  }, []);
+  }, [setIsSmall, checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   return (
     <>
@@ -334,21 +385,24 @@ export const FilterTagInput = ({
       >
         <ContextMenu2Container>
           <ContextMenu2
+            open={isSelectOpen}
             trigger={
               <styled.DropDownTrigger
                 type="button"
                 aria-label="フィルターのタイプを選ぶ"
+                onClick={() => setIsSelectOpen(!isSelectOpen)}
               >
-                <Icon name={selectOptions[selectedIndex].icon} />
+                {selectOptions[selectedIndex].icon}
               </styled.DropDownTrigger>
             }
+            onOpenChange={(open) => setIsSelectOpen(open)}
           >
             {selectOptions.map(({ label, icon }, i) => (
               <ContextMenu2CheckItem
                 key={label}
-                prepend={<Icon name={icon} />}
+                prepend={icon}
                 checked={selectedIndex === i}
-                onChange={() => onSelectChange(i)}
+                onChange={() => handleSelectChange(i)}
               >
                 {label}
               </ContextMenu2CheckItem>

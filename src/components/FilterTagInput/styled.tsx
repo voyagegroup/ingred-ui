@@ -52,7 +52,12 @@ export const InlineField = styled.div`
   align-items: center;
   min-height: 100%;
   padding: 0 5px;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &:has(input:focus) {
     outline: auto;
@@ -122,7 +127,7 @@ export const InlineInput = styled.div`
     box-sizing: border-box;
     width: 100%;
     border: 0;
-    padding: 0 5px;
+    padding: 0;
     background: #fff;
     outline: none;
 
@@ -203,6 +208,7 @@ export const PanelSelectTrigger = styled.button`
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  width: 100%;
   max-width: 100%;
   height: 34px;
   padding: 4px 8px;

@@ -68,7 +68,6 @@ import { LabelIcon } from "./internal/LabelIcon";
 import { DownloadCloudIcon } from "./internal/DownloadCloudIcon";
 import { SaveIcon } from "./internal/SaveIcon";
 import { CloseCircleIcon } from "./internal/CloseCircleIcon";
-import { CloseCircleFillIcon } from "./internal/CloseCircleFillIcon";
 import { BidStrapIcon } from "./internal/BidStrapIcon";
 import { FluctIcon } from "./internal/FluctIcon";
 import { DataStrapIcon } from "./internal/DataStrapIcon";
@@ -97,6 +96,17 @@ import { CheckThinIcon } from "./internal/CheckThinIcon";
 import { ImageCheckIcon } from "./internal/ImageCheckIcon";
 import { Group2Icon } from "./internal/Group2Icon";
 import { KeyIcon } from "./internal/KeyIcon";
+import { OperatorMatchIcon } from "./internal/OperatorMatchIcon";
+import { OperatorDoesNotMatchIcon } from "./internal/OperatorDoesNotMatchIcon";
+import { OperatorContainsIcon } from "./internal/OperatorContainsIcon";
+import { OperatorStartsWithIcon } from "./internal/OperatorStartsWithIcon";
+import { OperatorEndsWithIcon } from "./internal/OperatorEndsWithIcon";
+import { OperatorEqualIcon } from "./internal/OperatorEqualIcon";
+import { OperatorNotEqualIcon } from "./internal/OperatorNotEqualIcon";
+import { OperatorGreaterThanIcon } from "./internal/OperatorGreaterThanIcon";
+import { OperatorGreaterThanOrEqualToIcon } from "./internal/OperatorGreaterThanOrEqualToIcon";
+import { OperatorLessThanIcon } from "./internal/OperatorLessThanIcon";
+import { OperatorLessThanOrEqualToIcon } from "./internal/OperatorLessThanOrEqualToIcon";
 
 /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
 type DeprecatedArrowBottom = "arrow_bottom";
@@ -196,7 +206,18 @@ export type IconName =
   | "check_thin"
   | "image_check"
   | "group2"
-  | "key";
+  | "key"
+  | "operator_match"
+  | "operator_does_not_match"
+  | "operator_contains"
+  | "operator_starts_with"
+  | "operator_ends_with"
+  | "operator_equal"
+  | "operator_not_equal"
+  | "operator_greater_than"
+  | "operator_greater_than_or_equal_to"
+  | "operator_less_than"
+  | "operator_less_than_or_equal_to";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -282,7 +303,6 @@ export const icons: {
   download_cloud: DownloadCloudIcon,
   save: SaveIcon,
   close_circle: CloseCircleIcon,
-  close_circle_fill: CloseCircleFillIcon,
   bid_strap: BidStrapIcon,
   fluct: FluctIcon,
   data_strap: DataStrapIcon,
@@ -310,6 +330,17 @@ export const icons: {
   image_check: ImageCheckIcon,
   group2: Group2Icon,
   key: KeyIcon,
+  operator_match: OperatorMatchIcon,
+  operator_does_not_match: OperatorDoesNotMatchIcon,
+  operator_contains: OperatorContainsIcon,
+  operator_starts_with: OperatorStartsWithIcon,
+  operator_ends_with: OperatorEndsWithIcon,
+  operator_equal: OperatorEqualIcon,
+  operator_not_equal: OperatorNotEqualIcon,
+  operator_greater_than: OperatorGreaterThanIcon,
+  operator_greater_than_or_equal_to: OperatorGreaterThanOrEqualToIcon,
+  operator_less_than: OperatorLessThanIcon,
+  operator_less_than_or_equal_to: OperatorLessThanOrEqualToIcon,
 };
 
 const iconFactory = (name: IconName | DeprecatedArrowBottom) => {

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 // import { useArgs } from "@storybook/client-api";
 import { FilterTagInput } from "./index";
+import Icon from "../Icon";
+import { colors } from "../../styles";
 
 const meta = {
   title: "Components/Inputs/FilterTagInput",
@@ -30,31 +32,65 @@ export const Default: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: "forbid",
+        icon: (
+          <Icon name="operator_match" type="line" color={colors.basic[900]} />
+        ),
         label: "含む",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color={colors.basic[900]}
+          />
+        ),
         label: "含まない",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon
+            name="operator_contains"
+            type="line"
+            color={colors.basic[900]}
+          />
+        ),
         label: "いずれかを含む",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon
+            name="operator_starts_with"
+            type="line"
+            color={colors.basic[900]}
+          />
+        ),
         label: "で始まる",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon
+            name="operator_ends_with"
+            type="line"
+            color={colors.basic[900]}
+          />
+        ),
         label: "で終わる",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon name="operator_equal" type="line" color={colors.basic[900]} />
+        ),
         label: "同じ",
       },
       {
-        icon: "forbid",
+        icon: (
+          <Icon
+            name="operator_not_equal"
+            type="line"
+            color={colors.basic[900]}
+          />
+        ),
         label: "同じでない",
       },
     ],
