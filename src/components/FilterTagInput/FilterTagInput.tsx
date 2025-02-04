@@ -220,7 +220,11 @@ export const FilterTagInput = ({
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  // 本来なら CSS Container Query で判定したいけれど、
+  // styled-components v6 未満では未対応
+  const [isSmall, setIsSmall] = useState(false);
 
+  const el = useRef<HTMLDivElement>(null);
   const inlineFieldEl = useRef<HTMLDivElement>(null);
   const inlineFieldInnerEl = useRef<HTMLDivElement>(null);
   const inlineInputEl = useRef<HTMLInputElement>(null);
@@ -300,23 +304,34 @@ export const FilterTagInput = ({
   };
 
   useEffect(() => {
-    if (!inlineFieldEl.current) return;
+    const resizeObserver1 = new ResizeObserver(() => {
+      if (!el.current) return;
+      setIsSmall(el.current.clientWidth < 130);
+    });
 
-    const resizeObserver = new ResizeObserver(() => {
+    el.current && resizeObserver1.observe(el.current);
+
+    const resizeObserver2 = new ResizeObserver(() => {
+      if (!inlineFieldEl.current) return;
       checkInlineOverflow();
       computeInlineFieldVisibleWidth();
     });
 
-    resizeObserver.observe(inlineFieldEl.current);
+    inlineFieldEl.current && resizeObserver2.observe(inlineFieldEl.current);
 
     return () => {
-      resizeObserver.disconnect();
+      resizeObserver1.disconnect();
+      resizeObserver2.disconnect();
     };
   }, []);
 
   return (
     <>
-      <styled.FilterTagInput>
+      <styled.FilterTagInput
+        ref={el}
+        data-small={isSmall}
+        data-overflowing={isInlineOverflowing}
+      >
         <ContextMenu2Container>
           <ContextMenu2
             trigger={
@@ -368,15 +383,16 @@ export const FilterTagInput = ({
             </styled.InlineInput>
           </styled.InlineFieldInner>
         </styled.InlineField>
-        {isInlineOverflowing && (
-          <styled.OverflowIndicator
-            type="button"
-            aria-label="フィルター入力パネルを開く"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <Icon name="expand_diagonal_s_fill" color={colors.basic[900]} />
-          </styled.OverflowIndicator>
-        )}
+        <styled.OverflowIndicator
+          type="button"
+          aria-label="フィルター入力パネルを開く"
+          onClick={() => setIsModalOpen(true)}
+        >
+          <Icon
+            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+            color={colors.basic[900]}
+          />
+        </styled.OverflowIndicator>
       </styled.FilterTagInput>
       <FilterInputPanel
         isOpen={isModalOpen}

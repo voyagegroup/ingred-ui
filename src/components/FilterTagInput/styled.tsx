@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React from "react";
 import { colors } from "../../styles";
+import { palette } from "../../themes/palette";
+import { getShadow } from "../../utils/getShadow";
 
 export const FilterTagInput = styled.div`
   position: relative;
@@ -12,6 +14,12 @@ export const FilterTagInput = styled.div`
   border-radius: 6px;
   border: 1px solid ${colors.basic[400]};
   background-color: #fff;
+
+  &[data-small="true"] {
+    display: block;
+    border: 0;
+    background-color: transparent;
+  }
 `;
 
 export const DropDownTrigger = styled.button`
@@ -33,6 +41,10 @@ export const DropDownTrigger = styled.button`
     aspect-ratio: 1;
     height: 18px;
   }
+
+  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
+    display: none;
+  }
 `;
 
 export const InlineField = styled.div`
@@ -46,6 +58,10 @@ export const InlineField = styled.div`
     outline: auto;
     outline: auto -webkit-focus-ring-color;
   }
+
+  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
+    display: none;
+  }
 `;
 
 export const InlineFieldInner = styled.div`
@@ -58,7 +74,7 @@ export const InlineFieldInner = styled.div`
 export const OverflowIndicator = styled.button`
   position: absolute;
   inset: 0 0 0 auto;
-  display: grid;
+  display: none;
   place-items: center;
   width: 30px;
   border: 0;
@@ -66,6 +82,26 @@ export const OverflowIndicator = styled.button`
   background-color: ${colors.basic[100]};
   box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
   cursor: pointer;
+
+  &:where(${FilterTagInput.toString()}[data-overflowing="true"] *) {
+    display: grid;
+  }
+
+  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
+    position: static;
+    display: grid;
+    width: 32px;
+    aspect-ratio: 1;
+    border: 1px solid ${colors.basic[400]};
+    border-radius: 6px;
+    box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
+  }
+
+  &:where(${FilterTagInput.toString()}[data-small="true"] *:active:not(:disabled)) {
+    padding-top: 4px;
+    background: ${palette.gray.highlight};
+    box-shadow: ${getShadow(2, 0.04, palette.black)};
+  }
 
   &::before {
     content: "";
