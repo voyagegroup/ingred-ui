@@ -15,7 +15,7 @@ export type FloatingTipProps = {
    */
   baseElement: HTMLElement | null;
   /**
-   * Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
+   * 222Define priority of position. Please check [this](https://floating-ui.com/docs/tutorial#placements).
    * For backward compatibility, `"auto" | "auto-start" | "auto-end"` are included in addition to the above positions.
    */
   positionPriority?: (Placement | AutoPlacement)[];

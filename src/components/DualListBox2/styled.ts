@@ -31,14 +31,20 @@ const actionButton = `
     border-bottom-right-radius: 0;
   }
 
-  &:hover:not(:disabled) {
+  &:where(:hover:not(:disabled)) {
     background: ${colors.basic[100]};
   }
 
-  &:where(:active:not([disabled])) {
+  &:where(:active:not(:disabled)) {
     padding-block: 8px 4px;
     background: ${palette.gray.highlight};
     box-shadow: ${getShadow(2, 0.04, palette.black)};
+  }
+
+  &:where(:disabled) {
+    color: ${colors.basic[400]};
+    background: ${colors.basic[200]};
+    cursor: not-allowed;
   }
 `;
 
@@ -196,12 +202,12 @@ export const HeaderMenuButton = styled.button`
   place-items: center;
   width: 28px;
   aspect-ratio: 1;
-  padding: 4px 0;
+  padding: 2px 4px;
   background: #fff;
   cursor: pointer;
 
-  &:active {
-    padding-block: 4px 2px;
+  &:where(:active:not(:disabled)) {
+    padding-block: 2px 0;
   }
 `;
 
@@ -229,7 +235,7 @@ export const HeaderButtons = styled.ul`
     ${actionButton}
     padding-block: 6px 6px;
 
-    &:active {
+    &:where(:active:not([disabled])) {
       padding-block: 8px 4px;
     }
   }
@@ -330,6 +336,20 @@ export const ItemActions = styled.div`
     &[aria-pressed="true"] {
       color: var(--color);
     }
+
+    &:disabled {
+      visibility: hidden;
+    }
+  }
+
+  li:nth-last-child(1 of li:has(button:not(:disabled))) button {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  li:nth-child(1 of li:has(button:not(:disabled))) button {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
   }
 `;
 
@@ -482,6 +502,20 @@ export const AccordionActionButtons = styled.ul`
 
   button {
     ${actionButton}
+
+    &:disabled {
+      visibility: hidden;
+    }
+  }
+
+  li:nth-last-child(1 of li:has(button:not(:disabled))) button {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
+
+  li:nth-child(1 of li:has(button:not(:disabled))) button {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
   }
 `;
 

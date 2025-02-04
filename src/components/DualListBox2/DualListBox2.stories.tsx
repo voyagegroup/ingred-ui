@@ -1,21 +1,25 @@
 import React, { useState } from "react";
-import { StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
+import { useArgs } from "@storybook/client-api";
 import {
   type Item,
   DualListBox2,
   DualListBox2Item,
   DualListBox2Accordion,
   DualListBox2Section,
-} from "./DualListBox2";
+} from "./index";
 import {
   ContextMenu2ButtonItem,
   ContextMenu2SwitchItem,
 } from "../ContextMenu2";
 
-export default {
+const meta = {
   title: "Components/Data Display/DualListBox2",
   component: DualListBox2,
-};
+  argTypes: {},
+} satisfies Meta<typeof DualListBox2>;
+
+export default meta;
 
 const generateItems = (start: number, length: number, groupName?: string) => {
   return Array.from({ length }, (_, i) => ({
@@ -42,8 +46,46 @@ const toGroupedItems = (items: Item[]) => {
   return groupedItems;
 };
 
-export const Default: StoryObj<typeof DualListBox2> = {
-  render: () => {
+export const Default: StoryObj<typeof meta> = {
+  args: {
+    included: [
+      {
+        id: "unique-1",
+        label: "リストアイテム1",
+      },
+    ],
+    excluded: [
+      {
+        id: "unique-4",
+        label: "リストアイテム4",
+      },
+    ],
+    loading: false,
+    disableInclude: false,
+    disableExclude: false,
+    menuButtons: (
+      <>
+        <ContextMenu2ButtonItem
+          onClick={() => {
+            console.log("clicked");
+          }}
+        >
+          好きなボタンを
+        </ContextMenu2ButtonItem>
+        <ContextMenu2SwitchItem disabled onChange={() => {}}>
+          入れて使う
+        </ContextMenu2SwitchItem>
+      </>
+    ),
+    children: null,
+  },
+  render: (args) => {
+    const [{ included, excluded }, updateArgs] = useArgs<{
+      included: Item[];
+      excluded: Item[];
+      loading: boolean;
+    }>();
+
     const [items, setItems] = useState<Item[]>([
       {
         id: "unique-1",
@@ -64,45 +106,41 @@ export const Default: StoryObj<typeof DualListBox2> = {
       },
     ]);
 
-    const [included, setIncluded] = useState<Item[]>([items[0]]);
-    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
     return (
       <>
         <div>included: {JSON.stringify(included.map((item) => item.id))}</div>
         <div>excluded: {JSON.stringify(excluded.map((item) => item.id))}</div>
 
         <DualListBox2
-          included={included}
-          excluded={excluded}
-          menuButtons={
-            <>
-              <ContextMenu2ButtonItem
-                onClick={() => {
-                  console.log("clicked");
-                }}
-              >
-                好きなボタンを
-              </ContextMenu2ButtonItem>
-              <ContextMenu2SwitchItem disabled onChange={() => {}}>
-                入れて使う
-              </ContextMenu2SwitchItem>
-            </>
-          }
+          {...args}
           onIncludedChange={(ids: string[]) =>
-            setIncluded(items.filter((item) => ids.includes(item.id)))
+            updateArgs({
+              included: items.filter((item) => ids.includes(item.id)),
+            })
           }
           onExcludedChange={(ids: string[]) =>
-            setExcluded(items.filter((item) => ids.includes(item.id)))
+            updateArgs({
+              excluded: items.filter((item) => ids.includes(item.id)),
+            })
           }
           onLoadMore={() => {
-            setItems((prev) => [
-              ...prev,
-              ...generateItems(prev.length + 1, 10),
-            ]);
+            updateArgs({ loading: true });
+            setTimeout(() => {
+              setItems((prev) => [
+                ...prev,
+                ...generateItems(prev.length + 1, 10),
+              ]);
+              updateArgs({ loading: false });
+            }, 1000);
           }}
         >
           {items.map((item) => (
-            <DualListBox2Item key={item.id} id={item.id}>
+            <DualListBox2Item
+              key={item.id}
+              id={item.id}
+              disableInclude={args.disableInclude}
+              disableExclude={args.disableExclude}
+            >
               {item.label}
             </DualListBox2Item>
           ))}
@@ -140,8 +178,10 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
 
     const [included, setIncluded] = useState<Item[]>([items[0]]);
     const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [isLoading, setIsLoading] = useState(false);
     return (
       <DualListBox2
+        loading={isLoading}
         included={included}
         excluded={excluded}
         menuButtons={
@@ -165,6 +205,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
         onLoadMore={() => {
+          setIsLoading(true);
           setItems((prev) => [
             ...prev,
             ...generateItems(prev.length + 1, 10, "アコーディオン2"),
@@ -180,6 +221,93 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
               >
                 {group.items.map((item) => (
                   <DualListBox2Item key={item.id} id={item.id}>
+                    {item.label}
+                  </DualListBox2Item>
+                ))}
+              </DualListBox2Accordion>
+            ),
+        )}
+      </DualListBox2>
+    );
+  },
+};
+
+export const Either: StoryObj<typeof DualListBox2> = {
+  render: () => {
+    const [items, setItems] = useState<Item[]>([
+      {
+        id: "unique-1",
+        groupName: "アコーディオン1",
+        label: "リストアイテム1",
+      },
+      {
+        id: "unique-2",
+        groupName: "アコーディオン1",
+        label: "リストアイテム2",
+      },
+      {
+        id: "unique-3",
+        groupName: "アコーディオン2",
+        label: "リストアイテム3",
+      },
+      {
+        id: "unique-4",
+        groupName: "アコーディオン2",
+        label:
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+      },
+    ]);
+
+    const [included, setIncluded] = useState<Item[]>([items[0]]);
+    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [isLoading, setIsLoading] = useState(false);
+    return (
+      <DualListBox2
+        disableExclude
+        loading={isLoading}
+        included={included}
+        excluded={excluded}
+        menuButtons={
+          <>
+            <ContextMenu2ButtonItem
+              onClick={() => {
+                alert("clicked");
+              }}
+            >
+              好きなボタンを
+            </ContextMenu2ButtonItem>
+            <ContextMenu2SwitchItem disabled onChange={() => {}}>
+              入れて使う
+            </ContextMenu2SwitchItem>
+          </>
+        }
+        onIncludedChange={(ids: string[]) =>
+          setIncluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids: string[]) =>
+          setExcluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onLoadMore={() => {
+          setIsLoading(true);
+          setTimeout(() => {
+            setItems((prev) => [
+              ...prev,
+              ...generateItems(prev.length + 1, 10, "アコーディオン2"),
+            ]);
+            setIsLoading(false);
+          }, 1000);
+        }}
+      >
+        {toGroupedItems(items).map(
+          (group) =>
+            group.groupName && (
+              <DualListBox2Accordion
+                key={group.groupName}
+                disableExclude
+                label={group.groupName}
+              >
+                {group.items.map((item) => (
+                  <DualListBox2Item key={item.id} disableExclude id={item.id}>
                     {item.label}
                   </DualListBox2Item>
                 ))}
@@ -219,8 +347,11 @@ export const Section: StoryObj<typeof DualListBox2> = {
 
     const [included, setIncluded] = useState<Item[]>([items[0]]);
     const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [currentSection, setCurrentSection] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
     return (
       <DualListBox2
+        loading={isLoading}
         included={included}
         excluded={excluded}
         menuButtons={
@@ -243,11 +374,17 @@ export const Section: StoryObj<typeof DualListBox2> = {
         onExcludedChange={(ids: string[]) =>
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
+        onActiveSectionChange={(section) => setCurrentSection(section)}
         onLoadMore={() => {
-          setItems((prev) => [
-            ...prev,
-            ...generateItems(prev.length + 1, 10, "セクション1"),
-          ]);
+          if (currentSection === null) return;
+          setIsLoading(true);
+          setTimeout(() => {
+            setItems((prev) => [
+              ...prev,
+              ...generateItems(prev.length + 1, 10, currentSection),
+            ]);
+            setIsLoading(false);
+          }, 1000);
         }}
       >
         {toGroupedItems(items).map(

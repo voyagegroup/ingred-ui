@@ -21,13 +21,6 @@ import Icon from "../Icon";
 export default {
   title: "Components/Navigation/ContextMenu2",
   component: ContextMenu2,
-  parameters: {
-    docs: {
-      source: {
-        language: "tsx",
-      },
-    },
-  },
 };
 
 export const Overview: StoryObj<typeof ContextMenu2> = {
