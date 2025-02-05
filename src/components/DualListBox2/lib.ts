@@ -1,4 +1,9 @@
-import { createContext, Children, isValidElement, type ReactNode } from "react";
+import React, {
+  createContext,
+  Children,
+  isValidElement,
+  type ReactNode,
+} from "react";
 import { DualListBox2Item } from "./DualListBox2Item";
 import type { Item } from "./types";
 
@@ -35,18 +40,27 @@ export const traverseChildren = (
   });
 };
 
-export const getAllIds = (children: ReactNode) => {
-  const allIds: string[] = [];
+export const extractAllItems = (children: ReactNode) => {
+  const items: Item[] = [];
   traverseChildren(children, (child) => {
     if (
       isValidElement(child) &&
       typeof child.type !== "string" &&
       "displayName" in child.type &&
       child.type.displayName === DualListBox2Item.displayName
-    )
-      allIds.push(child.props.id);
+    ) {
+      items.push({
+        id: child.props.id,
+        label: child.props.children,
+        groupName: child.props.groupName,
+      });
+    }
   });
-  return allIds;
+  return items;
+};
+
+export const getAllIds = (children: ReactNode) => {
+  return extractAllItems(children).map((item) => item.id);
 };
 
 type groupedItems = { groupName?: string; items: Item[] };

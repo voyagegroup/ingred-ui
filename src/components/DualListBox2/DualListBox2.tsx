@@ -16,7 +16,7 @@ import * as styled from "./styled";
 import { colors } from "../../styles";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import { type Item } from "./types";
-import { DualListBox2Context, traverseChildren, getAllIds } from "./lib";
+import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
 import { DualListBox2Item } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 
@@ -183,27 +183,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [excluded],
     );
 
-    const allItems = useMemo(() => {
-      const items: Item[] = [];
-      traverseChildren(children, (child) => {
-        if (
-          isValidElement(child) &&
-          typeof child.type !== "string" &&
-          "displayName" in child.type &&
-          child.type.displayName === DualListBox2Item.displayName
-        ) {
-          items.push({
-            id: child.props.id,
-            label: child.props.children,
-            groupName: child.props.groupName,
-          });
-        }
-      });
-      return items;
-    }, [children]);
+    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
+    const allItems = useMemo(() => extractAllItems(children), [children]);
 
+    // DualListBox2 に配置された、全 DualListBox2Item の id の配列
     const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
 
+    // 検索フィルタ適用後の全 id
     const allIdsFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIds;
 
@@ -246,6 +232,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return ids;
     }, [activeSection, children, hasSection]);
 
+    // 検索フィルタ適用後の、選択中のセクションのみに含まれる全 id
     const allIdsInActiveSectionFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIdsInActiveSection;
 
@@ -256,6 +243,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIdsInActiveSection, allItems, filterWords]);
 
+    // 「すべて追加」ボタンを非活性にするかどうか
+    // セクション型の DualListBox の場合、セクション選択中のみ「すべて〜」ボタンは有効。
+    // それ以外は、追加選択できる項目があれば有効（すべて選択済みの場合、無効）
     const disableIncludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -278,6 +268,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       includedIds,
     ]);
 
+    // 「すべて除外」ボタンを非活性にするかどうか
+    // 「すべて追加」ボタン非活性化の判定の逆。
     const disableExcludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -300,6 +292,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       excludedIds,
     ]);
 
+    // 検索フィルターのテキスト入力変更に state に反映
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target?.value);
@@ -307,11 +300,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [setFilter],
     );
 
+    // 選択をクリアする
     const handleClearButtonClick = useCallback(() => {
       included.length && onIncludedChange([]);
       excluded.length && onExcludedChange([]);
     }, [included, excluded, onIncludedChange, onExcludedChange]);
 
+    // 「すべて追加」ボタンが押されたときの処理
+    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
+    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleIncludeAllButtonClick = useCallback(() => {
       if (hasSection) {
         // セクションの場合は特別
@@ -345,6 +342,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
     ]);
 
+    // 「すべて除外」ボタンが押されたときの処理
+    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
+    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleExcludeAllButtonClick = useCallback(() => {
       if (hasSection) {
         // セクションの場合は特別
@@ -474,11 +474,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.HeaderButtons>
                   {!disableInclude && (
                     <li>
-                      {/*
-                      セクション型の DualListBox の場合、
-                      セクション選択中のみ「すべて〜」ボタンは有効。
-                      それ以外は常に有効
-                    */}
                       <button
                         type="button"
                         disabled={disableIncludeAllButton}
@@ -498,11 +493,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                   )}
                   {!disableExclude && (
                     <li>
-                      {/*
-                      セクション型の DualListBox の場合、
-                      セクション選択中のみ「すべて〜」ボタンは有効。
-                      それ以外は常に有効
-                    */}
                       <button
                         type="button"
                         disabled={disableExcludeAllButton}
