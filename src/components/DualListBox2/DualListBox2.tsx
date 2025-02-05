@@ -166,6 +166,54 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
       return hasSection;
     }, [children]);
+
+    // フィルター文字列をスペース区切りで単語の配列に分割
+    const filterWords = useMemo(() => {
+      const trimmed = filter.trim();
+      return trimmed ? trimmed.split(/\s+/) : [];
+    }, [filter]);
+
+    const includedIds = useMemo(
+      () => included.map((item) => item.id),
+      [included],
+    );
+
+    const excludedIds = useMemo(
+      () => excluded.map((item) => item.id),
+      [excluded],
+    );
+
+    const allItems = useMemo(() => {
+      const items: Item[] = [];
+      traverseChildren(children, (child) => {
+        if (
+          isValidElement(child) &&
+          typeof child.type !== "string" &&
+          "displayName" in child.type &&
+          child.type.displayName === DualListBox2Item.displayName
+        ) {
+          items.push({
+            id: child.props.id,
+            label: child.props.children,
+            groupName: child.props.groupName,
+          });
+        }
+      });
+      return items;
+    }, [children]);
+
+    const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
+
+    const allIdsFiltered = useMemo(() => {
+      if (filterWords.length === 0) return allIds;
+
+      return allIds.filter((id) => {
+        const item = allItems.find((item) => item.id === id);
+        if (!item) return false;
+        return filterWords.every((word) => item.label.includes(word));
+      });
+    }, [allIds, allItems, filterWords]);
+
     // 選択中のセクションに含まれる全ての id
     const allIdsInActiveSection = useMemo(() => {
       if (!hasSection) return [];
@@ -198,34 +246,67 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return ids;
     }, [activeSection, children, hasSection]);
 
-    // フィルター文字列をスペース区切りで単語の配列に分割
-    const filterWords = useMemo(() => {
-      const trimmed = filter.trim();
-      return trimmed ? trimmed.split(/\s+/) : [];
-    }, [filter]);
-    const includedIds = useMemo(
-      () => included.map((item) => item.id),
-      [included],
-    );
-    const excludedIds = useMemo(
-      () => excluded.map((item) => item.id),
-      [excluded],
-    );
-    const allIds = useMemo(() => getAllIds(children), [children]);
-    const isAllIncluded = useMemo(
-      () => includedIds.length === allIds.length,
-      [includedIds, allIds],
-    );
-    const isAllExcluded = useMemo(
-      () => excludedIds.length === allIds.length,
-      [excludedIds, allIds],
-    );
+    const allIdsInActiveSectionFiltered = useMemo(() => {
+      if (filterWords.length === 0) return allIdsInActiveSection;
+
+      return allIdsInActiveSection.filter((id) => {
+        const item = allItems.find((item) => item.id === id);
+        if (!item) return false;
+        return filterWords.every((word) => item.label.includes(word));
+      });
+    }, [allIdsInActiveSection, allItems, filterWords]);
+
+    const disableIncludeAllButton = useMemo(() => {
+      if (hasSection) {
+        if (activeSection === null) return true;
+        const isAllInActiveSectionIncludedFiltered =
+          allIdsInActiveSectionFiltered.every((id) => includedIds.includes(id));
+        if (isAllInActiveSectionIncludedFiltered) return true;
+        return false;
+      }
+      const isAllIncludedFiltered = allIdsFiltered.every((id) =>
+        includedIds.includes(id),
+      );
+      if (isAllIncludedFiltered) return true;
+
+      return false;
+    }, [
+      hasSection,
+      activeSection,
+      allIdsFiltered,
+      allIdsInActiveSectionFiltered,
+      includedIds,
+    ]);
+
+    const disableExcludeAllButton = useMemo(() => {
+      if (hasSection) {
+        if (activeSection === null) return true;
+        const isAllInActiveSectionExcludedFiltered =
+          allIdsInActiveSectionFiltered.every((id) => excludedIds.includes(id));
+        if (isAllInActiveSectionExcludedFiltered) return true;
+        return false;
+      }
+      const isAllExcludedFiltered = allIdsFiltered.every((id) =>
+        excludedIds.includes(id),
+      );
+      if (isAllExcludedFiltered) return true;
+
+      return false;
+    }, [
+      hasSection,
+      activeSection,
+      allIdsFiltered,
+      allIdsInActiveSectionFiltered,
+      excludedIds,
+    ]);
+
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target?.value);
       },
       [setFilter],
     );
+
     const handleClearButtonClick = useCallback(() => {
       included.length && onIncludedChange([]);
       excluded.length && onExcludedChange([]);
@@ -236,24 +317,32 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         // セクションの場合は特別
         if (activeSection === null) return;
         onIncludedChange(
-          Array.from(new Set([...includedIds, ...allIdsInActiveSection])),
+          Array.from(
+            new Set([...includedIds, ...allIdsInActiveSectionFiltered]),
+          ),
         );
         onExcludedChange(
-          excludedIds.filter((id) => !allIdsInActiveSection.includes(id)),
+          excludedIds.filter(
+            (id) => !allIdsInActiveSectionFiltered.includes(id),
+          ),
         );
         return;
       }
-      onIncludedChange(allIds);
-      onExcludedChange([]);
+      onIncludedChange(
+        Array.from(new Set([...includedIds, ...allIdsFiltered])),
+      );
+      onExcludedChange(
+        excludedIds.filter((id) => !allIdsFiltered.includes(id)),
+      );
     }, [
-      allIds,
+      allIdsFiltered,
       onIncludedChange,
       onExcludedChange,
       hasSection,
       activeSection,
       includedIds,
       excludedIds,
-      allIdsInActiveSection,
+      allIdsInActiveSectionFiltered,
     ]);
 
     const handleExcludeAllButtonClick = useCallback(() => {
@@ -261,24 +350,32 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         // セクションの場合は特別
         if (activeSection === null) return;
         onExcludedChange(
-          Array.from(new Set([...excludedIds, ...allIdsInActiveSection])),
+          Array.from(
+            new Set([...excludedIds, ...allIdsInActiveSectionFiltered]),
+          ),
         );
         onIncludedChange(
-          includedIds.filter((id) => !allIdsInActiveSection.includes(id)),
+          includedIds.filter(
+            (id) => !allIdsInActiveSectionFiltered.includes(id),
+          ),
         );
         return;
       }
-      onExcludedChange(allIds);
-      onIncludedChange([]);
+      onExcludedChange(
+        Array.from(new Set([...excludedIds, ...allIdsFiltered])),
+      );
+      onIncludedChange(
+        includedIds.filter((id) => !allIdsFiltered.includes(id)),
+      );
     }, [
-      allIds,
+      allIdsFiltered,
       onIncludedChange,
       onExcludedChange,
       hasSection,
       activeSection,
       includedIds,
       excludedIds,
-      allIdsInActiveSection,
+      allIdsInActiveSectionFiltered,
     ]);
 
     return (
@@ -384,13 +481,17 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     */}
                       <button
                         type="button"
-                        disabled={
-                          isAllIncluded ||
-                          (hasSection && activeSection === null)
-                        }
+                        disabled={disableIncludeAllButton}
                         onClick={handleIncludeAllButtonClick}
                       >
-                        <Icon name="check_thin" color={colors.blue[500]} />
+                        <Icon
+                          name="check_thin"
+                          color={
+                            disableIncludeAllButton
+                              ? colors.basic[400]
+                              : colors.blue[500]
+                          }
+                        />
                         全て追加
                       </button>
                     </li>
@@ -404,13 +505,17 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     */}
                       <button
                         type="button"
-                        disabled={
-                          isAllExcluded ||
-                          (hasSection && activeSection === null)
-                        }
+                        disabled={disableExcludeAllButton}
                         onClick={handleExcludeAllButtonClick}
                       >
-                        <Icon name="forbid" color={colors.red[500]} />
+                        <Icon
+                          name="forbid"
+                          color={
+                            disableExcludeAllButton
+                              ? colors.basic[400]
+                              : colors.red[500]
+                          }
+                        />
                         全て除外
                       </button>
                     </li>

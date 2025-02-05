@@ -69,7 +69,7 @@ export const DualListBox2Item = ({
   if (
     !!contentsText &&
     !!filterWords.length &&
-    !filterWords.some((word) => contentsText.includes(word))
+    !filterWords.every((word) => contentsText.includes(word))
   ) {
     return null;
   }

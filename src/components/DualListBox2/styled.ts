@@ -18,7 +18,10 @@ const actionButton = `
   box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
 
   &:where(:disabled) {
+    color: ${colors.basic[400]};
+    background: ${colors.basic[200]};
     box-shadow: ${getShadow(1, 0.04, palette.black)};
+    cursor: not-allowed;
   }
 
   &:where(li:not(:first-child) button) {
@@ -39,12 +42,6 @@ const actionButton = `
     padding-block: 8px 4px;
     background: ${palette.gray.highlight};
     box-shadow: ${getShadow(2, 0.04, palette.black)};
-  }
-
-  &:where(:disabled) {
-    color: ${colors.basic[400]};
-    background: ${colors.basic[200]};
-    cursor: not-allowed;
   }
 `;
 
@@ -375,17 +372,20 @@ export const DualListBox2Item = styled.div`
     opacity: 1;
   }
 
-  &:not(:hover) ${ItemActions}:has(button[aria-pressed="true"]) {
-    visibility: visible;
-    opacity: 1;
+  @media (any-hover: hover) {
+    &:not(:hover) ${ItemActions}:has(button[aria-pressed="true"]) {
+      visibility: visible;
+      opacity: 1;
 
-    button[aria-pressed="true"] {
-      border-color: transparent;
-      background: transparent;
-      box-shadow: none;
-    }
-    button:not([aria-pressed="true"]) {
-      visibility: hidden;
+      button[aria-pressed="true"] {
+        border-color: transparent;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      button:not([aria-pressed="true"]) {
+        visibility: hidden;
+      }
     }
   }
 `;
@@ -437,17 +437,19 @@ export const DualListBox2SelectedLabel = styled.div`
 //
 // -----------------------------------------------------------------------------
 export const AccordionHeader = styled.div`
-  position: relative;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 8px;
   border-bottom: 1px solid ${colors.basic[400]};
-  background: ${colors.basic[100]};
+  background: ${colors.basic[200]};
   transition: background 0.2s;
 
   &:hover {
-    background: ${colors.basic[200]};
+    background: ${colors.basic[100]};
   }
 
   ${DualListBox2Item} + & {
@@ -555,11 +557,12 @@ export const SectionButton = styled.button`
   margin: -1px 0 0;
   border-inline: 0;
   border-block: 1px solid ${colors.basic[400]};
-  background: ${colors.basic[100]};
+  background: ${colors.basic[200]};
+  transition: background 0.2s;
   overflow: hidden;
 
   &:hover {
-    background: ${colors.basic[200]};
+    background: ${colors.basic[100]};
   }
 
   &:not([aria-expanded="true"]) ${SectionButtonBefore} {

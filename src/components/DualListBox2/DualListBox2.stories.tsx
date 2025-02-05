@@ -55,7 +55,8 @@ export const Default: StoryObj<typeof meta> = {
     excluded: [
       {
         id: "unique-4",
-        label: "リストアイテム4",
+        label:
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ],
     loading: false,
@@ -106,8 +107,12 @@ export const Default: StoryObj<typeof meta> = {
 
     return (
       <>
-        <div>included: {JSON.stringify(included.map((item) => item.id))}</div>
-        <div>excluded: {JSON.stringify(excluded.map((item) => item.id))}</div>
+        <div>
+          included: {JSON.stringify(included.map((item: Item) => item.id))}
+        </div>
+        <div>
+          excluded: {JSON.stringify(excluded.map((item: Item) => item.id))}
+        </div>
 
         <DualListBox2
           {...args}
