@@ -16,6 +16,7 @@ type DualListBox2ItemProps = {
   disableInclude?: boolean;
   disableExclude?: boolean;
 };
+
 export const DualListBox2Item = ({
   id,
   disableInclude,
@@ -48,6 +49,7 @@ export const DualListBox2Item = ({
     onIncludedChange,
     onExcludedChange,
   ]);
+
   const handleExcludeButtonClick = useCallback(() => {
     const newExcludedIds = isExcluded
       ? excludedIds.filter((item) => item !== id)

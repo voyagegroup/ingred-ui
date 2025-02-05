@@ -422,6 +422,7 @@ export const DualListBox2SelectedItem = styled.div`
     cursor: pointer;
   }
 `;
+
 //
 // -----------------------------------------------------------------------------
 export const DualListBox2SelectedLabel = styled.div`
@@ -539,6 +540,7 @@ export const SectionButtonBefore = styled.span`
     margin 0.2s,
     opacity 0.2s;
 `;
+
 export const SectionButtonAfter = styled.span`
   flex-shrink: 0;
   width: 20px;
@@ -549,6 +551,9 @@ export const SectionButtonAfter = styled.span`
 `;
 
 export const SectionButton = styled.button`
+  position: sticky;
+  top: -1px;
+  z-index: 1;
   display: flex;
   align-items: center;
   box-sizing: border-box;

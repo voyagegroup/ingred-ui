@@ -188,6 +188,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [included, setIncluded] = useState<Item[]>([items[0]]);
     const [excluded, setExcluded] = useState<Item[]>([items[3]]);
     const [isLoading, setIsLoading] = useState(false);
+
     return (
       <DualListBox2
         loading={isLoading}
@@ -276,6 +277,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
     const [isLoading, setIsLoading] = useState(false);
     const [disableInclude, setDisableInclude] = useState(false);
     const [disableExclude, setDisableExclude] = useState(true);
+
     return (
       <>
         <Checkbox
@@ -394,6 +396,7 @@ export const Section: StoryObj<typeof DualListBox2> = {
     const [excluded, setExcluded] = useState<Item[]>([items[3]]);
     const [currentSection, setCurrentSection] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+
     return (
       <DualListBox2
         loading={isLoading}
