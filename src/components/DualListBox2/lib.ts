@@ -24,6 +24,7 @@ export const DualListBox2GroupContext = createContext<{
   groupName: string;
 }>({ groupName: "" });
 
+// children の中を再帰的に探索して、引数で渡したコールバックを実行する
 export const traverseChildren = (
   children: ReactNode,
   callback: (child: ReactNode) => void,
@@ -35,6 +36,8 @@ export const traverseChildren = (
   });
 };
 
+// children の中から DualListBox2Item のみを抽出して、
+// Item （id、ラベル、所属するセクション・アコーディオンの名前）の配列に変換する
 export const extractAllItems = (children: ReactNode) => {
   const items: Item[] = [];
   traverseChildren(children, (child) => {
@@ -54,10 +57,14 @@ export const extractAllItems = (children: ReactNode) => {
   return items;
 };
 
+// children の中から DualListBox2Item の id を抽出して配列にして返す
 export const getAllIds = (children: ReactNode) => {
   return extractAllItems(children).map((item) => item.id);
 };
 
+// DualListBox2 用のユーティリティー関数。
+// フラットな Item の配列を受け取って、groupName ごとに分けた配列に変換する
+// DualListBox2 の children を作る際に便利。
 type groupedItems = { groupName?: string; items: Item[] };
 export const toGroupedItems = (items: Item[]) => {
   const groupedItems: groupedItems[] = items.reduce(
