@@ -1,14 +1,23 @@
 import React, { useState, useCallback } from "react";
+import { StoryObj } from "@storybook/react";
 import {
   DataTable2,
-  DataTable2Head,
   DataTable2Column,
+  DataTable2Head,
   DataTable2Body,
   DataTable2Row,
-  type DataTable2Props,
-} from "./DataTable2";
-import ActionButton from "../ActionButton/ActionButton";
-import { StoryObj } from "@storybook/react";
+  DataTable2InlineEditable,
+} from "./index";
+import Button from "../Button";
+import ActionButton from "../ActionButton";
+import {
+  ContextMenu2,
+  ContextMenu2ButtonControlsItem,
+  ContextMenu2Container,
+  ContextMenu2HeadingItem,
+  ContextMenu2SeparatorItem,
+  ContextMenu2TextInputItem,
+} from "../ContextMenu2";
 
 export default {
   title: "Components/Data Display/DataTable2",
@@ -31,14 +40,11 @@ const mockData = Array.from({ length: 100 }, (_, i) => ({
   date: `2019/08/12`,
 }));
 
-export const Overview: StoryObj<DataTable2Props> = {
+export const Overview: StoryObj<typeof DataTable2> = {
   render: () => {
     const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
-      188,
-      188,
-      188,
-      188,
-      undefined,
+      188, 188, 188, 188, 188,
+      // undefined,
     ]);
     const onWidthChange = useCallback(
       (index: number, width: number | undefined) => {
@@ -66,6 +72,8 @@ export const Overview: StoryObj<DataTable2Props> = {
             onWidthChange={(w) => onWidthChange(1, w)}
           >
             ステータス
+            <br />
+            xxx
           </DataTable2Column>
           <DataTable2Column
             isResizable
@@ -83,19 +91,59 @@ export const Overview: StoryObj<DataTable2Props> = {
           >
             登録日
           </DataTable2Column>
-          <DataTable2Column width={columnWidths[4]} minWidth={188}>
+          <DataTable2Column
+            isResizable
+            width={columnWidths[4]}
+            minWidth={188}
+            onWidthChange={(w) => onWidthChange(4, w)}
+          >
             操作
           </DataTable2Column>
         </DataTable2Head>
         <DataTable2Body>
           {mockData.map((data) => (
             <DataTable2Row key={data.id} id={data.id}>
-              <td>{data.name}</td>
+              <td>
+                <DataTable2InlineEditable
+                  command={
+                    <ContextMenu2Container>
+                      <ContextMenu2
+                        width={252}
+                        trigger={<ActionButton color="primary" icon="pencil" />}
+                      >
+                        <ContextMenu2HeadingItem>
+                          名前を編集
+                        </ContextMenu2HeadingItem>
+                        <ContextMenu2TextInputItem
+                          value={data.name}
+                          onChange={() => {}}
+                        />
+                        <ContextMenu2SeparatorItem />
+                        <ContextMenu2ButtonControlsItem>
+                          <Button type="button" color="clear" size="small">
+                            キャンセル
+                          </Button>
+                          <Button type="button" color="primary" size="small">
+                            適用
+                          </Button>
+                        </ContextMenu2ButtonControlsItem>
+                      </ContextMenu2>
+                    </ContextMenu2Container>
+                  }
+                >
+                  <a href="/">{data.name}</a>
+                </DataTable2InlineEditable>
+              </td>
               <td>{data.status}</td>
               <td>{data.email}</td>
               <td>{data.date}</td>
               <td>
-                <ActionButton color="primary" icon="pencil" onClick={() => {}}>
+                <ActionButton
+                  type="button"
+                  color="primary"
+                  icon="pencil"
+                  onClick={() => {}}
+                >
                   編集
                 </ActionButton>
               </td>
