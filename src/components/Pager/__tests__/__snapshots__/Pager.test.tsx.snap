@@ -17,18 +17,11 @@ exports[`Pager component testing Pager 1`] = `
         size="18"
       >
         <svg
-          transform="rotate(90)"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
         >
           <path
-            d="M0,0H24V24H0Z"
-            fill="none"
-          />
-          <path
-            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+            d="m9.1 10 4.1 4.1-1.1 1.2L6.8 10 12 4.7l1.1 1.2z"
             fill="#B3BAC1"
-            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </span>
@@ -121,18 +114,11 @@ exports[`Pager component testing Pager 1`] = `
         size="18"
       >
         <svg
-          transform="rotate(-90)"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
         >
           <path
-            d="M0,0H24V24H0Z"
-            fill="none"
-          />
-          <path
-            d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+            d="M10.9 10 6.8 5.9l1.1-1.2 5.3 5.3L8 15.3l-1.1-1.2z"
             fill="#0B82F4"
-            transform="translate(-1.414 -1.114)"
           />
         </svg>
       </span>

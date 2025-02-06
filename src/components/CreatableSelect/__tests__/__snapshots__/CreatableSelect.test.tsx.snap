@@ -124,37 +124,15 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#B3BAC1"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-7-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
           </div>
         </div>
       </div>
@@ -236,52 +214,15 @@ exports[`CreatableSelect component testing Disable not CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#B3BAC1"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-5-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-5-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-5-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -361,52 +302,15 @@ exports[`CreatableSelect component testing Disable one CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#B3BAC1"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-6-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-6-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-6-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -560,37 +464,15 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#EB0A4E"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-10-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
           </div>
         </div>
       </div>
@@ -670,52 +552,15 @@ exports[`CreatableSelect component testing Error not CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#EB0A4E"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-8-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-8-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-8-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -816,52 +661,15 @@ exports[`CreatableSelect component testing Error one CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#EB0A4E"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-vcx9vk-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-9-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-9-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-9-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -1015,37 +823,15 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#041C33"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="true"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-4-listbox"
-          role="listbox"
-        >
-          <div
-            class=" css-1ufqtev-NoOptionsMessage"
-          >
-            Not found
           </div>
         </div>
       </div>
@@ -1125,52 +911,15 @@ exports[`CreatableSelect component testing Normal not CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#041C33"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-2-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-2-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-2-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>
@@ -1271,52 +1020,15 @@ exports[`CreatableSelect component testing Normal one CreatableSelected 1`] = `
                 size="18"
               >
                 <svg
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
                 >
                   <path
-                    d="M0,0H24V24H0Z"
-                    fill="none"
-                  />
-                  <path
-                    d="M13.414,16.886,7.757,11.228,9.644,9.343l3.771,3.772,3.771-3.772,1.887,1.885Z"
+                    d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
                     fill="#041C33"
-                    transform="translate(-1.414 -1.114)"
                   />
                 </svg>
               </span>
             </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class=" css-fqzh9e-menu"
-      >
-        <div
-          aria-multiselectable="false"
-          class="sc-gsnTZi inqBSZ css-1jcex0u-MenuList"
-          id="react-select-3-listbox"
-          role="listbox"
-        >
-          <div
-            aria-disabled="false"
-            aria-selected="true"
-            class=" css-1hd25el-option"
-            id="react-select-3-option-0"
-            role="option"
-            tabindex="-1"
-          >
-            hoge
-          </div>
-          <div
-            aria-disabled="false"
-            aria-selected="false"
-            class=" css-1mw1c1j-option"
-            id="react-select-3-option-1"
-            role="option"
-            tabindex="-1"
-          >
-            huga
           </div>
         </div>
       </div>

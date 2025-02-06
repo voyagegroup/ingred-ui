@@ -22,10 +22,10 @@ export const Day: FC<Props> = memo(function Day({
   };
 
   return selectable ? (
-    <DayContainer selected={selected} onClick={handleClick}>
+    <DayContainer type="button" selected={selected} onClick={handleClick}>
       {children}
     </DayContainer>
   ) : (
-    <DisableDayContainer>{children}</DisableDayContainer>
+    <DisableDayContainer type="button">{children}</DisableDayContainer>
   );
 });
