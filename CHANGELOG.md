@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.6.0
+
+### Minor Changes
+
+- [#1708](https://github.com/voyagegroup/ingred-ui/pull/1708) [`574b87b0`](https://github.com/voyagegroup/ingred-ui/commit/574b87b0726e244729f010da72261caf48a002e8) Thanks [@yomotsu](https://github.com/yomotsu)! - Add DualListBox2 component
+
 ## 19.5.0
 
 ### Minor Changes
