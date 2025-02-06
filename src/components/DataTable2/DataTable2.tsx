@@ -13,12 +13,23 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import { createPortal } from "react-dom";
-import styled from "styled-components";
-// import * as Styled from "./styled";
-import Checkbox from "../Checkbox/Checkbox";
+import * as styled from "./styled";
+import Icon from "../Icon";
+import Button from "../Button";
+import Checkbox from "../Checkbox";
+import {
+  ContextMenu2Container,
+  ContextMenu2,
+  ContextMenu2ButtonItem,
+  ContextMenu2HeadingItem,
+} from "../ContextMenu2";
 
 const clamp = (value: number, min: number, max: number) =>
   Math.min(Math.max(value, min), max);
+
+////////////////////////////////////////////////////////////////////////////////
+// Contexts
+////////////////////////////////////////////////////////////////////////////////
 
 // thead 内の各 th すべての幅のリストを root で知るためのコンテキスト
 const DataTable2Context = createContext<{
@@ -44,30 +55,12 @@ const ColumnContext = createContext<{
   index: 0,
 });
 
-const DataTable2Root = styled.div``;
+////////////////////////////////////////////////////////////////////////////////
+// Components
+////////////////////////////////////////////////////////////////////////////////
 
-const Viewport = styled.div`
-  overflow: auto;
-  height: 300px;
-  overscroll-behavior-x: contain;
-`;
-
-const ViewportInner = styled.div`
-  width: max-content;
-  min-width: 100%;
-
-  table {
-    table-layout: fixed;
-    min-width: 100%;
-    border-collapse: collapse;
-  }
-`;
-
-const Select = styled.select`
-  appearance: revert;
-`;
-
-const RowsControls = styled(() => {
+// 左上コントロール群
+const RowsControls = () => {
   const { rowIds, checkedRows, setCheckedRows } = useContext(DataTable2Context);
 
   const isAllChecked = useMemo(
@@ -84,19 +77,44 @@ const RowsControls = styled(() => {
   }, [isAllChecked, rowIds, setCheckedRows]);
 
   return (
-    <>
+    <styled.RowsControls>
       <Checkbox
         checked={isAllChecked || isIndeterminate}
         indeterminate={isIndeterminate}
         onChange={onCheck}
       />
-      <button type="button">{checkedRows.length}件選択</button>
-    </>
+      <ContextMenu2Container>
+        <ContextMenu2
+          width={200}
+          trigger={
+            <Button inline type="button" size="small" color="secondary">
+              <styled.RowMenuTriggerLabel>
+                <em>{checkedRows.length}</em>件選択
+                <Icon name="arrow_down" />
+              </styled.RowMenuTriggerLabel>
+            </Button>
+          }
+        >
+          <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
+          <ContextMenu2ButtonItem>有効にする</ContextMenu2ButtonItem>
+          <ContextMenu2ButtonItem>アーカイブする</ContextMenu2ButtonItem>
+          <ContextMenu2HeadingItem>操作</ContextMenu2HeadingItem>
+          <ContextMenu2ButtonItem>複製する</ContextMenu2ButtonItem>
+          <ContextMenu2ButtonItem color="danger">
+            削除する
+          </ContextMenu2ButtonItem>
+        </ContextMenu2>
+      </ContextMenu2Container>
+      <styled.RowsControlsSeparator />
+      <styled.RowMenuPagination>
+        <button>
+          1 - 100 1,000
+          <Icon name="arrow_right" size="sm" />
+        </button>
+      </styled.RowMenuPagination>
+    </styled.RowsControls>
   );
-})`
-  position: sticky;
-  top: 0;
-`;
+};
 
 export type DataTable2Props = {
   children: ReactNode;
@@ -116,30 +134,23 @@ export const DataTable2 = ({ children }: DataTable2Props) => {
   );
 
   return (
-    <>
-      <Select>
-        <option>xxx</option>
-      </Select>
-      <DataTable2Root>
-        <DataTable2Context.Provider
-          value={{
-            rowIds,
-            checkedRows,
-            columnWidths,
-            setRowIds,
-            setCheckedRows,
-            onColumnWidthChange,
-          }}
-        >
-          <RowsControls />
-          <Viewport>
-            <ViewportInner>
-              <table>{children}</table>
-            </ViewportInner>
-          </Viewport>
-        </DataTable2Context.Provider>
-      </DataTable2Root>
-    </>
+    <styled.DataTable2>
+      <DataTable2Context.Provider
+        value={{
+          rowIds,
+          checkedRows,
+          columnWidths,
+          setRowIds,
+          setCheckedRows,
+          onColumnWidthChange,
+        }}
+      >
+        <RowsControls />
+        <styled.Viewport>
+          <table>{children}</table>
+        </styled.Viewport>
+      </DataTable2Context.Provider>
+    </styled.DataTable2>
   );
 };
 
@@ -147,7 +158,7 @@ type DataTable2HeadProps = {
   children: ReactNode;
 };
 
-export const DataTable2Head = styled(({ children }: DataTable2HeadProps) => {
+export const DataTable2Head = ({ children }: DataTable2HeadProps) => {
   return (
     <>
       {/* 幅を決めるための <col/> 展開する。<th> 自体には width を指定しない */}
@@ -158,7 +169,7 @@ export const DataTable2Head = styled(({ children }: DataTable2HeadProps) => {
           return <col key={i} style={{ width: child.props.width }} />;
         })}
       </colgroup>
-      <thead>
+      <styled.DataTable2Header>
         <tr>
           <th aria-label="empty cell" />
           {Children.map(children, (child, i) => {
@@ -169,13 +180,10 @@ export const DataTable2Head = styled(({ children }: DataTable2HeadProps) => {
             );
           })}
         </tr>
-      </thead>
+      </styled.DataTable2Header>
     </>
   );
-})`
-  position: sticky;
-  top: 0;
-`;
+};
 
 type DataTable2ColumnProps =
   | {
@@ -197,139 +205,106 @@ type DataTable2ColumnProps =
       children: ReactNode;
     };
 
-const DragHandle = styled.button`
-  position: absolute;
-  inset: 0 -5px 0 auto;
-  width: 10px;
-  padding: 0;
-  border: 0;
-  cursor: col-resize;
-  background: red;
+export const DataTable2Column = ({
+  className,
+  isResizable,
+  width,
+  minWidth = 32,
+  maxWidth = Infinity,
+  children,
+  onWidthChange,
+}: DataTable2ColumnProps) => {
+  const { onColumnWidthChange } = useContext(DataTable2Context);
+  const columnContext = useContext(ColumnContext);
+  const [isDragging, setIsDragging] = useState(false);
 
-  touch-action: none;
-  user-select: none;
-  webkit-user-select: none;
-`;
+  const activePointerId = useRef<number | null>(null);
+  const thElement = useRef<HTMLTableCellElement>(null);
+  const dragStartX = useRef<number>(0);
+  const dragStartWidth = useRef<number>(0);
 
-const DragArea = styled.div`
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  cursor: col-resize;
+  const handleDragStart = useCallback(
+    (event: ReactPointerEvent<HTMLButtonElement>) => {
+      setIsDragging(true);
+      if (!thElement.current) return;
+      if (activePointerId.current !== null) return;
+      activePointerId.current = event.pointerId;
+      dragStartWidth.current = width || thElement.current.clientWidth;
+      dragStartX.current = event.clientX;
+    },
+    [width],
+  );
+  const handleDragging = useCallback(
+    (event: PointerEvent) => {
+      if (!onWidthChange) return;
+      if (activePointerId.current !== event.pointerId) return;
 
-  &[data-min="true"] {
-    cursor: e-resize;
-  }
+      if (event.cancelable) event.preventDefault();
 
-  &[data-max="true"] {
-    cursor: w-resize;
-  }
-`;
-
-export const DataTable2Column = styled(
-  ({
-    className,
-    isResizable,
-    width,
-    minWidth = 32,
-    maxWidth = Infinity,
-    children,
-    onWidthChange,
-  }: DataTable2ColumnProps) => {
-    const { onColumnWidthChange } = useContext(DataTable2Context);
-    const columnContext = useContext(ColumnContext);
-    const [isDragging, setIsDragging] = useState(false);
-
-    const activePointerId = useRef<number | null>(null);
-    const thElement = useRef<HTMLTableCellElement>(null);
-    const dragStartX = useRef<number>(0);
-    const dragStartWidth = useRef<number>(0);
-
-    const handleDragStart = useCallback(
-      (event: ReactPointerEvent<HTMLButtonElement>) => {
-        setIsDragging(true);
-        if (!thElement.current) return;
-        if (activePointerId.current !== null) return;
-        activePointerId.current = event.pointerId;
-        dragStartWidth.current = width || thElement.current.clientWidth;
-        dragStartX.current = event.clientX;
-      },
-      [width],
-    );
-    const handleDragging = useCallback(
-      (event: PointerEvent) => {
-        if (!onWidthChange) return;
-        if (activePointerId.current !== event.pointerId) return;
-
-        if (event.cancelable) event.preventDefault();
-
-        const accumulatedMouseMove = event.clientX - dragStartX.current;
-        const newWidth = clamp(
-          dragStartWidth.current + accumulatedMouseMove,
-          minWidth,
-          maxWidth,
-        );
-        onWidthChange(newWidth);
-
-        onColumnWidthChange(columnContext.index, newWidth);
-      },
-      [
-        onWidthChange,
+      const accumulatedMouseMove = event.clientX - dragStartX.current;
+      const newWidth = clamp(
+        dragStartWidth.current + accumulatedMouseMove,
         minWidth,
         maxWidth,
-        onColumnWidthChange,
-        columnContext.index,
-      ],
-    );
-    const handleDragEnd = useCallback(() => {
-      setIsDragging(false);
-      activePointerId.current = null;
-    }, []);
+      );
+      onWidthChange(newWidth);
 
-    useEffect(() => {
-      if (!isDragging) return;
-      document.addEventListener("pointermove", handleDragging);
-      document.addEventListener("pointerup", handleDragEnd);
+      onColumnWidthChange(columnContext.index, newWidth);
+    },
+    [
+      onWidthChange,
+      minWidth,
+      maxWidth,
+      onColumnWidthChange,
+      columnContext.index,
+    ],
+  );
+  const handleDragEnd = useCallback(() => {
+    setIsDragging(false);
+    activePointerId.current = null;
+  }, []);
 
-      return () => {
-        document.removeEventListener("pointermove", handleDragging);
-        document.removeEventListener("pointerup", handleDragEnd);
-      };
-    }, [isDragging, handleDragging, handleDragEnd]);
+  useEffect(() => {
+    if (!isDragging) return;
+    document.addEventListener("pointermove", handleDragging);
+    document.addEventListener("pointerup", handleDragEnd);
 
-    return (
-      <th
-        ref={thElement}
-        className={className}
-        style={{
-          minWidth:
-            isFinite(minWidth) && minWidth <= maxWidth ? minWidth : undefined,
-          maxWidth:
-            isFinite(maxWidth) && minWidth <= maxWidth ? maxWidth : undefined,
-        }}
-      >
-        {children}
-        {isResizable && (
-          <DragHandle
-            type="button"
-            aria-label="resize the column"
-            onPointerDown={handleDragStart}
-          />
+    return () => {
+      document.removeEventListener("pointermove", handleDragging);
+      document.removeEventListener("pointerup", handleDragEnd);
+    };
+  }, [isDragging, handleDragging, handleDragEnd]);
+
+  return (
+    <styled.DataTable2Column
+      ref={thElement}
+      className={className}
+      style={{
+        minWidth:
+          isFinite(minWidth) && minWidth <= maxWidth ? minWidth : undefined,
+        maxWidth:
+          isFinite(maxWidth) && minWidth <= maxWidth ? maxWidth : undefined,
+      }}
+    >
+      {children}
+      {isResizable && (
+        <styled.DragHandle
+          type="button"
+          aria-label="resize the column"
+          onPointerDown={handleDragStart}
+        />
+      )}
+      {isDragging &&
+        createPortal(
+          <styled.DragArea
+            data-min={width && minWidth >= width}
+            data-max={width && maxWidth <= width}
+          />,
+          document.body,
         )}
-        {isDragging &&
-          createPortal(
-            <DragArea
-              data-min={width && minWidth >= width}
-              data-max={width && maxWidth <= width}
-            />,
-            document.body,
-          )}
-      </th>
-    );
-  },
-)`
-  position: relative;
-`;
+    </styled.DataTable2Column>
+  );
+};
 
 export const DataTable2Body = ({ children }: { children: ReactNode }) => {
   const { rowIds, setRowIds } = useContext(DataTable2Context);
@@ -352,7 +327,7 @@ type DataTable2RowProps = {
   children: ReactNode;
 };
 
-export const DataTable2Row = styled(({ id, children }: DataTable2RowProps) => {
+export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
   const { checkedRows, setCheckedRows } = useContext(DataTable2Context);
   const isChecked = useMemo(() => checkedRows.includes(id), [id, checkedRows]);
   const handleCheck = useCallback(() => {
@@ -370,7 +345,4 @@ export const DataTable2Row = styled(({ id, children }: DataTable2RowProps) => {
       {children}
     </tr>
   );
-})`
-  position: sticky;
-  top: 0;
-`;
+};

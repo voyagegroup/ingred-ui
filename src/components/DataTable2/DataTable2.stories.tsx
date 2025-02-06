@@ -23,6 +23,14 @@ export default {
   // args: {},
 };
 
+const mockData = Array.from({ length: 100 }, (_, i) => ({
+  id: `unique-${i}`,
+  name: i % 10 === 0 ? `すごく長い苗字すごく長い名前${i}` : `普羅久斗太郎${i}`,
+  status: i % 3 === 0 ? "有効" : "無効",
+  email: i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
+  date: `2019/08/12`,
+}));
+
 export const Overview: StoryObj<DataTable2Props> = {
   render: () => {
     const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
@@ -80,31 +88,19 @@ export const Overview: StoryObj<DataTable2Props> = {
           </DataTable2Column>
         </DataTable2Head>
         <DataTable2Body>
-          <DataTable2Row id="row1">
-            <td>
-              <a href="/">普羅久斗太郎</a>
-              <ActionButton color="primary" icon="pencil" onClick={() => {}} />
-            </td>
-            <td>有効</td>
-            <td>taro.fluct@fluct.jp</td>
-            <td>2019/08/12</td>
-            <td>
-              <ActionButton color="primary" icon="pencil" onClick={() => {}}>
-                編集
-              </ActionButton>
-            </td>
-          </DataTable2Row>
-          <DataTable2Row id="row2">
-            <td>普羅久斗太郎</td>
-            <td>有効</td>
-            <td>taro.fluct@fluct.jp</td>
-            <td>2019/08/12</td>
-            <td>
-              <ActionButton color="primary" icon="pencil" onClick={() => {}}>
-                編集
-              </ActionButton>
-            </td>
-          </DataTable2Row>
+          {mockData.map((data) => (
+            <DataTable2Row key={data.id} id={data.id}>
+              <td>{data.name}</td>
+              <td>{data.status}</td>
+              <td>{data.email}</td>
+              <td>{data.date}</td>
+              <td>
+                <ActionButton color="primary" icon="pencil" onClick={() => {}}>
+                  編集
+                </ActionButton>
+              </td>
+            </DataTable2Row>
+          ))}
         </DataTable2Body>
       </DataTable2>
     );
