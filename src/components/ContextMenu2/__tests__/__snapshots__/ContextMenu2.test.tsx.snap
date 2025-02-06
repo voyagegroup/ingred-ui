@@ -35,19 +35,19 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-kDDrLX kLXqFK"
+    class="sc-breuTD dyUHyD"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
     tabindex="-1"
   >
     <p
-      class="sc-iqcoie VJQVc"
+      class="sc-ksZaOG eUYUrP"
     >
       ステータスを変更
     </p>
     <div
-      class="sc-evZas gfJtYx"
+      class="sc-fnykZs bbaVEF"
     >
       <div>
         <span
@@ -70,13 +70,13 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </div>
       <p
-        class="sc-crXcEl ciWkcV"
+        class="sc-hAZoDl MPlkO"
       >
         ヘルプテキスト
       </p>
     </div>
     <hr
-      class="sc-ksZaOG kMltaq"
+      class="sc-bjUoiL cTSeEK"
     />
     <button
       class="sc-gsnTZi jJEItt"
@@ -264,15 +264,15 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       スイッチ
       <span
-        class="sc-jSMfEi dLfzGA"
+        class="sc-jSMfEi lasvCK"
       >
         <span
-          class="sc-gKXOVf bVQtsW"
+          class="sc-gKXOVf lbWmET"
         />
       </span>
     </button>
     <div
-      class="sc-breuTD kZmqvG"
+      class="sc-fEOsli gBuuds"
     >
       <input
         placeholder="プレイスホルダー"
@@ -280,11 +280,11 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       />
     </div>
     <ul
-      class="sc-hAZoDl bhqqpx"
+      class="sc-idiyUo kFDxmW"
     >
       <li>
         <button
-          class="sc-fEOsli sc-bjUoiL kqzYQS kbhJht"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw dCjqBG"
           font-size="12px"
           font-weight="normal"
         >
@@ -293,7 +293,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
       <li>
         <button
-          class="sc-fEOsli sc-bjUoiL kqzYQS fNlivE"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw drLzuX"
           font-size="12px"
           font-weight="normal"
         >
