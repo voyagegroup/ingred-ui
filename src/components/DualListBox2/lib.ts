@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  Children,
-  isValidElement,
-  type ReactNode,
-} from "react";
+import { createContext, Children, isValidElement, type ReactNode } from "react";
 import { DualListBox2Item } from "./DualListBox2Item";
 import type { Item } from "./types";
 
