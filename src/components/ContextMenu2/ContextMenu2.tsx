@@ -14,6 +14,7 @@ import React, {
   type SetStateAction,
   useMemo,
   useEffect,
+  Fragment,
 } from "react";
 import {
   useFloating,
@@ -103,6 +104,20 @@ type ContextMenu2Props = {
    * 開閉状態が変更されたときのコールバック
    */
   onOpenChange?: (open: boolean) => void;
+};
+
+// Fragment を展開して子要素をフラット化する
+const flattenChildren = (children: ReactNode): ReactNode[] => {
+  return Children.toArray(children)
+    .map((child) => {
+      // Fragmentであれば再帰的にflattenChildrenを呼び出す
+      if (isValidElement(child) && child.type === Fragment) {
+        return flattenChildren(child.props.children);
+      }
+      // Fragment以外はそのまま返す
+      return child;
+    })
+    .flat(Infinity);
 };
 
 const ContextMenu2Panel = styled.div`
@@ -244,6 +259,10 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
     }, [trigger, ref, refs]);
 
     const triggerRef = useMergeRefs([ref, refs.setReference]);
+    const flattenedChildren = flattenChildren(children).map((child, i) => ({
+      child,
+      id: i,
+    }));
 
     return (
       <>
@@ -285,9 +304,8 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                         tabIndex や Floating UI の props を暗黙で付与して child を返す。
                         focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
                       */}
-                      {Children.map(children, (child, index) => {
+                      {flattenedChildren.map(({ child, id }, index) => {
                         if (!isValidElement(child)) return child;
-
                         if (
                           typeof child.type === "string" ||
                           !("displayName" in child.type) ||
@@ -306,6 +324,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                           },
                           ...getItemProps(),
                           ...child.props,
+                          key: id,
                         });
                       })}
                     </ContextMenu2SortableContext.Provider>
