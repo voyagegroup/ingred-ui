@@ -1,5 +1,15 @@
 # Changelog
 
+## 19.7.0
+
+### Minor Changes
+
+- [#1711](https://github.com/voyagegroup/ingred-ui/pull/1711) [`29628de9`](https://github.com/voyagegroup/ingred-ui/commit/29628de97ba9e6aafa4cb7e263247019d6d35dd6) Thanks [@geckotang](https://github.com/geckotang)! - update checkbox style
+
+### Patch Changes
+
+- [#1711](https://github.com/voyagegroup/ingred-ui/pull/1711) [`29628de9`](https://github.com/voyagegroup/ingred-ui/commit/29628de97ba9e6aafa4cb7e263247019d6d35dd6) Thanks [@geckotang](https://github.com/geckotang)! - update svg icons
+
 ## 19.6.0
 
 ### Minor Changes
