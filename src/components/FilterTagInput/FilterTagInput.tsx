@@ -1,21 +1,21 @@
 import React, {
-  type ReactElement,
+  useState,
+  useCallback,
   useEffect,
   useRef,
-  useState,
+  type ReactElement,
   type KeyboardEvent,
-  useCallback,
 } from "react";
-import * as styled from "./styled";
 import Icon from "../Icon";
 import {
   ContextMenu2,
-  ContextMenu2CheckItem,
   ContextMenu2Container,
+  ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
+import * as styled from "./styled";
 import { colors } from "../../styles";
 
 type FilterTagProps = {
@@ -41,6 +41,7 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
 //
 // -----------------------------------------------------------------------------
 
+// モーダル時の表示。設置される領域のサイズが小さいときのみに展開される
 type FilterInputPanelProps = {
   isOpen: boolean;
   selectedIndex: number;
@@ -223,6 +224,7 @@ const FilterInputPanel = ({
 //
 // -----------------------------------------------------------------------------
 
+// 本体のコンポーネント
 type FilterTagInputProps = {
   values: string[];
   selectedIndex: number;
