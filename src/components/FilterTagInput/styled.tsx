@@ -161,7 +161,6 @@ const PanelInner = styled.div`
   max-width: 647px;
   padding: 16px;
   border-radius: 6px;
-  /* BASIC/Basic 0 */
   background: #FFFFFF;};
   border: 1px solid ${colors.basic[200]};
   /* Drop shadow Common */
@@ -261,7 +260,7 @@ export const PanelTagField = styled.div`
     outline: auto;
     outline: auto -webkit-focus-ring-color;
   }
-`;
+`; // ↑ outline が 2 だけれど、前者は Firefox 用に必要
 
 export const PanelTagFieldFocusTrigger = styled.button`
   position: absolute;
