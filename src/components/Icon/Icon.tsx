@@ -179,7 +179,6 @@ export type IconName =
   | "download_cloud"
   | "save"
   | "close_circle"
-  | "close_circle_fill"
   | "bid_strap"
   | "fluct"
   | "data_strap"

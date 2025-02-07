@@ -355,14 +355,16 @@ export const FilterTagInput = ({
   );
 
   useEffect(() => {
-    const resizeObserver1 = new ResizeObserver(() => {
+    if (!window.ResizeObserver) return;
+
+    const resizeObserver1 = new window.ResizeObserver(() => {
       if (!el.current) return;
       setIsSmall(el.current.clientWidth < 130);
     });
 
     el.current && resizeObserver1.observe(el.current);
 
-    const resizeObserver2 = new ResizeObserver(() => {
+    const resizeObserver2 = new window.ResizeObserver(() => {
       if (!inlineFieldEl.current) return;
       checkInlineOverflow();
       computeInlineFieldVisibleWidth();

@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader component testing FileUploader 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bczRLJ jnzkZZ"
+    data-overflowing="false"
+    data-small="false"
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="dialog"
+      aria-label="フィルターのタイプを選ぶ"
+      class="sc-gsnTZi gdyxkk"
+      type="button"
+    >
+      <span
+        class="sc-hHLeRK biRJNs"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3.9 19.1V4.9h16.2v14.2zM2 4c0-.6.4-1 1-1h18c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H3a1 1 0 0 1-1-1zm11.1 9h-2.3L12 9.7zm0-5.5H11l-3.4 9h2l.7-2h3.4l.6 2h2.1z"
+            fill="#041C33"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      class="sc-dkzDqf caRTCr"
+    >
+      <div
+        class="sc-hKMtZM bVSZeN"
+      >
+        <span
+          class="sc-idiyUo hKNDMY"
+        >
+          テキスト
+          <button
+            aria-label="削除"
+            class="sc-dIouRR lacmae"
+            type="button"
+          >
+            <span
+              class="sc-hHLeRK biRJNs"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z"
+                  fill="#041C33"
+                />
+              </svg>
+            </span>
+          </button>
+        </span>
+        <span
+          class="sc-idiyUo hKNDMY"
+        >
+          value2
+          <button
+            aria-label="削除"
+            class="sc-dIouRR lacmae"
+            type="button"
+          >
+            <span
+              class="sc-hHLeRK biRJNs"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z"
+                  fill="#041C33"
+                />
+              </svg>
+            </span>
+          </button>
+        </span>
+        <span
+          class="sc-idiyUo hKNDMY"
+        >
+          value3
+          <button
+            aria-label="削除"
+            class="sc-dIouRR lacmae"
+            type="button"
+          >
+            <span
+              class="sc-hHLeRK biRJNs"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 10.5858L9.17157 7.75736L7.75736 9.17157L10.5858 12L7.75736 14.8284L9.17157 16.2426L12 13.4142L14.8284 16.2426L16.2426 14.8284L13.4142 12L16.2426 9.17157L14.8284 7.75736L12 10.5858Z"
+                  fill="#041C33"
+                />
+              </svg>
+            </span>
+          </button>
+        </span>
+        <div
+          class="sc-jSMfEi fHLxhk"
+        >
+          <div
+            class="sc-gKXOVf boqsPK"
+          >
+            <span
+              class="sc-hHLeRK biRJNs"
+              size="18"
+            >
+              <svg
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 18h4v-2h-4v2ZM3 6v2h18V6H3Zm3 7h12v-2H6v2Z"
+                  fill="#596978"
+                />
+              </svg>
+            </span>
+          </div>
+          <input
+            aria-label="フィルターする値"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <button
+      aria-label="フィルター入力パネルを開く"
+      class="sc-eCYdqJ fTbYJr"
+      type="button"
+    >
+      <span
+        class="sc-hHLeRK biRJNs"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12.7 3.3h-5l2 2-4.3 4.4-2-2v5h5l-2.1-2 4.3-4.4 2 2v-5Z"
+            fill="#041C33"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
