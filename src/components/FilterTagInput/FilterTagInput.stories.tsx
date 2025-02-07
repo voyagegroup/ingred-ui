@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-// import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/client-api";
 import { FilterTagInput } from "./index";
 import Icon from "../Icon";
 import { colors } from "../../styles";
@@ -14,16 +14,41 @@ const meta = {
 export default meta;
 
 /**
- * #### ベーシックなタイプ
- *
- * 件数の上限が不明で都度サーバへ問い合わせる必要がある場合、上限が決まっている場合いずれにも使えます。
+ * 入力内容がタグ形式で表示される。<br />
+ * 設置される領域が狭い場合、入力領域をモーダルで展開する。
  *
  * ---
  *
- * `included` と `excluded` で選択中の値を指定します。
- * 選択状態変更時は、`onIncludedChange` と `onExcludedChange` で、新しい `included` と `excluded` を受け取れるので、これを使って `included` と `excluded` を更新してください。
+ * select 形式の「選択内容（`number`）」とタグ形式の「入力内容（`string[]`）」を管理できます。
  *
- * children には、左パネル用の選択できる項目を渡します。右パネルの内容は状態に応じて自動で表示管理されます。
+ * 選択内容は、選択内容の `selectedIndex` により、`0` から始まる整数で管理します。<br />
+ * `selectedIndex` は、select の上からの順です。<br />
+ * 選択内容が変更されると、`onSelectChange` で、新しい `selectedIndex` が返されます。
+ *
+ * 入力内容は `string[]` の配列で管理されます。ユーザーが入力を確定し、それがタグとして追加されると、`onChange` で、新しい配列が返されます。
+ *
+ * select の選択肢は、`selectOptions` として外から与えてください。<br />
+ * 例:
+ * ```
+ * selectOptions={ [
+ *   {
+ *     icon: (
+ *       <Icon name="operator_match" type="line" color={colors.basic[900]} />
+ *     ),
+ *     label: "含む",
+ *   },
+ *   {
+ *     icon: (
+ *       <Icon
+ *         name="operator_does_not_match"
+ *         type="line"
+ *         color={colors.basic[900]}
+ *       />
+ *     ),
+ *     label: "含まない",
+ *   },
+ * ] }
+ * ```
  *
  */
 export const Default: StoryObj<typeof meta> = {
@@ -96,18 +121,14 @@ export const Default: StoryObj<typeof meta> = {
     ],
   },
   render: (args) => {
-    const [values, setValues] = useState<string[]>(args.values);
-    const [selectedIndex, setSelectedIndex] = useState<number>(
-      args.selectedIndex,
-    );
+    const [, updateArgs] = useArgs();
+
     return (
       <>
         <FilterTagInput
-          values={values}
-          selectedIndex={selectedIndex}
-          selectOptions={args.selectOptions}
-          onChange={setValues}
-          onSelectChange={setSelectedIndex}
+          {...args}
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </>
     );
