@@ -205,6 +205,7 @@ const FilterInputPanel = ({
                   onCompositionStart={() => setIsInlineComposing(true)}
                   onCompositionEnd={() => setIsInlineComposing(false)}
                   onKeyDown={handleKeyDown}
+                  onBlur={() => setInputValue("")}
                 />
                 <styled.PanelInputSpacer>{inputValue}</styled.PanelInputSpacer>
               </styled.PanelInput>
@@ -455,6 +456,7 @@ export const FilterTagInput = ({
                 onCompositionStart={() => setIsInlineComposing(true)}
                 onCompositionEnd={() => setIsInlineComposing(false)}
                 onKeyDown={handleKeyDown}
+                onBlur={() => setInputValue("")}
               />
             </styled.InlineInput>
           </styled.InlineFieldInner>
