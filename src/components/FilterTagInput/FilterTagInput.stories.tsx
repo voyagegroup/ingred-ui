@@ -57,9 +57,7 @@ export const Default: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: (
-          <Icon name="operator_match" type="line" color={colors.basic[900]} />
-        ),
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
         label: "含む",
       },
       {
@@ -67,54 +65,36 @@ export const Default: StoryObj<typeof meta> = {
           <Icon
             name="operator_does_not_match"
             type="line"
-            color={colors.basic[900]}
+            color="currentColor"
           />
         ),
         label: "含まない",
       },
       {
         icon: (
-          <Icon
-            name="operator_contains"
-            type="line"
-            color={colors.basic[900]}
-          />
+          <Icon name="operator_contains" type="line" color="currentColor" />
         ),
         label: "いずれかを含む",
       },
       {
         icon: (
-          <Icon
-            name="operator_starts_with"
-            type="line"
-            color={colors.basic[900]}
-          />
+          <Icon name="operator_starts_with" type="line" color="currentColor" />
         ),
         label: "で始まる",
       },
       {
         icon: (
-          <Icon
-            name="operator_ends_with"
-            type="line"
-            color={colors.basic[900]}
-          />
+          <Icon name="operator_ends_with" type="line" color="currentColor" />
         ),
         label: "で終わる",
       },
       {
-        icon: (
-          <Icon name="operator_equal" type="line" color={colors.basic[900]} />
-        ),
+        icon: <Icon name="operator_equal" type="line" color="currentColor" />,
         label: "同じ",
       },
       {
         icon: (
-          <Icon
-            name="operator_not_equal"
-            type="line"
-            color={colors.basic[900]}
-          />
+          <Icon name="operator_not_equal" type="line" color="currentColor" />
         ),
         label: "同じでない",
       },

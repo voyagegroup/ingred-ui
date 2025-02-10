@@ -17,7 +17,6 @@ import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
 import * as styled from "./styled";
-import { colors } from "../../styles";
 
 type FilterTagProps = {
   label: string;
@@ -33,7 +32,7 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
         aria-label="削除"
         onClick={onRemove}
       >
-        <Icon name="close_circle" type="fill" color={colors.basic[900]} />
+        <Icon name="close_circle" type="fill" color="currentColor" />
       </styled.FilterTagButton>
     </styled.FilterTag>
   );
@@ -162,7 +161,7 @@ const FilterInputPanel = ({
                       {selectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
-                      <Icon name="arrow_down" color={colors.basic[900]} />
+                      <Icon name="arrow_down" color="currentColor" />
                     </styled.PanelSelectTriggerIcon>
                   </styled.PanelSelectTrigger>
                 }
@@ -213,11 +212,7 @@ const FilterInputPanel = ({
                 type="button"
                 onClick={handleClearButtonClick}
               >
-                <Icon
-                  name="close_circle"
-                  type="fill"
-                  color={colors.basic[900]}
-                />
+                <Icon name="close_circle" type="fill" color="currentColor" />
               </styled.PanelClearButton>
             </styled.PanelTagField>
           </styled.PanelRight>
@@ -415,7 +410,7 @@ export const FilterTagInput = ({
                 onClick={() => setIsSelectOpen(!isSelectOpen)}
               >
                 {selectOptions[selectedIndex].icon}
-                <Icon name="arrow_down" color={colors.basic[900]} />
+                <Icon name="arrow_down" color="currentColor" />
               </styled.DropDownTrigger>
             }
             onOpenChange={(open) => setIsSelectOpen(open)}
@@ -444,7 +439,7 @@ export const FilterTagInput = ({
             <styled.InlineInput>
               {!inputValue && (
                 <styled.InlineInputIcon>
-                  <Icon name="filter" />
+                  <Icon name="filter" color="currentColor" />
                 </styled.InlineInputIcon>
               )}
               <input
@@ -468,7 +463,7 @@ export const FilterTagInput = ({
         >
           <Icon
             name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-            color={colors.basic[900]}
+            color="currentColor"
           />
         </styled.OverflowIndicator>
       </styled.FilterTagInput>

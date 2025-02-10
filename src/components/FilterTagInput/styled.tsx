@@ -32,6 +32,7 @@ export const DropDownTrigger = styled.button`
   border: 0;
   border-right: 1px solid ${colors.basic[400]};
   border-radius: 6px 0 0 6px;
+  color: ${colors.basic[900]};
   background: transparent;
   cursor: pointer;
 
@@ -77,6 +78,7 @@ export const OverflowIndicator = styled.button`
   width: 30px;
   border: 0;
   border-radius: 0px 5px 5px 0px;
+  color: ${colors.basic[900]};
   background-color: ${colors.basic[100]};
   box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
   cursor: pointer;
@@ -137,6 +139,7 @@ export const InlineInputIcon = styled.div`
   display: grid;
   place-items: center;
   width: 20px;
+  color: ${colors.basic[600]};
   pointer-events: none;
 `;
 //
@@ -257,6 +260,7 @@ export const PanelSelectTriggerIcon = styled.span`
   grid-area: downArrow;
   flex-shrink: 0;
   width: 18px;
+  color: ${colors.basic[900]};
 `;
 
 export const PanelButtons = styled.ul`
@@ -327,6 +331,7 @@ export const PanelClearButton = styled.button`
   height: 18px;
   border: 0;
   margin: auto 0;
+  color: ${colors.basic[900]};
   background: transparent;
   cursor: pointer;
 `;
@@ -359,6 +364,7 @@ export const FilterTagButton = styled.button`
   padding: 0;
   border: 0;
   zoom: ${16 / 18};
+  color: ${colors.basic[900]};
   background-color: transparent;
   cursor: pointer;
 `;
