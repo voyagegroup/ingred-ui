@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import React from "react";
+import React, {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from "react";
 import { colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
@@ -76,7 +80,7 @@ export const InlineFieldInner = styled.div`
   white-space: nowrap;
 `;
 
-export const OverflowIndicator = styled.button`
+const OverflowIndicatorInner = styled.span`
   position: absolute;
   inset: 0 0 0 auto;
   display: none;
@@ -87,6 +91,7 @@ export const OverflowIndicator = styled.button`
   background-color: ${colors.basic[100]};
   box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
   cursor: pointer;
+  pointer-events: all;
 
   &:where(${FilterTagInput.toString()}[data-overflowing="true"] *) {
     display: grid;
@@ -117,6 +122,31 @@ export const OverflowIndicator = styled.button`
     background-color: transparent;
   }
 `;
+const OverflowIndicatorButton = styled.button`
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+`;
+
+type OverflowIndicatorProps = {
+  children?: ReactNode;
+} & ComponentPropsWithoutRef<"button">;
+export const OverflowIndicator = forwardRef<
+  HTMLButtonElement,
+  OverflowIndicatorProps
+>(({ children, ...props }, ref) => {
+  return (
+    <OverflowIndicatorButton {...props} ref={ref}>
+      <OverflowIndicatorInner>{children}</OverflowIndicatorInner>
+    </OverflowIndicatorButton>
+  );
+});
+OverflowIndicator.displayName = "OverflowIndicator";
 
 export const InlineInput = styled.div`
   position: relative;
@@ -146,10 +176,11 @@ export const InlineInputIcon = styled.div`
   width: 20px;
   pointer-events: none;
 `;
+
 //
 // -----------------------------------------------------------------------------
 
-const PanelInner = styled.div`
+export const Panel = styled.div`
   display: grid;
   grid-template:
     "left right"
@@ -166,22 +197,6 @@ const PanelInner = styled.div`
   /* Drop shadow Common */
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   pointer-events: auto;
-`;
-
-export const Panel = styled(({ className, children }) => {
-  return (
-    <div className={className}>
-      <PanelInner>{children}</PanelInner>
-    </div>
-  );
-})`
-  position: absolute;
-  inset: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
 `;
 
 export const PanelLeft = styled.div`
