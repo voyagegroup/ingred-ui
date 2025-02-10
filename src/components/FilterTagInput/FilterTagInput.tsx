@@ -6,24 +6,14 @@ import React, {
   type ReactElement,
   type KeyboardEvent,
 } from "react";
-import {
-  useFloating,
-  useClick,
-  useDismiss,
-  useRole,
-  useInteractions,
-  offset,
-  size,
-  autoPlacement,
-  autoUpdate,
-  FloatingPortal,
-} from "@floating-ui/react";
 import Icon from "../Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
+import Modal from "../Modal";
+import Fade from "../Fade";
 import Button from "../Button";
 import * as styled from "./styled";
 import { colors } from "../../styles";
@@ -37,7 +27,11 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
   return (
     <styled.FilterTag>
       {label}
-      <styled.FilterTagButton aria-label="削除" onClick={onRemove}>
+      <styled.FilterTagButton
+        type="button"
+        aria-label="削除"
+        onClick={onRemove}
+      >
         <Icon name="close_circle" type="fill" color={colors.basic[900]} />
       </styled.FilterTagButton>
     </styled.FilterTag>
@@ -49,7 +43,7 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
 
 // モーダル時の表示。設置される領域のサイズが小さいときのみに展開される
 type FilterInputPanelProps = {
-  isSmall: boolean;
+  isOpen: boolean;
   selectedIndex: number;
   values: string[];
   selectOptions: { icon: ReactElement; label: string }[];
@@ -58,15 +52,13 @@ type FilterInputPanelProps = {
 };
 
 const FilterInputPanel = ({
-  isSmall,
+  isOpen,
   values,
   selectedIndex,
   selectOptions,
   onApply,
   onClose,
 }: FilterInputPanelProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [userValues, setUserValues] = useState<string[]>([]);
@@ -121,13 +113,13 @@ const FilterInputPanel = ({
   }, []);
 
   const handleChancelClick = useCallback(() => {
-    setIsOpen(false);
-  }, []);
+    onClose();
+  }, [onClose]);
 
   const handleApplyClick = useCallback(() => {
     onApply(userValues, userSelectedIndex);
-    setIsOpen(false);
-  }, [userValues, userSelectedIndex, onApply]);
+    onClose();
+  }, [userValues, userSelectedIndex, onApply, onClose]);
 
   // isOpen が true になったら、現状の値を初期値としてセットする
   // 「適用」するまでは、親に値を返さない
@@ -138,160 +130,94 @@ const FilterInputPanel = ({
     setUserSelectedIndex(selectedIndex);
   }, [isOpen, selectedIndex, values]);
 
-  //
-
-  const { refs, floatingStyles, context } = useFloating({
-    open: isOpen,
-    onOpenChange: (open: boolean) => {
-      setIsOpen(open);
-    },
-    middleware: [
-      offset({
-        mainAxis: 5,
-        crossAxis: 0,
-      }),
-      size({
-        apply({ availableWidth, availableHeight, elements }) {
-          Object.assign(elements.floating.style, {
-            maxWidth: `${Math.max(0, availableWidth)}px`,
-            maxHeight: `${Math.max(0, availableHeight)}px`,
-          });
-        },
-      }),
-      autoPlacement(() => ({
-        allowedPlacements: [
-          "bottom-start",
-          "bottom-end",
-          "top-start",
-          "top-end",
-        ],
-      })),
-    ],
-    whileElementsMounted: autoUpdate,
-  });
-
-  const click = useClick(context);
-  const dismiss = useDismiss(context);
-  const role = useRole(context);
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ]);
-
   return (
-    <>
-      <styled.OverflowIndicator
-        ref={refs.setReference}
-        type="button"
-        aria-label="フィルター入力パネルを開く"
-        onClick={() => setIsOpen(true)}
-        {...getReferenceProps()}
-      >
-        <Icon
-          name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-          color={colors.basic[900]}
-        />
-      </styled.OverflowIndicator>
-      {isOpen && (
-        <FloatingPortal>
-          <styled.Panel
-            ref={refs.setFloating}
-            style={{
-              ...floatingStyles,
-              // width,
-            }}
-            {...getFloatingProps()}
-            tabIndex={-1}
-          >
-            <styled.PanelLeft>
-              <styled.PanelLabel>条件</styled.PanelLabel>
-              <ContextMenu2Container>
-                <ContextMenu2
-                  open={isSelectOpen}
-                  trigger={
-                    <styled.PanelSelectTrigger>
-                      <styled.PanelSelectTriggerLabel>
-                        {selectOptions[userSelectedIndex].label}
-                      </styled.PanelSelectTriggerLabel>
-                      <styled.PanelSelectTriggerIcon>
-                        <Icon name="arrow_down" color={colors.basic[900]} />
-                      </styled.PanelSelectTriggerIcon>
-                    </styled.PanelSelectTrigger>
-                  }
-                  onOpenChange={(open) => setIsSelectOpen(open)}
-                >
-                  {selectOptions.map(({ label, icon }, i) => (
-                    <ContextMenu2CheckItem
-                      key={label}
-                      prepend={icon}
-                      checked={userSelectedIndex === i}
-                      onChange={() => handleSelectChange(i)}
-                    >
-                      {label}
-                    </ContextMenu2CheckItem>
-                  ))}
-                </ContextMenu2>
-              </ContextMenu2Container>
-            </styled.PanelLeft>
-            <styled.PanelRight>
-              <styled.PanelLabel>値</styled.PanelLabel>
-              <styled.PanelTagField>
-                <styled.PanelTagFieldFocusTrigger
-                  type="button"
-                  onClick={handleFocusTriggerClick}
-                />
-                {userValues.map((value, i) => (
-                  <FilterTag
-                    key={value}
-                    label={value}
-                    onRemove={() => handleTagRemove(i)}
-                  />
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <Fade in={isOpen}>
+        <styled.Panel>
+          <styled.PanelLeft>
+            <styled.PanelLabel>条件</styled.PanelLabel>
+            <ContextMenu2Container>
+              <ContextMenu2
+                open={isSelectOpen}
+                trigger={
+                  <styled.PanelSelectTrigger>
+                    <styled.PanelSelectTriggerLabel>
+                      {selectOptions[userSelectedIndex].label}
+                    </styled.PanelSelectTriggerLabel>
+                    <styled.PanelSelectTriggerIcon>
+                      <Icon name="arrow_down" color={colors.basic[900]} />
+                    </styled.PanelSelectTriggerIcon>
+                  </styled.PanelSelectTrigger>
+                }
+                onOpenChange={(open) => setIsSelectOpen(open)}
+              >
+                {selectOptions.map(({ label, icon }, i) => (
+                  <ContextMenu2CheckItem
+                    key={label}
+                    prepend={icon}
+                    checked={userSelectedIndex === i}
+                    onChange={() => handleSelectChange(i)}
+                  >
+                    {label}
+                  </ContextMenu2CheckItem>
                 ))}
-                <styled.PanelInput>
-                  <input
-                    ref={inputEl}
-                    type="text"
-                    aria-label="フィルターする値"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onCompositionStart={() => setIsInlineComposing(true)}
-                    onCompositionEnd={() => setIsInlineComposing(false)}
-                    onKeyDown={handleKeyDown}
-                  />
-                  <styled.PanelInputSpacer>
-                    {inputValue}
-                  </styled.PanelInputSpacer>
-                </styled.PanelInput>
-                <styled.PanelClearButton
-                  type="button"
-                  onClick={handleClearButtonClick}
-                >
-                  <Icon
-                    name="close_circle"
-                    type="fill"
-                    color={colors.basic[900]}
-                  />
-                </styled.PanelClearButton>
-              </styled.PanelTagField>
-            </styled.PanelRight>
-            <styled.PanelButtons>
-              <li>
-                <Button size="small" color="clear" onClick={handleChancelClick}>
-                  キャンセル
-                </Button>
-              </li>
-              <li>
-                <Button size="small" onClick={handleApplyClick}>
-                  適用
-                </Button>
-              </li>
-            </styled.PanelButtons>
-          </styled.Panel>
-        </FloatingPortal>
-      )}
-    </>
+              </ContextMenu2>
+            </ContextMenu2Container>
+          </styled.PanelLeft>
+          <styled.PanelRight>
+            <styled.PanelLabel>値</styled.PanelLabel>
+            <styled.PanelTagField>
+              <styled.PanelTagFieldFocusTrigger
+                type="button"
+                onClick={handleFocusTriggerClick}
+              />
+              {userValues.map((value, i) => (
+                <FilterTag
+                  key={value}
+                  label={value}
+                  onRemove={() => handleTagRemove(i)}
+                />
+              ))}
+              <styled.PanelInput>
+                <input
+                  ref={inputEl}
+                  type="text"
+                  aria-label="フィルターする値"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onCompositionStart={() => setIsInlineComposing(true)}
+                  onCompositionEnd={() => setIsInlineComposing(false)}
+                  onKeyDown={handleKeyDown}
+                />
+                <styled.PanelInputSpacer>{inputValue}</styled.PanelInputSpacer>
+              </styled.PanelInput>
+              <styled.PanelClearButton
+                type="button"
+                onClick={handleClearButtonClick}
+              >
+                <Icon
+                  name="close_circle"
+                  type="fill"
+                  color={colors.basic[900]}
+                />
+              </styled.PanelClearButton>
+            </styled.PanelTagField>
+          </styled.PanelRight>
+          <styled.PanelButtons>
+            <li>
+              <Button size="small" color="clear" onClick={handleChancelClick}>
+                キャンセル
+              </Button>
+            </li>
+            <li>
+              <Button size="small" onClick={handleApplyClick}>
+                適用
+              </Button>
+            </li>
+          </styled.PanelButtons>
+        </styled.Panel>
+      </Fade>
+    </Modal>
   );
 };
 
@@ -317,6 +243,7 @@ export const FilterTagInput = ({
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
   // styled-components v6 未満では未対応
   const [isSmall, setIsSmall] = useState(false);
@@ -454,72 +381,85 @@ export const FilterTagInput = ({
   }, [setIsSmall, checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   return (
-    <styled.FilterTagInput
-      ref={el}
-      data-small={isSmall}
-      data-overflowing={isInlineOverflowing}
-    >
-      <ContextMenu2Container>
-        <ContextMenu2
-          open={isSelectOpen}
-          trigger={
-            <styled.DropDownTrigger
-              type="button"
-              aria-label="フィルターのタイプを選ぶ"
-              onClick={() => setIsSelectOpen(!isSelectOpen)}
-            >
-              {selectOptions[selectedIndex].icon}
-            </styled.DropDownTrigger>
-          }
-          onOpenChange={(open) => setIsSelectOpen(open)}
+    <>
+      <styled.FilterTagInput
+        ref={el}
+        data-small={isSmall}
+        data-overflowing={isInlineOverflowing}
+      >
+        <ContextMenu2Container>
+          <ContextMenu2
+            open={isSelectOpen}
+            trigger={
+              <styled.DropDownTrigger
+                type="button"
+                aria-label="フィルターのタイプを選ぶ"
+                onClick={() => setIsSelectOpen(!isSelectOpen)}
+              >
+                {selectOptions[selectedIndex].icon}
+              </styled.DropDownTrigger>
+            }
+            onOpenChange={(open) => setIsSelectOpen(open)}
+          >
+            {selectOptions.map(({ label, icon }, i) => (
+              <ContextMenu2CheckItem
+                key={label}
+                prepend={icon}
+                checked={selectedIndex === i}
+                onChange={() => handleSelectChange(i)}
+              >
+                {label}
+              </ContextMenu2CheckItem>
+            ))}
+          </ContextMenu2>
+        </ContextMenu2Container>
+        <styled.InlineField ref={inlineFieldEl}>
+          <styled.InlineFieldInner ref={inlineFieldInnerEl}>
+            {values.map((value, i) => (
+              <FilterTag
+                key={value}
+                label={value}
+                onRemove={() => handleTagRemove(i)}
+              />
+            ))}
+            <styled.InlineInput>
+              {!inputValue && (
+                <styled.InlineInputIcon>
+                  <Icon name="filter" />
+                </styled.InlineInputIcon>
+              )}
+              <input
+                ref={inlineInputEl}
+                type="text"
+                aria-label="フィルターする値"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onCompositionStart={() => setIsInlineComposing(true)}
+                onCompositionEnd={() => setIsInlineComposing(false)}
+                onKeyDown={handleKeyDown}
+              />
+            </styled.InlineInput>
+          </styled.InlineFieldInner>
+        </styled.InlineField>
+        <styled.OverflowIndicator
+          type="button"
+          aria-label="フィルター入力パネルを開く"
+          onClick={() => setIsModalOpen(true)}
         >
-          {selectOptions.map(({ label, icon }, i) => (
-            <ContextMenu2CheckItem
-              key={label}
-              prepend={icon}
-              checked={selectedIndex === i}
-              onChange={() => handleSelectChange(i)}
-            >
-              {label}
-            </ContextMenu2CheckItem>
-          ))}
-        </ContextMenu2>
-      </ContextMenu2Container>
-      <styled.InlineField ref={inlineFieldEl}>
-        <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-          {values.map((value, i) => (
-            <FilterTag
-              key={value}
-              label={value}
-              onRemove={() => handleTagRemove(i)}
-            />
-          ))}
-          <styled.InlineInput>
-            {!inputValue && (
-              <styled.InlineInputIcon>
-                <Icon name="filter" />
-              </styled.InlineInputIcon>
-            )}
-            <input
-              ref={inlineInputEl}
-              type="text"
-              aria-label="フィルターする値"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onCompositionStart={() => setIsInlineComposing(true)}
-              onCompositionEnd={() => setIsInlineComposing(false)}
-              onKeyDown={handleKeyDown}
-            />
-          </styled.InlineInput>
-        </styled.InlineFieldInner>
-      </styled.InlineField>
+          <Icon
+            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+            color={colors.basic[900]}
+          />
+        </styled.OverflowIndicator>
+      </styled.FilterTagInput>
       <FilterInputPanel
-        isSmall={isSmall}
+        isOpen={isModalOpen}
         values={values}
         selectedIndex={selectedIndex}
         selectOptions={selectOptions}
         onApply={handlePanelApply}
+        onClose={() => setIsModalOpen(false)}
       />
-    </styled.FilterTagInput>
+    </>
   );
 };
