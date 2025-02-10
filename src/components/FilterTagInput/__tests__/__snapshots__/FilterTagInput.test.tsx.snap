@@ -11,7 +11,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-cxabCf hnncqQ"
+      class="sc-cxabCf iwdbGm"
       type="button"
     >
       <span
@@ -28,6 +28,19 @@ exports[`FileUploader component testing FileUploader 1`] = `
           />
         </svg>
       </span>
+      <span
+        class="sc-bczRLJ gJuzRf"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
+            fill="#041C33"
+          />
+        </svg>
+      </span>
     </button>
     <div
       class="sc-llJcti fIqbbh"
@@ -36,12 +49,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
         class="sc-iIPllB KFycW"
       >
         <span
-          class="sc-dPyBCJ lkPgXh"
+          class="sc-bBXxYQ fCdpYD"
         >
           テキスト
           <button
             aria-label="削除"
-            class="sc-bBXxYQ etEeJF"
+            class="sc-cOFTSb fGVLVa"
             type="button"
           >
             <span
@@ -61,12 +74,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-dPyBCJ lkPgXh"
+          class="sc-bBXxYQ fCdpYD"
         >
           value2
           <button
             aria-label="削除"
-            class="sc-bBXxYQ etEeJF"
+            class="sc-cOFTSb fGVLVa"
             type="button"
           >
             <span
@@ -86,12 +99,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-dPyBCJ lkPgXh"
+          class="sc-bBXxYQ fCdpYD"
         >
           value3
           <button
             aria-label="削除"
-            class="sc-bBXxYQ etEeJF"
+            class="sc-cOFTSb fGVLVa"
             type="button"
           >
             <span
