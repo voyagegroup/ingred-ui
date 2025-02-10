@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import { colors } from "../../styles";
+import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
 
@@ -23,7 +23,9 @@ export const FilterTagInput = styled.div`
 `;
 
 export const DropDownTrigger = styled.button`
+  flex-shrink: 0;
   display: flex;
+  gap: 2px;
   align-items: center;
   height: 100%;
   padding: 0 2px 0 8px;
@@ -32,15 +34,6 @@ export const DropDownTrigger = styled.button`
   border-radius: 6px 0 0 6px;
   background: transparent;
   cursor: pointer;
-  box-shadow:
-    0px 1px 0px rgba(4, 28, 51, 0.04),
-    inset 0px -3px 0px rgba(4, 28, 51, 0.06);
-
-  &::after {
-    content: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2218%22 height=%2218%22 viewBox=%220 0 18 18%22%3E%3Cpath fill=%22%23041C33%22 d=%22M9 11.3 5.8 8l1-1L9 9l2.1-2 1 1L9 11.3Z%22/%3E%3C/svg%3E");
-    aspect-ratio: 1;
-    height: 18px;
-  }
 
   &:where(${FilterTagInput.toString()}[data-small="true"] *) {
     display: none;
@@ -154,11 +147,11 @@ const PanelInner = styled.div`
   grid-template:
     "left right"
     "bottom bottom" /
-    124px 1fr;
+    auto 1fr;
   gap: 16px;
   box-sizing: border-box;
   width: 100%;
-  max-width: 647px;
+  max-width: 800px;
   padding: 16px;
   border-radius: 6px;
   background: #FFFFFF;};
@@ -166,6 +159,14 @@ const PanelInner = styled.div`
   /* Drop shadow Common */
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   pointer-events: auto;
+
+  @media ( max-width: ${BreakPoint.MEDIUM}px ) {
+    grid-template:
+      "left"
+      "right"
+      "bottom";
+      gap: 16px;
+  }
 `;
 
 export const Panel = styled(({ className, children }) => {
@@ -204,7 +205,11 @@ export const PanelLabel = styled.p`
 `;
 
 export const PanelSelectTrigger = styled.button`
-  display: flex;
+  display: grid;
+  grid-template:
+    "spacer spacer" 0
+    "label downArrow" /
+    1fr 18px;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
@@ -218,18 +223,38 @@ export const PanelSelectTrigger = styled.button`
   font-size: 13px;
   line-height: 16px;
   text-align: left;
-  color: ${colors.basic[700]};
+  color: ${colors.basic[900]};
   background: ${colors.basic[100]};
+
+  @media (max-width: ${BreakPoint.MEDIUM}px) {
+    width: fit-content;
+  }
+`;
+
+export const PanelSelectTriggerSpacer = styled.span`
+  grid-area: spacer;
+  display: flex;
+  gap: 4px;
+  white-space: nowrap;
+  height: 0;
+  padding-right: 22px;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
 `;
 
 export const PanelSelectTriggerLabel = styled.span`
-  flex-grow: 1;
+  grid-area: label;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `;
 
 export const PanelSelectTriggerIcon = styled.span`
+  grid-area: downArrow;
   flex-shrink: 0;
   width: 18px;
 `;

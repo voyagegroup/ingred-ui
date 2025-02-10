@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useMemo,
   useCallback,
   useEffect,
   useRef,
@@ -64,6 +65,16 @@ const FilterInputPanel = ({
   const [userValues, setUserValues] = useState<string[]>([]);
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const longestLabelOption = useMemo(() => {
+    return selectOptions.reduce(
+      (longestLabelOption, option) =>
+        option.label.length > longestLabelOption.label.length
+          ? option
+          : longestLabelOption,
+      selectOptions[0],
+    );
+  }, [selectOptions]);
 
   const inputEl = useRef<HTMLInputElement>(null);
 
@@ -141,7 +152,13 @@ const FilterInputPanel = ({
                 open={isSelectOpen}
                 trigger={
                   <styled.PanelSelectTrigger>
+                    <styled.PanelSelectTriggerSpacer role="presentation">
+                      {/* 最大文字数の幅を確保用 */}
+                      {longestLabelOption.icon}
+                      {longestLabelOption.label}
+                    </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
+                      {selectOptions[userSelectedIndex].icon}
                       {selectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
@@ -397,6 +414,7 @@ export const FilterTagInput = ({
                 onClick={() => setIsSelectOpen(!isSelectOpen)}
               >
                 {selectOptions[selectedIndex].icon}
+                <Icon name="arrow_down" color={colors.basic[900]} />
               </styled.DropDownTrigger>
             }
             onOpenChange={(open) => setIsSelectOpen(open)}
