@@ -76,7 +76,6 @@ exports[`MenuList component testing MenuList splited 1`] = `
           class="sc-hKMtZM cvHByS"
         >
           <span
-            aria-label=""
             class="sc-iBkjds kTxGwl"
             size="18"
           >
@@ -115,7 +114,6 @@ exports[`MenuList component testing MenuList splited 1`] = `
           class="sc-hKMtZM cvHByS"
         >
           <span
-            aria-label=""
             class="sc-iBkjds kTxGwl"
             size="18"
           >
@@ -149,7 +147,6 @@ exports[`MenuList component testing MenuList splited 1`] = `
           class="sc-hKMtZM cvHByS"
         >
           <span
-            aria-label=""
             class="sc-iBkjds kTxGwl"
             size="18"
           >
@@ -185,7 +182,6 @@ exports[`MenuList component testing MenuList splited 1`] = `
           disabled=""
         >
           <span
-            aria-label=""
             class="sc-iBkjds kTxGwl"
             size="18"
           >

@@ -12,7 +12,6 @@ exports[`Snackbar component testing Snackbar 1`] = `
         class="sc-dkzDqf chbnnt"
       >
         <span
-          aria-label=""
           class="sc-hKMtZM gLnfjV"
           size="18"
         >

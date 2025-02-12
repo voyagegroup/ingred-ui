@@ -23,7 +23,6 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
             class="sc-dkzDqf kXpBi"
           >
             <span
-              aria-label=""
               class="sc-gKXOVf fmZGCL"
               size="24"
             >
@@ -54,7 +53,6 @@ exports[`DefaultToast component testing DefaultToast error 1`] = `
           class="sc-hKMtZM jCCKuz"
         >
           <span
-            aria-label=""
             class="sc-gKXOVf kFgTzX"
             size="18"
           >
@@ -103,7 +101,6 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
             class="sc-dkzDqf kXpBi"
           >
             <span
-              aria-label=""
               class="sc-gKXOVf fmZGCL"
               size="24"
             >
@@ -134,7 +131,6 @@ exports[`DefaultToast component testing DefaultToast info 1`] = `
           class="sc-hKMtZM jCCKuz"
         >
           <span
-            aria-label=""
             class="sc-gKXOVf kFgTzX"
             size="18"
           >
@@ -183,7 +179,6 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
             class="sc-dkzDqf kXpBi"
           >
             <span
-              aria-label=""
               class="sc-gKXOVf fmZGCL"
               size="24"
             >
@@ -210,7 +205,6 @@ exports[`DefaultToast component testing DefaultToast success 1`] = `
           class="sc-hKMtZM jCCKuz"
         >
           <span
-            aria-label=""
             class="sc-gKXOVf kFgTzX"
             size="18"
           >
@@ -259,7 +253,6 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
             class="sc-dkzDqf kXpBi"
           >
             <span
-              aria-label=""
               class="sc-gKXOVf fmZGCL"
               size="24"
             >
@@ -290,7 +283,6 @@ exports[`DefaultToast component testing DefaultToast warning 1`] = `
           class="sc-hKMtZM jCCKuz"
         >
           <span
-            aria-label=""
             class="sc-gKXOVf kFgTzX"
             size="18"
           >

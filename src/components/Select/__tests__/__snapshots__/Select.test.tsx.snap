@@ -40,7 +40,6 @@ exports[`Select component testing Disable multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -70,7 +69,6 @@ exports[`Select component testing Disable multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -122,7 +120,6 @@ exports[`Select component testing Disable multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -213,7 +210,6 @@ exports[`Select component testing Disable not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -302,7 +298,6 @@ exports[`Select component testing Disable one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -363,7 +358,6 @@ exports[`Select component testing Error multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -393,7 +387,6 @@ exports[`Select component testing Error multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -444,7 +437,6 @@ exports[`Select component testing Error multiple selected 1`] = `
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -468,7 +460,6 @@ exports[`Select component testing Error multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -557,7 +548,6 @@ exports[`Select component testing Error not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -644,7 +634,6 @@ exports[`Select component testing Error one selected 1`] = `
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -668,7 +657,6 @@ exports[`Select component testing Error one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -729,7 +717,6 @@ exports[`Select component testing Normal multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -759,7 +746,6 @@ exports[`Select component testing Normal multiple selected 1`] = `
               role="button"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -810,7 +796,6 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -834,7 +819,6 @@ exports[`Select component testing Normal multiple selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -923,7 +907,6 @@ exports[`Select component testing Normal not selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -1010,7 +993,6 @@ exports[`Select component testing Normal one selected 1`] = `
               class=" css-1xc3v61-indicatorContainer"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >
@@ -1034,7 +1016,6 @@ exports[`Select component testing Normal one selected 1`] = `
               class="sc-hKMtZM jZaZJX"
             >
               <span
-                aria-label=""
                 class="sc-dkzDqf kPdxGi"
                 size="18"
               >

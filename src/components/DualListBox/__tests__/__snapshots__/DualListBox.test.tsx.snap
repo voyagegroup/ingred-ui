@@ -323,7 +323,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -352,7 +351,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -381,7 +379,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -410,7 +407,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -476,7 +472,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
                 class="sc-iBkjds ixDsgp"
               >
                 <span
-                  aria-label=""
                   class="sc-gsnTZi ezZeqd"
                   size="18"
                 >
@@ -586,7 +581,6 @@ exports[`DualListBox component testing DualListBox candidateItems and selectedIt
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -658,7 +652,6 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -687,7 +680,6 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -716,7 +708,6 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >
@@ -745,7 +736,6 @@ exports[`DualListBox component testing DualListBox selectedItems 1`] = `
               type="button"
             >
               <span
-                aria-label=""
                 class="sc-gsnTZi ezZeqd"
                 size="18"
               >

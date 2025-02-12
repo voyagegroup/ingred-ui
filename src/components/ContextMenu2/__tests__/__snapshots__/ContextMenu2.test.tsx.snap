@@ -51,7 +51,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       <div>
         <span
-          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -88,7 +87,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-bczRLJ gjrGrq"
       >
         <span
-          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -138,7 +136,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         100
       </span>
       <span
-        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >
@@ -161,7 +158,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-dkzDqf kEatcv"
       >
         <span
-          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -198,7 +194,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-dkzDqf kEatcv"
       >
         <span
-          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >

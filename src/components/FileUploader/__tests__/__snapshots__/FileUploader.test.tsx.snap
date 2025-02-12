@@ -18,7 +18,6 @@ exports[`FileUploader component testing FileUploader 1`] = `
         display="flex"
       >
         <span
-          aria-label=""
           class="sc-eCYdqJ iymozk"
           size="18"
         >

@@ -20,7 +20,6 @@ exports[`DropdownButton component testing not splited disable 1`] = `
         class="sc-hKMtZM gHErep"
       />
       <span
-        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >
@@ -127,7 +126,6 @@ exports[`DropdownButton component testing not splited enable 1`] = `
         class="sc-hKMtZM gHErep"
       />
       <span
-        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >
@@ -247,7 +245,6 @@ exports[`DropdownButton component testing splited disable 1`] = `
       height="32px"
     >
       <span
-        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >
@@ -358,7 +355,6 @@ exports[`DropdownButton component testing splited enable 1`] = `
       height="32px"
     >
       <span
-        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >

@@ -43,7 +43,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             class="sc-ksZaOG HDGZE"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ cPFJww"
               size="12"
             >
@@ -75,7 +74,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             type="button"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -108,7 +106,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -130,7 +127,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -180,7 +176,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -204,7 +199,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -244,7 +238,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -268,7 +261,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -308,7 +300,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -332,7 +323,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -372,7 +362,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -396,7 +385,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -434,7 +422,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
               class="sc-hHLeRK kYaCzf"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -454,7 +441,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
               class="sc-dmRaPn hRmyLr"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -497,7 +483,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -526,7 +511,6 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -606,7 +590,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             class="sc-ksZaOG HDGZE"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ cPFJww"
               size="12"
             >
@@ -644,7 +627,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -666,7 +648,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -719,7 +700,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -741,7 +721,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -767,7 +746,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               class="sc-bZkfAO bWHgSv"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -802,7 +780,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -824,7 +801,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    aria-label=""
                     class="sc-eCYdqJ iymozk"
                     size="18"
                   >
@@ -850,7 +826,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               class="sc-bZkfAO bWHgSv"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -880,7 +855,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               class="sc-hHLeRK kYaCzf"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -900,7 +874,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               class="sc-dmRaPn hRmyLr"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -943,7 +916,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -977,7 +949,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -1062,7 +1033,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             class="sc-ksZaOG HDGZE"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ cPFJww"
               size="12"
             >
@@ -1102,7 +1072,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -1125,7 +1094,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
                 type="button"
               >
                 <span
-                  aria-label=""
                   class="sc-eCYdqJ iymozk"
                   size="18"
                 >
@@ -1162,7 +1130,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-kLLXSd fiRoHL"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1183,7 +1150,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-ikZpkk hCgywH"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1208,7 +1174,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-kLLXSd fiRoHL"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1229,7 +1194,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-ikZpkk hCgywH"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1259,7 +1223,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-hHLeRK kYaCzf"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1279,7 +1242,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               class="sc-dmRaPn hRmyLr"
             >
               <span
-                aria-label=""
                 class="sc-eCYdqJ iymozk"
                 size="18"
               >
@@ -1322,7 +1284,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
@@ -1356,7 +1317,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             class="sc-fLlhyt wjBJR"
           >
             <span
-              aria-label=""
               class="sc-eCYdqJ iymozk"
               size="18"
             >
