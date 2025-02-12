@@ -6,7 +6,6 @@ import { action } from "@storybook/addon-actions";
 import Button, { ButtonProps } from "./Button";
 import Flex from "../Flex";
 import Icon from "../Icon";
-import Spacer from "../Spacer";
 
 export default {
   title: "Components/Inputs/Button",
