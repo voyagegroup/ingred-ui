@@ -1,17 +1,15 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
-import { getShadow } from "../../utils/getShadow";
 
 export type ContainerProps = ButtonColorStyle & {
+  color: string;
   inline: boolean;
   fontSize: string;
-  fontWeight: string;
-  verticalPadding: string;
-  horizontalPadding: string;
-  paddingTopAtActive: string;
-  paddingBottomAtActive: string;
+  paddingInline: string;
+  borderRadius: string;
+  height: string;
   href?: string;
   disabled?: boolean;
 };
@@ -20,33 +18,51 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   display: ${({ inline }) => (inline ? "inline-flex" : "flex")};
   justify-content: center;
   align-items: center;
-  padding: ${({ verticalPadding, horizontalPadding }) =>
-    `${verticalPadding} ${horizontalPadding}`};
-  width: ${({ inline }) => (inline ? "auto" : "100%")};
-  border-radius: ${({ theme }) => theme.radius}px;
-  border: ${({ normal, disabled, theme }) =>
-    disabled ? `1px solid ${theme.palette.divider}` : normal.border};
-  background: ${({ normal, disabled, theme }) =>
-    disabled ? theme.palette.gray.light : normal.background};
-  color: ${({ normal, disabled, theme }) =>
-    disabled ? theme.palette.text.disabled : normal.color};
+  height: ${({ height }) => height};
+  width: ${({ inline }) => (inline ? "fit-content" : "100%")};
+  padding-inline: ${({ paddingInline }) => paddingInline};
+  border-radius: ${({ borderRadius }) => borderRadius};
+  border: ${({ normal }) => normal.border};
+  background: ${({ normal }) => normal.background};
+  color: ${({ normal }) => normal.color};
   text-align: center;
-  font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${({ fontSize }) => fontSize};
-  box-shadow: ${({ normal, disabled, theme }) =>
-    disabled
-      ? getShadow(1, theme.palette.action.shadowOpacity, theme.palette.black)
-      : normal.boxShadow};
+  box-shadow: ${({ normal }) => normal.boxShadow};
   transition: background 0.3s;
+
+  &[disabled] {
+    ${({ color }) =>
+      color === "clear"
+        ? css`
+            border: 0;
+            background: transparent;
+            color: ${({ theme }) => theme.palette.text.disabled};
+            box-shadow: none;
+          `
+        : css`
+            border: ${({ theme }) => `1px solid ${theme.palette.divider}`};
+            background: ${({ theme }) => theme.palette.gray.light};
+            color: ${({ theme }) => theme.palette.text.disabled};
+            box-shadow: theme.shadow[ "3dShadowBasic"];
+          `}
+  }
 
   &:hover:not([disabled]) {
     background: ${({ hover }) => hover.background};
   }
 
   &:active:not([disabled]) {
-    padding-top: ${({ paddingTopAtActive }) => paddingTopAtActive};
-    padding-bottom: ${({ paddingBottomAtActive }) => paddingBottomAtActive};
+    padding-top: 2px;
     background: ${({ active }) => active.background};
     box-shadow: ${({ active }) => active.boxShadow};
+  }
+
+  // アイコンのみの場合
+  & > span:only-child,
+  & > span:only-child > svg {
+    flex-shrink: 0;
+  }
+  &:has(> span:only-child > svg) {
+    width: ${({ height }) => height};
   }
 `;

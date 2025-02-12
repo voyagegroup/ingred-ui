@@ -4,7 +4,7 @@ import * as Styled from "./styled";
 import { ButtonSize } from "../Button/Button";
 import { useTheme } from "../../themes";
 
-type GroupButtonSize = Exclude<ButtonSize, "large">;
+type GroupButtonSize = ButtonSize;
 
 export type ButtonGroupProps = React.ComponentPropsWithoutRef<"div"> & {
   size?: GroupButtonSize;
@@ -16,6 +16,9 @@ const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
     minWidth: "63px",
   },
   medium: {
+    minWidth: "71px",
+  },
+  large: {
     minWidth: "71px",
   },
 };

@@ -25,6 +25,17 @@ export const DesignSamples: StoryObj = {
   render: () => (
     <Flex display="flex">
       <div>
+        <Typography weight="bold">Size Small</Typography>
+        <Spacer pt={2} />
+        <ButtonGroup size="small">
+          <Button>Save</Button>
+          <Button>Edit</Button>
+          <Button>Delete</Button>
+          <Button>Cancel</Button>
+        </ButtonGroup>
+      </div>
+      <Spacer pl={5} />
+      <div>
         <Typography weight="bold">Size Medium</Typography>
         <Spacer pt={2} />
         <ButtonGroup>
@@ -36,15 +47,16 @@ export const DesignSamples: StoryObj = {
       </div>
       <Spacer pl={5} />
       <div>
-        <Typography weight="bold">Size Small</Typography>
+        <Typography weight="bold">Size Large</Typography>
         <Spacer pt={2} />
-        <ButtonGroup size="small">
+        <ButtonGroup size="large">
           <Button>Save</Button>
           <Button>Edit</Button>
           <Button>Delete</Button>
           <Button>Cancel</Button>
         </ButtonGroup>
       </div>
+      <Spacer pl={5} />
     </Flex>
   ),
 };

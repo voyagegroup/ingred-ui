@@ -2,10 +2,17 @@ import * as React from "react";
 import { fontSize } from "../Typography/Typography";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
-import { getShadow } from "../../utils/getShadow";
+import Icon from "../Icon";
+import Spacer from "../Spacer";
 
 export type ButtonSize = "small" | "medium" | "large";
-export type ButtonColor = "primary" | "secondary" | "danger" | "clear";
+export type ButtonColor =
+  | "primary"
+  | "primaryPale"
+  | "basicLight"
+  | "basicDark"
+  | "danger"
+  | "clear";
 
 export type ButtonColorStyle = {
   normal: {
@@ -25,6 +32,30 @@ export type ButtonColorStyle = {
   };
 };
 
+const ButtonHeight = {
+  small: "28px",
+  medium: "32px",
+  large: "40px",
+};
+
+const FontSize = {
+  small: `${fontSize.xs}px`,
+  medium: `${fontSize.sm}px`,
+  large: `${fontSize.md}px`,
+};
+
+const BorderRadius = {
+  small: "4px",
+  medium: "6px",
+  large: "6px",
+};
+
+const paddingInline = {
+  small: "6px",
+  medium: "8px",
+  large: "10px",
+};
+
 export type Padding = {
   theme: Theme;
   size: ButtonSize;
@@ -38,11 +69,7 @@ const getContainerColorStyles = (
     normal: {
       background: theme.palette.primary.main,
       color: theme.palette.text.white,
-      boxShadow: getShadow(
-        1,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowPrimary"],
       border: `1px solid ${theme.palette.primary.dark}`,
     },
     hover: {
@@ -51,23 +78,15 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.primary.dark,
-      boxShadow: getShadow(
-        2,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowActive"],
       border: "none",
     },
   },
-  secondary: {
+  basicLight: {
     normal: {
       background: theme.palette.background.default,
       color: theme.palette.black,
-      boxShadow: getShadow(
-        1,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowBasic"],
       border: `1px solid ${theme.palette.divider}`,
     },
     hover: {
@@ -76,23 +95,32 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.gray.highlight,
-      boxShadow: getShadow(
-        2,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowActive"],
       border: `1px solid ${theme.palette.divider}`,
+    },
+  },
+  basicDark: {
+    normal: {
+      background: theme.palette.basicDark.main,
+      color: theme.palette.black,
+      boxShadow: theme.shadow["3dShadowBasic"],
+      border: `1px solid ${theme.palette.basicDark.deepDark}`,
+    },
+    hover: {
+      background: theme.palette.basicDark.dark,
+      border: "none",
+    },
+    active: {
+      background: theme.palette.basicDark.dark,
+      boxShadow: theme.shadow["3dShadowBasicActive"],
+      border: "none",
     },
   },
   danger: {
     normal: {
       background: theme.palette.danger.main,
       color: theme.palette.text.white,
-      boxShadow: getShadow(
-        1,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowDanger"],
       border: `1px solid ${theme.palette.danger.dark}`,
     },
     hover: {
@@ -101,18 +129,14 @@ const getContainerColorStyles = (
     },
     active: {
       background: theme.palette.danger.dark,
-      boxShadow: getShadow(
-        2,
-        theme.palette.action.shadowOpacity,
-        theme.palette.action.shadowBase,
-      ),
+      boxShadow: theme.shadow["3dShadowActive"],
       border: "none",
     },
   },
   clear: {
     normal: {
       background: "none",
-      color: theme.palette.gray.deepDark,
+      color: theme.palette.black,
       boxShadow: "none",
       border: "none",
     },
@@ -126,45 +150,25 @@ const getContainerColorStyles = (
       border: "none",
     },
   },
+  primaryPale: {
+    normal: {
+      background: theme.palette.primaryPale.main,
+      color: theme.palette.primaryPale.dark,
+      boxShadow: theme.shadow["3dShadowPrimaryPale"],
+      border: `1px solid ${theme.palette.primaryPale.light}`,
+    },
+    hover: {
+      background: theme.palette.primaryPale.highlight,
+      border: "none",
+    },
+    active: {
+      background: theme.palette.primaryPale.highlight,
+      boxShadow: theme.shadow["3dShadowPrimaryPaleActive"],
+      border: "none",
+    },
+  },
 });
 
-const paddingAtActive: Record<
-  ButtonSize,
-  { paddingTop: string; paddingBottom: string }
-> = {
-  small: {
-    paddingTop: "7px",
-    paddingBottom: "5px",
-  },
-  medium: {
-    paddingTop: "11px",
-    paddingBottom: "9px",
-  },
-  large: {
-    paddingTop: "14px",
-    paddingBottom: "12px",
-  },
-};
-
-const verticalPadding: Record<ButtonSize, { padding: string }> = {
-  small: {
-    padding: "6px",
-  },
-  medium: {
-    padding: "10px",
-  },
-  large: {
-    padding: "13px",
-  },
-};
-
-const getPadding = ({ theme, size, color }: Padding) => ({
-  horizontalPadding: size === "small" ? `10px` : `${theme.spacing * 2}px`,
-  verticalPadding: verticalPadding[size].padding,
-  paddingTopAtActive: color === "clear" ? "" : paddingAtActive[size].paddingTop,
-  paddingBottomAtActive:
-    color === "clear" ? "" : paddingAtActive[size].paddingBottom,
-});
 type baseProps = {
   /**
    * The component used for the root node.
@@ -178,6 +182,7 @@ type baseProps = {
    * Control whether "inline" or "block" Element.
    */
   inline?: boolean;
+  icon?: React.ReactNode;
   size?: ButtonSize;
   onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 } & React.ComponentPropsWithoutRef<"button">;
@@ -204,22 +209,13 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     color = "primary",
     inline = false,
     size = "medium",
+    icon,
     ...rest
   },
   ref,
 ) {
   const theme = useTheme();
   const colorStyle = getContainerColorStyles(theme)[color];
-  const {
-    horizontalPadding,
-    verticalPadding,
-    paddingTopAtActive,
-    paddingBottomAtActive,
-  } = getPadding({
-    theme,
-    size,
-    color,
-  });
 
   const anchorProps: {
     as?:
@@ -248,18 +244,21 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
       as={component || "button"}
       {...anchorProps}
       inline={inline}
-      verticalPadding={verticalPadding}
-      horizontalPadding={horizontalPadding}
-      paddingTopAtActive={paddingTopAtActive}
-      paddingBottomAtActive={paddingBottomAtActive}
-      normal={{ ...colorStyle.normal }}
-      hover={{ ...colorStyle.hover }}
-      active={{ ...colorStyle.active }}
-      fontWeight="normal"
-      fontSize={
-        size === "small" ? `${fontSize["xs"]}px` : `${fontSize["md"]}px`
-      }
+      paddingInline={paddingInline[size]}
+      normal={colorStyle.normal}
+      hover={colorStyle.hover}
+      active={colorStyle.active}
+      borderRadius={BorderRadius[size]}
+      fontSize={FontSize[size]}
+      height={ButtonHeight[size]}
+      color={color}
     >
+      {icon && (
+        <>
+          {icon}
+          <Spacer pr={0.5} />
+        </>
+      )}
       {children}
     </Styled.ButtonContainer>
   );

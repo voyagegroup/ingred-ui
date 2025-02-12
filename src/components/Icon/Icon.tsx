@@ -196,10 +196,12 @@ export type IconName =
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
-type IconSize = "sm" | "md" | "lg";
+export type IconSize = "sm" | "sm-md" | "md" | "md-lg" | "lg";
 export const iconSize: { [key in IconSize]: number } = {
   sm: 12,
+  "sm-md": 16,
   md: 18,
+  "md-lg": 20,
   lg: 24,
 };
 export type IconProps = {
@@ -334,6 +336,7 @@ export type Props =
       type?: IconType;
       size?: IconSize;
       color?: IconColor;
+      alt?: string;
     }
   | {
       /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
@@ -341,15 +344,16 @@ export type Props =
       type?: IconType;
       size?: IconSize;
       color?: IconColor;
+      alt?: string;
     };
 
 const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
-  { name, type = "line", size = "md", color = "fill" },
+  { name, type = "line", size = "md", color = "fill", alt = "" },
   ref,
 ) {
   const theme = useTheme();
   return (
-    <Styled.Container ref={ref} size={iconSize[size]}>
+    <Styled.Container ref={ref} size={iconSize[size]} aria-label={alt}>
       {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
     </Styled.Container>
   );
