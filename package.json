@@ -1,6 +1,6 @@
 {
   "name": "ingred-ui",
-  "version": "19.5.0",
+  "version": "19.7.0",
   "description": "",
   "author": "CARTA HOLDINGS, Inc.",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "@storybook/addon-essentials": "7.5.2",
     "@storybook/addon-links": "7.4.0",
     "@storybook/addon-storysource": "7.5.3",
+    "@storybook/client-api": "7.5.3",
     "@storybook/react": "7.5.3",
     "@storybook/react-vite": "7.5.3",
     "@testing-library/jest-dom": "6.1.3",

@@ -1,5 +1,21 @@
 # Changelog
 
+## 19.7.0
+
+### Minor Changes
+
+- [#1711](https://github.com/voyagegroup/ingred-ui/pull/1711) [`29628de9`](https://github.com/voyagegroup/ingred-ui/commit/29628de97ba9e6aafa4cb7e263247019d6d35dd6) Thanks [@geckotang](https://github.com/geckotang)! - update checkbox style
+
+### Patch Changes
+
+- [#1711](https://github.com/voyagegroup/ingred-ui/pull/1711) [`29628de9`](https://github.com/voyagegroup/ingred-ui/commit/29628de97ba9e6aafa4cb7e263247019d6d35dd6) Thanks [@geckotang](https://github.com/geckotang)! - update svg icons
+
+## 19.6.0
+
+### Minor Changes
+
+- [#1708](https://github.com/voyagegroup/ingred-ui/pull/1708) [`574b87b0`](https://github.com/voyagegroup/ingred-ui/commit/574b87b0726e244729f010da72261caf48a002e8) Thanks [@yomotsu](https://github.com/yomotsu)! - Add DualListBox2 component
+
 ## 19.5.0
 
 ### Minor Changes

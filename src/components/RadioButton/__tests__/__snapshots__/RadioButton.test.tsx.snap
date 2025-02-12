@@ -3,16 +3,16 @@
 exports[`RadioButton component testing RadioButton 1`] = `
 <DocumentFragment>
   <label
-    class="sc-bczRLJ irWXSl"
+    class="sc-gsnTZi iZFzY"
   >
     <input
       type="radio"
     />
-    <div
-      class="sc-gsnTZi keuGMX"
+    <span
+      class="sc-dkzDqf iLoKSn"
     />
     <span
-      class="sc-dkzDqf jQJeuR"
+      class="sc-hKMtZM huPyTe"
     >
       RadioButton
     </span>
