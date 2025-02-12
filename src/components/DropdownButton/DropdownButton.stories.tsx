@@ -50,10 +50,26 @@ export const Colors: StoryObj<DropdownButtonProps> = {
       </div>
       <Spacer pl={3} />
       <div>
-        <Typography weight="bold">Secondary</Typography>
+        <Typography weight="bold">Basic Light</Typography>
         <Spacer pt={2} />
-        <DropdownButton color="secondary" {...args}>
-          Secondary
+        <DropdownButton color="basicLight" {...args}>
+          Basic Light
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Basic Dark</Typography>
+        <Spacer pt={2} />
+        <DropdownButton color="basicDark" {...args}>
+          Basic Dark
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Disabled</Typography>
+        <Spacer pt={2} />
+        <DropdownButton color="basicDark" disabled={true} {...args}>
+          Basic Dark (Disabled)
         </DropdownButton>
       </div>
     </Flex>

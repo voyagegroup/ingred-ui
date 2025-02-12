@@ -36,7 +36,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           ...child.props,
           ...(disabled && { disabled: true }),
           size: size,
-          color: "secondary",
+          color: "basicLight",
           style: {
             ...child.props.style,
           },
