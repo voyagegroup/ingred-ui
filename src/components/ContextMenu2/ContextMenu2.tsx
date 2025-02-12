@@ -8,6 +8,7 @@ import React, {
   isValidElement,
   Children,
   type ReactNode,
+  type Ref,
   type ReactElement,
   type ButtonHTMLAttributes,
   type Dispatch,
@@ -85,7 +86,7 @@ type ContextMenu2Props = {
   trigger:
     | ReactElement<
         ButtonHTMLAttributes<HTMLButtonElement> & {
-          ref?: React.Ref<HTMLButtonElement>;
+          ref?: Ref<HTMLButtonElement>;
         },
         "button"
       >

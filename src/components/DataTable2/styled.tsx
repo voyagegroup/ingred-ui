@@ -321,7 +321,7 @@ export const CheckboxWrapper = styled.div`
 
 //
 // -----------------------------------------------------------------------------
-export const DataTable2InlineEditable = styled.div`
+export const DataTable2InlineEditor = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -329,5 +329,19 @@ export const DataTable2InlineEditable = styled.div`
 
   a {
     color: ${colors.blue[500]};
+  }
+`;
+
+export const DataTable2InlineEditorButton = styled.div`
+  @media (any-hover: hover) {
+    visibility: hidden;
+
+    &:where(:has([aria-expanded="true"])) {
+      visibility: visible;
+    }
+
+    &:where(${DataTable2InlineEditor}:hover *) {
+      visibility: visible;
+    }
   }
 `;

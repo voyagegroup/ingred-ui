@@ -3,4 +3,4 @@ export { DataTable2Head } from "./DataTable2Head";
 export { DataTable2Column } from "./DataTable2Column";
 export { DataTable2Body } from "./DataTable2Body";
 export { DataTable2Row } from "./DataTable2Row";
-export { DataTable2InlineEditable } from "./DataTable2InlineEditable";
+export { DataTable2InlineEditor } from "./DataTable2InlineEditor";

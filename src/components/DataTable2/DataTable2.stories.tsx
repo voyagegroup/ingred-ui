@@ -6,18 +6,9 @@ import {
   DataTable2Head,
   DataTable2Body,
   DataTable2Row,
-  DataTable2InlineEditable,
+  DataTable2InlineEditor,
 } from "./index";
-import Button from "../Button";
 import ActionButton from "../ActionButton";
-import {
-  ContextMenu2,
-  ContextMenu2ButtonControlsItem,
-  ContextMenu2Container,
-  ContextMenu2HeadingItem,
-  ContextMenu2SeparatorItem,
-  ContextMenu2TextInputItem,
-} from "../ContextMenu2";
 
 export default {
   title: "Components/Data Display/DataTable2",
@@ -104,35 +95,14 @@ export const Overview: StoryObj<typeof DataTable2> = {
           {mockData.map((data) => (
             <DataTable2Row key={data.id} id={data.id}>
               <td>
-                <DataTable2InlineEditable
-                  command={
-                    <ContextMenu2Container>
-                      <ContextMenu2
-                        width={252}
-                        trigger={<ActionButton color="primary" icon="pencil" />}
-                      >
-                        <ContextMenu2HeadingItem>
-                          名前を編集
-                        </ContextMenu2HeadingItem>
-                        <ContextMenu2TextInputItem
-                          value={data.name}
-                          onChange={() => {}}
-                        />
-                        <ContextMenu2SeparatorItem />
-                        <ContextMenu2ButtonControlsItem>
-                          <Button type="button" color="clear" size="small">
-                            キャンセル
-                          </Button>
-                          <Button type="button" color="primary" size="small">
-                            適用
-                          </Button>
-                        </ContextMenu2ButtonControlsItem>
-                      </ContextMenu2>
-                    </ContextMenu2Container>
-                  }
+                <DataTable2InlineEditor
+                  trigger={<ActionButton color="primary" icon="pencil" />}
+                  label="名前を編集"
+                  value={data.name}
+                  onChange={() => {}}
                 >
                   <a href="/">{data.name}</a>
-                </DataTable2InlineEditable>
+                </DataTable2InlineEditor>
               </td>
               <td>{data.status}</td>
               <td>{data.email}</td>
