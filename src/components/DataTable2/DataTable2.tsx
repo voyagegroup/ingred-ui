@@ -6,57 +6,42 @@ import React, {
   useEffect,
   useContext,
   type ReactNode,
-  type ReactElement,
 } from "react";
 import * as styled from "./styled";
 import { DataTable2Context } from "./context";
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
-import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
+import {
+  DataTable2MenuCountControl,
+  type DataTable2MenuCountControlProps,
+} from "./DataTable2MenuCountControl";
 import { DataTable2MenuSpaceControl } from "./DataTable2MenuSpaceControl";
-import { DataTable2Pagination } from "./DataTable2Pagination";
+import {
+  DataTable2Pagination,
+  type DataTable2PaginationProps,
+} from "./DataTable2Pagination";
 import { DataTable2RowControls } from "./DataTable2RowControls";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
-import {
-  ContextMenu2Container,
-  ContextMenu2,
-  ContextMenu2ButtonItem,
-} from "../ContextMenu2";
+import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
 ////////////////////////////////////////////////////////////////////////////////
-type DataTable2ActionButtonProps = {
-  prepend?: ReactElement;
-  children: ReactNode;
-  onClick?: () => void;
-};
-const DataTable2ActionButton = ({
-  prepend,
-  children,
-  onClick,
-}: DataTable2ActionButtonProps) => {
-  const { isSmallLayout } = useContext(DataTable2Context);
-
-  if (isSmallLayout) {
-    return (
-      <ContextMenu2ButtonItem prepend={prepend} onClick={onClick}>
-        {children}
-      </ContextMenu2ButtonItem>
-    );
-  }
-
-  return (
-    <styled.DataTable2ActionButton type="button" onClick={onClick}>
-      {prepend}
-      {children}
-    </styled.DataTable2ActionButton>
-  );
-};
-
 // 左上コントロール群
-const RowsControls = () => {
+type RowsControlsProps = DataTable2PaginationProps &
+  DataTable2MenuCountControlProps & {
+    extraButtons: ReactNode;
+  };
+const RowsControls = ({
+  currentPage,
+  pageSize,
+  pageSizeOptions,
+  numOfItems,
+  onPageChange,
+  onPageSizeChange,
+  extraButtons,
+}: RowsControlsProps) => {
   const { isSmallLayout, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
 
@@ -73,6 +58,13 @@ const RowsControls = () => {
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
+  // ページ移動した場合、全選択を解除
+  const previousPage = useRef(currentPage);
+  useEffect(() => {
+    if (previousPage.current !== currentPage) setCheckedRows([]);
+    previousPage.current = currentPage;
+  }, [currentPage, setCheckedRows]);
+
   return (
     <styled.RowsControls>
       <Checkbox
@@ -85,16 +77,19 @@ const RowsControls = () => {
       <styled.RowsControlsSeparator />
 
       {/* ページネーション */}
-      <DataTable2Pagination />
+      <DataTable2Pagination
+        currentPage={currentPage}
+        pageSize={pageSize}
+        pageSizeOptions={pageSizeOptions}
+        numOfItems={numOfItems}
+        onPageChange={onPageChange}
+        onPageSizeChange={onPageSizeChange}
+      />
 
       <styled.RowsControlsSeparator />
       <DataTable2FilterControls />
       <styled.RowsControlsExtras>
-        {!isSmallLayout && (
-          <DataTable2ActionButton prepend={<Icon name="download_cloud" />}>
-            ダウンロード
-          </DataTable2ActionButton>
-        )}
+        {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
         <ContextMenu2Container>
           <ContextMenu2
             width={316}
@@ -104,17 +99,17 @@ const RowsControls = () => {
               </styled.DataTable2ExtrasMenuTrigger>
             }
           >
-            {isSmallLayout && (
-              <DataTable2ActionButton prepend={<Icon name="download_cloud" />}>
-                ダウンロード
-              </DataTable2ActionButton>
-            )}
+            {isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
 
             {/* 並び替え */}
             <DataTable2MenuOrderControl />
 
             {/* 件数 */}
-            <DataTable2MenuCountControl />
+            <DataTable2MenuCountControl
+              pageSize={pageSize}
+              pageSizeOptions={pageSizeOptions}
+              onPageSizeChange={onPageSizeChange}
+            />
 
             {/* 密度 */}
             <DataTable2MenuSpaceControl />
@@ -127,9 +122,19 @@ const RowsControls = () => {
 
 type DataTable2Props = {
   children: ReactNode;
-};
+} & RowsControlsProps &
+  DataTable2MenuCountControlProps;
 
-export const DataTable2 = ({ children }: DataTable2Props) => {
+export const DataTable2 = ({
+  extraButtons,
+  currentPage,
+  pageSize,
+  pageSizeOptions,
+  numOfItems,
+  onPageChange,
+  onPageSizeChange,
+  children,
+}: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);
   const [checkedRows, setCheckedRows] = useState<string[]>([]);
@@ -174,7 +179,15 @@ export const DataTable2 = ({ children }: DataTable2Props) => {
           onColumnWidthChange,
         }}
       >
-        <RowsControls />
+        <RowsControls
+          currentPage={currentPage}
+          extraButtons={extraButtons}
+          pageSize={pageSize}
+          pageSizeOptions={pageSizeOptions}
+          numOfItems={numOfItems}
+          onPageChange={onPageChange}
+          onPageSizeChange={onPageSizeChange}
+        />
         <styled.Viewport>
           <table>{children}</table>
         </styled.Viewport>

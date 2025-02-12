@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useCallback, useEffect } from "react";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import {
@@ -13,39 +13,99 @@ import {
 ////////////////////////////////////////////////////////////////////////////////
 
 // 左上コントロール群
-export const DataTable2Pagination = () => {
+export type DataTable2PaginationProps = {
+  currentPage: number;
+  pageSize: number;
+  pageSizeOptions: number[];
+  numOfItems: number;
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (itemsPerPage: number) => void;
+};
+
+export const DataTable2Pagination = ({
+  currentPage,
+  pageSize,
+  pageSizeOptions,
+  numOfItems,
+  onPageChange,
+  onPageSizeChange,
+}: DataTable2PaginationProps) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const handleOnChange = useCallback(
+    (size: number) => {
+      // pageSize 変更により currentPage が maxPage を超える場合、
+      // currentPage を maxPage に合わせる
+      if (currentPage > Math.ceil(numOfItems / size) - 1) {
+        onPageChange(Math.ceil(numOfItems / size) - 1);
+      }
+
+      onPageSizeChange(size);
+      setIsOpen(false);
+    },
+    [currentPage, numOfItems, onPageChange, onPageSizeChange],
+  );
+  const minPage = 0;
+  const maxPage = useMemo(
+    () => Math.ceil(numOfItems / pageSize) - 1,
+    [numOfItems, pageSize],
+  );
+
+  // handleOnChange 内部で currentPage のオーバーフロー表示をガードしているけれど、
+  // 外から強制的に pageSize を変更（currentPage はそのまま）された場合に備えて、ここでもガードする
+  useEffect(() => {
+    if (currentPage > maxPage) {
+      onPageChange(maxPage);
+    }
+  }, [currentPage, maxPage, onPageChange]);
+
   return (
     <styled.RowMenuPagination>
-      <button type="button" aria-label="前のページへ">
+      <button
+        type="button"
+        aria-label="前のページへ"
+        disabled={currentPage === minPage}
+        onClick={() => onPageChange(Math.max(currentPage - 1, minPage))}
+      >
         <Icon name="arrow_left" color="currentColor" />
       </button>
       <ContextMenu2Container>
         <ContextMenu2
+          open={isOpen}
           width={296}
           trigger={
             <button type="button">
-              1
+              {Math.min(currentPage * pageSize + 1, pageSize * maxPage)}
               <styled.RowMenuPaginationOperator>
                 -
               </styled.RowMenuPaginationOperator>
-              100
+              {Math.min((currentPage + 1) * pageSize, numOfItems)}
               <styled.RowMenuPaginationOperator>
                 /
               </styled.RowMenuPaginationOperator>
-              1,000
+              {numOfItems}
               <Icon name="arrow_right" size="sm" />
             </button>
           }
+          onOpenChange={setIsOpen}
         >
           <ContextMenu2HeadingItem>表示件数を変更</ContextMenu2HeadingItem>
-          <ContextMenu2CheckItem>10</ContextMenu2CheckItem>
-          <ContextMenu2CheckItem>20</ContextMenu2CheckItem>
-          <ContextMenu2CheckItem>50</ContextMenu2CheckItem>
-          <ContextMenu2CheckItem checked>100</ContextMenu2CheckItem>
-          <ContextMenu2CheckItem>200</ContextMenu2CheckItem>
+          {pageSizeOptions.map((option) => (
+            <ContextMenu2CheckItem
+              key={option}
+              checked={pageSize === option}
+              onChange={() => handleOnChange(option)}
+            >
+              {option}
+            </ContextMenu2CheckItem>
+          ))}
         </ContextMenu2>
       </ContextMenu2Container>
-      <button type="button" aria-label="次のページへ">
+      <button
+        type="button"
+        aria-label="次のページへ"
+        disabled={currentPage === maxPage}
+        onClick={() => onPageChange(Math.min(currentPage + 1, maxPage))}
+      >
         <Icon name="arrow_right" color="currentColor" />
       </button>
     </styled.RowMenuPagination>

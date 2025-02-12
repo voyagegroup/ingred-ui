@@ -9,8 +9,18 @@ import {
 // INTERNAL USE ONLY
 ////////////////////////////////////////////////////////////////////////////////
 
+export type DataTable2MenuCountControlProps = {
+  pageSize: number;
+  pageSizeOptions: number[];
+  onPageSizeChange: (itemsPerPage: number) => void;
+};
+
 // 左上コントロール群
-export const DataTable2MenuCountControl = () => {
+export const DataTable2MenuCountControl = ({
+  pageSize,
+  pageSizeOptions,
+  onPageSizeChange,
+}: DataTable2MenuCountControlProps) => {
   return (
     // 並び替え
     // このコンポーネントが親の ContextMenu2Provider 内に設置される前提なので、
@@ -28,11 +38,15 @@ export const DataTable2MenuCountControl = () => {
         </ContextMenu2TriggerItem>
       }
     >
-      <ContextMenu2CheckItem>10件</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>20件</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>50件</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem checked>100件</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>200件</ContextMenu2CheckItem>
+      {pageSizeOptions.map((size) => (
+        <ContextMenu2CheckItem
+          key={size}
+          checked={pageSize === size}
+          onChange={() => onPageSizeChange(size)}
+        >
+          {size}件
+        </ContextMenu2CheckItem>
+      ))}
     </ContextMenu2>
   );
 };

@@ -30,8 +30,9 @@ const InternalContextMenu2TextInputItem = forwardRef<
   const handleOnKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       disableFloatingUIKeyboardNavigation(event);
-      if (isComposing) {
+      if (event.key === "Enter" && !isComposing) {
         onEnter?.();
+        return;
       }
     },
     [isComposing, onEnter],

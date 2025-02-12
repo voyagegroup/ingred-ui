@@ -1,29 +1,26 @@
-import React, { useState, useCallback } from "react";
-import { StoryObj } from "@storybook/react";
+import React, { useState, useCallback, useMemo } from "react";
+import { Meta, StoryObj } from "@storybook/react";
 import {
   DataTable2,
   DataTable2Column,
   DataTable2Head,
   DataTable2Body,
   DataTable2Row,
+  DataTable2ActionButton,
   DataTable2InlineEditor,
 } from "./index";
+import Icon from "../Icon";
 import ActionButton from "../ActionButton";
 
-export default {
+const meta = {
   title: "Components/Data Display/DataTable2",
   component: DataTable2,
-  parameters: {
-    docs: {
-      source: {
-        language: "tsx",
-      },
-    },
-  },
-  // args: {},
-};
+  argTypes: {},
+} satisfies Meta<typeof DataTable2>;
 
-const mockData = Array.from({ length: 100 }, (_, i) => ({
+export default meta;
+
+const mockData = Array.from({ length: 1000 }, (_, i) => ({
   id: `unique-${i}`,
   name: i % 10 === 0 ? `すごく長い苗字すごく長い名前${i}` : `普羅久斗太郎${i}`,
   status: i % 3 === 0 ? "有効" : "無効",
@@ -33,6 +30,19 @@ const mockData = Array.from({ length: 100 }, (_, i) => ({
 
 export const Overview: StoryObj<typeof DataTable2> = {
   render: () => {
+    // ページネーション
+    const [page, setPage] = useState(0);
+    const pageSizeOptions = [10, 20, 50, 100, 200];
+    const [pageSize, setPageSize] = useState(pageSizeOptions[3]);
+
+    // コンテンツ
+    const [data, setData] = useState(mockData);
+    const pageData = useMemo(
+      () => data.slice(page * pageSize, page * pageSize + pageSize),
+      [data, pageSize, page],
+    );
+
+    // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
     const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
       188, 188, 188, 188, 188,
       // undefined,
@@ -46,7 +56,19 @@ export const Overview: StoryObj<typeof DataTable2> = {
       [columnWidths, setColumnWidths],
     );
     return (
-      <DataTable2>
+      <DataTable2
+        pageSize={pageSize}
+        pageSizeOptions={pageSizeOptions}
+        currentPage={page}
+        numOfItems={data.length}
+        extraButtons={
+          <DataTable2ActionButton prepend={<Icon name="download_cloud" />}>
+            ダウンロード
+          </DataTable2ActionButton>
+        }
+        onPageChange={setPage}
+        onPageSizeChange={setPageSize}
+      >
         <DataTable2Head>
           <DataTable2Column
             isResizable
@@ -92,27 +114,33 @@ export const Overview: StoryObj<typeof DataTable2> = {
           </DataTable2Column>
         </DataTable2Head>
         <DataTable2Body>
-          {mockData.map((data) => (
-            <DataTable2Row key={data.id} id={data.id}>
+          {pageData.map((dataRow) => (
+            <DataTable2Row key={dataRow.id} id={dataRow.id}>
               <td>
                 <DataTable2InlineEditor
                   trigger={<ActionButton color="primary" icon="pencil" />}
                   label="名前を編集"
-                  value={data.name}
-                  onChange={() => {}}
+                  value={dataRow.name}
+                  onChange={(name) => {
+                    const newData = structuredClone(data);
+                    newData.find((d) => d.id === dataRow.id)!.name = name;
+                    setData(newData);
+                  }}
                 >
-                  <a href="/">{data.name}</a>
+                  <a href="/">{dataRow.name}</a>
                 </DataTable2InlineEditor>
               </td>
-              <td>{data.status}</td>
-              <td>{data.email}</td>
-              <td>{data.date}</td>
+              <td>{dataRow.status}</td>
+              <td>{dataRow.email}</td>
+              <td>{dataRow.date}</td>
               <td>
                 <ActionButton
                   type="button"
                   color="primary"
                   icon="pencil"
-                  onClick={() => {}}
+                  onClick={() =>
+                    alert("ドロワーを開く機能を独自に実装してください")
+                  }
                 >
                   編集
                 </ActionButton>
