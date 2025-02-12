@@ -520,4 +520,3 @@ export const DesignSamples: StoryObj = {
     </>
   ),
 };
-
