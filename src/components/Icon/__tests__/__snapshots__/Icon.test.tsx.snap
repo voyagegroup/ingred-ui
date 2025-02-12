@@ -3,6 +3,7 @@
 exports[`Icon component testing Icon 1`] = `
 <DocumentFragment>
   <span
+    aria-label=""
     class="sc-bczRLJ gJuzRf"
     size="18"
   >

@@ -51,6 +51,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       <div>
         <span
+          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -87,6 +88,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-bczRLJ gjrGrq"
       >
         <span
+          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -136,6 +138,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         100
       </span>
       <span
+        aria-label=""
         class="sc-ftvSup cgVcmC"
         size="18"
       >
@@ -158,6 +161,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-dkzDqf kEatcv"
       >
         <span
+          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -194,6 +198,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-dkzDqf kEatcv"
       >
         <span
+          aria-label=""
           class="sc-ftvSup cgVcmC"
           size="18"
         >
@@ -284,18 +289,20 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw dCjqBG"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw eoBrxU"
+          color="clear"
           font-size="12px"
-          font-weight="normal"
+          height="28px"
         >
           キャンセル
         </button>
       </li>
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw drLzuX"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw bXokIz"
+          color="primary"
           font-size="12px"
-          font-weight="normal"
+          height="28px"
         >
           適用
         </button>

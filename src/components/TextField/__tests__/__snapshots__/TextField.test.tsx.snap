@@ -32,6 +32,7 @@ exports[`TextField component testing TextField passward 1`] = `
         class="sc-dkzDqf sc-eCYdqJ ipdCxW lePLkB"
       >
         <span
+          aria-label=""
           class="sc-gKXOVf kFgTzX"
           size="18"
         >
@@ -67,6 +68,7 @@ exports[`TextField component testing TextField with icon 1`] = `
         class="sc-dkzDqf sc-hKMtZM ipdCxW eHVwRj"
       >
         <span
+          aria-label=""
           class="sc-gKXOVf kFgTzX"
           size="18"
         >

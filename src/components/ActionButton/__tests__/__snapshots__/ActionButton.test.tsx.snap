@@ -6,6 +6,7 @@ exports[`ActionButton component testing ActionButton 1`] = `
     class="sc-dkzDqf ia-DTMs"
   >
     <span
+      aria-label=""
       class="sc-bczRLJ gJuzRf"
       size="18"
     >

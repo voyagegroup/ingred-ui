@@ -34,6 +34,7 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
           class="sc-iBkjds jLsWjl"
         >
           <span
+            aria-label=""
             class="sc-bczRLJ gJuzRf"
             size="18"
           >

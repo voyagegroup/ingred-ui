@@ -2,7 +2,6 @@ import * as React from "react";
 import { fontSize } from "../Typography/Typography";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
-import Icon from "../Icon";
 import Spacer from "../Spacer";
 
 export type ButtonSize = "small" | "medium" | "large";

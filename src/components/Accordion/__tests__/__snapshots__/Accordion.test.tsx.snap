@@ -25,6 +25,7 @@ exports[`Accordion component testing Accordion 1`] = `
           class="sc-gKXOVf gIbCPD"
         >
           <span
+            aria-label=""
             class="sc-bczRLJ gJuzRf"
             size="18"
           >
@@ -77,6 +78,7 @@ exports[`Accordion component testing Disable Accordion 1`] = `
           class="sc-gKXOVf gIbCPD"
         >
           <span
+            aria-label=""
             class="sc-bczRLJ gJuzRf"
             size="18"
           >

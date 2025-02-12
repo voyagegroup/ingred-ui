@@ -37,6 +37,7 @@ exports[`FullSizeConfirmModal component testing FullSizeConfirmModal 1`] = `
               class="sc-iBkjds dNFTDc"
             >
               <span
+                aria-label=""
                 class="sc-jqUVSM eIEBka"
                 size="24"
               >

@@ -8,6 +8,7 @@ exports[`ContextMenu component testing ContextMenu 1`] = `
     data-testid="icon-wrapper"
   >
     <span
+      aria-label=""
       class="sc-iBkjds kTxGwl"
       size="18"
     >
