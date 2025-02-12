@@ -3,7 +3,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
 import { FilterTagInput } from "./index";
 import Icon from "../Icon";
-import { colors } from "../../styles";
 
 const meta = {
   title: "Components/Inputs/FilterTagInput",
