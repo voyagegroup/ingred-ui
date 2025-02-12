@@ -348,7 +348,7 @@ export type Props =
     };
 
 const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
-  { name, type = "line", size = "md", color = "fill", alt = "" },
+  { name, type = "line", size = "md", color = "fill", alt = undefined },
   ref,
 ) {
   const theme = useTheme();
