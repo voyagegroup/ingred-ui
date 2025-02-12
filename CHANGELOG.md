@@ -1,5 +1,11 @@
 # Changelog
 
+## 19.8.0
+
+### Minor Changes
+
+- [#1716](https://github.com/voyagegroup/ingred-ui/pull/1716) [`0f3627ae`](https://github.com/voyagegroup/ingred-ui/commit/0f3627ae9a535c26460b302a79d5906acb252942) Thanks [@yomotsu](https://github.com/yomotsu)! - add FilterTagInput component and corresponding icons
+
 ## 19.7.0
 
 ### Minor Changes
