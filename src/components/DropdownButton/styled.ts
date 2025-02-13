@@ -8,7 +8,11 @@ export const ButtonContainer = styled.div`
 export const MainButton = styled(Button)`
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  border-right: none;
+  border-right: 0;
+
+  &:disabled {
+    border-right: 0;
+  }
 `;
 
 export const SplitToggle = styled(Button)`
