@@ -145,7 +145,7 @@ const FullSizeConfirmModal = React.forwardRef<
                 <Flex display="flex" alignItems="center">
                   <Button
                     type="button"
-                    color="secondary"
+                    color="basicLight"
                     inline={true}
                     onClick={handleClose("clickCancelButton")}
                   >

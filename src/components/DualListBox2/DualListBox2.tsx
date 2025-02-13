@@ -547,7 +547,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.SelectedClearButton>
                   <Button
                     type="button"
-                    color="secondary"
+                    color="basicLight"
                     size="small"
                     disabled={!included.length && !excluded.length}
                     onClick={handleClearButtonClick}
