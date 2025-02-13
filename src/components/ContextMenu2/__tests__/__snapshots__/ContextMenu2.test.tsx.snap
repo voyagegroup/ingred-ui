@@ -294,7 +294,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw bXokIz"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw cxvbuX"
           color="primary"
           font-size="12px"
           height="28px"

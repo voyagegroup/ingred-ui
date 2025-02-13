@@ -8,7 +8,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV dWuJCo sc-iBkjds jECwvP"
+      class="sc-gsnTZi sc-dkzDqf bveZbV gJAork sc-iBkjds jECwvP"
       color="primary"
       data-testid="menu-toggle"
       disabled=""
@@ -115,7 +115,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV dWuJCo sc-iBkjds jECwvP"
+      class="sc-gsnTZi sc-dkzDqf bveZbV gJAork sc-iBkjds jECwvP"
       color="primary"
       data-testid="menu-toggle"
       font-size="13px"
@@ -228,7 +228,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV jtUQrT sc-jSMfEi eEljcZ"
+      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-jSMfEi xUbxp"
       color="primary"
       disabled=""
       font-size="13px"
@@ -237,7 +237,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       Save
     </button>
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV jtUQrT sc-gKXOVf cwUGoA"
+      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-gKXOVf cwUGoA"
       color="primary"
       data-testid="menu-toggle"
       disabled=""
@@ -340,7 +340,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV jtUQrT sc-jSMfEi eEljcZ"
+      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-jSMfEi xUbxp"
       color="primary"
       font-size="13px"
       height="32px"
@@ -348,7 +348,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       Save
     </button>
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV jtUQrT sc-gKXOVf cwUGoA"
+      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-gKXOVf cwUGoA"
       color="primary"
       data-testid="menu-toggle"
       font-size="13px"

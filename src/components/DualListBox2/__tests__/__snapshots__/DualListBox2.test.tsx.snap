@@ -466,7 +466,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             class="sc-kgflAQ hvwqvX"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV cbezQJ"
+              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
               color="basicLight"
               font-size="12px"
               height="28px"
@@ -899,7 +899,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             class="sc-kgflAQ hvwqvX"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV cbezQJ"
+              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
               color="basicLight"
               font-size="12px"
               height="28px"
@@ -1267,7 +1267,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             class="sc-kgflAQ hvwqvX"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV cbezQJ"
+              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
               color="basicLight"
               font-size="12px"
               height="28px"
