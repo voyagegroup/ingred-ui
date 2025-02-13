@@ -43,7 +43,7 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
             border: ${({ theme }) => `1px solid ${theme.palette.divider}`};
             background: ${({ theme }) => theme.palette.gray.light};
             color: ${({ theme }) => theme.palette.text.disabled};
-            box-shadow: theme.shadow[ "3dShadowBasic"];
+            box-shadow: ${({ theme }) => theme.shadow["3dShadowBasic"]};
           `}
   }
 
