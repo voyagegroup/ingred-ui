@@ -1,18 +1,13 @@
 import styled from "styled-components";
-
-export type ContainerProps = {
-  minWidth: string;
-  horizontalPadding: string;
+type ButtonGroupProps = {
+  minSize?: string;
 };
 
-export const ButtonGroupContainer = styled.div<ContainerProps>`
+export const ButtonGroupContainer = styled.div<ButtonGroupProps>`
   display: inline-flex;
 
   & > * {
-    min-width: ${({ minWidth }) => minWidth};
-    width: auto;
-    padding-right: ${({ horizontalPadding }) => horizontalPadding};
-    padding-left: ${({ horizontalPadding }) => horizontalPadding};
+    min-width: ${(props) => props.minSize || "fit-content"};
   }
 
   & > *:not(:last-child) {
