@@ -252,12 +252,8 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
       height={ButtonHeight[size]}
       color={color}
     >
-      {icon && (
-        <>
-          {icon}
-          <Spacer pr={0.5} />
-        </>
-      )}
+      {icon && icon}
+      {icon && children && <Spacer pr={0.5} />}
       {children}
     </Styled.ButtonContainer>
   );
