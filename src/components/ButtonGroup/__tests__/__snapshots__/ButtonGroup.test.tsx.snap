@@ -3,10 +3,10 @@
 exports[`Button component testing ButtonGroup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ cAklds"
+    class="sc-bczRLJ kQjzkA"
   >
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK KRrxX"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
       color="basicLight"
       font-size="13px"
       height="32px"
@@ -14,7 +14,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       Edit
     </button>
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK KRrxX"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
       color="basicLight"
       font-size="13px"
       height="32px"
