@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataTable2Context } from "./context";
 import {
   ContextMenu2,
   ContextMenu2TriggerItem,
@@ -11,7 +12,20 @@ import {
 
 // 左上コントロール群
 
+const spacings = [
+  { value: -2, label: "より狭くする" },
+  { value: -1, label: "狭くする" },
+  { value: 0, label: "標準" },
+  { value: 1, label: "広くする" },
+  { value: 2, label: "より広くする" },
+] as const;
+
 export const DataTable2MenuSpaceControl = () => {
+  const { rowSpacing, setRowSpacing } = useContext(DataTable2Context);
+  const handleOnChange = (spacing: -2 | -1 | 0 | 1 | 2) => {
+    setRowSpacing(spacing);
+  };
+
   return (
     // 密度
     // このコンポーネントが親の ContextMenu2Provider 内に設置される前提なので、
@@ -24,11 +38,15 @@ export const DataTable2MenuSpaceControl = () => {
         </ContextMenu2TriggerItem>
       }
     >
-      <ContextMenu2CheckItem>より狭くする</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>狭くする</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem checked>標準</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>広くする</ContextMenu2CheckItem>
-      <ContextMenu2CheckItem>より広くする</ContextMenu2CheckItem>
+      {spacings.map(({ value, label }) => (
+        <ContextMenu2CheckItem
+          key={value}
+          checked={rowSpacing === value}
+          onChange={() => handleOnChange(value)}
+        >
+          {label}
+        </ContextMenu2CheckItem>
+      ))}
     </ContextMenu2>
   );
 };

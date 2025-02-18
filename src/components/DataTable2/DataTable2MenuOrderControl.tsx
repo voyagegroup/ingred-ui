@@ -1,4 +1,6 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useMemo, useCallback, useContext } from "react";
+import { DataTable2Context } from "./context";
+import type { Column } from "./types";
 import Icon from "../Icon";
 import {
   ContextMenu2,
@@ -17,25 +19,18 @@ import Button from "../Button";
 ////////////////////////////////////////////////////////////////////////////////
 
 // 左上コントロール群
-type Column = {
-  id: number;
-  label: string;
-  checked: boolean;
-  sortable: boolean;
-};
 
 export const DataTable2MenuOrderControl = () => {
-  const [columns, setColumns] = useState<Column[]>([
-    { id: 1, label: "名前", checked: true, sortable: false },
-    { id: 2, label: "ステータス", checked: true, sortable: true },
-    { id: 3, label: "メールアドレス", checked: false, sortable: true },
-    { id: 4, label: "登録日", checked: true, sortable: true },
-    { id: 5, label: "操作", checked: true, sortable: false },
-  ]);
+  const { columns, setColumns } = useContext(DataTable2Context);
+
+  const orderedColumns = useMemo(
+    () => [...columns].sort((a, b) => a.order - b.order),
+    [columns],
+  );
 
   const groupedColumns = useMemo(
     () =>
-      columns.reduce(
+      orderedColumns.reduce(
         (acc, column) => {
           if (!column.sortable && acc.sortable.length === 0) {
             acc.startFixed.push(column);
@@ -54,22 +49,25 @@ export const DataTable2MenuOrderControl = () => {
           endFixed: [] as Column[],
         },
       ),
-    [columns],
+    [orderedColumns],
   );
 
   const handleOrderChange = useCallback(
     (order: (number | string)[]) => {
-      const newSortableColumns = order
-        .map((id) => groupedColumns.sortable.find((column) => column.id === id))
-        .filter((column): column is Column => !!column);
-      const newColumnOrder = [
-        ...groupedColumns.startFixed,
-        ...newSortableColumns,
-        ...groupedColumns.endFixed,
-      ];
-      setColumns(newColumnOrder);
+      const newColumns = structuredClone(columns);
+      newColumns.forEach((c) => {
+        const fixedCol =
+          groupedColumns.startFixed.find((col) => col.id === c.id) ||
+          groupedColumns.endFixed.find((col) => col.id === c.id);
+        if (fixedCol) return;
+
+        const newOrder = order.indexOf(c.id);
+        if (newOrder === -1) return;
+        c.order = groupedColumns.startFixed.length + newOrder;
+      });
+      setColumns(newColumns);
     },
-    [groupedColumns],
+    [columns, groupedColumns, setColumns],
   );
 
   return (
@@ -82,7 +80,7 @@ export const DataTable2MenuOrderControl = () => {
     >
       {groupedColumns.startFixed.map((col) => (
         <ContextMenu2SortableItem key={col.id} disabled id={col.id}>
-          <ContextMenu2SwitchItem disabled checked={col.checked}>
+          <ContextMenu2SwitchItem disabled checked={col.visible}>
             {col.label}
           </ContextMenu2SwitchItem>
         </ContextMenu2SortableItem>
@@ -94,11 +92,11 @@ export const DataTable2MenuOrderControl = () => {
         {groupedColumns.sortable.map((col) => (
           <ContextMenu2SortableItem key={col.id} id={col.id}>
             <ContextMenu2SwitchItem
-              checked={col.checked}
+              checked={col.visible}
               onChange={() =>
-                setColumns((columns) =>
-                  columns.map((c) =>
-                    c.id === col.id ? { ...c, checked: !c.checked } : c,
+                setColumns(
+                  structuredClone(columns).map((c) =>
+                    c.id === col.id ? { ...c, visible: !c.visible } : c,
                   ),
                 )
               }
@@ -110,7 +108,7 @@ export const DataTable2MenuOrderControl = () => {
       </ContextMenu2SortableGroup>
       {groupedColumns.endFixed.map((col) => (
         <ContextMenu2SortableItem key={col.id} disabled id={col.id}>
-          <ContextMenu2SwitchItem key={col.id} disabled checked={col.checked}>
+          <ContextMenu2SwitchItem key={col.id} disabled checked={col.visible}>
             {col.label}
           </ContextMenu2SwitchItem>
         </ContextMenu2SortableItem>

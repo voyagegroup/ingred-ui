@@ -1,12 +1,7 @@
-import React, { useContext } from "react";
+import React, { useContext, type ReactNode } from "react";
 import * as styled from "./styled";
 import Icon from "../Icon";
-import {
-  ContextMenu2,
-  ContextMenu2Container,
-  ContextMenu2HeadingItem,
-  ContextMenu2ButtonItem,
-} from "../ContextMenu2";
+import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import { DataTable2Context } from "./context";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -14,7 +9,11 @@ import { DataTable2Context } from "./context";
 ////////////////////////////////////////////////////////////////////////////////
 
 // 左上コントロール群
-export const DataTable2RowControls = () => {
+export const DataTable2RowControls = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   const { checkedRows } = useContext(DataTable2Context);
 
   return (
@@ -31,12 +30,7 @@ export const DataTable2RowControls = () => {
           </styled.RowMenuTrigger>
         }
       >
-        <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
-        <ContextMenu2ButtonItem>有効にする</ContextMenu2ButtonItem>
-        <ContextMenu2ButtonItem>アーカイブする</ContextMenu2ButtonItem>
-        <ContextMenu2HeadingItem>操作</ContextMenu2HeadingItem>
-        <ContextMenu2ButtonItem>複製する</ContextMenu2ButtonItem>
-        <ContextMenu2ButtonItem color="danger">削除する</ContextMenu2ButtonItem>
+        {children}
       </ContextMenu2>
     </ContextMenu2Container>
   );

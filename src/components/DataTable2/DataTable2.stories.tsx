@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import {
+  type Column,
   DataTable2,
   DataTable2Column,
   DataTable2Head,
@@ -11,6 +12,10 @@ import {
 } from "./index";
 import Icon from "../Icon";
 import ActionButton from "../ActionButton";
+import {
+  ContextMenu2HeadingItem,
+  ContextMenu2ButtonItem,
+} from "../ContextMenu2";
 
 const meta = {
   title: "Components/Data Display/DataTable2",
@@ -35,14 +40,62 @@ export const Overview: StoryObj<typeof DataTable2> = {
     const pageSizeOptions = [10, 20, 50, 100, 200];
     const [pageSize, setPageSize] = useState(pageSizeOptions[3]);
 
+    const [checkedRows, setCheckedRows] = useState<string[]>([]);
+
     // コンテンツ
     const [data, setData] = useState(mockData);
+    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
+    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
     const pageData = useMemo(
       () => data.slice(page * pageSize, page * pageSize + pageSize),
       [data, pageSize, page],
     );
 
+    const [columns, setColumns] = useState<Column[]>([
+      {
+        id: crypto.randomUUID(),
+        label: "名前",
+        order: 0,
+        visible: true,
+        sortable: false,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "ステータス",
+        order: 2,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "メールアドレス",
+        order: 1,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "登録日",
+        order: 3,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "操作",
+        order: 4,
+        visible: true,
+        sortable: false,
+        filtered: false,
+      },
+    ]);
+
     // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
+    // columns とは更新頻度が違うので、別で管理する。
     const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
       188, 188, 188, 188, 188,
       // undefined,
@@ -57,17 +110,50 @@ export const Overview: StoryObj<typeof DataTable2> = {
     );
     return (
       <DataTable2
+        columns={columns}
         pageSize={pageSize}
         pageSizeOptions={pageSizeOptions}
         currentPage={page}
-        numOfItems={data.length}
+        totalCount={data.length}
+        rowControls={
+          <>
+            <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
+            <ContextMenu2ButtonItem
+              onClick={() => alert(`有効: ${checkedRows.join()}`)}
+            >
+              有効にする
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem
+              onClick={() => alert(`アーカイブ: ${checkedRows.join()}`)}
+            >
+              アーカイブする
+            </ContextMenu2ButtonItem>
+            <ContextMenu2HeadingItem onClick={() => alert("任意機能")}>
+              操作
+            </ContextMenu2HeadingItem>
+            <ContextMenu2ButtonItem onClick={() => alert("任意機能")}>
+              複製する
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem
+              color="danger"
+              onClick={() => alert("任意機能")}
+            >
+              削除する
+            </ContextMenu2ButtonItem>
+          </>
+        }
         extraButtons={
-          <DataTable2ActionButton prepend={<Icon name="download_cloud" />}>
+          <DataTable2ActionButton
+            prepend={<Icon name="download_cloud" />}
+            onClick={() => alert("自由におけるボタン")}
+          >
             ダウンロード
           </DataTable2ActionButton>
         }
-        onPageChange={setPage}
+        onCheckedRowsChange={setCheckedRows}
         onPageSizeChange={setPageSize}
+        onPageChange={setPage}
+        onColumnsChange={setColumns}
       >
         <DataTable2Head>
           <DataTable2Column

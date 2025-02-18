@@ -207,7 +207,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       mouseOnly: true,
       delay: {
         open: 100,
-        close: isSorting ? 999999 : 250,
+        close: isSorting ? 999999 : 100,
       },
       restMs: 100,
       handleClose: safePolygon(),

@@ -7,20 +7,15 @@ import React, {
   useContext,
   type ReactNode,
 } from "react";
-import * as styled from "./styled";
-import { DataTable2Context } from "./context";
+import type { Column } from "./types";
+import { DataTable2Context, type RowSpacing } from "./context";
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
-import {
-  DataTable2MenuCountControl,
-  type DataTable2MenuCountControlProps,
-} from "./DataTable2MenuCountControl";
+import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
 import { DataTable2MenuSpaceControl } from "./DataTable2MenuSpaceControl";
-import {
-  DataTable2Pagination,
-  type DataTable2PaginationProps,
-} from "./DataTable2Pagination";
+import { DataTable2Pagination } from "./DataTable2Pagination";
 import { DataTable2RowControls } from "./DataTable2RowControls";
+import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
 import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
@@ -29,19 +24,11 @@ import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-type RowsControlsProps = DataTable2PaginationProps &
-  DataTable2MenuCountControlProps & {
-    extraButtons: ReactNode;
-  };
-const RowsControls = ({
-  currentPage,
-  pageSize,
-  pageSizeOptions,
-  numOfItems,
-  onPageChange,
-  onPageSizeChange,
-  extraButtons,
-}: RowsControlsProps) => {
+type RowsControlsProps = {
+  rowControls: ReactNode;
+  extraButtons: ReactNode;
+};
+const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
   const { isSmallLayout, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
 
@@ -58,13 +45,6 @@ const RowsControls = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // ページ移動した場合、全選択を解除
-  const previousPage = useRef(currentPage);
-  useEffect(() => {
-    if (previousPage.current !== currentPage) setCheckedRows([]);
-    previousPage.current = currentPage;
-  }, [currentPage, setCheckedRows]);
-
   return (
     <styled.RowsControls>
       <Checkbox
@@ -72,19 +52,12 @@ const RowsControls = ({
         indeterminate={isIndeterminate}
         onChange={onCheck}
       />
-      <DataTable2RowControls />
+      <DataTable2RowControls>{rowControls}</DataTable2RowControls>
 
       <styled.RowsControlsSeparator />
 
       {/* ページネーション */}
-      <DataTable2Pagination
-        currentPage={currentPage}
-        pageSize={pageSize}
-        pageSizeOptions={pageSizeOptions}
-        numOfItems={numOfItems}
-        onPageChange={onPageChange}
-        onPageSizeChange={onPageSizeChange}
-      />
+      <DataTable2Pagination />
 
       <styled.RowsControlsSeparator />
       <DataTable2FilterControls />
@@ -105,11 +78,7 @@ const RowsControls = ({
             <DataTable2MenuOrderControl />
 
             {/* 件数 */}
-            <DataTable2MenuCountControl
-              pageSize={pageSize}
-              pageSizeOptions={pageSizeOptions}
-              onPageSizeChange={onPageSizeChange}
-            />
+            <DataTable2MenuCountControl />
 
             {/* 密度 */}
             <DataTable2MenuSpaceControl />
@@ -121,26 +90,65 @@ const RowsControls = ({
 };
 
 type DataTable2Props = {
+  // ページネーション関連
+  /**
+   * ページネーションの現在のページ
+   */
+  currentPage: number;
+  /**
+   * ページネーションの1ページあたりの表示件数
+   */
+  pageSize: number;
+  /**
+   * ページネーションの1ページあたりの表示件数の選択肢
+   */
+  pageSizeOptions: number[];
+  /**
+   * ページネーションの全件数
+   */
+  totalCount: number;
+  columns: Column[];
+  /**
+   * ページネーションのページ変更時のコールバック
+   * @param page 変更後のページ
+   */
+  onPageChange: (page: number) => void;
+  /**
+   * ページネーションの1ページあたりの表示件数変更時のコールバック
+   * @param page 変更後のページ
+   */
+  onPageSizeChange: (size: number) => void;
+  onColumnsChange: (columns: Column[]) => void;
+} & {
   children: ReactNode;
-} & RowsControlsProps &
-  DataTable2MenuCountControlProps;
+  /**
+   * 朝のチェック状態が変更されたときに呼び出されるコールバック
+   * 読み取り専用で、今のところは外から checkedRows を変更することはできません
+   */
+  onCheckedRowsChange?: (checkedRows: string[]) => void;
+} & RowsControlsProps;
 
 export const DataTable2 = ({
+  rowControls,
   extraButtons,
   currentPage,
   pageSize,
   pageSizeOptions,
-  numOfItems,
+  totalCount,
+  columns,
   onPageChange,
   onPageSizeChange,
+  onColumnsChange,
+  onCheckedRowsChange,
   children,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);
   const [checkedRows, setCheckedRows] = useState<string[]>([]);
   const [columnWidths, setColumnWidths] = useState<(number | null)[]>([]);
+  const [rowSpacing, setRowSpacing] = useState<RowSpacing>(0);
   const elRef = useRef<HTMLDivElement>(null);
-  const onColumnWidthChange = useCallback(
+  const handleColumnWidthChange = useCallback(
     (index: number, width: number | null) => {
       const newColumnWidths = [...columnWidths];
       newColumnWidths[index] = width;
@@ -166,6 +174,21 @@ export const DataTable2 = ({
     };
   }, []);
 
+  const handleCheckedRows = useCallback(
+    (checkedRows: string[]) => {
+      setCheckedRows(checkedRows);
+      onCheckedRowsChange?.(checkedRows);
+    },
+    [setCheckedRows],
+  );
+
+  // ページ移動した場合全選択を解除
+  const previousPage = useRef(currentPage);
+  useEffect(() => {
+    if (previousPage.current !== currentPage) handleCheckedRows([]);
+    previousPage.current = currentPage;
+  }, [currentPage, handleCheckedRows]);
+
   return (
     <styled.DataTable2 ref={elRef}>
       <DataTable2Context.Provider
@@ -173,21 +196,23 @@ export const DataTable2 = ({
           isSmallLayout,
           rowIds,
           checkedRows,
+          totalCount,
+          currentPage,
+          pageSize,
+          pageSizeOptions,
+          columns,
           columnWidths,
+          rowSpacing,
           setRowIds,
-          setCheckedRows,
-          onColumnWidthChange,
+          setCheckedRows: handleCheckedRows,
+          setCurrentPage: onPageChange,
+          setPageSize: onPageSizeChange,
+          setColumns: onColumnsChange,
+          setColumnWidth: handleColumnWidthChange,
+          setRowSpacing,
         }}
       >
-        <RowsControls
-          currentPage={currentPage}
-          extraButtons={extraButtons}
-          pageSize={pageSize}
-          pageSizeOptions={pageSizeOptions}
-          numOfItems={numOfItems}
-          onPageChange={onPageChange}
-          onPageSizeChange={onPageSizeChange}
-        />
+        <RowsControls rowControls={rowControls} extraButtons={extraButtons} />
         <styled.Viewport>
           <table>{children}</table>
         </styled.Viewport>

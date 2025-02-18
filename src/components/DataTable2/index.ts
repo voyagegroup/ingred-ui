@@ -1,3 +1,4 @@
+export type { Column } from "./types";
 export { DataTable2 } from "./DataTable2";
 export { DataTable2Head } from "./DataTable2Head";
 export { DataTable2Column } from "./DataTable2Column";

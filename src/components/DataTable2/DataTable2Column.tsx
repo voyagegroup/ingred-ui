@@ -46,7 +46,7 @@ export const DataTable2Column = ({
   children,
   onWidthChange,
 }: DataTable2ColumnProps) => {
-  const { onColumnWidthChange } = useContext(DataTable2Context);
+  const { setColumnWidth: onColumnWidthChange } = useContext(DataTable2Context);
   const columnContext = useContext(ColumnContext);
   const [isDragging, setIsDragging] = useState(false);
 

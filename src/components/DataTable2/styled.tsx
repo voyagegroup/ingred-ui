@@ -124,6 +124,10 @@ export const RowMenuPagination = styled.div`
       border-radius: 4px 0 0 4px;
     }
 
+    &:nth-child(2) {
+      padding-left: 8px;
+    }
+
     &:last-child {
       border-radius: 0 4px 4px 0;
     }
@@ -312,6 +316,22 @@ export const DataTable2Row = styled.tr`
     line-height: 17px;
     color: ${colors.basic[900]};
     border-bottom: 1px solid ${colors.basic[400]};
+
+    &:where(tr[data-spacing="-2"] *) {
+      padding-block: 4px;
+    }
+
+    &:where(tr[data-spacing="-1"] *) {
+      padding-block: 8px;
+    }
+
+    &:where(tr[data-spacing="1"] *) {
+      padding-block: 16px;
+    }
+
+    &:where(tr[data-spacing="2"] *) {
+      padding-block: 20px;
+    }
   }
 `;
 

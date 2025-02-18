@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataTable2Context } from "./context";
 import {
   ContextMenu2,
   ContextMenu2TriggerItem,
@@ -9,18 +10,10 @@ import {
 // INTERNAL USE ONLY
 ////////////////////////////////////////////////////////////////////////////////
 
-export type DataTable2MenuCountControlProps = {
-  pageSize: number;
-  pageSizeOptions: number[];
-  onPageSizeChange: (itemsPerPage: number) => void;
-};
-
 // 左上コントロール群
-export const DataTable2MenuCountControl = ({
-  pageSize,
-  pageSizeOptions,
-  onPageSizeChange,
-}: DataTable2MenuCountControlProps) => {
+export const DataTable2MenuCountControl = () => {
+  const { pageSize, pageSizeOptions, setPageSize } =
+    useContext(DataTable2Context);
   return (
     // 並び替え
     // このコンポーネントが親の ContextMenu2Provider 内に設置される前提なので、
@@ -42,7 +35,7 @@ export const DataTable2MenuCountControl = ({
         <ContextMenu2CheckItem
           key={size}
           checked={pageSize === size}
-          onChange={() => onPageSizeChange(size)}
+          onChange={() => setPageSize(size)}
         >
           {size}件
         </ContextMenu2CheckItem>
