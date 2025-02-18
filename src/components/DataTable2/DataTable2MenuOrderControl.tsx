@@ -122,7 +122,7 @@ export const DataTable2MenuOrderControl = () => {
       <ContextMenu2ButtonControlsItem>
         <Button
           size="small"
-          color="secondary"
+          color="clear"
           onClick={() => setUserChangedColumns(columns)}
         >
           キャンセル

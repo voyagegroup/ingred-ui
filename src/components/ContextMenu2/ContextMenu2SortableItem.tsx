@@ -22,6 +22,7 @@ import styled from "styled-components";
 import { colors } from "../../styles";
 import { createPortal } from "react-dom";
 import Icon from "../Icon";
+import { depth } from "../../styles/depth";
 
 export const ContextMenu2SortableContext = createContext<{
   isSorting: boolean;
@@ -128,7 +129,7 @@ export const ContextMenu2SortableGroup = ({
         </SortableContext>
       </GroupInner>
       {createPortal(
-        <DragOverlay>
+        <DragOverlay zIndex={depth.modal + 1}>
           <ContextMenu2SortableItemContext.Provider value={{ isGhost: true }}>
             {activeChild}
           </ContextMenu2SortableItemContext.Provider>
