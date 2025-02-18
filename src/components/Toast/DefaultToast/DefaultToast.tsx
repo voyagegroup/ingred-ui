@@ -73,7 +73,7 @@ const getToastStyles = ({
       palette.warning.light,
     ),
     icon: (
-      <Icon name="alart" type="fill" size="lg" color={palette.warning.main} />
+      <Icon name="alert" type="fill" size="lg" color={palette.warning.main} />
     ),
     countDownBackground: palette.warning.main,
     titleColor: palette.warning.deepDark,
@@ -84,7 +84,7 @@ const getToastStyles = ({
     background: palette.danger.highlight,
     boxShadow: getShadow(5, palette.action.shadowOpacity, palette.danger.light),
     icon: (
-      <Icon name="alart" type="fill" size="lg" color={palette.danger.main} />
+      <Icon name="alert" type="fill" size="lg" color={palette.danger.main} />
     ),
     countDownBackground: palette.danger.main,
     titleColor: palette.danger.deepDark,
