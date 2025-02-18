@@ -40,6 +40,8 @@ export type Palette = {
   white: string;
   black: string;
   primary: PaletteColor;
+  primaryPale: PaletteColor;
+  basicDark: PaletteColor;
   success: PaletteColor;
   warning: PaletteColor;
   danger: PaletteColor;
@@ -60,6 +62,20 @@ export const palette: Palette = {
     main: colors.blue[500],
     light: colors.blue[200],
     highlight: colors.blue[100],
+  },
+  primaryPale: {
+    deepDark: colors.blue[600],
+    dark: colors.blue[500],
+    main: colors.blue[50],
+    light: colors.blue[200],
+    highlight: colors.blue[100],
+  },
+  basicDark: {
+    deepDark: colors.basic[400],
+    dark: colors.basic[200],
+    main: colors.basic[100],
+    light: colors.basic[300],
+    highlight: colors.basic[100],
   },
   success: {
     deepDark: colors.green[700],

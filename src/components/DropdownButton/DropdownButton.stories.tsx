@@ -50,10 +50,26 @@ export const Colors: StoryObj<DropdownButtonProps> = {
       </div>
       <Spacer pl={3} />
       <div>
-        <Typography weight="bold">Secondary</Typography>
+        <Typography weight="bold">Basic Light</Typography>
         <Spacer pt={2} />
-        <DropdownButton color="secondary" {...args}>
-          Secondary
+        <DropdownButton color="basicLight" {...args}>
+          Basic Light
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Basic Dark</Typography>
+        <Spacer pt={2} />
+        <DropdownButton color="basicDark" {...args}>
+          Basic Dark
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Disabled</Typography>
+        <Spacer pt={2} />
+        <DropdownButton color="basicDark" disabled={true} {...args}>
+          Basic Dark (Disabled)
         </DropdownButton>
       </div>
     </Flex>
@@ -100,9 +116,61 @@ export const Split: StoryObj<DropdownButtonProps> = {
       </div>
       <Spacer pl={3} />
       <div>
-        <Typography weight="bold">Split</Typography>
+        <Typography weight="bold">Split (small) </Typography>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="small" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="small" color="basicLight" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="small" color="basicDark" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="small" disabled={true} {...args}>
+          Split
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Split (Medium, Default)</Typography>
         <Spacer pt={2} />
         <DropdownButton split={true} {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} color="basicLight" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} color="basicDark" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} disabled={true} {...args}>
+          Split
+        </DropdownButton>
+      </div>
+      <Spacer pl={3} />
+      <div>
+        <Typography weight="bold">Split (Large)</Typography>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="large" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="large" color="basicLight" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="large" color="basicDark" {...args}>
+          Split
+        </DropdownButton>
+        <Spacer pt={2} />
+        <DropdownButton split={true} size="large" disabled={true} {...args}>
           Split
         </DropdownButton>
       </div>

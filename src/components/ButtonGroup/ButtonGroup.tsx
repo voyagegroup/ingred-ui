@@ -1,34 +1,44 @@
 import * as React from "react";
 import * as Styled from "./styled";
 
-import { ButtonSize } from "../Button/Button";
-import { useTheme } from "../../themes";
+import { ButtonColor, ButtonSize } from "../Button/Button";
 
-type GroupButtonSize = Exclude<ButtonSize, "large">;
+type ButtonMinSize = ButtonSize | "fit-content";
 
 export type ButtonGroupProps = React.ComponentPropsWithoutRef<"div"> & {
-  size?: GroupButtonSize;
+  size?: ButtonSize;
+  color?: ButtonColor;
+  minSize?: ButtonMinSize;
   disabled?: boolean;
 };
 
-const buttonSize: Record<GroupButtonSize, { minWidth: string }> = {
-  small: {
-    minWidth: "63px",
-  },
-  medium: {
-    minWidth: "71px",
-  },
+// ButtonGroup内のButtonのiconのサイズを指定する
+const buttonIconSize: Record<ButtonSize, string> = {
+  small: "md",
+  medium: "md-lg",
+  large: "md-lg",
+};
+
+// ButtonGroup内のButtonの最小幅を揃えるためのもの
+const buttonMinSize: Record<ButtonMinSize, string> = {
+  "fit-content": "fit-content",
+  small: "63px",
+  medium: "71px",
+  large: "71px",
 };
 
 const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
   function ButtonGroup(
-    { size = "medium", disabled = false, children, ...rest },
+    {
+      size = "medium",
+      color = "basicLight",
+      minSize = "fit-content",
+      disabled = false,
+      children,
+      ...rest
+    },
     ref,
   ) {
-    const theme = useTheme();
-    const horizontalPadding =
-      size === "small" ? `${theme.spacing}px` : `${theme.spacing * 2}px`;
-
     const childrenWithProps = React.Children.map(
       children as React.ReactElement[],
       (child: React.ReactElement) => {
@@ -36,10 +46,17 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           ...child.props,
           ...(disabled && { disabled: true }),
           size: size,
-          color: "secondary",
+          inline: true,
+          color: color,
           style: {
             ...child.props.style,
           },
+          // icon に ButtonGroup の size に合わせた値を適用
+          icon: child.props.icon
+            ? React.cloneElement(child.props.icon, {
+                size: buttonIconSize[size],
+              })
+            : undefined,
         });
         return Button;
       },
@@ -48,9 +65,8 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     return (
       <Styled.ButtonGroupContainer
         ref={ref}
-        minWidth={buttonSize[size].minWidth}
-        horizontalPadding={horizontalPadding}
         {...rest}
+        minSize={buttonMinSize[minSize]}
       >
         {childrenWithProps}
       </Styled.ButtonGroupContainer>

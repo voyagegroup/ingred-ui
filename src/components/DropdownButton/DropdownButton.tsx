@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes";
-import Icon from "../Icon";
+import Icon, { IconSize } from "../Icon";
 import Spacer from "../Spacer";
 import Menu, { MenuProps } from "../Menu";
 import { ButtonSize, ButtonColor } from "../Button/Button";
@@ -31,6 +31,12 @@ export type DropdownButtonProps = {
   menuMaxHeight?: MenuProps["maxHeight"];
   menuProps?: Partial<MenuProps>;
   children?: React.ReactNode;
+};
+
+const ArrowIconSize: { [key in ButtonSize]: IconSize } = {
+  small: "sm-md",
+  medium: "md",
+  large: "md",
 };
 
 const DropdownButton = React.forwardRef<HTMLDivElement, DropdownButtonProps>(
@@ -115,7 +121,7 @@ const DropdownButton = React.forwardRef<HTMLDivElement, DropdownButtonProps>(
               <Spacer pr={0.5} />
               <Icon
                 name={"arrow_bottom"}
-                size="md"
+                size={ArrowIconSize[size]}
                 // eslint-disable-next-line react/jsx-handler-names
                 color={setIconColor(disabled, color)}
               />

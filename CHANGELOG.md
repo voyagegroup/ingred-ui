@@ -1,5 +1,21 @@
 # Changelog
 
+## 20.0.0
+
+### Major Changes
+
+- [#1722](https://github.com/voyagegroup/ingred-ui/pull/1722) [`8e193296`](https://github.com/voyagegroup/ingred-ui/commit/8e1932964fc1b84f8cd0d745e606c37c6b7ecfd6) Thanks [@geckotang](https://github.com/geckotang)! - update button component
+
+### Patch Changes
+
+- [#1724](https://github.com/voyagegroup/ingred-ui/pull/1724) [`c259b1dc`](https://github.com/voyagegroup/ingred-ui/commit/c259b1dc1b9e27853d1633cc0f4321cf52c214b4) Thanks [@deatiger](https://github.com/deatiger)! - Update snapshot test
+
+## 19.8.0
+
+### Minor Changes
+
+- [#1716](https://github.com/voyagegroup/ingred-ui/pull/1716) [`0f3627ae`](https://github.com/voyagegroup/ingred-ui/commit/0f3627ae9a535c26460b302a79d5906acb252942) Thanks [@yomotsu](https://github.com/yomotsu)! - add FilterTagInput component and corresponding icons
+
 ## 19.7.0
 
 ### Minor Changes

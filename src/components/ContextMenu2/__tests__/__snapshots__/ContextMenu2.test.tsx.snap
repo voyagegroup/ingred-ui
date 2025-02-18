@@ -35,7 +35,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-breuTD dyUHyD"
+    class="sc-breuTD eJxrIt"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
@@ -284,18 +284,20 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw dCjqBG"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw eoBrxU"
+          color="clear"
           font-size="12px"
-          font-weight="normal"
+          height="28px"
         >
           キャンセル
         </button>
       </li>
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw drLzuX"
+          class="sc-hHLeRK sc-dmRaPn dqYRgw cxvbuX"
+          color="primary"
           font-size="12px"
-          font-weight="normal"
+          height="28px"
         >
           適用
         </button>

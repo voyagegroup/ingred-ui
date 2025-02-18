@@ -18,6 +18,7 @@ import { CheckIcon } from "./internal/CheckIcon";
 import { EyeIcon } from "./internal/EyeIcon";
 import { EyeOffIcon } from "./internal/EyeOffIcon";
 import { ExclamationIcon } from "./internal/ExclamationIcon";
+import { ExpandDiagonalSFillIcon } from "./internal/ExpandDiagonalSFillIcon";
 import { ArrowDoubleLeftIcon } from "./internal/ArrowDoubleLeftIcon";
 import { QuestionIcon } from "./internal/QuestionIcon";
 import { ZoomInIcon } from "./internal/ZoomInIcon";
@@ -95,6 +96,17 @@ import { CheckThinIcon } from "./internal/CheckThinIcon";
 import { ImageCheckIcon } from "./internal/ImageCheckIcon";
 import { Group2Icon } from "./internal/Group2Icon";
 import { KeyIcon } from "./internal/KeyIcon";
+import { OperatorMatchIcon } from "./internal/OperatorMatchIcon";
+import { OperatorDoesNotMatchIcon } from "./internal/OperatorDoesNotMatchIcon";
+import { OperatorContainsIcon } from "./internal/OperatorContainsIcon";
+import { OperatorStartsWithIcon } from "./internal/OperatorStartsWithIcon";
+import { OperatorEndsWithIcon } from "./internal/OperatorEndsWithIcon";
+import { OperatorEqualIcon } from "./internal/OperatorEqualIcon";
+import { OperatorNotEqualIcon } from "./internal/OperatorNotEqualIcon";
+import { OperatorGreaterThanIcon } from "./internal/OperatorGreaterThanIcon";
+import { OperatorGreaterThanOrEqualToIcon } from "./internal/OperatorGreaterThanOrEqualToIcon";
+import { OperatorLessThanIcon } from "./internal/OperatorLessThanIcon";
+import { OperatorLessThanOrEqualToIcon } from "./internal/OperatorLessThanOrEqualToIcon";
 
 /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
 type DeprecatedArrowBottom = "arrow_bottom";
@@ -119,6 +131,7 @@ export type IconName =
   | "eye"
   | "eye_off"
   | "exclamation"
+  | "expand_diagonal_s_fill"
   | "arrow_double_left"
   | "arrow_double_right"
   | "question"
@@ -192,14 +205,27 @@ export type IconName =
   | "check_thin"
   | "image_check"
   | "group2"
-  | "key";
+  | "key"
+  | "operator_match"
+  | "operator_does_not_match"
+  | "operator_contains"
+  | "operator_starts_with"
+  | "operator_ends_with"
+  | "operator_equal"
+  | "operator_not_equal"
+  | "operator_greater_than"
+  | "operator_greater_than_or_equal_to"
+  | "operator_less_than"
+  | "operator_less_than_or_equal_to";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
-type IconSize = "sm" | "md" | "lg";
+export type IconSize = "sm" | "sm-md" | "md" | "md-lg" | "lg";
 export const iconSize: { [key in IconSize]: number } = {
   sm: 12,
+  "sm-md": 16,
   md: 18,
+  "md-lg": 20,
   lg: 24,
 };
 export type IconProps = {
@@ -230,6 +256,7 @@ export const icons: {
   eye: EyeIcon,
   eye_off: EyeOffIcon,
   exclamation: ExclamationIcon,
+  expand_diagonal_s_fill: ExpandDiagonalSFillIcon,
   arrow_double_left: ArrowDoubleLeftIcon,
   arrow_double_right: ArrowDoubleRightIcon,
   question: QuestionIcon,
@@ -304,6 +331,17 @@ export const icons: {
   image_check: ImageCheckIcon,
   group2: Group2Icon,
   key: KeyIcon,
+  operator_match: OperatorMatchIcon,
+  operator_does_not_match: OperatorDoesNotMatchIcon,
+  operator_contains: OperatorContainsIcon,
+  operator_starts_with: OperatorStartsWithIcon,
+  operator_ends_with: OperatorEndsWithIcon,
+  operator_equal: OperatorEqualIcon,
+  operator_not_equal: OperatorNotEqualIcon,
+  operator_greater_than: OperatorGreaterThanIcon,
+  operator_greater_than_or_equal_to: OperatorGreaterThanOrEqualToIcon,
+  operator_less_than: OperatorLessThanIcon,
+  operator_less_than_or_equal_to: OperatorLessThanOrEqualToIcon,
 };
 
 const iconFactory = (name: IconName | DeprecatedArrowBottom) => {
@@ -334,6 +372,7 @@ export type Props =
       type?: IconType;
       size?: IconSize;
       color?: IconColor;
+      alt?: string;
     }
   | {
       /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
@@ -341,15 +380,16 @@ export type Props =
       type?: IconType;
       size?: IconSize;
       color?: IconColor;
+      alt?: string;
     };
 
 const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
-  { name, type = "line", size = "md", color = "fill" },
+  { name, type = "line", size = "md", color = "fill", alt = undefined },
   ref,
 ) {
   const theme = useTheme();
   return (
-    <Styled.Container ref={ref} size={iconSize[size]}>
+    <Styled.Container ref={ref} size={iconSize[size]} aria-label={alt}>
       {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
     </Styled.Container>
   );
