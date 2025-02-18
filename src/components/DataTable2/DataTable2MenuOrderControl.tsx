@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useContext } from "react";
+import React, { useState, useMemo, useCallback, useContext } from "react";
 import { DataTable2Context } from "./context";
 import type { Column } from "./types";
 import Icon from "../Icon";
@@ -22,10 +22,12 @@ import Button from "../Button";
 
 export const DataTable2MenuOrderControl = () => {
   const { columns, setColumns } = useContext(DataTable2Context);
+  const [userChangedColumns, setUserChangedColumns] =
+    useState<Column[]>(columns);
 
   const orderedColumns = useMemo(
-    () => [...columns].sort((a, b) => a.order - b.order),
-    [columns],
+    () => [...userChangedColumns].sort((a, b) => a.order - b.order),
+    [userChangedColumns],
   );
 
   const groupedColumns = useMemo(
@@ -65,9 +67,9 @@ export const DataTable2MenuOrderControl = () => {
         if (newOrder === -1) return;
         c.order = groupedColumns.startFixed.length + newOrder;
       });
-      setColumns(newColumns);
+      setUserChangedColumns(newColumns);
     },
-    [columns, groupedColumns, setColumns],
+    [columns, groupedColumns],
   );
 
   return (
@@ -94,8 +96,8 @@ export const DataTable2MenuOrderControl = () => {
             <ContextMenu2SwitchItem
               checked={col.visible}
               onChange={() =>
-                setColumns(
-                  structuredClone(columns).map((c) =>
+                setUserChangedColumns(
+                  userChangedColumns.map((c) =>
                     c.id === col.id ? { ...c, visible: !c.visible } : c,
                   ),
                 )
@@ -118,10 +120,16 @@ export const DataTable2MenuOrderControl = () => {
       </ContextMenu2HelpTextItem>
       <ContextMenu2SeparatorItem />
       <ContextMenu2ButtonControlsItem>
-        <Button size="small" color="secondary">
+        <Button
+          size="small"
+          color="secondary"
+          onClick={() => setUserChangedColumns(columns)}
+        >
           キャンセル
         </Button>
-        <Button size="small">適用</Button>
+        <Button size="small" onClick={() => setColumns(userChangedColumns)}>
+          適用
+        </Button>
       </ContextMenu2ButtonControlsItem>
     </ContextMenu2>
   );
