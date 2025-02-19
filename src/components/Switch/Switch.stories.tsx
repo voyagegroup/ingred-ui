@@ -32,7 +32,7 @@ export const WithIcon: StoryObj = {
       <Switch
         value={index}
         cases={[
-          { name: "Alert", icon: "alart" },
+          { name: "Alert", icon: "alert" },
           { name: "Auction", icon: "auction" },
           { name: "Dashboard", icon: "dashboard" },
         ]}

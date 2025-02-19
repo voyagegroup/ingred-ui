@@ -61,7 +61,7 @@ import { UserSettingsIcon } from "./internal/UserSettingsIcon";
 import { CompanySettingsIcon } from "./internal/CompanySettingsIcon";
 import { HeartPulseIcon } from "./internal/HeartPulseIcon";
 import { CheckBoxCircleIcon } from "./internal/CheckBoxCircleIcon";
-import { AlartIcon } from "./internal/AlartIcon";
+import { AlertIcon } from "./internal/AlertIcon";
 import { BaseStationIcon } from "./internal/BaseStationIcon";
 import { BrailleIcon } from "./internal/BrailleIcon";
 import { LabelIcon } from "./internal/LabelIcon";
@@ -172,7 +172,7 @@ export type IconName =
   | "company_settings"
   | "heart_pulse"
   | "checkbox_circle"
-  | "alart"
+  | "alert"
   | "base_station"
   | "braille"
   | "label"
@@ -297,7 +297,7 @@ export const icons: {
   company_settings: CompanySettingsIcon,
   heart_pulse: HeartPulseIcon,
   checkbox_circle: CheckBoxCircleIcon,
-  alart: AlartIcon,
+  alert: AlertIcon,
   base_station: BaseStationIcon,
   braille: BrailleIcon,
   label: LabelIcon,
