@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.0.0
+
+### Major Changes
+
+- [#1727](https://github.com/voyagegroup/ingred-ui/pull/1727) [`bbc39e41`](https://github.com/voyagegroup/ingred-ui/commit/bbc39e4110f3d2d63860bb22b075626bf140ed3d) Thanks [@geckotang](https://github.com/geckotang)! - Update ErrorText & Fix typo alart to alert
+
 ## 20.0.0
 
 ### Major Changes
