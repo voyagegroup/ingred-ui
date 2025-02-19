@@ -4,5 +4,10 @@ export type Column = {
   order: number;
   visible: boolean;
   sortable: boolean;
-  filtered: boolean;
+  /**
+   * true で入力値あり、false で入力値なし、undefined でフィルタ入力機能なし
+   */
+  filtered?: boolean | undefined;
 };
+
+export type SortDirection = "asc" | "desc" | undefined;

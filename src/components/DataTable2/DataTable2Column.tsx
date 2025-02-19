@@ -6,8 +6,10 @@ import React, {
   useContext,
   type ReactNode,
   type PointerEvent as ReactPointerEvent,
+  useMemo,
 } from "react";
 import { createPortal } from "react-dom";
+import { SortDirection } from "./types";
 import * as styled from "./styled";
 import { DataTable2Context, ColumnContext } from "./context";
 
@@ -138,5 +140,46 @@ export const DataTable2Column = ({
           )}
       </styled.DataTable2ColumnInner>
     </styled.DataTable2Column>
+  );
+};
+
+////////////////////////////////////////////////////////////////////////////////
+type DataTable2ColumnLabelProps = {
+  showSortButton?: true;
+  sortButtonDirection?: SortDirection;
+  onSortChange?: (direction: SortDirection) => void;
+  children: ReactNode;
+};
+export const DataTable2ColumnLabel = ({
+  showSortButton,
+  sortButtonDirection,
+  onSortChange,
+  children,
+}: DataTable2ColumnLabelProps) => {
+  const nextSortButtonDirection = useMemo(() => {
+    if (sortButtonDirection === "asc") return "desc";
+    if (sortButtonDirection === "desc") return undefined;
+    return "asc";
+  }, [sortButtonDirection]);
+  const handleClick = useCallback(() => {
+    onSortChange?.(nextSortButtonDirection);
+  }, [onSortChange, nextSortButtonDirection]);
+  return (
+    <styled.DataTable2ColumnLabel>
+      {children}
+      {showSortButton && (
+        <styled.SortButton
+          type="button"
+          aria-label="sort the column"
+          data-sort-direction={sortButtonDirection}
+          onClick={handleClick}
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18">
+            <path d="M8.17 3.25a1 1 0 0 1 1.3-.33c.15.08.27.19.36.33l2.13 3.2c.1.15.16.33.17.51 0 .18-.03.36-.12.52s-.21.29-.37.39a1 1 0 0 1-.51.14H6.87a1 1 0 0 1-.83-1.56z" />
+            <path d="M9.83 14.75a1 1 0 0 1-1.3.33.95.95 0 0 1-.36-.33l-2.13-3.2c-.1-.15-.16-.33-.17-.51 0-.18.03-.36.12-.52s.21-.29.37-.39a1 1 0 0 1 .51-.14h4.26a1 1 0 0 1 .83 1.56z" />
+          </svg>
+        </styled.SortButton>
+      )}
+    </styled.DataTable2ColumnLabel>
   );
 };

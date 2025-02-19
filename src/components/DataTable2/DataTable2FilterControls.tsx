@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useMemo } from "react";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import {
@@ -12,6 +12,7 @@ import {
   ContextMenu2ButtonControlsItem,
 } from "../ContextMenu2";
 import Button from "../Button";
+import { DataTable2Context } from "./context";
 
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL USE ONLY
@@ -19,6 +20,11 @@ import Button from "../Button";
 
 // 左上コントロール群
 export const DataTable2FilterControls = () => {
+  const { columns } = useContext(DataTable2Context);
+  const numOfFilters = useMemo(
+    () => columns.filter((column) => column.filtered).length,
+    [columns],
+  );
   return (
     <ContextMenu2Container>
       <ContextMenu2
@@ -26,7 +32,7 @@ export const DataTable2FilterControls = () => {
         trigger={
           <styled.RowMenuFilterTrigger type="button">
             <Icon name="filter" color="currentColor" />
-            3列に適用中
+            {numOfFilters}列に適用中
           </styled.RowMenuFilterTrigger>
         }
       >

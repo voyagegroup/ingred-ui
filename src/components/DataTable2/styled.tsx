@@ -298,6 +298,40 @@ export const DragArea = styled.div`
 
 //
 // -----------------------------------------------------------------------------
+export const DataTable2ColumnLabel = styled.div`
+  display: flex;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 16px;
+  color: ${colors.basic[900]};
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+`;
+
+export const SortButton = styled.button`
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+
+  svg {
+    display: block;
+    fill: ${colors.basic[400]};
+  }
+
+  &[data-sort-direction="asc"] path:nth-child(1) {
+    fill: ${colors.basic[900]};
+  }
+
+  &[data-sort-direction="desc"] path:nth-child(2) {
+    fill: ${colors.basic[900]};
+  }
+`;
+
+//
+// -----------------------------------------------------------------------------
 export const DataTable2Row = styled.tr`
   background: #ffffff;
   transition: background 0.2s;
@@ -346,6 +380,7 @@ export const DataTable2InlineEditor = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
+  width: fit-content;
 
   a {
     color: ${colors.blue[500]};

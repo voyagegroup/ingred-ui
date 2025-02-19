@@ -13,20 +13,16 @@ import {
   ContextMenu2HeadingItem,
   ContextMenu2SeparatorItem,
   ContextMenu2TextInputItem,
+  ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import Button from "../Button";
+import ActionButton from "../ActionButton";
 import * as styled from "./styled";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Public Components
 ////////////////////////////////////////////////////////////////////////////////
 type DataTable2InlineEditorProps = {
-  trigger: ReactElement<
-    ButtonHTMLAttributes<HTMLButtonElement> & {
-      ref?: Ref<HTMLButtonElement>;
-    },
-    "button"
-  >;
   label: string;
   value: string;
   children: ReactNode;
@@ -34,7 +30,6 @@ type DataTable2InlineEditorProps = {
 };
 
 export const DataTable2InlineEditor = ({
-  trigger,
   label,
   value,
   children,
@@ -60,7 +55,9 @@ export const DataTable2InlineEditor = ({
         <ContextMenu2Container>
           <ContextMenu2
             width={252}
-            trigger={trigger}
+            trigger={
+              <ActionButton type="button" color="primary" icon="pencil" />
+            }
             open={isOpen}
             onOpenChange={setIsOpen}
           >
@@ -89,6 +86,52 @@ export const DataTable2InlineEditor = ({
                 適用
               </Button>
             </ContextMenu2ButtonControlsItem>
+          </ContextMenu2>
+        </ContextMenu2Container>
+      </styled.DataTable2InlineEditorButton>
+    </styled.DataTable2InlineEditor>
+  );
+};
+
+type DataTable2InlineSelectEditorProps = {
+  label: string;
+  value: string;
+  options: string[];
+  children: ReactNode;
+  onChange: (value: string) => void;
+};
+
+export const DataTable2InlineSelectEditor = ({
+  label,
+  value,
+  options,
+  children,
+  onChange,
+}: DataTable2InlineSelectEditorProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <styled.DataTable2InlineEditor>
+      {children}
+      <styled.DataTable2InlineEditorButton>
+        <ContextMenu2Container>
+          <ContextMenu2
+            width={252}
+            trigger={
+              <ActionButton type="button" color="primary" icon="pencil" />
+            }
+            open={isOpen}
+            onOpenChange={setIsOpen}
+          >
+            <ContextMenu2HeadingItem>{label}</ContextMenu2HeadingItem>
+            {options.map((option) => (
+              <ContextMenu2CheckItem
+                key={option}
+                checked={value === option}
+                onChange={() => onChange(option)}
+              >
+                {option}
+              </ContextMenu2CheckItem>
+            ))}
           </ContextMenu2>
         </ContextMenu2Container>
       </styled.DataTable2InlineEditorButton>
