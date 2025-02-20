@@ -41,8 +41,21 @@ const actionButton = `
   }
 `;
 
-export const DataTable2 = styled.div`
-  border: 1px solid ${colors.basic[400]};
+export const DataTable2 = styled.div<{ bordered?: boolean }>`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  ${({ bordered }) =>
+    bordered
+      ? `
+    overflow: hidden;
+    border: 1px solid ${colors.basic[400]};
+    border-radius: 6px;
+  `
+      : `
+    border: 1px solid ${colors.basic[400]};
+  `}
 `;
 
 const ViewportInner = styled.div`
@@ -65,8 +78,8 @@ export const Viewport = styled(
     );
   },
 )`
+  flex-grow: 1;
   overflow: auto;
-  height: 300px;
   overscroll-behavior-x: contain;
 `;
 
@@ -241,7 +254,7 @@ export const DragHandle = styled.button`
   }
 
   &:where(th:last-child *) {
-    right: -5px;
+    right: -6px;
     width: 10px;
   }
 
@@ -341,6 +354,7 @@ export const SortButton = styled.button`
 export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
   background: #ffffff;
   transition: background 0.2s;
+  border-bottom: 1px solid ${colors.basic[400]};
 
   &[data-highlighted="true"] {
     background: ${colors.blue[100]};
@@ -350,12 +364,15 @@ export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
     background: ${colors.basic[100]};
   }
 
+  &:last-child {
+    border-bottom: 0;
+  }
+
   td {
     padding: 12px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
     font-size: ${({ isSmallLayout }) => (isSmallLayout ? 12 : 14)}px;
     line-height: 17px;
     color: ${colors.basic[900]};
-    border-bottom: 1px solid ${colors.basic[400]};
 
     &:first-child {
       /* チェックボックスのセル */

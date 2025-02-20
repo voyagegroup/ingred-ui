@@ -37,6 +37,47 @@ const mockData = Array.from({ length: 1000 }, (_, i) => ({
   date: `2019/08/12`,
 }));
 
+/**
+ * DataTable2 に高さを指定したい場合、親に高さを明示してください。<br />
+ * ページの高さにフィットさせたい場合には、親要素に 100vh などを指定してください。<br />
+ * 親に高さが明示されていない場合は、「全件表示できる高さ」で表示されます。（レスポンシブに高さを変えても大丈夫です）<br />
+ * 例:
+ * ```
+ *  <div style={{ height: 500 }}>
+ *    <DataTable2>...</DataTable2>
+ *  <div>
+ * ```
+ *
+ * 表内に表示したいデータは、HTML の `<table>`、`<tr>`、`<td>` の関係と同じように、`<DataTable2>` 内に、 `<DataTable2Row>` を配置し、その中に `<DataTable2Cell>` を配置してください。<br />
+ * ページネーションやフィルターの結果はクライアントサイドで実装し、それに応じて `<DataTable2Cell>` を構築しデータを流し込んでください。<br />
+ * 構造例（Propsは省略）:
+ * ```
+ * <DataTable2>
+ *   <DataTable2Head>
+ *     <DataTable2Column>
+ *       <DataTable2ColumnLabel>
+ *         名前
+ *       </DataTable2ColumnLabel>
+ *     </DataTable2Column>
+ *     <DataTable2Column>
+ *       <DataTable2ColumnLabel>
+ *         年齢
+ *       </DataTable2ColumnLabel>
+ *     </DataTable2Column>
+ *   </DataTable2Head>
+ *   <DataTable2Body>
+ *     <DataTable2Row>
+ *       <DataTable2Cell>田中太郎</DataTable2Cell>
+ *       <DataTable2Cell>25歳</DataTable2Cell>
+ *     </DataTable2Row>
+ *     <DataTable2Row>
+ *       <DataTable2Cell>鈴木花子</DataTable2Cell>
+ *       <DataTable2Cell>22歳</DataTable2Cell>
+ *     </DataTable2Row>
+ *   </DataTable2Body>
+ * </DataTable2>
+ * ```
+ */
 export const Overview: StoryObj<typeof DataTable2> = {
   render: () => {
     const [checkedRows, setCheckedRows] = useState<string[]>([]);
@@ -178,266 +219,270 @@ export const Overview: StoryObj<typeof DataTable2> = {
     ];
 
     return (
-      <DataTable2
-        columns={columns}
-        pageSize={pageSize}
-        pageSizeOptions={pageSizeOptions}
-        currentPage={page}
-        totalCount={data.length}
-        rowControls={
-          <>
-            <ContextMenu2HeadingItem>ステータスを変更</ContextMenu2HeadingItem>
-            <ContextMenu2ButtonItem
-              onClick={() => alert(`有効: ${checkedRows.join()}`)}
+      <div style={{ height: 500 }}>
+        <DataTable2
+          columns={columns}
+          pageSize={pageSize}
+          pageSizeOptions={pageSizeOptions}
+          currentPage={page}
+          totalCount={data.length}
+          rowControls={
+            <>
+              <ContextMenu2HeadingItem>
+                ステータスを変更
+              </ContextMenu2HeadingItem>
+              <ContextMenu2ButtonItem
+                onClick={() => alert(`有効: ${checkedRows.join()}`)}
+              >
+                有効にする
+              </ContextMenu2ButtonItem>
+              <ContextMenu2ButtonItem
+                onClick={() => alert(`アーカイブ: ${checkedRows.join()}`)}
+              >
+                アーカイブする
+              </ContextMenu2ButtonItem>
+              <ContextMenu2HeadingItem onClick={() => alert("任意機能")}>
+                操作
+              </ContextMenu2HeadingItem>
+              <ContextMenu2ButtonItem onClick={() => alert("任意機能")}>
+                複製する
+              </ContextMenu2ButtonItem>
+              <ContextMenu2ButtonItem
+                color="danger"
+                onClick={() => alert("任意機能")}
+              >
+                削除する
+              </ContextMenu2ButtonItem>
+            </>
+          }
+          extraButtons={
+            <DataTable2ActionButton
+              prepend={<Icon name="download_cloud" />}
+              onClick={() => alert("自由におけるボタン")}
             >
-              有効にする
-            </ContextMenu2ButtonItem>
-            <ContextMenu2ButtonItem
-              onClick={() => alert(`アーカイブ: ${checkedRows.join()}`)}
+              ダウンロード
+            </DataTable2ActionButton>
+          }
+          onCheckedRowsChange={setCheckedRows}
+          onPageSizeChange={setPageSize}
+          onPageChange={setPage}
+          onColumnsChange={(columns) => {
+            setColumns(columns);
+            // 各カラムのフィルターの状態に応じて、フィルタ入力値をクリアする
+            columns.forEach((c) => {
+              if (c.filtered) return;
+              switch (c.id) {
+                case columns[0].id:
+                  setNameFilterValues([]);
+                  break;
+                case columns[1].id:
+                  setStatusFilterValues([]);
+                  break;
+                case columns[2].id:
+                  setEmailFilterValues([]);
+                  break;
+                case columns[3].id:
+                  setDateFilterValues([]);
+                  break;
+              }
+            });
+          }}
+        >
+          <DataTable2Head>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[0]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(0, w)}
             >
-              アーカイブする
-            </ContextMenu2ButtonItem>
-            <ContextMenu2HeadingItem onClick={() => alert("任意機能")}>
-              操作
-            </ContextMenu2HeadingItem>
-            <ContextMenu2ButtonItem onClick={() => alert("任意機能")}>
-              複製する
-            </ContextMenu2ButtonItem>
-            <ContextMenu2ButtonItem
-              color="danger"
-              onClick={() => alert("任意機能")}
+              <DataTable2ColumnLabel
+                showSortButton
+                sortButtonDirection={nameSort}
+                onSortChange={(direction) => {
+                  alert(
+                    `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
+                  );
+                  setNameSort(direction);
+                }}
+              >
+                名前
+              </DataTable2ColumnLabel>
+              <FilterTagInput
+                values={nameFilterValues}
+                selectedIndex={nameFilterType}
+                selectOptions={filterTypes}
+                onChange={(values) => {
+                  setNameFilterValues(values);
+                  changeFilterStatus(
+                    values,
+                    statusFilterValues,
+                    emailFilterValues,
+                    dateFilterValues,
+                  );
+                }}
+                onSelectChange={setNameFilterType}
+              />
+            </DataTable2Column>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[1]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(1, w)}
             >
-              削除する
-            </ContextMenu2ButtonItem>
-          </>
-        }
-        extraButtons={
-          <DataTable2ActionButton
-            prepend={<Icon name="download_cloud" />}
-            onClick={() => alert("自由におけるボタン")}
-          >
-            ダウンロード
-          </DataTable2ActionButton>
-        }
-        onCheckedRowsChange={setCheckedRows}
-        onPageSizeChange={setPageSize}
-        onPageChange={setPage}
-        onColumnsChange={(columns) => {
-          setColumns(columns);
-          // 各カラムのフィルターの状態に応じて、フィルタ入力値をクリアする
-          columns.forEach((c) => {
-            if (c.filtered) return;
-            switch (c.id) {
-              case columns[0].id:
-                setNameFilterValues([]);
-                break;
-              case columns[1].id:
-                setStatusFilterValues([]);
-                break;
-              case columns[2].id:
-                setEmailFilterValues([]);
-                break;
-              case columns[3].id:
-                setDateFilterValues([]);
-                break;
-            }
-          });
-        }}
-      >
-        <DataTable2Head>
-          <DataTable2Column
-            isResizable
-            width={columnWidths[0]}
-            minWidth={188}
-            onWidthChange={(w) => onWidthChange(0, w)}
-          >
-            <DataTable2ColumnLabel
-              showSortButton
-              sortButtonDirection={nameSort}
-              onSortChange={(direction) => {
-                alert(
-                  `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
-                );
-                setNameSort(direction);
-              }}
+              <DataTable2ColumnLabel
+                showSortButton
+                sortButtonDirection={statusSort}
+                onSortChange={(direction) => {
+                  alert(
+                    `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
+                  );
+                  setStatusSort(direction);
+                }}
+              >
+                ステータス
+              </DataTable2ColumnLabel>
+              <FilterTagInput
+                values={statusFilterValues}
+                selectedIndex={statusFilterType}
+                selectOptions={filterTypes}
+                onChange={(values) => {
+                  setStatusFilterValues(values);
+                  changeFilterStatus(
+                    nameFilterValues,
+                    values,
+                    emailFilterValues,
+                    dateFilterValues,
+                  );
+                }}
+                onSelectChange={setStatusFilterType}
+              />
+            </DataTable2Column>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[2]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(2, w)}
             >
-              名前
-            </DataTable2ColumnLabel>
-            <FilterTagInput
-              values={nameFilterValues}
-              selectedIndex={nameFilterType}
-              selectOptions={filterTypes}
-              onChange={(values) => {
-                setNameFilterValues(values);
-                changeFilterStatus(
-                  values,
-                  statusFilterValues,
-                  emailFilterValues,
-                  dateFilterValues,
-                );
-              }}
-              onSelectChange={setNameFilterType}
-            />
-          </DataTable2Column>
-          <DataTable2Column
-            isResizable
-            width={columnWidths[1]}
-            minWidth={188}
-            onWidthChange={(w) => onWidthChange(1, w)}
-          >
-            <DataTable2ColumnLabel
-              showSortButton
-              sortButtonDirection={statusSort}
-              onSortChange={(direction) => {
-                alert(
-                  `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
-                );
-                setStatusSort(direction);
-              }}
+              <DataTable2ColumnLabel
+                showSortButton
+                sortButtonDirection={emailSort}
+                onSortChange={(direction) => {
+                  alert(
+                    `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
+                  );
+                  setEmailSort(direction);
+                }}
+              >
+                メールアドレス
+              </DataTable2ColumnLabel>
+              <FilterTagInput
+                values={emailFilterValues}
+                selectedIndex={emailFilterType}
+                selectOptions={filterTypes}
+                onChange={(values) => {
+                  setEmailFilterValues(values);
+                  changeFilterStatus(
+                    nameFilterValues,
+                    statusFilterValues,
+                    values,
+                    dateFilterValues,
+                  );
+                }}
+                onSelectChange={setEmailFilterType}
+              />
+            </DataTable2Column>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[3]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(3, w)}
             >
-              ステータス
-            </DataTable2ColumnLabel>
-            <FilterTagInput
-              values={statusFilterValues}
-              selectedIndex={statusFilterType}
-              selectOptions={filterTypes}
-              onChange={(values) => {
-                setStatusFilterValues(values);
-                changeFilterStatus(
-                  nameFilterValues,
-                  values,
-                  emailFilterValues,
-                  dateFilterValues,
-                );
-              }}
-              onSelectChange={setStatusFilterType}
-            />
-          </DataTable2Column>
-          <DataTable2Column
-            isResizable
-            width={columnWidths[2]}
-            minWidth={188}
-            onWidthChange={(w) => onWidthChange(2, w)}
-          >
-            <DataTable2ColumnLabel
-              showSortButton
-              sortButtonDirection={emailSort}
-              onSortChange={(direction) => {
-                alert(
-                  `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
-                );
-                setEmailSort(direction);
-              }}
+              <DataTable2ColumnLabel
+                showSortButton
+                sortButtonDirection={dateSort}
+                onSortChange={(direction) => {
+                  alert(
+                    `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
+                  );
+                  setDateSort(direction);
+                }}
+              >
+                登録日
+              </DataTable2ColumnLabel>
+              <FilterTagInput
+                values={dateFilterValues}
+                selectedIndex={dateFilterType}
+                selectOptions={filterTypes}
+                onChange={(values) => {
+                  setDateFilterValues(values);
+                  changeFilterStatus(
+                    nameFilterValues,
+                    statusFilterValues,
+                    emailFilterValues,
+                    values,
+                  );
+                }}
+                onSelectChange={setDateFilterType}
+              />
+            </DataTable2Column>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[4]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(4, w)}
             >
-              メールアドレス
-            </DataTable2ColumnLabel>
-            <FilterTagInput
-              values={emailFilterValues}
-              selectedIndex={emailFilterType}
-              selectOptions={filterTypes}
-              onChange={(values) => {
-                setEmailFilterValues(values);
-                changeFilterStatus(
-                  nameFilterValues,
-                  statusFilterValues,
-                  values,
-                  dateFilterValues,
-                );
-              }}
-              onSelectChange={setEmailFilterType}
-            />
-          </DataTable2Column>
-          <DataTable2Column
-            isResizable
-            width={columnWidths[3]}
-            minWidth={188}
-            onWidthChange={(w) => onWidthChange(3, w)}
-          >
-            <DataTable2ColumnLabel
-              showSortButton
-              sortButtonDirection={dateSort}
-              onSortChange={(direction) => {
-                alert(
-                  `${direction}: 実際のソート機能は利用者が実装して、data に反映してください`,
-                );
-                setDateSort(direction);
-              }}
-            >
-              登録日
-            </DataTable2ColumnLabel>
-            <FilterTagInput
-              values={dateFilterValues}
-              selectedIndex={dateFilterType}
-              selectOptions={filterTypes}
-              onChange={(values) => {
-                setDateFilterValues(values);
-                changeFilterStatus(
-                  nameFilterValues,
-                  statusFilterValues,
-                  emailFilterValues,
-                  values,
-                );
-              }}
-              onSelectChange={setDateFilterType}
-            />
-          </DataTable2Column>
-          <DataTable2Column
-            isResizable
-            width={columnWidths[4]}
-            minWidth={188}
-            onWidthChange={(w) => onWidthChange(4, w)}
-          >
-            <DataTable2ColumnLabel>操作</DataTable2ColumnLabel>
-          </DataTable2Column>
-        </DataTable2Head>
-        <DataTable2Body>
-          {pageData.map((dataRow) => (
-            <DataTable2Row key={dataRow.id} id={dataRow.id}>
-              <td>
-                <DataTable2InlineEditor
-                  label="名前を編集"
-                  value={dataRow.name}
-                  onChange={(name) => {
-                    const newData = structuredClone(data);
-                    newData.find((d) => d.id === dataRow.id)!.name = name;
-                    setData(newData);
-                  }}
-                >
-                  <a href="/">{dataRow.name}</a>
-                </DataTable2InlineEditor>
-              </td>
-              <td>
-                <DataTable2InlineSelectEditor
-                  label="ステータスを変更"
-                  value={dataRow.status}
-                  options={["有効", "無効"]}
-                  onChange={(status) => {
-                    const newData = structuredClone(data);
-                    newData.find((d) => d.id === dataRow.id)!.status = status;
-                    setData(newData);
-                  }}
-                >
-                  {dataRow.status}
-                </DataTable2InlineSelectEditor>
-              </td>
-              <td>{dataRow.email}</td>
-              <td>{dataRow.date}</td>
-              <td>
-                <ActionButton
-                  type="button"
-                  color="primary"
-                  icon="pencil"
-                  onClick={() =>
-                    alert("ドロワーを開く機能を独自に実装してください")
-                  }
-                >
-                  編集
-                </ActionButton>
-              </td>
-            </DataTable2Row>
-          ))}
-        </DataTable2Body>
-      </DataTable2>
+              <DataTable2ColumnLabel>操作</DataTable2ColumnLabel>
+            </DataTable2Column>
+          </DataTable2Head>
+          <DataTable2Body>
+            {pageData.map((dataRow) => (
+              <DataTable2Row key={dataRow.id} id={dataRow.id}>
+                <td>
+                  <DataTable2InlineEditor
+                    label="名前を編集"
+                    value={dataRow.name}
+                    onChange={(name) => {
+                      const newData = structuredClone(data);
+                      newData.find((d) => d.id === dataRow.id)!.name = name;
+                      setData(newData);
+                    }}
+                  >
+                    <a href="/">{dataRow.name}</a>
+                  </DataTable2InlineEditor>
+                </td>
+                <td>
+                  <DataTable2InlineSelectEditor
+                    label="ステータスを変更"
+                    value={dataRow.status}
+                    options={["有効", "無効"]}
+                    onChange={(status) => {
+                      const newData = structuredClone(data);
+                      newData.find((d) => d.id === dataRow.id)!.status = status;
+                      setData(newData);
+                    }}
+                  >
+                    {dataRow.status}
+                  </DataTable2InlineSelectEditor>
+                </td>
+                <td>{dataRow.email}</td>
+                <td>{dataRow.date}</td>
+                <td>
+                  <ActionButton
+                    type="button"
+                    color="primary"
+                    icon="pencil"
+                    onClick={() =>
+                      alert("ドロワーを開く機能を独自に実装してください")
+                    }
+                  >
+                    編集
+                  </ActionButton>
+                </td>
+              </DataTable2Row>
+            ))}
+          </DataTable2Body>
+        </DataTable2>
+      </div>
     );
   },
 };

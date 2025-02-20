@@ -25,7 +25,14 @@ import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
 type RowsControlsProps = {
+  /**
+   * 「◯件選択中」をクリックしたときに表示される ContextMenu2 の中身を指定できます。
+   * `<ContextMenu2>` 内に格納できるコンポーネントのみで構成してください。
+   */
   rowControls: ReactNode;
+  /**
+   * 右上に任意のボタンを設置できます。
+   */
   extraButtons: ReactNode;
 };
 const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
@@ -115,20 +122,32 @@ type DataTable2Props = {
   onPageChange: (page: number) => void;
   /**
    * ページネーションの1ページあたりの表示件数変更時のコールバック
-   * @param page 変更後のページ
+   * @param param 変更後の1ページあたりの表示件数
    */
   onPageSizeChange: (size: number) => void;
+  /**
+   * カラムの状態が変更されたときに呼び出されるコールバック<br />
+   * 順序変更時、表示/非表示変更時、フィルタ入力クリア時に呼び出されるので
+   * それに合わせて、そのまま columns を更新してください。<br />
+   * フィルタ入力クリア時は、filtered が false になっているので、自身で各フィルタの入力値を空白にしてください。
+   * @param columns 変更後のカラム
+   */
   onColumnsChange: (columns: Column[]) => void;
 } & {
+  /**
+   * 見た目の制御。枠線で囲むか否か。枠線で囲むと角丸も適用される
+   */
+  bordered?: boolean;
   children: ReactNode;
   /**
-   * 朝のチェック状態が変更されたときに呼び出されるコールバック
-   * 読み取り専用で、今のところは外から checkedRows を変更することはできません
+   * 行のチェック状態が変更されたときに呼び出されるコールバック
+   * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
 } & RowsControlsProps;
 
 export const DataTable2 = ({
+  bordered,
   rowControls,
   extraButtons,
   currentPage,
@@ -191,7 +210,7 @@ export const DataTable2 = ({
   }, [currentPage, handleCheckedRows]);
 
   return (
-    <styled.DataTable2 ref={elRef}>
+    <styled.DataTable2 ref={elRef} bordered={bordered}>
       <DataTable2Context.Provider
         value={{
           isSmallLayout,
