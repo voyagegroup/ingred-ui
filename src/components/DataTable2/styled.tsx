@@ -72,11 +72,11 @@ export const Viewport = styled(
 
 // 最上部のヘッダー部分
 // -----------------------------------------------------------------------------
-export const RowsControls = styled.div`
+export const RowsControls = styled.div<{ isSmallLayout: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 16px;
+  padding: 16px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
   background: ${colors.basic[100]};
 `;
 
@@ -124,7 +124,7 @@ export const RowMenuPagination = styled.div`
       border-radius: 4px 0 0 4px;
     }
 
-    &:nth-child(2) {
+    &:nth-child(2):not(:last-child) {
       padding-left: 8px;
     }
 
@@ -213,10 +213,10 @@ export const DataTable2Column = styled.th`
 `;
 
 // thead 内の th 要素
-export const DataTable2ColumnInner = styled.div`
+export const DataTable2ColumnInner = styled.div<{ isSmallLayout: boolean }>`
   position: relative;
   box-sizing: border-box;
-  padding: 8px 10px;
+  padding: 8px ${({ isSmallLayout }) => (isSmallLayout ? 6 : 10)}px;
   height: 100%;
   margin: 0 5px;
 `;
@@ -338,7 +338,7 @@ export const SortButton = styled.button`
 
 //
 // -----------------------------------------------------------------------------
-export const DataTable2Row = styled.tr`
+export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
   background: #ffffff;
   transition: background 0.2s;
 
@@ -351,11 +351,16 @@ export const DataTable2Row = styled.tr`
   }
 
   td {
-    padding: 12px 16px;
-    font-size: 14px;
+    padding: 12px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
+    font-size: ${({ isSmallLayout }) => (isSmallLayout ? 12 : 14)}px;
     line-height: 17px;
     color: ${colors.basic[900]};
     border-bottom: 1px solid ${colors.basic[400]};
+
+    &:first-child {
+      /* チェックボックスのセル */
+      padding-right: 0;
+    }
 
     &:where(tr[data-spacing="-2"] *) {
       padding-block: 4px;

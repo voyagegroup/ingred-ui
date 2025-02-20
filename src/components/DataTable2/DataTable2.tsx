@@ -46,7 +46,7 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
   }, [isAllChecked, rowIds, setCheckedRows]);
 
   return (
-    <styled.RowsControls>
+    <styled.RowsControls isSmallLayout={isSmallLayout}>
       <Checkbox
         checked={isAllChecked || isIndeterminate}
         indeterminate={isIndeterminate}
@@ -161,7 +161,8 @@ export const DataTable2 = ({
     if (!elRef.current) return;
 
     const onSizeChange = () => {
-      elRef.current && setIsSmallLayout(elRef.current?.clientWidth < 480);
+      // DataTable2 上部の UI が横位一列にぎりぎり収まる幅として 640
+      elRef.current && setIsSmallLayout(elRef.current?.clientWidth < 640);
     };
 
     const resizeObserver = new ResizeObserver(onSizeChange);
@@ -179,7 +180,7 @@ export const DataTable2 = ({
       setCheckedRows(checkedRows);
       onCheckedRowsChange?.(checkedRows);
     },
-    [setCheckedRows],
+    [setCheckedRows, onCheckedRowsChange],
   );
 
   // ページ移動した場合全選択を解除

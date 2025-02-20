@@ -16,6 +16,7 @@ import {
 // 左上コントロール群
 export const DataTable2Pagination = () => {
   const {
+    isSmallLayout,
     totalCount,
     currentPage,
     pageSize,
@@ -59,36 +60,42 @@ export const DataTable2Pagination = () => {
       >
         <Icon name="arrow_left" color="currentColor" />
       </button>
-      <ContextMenu2Container>
-        <ContextMenu2
-          width={296}
-          trigger={
-            <button type="button">
-              {Math.min(currentPage * pageSize + 1, pageSize * maxPage)}
-              <styled.RowMenuPaginationOperator>
-                -
-              </styled.RowMenuPaginationOperator>
-              {Math.min((currentPage + 1) * pageSize, totalCount)}
-              <styled.RowMenuPaginationOperator>
-                /
-              </styled.RowMenuPaginationOperator>
-              {totalCount}
-              <Icon name="arrow_right" size="sm" />
-            </button>
-          }
-        >
-          <ContextMenu2HeadingItem>表示件数を変更</ContextMenu2HeadingItem>
-          {pageSizeOptions.map((option) => (
-            <ContextMenu2CheckItem
-              key={option}
-              checked={pageSize === option}
-              onChange={() => handleOnChange(option)}
-            >
-              {option}
-            </ContextMenu2CheckItem>
-          ))}
-        </ContextMenu2>
-      </ContextMenu2Container>
+      {/*
+        本当は container query で表示分けをしたいけれど、
+        styled-components が対応していないため、React 側で制御
+      */}
+      {!isSmallLayout && (
+        <ContextMenu2Container>
+          <ContextMenu2
+            width={296}
+            trigger={
+              <button type="button">
+                {Math.min(currentPage * pageSize + 1, pageSize * maxPage)}
+                <styled.RowMenuPaginationOperator>
+                  -
+                </styled.RowMenuPaginationOperator>
+                {Math.min((currentPage + 1) * pageSize, totalCount)}
+                <styled.RowMenuPaginationOperator>
+                  /
+                </styled.RowMenuPaginationOperator>
+                {totalCount}
+                <Icon name="arrow_right" size="sm" />
+              </button>
+            }
+          >
+            <ContextMenu2HeadingItem>表示件数を変更</ContextMenu2HeadingItem>
+            {pageSizeOptions.map((option) => (
+              <ContextMenu2CheckItem
+                key={option}
+                checked={pageSize === option}
+                onChange={() => handleOnChange(option)}
+              >
+                {option}
+              </ContextMenu2CheckItem>
+            ))}
+          </ContextMenu2>
+        </ContextMenu2Container>
+      )}
       <button
         type="button"
         aria-label="次のページへ"

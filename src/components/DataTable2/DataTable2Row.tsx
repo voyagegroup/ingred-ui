@@ -18,7 +18,7 @@ type DataTable2RowProps = {
 };
 
 export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
-  const { columns, checkedRows, setCheckedRows, rowSpacing } =
+  const { isSmallLayout, columns, checkedRows, setCheckedRows, rowSpacing } =
     useContext(DataTable2Context);
   const isChecked = useMemo(() => checkedRows.includes(id), [id, checkedRows]);
   const handleCheck = useCallback(() => {
@@ -54,6 +54,7 @@ export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
     <styled.DataTable2Row
       data-highlighted={isChecked}
       data-spacing={rowSpacing}
+      isSmallLayout={isSmallLayout}
     >
       <td>
         <styled.CheckboxWrapper>

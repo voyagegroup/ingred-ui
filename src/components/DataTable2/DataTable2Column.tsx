@@ -48,7 +48,8 @@ export const DataTable2Column = ({
   children,
   onWidthChange,
 }: DataTable2ColumnProps) => {
-  const { setColumnWidth: onColumnWidthChange } = useContext(DataTable2Context);
+  const { isSmallLayout, setColumnWidth: onColumnWidthChange } =
+    useContext(DataTable2Context);
   const columnContext = useContext(ColumnContext);
   const [isDragging, setIsDragging] = useState(false);
 
@@ -121,7 +122,7 @@ export const DataTable2Column = ({
           isFinite(maxWidth) && minWidth <= maxWidth ? maxWidth : undefined,
       }}
     >
-      <styled.DataTable2ColumnInner>
+      <styled.DataTable2ColumnInner isSmallLayout={isSmallLayout}>
         {children}
         {isResizable && (
           <styled.DragHandle
