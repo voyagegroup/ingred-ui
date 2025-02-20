@@ -7,10 +7,10 @@ import { getShadow } from "../../utils/getShadow";
 export const FilterTagInput = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 46px 1fr;
   align-items: center;
   gap: 0;
-  height: 32px;
+  height: 28px;
   border-radius: 6px;
   border: 1px solid ${colors.basic[400]};
   background-color: #fff;
@@ -28,7 +28,7 @@ export const DropDownTrigger = styled.button`
   gap: 2px;
   align-items: center;
   height: 100%;
-  padding: 0 2px 0 8px;
+  padding: 0 2px 0 6px;
   border: 0;
   border-right: 1px solid ${colors.basic[400]};
   border-radius: 6px 0 0 6px;
@@ -46,8 +46,10 @@ export const InlineField = styled.div`
   align-items: center;
   min-height: 100%;
   padding: 0 5px;
+  border-radius: 0 6px 6px 0;
   overflow: auto;
   scrollbar-width: none;
+  background: ${colors.basic[100]};
 
   &::-webkit-scrollbar {
     display: none;
@@ -90,7 +92,7 @@ export const OverflowIndicator = styled.button`
   &:where(${FilterTagInput.toString()}[data-small="true"] *) {
     position: static;
     display: grid;
-    width: 32px;
+    width: 28px;
     aspect-ratio: 1;
     border: 1px solid ${colors.basic[400]};
     border-radius: 6px;
@@ -123,7 +125,7 @@ export const InlineInput = styled.div`
     width: 100%;
     border: 0;
     padding: 0;
-    background: #fff;
+    background: transparent;
     outline: none;
 
     &:focus {
@@ -302,14 +304,14 @@ export const PanelInput = styled.div`
   isolation: isolate;
   display: grid;
   grid-template-columns: 0px min-content;
-  min-width: 32px;
+  min-width: 28px;
   max-width: 100%;
   overflow: hidden;
 
   input {
     width: 100%;
     grid-area: 1 / 2;
-    min-width: 32px;
+    min-width: 28px;
     padding: 0;
     border: 0;
     font: inherit;
