@@ -153,7 +153,13 @@ export const RowMenuFilterTrigger = styled.button`
   cursor: pointer;
   transition: background 0.2s;
 
-  &:where(:hover),
+  &:where(:disabled) {
+    color: ${colors.basic[400]};
+    background: ${colors.basic[200]};
+    cursor: not-allowed;
+  }
+
+  &:where(:not(:disabled):hover),
   &:where([aria-expanded="true"]) {
     background: ${colors.blue[100]};
   }

@@ -15,7 +15,6 @@ import {
 
 // 左上コントロール群
 export const DataTable2Pagination = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
   const {
     totalCount,
     currentPage,
@@ -33,7 +32,6 @@ export const DataTable2Pagination = () => {
       }
 
       setPageSize(size);
-      setIsOpen(false);
     },
     [currentPage, totalCount, setCurrentPage, setPageSize],
   );
@@ -63,7 +61,6 @@ export const DataTable2Pagination = () => {
       </button>
       <ContextMenu2Container>
         <ContextMenu2
-          open={isOpen}
           width={296}
           trigger={
             <button type="button">
@@ -79,7 +76,6 @@ export const DataTable2Pagination = () => {
               <Icon name="arrow_right" size="sm" />
             </button>
           }
-          onOpenChange={setIsOpen}
         >
           <ContextMenu2HeadingItem>表示件数を変更</ContextMenu2HeadingItem>
           {pageSizeOptions.map((option) => (

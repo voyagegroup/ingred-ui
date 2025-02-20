@@ -222,7 +222,27 @@ export const Overview: StoryObj<typeof DataTable2> = {
         onCheckedRowsChange={setCheckedRows}
         onPageSizeChange={setPageSize}
         onPageChange={setPage}
-        onColumnsChange={setColumns}
+        onColumnsChange={(columns) => {
+          setColumns(columns);
+          // 各カラムのフィルターの状態に応じて、フィルタ入力値をクリアする
+          columns.forEach((c) => {
+            if (c.filtered) return;
+            switch (c.id) {
+              case columns[0].id:
+                setNameFilterValues([]);
+                break;
+              case columns[1].id:
+                setStatusFilterValues([]);
+                break;
+              case columns[2].id:
+                setEmailFilterValues([]);
+                break;
+              case columns[3].id:
+                setDateFilterValues([]);
+                break;
+            }
+          });
+        }}
       >
         <DataTable2Head>
           <DataTable2Column

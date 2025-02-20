@@ -14,7 +14,7 @@ type ContextMenu2SwitchItemProps = {
   disabled?: boolean;
   children: ReactNode;
   onChange?: (checked: boolean) => void;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onChange">;
 
 const SwitchTruck = styled.span<{
   checked: boolean;
