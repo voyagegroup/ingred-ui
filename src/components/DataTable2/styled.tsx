@@ -42,23 +42,33 @@ const actionButton = `
 `;
 
 export const DataTable2 = styled.div<{ bordered?: boolean }>`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
 
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border-block: 1px solid ${colors.basic[400]};
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
   ${({ bordered }) =>
-    bordered
-      ? `
-    overflow: hidden;
-    border: 1px solid ${colors.basic[400]};
-    border-radius: 6px;
-  `
-      : `
-    border: 1px solid ${colors.basic[400]};
+    bordered &&
+    `
+      overflow: hidden;
+      border-radius: 6px;
+      &::after {
+      border-inline: 1px solid ${colors.basic[400]};
   `}
 `;
 
 const ViewportInner = styled.div`
+  box-sizing: border-box;
   width: max-content;
   min-width: 100%;
 
@@ -80,6 +90,7 @@ export const Viewport = styled(
 )`
   flex-grow: 1;
   overflow: auto;
+  margin-inline: 1px;
   overscroll-behavior-x: contain;
 `;
 
@@ -362,10 +373,6 @@ export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
 
   &:not([data-highlighted="true"]):hover {
     background: ${colors.basic[100]};
-  }
-
-  &:last-child {
-    border-bottom: 0;
   }
 
   td {

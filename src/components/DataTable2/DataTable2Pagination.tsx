@@ -26,15 +26,11 @@ export const DataTable2Pagination = () => {
   } = useContext(DataTable2Context);
   const handleOnChange = useCallback(
     (size: number) => {
-      // pageSize 変更により currentPage が maxPage を超える場合、
-      // currentPage を maxPage に合わせる
-      if (currentPage > Math.ceil(totalCount / size) - 1) {
-        setCurrentPage(Math.ceil(totalCount / size) - 1);
-      }
-
+      // pageSize 変更時に、ページ数が変わるため、ページをリセットする
+      setCurrentPage(0);
       setPageSize(size);
     },
-    [currentPage, totalCount, setCurrentPage, setPageSize],
+    [setCurrentPage, setPageSize],
   );
   const minPage = 0;
   const maxPage = useMemo(

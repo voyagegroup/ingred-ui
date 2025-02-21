@@ -1,5 +1,7 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Meta, StoryObj } from "@storybook/react";
+import { useState } from "@storybook/preview-api";
+import { useArgs } from "@storybook/client-api";
 import {
   type Column,
   type SortDirection,
@@ -78,25 +80,29 @@ const mockData = Array.from({ length: 1000 }, (_, i) => ({
  * </DataTable2>
  * ```
  */
-export const Overview: StoryObj<typeof DataTable2> = {
-  render: () => {
-    const [checkedRows, setCheckedRows] = useState<string[]>([]);
 
-    // ページネーション
-    const [page, setPage] = useState(0);
-    const pageSizeOptions = [10, 20, 50, 100, 200];
-    const [pageSize, setPageSize] = useState(pageSizeOptions[3]);
+const pageSizeOptions = [10, 20, 50, 100, 200];
+const filterTypes = [
+  {
+    icon: <Icon name="operator_match" type="line" color="currentColor" />,
+    label: "含む",
+  },
+  {
+    icon: (
+      <Icon name="operator_does_not_match" type="line" color="currentColor" />
+    ),
+    label: "含まない",
+  },
+  {
+    icon: <Icon name="operator_contains" type="line" color="currentColor" />,
+    label: "いずれかを含む",
+  },
+];
 
-    // コンテンツ
-    const [data, setData] = useState(mockData);
-    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
-    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
-    const pageData = useMemo(
-      () => data.slice(page * pageSize, page * pageSize + pageSize),
-      [data, pageSize, page],
-    );
-
-    const [columns, setColumns] = useState<Column[]>([
+export const Overview: StoryObj<typeof meta> = {
+  args: {
+    bordered: false,
+    columns: [
       {
         id: crypto.randomUUID(),
         label: "名前",
@@ -136,13 +142,49 @@ export const Overview: StoryObj<typeof DataTable2> = {
         visible: true,
         sortable: false,
       },
-    ]);
+    ],
+    pageSize: pageSizeOptions[3],
+    pageSizeOptions,
+    currentPage: 0,
+    totalCount: mockData.length,
+    rowControls: null,
+    extraButtons: (
+      <DataTable2ActionButton
+        prepend={<Icon name="download_cloud" />}
+        onClick={() => alert("自由におけるボタン")}
+      >
+        ダウンロード
+      </DataTable2ActionButton>
+    ),
+    onCheckedRowsChange: () => {},
+    onPageSizeChange: () => {},
+    onPageChange: () => {},
+    onColumnsChange: () => {},
+    children: null,
+  },
+  render: (args) => {
+    const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
+      columns: Column[];
+      currentPage: number;
+      pageSize: number;
+    }>();
+
+    const [checkedRows, setCheckedRows] = useState<string[]>([]);
+
+    // コンテンツ
+    const [data, setData] = useState(mockData);
+    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
+    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
+    const pageData = useMemo(
+      () =>
+        data.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
+      [data, pageSize, currentPage],
+    );
 
     // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
     // columns とは更新頻度が違うので、別で管理する。
     const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
       188, 188, 188, 188, 188,
-      // undefined,
     ]);
     const onWidthChange = useCallback(
       (index: number, width: number | undefined) => {
@@ -155,13 +197,13 @@ export const Overview: StoryObj<typeof DataTable2> = {
 
     // sort 順序状態
     // 名前
-    const [nameSort, setNameSort] = useState<SortDirection>();
+    const [nameSort, setNameSort] = useState<SortDirection>(undefined);
     // ステータス
-    const [statusSort, setStatusSort] = useState<SortDirection>();
+    const [statusSort, setStatusSort] = useState<SortDirection>(undefined);
     // メールアドレス
-    const [emailSort, setEmailSort] = useState<SortDirection>();
+    const [emailSort, setEmailSort] = useState<SortDirection>(undefined);
     // 登録日
-    const [dateSort, setDateSort] = useState<SortDirection>();
+    const [dateSort, setDateSort] = useState<SortDirection>(undefined);
 
     // filter 選択状態
     // 名前
@@ -190,41 +232,17 @@ export const Overview: StoryObj<typeof DataTable2> = {
         newColumns[1].filtered = statusValues.length !== 0;
         newColumns[2].filtered = emailValues.length !== 0;
         newColumns[3].filtered = dateValues.length !== 0;
-        setColumns(newColumns);
+        updateArgs({ columns: newColumns });
       },
-      [columns],
+      [columns, updateArgs],
     );
-
-    const filterTypes = [
-      {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
-        label: "含む",
-      },
-      {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
-        label: "含まない",
-      },
-      {
-        icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" />
-        ),
-        label: "いずれかを含む",
-      },
-    ];
 
     return (
       <div style={{ height: 500 }}>
         <DataTable2
+          {...args}
           columns={columns}
-          pageSize={pageSize}
           pageSizeOptions={pageSizeOptions}
-          currentPage={page}
           totalCount={data.length}
           rowControls={
             <>
@@ -255,19 +273,11 @@ export const Overview: StoryObj<typeof DataTable2> = {
               </ContextMenu2ButtonItem>
             </>
           }
-          extraButtons={
-            <DataTable2ActionButton
-              prepend={<Icon name="download_cloud" />}
-              onClick={() => alert("自由におけるボタン")}
-            >
-              ダウンロード
-            </DataTable2ActionButton>
-          }
           onCheckedRowsChange={setCheckedRows}
-          onPageSizeChange={setPageSize}
-          onPageChange={setPage}
+          onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
+          onPageChange={(currentPage: number) => updateArgs({ currentPage })}
           onColumnsChange={(columns) => {
-            setColumns(columns);
+            updateArgs({ columns });
             // 各カラムのフィルターの状態に応じて、フィルタ入力値をクリアする
             columns.forEach((c) => {
               if (c.filtered) return;
