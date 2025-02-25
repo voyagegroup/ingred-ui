@@ -72,7 +72,7 @@ export const DataTable2FilterControls = () => {
   return (
     <ContextMenu2Container>
       <ContextMenu2
-        width={336}
+        width={360}
         trigger={
           <styled.RowMenuFilterTrigger
             type="button"

@@ -75,7 +75,7 @@ export const DataTable2Pagination = () => {
                   /
                 </styled.RowMenuPaginationOperator>
                 {totalCount}
-                <Icon name="arrow_right" size="sm" />
+                <Icon name="arrow_down" size="sm" color="currentColor" />
               </button>
             }
           >

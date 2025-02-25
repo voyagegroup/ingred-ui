@@ -11,9 +11,10 @@ export const FilterTagInput = styled.div`
   align-items: center;
   gap: 0;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid ${colors.basic[400]};
   background-color: #fff;
+  overflow: hidden;
 
   &[data-small="true"] {
     display: block;
@@ -31,8 +32,8 @@ export const DropDownTrigger = styled.button`
   padding: 0 2px 0 6px;
   border: 0;
   border-right: 1px solid ${colors.basic[400]};
-  border-radius: 6px 0 0 6px;
-  color: ${colors.basic[900]};
+  outline-offset: -1px;
+  color: #000;
   background: transparent;
   cursor: pointer;
 
@@ -46,7 +47,7 @@ export const InlineField = styled.div`
   align-items: center;
   min-height: 100%;
   padding: 0 5px;
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 4px 4px 0;
   overflow: auto;
   scrollbar-width: none;
   background: ${colors.basic[100]};
@@ -79,9 +80,9 @@ export const OverflowIndicator = styled.button`
   place-items: center;
   width: 30px;
   border: 0;
-  border-radius: 0px 5px 5px 0px;
-  color: ${colors.basic[900]};
-  background-color: ${colors.basic[100]};
+  outline-offset: -1px;
+  color: #000;
+  background-color: #fff;
   box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
   cursor: pointer;
 
@@ -95,7 +96,7 @@ export const OverflowIndicator = styled.button`
     width: 28px;
     aspect-ratio: 1;
     border: 1px solid ${colors.basic[400]};
-    border-radius: 6px;
+    border-radius: 4px;
     box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
   }
 
@@ -150,6 +151,7 @@ export const InlineInputIcon = styled.div`
 const PanelInner = styled.div`
   display: grid;
   grid-template:
+    "title title"
     "left right"
     "bottom bottom" /
     auto 1fr;
@@ -188,6 +190,17 @@ export const Panel = styled(({ className, children }) => {
   align-items: center;
   justify-content: center;
   pointer-events: none;
+`;
+
+export const PanelTitle = styled.div`
+  grid-area: title;
+  padding: 8px 16px;
+  margin: 0 -16px;
+  /* UI/Text 16 bold */
+  font-weight: 700;
+  font-size: 16px;
+  color: ${colors.basic[900]};
+  background: ${colors.basic[100]};
 `;
 
 export const PanelLeft = styled.div`
@@ -276,7 +289,6 @@ export const PanelButtons = styled.ul`
 `;
 
 export const PanelTagField = styled.div`
-  --tag-bg-color: #fff;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -349,14 +361,14 @@ export const FilterTag = styled.span`
   width: fit-content;
   padding: 2px 4px 2px 6px;
   border: 1px solid ${colors.basic[400]};
-  border-radius: 4px;
+  border-radius: 2px;
   /* UI/Text 12 */
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
   word-break: break-all;
   color: ${colors.basic[900]};
-  background-color: var(--tag-bg-color, ${colors.basic[100]});
+  background-color: #fff;
 `;
 
 export const FilterTagButton = styled.button`

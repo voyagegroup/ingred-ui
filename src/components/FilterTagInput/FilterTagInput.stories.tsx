@@ -52,6 +52,7 @@ export default meta;
  */
 export const Default: StoryObj<typeof meta> = {
   args: {
+    title: "任意タイトル",
     values: ["テキスト", "value2", "value3"],
     selectedIndex: 0,
     selectOptions: [

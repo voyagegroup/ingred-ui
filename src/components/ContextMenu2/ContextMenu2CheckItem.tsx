@@ -15,8 +15,8 @@ type ContextMenu2CheckItemProps = {
   onChange?: (checked: boolean) => void;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const ButtonAppend = styled.span`
-  color: ${colors.basic[700]};
+const ButtonPrepend = styled.span`
+  color: ${colors.basic[900]};
 `;
 const CheckMark = styled(
   ({ className, checked }: { className?: string; checked: boolean }) => (
@@ -41,7 +41,7 @@ const InternalContextMenu2CheckItem = forwardRef<
 
   return (
     <button type="button" {...props} ref={ref} onClick={handleClick}>
-      {prepend && <ButtonAppend>{prepend}</ButtonAppend>}
+      {prepend && <ButtonPrepend>{prepend}</ButtonPrepend>}
       {children}
       <CheckMark checked={checked ?? false} />
     </button>
