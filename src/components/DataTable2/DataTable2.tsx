@@ -29,14 +29,14 @@ type RowsControlsProps = {
    * 「◯件選択中」をクリックしたときに表示される ContextMenu2 の中身を指定できます。
    * `<ContextMenu2>` 内に格納できるコンポーネントのみで構成してください。
    */
-  rowControls: ReactNode;
+  rowControls?: ReactNode;
   /**
    * 右上に任意のボタンを設置できます。
    */
-  extraButtons: ReactNode;
+  extraButtons?: ReactNode;
 };
 const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
-  const { isSmallLayout, rowIds, checkedRows, setCheckedRows } =
+  const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
 
   const isAllChecked = useMemo(
@@ -50,26 +50,39 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
 
   const [isControlOpen, setIsControlOpen] = useState(false);
 
+  const hasFilterItems = useMemo(
+    () => columns.some((column) => column.filtered !== undefined),
+    [columns],
+  );
+
   const onCheck = useCallback(() => {
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
   return (
     <styled.RowsControls isSmallLayout={isSmallLayout}>
-      <Checkbox
-        checked={isAllChecked || isIndeterminate}
-        indeterminate={isIndeterminate}
-        onChange={onCheck}
-      />
-      <DataTable2RowControls>{rowControls}</DataTable2RowControls>
-
-      <styled.RowsControlsSeparator />
+      {rowControls && (
+        <>
+          <Checkbox
+            checked={isAllChecked || isIndeterminate}
+            indeterminate={isIndeterminate}
+            onChange={onCheck}
+          />
+          <DataTable2RowControls>{rowControls}</DataTable2RowControls>
+          <styled.RowsControlsSeparator />
+        </>
+      )}
 
       {/* ページネーション */}
       <DataTable2Pagination />
 
-      <styled.RowsControlsSeparator />
-      <DataTable2FilterControls />
+      {hasFilterItems && (
+        <>
+          <styled.RowsControlsSeparator />
+          <DataTable2FilterControls />
+        </>
+      )}
+
       <styled.RowsControlsExtras>
         {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
         <ContextMenu2Container>
@@ -86,9 +99,11 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
             {isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
 
             {/* 並び替え */}
-            <DataTable2MenuOrderControl
-              onClose={() => setIsControlOpen(false)}
-            />
+            {columns.some((column) => column.sortable) && (
+              <DataTable2MenuOrderControl
+                onClose={() => setIsControlOpen(false)}
+              />
+            )}
 
             {/* 件数 */}
             <DataTable2MenuCountControl />
@@ -221,6 +236,7 @@ export const DataTable2 = ({
         value={{
           isSmallLayout,
           rowIds,
+          hasRowControls: !!rowControls,
           checkedRows,
           totalCount,
           currentPage,

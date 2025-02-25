@@ -18,8 +18,14 @@ type DataTable2RowProps = {
 };
 
 export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
-  const { isSmallLayout, columns, checkedRows, setCheckedRows, rowSpacing } =
-    useContext(DataTable2Context);
+  const {
+    isSmallLayout,
+    columns,
+    hasRowControls,
+    checkedRows,
+    setCheckedRows,
+    rowSpacing,
+  } = useContext(DataTable2Context);
   const isChecked = useMemo(() => checkedRows.includes(id), [id, checkedRows]);
   const handleCheck = useCallback(() => {
     const newCheckedRows = checkedRows.includes(id)
@@ -56,12 +62,14 @@ export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
       data-spacing={rowSpacing}
       isSmallLayout={isSmallLayout}
     >
-      <td>
-        <styled.CheckboxWrapper>
-          <Checkbox checked={isChecked} onChange={handleCheck} />
-          <input type="checkbox" aria-label="この行を選択" />
-        </styled.CheckboxWrapper>
-      </td>
+      {hasRowControls && (
+        <styled.DataTable2RowCheckCell>
+          <styled.CheckboxWrapper>
+            <Checkbox checked={isChecked} onChange={handleCheck} />
+            <input type="checkbox" aria-label="この行を選択" />
+          </styled.CheckboxWrapper>
+        </styled.DataTable2RowCheckCell>
+      )}
       {childrenWithDataVisibleOrdered.map(({ child }) => child)}
     </styled.DataTable2Row>
   );

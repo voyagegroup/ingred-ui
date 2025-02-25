@@ -23,7 +23,7 @@ export const DataTable2MenuCountControl = () => {
       trigger={
         <ContextMenu2TriggerItem
           append={(() => {
-            const text = [10, 20, 50, 100, 200].join(", ");
+            const text = pageSizeOptions.join(", ");
             return text.length > 16 ? `${text.slice(0, 16)}...` : text;
           })()}
         >

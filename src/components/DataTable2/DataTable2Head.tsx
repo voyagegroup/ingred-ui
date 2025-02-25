@@ -16,7 +16,7 @@ type DataTable2HeadProps = {
 };
 
 export const DataTable2Head = ({ children }: DataTable2HeadProps) => {
-  const { columns } = useContext(DataTable2Context);
+  const { hasRowControls, columns } = useContext(DataTable2Context);
 
   const childrenWithData = useMemo(() => {
     return Children.toArray(children)
@@ -44,7 +44,7 @@ export const DataTable2Head = ({ children }: DataTable2HeadProps) => {
     <>
       {/* 幅を決めるための <col/> 展開する。<th> 自体には width を指定しない */}
       <colgroup>
-        <col style={{ width: 34 }} />
+        {hasRowControls && <col style={{ width: 34 }} />}
         {childrenWithDataVisibleOrdered.map(({ id, child }) => {
           if (!isValidElement(child)) return null;
           return <col key={id} style={{ width: child.props.width }} />;
@@ -52,7 +52,7 @@ export const DataTable2Head = ({ children }: DataTable2HeadProps) => {
       </colgroup>
       <styled.DataTable2Header>
         <tr>
-          <th aria-label="empty cell" />
+          {hasRowControls && <th aria-label="empty cell" />}
           {childrenWithDataVisibleOrdered.map(({ id, index, child }) => (
             <ColumnContext.Provider key={id} value={{ index: index }}>
               {child}

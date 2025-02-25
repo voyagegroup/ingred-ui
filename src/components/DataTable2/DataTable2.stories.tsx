@@ -242,7 +242,6 @@ export const Default: StoryObj<typeof meta> = {
         <DataTable2
           {...args}
           columns={columns}
-          pageSizeOptions={pageSizeOptions}
           totalCount={data.length}
           rowControls={
             <>
@@ -500,6 +499,131 @@ export const Default: StoryObj<typeof meta> = {
                   >
                     編集
                   </ActionButton>
+                </DataTable2Cell>
+              </DataTable2Row>
+            ))}
+          </DataTable2Body>
+        </DataTable2>
+      </div>
+    );
+  },
+};
+
+/**
+ * 以下のように、セルの loading を true に設定すると、スピナーが表示されます。
+ * ```
+ * <DataTable2Cell loading>
+ *   セルの内容
+ * </DataTable2Cell>
+ * ```
+ * また、DataTable2 の props について `rowControls` や `extraButtons` を未指定にすると、該当機能のボタンが表示されません。
+ * 「カラム」でフィルターやソートを明示しない場合も、それらの機能は非表示になります。
+ */
+export const Loading: StoryObj<typeof meta> = {
+  args: {
+    bordered: false,
+    columns: [
+      {
+        id: crypto.randomUUID(),
+        label: "カラム1",
+        order: 0,
+        visible: true,
+        sortable: false,
+        filtered: undefined, // filtered をすべて undefined にすると、フィルター機能が非表示になります
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "カラム2",
+        order: 1,
+        visible: true,
+        sortable: false,
+        filtered: undefined,
+      },
+    ],
+    pageSize: 50,
+    pageSizeOptions: [50],
+    currentPage: 0,
+    totalCount: 100,
+    rowControls: null,
+    onCheckedRowsChange: () => {},
+    onPageSizeChange: () => {},
+    onPageChange: () => {},
+    onColumnsChange: () => {},
+    children: null,
+  },
+  render: (args) => {
+    const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
+      columns: Column[];
+      currentPage: number;
+      pageSize: number;
+    }>();
+
+    // コンテンツ
+    const data = mockData;
+    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
+    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
+    const pageData = useMemo(
+      () =>
+        data.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
+      [data, pageSize, currentPage],
+    );
+
+    // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
+    // columns とは更新頻度が違うので、別で管理する。
+    const [columnWidths, setColumnWidths] = useState<(number | undefined)[]>([
+      200,
+      undefined,
+    ]);
+    const onWidthChange = useCallback(
+      (index: number, width: number | undefined) => {
+        const newColumnWidths = [...columnWidths];
+        newColumnWidths[index] = width;
+        setColumnWidths(newColumnWidths);
+      },
+      [columnWidths, setColumnWidths],
+    );
+
+    return (
+      <div style={{ height: 500 }}>
+        <DataTable2
+          {...args}
+          columns={columns}
+          totalCount={data.length}
+          onCheckedRowsChange={() => {}}
+          onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
+          onPageChange={(currentPage: number) => updateArgs({ currentPage })}
+          onColumnsChange={(columns) => {
+            console.log(columns);
+
+            updateArgs({ columns });
+          }}
+        >
+          <DataTable2Head>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[0]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(0, w)}
+            >
+              <DataTable2ColumnLabel>名前</DataTable2ColumnLabel>
+            </DataTable2Column>
+            <DataTable2Column
+              isResizable
+              width={columnWidths[1]}
+              minWidth={188}
+              onWidthChange={(w) => onWidthChange(1, w)}
+            >
+              <DataTable2ColumnLabel>ステータス</DataTable2ColumnLabel>
+            </DataTable2Column>
+          </DataTable2Head>
+          <DataTable2Body>
+            {pageData.map((dataRow, i) => (
+              <DataTable2Row key={dataRow.id} id={dataRow.id}>
+                <DataTable2Cell loading={i % 3 === 0}>
+                  {dataRow.name}
+                </DataTable2Cell>
+                <DataTable2Cell loading={i % 5 === 0}>
+                  {dataRow.status}
                 </DataTable2Cell>
               </DataTable2Row>
             ))}

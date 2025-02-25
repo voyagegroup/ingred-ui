@@ -376,15 +376,11 @@ export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
   }
 
   td {
+    position: relative;
     padding: 12px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
     font-size: ${({ isSmallLayout }) => (isSmallLayout ? 12 : 14)}px;
     line-height: 17px;
     color: ${colors.basic[900]};
-
-    &:first-child {
-      /* チェックボックスのセル */
-      padding-right: 0;
-    }
 
     &:where(tr[data-spacing="-2"] *) {
       padding-block: 4px;
@@ -404,8 +400,41 @@ export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
   }
 `;
 
+export const DataTable2RowCheckCell = styled.td`
+  padding-right: 0;
+`;
+
 export const CheckboxWrapper = styled.div`
   display: flex;
+`;
+//
+// -----------------------------------------------------------------------------
+
+// eslint-disable-next-line no-irregular-whitespace
+const fullWidthWhiteSpace = "　";
+export const DataTable2CellInner = styled.div`
+  display: grid;
+
+  &::after {
+    // 最低 1 文字分の高さを確保
+    grid-area: 1 / 1 / 2 / 2;
+    content: "${fullWidthWhiteSpace}";
+  }
+`;
+
+export const DataTable2CellSpinner = styled.div`
+  position: absolute;
+  inset: 0 auto 0 16px;
+  height: fit-content;
+  margin: auto 0;
+`;
+
+export const DataTable2CellContents = styled.div`
+  grid-area: 1 / 1 / 2 / 2;
+
+  &:where(${DataTable2CellInner}:has( ${DataTable2CellSpinner} ) *) {
+    visibility: hidden;
+  }
 `;
 
 //

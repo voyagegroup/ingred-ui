@@ -360,7 +360,7 @@ export const FilterTag = styled.span`
   align-items: center;
   gap: 4px;
   width: fit-content;
-  padding: 2px 4px 2px 6px;
+  padding: 1px 4px 1px 6px;
   border: 1px solid ${colors.basic[400]};
   border-radius: 2px;
   /* UI/Text 12 */

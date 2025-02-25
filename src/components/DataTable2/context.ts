@@ -10,6 +10,7 @@ export type RowSpacing = -2 | -1 | 0 | 1 | 2;
 export const DataTable2Context = createContext<
   {
     rowIds: string[]; // 全行の ID のリスト。コンテキストを通して、枝葉コンポーネントで共有する
+    hasRowControls: boolean;
     checkedRows: string[];
     columns: Column[];
     setRowIds: (rowIds: string[]) => void;
@@ -33,6 +34,7 @@ export const DataTable2Context = createContext<
   }
 >({
   rowIds: [],
+  hasRowControls: false,
   checkedRows: [],
 
   isSmallLayout: false,
