@@ -415,7 +415,7 @@ const fullWidthWhiteSpace = "　";
 export const DataTable2CellInner = styled.div`
   display: grid;
 
-  &::after {
+  &::before {
     // 最低 1 文字分の高さを確保
     grid-area: 1 / 1 / 2 / 2;
     content: "${fullWidthWhiteSpace}";
