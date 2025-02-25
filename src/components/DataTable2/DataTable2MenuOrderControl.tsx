@@ -19,8 +19,13 @@ import Button from "../Button";
 ////////////////////////////////////////////////////////////////////////////////
 
 // 左上コントロール群
+type DataTable2MenuOrderControlProps = {
+  onClose: () => void;
+};
 
-export const DataTable2MenuOrderControl = () => {
+export const DataTable2MenuOrderControl = ({
+  onClose,
+}: DataTable2MenuOrderControlProps) => {
   const { columns, setColumns } = useContext(DataTable2Context);
   const [userChangedColumns, setUserChangedColumns] =
     useState<Column[]>(columns);
@@ -72,6 +77,16 @@ export const DataTable2MenuOrderControl = () => {
     [columns, groupedColumns],
   );
 
+  const handleCancelButtonClick = useCallback(() => {
+    setUserChangedColumns(columns);
+    onClose();
+  }, [columns, onClose]);
+
+  const handleApplyButtonClick = useCallback(() => {
+    setColumns(userChangedColumns);
+    onClose();
+  }, [setColumns, userChangedColumns, onClose]);
+
   return (
     // 並び替え
     // このコンポーネントが親の ContextMenu2Provider 内に設置される前提なので、
@@ -120,14 +135,10 @@ export const DataTable2MenuOrderControl = () => {
       </ContextMenu2HelpTextItem>
       <ContextMenu2SeparatorItem />
       <ContextMenu2ButtonControlsItem>
-        <Button
-          size="small"
-          color="clear"
-          onClick={() => setUserChangedColumns(columns)}
-        >
+        <Button size="small" color="clear" onClick={handleCancelButtonClick}>
           キャンセル
         </Button>
-        <Button size="small" onClick={() => setColumns(userChangedColumns)}>
+        <Button size="small" onClick={handleApplyButtonClick}>
           適用
         </Button>
       </ContextMenu2ButtonControlsItem>

@@ -48,6 +48,8 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
     [checkedRows, rowIds],
   );
 
+  const [isControlOpen, setIsControlOpen] = useState(false);
+
   const onCheck = useCallback(() => {
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
@@ -72,17 +74,21 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
         {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
         <ContextMenu2Container>
           <ContextMenu2
+            open={isControlOpen}
             width={316}
             trigger={
               <styled.DataTable2ExtrasMenuTrigger>
                 <Icon name="more_vert" />
               </styled.DataTable2ExtrasMenuTrigger>
             }
+            onOpenChange={setIsControlOpen}
           >
             {isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
 
             {/* 並び替え */}
-            <DataTable2MenuOrderControl />
+            <DataTable2MenuOrderControl
+              onClose={() => setIsControlOpen(false)}
+            />
 
             {/* 件数 */}
             <DataTable2MenuCountControl />

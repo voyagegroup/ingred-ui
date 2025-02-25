@@ -58,6 +58,7 @@ export const InlineField = styled.div`
 
   &:has(input:focus) {
     outline: auto;
+    outline-offset: -1px;
     outline: auto -webkit-focus-ring-color;
   }
 

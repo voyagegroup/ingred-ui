@@ -250,22 +250,31 @@ export const Default: StoryObj<typeof meta> = {
                 ステータスを変更
               </ContextMenu2HeadingItem>
               <ContextMenu2ButtonItem
+                closeOnClick
                 onClick={() => alert(`有効: ${checkedRows.join()}`)}
               >
                 有効にする
               </ContextMenu2ButtonItem>
               <ContextMenu2ButtonItem
+                closeOnClick
                 onClick={() => alert(`アーカイブ: ${checkedRows.join()}`)}
               >
                 アーカイブする
               </ContextMenu2ButtonItem>
-              <ContextMenu2HeadingItem onClick={() => alert("任意機能")}>
+              <ContextMenu2HeadingItem
+                closeOnClick
+                onClick={() => alert("任意機能")}
+              >
                 操作
               </ContextMenu2HeadingItem>
-              <ContextMenu2ButtonItem onClick={() => alert("任意機能")}>
+              <ContextMenu2ButtonItem
+                closeOnClick
+                onClick={() => alert("任意機能")}
+              >
                 複製する
               </ContextMenu2ButtonItem>
               <ContextMenu2ButtonItem
+                closeOnClick
                 color="danger"
                 onClick={() => alert("任意機能")}
               >
@@ -318,6 +327,7 @@ export const Default: StoryObj<typeof meta> = {
                 名前
               </DataTable2ColumnLabel>
               <FilterTagInput
+                title="名前"
                 values={nameFilterValues}
                 selectedIndex={nameFilterType}
                 selectOptions={filterTypes}
@@ -352,6 +362,7 @@ export const Default: StoryObj<typeof meta> = {
                 ステータス
               </DataTable2ColumnLabel>
               <FilterTagInput
+                title="ステータス"
                 values={statusFilterValues}
                 selectedIndex={statusFilterType}
                 selectOptions={filterTypes}
@@ -386,6 +397,7 @@ export const Default: StoryObj<typeof meta> = {
                 メールアドレス
               </DataTable2ColumnLabel>
               <FilterTagInput
+                title="メールアドレス"
                 values={emailFilterValues}
                 selectedIndex={emailFilterType}
                 selectOptions={filterTypes}
@@ -420,6 +432,7 @@ export const Default: StoryObj<typeof meta> = {
                 登録日
               </DataTable2ColumnLabel>
               <FilterTagInput
+                title="登録日"
                 values={dateFilterValues}
                 selectedIndex={dateFilterType}
                 selectOptions={filterTypes}
