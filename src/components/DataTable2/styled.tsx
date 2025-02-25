@@ -2,7 +2,7 @@ import React, { type ReactNode } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { palette } from "../../themes/palette";
-import { getShadow } from "../../utils/getShadow";
+import { Shadow } from "../../styles/shadow";
 
 const actionButton = `
   display: flex;
@@ -16,11 +16,11 @@ const actionButton = `
   font-size: 12px;
   color: ${colors.basic[900]};
   cursor: pointer;
-  box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
+  box-shadow: ${Shadow["3dShadowBasic"]};
   &:where(:disabled) {
     color: ${colors.basic[400]};
     background: ${colors.basic[200]};
-    box-shadow: ${getShadow(1, 0.04, palette.black)};
+    box-shadow: ${Shadow["3dShadowBasic"]};
     cursor: not-allowed;
   }
   &:where(li:not(:first-child) button) {
@@ -37,7 +37,7 @@ const actionButton = `
   &:where(:active:not(:disabled)) {
     padding-block: 6px 2px;
     background: ${palette.gray.highlight};
-    box-shadow: ${getShadow(2, 0.04, palette.black)};
+    box-shadow: ${Shadow["3dShadowActive"]};
   }
 `;
 
@@ -96,7 +96,7 @@ export const Viewport = styled(
 
 // 最上部のヘッダー部分
 // -----------------------------------------------------------------------------
-export const RowsControls = styled.div<{ isSmallLayout: boolean }>`
+export const Toolbar = styled.div<{ isSmallLayout: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -119,7 +119,7 @@ export const RowMenuTrigger = styled.button`
   }
 `;
 
-export const RowsControlsSeparator = styled.hr`
+export const ToolbarSeparator = styled.hr`
   width: 1px;
   height: 20px;
   margin: 0;
@@ -127,7 +127,7 @@ export const RowsControlsSeparator = styled.hr`
   border-left: 1px dashed ${colors.basic[400]};
 `;
 
-export const RowMenuPagination = styled.div`
+export const ToolbarPagination = styled.div`
   display: flex;
   gap: 0;
 
@@ -158,11 +158,11 @@ export const RowMenuPagination = styled.div`
   }
 `;
 
-export const RowMenuPaginationOperator = styled.span`
+export const ToolbarPaginationOperator = styled.span`
   color: ${colors.basic[600]};
 `;
 
-export const RowMenuFilterTrigger = styled.button`
+export const ToolbarFilterTrigger = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -189,7 +189,7 @@ export const RowMenuFilterTrigger = styled.button`
   }
 `;
 
-export const RowsControlsExtras = styled.div`
+export const ToolbarExtras = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;

@@ -24,7 +24,7 @@ import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-type RowsControlsProps = {
+type ToolbarProps = {
   /**
    * 「◯件選択中」をクリックしたときに表示される ContextMenu2 の中身を指定できます。
    * `<ContextMenu2>` 内に格納できるコンポーネントのみで構成してください。
@@ -35,7 +35,7 @@ type RowsControlsProps = {
    */
   extraButtons?: ReactNode;
 };
-const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
+const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
   const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
 
@@ -60,7 +60,7 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
   }, [isAllChecked, rowIds, setCheckedRows]);
 
   return (
-    <styled.RowsControls isSmallLayout={isSmallLayout}>
+    <styled.Toolbar isSmallLayout={isSmallLayout}>
       {rowControls && (
         <>
           <Checkbox
@@ -69,7 +69,7 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
             onChange={onCheck}
           />
           <DataTable2RowControls>{rowControls}</DataTable2RowControls>
-          <styled.RowsControlsSeparator />
+          <styled.ToolbarSeparator />
         </>
       )}
 
@@ -78,12 +78,12 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
 
       {hasFilterItems && (
         <>
-          <styled.RowsControlsSeparator />
+          <styled.ToolbarSeparator />
           <DataTable2FilterControls />
         </>
       )}
 
-      <styled.RowsControlsExtras>
+      <styled.ToolbarExtras>
         {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
         <ContextMenu2Container>
           <ContextMenu2
@@ -112,8 +112,8 @@ const RowsControls = ({ rowControls, extraButtons }: RowsControlsProps) => {
             <DataTable2MenuSpaceControl />
           </ContextMenu2>
         </ContextMenu2Container>
-      </styled.RowsControlsExtras>
-    </styled.RowsControls>
+      </styled.ToolbarExtras>
+    </styled.Toolbar>
   );
 };
 
@@ -165,7 +165,7 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
-} & RowsControlsProps;
+} & ToolbarProps;
 
 export const DataTable2 = ({
   bordered,
@@ -254,7 +254,7 @@ export const DataTable2 = ({
           setRowSpacing,
         }}
       >
-        <RowsControls rowControls={rowControls} extraButtons={extraButtons} />
+        <Toolbar rowControls={rowControls} extraButtons={extraButtons} />
         <styled.Viewport>
           <table>{children}</table>
         </styled.Viewport>

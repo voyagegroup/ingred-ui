@@ -47,7 +47,7 @@ export const DataTable2Pagination = () => {
   }, [currentPage, maxPage, setCurrentPage]);
 
   return (
-    <styled.RowMenuPagination>
+    <styled.ToolbarPagination>
       <button
         type="button"
         aria-label="前のページへ"
@@ -67,13 +67,13 @@ export const DataTable2Pagination = () => {
             trigger={
               <button type="button">
                 {Math.min(currentPage * pageSize + 1, pageSize * maxPage)}
-                <styled.RowMenuPaginationOperator>
+                <styled.ToolbarPaginationOperator>
                   -
-                </styled.RowMenuPaginationOperator>
+                </styled.ToolbarPaginationOperator>
                 {Math.min((currentPage + 1) * pageSize, totalCount)}
-                <styled.RowMenuPaginationOperator>
+                <styled.ToolbarPaginationOperator>
                   /
-                </styled.RowMenuPaginationOperator>
+                </styled.ToolbarPaginationOperator>
                 {totalCount}
                 <Icon name="arrow_down" size="sm" color="currentColor" />
               </button>
@@ -100,6 +100,6 @@ export const DataTable2Pagination = () => {
       >
         <Icon name="arrow_right" color="currentColor" />
       </button>
-    </styled.RowMenuPagination>
+    </styled.ToolbarPagination>
   );
 };

@@ -74,13 +74,13 @@ export const DataTable2FilterControls = () => {
       <ContextMenu2
         width={360}
         trigger={
-          <styled.RowMenuFilterTrigger
+          <styled.ToolbarFilterTrigger
             type="button"
             disabled={numOfFilters === 0}
           >
             <Icon name="filter" color="currentColor" />
             {numOfFilters}列に適用中
-          </styled.RowMenuFilterTrigger>
+          </styled.ToolbarFilterTrigger>
         }
         open={isOpen}
         onOpenChange={handleOpenChange}

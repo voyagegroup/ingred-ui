@@ -26,7 +26,7 @@ export const DataTable2RowControls = ({
             disabled={checkedRows.length === 0}
           >
             <em>{checkedRows.length}</em>件選択
-            <Icon name="arrow_down" />
+            <Icon name="arrow_down" color="currentColor" />
           </styled.RowMenuTrigger>
         }
       >
