@@ -29,61 +29,7 @@ import { FilterTagInput } from "../FilterTagInput";
 const meta = {
   title: "Components/Data Display/DataTable2",
   component: DataTable2,
-  parameters: {
-    docs: {
-      source: { language: "tsx" },
-      page: () => (
-        <>
-          <Title />
-          <Markdown>
-            {`\
-DataTable2 に高さを指定したい場合、親に高さを明示してください。<br />
-ページの高さにフィットさせたい場合には、親要素に 100vh などを指定してください。<br />
-親に高さが明示されていない場合は、「全件表示できる高さ」で表示されます。（レスポンシブに高さを変えても大丈夫です）
-
-例:
-\`\`\`
-<div style={{ height: 500 }}>
-  <DataTable2>...</DataTable2>
-<div>
-\`\`\`
-表内に表示したいデータは、HTML の \`<table>\`、\`<tr>\`、\`<td>\` の関係と同じように、\`<DataTable2>\` 内に、 \`<DataTable2Row>\` を配置し、その中に \`<DataTable2Cell>\` を配置してください。<br />
-ページネーションやフィルターの結果はクライアントサイドで実装し、それに応じて \`<DataTable2Cell>\` を構築しデータを流し込んでください。<br />
-構造例（Propsは省略）:
-\`\`\`
-<DataTable2>
-  <DataTable2Head>
-    <DataTable2Column>
-      <DataTable2ColumnLabel>
-        名前
-      </DataTable2ColumnLabel>
-    </DataTable2Column>
-    <DataTable2Column>
-      <DataTable2ColumnLabel>
-        年齢
-      </DataTable2ColumnLabel>
-    </DataTable2Column>
-  </DataTable2Head>
-  <DataTable2Body>
-    <DataTable2Row>
-      <DataTable2Cell>田中太郎</DataTable2Cell>
-      <DataTable2Cell>25歳</DataTable2Cell>
-    </DataTable2Row>
-    <DataTable2Row>
-      <DataTable2Cell>鈴木花子</DataTable2Cell>
-      <DataTable2Cell>22歳</DataTable2Cell>
-    </DataTable2Row>
-  </DataTable2Body>
-</DataTable2>
-\`\`\`
-`}
-          </Markdown>
-          <Stories includePrimary title="Stories" />
-          <ArgsTable of={DataTable2} />
-        </>
-      ),
-    },
-  },
+  argTypes: {},
 } satisfies Meta<typeof DataTable2>;
 
 export default meta;
@@ -114,7 +60,48 @@ const filterTypes = [
   },
 ];
 
-export const Overview: StoryObj<typeof meta> = {
+/**
+ * DataTable2 に高さを指定したい場合、親に高さを明示してください。<br />
+ * ページの高さにフィットさせたい場合には、親要素に 100vh などを指定してください。<br />
+ * 親に高さが明示されていない場合は、「全件表示できる高さ」で表示されます。（レスポンシブに高さを変えても大丈夫です）<br />
+ * 例:
+ * ```
+ *  <div style={{ height: 500 }}>
+ *    <DataTable2>...</DataTable2>
+ *  <div>
+ * ```
+ *
+ * 表内に表示したいデータは、HTML の `<table>`、`<tr>`、`<td>` の関係と同じように、`<DataTable2>` 内に、 `<DataTable2Row>` を配置し、その中に `<DataTable2Cell>` を配置してください。<br />
+ * ページネーションやフィルターの結果はクライアントサイドで実装し、それに応じて `<DataTable2Cell>` を構築しデータを流し込んでください。<br />
+ * 構造例（Propsは省略）:
+ * ```
+ * <DataTable2>
+ *   <DataTable2Head>
+ *     <DataTable2Column>
+ *       <DataTable2ColumnLabel>
+ *         名前
+ *       </DataTable2ColumnLabel>
+ *     </DataTable2Column>
+ *     <DataTable2Column>
+ *       <DataTable2ColumnLabel>
+ *         年齢
+ *       </DataTable2ColumnLabel>
+ *     </DataTable2Column>
+ *   </DataTable2Head>
+ *   <DataTable2Body>
+ *     <DataTable2Row>
+ *       <DataTable2Cell>田中太郎</DataTable2Cell>
+ *       <DataTable2Cell>25歳</DataTable2Cell>
+ *     </DataTable2Row>
+ *     <DataTable2Row>
+ *       <DataTable2Cell>鈴木花子</DataTable2Cell>
+ *       <DataTable2Cell>22歳</DataTable2Cell>
+ *     </DataTable2Row>
+ *   </DataTable2Body>
+ * </DataTable2>
+ * ```
+ */
+export const Default: StoryObj<typeof meta> = {
   args: {
     bordered: false,
     columns: [
