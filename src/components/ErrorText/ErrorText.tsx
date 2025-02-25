@@ -15,11 +15,7 @@ const ErrorText = React.forwardRef<HTMLDivElement, ErrorTextProps>(
     return (
       <Flex ref={ref} display="flex" alignItems="center">
         <Spacer pr={0.5}>
-          <Icon
-            name="exclamation"
-            color={theme.palette.danger.main}
-            size="md"
-          />
+          <Icon name="alert" color={theme.palette.danger.main} size="md" />
         </Spacer>
         <Typography color={theme.palette.danger.main}>{children}</Typography>
       </Flex>
