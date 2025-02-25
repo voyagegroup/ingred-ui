@@ -3,7 +3,7 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-llJcti jFfHAa"
+    class="sc-llJcti dKkloF"
     data-overflowing="false"
     data-small="false"
   >
@@ -11,7 +11,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-iIPllB iCAtZI"
+      class="sc-iIPllB gMKXmg"
       type="button"
     >
       <span
@@ -43,18 +43,18 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-gicCDI bhxCFu"
+      class="sc-gicCDI fgmNOp"
     >
       <div
         class="sc-ezWOiH jbWjVW"
       >
         <span
-          class="sc-BeQoi ycjCT"
+          class="sc-kgUAyh hOxIEX"
         >
           テキスト
           <button
             aria-label="削除"
-            class="sc-kgUAyh jHValI"
+            class="sc-hTtwUo bVuSrE"
             type="button"
           >
             <span
@@ -74,12 +74,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-BeQoi ycjCT"
+          class="sc-kgUAyh hOxIEX"
         >
           value2
           <button
             aria-label="削除"
-            class="sc-kgUAyh jHValI"
+            class="sc-hTtwUo bVuSrE"
             type="button"
           >
             <span
@@ -99,12 +99,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-BeQoi ycjCT"
+          class="sc-kgUAyh hOxIEX"
         >
           value3
           <button
             aria-label="削除"
-            class="sc-kgUAyh jHValI"
+            class="sc-hTtwUo bVuSrE"
             type="button"
           >
             <span
@@ -153,7 +153,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
     </div>
     <button
       aria-label="フィルター入力パネルを開く"
-      class="sc-bZkfAO bTghFo"
+      class="sc-bZkfAO diRLzr"
       type="button"
     >
       <span

@@ -12,6 +12,7 @@ describe("FileUploader component testing", () => {
   test("FileUploader", () => {
     const { asFragment } = renderWithThemeProvider(
       <FilterTagInput
+        title="任意タイトル"
         values={["テキスト", "value2", "value3"]}
         selectedIndex={0}
         selectOptions={[
