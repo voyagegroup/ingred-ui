@@ -81,26 +81,31 @@ const SwitchThumb = styled.span<{
 const InternalContextMenu2SwitchItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2SwitchItemProps
->(({ checked = false, disabled = false, children, ...props }, ref) => {
-  const handleOnClick = () => {
-    props.onChange?.(!checked);
-  };
+>(
+  (
+    { checked = false, disabled = false, children, onChange, ...props },
+    ref,
+  ) => {
+    const handleOnClick = () => {
+      onChange?.(!checked);
+    };
 
-  return (
-    <button
-      type="button"
-      {...props}
-      ref={ref}
-      disabled={disabled}
-      onClick={handleOnClick}
-    >
-      {children}
-      <SwitchTruck checked={checked} disabled={disabled}>
-        <SwitchThumb checked={checked} disabled={disabled} />
-      </SwitchTruck>
-    </button>
-  );
-});
+    return (
+      <button
+        type="button"
+        {...props}
+        ref={ref}
+        disabled={disabled}
+        onClick={handleOnClick}
+      >
+        {children}
+        <SwitchTruck checked={checked} disabled={disabled}>
+          <SwitchThumb checked={checked} disabled={disabled} />
+        </SwitchTruck>
+      </button>
+    );
+  },
+);
 InternalContextMenu2SwitchItem.displayName = "ContextMenu2SwitchItem";
 
 type Theme = {

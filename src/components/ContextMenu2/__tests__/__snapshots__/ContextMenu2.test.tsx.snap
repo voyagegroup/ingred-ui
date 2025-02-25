@@ -35,19 +35,19 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-breuTD eJxrIt"
+    class="sc-ksZaOG fkpsDm"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
     tabindex="-1"
   >
     <p
-      class="sc-ksZaOG eUYUrP"
+      class="sc-hAZoDl hzQEEQ"
     >
       ステータスを変更
     </p>
     <div
-      class="sc-fnykZs bbaVEF"
+      class="sc-fEOsli jsSWjZ"
     >
       <div>
         <span
@@ -70,13 +70,13 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </div>
       <p
-        class="sc-hAZoDl MPlkO"
+        class="sc-fnykZs fgvMEV"
       >
         ヘルプテキスト
       </p>
     </div>
     <hr
-      class="sc-bjUoiL cTSeEK"
+      class="sc-idiyUo cCmHvy"
     />
     <button
       class="sc-gsnTZi jJEItt"
@@ -126,12 +126,16 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     <button
       aria-expanded="false"
       aria-haspopup="dialog"
-      class="sc-jqUVSM iUMWmL"
+      class="sc-kDDrLX duizbt"
       type="button"
     >
-      入れ子トリガー
       <span
-        class="sc-papXJ iaTPsM"
+        class="sc-papXJ flsUCO"
+      >
+        入れ子トリガー
+      </span>
+      <span
+        class="sc-jqUVSM cjnGLN"
       >
         100
       </span>
@@ -272,7 +276,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <div
-      class="sc-fEOsli gBuuds"
+      class="sc-bjUoiL hjepdx"
     >
       <input
         placeholder="プレイスホルダー"
@@ -280,11 +284,11 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       />
     </div>
     <ul
-      class="sc-idiyUo kFDxmW"
+      class="sc-dIouRR eFxEmW"
     >
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw eoBrxU"
+          class="sc-dmRaPn sc-kgflAQ kALpkY ckGPWO"
           color="clear"
           font-size="12px"
           height="28px"
@@ -294,7 +298,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
       <li>
         <button
-          class="sc-hHLeRK sc-dmRaPn dqYRgw cxvbuX"
+          class="sc-dmRaPn sc-kgflAQ kALpkY hJikLF"
           color="primary"
           font-size="12px"
           height="28px"
