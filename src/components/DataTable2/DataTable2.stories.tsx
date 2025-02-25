@@ -13,6 +13,7 @@ import {
   DataTable2Head,
   DataTable2Body,
   DataTable2Row,
+  DataTable2Cell,
   DataTable2ActionButton,
   DataTable2InlineEditor,
   DataTable2InlineSelectEditor,
@@ -461,7 +462,7 @@ export const Overview: StoryObj<typeof meta> = {
           <DataTable2Body>
             {pageData.map((dataRow) => (
               <DataTable2Row key={dataRow.id} id={dataRow.id}>
-                <td>
+                <DataTable2Cell>
                   <DataTable2InlineEditor
                     label="名前を編集"
                     value={dataRow.name}
@@ -473,8 +474,8 @@ export const Overview: StoryObj<typeof meta> = {
                   >
                     <a href="/">{dataRow.name}</a>
                   </DataTable2InlineEditor>
-                </td>
-                <td>
+                </DataTable2Cell>
+                <DataTable2Cell>
                   <DataTable2InlineSelectEditor
                     label="ステータスを変更"
                     value={dataRow.status}
@@ -487,10 +488,10 @@ export const Overview: StoryObj<typeof meta> = {
                   >
                     {dataRow.status}
                   </DataTable2InlineSelectEditor>
-                </td>
-                <td>{dataRow.email}</td>
-                <td>{dataRow.date}</td>
-                <td>
+                </DataTable2Cell>
+                <DataTable2Cell>{dataRow.email}</DataTable2Cell>
+                <DataTable2Cell>{dataRow.date}</DataTable2Cell>
+                <DataTable2Cell>
                   <ActionButton
                     type="button"
                     color="primary"
@@ -501,7 +502,7 @@ export const Overview: StoryObj<typeof meta> = {
                   >
                     編集
                   </ActionButton>
-                </td>
+                </DataTable2Cell>
               </DataTable2Row>
             ))}
           </DataTable2Body>

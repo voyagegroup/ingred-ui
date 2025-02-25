@@ -1,0 +1,12 @@
+import React, { type ReactNode } from "react";
+
+////////////////////////////////////////////////////////////////////////////////
+// Public Components
+////////////////////////////////////////////////////////////////////////////////
+type DataTable2CellProps = {
+  children: ReactNode;
+};
+
+export const DataTable2Cell = ({ children }: DataTable2CellProps) => (
+  <td>{children}</td>
+);
