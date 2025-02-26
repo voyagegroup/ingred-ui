@@ -4,43 +4,7 @@ import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
 
-export const FilterTagInput = styled.div`
-  position: relative;
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  align-items: center;
-  gap: 0;
-  height: 28px;
-  border-radius: 4px;
-  border: 1px solid ${colors.basic[400]};
-  background-color: #fff;
-  overflow: hidden;
-
-  &[data-small="true"] {
-    display: block;
-    border: 0;
-    background-color: transparent;
-  }
-`;
-
-export const DropDownTrigger = styled.button`
-  flex-shrink: 0;
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  height: 100%;
-  padding: 0 2px 0 6px;
-  border: 0;
-  border-right: 1px solid ${colors.basic[400]};
-  outline-offset: -1px;
-  color: #000;
-  background: transparent;
-  cursor: pointer;
-
-  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
-    display: none;
-  }
-`;
+import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
 export const InlineField = styled.div`
   display: flex;
@@ -62,7 +26,7 @@ export const InlineField = styled.div`
     outline: auto -webkit-focus-ring-color;
   }
 
-  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
+  &:where(${FilterInputAbstract}[data-small="true"] *) {
     display: none;
   }
 `;
@@ -87,11 +51,11 @@ export const OverflowIndicator = styled.button`
   box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
   cursor: pointer;
 
-  &:where(${FilterTagInput.toString()}[data-overflowing="true"] *) {
+  &:where([data-overflowing="true"]) {
     display: grid;
   }
 
-  &:where(${FilterTagInput.toString()}[data-small="true"] *) {
+  &:where(${FilterInputAbstract}[data-small="true"] *) {
     position: static;
     display: grid;
     width: 28px;
@@ -101,7 +65,7 @@ export const OverflowIndicator = styled.button`
     box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
   }
 
-  &:where(${FilterTagInput.toString()}[data-small="true"] *:active:not(:disabled)) {
+  &:where(${FilterInputAbstract}[data-small="true"] *:active:not(:disabled)) {
     padding-top: 4px;
     background: ${palette.gray.highlight};
     box-shadow: ${getShadow(2, 0.04, palette.black)};
@@ -170,6 +134,7 @@ const PanelInner = styled.div`
 
   @media ( max-width: ${BreakPoint.MEDIUM}px ) {
     grid-template:
+      "title"
       "left"
       "right"
       "bottom";
