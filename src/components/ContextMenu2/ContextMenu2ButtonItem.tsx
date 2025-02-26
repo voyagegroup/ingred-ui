@@ -1,8 +1,12 @@
 import React, {
   forwardRef,
+  useCallback,
+  useContext,
   type ReactNode,
   type ButtonHTMLAttributes,
+  type MouseEvent,
 } from "react";
+import { ContextMenu2Context } from "./context";
 import styled from "styled-components";
 import { colors } from "../../styles";
 
@@ -11,6 +15,7 @@ import { colors } from "../../styles";
 type ContextMenu2ButtonItemProps = {
   prepend?: ReactNode;
   children: ReactNode;
+  closeOnClick?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ButtonAppend = styled.span`
@@ -20,9 +25,18 @@ const ButtonAppend = styled.span`
 const InternalContextMenu2ButtonItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2ButtonItemProps
->(({ prepend, children, ...props }, ref) => {
+>(({ prepend, children, closeOnClick, onClick, ...props }, ref) => {
+  const { close } = useContext(ContextMenu2Context);
+
+  const handleClick = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      onClick && onClick(event);
+      closeOnClick && close();
+    },
+    [closeOnClick, close, onClick],
+  );
   return (
-    <button type="button" {...props} ref={ref}>
+    <button type="button" {...props} ref={ref} onClick={handleClick}>
       {prepend && <ButtonAppend>{prepend}</ButtonAppend>}
       {children}
     </button>

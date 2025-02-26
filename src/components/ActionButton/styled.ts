@@ -17,7 +17,7 @@ export const Container = styled.button<ContainerProps>`
   border-radius: ${({ theme }) => theme.radius}px;
   background-color: ${({ normalBackgroundColor }) => normalBackgroundColor};
   white-space: nowrap;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: ${({ hoverBackgroundColor }) => hoverBackgroundColor};

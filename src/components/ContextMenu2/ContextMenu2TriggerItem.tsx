@@ -10,6 +10,16 @@ type ContextMenu2TriggerItemProps = {
   children: ReactNode;
 };
 
+const TriggerLabel = styled.span`
+  margin-right: auto;
+  /* UI/Text 14*/
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  color: ${colors.basic[900]};
+`;
+
 const TriggerAppend = styled.span`
   margin-left: auto;
   /* UI/Text 13 */
@@ -25,7 +35,7 @@ const InternalContextMenu2TriggerItem = forwardRef<
 >(({ append, children, ...props }, ref) => {
   return (
     <button type="button" {...props} ref={ref}>
-      {children}
+      <TriggerLabel>{children}</TriggerLabel>
       {append && <TriggerAppend>{append}</TriggerAppend>}
       <Icon name="arrow_right" />
     </button>
@@ -39,12 +49,6 @@ export const ContextMenu2TriggerItem = styled(InternalContextMenu2TriggerItem)`
   padding: 6px 8px;
   border: 0;
   border-radius: 6px;
-  /* UI/Text 14*/
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: left;
-  color: ${colors.basic[900]};
   background: transparent;
   transition: background 0.2s;
 

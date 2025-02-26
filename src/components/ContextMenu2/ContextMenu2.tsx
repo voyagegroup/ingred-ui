@@ -4,10 +4,10 @@ import React, {
   useContext,
   forwardRef,
   cloneElement,
-  createContext,
   isValidElement,
   Children,
   type ReactNode,
+  type Ref,
   type ReactElement,
   type ButtonHTMLAttributes,
   type Dispatch,
@@ -15,6 +15,7 @@ import React, {
   useMemo,
   useEffect,
   Fragment,
+  useCallback,
 } from "react";
 import {
   useFloating,
@@ -38,16 +39,13 @@ import {
 } from "@floating-ui/react";
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { ContextMenu2Context } from "./context";
 import { ContextMenu2ButtonItem } from "./ContextMenu2ButtonItem";
 import { ContextMenu2CheckItem } from "./ContextMenu2CheckItem";
 import { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 import { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
 import { ContextMenu2SortableContext } from "./ContextMenu2SortableItem";
 import { depth } from "../../styles/depth";
-
-const ContextMenu2Context = createContext({
-  isRoot: false,
-});
 
 //
 // -----------------------------------------------------------------------------
@@ -87,7 +85,7 @@ type ContextMenu2Props = {
   trigger:
     | ReactElement<
         ButtonHTMLAttributes<HTMLButtonElement> & {
-          ref?: React.Ref<HTMLButtonElement>;
+          ref?: Ref<HTMLButtonElement>;
         },
         "button"
       >
@@ -135,7 +133,7 @@ const ContextMenu2Panel = styled.div`
 `;
 export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
   ({ open, trigger, width, children, onOpenChange }, ref) => {
-    const { isRoot } = useContext(ContextMenu2Context);
+    const { isRoot, close } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
     // 通常では、パネル外にカーソルが出ると自動で自パネルを閉じる。
     // 一方で、ドラッグで移動できるパーツ（Sortable）を children として持っている場合は、
@@ -149,6 +147,12 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       if (open !== undefined) return open;
       return isOpen;
     }, [open, isOpen, isSorting]);
+
+    const forceCloseRoot = useCallback(() => {
+      close();
+      setIsOpen(false);
+      setIsSorting(false);
+    }, [close, setIsOpen, setIsSorting]);
 
     const nodeId = useFloatingNodeId();
 
@@ -208,7 +212,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       mouseOnly: true,
       delay: {
         open: 100,
-        close: isSorting ? 999999 : 250,
+        close: isSorting ? 999999 : 100,
       },
       restMs: 100,
       handleClose: safePolygon(),
@@ -294,7 +298,9 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                   {...getFloatingProps()}
                   tabIndex={-1}
                 >
-                  <ContextMenu2Context.Provider value={{ isRoot: false }}>
+                  <ContextMenu2Context.Provider
+                    value={{ isRoot: false, close: forceCloseRoot }}
+                  >
                     <ContextMenu2SortableContext.Provider
                       value={{ isSorting, setIsSorting }}
                     >
@@ -367,7 +373,7 @@ export const ContextMenu2Container = ({
   }
 
   return (
-    <ContextMenu2Context.Provider value={{ isRoot: true }}>
+    <ContextMenu2Context.Provider value={{ isRoot: true, close: () => {} }}>
       <FloatingTree>{children}</FloatingTree>
     </ContextMenu2Context.Provider>
   );

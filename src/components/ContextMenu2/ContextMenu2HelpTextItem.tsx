@@ -30,5 +30,6 @@ export const ContextMenu2HelpTextItem = styled(
   /* Slide/Text 12 */
   font-size: 12px;
   line-height: 20px;
+  letter-spacing: 0;
   color: ${colors.basic[700]};
 `;

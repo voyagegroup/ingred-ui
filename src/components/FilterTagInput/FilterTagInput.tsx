@@ -44,6 +44,7 @@ const FilterTag = ({ label, onRemove }: FilterTagProps) => {
 // モーダル時の表示。設置される領域のサイズが小さいときのみに展開される
 type FilterInputPanelProps = {
   isOpen: boolean;
+  title: string;
   selectedIndex: number;
   values: string[];
   selectOptions: { icon: ReactElement; label: string }[];
@@ -53,6 +54,7 @@ type FilterInputPanelProps = {
 
 const FilterInputPanel = ({
   isOpen,
+  title,
   values,
   selectedIndex,
   selectOptions,
@@ -144,6 +146,7 @@ const FilterInputPanel = ({
     <Modal isOpen={isOpen} onClose={onClose}>
       <Fade in={isOpen}>
         <styled.Panel>
+          <styled.PanelTitle>{title}</styled.PanelTitle>
           <styled.PanelLeft>
             <styled.PanelLabel>条件</styled.PanelLabel>
             <ContextMenu2Container>
@@ -239,6 +242,7 @@ const FilterInputPanel = ({
 
 // 本体のコンポーネント
 type FilterTagInputProps = {
+  title: string;
   values: string[];
   selectedIndex: number;
   selectOptions: { icon: ReactElement; label: string }[];
@@ -246,6 +250,7 @@ type FilterTagInputProps = {
   onSelectChange: (index: number) => void;
 };
 export const FilterTagInput = ({
+  title,
   values,
   selectedIndex,
   selectOptions,
@@ -469,6 +474,7 @@ export const FilterTagInput = ({
       </styled.FilterTagInput>
       <FilterInputPanel
         isOpen={isModalOpen}
+        title={title}
         values={values}
         selectedIndex={selectedIndex}
         selectOptions={selectOptions}

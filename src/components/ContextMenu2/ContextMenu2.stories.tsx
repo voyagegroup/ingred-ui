@@ -153,10 +153,12 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
             />
             <ContextMenu2SeparatorItem />
             <ContextMenu2ButtonControlsItem>
-              <Button size="small" color="clear">
+              <Button type="button" size="small" color="clear">
                 キャンセル
               </Button>
-              <Button size="small">適用</Button>
+              <Button type="button" size="small">
+                適用
+              </Button>
             </ContextMenu2ButtonControlsItem>
             <ContextMenu2ButtonItem onClick={() => alert("最後の項目")}>
               最後の項目
@@ -238,7 +240,10 @@ export const Triggers: StoryObj<typeof ContextMenu2> = {
         </ContextMenu2Container>
 
         <ContextMenu2Container>
-          <ContextMenu2 trigger={<Button>trigger</Button>} width={316}>
+          <ContextMenu2
+            trigger={<Button type="button">trigger</Button>}
+            width={316}
+          >
             <ContextMenu2ButtonItem onClick={() => alert("ボタン1")}>
               ボタン1
             </ContextMenu2ButtonItem>
@@ -477,10 +482,16 @@ export const WithTextInput: StoryObj<typeof ContextMenu2> = {
             />
 
             <ContextMenu2ButtonControlsItem>
-              <Button size="small" color="clear" onClick={() => setOpen(false)}>
+              <Button
+                type="button"
+                size="small"
+                color="clear"
+                onClick={() => setOpen(false)}
+              >
                 キャンセル
               </Button>
               <Button
+                type="button"
                 size="small"
                 onClick={() => {
                   alert(textValue);

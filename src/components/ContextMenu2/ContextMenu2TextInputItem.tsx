@@ -1,4 +1,6 @@
 import React, {
+  useState,
+  useCallback,
   forwardRef,
   type InputHTMLAttributes,
   type KeyboardEvent,
@@ -8,27 +10,42 @@ import { colors } from "../../styles";
 
 // 特に機能を持たない、見た目付きのテキスト入力
 
-type ContextMenu2TextInputItemProps =
-  {} & InputHTMLAttributes<HTMLInputElement>;
+type ContextMenu2TextInputItemProps = {
+  onEnter?: () => void;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const InternalContextMenu2TextInputItem = forwardRef<
   HTMLInputElement,
   ContextMenu2TextInputItemProps
->(({ className, ...props }, ref) => {
-  const handleEventToDisableFloatingUIKeyboardNavigation = (
+>(({ className, onEnter, ...props }, ref) => {
+  const [isComposing, setIsComposing] = useState(false);
+  // Floating UI の useListNavigation によるキーボード操作を無効化する
+  // 文字入力中は、矢印キーや Esc キーを利用するが、それにより Floating UI のキーボード操作が実行されるのを防ぐ
+  const disableFloatingUIKeyboardNavigation = (
     event: KeyboardEvent<HTMLInputElement>,
   ) => {
     event.stopPropagation();
   };
+
+  const handleOnKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      disableFloatingUIKeyboardNavigation(event);
+      if (event.key === "Enter" && !isComposing) {
+        onEnter?.();
+        return;
+      }
+    },
+    [isComposing, onEnter],
+  );
 
   return (
     <div className={className}>
       <input
         {...props}
         ref={ref}
-        // Floating UI の useListNavigation によるキーボード操作を無効化する
-        // 文字入力中は、矢印キーや Esc キーを利用するが、それにより Floating UI のキーボード操作が実行されるのを防ぐ
-        onKeyDown={handleEventToDisableFloatingUIKeyboardNavigation}
+        onKeyDown={handleOnKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
       />
     </div>
   );
