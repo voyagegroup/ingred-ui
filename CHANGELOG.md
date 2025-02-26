@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.1.0
+
+### Minor Changes
+
+- [#1730](https://github.com/voyagegroup/ingred-ui/pull/1730) [`6c8e5445`](https://github.com/voyagegroup/ingred-ui/commit/6c8e54450a2d45a4692c0336b77eb3d79adf2b33) Thanks [@yomotsu](https://github.com/yomotsu)! - add DataTable2 component
+
 ## 21.0.0
 
 ### Major Changes
