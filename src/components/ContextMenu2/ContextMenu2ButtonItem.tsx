@@ -13,6 +13,7 @@ import { colors } from "../../styles";
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
 type ContextMenu2ButtonItemProps = {
+  pressed?: boolean;
   prepend?: ReactNode;
   children: ReactNode;
   closeOnClick?: boolean;
@@ -25,7 +26,7 @@ const ButtonAppend = styled.span`
 const InternalContextMenu2ButtonItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2ButtonItemProps
->(({ prepend, children, closeOnClick, onClick, ...props }, ref) => {
+>(({ pressed, prepend, children, closeOnClick, onClick, ...props }, ref) => {
   const { close } = useContext(ContextMenu2Context);
 
   const handleClick = useCallback(
@@ -36,7 +37,13 @@ const InternalContextMenu2ButtonItem = forwardRef<
     [closeOnClick, close, onClick],
   );
   return (
-    <button type="button" {...props} ref={ref} onClick={handleClick}>
+    <button
+      type="button"
+      {...props}
+      ref={ref}
+      data-pressed={pressed}
+      onClick={handleClick}
+    >
       {prepend && <ButtonAppend>{prepend}</ButtonAppend>}
       {children}
     </button>
@@ -76,6 +83,7 @@ export const ContextMenu2ButtonItem = styled(
     color: ${colors.basic[400]};
   }
 
+  &[data-pressed="true"],
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
     color: ${({ color }) => (color === "danger" ? "#fff" : colors.basic[900])};

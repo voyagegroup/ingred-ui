@@ -79,7 +79,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       class="sc-idiyUo cCmHvy"
     />
     <button
-      class="sc-gsnTZi jJEItt"
+      class="sc-gsnTZi grkKuj"
       tabindex="-1"
       type="button"
     >
@@ -109,14 +109,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       アイコンボタン
     </button>
     <button
-      class="sc-gsnTZi jJEItt"
+      class="sc-gsnTZi grkKuj"
       tabindex="-1"
       type="button"
     >
       ボタン
     </button>
     <button
-      class="sc-gsnTZi lduipB"
+      class="sc-gsnTZi cjZNsz"
       color="danger"
       tabindex="-1"
       type="button"
@@ -308,7 +308,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </li>
     </ul>
     <button
-      class="sc-gsnTZi jJEItt"
+      class="sc-gsnTZi grkKuj"
       tabindex="-1"
       type="button"
     >

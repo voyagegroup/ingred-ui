@@ -4,9 +4,14 @@ import React, {
   useCallback,
   useEffect,
   useRef,
+  useContext,
   type ReactElement,
   type KeyboardEvent,
 } from "react";
+import {
+  FilterInputAbstract,
+  FilterInputContext,
+} from "../FilterInputAbstract/FilterInputAbstract";
 import Icon from "../Icon";
 import {
   ContextMenu2,
@@ -257,16 +262,12 @@ export const FilterTagInput = ({
   onChange,
   onSelectChange,
 }: FilterTagInputProps) => {
+  const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
-  const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // 本来なら CSS Container Query で判定したいけれど、
-  // styled-components v6 未満では未対応
-  const [isSmall, setIsSmall] = useState(false);
 
-  const el = useRef<HTMLDivElement>(null);
   const inlineFieldEl = useRef<HTMLDivElement>(null);
   const inlineFieldInnerEl = useRef<HTMLDivElement>(null);
   const inlineInputEl = useRef<HTMLInputElement>(null);
@@ -298,14 +299,6 @@ export const FilterTagInput = ({
       inlineFieldRect.right - inlineFieldPaddingRight - inlineInputRect.left;
     return visibleWidth;
   }, []);
-
-  const handleSelectChange = useCallback(
-    (index: number) => {
-      onSelectChange(index);
-      setIsSelectOpen(false);
-    },
-    [onSelectChange, setIsSelectOpen],
-  );
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
@@ -376,62 +369,28 @@ export const FilterTagInput = ({
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
+    if (!inlineFieldEl.current) return;
 
-    const resizeObserver1 = new window.ResizeObserver(() => {
-      if (!el.current) return;
-      setIsSmall(el.current.clientWidth < 130);
-    });
-
-    el.current && resizeObserver1.observe(el.current);
-
-    const resizeObserver2 = new window.ResizeObserver(() => {
+    const resizeObserver = new window.ResizeObserver(() => {
       if (!inlineFieldEl.current) return;
       checkInlineOverflow();
       computeInlineFieldVisibleWidth();
     });
 
-    inlineFieldEl.current && resizeObserver2.observe(inlineFieldEl.current);
+    resizeObserver.observe(inlineFieldEl.current);
 
     return () => {
-      resizeObserver1.disconnect();
-      resizeObserver2.disconnect();
+      resizeObserver.disconnect();
     };
-  }, [setIsSmall, checkInlineOverflow, computeInlineFieldVisibleWidth]);
+  }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   return (
     <>
-      <styled.FilterTagInput
-        ref={el}
-        data-small={isSmall}
-        data-overflowing={isInlineOverflowing}
+      <FilterInputAbstract
+        selectedIndex={selectedIndex}
+        selectOptions={selectOptions}
+        onSelectChange={onSelectChange}
       >
-        <ContextMenu2Container>
-          <ContextMenu2
-            open={isSelectOpen}
-            trigger={
-              <styled.DropDownTrigger
-                type="button"
-                aria-label="フィルターのタイプを選ぶ"
-                onClick={() => setIsSelectOpen(!isSelectOpen)}
-              >
-                {selectOptions[selectedIndex].icon}
-                <Icon name="arrow_down" color="currentColor" />
-              </styled.DropDownTrigger>
-            }
-            onOpenChange={(open) => setIsSelectOpen(open)}
-          >
-            {selectOptions.map(({ label, icon }, i) => (
-              <ContextMenu2CheckItem
-                key={label}
-                prepend={icon}
-                checked={selectedIndex === i}
-                onChange={() => handleSelectChange(i)}
-              >
-                {label}
-              </ContextMenu2CheckItem>
-            ))}
-          </ContextMenu2>
-        </ContextMenu2Container>
         <styled.InlineField ref={inlineFieldEl}>
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
             {values.map((value, i) => (
@@ -464,6 +423,7 @@ export const FilterTagInput = ({
         <styled.OverflowIndicator
           type="button"
           aria-label="フィルター入力パネルを開く"
+          data-overflowing={isInlineOverflowing}
           onClick={() => setIsModalOpen(true)}
         >
           <Icon
@@ -471,7 +431,7 @@ export const FilterTagInput = ({
             color="currentColor"
           />
         </styled.OverflowIndicator>
-      </styled.FilterTagInput>
+      </FilterInputAbstract>
       <FilterInputPanel
         isOpen={isModalOpen}
         title={title}

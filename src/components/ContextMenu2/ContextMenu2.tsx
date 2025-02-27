@@ -95,6 +95,10 @@ type ContextMenu2Props = {
    */
   width?: number;
   /**
+   * コンテキストメニューの最小幅
+   */
+  minWidth?: number;
+  /**
    * メニュー内の項目。ContextMenu2*** のコンポーネントのみで構成する前提
    */
   children: ReactNode;
@@ -132,7 +136,7 @@ const ContextMenu2Panel = styled.div`
   }
 `;
 export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
-  ({ open, trigger, width, children, onOpenChange }, ref) => {
+  ({ open, trigger, width, minWidth, children, onOpenChange }, ref) => {
     const { isRoot, close } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
     // 通常では、パネル外にカーソルが出ると自動で自パネルを閉じる。
@@ -290,6 +294,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                   style={{
                     ...floatingStyles,
                     width,
+                    minWidth,
                     // ソートによるドラッグ移動中、overflow: auto にしていると、
                     // 移動場所中にスクロール可・不可の切り替えが連続的に発生しガタツキが発生する。
                     // ソートドラッグ中は overflow: auto を抑止する。
