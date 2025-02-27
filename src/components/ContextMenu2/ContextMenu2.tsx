@@ -37,6 +37,7 @@ import {
   FloatingFocusManager,
   useMergeRefs,
 } from "@floating-ui/react";
+import { getMaxIndex } from "./floating-ui-utils";
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
@@ -45,6 +46,7 @@ import { ContextMenu2CheckItem } from "./ContextMenu2CheckItem";
 import { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 import { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
 import { ContextMenu2SortableContext } from "./ContextMenu2SortableItem";
+import { ContextMenu2TextInputItem } from "./ContextMenu2TextInputItem";
 import { depth } from "../../styles/depth";
 
 //
@@ -234,6 +236,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       loop: true,
       nested: !isRoot,
     });
+    const maxActiveIndex = getMaxIndex(listRef, []);
 
     const { getReferenceProps, getFloatingProps, getItemProps } =
       useInteractions([click, hover, dismiss, role, listNavigation]);
@@ -245,6 +248,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       ContextMenu2CheckItem.displayName,
       ContextMenu2SwitchItem.displayName,
       ContextMenu2TriggerItem.displayName,
+      ContextMenu2TextInputItem.displayName,
     ];
 
     useEffect(() => {
@@ -304,7 +308,13 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                   tabIndex={-1}
                 >
                   <ContextMenu2Context.Provider
-                    value={{ isRoot: false, close: forceCloseRoot }}
+                    value={{
+                      isRoot: false,
+                      activeIndex,
+                      maxActiveIndex,
+                      setActiveIndex,
+                      close: forceCloseRoot,
+                    }}
                   >
                     <ContextMenu2SortableContext.Provider
                       value={{ isSorting, setIsSorting }}
@@ -378,7 +388,15 @@ export const ContextMenu2Container = ({
   }
 
   return (
-    <ContextMenu2Context.Provider value={{ isRoot: true, close: () => {} }}>
+    <ContextMenu2Context.Provider
+      value={{
+        isRoot: true,
+        close: () => {},
+        activeIndex: null,
+        maxActiveIndex: -1,
+        setActiveIndex: () => {},
+      }}
+    >
       <FloatingTree>{children}</FloatingTree>
     </ContextMenu2Context.Provider>
   );

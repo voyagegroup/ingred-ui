@@ -4,9 +4,11 @@ import React, {
   forwardRef,
   type InputHTMLAttributes,
   type KeyboardEvent,
+  useContext,
 } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { ContextMenu2Context } from "./context";
 
 // 特に機能を持たない、見た目付きのテキスト入力
 
@@ -18,6 +20,7 @@ const InternalContextMenu2TextInputItem = forwardRef<
   HTMLInputElement,
   ContextMenu2TextInputItemProps
 >(({ className, onEnter, ...props }, ref) => {
+  const { activeIndex, setActiveIndex } = useContext(ContextMenu2Context);
   const [isComposing, setIsComposing] = useState(false);
   // Floating UI の useListNavigation によるキーボード操作を無効化する
   // 文字入力中は、矢印キーや Esc キーを利用するが、それにより Floating UI のキーボード操作が実行されるのを防ぐ
@@ -30,12 +33,25 @@ const InternalContextMenu2TextInputItem = forwardRef<
   const handleOnKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       disableFloatingUIKeyboardNavigation(event);
-      if (event.key === "Enter" && !isComposing) {
+      if (isComposing) return;
+      if (event.key === "Enter") {
         onEnter?.();
         return;
       }
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        const newActiveIndex = activeIndex === null ? 1 : activeIndex + 1;
+        setActiveIndex(newActiveIndex);
+        return;
+      }
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        const newActiveIndex = activeIndex === null ? 1 : activeIndex - 1;
+        setActiveIndex(newActiveIndex < 0 ? null : newActiveIndex);
+        return;
+      }
     },
-    [isComposing, onEnter],
+    [isComposing, onEnter, activeIndex, setActiveIndex],
   );
 
   return (

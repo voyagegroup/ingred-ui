@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader component testing FileUploader 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-hHLeRK hmclDV"
+    data-small="false"
+  >
+    <button
+      aria-expanded="false"
+      aria-haspopup="dialog"
+      aria-label="フィルターのタイプを選ぶ"
+      class="sc-dmRaPn mNXIP"
+      type="button"
+    >
+      <span
+        class="sc-bczRLJ gJuzRf"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3.9 19.1V4.9h16.2v14.2zM2 4c0-.6.4-1 1-1h18c.6 0 1 .4 1 1v16c0 .6-.4 1-1 1H3a1 1 0 0 1-1-1zm11.1 9h-2.3L12 9.7zm0-5.5H11l-3.4 9h2l.7-2h3.4l.6 2h2.1z"
+            fill="currentColor"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-bczRLJ gJuzRf"
+        size="18"
+      >
+        <svg
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      class="sc-kgflAQ bncDUf"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        class="sc-fLlhyt dEijkV"
+        type="button"
+      >
+        <span
+          class="sc-bBrHrO gidTLq"
+        >
+          項目1
+        </span>
+        <span
+          class="sc-ivTmOn leeCUg"
+        >
+          <span
+            class="sc-bczRLJ gJuzRf"
+            size="18"
+          >
+            <svg
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
