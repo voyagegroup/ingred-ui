@@ -18,7 +18,7 @@ export const Select = styled.button`
   padding: 0 8px 0 54px;
   border: 0;
   background: transparent;
-  outline: none;
+  outline-offset: -1px;
   font-size: 13px;
   text-align: left;
   color: ${colors.basic[900]};
