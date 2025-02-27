@@ -2,7 +2,7 @@ import * as React from "react";
 import "@testing-library/jest-dom";
 import { cleanup } from "@testing-library/react";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
-import { FilterSelectInput } from "../";
+import { FilterComboBox } from "../";
 import Icon from "../../Icon";
 
 describe("FileUploader component testing", () => {
@@ -10,9 +10,9 @@ describe("FileUploader component testing", () => {
 
   test("FileUploader", () => {
     const { asFragment } = renderWithThemeProvider(
-      <FilterSelectInput
-        value="項目1"
-        values={[
+      <FilterComboBox
+        values={["項目1"]}
+        options={[
           "項目1",
           "value2",
           "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
