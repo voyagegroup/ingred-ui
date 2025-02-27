@@ -130,6 +130,11 @@ export const FilterComboBox = ({
     [values, onChange],
   );
 
+  const handleOpenChange = useCallback(() => {
+    setUserValue("");
+    setUserEnteredValue("");
+  }, [setUserValue, setUserEnteredValue]);
+
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!inlineFieldEl.current) return;
@@ -162,6 +167,7 @@ export const FilterComboBox = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
+            onOpenChange={handleOpenChange}
           >
             <ContextMenu2TextInputItem
               autoFocus
