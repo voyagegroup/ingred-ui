@@ -53,13 +53,16 @@ export const FilterComboBox = ({
   // userValue の入力状況に応じてフィルターされた options。
   // ただし、options は string | string[] なので、フィルターのついでに string[] に統一する。
   const filteredOptions = useMemo(() => {
+    const userValueTrimmed = userValue.trim();
     const filtered = options.filter((option) => {
-      if (!Array.isArray(option)) return option.includes(userValue);
-      return option.some((o) => o.includes(userValue));
+      if (!Array.isArray(option)) return option.includes(userValueTrimmed);
+      return option.some((o) => o.includes(userValueTrimmed));
     });
-    const normalized = filtered.map((option) => {
-      return !Array.isArray(option) ? [option] : option;
-    });
+    const normalized = (filtered.length === 0 ? options : filtered).map(
+      (option) => {
+        return !Array.isArray(option) ? [option] : option;
+      },
+    );
     return normalized;
   }, [userValue, options]);
 

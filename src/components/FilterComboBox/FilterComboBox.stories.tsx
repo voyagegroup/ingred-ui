@@ -13,6 +13,9 @@ const meta = {
 export default meta;
 
 /**
+ * Storybook の Docs の画面では、エンターキーが吸い取られてしまうようです。<br />
+ * **キーボード操作を試す場合は、Docs ではない、個別のページで確認してください**
+ *
  * 入力内容をリストから選択させるフィルターの入力です。
  * 利用方法は、FilterTagInput の story 内の説明を参照してください。
  *
@@ -75,16 +78,6 @@ export const Default: StoryObj<typeof meta> = {
           onChange={(values) => updateArgs({ values })}
           onSelectChange={(selectedIndex) => updateArgs({ selectedIndex })}
         />
-        {/* <div style={{ maxWidth: 200 }}>
-          ↓親で幅を指定した例
-          <FilterComboBox
-            {...args}
-            onChange={(newValue) => updateArgs({ value: newValue })}
-            onSelectChange={(newIndex) =>
-              updateArgs({ selectedIndex: newIndex })
-            }
-          />
-        </div> */}
       </>
     );
   },
