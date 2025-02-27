@@ -47,7 +47,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-fLlhyt dWTupT"
+        class="sc-fLlhyt dEijkV"
         type="button"
       >
         <span
