@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.2.0
+
+### Minor Changes
+
+- [#1732](https://github.com/voyagegroup/ingred-ui/pull/1732) [`9cd0a69a`](https://github.com/voyagegroup/ingred-ui/commit/9cd0a69a4a72bfa7a8316cbb66c3ee8ee51485ca) Thanks [@yomotsu](https://github.com/yomotsu)! - add FilterSelectInput component
+
 ## 21.1.0
 
 ### Minor Changes
