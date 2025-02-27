@@ -16,6 +16,7 @@ export default meta;
  * 入力内容をリストから選択させるフィルターの入力です。
  * 利用方法は、FilterTagInput の story 内の説明を参照してください。
  *
+ * 自動で横 100% に広がります。必要に応じて、親要素の幅を指定してください。
  */
 export const Default: StoryObj<typeof meta> = {
   args: {
@@ -82,6 +83,16 @@ export const Default: StoryObj<typeof meta> = {
           onChange={(newValue) => updateArgs({ value: newValue })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
+        <div style={{ maxWidth: 200 }}>
+          ↓親で幅を指定した例
+          <FilterSelectInput
+            {...args}
+            onChange={(newValue) => updateArgs({ value: newValue })}
+            onSelectChange={(newIndex) =>
+              updateArgs({ selectedIndex: newIndex })
+            }
+          />
+        </div>
       </>
     );
   },
