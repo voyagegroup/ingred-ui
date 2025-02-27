@@ -20,7 +20,8 @@ const InternalContextMenu2TextInputItem = forwardRef<
   HTMLInputElement,
   ContextMenu2TextInputItemProps
 >(({ className, onEnter, ...props }, ref) => {
-  const { activeIndex, setActiveIndex } = useContext(ContextMenu2Context);
+  const { activeIndex, maxActiveIndex, setActiveIndex } =
+    useContext(ContextMenu2Context);
   const [isComposing, setIsComposing] = useState(false);
   // Floating UI の useListNavigation によるキーボード操作を無効化する
   // 文字入力中は、矢印キーや Esc キーを利用するが、それにより Floating UI のキーボード操作が実行されるのを防ぐ
@@ -41,17 +42,17 @@ const InternalContextMenu2TextInputItem = forwardRef<
       if (event.key === "ArrowDown") {
         event.preventDefault();
         const newActiveIndex = activeIndex === null ? 1 : activeIndex + 1;
-        setActiveIndex(newActiveIndex);
+        setActiveIndex(newActiveIndex > maxActiveIndex ? null : newActiveIndex);
         return;
       }
       if (event.key === "ArrowUp") {
         event.preventDefault();
         const newActiveIndex = activeIndex === null ? 1 : activeIndex - 1;
-        setActiveIndex(newActiveIndex < 0 ? null : newActiveIndex);
+        setActiveIndex(newActiveIndex < 0 ? maxActiveIndex : newActiveIndex);
         return;
       }
     },
-    [isComposing, onEnter, activeIndex, setActiveIndex],
+    [isComposing, onEnter, activeIndex, maxActiveIndex, setActiveIndex],
   );
 
   return (

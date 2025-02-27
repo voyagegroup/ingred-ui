@@ -10,7 +10,7 @@ import * as styled from "./styled";
 
 type FilterTagInputProps = {
   value: string;
-  values: string[];
+  options: string[];
   selectedIndex: number;
   selectOptions: { icon: ReactElement; label: string }[];
   onChange: (value: string) => void;
@@ -18,7 +18,7 @@ type FilterTagInputProps = {
 };
 export const FilterSelectInput = ({
   value,
-  values,
+  options: values,
   selectedIndex,
   selectOptions,
   onChange,

@@ -1,10 +1,15 @@
 import React, {
   useState,
   useMemo,
-  type ReactElement,
   useCallback,
+  useRef,
+  useEffect,
+  type ReactElement,
 } from "react";
-import { FilterInputAbstract } from "../FilterInputAbstract/FilterInputAbstract";
+import {
+  FilterInputAbstract,
+  FilterTag,
+} from "../FilterInputAbstract/FilterInputAbstract";
 import {
   ContextMenu2,
   ContextMenu2Container,
@@ -32,6 +37,19 @@ export const FilterComboBox = ({
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
 
+  // タグリスト部分で、CSS の overflow が発生しているか否か
+  const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
+  const inlineFieldEl = useRef<HTMLDivElement>(null);
+  // inlineFieldEl の大きさを監視して、
+  // overflow したら isInlineOverflowing を true にする
+  const checkInlineOverflow = useCallback(() => {
+    if (!inlineFieldEl.current) return;
+
+    setIsInlineOverflowing(
+      inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
+    );
+  }, []);
+
   // userValue の入力状況に応じてフィルターされた options。
   // ただし、options は string | string[] なので、フィルターのついでに string[] に統一する。
   const filteredOptions = useMemo(() => {
@@ -53,7 +71,7 @@ export const FilterComboBox = ({
         onChange([...values, value]);
       }
     },
-    [onChange, values],
+    [values, onChange],
   );
 
   const handleEnter = useCallback(() => {
@@ -62,13 +80,36 @@ export const FilterComboBox = ({
     handleSelect(filteredOptions[0][0]);
   }, [userValue, filteredOptions, handleSelect]);
 
+  const handleRemove = useCallback(
+    (value: string) => {
+      onChange(values.filter((v) => v !== value));
+    },
+    [values, onChange],
+  );
+
+  useEffect(() => {
+    if (!window.ResizeObserver) return;
+    if (!inlineFieldEl.current) return;
+
+    const resizeObserver = new window.ResizeObserver(() => {
+      if (!inlineFieldEl.current) return;
+      checkInlineOverflow();
+    });
+
+    resizeObserver.observe(inlineFieldEl.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [checkInlineOverflow]);
+
   return (
     <FilterInputAbstract
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.SelectContainer>
+      <styled.SelectContainer data-overflowing={isInlineOverflowing}>
         <ContextMenu2Container>
           <ContextMenu2
             trigger={
@@ -96,8 +137,15 @@ export const FilterComboBox = ({
             ))}
           </ContextMenu2>
         </ContextMenu2Container>
-
-        <styled.TagList>{values.join()}</styled.TagList>
+        <styled.TagList ref={inlineFieldEl}>
+          {values.map((value) => (
+            <FilterTag
+              key={value}
+              label={value}
+              onRemove={() => handleRemove(value)}
+            />
+          ))}
+        </styled.TagList>
       </styled.SelectContainer>
     </FilterInputAbstract>
   );

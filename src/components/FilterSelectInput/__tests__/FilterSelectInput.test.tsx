@@ -12,7 +12,7 @@ describe("FileUploader component testing", () => {
     const { asFragment } = renderWithThemeProvider(
       <FilterSelectInput
         value="項目1"
-        values={[
+        options={[
           "項目1",
           "value2",
           "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",

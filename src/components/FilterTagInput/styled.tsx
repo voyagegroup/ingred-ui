@@ -315,36 +315,3 @@ export const PanelClearButton = styled.button`
   background: transparent;
   cursor: pointer;
 `;
-
-//
-// -----------------------------------------------------------------------------
-
-export const FilterTag = styled.span`
-  isolation: isolate;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  width: fit-content;
-  padding: 1px 4px 1px 6px;
-  border: 1px solid ${colors.basic[400]};
-  border-radius: 2px;
-  /* UI/Text 12 */
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  word-break: break-all;
-  color: ${colors.basic[900]};
-  background-color: #fff;
-`;
-
-export const FilterTagButton = styled.button`
-  flex-shrink: 0;
-  height: 18px;
-  aspect-ratio: 1;
-  padding: 0;
-  border: 0;
-  zoom: ${16 / 18};
-  color: ${colors.basic[900]};
-  background-color: transparent;
-  cursor: pointer;
-`;

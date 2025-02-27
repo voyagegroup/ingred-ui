@@ -9,6 +9,27 @@ export const SelectContainer = styled.div`
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0 32px 0 auto;
+    display: block;
+    width: 4px;
+    opacity: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(4, 28, 51, 0),
+      rgba(4, 28, 51, 0.16)
+    );
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  &:where([data-overflowing="true"])::before {
+    opacity: 1;
+  }
 `;
 
 export const TagList = styled.div`
@@ -21,7 +42,7 @@ export const TagList = styled.div`
   height: 100%;
   padding: 0 6px;
   margin-left: 46px;
-  background: orange;
+  white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: none;
