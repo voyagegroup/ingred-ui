@@ -21,7 +21,7 @@ export default meta;
 export const Default: StoryObj<typeof meta> = {
   args: {
     value: "項目1",
-    values: [
+    options: [
       "項目1",
       "value2",
       "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",

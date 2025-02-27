@@ -21,6 +21,28 @@ export const FilterInputContext = createContext({
 
 //
 // -----------------------------------------------------------------------------
+type FilterTagProps = {
+  label: string;
+  onRemove: () => void;
+};
+
+export const FilterTag = ({ label, onRemove }: FilterTagProps) => {
+  return (
+    <styled.FilterTag>
+      {label}
+      <styled.FilterTagButton
+        type="button"
+        aria-label="削除"
+        onClick={onRemove}
+      >
+        <Icon name="close_circle" type="fill" color="currentColor" />
+      </styled.FilterTagButton>
+    </styled.FilterTag>
+  );
+};
+
+//
+// -----------------------------------------------------------------------------
 
 // 本体のコンポーネント
 type FilterInputAbstractProps = {
