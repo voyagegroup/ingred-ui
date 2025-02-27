@@ -5,6 +5,8 @@ import React, {
   useRef,
   useEffect,
   type ReactElement,
+  type KeyboardEvent,
+  type ChangeEvent,
 } from "react";
 import {
   FilterInputAbstract,
@@ -36,6 +38,8 @@ export const FilterComboBox = ({
   onSelectChange,
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
+  const [userEnteredValue, setUserEnteredValue] = useState("");
+  const [isComposing, setIsComposing] = useState(false);
 
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
@@ -52,19 +56,26 @@ export const FilterComboBox = ({
 
   // userValue の入力状況に応じてフィルターされた options。
   // ただし、options は string | string[] なので、フィルターのついでに string[] に統一する。
+  const getFilteredOptions = useCallback(
+    (value: string) => {
+      const trimmedValue = value.trim();
+      const filtered = options.filter((option) => {
+        if (!Array.isArray(option)) return option.includes(trimmedValue);
+        return option.some((o) => o.includes(trimmedValue));
+      });
+      const normalized = (filtered.length === 0 ? options : filtered).map(
+        (option) => {
+          return !Array.isArray(option) ? [option] : option;
+        },
+      );
+      return normalized;
+    },
+    [options],
+  );
+
   const filteredOptions = useMemo(() => {
-    const userValueTrimmed = userValue.trim();
-    const filtered = options.filter((option) => {
-      if (!Array.isArray(option)) return option.includes(userValueTrimmed);
-      return option.some((o) => o.includes(userValueTrimmed));
-    });
-    const normalized = (filtered.length === 0 ? options : filtered).map(
-      (option) => {
-        return !Array.isArray(option) ? [option] : option;
-      },
-    );
-    return normalized;
-  }, [userValue, options]);
+    return getFilteredOptions(userEnteredValue);
+  }, [userEnteredValue, getFilteredOptions]);
 
   const handleSelect = useCallback(
     (value: string) => {
@@ -78,10 +89,39 @@ export const FilterComboBox = ({
   );
 
   const handleEnter = useCallback(() => {
+    if (isComposing) return;
+    setUserEnteredValue(userValue);
     if (!userValue.trim()) return;
+
+    const filteredOptions = getFilteredOptions(userEnteredValue);
+
     if (filteredOptions.length !== 1) return;
     handleSelect(filteredOptions[0][0]);
-  }, [userValue, filteredOptions, handleSelect]);
+  }, [
+    isComposing,
+    userValue,
+    userEnteredValue,
+    getFilteredOptions,
+    handleSelect,
+  ]);
+
+  const handleOnChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setUserValue(event.target.value);
+      if (!isComposing) setUserEnteredValue(event.target.value);
+    },
+    [isComposing, setUserValue, setUserEnteredValue],
+  );
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        setUserEnteredValue(userValue);
+        return;
+      }
+    },
+    [userValue, setUserEnteredValue],
+  );
 
   const handleRemove = useCallback(
     (value: string) => {
@@ -126,7 +166,10 @@ export const FilterComboBox = ({
             <ContextMenu2TextInputItem
               autoFocus
               value={userValue}
-              onChange={(e) => setUserValue(e.target.value)}
+              onChange={handleOnChange}
+              onKeyDown={handleKeyDown}
+              onCompositionStart={() => setIsComposing(true)}
+              onCompositionEnd={() => setIsComposing(false)}
               onEnter={handleEnter}
             />
             {filteredOptions.map((option) => (
