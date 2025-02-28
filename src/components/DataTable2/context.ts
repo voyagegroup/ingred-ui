@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import type { Column } from "./types";
+import type { Column2 } from "./types";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Contexts
@@ -12,10 +12,10 @@ export const DataTable2Context = createContext<
     rowIds: string[]; // 全行の ID のリスト。コンテキストを通して、枝葉コンポーネントで共有する
     hasRowControls: boolean;
     checkedRows: string[];
-    columns: Column[];
+    columns: Column2[];
     setRowIds: (rowIds: string[]) => void;
     setCheckedRows: (rowIds: string[]) => void;
-    setColumns: (columns: Column[]) => void;
+    setColumns: (columns: Column2[]) => void;
   } & {
     // ページネーション関連
     totalCount: number;

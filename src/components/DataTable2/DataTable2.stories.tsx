@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "@storybook/preview-api";
 import { useArgs } from "@storybook/client-api";
 import {
-  type Column,
+  type Column2,
   type SortDirection,
   DataTable2,
   DataTable2Column,
@@ -164,7 +164,7 @@ export const Default: StoryObj<typeof meta> = {
   },
   render: (args) => {
     const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
-      columns: Column[];
+      columns: Column2[];
       currentPage: number;
       pageSize: number;
     }>();
@@ -553,7 +553,7 @@ export const Loading: StoryObj<typeof meta> = {
   },
   render: (args) => {
     const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
-      columns: Column[];
+      columns: Column2[];
       currentPage: number;
       pageSize: number;
     }>();
