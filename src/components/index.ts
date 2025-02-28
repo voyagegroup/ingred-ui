@@ -32,17 +32,18 @@ export * from "./ClickAwayListener";
 export { default as ConfirmModal } from "./ConfirmModal";
 export * from "./ConfirmModal";
 
-export { default as FullSizeConfirmModal } from "./FullSizeConfirmModal";
-export * from "./FullSizeConfirmModal";
-
 export { default as ContextMenu } from "./ContextMenu";
 export * from "./ContextMenu";
+
+export * from "./ContextMenu2";
 
 export { default as CreatableSelect } from "./CreatableSelect";
 export * from "./CreatableSelect";
 
 export { default as DataTable } from "./DataTable";
 export * from "./DataTable";
+
+export * from "./DataTable2";
 
 export { DateField, DateRangeField } from "./DateField";
 export * from "./DateField";
@@ -62,6 +63,8 @@ export * from "./DropdownButton";
 export { default as DualListBox } from "./DualListBox";
 export * from "./DualListBox";
 
+export * from "./DualListBox2";
+
 export { default as ErrorText } from "./ErrorText";
 export * from "./ErrorText";
 
@@ -71,6 +74,10 @@ export * from "./Fade";
 export { default as FileUploader } from "./FileUploader";
 export * from "./FileUploader";
 
+export * from "./FilterSelectInput";
+
+export * from "./FilterTagInput";
+
 export { default as FixedPanel } from "./FixedPanel";
 export * from "./FixedPanel";
 
@@ -79,6 +86,9 @@ export * from "./Flex";
 
 export { default as FloatingTip } from "./FloatingTip";
 export * from "./FloatingTip";
+
+export { default as FullSizeConfirmModal } from "./FullSizeConfirmModal";
+export * from "./FullSizeConfirmModal";
 
 export { default as Grow } from "./Grow";
 export * from "./Grow";
@@ -94,6 +104,9 @@ export * from "./ItemEmpty";
 
 export { default as LoadingBar } from "./LoadingBar";
 export * from "./LoadingBar";
+
+export { default as LocaleProvider } from "./LocaleProvider";
+export * from "./LocaleProvider";
 
 export { default as Menu } from "./Menu";
 export * from "./Menu";
@@ -149,11 +162,11 @@ export * from "./SplitAnnotation";
 export { default as Switch } from "./Switch";
 export * from "./Switch";
 
-export { default as Tabs } from "./Tabs";
-export * from "./Tabs";
-
 export { default as Table } from "./Table";
 export * from "./Table";
+
+export { default as Tabs } from "./Tabs";
+export * from "./Tabs";
 
 export { default as TextField } from "./TextField";
 export * from "./TextField";
@@ -166,9 +179,6 @@ export * from "./ToggleButton";
 
 export { default as Tooltip } from "./Tooltip";
 export * from "./Tooltip";
-
-export { default as LocaleProvider } from "./LocaleProvider";
-export * from "./LocaleProvider";
 
 export { default as Typography } from "./Typography";
 export * from "./Typography";
