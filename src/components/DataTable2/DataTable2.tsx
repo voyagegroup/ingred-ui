@@ -7,7 +7,7 @@ import React, {
   useContext,
   type ReactNode,
 } from "react";
-import type { Column } from "./types";
+import type { Column2 } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
@@ -135,7 +135,7 @@ type DataTable2Props = {
    * ページネーションの全件数
    */
   totalCount: number;
-  columns: Column[];
+  columns: Column2[];
   /**
    * ページネーションのページ変更時のコールバック
    * @param page 変更後のページ
@@ -153,7 +153,7 @@ type DataTable2Props = {
    * フィルタ入力クリア時は、filtered が false になっているので、自身で各フィルタの入力値を空白にしてください。
    * @param columns 変更後のカラム
    */
-  onColumnsChange: (columns: Column[]) => void;
+  onColumnsChange: (columns: Column2[]) => void;
 } & {
   /**
    * 見た目の制御。枠線で囲むか否か。枠線で囲むと角丸も適用される
