@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useCallback, useContext } from "react";
 import { DataTable2Context } from "./context";
-import type { Column2 } from "./types";
+import type { TableColumn } from "./types";
 import Icon from "../Icon";
 import {
   ContextMenu2,
@@ -28,7 +28,7 @@ export const DataTable2MenuOrderControl = ({
 }: DataTable2MenuOrderControlProps) => {
   const { columns, setColumns } = useContext(DataTable2Context);
   const [userChangedColumns, setUserChangedColumns] =
-    useState<Column2[]>(columns);
+    useState<TableColumn[]>(columns);
 
   const orderedColumns = useMemo(
     () => [...userChangedColumns].sort((a, b) => a.order - b.order),
@@ -51,9 +51,9 @@ export const DataTable2MenuOrderControl = ({
           return acc;
         },
         {
-          startFixed: [] as Column2[],
-          sortable: [] as Column2[],
-          endFixed: [] as Column2[],
+          startFixed: [] as TableColumn[],
+          sortable: [] as TableColumn[],
+          endFixed: [] as TableColumn[],
         },
       ),
     [orderedColumns],

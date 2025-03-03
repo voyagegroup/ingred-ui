@@ -1,4 +1,4 @@
-export type Column2 = {
+export type TableColumn = {
   id: string;
   label: string;
   order: number;
