@@ -6,6 +6,7 @@ import React, {
   type InputHTMLAttributes,
   type KeyboardEvent,
   type CompositionEvent,
+  useEffect,
 } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
@@ -34,6 +35,7 @@ const InternalContextMenu2TextInputItem = forwardRef<
   ) => {
     const { activeIndex, maxActiveIndex, setActiveIndex } =
       useContext(ContextMenu2Context);
+    const [isIOS, setIsIOS] = useState(false);
     const [isComposing, setIsComposing] = useState(false);
     // Floating UI の useListNavigation によるキーボード操作を無効化する
     // 文字入力中は、矢印キーや Esc キーを利用するが、それにより Floating UI のキーボード操作が実行されるのを防ぐ
@@ -93,11 +95,16 @@ const InternalContextMenu2TextInputItem = forwardRef<
       [onCompositionEnd],
     );
 
+    useEffect(() => {
+      setIsIOS(/iPad|iPhone/.test(navigator.userAgent));
+    }, []);
+
     return (
       <div className={className}>
         <input
           {...props}
           ref={ref}
+          data-ios={isIOS}
           onKeyDown={handleOnKeyDown}
           onCompositionStart={handleCompositionStart}
           onCompositionEnd={handleCompositionEnd}
@@ -125,5 +132,9 @@ export const ContextMenu2TextInputItem = styled(
     line-height: 19px;
     color: ${colors.basic[900]};
     background: ${colors.basic[100]};
+
+    &[data-ios="true"] {
+      font-size: 16px;
+    }
   }
 `;
