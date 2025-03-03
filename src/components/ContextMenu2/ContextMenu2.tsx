@@ -156,6 +156,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       close();
       setIsOpen(false);
       setIsSorting(false);
+      onOpenChange?.(false);
     }, [close, setIsOpen, setIsSorting]);
 
     const nodeId = useFloatingNodeId();

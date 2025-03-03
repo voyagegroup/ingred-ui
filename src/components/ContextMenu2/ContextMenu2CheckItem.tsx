@@ -2,14 +2,18 @@ import React, {
   forwardRef,
   type ReactNode,
   type ButtonHTMLAttributes,
+  useContext,
+  useCallback,
 } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { ContextMenu2Context } from "./context";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
 type ContextMenu2CheckItemProps = {
   checked?: boolean;
+  closeOnChange?: boolean;
   prepend?: ReactNode;
   children: ReactNode;
   onChange?: (checked: boolean) => void;
@@ -34,10 +38,12 @@ const CheckMark = styled(
 const InternalContextMenu2CheckItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2CheckItemProps
->(({ checked, prepend, children, onChange, ...props }, ref) => {
-  const handleClick = () => {
-    if (onChange) onChange(!checked);
-  };
+>(({ checked, closeOnChange, prepend, children, onChange, ...props }, ref) => {
+  const { close } = useContext(ContextMenu2Context);
+  const handleClick = useCallback(() => {
+    onChange && onChange(!checked);
+    closeOnChange && close();
+  }, [checked, close, closeOnChange, onChange]);
 
   return (
     <button type="button" {...props} ref={ref} onClick={handleClick}>

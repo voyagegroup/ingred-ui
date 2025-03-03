@@ -119,6 +119,7 @@ export const DataTable2InlineSelectEditor = ({
             {options.map((option) => (
               <ContextMenu2CheckItem
                 key={option}
+                closeOnChange
                 checked={value === option}
                 onChange={() => onChange(option)}
               >
