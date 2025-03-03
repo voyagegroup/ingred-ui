@@ -11,6 +11,7 @@ import { ClearIndicator } from "./internal/ClearIndicator";
 import { DropdownIndicator } from "./internal/DropdownIndicator";
 import { MultiValueRemove } from "./internal/MultiValueRemove";
 import * as Styled from "./styled";
+import { depth } from "../../styles/depth";
 
 export const getOverrideStyles = <OptionValue,>(
   theme: Theme,
@@ -50,6 +51,10 @@ export const getOverrideStyles = <OptionValue,>(
       borderLeft: `1px solid ${
         error ? theme.palette.danger.main : theme.palette.divider
       }`,
+    }),
+    menuPortal: (base) => ({
+      ...base,
+      zIndex: depth.dropdown,
     }),
     menuList: (base) => ({
       ...base,
