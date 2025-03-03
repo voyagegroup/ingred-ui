@@ -276,9 +276,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <div
-      class="sc-ksZaOG fDEoyF"
+      class="sc-ksZaOG gmYxXR"
     >
       <input
+        data-ios="false"
         placeholder="プレイスホルダー"
         tabindex="-1"
         value="入力内容"
