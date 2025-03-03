@@ -35,19 +35,19 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-ksZaOG fkpsDm"
+    class="sc-hAZoDl iUiCmF"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
     tabindex="-1"
   >
     <p
-      class="sc-hAZoDl hzQEEQ"
+      class="sc-fnykZs fKCpnX"
     >
       ステータスを変更
     </p>
     <div
-      class="sc-fEOsli jsSWjZ"
+      class="sc-bjUoiL bMuhXM"
     >
       <div>
         <span
@@ -70,7 +70,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </div>
       <p
-        class="sc-fnykZs fgvMEV"
+        class="sc-fEOsli LEGTk"
       >
         ヘルプテキスト
       </p>
@@ -276,10 +276,12 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <div
-      class="sc-bjUoiL hjepdx"
+      class="sc-ksZaOG gmYxXR"
     >
       <input
+        data-ios="false"
         placeholder="プレイスホルダー"
+        tabindex="-1"
         value="入力内容"
       />
     </div>

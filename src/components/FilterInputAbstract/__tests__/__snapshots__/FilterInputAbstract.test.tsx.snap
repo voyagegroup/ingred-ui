@@ -3,14 +3,14 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-hHLeRK hmclDV"
+    class="sc-kgflAQ feaOnH"
     data-small="false"
   >
     <button
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-dmRaPn mNXIP"
+      class="sc-fLlhyt gvvYNu"
       type="button"
     >
       <span

@@ -9,8 +9,9 @@ import React, {
   type KeyboardEvent,
 } from "react";
 import {
-  FilterInputAbstract,
   FilterInputContext,
+  FilterInputAbstract,
+  FilterTag,
 } from "../FilterInputAbstract/FilterInputAbstract";
 import Icon from "../Icon";
 import {
@@ -22,26 +23,6 @@ import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
 import * as styled from "./styled";
-
-type FilterTagProps = {
-  label: string;
-  onRemove: () => void;
-};
-
-const FilterTag = ({ label, onRemove }: FilterTagProps) => {
-  return (
-    <styled.FilterTag>
-      {label}
-      <styled.FilterTagButton
-        type="button"
-        aria-label="削除"
-        onClick={onRemove}
-      >
-        <Icon name="close_circle" type="fill" color="currentColor" />
-      </styled.FilterTagButton>
-    </styled.FilterTag>
-  );
-};
 
 //
 // -----------------------------------------------------------------------------
@@ -275,7 +256,7 @@ export const FilterTagInput = ({
   // inlineFieldEl の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
   const checkInlineOverflow = useCallback(() => {
-    if (!inlineFieldEl.current || !inlineInputEl.current) return;
+    if (!inlineFieldEl.current) return;
 
     setIsInlineOverflowing(
       inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
