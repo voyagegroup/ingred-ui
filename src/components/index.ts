@@ -74,6 +74,8 @@ export * from "./Fade";
 export { default as FileUploader } from "./FileUploader";
 export * from "./FileUploader";
 
+export * from "./FilterComboBox";
+
 export * from "./FilterSelectInput";
 
 export * from "./FilterTagInput";
