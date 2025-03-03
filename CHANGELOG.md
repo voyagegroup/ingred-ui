@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.2.1
+
+### Patch Changes
+
+- [#1736](https://github.com/voyagegroup/ingred-ui/pull/1736) [`1b06822d`](https://github.com/voyagegroup/ingred-ui/commit/1b06822dd3e1a4f765e9ad8b33411589c4434344) Thanks [@yomotsu](https://github.com/yomotsu)! - fix: Dropdown panels should not be placed behind modals
+
 ## 21.2.0
 
 ### Minor Changes
