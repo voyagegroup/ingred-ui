@@ -123,7 +123,7 @@ const flattenChildren = (children: ReactNode): ReactNode[] => {
 };
 
 const ContextMenu2Panel = styled.div`
-  z-index: ${depth.modal + 1};
+  z-index: ${depth.dropdown};
   padding: 10px 8px;
   border: 1px solid ${colors.basic[200]};
   border-radius: 6px;
