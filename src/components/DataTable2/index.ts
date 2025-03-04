@@ -1,4 +1,4 @@
-export type { Column, SortDirection } from "./types";
+export type { TableColumn, SortDirection } from "./types";
 export { DataTable2 } from "./DataTable2";
 export { DataTable2Head } from "./DataTable2Head";
 export { DataTable2Column, DataTable2ColumnLabel } from "./DataTable2Column";
