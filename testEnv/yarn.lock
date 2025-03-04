@@ -742,10 +742,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@tsconfig/vite-react@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-3.0.0.tgz#b8740fa780ddd1086179f50a26035abf1d41e3b6"
-  integrity sha512-haOFbphpavQ1+eyQjeqvlz7sRkQue/bS0GvFmraHml31Ufhv+7juUSc8PVe0In7sly+n+5zTLmzc287KciiGXg==
+"@tsconfig/vite-react@3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@tsconfig/vite-react/-/vite-react-3.4.0.tgz#f2ba30fb44372f267da1724036fd5e8945c5858c"
+  integrity sha512-NxS7WJayciLI+UnCgEqdBfQrZebvVNTSEj5EnaitwThL7iAso5G8wx18B/6yypCFGnyu8p6IMpKWu6JklOX3KA==
 
 "@types/babel__core@^7.20.5":
   version "7.20.5"
