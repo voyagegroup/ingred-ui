@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.3.1
+
+### Patch Changes
+
+- [#1735](https://github.com/voyagegroup/ingred-ui/pull/1735) [`f9754cbf`](https://github.com/voyagegroup/ingred-ui/commit/f9754cbf6d9f29304bd18b78b1ffc9013e12f56e) Thanks [@deatiger](https://github.com/deatiger)! - Export new components and change type name to avoid duplication
+
 ## 21.3.0
 
 ### Minor Changes
