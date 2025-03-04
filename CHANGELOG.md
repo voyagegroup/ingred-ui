@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.4.0
+
+### Minor Changes
+
+- [#1739](https://github.com/voyagegroup/ingred-ui/pull/1739) [`0867b6ea`](https://github.com/voyagegroup/ingred-ui/commit/0867b6eac7398d2fb65e58bc6dfbdb3fd420d0f9) Thanks [@yomotsu](https://github.com/yomotsu)! - DataTable2: close context menu on item change
+
 ## 21.3.1
 
 ### Patch Changes
