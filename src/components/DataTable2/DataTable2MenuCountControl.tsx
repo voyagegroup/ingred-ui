@@ -21,12 +21,7 @@ export const DataTable2MenuCountControl = () => {
     <ContextMenu2
       width={136}
       trigger={
-        <ContextMenu2TriggerItem
-          append={(() => {
-            const text = pageSizeOptions.join(", ");
-            return text.length > 16 ? `${text.slice(0, 16)}...` : text;
-          })()}
-        >
+        <ContextMenu2TriggerItem append={pageSize}>
           件数を変更
         </ContextMenu2TriggerItem>
       }
@@ -34,6 +29,7 @@ export const DataTable2MenuCountControl = () => {
       {pageSizeOptions.map((size) => (
         <ContextMenu2CheckItem
           key={size}
+          closeOnChange
           checked={pageSize === size}
           onChange={() => setPageSize(size)}
         >

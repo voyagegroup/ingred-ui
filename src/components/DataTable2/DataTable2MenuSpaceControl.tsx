@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { DataTable2Context } from "./context";
 import {
   ContextMenu2,
@@ -22,6 +22,9 @@ const spacings = [
 
 export const DataTable2MenuSpaceControl = () => {
   const { rowSpacing, setRowSpacing } = useContext(DataTable2Context);
+  const currentLabel = useMemo(() => {
+    return spacings.find((s) => s.value === rowSpacing)?.label || "標準";
+  }, [rowSpacing]);
   const handleOnChange = (spacing: -2 | -1 | 0 | 1 | 2) => {
     setRowSpacing(spacing);
   };
@@ -33,7 +36,7 @@ export const DataTable2MenuSpaceControl = () => {
     <ContextMenu2
       width={168}
       trigger={
-        <ContextMenu2TriggerItem append="標準">
+        <ContextMenu2TriggerItem append={currentLabel}>
           表示密度を変更
         </ContextMenu2TriggerItem>
       }
@@ -41,6 +44,7 @@ export const DataTable2MenuSpaceControl = () => {
       {spacings.map(({ value, label }) => (
         <ContextMenu2CheckItem
           key={value}
+          closeOnChange
           checked={rowSpacing === value}
           onChange={() => handleOnChange(value)}
         >
