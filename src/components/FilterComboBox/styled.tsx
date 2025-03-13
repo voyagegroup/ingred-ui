@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { useTheme } from "../../themes";
 
 export const SelectContainer = styled.div`
   position: relative;
