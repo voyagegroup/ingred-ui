@@ -17,7 +17,10 @@ import {
   ContextMenu2Container,
   ContextMenu2TextInputItem,
   ContextMenu2CheckItem,
+  ContextMenu2ButtonControlsItem,
+  ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
+import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
 
@@ -29,6 +32,7 @@ type FilterTagInputProps = {
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
 };
+
 export const FilterComboBox = ({
   values,
   options,
@@ -40,10 +44,13 @@ export const FilterComboBox = ({
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
   const [isComposing, setIsComposing] = useState(false);
+  const [tempValues, setTempValues] = useState<string[]>(values);
+  const [isOpen, setIsOpen] = useState(false);
 
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const inlineFieldEl = useRef<HTMLDivElement>(null);
+
   // inlineFieldEl の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
   const checkInlineOverflow = useCallback(() => {
@@ -79,13 +86,13 @@ export const FilterComboBox = ({
 
   const handleSelect = useCallback(
     (value: string) => {
-      if (values.includes(value)) {
-        onChange(values.filter((v) => v !== value));
+      if (tempValues.includes(value)) {
+        setTempValues(tempValues.filter((v) => v !== value));
       } else {
-        onChange([...values, value]);
+        setTempValues([...tempValues, value]);
       }
     },
-    [values, onChange],
+    [tempValues],
   );
 
   const handleEnter = useCallback(() => {
@@ -125,15 +132,33 @@ export const FilterComboBox = ({
 
   const handleRemove = useCallback(
     (value: string) => {
-      onChange(values.filter((v) => v !== value));
+      const newValues = values.filter((v) => v !== value);
+      onChange(newValues);
     },
     [values, onChange],
   );
 
-  const handleOpenChange = useCallback(() => {
-    setUserValue("");
-    setUserEnteredValue("");
-  }, [setUserValue, setUserEnteredValue]);
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      setIsOpen(open);
+      if (open) {
+        setTempValues(values);
+      }
+      setUserValue("");
+      setUserEnteredValue("");
+    },
+    [values],
+  );
+
+  const handleApply = useCallback(() => {
+    onChange(tempValues);
+    setIsOpen(false);
+  }, [onChange, tempValues]);
+
+  const handleCancel = useCallback(() => {
+    setTempValues(values);
+    setIsOpen(false);
+  }, [values]);
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
@@ -160,6 +185,7 @@ export const FilterComboBox = ({
       <styled.SelectContainer data-overflowing={isInlineOverflowing}>
         <ContextMenu2Container>
           <ContextMenu2
+            open={isOpen}
             trigger={
               <styled.Select type="button">
                 <styled.SelectIcon>
@@ -181,12 +207,22 @@ export const FilterComboBox = ({
             {filteredOptions.map((option) => (
               <ContextMenu2CheckItem
                 key={option[0]}
-                checked={values.includes(option[0])}
+                checked={tempValues.includes(option[0])}
+                closeOnChange={false}
                 onChange={() => handleSelect(option[0])}
               >
                 {option[0]}
               </ContextMenu2CheckItem>
             ))}
+            <ContextMenu2SeparatorItem />
+            <ContextMenu2ButtonControlsItem>
+              <Button size="small" color="clear" onClick={handleCancel}>
+                キャンセル
+              </Button>
+              <Button size="small" onClick={handleApply}>
+                適用
+              </Button>
+            </ContextMenu2ButtonControlsItem>
           </ContextMenu2>
         </ContextMenu2Container>
         <styled.TagList ref={inlineFieldEl}>
