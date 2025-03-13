@@ -21,6 +21,7 @@ import { type Item } from "./types";
 import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
 import { DualListBox2Item } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
+import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
 type DualListBox2Props = {
   /**
@@ -67,6 +68,18 @@ type DualListBox2Props = {
    * 「さらに読み込む」ボタンが押されたときのハンドラ
    **/
   onLoadMore?: () => void;
+  /**
+   * 1ページあたりの表示件数
+   **/
+  pageSize?: number;
+  /**
+   * 1ページあたりの表示件数の選択肢
+   **/
+  pageSizeOptions?: number[];
+  /**
+   * 1ページあたりの表示件数が変更されたときのハンドラ
+   **/
+  onPageSizeChange?: (pageSize: number) => void;
 };
 
 const toGrouped = (items: Item[]) => {
@@ -146,6 +159,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       onExcludedChange,
       onActiveSectionChange,
       onLoadMore,
+      pageSize = 50,
+      pageSizeOptions = [10, 50, 100, 200],
+      onPageSizeChange,
     },
     ref,
   ) => {
@@ -458,19 +474,24 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     onChange={handleFilterChange}
                   />
                 </styled.HeaderSearch>
-                {menuButtons && (
-                  <ContextMenu2Container>
-                    <ContextMenu2
-                      trigger={
-                        <styled.HeaderMenuButton type="button">
-                          <Icon name="more_vert" color={colors.basic[900]} />
-                        </styled.HeaderMenuButton>
-                      }
-                    >
-                      {menuButtons}
-                    </ContextMenu2>
-                  </ContextMenu2Container>
-                )}
+                <ContextMenu2Container>
+                  <ContextMenu2
+                    trigger={
+                      <styled.HeaderMenuButton type="button">
+                        <Icon name="more_vert" color={colors.basic[900]} />
+                      </styled.HeaderMenuButton>
+                    }
+                  >
+                    {onPageSizeChange && (
+                      <DualListBox2MenuCountControl
+                        pageSize={pageSize}
+                        pageSizeOptions={pageSizeOptions}
+                        onPageSizeChange={onPageSizeChange}
+                      />
+                    )}
+                    {menuButtons}
+                  </ContextMenu2>
+                </ContextMenu2Container>
                 <styled.HeaderCount>
                   {loading ? (
                     <Spinner width="16px" />

@@ -54,35 +54,28 @@ export const Default: StoryObj<typeof meta> = {
     disableExclude: false,
     loading: false,
     children: null,
-    menuButtons: (
-      <>
-        <ContextMenu2ButtonItem onClick={() => {}}>
-          メニュー項目1
-        </ContextMenu2ButtonItem>
-        <ContextMenu2SwitchItem onChange={() => {}}>
-          メニュー項目2
-        </ContextMenu2SwitchItem>
-      </>
-    ),
+    pageSize: 50,
+    pageSizeOptions: [10, 50, 100, 200],
   },
   render: (args) => {
-    const [{ included, excluded, loading }, updateArgs] = useArgs<{
+    const [{ included, excluded, loading, pageSize }, updateArgs] = useArgs<{
       included: Item[];
       excluded: Item[];
       loading: boolean;
+      pageSize: number;
     }>();
-    const [items, setItems] = useState(() => generateItems(0, 50));
+    const [items, setItems] = useState(() => generateItems(0, pageSize));
 
     const handleLoadMore = useCallback(() => {
       updateArgs({ loading: true });
       setTimeout(() => {
         setItems((prev) => [
           ...prev,
-          ...generateItems(prev.length, 50),
+          ...generateItems(prev.length, pageSize),
         ]);
         updateArgs({ loading: false });
       }, 1000);
-    }, [updateArgs]);
+    }, [updateArgs, pageSize]);
 
     return (
       <>
@@ -91,6 +84,11 @@ export const Default: StoryObj<typeof meta> = {
           included={included}
           excluded={excluded}
           loading={loading}
+          pageSize={pageSize}
+          onPageSizeChange={(newPageSize) => {
+            updateArgs({ pageSize: newPageSize });
+            setItems(generateItems(0, newPageSize));
+          }}
           onIncludedChange={(ids: string[]) =>
             updateArgs({
               included: items.filter((item) => ids.includes(item.id)),
