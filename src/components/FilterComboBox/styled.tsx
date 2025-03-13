@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { useTheme } from "../../themes";
 
 export const SelectContainer = styled.div`
   position: relative;
@@ -9,6 +10,7 @@ export const SelectContainer = styled.div`
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
+  background-color: ${colors.basic[100]};
 
   &::before {
     content: "";
@@ -64,7 +66,7 @@ export const Select = styled.button`
   height: 100%;
   padding: 0 8px 0 54px;
   border: 0;
-  background: transparent;
+  background-color: ${colors.basic[100]};
   outline-offset: -1px;
   color: ${colors.basic[900]};
   cursor: pointer;
@@ -74,6 +76,7 @@ export const Select = styled.button`
   //   z-index: 1;
   // }
 `;
+
 export const SelectIcon = styled.span`
   flex-shrink: 0;
   width: 18px;

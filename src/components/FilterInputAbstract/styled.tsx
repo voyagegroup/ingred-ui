@@ -69,7 +69,7 @@ export const DropDownTrigger = styled.button`
   border-right: 1px solid ${colors.basic[400]};
   outline-offset: -1px;
   color: #000;
-  background: transparent;
+  background: #fff;
   cursor: pointer;
 
   &:where(${FilterInputAbstract.toString()}[data-small="true"] *) {
