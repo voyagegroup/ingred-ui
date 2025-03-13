@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
 import {
@@ -23,11 +23,10 @@ const meta = {
 
 export default meta;
 
-const generateItems = (start: number, length: number, groupName?: string) => {
-  return Array.from({ length }, (_, i) => ({
-    id: `unique-${start + i}`,
-    label: `リストアイテム${start + i}`,
-    groupName,
+const generateItems = (start: number, count: number) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `item-${start + i}`,
+    label: `アイテム ${start + i + 1}`,
   }));
 };
 
@@ -46,76 +45,49 @@ const generateItems = (start: number, length: number, groupName?: string) => {
  */
 export const Default: StoryObj<typeof meta> = {
   args: {
-    included: [
-      {
-        id: "unique-1",
-        label: "リストアイテム1",
-      },
-    ],
-    excluded: [
-      {
-        id: "unique-4",
-        label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
-      },
-    ],
-    loading: false,
+    included: [],
+    excluded: [],
     disableInclude: false,
     disableExclude: false,
+    loading: false,
+    children: null,
     menuButtons: (
       <>
-        <ContextMenu2ButtonItem
-          onClick={() => {
-            console.log("clicked");
-          }}
-        >
-          好きなボタンを
+        <ContextMenu2ButtonItem onClick={() => {}}>
+          メニュー項目1
         </ContextMenu2ButtonItem>
-        <ContextMenu2SwitchItem disabled onChange={() => {}}>
-          入れて使う
+        <ContextMenu2SwitchItem onChange={() => {}}>
+          メニュー項目2
         </ContextMenu2SwitchItem>
       </>
     ),
-    children: null,
   },
   render: (args) => {
-    const [{ included, excluded }, updateArgs] = useArgs<{
+    const [{ included, excluded, loading }, updateArgs] = useArgs<{
       included: Item[];
       excluded: Item[];
       loading: boolean;
     }>();
+    const [items, setItems] = useState(() => generateItems(0, 50));
 
-    const [items, setItems] = useState<Item[]>([
-      {
-        id: "unique-1",
-        label: "リストアイテム1",
-      },
-      {
-        id: "unique-2",
-        label: "リストアイテム2",
-      },
-      {
-        id: "unique-3",
-        label: "リストアイテム3",
-      },
-      {
-        id: "unique-4",
-        label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
-      },
-    ]);
+    const handleLoadMore = useCallback(() => {
+      updateArgs({ loading: true });
+      setTimeout(() => {
+        setItems((prev) => [
+          ...prev,
+          ...generateItems(prev.length, 50),
+        ]);
+        updateArgs({ loading: false });
+      }, 1000);
+    }, [updateArgs]);
 
     return (
       <>
-        <div>
-          included: {JSON.stringify(included.map((item: Item) => item.id))}
-        </div>
-        <div>
-          excluded: {JSON.stringify(excluded.map((item: Item) => item.id))}
-        </div>
-
         <DualListBox2
           {...args}
+          included={included}
+          excluded={excluded}
+          loading={loading}
           onIncludedChange={(ids: string[]) =>
             updateArgs({
               included: items.filter((item) => ids.includes(item.id)),
@@ -126,16 +98,7 @@ export const Default: StoryObj<typeof meta> = {
               excluded: items.filter((item) => ids.includes(item.id)),
             })
           }
-          onLoadMore={() => {
-            updateArgs({ loading: true });
-            setTimeout(() => {
-              setItems((prev) => [
-                ...prev,
-                ...generateItems(prev.length + 1, 10),
-              ]);
-              updateArgs({ loading: false });
-            }, 1000);
-          }}
+          onLoadMore={handleLoadMore}
         >
           {items.map((item) => (
             <DualListBox2Item
@@ -161,33 +124,34 @@ export const Default: StoryObj<typeof meta> = {
  */
 export const Accordion: StoryObj<typeof DualListBox2> = {
   render: () => {
-    const [items, setItems] = useState<Item[]>([
-      {
-        id: "unique-1",
-        groupName: "アコーディオン1",
-        label: "リストアイテム1",
-      },
-      {
-        id: "unique-2",
-        groupName: "アコーディオン1",
-        label: "リストアイテム2",
-      },
-      {
-        id: "unique-3",
-        groupName: "アコーディオン2",
-        label: "リストアイテム3",
-      },
-      {
-        id: "unique-4",
-        groupName: "アコーディオン2",
-        label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
-      },
-    ]);
-
-    const [included, setIncluded] = useState<Item[]>([items[0]]);
-    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [items, setItems] = useState<Item[]>([]);
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
+
+    // アコーディオンのグループ定義
+    const groups = [
+      { id: "group1", name: "アコーディオン1" },
+      { id: "group2", name: "アコーディオン2" },
+    ];
+
+    const handleAccordionOpen = useCallback((groupName: string) => {
+      if (loadedGroups.has(groupName)) return;
+      
+      setIsLoading(true);
+      setTimeout(() => {
+        setItems((prev) => [
+          ...prev,
+          ...generateItems(prev.length, 10).map(item => ({
+            ...item,
+            groupName,
+          })),
+        ]);
+        setLoadedGroups(prev => new Set([...prev, groupName]));
+        setIsLoading(false);
+      }, 1000);
+    }, [loadedGroups]);
 
     return (
       <DualListBox2
@@ -216,27 +180,32 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
         }
         onLoadMore={() => {
           setIsLoading(true);
-          setItems((prev) => [
-            ...prev,
-            ...generateItems(prev.length + 1, 10, "アコーディオン2"),
-          ]);
+          setTimeout(() => {
+            setItems((prev) => [
+              ...prev,
+              ...generateItems(prev.length, 10),
+            ]);
+            setIsLoading(false);
+          }, 1000);
         }}
       >
-        {toGroupedItems(items).map(
-          (group) =>
-            group.groupName && (
-              <DualListBox2Accordion
-                key={group.groupName}
-                label={group.groupName}
-              >
-                {group.items.map((item) => (
-                  <DualListBox2Item key={item.id} id={item.id}>
-                    {item.label}
-                  </DualListBox2Item>
-                ))}
-              </DualListBox2Accordion>
-            ),
-        )}
+        {groups.map((group) => (
+          <DualListBox2Accordion
+            key={group.id}
+            label={group.name}
+            onOpen={() => handleAccordionOpen(group.name)}
+            disableInclude={!loadedGroups.has(group.name)}
+            disableExclude={!loadedGroups.has(group.name)}
+          >
+            {items
+              .filter(item => item.groupName === group.name)
+              .map((item) => (
+                <DualListBox2Item key={item.id} id={item.id}>
+                  {item.label}
+                </DualListBox2Item>
+              ))}
+          </DualListBox2Accordion>
+        ))}
       </DualListBox2>
     );
   },
@@ -268,7 +237,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -388,7 +357,7 @@ export const Section: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "セクション2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
