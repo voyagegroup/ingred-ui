@@ -183,7 +183,6 @@ export const FilterComboBox = ({
         <ContextMenu2Container>
           <ContextMenu2
             open={isOpen}
-            onOpenChange={handleOpenChange}
             trigger={
               <styled.Select type="button">
                 <styled.SelectIcon>
@@ -191,6 +190,7 @@ export const FilterComboBox = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
+            onOpenChange={handleOpenChange}
           >
             <ContextMenu2TextInputItem
               autoFocus
@@ -205,8 +205,8 @@ export const FilterComboBox = ({
               <ContextMenu2CheckItem
                 key={option[0]}
                 checked={tempValues.includes(option[0])}
-                onChange={() => handleSelect(option[0])}
                 closeOnChange={false}
+                onChange={() => handleSelect(option[0])}
               >
                 {option[0]}
               </ContextMenu2CheckItem>
