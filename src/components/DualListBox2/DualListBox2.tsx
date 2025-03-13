@@ -149,12 +149,14 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     },
     ref,
   ) => {
+    // モバイルサイズでは、タブで左右パネルの表示を切り替える    
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
     const [filter, setFilter] = useState("");
+    // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const loadMoreRef = useRef<HTMLDivElement>(null);
-
+    // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
       let hasSection = false;
       traverseChildren(children, (child) => {
@@ -168,7 +170,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
       return hasSection;
     }, [children]);
-
+    
+    // フィルター文字列をスペース区切りで単語の配列に分割
     const filterWords = useMemo(() => {
       const trimmed = filter.trim();
       return trimmed ? trimmed.split(/\s+/) : [];
@@ -184,10 +187,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [excluded],
     );
 
+    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
     const allItems = useMemo(() => extractAllItems(children), [children]);
 
+    // DualListBox2 に配置された、全 DualListBox2Item の id の配列
     const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
 
+    // 検索フィルタ適用後の全 id
     const allIdsFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIds;
 
@@ -211,7 +217,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         ) {
           return;
         }
-
+        // ここまでの結果、child はセクション
         if (child.props.label !== activeSection) return;
 
         traverseChildren(child.props.children, (grandChild) => {
@@ -228,6 +234,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return ids;
     }, [activeSection, children, hasSection]);
 
+    // 検索フィルタ適用後の、選択中のセクションのみに含まれる全 id
     const allIdsInActiveSectionFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIdsInActiveSection;
 
@@ -238,6 +245,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIdsInActiveSection, allItems, filterWords]);
 
+    // 「すべて追加」ボタンを非活性にするかどうか
+    // セクション型の DualListBox の場合、セクション選択中のみ「すべて〜」ボタンは有効。
+    // それ以外は、追加選択できる項目があれば有効（すべて選択済みの場合、無効）
     const disableIncludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -260,6 +270,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       includedIds,
     ]);
 
+    // 「すべて除外」ボタンを非活性にするかどうか
+    // 「すべて追加」ボタン非活性化の判定の逆。
     const disableExcludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -282,6 +294,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       excludedIds,
     ]);
 
+    // 検索フィルターのテキスト入力変更に state に反映
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target?.value);
@@ -289,13 +302,18 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [setFilter],
     );
 
+    // 選択をクリアする
     const handleClearButtonClick = useCallback(() => {
       included.length && onIncludedChange([]);
       excluded.length && onExcludedChange([]);
     }, [included, excluded, onIncludedChange, onExcludedChange]);
 
+    // 「すべて追加」ボタンが押されたときの処理
+    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
+    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleIncludeAllButtonClick = useCallback(() => {
       if (hasSection) {
+        // セクションの場合は特別
         if (activeSection === null) return;
         onIncludedChange(
           Array.from(
@@ -326,8 +344,12 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
     ]);
 
+    // 「すべて除外」ボタンが押されたときの処理
+    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
+    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleExcludeAllButtonClick = useCallback(() => {
       if (hasSection) {
+        // セクションの場合は特別
         if (activeSection === null) return;
         onExcludedChange(
           Array.from(
