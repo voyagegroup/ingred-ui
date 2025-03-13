@@ -8,6 +8,8 @@ import React, {
   Fragment,
   type ReactNode,
   type ChangeEvent,
+  useEffect,
+  useRef,
 } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -147,12 +149,12 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     },
     ref,
   ) => {
-    // モバイルサイズでは、タブで左右パネルの表示を切り替える
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
     const [filter, setFilter] = useState("");
-    // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
-    // children にセクションが含まれているかどうか
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const loadMoreRef = useRef<HTMLDivElement>(null);
+
     const hasSection = useMemo(() => {
       let hasSection = false;
       traverseChildren(children, (child) => {
@@ -167,7 +169,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return hasSection;
     }, [children]);
 
-    // フィルター文字列をスペース区切りで単語の配列に分割
     const filterWords = useMemo(() => {
       const trimmed = filter.trim();
       return trimmed ? trimmed.split(/\s+/) : [];
@@ -183,13 +184,10 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [excluded],
     );
 
-    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
     const allItems = useMemo(() => extractAllItems(children), [children]);
 
-    // DualListBox2 に配置された、全 DualListBox2Item の id の配列
     const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
 
-    // 検索フィルタ適用後の全 id
     const allIdsFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIds;
 
@@ -200,7 +198,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIds, allItems, filterWords]);
 
-    // 選択中のセクションに含まれる全ての id
     const allIdsInActiveSection = useMemo(() => {
       if (!hasSection) return [];
       if (activeSection === null) return [];
@@ -215,7 +212,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           return;
         }
 
-        // ここまでの結果、child はセクション
         if (child.props.label !== activeSection) return;
 
         traverseChildren(child.props.children, (grandChild) => {
@@ -232,7 +228,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return ids;
     }, [activeSection, children, hasSection]);
 
-    // 検索フィルタ適用後の、選択中のセクションのみに含まれる全 id
     const allIdsInActiveSectionFiltered = useMemo(() => {
       if (filterWords.length === 0) return allIdsInActiveSection;
 
@@ -243,9 +238,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIdsInActiveSection, allItems, filterWords]);
 
-    // 「すべて追加」ボタンを非活性にするかどうか
-    // セクション型の DualListBox の場合、セクション選択中のみ「すべて〜」ボタンは有効。
-    // それ以外は、追加選択できる項目があれば有効（すべて選択済みの場合、無効）
     const disableIncludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -268,8 +260,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       includedIds,
     ]);
 
-    // 「すべて除外」ボタンを非活性にするかどうか
-    // 「すべて追加」ボタン非活性化の判定の逆。
     const disableExcludeAllButton = useMemo(() => {
       if (hasSection) {
         if (activeSection === null) return true;
@@ -292,7 +282,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       excludedIds,
     ]);
 
-    // 検索フィルターのテキスト入力変更に state に反映
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
         setFilter(event.target?.value);
@@ -300,18 +289,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [setFilter],
     );
 
-    // 選択をクリアする
     const handleClearButtonClick = useCallback(() => {
       included.length && onIncludedChange([]);
       excluded.length && onExcludedChange([]);
     }, [included, excluded, onIncludedChange, onExcludedChange]);
 
-    // 「すべて追加」ボタンが押されたときの処理
-    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
-    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleIncludeAllButtonClick = useCallback(() => {
       if (hasSection) {
-        // セクションの場合は特別
         if (activeSection === null) return;
         onIncludedChange(
           Array.from(
@@ -342,12 +326,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
     ]);
 
-    // 「すべて除外」ボタンが押されたときの処理
-    // 検索フィルタで絞り込まれた項目のみが選択の対象になる
-    // さらに、セクションの場合は、選択しているセクション内の項目のみが対象になる
     const handleExcludeAllButtonClick = useCallback(() => {
       if (hasSection) {
-        // セクションの場合は特別
         if (activeSection === null) return;
         onExcludedChange(
           Array.from(
@@ -377,6 +357,35 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       excludedIds,
       allIdsInActiveSectionFiltered,
     ]);
+
+    const handleIntersection = useCallback(
+      (entries: IntersectionObserverEntry[]) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !isLoadingMore && !loading && onLoadMore) {
+          setIsLoadingMore(true);
+          onLoadMore();
+        }
+      },
+      [isLoadingMore, loading, onLoadMore],
+    );
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(handleIntersection, {
+        root: null,
+        rootMargin: "100px",
+        threshold: 0.1,
+      });
+
+      if (loadMoreRef.current) {
+        observer.observe(loadMoreRef.current);
+      }
+
+      return () => {
+        if (loadMoreRef.current) {
+          observer.unobserve(loadMoreRef.current);
+        }
+      };
+    }, [handleIntersection]);
 
     return (
       <styled.DualListBox2 ref={ref}>
@@ -412,21 +421,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               activeSection,
               onIncludedChange,
               onExcludedChange,
-              setActiveSection: (activeSection) => {
-                setActiveSection(activeSection);
-                onActiveSectionChange?.(activeSection);
-              },
+              setActiveSection,
             }}
           >
             <styled.LeftPanel isShow={tabIndex === 0}>
               <styled.LeftPanelHeader>
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
-                  {/*
-                  セクション型の DualListBox の場合、
-                  セクション選択中のみ「すべて〜」ボタンは有効。
-                  それ以外は常に有効
-                */}
                   <input
                     placeholder="検索"
                     disabled={hasSection && activeSection === null}
@@ -452,9 +453,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                   {loading ? (
                     <Spinner width="16px" />
                   ) : (
-                    // セクション型の DualListBox の場合、
-                    // セクション選択中のみ件数を表示。
-                    // それ以外は常に表示
                     <>
                       {(() => {
                         if (hasSection && activeSection === null) {
@@ -511,22 +509,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     </li>
                   )}
                 </styled.HeaderButtons>
-                {/*
-                セクション型の DualListBox の場合、
-                セクション選択中のみ「さらにに読み込む」ボタンは有効。
-                それ以外は常に有効
-              */}
-                {(!hasSection || (hasSection && activeSection !== null)) && (
-                  <styled.HeaderLoadButton
-                    type="button"
-                    disabled={loading}
-                    onClick={onLoadMore}
-                  >
-                    さらに読み込む
-                  </styled.HeaderLoadButton>
-                )}
               </styled.LeftPanelHeader>
-              <styled.LeftPanelBody>{children}</styled.LeftPanelBody>
+              <styled.LeftPanelBody>
+                {children}
+                <div ref={loadMoreRef} style={{ height: "20px" }}>
+                  {loading && <styled.LoadingIndicator>読み込み中...</styled.LoadingIndicator>}
+                </div>
+              </styled.LeftPanelBody>
             </styled.LeftPanel>
             <styled.RightPanel isShow={tabIndex === 1}>
               <styled.RightPanelHeader>
@@ -563,7 +552,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     追加
                   </styled.SelectedPanelHeading>
                 )}
-                {/* included はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する */}
                 {toGrouped(included).map((group) => (
                   <Fragment key={group.groupName || "_"}>
                     {group.groupName && (
@@ -582,7 +570,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     除外
                   </styled.SelectedPanelHeading>
                 )}
-                {/* excluded はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する */}
                 {toGrouped(excluded).map((group) => (
                   <Fragment key={group.groupName || "_"}>
                     {group.groupName && (

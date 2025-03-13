@@ -253,11 +253,15 @@ export const HeaderLoadButton = styled.button`
 export const RightPanel = LeftPanel;
 
 export const RightPanelHeader = styled.div`
+  position: sticky;
+  top: -1px;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
   border-top-right-radius: 6px;
   border-bottom: 1px solid ${colors.basic[400]};
+  border-left: 1px solid ${colors.basic[400]};
   background: ${colors.basic[100]};
 `;
 
@@ -297,12 +301,16 @@ export const SelectedClearButton = styled.div`
 `;
 
 export const SelectedPanelHeading = styled.p`
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  margin: -1px 0 0;
-  border-block: 1px solid ${colors.basic[400]};
+  margin: 0;
+  border-bottom: 1px solid ${colors.basic[400]};
+  border-left: 1px solid ${colors.basic[400]};
   /* UI/Text 13 */
   font-size: 13px;
   line-height: 16px;
@@ -579,4 +587,14 @@ export const SectionButton = styled.button`
     margin-right: -20px;
     opacity: 0;
   }
+`;
+
+export const LoadingIndicator = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  color: ${colors.basic[600]};
+  font-size: 13px;
+  line-height: 16px;
 `;

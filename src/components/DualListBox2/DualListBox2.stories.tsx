@@ -42,6 +42,9 @@ const generateItems = (start: number, count: number) => {
  *
  * children には、左パネル用の選択できる項目を渡します。右パネルの内容は状態に応じて自動で表示管理されます。
  *
+ * モバイルサイズでは、タブで左右パネルの表示を切り替える
+ *
+ * included はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する
  */
 export const Default: StoryObj<typeof meta> = {
   args: {
