@@ -138,14 +138,17 @@ export const FilterComboBox = ({
     [values, onChange],
   );
 
-  const handleOpenChange = useCallback((open: boolean) => {
-    setIsOpen(open);
-    if (open) {
-      setTempValues(values);
-    }
-    setUserValue("");
-    setUserEnteredValue("");
-  }, [values]);
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      setIsOpen(open);
+      if (open) {
+        setTempValues(values);
+      }
+      setUserValue("");
+      setUserEnteredValue("");
+    },
+    [values],
+  );
 
   const handleApply = useCallback(() => {
     onChange(tempValues);
@@ -213,17 +216,10 @@ export const FilterComboBox = ({
             ))}
             <ContextMenu2SeparatorItem />
             <ContextMenu2ButtonControlsItem>
-              <Button
-                size="small"
-                color="clear"
-                onClick={handleCancel}
-              >
+              <Button size="small" color="clear" onClick={handleCancel}>
                 キャンセル
               </Button>
-              <Button
-                size="small"
-                onClick={handleApply}
-              >
+              <Button size="small" onClick={handleApply}>
                 適用
               </Button>
             </ContextMenu2ButtonControlsItem>
