@@ -1,5 +1,14 @@
 # Changelog
 
+## 21.4.1
+
+### Patch Changes
+
+- [#1744](https://github.com/voyagegroup/ingred-ui/pull/1744) [`6c7ed73c`](https://github.com/voyagegroup/ingred-ui/commit/6c7ed73cececc938e52f3c9566a95a204711d150) Thanks [@noronaoki](https://github.com/noronaoki)! - FilterComboBoxコンポーネントの改善:
+  - 複数選択時の一時保存機能を追加
+  - 適用・キャンセルボタンを追加
+  - UI/UXの改善（区切り線の追加、タグ削除機能の修正）
+
 ## 21.4.0
 
 ### Minor Changes
