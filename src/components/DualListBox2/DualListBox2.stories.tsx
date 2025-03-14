@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
+import styled from "styled-components";
 import {
   type Item,
   DualListBox2,
@@ -29,6 +30,25 @@ const generateItems = (start: number, count: number) => {
     label: `アイテム ${start + i + 1}`,
   }));
 };
+
+// ネストされたコンポーネント用のスタイル
+const NestedContainer = styled.div`
+  /* 配下の要素にパディングを適用 */
+  & > * {
+    padding-left: 24px;
+  }
+`;
+
+const StyledNestedAccordion = styled(DualListBox2Accordion)`
+  /* アコーディオンヘッダー部分のスタイル */
+  & > div:first-child {
+    padding-left: 24px;
+  }
+`;
+
+const StyledNestedItem = styled(DualListBox2Item)`
+  padding-left: 48px;
+`;
 
 /**
  * #### ベーシックなタイプ
@@ -139,7 +159,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
 
     const handleAccordionOpen = useCallback((groupName: string) => {
       if (loadedGroups.has(groupName)) return;
-      
+
       setIsLoading(true);
       setTimeout(() => {
         setItems((prev) => [
@@ -168,7 +188,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             >
               好きなボタンを
             </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => {}}>
+            <ContextMenu2SwitchItem disabled onChange={() => { }}>
               入れて使う
             </ContextMenu2SwitchItem>
           </>
@@ -238,7 +258,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -278,7 +298,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
               >
                 好きなボタンを
               </ContextMenu2ButtonItem>
-              <ContextMenu2SwitchItem disabled onChange={() => {}}>
+              <ContextMenu2SwitchItem disabled onChange={() => { }}>
                 入れて使う
               </ContextMenu2SwitchItem>
             </>
@@ -381,7 +401,7 @@ export const Section: StoryObj<typeof DualListBox2> = {
             >
               好きなボタンを
             </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => {}}>
+            <ContextMenu2SwitchItem disabled onChange={() => { }}>
               入れて使う
             </ContextMenu2SwitchItem>
           </>
@@ -423,4 +443,111 @@ export const Section: StoryObj<typeof DualListBox2> = {
       </DualListBox2>
     );
   },
+};
+
+/**
+ * #### 階層構造のアコーディオンタイプ
+ * 
+ * アコーディオンをネストして、都道府県 > 区 > 市のような階層構造を表現する例です。
+ * 実装者が独自に組み立てる方法を使用しています。
+ */
+export const NestedAccordion: StoryObj<typeof DualListBox2> = {
+  render: () => {
+    // 階層構造を持つデータの例
+    const [items] = useState<Item[]>([
+      // 埼玉県
+      {
+        id: "saitama-omiya-urawa",
+        label: "浦和市",
+        prefecture: "埼玉県",
+        district: "大宮区"
+      },
+      {
+        id: "saitama-omiya-nishi",
+        label: "西区",
+        prefecture: "埼玉県",
+        district: "大宮区"
+      },
+      {
+        id: "saitama-kawaguchi-honcho",
+        label: "本町",
+        prefecture: "埼玉県",
+        district: "川口市"
+      },
+      // 東京都
+      {
+        id: "tokyo-shinjuku-kabukicho",
+        label: "歌舞伎町",
+        prefecture: "東京都",
+        district: "新宿区"
+      },
+      {
+        id: "tokyo-shinjuku-okubo",
+        label: "大久保",
+        prefecture: "東京都",
+        district: "新宿区"
+      },
+      {
+        id: "tokyo-shibuya-harajuku",
+        label: "原宿",
+        prefecture: "東京都",
+        district: "渋谷区"
+      }
+    ]);
+
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
+
+    // データを階層構造に変換
+    const hierarchy = useMemo(() => {
+      const result: Record<string, Record<string, Item[]>> = {};
+
+      items.forEach(item => {
+        if (!item.prefecture || !item.district) return;
+
+        if (!result[item.prefecture]) {
+          result[item.prefecture] = {};
+        }
+        if (!result[item.prefecture][item.district]) {
+          result[item.prefecture][item.district] = [];
+        }
+        result[item.prefecture][item.district].push(item);
+      });
+
+      return result;
+    }, [items]);
+
+    return (
+      <DualListBox2
+        included={included}
+        excluded={excluded}
+        onIncludedChange={(ids) =>
+          setIncluded(items.filter(item => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids) =>
+          setExcluded(items.filter(item => ids.includes(item.id)))
+        }
+      >
+        {Object.entries(hierarchy).map(([prefecture, districts]) => (
+          <DualListBox2Accordion key={prefecture} label={prefecture}>
+            <NestedContainer>
+              {/* 区ごとのアコーディオン */}
+              {Object.entries(districts).map(([district, cityItems]) => (
+                <StyledNestedAccordion key={district} label={district}>
+                  <NestedContainer>
+                    {/* 市町村のアイテム */}
+                    {cityItems.map(item => (
+                      <StyledNestedItem key={item.id} id={item.id}>
+                        {item.label}
+                      </StyledNestedItem>
+                    ))}
+                  </NestedContainer>
+                </StyledNestedAccordion>
+              ))}
+            </NestedContainer>
+          </DualListBox2Accordion>
+        ))}
+      </DualListBox2>
+    );
+  }
 };

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
+import { DualListBox2Accordion } from "./DualListBox2Accordion";
+import { DualListBox2Item } from "./DualListBox2Item";
 
 const actionButton = `
   display: flex;
@@ -597,4 +599,12 @@ export const LoadingIndicator = styled.div`
   color: ${colors.basic[600]};
   font-size: 13px;
   line-height: 16px;
+`;
+
+export const NestedAccordion = styled(DualListBox2Accordion)`
+  padding-left: 24px;
+`;
+
+export const NestedItem = styled(DualListBox2Item)`
+  padding-left: 48px;
 `;
