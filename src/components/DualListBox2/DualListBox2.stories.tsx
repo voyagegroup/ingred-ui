@@ -15,6 +15,7 @@ import {
   ContextMenu2SwitchItem,
 } from "../ContextMenu2";
 import Checkbox from "../Checkbox";
+import { ComponentStory } from "@storybook/react";
 
 const meta = {
   title: "Components/Data Display/DualListBox2",
@@ -24,10 +25,11 @@ const meta = {
 
 export default meta;
 
-const generateItems = (start: number, count: number) => {
+const generateItems = (start: number, count: number, groupName?: string) => {
   return Array.from({ length: count }, (_, i) => ({
     id: `item-${start + i}`,
     label: `アイテム ${start + i + 1}`,
+    ...(groupName ? { groupName } : {}),
   }));
 };
 
@@ -66,75 +68,58 @@ const StyledNestedItem = styled(DualListBox2Item)`
  *
  * included はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する
  */
-export const Default: StoryObj<typeof meta> = {
-  args: {
-    included: [],
-    excluded: [],
-    disableInclude: false,
-    disableExclude: false,
-    loading: false,
-    children: null,
-    pageSize: 50,
-    pageSizeOptions: [10, 50, 100, 200],
-  },
-  render: (args) => {
-    const [{ included, excluded, loading, pageSize }, updateArgs] = useArgs<{
-      included: Item[];
-      excluded: Item[];
-      loading: boolean;
-      pageSize: number;
-    }>();
-    const [items, setItems] = useState(() => generateItems(0, pageSize));
+export const Default: ComponentStory<typeof DualListBox2> = (args) => {
+  const [included, setIncluded] = useState<Item[]>(args.included || []);
+  const [excluded, setExcluded] = useState<Item[]>(args.excluded || []);
+  const [loading, setLoading] = useState(args.loading || false);
+  const [pageSize, setPageSize] = useState(args.pageSize || 50);
+  const [items, setItems] = useState(() => generateItems(0, pageSize));
 
-    const handleLoadMore = useCallback(() => {
-      updateArgs({ loading: true });
-      setTimeout(() => {
-        setItems((prev) => [
-          ...prev,
-          ...generateItems(prev.length, pageSize),
-        ]);
-        updateArgs({ loading: false });
-      }, 1000);
-    }, [updateArgs, pageSize]);
+  const handleLoadMore = useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setItems((prev) => [
+        ...prev,
+        ...generateItems(prev.length, pageSize),
+      ]);
+      setLoading(false);
+    }, 1000);
+  }, [pageSize]);
 
-    return (
-      <>
-        <DualListBox2
-          {...args}
-          included={included}
-          excluded={excluded}
-          loading={loading}
-          pageSize={pageSize}
-          onPageSizeChange={(newPageSize) => {
-            updateArgs({ pageSize: newPageSize });
-            setItems(generateItems(0, newPageSize));
-          }}
-          onIncludedChange={(ids: string[]) =>
-            updateArgs({
-              included: items.filter((item) => ids.includes(item.id)),
-            })
-          }
-          onExcludedChange={(ids: string[]) =>
-            updateArgs({
-              excluded: items.filter((item) => ids.includes(item.id)),
-            })
-          }
-          onLoadMore={handleLoadMore}
+  const handlePageSizeChange = useCallback((newPageSize: number) => {
+    setPageSize(newPageSize);
+    setItems(generateItems(0, newPageSize));
+  }, []);
+
+  return (
+    <DualListBox2
+      {...args}
+      included={included}
+      excluded={excluded}
+      loading={loading}
+      pageSize={pageSize}
+      pageSizeOptions={args.pageSizeOptions}
+      onPageSizeChange={handlePageSizeChange}
+      onIncludedChange={(ids: string[]) =>
+        setIncluded(items.filter((item) => ids.includes(item.id)))
+      }
+      onExcludedChange={(ids: string[]) =>
+        setExcluded(items.filter((item) => ids.includes(item.id)))
+      }
+      onLoadMore={handleLoadMore}
+    >
+      {items.map((item) => (
+        <DualListBox2Item
+          key={item.id}
+          id={item.id}
+          disableInclude={args.disableInclude}
+          disableExclude={args.disableExclude}
         >
-          {items.map((item) => (
-            <DualListBox2Item
-              key={item.id}
-              id={item.id}
-              disableInclude={args.disableInclude}
-              disableExclude={args.disableExclude}
-            >
-              {item.label}
-            </DualListBox2Item>
-          ))}
-        </DualListBox2>
-      </>
-    );
-  },
+          {item.label}
+        </DualListBox2Item>
+      ))}
+    </DualListBox2>
+  );
 };
 
 /**
@@ -150,6 +135,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [excluded, setExcluded] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
+    const [pageSize, setPageSize] = useState(50);
 
     // アコーディオンのグループ定義
     const groups = [
@@ -164,21 +150,32 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
       setTimeout(() => {
         setItems((prev) => [
           ...prev,
-          ...generateItems(prev.length, 10).map(item => ({
+          ...generateItems(prev.length, pageSize).map(item => ({
             ...item,
             groupName,
           })),
         ]);
-        setLoadedGroups(prev => new Set([...prev, groupName]));
+        setLoadedGroups(prev => {
+          const newSet = new Set(prev);
+          newSet.add(groupName);
+          return newSet;
+        });
         setIsLoading(false);
       }, 1000);
-    }, [loadedGroups]);
+    }, [loadedGroups, pageSize]);
 
     return (
       <DualListBox2
         loading={isLoading}
         included={included}
         excluded={excluded}
+        pageSize={pageSize}
+        pageSizeOptions={[10, 50, 100, 200]}
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([]);
+          setLoadedGroups(new Set());
+        }}
         menuButtons={
           <>
             <ContextMenu2ButtonItem
@@ -204,7 +201,10 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           setTimeout(() => {
             setItems((prev) => [
               ...prev,
-              ...generateItems(prev.length, 10),
+              ...generateItems(prev.length, pageSize).map(item => ({
+                ...item,
+                groupName: "アコーディオン2",
+              })),
             ]);
             setIsLoading(false);
           }, 1000);
@@ -258,7 +258,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -386,12 +386,24 @@ export const Section: StoryObj<typeof DualListBox2> = {
     const [excluded, setExcluded] = useState<Item[]>([items[3]]);
     const [currentSection, setCurrentSection] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [pageSize, setPageSize] = useState(50);
 
     return (
       <DualListBox2
         loading={isLoading}
         included={included}
         excluded={excluded}
+        pageSize={pageSize}
+        pageSizeOptions={[10, 50, 100, 200]}
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([
+            // 初期アイテムを保持
+            ...items.slice(0, 4),
+            // 新しいページサイズに基づいて追加アイテムを生成
+            ...generateItems(4, newPageSize - 4),
+          ]);
+        }}
         menuButtons={
           <>
             <ContextMenu2ButtonItem
@@ -419,7 +431,7 @@ export const Section: StoryObj<typeof DualListBox2> = {
           setTimeout(() => {
             setItems((prev) => [
               ...prev,
-              ...generateItems(prev.length + 1, 10, currentSection),
+              ...generateItems(prev.length, pageSize),
             ]);
             setIsLoading(false);
           }, 1000);
