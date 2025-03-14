@@ -258,7 +258,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -531,11 +531,9 @@ export const NestedAccordion: StoryObj<typeof DualListBox2> = {
         {Object.entries(hierarchy).map(([prefecture, districts]) => (
           <DualListBox2Accordion key={prefecture} label={prefecture}>
             <NestedContainer>
-              {/* 区ごとのアコーディオン */}
               {Object.entries(districts).map(([district, cityItems]) => (
                 <StyledNestedAccordion key={district} label={district}>
                   <NestedContainer>
-                    {/* 市町村のアイテム */}
                     {cityItems.map(item => (
                       <StyledNestedItem key={item.id} id={item.id}>
                         {item.label}
