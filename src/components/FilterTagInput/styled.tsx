@@ -96,10 +96,6 @@ export const InlineInput = styled.div`
 
     @media (max-width: ${BreakPoint.MEDIUM}px) {
       font-size: 16px; /* Prevent iOS zoom */
-      /*
-      transform: scale(0.8125); 
-      transform-origin: left center;
-      */
     }
 
     &:focus {
