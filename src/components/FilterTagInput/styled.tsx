@@ -94,6 +94,12 @@ export const InlineInput = styled.div`
     background: transparent;
     outline: none;
 
+    @media (max-width: ${BreakPoint.MEDIUM}px) {
+      font-size: 16px; /* Prevent iOS zoom */
+      transform: scale(0.8125); /* Scale down to look like 13px (13/16) */
+      transform-origin: left center;
+    }
+
     &:focus {
       isolation: isolate;
       z-index: 1;
@@ -295,6 +301,12 @@ export const PanelInput = styled.div`
     font: inherit;
     outline: none;
     background: transparent;
+
+    @media (max-width: ${BreakPoint.MEDIUM}px) {
+      font-size: 16px; /* Prevent iOS zoom */
+      transform: scale(0.8125); /* Scale down to look like 13px (13/16) */
+      transform-origin: left center;
+    }
   }
 `;
 export const PanelInputSpacer = styled.div`
