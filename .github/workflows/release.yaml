@@ -9,14 +9,14 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           ref: ${{ github.event.ref }}
           token: ${{ secrets.FLUCT_MEMBER_GITHUB_TOKEN }}
       - name: Unshallow
         run: git fetch --prune --unshallow --tags
       - name: Use Node.js 18.x
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@cdca7365b2dadb8aad0a33bc7601856ffabcc48e # v4.3.0
         with:
           node-version: 18.x
       - name: install
@@ -29,7 +29,7 @@ jobs:
         run: make -f ci.mk build
       - name: Create Release Pull Request or Publish to npm
         id: check_changesets
-        uses: changesets/action@v1
+        uses: changesets/action@06245a4e0a36c064a573d4150030f5ec548e4fcc # v1.4.10
         with:
           publish: yarn release
         env:
