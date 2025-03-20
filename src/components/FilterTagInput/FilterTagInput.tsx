@@ -300,6 +300,7 @@ export const FilterTagInput = ({
       if (trimmedValue === "" || values.includes(trimmedValue)) return;
 
       if (event.key === "Enter") {
+        event.preventDefault();
         onChange([...values, trimmedValue]);
         setInputValue("");
         requestAnimationFrame(() => {
