@@ -15,6 +15,7 @@ type DualListBox2AccordionProps = {
   disableInclude?: boolean;
   disableExclude?: boolean;
   children: ReactNode;
+  onOpen?: () => void;
 };
 
 export const DualListBox2Accordion = ({
@@ -22,11 +23,16 @@ export const DualListBox2Accordion = ({
   disableInclude,
   disableExclude,
   children,
+  onOpen,
 }: DualListBox2AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const handleButtonClick = useCallback(() => {
-    setIsOpen((prev) => !prev);
-  }, [setIsOpen]);
+    const newIsOpen = !isOpen;
+    setIsOpen(newIsOpen);
+    if (newIsOpen && onOpen) {
+      onOpen();
+    }
+  }, [isOpen, onOpen]);
 
   //
   const { includedIds, excludedIds, onIncludedChange, onExcludedChange } =
