@@ -408,7 +408,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
 
     useEffect(() => {
       // テスト環境ではIntersectionObserverが利用できないため、処理をスキップ
-      if (typeof IntersectionObserver === 'undefined') {
+      if (typeof IntersectionObserver === "undefined") {
         return;
       }
 
