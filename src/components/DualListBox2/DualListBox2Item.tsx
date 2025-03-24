@@ -77,7 +77,7 @@ export const DualListBox2Item = ({
   }
 
   return (
-    <styled.DualListBox2Item>
+    <styled.StyledDualListBox2Item>
       <div>{children}</div>
       <styled.ItemActions>
         <li>
@@ -105,7 +105,7 @@ export const DualListBox2Item = ({
           </button>
         </li>
       </styled.ItemActions>
-    </styled.DualListBox2Item>
+    </styled.StyledDualListBox2Item>
   );
 };
 DualListBox2Item.displayName = "DualListBox2Item";

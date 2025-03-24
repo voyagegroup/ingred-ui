@@ -1,7 +1,5 @@
-import React, { useState, useCallback, useMemo } from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
-import styled from "styled-components";
+import React, { useState, useCallback } from "react";
+import { Meta, StoryObj, ComponentStory } from "@storybook/react";
 import {
   type Item,
   DualListBox2,
@@ -15,7 +13,6 @@ import {
   ContextMenu2SwitchItem,
 } from "../ContextMenu2";
 import Checkbox from "../Checkbox";
-import { ComponentStory } from "@storybook/react";
 
 const meta = {
   title: "Components/Data Display/DualListBox2",
@@ -59,10 +56,7 @@ export const Default: ComponentStory<typeof DualListBox2> = (args) => {
   const handleLoadMore = useCallback(() => {
     setLoading(true);
     setTimeout(() => {
-      setItems((prev) => [
-        ...prev,
-        ...generateItems(prev.length, pageSize),
-      ]);
+      setItems((prev) => [...prev, ...generateItems(prev.length, pageSize)]);
       setLoading(false);
     }, 1000);
   }, [pageSize]);
@@ -124,26 +118,29 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
       { id: "group2", name: "アコーディオン2" },
     ];
 
-    const handleAccordionOpen = useCallback((groupName: string) => {
-      if (loadedGroups.has(groupName)) return;
+    const handleAccordionOpen = useCallback(
+      (groupName: string) => {
+        if (loadedGroups.has(groupName)) return;
 
-      setIsLoading(true);
-      setTimeout(() => {
-        setItems((prev) => [
-          ...prev,
-          ...generateItems(prev.length, pageSize).map(item => ({
-            ...item,
-            groupName,
-          })),
-        ]);
-        setLoadedGroups(prev => {
-          const newSet = new Set(prev);
-          newSet.add(groupName);
-          return newSet;
-        });
-        setIsLoading(false);
-      }, 1000);
-    }, [loadedGroups, pageSize]);
+        setIsLoading(true);
+        setTimeout(() => {
+          setItems((prev) => [
+            ...prev,
+            ...generateItems(prev.length, pageSize).map((item) => ({
+              ...item,
+              groupName,
+            })),
+          ]);
+          setLoadedGroups((prev) => {
+            const newSet = new Set(prev);
+            newSet.add(groupName);
+            return newSet;
+          });
+          setIsLoading(false);
+        }, 1000);
+      },
+      [loadedGroups, pageSize],
+    );
 
     return (
       <DualListBox2
@@ -152,11 +149,6 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
         excluded={excluded}
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
-        onPageSizeChange={(newPageSize) => {
-          setPageSize(newPageSize);
-          setItems([]);
-          setLoadedGroups(new Set());
-        }}
         menuButtons={
           <>
             <ContextMenu2ButtonItem
@@ -166,11 +158,16 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             >
               好きなボタンを
             </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => { }}>
+            <ContextMenu2SwitchItem disabled onChange={() => {}}>
               入れて使う
             </ContextMenu2SwitchItem>
           </>
         }
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([]);
+          setLoadedGroups(new Set());
+        }}
         onIncludedChange={(ids: string[]) =>
           setIncluded(items.filter((item) => ids.includes(item.id)))
         }
@@ -182,7 +179,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           setTimeout(() => {
             setItems((prev) => [
               ...prev,
-              ...generateItems(prev.length, pageSize).map(item => ({
+              ...generateItems(prev.length, pageSize).map((item) => ({
                 ...item,
                 groupName: "アコーディオン2",
               })),
@@ -195,12 +192,12 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           <DualListBox2Accordion
             key={group.id}
             label={group.name}
-            onOpen={() => handleAccordionOpen(group.name)}
             disableInclude={!loadedGroups.has(group.name)}
             disableExclude={!loadedGroups.has(group.name)}
+            onOpen={() => handleAccordionOpen(group.name)}
           >
             {items
-              .filter(item => item.groupName === group.name)
+              .filter((item) => item.groupName === group.name)
               .map((item) => (
                 <DualListBox2Item key={item.id} id={item.id}>
                   {item.label}
@@ -279,7 +276,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
               >
                 好きなボタンを
               </ContextMenu2ButtonItem>
-              <ContextMenu2SwitchItem disabled onChange={() => { }}>
+              <ContextMenu2SwitchItem disabled onChange={() => {}}>
                 入れて使う
               </ContextMenu2SwitchItem>
             </>
@@ -376,15 +373,6 @@ export const Section: StoryObj<typeof DualListBox2> = {
         excluded={excluded}
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
-        onPageSizeChange={(newPageSize) => {
-          setPageSize(newPageSize);
-          setItems([
-            // 初期アイテムを保持
-            ...items.slice(0, 4),
-            // 新しいページサイズに基づいて追加アイテムを生成
-            ...generateItems(4, newPageSize - 4),
-          ]);
-        }}
         menuButtons={
           <>
             <ContextMenu2ButtonItem
@@ -394,11 +382,20 @@ export const Section: StoryObj<typeof DualListBox2> = {
             >
               好きなボタンを
             </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => { }}>
+            <ContextMenu2SwitchItem disabled onChange={() => {}}>
               入れて使う
             </ContextMenu2SwitchItem>
           </>
         }
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([
+            // 初期アイテムを保持
+            ...items.slice(0, 4),
+            // 新しいページサイズに基づいて追加アイテムを生成
+            ...generateItems(4, newPageSize - 4),
+          ]);
+        }}
         onIncludedChange={(ids: string[]) =>
           setIncluded(items.filter((item) => ids.includes(item.id)))
         }

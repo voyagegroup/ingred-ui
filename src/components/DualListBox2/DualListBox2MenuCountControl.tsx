@@ -25,9 +25,7 @@ export const DualListBox2MenuCountControl = ({
     <ContextMenu2
       width={136}
       trigger={
-        <StyledTriggerItem append={pageSize}>
-          件数を変更
-        </StyledTriggerItem>
+        <StyledTriggerItem append={pageSize}>件数を変更</StyledTriggerItem>
       }
     >
       {pageSizeOptions.map((size) => (
@@ -42,4 +40,4 @@ export const DualListBox2MenuCountControl = ({
       ))}
     </ContextMenu2>
   );
-}; 
+};

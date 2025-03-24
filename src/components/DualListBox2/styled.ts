@@ -3,7 +3,6 @@ import { colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
 import { DualListBox2Accordion } from "./DualListBox2Accordion";
-import { DualListBox2Item } from "./DualListBox2Item";
 
 const actionButton = `
   display: flex;
@@ -360,7 +359,7 @@ export const ItemActions = styled.div`
   }
 `;
 
-export const DualListBox2Item = styled.div`
+export const StyledDualListBox2Item = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -463,7 +462,7 @@ export const AccordionHeader = styled.div`
     background: ${colors.basic[100]};
   }
 
-  ${DualListBox2Item} + & {
+  ${StyledDualListBox2Item} + & {
     margin-top: -1px;
   }
 `;
@@ -605,6 +604,6 @@ export const NestedAccordion = styled(DualListBox2Accordion)`
   padding-left: 24px;
 `;
 
-export const NestedItem = styled(DualListBox2Item)`
+export const NestedItem = styled(StyledDualListBox2Item)`
   padding-left: 48px;
 `;

@@ -157,7 +157,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       loading,
       onIncludedChange,
       onExcludedChange,
-      onActiveSectionChange,
       onLoadMore,
       pageSize = 50,
       pageSizeOptions = [10, 50, 100, 200],
@@ -165,7 +164,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     },
     ref,
   ) => {
-    // モバイルサイズでは、タブで左右パネルの表示を切り替える    
+    // モバイルサイズでは、タブで左右パネルの表示を切り替える
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
     const [filter, setFilter] = useState("");
     // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
@@ -186,7 +185,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
       return hasSection;
     }, [children]);
-    
+
     // フィルター文字列をスペース区切りで単語の配列に分割
     const filterWords = useMemo(() => {
       const trimmed = filter.trim();
@@ -414,13 +413,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         threshold: 0.1,
       });
 
-      if (loadMoreRef.current) {
-        observer.observe(loadMoreRef.current);
+      const currentLoadMoreRef = loadMoreRef.current;
+
+      if (currentLoadMoreRef) {
+        observer.observe(currentLoadMoreRef);
       }
 
       return () => {
-        if (loadMoreRef.current) {
-          observer.unobserve(loadMoreRef.current);
+        if (currentLoadMoreRef) {
+          observer.unobserve(currentLoadMoreRef);
         }
       };
     }, [handleIntersection]);
@@ -556,7 +557,11 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               <styled.LeftPanelBody>
                 {children}
                 <div ref={loadMoreRef} style={{ height: "20px" }}>
-                  {loading && <styled.LoadingIndicator>読み込み中...</styled.LoadingIndicator>}
+                  {loading && (
+                    <styled.LoadingIndicator>
+                      読み込み中...
+                    </styled.LoadingIndicator>
+                  )}
                 </div>
               </styled.LeftPanelBody>
             </styled.LeftPanel>
