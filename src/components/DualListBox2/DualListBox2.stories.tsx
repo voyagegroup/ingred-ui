@@ -111,6 +111,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [isLoading, setIsLoading] = useState(false);
     const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
     const [pageSize, setPageSize] = useState(50);
+    const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
 
     // アコーディオンのグループ定義
     const groups = [
@@ -120,8 +121,9 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
 
     const handleAccordionOpen = useCallback(
       (groupName: string) => {
-        if (loadedGroups.has(groupName)) return;
+        if (loadedGroups.has(groupName) || loadingGroup) return;
 
+        setLoadingGroup(groupName);
         setIsLoading(true);
         setTimeout(() => {
           setItems((prev) => [
@@ -137,10 +139,31 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             return newSet;
           });
           setIsLoading(false);
+          setLoadingGroup(null);
         }, 1000);
       },
-      [loadedGroups, pageSize],
+      [loadedGroups, pageSize, loadingGroup],
     );
+
+    const handleLoadMore = useCallback(() => {
+      // すでにロード中の場合は何もしない
+      if (isLoading || loadingGroup) return;
+
+      // group2に対する追加データロード
+      if (loadedGroups.has("group2")) {
+        setIsLoading(true);
+        setTimeout(() => {
+          setItems((prev) => [
+            ...prev,
+            ...generateItems(prev.length, pageSize).map((item) => ({
+              ...item,
+              groupName: "グループ2",
+            })),
+          ]);
+          setIsLoading(false);
+        }, 1000);
+      }
+    }, [isLoading, loadedGroups, pageSize, loadingGroup]);
 
     return (
       <DualListBox2
@@ -174,19 +197,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
         onExcludedChange={(ids: string[]) =>
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
-        onLoadMore={() => {
-          setIsLoading(true);
-          setTimeout(() => {
-            setItems((prev) => [
-              ...prev,
-              ...generateItems(prev.length, pageSize).map((item) => ({
-                ...item,
-                groupName: "アコーディオン2",
-              })),
-            ]);
-            setIsLoading(false);
-          }, 1000);
-        }}
+        onLoadMore={handleLoadMore}
       >
         {groups.map((group) => (
           <DualListBox2Accordion
@@ -236,7 +247,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
