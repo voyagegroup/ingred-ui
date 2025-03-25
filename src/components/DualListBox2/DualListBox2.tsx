@@ -65,7 +65,7 @@ type DualListBox2Props = {
    **/
   onActiveSectionChange?: (activeSection: string | null) => void;
   /**
-   * 「さらに読み込む」ボタンが押されたときのハンドラ
+   * スクロールによって追加データの読み込みが必要になったときに呼び出されるハンドラ
    **/
   onLoadMore?: () => void;
   /**
@@ -396,14 +396,17 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     ]);
 
     const handleIntersection = useCallback(
-      (entries: IntersectionObserverEntry[]) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !isLoadingMore && !loading && onLoadMore) {
+      async (entries: IntersectionObserverEntry[]) => {
+        if (entries[0].isIntersecting && !isLoadingMore && onLoadMore) {
           setIsLoadingMore(true);
-          onLoadMore();
+          try {
+            await onLoadMore();
+          } finally {
+            setIsLoadingMore(false); // ローディング状態を必ずリセット
+          }
         }
       },
-      [isLoadingMore, loading, onLoadMore],
+      [isLoadingMore, onLoadMore]
     );
 
     useEffect(() => {

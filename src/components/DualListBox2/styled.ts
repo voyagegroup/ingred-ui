@@ -359,7 +359,7 @@ export const ItemActions = styled.div`
   }
 `;
 
-export const StyledDualListBox2Item = styled.div`
+export const DualListBox2Item = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -462,7 +462,7 @@ export const AccordionHeader = styled.div`
     background: ${colors.basic[100]};
   }
 
-  ${StyledDualListBox2Item} + & {
+  ${DualListBox2Item} + & {
     margin-top: -1px;
   }
 `;
@@ -604,6 +604,6 @@ export const NestedAccordion = styled(DualListBox2Accordion)`
   padding-left: 24px;
 `;
 
-export const NestedItem = styled(StyledDualListBox2Item)`
+export const NestedItem = styled(DualListBox2Item)`
   padding-left: 48px;
 `;

@@ -6,6 +6,6 @@ export type Item = {
   // 項目のラベル
   label: string;
   // 階層構造のための追加プロパティ
-  prefecture?: string;
-  district?: string;
-};
+  parentNode?: string;
+  childNode?: string;
+}; 
