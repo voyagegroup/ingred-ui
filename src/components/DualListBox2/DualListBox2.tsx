@@ -406,7 +406,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           }
         }
       },
-      [isLoadingMore, onLoadMore]
+      [isLoadingMore, onLoadMore],
     );
 
     useEffect(() => {
