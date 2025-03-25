@@ -5,4 +5,7 @@ export type Item = {
   groupName?: string;
   // 項目のラベル
   label: string;
+  // 階層構造のための追加プロパティ
+  parentNode?: string;
+  childNode?: string;
 };

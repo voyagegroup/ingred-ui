@@ -8,6 +8,8 @@ import React, {
   Fragment,
   type ReactNode,
   type ChangeEvent,
+  useEffect,
+  useRef,
 } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -19,6 +21,7 @@ import { type Item } from "./types";
 import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
 import { DualListBox2Item } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
+import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
 type DualListBox2Props = {
   /**
@@ -62,9 +65,21 @@ type DualListBox2Props = {
    **/
   onActiveSectionChange?: (activeSection: string | null) => void;
   /**
-   * 「さらに読み込む」ボタンが押されたときのハンドラ
+   * スクロールによって追加データの読み込みが必要になったときに呼び出されるハンドラ
    **/
   onLoadMore?: () => void;
+  /**
+   * 1ページあたりの表示件数
+   **/
+  pageSize?: number;
+  /**
+   * 1ページあたりの表示件数の選択肢
+   **/
+  pageSizeOptions?: number[];
+  /**
+   * 1ページあたりの表示件数が変更されたときのハンドラ
+   **/
+  onPageSizeChange?: (pageSize: number) => void;
 };
 
 const toGrouped = (items: Item[]) => {
@@ -142,8 +157,10 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       loading,
       onIncludedChange,
       onExcludedChange,
-      onActiveSectionChange,
       onLoadMore,
+      pageSize = 50,
+      pageSizeOptions = [10, 50, 100, 200],
+      onPageSizeChange,
     },
     ref,
   ) => {
@@ -152,6 +169,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     const [filter, setFilter] = useState("");
     // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
+    const [isLoadingMore, setIsLoadingMore] = useState(false);
+    const loadMoreRef = useRef<HTMLDivElement>(null);
     // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
       let hasSection = false;
@@ -200,7 +219,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIds, allItems, filterWords]);
 
-    // 選択中のセクションに含まれる全ての id
     const allIdsInActiveSection = useMemo(() => {
       if (!hasSection) return [];
       if (activeSection === null) return [];
@@ -214,7 +232,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         ) {
           return;
         }
-
         // ここまでの結果、child はセクション
         if (child.props.label !== activeSection) return;
 
@@ -378,6 +395,45 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
     ]);
 
+    const handleIntersection = useCallback(
+      async (entries: IntersectionObserverEntry[]) => {
+        if (entries[0].isIntersecting && !isLoadingMore && onLoadMore) {
+          setIsLoadingMore(true);
+          try {
+            await onLoadMore();
+          } finally {
+            setIsLoadingMore(false); // ローディング状態を必ずリセット
+          }
+        }
+      },
+      [isLoadingMore, onLoadMore],
+    );
+
+    useEffect(() => {
+      // テスト環境ではIntersectionObserverが利用できないため、処理をスキップ
+      if (typeof IntersectionObserver === "undefined") {
+        return;
+      }
+
+      const observer = new IntersectionObserver(handleIntersection, {
+        root: null,
+        rootMargin: "100px",
+        threshold: 0.1,
+      });
+
+      const currentLoadMoreRef = loadMoreRef.current;
+
+      if (currentLoadMoreRef) {
+        observer.observe(currentLoadMoreRef);
+      }
+
+      return () => {
+        if (currentLoadMoreRef) {
+          observer.unobserve(currentLoadMoreRef);
+        }
+      };
+    }, [handleIntersection]);
+
     return (
       <styled.DualListBox2 ref={ref}>
         <styled.TabList>
@@ -412,21 +468,13 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               activeSection,
               onIncludedChange,
               onExcludedChange,
-              setActiveSection: (activeSection) => {
-                setActiveSection(activeSection);
-                onActiveSectionChange?.(activeSection);
-              },
+              setActiveSection,
             }}
           >
             <styled.LeftPanel isShow={tabIndex === 0}>
               <styled.LeftPanelHeader>
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
-                  {/*
-                  セクション型の DualListBox の場合、
-                  セクション選択中のみ「すべて〜」ボタンは有効。
-                  それ以外は常に有効
-                */}
                   <input
                     placeholder="検索"
                     disabled={hasSection && activeSection === null}
@@ -435,26 +483,28 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     onChange={handleFilterChange}
                   />
                 </styled.HeaderSearch>
-                {menuButtons && (
-                  <ContextMenu2Container>
-                    <ContextMenu2
-                      trigger={
-                        <styled.HeaderMenuButton type="button">
-                          <Icon name="more_vert" color={colors.basic[900]} />
-                        </styled.HeaderMenuButton>
-                      }
-                    >
-                      {menuButtons}
-                    </ContextMenu2>
-                  </ContextMenu2Container>
-                )}
+                <ContextMenu2Container>
+                  <ContextMenu2
+                    trigger={
+                      <styled.HeaderMenuButton type="button">
+                        <Icon name="more_vert" color={colors.basic[900]} />
+                      </styled.HeaderMenuButton>
+                    }
+                  >
+                    {onPageSizeChange && (
+                      <DualListBox2MenuCountControl
+                        pageSize={pageSize}
+                        pageSizeOptions={pageSizeOptions}
+                        onPageSizeChange={onPageSizeChange}
+                      />
+                    )}
+                    {menuButtons}
+                  </ContextMenu2>
+                </ContextMenu2Container>
                 <styled.HeaderCount>
                   {loading ? (
                     <Spinner width="16px" />
                   ) : (
-                    // セクション型の DualListBox の場合、
-                    // セクション選択中のみ件数を表示。
-                    // それ以外は常に表示
                     <>
                       {(() => {
                         if (hasSection && activeSection === null) {
@@ -511,22 +561,17 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     </li>
                   )}
                 </styled.HeaderButtons>
-                {/*
-                セクション型の DualListBox の場合、
-                セクション選択中のみ「さらにに読み込む」ボタンは有効。
-                それ以外は常に有効
-              */}
-                {(!hasSection || (hasSection && activeSection !== null)) && (
-                  <styled.HeaderLoadButton
-                    type="button"
-                    disabled={loading}
-                    onClick={onLoadMore}
-                  >
-                    さらに読み込む
-                  </styled.HeaderLoadButton>
-                )}
               </styled.LeftPanelHeader>
-              <styled.LeftPanelBody>{children}</styled.LeftPanelBody>
+              <styled.LeftPanelBody>
+                {children}
+                <div ref={loadMoreRef} style={{ height: "20px" }}>
+                  {loading && (
+                    <styled.LoadingIndicator>
+                      読み込み中...
+                    </styled.LoadingIndicator>
+                  )}
+                </div>
+              </styled.LeftPanelBody>
             </styled.LeftPanel>
             <styled.RightPanel isShow={tabIndex === 1}>
               <styled.RightPanelHeader>
@@ -563,7 +608,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     追加
                   </styled.SelectedPanelHeading>
                 )}
-                {/* included はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する */}
                 {toGrouped(included).map((group) => (
                   <Fragment key={group.groupName || "_"}>
                     {group.groupName && (
@@ -582,7 +626,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     除外
                   </styled.SelectedPanelHeading>
                 )}
-                {/* excluded はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する */}
                 {toGrouped(excluded).map((group) => (
                   <Fragment key={group.groupName || "_"}>
                     {group.groupName && (

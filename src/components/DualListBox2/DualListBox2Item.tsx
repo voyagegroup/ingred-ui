@@ -76,32 +76,48 @@ export const DualListBox2Item = ({
     return null;
   }
 
+  const getIconColor = (
+    isDisabled: boolean | undefined,
+    isActive: boolean,
+    activeColor: string,
+  ) => {
+    if (isDisabled) return colors.basic[400];
+    if (isActive) return activeColor;
+    return colors.basic[900];
+  };
+
   return (
     <styled.DualListBox2Item>
-      <div>{children}</div>
+      {children}
       <styled.ItemActions>
         <li>
           <button
             type="button"
-            style={{ "--color": colors.blue[500] } as CSSProperties}
             disabled={disableInclude}
-            aria-label="追加"
             aria-pressed={isIncluded}
+            aria-label="追加"
+            style={{ "--color": colors.blue[500] } as CSSProperties}
             onClick={handleAddButtonClick}
           >
-            <Icon name="check_thin" color="currentColor" />
+            <Icon
+              name="check_thin"
+              color={getIconColor(disableInclude, isIncluded, colors.blue[500])}
+            />
           </button>
         </li>
         <li>
           <button
             type="button"
-            style={{ "--color": colors.red[500] } as CSSProperties}
             disabled={disableExclude}
-            aria-label="除外"
             aria-pressed={isExcluded}
+            aria-label="除外"
+            style={{ "--color": colors.red[500] } as CSSProperties}
             onClick={handleExcludeButtonClick}
           >
-            <Icon name="forbid" color="currentColor" />
+            <Icon
+              name="forbid"
+              color={getIconColor(disableExclude, isExcluded, colors.red[500])}
+            />
           </button>
         </li>
       </styled.ItemActions>
