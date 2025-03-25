@@ -1,5 +1,11 @@
 # Changelog
 
+## 21.4.2
+
+### Patch Changes
+
+- [#1749](https://github.com/voyagegroup/ingred-ui/pull/1749) [`d8dde806`](https://github.com/voyagegroup/ingred-ui/commit/d8dde8068f2ff2a6aef25d7765739adf7f7d53b7) Thanks [@noronaoki](https://github.com/noronaoki)! - Enhance UX with infinite scroll, sticky headers, and page size control
+
 ## 21.4.1
 
 ### Patch Changes
