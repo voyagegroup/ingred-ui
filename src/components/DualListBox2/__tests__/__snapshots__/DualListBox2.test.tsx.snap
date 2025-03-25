@@ -156,9 +156,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <div
             class="sc-ivTmOn cXxcYC"
           >
-            <div>
-              リストアイテム1
-            </div>
+            リストアイテム1
             <div
               class="sc-bBrHrO dFvZQD"
             >
@@ -179,7 +177,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                     >
                       <path
                         d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
-                        fill="currentColor"
+                        fill="#0B82F4"
                       />
                     </svg>
                   </span>
@@ -206,7 +204,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                       />
                       <path
                         d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
-                        fill="currentColor"
+                        fill="#041C33"
                         transform="translate(-6521.011 -4616.011)"
                       />
                     </svg>
@@ -218,9 +216,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <div
             class="sc-ivTmOn cXxcYC"
           >
-            <div>
-              リストアイテム2
-            </div>
+            リストアイテム2
             <div
               class="sc-bBrHrO dFvZQD"
             >
@@ -241,7 +237,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                     >
                       <path
                         d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
-                        fill="currentColor"
+                        fill="#041C33"
                       />
                     </svg>
                   </span>
@@ -268,7 +264,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                       />
                       <path
                         d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
-                        fill="currentColor"
+                        fill="#041C33"
                         transform="translate(-6521.011 -4616.011)"
                       />
                     </svg>
@@ -280,9 +276,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <div
             class="sc-ivTmOn cXxcYC"
           >
-            <div>
-              リストアイテム3
-            </div>
+            リストアイテム3
             <div
               class="sc-bBrHrO dFvZQD"
             >
@@ -303,7 +297,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                     >
                       <path
                         d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
-                        fill="currentColor"
+                        fill="#041C33"
                       />
                     </svg>
                   </span>
@@ -330,7 +324,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                       />
                       <path
                         d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
-                        fill="currentColor"
+                        fill="#041C33"
                         transform="translate(-6521.011 -4616.011)"
                       />
                     </svg>
@@ -342,9 +336,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <div
             class="sc-ivTmOn cXxcYC"
           >
-            <div>
-              長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
-            </div>
+            長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <div
               class="sc-bBrHrO dFvZQD"
             >
@@ -365,7 +357,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                     >
                       <path
                         d="M9.99999 15.172L19.192 5.979L20.607 7.393L9.99999 18L3.63599 11.636L5.04999 10.222L9.99999 15.172Z"
-                        fill="currentColor"
+                        fill="#041C33"
                       />
                     </svg>
                   </span>
@@ -392,7 +384,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                       />
                       <path
                         d="M6523,4625a7,7,0,1,1,7,7A7.008,7.008,0,0,1,6523,4625Zm7,5.6a5.6,5.6,0,0,0,4.422-9.033l-7.854,7.854A5.573,5.573,0,0,0,6530,4630.6Zm-5.6-5.6a5.572,5.572,0,0,0,1.178,3.433l7.854-7.855A5.6,5.6,0,0,0,6524.4,4625Z"
-                        fill="currentColor"
+                        fill="#EB0A4E"
                         transform="translate(-6521.011 -4616.011)"
                       />
                     </svg>

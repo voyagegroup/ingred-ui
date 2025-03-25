@@ -8,4 +8,4 @@ export type Item = {
   // 階層構造のための追加プロパティ
   parentNode?: string;
   childNode?: string;
-}; 
+};
