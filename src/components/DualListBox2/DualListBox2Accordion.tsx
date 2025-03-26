@@ -8,7 +8,7 @@ import React, {
 import Icon from "../Icon";
 import * as styled from "./styled";
 import { colors } from "../../styles";
-import { DualListBox2Context, getAllIds } from "./lib";
+import { DualListBox2Context, getAllIds, extractAllItems } from "./lib";
 
 type DualListBox2AccordionProps = {
   label: string;
@@ -34,29 +34,42 @@ export const DualListBox2Accordion = ({
     }
   }, [isOpen, onOpen]);
 
-  //
-  const { includedIds, excludedIds, onIncludedChange, onExcludedChange } =
+  const { filterWords, includedIds, excludedIds, onIncludedChange, onExcludedChange } =
     useContext(DualListBox2Context);
 
   const allIds = useMemo(() => getAllIds(children), [children]);
 
+  // 現在のフィルターに基づいて表示されているアイテムのIDだけを取得
+  const visibleIds = useMemo(() => {
+    if (filterWords.length === 0) return allIds;
+
+    const items = extractAllItems(children);
+    return items
+      .filter(item =>
+        filterWords.every(word =>
+          item.label && item.label.toString().includes(word)
+        )
+      )
+      .map(item => item.id);
+  }, [allIds, children, filterWords]);
+
   const handleIncludeAllButtonClick = useCallback(() => {
-    // すでにアコーディオン内が全選択されていたら、なにもしない
-    if (allIds.every((id) => includedIds.includes(id))) {
+    // フィルタリングされたアイテムがすべて選択済みの場合は何もしない
+    if (visibleIds.every((id) => includedIds.includes(id))) {
       return;
     }
-    onIncludedChange(Array.from(new Set([...includedIds, ...allIds])));
-    onExcludedChange(excludedIds.filter((id) => !allIds.includes(id)));
-  }, [allIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
+    onIncludedChange(Array.from(new Set([...includedIds, ...visibleIds])));
+    onExcludedChange(excludedIds.filter((id) => !visibleIds.includes(id)));
+  }, [visibleIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
 
   const handleExcludeAllButtonClick = useCallback(() => {
-    // すでにアコーディオン内が全選択されていたら、なにもしない
-    if (allIds.every((id) => excludedIds.includes(id))) {
+    // フィルタリングされたアイテムがすべて除外済みの場合は何もしない
+    if (visibleIds.every((id) => excludedIds.includes(id))) {
       return;
     }
-    onExcludedChange(Array.from(new Set([...excludedIds, ...allIds])));
-    onIncludedChange(includedIds.filter((id) => !allIds.includes(id)));
-  }, [allIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
+    onExcludedChange(Array.from(new Set([...excludedIds, ...visibleIds])));
+    onIncludedChange(includedIds.filter((id) => !visibleIds.includes(id)));
+  }, [visibleIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
 
   return (
     <>
