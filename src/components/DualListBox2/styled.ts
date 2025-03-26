@@ -181,7 +181,7 @@ export const HeaderSearch = styled.div`
     inset: 0;
     width: 100%;
     height: 100%;
-    padding: 0 6px 0 24px;
+    padding: 0 26px 0 24px;
     border: 0;
     background: transparent;
     line-height: 28px;
@@ -227,13 +227,11 @@ export const FilteredCount = styled.div`
   color: ${colors.basic[900]};
 `;
 
-export const SearchClearButton = styled.button`
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
+// 共通のキャンセルボタンスタイル
+export const CancelButton = styled.button`
+  flex-shrink: 0;
   width: 16px;
-  height: 16px;
+  aspect-ratio: 1;
   padding: 0;
   border: 0;
   border-radius: 50%;
@@ -241,11 +239,20 @@ export const SearchClearButton = styled.button`
     url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath fill=%22%23fff%22 d=%22M8 7 5.9 4.7l-1 1 2 2.2-2 2.1 1 1L8 9l2.1 2 1-1-2-2.1 2-2.1-1-1z%22/%3E%3C/svg%3E")
     no-repeat 50% 50%;
   cursor: pointer;
-  opacity: 0.7;
   
   &:hover {
-    opacity: 1;
+    opacity: 0.8;
   }
+`;
+
+export const SearchClearButtonWrapper = styled.div`
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  pointer-events: auto;
 `;
 
 export const HeaderButtons = styled.ul`
@@ -446,19 +453,6 @@ export const DualListBox2SelectedItem = styled.div`
 
   &:hover {
     background: ${colors.basic[100]};
-  }
-
-  button {
-    flex-shrink: 0;
-    width: 16px;
-    aspect-ratio: 1;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: ${colors.basic[900]}
-      url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath fill=%22%23fff%22 d=%22M8 7 5.9 4.7l-1 1 2 2.2-2 2.1 1 1L8 9l2.1 2 1-1-2-2.1 2-2.1-1-1z%22/%3E%3C/svg%3E")
-      no-repeat 50% 50%;
-    cursor: pointer;
   }
 `;
 

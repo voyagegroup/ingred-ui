@@ -120,6 +120,24 @@ const toGrouped = (items: Item[]) => {
   );
 };
 
+const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
+  return (
+    <styled.DualListBox2SelectedLabel>{label}</styled.DualListBox2SelectedLabel>
+  );
+};
+
+// 共通のキャンセルボタンコンポーネント
+const CancelButton = ({ onClick, label = "解除" }: { onClick: () => void; label?: string }) => {
+  return (
+    <styled.CancelButton
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+    />
+  );
+};
+
+// 選択済みアイテムコンポーネント（キャンセルボタンを使用）
 const DualListBox2SelectedItem = ({
   id,
   children,
@@ -139,23 +157,27 @@ const DualListBox2SelectedItem = ({
       onExcludedChange(excludedIds.filter((i) => i !== id));
     }
   };
-  const handleCancelButtonClick = cancel;
 
   return (
     <styled.DualListBox2SelectedItem>
       {children}
-      <button
-        type="button"
-        aria-label="解除"
-        onClick={handleCancelButtonClick}
-      />
+      <CancelButton onClick={cancel} />
     </styled.DualListBox2SelectedItem>
   );
 };
 
-const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
+// 検索クリアボタンコンポーネント
+const SearchClearButton = ({ onClick }: { onClick: () => void }) => {
+  // クリックイベントハンドラー内で明示的にstopPropagationを呼び出し、
+  // 親要素へのイベント伝播を防止する
+  const handleClick = useCallback(() => {
+    onClick();
+  }, [onClick]);
+
   return (
-    <styled.DualListBox2SelectedLabel>{label}</styled.DualListBox2SelectedLabel>
+    <styled.SearchClearButtonWrapper onClick={(e) => e.stopPropagation()}>
+      <CancelButton onClick={handleClick} label="検索をクリア" />
+    </styled.SearchClearButtonWrapper>
   );
 };
 
@@ -542,11 +564,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     onChange={handleFilterChange}
                   />
                   {filter && (
-                    <styled.SearchClearButton
-                      type="button"
-                      aria-label="検索をクリア"
-                      onClick={handleFilterClear}
-                    />
+                    <SearchClearButton onClick={handleFilterClear} />
                   )}
                 </styled.HeaderSearch>
                 <ContextMenu2Container>
