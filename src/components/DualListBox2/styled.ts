@@ -239,10 +239,6 @@ export const CancelButton = styled.button`
     url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Cpath fill=%22%23fff%22 d=%22M8 7 5.9 4.7l-1 1 2 2.2-2 2.1 1 1L8 9l2.1 2 1-1-2-2.1 2-2.1-1-1z%22/%3E%3C/svg%3E")
     no-repeat 50% 50%;
   cursor: pointer;
-  
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 export const SearchClearButtonWrapper = styled.div`
