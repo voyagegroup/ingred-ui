@@ -205,6 +205,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
   ) => {
     // モバイルサイズでは、タブで左右パネルの表示を切り替える
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
+    const [searchText, setSearchText] = useState("");
     const [filter, setFilter] = useState("");
     // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -421,13 +422,24 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     // 検索フィルターのテキスト入力変更に state に反映
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
-        setFilter(event.target?.value);
+        setSearchText(event.target?.value);
       },
-      [setFilter],
+      [],
+    );
+
+    // エンターキーが押されたときに検索を実行
+    const handleKeyDown = useCallback(
+      (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+          setFilter(searchText);
+        }
+      },
+      [searchText],
     );
 
     // 検索フィルターをリセット
     const handleFilterClear = useCallback(() => {
+      setSearchText("");
       setFilter("");
     }, []);
 
@@ -557,13 +569,14 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
-                    placeholder="検索"
+                    placeholder="検索（Enterで実行）"
                     disabled={hasSection && activeSection === null}
                     aria-label="検索"
-                    value={filter}
+                    value={searchText}
                     onChange={handleFilterChange}
+                    onKeyDown={handleKeyDown}
                   />
-                  {filter && (
+                  {searchText && (
                     <SearchClearButton onClick={handleFilterClear} />
                   )}
                 </styled.HeaderSearch>
