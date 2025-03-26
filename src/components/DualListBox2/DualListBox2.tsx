@@ -645,7 +645,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                   )}
                 </styled.HeaderButtons>
               </styled.LeftPanelHeader>
-              <styled.LeftPanelBody>
+              <styled.LeftPanelBody onScroll={handleScroll}>
                 {children}
                 <div ref={loadMoreRef} style={{ height: "20px" }}>
                   {loading && (
