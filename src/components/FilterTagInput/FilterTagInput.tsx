@@ -33,7 +33,7 @@ type FilterInputPanelProps = {
   title: string;
   selectedIndex: number;
   values: string[];
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<any>; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
 };
@@ -231,7 +231,7 @@ type FilterTagInputProps = {
   title: string;
   values: string[];
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<any>; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
 };

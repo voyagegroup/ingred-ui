@@ -7,7 +7,6 @@ exports[`ItemEmpty component testing ItemEmpty 1`] = `
   >
     <img
       class="sc-gsnTZi kNskej"
-      src=""
       width="80"
     />
     <div

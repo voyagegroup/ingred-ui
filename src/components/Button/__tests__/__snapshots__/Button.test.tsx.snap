@@ -3,10 +3,7 @@
 exports[`Button component testing Button 1`] = `
 <DocumentFragment>
   <button
-    class="sc-gsnTZi sc-dkzDqf bveZbV gJAork"
-    color="primary"
-    font-size="13px"
-    height="32px"
+    style="display: flex; justify-content: center; align-items: center; height: 32px; width: 100%; padding-inline: 8px; border-radius: 6px; border: 1px solid #0864d1; background: rgb(11, 130, 244); color: rgb(255, 255, 255); text-align: center; font-size: 13px; box-shadow: 0px -3px 0px 0px rgba(2, 37, 117, 0.06) inset, 0px 1px 0px 0px rgba(4, 28, 51, 0.04); transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
   />
 </DocumentFragment>
 `;

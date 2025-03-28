@@ -43,7 +43,7 @@ const ContextMenu2SortableItemContext = createContext<{
 
 type ContextMenu2SortableContainerProps = {
   order: UniqueIdentifier[];
-  children: ReactElement[];
+  children: ReactElement<any>[];
   onOrderChange: (order: UniqueIdentifier[]) => void;
 };
 
@@ -62,7 +62,9 @@ export const ContextMenu2SortableGroup = ({
     () =>
       Children.toArray(children).sort((a, b) => {
         if (!isValidElement(a) || !isValidElement(b)) return 0;
-        return order.indexOf(a.props.id) - order.indexOf(b.props.id);
+        const aProps = a.props as { id: UniqueIdentifier };
+        const bProps = b.props as { id: UniqueIdentifier };
+        return order.indexOf(aProps.id) - order.indexOf(bProps.id);
       }),
     [children, order],
   );
@@ -71,7 +73,8 @@ export const ContextMenu2SortableGroup = ({
     () =>
       Children.toArray(children).find((child) => {
         if (!isValidElement(child)) return false;
-        return child.props.id === activeId;
+        const childProps = child.props as { id: UniqueIdentifier };
+        return childProps.id === activeId;
       }),
     [children, activeId],
   );

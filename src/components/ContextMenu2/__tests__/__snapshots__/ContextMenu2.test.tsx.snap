@@ -290,20 +290,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     >
       <li>
         <button
-          class="sc-dmRaPn sc-kgflAQ kALpkY ckGPWO"
-          color="clear"
-          font-size="12px"
-          height="28px"
+          style="display: flex; justify-content: center; align-items: center; height: 28px; width: 100%; padding-inline: 6px; border-radius: 4px; background: none; color: rgb(4, 28, 51); text-align: center; font-size: 12px; box-shadow: none; transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
         >
           キャンセル
         </button>
       </li>
       <li>
         <button
-          class="sc-dmRaPn sc-kgflAQ kALpkY hJikLF"
-          color="primary"
-          font-size="12px"
-          height="28px"
+          style="display: flex; justify-content: center; align-items: center; height: 28px; width: 100%; padding-inline: 6px; border-radius: 4px; border: 1px solid #0864d1; background: rgb(11, 130, 244); color: rgb(255, 255, 255); text-align: center; font-size: 12px; box-shadow: 0px -3px 0px 0px rgba(2, 37, 117, 0.06) inset, 0px 1px 0px 0px rgba(4, 28, 51, 0.04); transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
         >
           適用
         </button>

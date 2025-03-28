@@ -29,7 +29,7 @@ const Portal: React.FunctionComponent<PortalProps> = ({
   }, [container]);
 
   if (disablePortal) {
-    return (children as React.ReactElement) || null;
+    return (children as React.ReactElement<any>) || null;
   }
 
   return mountNode ? ReactDOM.createPortal(children, mountNode) : null;

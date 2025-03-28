@@ -42,17 +42,17 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-iIPllB bxLXfc"
+      class="sc-cxabCf jGoiBD"
       data-overflowing="false"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-ezWOiH lpjcvk"
+        class="sc-iIPllB gsMabg"
         type="button"
       >
         <span
-          class="sc-bZkfAO fZvvlw"
+          class="sc-gicCDI iTYnos"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -70,7 +70,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
         </span>
       </button>
       <div
-        class="sc-gicCDI dQLHWf"
+        class="sc-llJcti hKUiOI"
       >
         <span
           class="sc-hHLeRK igsLAy"

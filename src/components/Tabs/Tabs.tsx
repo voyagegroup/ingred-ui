@@ -131,7 +131,8 @@ const Tabs = <T,>(
   );
 };
 
-export default React.forwardRef(Tabs) as <T>(
-  props: TabsProps<T>,
-  ref: React.ForwardedRef<HTMLDivElement>,
-) => ReturnType<typeof Tabs>;
+const TabsWithRef = React.forwardRef(Tabs) as <T>(
+  props: TabsProps<T> & { ref?: React.ForwardedRef<HTMLDivElement> },
+) => React.ReactElement;
+
+export default TabsWithRef;

@@ -33,7 +33,7 @@ export type ModalProps = {
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     reason: ModalCloseReason,
   ) => void;
-  children: React.ReactElement;
+  children: React.ReactElement<any>;
 };
 
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>(function MenuList(
