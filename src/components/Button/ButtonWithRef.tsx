@@ -195,11 +195,11 @@ const ButtonWithRef = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       
       return (
         <a
+          ref={ref as React.Ref<HTMLAnchorElement>}
           href={href}
           target={target}
           rel={rel}
           style={buttonStyle}
-          ref={ref as React.Ref<HTMLAnchorElement>}
         >
           {icon && icon}
           {icon && children && <Spacer pr={0.5} />}
@@ -210,8 +210,8 @@ const ButtonWithRef = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     
     return (
       <button
-        style={buttonStyle}
         ref={ref as React.Ref<HTMLButtonElement>}
+        style={buttonStyle}
         {...rest}
       >
         {icon && icon}

@@ -2,18 +2,18 @@ import React from 'react';
 
 declare global {
   namespace JSX {
-    interface Element extends React.ReactElement<any, any> {}
-    interface ElementClass extends React.Component<any> {
+    type Element = React.ReactElement<any, any>;
+    type ElementClass = React.Component<any> & {
       render(): React.ReactNode;
-    }
-    interface ElementAttributesProperty {
+    };
+    type ElementAttributesProperty = {
       props: {};
-    }
-    interface ElementChildrenAttribute {
+    };
+    type ElementChildrenAttribute = {
       children: {};
-    }
-    interface IntrinsicElements {
+    };
+    type IntrinsicElements = {
       [elemName: string]: any;
-    }
+    };
   }
 }
