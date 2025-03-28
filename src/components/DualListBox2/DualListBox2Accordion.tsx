@@ -77,6 +77,14 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
         .map(item => item.id);
     }, [allIds, children, filterWords]);
 
+    // 検索フィルタに一致するアイテムが存在するかどうか
+    const hasMatchingItems = useMemo(() => {
+      return visibleIds.length > 0;
+    }, [visibleIds]);
+
+    // early returnを削除し、JSXレンダリングで条件分岐を行う
+    const shouldRenderAccordion = !(filterWords.length > 0 && !hasMatchingItems);
+
     const handleIncludeAllButtonClick = useCallback(() => {
       // このアコーディオン内のフィルタリングされたアイテムがすべて選択済みの場合は何もしない
       if (visibleIds.every((id) => includedIds.includes(id))) {
@@ -105,42 +113,46 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
 
     return (
       <>
-        <styled.AccordionHeader>
-          <styled.AccordionButton
-            type="button"
-            aria-label={`${label}を開く`}
-            aria-expanded={isOpen}
-            onClick={handleButtonClick}
-          >
-            {label}
-          </styled.AccordionButton>
-          <styled.AccordionActionButtons>
-            <li>
-              <button
+        {shouldRenderAccordion && (
+          <>
+            <styled.AccordionHeader>
+              <styled.AccordionButton
                 type="button"
-                disabled={disableInclude}
-                aria-label="追加"
-                onClick={handleIncludeAllButtonClick}
+                aria-label={`${label}を開く`}
+                aria-expanded={isOpen}
+                onClick={handleButtonClick}
               >
-                <Icon name="check_thin" color={colors.blue[500]} />
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                disabled={disableExclude}
-                aria-label="除外"
-                onClick={handleExcludeAllButtonClick}
-              >
-                <Icon name="forbid" color={colors.red[500]} />
-              </button>
-            </li>
-          </styled.AccordionActionButtons>
-          <styled.AccordionIcon>
-            <Icon name="arrow_down" color={colors.basic[900]} />
-          </styled.AccordionIcon>
-        </styled.AccordionHeader>
-        {isOpen && <div ref={ref}>{children}</div>}
+                {label}
+              </styled.AccordionButton>
+              <styled.AccordionActionButtons>
+                <li>
+                  <button
+                    type="button"
+                    disabled={disableInclude}
+                    aria-label="追加"
+                    onClick={handleIncludeAllButtonClick}
+                  >
+                    <Icon name="check_thin" color={colors.blue[500]} />
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    disabled={disableExclude}
+                    aria-label="除外"
+                    onClick={handleExcludeAllButtonClick}
+                  >
+                    <Icon name="forbid" color={colors.red[500]} />
+                  </button>
+                </li>
+              </styled.AccordionActionButtons>
+              <styled.AccordionIcon>
+                <Icon name="arrow_down" color={colors.basic[900]} />
+              </styled.AccordionIcon>
+            </styled.AccordionHeader>
+            {isOpen && <div ref={ref}>{children}</div>}
+          </>
+        )}
       </>
     );
   }
