@@ -5,20 +5,10 @@ exports[`Button component testing ButtonGroup 1`] = `
   <div
     class="sc-bczRLJ kQjzkA"
   >
-    <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
-      color="basicLight"
-      font-size="13px"
-      height="32px"
-    >
+    <button>
       Edit
     </button>
-    <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
-      color="basicLight"
-      font-size="13px"
-      height="32px"
-    >
+    <button>
       Save
     </button>
   </div>

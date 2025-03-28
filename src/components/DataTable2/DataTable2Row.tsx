@@ -70,7 +70,9 @@ export const DataTable2Row = ({ id, children }: DataTable2RowProps) => {
           </styled.CheckboxWrapper>
         </styled.DataTable2RowCheckCell>
       )}
-      {childrenWithDataVisibleOrdered.map(({ child }) => child)}
+      {childrenWithDataVisibleOrdered.map(({ child }) => 
+        React.isValidElement(child) ? child : null
+      )}
     </styled.DataTable2Row>
   );
 };

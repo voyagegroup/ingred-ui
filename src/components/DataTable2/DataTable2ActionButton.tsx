@@ -7,7 +7,7 @@ import { ContextMenu2ButtonItem } from "../ContextMenu2";
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 type DataTable2ActionButtonProps = {
-  prepend?: ReactElement;
+  prepend?: ReactElement<any>;
   children: ReactNode;
   onClick?: () => void;
 };

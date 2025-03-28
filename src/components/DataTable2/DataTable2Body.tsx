@@ -16,8 +16,9 @@ export const DataTable2Body = ({ children }: { children: ReactNode }) => {
     const newRowIds: string[] = [];
     Children.forEach(children, (child) => {
       if (!isValidElement(child)) return;
-      if (typeof child.props.id !== "string") return;
-      newRowIds.push(child.props.id);
+      const props = child.props as { id?: string };
+      if (typeof props.id !== "string") return;
+      newRowIds.push(props.id);
     });
     if (newRowIds.filter((id) => !rowIds.includes(id)).length === 0) return;
     setRowIds(newRowIds);

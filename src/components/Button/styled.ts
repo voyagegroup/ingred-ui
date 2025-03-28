@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-
+import * as React from "react";
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
 
@@ -12,6 +12,8 @@ export type ContainerProps = ButtonColorStyle & {
   height: string;
   href?: string;
   disabled?: boolean;
+  children?: React.ReactNode;
+  className?: string;
 };
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`

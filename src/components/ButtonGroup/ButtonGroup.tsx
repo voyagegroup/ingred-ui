@@ -40,8 +40,8 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     ref,
   ) {
     const childrenWithProps = React.Children.map(
-      children as React.ReactElement[],
-      (child: React.ReactElement) => {
+      children as React.ReactElement<any>[],
+      (child: React.ReactElement<any>) => {
         const Button = React.cloneElement(child, {
           ...child.props,
           ...(disabled && { disabled: true }),

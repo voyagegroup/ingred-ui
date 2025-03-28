@@ -3,10 +3,10 @@
 exports[`DualListBox2 component testing DualListBox2 1`] = `
 <DocumentFragment>
   <div
-    class="sc-papXJ cSaPsI"
+    class="sc-iBkjds iwnMxi"
   >
     <ul
-      class="sc-jqUVSM byqyFJ"
+      class="sc-ftvSup jbNHId"
     >
       <li>
         <button
@@ -23,7 +23,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         >
           選択済みアイテム
           <span
-            class="sc-kDDrLX jlntbe"
+            class="sc-papXJ kOURlk"
           >
             2
           </span>
@@ -31,19 +31,19 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
       </li>
     </ul>
     <div
-      class="sc-iqcoie kENGxv"
+      class="sc-jqUVSM cZsfhd"
     >
       <div
-        class="sc-crXcEl edquut"
+        class="sc-kDDrLX hfaicL"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-crXcEl bQucUZ"
         >
           <div
-            class="sc-ksZaOG HDGZE"
+            class="sc-evZas dKRfeQ"
           >
             <span
-              class="sc-eCYdqJ cPFJww"
+              class="sc-dkzDqf brNpNC"
               size="12"
             >
               <svg
@@ -70,11 +70,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <button
             aria-expanded="false"
             aria-haspopup="dialog"
-            class="sc-hAZoDl huRFLl"
+            class="sc-breuTD dwcNlp"
             type="button"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -94,19 +94,19 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </span>
           </button>
           <div
-            class="sc-fnykZs ziGk"
+            class="sc-ksZaOG iaZakQ"
           >
             4件
           </div>
           <ul
-            class="sc-fEOsli eYMHIx"
+            class="sc-hAZoDl iBNDcj"
           >
             <li>
               <button
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -127,7 +127,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -151,14 +151,14 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <div
-            class="sc-ivTmOn cXxcYC"
+            class="sc-fLlhyt hIoZLm"
           >
             リストアイテム1
             <div
-              class="sc-bBrHrO dFvZQD"
+              class="sc-kgflAQ KbRy"
             >
               <li>
                 <button
@@ -168,7 +168,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -191,7 +191,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -214,11 +214,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-ivTmOn cXxcYC"
+            class="sc-fLlhyt hIoZLm"
           >
             リストアイテム2
             <div
-              class="sc-bBrHrO dFvZQD"
+              class="sc-kgflAQ KbRy"
             >
               <li>
                 <button
@@ -228,7 +228,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -251,7 +251,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -274,11 +274,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-ivTmOn cXxcYC"
+            class="sc-fLlhyt hIoZLm"
           >
             リストアイテム3
             <div
-              class="sc-bBrHrO dFvZQD"
+              class="sc-kgflAQ KbRy"
             >
               <li>
                 <button
@@ -288,7 +288,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -311,7 +311,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -334,11 +334,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-ivTmOn cXxcYC"
+            class="sc-fLlhyt hIoZLm"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <div
-              class="sc-bBrHrO dFvZQD"
+              class="sc-kgflAQ KbRy"
             >
               <li>
                 <button
@@ -348,7 +348,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -371,7 +371,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -399,19 +399,19 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         </div>
       </div>
       <div
-        class="sc-crXcEl bjMufC"
+        class="sc-kDDrLX ctQpQw"
       >
         <div
-          class="sc-idiyUo igFzWG"
+          class="sc-fEOsli feubjP"
         >
           <div
-            class="sc-dIouRR eIIatV"
+            class="sc-bjUoiL dIjhUd"
           >
             <div
-              class="sc-hHLeRK kYaCzf"
+              class="sc-idiyUo jOjbeo"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -427,10 +427,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
               1
             </div>
             <div
-              class="sc-dmRaPn hRmyLr"
+              class="sc-dIouRR jVUWnc"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -452,13 +452,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-kgflAQ hvwqvX"
+            class="sc-hHLeRK jyrgAl"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
-              color="basicLight"
-              font-size="12px"
-              height="28px"
+              style="display: flex; justify-content: center; align-items: center; height: 28px; width: 100%; padding-inline: 6px; border-radius: 4px; border: 1px solid #b3bac1; background: rgb(255, 255, 255); color: rgb(4, 28, 51); text-align: center; font-size: 12px; box-shadow: 0px -3px 0px 0px rgba(4, 28, 51, 0.06) inset, 0px 1px 0px 0px rgba(4, 28, 51, 0.04); transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
               type="button"
             >
               選択をクリア
@@ -466,13 +463,13 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -488,7 +485,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             追加
           </p>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             リストアイテム1
             <button
@@ -497,10 +494,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             />
           </div>
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -521,7 +518,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             除外
           </p>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button
@@ -539,10 +536,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
 exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
 <DocumentFragment>
   <div
-    class="sc-papXJ cSaPsI"
+    class="sc-iBkjds iwnMxi"
   >
     <ul
-      class="sc-jqUVSM byqyFJ"
+      class="sc-ftvSup jbNHId"
     >
       <li>
         <button
@@ -559,7 +556,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         >
           選択済みアイテム
           <span
-            class="sc-kDDrLX jlntbe"
+            class="sc-papXJ kOURlk"
           >
             2
           </span>
@@ -567,19 +564,19 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
       </li>
     </ul>
     <div
-      class="sc-iqcoie kENGxv"
+      class="sc-jqUVSM cZsfhd"
     >
       <div
-        class="sc-crXcEl edquut"
+        class="sc-kDDrLX hfaicL"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-crXcEl bQucUZ"
         >
           <div
-            class="sc-ksZaOG HDGZE"
+            class="sc-evZas dKRfeQ"
           >
             <span
-              class="sc-eCYdqJ cPFJww"
+              class="sc-dkzDqf brNpNC"
               size="12"
             >
               <svg
@@ -606,11 +603,11 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           <button
             aria-expanded="false"
             aria-haspopup="dialog"
-            class="sc-hAZoDl huRFLl"
+            class="sc-breuTD dwcNlp"
             type="button"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -630,19 +627,19 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             </span>
           </button>
           <div
-            class="sc-fnykZs ziGk"
+            class="sc-ksZaOG iaZakQ"
           >
             4件
           </div>
           <ul
-            class="sc-fEOsli eYMHIx"
+            class="sc-hAZoDl iBNDcj"
           >
             <li>
               <button
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -663,7 +660,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -687,21 +684,21 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <div
-            class="sc-iIPllB etBplq"
+            class="sc-cxabCf knfqpl"
           >
             <button
               aria-expanded="false"
               aria-label="アコーディオン1を開く"
-              class="sc-gicCDI jnroDV"
+              class="sc-llJcti ijGiZi"
               type="button"
             >
               アコーディオン1
             </button>
             <ul
-              class="sc-ezWOiH jGdxKf"
+              class="sc-iIPllB gbbUAP"
             >
               <li>
                 <button
@@ -709,7 +706,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -730,7 +727,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -752,10 +749,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               </li>
             </ul>
             <div
-              class="sc-bZkfAO bWHgSv"
+              class="sc-gicCDI CrlXz"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -770,18 +767,18 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             </div>
           </div>
           <div
-            class="sc-iIPllB etBplq"
+            class="sc-cxabCf knfqpl"
           >
             <button
               aria-expanded="false"
               aria-label="アコーディオン2を開く"
-              class="sc-gicCDI jnroDV"
+              class="sc-llJcti ijGiZi"
               type="button"
             >
               アコーディオン2
             </button>
             <ul
-              class="sc-ezWOiH jGdxKf"
+              class="sc-iIPllB gbbUAP"
             >
               <li>
                 <button
@@ -789,7 +786,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -810,7 +807,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
                   type="button"
                 >
                   <span
-                    class="sc-eCYdqJ iymozk"
+                    class="sc-dkzDqf kPdxGi"
                     size="18"
                   >
                     <svg
@@ -832,10 +829,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               </li>
             </ul>
             <div
-              class="sc-bZkfAO bWHgSv"
+              class="sc-gicCDI CrlXz"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -855,19 +852,19 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         </div>
       </div>
       <div
-        class="sc-crXcEl bjMufC"
+        class="sc-kDDrLX ctQpQw"
       >
         <div
-          class="sc-idiyUo igFzWG"
+          class="sc-fEOsli feubjP"
         >
           <div
-            class="sc-dIouRR eIIatV"
+            class="sc-bjUoiL dIjhUd"
           >
             <div
-              class="sc-hHLeRK kYaCzf"
+              class="sc-idiyUo jOjbeo"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -883,10 +880,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               1
             </div>
             <div
-              class="sc-dmRaPn hRmyLr"
+              class="sc-dIouRR jVUWnc"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -908,13 +905,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             </div>
           </div>
           <div
-            class="sc-kgflAQ hvwqvX"
+            class="sc-hHLeRK jyrgAl"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
-              color="basicLight"
-              font-size="12px"
-              height="28px"
+              style="display: flex; justify-content: center; align-items: center; height: 28px; width: 100%; padding-inline: 6px; border-radius: 4px; border: 1px solid #b3bac1; background: rgb(255, 255, 255); color: rgb(4, 28, 51); text-align: center; font-size: 12px; box-shadow: 0px -3px 0px 0px rgba(4, 28, 51, 0.06) inset, 0px 1px 0px 0px rgba(4, 28, 51, 0.04); transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
               type="button"
             >
               選択をクリア
@@ -922,13 +916,13 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -944,12 +938,12 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             追加
           </p>
           <div
-            class="sc-llJcti LbLEY"
+            class="sc-ivTmOn fRgQZn"
           >
             アコーディオン1
           </div>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             リストアイテム1
             <button
@@ -958,10 +952,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             />
           </div>
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -982,12 +976,12 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             除外
           </p>
           <div
-            class="sc-llJcti LbLEY"
+            class="sc-ivTmOn fRgQZn"
           >
             アコーディオン2
           </div>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button
@@ -1005,10 +999,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
 exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
 <DocumentFragment>
   <div
-    class="sc-papXJ cSaPsI"
+    class="sc-iBkjds iwnMxi"
   >
     <ul
-      class="sc-jqUVSM byqyFJ"
+      class="sc-ftvSup jbNHId"
     >
       <li>
         <button
@@ -1025,7 +1019,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         >
           選択済みアイテム
           <span
-            class="sc-kDDrLX jlntbe"
+            class="sc-papXJ kOURlk"
           >
             2
           </span>
@@ -1033,19 +1027,19 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
       </li>
     </ul>
     <div
-      class="sc-iqcoie kENGxv"
+      class="sc-jqUVSM cZsfhd"
     >
       <div
-        class="sc-crXcEl edquut"
+        class="sc-kDDrLX hfaicL"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-crXcEl bQucUZ"
         >
           <div
-            class="sc-ksZaOG HDGZE"
+            class="sc-evZas dKRfeQ"
           >
             <span
-              class="sc-eCYdqJ cPFJww"
+              class="sc-dkzDqf brNpNC"
               size="12"
             >
               <svg
@@ -1073,11 +1067,11 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           <button
             aria-expanded="false"
             aria-haspopup="dialog"
-            class="sc-hAZoDl huRFLl"
+            class="sc-breuTD dwcNlp"
             type="button"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -1097,12 +1091,12 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             </span>
           </button>
           <div
-            class="sc-fnykZs ziGk"
+            class="sc-ksZaOG iaZakQ"
           >
             -件
           </div>
           <ul
-            class="sc-fEOsli eYMHIx"
+            class="sc-hAZoDl iBNDcj"
           >
             <li>
               <button
@@ -1110,7 +1104,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -1132,7 +1126,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
                 type="button"
               >
                 <span
-                  class="sc-eCYdqJ iymozk"
+                  class="sc-dkzDqf kPdxGi"
                   size="18"
                 >
                   <svg
@@ -1156,19 +1150,19 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <button
             aria-expanded="false"
             aria-label="セクション1を開く"
-            class="sc-jIZahH loKfUC"
+            class="sc-kLLXSd hTgnZD"
             type="button"
           >
             <span
-              class="sc-kLLXSd fiRoHL"
+              class="sc-ezWOiH gvkfzx"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1185,10 +1179,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               セクション1
             </div>
             <span
-              class="sc-ikZpkk hCgywH"
+              class="sc-bZkfAO LjzwI"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1205,14 +1199,14 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           <button
             aria-expanded="false"
             aria-label="セクション2を開く"
-            class="sc-jIZahH loKfUC"
+            class="sc-kLLXSd hTgnZD"
             type="button"
           >
             <span
-              class="sc-kLLXSd fiRoHL"
+              class="sc-ezWOiH gvkfzx"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1229,10 +1223,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               セクション2
             </div>
             <span
-              class="sc-ikZpkk hCgywH"
+              class="sc-bZkfAO LjzwI"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1252,19 +1246,19 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         </div>
       </div>
       <div
-        class="sc-crXcEl bjMufC"
+        class="sc-kDDrLX ctQpQw"
       >
         <div
-          class="sc-idiyUo igFzWG"
+          class="sc-fEOsli feubjP"
         >
           <div
-            class="sc-dIouRR eIIatV"
+            class="sc-bjUoiL dIjhUd"
           >
             <div
-              class="sc-hHLeRK kYaCzf"
+              class="sc-idiyUo jOjbeo"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1280,10 +1274,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               1
             </div>
             <div
-              class="sc-dmRaPn hRmyLr"
+              class="sc-dIouRR jVUWnc"
             >
               <span
-                class="sc-eCYdqJ iymozk"
+                class="sc-dkzDqf kPdxGi"
                 size="18"
               >
                 <svg
@@ -1305,13 +1299,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             </div>
           </div>
           <div
-            class="sc-kgflAQ hvwqvX"
+            class="sc-hHLeRK jyrgAl"
           >
             <button
-              class="sc-gsnTZi sc-dkzDqf bveZbV lpralp"
-              color="basicLight"
-              font-size="12px"
-              height="28px"
+              style="display: flex; justify-content: center; align-items: center; height: 28px; width: 100%; padding-inline: 6px; border-radius: 4px; border: 1px solid #b3bac1; background: rgb(255, 255, 255); color: rgb(4, 28, 51); text-align: center; font-size: 12px; box-shadow: 0px -3px 0px 0px rgba(4, 28, 51, 0.06) inset, 0px 1px 0px 0px rgba(4, 28, 51, 0.04); transition: background 0.3s; margin: 0px; cursor: pointer; outline: none; text-decoration: none; letter-spacing: inherit; font-family: inherit; line-height: inherit;"
               type="button"
             >
               選択をクリア
@@ -1319,13 +1310,13 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-iqcoie eerugq"
         >
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -1341,12 +1332,12 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             追加
           </p>
           <div
-            class="sc-llJcti LbLEY"
+            class="sc-ivTmOn fRgQZn"
           >
             セクション1
           </div>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             リストアイテム1
             <button
@@ -1355,10 +1346,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             />
           </div>
           <p
-            class="sc-fLlhyt eWPZUA"
+            class="sc-dmRaPn ehmLFj"
           >
             <span
-              class="sc-eCYdqJ iymozk"
+              class="sc-dkzDqf kPdxGi"
               size="18"
             >
               <svg
@@ -1379,12 +1370,12 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             除外
           </p>
           <div
-            class="sc-llJcti LbLEY"
+            class="sc-ivTmOn fRgQZn"
           >
             セクション2
           </div>
           <div
-            class="sc-cxabCf izompD"
+            class="sc-bBrHrO xmpMR"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button

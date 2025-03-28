@@ -62,7 +62,7 @@ export type TextAlign = "left" | "center" | "right";
 export type FontWeight = "normal" | "bold";
 
 export type TypographyProps = {
-  component?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  component?: string | React.ComponentType<any>;
   color?: ColorType | string;
   align?: "left" | "center" | "right";
   size?: FontSize;

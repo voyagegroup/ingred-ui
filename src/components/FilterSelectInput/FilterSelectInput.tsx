@@ -12,7 +12,7 @@ type FilterTagInputProps = {
   value: string;
   options: string[];
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<any>; label: string }[];
   onChange: (value: string) => void;
   onSelectChange: (index: number) => void;
 };

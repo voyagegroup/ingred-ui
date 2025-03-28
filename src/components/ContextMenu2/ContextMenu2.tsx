@@ -116,7 +116,8 @@ const flattenChildren = (children: ReactNode): ReactNode[] => {
     .map((child) => {
       // Fragmentであれば再帰的にflattenChildrenを呼び出す
       if (isValidElement(child) && child.type === Fragment) {
-        return flattenChildren(child.props.children);
+        const props = child.props as { children?: ReactNode };
+        return flattenChildren(props.children || []);
       }
       // Fragment以外はそのまま返す
       return child;
@@ -339,15 +340,19 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                         if (!focusableItems.includes(child.type.displayName))
                           return child;
 
-                        return cloneElement(child, {
-                          tabIndex: activeIndex === index ? 0 : -1,
-                          ref: (el: HTMLElement) => {
-                            listRef.current[index] = el;
-                          },
-                          ...getItemProps(),
-                          ...child.props,
-                          key: id,
-                        });
+                        const childProps = child.props as Record<string, any>;
+                        return cloneElement(
+                          child,
+                          {
+                            tabIndex: activeIndex === index ? 0 : -1,
+                            ref: (el: HTMLElement) => {
+                              listRef.current[index] = el;
+                            },
+                            ...getItemProps(),
+                            ...childProps,
+                            key: id,
+                          } as React.ComponentProps<typeof child.type>
+                        );
                       })}
                     </ContextMenu2SortableContext.Provider>
                   </ContextMenu2Context.Provider>
@@ -371,7 +376,7 @@ type ContextMenu2ContainerProps = {
   /**
    * ContextMenu2 を 1 つだけ含める
    */
-  children: ReactElement;
+  children: ReactElement<any>;
 };
 
 export const ContextMenu2Container = ({

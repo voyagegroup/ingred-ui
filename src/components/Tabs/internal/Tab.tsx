@@ -11,6 +11,7 @@ type TabProps = {
   selected: boolean;
   onChange?: (value: any) => void;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: React.ReactNode;
 };
 
 export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(function Tab(

@@ -47,7 +47,7 @@ export const FilterTag = ({ label, onRemove }: FilterTagProps) => {
 // 本体のコンポーネント
 type FilterInputAbstractProps = {
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<any>; label: string }[];
   children?: ReactNode;
   onSelectChange: (index: number) => void;
 };
