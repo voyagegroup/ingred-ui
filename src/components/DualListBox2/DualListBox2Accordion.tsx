@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useContext,
   type ReactNode,
+  useEffect,
 } from "react";
 import Icon from "../Icon";
 import * as styled from "./styled";
@@ -16,6 +17,7 @@ type DualListBox2AccordionProps = {
   disableExclude?: boolean;
   children: ReactNode;
   onOpen?: () => void;
+  loadingMode?: 'infinite' | 'all';
 };
 
 export const DualListBox2Accordion = ({
@@ -24,15 +26,24 @@ export const DualListBox2Accordion = ({
   disableExclude,
   children,
   onOpen,
+  loadingMode = 'infinite',
 }: DualListBox2AccordionProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // allモードの場合は、マウント時にデータを読み込む
+  useEffect(() => {
+    if (loadingMode === 'all' && onOpen) {
+      onOpen();
+    }
+  }, [loadingMode, onOpen]);
+
   const handleButtonClick = useCallback(() => {
     const newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
-    if (newIsOpen && onOpen) {
+    if (newIsOpen && onOpen && loadingMode === 'infinite') {
       onOpen();
     }
-  }, [isOpen, onOpen]);
+  }, [isOpen, onOpen, loadingMode]);
 
   const { filterWords, includedIds, excludedIds, onIncludedChange, onExcludedChange } =
     useContext(DualListBox2Context);

@@ -113,6 +113,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
     const [pageSize, setPageSize] = useState(50);
     const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
+    const [loadingMode, setLoadingMode] = useState<'infinite' | 'all'>('infinite');
 
     // アコーディオンのグループ定義
     const groups = [
@@ -173,14 +174,15 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
         excluded={excluded}
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
+        loadingMode={loadingMode}
         menuButtons={
           <>
             <ContextMenu2ButtonItem
               onClick={() => {
-                alert("clicked");
+                setLoadingMode(loadingMode === 'infinite' ? 'all' : 'infinite');
               }}
             >
-              好きなボタンを
+              {`Loading Mode: ${loadingMode}`}
             </ContextMenu2ButtonItem>
             <ContextMenu2SwitchItem disabled onChange={() => { }}>
               入れて使う
@@ -207,6 +209,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             disableInclude={!loadedGroups.has(group.name)}
             disableExclude={!loadedGroups.has(group.name)}
             onOpen={() => handleAccordionOpen(group.name)}
+            loadingMode={loadingMode}
           >
             {items
               .filter((item) => item.groupName === group.name)
@@ -908,6 +911,113 @@ export const SectionWithLoadingModes: StoryObj<typeof DualListBox2> = {
           )}
         </DualListBox2>
       </>
+    );
+  },
+};
+
+/**
+ * #### 事前読み込みモード（allモード）のサンプル
+ * 
+ * allモードでは、アコーディオンを開く前にデータが事前に読み込まれます：
+ * 
+ * 1. コンポーネントのマウント時に各アコーディオンのデータ読み込みが開始されます
+ * 2. 読み込み中は各アコーディオンにローディング状態が表示されます
+ * 3. データの読み込みが完了すると、アコーディオンをクリックするだけで即座にコンテンツが表示されます
+ * 
+ * このモードは、以下のような場合に適しています：
+ * - データの総量が既知で管理可能な場合
+ * - ユーザーの待ち時間を最小限にしたい場合
+ * - ネットワークの往復を減らしたい場合
+ */
+export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
+  render: () => {
+    const [items, setItems] = useState<Item[]>([]);
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
+    const [pageSize] = useState(50);
+    const [loadingGroups, setLoadingGroups] = useState<Set<string>>(new Set());
+
+    // アコーディオンのグループ定義
+    const groups = [
+      { id: "group1", name: "プロジェクト" },
+      { id: "group2", name: "組織" },
+      { id: "group3", name: "ユーザー" },
+    ];
+
+    const loadGroupData = useCallback((groupName: string) => {
+      if (loadedGroups.has(groupName) || loadingGroups.has(groupName)) return;
+
+      setLoadingGroups(prev => new Set([...prev, groupName]));
+      setIsLoading(true);
+
+      // グループごとに異なるデータ件数を設定
+      const itemCounts = {
+        "group1": 150,
+        "group2": 100,
+        "group3": 200,
+      };
+
+      setTimeout(() => {
+        const count = itemCounts[groupName as keyof typeof itemCounts] || 100;
+        const newItems = generateItems(0, count).map((item) => ({
+          ...item,
+          groupName,
+          label: `${groups.find(g => g.id === groupName)?.name}${parseInt(item.id.split('-')[1]) + 1}`,
+        }));
+
+        setItems((prev) => [...prev, ...newItems]);
+        setLoadedGroups((prev) => new Set([...prev, groupName]));
+        setLoadingGroups(prev => {
+          const next = new Set(prev);
+          next.delete(groupName);
+          return next;
+        });
+
+        if (loadingGroups.size <= 1) {
+          setIsLoading(false);
+        }
+      }, 1500);
+    }, [loadedGroups, loadingGroups]);
+
+    // コンポーネントマウント時に全グループのデータを読み込み開始
+    useEffect(() => {
+      groups.forEach(group => loadGroupData(group.id));
+    }, [loadGroupData]);
+
+    return (
+      <DualListBox2
+        loading={isLoading}
+        included={included}
+        excluded={excluded}
+        pageSize={pageSize}
+        loadingMode="all"
+        onIncludedChange={(ids: string[]) =>
+          setIncluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids: string[]) =>
+          setExcluded(items.filter((item) => ids.includes(item.id)))
+        }
+      >
+        {groups.map((group) => (
+          <DualListBox2Accordion
+            key={group.id}
+            label={group.name}
+            loadingMode="all"
+            disableInclude={!loadedGroups.has(group.id)}
+            disableExclude={!loadedGroups.has(group.id)}
+          >
+            {items
+              .filter((item) => item.groupName === group.id)
+              .map((item) => (
+                <DualListBox2Item key={item.id} id={item.id}>
+                  {item.label}
+                </DualListBox2Item>
+              ))}
+          </DualListBox2Accordion>
+        ))}
+      </DualListBox2>
     );
   },
 };
