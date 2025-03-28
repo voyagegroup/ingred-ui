@@ -10,6 +10,9 @@ import React, {
   type ChangeEvent,
   useEffect,
   useRef,
+  type KeyboardEvent,
+  type RefObject,
+  type RefCallback,
 } from "react";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -25,7 +28,7 @@ import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
 export type LoadingMode = 'infinite-loading' | 'bulk-loading';
 
-type DualListBox2Props = {
+export type DualListBox2Props = {
   /**
    * 選択済みの「追加」項目
    **/
@@ -70,6 +73,10 @@ type DualListBox2Props = {
    * スクロールによって追加データの読み込みが必要になったときに呼び出されるハンドラ
    **/
   onLoadMore?: () => void;
+  /**
+   * 検索が実行されたときに呼び出されるハンドラ（全データ読み込みの開始等に使用）
+   **/
+  onSearch?: (searchText: string) => void;
   /**
    * 1ページあたりの表示件数
    **/
@@ -195,6 +202,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       onPageSizeChange,
       loadingMode = 'infinite-loading',
       renderFilteredCount,
+      onSearch,
     },
     ref,
   ) => {
@@ -422,14 +430,47 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [],
     );
 
+    // アコーディオンの参照を保持するためのMapを使用
+    const accordionRefs = useRef<Map<string, { onLoadAll?: () => void }>>(new Map());
+
+    // アコーディオンの登録関数
+    const registerAccordion = useCallback((id: string, callbacks: { onLoadAll?: () => void }) => {
+      accordionRefs.current.set(id, callbacks);
+    }, []);
+
+    // アコーディオンの登録解除関数
+    const unregisterAccordion = useCallback((id: string) => {
+      accordionRefs.current.delete(id);
+    }, []);
+
+    // 検索実行時のハンドラ
+    const handleSearchExecution = useCallback((searchText: string) => {
+      // 親コンポーネントから渡されたonSearchがあれば呼び出す
+      if (onSearch) {
+        onSearch(searchText);
+      }
+
+      // 検索ワードが空でなく、無限ローディングモードの場合は
+      // 登録されている全アコーディオンのonLoadAllを呼び出す
+      if (searchText.trim() !== '' && loadingMode === 'infinite-loading') {
+        accordionRefs.current.forEach((callbacks) => {
+          if (callbacks.onLoadAll) {
+            callbacks.onLoadAll();
+          }
+        });
+      }
+    }, [onSearch, loadingMode]);
+
     // エンターキーが押されたときに検索を実行
     const handleKeyDown = useCallback(
       (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
           setFilter(searchText);
+          // 検索実行時に handleSearchExecution を呼び出す
+          handleSearchExecution(searchText);
         }
       },
-      [searchText],
+      [searchText, handleSearchExecution],
     );
 
     // 検索フィルターをリセット
@@ -522,6 +563,32 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       setIsMenuOpen(!isMenuOpen);
     };
 
+    // DualListBox2Context.Providerに渡す値を作成
+    const contextValue = useMemo(
+      () => ({
+        filterWords: filter.split(/\s+/).filter(Boolean),
+        includedIds,
+        excludedIds,
+        onIncludedChange,
+        onExcludedChange,
+        activeSection,
+        setActiveSection: setActiveSection,
+        registerAccordion,
+        unregisterAccordion,
+      }),
+      [
+        filter,
+        includedIds,
+        excludedIds,
+        onIncludedChange,
+        onExcludedChange,
+        activeSection,
+        setActiveSection,
+        registerAccordion,
+        unregisterAccordion,
+      ],
+    );
+
     return (
       <styled.DualListBox2 ref={ref}>
         <styled.TabList>
@@ -549,15 +616,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         </styled.TabList>
         <styled.Inner>
           <DualListBox2Context.Provider
-            value={{
-              filterWords,
-              includedIds,
-              excludedIds,
-              activeSection,
-              onIncludedChange,
-              onExcludedChange,
-              setActiveSection,
-            }}
+            value={contextValue}
           >
             <styled.LeftPanel isShow={tabIndex === 0}>
               <styled.LeftPanelHeader>

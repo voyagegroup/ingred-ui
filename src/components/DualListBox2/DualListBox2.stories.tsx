@@ -729,6 +729,9 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
  * - ユーザーが操作したアコーディオンのデータのみを読み込みます
  * - 必要に応じて段階的にデータを読み込むため、初期表示が速くなります
  * - 各アコーディオンのデータ読み込みは独立して行われます
+ * - 検索実行時には自動的に全データが読み込まれるため、全件検索が可能です
+ * - 検索はEnterキーで実行されます
+ * - データが読み込まれた後はアコーディオンを開かなくても検索結果が表示されます
  */
 export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
   render: function InfiniteLoadingAccordionStory() {
@@ -739,6 +742,7 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
     const [loadedGroups, setLoadedGroups] = useState<string[]>([]);
     const [pageSize, setPageSize] = useState(50);
     const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
+    const [searchText, setSearchText] = useState('');
 
     // アコーディオンのグループ定義
     const groups = useMemo(() => [
@@ -746,6 +750,7 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
       { id: "group2", name: "アコーディオン2" },
     ], []);
 
+    // アコーディオンを開いたときのハンドラ（一部データ読み込み）
     const handleAccordionOpen = useCallback(
       (groupId: string) => {
         if (loadedGroups.includes(groupId) || loadingGroup) return;
@@ -771,6 +776,41 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
       },
       [loadedGroups, pageSize, loadingGroup, items.length, groups],
     );
+
+    // 検索実行時や全データ読み込み時のハンドラ（全データ一括読み込み）
+    const handleLoadAllData = useCallback(
+      (groupId: string) => {
+        if (loadedGroups.includes(groupId) || loadingGroup) return;
+
+        setLoadingGroup(groupId);
+        setIsLoading(true);
+
+        // グループの表示名を取得
+        const groupDisplayName = groups.find(g => g.id === groupId)?.name || groupId;
+
+        // グループを読み込む（全データ250件）
+        setTimeout(() => {
+          // 全データを一度に読み込む
+          const totalItems = 250;
+          const newItems = generateItems(items.length, totalItems).map((item) => ({
+            ...item,
+            groupName: groupDisplayName, // 表示名を使用
+          }));
+
+          setItems((prev) => [...prev, ...newItems]);
+          setLoadedGroups((prev) => [...prev, groupId]);
+          setIsLoading(false);
+          setLoadingGroup(null);
+        }, 1000);
+      },
+      [loadedGroups, loadingGroup, items.length, groups],
+    );
+
+    // 検索実行時のハンドラ
+    const handleSearch = useCallback((searchText: string) => {
+      setSearchText(searchText);
+      console.log(`検索実行: ${searchText}`);
+    }, []);
 
     const handleLoadMore = useCallback(() => {
       // すでにロード中の場合は何もしない
@@ -831,12 +871,14 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
         onLoadMore={handleLoadMore}
+        onSearch={handleSearch}
       >
         {groups.map((group) => (
           <DualListBox2Accordion
             key={group.id}
             label={group.name}
             onOpen={() => handleAccordionOpen(group.id)}
+            onLoadAll={() => handleLoadAllData(group.id)}
           >
             {items
               .filter((item) => item.groupName === group.name) // グループの表示名を使用

@@ -18,6 +18,8 @@ export type DualListBox2AccordionProps = {
   disableExclude?: boolean;
   children: ReactNode;
   onOpen?: () => void;
+  /** データをすべて読み込むため処理。onOpenと異なりアコーディオンは開きません */
+  onLoadAll?: () => void;
   loadingMode?: LoadingMode;
 };
 
@@ -29,11 +31,39 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
       disableExclude,
       children,
       onOpen,
+      onLoadAll,
       loadingMode = 'infinite-loading',
     },
     ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [hasLoadedAll, setHasLoadedAll] = useState(false);
+
+    const { 
+      filterWords, 
+      includedIds, 
+      excludedIds, 
+      onIncludedChange, 
+      onExcludedChange,
+      registerAccordion,
+      unregisterAccordion
+    } = useContext(DualListBox2Context);
+
+    // アコーディオンIDを生成（ラベルからID生成）
+    const accordionId = useMemo(() => `accordion-${label}`, [label]);
+
+    // コンポーネントのマウント時に登録、アンマウント時に解除
+    useEffect(() => {
+      if (registerAccordion) {
+        registerAccordion(accordionId, { onLoadAll });
+      }
+
+      return () => {
+        if (unregisterAccordion) {
+          unregisterAccordion(accordionId);
+        }
+      };
+    }, [accordionId, registerAccordion, unregisterAccordion, onLoadAll]);
 
     // allモードの場合は、マウント時にデータを読み込む
     useEffect(() => {
@@ -50,6 +80,28 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
       }
     }, [isOpen, onOpen, loadingMode]);
 
+    // 検索フィルタが適用された時にデータを読み込む
+    useEffect(() => {
+      // infinite-loadingモードで、検索フィルタが適用された場合かつ検索ワードが空でない場合
+      if (filterWords.length > 0 && !isOpen) {
+        if (onLoadAll && loadingMode === 'infinite-loading' && !hasLoadedAll) {
+          // 検索時には全データを一括で読み込み、再読み込みしないようフラグを立てる
+          onLoadAll();
+          setHasLoadedAll(true);
+        } else if (onOpen && loadingMode === 'infinite-loading') {
+          // onLoadAllが提供されていない場合は、従来通りonOpenを呼ぶ
+          onOpen();
+        }
+      }
+    }, [filterWords, onOpen, onLoadAll, loadingMode, isOpen, hasLoadedAll]);
+
+    // 検索フィルタがクリアされた場合、hasLoadedAllフラグをリセット
+    useEffect(() => {
+      if (filterWords.length === 0) {
+        setHasLoadedAll(false);
+      }
+    }, [filterWords]);
+
     const handleButtonClick = useCallback(() => {
       const newIsOpen = !isOpen;
       setIsOpen(newIsOpen);
@@ -57,9 +109,6 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
         onOpen();
       }
     }, [isOpen, onOpen, loadingMode]);
-
-    const { filterWords, includedIds, excludedIds, onIncludedChange, onExcludedChange } =
-      useContext(DualListBox2Context);
 
     const allIds = useMemo(() => getAllIds(children), [children]);
 
