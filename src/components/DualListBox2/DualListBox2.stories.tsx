@@ -556,7 +556,8 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
     useEffect(() => {
       setIsLoading(true);
       setTimeout(() => {
-        setItems(generateItems(0, pageSize));
+        // 一度に500件のデータを生成
+        setItems(generateItems(0, 500));
         setIsLoading(false);
       }, 500);
     }, [pageSize]);
@@ -573,7 +574,8 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
           setPageSize(newPageSize);
           setItems([]);
           setTimeout(() => {
-            setItems(generateItems(0, newPageSize));
+            // ページサイズ変更時も500件のデータを生成
+            setItems(generateItems(0, 500));
           }, 500);
         }}
         onIncludedChange={(ids: string[]) =>
