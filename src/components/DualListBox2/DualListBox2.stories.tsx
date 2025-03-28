@@ -647,12 +647,20 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
         "group3": 200,
       };
 
+      // 各グループの開始インデックスを設定して、IDが重複しないようにする
+      const startIndices = {
+        "group1": 0,
+        "group2": 1000,
+        "group3": 2000,
+      };
+
       setTimeout(() => {
         const count = itemCounts[groupName as keyof typeof itemCounts] || 100;
-        const newItems = generateItems(0, count).map((item) => ({
+        const startIndex = startIndices[groupName as keyof typeof startIndices] || 0;
+        const newItems = generateItems(startIndex, count).map((item) => ({
           ...item,
           groupName,
-          label: `${groups.find(g => g.id === groupName)?.name}${parseInt(item.id.split('-')[1]) + 1}`,
+          label: `${groups.find(g => g.id === groupName)?.name}${parseInt(item.id.split('-')[1]) - startIndex + 1}`,
         }));
 
         setItems((prev) => [...prev, ...newItems]);
@@ -663,7 +671,7 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
           setIsLoading(false);
         }
       }, 1500);
-    }, [loadedGroups, loadingGroups]);
+    }, [loadedGroups, loadingGroups, groups]);
 
     // コンポーネントマウント時に全グループのデータを読み込み開始
     useEffect(() => {

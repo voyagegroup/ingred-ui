@@ -78,20 +78,28 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
     }, [allIds, children, filterWords]);
 
     const handleIncludeAllButtonClick = useCallback(() => {
-      // フィルタリングされたアイテムがすべて選択済みの場合は何もしない
+      // このアコーディオン内のフィルタリングされたアイテムがすべて選択済みの場合は何もしない
       if (visibleIds.every((id) => includedIds.includes(id))) {
         return;
       }
+      
+      // このアコーディオン内のアイテムのみを追加対象とする
       onIncludedChange(Array.from(new Set([...includedIds, ...visibleIds])));
+      
+      // このアコーディオン内のアイテムが除外されていれば、それを除外リストから削除
       onExcludedChange(excludedIds.filter((id) => !visibleIds.includes(id)));
     }, [visibleIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
 
     const handleExcludeAllButtonClick = useCallback(() => {
-      // フィルタリングされたアイテムがすべて除外済みの場合は何もしない
+      // このアコーディオン内のフィルタリングされたアイテムがすべて除外済みの場合は何もしない
       if (visibleIds.every((id) => excludedIds.includes(id))) {
         return;
       }
+      
+      // このアコーディオン内のアイテムのみを除外対象とする
       onExcludedChange(Array.from(new Set([...excludedIds, ...visibleIds])));
+      
+      // このアコーディオン内のアイテムが追加されていれば、それを追加リストから削除
       onIncludedChange(includedIds.filter((id) => !visibleIds.includes(id)));
     }, [visibleIds, includedIds, excludedIds, onIncludedChange, onExcludedChange]);
 
