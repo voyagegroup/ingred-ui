@@ -347,29 +347,23 @@ export const Either: StoryObj<typeof DualListBox2> = {
  */
 export const Section: StoryObj<typeof DualListBox2> = {
   render: () => {
-    const [items, setItems] = useState<Item[]>([
-      {
-        id: "unique-1",
+    const [items, setItems] = useState<Item[]>(() => {
+      // セクション1のアイテムを生成（10件）
+      const section1Items = generateItems(0, 10).map(item => ({
+        ...item,
         groupName: "セクション1",
-        label: "リストアイテム1",
-      },
-      {
-        id: "unique-2",
-        groupName: "セクション1",
-        label: "リストアイテム2",
-      },
-      {
-        id: "unique-3",
+        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+      }));
+
+      // セクション2のアイテムを生成（10件）
+      const section2Items = generateItems(10, 10).map(item => ({
+        ...item,
         groupName: "セクション2",
-        label: "リストアイテム3",
-      },
-      {
-        id: "unique-4",
-        groupName: "セクション2",
-        label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
-      },
-    ]);
+        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+      }));
+
+      return [...section1Items, ...section2Items];
+    });
 
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
