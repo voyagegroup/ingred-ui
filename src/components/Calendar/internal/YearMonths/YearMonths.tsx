@@ -29,7 +29,7 @@ export const YearMonths: React.FC<Props> = ({
 }) => {
   const theme = useTheme();
   const ref = React.useRef<HTMLDivElement>(null);
-  const { years } = useScrollYearMonths(current, ref);
+  const { years } = useScrollYearMonths(current, ref as React.RefObject<HTMLDivElement>);
 
   const handleClick = (year: number, month: number) => () => {
     const newDate = dayjs(`${year}-${month}-01`);
