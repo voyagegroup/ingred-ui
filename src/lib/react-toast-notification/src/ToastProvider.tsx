@@ -91,7 +91,7 @@ export class ToastProvider extends Component<ToastProviderProps, State> {
 
   constructor(props: ToastProviderProps | Readonly<ToastProviderProps>) {
     super(props);
-    this.nodeRef = React.createRef<HTMLDivElement>();
+    this.nodeRef = React.createRef() as React.RefObject<HTMLDivElement>;
   }
 
   state = { toasts: [] as State["toasts"] };
