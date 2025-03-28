@@ -23,7 +23,7 @@ import { DualListBox2Item } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
-type LoadingMode = 'infinite' | 'all';
+export type LoadingMode = 'infinite-loading' | 'bulk-loading';
 
 type DualListBox2Props = {
   /**
@@ -197,7 +197,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       pageSize = 50,
       pageSizeOptions = [10, 50, 100, 200],
       onPageSizeChange,
-      loadingMode = 'infinite',
+      loadingMode = 'infinite-loading',
       isLoadingAll,
       renderFilteredCount,
     },
@@ -248,7 +248,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     // 無限スクロールの処理
     const handleScroll = useCallback(
       (event: React.UIEvent<HTMLDivElement>) => {
-        if (loadingMode !== 'infinite' || !onLoadMore || isLoadingMore || loading) return;
+        if (loadingMode !== 'infinite-loading' || !onLoadMore || isLoadingMore || loading) return;
 
         const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
         if (scrollHeight - scrollTop <= clientHeight * 1.5) {

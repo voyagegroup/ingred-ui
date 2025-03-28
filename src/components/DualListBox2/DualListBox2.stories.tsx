@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { Meta, StoryObj, ComponentStory } from "@storybook/react";
 import {
   type Item,
+  type LoadingMode,
   DualListBox2,
   DualListBox2Item,
   DualListBox2Accordion,
@@ -113,7 +114,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [loadedGroups, setLoadedGroups] = useState<string[]>([]);
     const [pageSize, setPageSize] = useState(50);
     const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
-    const [loadingMode, setLoadingMode] = useState<'infinite' | 'all'>('infinite');
+    const [loadingMode, setLoadingMode] = useState<LoadingMode>('infinite-loading');
 
     // アコーディオンのグループ定義
     const groups = [
@@ -175,7 +176,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           <>
             <ContextMenu2ButtonItem
               onClick={() => {
-                setLoadingMode(loadingMode === 'infinite' ? 'all' : 'infinite');
+                setLoadingMode(loadingMode === 'infinite-loading' ? 'bulk-loading' : 'infinite-loading');
               }}
             >
               {`Loading Mode: ${loadingMode}`}
@@ -247,7 +248,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -367,7 +368,7 @@ export const Section: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "セクション2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -447,24 +448,22 @@ export const Section: StoryObj<typeof DualListBox2> = {
 };
 
 /**
- * #### 読み込みモード
+ * #### Infinite loading
  * 
- * DualListBox2 コンポーネントには2つの読み込みモードがあります：
+ * このモードでは、スクロールに応じてページサイズ単位で追加データを読み込みます。
  * 
- * - **infinite**: デフォルトのモードで、スクロールに応じてページサイズ単位で追加データを読み込みます。
- * - **all**: ページサイズを無視して一度にすべてのデータ（上限500件まで）を読み込みます。
- * 
- * 以下のサンプルでそれぞれのモードの違いを確認できます。
+ * 特徴:
+ * - 初期表示が速く、必要になったときにのみデータを読み込みます
+ * - ページサイズ単位で段階的にデータを取得するため、メモリ効率が良いです
+ * - 大量のデータを扱う場合に適しています
  */
-export const LoadingModes: StoryObj<typeof DualListBox2> = {
-  render: () => {
+export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
+  render: function InfiniteLoadingStory() {
     const [items, setItems] = useState<Item[]>([]);
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingAll, setIsLoadingAll] = useState(false);
     const [pageSize, setPageSize] = useState(50);
-    const [loadingMode, setLoadingMode] = useState<'infinite' | 'all'>('infinite');
 
     // 初期データ読み込み
     useEffect(() => {
@@ -476,272 +475,165 @@ export const LoadingModes: StoryObj<typeof DualListBox2> = {
     }, [pageSize]);
 
     const handleLoadMore = useCallback(() => {
-      console.log('LoadingModes: loadMore called, mode:', loadingMode); // デバッグ用
-      if (loadingMode === 'infinite') {
-        // すでに500件に達していたら何もしない
-        if (items.length >= 500) return;
+      // すでに500件に達していたら何もしない
+      if (items.length >= 500) return;
 
-        setIsLoading(true);
-        setTimeout(() => {
-          // 残りの件数を計算（上限は500件）
-          const remainingItems = 500 - items.length;
-          const itemsToLoad = Math.min(remainingItems, pageSize);
+      setIsLoading(true);
+      setTimeout(() => {
+        // 残りの件数を計算（上限は500件）
+        const remainingItems = 500 - items.length;
+        const itemsToLoad = Math.min(remainingItems, pageSize);
 
-          if (itemsToLoad > 0) {
-            setItems((prev) => [...prev, ...generateItems(prev.length, itemsToLoad)]);
-          }
-          setIsLoading(false);
-        }, 1000);
-      }
-    }, [loadingMode, pageSize, items.length]);
+        if (itemsToLoad > 0) {
+          setItems((prev) => [...prev, ...generateItems(prev.length, itemsToLoad)]);
+        }
+        setIsLoading(false);
+      }, 1000);
+    }, [pageSize, items.length]);
 
-    const handleLoadAll = useCallback(() => {
-      if (loadingMode === 'all' && !isLoadingAll) {
+    return (
+      <DualListBox2
+        loading={isLoading}
+        included={included}
+        excluded={excluded}
+        pageSize={pageSize}
+        pageSizeOptions={[10, 50, 100, 200]}
+        loadingMode="infinite-loading"
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([]);
+          setTimeout(() => {
+            setItems(generateItems(0, newPageSize));
+          }, 500);
+        }}
+        onIncludedChange={(ids: string[]) =>
+          setIncluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids: string[]) =>
+          setExcluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onLoadMore={handleLoadMore}
+        renderFilteredCount={(filteredCount, totalCount) => (
+          <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
+            {filteredCount !== totalCount
+              ? `${filteredCount} / ${totalCount}件`
+              : `${totalCount}件`}
+          </div>
+        )}
+      >
+        {items.map((item) => (
+          <DualListBox2Item
+            key={item.id}
+            id={item.id}
+          >
+            {item.label}
+          </DualListBox2Item>
+        ))}
+      </DualListBox2>
+    );
+  },
+};
+
+/**
+ * #### Bulk loading
+ * 
+ * このモードでは、一度にすべてのデータ（上限500件まで）を読み込みます。
+ * 
+ * 特徴:
+ * - コンポーネントのマウント時に全データの読み込みが開始されます
+ * - データの総量が既知で管理可能な場合に適しています
+ * - ユーザーの待ち時間を最小限にし、スクロール操作がスムーズです
+ * - 追加の読み込み待ちがないためUXが向上します
+ */
+export const BulkLoading: StoryObj<typeof DualListBox2> = {
+  render: function BulkLoadingStory() {
+    const [items, setItems] = useState<Item[]>([]);
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingAll, setIsLoadingAll] = useState(false);
+    const [pageSize, setPageSize] = useState(50);
+
+    // 初期データ読み込み
+    useEffect(() => {
+      setIsLoading(true);
+      setTimeout(() => {
+        setItems(generateItems(0, pageSize));
+        setIsLoading(false);
+
+        // Allモードでは、初期データ読み込み後に残りのデータも読み込む
         setIsLoadingAll(true);
         setTimeout(() => {
           // 一度に全部（最大500件まで）読み込む
-          const remainingItems = 500 - items.length;
+          const remainingItems = 500 - pageSize;
           if (remainingItems > 0) {
             setItems((prev) => [...prev, ...generateItems(prev.length, remainingItems)]);
           }
           setIsLoadingAll(false);
         }, 2000);
-      }
-    }, [loadingMode, isLoadingAll, items.length]);
-
-    useEffect(() => {
-      if (loadingMode === 'all') {
-        handleLoadAll();
-      }
-    }, [loadingMode, handleLoadAll]);
+      }, 500);
+    }, [pageSize]);
 
     return (
-      <>
-        <div style={{ marginBottom: '16px' }}>
-          <Checkbox
-            checked={loadingMode === 'infinite'}
-            onChange={() => setLoadingMode('infinite')}
-          >
-            Infinite モード
-          </Checkbox>
-          <Checkbox
-            checked={loadingMode === 'all'}
-            onChange={() => setLoadingMode('all')}
-          >
-            All モード
-          </Checkbox>
-        </div>
+      <DualListBox2
+        loading={isLoading}
+        isLoadingAll={isLoadingAll}
+        included={included}
+        excluded={excluded}
+        pageSize={pageSize}
+        pageSizeOptions={[10, 50, 100, 200]}
+        loadingMode="bulk-loading"
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+          setItems([]);
+          // リセット後に再読み込み
+          setIsLoading(true);
+          setTimeout(() => {
+            setItems(generateItems(0, newPageSize));
+            setIsLoading(false);
 
-        <DualListBox2
-          loading={isLoading}
-          isLoadingAll={isLoadingAll}
-          included={included}
-          excluded={excluded}
-          pageSize={pageSize}
-          pageSizeOptions={[10, 50, 100, 200]}
-          loadingMode={loadingMode}
-          onPageSizeChange={(newPageSize) => {
-            setPageSize(newPageSize);
-            setItems([]);
+            // 残りのデータも読み込む
+            setIsLoadingAll(true);
             setTimeout(() => {
-              setItems(generateItems(0, newPageSize));
-            }, 500);
-          }}
-          onIncludedChange={(ids: string[]) =>
-            setIncluded(items.filter((item) => ids.includes(item.id)))
-          }
-          onExcludedChange={(ids: string[]) =>
-            setExcluded(items.filter((item) => ids.includes(item.id)))
-          }
-          onLoadMore={handleLoadMore}
-          renderFilteredCount={(filteredCount, totalCount) => (
-            <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
-              {filteredCount !== totalCount
-                ? `${filteredCount} / ${totalCount}件`
-                : `${totalCount}件`}
-            </div>
-          )}
-        >
-          {items.map((item) => (
-            <DualListBox2Item
-              key={item.id}
-              id={item.id}
-            >
-              {item.label}
-            </DualListBox2Item>
-          ))}
-        </DualListBox2>
-      </>
+              const remainingItems = 500 - newPageSize;
+              if (remainingItems > 0) {
+                setItems((prev) => [...prev, ...generateItems(prev.length, remainingItems)]);
+              }
+              setIsLoadingAll(false);
+            }, 2000);
+          }, 500);
+        }}
+        onIncludedChange={(ids: string[]) =>
+          setIncluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids: string[]) =>
+          setExcluded(items.filter((item) => ids.includes(item.id)))
+        }
+        renderFilteredCount={(filteredCount, totalCount) => (
+          <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
+            {filteredCount !== totalCount
+              ? `${filteredCount} / ${totalCount}件`
+              : `${totalCount}件`}
+          </div>
+        )}
+      >
+        {items.map((item) => (
+          <DualListBox2Item
+            key={item.id}
+            id={item.id}
+          >
+            {item.label}
+          </DualListBox2Item>
+        ))}
+      </DualListBox2>
     );
   },
 };
 
 /**
- * #### セクションとLoadingMode
+ * #### Bulk loading accordion
  * 
- * セクションの場合でも、infiniteモードとallモードを使用できます。
- * - infinite: ページサイズ単位で追加データを読み込みます
- * - all: ページサイズを無視して一度に全データ（セクションごとに最大250件まで）を読み込みます
- * 
- * 各セクションのデータ読み込みはセクションが選択されたときに行われます。
- */
-export const SectionWithLoadingModes: StoryObj<typeof DualListBox2> = {
-  render: () => {
-    const [items, setItems] = useState<Item[]>([
-      { id: "section1-1", groupName: "セクション1", label: "リストアイテム1-1" },
-      { id: "section1-2", groupName: "セクション1", label: "リストアイテム1-2" },
-      { id: "section2-1", groupName: "セクション2", label: "リストアイテム2-1" },
-      { id: "section2-2", groupName: "セクション2", label: "リストアイテム2-2" },
-    ]);
-
-    const [included, setIncluded] = useState<Item[]>([]);
-    const [excluded, setExcluded] = useState<Item[]>([]);
-    const [currentSection, setCurrentSection] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingAll, setIsLoadingAll] = useState(false);
-    const [pageSize, setPageSize] = useState(50);
-    const [loadingMode, setLoadingMode] = useState<'infinite' | 'all'>('infinite');
-    const [loadedSections, setLoadedSections] = useState<Record<string, number>>({
-      "セクション1": 2,
-      "セクション2": 2,
-    });
-
-    useEffect(() => {
-      if (currentSection && loadingMode === 'all' && !isLoadingAll) {
-        setIsLoadingAll(true);
-        setTimeout(() => {
-          const currentCount = loadedSections[currentSection] || 0;
-
-          // セクションごとの上限は250件（ページサイズを無視して一括読み込み）
-          if (currentCount < 250) {
-            // ページサイズを無視して残りの件数を計算
-            const remainingItems = 250 - currentCount;
-
-            if (remainingItems > 0) {
-              const newItems = generateItems(currentCount, remainingItems).map(item => ({
-                ...item,
-                id: `${currentSection}-${currentCount + item.id.split('-')[1]}`,
-                groupName: currentSection,
-                label: `${currentSection}のアイテム ${parseInt(item.id.split('-')[1]) + currentCount}`
-              }));
-
-              setItems(prev => [...prev, ...newItems]);
-              setLoadedSections(prev => ({
-                ...prev,
-                [currentSection]: currentCount + remainingItems
-              }));
-            }
-          }
-          setIsLoadingAll(false);
-        }, 2000);
-      }
-    }, [currentSection, loadingMode, isLoadingAll, loadedSections]);
-
-    const handleLoadMore = useCallback(() => {
-      console.log('SectionWithLoadingModes: loadMore called, mode:', loadingMode, 'section:', currentSection); // デバッグ用
-      if (!currentSection || isLoading || isLoadingAll) return;
-
-      // セクションごとのアイテム数をカウント
-      const currentCount = loadedSections[currentSection] || 0;
-
-      // セクションごとの上限は250件（2セクションで合計500件）
-      if (currentCount >= 250) return;
-
-      if (loadingMode === 'infinite') {
-        setIsLoading(true);
-        setTimeout(() => {
-          // 残りの件数を計算（セクションごとの上限は250件）
-          const remainingItems = 250 - currentCount;
-          const itemsToLoad = Math.min(remainingItems, pageSize);
-
-          if (itemsToLoad > 0) {
-            const newItems = generateItems(currentCount, itemsToLoad).map(item => ({
-              ...item,
-              id: `${currentSection}-${currentCount + item.id.split('-')[1]}`,
-              groupName: currentSection,
-              label: `${currentSection}のアイテム ${parseInt(item.id.split('-')[1]) + currentCount}`
-            }));
-
-            setItems(prev => [...prev, ...newItems]);
-            setLoadedSections(prev => ({
-              ...prev,
-              [currentSection]: currentCount + itemsToLoad
-            }));
-          }
-          setIsLoading(false);
-        }, 1000);
-      }
-    }, [currentSection, isLoading, isLoadingAll, loadingMode, pageSize, loadedSections]);
-
-    return (
-      <>
-        <div style={{ marginBottom: '16px' }}>
-          <Checkbox
-            checked={loadingMode === 'infinite'}
-            onChange={() => setLoadingMode('infinite')}
-          >
-            Infinite モード
-          </Checkbox>
-          <Checkbox
-            checked={loadingMode === 'all'}
-            onChange={() => setLoadingMode('all')}
-          >
-            All モード
-          </Checkbox>
-        </div>
-
-        <DualListBox2
-          loading={isLoading}
-          isLoadingAll={isLoadingAll}
-          included={included}
-          excluded={excluded}
-          pageSize={pageSize}
-          pageSizeOptions={[10, 50, 100, 200]}
-          loadingMode={loadingMode}
-          onPageSizeChange={(newPageSize) => {
-            setPageSize(newPageSize);
-          }}
-          onIncludedChange={(ids: string[]) =>
-            setIncluded(items.filter((item) => ids.includes(item.id)))
-          }
-          onExcludedChange={(ids: string[]) =>
-            setExcluded(items.filter((item) => ids.includes(item.id)))
-          }
-          onActiveSectionChange={(section) => setCurrentSection(section)}
-          onLoadMore={handleLoadMore}
-          renderFilteredCount={(filteredCount, totalCount) => (
-            <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
-              {filteredCount !== totalCount
-                ? `${filteredCount} / ${totalCount}件`
-                : `${totalCount}件`}
-            </div>
-          )}
-        >
-          {toGroupedItems(items).map(
-            (group) =>
-              group.groupName && (
-                <DualListBox2Section
-                  key={group.groupName}
-                  label={group.groupName}
-                >
-                  {group.items.map((item) => (
-                    <DualListBox2Item key={item.id} id={item.id}>
-                      {item.label}
-                    </DualListBox2Item>
-                  ))}
-                </DualListBox2Section>
-              ),
-          )}
-        </DualListBox2>
-      </>
-    );
-  },
-};
-
-/**
- * #### 事前読み込みモード（allモード）のサンプル
- * 
- * allモードでは、アコーディオンを開く前にデータが事前に読み込まれます：
+ * Bulk loadingモードでは、アコーディオンを開く前にデータが事前に読み込まれます：
  * 
  * 1. コンポーネントのマウント時に各アコーディオンのデータ読み込みが開始されます
  * 2. 読み込み中は各アコーディオンにローディング状態が表示されます
@@ -752,8 +644,8 @@ export const SectionWithLoadingModes: StoryObj<typeof DualListBox2> = {
  * - ユーザーの待ち時間を最小限にしたい場合
  * - ネットワークの往復を減らしたい場合
  */
-export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
-  render: function PreloadedAccordionStory() {
+export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
+  render: function BulkLoadingAccordionStory() {
     const [items, setItems] = useState<Item[]>([]);
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
@@ -811,7 +703,7 @@ export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
         included={included}
         excluded={excluded}
         pageSize={pageSize}
-        loadingMode="all"
+        loadingMode="bulk-loading"
         onIncludedChange={(ids: string[]) =>
           setIncluded(items.filter((item) => ids.includes(item.id)))
         }
@@ -823,7 +715,7 @@ export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
           <DualListBox2Accordion
             key={group.id}
             label={group.name}
-            loadingMode="all"
+            loadingMode="bulk-loading"
             disableInclude={!loadedGroups.includes(group.id)}
             disableExclude={!loadedGroups.includes(group.id)}
           >
@@ -842,7 +734,7 @@ export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
 };
 
 /**
- * #### アコーディオンのInfiniteモード
+ * #### Infinite loading accordion
  * 
  * このモードでは、アコーディオンをクリックしたときにデータの読み込みが開始されます。
  * スクロールに応じて、ページサイズ単位で追加データを読み込みます。
@@ -852,8 +744,8 @@ export const PreloadedAccordion: StoryObj<typeof DualListBox2> = {
  * - 必要に応じて段階的にデータを読み込むため、初期表示が速くなります
  * - 各アコーディオンのデータ読み込みは独立して行われます
  */
-export const AccordionInfiniteMode: StoryObj<typeof DualListBox2> = {
-  render: function AccordionInfiniteModeStory() {
+export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
+  render: function InfiniteLoadingAccordionStory() {
     const [items, setItems] = useState<Item[]>([]);
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
@@ -934,7 +826,7 @@ export const AccordionInfiniteMode: StoryObj<typeof DualListBox2> = {
         excluded={excluded}
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
-        loadingMode="infinite"
+        loadingMode="infinite-loading"
         onPageSizeChange={(newPageSize) => {
           setPageSize(newPageSize);
           // リセット
