@@ -14,7 +14,6 @@ import {
   ContextMenu2SwitchItem,
 } from "../ContextMenu2";
 import Checkbox from "../Checkbox";
-import * as styled from "./styled";
 
 const meta = {
   title: "Components/Data Display/DualListBox2",
@@ -248,7 +247,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -551,7 +550,6 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isLoadingAll, setIsLoadingAll] = useState(false);
     const [pageSize, setPageSize] = useState(50);
 
     // 初期データ読み込み
@@ -560,24 +558,12 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
       setTimeout(() => {
         setItems(generateItems(0, pageSize));
         setIsLoading(false);
-
-        // Allモードでは、初期データ読み込み後に残りのデータも読み込む
-        setIsLoadingAll(true);
-        setTimeout(() => {
-          // 一度に全部（最大500件まで）読み込む
-          const remainingItems = 500 - pageSize;
-          if (remainingItems > 0) {
-            setItems((prev) => [...prev, ...generateItems(prev.length, remainingItems)]);
-          }
-          setIsLoadingAll(false);
-        }, 2000);
       }, 500);
     }, [pageSize]);
 
     return (
       <DualListBox2
         loading={isLoading}
-        isLoadingAll={isLoadingAll}
         included={included}
         excluded={excluded}
         pageSize={pageSize}
@@ -586,21 +572,8 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
         onPageSizeChange={(newPageSize) => {
           setPageSize(newPageSize);
           setItems([]);
-          // リセット後に再読み込み
-          setIsLoading(true);
           setTimeout(() => {
             setItems(generateItems(0, newPageSize));
-            setIsLoading(false);
-
-            // 残りのデータも読み込む
-            setIsLoadingAll(true);
-            setTimeout(() => {
-              const remainingItems = 500 - newPageSize;
-              if (remainingItems > 0) {
-                setItems((prev) => [...prev, ...generateItems(prev.length, remainingItems)]);
-              }
-              setIsLoadingAll(false);
-            }, 2000);
           }, 500);
         }}
         onIncludedChange={(ids: string[]) =>

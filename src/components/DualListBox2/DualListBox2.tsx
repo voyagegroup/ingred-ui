@@ -87,10 +87,6 @@ type DualListBox2Props = {
    **/
   loadingMode?: LoadingMode;
   /**
-   * 一括読み込み時のローディング状態
-   **/
-  isLoadingAll?: boolean;
-  /**
    * 検索結果の件数表示のカスタマイズ関数
    **/
   renderFilteredCount?: (filteredCount: number, totalCount: number) => ReactNode;
@@ -198,7 +194,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       pageSizeOptions = [10, 50, 100, 200],
       onPageSizeChange,
       loadingMode = 'infinite-loading',
-      isLoadingAll,
       renderFilteredCount,
     },
     ref,

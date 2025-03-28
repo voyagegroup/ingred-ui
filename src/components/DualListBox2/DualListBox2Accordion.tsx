@@ -132,7 +132,7 @@ export const DualListBox2Accordion = React.forwardRef<HTMLDivElement, DualListBo
             <Icon name="arrow_down" color={colors.basic[900]} />
           </styled.AccordionIcon>
         </styled.AccordionHeader>
-        {isOpen && children}
+        {isOpen && <div ref={ref}>{children}</div>}
       </>
     );
   }
