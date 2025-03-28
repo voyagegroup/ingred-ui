@@ -371,8 +371,8 @@ export const Section: StoryObj<typeof DualListBox2> = {
       },
     ]);
 
-    const [included, setIncluded] = useState<Item[]>([items[0]]);
-    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
     const [currentSection, setCurrentSection] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [pageSize, setPageSize] = useState(50);
