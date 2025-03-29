@@ -338,14 +338,12 @@ export const Either: StoryObj<typeof DualListBox2> = {
 };
 
 /**
- * #### 選択候補がセクションで分かれているタイプ
+ * #### Section with Infinite Loading
  *
- * 件数の上限が不明で都度サーバへ問い合わせる必要がある場合に利用します。
- * 検索は各セクションに移動後に使えます。
- *
- * 任意のセクション選択中は、その他のセクションは非表示となります。
+ * セクション機能を持つDualListBox2のサンプルです。
+ * infinite-loadingモードでは、スクロールに応じて段階的にデータを読み込みます。
  */
-export const Section: StoryObj<typeof DualListBox2> = {
+export const SectionWithInfiniteLoading: StoryObj<typeof DualListBox2> = {
   render: () => {
     const [items, setItems] = useState<Item[]>(() => {
       // セクション1のアイテムを生成（10件）
@@ -378,27 +376,16 @@ export const Section: StoryObj<typeof DualListBox2> = {
         excluded={excluded}
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
-        menuButtons={
-          <>
-            <ContextMenu2ButtonItem
-              onClick={() => {
-                alert("clicked");
-              }}
-            >
-              好きなボタンを
-            </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => { }}>
-              入れて使う
-            </ContextMenu2SwitchItem>
-          </>
-        }
+        loadingMode="infinite-loading"
         onPageSizeChange={(newPageSize) => {
           setPageSize(newPageSize);
           setItems([
-            // 初期アイテムを保持
             ...items.slice(0, 4),
-            // 新しいページサイズに基づいて追加アイテムを生成
-            ...generateItems(4, newPageSize - 4),
+            ...generateItems(4, newPageSize - 4).map(item => ({
+              ...item,
+              groupName: item.id.includes('0') ? "セクション1" : "セクション2",
+              label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+            })),
           ]);
         }}
         onIncludedChange={(ids: string[]) =>
@@ -414,11 +401,78 @@ export const Section: StoryObj<typeof DualListBox2> = {
           setTimeout(() => {
             setItems((prev) => [
               ...prev,
-              ...generateItems(prev.length, pageSize),
+              ...generateItems(prev.length, pageSize).map(item => ({
+                ...item,
+                groupName: currentSection,
+                label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+              })),
             ]);
             setIsLoading(false);
           }, 1000);
         }}
+      >
+        {toGroupedItems(items).map(
+          (group) =>
+            group.groupName && (
+              <DualListBox2Section
+                key={group.groupName}
+                label={group.groupName}
+              >
+                {group.items.map((item) => (
+                  <DualListBox2Item key={item.id} id={item.id}>
+                    {item.label}
+                  </DualListBox2Item>
+                ))}
+              </DualListBox2Section>
+            ),
+        )}
+      </DualListBox2>
+    );
+  },
+};
+
+/**
+ * #### Section with Bulk Loading
+ *
+ * セクション機能を持つDualListBox2のサンプルです。
+ * bulk-loadingモードでは、一度に全てのデータを読み込みます。
+ */
+export const SectionWithBulkLoading: StoryObj<typeof DualListBox2> = {
+  render: () => {
+    const [items, setItems] = useState<Item[]>(() => {
+      // 初期データとして500件を生成
+      const allItems = generateItems(0, 500).map(item => ({
+        ...item,
+        groupName: item.id.includes('0') ? "セクション1" : "セクション2",
+        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+      }));
+      return allItems;
+    });
+
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
+    const [currentSection, setCurrentSection] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [pageSize, setPageSize] = useState(50);
+
+    return (
+      <DualListBox2
+        loading={isLoading}
+        included={included}
+        excluded={excluded}
+        pageSize={pageSize}
+        pageSizeOptions={[10, 50, 100, 200]}
+        loadingMode="bulk-loading"
+        onPageSizeChange={(newPageSize) => {
+          setPageSize(newPageSize);
+        }}
+        onIncludedChange={(ids: string[]) =>
+          setIncluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onExcludedChange={(ids: string[]) =>
+          setExcluded(items.filter((item) => ids.includes(item.id)))
+        }
+        onActiveSectionChange={(section) => setCurrentSection(section)}
       >
         {toGroupedItems(items).map(
           (group) =>
