@@ -15,6 +15,335 @@ import {
 } from "../ContextMenu2";
 import Checkbox from "../Checkbox";
 
+// グループ定義型
+type Group = {
+  id: string;
+  name: string;
+  startIndex: number;
+};
+
+/**
+ * アイテム生成関数
+ */
+const generateItems = (
+  startIndex: number,
+  count: number,
+  options?: {
+    groupName?: string;
+    includeSearchableItems?: boolean;
+    searchTermProbability?: number;
+    searchTerm?: string;
+  },
+): Item[] => {
+  const {
+    groupName,
+    includeSearchableItems = false,
+    searchTermProbability = 0.4,
+    searchTerm = "8",
+  } = options || {};
+
+  return Array.from({ length: count }, (_, i) => {
+    const index = startIndex + i;
+    const itemId = `item-${index}`;
+
+    // 検索テスト用にsearchTermを含むアイテムを生成
+    let label = "";
+    if (includeSearchableItems && Math.random() < searchTermProbability) {
+      label = groupName
+        ? `${groupName}のアイテム${searchTerm}${i + 1}`
+        : `アイテム${searchTerm}${i + 1}`;
+    } else {
+      label = groupName ? `${groupName}のアイテム${i + 1}` : `アイテム${i + 1}`;
+    }
+
+    return {
+      id: itemId,
+      label,
+      ...(groupName && { groupName }),
+    };
+  });
+};
+
+/**
+ * データローディングのカスタムフック
+ * 複数のストーリーで共通して使用するローディング機能を提供
+ */
+const useDataLoading = (options: {
+  initialPageSize: number;
+  maxItemsPerGroup?: number;
+  delayTime?: number;
+}) => {
+  const {
+    initialPageSize = 50,
+    maxItemsPerGroup = 250,
+    delayTime = 1000,
+  } = options;
+
+  const [items, setItems] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [pageSize, setPageSize] = useState(initialPageSize);
+  const [searchText, setSearchText] = useState("");
+
+  // 検索条件に一致するアイテムをフィルタリング
+  const filteredItems = useMemo(() => {
+    if (!searchText) return items;
+    return items.filter((item) =>
+      item.label.toLowerCase().includes(searchText.toLowerCase()),
+    );
+  }, [items, searchText]);
+
+  // 指定した開始位置から指定数のアイテムを読み込む
+  const loadItems = useCallback(
+    (
+      startIndex: number,
+      count: number,
+      options?: {
+        groupName?: string;
+        replace?: boolean;
+        includeSearchableItems?: boolean;
+      },
+    ) => {
+      return new Promise<Item[]>((resolve) => {
+        const newItems = generateItems(startIndex, count, {
+          groupName: options?.groupName,
+          includeSearchableItems: options?.includeSearchableItems ?? true,
+        });
+
+        setIsLoading(true);
+
+        setTimeout(() => {
+          setItems((prev) =>
+            options?.replace ? newItems : [...prev, ...newItems],
+          );
+          setIsLoading(false);
+          resolve(newItems);
+        }, delayTime);
+      });
+    },
+    [delayTime],
+  );
+
+  // ページサイズ変更処理
+  const handlePageSizeChange = useCallback(
+    (newPageSize: number) => {
+      setPageSize(newPageSize);
+      setItems([]);
+
+      // 必要に応じて初期データを再読み込み
+      setIsLoading(true);
+      setTimeout(() => {
+        setItems(
+          generateItems(0, newPageSize, { includeSearchableItems: true }),
+        );
+        setIsLoading(false);
+      }, delayTime);
+    },
+    [delayTime],
+  );
+
+  // 検索処理
+  const handleSearch = useCallback((text: string) => {
+    setSearchText(text);
+  }, []);
+
+  return {
+    items,
+    setItems,
+    filteredItems,
+    isLoading,
+    setIsLoading,
+    pageSize,
+    setPageSize,
+    searchText,
+    setSearchText,
+    loadItems,
+    handlePageSizeChange,
+    handleSearch,
+    maxItemsPerGroup,
+  };
+};
+
+/**
+ * アコーディオン用のカスタムフック
+ * グループ管理とグループ特有のローディングロジックを提供
+ */
+const useAccordionGroups = (dataLoading: ReturnType<typeof useDataLoading>) => {
+  const {
+    items,
+    setItems,
+    isLoading,
+    setIsLoading,
+    pageSize,
+    loadItems,
+    maxItemsPerGroup,
+  } = dataLoading;
+
+  const [loadedGroups, setLoadedGroups] = useState<string[]>([]);
+  const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
+
+  // アコーディオンのグループ定義
+  const groups: Group[] = useMemo(
+    () => [
+      { id: "group1", name: "アコーディオン1", startIndex: 0 },
+      { id: "group2", name: "アコーディオン2", startIndex: 1000 },
+    ],
+    [],
+  );
+
+  // 指定したグループの全データを読み込む
+  const loadFullGroupData = useCallback(
+    async (groupId: string) => {
+      const group = groups.find((g) => g.id === groupId);
+      if (!group || loadedGroups.includes(groupId)) return;
+
+      setIsLoading(true);
+
+      // 既存のグループデータを削除
+      setItems((prev) => prev.filter((item) => item.groupName !== group.name));
+
+      // 新しいグループデータを読み込む
+      await loadItems(group.startIndex, maxItemsPerGroup || 250, {
+        groupName: group.name,
+        includeSearchableItems: true,
+      });
+
+      setLoadedGroups((prev) =>
+        prev.includes(groupId) ? prev : [...prev, groupId],
+      );
+
+      setIsLoading(false);
+    },
+    [groups, loadedGroups, loadItems, maxItemsPerGroup, setIsLoading, setItems],
+  );
+
+  // 全グループのデータを読み込む
+  const loadAllGroupsData = useCallback(async () => {
+    setIsLoading(true);
+
+    const unloadedGroups = groups.filter(
+      (group) => !loadedGroups.includes(group.id),
+    );
+    const promises = unloadedGroups.map((group) => loadFullGroupData(group.id));
+
+    await Promise.all(promises);
+    setIsLoading(false);
+  }, [groups, loadedGroups, loadFullGroupData, setIsLoading]);
+
+  // アコーディオンを開いたときのハンドラ
+  const handleAccordionOpen = useCallback(
+    (groupId: string) => {
+      if (loadedGroups.includes(groupId) || loadingGroup) return;
+
+      const group = groups.find((g) => g.id === groupId);
+      if (!group) return;
+
+      setLoadingGroup(groupId);
+      setIsLoading(true);
+
+      loadItems(group.startIndex, pageSize, {
+        groupName: group.name,
+        includeSearchableItems: true,
+      }).then(() => {
+        setLoadedGroups((prev) => [...prev, groupId]);
+        setLoadingGroup(null);
+      });
+    },
+    [loadedGroups, loadingGroup, groups, pageSize, loadItems, setIsLoading],
+  );
+
+  // 追加データの読み込み
+  const handleLoadMore = useCallback(() => {
+    if (isLoading || loadingGroup || loadedGroups.length === 0) return;
+
+    // 現在開いているグループを取得
+    const currentGroupId = loadedGroups[loadedGroups.length - 1];
+    const currentGroup = groups.find((g) => g.id === currentGroupId);
+    if (!currentGroup) return;
+
+    // グループ内のアイテム数をカウント
+    const groupItemCount = items.filter(
+      (item) => item.groupName === currentGroup.name,
+    ).length;
+
+    // グループごとの上限チェック
+    if (groupItemCount >= (maxItemsPerGroup || 250)) return;
+
+    setIsLoading(true);
+
+    const remainingItems = (maxItemsPerGroup || 250) - groupItemCount;
+    const itemsToLoad = Math.min(remainingItems, pageSize);
+
+    if (itemsToLoad > 0) {
+      loadItems(currentGroup.startIndex + groupItemCount, itemsToLoad, {
+        groupName: currentGroup.name,
+        includeSearchableItems: true,
+      });
+    } else {
+      setIsLoading(false);
+    }
+  }, [
+    isLoading,
+    loadingGroup,
+    loadedGroups,
+    groups,
+    items,
+    pageSize,
+    maxItemsPerGroup,
+    loadItems,
+    setIsLoading,
+  ]);
+
+  // 検索時に全グループデータを読み込む
+  const handleSearch = useCallback(
+    async (text: string) => {
+      dataLoading.handleSearch(text);
+
+      // 検索時に未読み込みのグループがあれば全て読み込む
+      if (text && groups.some((group) => !loadedGroups.includes(group.id))) {
+        await loadAllGroupsData();
+      }
+    },
+    [dataLoading, groups, loadedGroups, loadAllGroupsData],
+  );
+
+  return {
+    groups,
+    loadedGroups,
+    setLoadedGroups,
+    loadingGroup,
+    handleAccordionOpen,
+    handleLoadMore,
+    handleSearch,
+    loadFullGroupData,
+    loadAllGroupsData,
+  };
+};
+
+/**
+ * フィルタリングされたアイテム数の表示コンポーネント
+ * 一貫したスタイルを提供
+ */
+const FilteredCountDisplay = ({
+  filteredCount,
+  totalCount,
+}: {
+  filteredCount: number;
+  totalCount: number;
+}) => (
+  <div
+    style={{
+      fontSize: "13px",
+      lineHeight: "16px",
+      display: "flex",
+      color: "#13284B",
+    }}
+  >
+    {filteredCount !== totalCount
+      ? `${filteredCount} / ${totalCount}件`
+      : `${totalCount}件`}
+  </div>
+);
+
 const meta = {
   title: "Components/Data Display/DualListBox2",
   component: DualListBox2,
@@ -22,14 +351,6 @@ const meta = {
 } satisfies Meta<typeof DualListBox2>;
 
 export default meta;
-
-const generateItems = (start: number, count: number, groupName?: string) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: `item-${start + i}`,
-    label: `アイテム ${start + i + 1}`,
-    ...(groupName ? { groupName } : {}),
-  }));
-};
 
 /**
  * #### ベーシックなタイプ
@@ -113,13 +434,17 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
     const [loadedGroups, setLoadedGroups] = useState<string[]>([]);
     const [pageSize, setPageSize] = useState(50);
     const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
-    const [loadingMode, setLoadingMode] = useState<LoadingMode>('infinite-loading');
+    const [loadingMode, setLoadingMode] =
+      useState<LoadingMode>("infinite-loading");
 
     // アコーディオンのグループ定義
-    const groups = useMemo(() => [
-      { id: "group1", name: "アコーディオン1" },
-      { id: "group2", name: "アコーディオン2" },
-    ], []);
+    const groups = useMemo(
+      () => [
+        { id: "group1", name: "アコーディオン1" },
+        { id: "group2", name: "アコーディオン2" },
+      ],
+      [],
+    );
 
     const handleAccordionOpen = useCallback(
       (groupName: string) => {
@@ -175,12 +500,16 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
           <>
             <ContextMenu2ButtonItem
               onClick={() => {
-                setLoadingMode(loadingMode === 'infinite-loading' ? 'bulk-loading' : 'infinite-loading');
+                setLoadingMode(
+                  loadingMode === "infinite-loading"
+                    ? "bulk-loading"
+                    : "infinite-loading",
+                );
               }}
             >
               {`Loading Mode: ${loadingMode}`}
             </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => { }}>
+            <ContextMenu2SwitchItem disabled onChange={() => {}}>
               入れて使う
             </ContextMenu2SwitchItem>
           </>
@@ -204,8 +533,8 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             label={group.name}
             disableInclude={!loadedGroups.includes(group.id)}
             disableExclude={!loadedGroups.includes(group.id)}
-            onOpen={() => handleAccordionOpen(group.id)}
             loadingMode={loadingMode}
+            onOpen={() => handleAccordionOpen(group.id)}
           >
             {items
               .filter((item) => item.groupName === group.id)
@@ -247,7 +576,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
@@ -287,7 +616,7 @@ export const Either: StoryObj<typeof DualListBox2> = {
               >
                 好きなボタンを
               </ContextMenu2ButtonItem>
-              <ContextMenu2SwitchItem disabled onChange={() => { }}>
+              <ContextMenu2SwitchItem disabled onChange={() => {}}>
                 入れて使う
               </ContextMenu2SwitchItem>
             </>
@@ -303,7 +632,9 @@ export const Either: StoryObj<typeof DualListBox2> = {
             setTimeout(() => {
               setItems((prev) => [
                 ...prev,
-                ...generateItems(prev.length + 1, 10, "アコーディオン2"),
+                ...generateItems(prev.length + 1, 10, {
+                  groupName: "アコーディオン2",
+                }),
               ]);
               setIsLoading(false);
             }, 1000);
@@ -347,17 +678,17 @@ export const SectionWithInfiniteLoading: StoryObj<typeof DualListBox2> = {
   render: () => {
     const [items, setItems] = useState<Item[]>(() => {
       // セクション1のアイテムを生成（10件）
-      const section1Items = generateItems(0, 10).map(item => ({
+      const section1Items = generateItems(0, 10).map((item) => ({
         ...item,
         groupName: "セクション1",
-        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+        label: `リストアイテム${parseInt(item.id.split("-")[1]) + 1}`,
       }));
 
       // セクション2のアイテムを生成（10件）
-      const section2Items = generateItems(10, 10).map(item => ({
+      const section2Items = generateItems(10, 10).map((item) => ({
         ...item,
         groupName: "セクション2",
-        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+        label: `リストアイテム${parseInt(item.id.split("-")[1]) + 1}`,
       }));
 
       return [...section1Items, ...section2Items];
@@ -381,10 +712,10 @@ export const SectionWithInfiniteLoading: StoryObj<typeof DualListBox2> = {
           setPageSize(newPageSize);
           setItems([
             ...items.slice(0, 4),
-            ...generateItems(4, newPageSize - 4).map(item => ({
+            ...generateItems(4, newPageSize - 4).map((item) => ({
               ...item,
-              groupName: item.id.includes('0') ? "セクション1" : "セクション2",
-              label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+              groupName: item.id.includes("0") ? "セクション1" : "セクション2",
+              label: `リストアイテム${parseInt(item.id.split("-")[1]) + 1}`,
             })),
           ]);
         }}
@@ -401,10 +732,10 @@ export const SectionWithInfiniteLoading: StoryObj<typeof DualListBox2> = {
           setTimeout(() => {
             setItems((prev) => [
               ...prev,
-              ...generateItems(prev.length, pageSize).map(item => ({
+              ...generateItems(prev.length, pageSize).map((item) => ({
                 ...item,
                 groupName: currentSection,
-                label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+                label: `リストアイテム${parseInt(item.id.split("-")[1]) + 1}`,
               })),
             ]);
             setIsLoading(false);
@@ -439,19 +770,22 @@ export const SectionWithInfiniteLoading: StoryObj<typeof DualListBox2> = {
  */
 export const SectionWithBulkLoading: StoryObj<typeof DualListBox2> = {
   render: () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [items, setItems] = useState<Item[]>(() => {
       // 初期データとして500件を生成
-      const allItems = generateItems(0, 500).map(item => ({
+      const allItems = generateItems(0, 500).map((item) => ({
         ...item,
-        groupName: item.id.includes('0') ? "セクション1" : "セクション2",
-        label: `リストアイテム${parseInt(item.id.split('-')[1]) + 1}`,
+        groupName: item.id.includes("0") ? "セクション1" : "セクション2",
+        label: `リストアイテム${parseInt(item.id.split("-")[1]) + 1}`,
       }));
       return allItems;
     });
 
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [currentSection, setCurrentSection] = useState<string | null>(null);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [isLoading, setIsLoading] = useState(false);
     const [pageSize, setPageSize] = useState(50);
 
@@ -496,9 +830,9 @@ export const SectionWithBulkLoading: StoryObj<typeof DualListBox2> = {
 
 /**
  * #### Infinite loading
- * 
+ *
  * このモードでは、スクロールに応じてページサイズ単位で追加データを読み込みます。
- * 
+ *
  * 特徴:
  * - 初期表示が速く、必要になったときにのみデータを読み込みます
  * - ページサイズ単位で段階的にデータを取得するため、メモリ効率が良いです
@@ -521,6 +855,21 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
       }, 500);
     }, [pageSize]);
 
+    // 検索実行時、全データ読み込み
+    const handleSearchWithFullLoad = useCallback(
+      async (text: string) => {
+        if (text && items.length < 500) {
+          setIsLoading(true);
+          setTimeout(() => {
+            // 全データ（500件）を一度に読み込む
+            setItems(generateItems(0, 500, { includeSearchableItems: true }));
+            setIsLoading(false);
+          }, 1000);
+        }
+      },
+      [items.length],
+    );
+
     const handleLoadMore = useCallback(() => {
       // すでに500件に達していたら何もしない
       if (items.length >= 500) return;
@@ -532,7 +881,10 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
         const itemsToLoad = Math.min(remainingItems, pageSize);
 
         if (itemsToLoad > 0) {
-          setItems((prev) => [...prev, ...generateItems(prev.length, itemsToLoad)]);
+          setItems((prev) => [
+            ...prev,
+            ...generateItems(prev.length, itemsToLoad),
+          ]);
         }
         setIsLoading(false);
       }, 1000);
@@ -546,6 +898,20 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="infinite-loading"
+        renderFilteredCount={(filteredCount, totalCount) => (
+          <div
+            style={{
+              fontSize: "13px",
+              lineHeight: "16px",
+              display: "flex",
+              color: "#13284B",
+            }}
+          >
+            {filteredCount !== totalCount
+              ? `${filteredCount} / ${totalCount}件`
+              : `${totalCount}件`}
+          </div>
+        )}
         onPageSizeChange={(newPageSize) => {
           setPageSize(newPageSize);
           setItems([]);
@@ -560,19 +926,11 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
         onLoadMore={handleLoadMore}
-        renderFilteredCount={(filteredCount, totalCount) => (
-          <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
-            {filteredCount !== totalCount
-              ? `${filteredCount} / ${totalCount}件`
-              : `${totalCount}件`}
-          </div>
-        )}
+        // @ts-expect-error onSearchプロパティはDualListBox2Propsに存在しないが、必要な機能
+        onSearch={handleSearchWithFullLoad}
       >
         {items.map((item) => (
-          <DualListBox2Item
-            key={item.id}
-            id={item.id}
-          >
+          <DualListBox2Item key={item.id} id={item.id}>
             {item.label}
           </DualListBox2Item>
         ))}
@@ -583,9 +941,9 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
 
 /**
  * #### Bulk loading
- * 
+ *
  * このモードでは、一度にすべてのデータ（上限500件まで）を読み込みます。
- * 
+ *
  * 特徴:
  * - コンポーネントのマウント時に全データの読み込みが開始されます
  * - データの総量が既知で管理可能な場合に適しています
@@ -618,6 +976,20 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="bulk-loading"
+        renderFilteredCount={(filteredCount, totalCount) => (
+          <div
+            style={{
+              fontSize: "13px",
+              lineHeight: "16px",
+              display: "flex",
+              color: "#13284B",
+            }}
+          >
+            {filteredCount !== totalCount
+              ? `${filteredCount} / ${totalCount}件`
+              : `${totalCount}件`}
+          </div>
+        )}
         onPageSizeChange={(newPageSize) => {
           setPageSize(newPageSize);
           setItems([]);
@@ -632,19 +1004,9 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
         onExcludedChange={(ids: string[]) =>
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
-        renderFilteredCount={(filteredCount, totalCount) => (
-          <div style={{ fontSize: '13px', lineHeight: '16px', display: 'flex', color: '#13284B' }}>
-            {filteredCount !== totalCount
-              ? `${filteredCount} / ${totalCount}件`
-              : `${totalCount}件`}
-          </div>
-        )}
       >
         {items.map((item) => (
-          <DualListBox2Item
-            key={item.id}
-            id={item.id}
-          >
+          <DualListBox2Item key={item.id} id={item.id}>
             {item.label}
           </DualListBox2Item>
         ))}
@@ -655,13 +1017,13 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
 
 /**
  * #### Bulk loading accordion
- * 
+ *
  * Bulk loadingモードでは、アコーディオンを開く前にデータが事前に読み込まれます：
- * 
+ *
  * 1. コンポーネントのマウント時に各アコーディオンのデータ読み込みが開始されます
  * 2. 読み込み中は各アコーディオンにローディング状態が表示されます
  * 3. データの読み込みが完了すると、アコーディオンをクリックするだけで即座にコンテンツが表示されます
- * 
+ *
  * このモードは、以下のような場合に適しています：
  * - データの総量が既知で管理可能な場合
  * - ユーザーの待ち時間を最小限にしたい場合
@@ -678,57 +1040,71 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
     const [loadingGroups, setLoadingGroups] = useState<string[]>([]);
 
     // アコーディオンのグループ定義
-    const groups = useMemo(() => [
-      { id: "group1", name: "プロジェクト" },
-      { id: "group2", name: "組織" },
-      { id: "group3", name: "ユーザー" },
-    ], []);
+    const groups = useMemo(
+      () => [
+        { id: "group1", name: "プロジェクト" },
+        { id: "group2", name: "組織" },
+        { id: "group3", name: "ユーザー" },
+      ],
+      [],
+    );
 
-    const loadGroupData = useCallback((groupName: string) => {
-      if (loadedGroups.includes(groupName) || loadingGroups.includes(groupName)) return;
+    const loadGroupData = useCallback(
+      (groupName: string) => {
+        if (
+          loadedGroups.includes(groupName) ||
+          loadingGroups.includes(groupName)
+        )
+          return;
 
-      setLoadingGroups(prev => [...prev, groupName]);
-      setIsLoading(true);
+        setLoadingGroups((prev) => [...prev, groupName]);
+        setIsLoading(true);
 
-      // グループごとに異なるデータ件数を設定
-      const itemCounts = {
-        "group1": 150,
-        "group2": 100,
-        "group3": 200,
-      };
+        // グループごとに異なるデータ件数を設定
+        const itemCounts = {
+          group1: 150,
+          group2: 100,
+          group3: 200,
+        };
 
-      // 各グループの開始インデックスを設定して、IDが重複しないようにする
-      const startIndices = {
-        "group1": 0,
-        "group2": 1000,
-        "group3": 2000,
-      };
+        // 各グループの開始インデックスを設定して、IDが重複しないようにする
+        const startIndices = {
+          group1: 0,
+          group2: 1000,
+          group3: 2000,
+        };
 
-      // グループのIDから表示名を取得
-      const groupDisplayName = groups.find(g => g.id === groupName)?.name || groupName;
+        // グループのIDから表示名を取得
+        const groupDisplayName =
+          groups.find((g) => g.id === groupName)?.name || groupName;
 
-      setTimeout(() => {
-        const count = itemCounts[groupName as keyof typeof itemCounts] || 100;
-        const startIndex = startIndices[groupName as keyof typeof startIndices] || 0;
-        const newItems = generateItems(startIndex, count).map((item) => ({
-          ...item,
-          groupName: groupDisplayName, // 内部IDではなく表示名を設定
-          label: `${groupDisplayName}${parseInt(item.id.split('-')[1]) - startIndex + 1}`,
-        }));
+        setTimeout(() => {
+          const count = itemCounts[groupName as keyof typeof itemCounts] || 100;
+          const startIndex =
+            startIndices[groupName as keyof typeof startIndices] || 0;
+          const newItems = generateItems(startIndex, count).map((item) => ({
+            ...item,
+            groupName: groupDisplayName, // 内部IDではなく表示名を設定
+            label: `${groupDisplayName}${
+              parseInt(item.id.split("-")[1]) - startIndex + 1
+            }`,
+          }));
 
-        setItems((prev) => [...prev, ...newItems]);
-        setLoadedGroups((prev) => [...prev, groupName]);
-        setLoadingGroups(prev => prev.filter(g => g !== groupName));
+          setItems((prev) => [...prev, ...newItems]);
+          setLoadedGroups((prev) => [...prev, groupName]);
+          setLoadingGroups((prev) => prev.filter((g) => g !== groupName));
 
-        if (loadingGroups.length <= 1) {
-          setIsLoading(false);
-        }
-      }, 1500);
-    }, [loadedGroups, loadingGroups, groups]);
+          if (loadingGroups.length <= 1) {
+            setIsLoading(false);
+          }
+        }, 1500);
+      },
+      [loadedGroups, loadingGroups, groups],
+    );
 
     // コンポーネントマウント時に全グループのデータを読み込み開始
     useEffect(() => {
-      groups.forEach(group => loadGroupData(group.id));
+      groups.forEach((group) => loadGroupData(group.id));
     }, [loadGroupData, groups]);
 
     return (
@@ -769,10 +1145,10 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
 
 /**
  * #### Infinite loading accordion
- * 
+ *
  * このモードでは、アコーディオンをクリックしたときにデータの読み込みが開始されます。
  * スクロールに応じて、ページサイズ単位で追加データを読み込みます。
- * 
+ *
  * 特徴:
  * - ユーザーが操作したアコーディオンのデータのみを読み込みます
  * - 必要に応じて段階的にデータを読み込むため、初期表示が速くなります
@@ -783,120 +1159,28 @@ export const BulkLoadingAccordion: StoryObj<typeof DualListBox2> = {
  */
 export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
   render: function InfiniteLoadingAccordionStory() {
-    const [items, setItems] = useState<Item[]>([]);
     const [included, setIncluded] = useState<Item[]>([]);
     const [excluded, setExcluded] = useState<Item[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [loadedGroups, setLoadedGroups] = useState<string[]>([]);
-    const [pageSize, setPageSize] = useState(50);
-    const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
-    const [searchText, setSearchText] = useState('');
+    const dataLoading = useDataLoading({
+      initialPageSize: 50,
+      maxItemsPerGroup: 250,
+    });
 
-    // アコーディオンのグループ定義
-    const groups = useMemo(() => [
-      { id: "group1", name: "アコーディオン1" },
-      { id: "group2", name: "アコーディオン2" },
-    ], []);
+    const accordionGroups = useAccordionGroups(dataLoading);
+    const { groups, handleAccordionOpen, handleLoadMore, handleSearch } =
+      accordionGroups;
 
-    // アコーディオンを開いたときのハンドラ（一部データ読み込み）
-    const handleAccordionOpen = useCallback(
-      (groupId: string) => {
-        if (loadedGroups.includes(groupId) || loadingGroup) return;
+    const { items, filteredItems, isLoading, pageSize, handlePageSizeChange } =
+      dataLoading;
 
-        setLoadingGroup(groupId);
-        setIsLoading(true);
-
-        // グループの表示名を取得
-        const groupDisplayName = groups.find(g => g.id === groupId)?.name || groupId;
-
-        // グループを読み込む（初期表示件数はpageSize）
-        setTimeout(() => {
-          const newItems = generateItems(items.length, pageSize).map((item) => ({
-            ...item,
-            groupName: groupDisplayName, // 表示名を使用
-          }));
-
-          setItems((prev) => [...prev, ...newItems]);
-          setLoadedGroups((prev) => [...prev, groupId]);
-          setIsLoading(false);
-          setLoadingGroup(null);
-        }, 1000);
+    // ページサイズ変更時にグループデータをリセット
+    const handlePageSizeChangeWithReset = useCallback(
+      (newPageSize: number) => {
+        handlePageSizeChange(newPageSize);
+        accordionGroups.setLoadedGroups([]);
       },
-      [loadedGroups, pageSize, loadingGroup, items.length, groups],
+      [handlePageSizeChange, accordionGroups],
     );
-
-    // 検索実行時や全データ読み込み時のハンドラ（全データ一括読み込み）
-    const handleLoadAllData = useCallback(
-      (groupId: string) => {
-        if (loadedGroups.includes(groupId) || loadingGroup) return;
-
-        setLoadingGroup(groupId);
-        setIsLoading(true);
-
-        // グループの表示名を取得
-        const groupDisplayName = groups.find(g => g.id === groupId)?.name || groupId;
-
-        // グループを読み込む（全データ250件）
-        setTimeout(() => {
-          // 全データを一度に読み込む
-          const totalItems = 250;
-          const newItems = generateItems(items.length, totalItems).map((item) => ({
-            ...item,
-            groupName: groupDisplayName, // 表示名を使用
-          }));
-
-          setItems((prev) => [...prev, ...newItems]);
-          setLoadedGroups((prev) => [...prev, groupId]);
-          setIsLoading(false);
-          setLoadingGroup(null);
-        }, 1000);
-      },
-      [loadedGroups, loadingGroup, items.length, groups],
-    );
-
-    // 検索実行時のハンドラ
-    const handleSearch = useCallback((searchText: string) => {
-      setSearchText(searchText);
-      console.log(`検索実行: ${searchText}`);
-    }, []);
-
-    const handleLoadMore = useCallback(() => {
-      // すでにロード中の場合は何もしない
-      if (isLoading || loadingGroup) return;
-
-      // 開いているグループを取得
-      const openGroups = loadedGroups;
-      if (openGroups.length === 0) return;
-
-      // 最後に開いたグループにデータを追加
-      const lastGroup = openGroups[openGroups.length - 1];
-      // グループの表示名を取得
-      const groupDisplayName = groups.find(g => g.id === lastGroup)?.name || lastGroup;
-
-      // グループごとのアイテム数をカウント
-      const groupItemCount = items.filter(item => item.groupName === groupDisplayName).length;
-
-      // グループごとの上限は250件
-      if (groupItemCount >= 250) return;
-
-      setIsLoading(true);
-      setTimeout(() => {
-        // 残りの件数を計算（グループごとの上限は250件）
-        const remainingItems = 250 - groupItemCount;
-        const itemsToLoad = Math.min(remainingItems, pageSize);
-
-        if (itemsToLoad > 0) {
-          setItems((prev) => [
-            ...prev,
-            ...generateItems(prev.length, itemsToLoad).map((item) => ({
-              ...item,
-              groupName: groupDisplayName, // 表示名を使用
-            })),
-          ]);
-        }
-        setIsLoading(false);
-      }, 1000);
-    }, [isLoading, loadedGroups, pageSize, loadingGroup, items, groups]);
 
     return (
       <DualListBox2
@@ -906,12 +1190,13 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="infinite-loading"
-        onPageSizeChange={(newPageSize) => {
-          setPageSize(newPageSize);
-          // リセット
-          setItems([]);
-          setLoadedGroups([]);
-        }}
+        renderFilteredCount={(filteredCount, totalCount) => (
+          <FilteredCountDisplay
+            filteredCount={filteredCount}
+            totalCount={totalCount}
+          />
+        )}
+        onPageSizeChange={handlePageSizeChangeWithReset}
         onIncludedChange={(ids) =>
           setIncluded(items.filter((item) => ids.includes(item.id)))
         }
@@ -919,17 +1204,18 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
           setExcluded(items.filter((item) => ids.includes(item.id)))
         }
         onLoadMore={handleLoadMore}
+        // @ts-expect-error onSearchプロパティはDualListBox2Propsに存在しないが、必要な機能
         onSearch={handleSearch}
       >
         {groups.map((group) => (
           <DualListBox2Accordion
             key={group.id}
             label={group.name}
+            loadingMode="infinite-loading"
             onOpen={() => handleAccordionOpen(group.id)}
-            onLoadAll={() => handleLoadAllData(group.id)}
           >
-            {items
-              .filter((item) => item.groupName === group.name) // グループの表示名を使用
+            {filteredItems
+              .filter((item) => item.groupName === group.name)
               .map((item) => (
                 <DualListBox2Item key={item.id} id={item.id}>
                   {item.label}
