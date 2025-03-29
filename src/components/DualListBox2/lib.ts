@@ -10,6 +10,10 @@ export const DualListBox2Context = createContext<{
   onIncludedChange: (includedIds: string[]) => void;
   onExcludedChange: (excludedIds: string[]) => void;
   setActiveSection: (activeSection: string | null) => void;
+  /** アコーディオンの登録用関数 */
+  registerAccordion?: (id: string, callbacks: { onLoadAll?: () => void }) => void;
+  /** アコーディオンの登録解除用関数 */
+  unregisterAccordion?: (id: string) => void;
 }>({
   filterWords: [],
   includedIds: [],
@@ -18,6 +22,8 @@ export const DualListBox2Context = createContext<{
   onIncludedChange: (_) => {},
   onExcludedChange: (_) => {},
   setActiveSection: (_) => {},
+  registerAccordion: undefined,
+  unregisterAccordion: undefined,
 });
 
 export const DualListBox2GroupContext = createContext<{
