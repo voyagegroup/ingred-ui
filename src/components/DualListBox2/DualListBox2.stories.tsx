@@ -338,9 +338,7 @@ const FilteredCountDisplay = ({
       color: "#13284B",
     }}
   >
-    {filteredCount !== totalCount
-      ? `${filteredCount} / ${totalCount}件`
-      : `${totalCount}件`}
+    {`${filteredCount}件`}
   </div>
 );
 
@@ -898,7 +896,7 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="infinite-loading"
-        renderFilteredCount={(filteredCount, totalCount) => (
+        renderFilteredCount={(filteredCount) => (
           <div
             style={{
               fontSize: "13px",
@@ -907,9 +905,7 @@ export const InfiniteLoading: StoryObj<typeof DualListBox2> = {
               color: "#13284B",
             }}
           >
-            {filteredCount !== totalCount
-              ? `${filteredCount} / ${totalCount}件`
-              : `${totalCount}件`}
+            {`${filteredCount}件`}
           </div>
         )}
         onPageSizeChange={(newPageSize) => {
@@ -976,7 +972,7 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="bulk-loading"
-        renderFilteredCount={(filteredCount, totalCount) => (
+        renderFilteredCount={(filteredCount) => (
           <div
             style={{
               fontSize: "13px",
@@ -985,9 +981,7 @@ export const BulkLoading: StoryObj<typeof DualListBox2> = {
               color: "#13284B",
             }}
           >
-            {filteredCount !== totalCount
-              ? `${filteredCount} / ${totalCount}件`
-              : `${totalCount}件`}
+            {`${filteredCount}件`}
           </div>
         )}
         onPageSizeChange={(newPageSize) => {
@@ -1190,10 +1184,10 @@ export const InfiniteLoadingAccordion: StoryObj<typeof DualListBox2> = {
         pageSize={pageSize}
         pageSizeOptions={[10, 50, 100, 200]}
         loadingMode="infinite-loading"
-        renderFilteredCount={(filteredCount, totalCount) => (
+        renderFilteredCount={(filteredCount) => (
           <FilteredCountDisplay
             filteredCount={filteredCount}
-            totalCount={totalCount}
+            totalCount={filteredItems.length}
           />
         )}
         onPageSizeChange={handlePageSizeChangeWithReset}
