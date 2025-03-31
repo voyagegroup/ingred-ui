@@ -1,7 +1,8 @@
 import { ThemedStyledProps } from "styled-components";
 import { Theme } from "../themes";
+import { StyledComponentProps } from "./styledTypes";
 
-export type SpacerProps = {
+export type SpacerProps = StyledComponentProps & {
   /** margin */
   m?: number;
   /** margin-top */
