@@ -83,7 +83,7 @@ export const ModalFooter = styled.div<StyledComponentProps>`
   margin-bottom: 1.8vh;
 `;
 
-export const IconContainer = styled.div<StyledComponentProps & { onClick?: (event: React.MouseEvent<HTMLDivElement>) => void }>`
+export const IconContainer = styled.div<StyledComponentProps>`
   cursor: pointer;
 `;
 

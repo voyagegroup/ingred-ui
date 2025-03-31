@@ -8,7 +8,7 @@ export type StyledComponentProps = {
   children?: React.ReactNode;
   className?: string;
   role?: string;
-  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
+  onClick?: React.MouseEventHandler<HTMLElement> | ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
   onKeyDown?: (event?: React.KeyboardEvent<HTMLElement>) => void;
   onTransitionEnd?: () => void;
   ref?: React.Ref<any>;
