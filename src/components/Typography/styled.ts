@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { TextAlign, FontWeight } from "./Typography";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
 type ContainerProps = {
   color: string;
@@ -7,7 +8,7 @@ type ContainerProps = {
   fontSize: string;
   weight: FontWeight;
   lineHeight: string;
-};
+} & StyledComponentProps;
 
 export const Container = styled.p<ContainerProps>`
   color: ${({ color }) => color};
