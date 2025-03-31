@@ -62,7 +62,7 @@ export const ContextMenu2SortableGroup = ({
     () =>
       Children.toArray(children).sort((a, b) => {
         if (!isValidElement(a) || !isValidElement(b)) return 0;
-        return order.indexOf(a.props.id) - order.indexOf(b.props.id);
+        return order.indexOf((a as ReactElement<{id: UniqueIdentifier}>).props.id) - order.indexOf((b as ReactElement<{id: UniqueIdentifier}>).props.id);
       }),
     [children, order],
   );
@@ -71,7 +71,7 @@ export const ContextMenu2SortableGroup = ({
     () =>
       Children.toArray(children).find((child) => {
         if (!isValidElement(child)) return false;
-        return child.props.id === activeId;
+        return (child as ReactElement<{id: UniqueIdentifier}>).props.id === activeId;
       }),
     [children, activeId],
   );

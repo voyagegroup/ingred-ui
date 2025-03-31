@@ -340,7 +340,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                         if (!focusableItems.includes(child.type.displayName))
                           return child;
 
-                        return cloneElement(child, {
+                        return cloneElement(child as React.ReactElement<any>, {
                           tabIndex: activeIndex === index ? 0 : -1,
                           ref: (el: HTMLElement) => {
                             listRef.current[index] = el;
