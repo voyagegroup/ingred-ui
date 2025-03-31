@@ -9,7 +9,7 @@ export type Props = React.ComponentPropsWithoutRef<"div">;
 const SplitAnnotation = React.forwardRef<HTMLDivElement, Props>(
   function SplitAnnotation({ children, ...rest }, ref) {
     return (
-      <Flex ref={ref} display="flex" {...rest}>
+      <Flex ref={ref as React.Ref<HTMLDivElement>} display="flex" {...rest as any}>
         <Spacer pr={1} />
         <Divider orientation="vertical" />
         <Spacer pr={1} />
