@@ -3,7 +3,6 @@ import { fontSize } from "../Typography/Typography";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 import Spacer from "../Spacer";
-import type { StyledComponentProps } from "../../utils/styledTypes";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor =
