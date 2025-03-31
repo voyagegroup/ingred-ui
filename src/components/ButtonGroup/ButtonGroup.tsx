@@ -42,18 +42,19 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     const childrenWithProps = React.Children.map(
       children as React.ReactElement[],
       (child: React.ReactElement) => {
+        const childProps = child.props as Record<string, any>;
         const Button = React.cloneElement(child, {
-          ...child.props,
+          ...childProps,
           ...(disabled && { disabled: true }),
           size: size,
           inline: true,
           color: color,
           style: {
-            ...child.props.style,
+            ...(childProps.style || {}),
           },
           // icon に ButtonGroup の size に合わせた値を適用
-          icon: child.props.icon
-            ? React.cloneElement(child.props.icon, {
+          icon: childProps.icon
+            ? React.cloneElement(childProps.icon, {
                 size: buttonIconSize[size],
               })
             : undefined,

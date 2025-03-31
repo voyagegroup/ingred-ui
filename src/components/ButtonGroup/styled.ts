@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { StyledComponentProps } from "../../utils/styledTypes";
+
 type ButtonGroupProps = {
   minSize?: string;
-};
+} & StyledComponentProps;
 
 export const ButtonGroupContainer = styled.div<ButtonGroupProps>`
   display: inline-flex;
