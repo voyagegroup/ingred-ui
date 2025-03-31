@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { Property } from "csstype";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
 const rotate = keyframes`
   100% {
@@ -22,20 +23,20 @@ const dash = keyframes`
   }
 `;
 
-export const Container = styled.div<{ width: Property.Width }>`
+export const Container = styled.div<{ width: Property.Width } & StyledComponentProps>`
   width: ${({ width }) => width};
   height: ${({ width }) => width};
   background-color: transparent;
 `;
 
-export const Svg = styled.svg`
+export const Svg = styled.svg<StyledComponentProps>`
   width: 100%;
   height: 100%;
   animation: ${rotate} 2s linear infinite;
   transform-origin: center center;
 `;
 
-export const Circle = styled.circle`
+export const Circle = styled.circle<StyledComponentProps>`
   stroke-width: 3;
   fill: none;
 `;

@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
 import { ButtonColorStyle } from "./Button";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
 export type ContainerProps = ButtonColorStyle & {
   color: string;
@@ -12,7 +13,7 @@ export type ContainerProps = ButtonColorStyle & {
   height: string;
   href?: string;
   disabled?: boolean;
-};
+} & StyledComponentProps;
 
 export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   display: ${({ inline }) => (inline ? "inline-flex" : "flex")};

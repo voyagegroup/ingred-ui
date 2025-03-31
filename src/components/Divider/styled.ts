@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { SpacerProps, spacer } from "../../utils/spacer";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
 type DividerProps = SpacerProps & {
   color: string;
   orientation: "vertical" | "horizontal";
-};
+} & StyledComponentProps;
 
 export const Divider = styled.hr<DividerProps>`
   ${spacer}

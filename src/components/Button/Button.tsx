@@ -3,6 +3,7 @@ import { fontSize } from "../Typography/Typography";
 import * as Styled from "./styled";
 import { Theme, useTheme } from "../../themes";
 import Spacer from "../Spacer";
+import type { StyledComponentProps } from "../../utils/styledTypes";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonColor =
@@ -174,7 +175,7 @@ type baseProps = {
    * Default: `<button />`
    */
   component?:
-    | keyof JSX.IntrinsicElements
+    | keyof React.JSX.IntrinsicElements
     | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   /**
@@ -218,7 +219,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
 
   const anchorProps: {
     as?:
-      | keyof JSX.IntrinsicElements
+      | keyof React.JSX.IntrinsicElements
       | React.ComponentType<{ className: string }>;
     href?: string;
     target?: "_blank" | "_self" | "_parent" | "_top";
@@ -240,7 +241,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     <Styled.ButtonContainer
       ref={ref}
       {...rest}
-      as={component || "button"}
+      as={component || "button" as any}
       {...anchorProps}
       inline={inline}
       paddingInline={paddingInline[size]}
