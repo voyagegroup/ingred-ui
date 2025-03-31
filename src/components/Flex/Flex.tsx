@@ -1,9 +1,9 @@
 import { Property } from "csstype";
 import styled from "styled-components";
-import { StyledComponentProps } from "../../utils/styledTypes";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
 type TLengthStyledSystem = string | 0 | number;
-export type FlexProps = StyledComponentProps & {
+export type FlexProps = DivElementProps & {
   display?: "flex" | "inline-flex";
   height?: Property.Height<TLengthStyledSystem>;
   alignItems?: Property.AlignItems;
