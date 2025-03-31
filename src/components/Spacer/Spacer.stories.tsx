@@ -4,6 +4,7 @@ import Spacer from "../Spacer";
 import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
 import { SpacerProps } from "../../utils/spacer";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
 export default {
   title: "Components/Layout/Spacer",
@@ -57,7 +58,7 @@ export default {
 export const Example: StoryObj<SpacerProps> = {
   render: (args) => (
     <>
-      <Spacer {...args as any}>
+      <Spacer {...args as DivElementProps}>
         <div
           style={{
             border: "1px solid black",
@@ -70,7 +71,7 @@ export const Example: StoryObj<SpacerProps> = {
           And there is one more {"<Spacer />"} directly below.
         </div>
       </Spacer>
-      <Spacer {...args as any} />
+      <Spacer {...args as DivElementProps} />
       <div
         style={{
           border: "1px solid black",

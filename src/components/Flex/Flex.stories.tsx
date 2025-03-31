@@ -3,6 +3,7 @@ import { StoryObj } from "@storybook/react";
 import { Markdown } from "@storybook/blocks";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Flex, { FlexProps } from "./Flex";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
 export default {
   title: "Components/Layout/Flex",
@@ -32,7 +33,7 @@ export default {
 
 export const Example: StoryObj<FlexProps> = {
   render: (args) => (
-    <Flex {...args as any}>
+    <Flex {...args as DivElementProps}>
       {Array.from({ length: 3 }, (_, i) => (
         <div
           key={i}

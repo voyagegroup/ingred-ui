@@ -2,6 +2,7 @@ import React from "react";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes";
 import { SpacerProps } from "../../utils/spacer";
+import { HRElementProps } from "../../utils/reactElementTypes";
 
 export type DividerProps = SpacerProps & {
   color?: string;
@@ -19,7 +20,7 @@ const Divider = React.forwardRef<HTMLHRElement, DividerProps>(function Divider(
       ref={ref}
       color={color}
       orientation={orientation}
-      {...rest as any}
+      {...rest as HRElementProps}
     />
   );
 });
