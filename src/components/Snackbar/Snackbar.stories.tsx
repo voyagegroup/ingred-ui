@@ -47,21 +47,21 @@ const Template: StoryObj<SnackbarProps> = {
   },
 };
 
-export const Default = {
+export const Default: StoryObj<SnackbarProps> = {
   ...Template,
   args: {
     color: "default",
   },
 };
 
-export const Dark = {
+export const Dark: StoryObj<SnackbarProps> = {
   ...Template,
   args: {
     color: "dark",
   },
 };
 
-export const Warning = {
+export const Warning: StoryObj<SnackbarProps> = {
   ...Template,
   args: {
     color: "warning",
