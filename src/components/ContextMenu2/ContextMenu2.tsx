@@ -116,7 +116,8 @@ const flattenChildren = (children: ReactNode): ReactNode[] => {
     .map((child) => {
       // Fragmentであれば再帰的にflattenChildrenを呼び出す
       if (isValidElement(child) && child.type === Fragment) {
-        return flattenChildren(child.props.children);
+        const fragmentProps = child.props as { children: React.ReactNode };
+        return flattenChildren(fragmentProps.children);
       }
       // Fragment以外はそのまま返す
       return child;
@@ -124,7 +125,7 @@ const flattenChildren = (children: ReactNode): ReactNode[] => {
     .flat(Infinity);
 };
 
-const ContextMenu2Panel = styled.div`
+const ContextMenu2Panel = styled.div<{ children?: React.ReactNode; className?: string; ref?: React.Ref<HTMLDivElement>; tabIndex?: number; style?: React.CSSProperties }>`
   z-index: ${depth.dropdown};
   padding: 10px 8px;
   border: 1px solid ${colors.basic[200]};
@@ -345,7 +346,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                             listRef.current[index] = el;
                           },
                           ...getItemProps(),
-                          ...child.props,
+                          ...(child.props as Record<string, any>),
                           key: id,
                         });
                       })}
