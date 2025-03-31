@@ -23,7 +23,9 @@ const dash = keyframes`
   }
 `;
 
-export const Container = styled.div<{ width: Property.Width } & StyledComponentProps>`
+export const Container = styled.div<
+  { width: Property.Width } & StyledComponentProps
+>`
   width: ${({ width }) => width};
   height: ${({ width }) => width};
   background-color: transparent;

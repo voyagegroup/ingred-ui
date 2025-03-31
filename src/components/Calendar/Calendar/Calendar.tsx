@@ -80,7 +80,7 @@ const Calendar = forwardRef<HTMLDivElement, CalendarProps>(function Calendar(
   }, [date]);
 
   return (
-    <Card ref={ref as React.Ref<HTMLDivElement>} {...rest as any}>
+    <Card ref={ref as React.Ref<HTMLDivElement>} {...(rest as any)}>
       <Actions
         defaultClickAction={defaultClickAction}
         actions={actions}

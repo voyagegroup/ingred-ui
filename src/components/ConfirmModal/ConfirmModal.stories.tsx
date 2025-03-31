@@ -78,17 +78,21 @@ export const WithTwoSubActions: StoryObj<ConfirmModalProps> = {
     children: "Content",
     onSubmit: action("submitted"),
     subActions: [
-    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
-      Add
-    </ActionButton>,
-    <ActionButton
-      icon="export"
-      type="button"
-      onClick={action(`clicked "Download"`)}
-    >
-      Download
-    </ActionButton>,
-  ],
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Add"`)}
+      >
+        Add
+      </ActionButton>,
+      <ActionButton
+        icon="export"
+        type="button"
+        onClick={action(`clicked "Download"`)}
+      >
+        Download
+      </ActionButton>,
+    ],
   },
 };
 

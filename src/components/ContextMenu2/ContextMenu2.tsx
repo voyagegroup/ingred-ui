@@ -125,7 +125,13 @@ const flattenChildren = (children: ReactNode): ReactNode[] => {
     .flat(Infinity);
 };
 
-const ContextMenu2Panel = styled.div<{ children?: React.ReactNode; className?: string; ref?: React.Ref<HTMLDivElement>; tabIndex?: number; style?: React.CSSProperties }>`
+const ContextMenu2Panel = styled.div<{
+  children?: React.ReactNode;
+  className?: string;
+  ref?: React.Ref<HTMLDivElement>;
+  tabIndex?: number;
+  style?: React.CSSProperties;
+}>`
   z-index: ${depth.dropdown};
   padding: 10px 8px;
   border: 1px solid ${colors.basic[200]};

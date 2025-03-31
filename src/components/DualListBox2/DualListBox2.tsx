@@ -217,7 +217,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         if (!item) return false;
         return filterWords.every((word) => {
           const label = item.label;
-          return typeof label === "string" ? label.includes(word) : String(label).includes(word);
+          return typeof label === "string"
+            ? label.includes(word)
+            : String(label).includes(word);
         });
       });
     }, [allIds, allItems, filterWords]);
@@ -236,18 +238,28 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           return;
         }
         // ここまでの結果、child はセクション
-        if ((child as React.ReactElement<{label: string}>).props.label !== activeSection) return;
+        if (
+          (child as React.ReactElement<{ label: string }>).props.label !==
+          activeSection
+        )
+          return;
 
-        traverseChildren((child as React.ReactElement<{children: React.ReactNode}>).props.children, (grandChild) => {
-          if (
-            isValidElement(grandChild) &&
-            typeof grandChild.type !== "string" &&
-            "displayName" in grandChild.type &&
-            grandChild.type.displayName === DualListBox2Item.displayName
-          ) {
-            ids.push((grandChild as React.ReactElement<{id: string}>).props.id);
-          }
-        });
+        traverseChildren(
+          (child as React.ReactElement<{ children: React.ReactNode }>).props
+            .children,
+          (grandChild) => {
+            if (
+              isValidElement(grandChild) &&
+              typeof grandChild.type !== "string" &&
+              "displayName" in grandChild.type &&
+              grandChild.type.displayName === DualListBox2Item.displayName
+            ) {
+              ids.push(
+                (grandChild as React.ReactElement<{ id: string }>).props.id,
+              );
+            }
+          },
+        );
       });
       return ids;
     }, [activeSection, children, hasSection]);
@@ -261,7 +273,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         if (!item) return false;
         return filterWords.every((word) => {
           const label = item.label;
-          return typeof label === "string" ? label.includes(word) : String(label).includes(word);
+          return typeof label === "string"
+            ? label.includes(word)
+            : String(label).includes(word);
         });
       });
     }, [allIdsInActiveSection, allItems, filterWords]);

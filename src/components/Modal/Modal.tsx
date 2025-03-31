@@ -67,11 +67,12 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(function MenuList(
   if (enableTransition && getHasTransition(children.props)) {
     childProps.onEnter = createChainedFunction(
       handleEnter,
-      (children as React.ReactElement<{onEnter?: () => void}>).props.onEnter,
+      (children as React.ReactElement<{ onEnter?: () => void }>).props.onEnter,
     );
     childProps.onExited = createChainedFunction(
       handleExited,
-      (children as React.ReactElement<{onExited?: () => void}>).props.onExited,
+      (children as React.ReactElement<{ onExited?: () => void }>).props
+        .onExited,
     );
   }
 

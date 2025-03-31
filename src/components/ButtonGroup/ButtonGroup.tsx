@@ -54,9 +54,12 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
           },
           // icon に ButtonGroup の size に合わせた値を適用
           icon: childProps.icon
-            ? React.cloneElement(childProps.icon as React.ReactElement, {
-                size: buttonIconSize[size],
-              } as any)
+            ? React.cloneElement(
+                childProps.icon as React.ReactElement,
+                {
+                  size: buttonIconSize[size],
+                } as any,
+              )
             : undefined,
         };
         const Button = React.cloneElement(child, buttonProps as any);
@@ -67,7 +70,7 @@ const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>(
     return (
       <Styled.ButtonGroupContainer
         ref={ref}
-        {...rest as any}
+        {...(rest as any)}
         minSize={buttonMinSize[minSize]}
       >
         {childrenWithProps}

@@ -51,13 +51,17 @@ export const DayStyle = styled.span<StyledComponentProps>`
   color: ${({ theme }) => theme.palette.gray.deepDark};
 `;
 
-export const TitleContainer = styled(Typography)<{ expanded: boolean } & StyledComponentProps>`
+export const TitleContainer = styled(Typography)<
+  { expanded: boolean } & StyledComponentProps
+>`
   color: ${({ theme, expanded }) =>
     expanded ? "transparent" : theme.palette.black};
   transition: color 300ms;
 `;
 
-export const CalendarMonth = styled.div<{ expanded: boolean } & StyledComponentProps>`
+export const CalendarMonth = styled.div<
+  { expanded: boolean } & StyledComponentProps
+>`
   position: sticky;
   top: 0;
   z-index: 2;
@@ -70,7 +74,9 @@ export const CalendarMonth = styled.div<{ expanded: boolean } & StyledComponentP
   transition: background-color 300ms;
 `;
 
-export const IconContainer = styled.button<{ expanded: boolean; onClick?: () => void } & StyledComponentProps>`
+export const IconContainer = styled.button<
+  { expanded: boolean; onClick?: () => void } & StyledComponentProps
+>`
   cursor: pointer;
   position: absolute;
   top: ${({ theme }) => theme.spacing * 2}px;
@@ -81,7 +87,9 @@ export const IconContainer = styled.button<{ expanded: boolean; onClick?: () => 
   transition: opacity 300ms;
 `;
 
-export const IconButton = styled.div<{ expanded: boolean } & StyledComponentProps>`
+export const IconButton = styled.div<
+  { expanded: boolean } & StyledComponentProps
+>`
   padding: 0px ${({ theme }) => theme.spacing}px;
   transition: transform 150ms;
   transform-origin: center center;

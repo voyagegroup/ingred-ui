@@ -20,7 +20,7 @@ const Divider = React.forwardRef<HTMLHRElement, DividerProps>(function Divider(
       ref={ref}
       color={color}
       orientation={orientation}
-      {...rest as HRElementProps}
+      {...(rest as HRElementProps)}
     />
   );
 });

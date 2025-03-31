@@ -240,7 +240,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
     <Styled.ButtonContainer
       ref={ref}
       {...rest}
-      as={component || "button" as any}
+      as={component || ("button" as any)}
       {...anchorProps}
       inline={inline}
       paddingInline={paddingInline[size]}

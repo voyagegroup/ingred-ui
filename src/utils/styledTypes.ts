@@ -8,8 +8,12 @@ export type StyledComponentProps = {
   children?: React.ReactNode;
   className?: string;
   role?: string;
-  onClick?: React.MouseEventHandler<HTMLElement> | ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
-  onKeyDown?: React.KeyboardEventHandler<HTMLElement> | ((event?: React.KeyboardEvent<HTMLElement>) => void);
+  onClick?:
+    | React.MouseEventHandler<HTMLElement>
+    | ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
+  onKeyDown?:
+    | React.KeyboardEventHandler<HTMLElement>
+    | ((event?: React.KeyboardEvent<HTMLElement>) => void);
   onTransitionEnd?: () => void;
   ref?: React.Ref<any>;
   style?: React.CSSProperties;
@@ -23,14 +27,35 @@ export type StyledComponentProps = {
   "aria-disabled"?: boolean | "true" | "false";
   "aria-selected"?: boolean | "true" | "false";
   "aria-checked"?: boolean | "true" | "false";
-  "aria-current"?: boolean | "true" | "false" | "page" | "step" | "location" | "date" | "time";
-  "aria-haspopup"?: boolean | "true" | "false" | "menu" | "listbox" | "tree" | "grid" | "dialog";
+  "aria-current"?:
+    | boolean
+    | "true"
+    | "false"
+    | "page"
+    | "step"
+    | "location"
+    | "date"
+    | "time";
+  "aria-haspopup"?:
+    | boolean
+    | "true"
+    | "false"
+    | "menu"
+    | "listbox"
+    | "tree"
+    | "grid"
+    | "dialog";
   "aria-pressed"?: boolean | "true" | "false" | "mixed";
   "aria-invalid"?: boolean | "true" | "false" | "grammar" | "spelling";
   "aria-busy"?: boolean | "true" | "false";
   "aria-live"?: "off" | "assertive" | "polite";
   "aria-atomic"?: boolean | "true" | "false";
-  "aria-relevant"?: "additions" | "additions text" | "all" | "removals" | "text";
+  "aria-relevant"?:
+    | "additions"
+    | "additions text"
+    | "all"
+    | "removals"
+    | "text";
   "aria-roledescription"?: string;
   "aria-valuemin"?: number;
   "aria-valuemax"?: number;

@@ -35,7 +35,9 @@ export const InnerCalendar: React.FC<Props> = ({
   onDateChange,
 }) => {
   const theme = useTheme();
-  const scrollRef = useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
+  const scrollRef = useRef<HTMLDivElement>(
+    null,
+  ) as React.RefObject<HTMLDivElement>;
   const { monthList } = useScrollCalendar(current, scrollRef);
 
   return (

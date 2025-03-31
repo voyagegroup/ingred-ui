@@ -14,7 +14,13 @@ export const Tag = styled.div`
   width: 1;
 `;
 
-export const Button = styled.div<{ gutter: number; children?: React.ReactNode; className?: string; role?: string; onClick?: () => void }>`
+export const Button = styled.div<{
+  gutter: number;
+  children?: React.ReactNode;
+  className?: string;
+  role?: string;
+  onClick?: () => void;
+}>`
   cursor: pointer;
   flex-shrink: 0;
   opacity: 0.5;
@@ -25,7 +31,11 @@ export const Button = styled.div<{ gutter: number; children?: React.ReactNode; c
   }
 `;
 
-export const Content = styled.div<{ gutter: number; children?: React.ReactNode; className?: string }>`
+export const Content = styled.div<{
+  gutter: number;
+  children?: React.ReactNode;
+  className?: string;
+}>`
   flex-grow: 1;
   font-size: 14;
   line-height: 1.4;

@@ -187,7 +187,10 @@ const Select = <OptionValue, IsMulti extends boolean>(
   const handleInputChange: SelectProps<
     OptionValue,
     IsMulti
-  >["onInputChange"] = (newValue: string, actionMeta: { action: string; prevInputValue?: string }) => {
+  >["onInputChange"] = (
+    newValue: string,
+    actionMeta: { action: string; prevInputValue?: string },
+  ) => {
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
     }
@@ -231,5 +234,6 @@ export default React.forwardRef(Select) as <
   OptionValue,
   IsMulti extends boolean = false,
 >(
-  props: SelectProps<OptionValue, IsMulti> & React.RefAttributes<HTMLDivElement>,
+  props: SelectProps<OptionValue, IsMulti> &
+    React.RefAttributes<HTMLDivElement>,
 ) => React.ReactElement<SelectProps<OptionValue, IsMulti>>;

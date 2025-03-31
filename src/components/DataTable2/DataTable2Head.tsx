@@ -47,7 +47,16 @@ export const DataTable2Head = ({ children }: DataTable2HeadProps) => {
         {hasRowControls && <col style={{ width: 34 }} />}
         {childrenWithDataVisibleOrdered.map(({ id, child }) => {
           if (!isValidElement(child)) return null;
-          return <col key={id} style={{ width: (child as React.ReactElement<{width?: string | number}>).props.width }} />;
+          return (
+            <col
+              key={id}
+              style={{
+                width: (
+                  child as React.ReactElement<{ width?: string | number }>
+                ).props.width,
+              }}
+            />
+          );
         })}
       </colgroup>
       <styled.DataTable2Header>

@@ -7,16 +7,18 @@ export const Container = styled.div<StyledComponentProps>`
   border-top: ${({ theme }) => `1px solid ${theme.palette.divider}`};
 `;
 
-export const AccordionTitle = styled(Flex)<{
-  expanded: boolean;
-  disabled?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
-  role?: string;
-  tabIndex?: number;
-  "aria-expanded"?: boolean;
-  "aria-controls"?: string;
-} & StyledComponentProps>`
+export const AccordionTitle = styled(Flex)<
+  {
+    expanded: boolean;
+    disabled?: boolean;
+    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
+    onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+    role?: string;
+    tabIndex?: number;
+    "aria-expanded"?: boolean;
+    "aria-controls"?: string;
+  } & StyledComponentProps
+>`
   background-color: ${({ disabled, theme }) =>
     disabled ? theme.palette.gray.light : theme.palette.gray.light};
   color: ${({ disabled, theme }) =>
@@ -39,7 +41,9 @@ export const IconContainer = styled.div<StyledComponentProps>`
   box-sizing: border-box;
 `;
 
-export const IconButton = styled.div<{ expanded: boolean } & StyledComponentProps>`
+export const IconButton = styled.div<
+  { expanded: boolean } & StyledComponentProps
+>`
   padding: ${({ theme }) => `${theme.spacing * 1.25}px ${theme.spacing * 2}px`};
   transition: transform 150ms;
   transform-origin: center center;
@@ -55,12 +59,14 @@ export const DropdownIndicator = styled.div<StyledComponentProps>`
   width: ${({ theme }) => theme.spacing * 5}px;
 `;
 
-export const AccordionContent = styled.div<{
-  height: `${number}px` | "auto";
-  overflow: "hidden" | "visible";
-  onTransitionEnd?: () => void;
-  ref?: React.Ref<HTMLDivElement>;
-} & StyledComponentProps>`
+export const AccordionContent = styled.div<
+  {
+    height: `${number}px` | "auto";
+    overflow: "hidden" | "visible";
+    onTransitionEnd?: () => void;
+    ref?: React.Ref<HTMLDivElement>;
+  } & StyledComponentProps
+>`
   height: ${({ height }) => height};
   overflow: ${({ overflow }) => overflow};
   transition: 0.3s all;
