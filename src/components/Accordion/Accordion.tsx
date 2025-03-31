@@ -76,7 +76,7 @@ const Accordion = forwardRef<HTMLDivElement, AccordionProps>(function Accordion(
         expanded={expandedState}
         disabled={disabled}
         onClick={handleClick}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => handleKeyDown(e)}
       >
         <Styled.AccordionTitleChildren>{title}</Styled.AccordionTitleChildren>
         <Styled.DropdownIndicator>

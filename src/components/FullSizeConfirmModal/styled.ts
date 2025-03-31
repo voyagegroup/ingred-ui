@@ -2,7 +2,6 @@ import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
 import { StyledComponentProps } from "../../utils/styledTypes";
-import React from "react";
 
 const FullSizeSlideIn = keyframes`
   0% {
