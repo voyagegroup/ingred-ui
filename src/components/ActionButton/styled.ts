@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
-type ContainerProps = {
+export type ContainerProps = {
   borderColor: string;
   normalBackgroundColor: string;
   hoverBackgroundColor: string;
-};
+} & StyledComponentProps;
 
 export const Container = styled.button<ContainerProps>`
   display: flex;
