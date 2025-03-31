@@ -126,9 +126,7 @@ const FullSizeConfirmModal = React.forwardRef<
                 )}
               </Styled.LeftContainer>
               <Styled.IconContainer 
-                onClick={(e: React.MouseEvent<HTMLDivElement>) => {
-                  if (onClose) onClose(e, "clickCloseIcon");
-                }}
+                onClick={handleClose("clickCloseIcon")}
               >
                 <Icon name="close" size="lg" color={theme.palette.black} />
               </Styled.IconContainer>
