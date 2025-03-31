@@ -3,9 +3,11 @@ import { Property } from "csstype";
 
 import { flexbox, FlexProps } from "../Flex/Flex";
 import { spacer, SpacerProps } from "../../utils/spacer";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
 export type CardProps = SpacerProps &
-  FlexProps & {
+  FlexProps &
+  DivElementProps & {
     width?: Property.Width;
     maxWidth?: Property.MaxWidth;
     minWidth?: Property.MinWidth;
