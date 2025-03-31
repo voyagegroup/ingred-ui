@@ -16,13 +16,14 @@ const DropdownIndicator = ({ isDisabled, error, ...rest }: any) => {
     color = theme.palette.black;
   }
   return (
-    components.DropdownIndicator && (
-      <components.DropdownIndicator {...rest}>
+    components.DropdownIndicator && 
+      React.createElement(
+        components.DropdownIndicator as React.ComponentType<any>,
+        rest,
         <Styled.DropdownIndicator menuIsOpen={rest.selectProps.menuIsOpen}>
           <Icon name="arrow_bottom" size="md" color={color} />
         </Styled.DropdownIndicator>
-      </components.DropdownIndicator>
-    )
+      )
   );
 };
 

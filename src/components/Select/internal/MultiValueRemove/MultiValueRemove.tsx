@@ -13,10 +13,10 @@ const MultiValueRemove = <T,>(
   >,
 ) => {
   const theme = useTheme();
-  return (
-    <components.MultiValueRemove {...props}>
-      <Icon name="close_circle" color={theme.palette.black} />
-    </components.MultiValueRemove>
+  return React.createElement(
+    components.MultiValueRemove as React.ComponentType<any>,
+    props,
+    <Icon name="close_circle" color={theme.palette.black} />
   );
 };
 export { MultiValueRemove };

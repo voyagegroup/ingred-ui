@@ -11,12 +11,10 @@ const ClearIndicator = <T,>(
   const theme = useTheme();
   return (
     <Styled.Container>
-      <components.ClearIndicator
-        // TODO: remove any
-        {...(props as ClearIndicatorProps<any, boolean, any>)}
-      >
+      {React.createElement(components.ClearIndicator as React.ComponentType<any>, 
+        props as ClearIndicatorProps<any, boolean, any>,
         <Icon name="close_circle" color={theme.palette.black} type="fill" />
-      </components.ClearIndicator>
+      )}
     </Styled.Container>
   );
 };
