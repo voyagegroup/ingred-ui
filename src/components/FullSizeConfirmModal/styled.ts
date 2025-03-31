@@ -1,6 +1,8 @@
 import styled, { keyframes, css } from "styled-components";
 import { addScrollbarProperties } from "../../utils/scrollbar";
 import Card from "../Card";
+import { StyledComponentProps } from "../../utils/styledTypes";
+import React from "react";
 
 const FullSizeSlideIn = keyframes`
   0% {
@@ -11,7 +13,7 @@ const FullSizeSlideIn = keyframes`
   }
 `;
 
-export const ModalContainer = styled(Card)`
+export const ModalContainer = styled(Card)<StyledComponentProps>`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,7 +27,7 @@ export const ModalContainer = styled(Card)`
   overflow: hidden;
 `;
 
-export const ModalHeader = styled.div`
+export const ModalHeader = styled.div<StyledComponentProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +36,7 @@ export const ModalHeader = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
 
-export const LeftContainer = styled.div`
+export const LeftContainer = styled.div<StyledComponentProps>`
   display: flex;
   align-items: center;
   max-width: 70%;
@@ -43,7 +45,7 @@ export const LeftContainer = styled.div`
 type ScrollContainerProps = {
   overflowYScroll: boolean;
   showFooter: boolean;
-};
+} & StyledComponentProps;
 
 export const ScrollContainer = styled.div<ScrollContainerProps>`
   margin-bottom: ${({ showFooter, theme }) =>
@@ -66,7 +68,7 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
         `}
 `;
 
-export const ModalFooter = styled.div`
+export const ModalFooter = styled.div<StyledComponentProps>`
   position: fixed;
   left: 0;
   bottom: 0;
@@ -81,11 +83,11 @@ export const ModalFooter = styled.div`
   margin-bottom: 1.8vh;
 `;
 
-export const IconContainer = styled.div`
+export const IconContainer = styled.div<StyledComponentProps & { onClick?: (event: React.MouseEvent<HTMLDivElement>) => void }>`
   cursor: pointer;
 `;
 
-export const LoadingContainer = styled.div`
+export const LoadingContainer = styled.div<StyledComponentProps>`
   position: fixed;
   top: 0;
   left: 0;
