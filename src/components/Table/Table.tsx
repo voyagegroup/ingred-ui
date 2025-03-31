@@ -7,7 +7,7 @@ import { Row } from "./Row";
 import { HeaderCell } from "./HeaderCell";
 
 type ExportedComponentType = {
-  (props: React.ComponentPropsWithRef<"table">): JSX.Element;
+  (props: React.ComponentPropsWithRef<"table">): React.JSX.Element;
   Header: typeof Header;
   Body: typeof Body;
   Row: typeof Row;

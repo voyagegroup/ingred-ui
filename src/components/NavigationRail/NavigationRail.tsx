@@ -10,7 +10,7 @@ import { ExpansionMenu } from "./ExpansionMenu";
 import { ExpansionMenuItem } from "./ExpansionMenuItem";
 
 type ExportedComponentType = {
-  (props: Props & React.RefAttributes<HTMLDivElement>): JSX.Element;
+  (props: Props & React.RefAttributes<HTMLDivElement>): React.JSX.Element;
   Container: typeof NavigationRailContainer;
   Header: typeof Header;
   Content: typeof Content;

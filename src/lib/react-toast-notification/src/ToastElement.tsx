@@ -15,7 +15,7 @@ export const toastWidth = 360;
 // a11y helper
 const A11yText: FC<{
   className: string;
-  tag?: keyof JSX.IntrinsicElements;
+  tag?: keyof React.JSX.IntrinsicElements;
   children: ReactNode;
 }> = ({ tag = "span", ...props }: any) => <Styled.Tag as={tag} {...props} />;
 

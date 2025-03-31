@@ -15,7 +15,7 @@ import { getShadow } from "../../../utils/getShadow";
 type ToastStyle = {
   background: string;
   boxShadow: string;
-  icon: JSX.Element;
+  icon: React.JSX.Element;
   countDownBackground: string;
   titleColor: string;
   contentColor: string;
