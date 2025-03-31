@@ -215,7 +215,10 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return allIds.filter((id) => {
         const item = allItems.find((item) => item.id === id);
         if (!item) return false;
-        return filterWords.every((word) => item.label.includes(word));
+        return filterWords.every((word) => {
+          const label = item.label;
+          return typeof label === "string" ? label.includes(word) : String(label).includes(word);
+        });
       });
     }, [allIds, allItems, filterWords]);
 
@@ -256,7 +259,10 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return allIdsInActiveSection.filter((id) => {
         const item = allItems.find((item) => item.id === id);
         if (!item) return false;
-        return filterWords.every((word) => item.label.includes(word));
+        return filterWords.every((word) => {
+          const label = item.label;
+          return typeof label === "string" ? label.includes(word) : String(label).includes(word);
+        });
       });
     }, [allIdsInActiveSection, allItems, filterWords]);
 
