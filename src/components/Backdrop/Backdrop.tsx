@@ -35,7 +35,7 @@ const Backdrop = React.forwardRef<HTMLDivElement, BackdropProps>(
         unmountOnExit={true}
         {...fadeProps}
       >
-        <Styled.Container invisible={invisible} {...rest} ref={ref}>
+        <Styled.Container invisible={invisible} {...rest as any} ref={ref}>
           {children}
         </Styled.Container>
       </Fade>

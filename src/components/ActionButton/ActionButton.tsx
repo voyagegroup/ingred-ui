@@ -60,7 +60,7 @@ const ActionButton = React.forwardRef<HTMLButtonElement, ActionButtonProps>(
 
     return (
       <Styled.Container
-        {...rest}
+        {...rest as any}
         ref={ref}
         borderColor={borderColor}
         normalBackgroundColor={normalBackgroundColor}
