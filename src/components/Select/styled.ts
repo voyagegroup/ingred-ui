@@ -11,8 +11,8 @@ export const Container = styled.div<{
   cursor: ${({ isDisabled }) => (isDisabled ? "not-allowed" : "auto")};
 `;
 
-export const ReactSelectMenuList = styled(components.MenuList)<
-  MenuListProps<OptionType<any>, boolean>
+export const ReactSelectMenuList = styled(components.MenuList as React.ComponentType<MenuListProps<OptionType<any>, boolean>>)<
+  MenuListProps<OptionType<any>, boolean> & { children?: React.ReactNode }
 >`
   ${({ maxHeight }) => addScrollbarProperties({ maxHeight: `${maxHeight}px` })}
-` as any; // TODO: remove any
+`;
