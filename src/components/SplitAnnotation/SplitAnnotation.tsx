@@ -3,16 +3,17 @@ import Spacer from "../Spacer";
 import Divider from "../Divider";
 import Flex from "../Flex";
 import * as Styled from "./styled";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
-export type Props = React.ComponentPropsWithoutRef<"div">;
+export type Props = DivElementProps;
 
 const SplitAnnotation = React.forwardRef<HTMLDivElement, Props>(
   function SplitAnnotation({ children, ...rest }, ref) {
     return (
       <Flex
-        ref={ref as React.Ref<HTMLDivElement>}
+        ref={ref}
         display="flex"
-        {...(rest as any)}
+        {...rest}
       >
         <Spacer pr={1} />
         <Divider orientation="vertical" />
