@@ -9,11 +9,11 @@ export type StyledComponentProps = {
   className?: string;
   role?: string;
   onClick?: React.MouseEventHandler<HTMLElement> | ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void);
-  onKeyDown?: (event?: React.KeyboardEvent<HTMLElement>) => void;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement> | ((event?: React.KeyboardEvent<HTMLElement>) => void);
   onTransitionEnd?: () => void;
   ref?: React.Ref<any>;
   style?: React.CSSProperties;
   tabIndex?: number;
-  "aria-expanded"?: boolean;
+  "aria-expanded"?: boolean | string;
   "aria-controls"?: string;
 };
