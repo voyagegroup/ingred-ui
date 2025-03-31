@@ -57,7 +57,7 @@ export default {
 export const Example: StoryObj<SpacerProps> = {
   render: (args) => (
     <>
-      <Spacer {...args}>
+      <Spacer {...args as any}>
         <div
           style={{
             border: "1px solid black",
@@ -70,7 +70,7 @@ export const Example: StoryObj<SpacerProps> = {
           And there is one more {"<Spacer />"} directly below.
         </div>
       </Spacer>
-      <Spacer {...args} />
+      <Spacer {...args as any} />
       <div
         style={{
           border: "1px solid black",

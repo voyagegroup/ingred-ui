@@ -32,7 +32,7 @@ export default {
 
 export const Example: StoryObj<FlexProps> = {
   render: (args) => (
-    <Flex {...args}>
+    <Flex {...args as any}>
       {Array.from({ length: 3 }, (_, i) => (
         <div
           key={i}
