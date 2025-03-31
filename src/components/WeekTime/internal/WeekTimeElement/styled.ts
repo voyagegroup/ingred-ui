@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import React from "react";
 
-export const WeekTimeContainer = styled.div`
+export const WeekTimeContainer = styled.div<{ children?: React.ReactNode }>`
   display: grid;
   grid-template-columns: 38px repeat(24, 1fr);
   grid-gap: ${({ theme }) => theme.spacing / 2}px;
@@ -9,7 +10,7 @@ export const WeekTimeContainer = styled.div`
   width: fit-content;
 `;
 
-export const ContainerBase = styled.div`
+export const ContainerBase = styled.div<{ children?: React.ReactNode }>`
   height: 24px;
   text-align: center;
   background-color: ${({ theme }) => theme.palette.gray.light};

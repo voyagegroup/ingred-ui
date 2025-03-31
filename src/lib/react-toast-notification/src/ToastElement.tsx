@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC, ReactNode } from "react";
+import React, { useEffect, useRef, useState, FC, ReactNode, JSX } from "react";
 import * as Styled from "./styled";
 
 import { CheckIcon, FlameIcon, InfoIcon, CloseIcon, AlertIcon } from "./icons";
@@ -192,7 +192,7 @@ export const DefaultToast = ({
   autoDismissTimeout,
   children,
   isRunning,
-  onDismiss,
+  onDismiss = NOOP,
   placement,
   transitionDuration,
   transitionState,
@@ -226,7 +226,3 @@ export const DefaultToast = ({
     ) : null}
   </ToastElement>
 );
-
-DefaultToast.defaultProps = {
-  onDismiss: NOOP,
-};

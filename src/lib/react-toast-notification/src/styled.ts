@@ -1,6 +1,7 @@
 import { TransitionStatus } from "react-transition-group";
 import styled, { css, keyframes } from "styled-components";
 import { Placement } from "./types";
+import React from "react";
 
 export const Tag = styled.div`
   border: 0;
@@ -13,7 +14,7 @@ export const Tag = styled.div`
   width: 1;
 `;
 
-export const Button = styled.div<{ gutter: number }>`
+export const Button = styled.div<{ gutter: number; children?: React.ReactNode; className?: string; role?: string; onClick?: () => void }>`
   cursor: pointer;
   flex-shrink: 0;
   opacity: 0.5;
@@ -24,7 +25,7 @@ export const Button = styled.div<{ gutter: number }>`
   }
 `;
 
-export const Content = styled.div<{ gutter: number }>`
+export const Content = styled.div<{ gutter: number; children?: React.ReactNode; className?: string }>`
   flex-grow: 1;
   font-size: 14;
   line-height: 1.4;
@@ -56,6 +57,8 @@ export const Icon = styled.div<{
   backgroundColor: string;
   borderRadius: number;
   gutter: number;
+  children?: React.ReactNode;
+  className?: string;
 }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   border-top-left-radius: ${({ borderRadius }) => borderRadius}px;
@@ -73,6 +76,9 @@ export const Icon = styled.div<{
 export const ToastElement = styled.div<{
   height: string | number;
   transitionDuration: number;
+  children?: React.ReactNode;
+  ref?: React.Ref<HTMLDivElement>;
+  className?: string;
 }>`
   height: ${({ height }) => height};
   transition: height
@@ -103,6 +109,8 @@ export const ToastElementInner = styled.div<{
   width: number;
   placement: Placement;
   transitionState: TransitionStatus;
+  children?: React.ReactNode;
+  className?: string;
 }>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: ${({ borderRadius }) => borderRadius}px;

@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import type { Placement } from "./types";
 import { gutter } from "./ToastElement";
 
-const Div = styled.div<{ hasToasts: boolean; placement: Placement }>`
+const Div = styled.div<{ hasToasts: boolean; placement: Placement; className?: string; children?: React.ReactNode }>`
   box-sizing: border-box;
   max-height: 100%;
   max-width: 100%;
