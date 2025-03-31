@@ -35,7 +35,7 @@ const Template: StoryObj<MenuListProps> = {
   },
 };
 
-export const Basic = {
+export const Basic: StoryObj<MenuListProps> = {
   ...Template,
   args: {
     contents: [
@@ -72,7 +72,7 @@ export const Basic = {
   },
 };
 
-export const Group = {
+export const Group: StoryObj<MenuListProps> = {
   ...Template,
   args: {
     contents: [
