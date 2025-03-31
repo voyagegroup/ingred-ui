@@ -233,16 +233,16 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           return;
         }
         // ここまでの結果、child はセクション
-        if (child.props.label !== activeSection) return;
+        if ((child as React.ReactElement<{label: string}>).props.label !== activeSection) return;
 
-        traverseChildren(child.props.children, (grandChild) => {
+        traverseChildren((child as React.ReactElement<{children: React.ReactNode}>).props.children, (grandChild) => {
           if (
             isValidElement(grandChild) &&
             typeof grandChild.type !== "string" &&
             "displayName" in grandChild.type &&
             grandChild.type.displayName === DualListBox2Item.displayName
           ) {
-            ids.push(grandChild.props.id);
+            ids.push((grandChild as React.ReactElement<{id: string}>).props.id);
           }
         });
       });

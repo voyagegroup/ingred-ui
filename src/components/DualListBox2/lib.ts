@@ -31,8 +31,8 @@ export const traverseChildren = (
 ): void => {
   Children.forEach(children, (child) => {
     callback(child);
-    if (!isValidElement(child) || !child.props.children) return;
-    traverseChildren(child.props.children, callback);
+    if (!isValidElement(child) || !(child as React.ReactElement<{children?: React.ReactNode}>).props.children) return;
+    traverseChildren((child as React.ReactElement<{children: React.ReactNode}>).props.children, callback);
   });
 };
 
@@ -48,9 +48,9 @@ export const extractAllItems = (children: ReactNode) => {
       child.type.displayName === DualListBox2Item.displayName
     ) {
       items.push({
-        id: child.props.id,
-        label: child.props.children,
-        groupName: child.props.groupName,
+        id: (child as React.ReactElement<{id: string}>).props.id,
+        label: (child as React.ReactElement<{children: React.ReactNode}>).props.children,
+        groupName: (child as React.ReactElement<{groupName?: string}>).props.groupName,
       });
     }
   });
