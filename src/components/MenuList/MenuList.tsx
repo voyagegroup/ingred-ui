@@ -150,8 +150,8 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
       return !!content.title;
     };
 
-    const renderContent = (content: SingleContentProp) => (
-      <React.Fragment key={content.text}>
+    const renderContent = (content: SingleContentProp, index: number) => (
+      <React.Fragment key={`${content.text}-${index}`}>
         {content.divideTop && (
           <Divider my={1} mx={2} color={theme.palette.gray.light} />
         )}
@@ -223,10 +223,10 @@ const MenuList = React.forwardRef<HTMLDivElement, MenuListProps>(
                   </Typography>
                 </Styled.TitleContainer>
               )}
-              {content.contents.map(renderContent)}
+              {content.contents.map((c, i) => renderContent(c, i))}
             </React.Fragment>
           ) : (
-            renderContent(content)
+            renderContent(content, 0)
           ),
         )}
       </Styled.Container>

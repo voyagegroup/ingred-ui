@@ -14,45 +14,42 @@ export const CandidateRenderer: React.FunctionComponent<{
 }> = ({ disableCheckbox, items, onAdd, onRemove }) => {
   return (
     <Styled.Container>
-      {items.map((item, i) => (
-        // eslint-disable-next-line react/jsx-no-useless-fragment
-        <>
-          {item.items ? (
-            <Styled.AccordionWrapper key={item.id}>
-              <Styled.AccordionComponent
-                title={
-                  <Styled.AccordionTitleWrapper>
-                    <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
-                      {item.content}
-                    </SelectLabel>
-                  </Styled.AccordionTitleWrapper>
-                }
-              >
-                <CandidateRenderer
-                  disableCheckbox={disableCheckbox}
-                  items={item.items}
-                  onAdd={onAdd}
-                  onRemove={onRemove}
-                />
-              </Styled.AccordionComponent>
-            </Styled.AccordionWrapper>
-          ) : (
-            <Styled.UnselectedItem
-              key={item.id}
-              isLastIndex={i + 1 === items.length}
+      {items.map((item, i) =>
+        item.items ? (
+          <Styled.AccordionWrapper key={item.id}>
+            <Styled.AccordionComponent
+              title={
+                <Styled.AccordionTitleWrapper>
+                  <SelectLabel item={item} onAdd={onAdd} onRemove={onRemove}>
+                    {item.content}
+                  </SelectLabel>
+                </Styled.AccordionTitleWrapper>
+              }
             >
-              <SelectLabel
+              <CandidateRenderer
                 disableCheckbox={disableCheckbox}
-                item={item}
+                items={item.items}
                 onAdd={onAdd}
                 onRemove={onRemove}
-              >
-                {item.content}
-              </SelectLabel>
-            </Styled.UnselectedItem>
-          )}
-        </>
-      ))}
+              />
+            </Styled.AccordionComponent>
+          </Styled.AccordionWrapper>
+        ) : (
+          <Styled.UnselectedItem
+            key={item.id}
+            isLastIndex={i + 1 === items.length}
+          >
+            <SelectLabel
+              disableCheckbox={disableCheckbox}
+              item={item}
+              onAdd={onAdd}
+              onRemove={onRemove}
+            >
+              {item.content}
+            </SelectLabel>
+          </Styled.UnselectedItem>
+        )
+      )}
     </Styled.Container>
   );
 };

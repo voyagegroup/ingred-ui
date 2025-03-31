@@ -32,7 +32,7 @@ export type CandidateItem = DualListBoxCandidateItem & {
 };
 
 const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
-  function DualListBox(inProps) {
+  function DualListBox(inProps, ref) {
     const {
       candidateItems: candidateItemsProp,
       selectedItems,
@@ -50,7 +50,7 @@ const DualListBox = React.forwardRef<HTMLDivElement, DualListBoxProps>(
     );
 
     return (
-      <Styled.Container>
+      <Styled.Container ref={ref}>
         <CandidateRenderer
           disableCheckbox={disableCheckbox}
           items={candidateItems}
