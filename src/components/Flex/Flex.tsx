@@ -1,8 +1,9 @@
 import { Property } from "csstype";
 import styled from "styled-components";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
 type TLengthStyledSystem = string | 0 | number;
-export type FlexProps = {
+export type FlexProps = StyledComponentProps & {
   display?: "flex" | "inline-flex";
   height?: Property.Height<TLengthStyledSystem>;
   alignItems?: Property.AlignItems;
