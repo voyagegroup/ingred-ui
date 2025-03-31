@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
+import { StyledComponentProps } from "../../utils/styledTypes";
 
-export const Container = styled.div<{ invisible: boolean }>`
+export const Container = styled.div<{ invisible: boolean } & StyledComponentProps>`
   position: fixed;
   display: flex;
   align-items: center;
