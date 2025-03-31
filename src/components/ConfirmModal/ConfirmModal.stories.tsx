@@ -47,7 +47,7 @@ const Template: StoryObj<ConfirmModalProps> = {
   },
 };
 
-export const Basic = {
+export const Basic: StoryObj<ConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -55,7 +55,7 @@ export const Basic = {
   },
 };
 
-export const WithOneSubAction = {
+export const WithOneSubAction: StoryObj<ConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -72,11 +72,12 @@ export const WithOneSubAction = {
   },
 };
 
-export const WithTwoSubActions = {
+export const WithTwoSubActions: StoryObj<ConfirmModalProps> = {
   ...Template,
-  children: "Content",
-  onSubmit: action("submitted"),
-  subActions: [
+  args: {
+    children: "Content",
+    onSubmit: action("submitted"),
+    subActions: [
     <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
       Add
     </ActionButton>,
@@ -88,14 +89,15 @@ export const WithTwoSubActions = {
       Download
     </ActionButton>,
   ],
+  },
 };
 
-export const Loading = {
+export const Loading: StoryObj<ConfirmModalProps> = {
   ...Template,
   args: { children: "Content", onSubmit: () => {}, loading: true },
 };
 
-export const OverflowYScroll = {
+export const OverflowYScroll: StoryObj<ConfirmModalProps> = {
   ...Template,
   args: {
     children: (
@@ -122,7 +124,7 @@ export const OverflowYScroll = {
   },
 };
 
-export const WithoutFooter = {
+export const WithoutFooter: StoryObj<ConfirmModalProps> = {
   ...Template,
   args: { children: "Content", onSubmit: undefined },
 };
