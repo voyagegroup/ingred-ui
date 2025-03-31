@@ -28,7 +28,7 @@ export const YearMonths: React.FC<Props> = ({
   onClick,
 }) => {
   const theme = useTheme();
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLDivElement>(null) as React.RefObject<HTMLDivElement>;
   const { years } = useScrollYearMonths(current, ref);
 
   const handleClick = (year: number, month: number) => () => {
