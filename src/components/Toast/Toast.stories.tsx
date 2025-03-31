@@ -58,28 +58,28 @@ const Template: StoryObj<ToastProps> = {
   },
 };
 
-export const Info = {
+export const Info: StoryObj<ToastProps> = {
   ...Template,
   args: {
     appearance: "info",
   },
 };
 
-export const Success = {
+export const Success: StoryObj<ToastProps> = {
   ...Template,
   args: {
     appearance: "success",
   },
 };
 
-export const Warning = {
+export const Warning: StoryObj<ToastProps> = {
   ...Template,
   args: {
     appearance: "warning",
   },
 };
 
-export const Error = {
+export const Error: StoryObj<ToastProps> = {
   ...Template,
   args: {
     appearance: "error",
