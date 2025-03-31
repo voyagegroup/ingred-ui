@@ -53,7 +53,7 @@ const Template: StoryObj<FullSizeConfirmModalProps> = {
   },
 };
 
-export const Basic = {
+export const Basic: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -61,7 +61,7 @@ export const Basic = {
   },
 };
 
-export const WithOneSubAction = {
+export const WithOneSubAction: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -78,7 +78,7 @@ export const WithOneSubAction = {
   },
 };
 
-export const WithTwoSubActions = {
+export const WithTwoSubActions: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -102,7 +102,7 @@ export const WithTwoSubActions = {
   },
 };
 
-export const Loading = {
+export const Loading: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
@@ -111,7 +111,7 @@ export const Loading = {
   },
 };
 
-export const OverflowYScroll = {
+export const OverflowYScroll: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: (
@@ -138,7 +138,7 @@ export const OverflowYScroll = {
   },
 };
 
-export const WithoutFooter = {
+export const WithoutFooter: StoryObj<FullSizeConfirmModalProps> = {
   ...Template,
   args: {
     children: "Content",
