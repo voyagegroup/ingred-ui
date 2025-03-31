@@ -13,8 +13,9 @@ import { ClickState, ClickStateType } from "./constants";
 import { InnerCalendarRange } from "../internal/InnerCalendarRange/InnerCalendarRange";
 import { YearMonths } from "../internal/YearMonths";
 import { useTheme } from "../../../themes";
+import { DivElementProps } from "../../../utils/reactElementTypes";
 
-export type CalendarRangeProps = React.HTMLAttributes<HTMLDivElement> & {
+export type CalendarRangeProps = DivElementProps & {
   /**
    * 開始日
    * @default dayjs()
@@ -134,7 +135,7 @@ export const CalendarRange = forwardRef<HTMLDivElement, CalendarRangeProps>(
     );
 
     return (
-      <Card ref={ref as React.Ref<HTMLDivElement>} {...(rest as any)}>
+      <Card ref={ref} {...rest}>
         <Actions
           defaultClickAction={defaultClickAction}
           actions={actions}
