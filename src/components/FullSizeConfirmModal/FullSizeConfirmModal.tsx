@@ -13,6 +13,7 @@ import Modal, { ModalCloseReason, ModalProps } from "../Modal";
 import Fade from "../Fade";
 import { CSSTransitionProps } from "../../utils/reactTransitionGroup";
 import { useLocaleProps } from "../../hooks/useLocaleProps";
+import { DivElementProps } from "../../utils/reactElementTypes";
 
 export type FullSizeConfirmModalCloseReason =
   | "clickCloseIcon"
@@ -24,7 +25,7 @@ export type SubAction = {
   action: () => void;
 };
 
-export type FullSizeConfirmModalProps = {
+export type FullSizeConfirmModalProps = DivElementProps & {
   title: string;
   confirmText?: string;
   cancelText?: string;
