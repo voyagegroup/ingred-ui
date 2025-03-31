@@ -123,7 +123,7 @@ export const Example: StoryObj<LocaleProviderProps> = {
           <Select
             options={localeOptions}
             defaultValue={selectedLocale}
-            onChange={(option) => {
+            onChange={(option: OptionType<keyof typeof locales> | null) => {
               if (!option) return;
               setSelectedLocale(option);
             }}

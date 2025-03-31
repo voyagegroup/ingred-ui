@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, FC, ReactNode, JSX } from "react";
+import React, { useEffect, useRef, useState, FC, ReactNode } from "react";
 import * as Styled from "./styled";
 
 import { CheckIcon, FlameIcon, InfoIcon, CloseIcon, AlertIcon } from "./icons";
