@@ -17,7 +17,7 @@ export const Example: StoryObj<TooltipProps> = {
   },
 };
 
-export const DesignSamples: StoryObj = {
+export const DesignSamples: StoryObj<TooltipProps> = {
   render: () => {
     return (
       <>
