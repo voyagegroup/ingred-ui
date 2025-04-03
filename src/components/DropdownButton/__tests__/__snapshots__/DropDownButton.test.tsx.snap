@@ -39,6 +39,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
   >
     <div
       class="sc-breuTD gslte"
+      data-floating-ui-focusable=""
       id=":r2:"
       role="dialog"
       style="position: absolute; top: 0px; left: 0px;"
@@ -152,6 +153,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     </div>
     <div
       class="sc-breuTD gslte"
+      data-floating-ui-focusable=""
       id=":r0:"
       role="dialog"
       style="position: absolute; top: 0px; left: 0px;"
@@ -264,6 +266,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
   >
     <div
       class="sc-breuTD gslte"
+      data-floating-ui-focusable=""
       id=":r6:"
       role="dialog"
       style="position: absolute; top: 0px; left: 0px;"
@@ -381,6 +384,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
     </div>
     <div
       class="sc-breuTD gslte"
+      data-floating-ui-focusable=""
       id=":r4:"
       role="dialog"
       style="position: absolute; top: 0px; left: 0px;"

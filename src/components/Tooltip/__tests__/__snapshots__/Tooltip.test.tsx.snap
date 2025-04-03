@@ -10,6 +10,7 @@ exports[`Tooltip component testing Tooltip 1`] = `
   >
     <div
       class="sc-bczRLJ BSATi"
+      data-floating-ui-focusable=""
       id=":r0:"
       role="tooltip"
       style="position: absolute; top: 0px; left: 0px;"
