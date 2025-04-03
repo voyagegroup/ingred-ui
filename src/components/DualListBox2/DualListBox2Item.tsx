@@ -15,6 +15,14 @@ type DualListBox2ItemProps = {
   children: ReactNode;
   disableInclude?: boolean;
   disableExclude?: boolean;
+  /** アイテムが追加済みかどうかを外部から制御 */
+  isIncluded?: boolean;
+  /** アイテムが除外済みかどうかを外部から制御 */
+  isExcluded?: boolean;
+  /** 追加/解除時のコールバック */
+  onIncludeChange?: (included: boolean) => void;
+  /** 除外/解除時のコールバック */
+  onExcludeChange?: (excluded: boolean) => void;
 };
 
 export const DualListBox2Item = ({
@@ -22,6 +30,10 @@ export const DualListBox2Item = ({
   disableInclude,
   disableExclude,
   children,
+  isIncluded: isIncludedProp,
+  isExcluded: isExcludedProp,
+  onIncludeChange,
+  onExcludeChange,
 }: DualListBox2ItemProps) => {
   const {
     filterWords,
@@ -31,15 +43,31 @@ export const DualListBox2Item = ({
     onExcludedChange,
   } = useContext(DualListBox2Context);
 
-  const isIncluded = useMemo(() => includedIds.includes(id), [includedIds, id]);
-  const isExcluded = useMemo(() => excludedIds.includes(id), [excludedIds, id]);
+  // 外部からpropsが渡された場合はそちらを優先
+  const isIncluded = useMemo(
+    () => (isIncludedProp !== undefined ? isIncludedProp : includedIds.includes(id)),
+    [isIncludedProp, includedIds, id]
+  );
+  const isExcluded = useMemo(
+    () => (isExcludedProp !== undefined ? isExcludedProp : excludedIds.includes(id)),
+    [isExcludedProp, excludedIds, id]
+  );
 
   const handleAddButtonClick = useCallback(() => {
-    const newIncludedIds = isIncluded
-      ? includedIds.filter((item) => item !== id)
-      : [...includedIds, id];
+    const newIncluded = !isIncluded;
+    // 外部制御用のコールバックを呼び出し
+    onIncludeChange?.(newIncluded);
+    
+    // 内部状態も更新
+    const newIncludedIds = newIncluded
+      ? [...includedIds, id]
+      : includedIds.filter((item) => item !== id);
     onIncludedChange(newIncludedIds);
-    if (isExcluded) onExcludedChange(excludedIds.filter((item) => item !== id));
+
+    if (isExcluded) {
+      onExcludeChange?.(false);
+      onExcludedChange(excludedIds.filter((item) => item !== id));
+    }
   }, [
     id,
     includedIds,
@@ -48,14 +76,25 @@ export const DualListBox2Item = ({
     isExcluded,
     onIncludedChange,
     onExcludedChange,
+    onIncludeChange,
+    onExcludeChange,
   ]);
 
   const handleExcludeButtonClick = useCallback(() => {
-    const newExcludedIds = isExcluded
-      ? excludedIds.filter((item) => item !== id)
-      : [...excludedIds, id];
+    const newExcluded = !isExcluded;
+    // 外部制御用のコールバックを呼び出し
+    onExcludeChange?.(newExcluded);
+
+    // 内部状態も更新
+    const newExcludedIds = newExcluded
+      ? [...excludedIds, id]
+      : excludedIds.filter((item) => item !== id);
     onExcludedChange(newExcludedIds);
-    if (isIncluded) onIncludedChange(includedIds.filter((item) => item !== id));
+
+    if (isIncluded) {
+      onIncludeChange?.(false);
+      onIncludedChange(includedIds.filter((item) => item !== id));
+    }
   }, [
     id,
     includedIds,
@@ -64,6 +103,8 @@ export const DualListBox2Item = ({
     isExcluded,
     onIncludedChange,
     onExcludedChange,
+    onIncludeChange,
+    onExcludeChange,
   ]);
 
   const contentsText = children?.toString();
