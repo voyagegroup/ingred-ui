@@ -23,6 +23,8 @@ import { DualListBox2Item } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
+export type LoadingMode = 'infinite-loading' | 'bulk-loading';
+
 type DualListBox2Props = {
   /**
    * 選択済みの「追加」項目
@@ -80,6 +82,14 @@ type DualListBox2Props = {
    * 1ページあたりの表示件数が変更されたときのハンドラ
    **/
   onPageSizeChange?: (pageSize: number) => void;
+  /**
+   * データの読み込み方式
+   **/
+  loadingMode?: LoadingMode;
+  /**
+   * 検索結果の件数表示のカスタマイズ関数
+   **/
+  renderFilteredCount?: (filteredCount: number, totalCount: number) => ReactNode;
 };
 
 const toGrouped = (items: Item[]) => {
@@ -106,6 +116,24 @@ const toGrouped = (items: Item[]) => {
   );
 };
 
+const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
+  return (
+    <styled.DualListBox2SelectedLabel>{label}</styled.DualListBox2SelectedLabel>
+  );
+};
+
+// 共通のキャンセルボタンコンポーネント
+const CancelButton = ({ onClick, label = "解除" }: { onClick: () => void; label?: string }) => {
+  return (
+    <styled.CancelButton
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+    />
+  );
+};
+
+// 選択済みアイテムコンポーネント（キャンセルボタンを使用）
 const DualListBox2SelectedItem = ({
   id,
   children,
@@ -125,23 +153,27 @@ const DualListBox2SelectedItem = ({
       onExcludedChange(excludedIds.filter((i) => i !== id));
     }
   };
-  const handleCancelButtonClick = cancel;
 
   return (
     <styled.DualListBox2SelectedItem>
       {children}
-      <button
-        type="button"
-        aria-label="解除"
-        onClick={handleCancelButtonClick}
-      />
+      <CancelButton onClick={cancel} />
     </styled.DualListBox2SelectedItem>
   );
 };
 
-const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
+// 検索クリアボタンコンポーネント
+const SearchClearButton = ({ onClick }: { onClick: () => void }) => {
+  // クリックイベントハンドラー内で明示的にstopPropagationを呼び出し、
+  // 親要素へのイベント伝播を防止する
+  const handleClick = useCallback(() => {
+    onClick();
+  }, [onClick]);
+
   return (
-    <styled.DualListBox2SelectedLabel>{label}</styled.DualListBox2SelectedLabel>
+    <styled.SearchClearButtonWrapper onClick={(e) => e.stopPropagation()}>
+      <CancelButton onClick={handleClick} label="検索をクリア" />
+    </styled.SearchClearButtonWrapper>
   );
 };
 
@@ -161,11 +193,14 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       pageSize = 50,
       pageSizeOptions = [10, 50, 100, 200],
       onPageSizeChange,
+      loadingMode = 'infinite-loading',
+      renderFilteredCount,
     },
     ref,
   ) => {
     // モバイルサイズでは、タブで左右パネルの表示を切り替える
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
+    const [searchText, setSearchText] = useState("");
     const [filter, setFilter] = useState("");
     // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -186,11 +221,45 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return hasSection;
     }, [children]);
 
+    // 全アイテムの取得
+    const allItems = useMemo(() => extractAllItems(children), [children]);
+
     // フィルター文字列をスペース区切りで単語の配列に分割
     const filterWords = useMemo(() => {
       const trimmed = filter.trim();
       return trimmed ? trimmed.split(/\s+/) : [];
     }, [filter]);
+
+    // フィルタリングされたアイテムの取得
+    const filteredItems = useMemo(() => {
+      if (filterWords.length === 0) return allItems;
+      return allItems.filter((item) =>
+        filterWords.every((word) =>
+          item.label.toLowerCase().includes(word.toLowerCase())
+        )
+      );
+    }, [allItems, filterWords]);
+
+    // 無限スクロールの処理
+    const handleScroll = useCallback(
+      (event: React.UIEvent<HTMLDivElement>) => {
+        if (loadingMode !== 'infinite-loading' || !onLoadMore || isLoadingMore || loading) return;
+
+        const { scrollTop, clientHeight, scrollHeight } = event.currentTarget;
+        if (scrollHeight - scrollTop <= clientHeight * 1.5) {
+          setIsLoadingMore(true);
+          onLoadMore();
+        }
+      },
+      [loadingMode, onLoadMore, isLoadingMore, loading]
+    );
+
+    // ローディング状態の解除
+    useEffect(() => {
+      if (!loading) {
+        setIsLoadingMore(false);
+      }
+    }, [loading]);
 
     const includedIds = useMemo(
       () => included.map((item) => item.id),
@@ -201,9 +270,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       () => excluded.map((item) => item.id),
       [excluded],
     );
-
-    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
-    const allItems = useMemo(() => extractAllItems(children), [children]);
 
     // DualListBox2 に配置された、全 DualListBox2Item の id の配列
     const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
@@ -260,6 +326,45 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       });
     }, [allIdsInActiveSection, allItems, filterWords]);
 
+    // 件数表示のレンダリング
+    const renderCount = useCallback(() => {
+      if (loading) {
+        return (
+          <styled.HeaderCount>
+            <Spinner width="16px" />
+          </styled.HeaderCount>
+        );
+      }
+
+      const filteredCount = filteredItems.length;
+      const totalCount = allItems.length;
+
+      if (renderFilteredCount) {
+        return renderFilteredCount(filteredCount, totalCount);
+      }
+
+      // フィルターが適用されている場合も、表示中のアイテム件数のみを表示
+      return (
+        <styled.HeaderCount>
+          {hasSection && activeSection === null
+            ? "-"
+            : `${filterWords.length > 0 ? filteredCount :
+              hasSection ? allIdsInActiveSection.length : allIds.length}件`
+          }
+        </styled.HeaderCount>
+      );
+    }, [
+      loading,
+      filteredItems.length,
+      allItems.length,
+      renderFilteredCount,
+      filterWords.length,
+      hasSection,
+      activeSection,
+      allIdsInActiveSection.length,
+      allIds.length
+    ]);
+
     // 「すべて追加」ボタンを非活性にするかどうか
     // セクション型の DualListBox の場合、セクション選択中のみ「すべて〜」ボタンは有効。
     // それ以外は、追加選択できる項目があれば有効（すべて選択済みの場合、無効）
@@ -312,10 +417,26 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     // 検索フィルターのテキスト入力変更に state に反映
     const handleFilterChange = useCallback(
       (event: ChangeEvent<HTMLInputElement>) => {
-        setFilter(event.target?.value);
+        setSearchText(event.target?.value);
       },
-      [setFilter],
+      [],
     );
+
+    // エンターキーが押されたときに検索を実行
+    const handleKeyDown = useCallback(
+      (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") {
+          setFilter(searchText);
+        }
+      },
+      [searchText],
+    );
+
+    // 検索フィルターをリセット
+    const handleFilterClear = useCallback(() => {
+      setSearchText("");
+      setFilter("");
+    }, []);
 
     // 選択をクリアする
     const handleClearButtonClick = useCallback(() => {
@@ -395,44 +516,11 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
     ]);
 
-    const handleIntersection = useCallback(
-      async (entries: IntersectionObserverEntry[]) => {
-        if (entries[0].isIntersecting && !isLoadingMore && onLoadMore) {
-          setIsLoadingMore(true);
-          try {
-            await onLoadMore();
-          } finally {
-            setIsLoadingMore(false); // ローディング状態を必ずリセット
-          }
-        }
-      },
-      [isLoadingMore, onLoadMore],
-    );
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-      // テスト環境ではIntersectionObserverが利用できないため、処理をスキップ
-      if (typeof IntersectionObserver === "undefined") {
-        return;
-      }
-
-      const observer = new IntersectionObserver(handleIntersection, {
-        root: null,
-        rootMargin: "100px",
-        threshold: 0.1,
-      });
-
-      const currentLoadMoreRef = loadMoreRef.current;
-
-      if (currentLoadMoreRef) {
-        observer.observe(currentLoadMoreRef);
-      }
-
-      return () => {
-        if (currentLoadMoreRef) {
-          observer.unobserve(currentLoadMoreRef);
-        }
-      };
-    }, [handleIntersection]);
+    const handleToggleMenu = () => {
+      setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
       <styled.DualListBox2 ref={ref}>
@@ -476,18 +564,27 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
-                    placeholder="検索"
+                    placeholder="検索（Enterで実行）"
                     disabled={hasSection && activeSection === null}
                     aria-label="検索"
-                    value={filter}
+                    value={searchText}
                     onChange={handleFilterChange}
+                    onKeyDown={handleKeyDown}
                   />
+                  {searchText && (
+                    <SearchClearButton onClick={handleFilterClear} />
+                  )}
                 </styled.HeaderSearch>
                 <ContextMenu2Container>
                   <ContextMenu2
+                    open={isMenuOpen}
+                    onOpenChange={setIsMenuOpen}
                     trigger={
-                      <styled.HeaderMenuButton type="button">
-                        <Icon name="more_vert" color={colors.basic[900]} />
+                      <styled.HeaderMenuButton
+                        type="button"
+                        onClick={handleToggleMenu}
+                      >
+                        <Icon name="more_vert" size="md" color="currentColor" />
                       </styled.HeaderMenuButton>
                     }
                   >
@@ -501,26 +598,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     {menuButtons}
                   </ContextMenu2>
                 </ContextMenu2Container>
-                <styled.HeaderCount>
-                  {loading ? (
-                    <Spinner width="16px" />
-                  ) : (
-                    <>
-                      {(() => {
-                        if (hasSection && activeSection === null) {
-                          return "-";
-                        }
-                        if (hasSection) {
-                          return allIdsInActiveSection.length.toLocaleString(
-                            "en-US",
-                          );
-                        }
-                        return allIds.length.toLocaleString("en-US");
-                      })()}
-                      件
-                    </>
-                  )}
-                </styled.HeaderCount>
+                {renderCount()}
                 <styled.HeaderButtons>
                   {!disableInclude && (
                     <li>
@@ -562,7 +640,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                   )}
                 </styled.HeaderButtons>
               </styled.LeftPanelHeader>
-              <styled.LeftPanelBody>
+              <styled.LeftPanelBody onScroll={handleScroll}>
                 {children}
                 <div ref={loadMoreRef} style={{ height: "20px" }}>
                   {loading && (
