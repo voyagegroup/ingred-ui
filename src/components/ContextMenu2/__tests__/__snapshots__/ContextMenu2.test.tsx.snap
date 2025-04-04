@@ -13,12 +13,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     trigger
   </button>
   <span
-    aria-hidden="true"
-    data-floating-ui-inert=""
-    style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
-    tabindex="-1"
-  />
-  <span
     data-floating-ui-focus-guard=""
     data-floating-ui-inert=""
     data-type="outside"
@@ -42,7 +36,6 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   <div
     aria-orientation="vertical"
     class="sc-hAZoDl iUiCmF"
-    data-floating-ui-focusable=""
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
