@@ -39,12 +39,14 @@ export const DualListBox2Item = ({
 
   // 外部からpropsが渡された場合はそちらを優先
   const isIncluded = useMemo(
-    () => (isIncludedProp !== undefined ? isIncludedProp : includedIds.includes(id)),
-    [isIncludedProp, includedIds, id]
+    () =>
+      isIncludedProp !== undefined ? isIncludedProp : includedIds.includes(id),
+    [isIncludedProp, includedIds, id],
   );
   const isExcluded = useMemo(
-    () => (isExcludedProp !== undefined ? isExcludedProp : excludedIds.includes(id)),
-    [isExcludedProp, excludedIds, id]
+    () =>
+      isExcludedProp !== undefined ? isExcludedProp : excludedIds.includes(id),
+    [isExcludedProp, excludedIds, id],
   );
 
   const handleAddButtonClick = useCallback(() => {
