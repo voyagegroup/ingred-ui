@@ -1,34 +1,59 @@
-import React, { useState, useCallback } from "react";
-import { Meta, StoryObj, ComponentStory } from "@storybook/react";
+import React, { useState, useCallback, useMemo } from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { DualListBox2, DualListBox2Item } from "./";
+import { useDualListBox2, type Item } from "./hooks/useDualListBox2";
+import { DualListBox2Accordion } from "./DualListBox2Accordion";
+import { DualListBox2Section } from "./DualListBox2Section";
 import {
-  type Item,
-  DualListBox2,
-  DualListBox2Item,
-  DualListBox2Accordion,
-  DualListBox2Section,
-  toGroupedItems,
-} from "./index";
-import {
-  ContextMenu2ButtonItem,
-  ContextMenu2SwitchItem,
+  ContextMenu2,
+  ContextMenu2TriggerItem,
+  ContextMenu2CheckItem,
 } from "../ContextMenu2";
+import { ContextMenu2ButtonItem } from "../ContextMenu2";
+import { useContextMenu2Anchor } from "../ContextMenu2";
 import Checkbox from "../Checkbox";
+import Button from "../Button";
+import Select from "../Select";
+import Flex from "../Flex";
+import Typography from "../Typography";
 
-const meta = {
+const meta: Meta<typeof DualListBox2> = {
   title: "Components/Data Display/DualListBox2",
   component: DualListBox2,
-  argTypes: {},
-} satisfies Meta<typeof DualListBox2>;
+};
 
 export default meta;
+type Story = StoryObj<typeof DualListBox2>;
 
-const generateItems = (start: number, count: number, groupName?: string) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: `item-${start + i}`,
-    label: `アイテム ${start + i + 1}`,
-    ...(groupName ? { groupName } : {}),
+// 500件のアイテムを生成
+const ALL_ITEMS = Array.from({ length: 500 }, (_, i) => ({
+  id: `item-${i + 1}`,
+  label: `Item ${i + 1}`,
+}));
+
+const PAGE_SIZE_OPTIONS = [100, 200, 300] as const;
+
+const generateItems = (count: number, groupPrefix: string = ""): Item[] => {
+  return ALL_ITEMS.slice(0, count).map(item => ({
+    ...item,
+    id: `${groupPrefix ? `${groupPrefix}-` : ""}${item.id}`,
+    label: `${groupPrefix ? `${groupPrefix} ` : ""}${item.label}`,
   }));
 };
+
+const createContextMenuItems = (pageSize: number, onPageSizeChange: (size: number) => void) => [
+  <ContextMenu2ButtonItem
+    key="pageSize"
+    text="件数を変更"
+    onClick={() => {}}
+    subMenuItems={PAGE_SIZE_OPTIONS.map(size => ({
+      type: "button" as const,
+      text: `${size}件`,
+      onClick: () => onPageSizeChange(size),
+      selected: pageSize === size,
+    }))}
+  />,
+];
 
 /**
  * #### ベーシックなタイプ
@@ -46,55 +71,155 @@ const generateItems = (start: number, count: number, groupName?: string) => {
  *
  * included はフラットな配列。アコーディオンやセクションの group ごとに分けて配置する
  */
-export const Default: ComponentStory<typeof DualListBox2> = (args) => {
-  const [included, setIncluded] = useState<Item[]>(args.included || []);
-  const [excluded, setExcluded] = useState<Item[]>(args.excluded || []);
-  const [loading, setLoading] = useState(args.loading || false);
-  const [pageSize, setPageSize] = useState(args.pageSize || 50);
-  const [items, setItems] = useState(() => generateItems(0, pageSize));
+export const Default: Story = {
+  render: () => {
+    const [pageSize, setPageSize] = useState<number>(100);
+    const [items, setItems] = useState<Item[]>(() => generateItems(pageSize));
+    const [isLoading, setIsLoading] = useState(false);
+    const [filter, setFilter] = useState("");
+
+    const {
+      includedItems,
+      excludedItems,
+      handleIncludedChange,
+      handleExcludedChange,
+      isItemIncluded,
+      isItemExcluded,
+    } = useDualListBox2({
+      items,
+      onChange: (selected: Item[]) => console.log("Selected items:", selected),
+    });
 
   const handleLoadMore = useCallback(() => {
-    setLoading(true);
+      if (items.length >= ALL_ITEMS.length) return;
+
+      setIsLoading(true);
     setTimeout(() => {
-      setItems((prev) => [...prev, ...generateItems(prev.length, pageSize)]);
-      setLoading(false);
+        const nextItems = generateItems(Math.min(items.length + pageSize, ALL_ITEMS.length));
+        setItems(nextItems);
+        setIsLoading(false);
     }, 1000);
-  }, [pageSize]);
+    }, [items.length, pageSize]);
 
   const handlePageSizeChange = useCallback((newPageSize: number) => {
     setPageSize(newPageSize);
-    setItems(generateItems(0, newPageSize));
+      setItems(generateItems(newPageSize));
   }, []);
+
+    const handleInclude = useCallback(
+      (id: string) => {
+        // 除外リストから削除
+        const newExcludedIds = excludedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        handleExcludedChange(newExcludedIds);
+
+        // 追加リストをトグル
+        const newIncludedIds = includedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        
+        if (!isItemIncluded(id)) {
+          newIncludedIds.push(id);
+        }
+        
+        handleIncludedChange(newIncludedIds);
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemIncluded]
+    );
+
+    const handleExclude = useCallback(
+      (id: string) => {
+        // 追加リストから削除
+        const newIncludedIds = includedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        handleIncludedChange(newIncludedIds);
+
+        // 除外リストをトグル
+        const newExcludedIds = excludedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        
+        if (!isItemExcluded(id)) {
+          newExcludedIds.push(id);
+        }
+        
+        handleExcludedChange(newExcludedIds);
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemExcluded]
+    );
+
+    const menuButtons = (
+      <>
+        <Button
+          size="small"
+          color="clear"
+          onClick={() => setFilter("")}
+          style={{ visibility: filter ? "visible" : "hidden" }}
+        >
+          ×
+        </Button>
+        <ContextMenu2
+          width={136}
+          trigger={
+            <ContextMenu2TriggerItem append={pageSize}>
+              件数を変更
+            </ContextMenu2TriggerItem>
+          }
+        >
+          {PAGE_SIZE_OPTIONS.map((size) => (
+            <ContextMenu2CheckItem
+              key={size}
+              closeOnChange
+              checked={pageSize === size}
+              onChange={() => handlePageSizeChange(size)}
+            >
+              {size}件
+            </ContextMenu2CheckItem>
+          ))}
+        </ContextMenu2>
+      </>
+    );
+
+    // フィルタリングされたアイテムを計算
+    const filteredItems = useMemo(() => {
+      if (!filter) return items;
+      
+      const filterWords = filter.toLowerCase().trim().split(/\s+/);
+      return items.filter((item) => {
+        const label = item.label.toLowerCase();
+        return filterWords.every((word) => label.includes(word));
+      });
+    }, [items, filter]);
 
   return (
     <DualListBox2
-      {...args}
-      included={included}
-      excluded={excluded}
-      loading={loading}
-      pageSize={pageSize}
-      pageSizeOptions={args.pageSizeOptions}
-      onPageSizeChange={handlePageSizeChange}
-      onIncludedChange={(ids: string[]) =>
-        setIncluded(items.filter((item) => ids.includes(item.id)))
-      }
-      onExcludedChange={(ids: string[]) =>
-        setExcluded(items.filter((item) => ids.includes(item.id)))
-      }
+        included={includedItems}
+        excluded={excludedItems}
+        onIncludedChange={handleIncludedChange}
+        onExcludedChange={handleExcludedChange}
+        loading={isLoading}
       onLoadMore={handleLoadMore}
+        menuButtons={menuButtons}
+        filter={filter}
+        onFilterChange={setFilter}
     >
-      {items.map((item) => (
+        {filteredItems.map((item) => (
         <DualListBox2Item
           key={item.id}
           id={item.id}
-          disableInclude={args.disableInclude}
-          disableExclude={args.disableExclude}
+            isIncluded={isItemIncluded(item.id)}
+            isExcluded={isItemExcluded(item.id)}
+            onInclude={handleInclude}
+            onExclude={handleExclude}
         >
           {item.label}
         </DualListBox2Item>
       ))}
     </DualListBox2>
   );
+  },
 };
 
 /**
@@ -103,101 +228,217 @@ export const Default: ComponentStory<typeof DualListBox2> = (args) => {
  * 件数の上限が決まっていて、多い場合や区切りたい場合に利用します。
  * セクションごとに一括選択もできます。
  */
-export const Accordion: StoryObj<typeof DualListBox2> = {
+export const Accordion: Story = {
   render: () => {
+    const [pageSize, setPageSize] = useState<number>(100);
     const [items, setItems] = useState<Item[]>([]);
-    const [included, setIncluded] = useState<Item[]>([]);
-    const [excluded, setExcluded] = useState<Item[]>([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [loadedGroups, setLoadedGroups] = useState<Set<string>>(new Set());
-    const [pageSize, setPageSize] = useState(50);
     const [loadingGroup, setLoadingGroup] = useState<string | null>(null);
+    const [filter, setFilter] = useState("");
 
-    // アコーディオンのグループ定義
     const groups = [
       { id: "group1", name: "アコーディオン1" },
       { id: "group2", name: "アコーディオン2" },
+      { id: "group3", name: "アコーディオン3" },
     ];
+
+    const {
+      includedItems,
+      excludedItems,
+      handleIncludedChange,
+      handleExcludedChange,
+      isItemIncluded,
+      isItemExcluded,
+    } = useDualListBox2({
+      items,
+      onChange: (selected: Item[]) => {
+        console.log("Selected items:", selected);
+      },
+    });
+
+    // 検索時に未読み込みのグループを読み込む
+    const loadAllGroups = useCallback(async () => {
+      const unloadedGroups = groups.filter(group => !loadedGroups.has(group.name));
+      if (unloadedGroups.length === 0) return;
+
+      setLoading(true);
+      for (const group of unloadedGroups) {
+        const newItems = generateItems(pageSize, group.name).map(item => ({
+          ...item,
+          groupName: group.name,
+        }));
+        setItems(prev => [...prev, ...newItems]);
+        setLoadedGroups(prev => new Set([...prev, group.name]));
+      }
+      setLoading(false);
+    }, [groups, loadedGroups, pageSize]);
+
+    // フィルタが変更されたときの処理
+    const handleFilterChange = useCallback(async (newFilter: string) => {
+      setFilter(newFilter);
+      if (newFilter) {
+        await loadAllGroups();
+      }
+    }, [loadAllGroups]);
+
+    const handlePageSizeChange = useCallback((newPageSize: number) => {
+      setPageSize(newPageSize);
+      setItems([]);
+      setLoadedGroups(new Set());
+    }, []);
 
     const handleAccordionOpen = useCallback(
       (groupName: string) => {
         if (loadedGroups.has(groupName) || loadingGroup) return;
 
         setLoadingGroup(groupName);
-        setIsLoading(true);
+        setLoading(true);
         setTimeout(() => {
-          setItems((prev) => [
-            ...prev,
-            ...generateItems(prev.length, pageSize).map((item) => ({
+          const newItems = generateItems(pageSize, groupName).map(item => ({
               ...item,
               groupName,
-            })),
-          ]);
-          setLoadedGroups((prev) => {
-            const newSet = new Set(prev);
-            newSet.add(groupName);
-            return newSet;
-          });
-          setIsLoading(false);
+          }));
+          setItems((prev) => [...prev, ...newItems]);
+          setLoadedGroups((prev) => new Set([...prev, groupName]));
+          setLoading(false);
           setLoadingGroup(null);
         }, 1000);
       },
       [loadedGroups, pageSize, loadingGroup],
     );
 
-    const handleLoadMore = useCallback(() => {
-      // すでにロード中の場合は何もしない
-      if (isLoading || loadingGroup) return;
+    // フィルタリングされたアイテムを計算
+    const filteredItems = useMemo(() => {
+      if (!filter) return items;
+      
+      const filterWords = filter.toLowerCase().trim().split(/\s+/);
+      return items.filter((item) => {
+        const label = item.label.toLowerCase();
+        return filterWords.every((word) => label.includes(word));
+      });
+    }, [items, filter]);
 
-      // group2に対する追加データロード
-      if (loadedGroups.has("group2")) {
-        setIsLoading(true);
-        setTimeout(() => {
-          setItems((prev) => [
-            ...prev,
-            ...generateItems(prev.length, pageSize).map((item) => ({
-              ...item,
-              groupName: "グループ2",
-            })),
-          ]);
-          setIsLoading(false);
-        }, 1000);
-      }
-    }, [isLoading, loadedGroups, pageSize, loadingGroup]);
+    const handleGroupInclude = useCallback(
+      (groupName: string) => {
+        const groupItems = items.filter((item) => item.groupName === groupName);
+        const groupItemIds = groupItems.map((item) => item.id);
+        const currentIncludedIds = includedItems.map((item: Item) => item.id);
+        
+        // グループ内のアイテムが全て選択済みの場合は、全て選択解除
+        const allIncluded = groupItemIds.every(id => isItemIncluded(id));
+        const newIncludedIds = allIncluded
+          ? currentIncludedIds.filter(id => !groupItemIds.includes(id))
+          : [...new Set([...currentIncludedIds, ...groupItemIds])];
+        
+        handleIncludedChange(newIncludedIds);
+      },
+      [items, includedItems, handleIncludedChange, isItemIncluded]
+    );
+
+    const handleGroupExclude = useCallback(
+      (groupName: string) => {
+        const groupItems = items.filter((item) => item.groupName === groupName);
+        const groupItemIds = groupItems.map((item) => item.id);
+        const currentExcludedIds = excludedItems.map((item: Item) => item.id);
+        
+        // グループ内のアイテムが全て除外済みの場合は、全て除外解除
+        const allExcluded = groupItemIds.every(id => isItemExcluded(id));
+        const newExcludedIds = allExcluded
+          ? currentExcludedIds.filter(id => !groupItemIds.includes(id))
+          : [...new Set([...currentExcludedIds, ...groupItemIds])];
+        
+        handleExcludedChange(newExcludedIds);
+      },
+      [items, excludedItems, handleExcludedChange, isItemExcluded]
+    );
+
+    const handleItemInclude = useCallback(
+      (id: string) => {
+        // 除外リストから削除
+        const newExcludedIds = excludedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        handleExcludedChange(newExcludedIds);
+
+        // 追加リストをトグル
+        const newIncludedIds = includedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        
+        if (!isItemIncluded(id)) {
+          newIncludedIds.push(id);
+        }
+        
+        handleIncludedChange(newIncludedIds);
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemIncluded]
+    );
+
+    const handleItemExclude = useCallback(
+      (id: string) => {
+        // 追加リストから削除
+        const newIncludedIds = includedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        handleIncludedChange(newIncludedIds);
+
+        // 除外リストをトグル
+        const newExcludedIds = excludedItems
+          .map((item) => item.id)
+          .filter((itemId) => itemId !== id);
+        
+        if (!isItemExcluded(id)) {
+          newExcludedIds.push(id);
+        }
+        
+        handleExcludedChange(newExcludedIds);
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemExcluded]
+    );
+
+    const menuButtons = (
+      <>
+        <Button
+          size="small"
+          color="clear"
+          onClick={() => handleFilterChange("")}
+          style={{ visibility: filter ? "visible" : "hidden" }}
+        >
+          ×
+        </Button>
+        <ContextMenu2
+          width={136}
+          trigger={
+            <ContextMenu2TriggerItem append={pageSize}>
+              件数を変更
+            </ContextMenu2TriggerItem>
+          }
+        >
+          {PAGE_SIZE_OPTIONS.map((size) => (
+            <ContextMenu2CheckItem
+              key={size}
+              closeOnChange
+              checked={pageSize === size}
+              onChange={() => handlePageSizeChange(size)}
+            >
+              {size}件
+            </ContextMenu2CheckItem>
+          ))}
+        </ContextMenu2>
+      </>
+    );
 
     return (
       <DualListBox2
-        loading={isLoading}
-        included={included}
-        excluded={excluded}
-        pageSize={pageSize}
-        pageSizeOptions={[10, 50, 100, 200]}
-        menuButtons={
-          <>
-            <ContextMenu2ButtonItem
-              onClick={() => {
-                alert("clicked");
-              }}
-            >
-              好きなボタンを
-            </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => {}}>
-              入れて使う
-            </ContextMenu2SwitchItem>
-          </>
-        }
-        onPageSizeChange={(newPageSize) => {
-          setPageSize(newPageSize);
-          setItems([]);
-          setLoadedGroups(new Set());
-        }}
-        onIncludedChange={(ids: string[]) =>
-          setIncluded(items.filter((item) => ids.includes(item.id)))
-        }
-        onExcludedChange={(ids: string[]) =>
-          setExcluded(items.filter((item) => ids.includes(item.id)))
-        }
-        onLoadMore={handleLoadMore}
+        included={includedItems}
+        excluded={excludedItems}
+        onIncludedChange={handleIncludedChange}
+        onExcludedChange={handleExcludedChange}
+        loading={loading}
+        menuButtons={menuButtons}
+        filter={filter}
+        onFilterChange={handleFilterChange}
       >
         {groups.map((group) => (
           <DualListBox2Accordion
@@ -206,11 +447,20 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
             disableInclude={!loadedGroups.has(group.name)}
             disableExclude={!loadedGroups.has(group.name)}
             onOpen={() => handleAccordionOpen(group.name)}
+            onIncludeAll={() => handleGroupInclude(group.name)}
+            onExcludeAll={() => handleGroupExclude(group.name)}
           >
-            {items
+            {filteredItems
               .filter((item) => item.groupName === group.name)
               .map((item) => (
-                <DualListBox2Item key={item.id} id={item.id}>
+                <DualListBox2Item
+                  key={item.id}
+                  id={item.id}
+                  isIncluded={isItemIncluded(item.id)}
+                  isExcluded={isItemExcluded(item.id)}
+                  onInclude={handleItemInclude}
+                  onExclude={handleItemExclude}
+                >
                   {item.label}
                 </DualListBox2Item>
               ))}
@@ -225,7 +475,7 @@ export const Accordion: StoryObj<typeof DualListBox2> = {
  * 「追加」「除外」のいずれかしかできない場合の例です。
  * 状況に応じて、`disableExclude`（除外無効）、`disableInclude`（追加無効） に `true` を指定して制御してください。
  */
-export const Either: StoryObj<typeof DualListBox2> = {
+export const Either: Story = {
   render: () => {
     const [items, setItems] = useState<Item[]>([
       {
@@ -247,90 +497,169 @@ export const Either: StoryObj<typeof DualListBox2> = {
         id: "unique-4",
         groupName: "アコーディオン2",
         label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
+          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
       },
     ]);
 
-    const [included, setIncluded] = useState<Item[]>([items[0]]);
-    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
+    const [included, setIncluded] = useState<Item[]>([]);
+    const [excluded, setExcluded] = useState<Item[]>([]);
     const [isLoading, setIsLoading] = useState(false);
     const [disableInclude, setDisableInclude] = useState(false);
     const [disableExclude, setDisableExclude] = useState(true);
 
+    const isItemIncluded = useCallback(
+      (id: string) => included.some((item) => item.id === id),
+      [included]
+    );
+
+    const isItemExcluded = useCallback(
+      (id: string) => excluded.some((item) => item.id === id),
+      [excluded]
+    );
+
+    const handleInclude = useCallback(
+      (id: string) => {
+        // 除外リストから削除
+        const newExcluded = excluded.filter((item) => item.id !== id);
+        setExcluded(newExcluded);
+
+        // 追加リストをトグル
+        const isCurrentlyIncluded = isItemIncluded(id);
+        const newIncluded = isCurrentlyIncluded
+          ? included.filter((item) => item.id !== id)
+          : [...included, items.find((item) => item.id === id)!];
+        setIncluded(newIncluded);
+      },
+      [included, excluded, items, isItemIncluded]
+    );
+
+    const handleExclude = useCallback(
+      (id: string) => {
+        // 追加リストから削除
+        const newIncluded = included.filter((item) => item.id !== id);
+        setIncluded(newIncluded);
+
+        // 除外リストをトグル
+        const isCurrentlyExcluded = isItemExcluded(id);
+        const newExcluded = isCurrentlyExcluded
+          ? excluded.filter((item) => item.id !== id)
+          : [...excluded, items.find((item) => item.id === id)!];
+        setExcluded(newExcluded);
+      },
+      [included, excluded, items, isItemExcluded]
+    );
+
+    const handleGroupInclude = useCallback(
+      (groupName: string) => {
+        if (disableInclude) return;
+
+        const groupItems = items.filter((item) => item.groupName === groupName);
+        const groupItemIds = groupItems.map((item) => item.id);
+        
+        // 除外リストから該当グループのアイテムを削除
+        const newExcluded = excluded.filter(
+          (item) => !groupItemIds.includes(item.id)
+        );
+        setExcluded(newExcluded);
+
+        // グループ内のアイテムが全て選択済みの場合は、全て選択解除
+        const allIncluded = groupItemIds.every(id => isItemIncluded(id));
+        const newIncluded = allIncluded
+          ? included.filter((item) => !groupItemIds.includes(item.id))
+          : [...included, ...groupItems.filter((item) => !isItemIncluded(item.id))];
+        
+        setIncluded(newIncluded);
+      },
+      [items, included, excluded, isItemIncluded, disableInclude]
+    );
+
+    const handleGroupExclude = useCallback(
+      (groupName: string) => {
+        if (disableExclude) return;
+
+        const groupItems = items.filter((item) => item.groupName === groupName);
+        const groupItemIds = groupItems.map((item) => item.id);
+        
+        // 追加リストから該当グループのアイテムを削除
+        const newIncluded = included.filter(
+          (item) => !groupItemIds.includes(item.id)
+        );
+        setIncluded(newIncluded);
+
+        // グループ内のアイテムが全て除外済みの場合は、全て除外解除
+        const allExcluded = groupItemIds.every(id => isItemExcluded(id));
+        const newExcluded = allExcluded
+          ? excluded.filter((item) => !groupItemIds.includes(item.id))
+          : [...excluded, ...groupItems.filter((item) => !isItemExcluded(item.id))];
+        
+        setExcluded(newExcluded);
+      },
+      [items, included, excluded, isItemExcluded, disableExclude]
+    );
+
     return (
       <>
-        <Checkbox
-          checked={disableInclude}
-          onChange={() => setDisableInclude(!disableInclude)}
-        >
-          disableInclude
-        </Checkbox>
-        <Checkbox
-          checked={disableExclude}
-          onChange={() => setDisableExclude(!disableExclude)}
-        >
-          disableExclude
-        </Checkbox>
-
         <DualListBox2
-          disableExclude={disableExclude}
-          disableInclude={disableInclude}
-          loading={isLoading}
           included={included}
           excluded={excluded}
-          menuButtons={
-            <>
-              <ContextMenu2ButtonItem
-                onClick={() => {
-                  alert("clicked");
-                }}
-              >
-                好きなボタンを
-              </ContextMenu2ButtonItem>
-              <ContextMenu2SwitchItem disabled onChange={() => {}}>
-                入れて使う
-              </ContextMenu2SwitchItem>
-            </>
-          }
           onIncludedChange={(ids: string[]) =>
             setIncluded(items.filter((item) => ids.includes(item.id)))
           }
           onExcludedChange={(ids: string[]) =>
             setExcluded(items.filter((item) => ids.includes(item.id)))
           }
-          onLoadMore={() => {
-            setIsLoading(true);
-            setTimeout(() => {
-              setItems((prev) => [
-                ...prev,
-                ...generateItems(prev.length + 1, 10, "アコーディオン2"),
-              ]);
-              setIsLoading(false);
-            }, 1000);
-          }}
+          loading={isLoading}
+          disableInclude={disableInclude}
+          disableExclude={disableExclude}
         >
-          {toGroupedItems(items).map(
-            (group) =>
-              group.groupName && (
                 <DualListBox2Accordion
-                  key={group.groupName}
+            label="アコーディオン1"
+            disableInclude={disableInclude}
+            disableExclude={disableExclude}
+            onIncludeAll={() => handleGroupInclude("アコーディオン1")}
+            onExcludeAll={() => handleGroupExclude("アコーディオン1")}
+          >
+            {items
+              .filter((item) => item.groupName === "アコーディオン1")
+              .map((item) => (
+                <DualListBox2Item
+                  key={item.id}
+                  id={item.id}
+                  isIncluded={isItemIncluded(item.id)}
+                  isExcluded={isItemExcluded(item.id)}
+                  onInclude={handleInclude}
+                  onExclude={handleExclude}
                   disableExclude={disableExclude}
                   disableInclude={disableInclude}
-                  label={group.groupName}
                 >
-                  {group.items.map((item) => (
+                  {item.label}
+                </DualListBox2Item>
+              ))}
+          </DualListBox2Accordion>
+          <DualListBox2Accordion
+            label="アコーディオン2"
+            disableInclude={disableInclude}
+            disableExclude={disableExclude}
+            onIncludeAll={() => handleGroupInclude("アコーディオン2")}
+            onExcludeAll={() => handleGroupExclude("アコーディオン2")}
+          >
+            {items
+              .filter((item) => item.groupName === "アコーディオン2")
+              .map((item) => (
                     <DualListBox2Item
                       key={item.id}
+                  id={item.id}
+                  isIncluded={isItemIncluded(item.id)}
+                  isExcluded={isItemExcluded(item.id)}
+                  onInclude={handleInclude}
+                  onExclude={handleExclude}
                       disableExclude={disableExclude}
                       disableInclude={disableInclude}
-                      id={item.id}
                     >
                       {item.label}
                     </DualListBox2Item>
                   ))}
                 </DualListBox2Accordion>
-              ),
-          )}
         </DualListBox2>
       </>
     );
@@ -345,103 +674,132 @@ export const Either: StoryObj<typeof DualListBox2> = {
  *
  * 任意のセクション選択中は、その他のセクションは非表示となります。
  */
-export const Section: StoryObj<typeof DualListBox2> = {
+export const Section: Story = {
   render: () => {
-    const [items, setItems] = useState<Item[]>([
-      {
-        id: "unique-1",
-        groupName: "セクション1",
-        label: "リストアイテム1",
-      },
-      {
-        id: "unique-2",
-        groupName: "セクション1",
-        label: "リストアイテム2",
-      },
-      {
-        id: "unique-3",
-        groupName: "セクション2",
-        label: "リストアイテム3",
-      },
-      {
-        id: "unique-4",
-        groupName: "セクション2",
-        label:
-          "長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム",
-      },
-    ]);
-
-    const [included, setIncluded] = useState<Item[]>([items[0]]);
-    const [excluded, setExcluded] = useState<Item[]>([items[3]]);
-    const [currentSection, setCurrentSection] = useState<string | null>(null);
+    const [pageSize, setPageSize] = useState<number>(100);
+    const [items, setItems] = useState<Item[]>(() =>
+      generateItems(pageSize).map((item, i) => ({
+        ...item,
+        groupName: `Section ${Math.floor(i / 3) + 1}`,
+      }))
+    );
     const [isLoading, setIsLoading] = useState(false);
-    const [pageSize, setPageSize] = useState(50);
+    const [activeSection, setActiveSection] = useState<string | null>(null);
+
+    const {
+      includedItems,
+      excludedItems,
+      handleIncludedChange,
+      handleExcludedChange,
+      isItemIncluded,
+      isItemExcluded,
+    } = useDualListBox2({
+      items,
+      onChange: (selected: Item[]) => console.log("Selected items:", selected),
+    });
+
+    const handleLoadMore = useCallback(() => {
+      if (!activeSection) return;
+      if (items.filter(item => item.groupName === activeSection).length >= ALL_ITEMS.length / 4) return;
+
+      setIsLoading(true);
+      setTimeout(() => {
+        const currentSectionItems = items.filter(item => item.groupName === activeSection);
+        const nextItems = generateItems(pageSize).slice(currentSectionItems.length, currentSectionItems.length + pageSize)
+          .map(item => ({
+            ...item,
+            groupName: activeSection,
+          }));
+        setItems((prev) => [...prev, ...nextItems]);
+        setIsLoading(false);
+      }, 1000);
+    }, [activeSection, items, pageSize]);
+
+    const handlePageSizeChange = useCallback((option: { value: string; label: string }) => {
+      const newPageSize = parseInt(option.value, 10);
+      setPageSize(newPageSize);
+      setItems(
+        generateItems(newPageSize).map((item, i) => ({
+          ...item,
+          groupName: `Section ${Math.floor(i / 3) + 1}`,
+        }))
+      );
+    }, []);
+
+    const handleInclude = useCallback(
+      (id: string) => {
+        // 除外リストから削除
+        const newExcluded = excludedItems.filter((item) => item.id !== id);
+        handleExcludedChange(newExcluded.map((item) => item.id));
+
+        // 追加リストをトグル
+        const isCurrentlyIncluded = isItemIncluded(id);
+        const newIncluded = isCurrentlyIncluded
+          ? includedItems.filter((item) => item.id !== id)
+          : [...includedItems, items.find((item) => item.id === id)!];
+        handleIncludedChange(newIncluded.map((item) => item.id));
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemIncluded]
+    );
+
+    const handleExclude = useCallback(
+      (id: string) => {
+        // 追加リストから削除
+        const newIncluded = includedItems.filter((item) => item.id !== id);
+        handleIncludedChange(newIncluded.map((item) => item.id));
+
+        // 除外リストをトグル
+        const isCurrentlyExcluded = isItemExcluded(id);
+        const newExcluded = isCurrentlyExcluded
+          ? excludedItems.filter((item) => item.id !== id)
+          : [...excludedItems, items.find((item) => item.id === id)!];
+        handleExcludedChange(newExcluded.map((item) => item.id));
+      },
+      [includedItems, excludedItems, handleIncludedChange, handleExcludedChange, isItemExcluded]
+    );
+
+    const sections = [
+      { id: "section1", name: "Section 1" },
+      { id: "section2", name: "Section 2" },
+      { id: "section3", name: "Section 3" },
+      { id: "section4", name: "Section 4" },
+    ];
 
     return (
+      <>
       <DualListBox2
+          included={includedItems}
+          excluded={excludedItems}
+          onIncludedChange={handleIncludedChange}
+          onExcludedChange={handleExcludedChange}
         loading={isLoading}
-        included={included}
-        excluded={excluded}
-        pageSize={pageSize}
-        pageSizeOptions={[10, 50, 100, 200]}
-        menuButtons={
-          <>
-            <ContextMenu2ButtonItem
-              onClick={() => {
-                alert("clicked");
-              }}
+          onLoadMore={handleLoadMore}
+          onActiveSectionChange={setActiveSection}
+        >
+          {sections.map((section) => (
+            <DualListBox2Section
+              key={section.id}
+              label={section.name}
+              active={activeSection === section.name}
             >
-              好きなボタンを
-            </ContextMenu2ButtonItem>
-            <ContextMenu2SwitchItem disabled onChange={() => {}}>
-              入れて使う
-            </ContextMenu2SwitchItem>
-          </>
-        }
-        onPageSizeChange={(newPageSize) => {
-          setPageSize(newPageSize);
-          setItems([
-            // 初期アイテムを保持
-            ...items.slice(0, 4),
-            // 新しいページサイズに基づいて追加アイテムを生成
-            ...generateItems(4, newPageSize - 4),
-          ]);
-        }}
-        onIncludedChange={(ids: string[]) =>
-          setIncluded(items.filter((item) => ids.includes(item.id)))
-        }
-        onExcludedChange={(ids: string[]) =>
-          setExcluded(items.filter((item) => ids.includes(item.id)))
-        }
-        onActiveSectionChange={(section) => setCurrentSection(section)}
-        onLoadMore={() => {
-          if (currentSection === null) return;
-          setIsLoading(true);
-          setTimeout(() => {
-            setItems((prev) => [
-              ...prev,
-              ...generateItems(prev.length, pageSize),
-            ]);
-            setIsLoading(false);
-          }, 1000);
-        }}
-      >
-        {toGroupedItems(items).map(
-          (group) =>
-            group.groupName && (
-              <DualListBox2Section
-                key={group.groupName}
-                label={group.groupName}
-              >
-                {group.items.map((item) => (
-                  <DualListBox2Item key={item.id} id={item.id}>
+              {items
+                .filter((item) => item.groupName === section.name)
+                .map((item) => (
+                  <DualListBox2Item
+                    key={item.id}
+                    id={item.id}
+                    isIncluded={isItemIncluded(item.id)}
+                    isExcluded={isItemExcluded(item.id)}
+                    onInclude={handleInclude}
+                    onExclude={handleExclude}
+                  >
                     {item.label}
                   </DualListBox2Item>
                 ))}
               </DualListBox2Section>
-            ),
-        )}
+          ))}
       </DualListBox2>
+      </>
     );
   },
 };
