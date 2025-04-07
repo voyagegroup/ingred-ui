@@ -80,6 +80,14 @@ type DualListBox2Props = {
    * 1ページあたりの表示件数が変更されたときのハンドラ
    **/
   onPageSizeChange?: (pageSize: number) => void;
+  /**
+   * 検索フィルターの文字列
+   **/
+  filter?: string;
+  /**
+   * 検索フィルターが変更されたときのハンドラ
+   **/
+  onFilterChange?: (filter: string) => void;
 };
 
 const toGrouped = (items: Item[]) => {
@@ -161,16 +169,33 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       pageSize = 50,
       pageSizeOptions = [10, 50, 100, 200],
       onPageSizeChange,
+      filter: externalFilter = "",
+      onFilterChange,
     },
     ref,
   ) => {
     // モバイルサイズでは、タブで左右パネルの表示を切り替える
     const [tabIndex, setTabIndex] = useState<0 | 1>(0);
-    const [filter, setFilter] = useState("");
+    const [internalFilter, setInternalFilter] = useState("");
     // セクションの排他表示監理用。セクションが選択されている場合はそのセクションのみ表示する。
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const loadMoreRef = useRef<HTMLDivElement>(null);
+
+    // 外部から制御される場合は外部のfilterを使用し、そうでない場合は内部のfilterを使用
+    const currentFilter = onFilterChange ? externalFilter : internalFilter;
+    const handleFilterChange = useCallback(
+      (event: ChangeEvent<HTMLInputElement>) => {
+        const newFilter = event.target.value;
+        if (onFilterChange) {
+          onFilterChange(newFilter);
+        } else {
+          setInternalFilter(newFilter);
+        }
+      },
+      [onFilterChange]
+    );
+
     // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
       let hasSection = false;
@@ -188,9 +213,71 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
 
     // フィルター文字列をスペース区切りで単語の配列に分割
     const filterWords = useMemo(() => {
-      const trimmed = filter.trim();
+      const trimmed = currentFilter.trim();
       return trimmed ? trimmed.split(/\s+/) : [];
-    }, [filter]);
+    }, [currentFilter]);
+
+    // フィルタリングされた子要素を生成
+    const filteredChildren = useMemo(() => {
+      if (!filterWords.length) return children;
+
+      return React.Children.map(children, (child) => {
+        if (!isValidElement(child)) return child;
+
+        // DualListBox2Itemの場合
+        if (child.type === DualListBox2Item) {
+          const label = String(child.props.children).toLowerCase();
+          if (filterWords.every((word) => label.includes(word.toLowerCase()))) {
+            return child;
+          }
+          return null;
+        }
+
+        // DualListBox2Accordionの場合
+        if (
+          typeof child.type !== "string" &&
+          "displayName" in child.type &&
+          child.type.displayName === "DualListBox2Accordion"
+        ) {
+          const filteredAccordionChildren = React.Children.toArray(child.props.children)
+            .filter(isValidElement)
+            .filter((accordionChild) => {
+              if (!isValidElement(accordionChild)) return false;
+              const label = String(accordionChild.props.children).toLowerCase();
+              return filterWords.every((word) => label.includes(word.toLowerCase()));
+            });
+
+          if (filteredAccordionChildren.length === 0) return null;
+          return React.cloneElement(child, {
+            ...child.props,
+            children: filteredAccordionChildren,
+          });
+        }
+
+        // DualListBox2Sectionの場合
+        if (
+          typeof child.type !== "string" &&
+          "displayName" in child.type &&
+          child.type.displayName === "DualListBox2Section"
+        ) {
+          const filteredSectionChildren = React.Children.toArray(child.props.children)
+            .filter(isValidElement)
+            .filter((sectionChild) => {
+              if (!isValidElement(sectionChild)) return false;
+              const label = String(sectionChild.props.children).toLowerCase();
+              return filterWords.every((word) => label.includes(word.toLowerCase()));
+            });
+
+          if (filteredSectionChildren.length === 0) return null;
+          return React.cloneElement(child, {
+            ...child.props,
+            children: filteredSectionChildren,
+          });
+        }
+
+        return child;
+      });
+    }, [children, filterWords]);
 
     const includedIds = useMemo(
       () => included.map((item) => item.id),
@@ -308,14 +395,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       allIdsInActiveSectionFiltered,
       excludedIds,
     ]);
-
-    // 検索フィルターのテキスト入力変更に state に反映
-    const handleFilterChange = useCallback(
-      (event: ChangeEvent<HTMLInputElement>) => {
-        setFilter(event.target?.value);
-      },
-      [setFilter],
-    );
 
     // 選択をクリアする
     const handleClearButtonClick = useCallback(() => {
@@ -479,7 +558,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     placeholder="検索"
                     disabled={hasSection && activeSection === null}
                     aria-label="検索"
-                    value={filter}
+                    value={currentFilter}
                     onChange={handleFilterChange}
                   />
                 </styled.HeaderSearch>
@@ -563,7 +642,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 </styled.HeaderButtons>
               </styled.LeftPanelHeader>
               <styled.LeftPanelBody>
-                {children}
+                {filteredChildren}
                 <div ref={loadMoreRef} style={{ height: "20px" }}>
                   {loading && (
                     <styled.LoadingIndicator>
