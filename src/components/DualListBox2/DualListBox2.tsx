@@ -19,7 +19,7 @@ import { colors } from "../../styles";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import { type Item } from "./types";
 import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
-import { DualListBox2Item } from "./DualListBox2Item";
+import { DualListBox2Item, type DualListBox2ItemProps } from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
@@ -234,7 +234,25 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       return trimmed ? trimmed.split(/\s+/) : [];
     }, [currentFilter]);
 
-    // フィルタリングされた子要素を生成
+    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
+    const allItems = useMemo(() => extractAllItems(children), [children]);
+
+    const filterItem = useCallback(
+      (child: React.ReactElement<DualListBox2ItemProps>) => {
+        if (!isValidElement(child)) return child;
+        if (child.type !== DualListBox2Item) return child;
+
+        const item = allItems.find((item) => item.id === child.props.id);
+        if (!item) return null;
+
+        if (filterWords.every((word) => item.label.toLowerCase().includes(word.toLowerCase()))) {
+          return child;
+        }
+        return null;
+      },
+      [filterWords, allItems]
+    );
+
     const filteredChildren = useMemo(() => {
       if (!filterWords.length) return children;
 
@@ -243,11 +261,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
 
         // DualListBox2Itemの場合
         if (child.type === DualListBox2Item) {
-          const label = String(child.props.children).toLowerCase();
-          if (filterWords.every((word) => label.includes(word.toLowerCase()))) {
-            return child;
-          }
-          return null;
+          return filterItem(child as React.ReactElement<DualListBox2ItemProps>);
         }
 
         // DualListBox2Accordionの場合
@@ -258,11 +272,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         ) {
           const filteredAccordionChildren = React.Children.toArray(child.props.children)
             .filter(isValidElement)
-            .filter((accordionChild) => {
-              if (!isValidElement(accordionChild)) return false;
-              const label = String(accordionChild.props.children).toLowerCase();
-              return filterWords.every((word) => label.includes(word.toLowerCase()));
-            });
+            .map((accordionChild) => filterItem(accordionChild as React.ReactElement<DualListBox2ItemProps>))
+            .filter(Boolean);
 
           if (filteredAccordionChildren.length === 0) return null;
           return React.cloneElement(child, {
@@ -279,11 +290,8 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         ) {
           const filteredSectionChildren = React.Children.toArray(child.props.children)
             .filter(isValidElement)
-            .filter((sectionChild) => {
-              if (!isValidElement(sectionChild)) return false;
-              const label = String(sectionChild.props.children).toLowerCase();
-              return filterWords.every((word) => label.includes(word.toLowerCase()));
-            });
+            .map((sectionChild) => filterItem(sectionChild as React.ReactElement<DualListBox2ItemProps>))
+            .filter(Boolean);
 
           // セクションの見出しは常に表示する（フィルタリング結果が空でも）
           return React.cloneElement(child, {
@@ -294,7 +302,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
 
         return child;
       });
-    }, [children, filterWords]);
+    }, [children, filterWords, filterItem]);
 
     const includedIds = useMemo(
       () => included.map((item) => item.id),
@@ -305,9 +313,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       () => excluded.map((item) => item.id),
       [excluded],
     );
-
-    // DualListBox2 に配置された、全 DualListBox2Item を抽象化したオブジェクトの配列
-    const allItems = useMemo(() => extractAllItems(children), [children]);
 
     // DualListBox2 に配置された、全 DualListBox2Item の id の配列
     const allIds = useMemo(() => allItems.map((item) => item.id), [allItems]);
@@ -596,6 +601,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 </styled.HeaderSearch>
                 <ContextMenu2Container>
                   <ContextMenu2
+                    width={136}
                     trigger={
                       <styled.HeaderMenuButton type="button">
                         <Icon name="more_vert" color={colors.basic[900]} />
@@ -609,6 +615,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                         onPageSizeChange={onPageSizeChange}
                       />
                     )}
+                    {menuButtons}
                   </ContextMenu2>
                 </ContextMenu2Container>
                 <styled.HeaderCount>

@@ -3,7 +3,7 @@ import Icon from "../Icon";
 import * as styled from "./styled";
 import { colors } from "../../styles";
 
-type DualListBox2ItemProps = {
+export type DualListBox2ItemProps = {
   id: string;
   children: ReactNode;
   isIncluded?: boolean;
@@ -14,7 +14,7 @@ type DualListBox2ItemProps = {
   disableExclude?: boolean;
 };
 
-export const DualListBox2Item = ({
+export const DualListBox2Item: React.FC<DualListBox2ItemProps> = ({
   id,
   children,
   isIncluded = false,
@@ -23,7 +23,7 @@ export const DualListBox2Item = ({
   onExclude,
   disableInclude,
   disableExclude,
-}: DualListBox2ItemProps) => {
+}) => {
   const getIconColor = (
     isDisabled: boolean | undefined,
     isActive: boolean,
@@ -72,3 +72,5 @@ export const DualListBox2Item = ({
     </styled.DualListBox2Item>
   );
 };
+
+DualListBox2Item.displayName = "DualListBox2Item";
