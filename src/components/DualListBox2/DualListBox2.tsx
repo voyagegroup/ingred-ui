@@ -196,6 +196,23 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
       [onFilterChange]
     );
 
+    const handleFilterReset = useCallback(() => {
+      if (onFilterChange) {
+        onFilterChange("");
+      } else {
+        setInternalFilter("");
+      }
+    }, [onFilterChange]);
+
+    // セクションが変更されたときのハンドラ
+    const handleActiveSectionChange = useCallback((section: string | null) => {
+      setActiveSection(section);
+      // セクション一覧に戻る時（section === null）のみ検索ワードをリセット
+      if (section === null) {
+        handleFilterReset();
+      }
+    }, [handleFilterReset]);
+
     // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
       let hasSection = false;
@@ -268,7 +285,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               return filterWords.every((word) => label.includes(word.toLowerCase()));
             });
 
-          if (filteredSectionChildren.length === 0) return null;
+          // セクションの見出しは常に表示する（フィルタリング結果が空でも）
           return React.cloneElement(child, {
             ...child.props,
             children: filteredSectionChildren,
@@ -515,26 +532,34 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
 
     return (
       <styled.DualListBox2 ref={ref}>
-        <styled.TabList>
+        <styled.TabList role="tablist">
           <li>
             <button
               type="button"
+              role="tab"
+              aria-selected={tabIndex === 0}
               aria-expanded={tabIndex === 0}
               onClick={() => setTabIndex(0)}
             >
-              リストアイテム
+              <Icon name="search" size="sm" color={colors.basic[600]} />
+              検索
             </button>
           </li>
           <li>
             <button
               type="button"
+              role="tab"
+              aria-selected={tabIndex === 1}
               aria-expanded={tabIndex === 1}
               onClick={() => setTabIndex(1)}
             >
-              選択済みアイテム
-              <styled.CountBadge>
-                {includedIds.length + excludedIds.length}
-              </styled.CountBadge>
+              <Icon name="check" size="md" />
+              選択済み
+              {(included.length > 0 || excluded.length > 0) && (
+                <styled.CountBadge>
+                  {included.length + excluded.length}
+                </styled.CountBadge>
+              )}
             </button>
           </li>
         </styled.TabList>
@@ -547,7 +572,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               activeSection,
               onIncludedChange,
               onExcludedChange,
-              setActiveSection,
+              setActiveSection: handleActiveSectionChange,
             }}
           >
             <styled.LeftPanel isShow={tabIndex === 0}>
@@ -555,12 +580,19 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
+                    type="text"
                     placeholder="検索"
-                    disabled={hasSection && activeSection === null}
-                    aria-label="検索"
                     value={currentFilter}
                     onChange={handleFilterChange}
+                    disabled={hasSection && activeSection === null}
                   />
+                  {currentFilter && (
+                    <styled.HeaderSearchReset
+                      type="button"
+                      aria-label="検索をリセット"
+                      onClick={handleFilterReset}
+                    />
+                  )}
                 </styled.HeaderSearch>
                 <ContextMenu2Container>
                   <ContextMenu2
@@ -577,7 +609,6 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                         onPageSizeChange={onPageSizeChange}
                       />
                     )}
-                    {menuButtons}
                   </ContextMenu2>
                 </ContextMenu2Container>
                 <styled.HeaderCount>
@@ -590,11 +621,11 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                           return "-";
                         }
                         if (hasSection) {
-                          return allIdsInActiveSection.length.toLocaleString(
+                          return allIdsInActiveSectionFiltered.length.toLocaleString(
                             "en-US",
                           );
                         }
-                        return allIds.length.toLocaleString("en-US");
+                        return allIdsFiltered.length.toLocaleString("en-US");
                       })()}
                       件
                     </>
