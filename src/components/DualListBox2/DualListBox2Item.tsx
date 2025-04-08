@@ -7,6 +7,8 @@ import { DualListBox2Context } from "./lib";
 export type DualListBox2ItemProps = {
   id: string;
   children: ReactNode;
+  isIncluded?: boolean;
+  isExcluded?: boolean;
   disableInclude?: boolean;
   disableExclude?: boolean;
 };
@@ -14,18 +16,17 @@ export type DualListBox2ItemProps = {
 export const DualListBox2Item: React.FC<DualListBox2ItemProps> = ({
   id,
   children,
+  isIncluded = false,
+  isExcluded = false,
   disableInclude,
   disableExclude,
 }) => {
   const {
+    onIncludedChange,
+    onExcludedChange,
     includedIds,
     excludedIds,
-    onIncludedChange,
-    onExcludedChange
   } = useContext(DualListBox2Context);
-
-  const isIncluded = includedIds.includes(id);
-  const isExcluded = excludedIds.includes(id);
 
   const getIconColor = (
     isDisabled: boolean | undefined,
