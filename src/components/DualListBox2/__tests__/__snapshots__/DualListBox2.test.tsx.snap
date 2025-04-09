@@ -3,14 +3,18 @@
 exports[`DualListBox2 component testing DualListBox2 1`] = `
 <DocumentFragment>
   <div
+    aria-label="デュアルリストボックス"
     class="sc-papXJ cSaPsI"
+    role="region"
   >
     <ul
+      aria-label="リストの表示切り替え"
       class="sc-jqUVSM byqyFJ"
       role="tablist"
     >
       <li>
         <button
+          aria-controls="list-items-panel"
           aria-expanded="true"
           aria-selected="true"
           role="tab"
@@ -21,6 +25,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
       </li>
       <li>
         <button
+          aria-controls="selected-items-panel"
           aria-expanded="false"
           aria-selected="false"
           role="tab"
@@ -39,7 +44,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
       class="sc-iqcoie kENGxv"
     >
       <div
+        aria-labelledby="list-items-tab"
         class="sc-crXcEl edquut"
+        id="list-items-panel"
+        role="tabpanel"
       >
         <div
           class="sc-breuTD bBhWi"
@@ -545,14 +553,18 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
 exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
 <DocumentFragment>
   <div
+    aria-label="デュアルリストボックス"
     class="sc-papXJ cSaPsI"
+    role="region"
   >
     <ul
+      aria-label="リストの表示切り替え"
       class="sc-jqUVSM byqyFJ"
       role="tablist"
     >
       <li>
         <button
+          aria-controls="list-items-panel"
           aria-expanded="true"
           aria-selected="true"
           role="tab"
@@ -563,6 +575,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
       </li>
       <li>
         <button
+          aria-controls="selected-items-panel"
           aria-expanded="false"
           aria-selected="false"
           role="tab"
@@ -581,7 +594,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
       class="sc-iqcoie kENGxv"
     >
       <div
+        aria-labelledby="list-items-tab"
         class="sc-crXcEl edquut"
+        id="list-items-panel"
+        role="tabpanel"
       >
         <div
           class="sc-breuTD bBhWi"
@@ -1017,14 +1033,18 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
 exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
 <DocumentFragment>
   <div
+    aria-label="デュアルリストボックス"
     class="sc-papXJ cSaPsI"
+    role="region"
   >
     <ul
+      aria-label="リストの表示切り替え"
       class="sc-jqUVSM byqyFJ"
       role="tablist"
     >
       <li>
         <button
+          aria-controls="list-items-panel"
           aria-expanded="true"
           aria-selected="true"
           role="tab"
@@ -1035,6 +1055,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
       </li>
       <li>
         <button
+          aria-controls="selected-items-panel"
           aria-expanded="false"
           aria-selected="false"
           role="tab"
@@ -1053,7 +1074,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
       class="sc-iqcoie kENGxv"
     >
       <div
+        aria-labelledby="list-items-tab"
         class="sc-crXcEl edquut"
+        id="list-items-panel"
+        role="tabpanel"
       >
         <div
           class="sc-breuTD bBhWi"
