@@ -89,7 +89,7 @@ export const Default: Story = {
     const menuButtons = (
       <>
         <ContextMenu2
-          width={136}
+          width={186}
           trigger={
             <ContextMenu2TriggerItem append={pageSize}>
               件数を変更
@@ -158,13 +158,15 @@ export const Accordion: Story = {
     const [pageSize, setPageSize] = useState<number>(100);
     const [filter, setFilter] = useState("");
     const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+    const [groupItems, setGroupItems] = useState<Record<string, Item[]>>({});
+    const [isLoading, setIsLoading] = useState(false);
 
     const groups = useMemo(() => {
       return ["Group A", "Group B", "Group C"].map((name) => ({
         name,
-        items: generateItems(pageSize / 3, name),
+        items: groupItems[name] || [],
       }));
-    }, [pageSize]);
+    }, [groupItems]);
 
     const allItems = useMemo(() => {
       return groups.flatMap((group) => group.items);
@@ -184,11 +186,33 @@ export const Accordion: Story = {
 
     const handlePageSizeChange = useCallback((newPageSize: number) => {
       setPageSize(newPageSize);
-    }, []);
+      // ページサイズが変更されたら、展開されているグループのアイテムを再生成
+      expandedGroups.forEach((groupName) => {
+        setIsLoading(true);
+        setTimeout(() => {
+          setGroupItems(prev => ({
+            ...prev,
+            [groupName]: generateItems(newPageSize / 3, groupName),
+          }));
+          setIsLoading(false);
+        }, 1000);
+      });
+    }, [expandedGroups]);
 
     const handleOpen = useCallback((groupName: string) => {
-      setExpandedGroups(prev => [...prev, groupName]);
-    }, []);
+      if (!expandedGroups.includes(groupName)) {
+        setExpandedGroups(prev => [...prev, groupName]);
+        // グループが開かれたときにアイテムを生成
+        setIsLoading(true);
+        setTimeout(() => {
+          setGroupItems(prev => ({
+            ...prev,
+            [groupName]: generateItems(pageSize / 3, groupName),
+          }));
+          setIsLoading(false);
+        }, 1000);
+      }
+    }, [expandedGroups, pageSize]);
 
     const menuButtons = (
       <>
@@ -219,7 +243,7 @@ export const Accordion: Story = {
       if (!filter) return groups;
 
       const filterWords = filter.toLowerCase().trim().split(/\s+/);
-      return groups.map((group) => ({
+      return groups.map(group => ({
         ...group,
         items: group.items.filter((item) => {
           const label = item.label.toLowerCase();
@@ -237,21 +261,22 @@ export const Accordion: Story = {
         menuButtons={menuButtons}
         filter={filter}
         onFilterChange={setFilter}
+        loading={isLoading}
       >
         {filteredGroups.map((group) => (
           <DualListBox2Accordion
             key={group.name}
             label={group.name}
             onOpen={() => handleOpen(group.name)}
-            disableInclude={group.items.every(item => includedItems.includes(item))}
-            disableExclude={group.items.every(item => excludedItems.includes(item))}
+            disableInclude={group.items.every(item => isItemIncluded(item.id))}
+            disableExclude={group.items.every(item => isItemExcluded(item.id))}
           >
-            {expandedGroups.includes(group.name) && group.items.map((item) => (
+            {group.items.map((item) => (
               <DualListBox2Item
                 key={item.id}
                 id={item.id}
-                isIncluded={includedItems.includes(item)}
-                isExcluded={excludedItems.includes(item)}
+                disableInclude={isItemIncluded(item.id)}
+                disableExclude={isItemExcluded(item.id)}
               >
                 {item.label}
               </DualListBox2Item>
