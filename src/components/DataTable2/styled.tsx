@@ -431,7 +431,9 @@ export const DataTable2CellSpinner = styled.div`
 
 export const DataTable2CellContents = styled.div`
   grid-area: 1 / 1 / 2 / 2;
-
+  overflow-wrap: anywhere;
+  word-break: normal;
+  line-break: strict;
   &:where(${DataTable2CellInner}:has( ${DataTable2CellSpinner} ) *) {
     visibility: hidden;
   }

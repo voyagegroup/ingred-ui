@@ -34,7 +34,10 @@ export default meta;
 
 const mockData = Array.from({ length: 1000 }, (_, i) => ({
   id: `unique-${i}`,
-  name: i % 10 === 0 ? `すごく長い苗字すごく長い名前${i}` : `普羅久斗太郎${i}`,
+  name:
+    i % 10 === 0
+      ? `Test_User_123456789_Long_Name_For_Testing${i}`
+      : `普羅久斗太郎${i}`,
   status: i % 3 === 0 ? "有効" : "無効",
   email: i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
   date: `2019/08/12`,
