@@ -546,8 +546,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               aria-expanded={tabIndex === 0}
               onClick={() => setTabIndex(0)}
             >
-              <Icon name="search" size="sm" color={colors.basic[600]} />
-              検索
+              リストアイテム
             </button>
           </li>
           <li>
@@ -558,8 +557,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               aria-expanded={tabIndex === 1}
               onClick={() => setTabIndex(1)}
             >
-              <Icon name="check" size="md" />
-              選択済み
+              選択済みアイテム
               {(included.length > 0 || excluded.length > 0) && (
                 <styled.CountBadge>
                   {included.length + excluded.length}
