@@ -9,10 +9,6 @@ import {
   ContextMenu2TriggerItem,
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
-import Button from "../Button";
-import Select from "../Select";
-import Flex from "../Flex";
-import Typography from "../Typography";
 
 const meta = {
   title: "Components/Data Display/DualListBox2",
