@@ -19,38 +19,41 @@ import { colors } from "../../styles";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import { type Item } from "./types";
 import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
-import { DualListBox2Item, type DualListBox2ItemProps } from "./DualListBox2Item";
+import {
+  DualListBox2Item,
+  type DualListBox2ItemProps,
+} from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
 type DualListBox2Props = {
   /**
-   * 選択済みの「追加」項目
-   **/
+   * 選択済みの「追加」項目の配列
+   */
   included: Item[];
   /**
-   * 選択済みの「除外」項目
-   **/
+   * 選択済みの「除外」項目の配列
+   */
   excluded: Item[];
   /**
-   * 追加ボタンを非活性にし、「排他のみモード」にするかどうか
-   **/
+   * 追加ボタンを非活性にし、「除外のみモード」にするかどうか
+   */
   disableInclude?: boolean;
   /**
-   * 除外ボタンを非活性にし、「排他のみモード」にするかどうか
-   **/
+   * 除外ボタンを非活性にし、「追加のみモード」にするかどうか
+   */
   disableExclude?: boolean;
   /**
-   * メニューに表示するボタン要素
-   **/
+   * メニューに表示するカスタムボタン要素
+   */
   menuButtons?: ReactNode;
   /**
-   * ローディング中かどうかのフラグ
-   **/
+   * データ読み込み中かどうかを示すフラグ
+   */
   loading?: boolean;
   /**
-   * 項目リスト（DualListBox2Item, DualListBox2Accordion, DualListBox2Section のいずれかのみ）
-   **/
+   * 項目リスト（DualListBox2Item, DualListBox2Accordion, DualListBox2Section のいずれかのコンポーネントのみ許可）
+   */
   children: ReactNode;
   /**
    * 「追加」状態の変更イベントハンドラ
@@ -90,15 +93,14 @@ type DualListBox2Props = {
   onFilterChange?: (filter: string) => void;
 };
 
-const toGrouped = (items: Item[]) => {
+type GroupedItems = {
+  groupName?: string;
+  items: Pick<Item, "id" | "label">[];
+};
+
+const toGrouped = (items: Item[]): GroupedItems[] => {
   return items.reduce(
-    (
-      acc: {
-        groupName?: string;
-        items: Pick<Item, "id" | "label">[];
-      }[],
-      item,
-    ) => {
+    (acc: GroupedItems[], item) => {
       const group = acc.find((group) => group.groupName === item.groupName);
       if (group) {
         group.items.push({ id: item.id, label: item.label });
@@ -114,7 +116,7 @@ const toGrouped = (items: Item[]) => {
   );
 };
 
-const DualListBox2SelectedItem = ({
+const DualListBox2SelectedItem = React.memo(({
   id,
   children,
 }: {
@@ -125,15 +127,14 @@ const DualListBox2SelectedItem = ({
     useContext(DualListBox2Context);
   const isIncluded = useMemo(() => includedIds.includes(id), [includedIds, id]);
   const isExcluded = useMemo(() => excludedIds.includes(id), [excludedIds, id]);
-  const cancel = () => {
+  const handleCancel = useCallback(() => {
     if (isIncluded) {
       onIncludedChange(includedIds.filter((i) => i !== id));
     }
     if (isExcluded) {
       onExcludedChange(excludedIds.filter((i) => i !== id));
     }
-  };
-  const handleCancelButtonClick = cancel;
+  }, [isIncluded, isExcluded, includedIds, excludedIds, onIncludedChange, onExcludedChange, id]);
 
   return (
     <styled.DualListBox2SelectedItem>
@@ -141,11 +142,13 @@ const DualListBox2SelectedItem = ({
       <button
         type="button"
         aria-label="解除"
-        onClick={handleCancelButtonClick}
+        onClick={handleCancel}
       />
     </styled.DualListBox2SelectedItem>
   );
-};
+});
+
+DualListBox2SelectedItem.displayName = "DualListBox2SelectedItem";
 
 const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
   return (
@@ -193,7 +196,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           setInternalFilter(newFilter);
         }
       },
-      [onFilterChange]
+      [onFilterChange],
     );
 
     const handleFilterReset = useCallback(() => {
@@ -205,13 +208,16 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     }, [onFilterChange]);
 
     // セクションが変更されたときのハンドラ
-    const handleActiveSectionChange = useCallback((section: string | null) => {
-      setActiveSection(section);
-      // セクション一覧に戻る時（section === null）のみ検索ワードをリセット
-      if (section === null) {
-        handleFilterReset();
-      }
-    }, [handleFilterReset]);
+    const handleActiveSectionChange = useCallback(
+      (section: string | null) => {
+        setActiveSection(section);
+        // セクション一覧に戻る時（section === null）のみ検索ワードをリセット
+        if (section === null) {
+          handleFilterReset();
+        }
+      },
+      [handleFilterReset],
+    );
 
     // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
@@ -245,12 +251,16 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         const item = allItems.find((item) => item.id === child.props.id);
         if (!item) return null;
 
-        if (filterWords.every((word) => item.label.toLowerCase().includes(word.toLowerCase()))) {
+        if (
+          filterWords.every((word) =>
+            item.label.toLowerCase().includes(word.toLowerCase()),
+          )
+        ) {
           return child;
         }
         return null;
       },
-      [filterWords, allItems]
+      [filterWords, allItems],
     );
 
     const filteredChildren = useMemo(() => {
@@ -270,9 +280,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           "displayName" in child.type &&
           child.type.displayName === "DualListBox2Accordion"
         ) {
-          const filteredAccordionChildren = React.Children.toArray(child.props.children)
+          const filteredAccordionChildren = React.Children.toArray(
+            child.props.children,
+          )
             .filter(isValidElement)
-            .map((accordionChild) => filterItem(accordionChild as React.ReactElement<DualListBox2ItemProps>))
+            .map((accordionChild) =>
+              filterItem(
+                accordionChild as React.ReactElement<DualListBox2ItemProps>,
+              ),
+            )
             .filter(Boolean);
 
           if (filteredAccordionChildren.length === 0) return null;
@@ -288,9 +304,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           "displayName" in child.type &&
           child.type.displayName === "DualListBox2Section"
         ) {
-          const filteredSectionChildren = React.Children.toArray(child.props.children)
+          const filteredSectionChildren = React.Children.toArray(
+            child.props.children,
+          )
             .filter(isValidElement)
-            .map((sectionChild) => filterItem(sectionChild as React.ReactElement<DualListBox2ItemProps>))
+            .map((sectionChild) =>
+              filterItem(
+                sectionChild as React.ReactElement<DualListBox2ItemProps>,
+              ),
+            )
             .filter(Boolean);
 
           // セクションの見出しは常に表示する（フィルタリング結果が空でも）
@@ -536,14 +558,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     }, [handleIntersection]);
 
     return (
-      <styled.DualListBox2 ref={ref}>
-        <styled.TabList role="tablist">
+      <styled.DualListBox2 ref={ref} role="region" aria-label="デュアルリストボックス">
+        <styled.TabList role="tablist" aria-label="リストの表示切り替え">
           <li>
             <button
               type="button"
               role="tab"
               aria-selected={tabIndex === 0}
               aria-expanded={tabIndex === 0}
+              aria-controls="list-items-panel"
               onClick={() => setTabIndex(0)}
             >
               リストアイテム
@@ -555,6 +578,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               role="tab"
               aria-selected={tabIndex === 1}
               aria-expanded={tabIndex === 1}
+              aria-controls="selected-items-panel"
               onClick={() => setTabIndex(1)}
             >
               選択済みアイテム
@@ -578,16 +602,22 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               setActiveSection: handleActiveSectionChange,
             }}
           >
-            <styled.LeftPanel isShow={tabIndex === 0}>
+            <styled.LeftPanel
+              isShow={tabIndex === 0}
+              id="list-items-panel"
+              role="tabpanel"
+              aria-labelledby="list-items-tab"
+            >
               <styled.LeftPanelHeader>
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
-                    type="text"
+                    aria-label="アイテムを検索"
+                    disabled={hasSection && activeSection === null}
                     placeholder="検索"
+                    type="text"
                     value={currentFilter}
                     onChange={handleFilterChange}
-                    disabled={hasSection && activeSection === null}
                   />
                   {currentFilter && (
                     <styled.HeaderSearchReset

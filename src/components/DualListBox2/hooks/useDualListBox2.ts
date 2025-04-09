@@ -29,40 +29,37 @@ export const useDualListBox2 = ({
 
   const includedItems = useMemo(
     () => items.filter((item) => includedIds.has(item.id)),
-    [items, includedIds]
+    [items, includedIds],
   );
 
   const excludedItems = useMemo(
     () => items.filter((item) => excludedIds.has(item.id)),
-    [items, excludedIds]
+    [items, excludedIds],
   );
 
   const handleIncludedChange = useCallback(
     (newIncludedIds: string[]) => {
       setIncludedIds(new Set(newIncludedIds));
       const newIncludedItems = items.filter((item) =>
-        newIncludedIds.includes(item.id)
+        newIncludedIds.includes(item.id),
       );
       onChange?.(newIncludedItems);
     },
-    [items, onChange]
+    [items, onChange],
   );
 
-  const handleExcludedChange = useCallback(
-    (newExcludedIds: string[]) => {
-      setExcludedIds(new Set(newExcludedIds));
-    },
-    []
-  );
+  const handleExcludedChange = useCallback((newExcludedIds: string[]) => {
+    setExcludedIds(new Set(newExcludedIds));
+  }, []);
 
   const isItemIncluded = useCallback(
     (id: string) => includedIds.has(id),
-    [includedIds]
+    [includedIds],
   );
 
   const isItemExcluded = useCallback(
     (id: string) => excludedIds.has(id),
-    [excludedIds]
+    [excludedIds],
   );
 
   return {
@@ -73,4 +70,4 @@ export const useDualListBox2 = ({
     isItemIncluded,
     isItemExcluded,
   };
-}; 
+};
