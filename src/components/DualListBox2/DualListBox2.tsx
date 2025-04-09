@@ -99,54 +99,57 @@ type GroupedItems = {
 };
 
 const toGrouped = (items: Item[]): GroupedItems[] => {
-  return items.reduce(
-    (acc: GroupedItems[], item) => {
-      const group = acc.find((group) => group.groupName === item.groupName);
-      if (group) {
-        group.items.push({ id: item.id, label: item.label });
-      } else {
-        acc.push({
-          groupName: item.groupName,
-          items: [{ id: item.id, label: item.label }],
-        });
-      }
-      return acc;
-    },
-    [],
-  );
+  return items.reduce((acc: GroupedItems[], item) => {
+    const group = acc.find((group) => group.groupName === item.groupName);
+    if (group) {
+      group.items.push({ id: item.id, label: item.label });
+    } else {
+      acc.push({
+        groupName: item.groupName,
+        items: [{ id: item.id, label: item.label }],
+      });
+    }
+    return acc;
+  }, []);
 };
 
-const DualListBox2SelectedItem = React.memo(({
-  id,
-  children,
-}: {
-  id: string;
-  children: ReactNode;
-}) => {
-  const { includedIds, excludedIds, onIncludedChange, onExcludedChange } =
-    useContext(DualListBox2Context);
-  const isIncluded = useMemo(() => includedIds.includes(id), [includedIds, id]);
-  const isExcluded = useMemo(() => excludedIds.includes(id), [excludedIds, id]);
-  const handleCancel = useCallback(() => {
-    if (isIncluded) {
-      onIncludedChange(includedIds.filter((i) => i !== id));
-    }
-    if (isExcluded) {
-      onExcludedChange(excludedIds.filter((i) => i !== id));
-    }
-  }, [isIncluded, isExcluded, includedIds, excludedIds, onIncludedChange, onExcludedChange, id]);
+const DualListBox2SelectedItem = React.memo(
+  ({ id, children }: { id: string; children: ReactNode }) => {
+    const { includedIds, excludedIds, onIncludedChange, onExcludedChange } =
+      useContext(DualListBox2Context);
+    const isIncluded = useMemo(
+      () => includedIds.includes(id),
+      [includedIds, id],
+    );
+    const isExcluded = useMemo(
+      () => excludedIds.includes(id),
+      [excludedIds, id],
+    );
+    const handleCancel = useCallback(() => {
+      if (isIncluded) {
+        onIncludedChange(includedIds.filter((i) => i !== id));
+      }
+      if (isExcluded) {
+        onExcludedChange(excludedIds.filter((i) => i !== id));
+      }
+    }, [
+      isIncluded,
+      isExcluded,
+      includedIds,
+      excludedIds,
+      onIncludedChange,
+      onExcludedChange,
+      id,
+    ]);
 
-  return (
-    <styled.DualListBox2SelectedItem>
-      {children}
-      <button
-        type="button"
-        aria-label="解除"
-        onClick={handleCancel}
-      />
-    </styled.DualListBox2SelectedItem>
-  );
-});
+    return (
+      <styled.DualListBox2SelectedItem>
+        {children}
+        <button type="button" aria-label="解除" onClick={handleCancel} />
+      </styled.DualListBox2SelectedItem>
+    );
+  },
+);
 
 DualListBox2SelectedItem.displayName = "DualListBox2SelectedItem";
 
@@ -558,7 +561,11 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     }, [handleIntersection]);
 
     return (
-      <styled.DualListBox2 ref={ref} role="region" aria-label="デュアルリストボックス">
+      <styled.DualListBox2
+        ref={ref}
+        role="region"
+        aria-label="デュアルリストボックス"
+      >
         <styled.TabList role="tablist" aria-label="リストの表示切り替え">
           <li>
             <button
