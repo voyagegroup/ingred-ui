@@ -582,6 +582,7 @@ export const SectionButton = styled.button`
   align-items: center;
   box-sizing: border-box;
   width: 100%;
+  min-height: 48px;
   padding: 8px;
   margin: -1px 0 0;
   border-inline: 0;
