@@ -275,8 +275,8 @@ export const Accordion: Story = {
               <DualListBox2Item
                 key={item.id}
                 id={item.id}
-                disableInclude={isItemIncluded(item.id)}
-                disableExclude={isItemExcluded(item.id)}
+                isIncluded={isItemIncluded(item.id)}
+                isExcluded={isItemExcluded(item.id)}
               >
                 {item.label}
               </DualListBox2Item>
