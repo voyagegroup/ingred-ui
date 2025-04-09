@@ -28,32 +28,32 @@ import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
 type DualListBox2Props = {
   /**
-   * 選択済みの「追加」項目
-   **/
+   * 選択済みの「追加」項目の配列
+   */
   included: Item[];
   /**
-   * 選択済みの「除外」項目
-   **/
+   * 選択済みの「除外」項目の配列
+   */
   excluded: Item[];
   /**
-   * 追加ボタンを非活性にし、「排他のみモード」にするかどうか
-   **/
+   * 追加ボタンを非活性にし、「除外のみモード」にするかどうか
+   */
   disableInclude?: boolean;
   /**
-   * 除外ボタンを非活性にし、「排他のみモード」にするかどうか
-   **/
+   * 除外ボタンを非活性にし、「追加のみモード」にするかどうか
+   */
   disableExclude?: boolean;
   /**
-   * メニューに表示するボタン要素
-   **/
+   * メニューに表示するカスタムボタン要素
+   */
   menuButtons?: ReactNode;
   /**
-   * ローディング中かどうかのフラグ
-   **/
+   * データ読み込み中かどうかを示すフラグ
+   */
   loading?: boolean;
   /**
-   * 項目リスト（DualListBox2Item, DualListBox2Accordion, DualListBox2Section のいずれかのみ）
-   **/
+   * 項目リスト（DualListBox2Item, DualListBox2Accordion, DualListBox2Section のいずれかのコンポーネントのみ許可）
+   */
   children: ReactNode;
   /**
    * 「追加」状態の変更イベントハンドラ
@@ -93,15 +93,14 @@ type DualListBox2Props = {
   onFilterChange?: (filter: string) => void;
 };
 
-const toGrouped = (items: Item[]) => {
+type GroupedItems = {
+  groupName?: string;
+  items: Pick<Item, "id" | "label">[];
+};
+
+const toGrouped = (items: Item[]): GroupedItems[] => {
   return items.reduce(
-    (
-      acc: {
-        groupName?: string;
-        items: Pick<Item, "id" | "label">[];
-      }[],
-      item,
-    ) => {
+    (acc: GroupedItems[], item) => {
       const group = acc.find((group) => group.groupName === item.groupName);
       if (group) {
         group.items.push({ id: item.id, label: item.label });
@@ -117,7 +116,7 @@ const toGrouped = (items: Item[]) => {
   );
 };
 
-const DualListBox2SelectedItem = ({
+const DualListBox2SelectedItem = React.memo(({
   id,
   children,
 }: {
@@ -128,15 +127,14 @@ const DualListBox2SelectedItem = ({
     useContext(DualListBox2Context);
   const isIncluded = useMemo(() => includedIds.includes(id), [includedIds, id]);
   const isExcluded = useMemo(() => excludedIds.includes(id), [excludedIds, id]);
-  const cancel = () => {
+  const cancel = useCallback(() => {
     if (isIncluded) {
       onIncludedChange(includedIds.filter((i) => i !== id));
     }
     if (isExcluded) {
       onExcludedChange(excludedIds.filter((i) => i !== id));
     }
-  };
-  const handleCancelButtonClick = cancel;
+  }, [isIncluded, isExcluded, includedIds, excludedIds, onIncludedChange, onExcludedChange, id]);
 
   return (
     <styled.DualListBox2SelectedItem>
@@ -144,11 +142,13 @@ const DualListBox2SelectedItem = ({
       <button
         type="button"
         aria-label="解除"
-        onClick={handleCancelButtonClick}
+        onClick={cancel}
       />
     </styled.DualListBox2SelectedItem>
   );
-};
+});
+
+DualListBox2SelectedItem.displayName = "DualListBox2SelectedItem";
 
 const DualListBox2SelectedLabel = ({ label }: { label: string }) => {
   return (
@@ -558,14 +558,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     }, [handleIntersection]);
 
     return (
-      <styled.DualListBox2 ref={ref}>
-        <styled.TabList role="tablist">
+      <styled.DualListBox2 ref={ref} role="region" aria-label="デュアルリストボックス">
+        <styled.TabList role="tablist" aria-label="リストの表示切り替え">
           <li>
             <button
               type="button"
               role="tab"
               aria-selected={tabIndex === 0}
               aria-expanded={tabIndex === 0}
+              aria-controls="list-items-panel"
               onClick={() => setTabIndex(0)}
             >
               リストアイテム
@@ -577,6 +578,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               role="tab"
               aria-selected={tabIndex === 1}
               aria-expanded={tabIndex === 1}
+              aria-controls="selected-items-panel"
               onClick={() => setTabIndex(1)}
             >
               選択済みアイテム
@@ -600,7 +602,12 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               setActiveSection: handleActiveSectionChange,
             }}
           >
-            <styled.LeftPanel isShow={tabIndex === 0}>
+            <styled.LeftPanel
+              isShow={tabIndex === 0}
+              id="list-items-panel"
+              role="tabpanel"
+              aria-labelledby="list-items-tab"
+            >
               <styled.LeftPanelHeader>
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
