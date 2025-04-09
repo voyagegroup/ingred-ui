@@ -19,7 +19,10 @@ import { colors } from "../../styles";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import { type Item } from "./types";
 import { DualListBox2Context, traverseChildren, extractAllItems } from "./lib";
-import { DualListBox2Item, type DualListBox2ItemProps } from "./DualListBox2Item";
+import {
+  DualListBox2Item,
+  type DualListBox2ItemProps,
+} from "./DualListBox2Item";
 import { DualListBox2Section } from "./DualListBox2Section";
 import { DualListBox2MenuCountControl } from "./DualListBox2MenuCountControl";
 
@@ -193,7 +196,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           setInternalFilter(newFilter);
         }
       },
-      [onFilterChange]
+      [onFilterChange],
     );
 
     const handleFilterReset = useCallback(() => {
@@ -205,13 +208,16 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
     }, [onFilterChange]);
 
     // セクションが変更されたときのハンドラ
-    const handleActiveSectionChange = useCallback((section: string | null) => {
-      setActiveSection(section);
-      // セクション一覧に戻る時（section === null）のみ検索ワードをリセット
-      if (section === null) {
-        handleFilterReset();
-      }
-    }, [handleFilterReset]);
+    const handleActiveSectionChange = useCallback(
+      (section: string | null) => {
+        setActiveSection(section);
+        // セクション一覧に戻る時（section === null）のみ検索ワードをリセット
+        if (section === null) {
+          handleFilterReset();
+        }
+      },
+      [handleFilterReset],
+    );
 
     // children にセクションが含まれているかどうか
     const hasSection = useMemo(() => {
@@ -245,12 +251,16 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
         const item = allItems.find((item) => item.id === child.props.id);
         if (!item) return null;
 
-        if (filterWords.every((word) => item.label.toLowerCase().includes(word.toLowerCase()))) {
+        if (
+          filterWords.every((word) =>
+            item.label.toLowerCase().includes(word.toLowerCase()),
+          )
+        ) {
           return child;
         }
         return null;
       },
-      [filterWords, allItems]
+      [filterWords, allItems],
     );
 
     const filteredChildren = useMemo(() => {
@@ -270,9 +280,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           "displayName" in child.type &&
           child.type.displayName === "DualListBox2Accordion"
         ) {
-          const filteredAccordionChildren = React.Children.toArray(child.props.children)
+          const filteredAccordionChildren = React.Children.toArray(
+            child.props.children,
+          )
             .filter(isValidElement)
-            .map((accordionChild) => filterItem(accordionChild as React.ReactElement<DualListBox2ItemProps>))
+            .map((accordionChild) =>
+              filterItem(
+                accordionChild as React.ReactElement<DualListBox2ItemProps>,
+              ),
+            )
             .filter(Boolean);
 
           if (filteredAccordionChildren.length === 0) return null;
@@ -288,9 +304,15 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
           "displayName" in child.type &&
           child.type.displayName === "DualListBox2Section"
         ) {
-          const filteredSectionChildren = React.Children.toArray(child.props.children)
+          const filteredSectionChildren = React.Children.toArray(
+            child.props.children,
+          )
             .filter(isValidElement)
-            .map((sectionChild) => filterItem(sectionChild as React.ReactElement<DualListBox2ItemProps>))
+            .map((sectionChild) =>
+              filterItem(
+                sectionChild as React.ReactElement<DualListBox2ItemProps>,
+              ),
+            )
             .filter(Boolean);
 
           // セクションの見出しは常に表示する（フィルタリング結果が空でも）
@@ -583,11 +605,12 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
-                    type="text"
+                    aria-label="アイテムを検索"
+                    disabled={hasSection && activeSection === null}
                     placeholder="検索"
+                    type="text"
                     value={currentFilter}
                     onChange={handleFilterChange}
-                    disabled={hasSection && activeSection === null}
                   />
                   {currentFilter && (
                     <styled.HeaderSearchReset

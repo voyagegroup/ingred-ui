@@ -21,12 +21,8 @@ export const DualListBox2Item: React.FC<DualListBox2ItemProps> = ({
   disableInclude,
   disableExclude,
 }) => {
-  const {
-    onIncludedChange,
-    onExcludedChange,
-    includedIds,
-    excludedIds,
-  } = useContext(DualListBox2Context);
+  const { onIncludedChange, onExcludedChange, includedIds, excludedIds } =
+    useContext(DualListBox2Context);
 
   const getIconColor = (
     isDisabled: boolean | undefined,
@@ -41,10 +37,10 @@ export const DualListBox2Item: React.FC<DualListBox2ItemProps> = ({
   const handleIncludeClick = () => {
     if (isIncluded) {
       // チェックが付いている状態でクリックされたら解除
-      onIncludedChange(includedIds.filter(itemId => itemId !== id));
+      onIncludedChange(includedIds.filter((itemId) => itemId !== id));
     } else if (isExcluded) {
       // 除外状態の場合、除外を解除して追加
-      onExcludedChange(excludedIds.filter(itemId => itemId !== id));
+      onExcludedChange(excludedIds.filter((itemId) => itemId !== id));
       onIncludedChange([...includedIds, id]);
     } else {
       // 未選択状態なら追加
@@ -55,10 +51,10 @@ export const DualListBox2Item: React.FC<DualListBox2ItemProps> = ({
   const handleExcludeClick = () => {
     if (isExcluded) {
       // 除外状態でクリックされたら解除
-      onExcludedChange(excludedIds.filter(itemId => itemId !== id));
+      onExcludedChange(excludedIds.filter((itemId) => itemId !== id));
     } else if (isIncluded) {
       // 追加状態の場合、追加を解除して除外
-      onIncludedChange(includedIds.filter(itemId => itemId !== id));
+      onIncludedChange(includedIds.filter((itemId) => itemId !== id));
       onExcludedChange([...excludedIds, id]);
     } else {
       // 未選択状態なら除外
