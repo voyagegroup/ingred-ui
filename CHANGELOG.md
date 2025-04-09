@@ -1,5 +1,35 @@
 # Changelog
 
+## 22.0.0
+
+### Major Changes
+
+- [#1779](https://github.com/voyagegroup/ingred-ui/pull/1779) [`5bca9f18`](https://github.com/voyagegroup/ingred-ui/commit/5bca9f18676b88838bd9987f9ddcb40f87ae89ac) Thanks [@noronaoki](https://github.com/noronaoki)! - TypeScriptのターゲットバージョンをES2017に更新
+
+  Breaking Changes:
+
+  - `target`を`es5`から`es2017`に変更
+    - コンパイル後のコードがES2017の機能を使用するように変更されます
+    - IE11など古いブラウザはサポートされなくなります
+    - より最新のJavaScript機能（async/await, Object.values/entries など）が利用可能になります
+
+  その他の変更:
+
+  - `lib`に`es2015`を追加し、型定義のサポートを強化
+  - DualListBox2コンポーネントで発生していた`Set`型の反復処理に関するエラーを解決
+
+  移行ガイド:
+
+  1. アプリケーションがES2017をサポートしているブラウザのみをターゲットにしていることを確認してください
+  2. 古いブラウザ（特にIE11）のサポートが必要な場合は、適切なポリフィルを追加するか、このバージョンへのアップデートを見送ってください
+  3. ビルド設定で追加のトランスパイルを行っている場合は、設定の見直しが必要かもしれません
+
+### Patch Changes
+
+- [#1775](https://github.com/voyagegroup/ingred-ui/pull/1775) [`1d7bd6b9`](https://github.com/voyagegroup/ingred-ui/commit/1d7bd6b94587bc0f1063dcae9b310b4cd2b49517) Thanks [@noronaoki](https://github.com/noronaoki)! - DataTable2のカラムで半角英数がきちんと折り返すようにする
+
+- [#1775](https://github.com/voyagegroup/ingred-ui/pull/1775) [`1d7bd6b9`](https://github.com/voyagegroup/ingred-ui/commit/1d7bd6b94587bc0f1063dcae9b310b4cd2b49517) Thanks [@noronaoki](https://github.com/noronaoki)! - DataTable2のセル内折り返しを修正
+
 ## 21.4.2
 
 ### Patch Changes
