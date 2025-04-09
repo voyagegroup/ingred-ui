@@ -127,7 +127,7 @@ const DualListBox2SelectedItem = React.memo(({
     useContext(DualListBox2Context);
   const isIncluded = useMemo(() => includedIds.includes(id), [includedIds, id]);
   const isExcluded = useMemo(() => excludedIds.includes(id), [excludedIds, id]);
-  const cancel = useCallback(() => {
+  const handleCancel = useCallback(() => {
     if (isIncluded) {
       onIncludedChange(includedIds.filter((i) => i !== id));
     }
@@ -142,7 +142,7 @@ const DualListBox2SelectedItem = React.memo(({
       <button
         type="button"
         aria-label="解除"
-        onClick={cancel}
+        onClick={handleCancel}
       />
     </styled.DualListBox2SelectedItem>
   );
