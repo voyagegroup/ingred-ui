@@ -1,5 +1,21 @@
 # Changelog
 
+## 22.1.0
+
+### Minor Changes
+
+- [#1777](https://github.com/voyagegroup/ingred-ui/pull/1777) [`39342029`](https://github.com/voyagegroup/ingred-ui/commit/39342029535949bb559fcdddf2dec54fc3417d87) Thanks [@noronaoki](https://github.com/noronaoki)! - Dual listbox2の機能アップデート
+
+  - コンテキストベースの状態管理を導入し、コンポーネント間の連携を改善
+  - パフォーマンスの最適化（useMemo, useCallbackの適切な使用）
+  - アクセシビリティの改善（ARIA属性の追加）
+  - より柔軟な使用方法をサポート（アコーディオン、セクション機能）
+  - ページネーションとフィルタリング機能の強化
+
+### Patch Changes
+
+- [#1777](https://github.com/voyagegroup/ingred-ui/pull/1777) [`39342029`](https://github.com/voyagegroup/ingred-ui/commit/39342029535949bb559fcdddf2dec54fc3417d87) Thanks [@noronaoki](https://github.com/noronaoki)! - Dual listbox2でアイテムの追加/除外状態を外部から制御できるように isIncluded と isExcluded props を追加
+
 ## 22.0.0
 
 ### Major Changes
