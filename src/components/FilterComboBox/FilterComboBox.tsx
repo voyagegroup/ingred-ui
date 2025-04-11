@@ -23,6 +23,7 @@ import {
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
+import { FilterSize } from "../FilterInputAbstract/types";
 
 type FilterTagInputProps = {
   values: string[];
@@ -31,6 +32,7 @@ type FilterTagInputProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
+  size?: FilterSize;
 };
 
 export const FilterComboBox = ({
@@ -40,6 +42,7 @@ export const FilterComboBox = ({
   selectOptions,
   onChange,
   onSelectChange,
+  size = "medium",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -181,6 +184,7 @@ export const FilterComboBox = ({
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
+      size={size}
     >
       <styled.SelectContainer data-overflowing={isInlineOverflowing}>
         <ContextMenu2Container>
