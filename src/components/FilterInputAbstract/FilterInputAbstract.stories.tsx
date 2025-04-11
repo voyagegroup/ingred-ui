@@ -7,10 +7,46 @@ import Icon from "../Icon";
 const meta = {
   title: "Components/Inputs/FilterInputAbstract",
   component: FilterInputAbstract,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
+      description: "サイズバリエーション",
+      table: {
+        type: { summary: "small | medium | large" },
+        defaultValue: { summary: "small" },
+      },
+    },
+  },
 } satisfies Meta<typeof FilterInputAbstract>;
 
 export default meta;
+
+const defaultArgs = {
+  selectedIndex: 0,
+  selectOptions: [
+    {
+      icon: <Icon name="operator_match" type="line" color="currentColor" />,
+      label: "含む",
+    },
+    {
+      icon: (
+        <Icon
+          name="operator_does_not_match"
+          type="line"
+          color="currentColor"
+        />
+      ),
+      label: "含まない",
+    },
+    {
+      icon: (
+        <Icon name="operator_contains" type="line" color="currentColor" />
+      ),
+      label: "いずれかを含む",
+    },
+  ],
+};
 
 /**
  * Internal use only!
@@ -18,51 +54,8 @@ export default meta;
  */
 export const Default: StoryObj<typeof meta> = {
   args: {
-    selectedIndex: 0,
-    selectOptions: [
-      {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
-        label: "含む",
-      },
-      {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
-        label: "含まない",
-      },
-      {
-        icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" />
-        ),
-        label: "いずれかを含む",
-      },
-      {
-        icon: (
-          <Icon name="operator_starts_with" type="line" color="currentColor" />
-        ),
-        label: "で始まる",
-      },
-      {
-        icon: (
-          <Icon name="operator_ends_with" type="line" color="currentColor" />
-        ),
-        label: "で終わる",
-      },
-      {
-        icon: <Icon name="operator_equal" type="line" color="currentColor" />,
-        label: "同じ",
-      },
-      {
-        icon: (
-          <Icon name="operator_not_equal" type="line" color="currentColor" />
-        ),
-        label: "同じでない",
-      },
-    ],
+    ...defaultArgs,
+    size: "small",
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -76,6 +69,30 @@ export const Default: StoryObj<typeof meta> = {
           children
         </FilterInputAbstract>
       </>
+    );
+  },
+};
+
+/**
+ * サイズバリエーション
+ */
+export const Sizes: StoryObj<typeof meta> = {
+  args: {
+    ...defaultArgs,
+  },
+  render: (args) => {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterInputAbstract {...defaultArgs} size="small" onSelectChange={() => { }}>
+          small size (28px)
+        </FilterInputAbstract>
+        <FilterInputAbstract {...defaultArgs} size="medium" onSelectChange={() => { }}>
+          medium size (32px)
+        </FilterInputAbstract>
+        <FilterInputAbstract {...defaultArgs} size="large" onSelectChange={() => { }}>
+          large size (40px)
+        </FilterInputAbstract>
+      </div>
     );
   },
 };

@@ -12,8 +12,10 @@ import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2CheckItem,
+  ContextMenu2ButtonItem,
 } from "../ContextMenu2";
 import * as styled from "./styled";
+import { StyledContextMenu2CheckItem } from "./styled";
 
 export const FilterInputContext = createContext({
   isSmall: false,
@@ -50,12 +52,14 @@ type FilterInputAbstractProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   children?: ReactNode;
   onSelectChange: (index: number) => void;
+  size?: "small" | "medium" | "large";
 };
 export const FilterInputAbstract = ({
   selectedIndex,
   selectOptions,
   onSelectChange,
   children,
+  size = "small",
 }: FilterInputAbstractProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
@@ -89,7 +93,7 @@ export const FilterInputAbstract = ({
   }, [setIsSmall]);
 
   return (
-    <styled.FilterInputAbstract ref={el} data-small={isSmall}>
+    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size}>
       <ContextMenu2Container>
         <ContextMenu2
           open={isSelectOpen}
@@ -106,14 +110,14 @@ export const FilterInputAbstract = ({
           onOpenChange={(open) => setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
-            <ContextMenu2CheckItem
+            <StyledContextMenu2CheckItem
               key={label}
               prepend={icon}
               checked={selectedIndex === i}
               onChange={() => handleSelectChange(i)}
             >
               {label}
-            </ContextMenu2CheckItem>
+            </StyledContextMenu2CheckItem>
           ))}
         </ContextMenu2>
       </ContextMenu2Container>
