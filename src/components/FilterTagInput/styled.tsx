@@ -48,7 +48,7 @@ export const OverflowIndicator = styled.button`
   outline-offset: -1px;
   color: #000;
   background-color: #fff;
-  box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
+  box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
 
   &:where([data-overflowing="true"]) {
