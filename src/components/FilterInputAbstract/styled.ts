@@ -145,35 +145,95 @@ export const DropDownTrigger = styled.button`
   }
 `;
 
-// フィルタータグのスタイル
-export const FilterTag = styled.span`
+interface FilterTagProps {
+  $size: FilterSize;
+}
+
+export const FilterTag = styled.span<FilterTagProps>`
   isolation: isolate;
   display: flex;
   align-items: center;
   gap: 4px;
   width: fit-content;
-  padding: 1px 4px 1px 6px;
+  padding: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "1px 4px 1px 6px";
+      case "medium":
+        return "2px 5px 2px 7px";
+      case "large":
+        return "3px 6px 3px 8px";
+    }
+  }};
   border: 1px solid ${colors.basic[400]};
   border-radius: 2px;
-  /* UI/Text 12 */
   font-weight: 400;
-  font-size: 12px;
+  font-size: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "11px";
+      case "medium":
+        return "12px";
+      case "large":
+        return "13px";
+    }
+  }};
   line-height: 14px;
   word-break: break-all;
   color: ${colors.basic[900]};
   background-color: #fff;
 `;
 
-export const FilterTagButton = styled.button`
+export const FilterTagButton = styled.button<FilterTagProps>`
   flex-shrink: 0;
-  height: 18px;
+  height: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
   aspect-ratio: 1;
   padding: 0;
   border: 0;
-  zoom: ${16 / 18};
   color: ${colors.basic[900]};
   background-color: transparent;
   cursor: pointer;
+
+  /* アイコンのサイズ調整 */
+  svg {
+    width: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
+    height: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 // ... 他のexportは変更なし ... 

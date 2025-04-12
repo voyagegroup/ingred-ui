@@ -16,6 +16,7 @@ import {
 } from "../ContextMenu2";
 import * as styled from "./styled";
 import { StyledContextMenu2CheckItem } from "./styled";
+import { FilterSize } from "./types";
 
 export const FilterInputContext = createContext({
   isSmall: false,
@@ -26,16 +27,18 @@ export const FilterInputContext = createContext({
 type FilterTagProps = {
   label: string;
   onRemove: () => void;
+  size?: FilterSize;
 };
 
-export const FilterTag = ({ label, onRemove }: FilterTagProps) => {
+export const FilterTag = ({ label, onRemove, size = "medium" }: FilterTagProps) => {
   return (
-    <styled.FilterTag>
+    <styled.FilterTag $size={size}>
       {label}
       <styled.FilterTagButton
         type="button"
         aria-label="削除"
         onClick={onRemove}
+        $size={size}
       >
         <Icon name="close_circle" type="fill" color="currentColor" />
       </styled.FilterTagButton>
@@ -59,7 +62,7 @@ export const FilterInputAbstract = ({
   selectOptions,
   onSelectChange,
   children,
-  size = "small",
+  size = "medium",
 }: FilterInputAbstractProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、

@@ -235,6 +235,7 @@ export const FilterComboBox = ({
               key={value}
               label={value}
               onRemove={() => handleRemove(value)}
+              size={size}
             />
           ))}
         </styled.TagList>
