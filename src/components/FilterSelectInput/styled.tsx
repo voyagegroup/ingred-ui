@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/styled";
 
 type StyledProps = {
   $size: FilterSize;

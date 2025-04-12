@@ -10,8 +10,7 @@ import React, {
 import Icon from "../Icon";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import * as styled from "./styled";
-import { StyledContextMenu2CheckItem } from "./styled";
-import { FilterSize } from "./types";
+import { StyledContextMenu2CheckItem, FilterSize } from "./styled";
 import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({

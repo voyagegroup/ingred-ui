@@ -17,7 +17,7 @@ import {
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/styled";
 
 type FilterTagInputProps = {
   value: string;

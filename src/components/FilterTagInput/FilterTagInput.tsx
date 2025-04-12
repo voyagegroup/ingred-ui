@@ -23,7 +23,7 @@ import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
 import * as styled from "./styled";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize } from "../FilterInputAbstract/styled";
 
 //
 // -----------------------------------------------------------------------------

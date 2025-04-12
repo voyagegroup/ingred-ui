@@ -3,7 +3,7 @@ import React from "react";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/styled";
 
 import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
