@@ -14,14 +14,27 @@ type StyledProps = {
 
 export const InlineField = styled.div<StyledProps>`
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  min-width: 0;
-  width: calc(100% + 46px);
-  height: 100%;
-  margin-left: -46px;
-  padding: 4px 8px 4px 54px;
+  align-items: center;
+  min-height: 100%;
+  padding: 0 5px;
+  border-radius: 0 4px 4px 0;
+  overflow: auto;
+  scrollbar-width: none;
   background: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:has(input:focus) {
+    outline: auto;
+    outline-offset: -1px;
+    outline: auto -webkit-focus-ring-color;
+  }
+
+  &:where(${FilterInputAbstract}[data-small="true"] *) {
+    display: none;
+  }
 `;
 
 export const InlineFieldInner = styled.div`
