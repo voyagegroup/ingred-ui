@@ -24,14 +24,16 @@ type FilterTagProps = {
   label: string;
   onRemove: () => void;
   size?: FilterSize;
+  variant?: "light" | "dark";
 };
 
 export const FilterTag = ({
   label,
   size = "medium",
+  variant = "dark",
   onRemove,
 }: FilterTagProps) => {
-  return <Tag label={label} size={size} onRemove={onRemove} />;
+  return <Tag label={label} size={size} variant={variant} onRemove={onRemove} />;
 };
 
 //
