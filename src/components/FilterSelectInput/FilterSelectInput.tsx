@@ -1,9 +1,19 @@
-import React, { useEffect, useRef, useState, type ReactElement } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useMemo,
+  type ReactElement,
+  type ChangeEvent,
+  type KeyboardEvent,
+} from "react";
 import { FilterInputAbstract } from "../FilterInputAbstract/FilterInputAbstract";
 import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2ButtonItem,
+  ContextMenu2TextInputItem,
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
@@ -18,6 +28,7 @@ type FilterTagInputProps = {
   onSelectChange: (index: number) => void;
   size?: FilterSize;
 };
+
 export const FilterSelectInput = ({
   value,
   options: values,
@@ -28,6 +39,10 @@ export const FilterSelectInput = ({
   size = "medium",
 }: FilterTagInputProps) => {
   const [width, setWidth] = useState(0);
+  const [userValue, setUserValue] = useState("");
+  const [userEnteredValue, setUserEnteredValue] = useState("");
+  const [isComposing, setIsComposing] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const triggerEl = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +60,44 @@ export const FilterSelectInput = ({
     };
   }, []);
 
+  // userValueの入力状況に応じてフィルターされたoptions
+  const filteredOptions = useMemo(() => {
+    const trimmedValue = userEnteredValue.trim();
+    if (trimmedValue === "") return values;
+    return values.filter((option) => option.includes(trimmedValue));
+  }, [values, userEnteredValue]);
+
+  const handleOnChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setUserValue(event.target.value);
+      if (!isComposing) setUserEnteredValue(event.target.value);
+    },
+    [isComposing],
+  );
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") {
+        setUserEnteredValue(userValue);
+        return;
+      }
+    },
+    [userValue],
+  );
+
+  const handleOpenChange = useCallback((open: boolean) => {
+    setIsOpen(open);
+    if (!open) {
+      setUserValue("");
+      setUserEnteredValue("");
+    }
+  }, []);
+
+  const handleOptionClick = useCallback((selectedValue: string) => {
+    onChange(selectedValue);
+    setIsOpen(false);
+  }, [onChange]);
+
   return (
     <FilterInputAbstract
       size={size}
@@ -55,6 +108,7 @@ export const FilterSelectInput = ({
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>
           <ContextMenu2
+            open={isOpen}
             minWidth={width}
             trigger={
               <styled.Select type="button">
@@ -64,13 +118,22 @@ export const FilterSelectInput = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
+            onOpenChange={handleOpenChange}
           >
-            {values.map((v) => (
+            <ContextMenu2TextInputItem
+              autoFocus
+              value={userValue}
+              onChange={handleOnChange}
+              onKeyDown={handleKeyDown}
+              onCompositionStart={() => setIsComposing(true)}
+              onCompositionEnd={() => setIsComposing(false)}
+            />
+            {filteredOptions.map((v) => (
               <ContextMenu2ButtonItem
                 key={v}
                 closeOnClick
                 pressed={v === value}
-                onClick={() => onChange(v)}
+                onClick={() => handleOptionClick(v)}
               >
                 {v}
               </ContextMenu2ButtonItem>
