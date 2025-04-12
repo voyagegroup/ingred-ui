@@ -23,7 +23,7 @@ import {
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/styled";
 
 type FilterTagInputProps = {
   values: string[];
@@ -33,6 +33,8 @@ type FilterTagInputProps = {
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
+  variant?: FilterVariant;
+  tagVariant?: FilterVariant;
 };
 
 export const FilterComboBox = ({
@@ -43,6 +45,8 @@ export const FilterComboBox = ({
   onChange,
   onSelectChange,
   size = "medium",
+  variant = "dark",
+  tagVariant = "light",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -186,12 +190,12 @@ export const FilterComboBox = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.SelectContainer data-overflowing={isInlineOverflowing}>
+      <styled.SelectContainer data-overflowing={isInlineOverflowing} $variant={variant}>
         <ContextMenu2Container>
           <ContextMenu2
             open={isOpen}
             trigger={
-              <styled.Select type="button">
+              <styled.Select type="button" $variant={variant}>
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
@@ -235,6 +239,7 @@ export const FilterComboBox = ({
               key={value}
               label={value}
               size={size}
+              variant={tagVariant}
               onRemove={() => handleRemove(value)}
             />
           ))}
