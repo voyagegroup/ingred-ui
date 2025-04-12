@@ -239,6 +239,7 @@ type FilterTagInputProps = {
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
+  variant?: "light" | "dark";
 };
 export const FilterTagInput = ({
   title,
@@ -248,6 +249,7 @@ export const FilterTagInput = ({
   onChange,
   onSelectChange,
   size = "medium",
+  variant = "light",
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -372,55 +374,53 @@ export const FilterTagInput = ({
   }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   return (
-    <>
-      <FilterInputAbstract
-        size={size}
-        selectedIndex={selectedIndex}
-        selectOptions={selectOptions}
-        onSelectChange={onSelectChange}
+    <FilterInputAbstract
+      size={size}
+      selectedIndex={selectedIndex}
+      selectOptions={selectOptions}
+      onSelectChange={onSelectChange}
+    >
+      <styled.InlineField $variant={variant}>
+        <styled.InlineFieldInner ref={inlineFieldInnerEl}>
+          {values.map((value, i) => (
+            <FilterTag
+              key={value}
+              label={value}
+              size={size}
+              onRemove={() => handleTagRemove(i)}
+            />
+          ))}
+          <styled.InlineInput>
+            {!inputValue && (
+              <styled.InlineInputIcon>
+                <Icon name="filter" color="currentColor" />
+              </styled.InlineInputIcon>
+            )}
+            <input
+              ref={inlineInputEl}
+              type="text"
+              aria-label="フィルターする値"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onCompositionStart={() => setIsInlineComposing(true)}
+              onCompositionEnd={() => setIsInlineComposing(false)}
+              onKeyDown={handleKeyDown}
+              onBlur={() => setInputValue("")}
+            />
+          </styled.InlineInput>
+        </styled.InlineFieldInner>
+      </styled.InlineField>
+      <styled.OverflowIndicator
+        type="button"
+        aria-label="フィルター入力パネルを開く"
+        data-overflowing={isInlineOverflowing}
+        onClick={() => setIsModalOpen(true)}
       >
-        <styled.InlineField ref={inlineFieldEl}>
-          <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-            {values.map((value, i) => (
-              <FilterTag
-                key={value}
-                label={value}
-                size={size}
-                onRemove={() => handleTagRemove(i)}
-              />
-            ))}
-            <styled.InlineInput>
-              {!inputValue && (
-                <styled.InlineInputIcon>
-                  <Icon name="filter" color="currentColor" />
-                </styled.InlineInputIcon>
-              )}
-              <input
-                ref={inlineInputEl}
-                type="text"
-                aria-label="フィルターする値"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onCompositionStart={() => setIsInlineComposing(true)}
-                onCompositionEnd={() => setIsInlineComposing(false)}
-                onKeyDown={handleKeyDown}
-                onBlur={() => setInputValue("")}
-              />
-            </styled.InlineInput>
-          </styled.InlineFieldInner>
-        </styled.InlineField>
-        <styled.OverflowIndicator
-          type="button"
-          aria-label="フィルター入力パネルを開く"
-          data-overflowing={isInlineOverflowing}
-          onClick={() => setIsModalOpen(true)}
-        >
-          <Icon
-            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-            color="currentColor"
-          />
-        </styled.OverflowIndicator>
-      </FilterInputAbstract>
+        <Icon
+          name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+          color="currentColor"
+        />
+      </styled.OverflowIndicator>
       <FilterInputPanel
         isOpen={isModalOpen}
         selectOptions={selectOptions}
@@ -431,6 +431,6 @@ export const FilterTagInput = ({
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
       />
-    </>
+    </FilterInputAbstract>
   );
 };

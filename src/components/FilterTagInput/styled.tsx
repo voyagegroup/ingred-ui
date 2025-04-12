@@ -3,10 +3,25 @@ import React from "react";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
+import { FilterSize } from "../FilterInputAbstract/types";
 
 import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
-export const InlineField = styled.div`
+type StyledProps = {
+  $size?: FilterSize;
+  $variant?: "light" | "dark";
+};
+
+const FILTER_VARIANTS = {
+  light: {
+    background: colors.basic[0],
+  },
+  dark: {
+    background: colors.basic[100],
+  },
+} as const;
+
+export const InlineField = styled.div<StyledProps>`
   display: flex;
   align-items: center;
   min-height: 100%;
@@ -14,7 +29,7 @@ export const InlineField = styled.div`
   border-radius: 0 4px 4px 0;
   overflow: auto;
   scrollbar-width: none;
-  background: ${colors.basic[100]};
+  background: ${({ $variant = "light" }) => FILTER_VARIANTS[$variant].background};
 
   &::-webkit-scrollbar {
     display: none;

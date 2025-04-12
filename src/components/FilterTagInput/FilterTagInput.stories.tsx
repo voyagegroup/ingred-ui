@@ -14,6 +14,12 @@ const meta = {
       },
       options: ["small", "medium", "large"],
     },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["light", "dark"],
+    },
   },
 } satisfies Meta<typeof FilterTagInput>;
 
@@ -164,6 +170,65 @@ export const Sizes: StoryObj<typeof meta> = {
         <FilterTagInput
           {...args}
           size="large"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
+    );
+  },
+};
+
+export const Variants: StoryObj<typeof meta> = {
+  args: {
+    title: "カラーバリエーション",
+    values: ["light", "dark"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterTagInput
+          {...args}
+          variant="light"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          variant="dark"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        {/* サイズとの組み合わせ */}
+        <FilterTagInput
+          {...args}
+          variant="light"
+          size="small"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          variant="dark"
+          size="small"
           onChange={(newValues) => updateArgs({ values: newValues })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
