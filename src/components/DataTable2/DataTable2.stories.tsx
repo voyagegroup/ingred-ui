@@ -159,10 +159,10 @@ export const Default: StoryObj<typeof meta> = {
         ダウンロード
       </DataTable2ActionButton>
     ),
-    onCheckedRowsChange: () => {},
-    onPageSizeChange: () => {},
-    onPageChange: () => {},
-    onColumnsChange: () => {},
+    onCheckedRowsChange: () => { },
+    onPageSizeChange: () => { },
+    onPageChange: () => { },
+    onColumnsChange: () => { },
     children: null,
   },
   render: (args) => {
@@ -330,6 +330,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="名前"
+                size="small"
                 values={nameFilterValues}
                 selectedIndex={nameFilterType}
                 selectOptions={filterTypes}
@@ -365,6 +366,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="ステータス"
+                size="small"
                 values={statusFilterValues}
                 selectedIndex={statusFilterType}
                 selectOptions={filterTypes}
@@ -400,6 +402,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="メールアドレス"
+                size="small"
                 values={emailFilterValues}
                 selectedIndex={emailFilterType}
                 selectOptions={filterTypes}
@@ -435,6 +438,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="登録日"
+                size="small"
                 values={dateFilterValues}
                 selectedIndex={dateFilterType}
                 selectOptions={filterTypes}
@@ -548,10 +552,10 @@ export const Loading: StoryObj<typeof meta> = {
     currentPage: 0,
     totalCount: 100,
     rowControls: null,
-    onCheckedRowsChange: () => {},
-    onPageSizeChange: () => {},
-    onPageChange: () => {},
-    onColumnsChange: () => {},
+    onCheckedRowsChange: () => { },
+    onPageSizeChange: () => { },
+    onPageChange: () => { },
+    onColumnsChange: () => { },
     children: null,
   },
   render: (args) => {
@@ -592,7 +596,7 @@ export const Loading: StoryObj<typeof meta> = {
           {...args}
           columns={columns}
           totalCount={data.length}
-          onCheckedRowsChange={() => {}}
+          onCheckedRowsChange={() => { }}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
           onColumnsChange={(columns) => {
