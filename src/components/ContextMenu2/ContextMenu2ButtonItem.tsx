@@ -56,7 +56,7 @@ type Theme = {
 };
 export const ContextMenu2ButtonItem = styled(
   InternalContextMenu2ButtonItem,
-)<Theme>`
+) <Theme>`
   display: flex;
   align-items: center;
   gap: 4px;
@@ -86,8 +86,8 @@ export const ContextMenu2ButtonItem = styled(
   &[data-pressed="true"],
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    color: ${({ color }) => (color === "danger" ? "#fff" : colors.basic[900])};
+    color: ${({ color }) => (color === "danger" ? colors.red[500] : colors.basic[900])};
     background: ${({ color }) =>
-      color === "danger" ? colors.red[500] : colors.basic[200]};
+    color === "danger" ? colors.red[100] : colors.basic[200]};
   }
 `;
