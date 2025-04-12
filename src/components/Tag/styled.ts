@@ -8,7 +8,7 @@ type StyledTagProps = {
   $disabled?: boolean;
 };
 
-export const Tag = styled.span<StyledTagProps>`
+export const Tag = styled.div<StyledTagProps>`
   isolation: isolate;
   display: inline-flex;
   align-items: center;
@@ -27,6 +27,10 @@ export const Tag = styled.span<StyledTagProps>`
   cursor: ${({ $disabled }) => $disabled ? "not-allowed" : "default"};
 `;
 
+export const Text = styled.div<StyledTagProps>`
+
+`;
+
 export const RemoveButton = styled.button<StyledTagProps>`
   flex-shrink: 0;
   display: flex;
@@ -35,6 +39,7 @@ export const RemoveButton = styled.button<StyledTagProps>`
   width: ${({ $size }) => TAG_SIZES[$size].iconSize};
   height: ${({ $size }) => TAG_SIZES[$size].iconSize};
   padding: 0;
+  margin-right: -2px;
   border: 0;
   color: ${({ $variant, $disabled }) => $disabled ? colors.basic[400] : TAG_VARIANTS[$variant].text};
   background-color: transparent;

@@ -18,7 +18,13 @@ export const Tag = ({
             $disabled={disabled}
             className={className}
         >
-            {label}
+            <styled.Text
+                $size={size}
+                $variant={variant}
+                $disabled={disabled}
+            >
+                {label}
+            </styled.Text>
             {onRemove && (
                 <styled.RemoveButton
                     type="button"
