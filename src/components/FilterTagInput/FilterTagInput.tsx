@@ -240,6 +240,7 @@ type FilterTagInputProps = {
   onSelectChange: (index: number) => void;
   size?: FilterSize;
   variant?: "light" | "dark";
+  tagVariant?: "light" | "dark";
 };
 export const FilterTagInput = ({
   title,
@@ -249,7 +250,8 @@ export const FilterTagInput = ({
   onChange,
   onSelectChange,
   size = "medium",
-  variant = "light",
+  variant = "dark",
+  tagVariant = "light",
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -387,6 +389,7 @@ export const FilterTagInput = ({
               key={value}
               label={value}
               size={size}
+              variant={tagVariant}
               onRemove={() => handleTagRemove(i)}
             />
           ))}

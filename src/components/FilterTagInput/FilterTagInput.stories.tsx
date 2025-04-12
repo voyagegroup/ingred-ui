@@ -20,6 +20,12 @@ const meta = {
       },
       options: ["light", "dark"],
     },
+    tagVariant: {
+      control: {
+        type: "select",
+      },
+      options: ["light", "dark"],
+    },
   },
 } satisfies Meta<typeof FilterTagInput>;
 
@@ -208,27 +214,14 @@ export const Variants: StoryObj<typeof meta> = {
         <FilterTagInput
           {...args}
           variant="light"
+          tagVariant="dark"
           onChange={(newValues) => updateArgs({ values: newValues })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
         <FilterTagInput
           {...args}
           variant="dark"
-          onChange={(newValues) => updateArgs({ values: newValues })}
-          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
-        />
-        {/* サイズとの組み合わせ */}
-        <FilterTagInput
-          {...args}
-          variant="light"
-          size="small"
-          onChange={(newValues) => updateArgs({ values: newValues })}
-          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
-        />
-        <FilterTagInput
-          {...args}
-          variant="dark"
-          size="small"
+          tagVariant="light"
           onChange={(newValues) => updateArgs({ values: newValues })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
