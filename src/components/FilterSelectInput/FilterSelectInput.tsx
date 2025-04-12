@@ -17,7 +17,7 @@ import {
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 
 type FilterTagInputProps = {
   value: string;
@@ -27,6 +27,7 @@ type FilterTagInputProps = {
   onChange: (value: string) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
+  variant?: FilterVariant;
 };
 
 export const FilterSelectInput = ({
@@ -37,6 +38,7 @@ export const FilterSelectInput = ({
   onChange,
   onSelectChange,
   size = "medium",
+  variant = "dark",
 }: FilterTagInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
@@ -111,7 +113,7 @@ export const FilterSelectInput = ({
             open={isOpen}
             minWidth={width}
             trigger={
-              <styled.Select type="button">
+              <styled.Select type="button" $size={size} $variant={variant}>
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />

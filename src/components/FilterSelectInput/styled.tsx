@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/types";
+
+type StyledProps = {
+  $size: FilterSize;
+  $variant: FilterVariant;
+};
 
 export const SelectContainer = styled.div`
   min-width: 0;
@@ -9,7 +14,7 @@ export const SelectContainer = styled.div`
   margin-left: -46px;
 `;
 
-export const Select = styled.button`
+export const Select = styled.button<StyledProps>`
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -18,7 +23,7 @@ export const Select = styled.button`
   height: 100%;
   padding: 0 8px 0 54px;
   border: 0;
-  background: transparent;
+  background: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
   outline-offset: -1px;
   text-align: left;
   color: ${colors.basic[900]};

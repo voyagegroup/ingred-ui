@@ -9,13 +9,16 @@ const meta = {
   component: FilterSelectInput,
   argTypes: {
     size: {
-      control: { type: "radio" },
-      options: ["small", "medium", "large"],
-      description: "コンポーネントのサイズバリエーション",
-      table: {
-        type: { summary: "small | medium | large" },
-        defaultValue: { summary: "medium" },
+      control: {
+        type: "select",
       },
+      options: ["small", "medium", "large"],
+    },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["light", "dark"],
     },
   },
 } satisfies Meta<typeof FilterSelectInput>;
@@ -171,6 +174,50 @@ export const Sizes: StoryObj<typeof meta> = {
           size="large"
           onChange={handleChange}
           onSelectChange={handleSelectChange}
+        />
+      </div>
+    );
+  },
+};
+
+export const Variants: StoryObj<typeof meta> = {
+  args: {
+    value: "選択肢1",
+    options: ["選択肢1", "選択肢2", "選択肢3"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterSelectInput
+          {...args}
+          variant="light"
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterSelectInput
+          {...args}
+          variant="dark"
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </div>
     );
