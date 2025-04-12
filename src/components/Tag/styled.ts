@@ -14,6 +14,7 @@ export const Tag = styled.span<StyledTagProps>`
   align-items: center;
   gap: 4px;
   width: fit-content;
+  min-height: ${({ $size }) => TAG_SIZES[$size].height};
   padding: ${({ $size }) => TAG_SIZES[$size].padding};
   border: 1px solid ${({ $variant, $disabled }) => $disabled ? colors.basic[400] : TAG_VARIANTS[$variant].border};
   border-radius: ${({ $size }) => TAG_SIZES[$size].borderRadius};
