@@ -41,46 +41,12 @@ export const getTriggerIconSizeStyle = (size: FilterSize) => css`
 // チェックアイテムのスタイル
 export const StyledContextMenu2CheckItem = styled(ContextMenu2CheckItem)`
   svg {
-    width: ${FILTER_SIZES["medium"].iconSize};
-    height: ${FILTER_SIZES["medium"].iconSize};
+    width: 22px;
+    height: 22px;
   }
   span {
-    width: ${FILTER_SIZES["medium"].iconSize};
-    height: ${FILTER_SIZES["medium"].iconSize};
-  }
-
-  /* サイズバリエーション */
-  [data-size="small"] & {
-    svg {
-      width: ${FILTER_SIZES["small"].iconSize};
-      height: ${FILTER_SIZES["small"].iconSize};
-    }
-    span {
-      width: ${FILTER_SIZES["small"].iconSize};
-      height: ${FILTER_SIZES["small"].iconSize};
-    }
-  }
-
-  [data-size="medium"] & {
-    svg {
-      width: ${FILTER_SIZES["medium"].iconSize};
-      height: ${FILTER_SIZES["medium"].iconSize};
-    }
-    span {
-      width: ${FILTER_SIZES["medium"].iconSize};
-      height: ${FILTER_SIZES["medium"].iconSize};
-    }
-  }
-
-  [data-size="large"] & {
-    svg {
-      width: ${FILTER_SIZES["large"].iconSize};
-      height: ${FILTER_SIZES["large"].iconSize};
-    }
-    span {
-      width: ${FILTER_SIZES["large"].iconSize};
-      height: ${FILTER_SIZES["large"].iconSize};
-    }
+    width: 22px;
+    height: 22px;
   }
 `;
 
@@ -206,25 +172,25 @@ export const FilterTagButton = styled.button<FilterTagProps>`
   /* アイコンのサイズ調整 */
   svg {
     width: ${({ $size }) => {
-      switch ($size) {
-        case "small":
-          return "14px";
-        case "medium":
-          return "16px";
-        case "large":
-          return "18px";
-      }
-    }};
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
     height: ${({ $size }) => {
-      switch ($size) {
-        case "small":
-          return "14px";
-        case "medium":
-          return "16px";
-        case "large":
-          return "18px";
-      }
-    }};
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
   }
 
   span {

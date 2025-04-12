@@ -12,6 +12,7 @@ import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import * as styled from "./styled";
 import { StyledContextMenu2CheckItem } from "./styled";
 import { FilterSize } from "./types";
+import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
   isSmall: false,
@@ -30,19 +31,7 @@ export const FilterTag = ({
   size = "medium",
   onRemove,
 }: FilterTagProps) => {
-  return (
-    <styled.FilterTag $size={size}>
-      {label}
-      <styled.FilterTagButton
-        type="button"
-        aria-label="削除"
-        $size={size}
-        onClick={onRemove}
-      >
-        <Icon name="close_circle" type="fill" color="currentColor" />
-      </styled.FilterTagButton>
-    </styled.FilterTag>
-  );
+  return <Tag label={label} size={size} onRemove={onRemove} />;
 };
 
 //
