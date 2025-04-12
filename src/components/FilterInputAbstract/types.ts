@@ -21,7 +21,7 @@ export const FILTER_SIZES = {
     },
     large: {
         height: "40px",
-        borderRadius: "8px",
+        borderRadius: "6px",
         iconSize: "24px",
         arrowIconSize: "20px",
         padding: "0 4px 0 8px",
