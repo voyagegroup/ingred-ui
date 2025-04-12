@@ -11,6 +11,8 @@ export const Tag = ({
     className,
     disabled = false,
 }: TagProps) => {
+    const handleRemove = disabled ? undefined : onRemove;
+
     return (
         <styled.Tag
             $size={size}
@@ -32,7 +34,7 @@ export const Tag = ({
                     $size={size}
                     $variant={variant}
                     $disabled={disabled}
-                    onClick={disabled ? undefined : onRemove}
+                    onClick={handleRemove}
                 >
                     <Icon name="close_circle" type="fill" color="currentColor" />
                 </styled.RemoveButton>
