@@ -158,7 +158,7 @@ export const FilterTag = styled.span<FilterTagProps>`
   padding: ${({ $size }) => {
     switch ($size) {
       case "small":
-        return "1px 4px 1px 6px";
+        return "2px 4px 2px 6px";
       case "medium":
         return "2px 5px 2px 7px";
       case "large":
