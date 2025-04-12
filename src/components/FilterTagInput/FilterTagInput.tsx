@@ -23,6 +23,7 @@ import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
 import * as styled from "./styled";
+import { FilterSize } from "../FilterInputAbstract/types";
 
 //
 // -----------------------------------------------------------------------------
@@ -36,6 +37,7 @@ type FilterInputPanelProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
+  size?: FilterSize;
 };
 
 const FilterInputPanel = ({
@@ -46,6 +48,7 @@ const FilterInputPanel = ({
   selectOptions,
   onApply,
   onClose,
+  size = "medium",
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
@@ -180,6 +183,7 @@ const FilterInputPanel = ({
                 <FilterTag
                   key={value}
                   label={value}
+                  size={size}
                   onRemove={() => handleTagRemove(i)}
                 />
               ))}
@@ -234,6 +238,7 @@ type FilterTagInputProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
+  size?: FilterSize;
 };
 export const FilterTagInput = ({
   title,
@@ -242,6 +247,7 @@ export const FilterTagInput = ({
   selectOptions,
   onChange,
   onSelectChange,
+  size = "medium",
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -368,6 +374,7 @@ export const FilterTagInput = ({
   return (
     <>
       <FilterInputAbstract
+        size={size}
         selectedIndex={selectedIndex}
         selectOptions={selectOptions}
         onSelectChange={onSelectChange}
@@ -378,6 +385,7 @@ export const FilterTagInput = ({
               <FilterTag
                 key={value}
                 label={value}
+                size={size}
                 onRemove={() => handleTagRemove(i)}
               />
             ))}
@@ -415,10 +423,11 @@ export const FilterTagInput = ({
       </FilterInputAbstract>
       <FilterInputPanel
         isOpen={isModalOpen}
+        selectOptions={selectOptions}
+        selectedIndex={selectedIndex}
+        size={size}
         title={title}
         values={values}
-        selectedIndex={selectedIndex}
-        selectOptions={selectOptions}
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
       />

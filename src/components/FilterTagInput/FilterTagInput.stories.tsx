@@ -7,7 +7,14 @@ import Icon from "../Icon";
 const meta = {
   title: "Components/Inputs/FilterTagInput",
   component: FilterTagInput,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+    },
+  },
 } satisfies Meta<typeof FilterTagInput>;
 
 export default meta;
@@ -111,6 +118,56 @@ export const Default: StoryObj<typeof meta> = {
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </>
+    );
+  },
+};
+
+export const Sizes: StoryObj<typeof meta> = {
+  args: {
+    title: "サイズバリエーション",
+    values: ["small", "medium", "large"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterTagInput
+          {...args}
+          size="small"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          size="medium"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          size="large"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
     );
   },
 };
