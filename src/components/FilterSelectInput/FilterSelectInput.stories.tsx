@@ -7,7 +7,17 @@ import Icon from "../Icon";
 const meta = {
   title: "Components/Inputs/FilterSelectInput",
   component: FilterSelectInput,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: { type: "radio" },
+      options: ["small", "medium", "large"],
+      description: "コンポーネントのサイズバリエーション",
+      table: {
+        type: { summary: "small | medium | large" },
+        defaultValue: { summary: "medium" },
+      },
+    },
+  },
 } satisfies Meta<typeof FilterSelectInput>;
 
 export default meta;
@@ -94,6 +104,75 @@ export const Default: StoryObj<typeof meta> = {
           />
         </div>
       </>
+    );
+  },
+};
+
+/**
+ * サイズバリエーション
+ *
+ * - small: 高さ28px
+ * - medium: 高さ32px（デフォルト）
+ * - large: 高さ40px
+ */
+export const Sizes: StoryObj<typeof meta> = {
+  args: {
+    value: "項目1",
+    options: [
+      "項目1",
+      "value2",
+      "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
+    ],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+    const handleChange = (value: string) => updateArgs({ value });
+    const handleSelectChange = (selectedIndex: number) =>
+      updateArgs({ selectedIndex });
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterSelectInput
+          {...args}
+          size="small"
+          onChange={handleChange}
+          onSelectChange={handleSelectChange}
+        />
+        <FilterSelectInput
+          {...args}
+          onChange={handleChange}
+          onSelectChange={handleSelectChange}
+        />
+        <FilterSelectInput
+          {...args}
+          size="large"
+          onChange={handleChange}
+          onSelectChange={handleSelectChange}
+        />
+      </div>
     );
   },
 };

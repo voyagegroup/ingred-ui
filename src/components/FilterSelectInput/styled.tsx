@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { FilterSize } from "../FilterInputAbstract/types";
 
 export const SelectContainer = styled.div`
   min-width: 0;
@@ -19,7 +20,6 @@ export const Select = styled.button`
   border: 0;
   background: transparent;
   outline-offset: -1px;
-  font-size: 13px;
   text-align: left;
   color: ${colors.basic[900]};
   cursor: pointer;
@@ -30,11 +30,25 @@ export const Select = styled.button`
   }
 `;
 
-export const SelectLabel = styled.span`
+type SelectLabelProps = {
+  $size: FilterSize;
+};
+
+export const SelectLabel = styled.span<SelectLabelProps>`
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return "12px";
+      case "medium":
+        return "13px";
+      case "large":
+        return "14px";
+    }
+  }};
 `;
 
 export const SelectIcon = styled.span`
