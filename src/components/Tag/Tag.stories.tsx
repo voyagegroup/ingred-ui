@@ -24,6 +24,14 @@ const meta = {
                 defaultValue: { summary: "light" },
             },
         },
+        disabled: {
+            control: { type: "boolean" },
+            description: "無効状態",
+            table: {
+                type: { summary: "boolean" },
+                defaultValue: { summary: false },
+            },
+        },
     },
 } satisfies Meta<typeof Tag>;
 
@@ -75,4 +83,14 @@ export const WithoutRemove: Story = {
         size: "medium",
         variant: "light",
     },
-}; 
+};
+
+export const Disabled: Story = {
+    args: {
+        label: "タグ",
+        size: "medium",
+        variant: "light",
+        onRemove: () => console.log("remove"),
+        disabled: true,
+    },
+};

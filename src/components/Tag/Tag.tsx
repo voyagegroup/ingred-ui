@@ -9,9 +9,15 @@ export const Tag = ({
     variant = "light",
     onRemove,
     className,
+    disabled = false,
 }: TagProps) => {
     return (
-        <styled.Tag $size={size} $variant={variant} className={className}>
+        <styled.Tag
+            $size={size}
+            $variant={variant}
+            $disabled={disabled}
+            className={className}
+        >
             {label}
             {onRemove && (
                 <styled.RemoveButton
@@ -19,7 +25,8 @@ export const Tag = ({
                     aria-label="削除"
                     $size={size}
                     $variant={variant}
-                    onClick={onRemove}
+                    $disabled={disabled}
+                    onClick={disabled ? undefined : onRemove}
                 >
                     <Icon name="close_circle" type="fill" color="currentColor" />
                 </styled.RemoveButton>

@@ -9,6 +9,7 @@ export type TagProps = {
     variant?: TagVariant;
     onRemove?: () => void;
     className?: string;
+    disabled?: boolean;
 };
 
 export const TAG_SIZES = {
