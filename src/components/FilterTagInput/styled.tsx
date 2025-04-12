@@ -3,47 +3,25 @@ import React from "react";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/types";
 
 import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
 type StyledProps = {
-  $size?: FilterSize;
-  $variant?: "light" | "dark";
+  $size: FilterSize;
+  $variant: FilterVariant;
 };
-
-const FILTER_VARIANTS = {
-  light: {
-    background: colors.basic[0],
-  },
-  dark: {
-    background: colors.basic[100],
-  },
-} as const;
 
 export const InlineField = styled.div<StyledProps>`
   display: flex;
-  align-items: center;
-  min-height: 100%;
-  padding: 0 5px;
-  border-radius: 0 4px 4px 0;
-  overflow: auto;
-  scrollbar-width: none;
-  background: ${({ $variant = "light" }) => FILTER_VARIANTS[$variant].background};
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  &:has(input:focus) {
-    outline: auto;
-    outline-offset: -1px;
-    outline: auto -webkit-focus-ring-color;
-  }
-
-  &:where(${FilterInputAbstract}[data-small="true"] *) {
-    display: none;
-  }
+  flex-wrap: wrap;
+  gap: 4px;
+  min-width: 0;
+  width: calc(100% + 46px);
+  height: 100%;
+  margin-left: -46px;
+  padding: 4px 8px 4px 54px;
+  background: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
 `;
 
 export const InlineFieldInner = styled.div`
