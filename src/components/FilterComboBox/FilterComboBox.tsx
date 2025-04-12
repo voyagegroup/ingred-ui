@@ -181,10 +181,10 @@ export const FilterComboBox = ({
 
   return (
     <FilterInputAbstract
+      size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
-      size={size}
     >
       <styled.SelectContainer data-overflowing={isInlineOverflowing}>
         <ContextMenu2Container>
@@ -234,8 +234,8 @@ export const FilterComboBox = ({
             <FilterTag
               key={value}
               label={value}
-              onRemove={() => handleRemove(value)}
               size={size}
+              onRemove={() => handleRemove(value)}
             />
           ))}
         </styled.TagList>

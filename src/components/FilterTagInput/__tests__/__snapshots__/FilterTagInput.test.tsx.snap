@@ -3,14 +3,15 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-kgflAQ feaOnH"
+    class="sc-dmRaPn iqHGTp"
+    data-size="medium"
     data-small="false"
   >
     <button
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-fLlhyt jqpZx"
+      class="sc-kgflAQ fGeXph"
       type="button"
     >
       <span
@@ -42,18 +43,18 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-bZkfAO pVeyf"
+      class="sc-kLLXSd cSJYQa"
     >
       <div
-        class="sc-kLLXSd jqcVbQ"
+        class="sc-ikZpkk gzgRGY"
       >
         <span
-          class="sc-hHLeRK igsLAy"
+          class="sc-fLlhyt kQoKFC"
         >
           テキスト
           <button
             aria-label="削除"
-            class="sc-dmRaPn hRUHjp"
+            class="sc-bBrHrO gfmIFk"
             type="button"
           >
             <span
@@ -73,12 +74,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-hHLeRK igsLAy"
+          class="sc-fLlhyt kQoKFC"
         >
           value2
           <button
             aria-label="削除"
-            class="sc-dmRaPn hRUHjp"
+            class="sc-bBrHrO gfmIFk"
             type="button"
           >
             <span
@@ -98,12 +99,12 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <span
-          class="sc-hHLeRK igsLAy"
+          class="sc-fLlhyt kQoKFC"
         >
           value3
           <button
             aria-label="削除"
-            class="sc-dmRaPn hRUHjp"
+            class="sc-bBrHrO gfmIFk"
             type="button"
           >
             <span
@@ -123,10 +124,10 @@ exports[`FileUploader component testing FileUploader 1`] = `
           </button>
         </span>
         <div
-          class="sc-jIZahH diZQGd"
+          class="sc-himrzO iEXnle"
         >
           <div
-            class="sc-himrzO aScQJ"
+            class="sc-gXmSlM TfSky"
           >
             <span
               class="sc-bczRLJ gJuzRf"
@@ -152,7 +153,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
     </div>
     <button
       aria-label="フィルター入力パネルを開く"
-      class="sc-ikZpkk gFrcam"
+      class="sc-jIZahH ZggFq"
       data-overflowing="false"
       type="button"
     >

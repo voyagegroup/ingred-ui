@@ -3,14 +3,15 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-kgflAQ feaOnH"
+    class="sc-dmRaPn iqHGTp"
+    data-size="medium"
     data-small="false"
   >
     <button
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-fLlhyt jqpZx"
+      class="sc-kgflAQ fGeXph"
       type="button"
     >
       <span
@@ -42,17 +43,17 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-iIPllB bxLXfc"
+      class="sc-gicCDI hCbUJR"
       data-overflowing="false"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-ezWOiH lpjcvk"
+        class="sc-bZkfAO hsuTPV"
         type="button"
       >
         <span
-          class="sc-bZkfAO fZvvlw"
+          class="sc-kLLXSd dWzmbj"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -70,15 +71,15 @@ exports[`FileUploader component testing FileUploader 1`] = `
         </span>
       </button>
       <div
-        class="sc-gicCDI dQLHWf"
+        class="sc-ezWOiH kmPWPC"
       >
         <span
-          class="sc-hHLeRK igsLAy"
+          class="sc-fLlhyt kQoKFC"
         >
           項目1
           <button
             aria-label="削除"
-            class="sc-dmRaPn hRUHjp"
+            class="sc-bBrHrO gfmIFk"
             type="button"
           >
             <span

@@ -145,9 +145,9 @@ export const DropDownTrigger = styled.button`
   }
 `;
 
-interface FilterTagProps {
+export type FilterTagProps = {
   $size: FilterSize;
-}
+};
 
 export const FilterTag = styled.span<FilterTagProps>`
   isolation: isolate;
@@ -206,25 +206,25 @@ export const FilterTagButton = styled.button<FilterTagProps>`
   /* アイコンのサイズ調整 */
   svg {
     width: ${({ $size }) => {
-    switch ($size) {
-      case "small":
-        return "14px";
-      case "medium":
-        return "16px";
-      case "large":
-        return "18px";
-    }
-  }};
+      switch ($size) {
+        case "small":
+          return "14px";
+        case "medium":
+          return "16px";
+        case "large":
+          return "18px";
+      }
+    }};
     height: ${({ $size }) => {
-    switch ($size) {
-      case "small":
-        return "14px";
-      case "medium":
-        return "16px";
-      case "large":
-        return "18px";
-    }
-  }};
+      switch ($size) {
+        case "small":
+          return "14px";
+        case "medium":
+          return "16px";
+        case "large":
+          return "18px";
+      }
+    }};
   }
 
   span {
@@ -236,4 +236,4 @@ export const FilterTagButton = styled.button<FilterTagProps>`
   }
 `;
 
-// ... 他のexportは変更なし ... 
+// ... 他のexportは変更なし ...

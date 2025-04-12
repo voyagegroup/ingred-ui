@@ -31,18 +31,12 @@ const defaultArgs = {
     },
     {
       icon: (
-        <Icon
-          name="operator_does_not_match"
-          type="line"
-          color="currentColor"
-        />
+        <Icon name="operator_does_not_match" type="line" color="currentColor" />
       ),
       label: "含まない",
     },
     {
-      icon: (
-        <Icon name="operator_contains" type="line" color="currentColor" />
-      ),
+      icon: <Icon name="operator_contains" type="line" color="currentColor" />,
       label: "いずれかを含む",
     },
   ],
@@ -80,16 +74,28 @@ export const Sizes: StoryObj<typeof meta> = {
   args: {
     ...defaultArgs,
   },
-  render: (args) => {
+  render: () => {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <FilterInputAbstract {...defaultArgs} size="small" onSelectChange={() => { }}>
+        <FilterInputAbstract
+          {...defaultArgs}
+          size="small"
+          onSelectChange={() => {}}
+        >
           small size (28px)
         </FilterInputAbstract>
-        <FilterInputAbstract {...defaultArgs} size="medium" onSelectChange={() => { }}>
+        <FilterInputAbstract
+          {...defaultArgs}
+          size="medium"
+          onSelectChange={() => {}}
+        >
           medium size (32px)
         </FilterInputAbstract>
-        <FilterInputAbstract {...defaultArgs} size="large" onSelectChange={() => { }}>
+        <FilterInputAbstract
+          {...defaultArgs}
+          size="large"
+          onSelectChange={() => {}}
+        >
           large size (40px)
         </FilterInputAbstract>
       </div>

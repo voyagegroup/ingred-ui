@@ -8,12 +8,7 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
-import {
-  ContextMenu2,
-  ContextMenu2Container,
-  ContextMenu2CheckItem,
-  ContextMenu2ButtonItem,
-} from "../ContextMenu2";
+import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import * as styled from "./styled";
 import { StyledContextMenu2CheckItem } from "./styled";
 import { FilterSize } from "./types";
@@ -30,15 +25,19 @@ type FilterTagProps = {
   size?: FilterSize;
 };
 
-export const FilterTag = ({ label, onRemove, size = "medium" }: FilterTagProps) => {
+export const FilterTag = ({
+  label,
+  size = "medium",
+  onRemove,
+}: FilterTagProps) => {
   return (
     <styled.FilterTag $size={size}>
       {label}
       <styled.FilterTagButton
         type="button"
         aria-label="削除"
-        onClick={onRemove}
         $size={size}
+        onClick={onRemove}
       >
         <Icon name="close_circle" type="fill" color="currentColor" />
       </styled.FilterTagButton>

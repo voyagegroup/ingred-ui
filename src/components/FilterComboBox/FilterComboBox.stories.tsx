@@ -95,7 +95,7 @@ export const Default: StoryObj<typeof meta> = {
 
 /**
  * サイズバリエーション
- * 
+ *
  * - small: 高さ28px
  * - medium: 高さ32px（デフォルト）
  * - large: 高さ40px
@@ -140,7 +140,8 @@ export const Sizes: StoryObj<typeof meta> = {
   render: (args) => {
     const [, updateArgs] = useArgs();
     const handleChange = (values: string[]) => updateArgs({ values });
-    const handleSelectChange = (selectedIndex: number) => updateArgs({ selectedIndex });
+    const handleSelectChange = (selectedIndex: number) =>
+      updateArgs({ selectedIndex });
 
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
