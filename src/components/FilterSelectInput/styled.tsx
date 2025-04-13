@@ -5,6 +5,7 @@ import {
   FilterVariant,
   FILTER_VARIANTS,
 } from "../FilterInputAbstract/styled";
+import { ContextMenu2TextInputItem } from "../ContextMenu2";
 
 type StyledProps = {
   $size: FilterSize;
@@ -63,4 +64,19 @@ export const SelectLabel = styled.span<SelectLabelProps>`
 export const SelectIcon = styled.span`
   flex-shrink: 0;
   width: 18px;
+`;
+
+type StyledContextMenu2TextInputItemProps = {
+  $placeholderColor?: string;
+};
+
+export const StyledContextMenu2TextInputItem = styled(
+  ContextMenu2TextInputItem,
+)<StyledContextMenu2TextInputItemProps>`
+  input {
+    &::placeholder {
+      color: ${({ $placeholderColor }) =>
+        $placeholderColor || colors.basic[600]};
+    }
+  }
 `;

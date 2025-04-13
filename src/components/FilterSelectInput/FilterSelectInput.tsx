@@ -13,7 +13,6 @@ import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2ButtonItem,
-  ContextMenu2TextInputItem,
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
@@ -28,6 +27,7 @@ type FilterTagInputProps = {
   onSelectChange: (index: number) => void;
   size?: FilterSize;
   variant?: FilterVariant;
+  searchPlaceholder?: string;
 };
 
 export const FilterSelectInput = ({
@@ -39,6 +39,7 @@ export const FilterSelectInput = ({
   onSelectChange,
   size = "medium",
   variant = "dark",
+  searchPlaceholder = "絞り込む",
 }: FilterTagInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
@@ -125,9 +126,10 @@ export const FilterSelectInput = ({
             }
             onOpenChange={handleOpenChange}
           >
-            <ContextMenu2TextInputItem
+            <styled.StyledContextMenu2TextInputItem
               autoFocus
               value={userValue}
+              placeholder={searchPlaceholder}
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}

@@ -20,6 +20,12 @@ const meta = {
       },
       options: ["light", "dark"],
     },
+    searchPlaceholder: {
+      control: {
+        type: "text",
+      },
+      description: "検索窓のプレースホルダーテキスト",
+    },
   },
 } satisfies Meta<typeof FilterSelectInput>;
 
@@ -219,6 +225,62 @@ export const Variants: StoryObj<typeof meta> = {
           onChange={(newValue) => updateArgs({ value: newValue })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
+      </div>
+    );
+  },
+};
+
+/**
+ * 検索窓のプレースホルダーをカスタマイズできます。
+ * デフォルトは「絞り込む」です。
+ */
+export const SearchPlaceholder: StoryObj<typeof meta> = {
+  args: {
+    value: "選択肢1",
+    options: ["選択肢1", "選択肢2", "選択肢3"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+    const handleChange = (value: string) => updateArgs({ value });
+    const handleSelectChange = (selectedIndex: number) =>
+      updateArgs({ selectedIndex });
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>
+          <p>デフォルトのプレースホルダー：</p>
+          <FilterSelectInput
+            {...args}
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
+        <div>
+          <p>カスタムプレースホルダー：</p>
+          <FilterSelectInput
+            {...args}
+            searchPlaceholder="キーワードを入力..."
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
       </div>
     );
   },
