@@ -190,7 +190,10 @@ export const FilterComboBox = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.SelectContainer data-overflowing={isInlineOverflowing} $variant={variant}>
+      <styled.SelectContainer
+        data-overflowing={isInlineOverflowing}
+        $variant={variant}
+      >
         <ContextMenu2Container>
           <ContextMenu2
             open={isOpen}

@@ -159,10 +159,10 @@ export const Default: StoryObj<typeof meta> = {
         ダウンロード
       </DataTable2ActionButton>
     ),
-    onCheckedRowsChange: () => { },
-    onPageSizeChange: () => { },
-    onPageChange: () => { },
-    onColumnsChange: () => { },
+    onCheckedRowsChange: () => {},
+    onPageSizeChange: () => {},
+    onPageChange: () => {},
+    onColumnsChange: () => {},
     children: null,
   },
   render: (args) => {
@@ -552,10 +552,10 @@ export const Loading: StoryObj<typeof meta> = {
     currentPage: 0,
     totalCount: 100,
     rowControls: null,
-    onCheckedRowsChange: () => { },
-    onPageSizeChange: () => { },
-    onPageChange: () => { },
-    onColumnsChange: () => { },
+    onCheckedRowsChange: () => {},
+    onPageSizeChange: () => {},
+    onPageChange: () => {},
+    onColumnsChange: () => {},
     children: null,
   },
   render: (args) => {
@@ -596,7 +596,7 @@ export const Loading: StoryObj<typeof meta> = {
           {...args}
           columns={columns}
           totalCount={data.length}
-          onCheckedRowsChange={() => { }}
+          onCheckedRowsChange={() => {}}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
           onColumnsChange={(columns) => {

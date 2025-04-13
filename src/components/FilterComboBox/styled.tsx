@@ -14,7 +14,8 @@ export const SelectContainer = styled.div`
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
-  background-color: ${({ $variant }: StyledProps) => FILTER_VARIANTS[$variant].background};
+  background-color: ${({ $variant }: StyledProps) =>
+    FILTER_VARIANTS[$variant].background};
 
   &::before {
     content: "";

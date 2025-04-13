@@ -187,7 +187,7 @@ export const Sizes: StoryObj<typeof meta> = {
 
 /**
  * カラーバリエーション
- * 
+ *
  * - variant: コンポーネント全体の背景色
  *   - light: 明るい背景色
  *   - dark: 暗い背景色（デフォルト）

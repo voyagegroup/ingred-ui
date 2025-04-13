@@ -37,7 +37,6 @@ type FilterInputPanelProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
-  size?: FilterSize;
 };
 
 const FilterInputPanel = ({
@@ -48,7 +47,6 @@ const FilterInputPanel = ({
   selectOptions,
   onApply,
   onClose,
-  size = "medium",
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
@@ -182,9 +180,9 @@ const FilterInputPanel = ({
               {userValues.map((value, i) => (
                 <FilterTag
                   key={value}
-                  label={value}
                   size="medium"
                   variant="light"
+                  label={value}
                   onRemove={() => handleTagRemove(i)}
                 />
               ))}
@@ -383,14 +381,14 @@ export const FilterTagInput = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.InlineField $variant={variant} $size={size} ref={inlineFieldEl}>
+      <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
         <styled.InlineFieldInner ref={inlineFieldInnerEl}>
           {values.map((value, i) => (
             <FilterTag
               key={value}
-              label={value}
               size={size}
               variant={tagVariant}
+              label={value}
               onRemove={() => handleTagRemove(i)}
             />
           ))}
@@ -415,11 +413,11 @@ export const FilterTagInput = ({
         </styled.InlineFieldInner>
       </styled.InlineField>
       <styled.OverflowIndicator
-        type="button"
+        $size={size}
         aria-label="フィルター入力パネルを開く"
         data-overflowing={isInlineOverflowing}
+        type="button"
         onClick={() => setIsModalOpen(true)}
-        $size={size}
       >
         <Icon
           name={isSmall ? "filter" : "expand_diagonal_s_fill"}
@@ -430,7 +428,6 @@ export const FilterTagInput = ({
         isOpen={isModalOpen}
         selectOptions={selectOptions}
         selectedIndex={selectedIndex}
-        size={size}
         title={title}
         values={values}
         onApply={handlePanelApply}

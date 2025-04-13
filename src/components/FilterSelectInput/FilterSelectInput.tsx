@@ -95,10 +95,13 @@ export const FilterSelectInput = ({
     }
   }, []);
 
-  const handleOptionClick = useCallback((selectedValue: string) => {
-    onChange(selectedValue);
-    setIsOpen(false);
-  }, [onChange]);
+  const handleOptionClick = useCallback(
+    (selectedValue: string) => {
+      onChange(selectedValue);
+      setIsOpen(false);
+    },
+    [onChange],
+  );
 
   return (
     <FilterInputAbstract

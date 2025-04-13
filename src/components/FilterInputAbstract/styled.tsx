@@ -11,10 +11,6 @@ export type FilterSizeProps = {
   size?: FilterSize;
 };
 
-type StyledProps = {
-  $size: FilterSize;
-};
-
 // Constants
 export const FILTER_SIZES = {
   small: {
@@ -206,25 +202,25 @@ export const FilterTagButton = styled.button<FilterTagProps>`
   /* アイコンのサイズ調整 */
   svg {
     width: ${({ $size }) => {
-    switch ($size) {
-      case "small":
-        return "14px";
-      case "medium":
-        return "16px";
-      case "large":
-        return "18px";
-    }
-  }};
+      switch ($size) {
+        case "small":
+          return "14px";
+        case "medium":
+          return "16px";
+        case "large":
+          return "18px";
+      }
+    }};
     height: ${({ $size }) => {
-    switch ($size) {
-      case "small":
-        return "14px";
-      case "medium":
-        return "16px";
-      case "large":
-        return "18px";
-    }
-  }};
+      switch ($size) {
+        case "small":
+          return "14px";
+        case "medium":
+          return "16px";
+        case "large":
+          return "18px";
+      }
+    }};
   }
 
   span {

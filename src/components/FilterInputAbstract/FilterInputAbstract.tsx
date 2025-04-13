@@ -32,7 +32,9 @@ export const FilterTag = ({
   variant = "dark",
   onRemove,
 }: FilterTagProps) => {
-  return <Tag label={label} size={size} variant={variant} onRemove={onRemove} />;
+  return (
+    <Tag label={label} size={size} variant={variant} onRemove={onRemove} />
+  );
 };
 
 //

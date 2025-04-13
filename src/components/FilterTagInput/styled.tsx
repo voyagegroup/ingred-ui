@@ -3,9 +3,12 @@ import React from "react";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-import { FilterSize, FilterVariant, FILTER_VARIANTS } from "../FilterInputAbstract/styled";
-
-import { FilterInputAbstract } from "../FilterInputAbstract/styled";
+import {
+  FilterSize,
+  FilterVariant,
+  FILTER_VARIANTS,
+  FilterInputAbstract,
+} from "../FilterInputAbstract/styled";
 
 type StyledProps = {
   $size: FilterSize;
@@ -74,15 +77,15 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
     position: static;
     display: grid;
     width: ${({ $size = "medium" }) => {
-    switch ($size) {
-      case "small":
-        return "26px";
-      case "medium":
-        return "30px";
-      case "large":
-        return "38px";
-    }
-  }};
+      switch ($size) {
+        case "small":
+          return "26px";
+        case "medium":
+          return "30px";
+        case "large":
+          return "38px";
+      }
+    }};
     aspect-ratio: 1;
     border: 1px solid ${colors.basic[400]};
     border-radius: 4px;
