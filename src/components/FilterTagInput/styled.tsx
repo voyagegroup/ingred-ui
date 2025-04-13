@@ -282,7 +282,7 @@ export const PanelTagField = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   box-sizing: border-box;
   padding: 6px 37px 6px 6px;
   border: 1px solid ${colors.basic[400]};

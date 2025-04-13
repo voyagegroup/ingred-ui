@@ -183,7 +183,8 @@ const FilterInputPanel = ({
                 <FilterTag
                   key={value}
                   label={value}
-                  size={size}
+                  size="medium"
+                  variant="light"
                   onRemove={() => handleTagRemove(i)}
                 />
               ))}
