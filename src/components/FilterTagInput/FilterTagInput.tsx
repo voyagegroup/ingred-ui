@@ -13,7 +13,7 @@ import {
   FilterInputAbstract,
   FilterTag,
 } from "../FilterInputAbstract/FilterInputAbstract";
-import Icon from "../Icon";
+import Icon, { IconSize } from "../Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
@@ -37,6 +37,7 @@ type FilterInputPanelProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
+  menuIconSize: IconSize;
 };
 
 const FilterInputPanel = ({
@@ -47,6 +48,7 @@ const FilterInputPanel = ({
   selectOptions,
   onApply,
   onClose,
+  menuIconSize,
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
@@ -54,15 +56,22 @@ const FilterInputPanel = ({
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
+  const modifiedSelectOptions = useMemo(() => {
+    return selectOptions.map(option => ({
+      ...option,
+      icon: React.cloneElement(option.icon, { size: menuIconSize })
+    }));
+  }, [selectOptions, menuIconSize]);
+
   const longestLabelOption = useMemo(() => {
-    return selectOptions.reduce(
+    return modifiedSelectOptions.reduce(
       (longestLabelOption, option) =>
         option.label.length > longestLabelOption.label.length
           ? option
           : longestLabelOption,
-      selectOptions[0],
+      modifiedSelectOptions[0],
     );
-  }, [selectOptions]);
+  }, [modifiedSelectOptions]);
 
   const inputEl = useRef<HTMLInputElement>(null);
 
@@ -147,8 +156,8 @@ const FilterInputPanel = ({
                       {longestLabelOption.label}
                     </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
-                      {selectOptions[userSelectedIndex].icon}
-                      {selectOptions[userSelectedIndex].label}
+                      {React.cloneElement(modifiedSelectOptions[userSelectedIndex].icon, { size: menuIconSize })}
+                      {modifiedSelectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
                       <Icon name="arrow_down" color="currentColor" />
@@ -157,7 +166,7 @@ const FilterInputPanel = ({
                 }
                 onOpenChange={(open) => setIsSelectOpen(open)}
               >
-                {selectOptions.map(({ label, icon }, i) => (
+                {modifiedSelectOptions.map(({ label, icon }, i) => (
                   <ContextMenu2CheckItem
                     key={label}
                     prepend={icon}
@@ -240,6 +249,7 @@ type FilterTagInputProps = {
   size?: FilterSize;
   variant?: "light" | "dark";
   tagVariant?: "light" | "dark";
+  menuIconSize?: IconSize;
 };
 export const FilterTagInput = ({
   title,
@@ -251,6 +261,7 @@ export const FilterTagInput = ({
   size = "medium",
   variant = "dark",
   tagVariant = "light",
+  menuIconSize = "md-lg",
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -432,6 +443,7 @@ export const FilterTagInput = ({
         values={values}
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
+        menuIconSize={menuIconSize}
       />
     </FilterInputAbstract>
   );
