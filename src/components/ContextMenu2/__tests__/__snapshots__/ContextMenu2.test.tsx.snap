@@ -116,7 +116,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       ボタン
     </button>
     <button
-      class="sc-gsnTZi cjZNsz"
+      class="sc-gsnTZi kbIWLm"
       color="danger"
       tabindex="-1"
       type="button"

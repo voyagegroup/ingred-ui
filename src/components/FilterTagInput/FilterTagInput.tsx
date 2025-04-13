@@ -437,13 +437,13 @@ export const FilterTagInput = ({
       </styled.OverflowIndicator>
       <FilterInputPanel
         isOpen={isModalOpen}
+        menuIconSize={menuIconSize}
         selectOptions={selectOptions}
         selectedIndex={selectedIndex}
         title={title}
         values={values}
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
-        menuIconSize={menuIconSize}
       />
     </FilterInputAbstract>
   );
