@@ -382,7 +382,7 @@ export const FilterTagInput = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.InlineField $variant={variant}>
+      <styled.InlineField $variant={variant} $size={size} ref={inlineFieldEl}>
         <styled.InlineFieldInner ref={inlineFieldInnerEl}>
           {values.map((value, i) => (
             <FilterTag
