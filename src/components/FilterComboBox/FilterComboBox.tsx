@@ -15,7 +15,6 @@ import {
 import {
   ContextMenu2,
   ContextMenu2Container,
-  ContextMenu2TextInputItem,
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
   ContextMenu2SeparatorItem,
@@ -35,6 +34,7 @@ type FilterTagInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   tagVariant?: FilterVariant;
+  placeholder?: string;
 };
 
 export const FilterComboBox = ({
@@ -47,6 +47,7 @@ export const FilterComboBox = ({
   size = "medium",
   variant = "dark",
   tagVariant = "light",
+  placeholder = "絞り込む",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -206,9 +207,10 @@ export const FilterComboBox = ({
             }
             onOpenChange={handleOpenChange}
           >
-            <ContextMenu2TextInputItem
+            <styled.StyledContextMenu2TextInputItem
               autoFocus
               value={userValue}
+              placeholder={placeholder}
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}
