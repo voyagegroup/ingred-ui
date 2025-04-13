@@ -418,6 +418,7 @@ export const FilterTagInput = ({
         aria-label="フィルター入力パネルを開く"
         data-overflowing={isInlineOverflowing}
         onClick={() => setIsModalOpen(true)}
+        $size={size}
       >
         <Icon
           name={isSmall ? "filter" : "expand_diagonal_s_fill"}

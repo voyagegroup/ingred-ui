@@ -44,12 +44,21 @@ export const InlineFieldInner = styled.div`
   white-space: nowrap;
 `;
 
-export const OverflowIndicator = styled.button`
+export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   position: absolute;
   inset: 0 0 0 auto;
   display: none;
   place-items: center;
-  width: 30px;
+  width: ${({ $size = "medium" }) => {
+    switch ($size) {
+      case "small":
+        return "26px";
+      case "medium":
+        return "30px";
+      case "large":
+        return "38px";
+    }
+  }};
   border: 0;
   outline-offset: -1px;
   color: #000;
@@ -64,7 +73,16 @@ export const OverflowIndicator = styled.button`
   &:where(${FilterInputAbstract}[data-small="true"] *) {
     position: static;
     display: grid;
-    width: 28px;
+    width: ${({ $size = "medium" }) => {
+    switch ($size) {
+      case "small":
+        return "26px";
+      case "medium":
+        return "30px";
+      case "large":
+        return "38px";
+    }
+  }};
     aspect-ratio: 1;
     border: 1px solid ${colors.basic[400]};
     border-radius: 4px;
