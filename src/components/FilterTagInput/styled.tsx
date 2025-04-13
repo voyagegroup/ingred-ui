@@ -64,8 +64,8 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   }};
   border: 0;
   outline-offset: -1px;
-  color: #000;
-  background-color: #fff;
+  color: ${colors.basic[900]};
+  background-color: ${colors.basic[0]};
   box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
 
@@ -153,19 +153,19 @@ const PanelInner = styled.div`
   max-width: 800px;
   padding: 16px;
   border-radius: 6px;
-  background: #FFFFFF;};
+  background: ${colors.basic[0]};
   border: 1px solid ${colors.basic[200]};
   /* Drop shadow Common */
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   pointer-events: auto;
 
-  @media ( max-width: ${BreakPoint.MEDIUM}px ) {
+  @media (max-width: ${BreakPoint.MEDIUM}px) {
     grid-template:
       "title"
       "left"
       "right"
       "bottom";
-      gap: 16px;
+    gap: 16px;
   }
 `;
 
