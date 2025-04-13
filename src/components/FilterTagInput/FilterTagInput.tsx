@@ -37,7 +37,7 @@ type FilterInputPanelProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
-  menuIconSize: IconSize;
+  menuIconSize: IconSize | number;
 };
 
 const FilterInputPanel = ({
@@ -249,7 +249,7 @@ type FilterTagInputProps = {
   size?: FilterSize;
   variant?: "light" | "dark";
   tagVariant?: "light" | "dark";
-  menuIconSize?: IconSize;
+  menuIconSize?: IconSize | number;
 };
 export const FilterTagInput = ({
   title,
@@ -261,7 +261,7 @@ export const FilterTagInput = ({
   size = "medium",
   variant = "dark",
   tagVariant = "light",
-  menuIconSize = "md-lg",
+  menuIconSize = 22,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
