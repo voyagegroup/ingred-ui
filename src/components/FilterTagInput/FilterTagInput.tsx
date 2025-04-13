@@ -57,9 +57,9 @@ const FilterInputPanel = ({
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
   const modifiedSelectOptions = useMemo(() => {
-    return selectOptions.map(option => ({
+    return selectOptions.map((option) => ({
       ...option,
-      icon: React.cloneElement(option.icon, { size: menuIconSize })
+      icon: React.cloneElement(option.icon, { size: menuIconSize }),
     }));
   }, [selectOptions, menuIconSize]);
 
@@ -156,7 +156,10 @@ const FilterInputPanel = ({
                       {longestLabelOption.label}
                     </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
-                      {React.cloneElement(modifiedSelectOptions[userSelectedIndex].icon, { size: menuIconSize })}
+                      {React.cloneElement(
+                        modifiedSelectOptions[userSelectedIndex].icon,
+                        { size: menuIconSize },
+                      )}
                       {modifiedSelectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>

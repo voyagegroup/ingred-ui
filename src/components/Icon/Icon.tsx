@@ -371,20 +371,20 @@ const getIconColor = (color: IconColor, theme: Theme) => {
 
 export type Props =
   | {
-    name: IconName;
-    type?: IconType;
-    size?: IconSize | number;
-    color?: IconColor;
-    alt?: string;
-  }
+      name: IconName;
+      type?: IconType;
+      size?: IconSize | number;
+      color?: IconColor;
+      alt?: string;
+    }
   | {
-    /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
-    name: DeprecatedArrowBottom;
-    type?: IconType;
-    size?: IconSize | number;
-    color?: IconColor;
-    alt?: string;
-  };
+      /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
+      name: DeprecatedArrowBottom;
+      type?: IconType;
+      size?: IconSize | number;
+      color?: IconColor;
+      alt?: string;
+    };
 
 const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
   { name, type = "line", size = "md", color = "fill", alt = undefined },
