@@ -4,7 +4,6 @@ import React, {
   useState,
   useCallback,
   useMemo,
-  type ReactElement,
   type ChangeEvent,
   type KeyboardEvent,
 } from "react";
@@ -16,23 +15,24 @@ import {
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize, FilterVariant } from "../FilterInputAbstract/styled";
+import { FilterSize } from "../FilterInputAbstract/types";
+import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
 
-type FilterTagInputProps = {
+type FilterSelectInputProps = {
   value: string;
   options: string[];
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: React.ReactElement; label: string }[];
   onChange: (value: string) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
-  variant?: FilterVariant;
+  variant?: keyof typeof FILTER_VARIANTS;
   searchPlaceholder?: string;
 };
 
 export const FilterSelectInput = ({
   value,
-  options: values,
+  options,
   selectedIndex,
   selectOptions,
   onChange,
@@ -40,7 +40,7 @@ export const FilterSelectInput = ({
   size = "medium",
   variant = "dark",
   searchPlaceholder = "絞り込む",
-}: FilterTagInputProps) => {
+}: FilterSelectInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -66,9 +66,9 @@ export const FilterSelectInput = ({
   // userValueの入力状況に応じてフィルターされたoptions
   const filteredOptions = useMemo(() => {
     const trimmedValue = userEnteredValue.trim();
-    if (trimmedValue === "") return values;
-    return values.filter((option) => option.includes(trimmedValue));
-  }, [values, userEnteredValue]);
+    if (trimmedValue === "") return options;
+    return options.filter((option: string) => option.includes(trimmedValue));
+  }, [options, userEnteredValue]);
 
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {

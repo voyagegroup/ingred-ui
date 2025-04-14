@@ -22,7 +22,8 @@ import {
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize, FilterVariant } from "../FilterInputAbstract/styled";
+import { FilterSize } from "../FilterInputAbstract/types";
+import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
 
 type FilterTagInputProps = {
   values: string[];
@@ -32,8 +33,8 @@ type FilterTagInputProps = {
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
-  variant?: FilterVariant;
-  tagVariant?: FilterVariant;
+  variant?: keyof typeof FILTER_VARIANTS;
+  tagVariant?: keyof typeof FILTER_VARIANTS;
   placeholder?: string;
 };
 

@@ -1,18 +1,17 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
+import { FilterSize } from "../FilterInputAbstract/types";
 import {
-  FilterSize,
-  FilterVariant,
   FILTER_VARIANTS,
   FilterInputAbstract,
 } from "../FilterInputAbstract/styled";
 
 type StyledProps = {
   $size: FilterSize;
-  $variant: FilterVariant;
+  $variant: keyof typeof FILTER_VARIANTS;
 };
 
 export const InlineField = styled.div<StyledProps>`

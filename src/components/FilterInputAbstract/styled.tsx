@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2CheckItem } from "../ContextMenu2/ContextMenu2CheckItem";
-import { FilterSize, FilterSizeProps } from "./types";
+import { FilterSize } from "./types";
 
 // Constants
 export const FILTER_SIZES = {

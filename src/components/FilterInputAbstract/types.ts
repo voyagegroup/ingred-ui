@@ -4,4 +4,4 @@ export type FilterVariant = "light" | "dark";
 
 export type FilterSizeProps = {
   size?: FilterSize;
-}; 
+};

@@ -8,22 +8,22 @@ import React, {
   type ReactElement,
   type KeyboardEvent,
 } from "react";
-import {
-  FilterInputContext,
-  FilterInputAbstract,
-  FilterTag,
-} from "../FilterInputAbstract/FilterInputAbstract";
 import Icon, { IconSize } from "../Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
+import * as styled from "./styled";
+import { FilterSize } from "../FilterInputAbstract/types";
+import {
+  FilterInputContext,
+  FilterInputAbstract,
+  FilterTag,
+} from "../FilterInputAbstract/FilterInputAbstract";
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
-import * as styled from "./styled";
-import { FilterSize } from "../FilterInputAbstract/styled";
 
 //
 // -----------------------------------------------------------------------------
