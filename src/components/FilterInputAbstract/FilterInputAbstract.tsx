@@ -10,7 +10,7 @@ import React, {
 import Icon from "../Icon";
 import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import * as styled from "./styled";
-import { StyledContextMenu2CheckItem, FilterSize } from "./styled";
+import { FilterSize } from "./types";
 import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
@@ -104,14 +104,14 @@ export const FilterInputAbstract = ({
           onOpenChange={(open) => setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
-            <StyledContextMenu2CheckItem
+            <styled.StyledContextMenu2CheckItem
               key={label}
               prepend={icon}
               checked={selectedIndex === i}
               onChange={() => handleSelectChange(i)}
             >
               {label}
-            </StyledContextMenu2CheckItem>
+            </styled.StyledContextMenu2CheckItem>
           ))}
         </ContextMenu2>
       </ContextMenu2Container>

@@ -1,15 +1,7 @@
 import styled, { css } from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2CheckItem } from "../ContextMenu2/ContextMenu2CheckItem";
-
-// Types
-export type FilterSize = "small" | "medium" | "large";
-
-export type FilterVariant = "light" | "dark";
-
-export type FilterSizeProps = {
-  size?: FilterSize;
-};
+import { FilterSize, FilterSizeProps } from "./types";
 
 // Constants
 export const FILTER_SIZES = {
