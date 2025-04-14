@@ -108,6 +108,7 @@ export const FilterInputAbstract = styled.div`
   &[data-small="true"] {
     display: block;
     border: 0;
+    border-radius: 0px;
     background-color: transparent;
   }
 `;
@@ -202,25 +203,25 @@ export const FilterTagButton = styled.button<FilterTagProps>`
   /* アイコンのサイズ調整 */
   svg {
     width: ${({ $size }) => {
-      switch ($size) {
-        case "small":
-          return "14px";
-        case "medium":
-          return "16px";
-        case "large":
-          return "18px";
-      }
-    }};
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
     height: ${({ $size }) => {
-      switch ($size) {
-        case "small":
-          return "14px";
-        case "medium":
-          return "16px";
-        case "large":
-          return "18px";
-      }
-    }};
+    switch ($size) {
+      case "small":
+        return "14px";
+      case "medium":
+        return "16px";
+      case "large":
+        return "18px";
+    }
+  }};
   }
 
   span {
