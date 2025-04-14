@@ -3,11 +3,12 @@ import styled from "styled-components";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 import {
+  FilterSize,
+  FilterVariant,
   FILTER_VARIANTS,
-  FilterInputAbstract,
-} from "../FilterInputAbstract/styled";
+} from "../FilterInputAbstract/types";
+import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
 type StyledProps = {
   $size: FilterSize;

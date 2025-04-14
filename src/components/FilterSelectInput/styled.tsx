@@ -1,7 +1,10 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
-import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
+import {
+  FilterSize,
+  FilterVariant,
+  FILTER_VARIANTS,
+} from "../FilterInputAbstract/types";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
 
 type StyledProps = {

@@ -1,41 +1,7 @@
 import styled, { css } from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2CheckItem } from "../ContextMenu2/ContextMenu2CheckItem";
-import { FilterSize } from "./types";
-
-// Constants
-export const FILTER_SIZES = {
-  small: {
-    height: "28px",
-    borderRadius: "4px",
-    iconSize: "20px",
-    arrowIconSize: "16px",
-    padding: "0 2px 0 6px",
-  },
-  medium: {
-    height: "32px",
-    borderRadius: "6px",
-    iconSize: "22px",
-    arrowIconSize: "18px",
-    padding: "0 2px 0 6px",
-  },
-  large: {
-    height: "40px",
-    borderRadius: "6px",
-    iconSize: "24px",
-    arrowIconSize: "20px",
-    padding: "0 4px 0 8px",
-  },
-} as const;
-
-export const FILTER_VARIANTS = {
-  light: {
-    background: colors.basic[0],
-  },
-  dark: {
-    background: colors.basic[100],
-  },
-} as const;
+import { FILTER_SIZES, FilterSize } from "./types";
 
 // フィルターのベーススタイル
 export const filterBaseStyle = css`
