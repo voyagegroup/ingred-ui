@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 import {
   FILTER_VARIANTS,
   FilterInputAbstract,
@@ -11,7 +11,7 @@ import {
 
 type StyledProps = {
   $size: FilterSize;
-  $variant: keyof typeof FILTER_VARIANTS;
+  $variant: FilterVariant;
 };
 
 export const InlineField = styled.div<StyledProps>`

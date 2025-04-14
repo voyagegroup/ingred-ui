@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
+import { FilterVariant } from "../FilterInputAbstract/types";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
 
 type StyledProps = {
-  $variant: keyof typeof FILTER_VARIANTS;
+  $variant: FilterVariant;
 };
 
 export const SelectContainer = styled.div`

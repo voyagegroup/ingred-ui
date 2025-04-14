@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { FilterSize } from "../FilterInputAbstract/types";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
 
 type StyledProps = {
   $size: FilterSize;
-  $variant: keyof typeof FILTER_VARIANTS;
+  $variant: FilterVariant;
 };
 
 export const SelectContainer = styled.div`

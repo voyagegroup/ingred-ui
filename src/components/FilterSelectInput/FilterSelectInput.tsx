@@ -15,8 +15,7 @@ import {
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
-import { FilterSize } from "../FilterInputAbstract/types";
-import { FILTER_VARIANTS } from "../FilterInputAbstract/styled";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 
 type FilterSelectInputProps = {
   value: string;
@@ -26,7 +25,7 @@ type FilterSelectInputProps = {
   onChange: (value: string) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
-  variant?: keyof typeof FILTER_VARIANTS;
+  variant?: FilterVariant;
   searchPlaceholder?: string;
 };
 
