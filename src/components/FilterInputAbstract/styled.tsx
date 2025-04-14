@@ -6,7 +6,7 @@ import { FILTER_SIZES, FilterSize } from "./types";
 // フィルターのベーススタイル
 export const filterBaseStyle = css`
   border: 1px solid ${colors.basic[400]};
-  background-color: #fff;
+  background-color: ${colors.basic[0]};
 `;
 
 // サイズに応じたスタイルを生成するヘルパー関数
@@ -83,7 +83,7 @@ export const DropDownTrigger = styled.button`
   border-right: 1px solid ${colors.basic[400]};
   outline-offset: -1px;
   color: #000;
-  background: #fff;
+  background: ${colors.basic[0]};
   cursor: pointer;
 
   /* サイズバリエーション */
@@ -136,7 +136,7 @@ export const FilterTag = styled.span<FilterTagProps>`
   line-height: 14px;
   word-break: break-all;
   color: ${colors.basic[900]};
-  background-color: #fff;
+  background-color: ${colors.basic[0]};
 `;
 
 export const FilterTagButton = styled.button<FilterTagProps>`
