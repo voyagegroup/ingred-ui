@@ -12,7 +12,7 @@ import { FilterInputAbstract } from "../FilterInputAbstract/FilterInputAbstract"
 import {
   ContextMenu2,
   ContextMenu2Container,
-  ContextMenu2ButtonItem,
+  ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import Icon from "../Icon";
 import * as styled from "./styled";
@@ -136,14 +136,13 @@ export const FilterSelectInput = ({
               onCompositionEnd={() => setIsComposing(false)}
             />
             {filteredOptions.map((v) => (
-              <ContextMenu2ButtonItem
+              <ContextMenu2CheckItem
                 key={v}
-                closeOnClick
-                pressed={v === value}
-                onClick={() => handleOptionClick(v)}
+                checked={v === value}
+                onChange={() => handleOptionClick(v)}
               >
                 {v}
-              </ContextMenu2ButtonItem>
+              </ContextMenu2CheckItem>
             ))}
           </ContextMenu2>
         </ContextMenu2Container>
