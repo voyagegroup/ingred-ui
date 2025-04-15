@@ -88,11 +88,11 @@ export const ContextMenu2CheckItem = styled(
   &:focus {
     background: ${colors.basic[200]};
   }
-  
+
   &:disabled {
     color: ${colors.basic[400]};
     cursor: not-allowed;
-    
+
     &:hover {
       background: transparent;
     }

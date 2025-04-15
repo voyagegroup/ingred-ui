@@ -154,7 +154,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </span>
     </button>
     <button
-      class="sc-eCYdqJ PgtUa"
+      class="sc-eCYdqJ ixGNdA"
       tabindex="-1"
       type="button"
     >
@@ -190,7 +190,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </svg>
     </button>
     <button
-      class="sc-eCYdqJ dijZXN"
+      class="sc-eCYdqJ hiFPpP"
       tabindex="-1"
       type="button"
     >
@@ -226,7 +226,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </svg>
     </button>
     <button
-      class="sc-eCYdqJ dijZXN"
+      class="sc-eCYdqJ hiFPpP"
       tabindex="-1"
       type="button"
     >
@@ -244,7 +244,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       </svg>
     </button>
     <button
-      class="sc-eCYdqJ dijZXN"
+      class="sc-eCYdqJ hiFPpP"
       tabindex="-1"
       type="button"
     >
