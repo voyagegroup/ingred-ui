@@ -126,8 +126,9 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
               onChange={(checked) => {
                 if (checked) setCheckedIndex(2);
               }}
+              disabled
             >
-              いずれかを含む
+              いずれかを含む（無効）
             </ContextMenu2CheckItem>
 
             <ContextMenu2CheckItem
@@ -135,8 +136,9 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
               onChange={(checked) => {
                 if (checked) setCheckedIndex(3);
               }}
+              disabled
             >
-              アイコンなしチェック1
+              アイコンなしチェック1（無効）
             </ContextMenu2CheckItem>
             <ContextMenu2CheckItem
               checked={checkedIndex === 4}
@@ -328,15 +330,17 @@ export const WithCheck: StoryObj<typeof ContextMenu2> = {
             checked={checkedIndex.includes(2)}
             prepend={<Icon name="image" />}
             onChange={() => handleCheck(2)}
+            disabled
           >
-            いずれかを含む
+            いずれかを含む（無効）
           </ContextMenu2CheckItem>
 
           <ContextMenu2CheckItem
             checked={checkedIndex.includes(3)}
             onChange={() => handleCheck(3)}
+            disabled
           >
-            アイコンなしチェック1
+            アイコンなしチェック1（無効）
           </ContextMenu2CheckItem>
           <ContextMenu2CheckItem
             checked={checkedIndex.includes(4)}
