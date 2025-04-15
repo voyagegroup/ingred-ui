@@ -1,4 +1,5 @@
 export type Color = {
+  0?: `#${string}`;
   40?: `#${string}`;
   50?: `#${string}`;
   100: `#${string}`;
@@ -62,6 +63,7 @@ export const colors = {
     900: "#135E07",
   },
   basic: {
+    0: "#FFFFFF",
     50: "#FDFEFF",
 
     100: "#F5F7F8",

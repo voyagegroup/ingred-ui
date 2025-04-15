@@ -3,14 +3,15 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-kgflAQ feaOnH"
+    class="sc-hHLeRK gVJCUu"
+    data-size="medium"
     data-small="false"
   >
     <button
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-fLlhyt jqpZx"
+      class="sc-dmRaPn fycaPG"
       type="button"
     >
       <span
@@ -42,17 +43,17 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-iIPllB bxLXfc"
+      class="sc-kLLXSd rOgAy"
       data-overflowing="false"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-ezWOiH lpjcvk"
+        class="sc-jIZahH eSEuOW"
         type="button"
       >
         <span
-          class="sc-bZkfAO fZvvlw"
+          class="sc-himrzO emiHoQ"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -70,15 +71,19 @@ exports[`FileUploader component testing FileUploader 1`] = `
         </span>
       </button>
       <div
-        class="sc-gicCDI dQLHWf"
+        class="sc-ikZpkk jkBxIg"
       >
-        <span
-          class="sc-hHLeRK igsLAy"
+        <div
+          class="sc-ivTmOn kdXggZ"
         >
-          項目1
+          <div
+            class="sc-cxabCf"
+          >
+            項目1
+          </div>
           <button
             aria-label="削除"
-            class="sc-dmRaPn hRUHjp"
+            class="sc-llJcti jYxLSt"
             type="button"
           >
             <span
@@ -96,7 +101,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
               </svg>
             </span>
           </button>
-        </span>
+        </div>
       </div>
     </div>
   </div>

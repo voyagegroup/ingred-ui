@@ -99,6 +99,7 @@ import { KeyIcon } from "./internal/KeyIcon";
 import { OperatorMatchIcon } from "./internal/OperatorMatchIcon";
 import { OperatorDoesNotMatchIcon } from "./internal/OperatorDoesNotMatchIcon";
 import { OperatorContainsIcon } from "./internal/OperatorContainsIcon";
+import { OperatorDoesNotContainsIcon } from "./internal/OperatorDoesNotContainsIcon";
 import { OperatorStartsWithIcon } from "./internal/OperatorStartsWithIcon";
 import { OperatorEndsWithIcon } from "./internal/OperatorEndsWithIcon";
 import { OperatorEqualIcon } from "./internal/OperatorEqualIcon";
@@ -209,6 +210,7 @@ export type IconName =
   | "operator_match"
   | "operator_does_not_match"
   | "operator_contains"
+  | "operator_does_not_contains"
   | "operator_starts_with"
   | "operator_ends_with"
   | "operator_equal"
@@ -334,6 +336,7 @@ export const icons: {
   operator_match: OperatorMatchIcon,
   operator_does_not_match: OperatorDoesNotMatchIcon,
   operator_contains: OperatorContainsIcon,
+  operator_does_not_contains: OperatorDoesNotContainsIcon,
   operator_starts_with: OperatorStartsWithIcon,
   operator_ends_with: OperatorEndsWithIcon,
   operator_equal: OperatorEqualIcon,
@@ -370,7 +373,7 @@ export type Props =
   | {
       name: IconName;
       type?: IconType;
-      size?: IconSize;
+      size?: IconSize | number;
       color?: IconColor;
       alt?: string;
     }
@@ -378,7 +381,7 @@ export type Props =
       /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
       name: DeprecatedArrowBottom;
       type?: IconType;
-      size?: IconSize;
+      size?: IconSize | number;
       color?: IconColor;
       alt?: string;
     };
@@ -388,8 +391,9 @@ const Icon = React.forwardRef<HTMLSpanElement, Props>(function Icon(
   ref,
 ) {
   const theme = useTheme();
+  const finalSize = typeof size === "number" ? size : iconSize[size];
   return (
-    <Styled.Container ref={ref} size={iconSize[size]} aria-label={alt}>
+    <Styled.Container ref={ref} size={finalSize} aria-label={alt}>
       {iconFactory(name)({ type, fill: getIconColor(color, theme) })}
     </Styled.Container>
   );

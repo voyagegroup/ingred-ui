@@ -7,7 +7,26 @@ import Icon from "../Icon";
 const meta = {
   title: "Components/Inputs/FilterTagInput",
   component: FilterTagInput,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["small", "medium", "large"],
+    },
+    variant: {
+      control: {
+        type: "select",
+      },
+      options: ["light", "dark"],
+    },
+    tagVariant: {
+      control: {
+        type: "select",
+      },
+      options: ["light", "dark"],
+    },
+  },
 } satisfies Meta<typeof FilterTagInput>;
 
 export default meta;
@@ -111,6 +130,102 @@ export const Default: StoryObj<typeof meta> = {
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </>
+    );
+  },
+};
+
+export const Sizes: StoryObj<typeof meta> = {
+  args: {
+    title: "サイズバリエーション",
+    values: ["small", "medium", "large"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterTagInput
+          {...args}
+          size="small"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          size="medium"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          size="large"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
+    );
+  },
+};
+
+export const Variants: StoryObj<typeof meta> = {
+  args: {
+    title: "カラーバリエーション",
+    values: ["light", "dark"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <FilterTagInput
+          {...args}
+          variant="light"
+          tagVariant="dark"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <FilterTagInput
+          {...args}
+          variant="dark"
+          tagVariant="light"
+          onChange={(newValues) => updateArgs({ values: newValues })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
     );
   },
 };

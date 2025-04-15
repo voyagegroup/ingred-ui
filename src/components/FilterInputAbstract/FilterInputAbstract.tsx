@@ -8,12 +8,10 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
-import {
-  ContextMenu2,
-  ContextMenu2Container,
-  ContextMenu2CheckItem,
-} from "../ContextMenu2";
+import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
 import * as styled from "./styled";
+import { FilterSize } from "./types";
+import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
   isSmall: false,
@@ -24,20 +22,18 @@ export const FilterInputContext = createContext({
 type FilterTagProps = {
   label: string;
   onRemove: () => void;
+  size?: FilterSize;
+  variant?: "light" | "dark";
 };
 
-export const FilterTag = ({ label, onRemove }: FilterTagProps) => {
+export const FilterTag = ({
+  label,
+  size = "medium",
+  variant = "dark",
+  onRemove,
+}: FilterTagProps) => {
   return (
-    <styled.FilterTag>
-      {label}
-      <styled.FilterTagButton
-        type="button"
-        aria-label="削除"
-        onClick={onRemove}
-      >
-        <Icon name="close_circle" type="fill" color="currentColor" />
-      </styled.FilterTagButton>
-    </styled.FilterTag>
+    <Tag label={label} size={size} variant={variant} onRemove={onRemove} />
   );
 };
 
@@ -50,12 +46,14 @@ type FilterInputAbstractProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   children?: ReactNode;
   onSelectChange: (index: number) => void;
+  size?: "small" | "medium" | "large";
 };
 export const FilterInputAbstract = ({
   selectedIndex,
   selectOptions,
   onSelectChange,
   children,
+  size = "medium",
 }: FilterInputAbstractProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
@@ -89,7 +87,7 @@ export const FilterInputAbstract = ({
   }, [setIsSmall]);
 
   return (
-    <styled.FilterInputAbstract ref={el} data-small={isSmall}>
+    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size}>
       <ContextMenu2Container>
         <ContextMenu2
           open={isSelectOpen}
@@ -106,14 +104,14 @@ export const FilterInputAbstract = ({
           onOpenChange={(open) => setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
-            <ContextMenu2CheckItem
+            <styled.StyledContextMenu2CheckItem
               key={label}
               prepend={icon}
               checked={selectedIndex === i}
               onChange={() => handleSelectChange(i)}
             >
               {label}
-            </ContextMenu2CheckItem>
+            </styled.StyledContextMenu2CheckItem>
           ))}
         </ContextMenu2>
       </ContextMenu2Container>

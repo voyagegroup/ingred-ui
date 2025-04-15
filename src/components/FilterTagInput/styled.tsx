@@ -1,12 +1,21 @@
-import styled from "styled-components";
 import React from "react";
+import styled from "styled-components";
 import { BreakPoint, colors } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
-
+import {
+  FilterSize,
+  FilterVariant,
+  FILTER_VARIANTS,
+} from "../FilterInputAbstract/types";
 import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
-export const InlineField = styled.div`
+type StyledProps = {
+  $size: FilterSize;
+  $variant: FilterVariant;
+};
+
+export const InlineField = styled.div<StyledProps>`
   display: flex;
   align-items: center;
   min-height: 100%;
@@ -14,7 +23,7 @@ export const InlineField = styled.div`
   border-radius: 0 4px 4px 0;
   overflow: auto;
   scrollbar-width: none;
-  background: ${colors.basic[100]};
+  background: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
 
   &::-webkit-scrollbar {
     display: none;
@@ -38,17 +47,26 @@ export const InlineFieldInner = styled.div`
   white-space: nowrap;
 `;
 
-export const OverflowIndicator = styled.button`
+export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   position: absolute;
   inset: 0 0 0 auto;
   display: none;
   place-items: center;
-  width: 30px;
+  width: ${({ $size = "medium" }) => {
+    switch ($size) {
+      case "small":
+        return "26px";
+      case "medium":
+        return "30px";
+      case "large":
+        return "38px";
+    }
+  }};
   border: 0;
   outline-offset: -1px;
-  color: #000;
-  background-color: #fff;
-  box-shadow: -2px 0px 2px rgba(4, 28, 51, 0.16);
+  color: ${colors.basic[900]};
+  background-color: ${colors.basic[0]};
+  box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
 
   &:where([data-overflowing="true"]) {
@@ -58,7 +76,16 @@ export const OverflowIndicator = styled.button`
   &:where(${FilterInputAbstract}[data-small="true"] *) {
     position: static;
     display: grid;
-    width: 28px;
+    width: ${({ $size = "medium" }) => {
+      switch ($size) {
+        case "small":
+          return "26px";
+        case "medium":
+          return "30px";
+        case "large":
+          return "38px";
+      }
+    }};
     aspect-ratio: 1;
     border: 1px solid ${colors.basic[400]};
     border-radius: 4px;
@@ -126,19 +153,19 @@ const PanelInner = styled.div`
   max-width: 800px;
   padding: 16px;
   border-radius: 6px;
-  background: #FFFFFF;};
+  background: ${colors.basic[0]};
   border: 1px solid ${colors.basic[200]};
   /* Drop shadow Common */
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   pointer-events: auto;
 
-  @media ( max-width: ${BreakPoint.MEDIUM}px ) {
+  @media (max-width: ${BreakPoint.MEDIUM}px) {
     grid-template:
       "title"
       "left"
       "right"
       "bottom";
-      gap: 16px;
+    gap: 16px;
   }
 `;
 
@@ -258,7 +285,7 @@ export const PanelTagField = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   box-sizing: border-box;
   padding: 6px 37px 6px 6px;
   border: 1px solid ${colors.basic[400]};

@@ -15,7 +15,6 @@ import {
 import {
   ContextMenu2,
   ContextMenu2Container,
-  ContextMenu2TextInputItem,
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
   ContextMenu2SeparatorItem,
@@ -23,6 +22,7 @@ import {
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
+import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
 
 type FilterTagInputProps = {
   values: string[];
@@ -31,6 +31,10 @@ type FilterTagInputProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
+  size?: FilterSize;
+  variant?: FilterVariant;
+  tagVariant?: FilterVariant;
+  placeholder?: string;
 };
 
 export const FilterComboBox = ({
@@ -40,6 +44,10 @@ export const FilterComboBox = ({
   selectOptions,
   onChange,
   onSelectChange,
+  size = "medium",
+  variant = "dark",
+  tagVariant = "light",
+  placeholder = "絞り込む",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -178,16 +186,20 @@ export const FilterComboBox = ({
 
   return (
     <FilterInputAbstract
+      size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
     >
-      <styled.SelectContainer data-overflowing={isInlineOverflowing}>
+      <styled.SelectContainer
+        data-overflowing={isInlineOverflowing}
+        $variant={variant}
+      >
         <ContextMenu2Container>
           <ContextMenu2
             open={isOpen}
             trigger={
-              <styled.Select type="button">
+              <styled.Select type="button" $variant={variant}>
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
@@ -195,9 +207,10 @@ export const FilterComboBox = ({
             }
             onOpenChange={handleOpenChange}
           >
-            <ContextMenu2TextInputItem
+            <styled.StyledContextMenu2TextInputItem
               autoFocus
               value={userValue}
+              placeholder={placeholder}
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}
@@ -230,6 +243,8 @@ export const FilterComboBox = ({
             <FilterTag
               key={value}
               label={value}
+              size={size}
+              variant={tagVariant}
               onRemove={() => handleRemove(value)}
             />
           ))}

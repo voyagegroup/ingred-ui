@@ -330,6 +330,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="名前"
+                size="small"
                 values={nameFilterValues}
                 selectedIndex={nameFilterType}
                 selectOptions={filterTypes}
@@ -365,6 +366,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="ステータス"
+                size="small"
                 values={statusFilterValues}
                 selectedIndex={statusFilterType}
                 selectOptions={filterTypes}
@@ -400,6 +402,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="メールアドレス"
+                size="small"
                 values={emailFilterValues}
                 selectedIndex={emailFilterType}
                 selectOptions={filterTypes}
@@ -435,6 +438,7 @@ export const Default: StoryObj<typeof meta> = {
               </DataTable2ColumnLabel>
               <FilterTagInput
                 title="登録日"
+                size="small"
                 values={dateFilterValues}
                 selectedIndex={dateFilterType}
                 selectOptions={filterTypes}

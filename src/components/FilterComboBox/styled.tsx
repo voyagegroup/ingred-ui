@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { FILTER_VARIANTS, FilterVariant } from "../FilterInputAbstract/types";
+import { ContextMenu2TextInputItem } from "../ContextMenu2";
+
+type StyledProps = {
+  $variant: FilterVariant;
+};
 
 export const SelectContainer = styled.div`
   position: relative;
@@ -9,7 +15,8 @@ export const SelectContainer = styled.div`
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
-  background-color: ${colors.basic[100]};
+  background-color: ${({ $variant }: StyledProps) =>
+    FILTER_VARIANTS[$variant].background};
 
   &::before {
     content: "";
@@ -53,7 +60,7 @@ export const TagList = styled.div`
   }
 `;
 
-export const Select = styled.button`
+export const Select = styled.button<StyledProps>`
   position: absolute;
   inset: 0;
   box-sizing: border-box;
@@ -65,7 +72,7 @@ export const Select = styled.button`
   height: 100%;
   padding: 0 8px 0 54px;
   border: 0;
-  background-color: ${colors.basic[100]};
+  background-color: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
   outline-offset: -1px;
   color: ${colors.basic[900]};
   cursor: pointer;
@@ -79,4 +86,14 @@ export const Select = styled.button`
 export const SelectIcon = styled.span`
   flex-shrink: 0;
   width: 18px;
+`;
+
+export const StyledContextMenu2TextInputItem = styled(
+  ContextMenu2TextInputItem,
+)`
+  input {
+    &::placeholder {
+      color: ${colors.basic[600]};
+    }
+  }
 `;

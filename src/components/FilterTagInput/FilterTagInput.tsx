@@ -8,21 +8,22 @@ import React, {
   type ReactElement,
   type KeyboardEvent,
 } from "react";
-import {
-  FilterInputContext,
-  FilterInputAbstract,
-  FilterTag,
-} from "../FilterInputAbstract/FilterInputAbstract";
-import Icon from "../Icon";
+import Icon, { IconSize } from "../Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
+import * as styled from "./styled";
+import { FilterSize } from "../FilterInputAbstract/types";
+import {
+  FilterInputContext,
+  FilterInputAbstract,
+  FilterTag,
+} from "../FilterInputAbstract/FilterInputAbstract";
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
-import * as styled from "./styled";
 
 //
 // -----------------------------------------------------------------------------
@@ -36,6 +37,7 @@ type FilterInputPanelProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
+  menuIconSize: IconSize | number;
 };
 
 const FilterInputPanel = ({
@@ -46,6 +48,7 @@ const FilterInputPanel = ({
   selectOptions,
   onApply,
   onClose,
+  menuIconSize,
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
@@ -53,15 +56,22 @@ const FilterInputPanel = ({
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
 
+  const modifiedSelectOptions = useMemo(() => {
+    return selectOptions.map((option) => ({
+      ...option,
+      icon: React.cloneElement(option.icon, { size: menuIconSize }),
+    }));
+  }, [selectOptions, menuIconSize]);
+
   const longestLabelOption = useMemo(() => {
-    return selectOptions.reduce(
+    return modifiedSelectOptions.reduce(
       (longestLabelOption, option) =>
         option.label.length > longestLabelOption.label.length
           ? option
           : longestLabelOption,
-      selectOptions[0],
+      modifiedSelectOptions[0],
     );
-  }, [selectOptions]);
+  }, [modifiedSelectOptions]);
 
   const inputEl = useRef<HTMLInputElement>(null);
 
@@ -146,8 +156,11 @@ const FilterInputPanel = ({
                       {longestLabelOption.label}
                     </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
-                      {selectOptions[userSelectedIndex].icon}
-                      {selectOptions[userSelectedIndex].label}
+                      {React.cloneElement(
+                        modifiedSelectOptions[userSelectedIndex].icon,
+                        { size: menuIconSize },
+                      )}
+                      {modifiedSelectOptions[userSelectedIndex].label}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
                       <Icon name="arrow_down" color="currentColor" />
@@ -156,7 +169,7 @@ const FilterInputPanel = ({
                 }
                 onOpenChange={(open) => setIsSelectOpen(open)}
               >
-                {selectOptions.map(({ label, icon }, i) => (
+                {modifiedSelectOptions.map(({ label, icon }, i) => (
                   <ContextMenu2CheckItem
                     key={label}
                     prepend={icon}
@@ -179,6 +192,8 @@ const FilterInputPanel = ({
               {userValues.map((value, i) => (
                 <FilterTag
                   key={value}
+                  size="medium"
+                  variant="light"
                   label={value}
                   onRemove={() => handleTagRemove(i)}
                 />
@@ -234,6 +249,10 @@ type FilterTagInputProps = {
   selectOptions: { icon: ReactElement; label: string }[];
   onChange: (values: string[]) => void;
   onSelectChange: (index: number) => void;
+  size?: FilterSize;
+  variant?: "light" | "dark";
+  tagVariant?: "light" | "dark";
+  menuIconSize?: IconSize | number;
 };
 export const FilterTagInput = ({
   title,
@@ -242,6 +261,10 @@ export const FilterTagInput = ({
   selectOptions,
   onChange,
   onSelectChange,
+  size = "medium",
+  variant = "dark",
+  tagVariant = "light",
+  menuIconSize = 22,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -366,62 +389,65 @@ export const FilterTagInput = ({
   }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   return (
-    <>
-      <FilterInputAbstract
-        selectedIndex={selectedIndex}
-        selectOptions={selectOptions}
-        onSelectChange={onSelectChange}
+    <FilterInputAbstract
+      size={size}
+      selectedIndex={selectedIndex}
+      selectOptions={selectOptions}
+      onSelectChange={onSelectChange}
+    >
+      <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
+        <styled.InlineFieldInner ref={inlineFieldInnerEl}>
+          {values.map((value, i) => (
+            <FilterTag
+              key={value}
+              size={size}
+              variant={tagVariant}
+              label={value}
+              onRemove={() => handleTagRemove(i)}
+            />
+          ))}
+          <styled.InlineInput>
+            {!inputValue && (
+              <styled.InlineInputIcon>
+                <Icon name="filter" color="currentColor" />
+              </styled.InlineInputIcon>
+            )}
+            <input
+              ref={inlineInputEl}
+              type="text"
+              aria-label="フィルターする値"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onCompositionStart={() => setIsInlineComposing(true)}
+              onCompositionEnd={() => setIsInlineComposing(false)}
+              onKeyDown={handleKeyDown}
+              onBlur={() => setInputValue("")}
+            />
+          </styled.InlineInput>
+        </styled.InlineFieldInner>
+      </styled.InlineField>
+      <styled.OverflowIndicator
+        $size={size}
+        aria-label="フィルター入力パネルを開く"
+        data-overflowing={isInlineOverflowing}
+        type="button"
+        onClick={() => setIsModalOpen(true)}
       >
-        <styled.InlineField ref={inlineFieldEl}>
-          <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-            {values.map((value, i) => (
-              <FilterTag
-                key={value}
-                label={value}
-                onRemove={() => handleTagRemove(i)}
-              />
-            ))}
-            <styled.InlineInput>
-              {!inputValue && (
-                <styled.InlineInputIcon>
-                  <Icon name="filter" color="currentColor" />
-                </styled.InlineInputIcon>
-              )}
-              <input
-                ref={inlineInputEl}
-                type="text"
-                aria-label="フィルターする値"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onCompositionStart={() => setIsInlineComposing(true)}
-                onCompositionEnd={() => setIsInlineComposing(false)}
-                onKeyDown={handleKeyDown}
-                onBlur={() => setInputValue("")}
-              />
-            </styled.InlineInput>
-          </styled.InlineFieldInner>
-        </styled.InlineField>
-        <styled.OverflowIndicator
-          type="button"
-          aria-label="フィルター入力パネルを開く"
-          data-overflowing={isInlineOverflowing}
-          onClick={() => setIsModalOpen(true)}
-        >
-          <Icon
-            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-            color="currentColor"
-          />
-        </styled.OverflowIndicator>
-      </FilterInputAbstract>
+        <Icon
+          name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+          color="currentColor"
+        />
+      </styled.OverflowIndicator>
       <FilterInputPanel
         isOpen={isModalOpen}
+        menuIconSize={menuIconSize}
+        selectOptions={selectOptions}
+        selectedIndex={selectedIndex}
         title={title}
         values={values}
-        selectedIndex={selectedIndex}
-        selectOptions={selectOptions}
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
       />
-    </>
+    </FilterInputAbstract>
   );
 };
