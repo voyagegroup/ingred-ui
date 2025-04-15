@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import { Theme } from "../../themes";
 
 export type Select2Size = "small" | "medium" | "large";
@@ -36,11 +35,11 @@ export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
   },
 } as const;
 
-export interface Select2Option<T extends string | number = string> {
+export interface Select2Option {
   /**
    * 選択肢の値
    */
-  value: T;
+  value: string | number;
   /**
    * 表示ラベル
    */
@@ -61,19 +60,19 @@ export interface Select2StyleProps {
   $hasValue?: boolean;
 }
 
-export interface Select2Props<T extends string | number = string> {
+export interface Select2Props {
   /**
    * 選択肢の配列
    */
-  options: Select2Option<T>[];
+  options: Select2Option[];
   /**
    * 選択された値
    */
-  value?: T;
+  value?: string | number;
   /**
    * 値が変更された時のコールバック
    */
-  onChange?: (value: T) => void;
+  onChange?: (value: string | number) => void;
   /**
    * コンポーネントのサイズ
    * @default "medium"
@@ -95,11 +94,6 @@ export interface Select2Props<T extends string | number = string> {
    */
   placeholder?: string;
   /**
-   * 検索機能の有効化
-   * @default false
-   */
-  searchable?: boolean;
-  /**
    * 検索入力のプレースホルダー
    * @default "検索..."
    */
@@ -110,16 +104,7 @@ export interface Select2Props<T extends string | number = string> {
    */
   error?: boolean;
   /**
-   * メニューの最大高さ
+   * エラーメッセージ
    */
-  maxMenuHeight?: number;
-  /**
-   * オプションが存在しない場合のメッセージ
-   * @default "オプションがありません"
-   */
-  noOptionsMessage?: string;
-  /**
-   * カスタムクラス名
-   */
-  className?: string;
+  errorMessage?: string;
 }

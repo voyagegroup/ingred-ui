@@ -6,21 +6,18 @@ import {
   ContextMenu2Container,
 } from "../ContextMenu2";
 import {
-  SelectContainer,
+  Select2Container,
   SelectButton,
   InputArea,
   SelectLabel,
   Placeholder,
   IconArea,
-  StyledSearchInput,
-  OptionsContainer,
+  StyledContextMenu2TextInputItem,
   ErrorMessage,
-  Description,
-  Label,
 } from "./styled";
 import { Select2Props, Select2Option } from "./types";
 
-export const Select2 = <T extends string | number>({
+export const Select2 = ({
   options = [],
   value,
   onChange,
@@ -28,20 +25,11 @@ export const Select2 = <T extends string | number>({
   placeholder = "選択してください",
   size = "medium",
   variant = "default",
-  searchable = false,
   searchPlaceholder = "検索...",
-  className,
   error = false,
   errorMessage,
-  required = false,
-  label,
-  description,
-  maxMenuHeight,
-  minMenuWidth,
-  maxMenuWidth,
-  noOptionsMessage = "オプションがありません",
   ...rest
-}: Select2Props<T>) => {
+}: Select2Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
@@ -57,11 +45,13 @@ export const Select2 = <T extends string | number>({
     [disabled]
   );
 
+  // リスト絞り込みのキーワードをクリア
   const handleSelect = useCallback(
-    (option: Select2Option<T>) => {
+    (option: Select2Option) => {
       if (!option.disabled) {
         onChange?.(option.value);
         setIsOpen(false);
+        setSearchValue("");
       }
     },
     [onChange]
@@ -73,26 +63,18 @@ export const Select2 = <T extends string | number>({
   );
 
   const filteredOptions = useMemo(() => {
-    if (!searchable || !searchValue) return options;
+    if (!searchValue) return options;
     return options.filter((option) =>
       option.label.toLowerCase().includes(searchValue.toLowerCase())
     );
-  }, [options, searchable, searchValue]);
+  }, [options, searchValue]);
 
   return (
-    <SelectContainer className={className}>
-      {label && (
-        <Label>
-          {label}
-          {required && <span style={{ color: "red" }}> *</span>}
-        </Label>
-      )}
+    <Select2Container>
       <ContextMenu2Container>
         <ContextMenu2
           open={isOpen}
           onOpenChange={handleOpenChange}
-          minWidth={minMenuWidth}
-          maxWidth={maxMenuWidth}
           trigger={
             <SelectButton
               type="button"
@@ -103,11 +85,10 @@ export const Select2 = <T extends string | number>({
               $isOpen={isOpen}
               $hasValue={!!selectedOption}
               disabled={disabled}
-              role="combobox"
+              role="listbox"
               aria-expanded={isOpen}
-              aria-haspopup="listbox"
+              aria-haspopup="true"
               aria-invalid={error}
-              aria-required={required}
               {...rest}
             >
               <InputArea $size={size} $variant={variant} $disabled={disabled}>
@@ -122,43 +103,36 @@ export const Select2 = <T extends string | number>({
                 </SelectLabel>
               </InputArea>
               <IconArea>
-                <Icon name={isOpen ? "arrow_up" : "arrow_down"} size="md" />
+                <Icon name="arrow_down" size="md" />
               </IconArea>
             </SelectButton>
           }
         >
-          <>
-            {searchable && (
-              <StyledSearchInput
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-                placeholder={searchPlaceholder}
-                autoFocus
-              />
-            )}
-            <OptionsContainer $maxHeight={maxMenuHeight}>
-              {filteredOptions.length > 0 ? (
-                filteredOptions.map((option) => (
-                  <ContextMenu2CheckItem
-                    key={option.value.toString()}
-                    checked={option.value === value}
-                    onChange={() => handleSelect(option)}
-                    disabled={option.disabled}
-                  >
-                    {option.label}
-                  </ContextMenu2CheckItem>
-                ))
-              ) : (
-                <ContextMenu2CheckItem disabled>
-                  {noOptionsMessage}
-                </ContextMenu2CheckItem>
-              )}
-            </OptionsContainer>
-          </>
+          <StyledContextMenu2TextInputItem
+            autoFocus
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            placeholder={searchPlaceholder}
+          />
+          {filteredOptions.length > 0 ? (
+            filteredOptions.map((option) => (
+              <ContextMenu2CheckItem
+                key={option.value.toString()}
+                checked={option.value === value}
+                onChange={() => handleSelect(option)}
+                disabled={option.disabled}
+              >
+                {option.label}
+              </ContextMenu2CheckItem>
+            ))
+          ) : (
+            <ContextMenu2CheckItem disabled>
+              オプションがありません
+            </ContextMenu2CheckItem>
+          )}
         </ContextMenu2>
       </ContextMenu2Container>
       {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-      {description && <Description>{description}</Description>}
-    </SelectContainer>
+    </Select2Container>
   );
 }; 

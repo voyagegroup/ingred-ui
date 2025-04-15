@@ -4,14 +4,14 @@ import { Select2 } from "./Select2";
 import { Select2Option, Select2Props } from "./types";
 
 export default {
-  title: "Components/Select2",
+  title: "Components/Inputs/Select2",
   component: Select2,
   parameters: {
     docs: {
       description: {
         component: `
 選択肢の中から項目を選択するコンポーネントです。
-検索機能付きのセレクトボックスとして使用できます。
+検索機能付きのセレクトボックスです。
         `,
       },
     },
@@ -51,33 +51,9 @@ Basic.args = {
   placeholder: "果物を選択",
 };
 
-export const WithLabel: Story<Select2Props<string>> = Template.bind({});
-WithLabel.args = {
-  options,
-  label: "お好きな果物",
-  placeholder: "果物を選択",
-};
-
-export const Required: Story<Select2Props<string>> = Template.bind({});
-Required.args = {
-  options,
-  label: "お好きな果物",
-  placeholder: "果物を選択",
-  required: true,
-};
-
-export const WithDescription: Story<Select2Props<string>> = Template.bind({});
-WithDescription.args = {
-  options,
-  label: "お好きな果物",
-  placeholder: "果物を選択",
-  description: "好きな果物を1つ選んでください",
-};
-
 export const WithError: Story<Select2Props<string>> = Template.bind({});
 WithError.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   error: true,
   errorMessage: "果物を選択してください",
@@ -86,7 +62,6 @@ WithError.args = {
 export const Disabled: Story<Select2Props<string>> = Template.bind({});
 Disabled.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   disabled: true,
 };
@@ -95,22 +70,11 @@ export const WithDefaultValue: Story<Select2Props<string>> = Template.bind({});
 WithDefaultValue.args = {
   options,
   value: "apple",
-  label: "お好きな果物",
-};
-
-export const WithSearch: Story<Select2Props<string>> = Template.bind({});
-WithSearch.args = {
-  options,
-  label: "お好きな果物",
-  placeholder: "果物を選択",
-  searchable: true,
-  searchPlaceholder: "果物を検索...",
 };
 
 export const Small: Story<Select2Props<string>> = Template.bind({});
 Small.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   size: "small",
 };
@@ -118,7 +82,6 @@ Small.args = {
 export const Medium: Story<Select2Props<string>> = Template.bind({});
 Medium.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   size: "medium",
 };
@@ -126,7 +89,6 @@ Medium.args = {
 export const Large: Story<Select2Props<string>> = Template.bind({});
 Large.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   size: "large",
 };
@@ -134,7 +96,6 @@ Large.args = {
 export const LightVariant: Story<Select2Props<string>> = Template.bind({});
 LightVariant.args = {
   options,
-  label: "お好きな果物",
   placeholder: "果物を選択",
   variant: "light",
 };
@@ -154,10 +115,7 @@ WithManyOptions.args = {
     { value: "persimmon", label: "柿" },
     { value: "fig", label: "イチジク" },
   ],
-  label: "お好きな果物",
   placeholder: "果物を選択",
-  searchable: true,
-  maxMenuHeight: 200,
 };
 
 export const WithDisabledOptions: Story<Select2Props<string>> = Template.bind({});
@@ -169,6 +127,5 @@ WithDisabledOptions.args = {
     { value: "grape", label: "ブドウ", disabled: true },
     { value: "melon", label: "メロン" },
   ],
-  label: "お好きな果物",
   placeholder: "果物を選択",
 }; 

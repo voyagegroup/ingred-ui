@@ -1,8 +1,7 @@
-import * as React from "react";
 import styled from "styled-components";
-import { Theme } from "../../themes/createTheme";
 import { colors } from "../../styles";
 import { Select2Size, Select2Props } from "./types";
+import { ContextMenu2TextInputItem } from "../ContextMenu2";
 
 export type SizeStyle = {
   minHeight: string;
@@ -38,63 +37,10 @@ export const getSizeStyle = (size: Select2Size): SizeStyle => {
   }
 };
 
-export const GridContainer = styled.div<{
-  size: Select2Size;
-  variant?: Select2Props["variant"];
-  error?: boolean;
-  disabled?: boolean;
-  isFocused?: boolean;
-  isOpen?: boolean;
-}>`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  position: relative;
-  box-sizing: border-box;
+export const Select2Container = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  min-height: ${({ size }) => getSizeStyle(size).minHeight};
-  padding: ${({ size }) => getSizeStyle(size).padding};
-  font-size: ${({ size }) => getSizeStyle(size).fontSize};
-  outline: none;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  border-radius: ${({ theme }) => theme.radius}px;
-  border: 1px solid
-    ${({ theme, variant, error, disabled, isFocused }) => {
-      if (error) return colors.red[500];
-      if (disabled) return colors.basic[400];
-      if (isFocused) return colors.blue[500];
-      return variant === "light" ? "transparent" : colors.basic[400];
-    }};
-  background-color: ${({ variant, disabled }) => {
-    if (disabled) return colors.basic[100];
-    return variant === "light" ? colors.basic[0] : colors.basic[0];
-  }};
-  color: ${({ disabled }) =>
-    disabled ? colors.basic[500] : colors.basic[900]};
-
-  &:hover {
-    border-color: ${({ error, disabled }) => {
-      if (error) return colors.red[500];
-      if (disabled) return colors.basic[400];
-      return colors.blue[500];
-    }};
-    background-color: ${({ variant, disabled }) => {
-      if (disabled) return colors.basic[100];
-      return variant === "light" ? colors.basic[50] : colors.basic[50];
-    }};
-  }
-
-  ${({ isFocused, error }) =>
-    isFocused &&
-    `
-    box-shadow: 0 0 0 3px ${
-      error
-        ? `${colors.red[500]}33`
-        : `${colors.blue[500]}33`
-    };
-  `}
-
-  transition: all 0.2s ease;
 `;
 
 export const SelectButton = styled.button<{
@@ -118,15 +64,15 @@ export const SelectButton = styled.button<{
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
   border-radius: ${({ theme }) => theme.radius}px;
   border: 1px solid
-    ${({ $variant, $error, $disabled, $isOpen }) => {
+    ${({ $error, $disabled, $isOpen }) => {
       if ($error) return colors.red[500];
       if ($disabled) return colors.basic[400];
       if ($isOpen) return colors.blue[500];
-      return $variant === "light" ? "transparent" : colors.basic[400];
+      return colors.basic[400];
     }};
   background-color: ${({ $variant, $disabled }) => {
     if ($disabled) return colors.basic[100];
-    return $variant === "light" ? colors.basic[0] : colors.basic[0];
+    return $variant === "light" ? colors.basic[0] : colors.basic[100];
   }};
   color: ${({ $disabled }) =>
     $disabled ? colors.basic[500] : colors.basic[900]};
@@ -135,10 +81,7 @@ export const SelectButton = styled.button<{
   &:hover:not(:disabled) {
     border-color: ${({ $error }) => {
       if ($error) return colors.red[500];
-      return colors.basic[500];
-    }};
-    background-color: ${({ $variant }) => {
-      return $variant === "light" ? colors.basic[50] : colors.basic[50];
+      return colors.blue[500];
     }};
   }
 
@@ -207,48 +150,23 @@ export const StyledSearchInput = styled.input`
   }
 `;
 
-export const OptionsContainer = styled.div<{
-  $maxHeight?: number;
-}>`
-  max-height: ${({ $maxHeight }) => ($maxHeight ? `${$maxHeight}px` : "300px")};
+export const StyledContextMenu2TextInputItem = styled(
+  ContextMenu2TextInputItem
+)`
+  input {
+    &::placeholder {
+      color: ${colors.basic[600]};
+    }
+  }
+`;
+
+export const OptionsContainer = styled.div`
+  max-height: 180px;
   overflow-y: auto;
 `;
 
 export const ErrorMessage = styled.span`
   color: ${colors.red[500]};
-  font-size: 12px;
-  margin-top: 4px;
-`;
-
-export const Description = styled.span`
-  color: ${colors.basic[600]};
-  font-size: 12px;
-  margin-top: 4px;
-`;
-
-export const Label = styled.label<{
-  required?: boolean;
-  disabled?: boolean;
-}>`
-  display: block;
-  margin-bottom: 4px;
   font-size: 14px;
-  color: ${({ disabled }) =>
-    disabled ? colors.basic[500] : colors.basic[900]};
-
-  ${({ required }) =>
-    required &&
-    `
-    &::after {
-      content: "*";
-      color: ${colors.red[500]};
-      margin-left: 4px;
-    }
-  `}
-`;
-
-export const SelectContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  margin-top: 4px;
 `; 
