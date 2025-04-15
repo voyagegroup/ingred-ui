@@ -24,8 +24,9 @@ export const Select2 = ({
   disabled = false,
   placeholder = "選択してください",
   size = "medium",
-  variant = "default",
-  searchPlaceholder = "検索...",
+  variant = "light",
+  searchPlaceholder = "検索",
+  noResultsMessage = "見つかりませんでした",
   error = false,
   errorMessage,
   ...rest
@@ -102,8 +103,8 @@ export const Select2 = ({
                   )}
                 </SelectLabel>
               </InputArea>
-              <IconArea>
-                <Icon name="arrow_down" size="md" />
+              <IconArea $size={size}>
+                <Icon name="arrow_down" color="currentColor" />
               </IconArea>
             </SelectButton>
           }
@@ -127,7 +128,7 @@ export const Select2 = ({
             ))
           ) : (
             <ContextMenu2CheckItem disabled>
-              オプションがありません
+              {noResultsMessage}
             </ContextMenu2CheckItem>
           )}
         </ContextMenu2>

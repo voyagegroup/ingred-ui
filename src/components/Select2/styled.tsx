@@ -1,41 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { Select2Size, Select2Props } from "./types";
+import { Select2Size, Select2Props, SELECT2_SIZES } from "./types";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
-
-export type SizeStyle = {
-  minHeight: string;
-  padding: string;
-  fontSize: string;
-  iconSize: string;
-};
-
-export const getSizeStyle = (size: Select2Size): SizeStyle => {
-  switch (size) {
-    case "small":
-      return {
-        minHeight: "32px",
-        padding: "4px 8px",
-        fontSize: "14px",
-        iconSize: "14px",
-      };
-    case "large":
-      return {
-        minHeight: "48px",
-        padding: "12px 16px",
-        fontSize: "16px",
-        iconSize: "16px",
-      };
-    case "medium":
-    default:
-      return {
-        minHeight: "40px",
-        padding: "8px 12px",
-        fontSize: "14px",
-        iconSize: "14px",
-      };
-  }
-};
 
 export const Select2Container = styled.div`
   display: flex;
@@ -55,14 +21,14 @@ export const SelectButton = styled.button<{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: ${({ $size }) => getSizeStyle($size).minHeight};
-  padding: ${({ $size }) => getSizeStyle($size).padding};
-  font-size: ${({ $size }) => getSizeStyle($size).fontSize};
+  min-height: ${({ $size }) => SELECT2_SIZES[$size].minHeight};
+  padding: ${({ $size }) => SELECT2_SIZES[$size].padding};
+  font-size: ${({ $size }) => SELECT2_SIZES[$size].fontSize};
   outline: none;
   border: none;
   background: none;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  border-radius: ${({ theme }) => theme.radius}px;
+  border-radius: ${({ $size }) => SELECT2_SIZES[$size].borderRadius};
   border: 1px solid
     ${({ $error, $disabled, $isOpen }) => {
       if ($error) return colors.red[500];
@@ -90,8 +56,8 @@ export const SelectButton = styled.button<{
     `
     box-shadow: 0 0 0 3px ${
       $error
-        ? `${colors.red[500]}33`
-        : `${colors.blue[500]}33`
+        ? `${colors.red[200]}66`
+        : `${colors.blue[200]}66`
     };
   `}
 
@@ -123,30 +89,23 @@ export const Placeholder = styled.span<{
 `;
 
 export const IconArea = styled.div<{
-  size?: Select2Size;
+  $size?: Select2Size;
 }>`
   display: flex;
   align-items: center;
-  font-size: ${({ size }) => (size ? getSizeStyle(size).iconSize : "14px")};
-  color: ${colors.basic[700]};
-`;
-
-export const StyledSearchInput = styled.input`
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-size: inherit;
-  padding: 0;
-  color: ${colors.basic[900]};
-  font-family: inherit;
-
-  &::placeholder {
-    color: ${colors.basic[600]};
+  color: ${colors.blue[900]};
+  width: ${({ $size }) => $size ? SELECT2_SIZES[$size].iconSize : "18px"};
+  aspect-ratio: 1;
+  svg {
+    width: 100%;
+    height: 100%;
   }
-
-  &:disabled {
-    cursor: not-allowed;
+    span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -169,4 +128,4 @@ export const ErrorMessage = styled.span`
   color: ${colors.red[500]};
   font-size: 14px;
   margin-top: 4px;
-`; 
+`;

@@ -1,37 +1,37 @@
 import { Theme } from "../../themes";
 
 export type Select2Size = "small" | "medium" | "large";
-export type Select2Variant = "default" | "light";
+export type Select2Variant = "light" | "dark";
 
 export interface Select2SizeConfig {
-  height: string;
   fontSize: string;
   padding: string;
-  iconSize: "sm" | "md" | "lg";
+  iconSize: string;
   borderRadius: string;
+  minHeight: string;
 }
 
 export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
   small: {
-    height: "28px",
     fontSize: "12px",
-    padding: "0 2px 0 6px",
-    iconSize: "md",
+    padding: "0 6px 0 6px",
+    iconSize: "16px",
     borderRadius: "4px",
+    minHeight: "28px",
   },
   medium: {
-    height: "32px",
     fontSize: "13px",
-    padding: "0 2px 0 6px",
-    iconSize: "md",
+    padding: "0 8px 0 8px",
+    iconSize: "18px",
     borderRadius: "6px",
+    minHeight: "32px",
   },
   large: {
-    height: "40px",
     fontSize: "14px",
-    padding: "0 4px 0 8px",
-    iconSize: "md",
+    padding: "0 10px 0 10px",
+    iconSize: "20px",
     borderRadius: "6px",
+    minHeight: "40px",
   },
 } as const;
 
@@ -95,9 +95,14 @@ export interface Select2Props {
   placeholder?: string;
   /**
    * 検索入力のプレースホルダー
-   * @default "検索..."
+   * @default "検索"
    */
   searchPlaceholder?: string;
+  /**
+   * 検索結果がない場合のメッセージ
+   * @default "オプションがありません"
+   */
+  noResultsMessage?: string;
   /**
    * エラー状態
    * @default false
