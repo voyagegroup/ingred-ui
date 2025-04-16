@@ -1,24 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
 import { FilterSelectInput } from "./index";
 import Icon from "../Icon";
 
-const meta = {
+const meta: Meta<typeof FilterSelectInput> = {
   title: "Components/Inputs/FilterSelectInput",
   component: FilterSelectInput,
   argTypes: {
     size: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["small", "medium", "large"],
+      description: "Size of the input",
     },
     variant: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["light", "dark"],
+      description: "Color variation",
     },
     searchPlaceholder: {
       control: {
@@ -27,9 +25,14 @@ const meta = {
       description: "検索窓のプレースホルダーテキスト",
     },
     disabled: {
-      control: "boolean",
-      description: "無効化状態",
-      defaultValue: false,
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether the input is disabled",
+    },
+    error: {
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether to display error state",
     },
   },
 } satisfies Meta<typeof FilterSelectInput>;
@@ -293,6 +296,43 @@ export const Disabled: StoryObj<typeof meta> = {
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </div>
+    );
+  },
+};
+
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    value: "value1",
+    options: ["value1", "value2"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="add_line" />,
+        label: "Option 1",
+      },
+      {
+        icon: <Icon name="add_line" />,
+        label: "Option 2",
+      },
+    ],
+    error: true,
+  },
+  render: (args) => {
+    const [value, setValue] = useState(args.value);
+    const [selectedIndex, setSelectedIndex] = useState(args.selectedIndex);
+
+    return (
+      <FilterSelectInput
+        {...args}
+        value={value}
+        selectedIndex={selectedIndex}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        onSelectChange={(newIndex) => {
+          setSelectedIndex(newIndex);
+        }}
+      />
     );
   },
 };

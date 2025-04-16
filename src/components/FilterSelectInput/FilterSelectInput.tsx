@@ -28,6 +28,7 @@ type FilterSelectInputProps = {
   variant?: FilterVariant;
   searchPlaceholder?: string;
   disabled?: boolean;
+  error?: boolean;
 };
 
 export const FilterSelectInput = ({
@@ -41,6 +42,7 @@ export const FilterSelectInput = ({
   variant = "dark",
   searchPlaceholder = "絞り込む",
   disabled = false,
+  error = false,
 }: FilterSelectInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
@@ -112,6 +114,7 @@ export const FilterSelectInput = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
       disabled={disabled}
+      error={error}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>
