@@ -96,7 +96,7 @@ export const SelectButton = styled.button<{
   border: none;
   background: none;
   cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  z-index: ${({ $multiple }) => ($multiple ? 1 : 3)};
+  z-index: ${({ $multiple }) => ($multiple ? 0 : 3)};
   transition: all 0.2s ease;
 `;
 
@@ -135,7 +135,7 @@ export const TagContainer = styled.div`
   width: fit-content;
   gap: 4px;
   max-width: calc(100% - 32px);
-  padding: 0 6px;
+  padding: 4px 6px;
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
@@ -146,6 +146,9 @@ export const TagContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  
+  min-height: 30px;
+  margin: 2px 0;
 `;
 
 export const StyledTag = styled(Tag)`

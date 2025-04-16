@@ -299,7 +299,13 @@ export const Select2 = ({
         
         {multiple && (
           <InputArea>
-            <TagContainer ref={tagContainerRef}>
+            <TagContainer 
+              ref={tagContainerRef}
+              onClick={(e) => {
+                // タグコンテナのクリックイベントを親（SelectButton）に伝播させない
+                e.stopPropagation();
+              }}
+            >
               {selectedOptions.map((option) => (
                 <StyledTag
                   key={option.value.toString()}
