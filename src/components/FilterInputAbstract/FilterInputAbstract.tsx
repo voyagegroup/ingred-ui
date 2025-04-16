@@ -56,6 +56,7 @@ type FilterInputAbstractProps = {
   onSelectChange: (index: number) => void;
   size?: "small" | "medium" | "large";
   disabled?: boolean;
+  error?: boolean;
 };
 export const FilterInputAbstract = ({
   selectedIndex,
@@ -64,6 +65,7 @@ export const FilterInputAbstract = ({
   children,
   size = "medium",
   disabled = false,
+  error = false,
 }: FilterInputAbstractProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
@@ -97,7 +99,7 @@ export const FilterInputAbstract = ({
   }, [setIsSmall]);
 
   return (
-    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size} data-disabled={disabled}>
+    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size} data-disabled={disabled} data-error={error}>
       <ContextMenu2Container>
         <ContextMenu2
           open={disabled ? false : isSelectOpen}

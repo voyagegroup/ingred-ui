@@ -51,6 +51,10 @@ export const FilterInputAbstract = styled.div`
   ${filterBaseStyle}
   overflow: hidden;
 
+  &[data-error="true"] {
+    border-color: ${colors.red[500]};
+  }
+
   &[data-disabled="true"] {
     background-color: ${colors.basic[200]};
     border-color: ${colors.basic[400]};

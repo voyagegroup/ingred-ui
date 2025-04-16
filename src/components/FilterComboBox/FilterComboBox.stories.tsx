@@ -329,3 +329,38 @@ export const Disabled: StoryObj<typeof meta> = {
     );
   },
 };
+
+/**
+ * エラー状態
+ */
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    values: ["パンダ", "ヒョウ"],
+    options: [
+      ["ウサギ", "うさぎ", "兎"],
+      ["パンダ", "ぱんだ", "熊猫"],
+      ["レッサーパンダ", "れっさーぱんだ"],
+      "ヒョウ",
+      "ライオン",
+    ],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+    ],
+    error: true,
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <FilterComboBox
+        {...args}
+        onChange={(values) => updateArgs({ values })}
+        onSelectChange={(selectedIndex) => updateArgs({ selectedIndex })}
+      />
+    );
+  },
+};

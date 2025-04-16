@@ -39,6 +39,7 @@ type FilterTagInputProps = {
   disabled?: boolean;
   applyButtonText?: string;
   cancelButtonText?: string;
+  error?: boolean;
 };
 
 export const FilterComboBox = ({
@@ -56,6 +57,7 @@ export const FilterComboBox = ({
   disabled = false,
   applyButtonText = "適用",
   cancelButtonText = "キャンセル",
+  error = false,
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [isComposing, setIsComposing] = useState(false);
@@ -237,6 +239,7 @@ export const FilterComboBox = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
       disabled={disabled}
+      error={error}
     >
       <styled.SelectContainer
         $variant={variant}
@@ -250,7 +253,11 @@ export const FilterComboBox = ({
                 type="button"
                 $variant={variant}
                 disabled={disabled}
-                onClick={() => !disabled && setIsOpen(true)}
+                aria-label="タグを追加"
+                onClick={() => {
+                  if (disabled) return;
+                  setIsOpen(!isOpen);
+                }}
               >
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
