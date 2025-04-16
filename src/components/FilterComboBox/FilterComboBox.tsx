@@ -17,7 +17,6 @@ import {
   ContextMenu2Container,
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
-  ContextMenu2SeparatorItem,
   ContextMenu2HeadingItem,
 } from "../ContextMenu2";
 import Button from "../Button";
@@ -35,10 +34,11 @@ type FilterTagInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   tagVariant?: FilterVariant;
-  placeholder?: string;
   searchPlaceholder?: string;
   noResultsMessage?: string;
   disabled?: boolean;
+  applyButtonText?: string;
+  cancelButtonText?: string;
 };
 
 export const FilterComboBox = ({
@@ -51,13 +51,13 @@ export const FilterComboBox = ({
   size = "medium",
   variant = "dark",
   tagVariant,
-  placeholder = "絞り込む",
   searchPlaceholder = "検索",
   noResultsMessage = "見つかりませんでした",
   disabled = false,
+  applyButtonText = "適用",
+  cancelButtonText = "キャンセル",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
-  const [userEnteredValue, setUserEnteredValue] = useState("");
   const [isComposing, setIsComposing] = useState(false);
   const [tempValues, setTempValues] = useState<string[]>(values);
   const [isOpen, setIsOpen] = useState(false);
@@ -137,19 +137,17 @@ export const FilterComboBox = ({
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setUserValue(event.target.value);
-      if (!isComposing) setUserEnteredValue(event.target.value);
     },
-    [isComposing, setUserValue, setUserEnteredValue],
+    [setUserValue],
   );
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
-        setUserEnteredValue(userValue);
         return;
       }
     },
-    [userValue, setUserEnteredValue],
+    [],
   );
 
   const handleRemove = useCallback(
@@ -168,7 +166,6 @@ export const FilterComboBox = ({
         setTempValues(values);
       }
       setUserValue("");
-      setUserEnteredValue("");
     },
     [values],
   );
@@ -207,10 +204,10 @@ export const FilterComboBox = ({
   const stickyFooter = useMemo(() => (
     <ContextMenu2ButtonControlsItem>
       <Button size="small" color="clear" onClick={handleCancel}>
-        キャンセル
+      {cancelButtonText}
       </Button>
       <Button size="small" onClick={handleApply}>
-        適用
+      {applyButtonText}
       </Button>
     </ContextMenu2ButtonControlsItem>
   ), [handleCancel, handleApply]);
@@ -263,6 +260,7 @@ export const FilterComboBox = ({
             onOpenChange={(open) => !disabled && handleOpenChange(open)}
             stickyHeader={stickyHeader}
             stickyFooter={stickyFooter}
+            noResultsMessage={noResultsMessage}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => (

@@ -272,6 +272,7 @@ export const Select2 = ({
                 </IconArea>
               </SelectButton>
             }
+            noResultsMessage={noResultsMessage}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => (
