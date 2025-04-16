@@ -47,6 +47,7 @@ import { ContextMenu2SwitchItem } from "./ContextMenu2SwitchItem";
 import { ContextMenu2TriggerItem } from "./ContextMenu2TriggerItem";
 import { ContextMenu2SortableContext } from "./ContextMenu2SortableItem";
 import { ContextMenu2TextInputItem } from "./ContextMenu2TextInputItem";
+import { ContextMenu2NoResultsMessage } from "./ContextMenu2NoResultsMessage";
 import { depth } from "../../styles/depth";
 
 //
@@ -116,6 +117,10 @@ type ContextMenu2Props = {
    * パネルの下部に固定表示される要素（適用ボタンなど）
    */
   stickyFooter?: ReactNode;
+  /**
+   * 検索結果が0件の場合に表示するメッセージ
+   */
+  noResultsMessage?: string;
 };
 
 // Fragment を展開して子要素をフラット化する
@@ -193,6 +198,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       onOpenChange,
       stickyHeader,
       stickyFooter,
+      noResultsMessage,
     },
     ref
   ) => {
@@ -307,6 +313,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       ContextMenu2SwitchItem.displayName,
       ContextMenu2TriggerItem.displayName,
       ContextMenu2TextInputItem.displayName,
+      ContextMenu2NoResultsMessage.displayName,
     ];
 
     useEffect(() => {
@@ -333,6 +340,38 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       child,
       id: i,
     }));
+
+    const renderChildren = () => {
+      const childrenArray = React.Children.toArray(children);
+      const filteredChildren = childrenArray.filter((child) => {
+        if (!React.isValidElement(child)) return false;
+        if (
+          typeof child.type === "string" ||
+          !("displayName" in child.type) ||
+          typeof child.type.displayName !== "string"
+        ) {
+          return false;
+        }
+        return focusableItems.includes(child.type.displayName);
+      });
+
+      if (filteredChildren.length === 0 && noResultsMessage) {
+        return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
+      }
+
+      return filteredChildren.map((child, index) => {
+        if (!React.isValidElement(child)) return child;
+        return React.cloneElement(child, {
+          tabIndex: activeIndex === index ? 0 : -1,
+          ref: (el: HTMLElement) => {
+            listRef.current[index] = el;
+          },
+          ...getItemProps(),
+          ...child.props,
+          key: flattenedChildren[index]?.id,
+        });
+      });
+    };
 
     return (
       <>
@@ -378,29 +417,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                         $hasStickyHeader={!!stickyHeader}
                         $hasStickyFooter={!!stickyFooter}
                       >
-                        {flattenedChildren.map(({ child, id }, index) => {
-                          if (!isValidElement(child)) return child;
-                          if (
-                            typeof child.type === "string" ||
-                            !("displayName" in child.type) ||
-                            typeof child.type.displayName !== "string"
-                          ) {
-                            return child;
-                          }
-
-                          if (!focusableItems.includes(child.type.displayName))
-                            return child;
-
-                          return cloneElement(child, {
-                            tabIndex: activeIndex === index ? 0 : -1,
-                            ref: (el: HTMLElement) => {
-                              listRef.current[index] = el;
-                            },
-                            ...getItemProps(),
-                            ...child.props,
-                            key: id,
-                          });
-                        })}
+                        {renderChildren()}
                       </ContentContainer>
                       {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
                     </ContextMenu2SortableContext.Provider>
