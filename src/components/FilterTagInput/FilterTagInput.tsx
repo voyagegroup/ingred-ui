@@ -167,7 +167,7 @@ const FilterInputPanel = ({
                     </styled.PanelSelectTriggerIcon>
                   </styled.PanelSelectTrigger>
                 }
-                onOpenChange={(open) => setIsSelectOpen(open)}
+                onOpenChange={setIsSelectOpen}
               >
                 {modifiedSelectOptions.map(({ label, icon }, i) => (
                   <ContextMenu2CheckItem
@@ -253,6 +253,7 @@ type FilterTagInputProps = {
   variant?: "light" | "dark";
   tagVariant?: "light" | "dark";
   menuIconSize?: IconSize | number;
+  disabled?: boolean;
 };
 export const FilterTagInput = ({
   title,
@@ -265,6 +266,7 @@ export const FilterTagInput = ({
   variant = "dark",
   tagVariant,
   menuIconSize = 22,
+  disabled = false,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -401,6 +403,7 @@ export const FilterTagInput = ({
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
+      disabled={disabled}
     >
       <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
         <styled.InlineFieldInner ref={inlineFieldInnerEl}>
@@ -439,6 +442,7 @@ export const FilterTagInput = ({
         data-overflowing={isInlineOverflowing}
         type="button"
         onClick={() => setIsModalOpen(true)}
+        disabled={disabled}
       >
         <Icon
           name={isSmall ? "filter" : "expand_diagonal_s_fill"}

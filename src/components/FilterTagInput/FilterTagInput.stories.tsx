@@ -228,3 +228,53 @@ export const Variants: StoryObj<typeof meta> = {
     },
   },
 };
+
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    title: "無効状態のサンプル",
+    values: ["テキスト", "value2", "value3"],
+    selectedIndex: 0,
+    disabled: true,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>
+          <p style={{ marginBottom: "0.5rem" }}>無効状態</p>
+          <FilterTagInput
+            {...args}
+            onChange={(newValues) => updateArgs({ values: newValues })}
+            onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+          />
+        </div>
+        <div>
+          <p style={{ marginBottom: "0.5rem" }}>通常状態</p>
+          <FilterTagInput
+            {...args}
+            disabled={false}
+            onChange={(newValues) => updateArgs({ values: newValues })}
+            onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+          />
+        </div>
+      </div>
+    );
+  },
+};

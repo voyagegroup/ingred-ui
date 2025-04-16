@@ -68,6 +68,14 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   background-color: ${colors.basic[0]};
   box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:disabled {
+    color: ${colors.basic[400]};
+    background-color: ${colors.basic[200]};
+    cursor: not-allowed;
+    box-shadow: none;
+  }
 
   &:where([data-overflowing="true"]) {
     display: grid;
@@ -90,6 +98,12 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
     border: 1px solid ${colors.basic[400]};
     border-radius: 4px;
     box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
+
+    &:disabled {
+      border-color: ${colors.basic[300]};
+      background-color: ${colors.basic[200]};
+      box-shadow: none;
+    }
   }
 
   &:where(${FilterInputAbstract}[data-small="true"] *:active:not(:disabled)) {
