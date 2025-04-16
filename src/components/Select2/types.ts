@@ -85,9 +85,14 @@ export interface Select2Props {
   size?: Select2Size;
   /**
    * コンポーネントのバリアント
-   * @default "default"
+   * @default "light"
    */
   variant?: Select2Variant;
+  /**
+   * タグのバリアント（複数選択時）
+   * @default "light"
+   */
+  tagVariant?: Select2Variant;
   /**
    * 無効状態
    * @default false

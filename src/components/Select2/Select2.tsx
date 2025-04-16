@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState, useRef, useEffect } from "react";
 import Icon from "../Icon";
 import Button from "../Button";
 import {
@@ -10,6 +10,7 @@ import {
 } from "../ContextMenu2";
 import {
   Select2Container,
+  SelectContainer,
   SelectButton,
   InputArea,
   SelectLabel,
@@ -30,6 +31,7 @@ export const Select2 = ({
   placeholder = "選択してください",
   size = "medium",
   variant = "light",
+  tagVariant = "light",
   searchPlaceholder = "検索",
   noResultsMessage = "見つかりませんでした",
   error = false,
@@ -41,6 +43,9 @@ export const Select2 = ({
   const [searchValue, setSearchValue] = useState("");
   // 複数選択時の一時的な選択状態
   const [tempSelectedValues, setTempSelectedValues] = useState<(string | number)[]>([]);
+  // タグリスト部分で、CSS の overflow が発生しているか否か
+  const [isTagOverflowing, setIsTagOverflowing] = useState(false);
+  const tagContainerRef = useRef<HTMLDivElement>(null);
 
   // 単一/複数選択モードに関わらず、現在の選択値を配列として扱う
   const selectedValues = useMemo(() => {
@@ -138,48 +143,69 @@ export const Select2 = ({
     );
   }, [options, searchValue]);
 
+  // tagContainerRef の大きさを監視して、
+  // overflow したら isTagOverflowing を true にする
+  const checkTagOverflow = useCallback(() => {
+    if (!tagContainerRef.current) return;
+
+    setIsTagOverflowing(
+      tagContainerRef.current.scrollWidth > tagContainerRef.current.clientWidth
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!window.ResizeObserver) return;
+    if (!tagContainerRef.current) return;
+
+    checkTagOverflow();
+
+    const resizeObserver = new window.ResizeObserver(() => {
+      if (!tagContainerRef.current) return;
+      checkTagOverflow();
+    });
+
+    resizeObserver.observe(tagContainerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [checkTagOverflow, selectedOptions]);
+
   return (
     <Select2Container>
-      <ContextMenu2Container>
-        <ContextMenu2
-          open={isOpen}
-          onOpenChange={handleOpenChange}
-          trigger={
-            <SelectButton
-              type="button"
-              $size={size}
-              $variant={variant}
-              $error={error}
-              $disabled={disabled}
-              $isOpen={isOpen}
-              $hasValue={multiple ? (Array.isArray(value) && value.length > 0) : !!selectedOption}
-              disabled={disabled}
-              role="listbox"
-              aria-expanded={isOpen}
-              aria-haspopup="true"
-              aria-invalid={error}
-              {...rest}
-            >
-              <InputArea $size={size} $variant={variant} $disabled={disabled}>
-                {multiple ? (
-                  selectedOptions.length > 0 ? (
-                    <TagContainer>
-                      {selectedOptions.map((option) => (
-                        <StyledTag
-                          key={option.value.toString()}
-                          label={option.label}
-                          size="small"
-                          disabled={disabled}
-                          onRemove={disabled ? undefined : () => handleRemoveTag(option.value)}
-                        />
-                      ))}
-                    </TagContainer>
-                  ) : (
-                    <Placeholder $variant={variant} $disabled={disabled}>
-                      {placeholder}
-                    </Placeholder>
-                  )
-                ) : (
+      <SelectContainer 
+        $size={size}
+        $variant={variant} 
+        $disabled={disabled}
+        $error={error}
+        $isOpen={isOpen}
+        data-overflowing={isTagOverflowing}
+        style={{
+          cursor: !multiple && !disabled ? 'pointer' : 'default'
+        }}
+      >
+        <ContextMenu2Container>
+          <ContextMenu2
+            open={isOpen}
+            onOpenChange={handleOpenChange}
+            trigger={
+              <SelectButton
+                type="button"
+                $size={size}
+                $variant={variant}
+                $error={error}
+                $disabled={disabled}
+                $isOpen={isOpen}
+                $hasValue={multiple ? (Array.isArray(value) && value.length > 0) : !!selectedOption}
+                $multiple={multiple}
+                disabled={disabled}
+                role="listbox"
+                aria-expanded={isOpen}
+                aria-haspopup="true"
+                aria-invalid={error}
+                {...rest}
+              >
+                {!multiple && (
                   <SelectLabel>
                     {selectedOption ? (
                       selectedOption.label
@@ -190,67 +216,120 @@ export const Select2 = ({
                     )}
                   </SelectLabel>
                 )}
-              </InputArea>
-              <IconArea $size={size} $disabled={disabled}>
-                <Icon name="arrow_down" color="currentColor" />
-              </IconArea>
-            </SelectButton>
-          }
-        >
-          <StyledContextMenu2TextInputItem
-            autoFocus
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder={searchPlaceholder}
-          />
-          {filteredOptions.length > 0 ? (
-            filteredOptions.map((option) => (
-              <ContextMenu2CheckItem
-                key={option.value.toString()}
-                checked={multiple 
-                  ? tempSelectedValues.includes(option.value)
-                  : option.value === value
-                }
-                onChange={() => 
-                  multiple 
-                    ? handleMultipleSelect(option)
-                    : handleSingleSelect(option)
-                }
-                closeOnChange={!multiple}
-                disabled={option.disabled}
-              >
-                {option.label}
+                <IconArea $size={size} $disabled={disabled}>
+                  <Icon name="arrow_down" color="currentColor" />
+                </IconArea>
+              </SelectButton>
+            }
+          >
+            <StyledContextMenu2TextInputItem
+              autoFocus
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              placeholder={searchPlaceholder}
+            />
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((option) => (
+                <ContextMenu2CheckItem
+                  key={option.value.toString()}
+                  checked={multiple 
+                    ? tempSelectedValues.includes(option.value)
+                    : option.value === value
+                  }
+                  onChange={() => 
+                    multiple 
+                      ? handleMultipleSelect(option)
+                      : handleSingleSelect(option)
+                  }
+                  closeOnChange={!multiple}
+                  disabled={option.disabled}
+                >
+                  {option.label}
+                </ContextMenu2CheckItem>
+              ))
+            ) : (
+              <ContextMenu2CheckItem disabled>
+                {noResultsMessage}
               </ContextMenu2CheckItem>
-            ))
+            )}
+            {multiple && (
+              <>
+                <ContextMenu2SeparatorItem />
+                <ContextMenu2ButtonControlsItem>
+                  <Button
+                    type="button"
+                    size="small"
+                    color="clear"
+                    onClick={handleCancel}
+                  >
+                    {cancelButtonText}
+                  </Button>
+                  <Button
+                    type="button"
+                    size="small"
+                    onClick={handleApply}
+                  >
+                    {applyButtonText}
+                  </Button>
+                </ContextMenu2ButtonControlsItem>
+              </>
+            )}
+          </ContextMenu2>
+        </ContextMenu2Container>
+        
+        {multiple ? (
+          selectedOptions.length > 0 ? (
+            <TagContainer 
+              ref={tagContainerRef}
+              onClick={(e: React.MouseEvent) => {
+                // タグコンテナのクリックイベントを親（SelectButton）に伝播させない
+                e.stopPropagation();
+              }}
+            >
+              {selectedOptions.map((option) => (
+                <StyledTag
+                  key={option.value.toString()}
+                  label={option.label}
+                  size={size}
+                  variant={tagVariant}
+                  disabled={disabled}
+                  onRemove={disabled ? undefined : () => handleRemoveTag(option.value)}
+                />
+              ))}
+            </TagContainer>
           ) : (
-            <ContextMenu2CheckItem disabled>
-              {noResultsMessage}
-            </ContextMenu2CheckItem>
-          )}
-          {multiple && (
-            <>
-              <ContextMenu2SeparatorItem />
-              <ContextMenu2ButtonControlsItem>
-                <Button
-                  type="button"
-                  size="small"
-                  color="clear"
-                  onClick={handleCancel}
-                >
-                  {cancelButtonText}
-                </Button>
-                <Button
-                  type="button"
-                  size="small"
-                  onClick={handleApply}
-                >
-                  {applyButtonText}
-                </Button>
-              </ContextMenu2ButtonControlsItem>
-            </>
-          )}
-        </ContextMenu2>
-      </ContextMenu2Container>
+            <InputArea 
+              $size={size} 
+              $variant={variant} 
+              $disabled={disabled}
+              $multiple={multiple}
+            >
+              <Placeholder $variant={variant} $disabled={disabled}>
+                {placeholder}
+              </Placeholder>
+            </InputArea>
+          )
+        ) : (
+          <InputArea 
+            $size={size} 
+            $variant={variant} 
+            $disabled={disabled}
+            $multiple={multiple}
+            onClick={() => !disabled && setIsOpen(true)}
+            style={{ cursor: disabled ? 'not-allowed' : 'pointer', display: 'none' }}
+          >
+            <SelectLabel>
+              {selectedOption ? (
+                selectedOption.label
+              ) : (
+                <Placeholder $variant={variant} $disabled={disabled}>
+                  {placeholder}
+                </Placeholder>
+              )}
+            </SelectLabel>
+          </InputArea>
+        )}
+      </SelectContainer>
     </Select2Container>
   );
 }; 

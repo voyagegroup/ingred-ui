@@ -10,47 +10,38 @@ export const Select2Container = styled.div`
   width: 100%;
 `;
 
-export const SelectButton = styled.button<{
-  $size: Select2Size;
+export const SelectContainer = styled.div<{
+  $size?: Select2Size;
   $variant?: Select2Props["variant"];
-  $error?: boolean;
   $disabled?: boolean;
+  $error?: boolean;
   $isOpen?: boolean;
-  $hasValue?: boolean;
 }>`
+  position: relative;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: ${({ $size }) => SELECT2_SIZES[$size].minHeight};
-  padding: ${({ $size }) => SELECT2_SIZES[$size].padding};
-  font-size: ${({ $size }) => SELECT2_SIZES[$size].fontSize};
-  outline: none;
-  border: none;
-  background: none;
-  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
-  border-radius: ${({ $size }) => SELECT2_SIZES[$size].borderRadius};
-  border: 1px solid
-    ${({ $error, $disabled, $isOpen }) => {
-      if ($error) return colors.red[500];
-      if ($disabled) return colors.basic[400];
-      if ($isOpen) return colors.blue[500];
-      return colors.basic[400];
-    }};
+  min-height: ${({ $size = "medium" }) => SELECT2_SIZES[$size].minHeight};
   background-color: ${({ $variant, $disabled }) => {
     if ($disabled) return colors.basic[200];
     return $variant === "light" ? colors.basic[0] : colors.basic[100];
   }};
- 
-  text-align: left;
-
-  &:hover:not(:disabled) {
+  border: 1px solid ${({ $error, $disabled, $isOpen }) => {
+    if ($error) return colors.red[500];
+    if ($disabled) return colors.basic[400];
+    if ($isOpen) return colors.blue[500];
+    return colors.basic[400];
+  }};
+  border-radius: 6px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover:not([disabled]) {
     border-color: ${({ $error }) => {
       if ($error) return colors.red[500];
       return colors.blue[500];
     }};
   }
-
+  
   ${({ $isOpen, $error }) =>
     $isOpen &&
     `
@@ -60,7 +51,52 @@ export const SelectButton = styled.button<{
         : `${colors.blue[200]}66`
     };
   `}
+  
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0 32px 0 auto;
+    display: block;
+    width: 4px;
+    opacity: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(4, 28, 51, 0),
+      rgba(4, 28, 51, 0.16)
+    );
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+  
+  &:where([data-overflowing="true"])::before {
+    opacity: 1;
+  }
+`;
 
+export const SelectButton = styled.button<{
+  $size: Select2Size;
+  $variant?: Select2Props["variant"];
+  $error?: boolean;
+  $disabled?: boolean;
+  $isOpen?: boolean;
+  $hasValue?: boolean;
+  $multiple?: boolean;
+}>`
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: ${({ $multiple }) => ($multiple ? "flex-end" : "space-between")};
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  font-size: ${({ $size }) => SELECT2_SIZES[$size].fontSize};
+  outline: none;
+  border: none;
+  background: none;
+  cursor: ${({ $disabled }) => ($disabled ? "not-allowed" : "pointer")};
+  z-index: ${({ $multiple }) => ($multiple ? 1 : 3)};
   transition: all 0.2s ease;
 `;
 
@@ -68,11 +104,18 @@ export const InputArea = styled.div<{
   $size?: Select2Size;
   $variant?: Select2Props["variant"];
   $disabled?: boolean;
+  $multiple?: boolean;
 }>`
   display: flex;
   flex-direction: column;
   flex: 1;
   overflow: hidden;
+  position: relative;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: ${({ $multiple }) => ($multiple ? "auto" : 0)};
+  pointer-events: ${({ $multiple }) => ($multiple ? "auto" : "none")};
 `;
 
 export const SelectLabel = styled.span`
@@ -80,17 +123,37 @@ export const SelectLabel = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 0 6px;
+  width: 100%;
+  text-align: left;
 `;
 
 export const TagContainer = styled.div`
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  width: fit-content;
   gap: 4px;
-  overflow: hidden;
+  max-width: calc(100% - 32px);
+  padding: 0 6px;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  z-index: 2;
+  pointer-events: all;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const StyledTag = styled(Tag)`
-  margin: 2px 0;
+  flex-shrink: 0;
+  margin: 0;
+  display: inline-flex;
+  align-self: center;
+  pointer-events: all;
 `;
 
 export const Placeholder = styled.span<{
@@ -99,6 +162,7 @@ export const Placeholder = styled.span<{
 }>`
   color: ${({ $disabled }) =>
     $disabled ? colors.basic[400] : colors.basic[900]};
+  padding: 0 6px;
 `;
 
 export const IconArea = styled.div<{
@@ -111,6 +175,9 @@ export const IconArea = styled.div<{
     $disabled ? colors.basic[400] : colors.basic[900]};
   width: ${({ $size }) => $size ? SELECT2_SIZES[$size].iconSize : "18px"};
   aspect-ratio: 1;
+  margin-right: 8px;
+  position: relative;
+  z-index: 4;
   svg {
     width: 100%;
     height: 100%;
