@@ -169,10 +169,17 @@ const StickyFooter = styled.div`
   margin: 0 8px 0;
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{
+  $hasStickyHeader?: boolean;
+  $hasStickyFooter?: boolean;
+}>`
   flex: 1;
   overflow: auto;
-  padding: 8px 0;
+  padding: ${({ $hasStickyHeader, $hasStickyFooter }) => {
+    const top = $hasStickyHeader ? "8px" : "0";
+    const bottom = $hasStickyFooter ? "8px" : "0";
+    return `${top} 0 ${bottom}`;
+  }};
 `;
 
 export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
@@ -343,20 +350,16 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                 context={context}
                 modal={false}
                 initialFocus={-1}
+                returnFocus={false}
               >
                 <ContextMenu2Panel
                   ref={refs.setFloating}
                   style={{
                     ...floatingStyles,
-                    width,
-                    minWidth,
-                    // ソートによるドラッグ移動中、overflow: auto にしていると、
-                    // 移動場所中にスクロール可・不可の切り替えが連続的に発生しガタツキが発生する。
-                    // ソートドラッグ中は overflow: auto を抑止する。
-                    overflow: isSorting ? "visible" : undefined,
+                    width: width ?? "auto",
+                    minWidth: minWidth ?? "auto",
                   }}
                   {...getFloatingProps()}
-                  tabIndex={-1}
                 >
                   <ContextMenu2Context.Provider
                     value={{
@@ -371,13 +374,10 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                       value={{ isSorting, setIsSorting }}
                     >
                       {stickyHeader && <StickyHeader>{stickyHeader}</StickyHeader>}
-                      <ContentContainer>
-                        {/*
-                          上下矢印キーでメニュー内の項目を操作できるようにする
-                          このとき、上下移動の対象となるコンポーネントだけに
-                          tabIndex や Floating UI の props を暗黙で付与して child を返す。
-                          focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
-                        */}
+                      <ContentContainer
+                        $hasStickyHeader={!!stickyHeader}
+                        $hasStickyFooter={!!stickyFooter}
+                      >
                         {flattenedChildren.map(({ child, id }, index) => {
                           if (!isValidElement(child)) return child;
                           if (
