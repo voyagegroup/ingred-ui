@@ -267,3 +267,74 @@ export const Variants: StoryObj<typeof meta> = {
     },
   },
 };
+
+/**
+ * 無効状態のサンプル
+ */
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    values: ["パンダ", "ヒョウ"],
+    options: [
+      ["ウサギ", "うさぎ", "兎"],
+      ["パンダ", "ぱんだ", "熊猫"],
+      ["レッサーパンダ", "れっさーぱんだ"],
+      "ヒョウ",
+      "ライオン",
+      "tiger",
+      "giraffe",
+      ["🐘", "ゾウ", "ぞう", "象"],
+    ],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
+    ],
+    disabled: true,
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+    const handleChange = (values: string[]) => updateArgs({ values });
+    const handleSelectChange = (selectedIndex: number) =>
+      updateArgs({ selectedIndex });
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>
+          <p>無効状態</p>
+          <FilterComboBox
+            {...args}
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
+        <div>
+          <p>通常状態</p>
+          <FilterComboBox
+            {...args}
+            disabled={false}
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
+      </div>
+    );
+  },
+};

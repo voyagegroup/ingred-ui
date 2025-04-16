@@ -35,6 +35,7 @@ type FilterTagInputProps = {
   variant?: FilterVariant;
   tagVariant?: FilterVariant;
   placeholder?: string;
+  disabled?: boolean;
 };
 
 export const FilterComboBox = ({
@@ -48,6 +49,7 @@ export const FilterComboBox = ({
   variant = "dark",
   tagVariant,
   placeholder = "絞り込む",
+  disabled = false,
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
   const [userEnteredValue, setUserEnteredValue] = useState("");
@@ -196,22 +198,30 @@ export const FilterComboBox = ({
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
+      disabled={disabled}
     >
       <styled.SelectContainer
-        data-overflowing={isInlineOverflowing}
         $variant={variant}
+        ref={inlineFieldEl}
+        data-overflowing={isInlineOverflowing}
       >
         <ContextMenu2Container>
           <ContextMenu2
-            open={isOpen}
+            open={isOpen && !disabled}
+            width={252}
             trigger={
-              <styled.Select type="button" $variant={variant}>
+              <styled.Select
+                type="button"
+                $variant={variant}
+                disabled={disabled}
+                onClick={() => !disabled && setIsOpen(true)}
+              >
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={handleOpenChange}
+            onOpenChange={(open) => !disabled && handleOpenChange(open)}
           >
             <styled.StyledContextMenu2TextInputItem
               autoFocus

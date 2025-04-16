@@ -7,7 +7,7 @@ type StyledProps = {
   $variant: FilterVariant;
 };
 
-export const SelectContainer = styled.div`
+export const SelectContainer = styled.div<StyledProps>`
   position: relative;
   display: flex;
   align-items: center;
@@ -15,8 +15,7 @@ export const SelectContainer = styled.div`
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
-  background-color: ${({ $variant }: StyledProps) =>
-    FILTER_VARIANTS[$variant].background};
+  background-color: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
 
   &::before {
     content: "";
@@ -67,20 +66,22 @@ export const Select = styled.button<StyledProps>`
   display: flex;
   justify-content: end;
   align-items: center;
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 0 8px 0 54px;
   border: 0;
   background-color: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
   outline-offset: -1px;
-  color: ${colors.basic[900]};
   cursor: pointer;
+  transition: background-color 0.2s ease;
 
-  // &:focus {
-  //   isolation: isolate;
-  //   z-index: 1;
-  // }
+  &:hover:not([disabled]) {
+    background: ${colors.basic[100]};
+  }
+
+  svg {
+    transition: color 0.2s ease;
+  }
 `;
 
 export const SelectIcon = styled.span`

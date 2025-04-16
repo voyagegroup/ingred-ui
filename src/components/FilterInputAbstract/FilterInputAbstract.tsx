@@ -33,8 +33,15 @@ export const FilterTag = ({
   variant = "dark",
   onRemove,
 }: FilterTagProps) => {
+  const { disabled } = React.useContext(FilterInputContext);
   return (
-    <Tag label={label} size={size} variant={variant} onRemove={onRemove} />
+    <Tag
+      label={label}
+      size={size}
+      variant={variant}
+      onRemove={disabled ? undefined : onRemove}
+      disabled={disabled}
+    />
   );
 };
 
