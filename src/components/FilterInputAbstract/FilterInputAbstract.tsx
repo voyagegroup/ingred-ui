@@ -8,7 +8,7 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
-import { ContextMenu2, ContextMenu2Container } from "../ContextMenu2";
+import { ContextMenu2, ContextMenu2Container, ContextMenu2CheckItem } from "../ContextMenu2";
 import * as styled from "./styled";
 import { FilterSize } from "./types";
 import { Tag } from "../Tag";
@@ -120,7 +120,7 @@ export const FilterInputAbstract = ({
           onOpenChange={(open) => !disabled && setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
-            <styled.StyledContextMenu2CheckItem
+            <ContextMenu2CheckItem
               key={label}
               prepend={icon}
               checked={selectedIndex === i}
@@ -128,7 +128,7 @@ export const FilterInputAbstract = ({
               disabled={disabled}
             >
               {label}
-            </styled.StyledContextMenu2CheckItem>
+            </ContextMenu2CheckItem>
           ))}
         </ContextMenu2>
       </ContextMenu2Container>
