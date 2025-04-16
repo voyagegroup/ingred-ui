@@ -177,6 +177,48 @@ export const Select2 = ({
     };
   }, [checkTagOverflow, selectedOptions]);
 
+  // 検索窓を上部に固定
+  const stickyHeader = useMemo(() => (
+    <StyledContextMenu2TextInputItem
+      autoFocus
+      value={searchValue}
+      onChange={(e) => setSearchValue(e.target.value)}
+      placeholder={searchPlaceholder}
+    />
+  ), [searchValue, searchPlaceholder]);
+
+  // 適用/キャンセルボタンを下部に固定（複数選択モードの場合のみ）
+  const stickyFooter = useMemo(() => {
+    if (!multiple) return null;
+    
+    return (
+      <ContextMenu2ButtonControlsItem>
+        <Button
+          size="small"
+          color="primary"
+          onClick={handleApply}
+          disabled={tempSelectedValues.length === 0}
+        >
+          {applyButtonText}
+        </Button>
+        <Button
+          size="small"
+          color="clear"
+          onClick={handleCancel}
+        >
+          {cancelButtonText}
+        </Button>
+      </ContextMenu2ButtonControlsItem>
+    );
+  }, [
+    multiple, 
+    tempSelectedValues, 
+    handleApply, 
+    handleCancel, 
+    applyButtonText, 
+    cancelButtonText
+  ]);
+
   return (
     <Select2Container>
       <SelectContainer 
@@ -194,6 +236,8 @@ export const Select2 = ({
           <ContextMenu2
             open={isOpen}
             onOpenChange={handleOpenChange}
+            stickyHeader={stickyHeader}
+            stickyFooter={stickyFooter}
             trigger={
               <SelectButton
                 type="button"
@@ -228,12 +272,6 @@ export const Select2 = ({
               </SelectButton>
             }
           >
-            <StyledContextMenu2TextInputItem
-              autoFocus
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder={searchPlaceholder}
-            />
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => (
                 <ContextMenu2CheckItem
@@ -254,85 +292,28 @@ export const Select2 = ({
                 </ContextMenu2CheckItem>
               ))
             ) : (
-              <ContextMenu2CheckItem disabled>
-                {noResultsMessage}
-              </ContextMenu2CheckItem>
-            )}
-            {multiple && (
-              <>
-                <ContextMenu2SeparatorItem />
-                <ContextMenu2ButtonControlsItem>
-                  <Button
-                    type="button"
-                    size="small"
-                    color="clear"
-                    onClick={handleCancel}
-                  >
-                    {cancelButtonText}
-                  </Button>
-                  <Button
-                    type="button"
-                    size="small"
-                    onClick={handleApply}
-                  >
-                    {applyButtonText}
-                  </Button>
-                </ContextMenu2ButtonControlsItem>
-              </>
+              <ContextMenu2SeparatorItem label={noResultsMessage} />
             )}
           </ContextMenu2>
         </ContextMenu2Container>
         
-        {multiple ? (
-          selectedOptions.length > 0 ? (
-            <TagContainer 
-              ref={tagContainerRef}
-              onClick={(e: React.MouseEvent) => {
-                // タグコンテナのクリックイベントを親（SelectButton）に伝播させない
-                e.stopPropagation();
-              }}
-            >
+        {multiple && (
+          <InputArea>
+            <TagContainer ref={tagContainerRef}>
               {selectedOptions.map((option) => (
                 <StyledTag
                   key={option.value.toString()}
                   label={option.label}
                   size={size}
                   variant={computedTagVariant}
-                  disabled={disabled}
-                  onRemove={disabled ? undefined : () => handleRemoveTag(option.value)}
+                  onRemove={
+                    disabled
+                      ? undefined
+                      : () => handleRemoveTag(option.value)
+                  }
                 />
               ))}
             </TagContainer>
-          ) : (
-            <InputArea 
-              $size={size} 
-              $variant={variant} 
-              $disabled={disabled}
-              $multiple={multiple}
-            >
-              <Placeholder $variant={variant} $disabled={disabled}>
-                {placeholder}
-              </Placeholder>
-            </InputArea>
-          )
-        ) : (
-          <InputArea 
-            $size={size} 
-            $variant={variant} 
-            $disabled={disabled}
-            $multiple={multiple}
-            onClick={() => !disabled && setIsOpen(true)}
-            style={{ cursor: disabled ? 'not-allowed' : 'pointer', display: 'none' }}
-          >
-            <SelectLabel>
-              {selectedOption ? (
-                selectedOption.label
-              ) : (
-                <Placeholder $variant={variant} $disabled={disabled}>
-                  {placeholder}
-                </Placeholder>
-              )}
-            </SelectLabel>
           </InputArea>
         )}
       </SelectContainer>
