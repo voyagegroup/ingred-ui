@@ -90,7 +90,8 @@ export interface Select2Props {
   variant?: Select2Variant;
   /**
    * タグのバリアント（複数選択時）
-   * @default "light"
+   * @default 指定がない場合、Select2のvariantに応じて自動的に決定されます。
+   * variant="light"の場合はdark、variant="dark"の場合はlightが適用されます。
    */
   tagVariant?: Select2Variant;
   /**

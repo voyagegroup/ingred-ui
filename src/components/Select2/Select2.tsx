@@ -31,7 +31,7 @@ export const Select2 = ({
   placeholder = "選択してください",
   size = "medium",
   variant = "light",
-  tagVariant = "light",
+  tagVariant,
   searchPlaceholder = "検索",
   noResultsMessage = "見つかりませんでした",
   error = false,
@@ -46,6 +46,12 @@ export const Select2 = ({
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isTagOverflowing, setIsTagOverflowing] = useState(false);
   const tagContainerRef = useRef<HTMLDivElement>(null);
+
+  // variant に応じたタグのバリアント（明示的に指定がある場合はそれを優先）
+  const computedTagVariant = useMemo(() => {
+    if (tagVariant) return tagVariant;
+    return variant === "light" ? "dark" : "light";
+  }, [variant, tagVariant]);
 
   // 単一/複数選択モードに関わらず、現在の選択値を配列として扱う
   const selectedValues = useMemo(() => {
@@ -291,7 +297,7 @@ export const Select2 = ({
                   key={option.value.toString()}
                   label={option.label}
                   size={size}
-                  variant={tagVariant}
+                  variant={computedTagVariant}
                   disabled={disabled}
                   onRemove={disabled ? undefined : () => handleRemoveTag(option.value)}
                 />

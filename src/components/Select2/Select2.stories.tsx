@@ -34,14 +34,6 @@ export default {
         defaultValue: { summary: 'light' },
       },
     },
-    tagVariant: {
-      options: ['light', 'dark'],
-      control: { type: 'select' },
-      description: 'タグのバリアント (multiple=trueの場合)',
-      table: {
-        defaultValue: { summary: 'light' },
-      },
-    },
     disabled: {
       options: [true, false],
       control: { type: 'radio' },
@@ -93,26 +85,18 @@ Basic.args = {
   options,
   placeholder: "果物を選択",
 };
-Basic.parameters = {
-  argTypes: {
-    tagVariant: { table: { disable: true } },
-  },
-};
 
-export const WithError: Story<Select2Props> = Template.bind({});
-WithError.args = {
+export const Error: Story<Select2Props> = Template.bind({});
+Error.args = {
   options,
   placeholder: "果物を選択",
   error: true,
 };
-WithError.parameters = {
+Error.parameters = {
   docs: {
     description: {
       story: 'エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。',
     },
-  },
-  argTypes: {
-    tagVariant: { table: { disable: true } },
   },
 };
 
@@ -122,21 +106,11 @@ Disabled.args = {
   placeholder: "果物を選択",
   disabled: true,
 };
-Disabled.parameters = {
-  argTypes: {
-    tagVariant: { table: { disable: true } },
-  },
-};
 
 export const WithDefaultValue: Story<Select2Props> = Template.bind({});
 WithDefaultValue.args = {
   options,
   value: "apple",
-};
-WithDefaultValue.parameters = {
-  argTypes: {
-    tagVariant: { table: { disable: true } },
-  },
 };
 
 export const WithManyOptions: Story<Select2Props> = Template.bind({});
@@ -156,11 +130,6 @@ WithManyOptions.args = {
   ],
   placeholder: "果物を選択",
 };
-WithManyOptions.parameters = {
-  argTypes: {
-    tagVariant: { table: { disable: true } },
-  },
-};
 
 export const WithDisabledOptions: Story<Select2Props> = Template.bind({});
 WithDisabledOptions.args = {
@@ -173,13 +142,8 @@ WithDisabledOptions.args = {
   ],
   placeholder: "果物を選択",
 };
-WithDisabledOptions.parameters = {
-  argTypes: {
-    tagVariant: { table: { disable: true } },
-  },
-};
 
-export const WithMultipleSelection: Story<Select2Props> = (args) => {
+export const MultipleSelection: Story<Select2Props> = (args) => {
   const [selectedValues, setSelectedValues] = useState<(string | number)[]>(["apple", "orange"]);
   
   return (
@@ -200,13 +164,13 @@ export const WithMultipleSelection: Story<Select2Props> = (args) => {
     </div>
   );
 };
-WithMultipleSelection.args = {
+MultipleSelection.args = {
   options,
   placeholder: "果物を選択（複数可）",
   applyButtonText: "適用",
   cancelButtonText: "キャンセル",
 };
-WithMultipleSelection.parameters = {
+MultipleSelection.parameters = {
   docs: {
     description: {
       story: '複数選択モード（multiple={true}）では、複数の選択肢を選択できます。選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。',
