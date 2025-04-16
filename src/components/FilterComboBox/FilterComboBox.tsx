@@ -18,6 +18,7 @@ import {
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
   ContextMenu2SeparatorItem,
+  ContextMenu2HeadingItem,
 } from "../ContextMenu2";
 import Button from "../Button";
 import Icon from "../Icon";
@@ -35,6 +36,8 @@ type FilterTagInputProps = {
   variant?: FilterVariant;
   tagVariant?: FilterVariant;
   placeholder?: string;
+  searchPlaceholder?: string;
+  noResultsMessage?: string;
   disabled?: boolean;
 };
 
@@ -49,6 +52,8 @@ export const FilterComboBox = ({
   variant = "dark",
   tagVariant,
   placeholder = "絞り込む",
+  searchPlaceholder = "検索",
+  noResultsMessage = "見つかりませんでした",
   disabled = false,
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
@@ -82,23 +87,25 @@ export const FilterComboBox = ({
   const getFilteredOptions = useCallback(
     (value: string) => {
       const trimmedValue = value.trim();
+      if (!trimmedValue) return options.map((option) => {
+        return !Array.isArray(option) ? [option] : option;
+      });
+
       const filtered = options.filter((option) => {
         if (!Array.isArray(option)) return option.includes(trimmedValue);
         return option.some((o) => o.includes(trimmedValue));
       });
-      const normalized = (filtered.length === 0 ? options : filtered).map(
-        (option) => {
-          return !Array.isArray(option) ? [option] : option;
-        },
-      );
+      const normalized = filtered.map((option) => {
+        return !Array.isArray(option) ? [option] : option;
+      });
       return normalized;
     },
     [options],
   );
 
   const filteredOptions = useMemo(() => {
-    return getFilteredOptions(userEnteredValue);
-  }, [userEnteredValue, getFilteredOptions]);
+    return getFilteredOptions(userValue);
+  }, [userValue, getFilteredOptions]);
 
   const handleSelect = useCallback(
     (value: string) => {
@@ -113,17 +120,16 @@ export const FilterComboBox = ({
 
   const handleEnter = useCallback(() => {
     if (isComposing) return;
-    setUserEnteredValue(userValue);
     if (!userValue.trim()) return;
 
-    const filteredOptions = getFilteredOptions(userEnteredValue);
+    const filteredOptions = getFilteredOptions(userValue);
 
     if (filteredOptions.length !== 1) return;
     handleSelect(filteredOptions[0][0]);
+    setUserValue("");
   }, [
     isComposing,
     userValue,
-    userEnteredValue,
     getFilteredOptions,
     handleSelect,
   ]);
@@ -182,7 +188,7 @@ export const FilterComboBox = ({
     <styled.StyledContextMenu2TextInputItem
       autoFocus
       value={userValue}
-      placeholder={placeholder}
+      placeholder={searchPlaceholder}
       onChange={handleOnChange}
       onKeyDown={handleKeyDown}
       onCompositionStart={() => setIsComposing(true)}
@@ -191,7 +197,7 @@ export const FilterComboBox = ({
     />
   ), [
     userValue,
-    placeholder,
+    searchPlaceholder,
     handleOnChange,
     handleKeyDown,
     handleEnter,
@@ -258,16 +264,22 @@ export const FilterComboBox = ({
             stickyHeader={stickyHeader}
             stickyFooter={stickyFooter}
           >
-            {filteredOptions.map((option) => (
-              <ContextMenu2CheckItem
-                key={option[0]}
-                checked={tempValues.includes(option[0])}
-                closeOnChange={false}
-                onChange={() => handleSelect(option[0])}
-              >
-                {option[0]}
-              </ContextMenu2CheckItem>
-            ))}
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((option) => (
+                <ContextMenu2CheckItem
+                  key={option[0]}
+                  checked={tempValues.includes(option[0])}
+                  closeOnChange={false}
+                  onChange={() => handleSelect(option[0])}
+                >
+                  {option[0]}
+                </ContextMenu2CheckItem>
+              ))
+            ) : (
+              <ContextMenu2HeadingItem>
+                {noResultsMessage}
+              </ContextMenu2HeadingItem>
+            )}
           </ContextMenu2>
         </ContextMenu2Container>
         <styled.TagList ref={tagListRef}>
