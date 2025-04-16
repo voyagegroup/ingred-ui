@@ -75,10 +75,6 @@ export const Select = styled.button<StyledProps>`
   cursor: pointer;
   transition: background-color 0.2s ease;
 
-  &:hover:not([disabled]) {
-    background: ${colors.basic[100]};
-  }
-
   svg {
     transition: color 0.2s ease;
   }

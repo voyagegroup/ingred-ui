@@ -150,6 +150,7 @@ export const FilterComboBox = ({
     (value: string) => {
       const newValues = values.filter((v) => v !== value);
       onChange(newValues);
+      setTempValues(newValues);
     },
     [values, onChange],
   );
@@ -208,7 +209,6 @@ export const FilterComboBox = ({
         <ContextMenu2Container>
           <ContextMenu2
             open={isOpen && !disabled}
-            width={252}
             trigger={
               <styled.Select
                 type="button"
