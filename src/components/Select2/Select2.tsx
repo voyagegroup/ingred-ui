@@ -13,7 +13,6 @@ import {
   Placeholder,
   IconArea,
   StyledContextMenu2TextInputItem,
-  ErrorMessage,
 } from "./styled";
 import { Select2Props, Select2Option } from "./types";
 
@@ -28,7 +27,6 @@ export const Select2 = ({
   searchPlaceholder = "検索",
   noResultsMessage = "見つかりませんでした",
   error = false,
-  errorMessage,
   ...rest
 }: Select2Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -133,7 +131,6 @@ export const Select2 = ({
           )}
         </ContextMenu2>
       </ContextMenu2Container>
-      {error && errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Select2Container>
   );
 }; 

@@ -106,10 +106,9 @@ export interface Select2Props {
   /**
    * エラー状態
    * @default false
+   * 
+   * 注意: エラーメッセージの表示はコンポーネント側では行われません。
+   * エラーメッセージはプロダクト側で実装してください。
    */
   error?: boolean;
-  /**
-   * エラーメッセージ
-   */
-  errorMessage?: string;
 }

@@ -56,7 +56,13 @@ WithError.args = {
   options,
   placeholder: "果物を選択",
   error: true,
-  errorMessage: "果物を選択してください",
+};
+WithError.parameters = {
+  docs: {
+    description: {
+      story: 'エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。',
+    },
+  },
 };
 
 export const Disabled: Story<Select2Props> = Template.bind({});

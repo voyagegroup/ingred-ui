@@ -126,9 +126,3 @@ export const OptionsContainer = styled.div`
   max-height: 180px;
   overflow-y: auto;
 `;
-
-export const ErrorMessage = styled.span`
-  color: ${colors.red[500]};
-  font-size: 14px;
-  margin-top: 4px;
-`;
