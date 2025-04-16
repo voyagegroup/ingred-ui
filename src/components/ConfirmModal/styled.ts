@@ -31,8 +31,7 @@ export const ModalHeader = styled.div`
   align-items: top;
   gap: ${({ theme }) => theme.spacing * 3}px;
   padding: ${({ theme }) => theme.spacing * 2}px
-  ${({ theme }) => theme.spacing * 2}px
-  ${({ theme }) => theme.spacing * 2}px
+    ${({ theme }) => theme.spacing * 2}px ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
