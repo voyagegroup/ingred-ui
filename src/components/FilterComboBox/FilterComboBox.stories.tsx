@@ -35,14 +35,6 @@ const meta = {
         defaultValue: { summary: "variantに連動" },
       },
     },
-    placeholder: {
-      control: { type: "text" },
-      description: "入力フィールドのプレースホルダー",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "" },
-      },
-    },
   },
 } satisfies Meta<typeof FilterComboBox>;
 
@@ -103,7 +95,6 @@ export const Default: StoryObj<typeof meta> = {
         label: "いずれかを含む",
       },
     ],
-    placeholder: "検索...",
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
