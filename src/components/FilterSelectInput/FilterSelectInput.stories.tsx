@@ -26,6 +26,11 @@ const meta = {
       },
       description: "検索窓のプレースホルダーテキスト",
     },
+    disabled: {
+      control: "boolean",
+      description: "無効化状態",
+      defaultValue: false,
+    },
   },
 } satisfies Meta<typeof FilterSelectInput>;
 
@@ -234,6 +239,61 @@ export const Variants: StoryObj<typeof meta> = {
         story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
       },
     },
+  },
+};
+
+/**
+ * 無効化状態のサンプル
+ */
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    value: "項目1",
+    options: ["項目1", "項目2", "項目3"],
+    selectedIndex: 0,
+    disabled: true,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>無効化状態</div>
+        <FilterSelectInput
+          {...args}
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <div>通常状態</div>
+        <FilterSelectInput
+          {...args}
+          disabled={false}
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
+    );
   },
 };
 

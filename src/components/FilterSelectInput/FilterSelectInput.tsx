@@ -27,6 +27,7 @@ type FilterSelectInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   searchPlaceholder?: string;
+  disabled?: boolean;
 };
 
 export const FilterSelectInput = ({
@@ -39,6 +40,7 @@ export const FilterSelectInput = ({
   size = "medium",
   variant = "dark",
   searchPlaceholder = "絞り込む",
+  disabled = false,
 }: FilterSelectInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
@@ -109,21 +111,28 @@ export const FilterSelectInput = ({
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
+      disabled={disabled}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>
           <ContextMenu2
-            open={isOpen}
+            open={isOpen && !disabled}
             minWidth={width}
             trigger={
-              <styled.Select type="button" $size={size} $variant={variant}>
+              <styled.Select
+                type="button"
+                $size={size}
+                $variant={variant}
+                disabled={disabled}
+                onClick={() => !disabled && setIsOpen(true)}
+              >
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={handleOpenChange}
+            onOpenChange={(open) => !disabled && handleOpenChange(open)}
           >
             <styled.StyledContextMenu2TextInputItem
               autoFocus
@@ -133,12 +142,14 @@ export const FilterSelectInput = ({
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
+              disabled={disabled}
             />
             {filteredOptions.map((v) => (
               <ContextMenu2CheckItem
                 key={v}
                 checked={v === value}
                 onChange={() => handleOptionClick(v)}
+                disabled={disabled}
               >
                 {v}
               </ContextMenu2CheckItem>

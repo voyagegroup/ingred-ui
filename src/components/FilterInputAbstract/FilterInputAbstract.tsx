@@ -15,6 +15,7 @@ import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
   isSmall: false,
+  disabled: false,
 });
 
 //
@@ -47,6 +48,7 @@ type FilterInputAbstractProps = {
   children?: ReactNode;
   onSelectChange: (index: number) => void;
   size?: "small" | "medium" | "large";
+  disabled?: boolean;
 };
 export const FilterInputAbstract = ({
   selectedIndex,
@@ -54,6 +56,7 @@ export const FilterInputAbstract = ({
   onSelectChange,
   children,
   size = "medium",
+  disabled = false,
 }: FilterInputAbstractProps) => {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   // 本来なら CSS Container Query で判定したいけれど、
@@ -87,21 +90,25 @@ export const FilterInputAbstract = ({
   }, [setIsSmall]);
 
   return (
-    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size}>
+    <styled.FilterInputAbstract ref={el} data-small={isSmall} data-size={size} data-disabled={disabled}>
       <ContextMenu2Container>
         <ContextMenu2
-          open={isSelectOpen}
+          open={disabled ? false : isSelectOpen}
           trigger={
             <styled.DropDownTrigger
               type="button"
+              disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
-              onClick={() => setIsSelectOpen(!isSelectOpen)}
+              onClick={() => {
+                if (disabled) return;
+                setIsSelectOpen(!isSelectOpen);
+              }}
             >
               {selectOptions[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />
             </styled.DropDownTrigger>
           }
-          onOpenChange={(open) => setIsSelectOpen(open)}
+          onOpenChange={(open) => !disabled && setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
             <styled.StyledContextMenu2CheckItem
@@ -109,13 +116,14 @@ export const FilterInputAbstract = ({
               prepend={icon}
               checked={selectedIndex === i}
               onChange={() => handleSelectChange(i)}
+              disabled={disabled}
             >
               {label}
             </styled.StyledContextMenu2CheckItem>
           ))}
         </ContextMenu2>
       </ContextMenu2Container>
-      <FilterInputContext.Provider value={{ isSmall }}>
+      <FilterInputContext.Provider value={{ isSmall, disabled }}>
         {children}
       </FilterInputContext.Provider>
     </styled.FilterInputAbstract>

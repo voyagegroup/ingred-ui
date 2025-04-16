@@ -23,7 +23,6 @@ export const Select = styled.button<StyledProps>`
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 0 8px 0 54px;
