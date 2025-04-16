@@ -29,10 +29,10 @@ const meta = {
     tagVariant: {
       control: { type: "radio" },
       options: ["light", "dark"],
-      description: "タグの背景色バリエーション",
+      description: "タグの背景色バリエーション。省略した場合はvariantに応じて自動的に決定（variantが'light'の場合は'dark'、'dark'の場合は'light'）",
       table: {
         type: { summary: "light | dark" },
-        defaultValue: { summary: "light" },
+        defaultValue: { summary: "variantに連動" },
       },
     },
     placeholder: {
@@ -201,8 +201,12 @@ export const Sizes: StoryObj<typeof meta> = {
  *   - light: 明るい背景色
  *   - dark: 暗い背景色（デフォルト）
  * - tagVariant: タグの背景色
- *   - light: 明るい背景色（デフォルト）
+ *   - 指定なし: 親コンポーネントのvariantに応じて自動的に設定（推奨）
+ *   - light: 明るい背景色
  *   - dark: 暗い背景色
+ *
+ * コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。
+ * variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。
  */
 export const Variants: StoryObj<typeof meta> = {
   args: {
@@ -243,18 +247,23 @@ export const Variants: StoryObj<typeof meta> = {
         <FilterComboBox
           {...args}
           variant="light"
-          tagVariant="dark"
           onChange={handleChange}
           onSelectChange={handleSelectChange}
         />
         <FilterComboBox
           {...args}
           variant="dark"
-          tagVariant="light"
           onChange={handleChange}
           onSelectChange={handleSelectChange}
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。tagVariantを明示的に指定することで、この自動連動をオーバーライドすることもできます。',
+      },
+    },
   },
 };

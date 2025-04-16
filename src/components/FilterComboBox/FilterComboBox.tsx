@@ -46,7 +46,7 @@ export const FilterComboBox = ({
   onSelectChange,
   size = "medium",
   variant = "dark",
-  tagVariant = "light",
+  tagVariant,
   placeholder = "絞り込む",
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
@@ -54,6 +54,12 @@ export const FilterComboBox = ({
   const [isComposing, setIsComposing] = useState(false);
   const [tempValues, setTempValues] = useState<string[]>(values);
   const [isOpen, setIsOpen] = useState(false);
+  
+  // タグのvariantを計算: 明示的に指定されていれば、それを使用。そうでなければvariantに応じて自動的に設定
+  const computedTagVariant = useMemo(() => {
+    if (tagVariant) return tagVariant;
+    return variant === "light" ? "dark" : "light";
+  }, [variant, tagVariant]);
 
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
@@ -244,7 +250,7 @@ export const FilterComboBox = ({
               key={value}
               label={value}
               size={size}
-              variant={tagVariant}
+              variant={computedTagVariant}
               onRemove={() => handleRemove(value)}
             />
           ))}

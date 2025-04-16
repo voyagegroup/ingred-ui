@@ -263,7 +263,7 @@ export const FilterTagInput = ({
   onSelectChange,
   size = "medium",
   variant = "dark",
-  tagVariant = "light",
+  tagVariant,
   menuIconSize = 22,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
@@ -271,6 +271,13 @@ export const FilterTagInput = ({
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // タグのバリアントを自動的に設定
+  // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
+  const computedTagVariant = useMemo(() => {
+    if (tagVariant) return tagVariant;
+    return variant === "light" ? "dark" : "light";
+  }, [variant, tagVariant]);
 
   const inlineFieldEl = useRef<HTMLDivElement>(null);
   const inlineFieldInnerEl = useRef<HTMLDivElement>(null);
@@ -401,7 +408,7 @@ export const FilterTagInput = ({
             <FilterTag
               key={value}
               size={size}
-              variant={tagVariant}
+              variant={computedTagVariant}
               label={value}
               onRemove={() => handleTagRemove(i)}
             />

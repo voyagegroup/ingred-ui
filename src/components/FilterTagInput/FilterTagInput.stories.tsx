@@ -20,12 +20,6 @@ const meta = {
       },
       options: ["light", "dark"],
     },
-    tagVariant: {
-      control: {
-        type: "select",
-      },
-      options: ["light", "dark"],
-    },
   },
 } satisfies Meta<typeof FilterTagInput>;
 
@@ -214,18 +208,23 @@ export const Variants: StoryObj<typeof meta> = {
         <FilterTagInput
           {...args}
           variant="light"
-          tagVariant="dark"
           onChange={(newValues) => updateArgs({ values: newValues })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
         <FilterTagInput
           {...args}
           variant="dark"
-          tagVariant="light"
           onChange={(newValues) => updateArgs({ values: newValues })}
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </div>
     );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
+      },
+    },
   },
 };
