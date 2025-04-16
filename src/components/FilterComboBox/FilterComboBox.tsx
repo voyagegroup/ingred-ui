@@ -177,6 +177,38 @@ export const FilterComboBox = ({
     setIsOpen(false);
   }, [values]);
 
+  // 検索窓を上部に固定
+  const stickyHeader = useMemo(() => (
+    <styled.StyledContextMenu2TextInputItem
+      autoFocus
+      value={userValue}
+      placeholder={placeholder}
+      onChange={handleOnChange}
+      onKeyDown={handleKeyDown}
+      onCompositionStart={() => setIsComposing(true)}
+      onCompositionEnd={() => setIsComposing(false)}
+      onEnter={handleEnter}
+    />
+  ), [
+    userValue,
+    placeholder,
+    handleOnChange,
+    handleKeyDown,
+    handleEnter,
+  ]);
+
+  // 適用/キャンセルボタンを下部に固定
+  const stickyFooter = useMemo(() => (
+    <ContextMenu2ButtonControlsItem>
+      <Button size="small" color="clear" onClick={handleCancel}>
+        キャンセル
+      </Button>
+      <Button size="small" onClick={handleApply}>
+        適用
+      </Button>
+    </ContextMenu2ButtonControlsItem>
+  ), [handleCancel, handleApply]);
+
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!tagListRef.current) return;
@@ -223,17 +255,9 @@ export const FilterComboBox = ({
               </styled.Select>
             }
             onOpenChange={(open) => !disabled && handleOpenChange(open)}
+            stickyHeader={stickyHeader}
+            stickyFooter={stickyFooter}
           >
-            <styled.StyledContextMenu2TextInputItem
-              autoFocus
-              value={userValue}
-              placeholder={placeholder}
-              onChange={handleOnChange}
-              onKeyDown={handleKeyDown}
-              onCompositionStart={() => setIsComposing(true)}
-              onCompositionEnd={() => setIsComposing(false)}
-              onEnter={handleEnter}
-            />
             {filteredOptions.map((option) => (
               <ContextMenu2CheckItem
                 key={option[0]}
@@ -244,15 +268,6 @@ export const FilterComboBox = ({
                 {option[0]}
               </ContextMenu2CheckItem>
             ))}
-            <ContextMenu2SeparatorItem />
-            <ContextMenu2ButtonControlsItem>
-              <Button size="small" color="clear" onClick={handleCancel}>
-                キャンセル
-              </Button>
-              <Button size="small" onClick={handleApply}>
-                適用
-              </Button>
-            </ContextMenu2ButtonControlsItem>
           </ContextMenu2>
         </ContextMenu2Container>
         <styled.TagList ref={tagListRef}>

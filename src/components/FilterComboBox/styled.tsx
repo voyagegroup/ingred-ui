@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { FILTER_VARIANTS, FilterVariant } from "../FilterInputAbstract/types";
-import { ContextMenu2TextInputItem } from "../ContextMenu2";
+import { ContextMenu2TextInputItem, ContextMenu2ButtonControlsItem } from "../ContextMenu2";
 
 type StyledProps = {
   $variant: FilterVariant;
@@ -88,9 +88,24 @@ export const SelectIcon = styled.span`
 export const StyledContextMenu2TextInputItem = styled(
   ContextMenu2TextInputItem,
 )`
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: ${colors.basic[0]};
+
   input {
     &::placeholder {
       color: ${colors.basic[600]};
     }
   }
+`;
+
+export const StyledContextMenu2ButtonControlsItem = styled(
+  ContextMenu2ButtonControlsItem,
+)`
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background-color: ${colors.basic[0]};
+  border-top: 1px solid ${colors.basic[300]};
 `;
