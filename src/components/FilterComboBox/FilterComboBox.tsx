@@ -65,15 +65,15 @@ export const FilterComboBox = ({
 
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
-  const inlineFieldEl = useRef<HTMLDivElement>(null);
+  const tagListRef = useRef<HTMLDivElement>(null);
 
-  // inlineFieldEl の大きさを監視して、
+  // tagListRef の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
   const checkInlineOverflow = useCallback(() => {
-    if (!inlineFieldEl.current) return;
+    if (!tagListRef.current) return;
 
     setIsInlineOverflowing(
-      inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
+      tagListRef.current.clientWidth < tagListRef.current.scrollWidth,
     );
   }, []);
 
@@ -179,14 +179,16 @@ export const FilterComboBox = ({
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
-    if (!inlineFieldEl.current) return;
+    if (!tagListRef.current) return;
 
     const resizeObserver = new window.ResizeObserver(() => {
-      if (!inlineFieldEl.current) return;
+      if (!tagListRef.current) return;
       checkInlineOverflow();
     });
 
-    resizeObserver.observe(inlineFieldEl.current);
+    resizeObserver.observe(tagListRef.current);
+    // 初回チェック
+    checkInlineOverflow();
 
     return () => {
       resizeObserver.disconnect();
@@ -203,7 +205,6 @@ export const FilterComboBox = ({
     >
       <styled.SelectContainer
         $variant={variant}
-        ref={inlineFieldEl}
         data-overflowing={isInlineOverflowing}
       >
         <ContextMenu2Container>
@@ -254,7 +255,7 @@ export const FilterComboBox = ({
             </ContextMenu2ButtonControlsItem>
           </ContextMenu2>
         </ContextMenu2Container>
-        <styled.TagList ref={inlineFieldEl}>
+        <styled.TagList ref={tagListRef}>
           {values.map((value) => (
             <FilterTag
               key={value}
