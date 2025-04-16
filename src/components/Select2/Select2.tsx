@@ -195,18 +195,18 @@ export const Select2 = ({
       <ContextMenu2ButtonControlsItem>
         <Button
           size="small"
+          color="clear"
+          onClick={handleCancel}
+        >
+          {cancelButtonText}
+        </Button>
+        <Button
+          size="small"
           color="primary"
           onClick={handleApply}
           disabled={tempSelectedValues.length === 0}
         >
           {applyButtonText}
-        </Button>
-        <Button
-          size="small"
-          color="clear"
-          onClick={handleCancel}
-        >
-          {cancelButtonText}
         </Button>
       </ContextMenu2ButtonControlsItem>
     );
