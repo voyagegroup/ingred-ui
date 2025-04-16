@@ -21,7 +21,7 @@ export const SelectContainer = styled.div<{
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: ${({ $size = "medium" }) => SELECT2_SIZES[$size].minHeight};
+  height: ${({ $size = "medium" }) => SELECT2_SIZES[$size].height};
   background-color: ${({ $variant, $disabled }) => {
     if ($disabled) return colors.basic[200];
     return $variant === "light" ? colors.basic[0] : colors.basic[100];
@@ -35,8 +35,10 @@ export const SelectContainer = styled.div<{
   border-radius: 6px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   
-  &:hover:not([disabled]) {
-    border-color: ${({ $error }) => {
+  /* disabled状態ではない場合のみhoverスタイルを適用 */
+  &:hover:not([disabled]):not([data-disabled="true"]) {
+    border-color: ${({ $error, $disabled }) => {
+      if ($disabled) return colors.basic[400];
       if ($error) return colors.red[500];
       return colors.blue[500];
     }};
@@ -146,17 +148,16 @@ export const TagContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-  
-  min-height: 30px;
-  margin: 2px 0;
 `;
 
+// 現状、追加のスタイリングは不要だが、将来的に必要になる可能性があるため
+// コンポーネントとしては残しておく
 export const StyledTag = styled(Tag)`
-  flex-shrink: 0;
-  margin: 0;
-  display: inline-flex;
-  align-self: center;
-  pointer-events: all;
+  // flex-shrink: 0;
+  // margin: 0;
+  // display: inline-flex;
+  // align-self: center;
+  // pointer-events: all;
 `;
 
 export const Placeholder = styled.span<{

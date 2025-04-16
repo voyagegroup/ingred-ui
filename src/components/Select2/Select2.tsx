@@ -228,6 +228,7 @@ export const Select2 = ({
         $error={error}
         $isOpen={isOpen}
         data-overflowing={isTagOverflowing}
+        data-disabled={disabled}
         style={{
           cursor: !multiple && !disabled ? 'pointer' : 'default'
         }}
@@ -312,6 +313,7 @@ export const Select2 = ({
                   label={option.label}
                   size={size}
                   variant={computedTagVariant}
+                  disabled={disabled}
                   onRemove={
                     disabled
                       ? undefined

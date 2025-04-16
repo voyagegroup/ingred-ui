@@ -8,7 +8,7 @@ export interface Select2SizeConfig {
   padding: string;
   iconSize: string;
   borderRadius: string;
-  minHeight: string;
+  height: string;
 }
 
 export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
@@ -17,21 +17,21 @@ export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
     padding: "0 6px 0 6px",
     iconSize: "16px",
     borderRadius: "4px",
-    minHeight: "28px",
+    height: "28px",
   },
   medium: {
     fontSize: "13px",
     padding: "0 8px 0 8px",
     iconSize: "18px",
     borderRadius: "6px",
-    minHeight: "32px",
+    height: "32px",
   },
   large: {
     fontSize: "14px",
     padding: "0 10px 0 10px",
     iconSize: "20px",
     borderRadius: "6px",
-    minHeight: "40px",
+    height: "40px",
   },
 } as const;
 
