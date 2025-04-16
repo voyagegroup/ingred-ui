@@ -3,15 +3,9 @@ import styled from "styled-components";
 import { colors } from "../../styles";
 
 const StyledMessage = styled.p`
-  margin: 8px;
-  padding: 8px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 22px;
+  margin: 16px 0;
+  font-size: 13px;
   color: ${colors.basic[700]};
-  background-color: ${colors.basic[100]};
-  border-radius: 4px;
   text-align: center;
 `;
 
