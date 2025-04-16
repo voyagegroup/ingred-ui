@@ -37,11 +37,10 @@ export const SelectButton = styled.button<{
       return colors.basic[400];
     }};
   background-color: ${({ $variant, $disabled }) => {
-    if ($disabled) return colors.basic[100];
+    if ($disabled) return colors.basic[200];
     return $variant === "light" ? colors.basic[0] : colors.basic[100];
   }};
-  color: ${({ $disabled }) =>
-    $disabled ? colors.basic[500] : colors.basic[900]};
+ 
   text-align: left;
 
   &:hover:not(:disabled) {
@@ -84,16 +83,20 @@ export const SelectLabel = styled.span`
 
 export const Placeholder = styled.span<{
   $variant?: Select2Props["variant"];
+  $disabled?: boolean;
 }>`
-  color: ${colors.basic[600]};
+  color: ${({ $disabled }) =>
+    $disabled ? colors.basic[400] : colors.basic[900]};
 `;
 
 export const IconArea = styled.div<{
   $size?: Select2Size;
+  $disabled?: boolean;
 }>`
   display: flex;
   align-items: center;
-  color: ${colors.blue[900]};
+  color: ${({ $disabled }) => 
+    $disabled ? colors.basic[400] : colors.basic[900]};
   width: ${({ $size }) => $size ? SELECT2_SIZES[$size].iconSize : "18px"};
   aspect-ratio: 1;
   svg {

@@ -97,13 +97,13 @@ export const Select2 = ({
                   {selectedOption ? (
                     selectedOption.label
                   ) : (
-                    <Placeholder $variant={variant}>
+                    <Placeholder $variant={variant} $disabled={disabled}>
                       {placeholder}
                     </Placeholder>
                   )}
                 </SelectLabel>
               </InputArea>
-              <IconArea $size={size}>
+              <IconArea $size={size} $disabled={disabled}>
                 <Icon name="arrow_down" color="currentColor" />
               </IconArea>
             </SelectButton>
