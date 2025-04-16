@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../styles";
 import { Select2Size, Select2Props, SELECT2_SIZES } from "./types";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
+import { Tag } from "../Tag";
 
 export const Select2Container = styled.div`
   display: flex;
@@ -79,6 +80,17 @@ export const SelectLabel = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+export const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  overflow: hidden;
+`;
+
+export const StyledTag = styled(Tag)`
+  margin: 2px 0;
 `;
 
 export const Placeholder = styled.span<{

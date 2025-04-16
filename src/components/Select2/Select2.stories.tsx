@@ -148,4 +148,39 @@ WithDisabledOptions.args = {
     { value: "melon", label: "メロン" },
   ],
   placeholder: "果物を選択",
+};
+
+export const WithMultipleSelection: Story<Select2Props> = (args) => {
+  const [selectedValues, setSelectedValues] = useState<(string | number)[]>([]);
+  
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        {...args}
+        value={selectedValues}
+        onChange={(newValues) => {
+          if (Array.isArray(newValues)) {
+            setSelectedValues(newValues);
+          }
+        }}
+        multiple={true}
+      />
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {selectedValues.join(', ')}</p>
+      </div>
+    </div>
+  );
+};
+WithMultipleSelection.args = {
+  options,
+  placeholder: "果物を選択（複数可）",
+  applyButtonText: "適用",
+  cancelButtonText: "キャンセル",
+};
+WithMultipleSelection.parameters = {
+  docs: {
+    description: {
+      story: '複数選択モード（multiple={true}）では、複数の選択肢を選択できます。選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。',
+    },
+  },
 }; 

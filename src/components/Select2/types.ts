@@ -66,13 +66,18 @@ export interface Select2Props {
    */
   options: Select2Option[];
   /**
-   * 選択された値
+   * 選択された値。multipleがtrueの場合は配列、falseの場合は単一の値
    */
-  value?: string | number;
+  value?: string | number | (string | number)[];
   /**
    * 値が変更された時のコールバック
    */
-  onChange?: (value: string | number) => void;
+  onChange?: ((value: string | number) => void) | ((values: (string | number)[]) => void);
+  /**
+   * 複数選択モード
+   * @default false
+   */
+  multiple?: boolean;
   /**
    * コンポーネントのサイズ
    * @default "medium"
@@ -111,4 +116,14 @@ export interface Select2Props {
    * エラーメッセージはプロダクト側で実装してください。
    */
   error?: boolean;
+  /**
+   * 適用ボタンのテキスト (multipleがtrueの場合のみ使用)
+   * @default "適用"
+   */
+  applyButtonText?: string;
+  /**
+   * キャンセルボタンのテキスト (multipleがtrueの場合のみ使用)
+   * @default "キャンセル"
+   */
+  cancelButtonText?: string;
 }
