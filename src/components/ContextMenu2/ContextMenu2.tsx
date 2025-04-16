@@ -108,6 +108,14 @@ type ContextMenu2Props = {
    * 開閉状態が変更されたときのコールバック
    */
   onOpenChange?: (open: boolean) => void;
+  /**
+   * パネルの上部に固定表示される要素（検索窓など）
+   */
+  stickyHeader?: ReactNode;
+  /**
+   * パネルの下部に固定表示される要素（適用ボタンなど）
+   */
+  stickyFooter?: ReactNode;
 };
 
 // Fragment を展開して子要素をフラット化する
@@ -132,13 +140,55 @@ const ContextMenu2Panel = styled.div`
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   background: #ffffff;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
 
   &:focus {
     outline: none;
   }
 `;
+
+const StickyHeader = styled.div`
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  z-index: 1;
+  padding-bottom: 8px;
+  border-bottom: 1px solid ${colors.basic[200]};
+  margin: 0 -8px 0;
+  padding: 0 8px 8px;
+`;
+
+const StickyFooter = styled.div`
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  background: #ffffff;
+  border-top: 1px solid ${colors.basic[200]};
+  margin: 0 8px 0;
+`;
+
+const ContentContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+  padding: 8px 0;
+`;
+
 export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
-  ({ open, trigger, width, minWidth, children, onOpenChange }, ref) => {
+  (
+    {
+      open,
+      trigger,
+      width,
+      minWidth,
+      children,
+      onOpenChange,
+      stickyHeader,
+      stickyFooter,
+    },
+    ref
+  ) => {
     const { isRoot, close } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
     // 通常では、パネル外にカーソルが出ると自動で自パネルを閉じる。
@@ -320,35 +370,39 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                     <ContextMenu2SortableContext.Provider
                       value={{ isSorting, setIsSorting }}
                     >
-                      {/*
-                        上下矢印キーでメニュー内の項目を操作できるようにする
-                        このとき、上下移動の対象となるコンポーネントだけに
-                        tabIndex や Floating UI の props を暗黙で付与して child を返す。
-                        focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
-                      */}
-                      {flattenedChildren.map(({ child, id }, index) => {
-                        if (!isValidElement(child)) return child;
-                        if (
-                          typeof child.type === "string" ||
-                          !("displayName" in child.type) ||
-                          typeof child.type.displayName !== "string"
-                        ) {
-                          return child;
-                        }
+                      {stickyHeader && <StickyHeader>{stickyHeader}</StickyHeader>}
+                      <ContentContainer>
+                        {/*
+                          上下矢印キーでメニュー内の項目を操作できるようにする
+                          このとき、上下移動の対象となるコンポーネントだけに
+                          tabIndex や Floating UI の props を暗黙で付与して child を返す。
+                          focusableItems にコンポーネントの displayName が含まれていなければ、それをしないで child を返す。
+                        */}
+                        {flattenedChildren.map(({ child, id }, index) => {
+                          if (!isValidElement(child)) return child;
+                          if (
+                            typeof child.type === "string" ||
+                            !("displayName" in child.type) ||
+                            typeof child.type.displayName !== "string"
+                          ) {
+                            return child;
+                          }
 
-                        if (!focusableItems.includes(child.type.displayName))
-                          return child;
+                          if (!focusableItems.includes(child.type.displayName))
+                            return child;
 
-                        return cloneElement(child, {
-                          tabIndex: activeIndex === index ? 0 : -1,
-                          ref: (el: HTMLElement) => {
-                            listRef.current[index] = el;
-                          },
-                          ...getItemProps(),
-                          ...child.props,
-                          key: id,
-                        });
-                      })}
+                          return cloneElement(child, {
+                            tabIndex: activeIndex === index ? 0 : -1,
+                            ref: (el: HTMLElement) => {
+                              listRef.current[index] = el;
+                            },
+                            ...getItemProps(),
+                            ...child.props,
+                            key: id,
+                          });
+                        })}
+                      </ContentContainer>
+                      {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
                     </ContextMenu2SortableContext.Provider>
                   </ContextMenu2Context.Provider>
                 </ContextMenu2Panel>
