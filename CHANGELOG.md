@@ -1,5 +1,13 @@
 # Changelog
 
+## 22.2.1
+
+### Patch Changes
+
+- [#1788](https://github.com/voyagegroup/ingred-ui/pull/1788) [`f7ea4c4d`](https://github.com/voyagegroup/ingred-ui/commit/f7ea4c4d2f0902a057dc69e20f3c3c9c402581bc) Thanks [@deatiger](https://github.com/deatiger)! - Fix lint warning
+
+- [#1786](https://github.com/voyagegroup/ingred-ui/pull/1786) [`86f69b47`](https://github.com/voyagegroup/ingred-ui/commit/86f69b475a85a8134adad626061fb533abe91d80) Thanks [@noronaoki](https://github.com/noronaoki)! - disableスタイルの追加
+
 ## 22.2.0
 
 ### Minor Changes
