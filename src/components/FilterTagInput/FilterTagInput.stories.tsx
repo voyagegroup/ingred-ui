@@ -1,27 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
 import { FilterTagInput } from "./index";
 import Icon from "../Icon";
 
-const meta = {
+const meta: Meta<typeof FilterTagInput> = {
   title: "Components/Inputs/FilterTagInput",
   component: FilterTagInput,
   argTypes: {
     size: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["small", "medium", "large"],
+      description: "Size of the input",
     },
     variant: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["light", "dark"],
+      description: "Color variation",
+    },
+    disabled: {
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether the input is disabled",
+    },
+    error: {
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether to display error state",
     },
   },
-} satisfies Meta<typeof FilterTagInput>;
+};
 
 export default meta;
 
@@ -275,6 +283,41 @@ export const Disabled: StoryObj<typeof meta> = {
           />
         </div>
       </div>
+    );
+  },
+};
+
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    title: "Filter",
+    values: ["value1", "value2"],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="add_line" />,
+        label: "Option 1",
+      },
+      {
+        icon: <Icon name="add_line" />,
+        label: "Option 2",
+      },
+    ],
+    error: true,
+  },
+  render: (args) => {
+    const [values, setValues] = useState(args.values);
+    const [selectedIndex, setSelectedIndex] = useState(args.selectedIndex);
+
+    return (
+      <FilterTagInput
+        {...args}
+        values={values}
+        selectedIndex={selectedIndex}
+        onChange={(newValues, newSelectedIndex) => {
+          setValues(newValues);
+          setSelectedIndex(newSelectedIndex);
+        }}
+      />
     );
   },
 };

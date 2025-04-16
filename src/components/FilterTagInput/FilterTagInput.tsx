@@ -247,13 +247,14 @@ type FilterTagInputProps = {
   values: string[];
   selectedIndex: number;
   selectOptions: { icon: ReactElement; label: string }[];
-  onChange: (values: string[]) => void;
+  onChange: (values: string[], selectedIndex: number) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
   variant?: "light" | "dark";
   tagVariant?: "light" | "dark";
   menuIconSize?: IconSize | number;
   disabled?: boolean;
+  error?: boolean;
 };
 export const FilterTagInput = ({
   title,
@@ -267,6 +268,7 @@ export const FilterTagInput = ({
   tagVariant,
   menuIconSize = 22,
   disabled = false,
+  error = false,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -320,7 +322,7 @@ export const FilterTagInput = ({
 
       // 0 文字目で backspace を押した場合は、最後の値を削除する
       if (event.key === "Backspace" && event.target.selectionStart === 0) {
-        onChange(values.slice(0, -1));
+        onChange(values.slice(0, -1), selectedIndex);
         requestAnimationFrame(() => {
           checkInlineOverflow();
           computeInlineFieldVisibleWidth();
@@ -332,7 +334,7 @@ export const FilterTagInput = ({
       if (trimmedValue === "" || values.includes(trimmedValue)) return;
 
       if (event.key === "Enter") {
-        onChange([...values, trimmedValue]);
+        onChange([...values, trimmedValue], selectedIndex);
         setInputValue("");
         requestAnimationFrame(() => {
           checkInlineOverflow();
@@ -347,6 +349,7 @@ export const FilterTagInput = ({
       isInlineComposing,
       checkInlineOverflow,
       computeInlineFieldVisibleWidth,
+      selectedIndex,
     ],
   );
 
@@ -354,18 +357,18 @@ export const FilterTagInput = ({
     (index: number) => {
       const newValues = [...values];
       newValues.splice(index, 1);
-      onChange(newValues);
+      onChange(newValues, selectedIndex);
       requestAnimationFrame(() => {
         checkInlineOverflow();
         computeInlineFieldVisibleWidth();
       });
     },
-    [values, onChange, checkInlineOverflow, computeInlineFieldVisibleWidth],
+    [values, onChange, checkInlineOverflow, computeInlineFieldVisibleWidth, selectedIndex],
   );
 
   const handlePanelApply = useCallback(
     (newValues: string[], newSelectedIndex: number) => {
-      onChange(newValues);
+      onChange(newValues, newSelectedIndex);
       onSelectChange(newSelectedIndex);
       requestAnimationFrame(() => {
         checkInlineOverflow();
@@ -404,6 +407,7 @@ export const FilterTagInput = ({
       selectOptions={selectOptions}
       onSelectChange={onSelectChange}
       disabled={disabled}
+      error={error}
     >
       <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
         <styled.InlineFieldInner ref={inlineFieldInnerEl}>
