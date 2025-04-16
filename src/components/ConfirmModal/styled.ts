@@ -28,9 +28,11 @@ export const ModalContainer = styled(Card)`
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 24px;
+  align-items: top;
+  gap: ${({ theme }) => theme.spacing * 3}px;
   padding: ${({ theme }) => theme.spacing * 2}px
+  ${({ theme }) => theme.spacing * 2}px
+  ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
