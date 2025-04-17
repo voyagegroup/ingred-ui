@@ -239,7 +239,8 @@ export const Variants: StoryObj<typeof meta> = {
   parameters: {
     docs: {
       description: {
-        story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
+        story:
+          'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
       },
     },
   },
@@ -348,4 +349,3 @@ export const Error: StoryObj<typeof meta> = {
     );
   },
 };
-

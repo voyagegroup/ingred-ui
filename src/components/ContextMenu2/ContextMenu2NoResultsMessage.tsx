@@ -13,10 +13,10 @@ export type ContextMenu2NoResultsMessageProps = {
   message: string;
 };
 
-export const ContextMenu2NoResultsMessage: React.FC<ContextMenu2NoResultsMessageProps> = ({
-  message,
-}) => {
+export const ContextMenu2NoResultsMessage: React.FC<
+  ContextMenu2NoResultsMessageProps
+> = ({ message }) => {
   return <StyledMessage>{message}</StyledMessage>;
 };
 
-ContextMenu2NoResultsMessage.displayName = "ContextMenu2NoResultsMessage"; 
+ContextMenu2NoResultsMessage.displayName = "ContextMenu2NoResultsMessage";

@@ -231,7 +231,8 @@ export const Variants: StoryObj<typeof meta> = {
   parameters: {
     docs: {
       description: {
-        story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
+        story:
+          'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
       },
     },
   },
@@ -270,7 +271,9 @@ export const Disabled: StoryObj<typeof meta> = {
           <FilterTagInput
             {...args}
             onChange={(newValues) => updateArgs({ values: newValues })}
-            onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+            onSelectChange={(newIndex) =>
+              updateArgs({ selectedIndex: newIndex })
+            }
           />
         </div>
         <div>
@@ -279,7 +282,9 @@ export const Disabled: StoryObj<typeof meta> = {
             {...args}
             disabled={false}
             onChange={(newValues) => updateArgs({ values: newValues })}
-            onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+            onSelectChange={(newIndex) =>
+              updateArgs({ selectedIndex: newIndex })
+            }
           />
         </div>
       </div>

@@ -19,33 +19,33 @@ export default {
   },
   argTypes: {
     size: {
-      options: ['small', 'medium', 'large'],
-      control: { type: 'select' },
-      description: 'コンポーネントのサイズ',
+      options: ["small", "medium", "large"],
+      control: { type: "select" },
+      description: "コンポーネントのサイズ",
       table: {
-        defaultValue: { summary: 'medium' },
+        defaultValue: { summary: "medium" },
       },
     },
     variant: {
-      options: ['light', 'dark'],
-      control: { type: 'select' },
-      description: 'コンポーネントのバリアント',
+      options: ["light", "dark"],
+      control: { type: "select" },
+      description: "コンポーネントのバリアント",
       table: {
-        defaultValue: { summary: 'light' },
+        defaultValue: { summary: "light" },
       },
     },
     disabled: {
       options: [true, false],
-      control: { type: 'radio' },
-      description: '無効状態',
+      control: { type: "radio" },
+      description: "無効状態",
       table: {
         defaultValue: { summary: false },
       },
     },
     error: {
       options: [true, false],
-      control: { type: 'radio' },
-      description: 'エラー状態',
+      control: { type: "radio" },
+      description: "エラー状態",
       table: {
         defaultValue: { summary: false },
       },
@@ -67,14 +67,25 @@ const options: Select2Option[] = [
 ];
 
 const Template: Story<Select2Props> = (args) => {
-  const [value, setValue] = useState<string | number | (string | number)[] | undefined>(args.value);
-  
+  let defaultValue: string | number | (string | number)[] = "";
+  if (args.value !== undefined) {
+    defaultValue = args.value;
+  } else if (args.multiple) {
+    defaultValue = [];
+  }
+
+  const [value, setValue] = useState<string | number | (string | number)[]>(
+    defaultValue,
+  );
+
   return (
     <div style={{ width: "300px" }}>
       <Select2
         {...args}
         value={value}
-        onChange={(newValue: string | number | (string | number)[]) => setValue(newValue)}
+        onChange={(newValue: string | number | (string | number)[]) =>
+          setValue(newValue)
+        }
       />
     </div>
   );
@@ -95,7 +106,8 @@ Error.args = {
 Error.parameters = {
   docs: {
     description: {
-      story: 'エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。',
+      story:
+        "エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。",
     },
   },
 };
@@ -144,22 +156,25 @@ WithDisabledOptions.args = {
 };
 
 export const MultipleSelection: Story<Select2Props> = (args) => {
-  const [selectedValues, setSelectedValues] = useState<(string | number)[]>(["apple", "orange"]);
-  
+  const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
+    "apple",
+    "orange",
+  ]);
+
   return (
     <div style={{ width: "300px" }}>
       <Select2
         {...args}
+        multiple={true}
         value={selectedValues}
         onChange={(newValues: string | number | (string | number)[]) => {
           if (Array.isArray(newValues)) {
             setSelectedValues(newValues);
           }
         }}
-        multiple={true}
       />
       <div style={{ marginTop: "16px" }}>
-        <p>選択された値: {selectedValues.join(', ')}</p>
+        <p>選択された値: {selectedValues.join(", ")}</p>
       </div>
     </div>
   );
@@ -173,7 +188,8 @@ MultipleSelection.args = {
 MultipleSelection.parameters = {
   docs: {
     description: {
-      story: '複数選択モード（multiple={true}）では、複数の選択肢を選択できます。選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。',
+      story:
+        "複数選択モード（multiple={true}）では、複数の選択肢を選択できます。選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。",
     },
   },
 };

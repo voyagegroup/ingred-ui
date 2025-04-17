@@ -1,4 +1,10 @@
-import React, { useCallback, useMemo, useState, useRef, useEffect } from "react";
+import React, {
+  useCallback,
+  useMemo,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 import Icon from "../Icon";
 import Button from "../Button";
 import {
@@ -20,12 +26,36 @@ import {
   TagContainer,
   StyledTag,
 } from "./styled";
-import { Select2Props, Select2Option } from "./types";
+import { Select2Size, Select2Variant } from "./types";
+import { TagVariant } from "../Tag/types";
 
-export const Select2 = ({
+// 内部定義と競合しないように名前を変更
+type Select2Option = {
+  value: string | number;
+  label: string;
+  disabled?: boolean;
+};
+
+type Select2Props = {
+  value: (string | number) | (string | number)[];
+  onChange: (value: (string | number) | (string | number)[]) => void;
+  options: Select2Option[];
+  multiple?: boolean;
+  disabled?: boolean;
+  placeholder?: string;
+  size?: Select2Size;
+  variant?: Select2Variant;
+  tagVariant?: TagVariant;
+  searchPlaceholder?: string;
+  noResultsMessage?: string;
+  error?: boolean;
+  applyButtonText?: string;
+  cancelButtonText?: string;
+};
+
+export const Select2: React.FC<Select2Props> = ({
   options = [],
   value,
-  onChange,
   multiple = false,
   disabled = false,
   placeholder = "選択してください",
@@ -37,23 +67,22 @@ export const Select2 = ({
   error = false,
   applyButtonText = "適用",
   cancelButtonText = "キャンセル",
+  onChange,
   ...rest
-}: Select2Props) => {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  // 複数選択時の一時的な選択状態
-  const [tempSelectedValues, setTempSelectedValues] = useState<(string | number)[]>([]);
-  // タグリスト部分で、CSS の overflow が発生しているか否か
+  const [tempSelectedValues, setTempSelectedValues] = useState<
+    (string | number)[]
+  >([]);
   const [isTagOverflowing, setIsTagOverflowing] = useState(false);
   const tagContainerRef = useRef<HTMLDivElement>(null);
 
-  // variant に応じたタグのバリアント（明示的に指定がある場合はそれを優先）
   const computedTagVariant = useMemo(() => {
     if (tagVariant) return tagVariant;
     return variant === "light" ? "dark" : "light";
   }, [variant, tagVariant]);
 
-  // 単一/複数選択モードに関わらず、現在の選択値を配列として扱う
   const selectedValues = useMemo(() => {
     if (multiple) {
       return Array.isArray(value) ? value : [];
@@ -61,13 +90,19 @@ export const Select2 = ({
       return value !== undefined ? [value as string | number] : [];
     }
   }, [value, multiple]);
-  
+
+  const handleChange = useCallback(
+    (newValue: string | number | (string | number)[]) => {
+      onChange?.(newValue as never);
+    },
+    [onChange],
+  );
+
   const handleOpenChange = useCallback(
     (open: boolean) => {
       if (!disabled) {
         setIsOpen(open);
         if (open && multiple) {
-          // 複数選択モードでメニューを開く時、現在の選択値を一時保存
           setTempSelectedValues([...selectedValues]);
         }
         if (!open) {
@@ -75,68 +110,75 @@ export const Select2 = ({
         }
       }
     },
-    [disabled, multiple, selectedValues]
+    [disabled, multiple, selectedValues],
   );
 
-  // 単一選択の場合の選択処理
   const handleSingleSelect = useCallback(
     (option: Select2Option) => {
       if (!option.disabled) {
-        onChange?.(option.value as never);
+        handleChange(option.value);
         setIsOpen(false);
         setSearchValue("");
       }
     },
-    [onChange]
+    [handleChange],
   );
 
-  // 複数選択の場合の選択処理（一時的な選択状態を更新）
   const handleMultipleSelect = useCallback(
-    (option: Select2Option) => {
+    (checked: boolean, option: Select2Option) => {
       if (option.disabled) return;
 
       setTempSelectedValues((prev) => {
-        if (prev.includes(option.value)) {
-          return prev.filter((v) => v !== option.value);
-        } else {
-          return [...prev, option.value];
-        }
+        const newValues = checked
+          ? [...prev, option.value]
+          : prev.filter((v) => v !== option.value);
+        return newValues;
       });
     },
-    []
+    [],
   );
 
-  // 複数選択モードでの確定処理
   const handleApply = useCallback(() => {
-    onChange?.(tempSelectedValues as never);
+    if (multiple) {
+      handleChange(tempSelectedValues);
+    }
     setIsOpen(false);
     setSearchValue("");
-  }, [onChange, tempSelectedValues]);
+  }, [handleChange, multiple, tempSelectedValues]);
 
-  // 複数選択モードでのキャンセル処理
   const handleCancel = useCallback(() => {
     setIsOpen(false);
     setSearchValue("");
   }, []);
 
-  // タグ削除処理（複数選択モード用）
-  const handleRemoveTag = useCallback(
-    (valueToRemove: string | number) => {
+  const handleTagRemove = useCallback(
+    (tagValue: string | number) => {
       if (multiple && Array.isArray(value)) {
-        const newValues = value.filter((v) => v !== valueToRemove);
-        onChange?.(newValues as never);
+        const newValues = (value as (string | number)[]).filter(
+          (v) => v !== tagValue,
+        );
+        handleChange(newValues);
       }
     },
-    [multiple, value, onChange]
+    [multiple, value, handleChange],
   );
 
-  // 単一選択モードの場合の選択されたオプション
+  const handleSearchChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchValue(e.target.value);
+    },
+    [],
+  );
+
+  const handleTagContainerClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+  }, []);
+
   const selectedOption = useMemo(
     () => options.find((option) => option.value === value),
-    [options, value]
+    [options, value],
   );
 
-  // 複数選択モードの場合の選択されたオプションリスト
   const selectedOptions = useMemo(() => {
     if (!multiple || !Array.isArray(value)) return [];
     return options.filter((option) => value.includes(option.value));
@@ -145,17 +187,15 @@ export const Select2 = ({
   const filteredOptions = useMemo(() => {
     if (!searchValue) return options;
     return options.filter((option) =>
-      option.label.toLowerCase().includes(searchValue.toLowerCase())
+      option.label.toLowerCase().includes(searchValue.toLowerCase()),
     );
   }, [options, searchValue]);
 
-  // tagContainerRef の大きさを監視して、
-  // overflow したら isTagOverflowing を true にする
   const checkTagOverflow = useCallback(() => {
     if (!tagContainerRef.current) return;
 
     setIsTagOverflowing(
-      tagContainerRef.current.scrollWidth > tagContainerRef.current.clientWidth
+      tagContainerRef.current.scrollWidth > tagContainerRef.current.clientWidth,
     );
   }, []);
 
@@ -177,155 +217,166 @@ export const Select2 = ({
     };
   }, [checkTagOverflow, selectedOptions]);
 
-  // 検索窓を上部に固定
-  const stickyHeader = useMemo(() => (
-    <StyledContextMenu2TextInputItem
-      autoFocus
-      value={searchValue}
-      onChange={(e) => setSearchValue(e.target.value)}
-      placeholder={searchPlaceholder}
-    />
-  ), [searchValue, searchPlaceholder]);
+  useEffect(() => {
+    if (multiple && Array.isArray(value)) {
+      setTempSelectedValues(value);
+    }
+  }, [multiple, value]);
 
-  // 適用/キャンセルボタンを下部に固定（複数選択モードの場合のみ）
+  const stickyHeader = useMemo(
+    () => (
+      <StyledContextMenu2TextInputItem
+        autoFocus
+        placeholder={searchPlaceholder}
+        value={searchValue}
+        onChange={handleSearchChange}
+      />
+    ),
+    [searchValue, searchPlaceholder, handleSearchChange],
+  );
+
   const stickyFooter = useMemo(() => {
     if (!multiple) return null;
-    
+
     return (
       <ContextMenu2ButtonControlsItem>
-        <Button
-          size="small"
-          color="clear"
-          onClick={handleCancel}
-        >
+        <Button color="clear" size="small" onClick={handleCancel}>
           {cancelButtonText}
         </Button>
         <Button
-          size="small"
           color="primary"
-          onClick={handleApply}
           disabled={tempSelectedValues.length === 0}
+          size="small"
+          onClick={handleApply}
         >
           {applyButtonText}
         </Button>
       </ContextMenu2ButtonControlsItem>
     );
   }, [
-    multiple, 
-    tempSelectedValues, 
-    handleApply, 
-    handleCancel, 
-    applyButtonText, 
-    cancelButtonText
+    multiple,
+    tempSelectedValues,
+    handleApply,
+    handleCancel,
+    applyButtonText,
+    cancelButtonText,
   ]);
+
+  const triggerElement = (
+    <SelectButton
+      $disabled={disabled}
+      $error={error}
+      $hasValue={
+        multiple ? Array.isArray(value) && value.length > 0 : !!selectedOption
+      }
+      $isOpen={isOpen}
+      $multiple={multiple}
+      $size={size}
+      $variant={variant}
+      aria-expanded={isOpen}
+      aria-invalid={error}
+      disabled={disabled}
+      role="combobox"
+      type="button"
+      {...rest}
+    >
+      {!multiple && (
+        <SelectLabel>
+          {selectedOption ? (
+            selectedOption.label
+          ) : (
+            <Placeholder $disabled={disabled} $variant={variant}>
+              {placeholder}
+            </Placeholder>
+          )}
+        </SelectLabel>
+      )}
+      <IconArea $disabled={disabled} $size={size}>
+        <Icon name="arrow_down" color="currentColor" />
+      </IconArea>
+    </SelectButton>
+  );
 
   return (
     <Select2Container>
-      <SelectContainer 
-        $size={size}
-        $variant={variant} 
+      <SelectContainer
         $disabled={disabled}
         $error={error}
         $isOpen={isOpen}
-        data-overflowing={isTagOverflowing}
+        $size={size}
+        $variant={variant}
         data-disabled={disabled}
+        data-overflowing={isTagOverflowing}
         style={{
-          cursor: !multiple && !disabled ? 'pointer' : 'default'
+          cursor: !multiple && !disabled ? "pointer" : "default",
         }}
       >
         <ContextMenu2Container>
           <ContextMenu2
-            open={isOpen}
-            onOpenChange={handleOpenChange}
-            stickyHeader={stickyHeader}
-            stickyFooter={stickyFooter}
-            trigger={
-              <SelectButton
-                type="button"
-                $size={size}
-                $variant={variant}
-                $error={error}
-                $disabled={disabled}
-                $isOpen={isOpen}
-                $hasValue={multiple ? (Array.isArray(value) && value.length > 0) : !!selectedOption}
-                $multiple={multiple}
-                disabled={disabled}
-                role="listbox"
-                aria-expanded={isOpen}
-                aria-haspopup="true"
-                aria-invalid={error}
-                {...rest}
-              >
-                {!multiple && (
-                  <SelectLabel>
-                    {selectedOption ? (
-                      selectedOption.label
-                    ) : (
-                      <Placeholder $variant={variant} $disabled={disabled}>
-                        {placeholder}
-                      </Placeholder>
-                    )}
-                  </SelectLabel>
-                )}
-                <IconArea $size={size} $disabled={disabled}>
-                  <Icon name="arrow_down" color="currentColor" />
-                </IconArea>
-              </SelectButton>
-            }
             noResultsMessage={noResultsMessage}
+            open={isOpen}
+            stickyFooter={stickyFooter}
+            stickyHeader={stickyHeader}
+            trigger={triggerElement}
+            onOpenChange={handleOpenChange}
           >
             {filteredOptions.length > 0 ? (
-              filteredOptions.map((option) => (
-                <ContextMenu2CheckItem
-                  key={option.value.toString()}
-                  checked={multiple 
-                    ? tempSelectedValues.includes(option.value)
-                    : option.value === value
+              filteredOptions.map((option) => {
+                const isChecked = multiple
+                  ? tempSelectedValues.includes(option.value)
+                  : option.value === value;
+
+                const handleChange = () => {
+                  if (multiple) {
+                    handleMultipleSelect(!isChecked, option);
+                  } else {
+                    handleSingleSelect(option);
                   }
-                  onChange={() => 
-                    multiple 
-                      ? handleMultipleSelect(option)
-                      : handleSingleSelect(option)
-                  }
-                  closeOnChange={!multiple}
-                  disabled={option.disabled}
-                >
-                  {option.label}
-                </ContextMenu2CheckItem>
-              ))
+                };
+
+                return (
+                  <ContextMenu2CheckItem
+                    key={option.value.toString()}
+                    checked={isChecked}
+                    closeOnChange={!multiple}
+                    disabled={option.disabled}
+                    onChange={handleChange as any}
+                  >
+                    {option.label}
+                  </ContextMenu2CheckItem>
+                );
+              })
             ) : (
               <ContextMenu2SeparatorItem label={noResultsMessage} />
             )}
           </ContextMenu2>
         </ContextMenu2Container>
-        
+
         {multiple && (
           <InputArea>
-            <TagContainer 
+            <TagContainer
               ref={tagContainerRef}
-              onClick={(e) => {
-                // タグコンテナのクリックイベントを親（SelectButton）に伝播させない
-                e.stopPropagation();
-              }}
+              onClick={handleTagContainerClick}
             >
-              {selectedOptions.map((option) => (
-                <StyledTag
-                  key={option.value.toString()}
-                  label={option.label}
-                  size={size}
-                  variant={computedTagVariant}
-                  disabled={disabled}
-                  onRemove={
-                    disabled
-                      ? undefined
-                      : () => handleRemoveTag(option.value)
-                  }
-                />
-              ))}
+              {selectedOptions.map((option) => {
+                return (
+                  <StyledTag
+                    key={option.value.toString()}
+                    disabled={disabled}
+                    label={option.label}
+                    size={size}
+                    variant={computedTagVariant}
+                    // eslint-disable-next-line react/jsx-handler-names
+                    onRemove={
+                      disabled ? undefined : () => handleTagRemove(option.value)
+                    }
+                  />
+                );
+              })}
             </TagContainer>
           </InputArea>
         )}
       </SelectContainer>
     </Select2Container>
   );
-}; 
+};

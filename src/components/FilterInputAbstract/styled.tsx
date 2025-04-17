@@ -54,27 +54,27 @@ export const FilterInputAbstract = styled.div<{
   gap: 0;
   ${filterBaseStyle}
   overflow: hidden;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid ${({ $error, $disabled, $isOpen }) => {
-    if ($error) return colors.red[500];
-    if ($disabled) return colors.basic[400];
-    if ($isOpen) return colors.blue[500];
-    return colors.basic[400];
-  }};
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  border: 1px solid
+    ${({ $error, $disabled, $isOpen }) => {
+      if ($error) return colors.red[500];
+      if ($disabled) return colors.basic[400];
+      if ($isOpen) return colors.blue[500];
+      return colors.basic[400];
+    }};
 
   &:hover:not([data-disabled="true"]) {
-    border-color: ${({ $error, theme }) => 
-      $error ? colors.red[500] : theme.palette.primary.main
-    };
+    border-color: ${({ $error, theme }) =>
+      $error ? colors.red[500] : theme.palette.primary.main};
   }
 
   ${({ $isOpen, $error }) =>
     $isOpen &&
     `
     box-shadow: 0 0 0 3px ${
-      $error
-        ? `${colors.red[200]}66`
-        : `${colors.blue[200]}66`
+      $error ? `${colors.red[200]}66` : `${colors.blue[200]}66`
     };
   `}
 
@@ -89,12 +89,15 @@ export const FilterInputAbstract = styled.div<{
       transition: all 0.2s ease;
 
       /* 共通のdisabledスタイル */
-      &, input, button {
+      &,
+      input,
+      button {
         color: ${colors.basic[400]};
         background-color: ${colors.basic[200]};
       }
 
-      input, button {
+      input,
+      button {
         cursor: not-allowed;
         pointer-events: none;
       }
@@ -136,14 +139,16 @@ export const DropDownTrigger = styled.button`
   border: 0;
   border-right: 1px solid ${colors.basic[400]};
   outline-offset: -1px;
-  color: ${({ disabled }) => disabled ? colors.basic[400] : colors.basic[900]};
-  background: ${({ disabled }) => disabled ? colors.basic[200] : colors.basic[0]};
-  cursor: ${({ disabled }) => disabled ? "not-allowed" : "pointer"};
+  color: ${({ disabled }) =>
+    disabled ? colors.basic[400] : colors.basic[900]};
+  background: ${({ disabled }) =>
+    disabled ? colors.basic[200] : colors.basic[0]};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease;
 
   /* アイコンの色を制御 */
   svg {
-    color: ${({ disabled }) => disabled ? colors.basic[400] : "currentColor"};
+    color: ${({ disabled }) => (disabled ? colors.basic[400] : "currentColor")};
     transition: color 0.2s ease;
   }
 

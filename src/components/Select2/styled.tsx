@@ -26,15 +26,18 @@ export const SelectContainer = styled.div<{
     if ($disabled) return colors.basic[200];
     return $variant === "light" ? colors.basic[0] : colors.basic[100];
   }};
-  border: 1px solid ${({ $error, $disabled, $isOpen }) => {
-    if ($error) return colors.red[500];
-    if ($disabled) return colors.basic[400];
-    if ($isOpen) return colors.blue[500];
-    return colors.basic[400];
-  }};
+  border: 1px solid
+    ${({ $error, $disabled, $isOpen }) => {
+      if ($error) return colors.red[500];
+      if ($disabled) return colors.basic[400];
+      if ($isOpen) return colors.blue[500];
+      return colors.basic[400];
+    }};
   border-radius: 6px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
   /* disabled状態ではない場合のみhoverスタイルを適用 */
   &:hover:not([disabled]):not([data-disabled="true"]) {
     border-color: ${({ $error, $disabled }) => {
@@ -43,17 +46,15 @@ export const SelectContainer = styled.div<{
       return colors.blue[500];
     }};
   }
-  
+
   ${({ $isOpen, $error }) =>
     $isOpen &&
     `
     box-shadow: 0 0 0 3px ${
-      $error
-        ? `${colors.red[200]}66`
-        : `${colors.blue[200]}66`
+      $error ? `${colors.red[200]}66` : `${colors.blue[200]}66`
     };
   `}
-  
+
   &::before {
     content: "";
     position: absolute;
@@ -70,7 +71,7 @@ export const SelectContainer = styled.div<{
     transition: opacity 0.2s;
     pointer-events: none;
   }
-  
+
   &:where([data-overflowing="true"])::before {
     opacity: 1;
   }
@@ -88,7 +89,8 @@ export const SelectButton = styled.button<{
   position: absolute;
   inset: 0;
   display: flex;
-  justify-content: ${({ $multiple }) => ($multiple ? "flex-end" : "space-between")};
+  justify-content: ${({ $multiple }) =>
+    $multiple ? "flex-end" : "space-between"};
   align-items: center;
   width: 100%;
   height: 100%;
@@ -144,7 +146,7 @@ export const TagContainer = styled.div`
   scrollbar-width: none;
   z-index: 2;
   pointer-events: all;
-  
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -175,9 +177,9 @@ export const IconArea = styled.div<{
 }>`
   display: flex;
   align-items: center;
-  color: ${({ $disabled }) => 
+  color: ${({ $disabled }) =>
     $disabled ? colors.basic[400] : colors.basic[900]};
-  width: ${({ $size }) => $size ? SELECT2_SIZES[$size].iconSize : "18px"};
+  width: ${({ $size }) => ($size ? SELECT2_SIZES[$size].iconSize : "18px")};
   aspect-ratio: 1;
   margin-right: 8px;
   position: relative;
@@ -186,7 +188,7 @@ export const IconArea = styled.div<{
     width: 100%;
     height: 100%;
   }
-    span {
+  span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -196,7 +198,7 @@ export const IconArea = styled.div<{
 `;
 
 export const StyledContextMenu2TextInputItem = styled(
-  ContextMenu2TextInputItem
+  ContextMenu2TextInputItem,
 )`
   input {
     &::placeholder {

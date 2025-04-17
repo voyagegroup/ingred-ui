@@ -8,7 +8,11 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
-import { ContextMenu2, ContextMenu2Container, ContextMenu2CheckItem } from "../ContextMenu2";
+import {
+  ContextMenu2,
+  ContextMenu2Container,
+  ContextMenu2CheckItem,
+} from "../ContextMenu2";
 import * as styled from "./styled";
 import { FilterSize } from "./types";
 import { Tag } from "../Tag";
@@ -39,8 +43,9 @@ export const FilterTag = ({
       label={label}
       size={size}
       variant={variant}
-      onRemove={disabled ? undefined : onRemove}
       disabled={disabled}
+      // eslint-disable-next-line react/jsx-handler-names
+      onRemove={disabled ? undefined : onRemove}
     />
   );
 };
@@ -101,10 +106,10 @@ export const FilterInputAbstract = ({
   }, [setIsSmall]);
 
   return (
-    <styled.FilterInputAbstract 
-      ref={el} 
-      data-small={isSmall} 
-      data-size={size} 
+    <styled.FilterInputAbstract
+      ref={el}
+      data-small={isSmall}
+      data-size={size}
       data-disabled={disabled}
       $isOpen={isOpen}
       $error={error}
@@ -118,6 +123,7 @@ export const FilterInputAbstract = ({
               type="button"
               disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
+              // eslint-disable-next-line react/jsx-handler-names
               onClick={() => {
                 if (disabled) return;
                 setIsSelectOpen(!isSelectOpen);
@@ -127,6 +133,7 @@ export const FilterInputAbstract = ({
               <Icon name="arrow_down" color="currentColor" />
             </styled.DropDownTrigger>
           }
+          // eslint-disable-next-line react/jsx-handler-names
           onOpenChange={(open) => !disabled && setIsSelectOpen(open)}
         >
           {selectOptions.map(({ label, icon }, i) => (
@@ -134,8 +141,8 @@ export const FilterInputAbstract = ({
               key={label}
               prepend={icon}
               checked={selectedIndex === i}
-              onChange={() => handleSelectChange(i)}
               disabled={disabled}
+              onChange={() => handleSelectChange(i)}
             >
               {label}
             </ContextMenu2CheckItem>

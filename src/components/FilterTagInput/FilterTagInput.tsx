@@ -296,7 +296,7 @@ export const FilterTagInput = ({
     setIsInlineOverflowing(
       inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
     );
-  }, []);
+  }, [setIsInlineOverflowing]);
 
   // inlineFieldEl が狭すぎる場合は、モーダルパネル内で入力させる。
   // その判定。
@@ -348,8 +348,6 @@ export const FilterTagInput = ({
       onChange,
       setInputValue,
       isInlineComposing,
-      checkInlineOverflow,
-      computeInlineFieldVisibleWidth,
       selectedIndex,
     ],
   );
@@ -364,7 +362,11 @@ export const FilterTagInput = ({
         computeInlineFieldVisibleWidth();
       });
     },
-    [values, onChange, checkInlineOverflow, computeInlineFieldVisibleWidth, selectedIndex],
+    [
+      values,
+      onChange,
+      selectedIndex,
+    ],
   );
 
   const handlePanelApply = useCallback(
@@ -379,8 +381,6 @@ export const FilterTagInput = ({
     [
       onChange,
       onSelectChange,
-      checkInlineOverflow,
-      computeInlineFieldVisibleWidth,
     ],
   );
 
@@ -399,7 +399,7 @@ export const FilterTagInput = ({
     return () => {
       resizeObserver.disconnect();
     };
-  }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
+  }, []);
 
   const handleFocus = useCallback(() => {
     if (!disabled) {
@@ -417,10 +417,10 @@ export const FilterTagInput = ({
         size={size}
         selectedIndex={selectedIndex}
         selectOptions={selectOptions}
-        onSelectChange={onSelectChange}
         disabled={disabled}
         error={error}
         isOpen={isFocused}
+        onSelectChange={onSelectChange}
       >
         <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
@@ -444,35 +444,37 @@ export const FilterTagInput = ({
                 type="text"
                 aria-label="フィルターする値"
                 value={inputValue}
+                disabled={disabled}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
                 onCompositionStart={() => setIsInlineComposing(true)}
                 onCompositionEnd={() => setIsInlineComposing(false)}
                 onFocus={handleFocus}
+                // eslint-disable-next-line react/jsx-handler-names
                 onBlur={() => {
                   handleBlur();
                   setInputValue("");
                 }}
-                disabled={disabled}
               />
             </styled.InlineInput>
           </styled.InlineFieldInner>
         </styled.InlineField>
         <styled.OverflowIndicator
-        $size={size}
-        aria-label="フィルター入力パネルを開く"
-        data-overflowing={isInlineOverflowing}
-        type="button"
-        onClick={() => setIsModalOpen(true)}
-        disabled={disabled}
-      >
-        <Icon
-          name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-          color="currentColor"
-        />
-      </styled.OverflowIndicator>
+          $size={size}
+          aria-label="フィルター入力パネルを開く"
+          data-overflowing={isInlineOverflowing}
+          type="button"
+          disabled={disabled}
+          // eslint-disable-next-line react/jsx-handler-names
+          onClick={() => setIsModalOpen(true)}
+        >
+          <Icon
+            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+            color="currentColor"
+          />
+        </styled.OverflowIndicator>
       </FilterInputAbstract>
-      
+
       <FilterInputPanel
         isOpen={isModalOpen}
         menuIconSize={menuIconSize}
@@ -481,6 +483,7 @@ export const FilterTagInput = ({
         title={title}
         values={values}
         onApply={handlePanelApply}
+        // eslint-disable-next-line react/jsx-handler-names
         onClose={() => setIsModalOpen(false)}
       />
     </>

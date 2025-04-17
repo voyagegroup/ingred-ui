@@ -3,13 +3,13 @@ import { Theme } from "../../themes";
 export type Select2Size = "small" | "medium" | "large";
 export type Select2Variant = "light" | "dark";
 
-export interface Select2SizeConfig {
+export type Select2SizeConfig = {
   fontSize: string;
   padding: string;
   iconSize: string;
   borderRadius: string;
   height: string;
-}
+};
 
 export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
   small: {
@@ -35,7 +35,7 @@ export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
   },
 } as const;
 
-export interface Select2Option {
+export type Select2Option = {
   /**
    * 選択肢の値
    */
@@ -48,9 +48,9 @@ export interface Select2Option {
    * 無効状態
    */
   disabled?: boolean;
-}
+};
 
-export interface Select2StyleProps {
+export type Select2StyleProps = {
   theme: Theme;
   $size: Select2Size;
   $variant: Select2Variant;
@@ -58,9 +58,9 @@ export interface Select2StyleProps {
   $error?: boolean;
   $isOpen?: boolean;
   $hasValue?: boolean;
-}
+};
 
-export interface Select2Props {
+export type Select2Props = {
   /**
    * 選択肢の配列
    */
@@ -72,7 +72,9 @@ export interface Select2Props {
   /**
    * 値が変更された時のコールバック
    */
-  onChange?: ((value: string | number) => void) | ((values: (string | number)[]) => void);
+  onChange?:
+    | ((value: string | number) => void)
+    | ((values: (string | number)[]) => void);
   /**
    * 複数選択モード
    * @default false
@@ -117,7 +119,7 @@ export interface Select2Props {
   /**
    * エラー状態
    * @default false
-   * 
+   *
    * 注意: エラーメッセージの表示はコンポーネント側では行われません。
    * エラーメッセージはプロダクト側で実装してください。
    */
@@ -132,4 +134,4 @@ export interface Select2Props {
    * @default "キャンセル"
    */
   cancelButtonText?: string;
-}
+};

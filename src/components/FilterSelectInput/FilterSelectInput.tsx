@@ -112,10 +112,10 @@ export const FilterSelectInput = ({
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
-      onSelectChange={onSelectChange}
       disabled={disabled}
       error={error}
       isOpen={isOpen}
+      onSelectChange={onSelectChange}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>
@@ -128,6 +128,7 @@ export const FilterSelectInput = ({
                 $size={size}
                 $variant={variant}
                 disabled={disabled}
+                // eslint-disable-next-line react/jsx-handler-names
                 onClick={() => !disabled && setIsOpen(!isOpen)}
               >
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
@@ -136,24 +137,25 @@ export const FilterSelectInput = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
+            // eslint-disable-next-line react/jsx-handler-names
             onOpenChange={(open) => !disabled && handleOpenChange(open)}
           >
             <styled.StyledContextMenu2TextInputItem
               autoFocus
               value={userValue}
               placeholder={searchPlaceholder}
+              disabled={disabled}
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
-              disabled={disabled}
             />
             {filteredOptions.map((v) => (
               <ContextMenu2CheckItem
                 key={v}
                 checked={v === value}
-                onChange={() => handleOptionClick(v)}
                 disabled={disabled}
+                onChange={() => handleOptionClick(v)}
               >
                 {v}
               </ContextMenu2CheckItem>

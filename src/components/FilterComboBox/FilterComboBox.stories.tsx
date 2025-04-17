@@ -29,7 +29,8 @@ const meta = {
     tagVariant: {
       control: { type: "radio" },
       options: ["light", "dark"],
-      description: "タグの背景色バリエーション。省略した場合はvariantに応じて自動的に決定（variantが'light'の場合は'dark'、'dark'の場合は'light'）",
+      description:
+        "タグの背景色バリエーション。省略した場合はvariantに応じて自動的に決定（variantが'light'の場合は'dark'、'dark'の場合は'light'）",
       table: {
         type: { summary: "light | dark" },
         defaultValue: { summary: "variantに連動" },
@@ -253,7 +254,8 @@ export const Variants: StoryObj<typeof meta> = {
   parameters: {
     docs: {
       description: {
-        story: 'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。tagVariantを明示的に指定することで、この自動連動をオーバーライドすることもできます。',
+        story:
+          'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。tagVariantを明示的に指定することで、この自動連動をオーバーライドすることもできます。',
       },
     },
   },

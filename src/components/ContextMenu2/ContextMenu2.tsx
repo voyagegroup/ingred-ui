@@ -200,7 +200,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       stickyFooter,
       noResultsMessage,
     },
-    ref
+    ref,
   ) => {
     const { isRoot, close } = useContext(ContextMenu2Context);
     const [isOpen, setIsOpen] = useState(false);
@@ -412,14 +412,18 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                     <ContextMenu2SortableContext.Provider
                       value={{ isSorting, setIsSorting }}
                     >
-                      {stickyHeader && <StickyHeader>{stickyHeader}</StickyHeader>}
+                      {stickyHeader && (
+                        <StickyHeader>{stickyHeader}</StickyHeader>
+                      )}
                       <ContentContainer
                         $hasStickyHeader={!!stickyHeader}
                         $hasStickyFooter={!!stickyFooter}
                       >
                         {renderChildren()}
                       </ContentContainer>
-                      {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
+                      {stickyFooter && (
+                        <StickyFooter>{stickyFooter}</StickyFooter>
+                      )}
                     </ContextMenu2SortableContext.Provider>
                   </ContextMenu2Context.Provider>
                 </ContextMenu2Panel>

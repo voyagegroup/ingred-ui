@@ -63,7 +63,7 @@ export const FilterComboBox = ({
   const [isComposing, setIsComposing] = useState(false);
   const [tempValues, setTempValues] = useState<string[]>(values);
   const [isOpen, setIsOpen] = useState(false);
-  
+
   // タグのvariantを計算: 明示的に指定されていれば、それを使用。そうでなければvariantに応じて自動的に設定
   const computedTagVariant = useMemo(() => {
     if (tagVariant) return tagVariant;
@@ -89,9 +89,10 @@ export const FilterComboBox = ({
   const getFilteredOptions = useCallback(
     (value: string) => {
       const trimmedValue = value.trim();
-      if (!trimmedValue) return options.map((option) => {
-        return !Array.isArray(option) ? [option] : option;
-      });
+      if (!trimmedValue)
+        return options.map((option) => {
+          return !Array.isArray(option) ? [option] : option;
+        });
 
       const filtered = options.filter((option) => {
         if (!Array.isArray(option)) return option.includes(trimmedValue);
@@ -129,12 +130,7 @@ export const FilterComboBox = ({
     if (filteredOptions.length !== 1) return;
     handleSelect(filteredOptions[0][0]);
     setUserValue("");
-  }, [
-    isComposing,
-    userValue,
-    getFilteredOptions,
-    handleSelect,
-  ]);
+  }, [isComposing, userValue, getFilteredOptions, handleSelect]);
 
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -183,36 +179,36 @@ export const FilterComboBox = ({
   }, [values]);
 
   // 検索窓を上部に固定
-  const stickyHeader = useMemo(() => (
-    <styled.StyledContextMenu2TextInputItem
-      autoFocus
-      value={userValue}
-      placeholder={searchPlaceholder}
-      onChange={handleOnChange}
-      onKeyDown={handleKeyDown}
-      onCompositionStart={() => setIsComposing(true)}
-      onCompositionEnd={() => setIsComposing(false)}
-      onEnter={handleEnter}
-    />
-  ), [
-    userValue,
-    searchPlaceholder,
-    handleOnChange,
-    handleKeyDown,
-    handleEnter,
-  ]);
+  const stickyHeader = useMemo(
+    () => (
+      <styled.StyledContextMenu2TextInputItem
+        autoFocus
+        value={userValue}
+        placeholder={searchPlaceholder}
+        onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
+        onEnter={handleEnter}
+      />
+    ),
+    [userValue, searchPlaceholder, handleOnChange, handleKeyDown, handleEnter],
+  );
 
   // 適用/キャンセルボタンを下部に固定
-  const stickyFooter = useMemo(() => (
-    <ContextMenu2ButtonControlsItem>
-      <Button size="small" color="clear" onClick={handleCancel}>
-      {cancelButtonText}
-      </Button>
-      <Button size="small" onClick={handleApply}>
-      {applyButtonText}
-      </Button>
-    </ContextMenu2ButtonControlsItem>
-  ), [handleCancel, handleApply]);
+  const stickyFooter = useMemo(
+    () => (
+      <ContextMenu2ButtonControlsItem>
+        <Button size="small" color="clear" onClick={handleCancel}>
+          {cancelButtonText}
+        </Button>
+        <Button size="small" onClick={handleApply}>
+          {applyButtonText}
+        </Button>
+      </ContextMenu2ButtonControlsItem>
+    ),
+    [handleCancel, handleApply],
+  );
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
@@ -237,10 +233,10 @@ export const FilterComboBox = ({
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
-      onSelectChange={onSelectChange}
       disabled={disabled}
       error={error}
       isOpen={isOpen}
+      onSelectChange={onSelectChange}
     >
       <styled.SelectContainer
         $variant={variant}
@@ -255,6 +251,7 @@ export const FilterComboBox = ({
                 $variant={variant}
                 disabled={disabled}
                 aria-label="タグを追加"
+                // eslint-disable-next-line react/jsx-handler-names
                 onClick={() => {
                   if (disabled) return;
                   setIsOpen(!isOpen);
@@ -265,10 +262,11 @@ export const FilterComboBox = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={(open) => !disabled && handleOpenChange(open)}
             stickyHeader={stickyHeader}
             stickyFooter={stickyFooter}
             noResultsMessage={noResultsMessage}
+            // eslint-disable-next-line react/jsx-handler-names
+            onOpenChange={(open) => !disabled && handleOpenChange(open)}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => (
