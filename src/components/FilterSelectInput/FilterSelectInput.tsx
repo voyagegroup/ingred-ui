@@ -127,7 +127,7 @@ export const FilterSelectInput = ({
                 $size={size}
                 $variant={variant}
                 disabled={disabled}
-                onClick={() => !disabled && setIsOpen(true)}
+                onClick={() => !disabled && setIsOpen(!isOpen)}
               >
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
                 <styled.SelectIcon>
