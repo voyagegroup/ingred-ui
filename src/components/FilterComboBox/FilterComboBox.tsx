@@ -207,7 +207,7 @@ export const FilterComboBox = ({
         </Button>
       </ContextMenu2ButtonControlsItem>
     ),
-    [handleCancel, handleApply],
+    [handleCancel, handleApply, applyButtonText, cancelButtonText],
   );
 
   useEffect(() => {

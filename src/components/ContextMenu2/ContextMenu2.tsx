@@ -1,21 +1,19 @@
 import React, {
+  useCallback,
+  useMemo,
   useState,
   useRef,
+  useEffect,
   useContext,
   forwardRef,
   cloneElement,
   isValidElement,
-  Children,
   type ReactNode,
-  type Ref,
   type ReactElement,
   type ButtonHTMLAttributes,
   type Dispatch,
   type SetStateAction,
-  useMemo,
-  useEffect,
-  Fragment,
-  useCallback,
+  type Ref,
 } from "react";
 import {
   useFloating,
@@ -121,20 +119,6 @@ type ContextMenu2Props = {
    * 検索結果が0件の場合に表示するメッセージ
    */
   noResultsMessage?: string;
-};
-
-// Fragment を展開して子要素をフラット化する
-const flattenChildren = (children: ReactNode): ReactNode[] => {
-  return Children.toArray(children)
-    .map((child) => {
-      // Fragmentであれば再帰的にflattenChildrenを呼び出す
-      if (isValidElement(child) && child.type === Fragment) {
-        return flattenChildren(child.props.children);
-      }
-      // Fragment以外はそのまま返す
-      return child;
-    })
-    .flat(Infinity);
 };
 
 const ContextMenu2Panel = styled.div`
@@ -335,31 +319,27 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
     }, [trigger, ref, refs]);
 
     const triggerRef = useMergeRefs([ref, refs.setReference]);
-    const flattenedChildren = flattenChildren(children).map((child, i) => ({
-      child,
-      id: i,
-    }));
 
     const renderChildren = (
       children: ReactNode,
-      isTopLevel = true
+      isTopLevel = true,
     ): ReactNode[] => {
       // React.Childrenではコンテキストメニューにchildrenを1つしか与えていなくともコンテキストメニューItemに変換する
       // childrenが正しく動作するようにする場合、`ContextMenu2Container`を親とする
       return React.Children.toArray(children)
         .filter((child) => {
           if (!React.isValidElement(child)) return false;
-          
+
           const type = child.type;
           // Fragment特殊処理
           if (type === React.Fragment) return true;
-          
+
           // 特定の名前を持つコンポーネントを常に表示
-          const displayName = 
-            typeof type === "function" || typeof type === "object" 
-              ? (type as any).displayName 
+          const displayName =
+            typeof type === "function" || typeof type === "object"
+              ? (type as any).displayName
               : undefined;
-            
+
           // TrigerItemやDataTable2関連コンポーネントは常に表示
           if (
             displayName === "ContextMenu2TriggerItem" ||
@@ -374,12 +354,13 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
           if (displayName === "ContextMenu2Container") {
             return true;
           }
-          
+
           // 通常の表示条件
-          return isTopLevel || (
-            typeof type === "function" || typeof type === "object" 
-            ? focusableItems.includes((type as any).displayName)
-            : false
+          return (
+            isTopLevel ||
+            (typeof type === "function" || typeof type === "object"
+              ? focusableItems.includes((type as any).displayName)
+              : false)
           );
         })
         .map((child) => {
@@ -479,7 +460,9 @@ export const ContextMenu2Container = ({
   if (
     !isValidElement(children) ||
     typeof children.type === "string" ||
-    !(typeof children.type === "function" || typeof children.type === "object") ||
+    !(
+      typeof children.type === "function" || typeof children.type === "object"
+    ) ||
     !("displayName" in (children.type as any)) ||
     (children.type as any).displayName !== ContextMenu2.displayName
   ) {

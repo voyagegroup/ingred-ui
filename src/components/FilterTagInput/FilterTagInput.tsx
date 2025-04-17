@@ -470,7 +470,7 @@ export const FilterTagInput = ({
     return () => {
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
   // タグのレンダリングをメモ化
   const renderedTags = useMemo(
