@@ -198,7 +198,6 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       onOpenChange,
       stickyHeader,
       stickyFooter,
-      noResultsMessage,
     },
     ref,
   ) => {

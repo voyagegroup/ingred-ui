@@ -17,12 +17,12 @@ import {
   ContextMenu2Container,
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
-  ContextMenu2HeadingItem,
 } from "../ContextMenu2";
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
 import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
+import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 type FilterTagInputProps = {
   values: string[];
@@ -280,9 +280,7 @@ export const FilterComboBox = ({
                 </ContextMenu2CheckItem>
               ))
             ) : (
-              <ContextMenu2HeadingItem>
-                {noResultsMessage}
-              </ContextMenu2HeadingItem>
+              <ContextMenu2NoResultsMessage message={noResultsMessage} />
             )}
           </ContextMenu2>
         </ContextMenu2Container>

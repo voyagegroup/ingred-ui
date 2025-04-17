@@ -11,7 +11,6 @@ import {
   ContextMenu2,
   ContextMenu2CheckItem,
   ContextMenu2Container,
-  ContextMenu2SeparatorItem,
   ContextMenu2ButtonControlsItem,
 } from "../ContextMenu2";
 import {
@@ -28,6 +27,7 @@ import {
 } from "./styled";
 import { Select2Size, Select2Variant } from "./types";
 import { TagVariant } from "../Tag/types";
+import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 // 内部定義と競合しないように名前を変更
 type Select2Option = {
@@ -348,7 +348,7 @@ export const Select2: React.FC<Select2Props> = ({
                 );
               })
             ) : (
-              <ContextMenu2SeparatorItem label={noResultsMessage} />
+              <ContextMenu2NoResultsMessage message={noResultsMessage} />
             )}
           </ContextMenu2>
         </ContextMenu2Container>
