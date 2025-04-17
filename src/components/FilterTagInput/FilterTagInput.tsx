@@ -343,13 +343,7 @@ export const FilterTagInput = ({
         });
       }
     },
-    [
-      values,
-      onChange,
-      setInputValue,
-      isInlineComposing,
-      selectedIndex,
-    ],
+    [values, onChange, setInputValue, isInlineComposing, selectedIndex],
   );
 
   const handleTagRemove = useCallback(
@@ -362,11 +356,7 @@ export const FilterTagInput = ({
         computeInlineFieldVisibleWidth();
       });
     },
-    [
-      values,
-      onChange,
-      selectedIndex,
-    ],
+    [values, onChange, selectedIndex],
   );
 
   const handlePanelApply = useCallback(
@@ -378,10 +368,7 @@ export const FilterTagInput = ({
         computeInlineFieldVisibleWidth();
       });
     },
-    [
-      onChange,
-      onSelectChange,
-    ],
+    [onChange, onSelectChange],
   );
 
   useEffect(() => {
