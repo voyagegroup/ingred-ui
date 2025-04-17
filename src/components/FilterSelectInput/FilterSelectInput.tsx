@@ -16,6 +16,7 @@ import {
 import Icon from "../Icon";
 import * as styled from "./styled";
 import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
+import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 type FilterSelectInputProps = {
   value: string;
@@ -27,6 +28,7 @@ type FilterSelectInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   searchPlaceholder?: string;
+  noResultsMessage?: string;
   disabled?: boolean;
   error?: boolean;
 };
@@ -41,6 +43,7 @@ export const FilterSelectInput = ({
   size = "medium",
   variant = "dark",
   searchPlaceholder = "絞り込む",
+  noResultsMessage = "見つかりませんでした",
   disabled = false,
   error = false,
 }: FilterSelectInputProps) => {
@@ -150,16 +153,20 @@ export const FilterSelectInput = ({
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
             />
-            {filteredOptions.map((v) => (
-              <ContextMenu2CheckItem
-                key={v}
-                checked={v === value}
-                disabled={disabled}
-                onChange={() => handleOptionClick(v)}
-              >
-                {v}
-              </ContextMenu2CheckItem>
-            ))}
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((v) => (
+                <ContextMenu2CheckItem
+                  key={v}
+                  checked={v === value}
+                  disabled={disabled}
+                  onChange={() => handleOptionClick(v)}
+                >
+                  {v}
+                </ContextMenu2CheckItem>
+              ))
+            ) : (
+              <ContextMenu2NoResultsMessage message={noResultsMessage} />
+            )}
           </ContextMenu2>
         </ContextMenu2Container>
       </styled.SelectContainer>
