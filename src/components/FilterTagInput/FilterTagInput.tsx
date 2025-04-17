@@ -385,6 +385,7 @@ export const FilterTagInput = ({
         });
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [values, onChange, setInputValue, isInlineComposing, selectedIndex],
   );
 
@@ -398,6 +399,7 @@ export const FilterTagInput = ({
         computeInlineFieldVisibleWidth();
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [values, onChange, selectedIndex],
   );
 
@@ -410,6 +412,7 @@ export const FilterTagInput = ({
         computeInlineFieldVisibleWidth();
       });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onChange, onSelectChange],
   );
 
@@ -451,6 +454,7 @@ export const FilterTagInput = ({
     setInputValue("");
   }, [handleBlur]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!inlineFieldEl.current) return;
