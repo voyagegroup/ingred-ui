@@ -129,6 +129,60 @@ const FilterInputPanel = ({
     onClose();
   }, [userValues, userSelectedIndex, onApply, onClose]);
 
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  }, []);
+
+  const handleCompositionStart = useCallback(() => {
+    setIsInlineComposing(true);
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    setIsInlineComposing(false);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setInputValue("");
+  }, []);
+
+  // タグのレンダリングをメモ化
+  const renderedUserTags = useMemo(() => (
+    userValues.map((value, i) => (
+      <FilterTag
+        key={value}
+        size="medium"
+        variant="light"
+        label={value}
+        onRemove={() => handleTagRemove(i)}
+      />
+    ))
+  ), [userValues, handleTagRemove]);
+
+  // セレクトオプションのレンダリングをメモ化
+  const renderedSelectOptions = useMemo(() => (
+    modifiedSelectOptions.map(({ label, icon }, i) => (
+      <ContextMenu2CheckItem
+        key={label}
+        prepend={icon}
+        checked={userSelectedIndex === i}
+        onChange={() => handleSelectChange(i)}
+      >
+        {label}
+      </ContextMenu2CheckItem>
+    ))
+  ), [modifiedSelectOptions, userSelectedIndex, handleSelectChange]);
+
+  // 現在選択されているオプションの表示をメモ化
+  const selectedOptionDisplay = useMemo(() => (
+    <>
+      {React.cloneElement(
+        modifiedSelectOptions[userSelectedIndex].icon,
+        { size: menuIconSize },
+      )}
+      {modifiedSelectOptions[userSelectedIndex].label}
+    </>
+  ), [modifiedSelectOptions, userSelectedIndex, menuIconSize]);
+
   // isOpen が true になったら、現状の値を初期値としてセットする
   // 「適用」するまでは、親に値を返さない
   useEffect(() => {
@@ -156,11 +210,7 @@ const FilterInputPanel = ({
                       {longestLabelOption.label}
                     </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
-                      {React.cloneElement(
-                        modifiedSelectOptions[userSelectedIndex].icon,
-                        { size: menuIconSize },
-                      )}
-                      {modifiedSelectOptions[userSelectedIndex].label}
+                      {selectedOptionDisplay}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
                       <Icon name="arrow_down" color="currentColor" />
@@ -169,16 +219,7 @@ const FilterInputPanel = ({
                 }
                 onOpenChange={setIsSelectOpen}
               >
-                {modifiedSelectOptions.map(({ label, icon }, i) => (
-                  <ContextMenu2CheckItem
-                    key={label}
-                    prepend={icon}
-                    checked={userSelectedIndex === i}
-                    onChange={() => handleSelectChange(i)}
-                  >
-                    {label}
-                  </ContextMenu2CheckItem>
-                ))}
+                {renderedSelectOptions}
               </ContextMenu2>
             </ContextMenu2Container>
           </styled.PanelLeft>
@@ -189,26 +230,18 @@ const FilterInputPanel = ({
                 type="button"
                 onClick={handleFocusTriggerClick}
               />
-              {userValues.map((value, i) => (
-                <FilterTag
-                  key={value}
-                  size="medium"
-                  variant="light"
-                  label={value}
-                  onRemove={() => handleTagRemove(i)}
-                />
-              ))}
+              {renderedUserTags}
               <styled.PanelInput>
                 <input
                   ref={inputEl}
                   type="text"
                   aria-label="フィルターする値"
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onCompositionStart={() => setIsInlineComposing(true)}
-                  onCompositionEnd={() => setIsInlineComposing(false)}
+                  onChange={handleInputChange}
+                  onCompositionStart={handleCompositionStart}
+                  onCompositionEnd={handleCompositionEnd}
                   onKeyDown={handleKeyDown}
-                  onBlur={() => setInputValue("")}
+                  onBlur={handleInputBlur}
                 />
                 <styled.PanelInputSpacer>{inputValue}</styled.PanelInputSpacer>
               </styled.PanelInput>
@@ -371,6 +404,31 @@ export const FilterTagInput = ({
     [onChange, onSelectChange],
   );
 
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  }, []);
+
+  const handleCompositionStart = useCallback(() => {
+    setIsInlineComposing(true);
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    setIsInlineComposing(false);
+  }, []);
+
+  const handleModalOpen = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  const handleBlurWithClear = useCallback(() => {
+    handleBlur();
+    setInputValue("");
+  }, []);
+
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!inlineFieldEl.current) return;
@@ -398,6 +456,19 @@ export const FilterTagInput = ({
     setIsFocused(false);
   }, []);
 
+  // タグのレンダリングをメモ化
+  const renderedTags = useMemo(() => (
+    values.map((value, i) => (
+      <FilterTag
+        key={value}
+        size={size}
+        variant={computedTagVariant}
+        label={value}
+        onRemove={() => handleTagRemove(i)}
+      />
+    ))
+  ), [values, size, computedTagVariant, handleTagRemove]);
+
   return (
     <>
       <FilterInputAbstract
@@ -411,15 +482,7 @@ export const FilterTagInput = ({
       >
         <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-            {values.map((value, i) => (
-              <FilterTag
-                key={value}
-                size={size}
-                variant={computedTagVariant}
-                label={value}
-                onRemove={() => handleTagRemove(i)}
-              />
-            ))}
+            {renderedTags}
             <styled.InlineInput>
               {!inputValue && (
                 <styled.InlineInputIcon>
@@ -432,16 +495,13 @@ export const FilterTagInput = ({
                 aria-label="フィルターする値"
                 value={inputValue}
                 disabled={disabled}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                onCompositionStart={() => setIsInlineComposing(true)}
-                onCompositionEnd={() => setIsInlineComposing(false)}
+                onCompositionStart={handleCompositionStart}
+                onCompositionEnd={handleCompositionEnd}
                 onFocus={handleFocus}
                 // eslint-disable-next-line react/jsx-handler-names
-                onBlur={() => {
-                  handleBlur();
-                  setInputValue("");
-                }}
+                onBlur={handleBlurWithClear}
               />
             </styled.InlineInput>
           </styled.InlineFieldInner>
@@ -453,7 +513,7 @@ export const FilterTagInput = ({
           type="button"
           disabled={disabled}
           // eslint-disable-next-line react/jsx-handler-names
-          onClick={() => setIsModalOpen(true)}
+          onClick={handleModalOpen}
         >
           <Icon
             name={isSmall ? "filter" : "expand_diagonal_s_fill"}
@@ -471,7 +531,7 @@ export const FilterTagInput = ({
         values={values}
         onApply={handlePanelApply}
         // eslint-disable-next-line react/jsx-handler-names
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleModalClose}
       />
     </>
   );
