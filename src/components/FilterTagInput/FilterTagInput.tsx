@@ -458,8 +458,7 @@ export const FilterTagInput = ({
             </styled.InlineInput>
           </styled.InlineFieldInner>
         </styled.InlineField>
-      </FilterInputAbstract>
-      <styled.OverflowIndicator
+        <styled.OverflowIndicator
         $size={size}
         aria-label="フィルター入力パネルを開く"
         data-overflowing={isInlineOverflowing}
@@ -472,6 +471,8 @@ export const FilterTagInput = ({
           color="currentColor"
         />
       </styled.OverflowIndicator>
+      </FilterInputAbstract>
+      
       <FilterInputPanel
         isOpen={isModalOpen}
         menuIconSize={menuIconSize}
