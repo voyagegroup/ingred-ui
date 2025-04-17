@@ -304,7 +304,9 @@ export const PanelTagField = styled.div`
     outline: none;
     border-color: ${colors.blue[500]};
     box-shadow: 0 0 0 3px ${colors.blue[200]}66;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
   }
 `;
 

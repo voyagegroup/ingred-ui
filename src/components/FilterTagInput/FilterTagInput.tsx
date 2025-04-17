@@ -129,9 +129,12 @@ const FilterInputPanel = ({
     onClose();
   }, [userValues, userSelectedIndex, onApply, onClose]);
 
-  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  }, []);
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    },
+    [],
+  );
 
   const handleCompositionStart = useCallback(() => {
     setIsInlineComposing(true);
@@ -146,42 +149,48 @@ const FilterInputPanel = ({
   }, []);
 
   // タグのレンダリングをメモ化
-  const renderedUserTags = useMemo(() => (
-    userValues.map((value, i) => (
-      <FilterTag
-        key={value}
-        size="medium"
-        variant="light"
-        label={value}
-        onRemove={() => handleTagRemove(i)}
-      />
-    ))
-  ), [userValues, handleTagRemove]);
+  const renderedUserTags = useMemo(
+    () =>
+      userValues.map((value, i) => (
+        <FilterTag
+          key={value}
+          size="medium"
+          variant="light"
+          label={value}
+          onRemove={() => handleTagRemove(i)}
+        />
+      )),
+    [userValues, handleTagRemove],
+  );
 
   // セレクトオプションのレンダリングをメモ化
-  const renderedSelectOptions = useMemo(() => (
-    modifiedSelectOptions.map(({ label, icon }, i) => (
-      <ContextMenu2CheckItem
-        key={label}
-        prepend={icon}
-        checked={userSelectedIndex === i}
-        onChange={() => handleSelectChange(i)}
-      >
-        {label}
-      </ContextMenu2CheckItem>
-    ))
-  ), [modifiedSelectOptions, userSelectedIndex, handleSelectChange]);
+  const renderedSelectOptions = useMemo(
+    () =>
+      modifiedSelectOptions.map(({ label, icon }, i) => (
+        <ContextMenu2CheckItem
+          key={label}
+          prepend={icon}
+          checked={userSelectedIndex === i}
+          onChange={() => handleSelectChange(i)}
+        >
+          {label}
+        </ContextMenu2CheckItem>
+      )),
+    [modifiedSelectOptions, userSelectedIndex, handleSelectChange],
+  );
 
   // 現在選択されているオプションの表示をメモ化
-  const selectedOptionDisplay = useMemo(() => (
-    <>
-      {React.cloneElement(
-        modifiedSelectOptions[userSelectedIndex].icon,
-        { size: menuIconSize },
-      )}
-      {modifiedSelectOptions[userSelectedIndex].label}
-    </>
-  ), [modifiedSelectOptions, userSelectedIndex, menuIconSize]);
+  const selectedOptionDisplay = useMemo(
+    () => (
+      <>
+        {React.cloneElement(modifiedSelectOptions[userSelectedIndex].icon, {
+          size: menuIconSize,
+        })}
+        {modifiedSelectOptions[userSelectedIndex].label}
+      </>
+    ),
+    [modifiedSelectOptions, userSelectedIndex, menuIconSize],
+  );
 
   // isOpen が true になったら、現状の値を初期値としてセットする
   // 「適用」するまでは、親に値を返さない
@@ -404,9 +413,12 @@ export const FilterTagInput = ({
     [onChange, onSelectChange],
   );
 
-  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  }, []);
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    },
+    [],
+  );
 
   const handleCompositionStart = useCallback(() => {
     setIsInlineComposing(true);
@@ -424,10 +436,20 @@ export const FilterTagInput = ({
     setIsModalOpen(false);
   }, []);
 
+  const handleFocus = useCallback(() => {
+    if (!disabled) {
+      setIsFocused(true);
+    }
+  }, [disabled]);
+
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
   const handleBlurWithClear = useCallback(() => {
     handleBlur();
     setInputValue("");
-  }, []);
+  }, [handleBlur]);
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
@@ -446,28 +468,20 @@ export const FilterTagInput = ({
     };
   }, []);
 
-  const handleFocus = useCallback(() => {
-    if (!disabled) {
-      setIsFocused(true);
-    }
-  }, [disabled]);
-
-  const handleBlur = useCallback(() => {
-    setIsFocused(false);
-  }, []);
-
   // タグのレンダリングをメモ化
-  const renderedTags = useMemo(() => (
-    values.map((value, i) => (
-      <FilterTag
-        key={value}
-        size={size}
-        variant={computedTagVariant}
-        label={value}
-        onRemove={() => handleTagRemove(i)}
-      />
-    ))
-  ), [values, size, computedTagVariant, handleTagRemove]);
+  const renderedTags = useMemo(
+    () =>
+      values.map((value, i) => (
+        <FilterTag
+          key={value}
+          size={size}
+          variant={computedTagVariant}
+          label={value}
+          onRemove={() => handleTagRemove(i)}
+        />
+      )),
+    [values, size, computedTagVariant, handleTagRemove],
+  );
 
   return (
     <>
