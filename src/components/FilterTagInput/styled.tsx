@@ -301,10 +301,12 @@ export const PanelTagField = styled.div`
   background: ${colors.basic[100]};
 
   &:has(input:focus) {
-    outline: auto;
-    outline: auto -webkit-focus-ring-color;
+    outline: none;
+    border-color: ${colors.blue[500]};
+    box-shadow: 0 0 0 3px ${colors.blue[200]}66;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
-`; // ↑ outline が 2 だけれど、前者は Firefox 用に必要
+`;
 
 export const PanelTagFieldFocusTrigger = styled.button`
   position: absolute;
