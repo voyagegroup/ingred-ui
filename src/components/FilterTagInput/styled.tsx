@@ -29,12 +29,6 @@ export const InlineField = styled.div<StyledProps>`
     display: none;
   }
 
-  &:has(input:focus) {
-    outline: auto;
-    outline-offset: -1px;
-    outline: auto -webkit-focus-ring-color;
-  }
-
   &:where(${FilterInputAbstract}[data-small="true"] *) {
     display: none;
   }
