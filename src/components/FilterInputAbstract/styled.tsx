@@ -42,7 +42,11 @@ export type FilterTagProps = {
   $size: FilterSize;
 };
 
-export const FilterInputAbstract = styled.div`
+export const FilterInputAbstract = styled.div<{
+  $isOpen?: boolean;
+  $error?: boolean;
+  $disabled?: boolean;
+}>`
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -50,10 +54,29 @@ export const FilterInputAbstract = styled.div`
   gap: 0;
   ${filterBaseStyle}
   overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid ${({ $error, $disabled, $isOpen }) => {
+    if ($error) return colors.red[500];
+    if ($disabled) return colors.basic[400];
+    if ($isOpen) return colors.blue[500];
+    return colors.basic[400];
+  }};
 
-  &[data-error="true"] {
-    border-color: ${colors.red[500]};
+  &:hover:not([data-disabled="true"]) {
+    border-color: ${({ $error, theme }) => 
+      $error ? colors.red[500] : theme.palette.primary.main
+    };
   }
+
+  ${({ $isOpen, $error }) =>
+    $isOpen &&
+    `
+    box-shadow: 0 0 0 3px ${
+      $error
+        ? `${colors.red[200]}66`
+        : `${colors.blue[200]}66`
+    };
+  `}
 
   &[data-disabled="true"] {
     background-color: ${colors.basic[200]};

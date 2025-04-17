@@ -115,6 +115,7 @@ export const FilterSelectInput = ({
       onSelectChange={onSelectChange}
       disabled={disabled}
       error={error}
+      isOpen={isOpen}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>

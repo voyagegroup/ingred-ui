@@ -275,6 +275,8 @@ export const FilterTagInput = ({
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const inputEl = useRef<HTMLInputElement>(null);
 
   // タグのバリアントを自動的に設定
   // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
@@ -285,7 +287,6 @@ export const FilterTagInput = ({
 
   const inlineFieldEl = useRef<HTMLDivElement>(null);
   const inlineFieldInnerEl = useRef<HTMLDivElement>(null);
-  const inlineInputEl = useRef<HTMLInputElement>(null);
 
   // inlineFieldEl の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
@@ -300,10 +301,10 @@ export const FilterTagInput = ({
   // inlineFieldEl が狭すぎる場合は、モーダルパネル内で入力させる。
   // その判定。
   const computeInlineFieldVisibleWidth = useCallback(() => {
-    if (!inlineFieldEl.current || !inlineInputEl.current) return;
+    if (!inlineFieldEl.current || !inputEl.current) return;
 
-    // inlineInputEl がどれくらい見えているか？
-    const inlineInputRect = inlineInputEl.current.getBoundingClientRect();
+    // inputEl がどれくらい見えているか？
+    const inputRect = inputEl.current.getBoundingClientRect();
     const inlineFieldRect = inlineFieldEl.current.getBoundingClientRect();
     const inlineFieldPaddingRight = Number(
       window
@@ -311,7 +312,7 @@ export const FilterTagInput = ({
         .paddingRight.replace("px", ""),
     );
     const visibleWidth =
-      inlineFieldRect.right - inlineFieldPaddingRight - inlineInputRect.left;
+      inlineFieldRect.right - inlineFieldPaddingRight - inputRect.left;
     return visibleWidth;
   }, []);
 
@@ -400,46 +401,64 @@ export const FilterTagInput = ({
     };
   }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
+  const handleFocus = useCallback(() => {
+    if (!disabled) {
+      setIsFocused(true);
+    }
+  }, [disabled]);
+
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
   return (
-    <FilterInputAbstract
-      size={size}
-      selectedIndex={selectedIndex}
-      selectOptions={selectOptions}
-      onSelectChange={onSelectChange}
-      disabled={disabled}
-      error={error}
-    >
-      <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
-        <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-          {values.map((value, i) => (
-            <FilterTag
-              key={value}
-              size={size}
-              variant={computedTagVariant}
-              label={value}
-              onRemove={() => handleTagRemove(i)}
-            />
-          ))}
-          <styled.InlineInput>
-            {!inputValue && (
-              <styled.InlineInputIcon>
-                <Icon name="filter" color="currentColor" />
-              </styled.InlineInputIcon>
-            )}
-            <input
-              ref={inlineInputEl}
-              type="text"
-              aria-label="フィルターする値"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onCompositionStart={() => setIsInlineComposing(true)}
-              onCompositionEnd={() => setIsInlineComposing(false)}
-              onKeyDown={handleKeyDown}
-              onBlur={() => setInputValue("")}
-            />
-          </styled.InlineInput>
-        </styled.InlineFieldInner>
-      </styled.InlineField>
+    <>
+      <FilterInputAbstract
+        size={size}
+        selectedIndex={selectedIndex}
+        selectOptions={selectOptions}
+        onSelectChange={onSelectChange}
+        disabled={disabled}
+        error={error}
+        isOpen={isFocused}
+      >
+        <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
+          <styled.InlineFieldInner ref={inlineFieldInnerEl}>
+            {values.map((value, i) => (
+              <FilterTag
+                key={value}
+                size={size}
+                variant={computedTagVariant}
+                label={value}
+                onRemove={() => handleTagRemove(i)}
+              />
+            ))}
+            <styled.InlineInput>
+              {!inputValue && (
+                <styled.InlineInputIcon>
+                  <Icon name="filter" color="currentColor" />
+                </styled.InlineInputIcon>
+              )}
+              <input
+                ref={inputEl}
+                type="text"
+                aria-label="フィルターする値"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onCompositionStart={() => setIsInlineComposing(true)}
+                onCompositionEnd={() => setIsInlineComposing(false)}
+                onFocus={handleFocus}
+                onBlur={() => {
+                  handleBlur();
+                  setInputValue("");
+                }}
+                disabled={disabled}
+              />
+            </styled.InlineInput>
+          </styled.InlineFieldInner>
+        </styled.InlineField>
+      </FilterInputAbstract>
       <styled.OverflowIndicator
         $size={size}
         aria-label="フィルター入力パネルを開く"
@@ -463,6 +482,6 @@ export const FilterTagInput = ({
         onApply={handlePanelApply}
         onClose={() => setIsModalOpen(false)}
       />
-    </FilterInputAbstract>
+    </>
   );
 };

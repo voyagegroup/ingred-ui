@@ -240,6 +240,7 @@ export const FilterComboBox = ({
       onSelectChange={onSelectChange}
       disabled={disabled}
       error={error}
+      isOpen={isOpen}
     >
       <styled.SelectContainer
         $variant={variant}
