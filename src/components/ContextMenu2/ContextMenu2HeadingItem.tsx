@@ -7,8 +7,9 @@ import { colors } from "../../styles";
 export const ContextMenu2HeadingItem = styled(({ className, children }) => {
   return <p className={className}>{children}</p>;
 })`
+  border-radius: 4px;
   padding: 4px 8px;
-  margin: 8px -8px;
+  margin: 0 0 8px;
   font-style: normal;
   font-weight: 700;
   font-size: 12px;
