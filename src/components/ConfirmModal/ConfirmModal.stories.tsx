@@ -50,6 +50,7 @@ const Template: StoryObj<ConfirmModalProps> = {
 export const Basic = {
   ...Template,
   args: {
+    title: "Long long long Long long longLong long longLong long long Title",
     children: "Content",
     onSubmit: action("submitted"),
   },

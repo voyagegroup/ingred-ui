@@ -1,5 +1,31 @@
 # Changelog
 
+## 22.2.1
+
+### Patch Changes
+
+- [#1788](https://github.com/voyagegroup/ingred-ui/pull/1788) [`f7ea4c4d`](https://github.com/voyagegroup/ingred-ui/commit/f7ea4c4d2f0902a057dc69e20f3c3c9c402581bc) Thanks [@deatiger](https://github.com/deatiger)! - Fix lint warning
+
+- [#1786](https://github.com/voyagegroup/ingred-ui/pull/1786) [`86f69b47`](https://github.com/voyagegroup/ingred-ui/commit/86f69b475a85a8134adad626061fb533abe91d80) Thanks [@noronaoki](https://github.com/noronaoki)! - disableスタイルの追加
+
+## 22.2.0
+
+### Minor Changes
+
+- [#1782](https://github.com/voyagegroup/ingred-ui/pull/1782) [`07579fd4`](https://github.com/voyagegroup/ingred-ui/commit/07579fd454277823eca8c5384d3ee0641a69b106) Thanks [@noronaoki](https://github.com/noronaoki)! - フィルターコンポーネントの機能強化とアイコンサイズの柔軟な指定
+
+  - FilterTagInputコンポーネントの機能強化
+
+    - isOverFlowingの問題を修正
+    - サイズに応じたボタン調整
+    - パネル内のTagの調整
+    - スタイルの統合
+    - カラーバリエーションの追加
+
+  - アイコン関連の改善
+    - アイコンサイズを任意の数値で指定可能に
+    - オペレーターアイコンのサイズ調整機能の追加
+
 ## 22.1.0
 
 ### Minor Changes

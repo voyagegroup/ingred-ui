@@ -28,8 +28,10 @@ export const ModalContainer = styled(Card)`
 export const ModalHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
+  gap: ${({ theme }) => theme.spacing * 3}px;
   padding: ${({ theme }) => theme.spacing * 2}px
+    ${({ theme }) => theme.spacing * 2}px ${({ theme }) => theme.spacing * 2}px
     ${({ theme }) => theme.spacing * 3}px;
   border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
 `;
@@ -37,7 +39,6 @@ export const ModalHeader = styled.div`
 export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
-  max-width: 70%;
 `;
 
 type ScrollContainerProps = {
