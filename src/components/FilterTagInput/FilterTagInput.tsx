@@ -120,7 +120,7 @@ const FilterInputPanel = ({
     setInputValue("");
   }, []);
 
-  const handleChancelClick = useCallback(() => {
+  const handleCancelClick = useCallback(() => {
     onClose();
   }, [onClose]);
 
@@ -222,7 +222,7 @@ const FilterInputPanel = ({
           </styled.PanelRight>
           <styled.PanelButtons>
             <li>
-              <Button size="small" color="clear" onClick={handleChancelClick}>
+              <Button size="small" color="clear" onClick={handleCancelClick}>
                 キャンセル
               </Button>
             </li>
