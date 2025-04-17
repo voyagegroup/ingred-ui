@@ -341,36 +341,61 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       id: i,
     }));
 
-    const renderChildren = () => {
-      const childrenArray = React.Children.toArray(children);
-      const filteredChildren = childrenArray.filter((child) => {
-        if (!React.isValidElement(child)) return false;
-        if (
-          typeof child.type === "string" ||
-          !("displayName" in child.type) ||
-          typeof child.type.displayName !== "string"
-        ) {
-          return false;
-        }
-        return focusableItems.includes(child.type.displayName);
-      });
+    const renderChildren = (
+      children: ReactNode,
+      isTopLevel = true
+    ): ReactNode[] => {
+      // React.Childrenではコンテキストメニューにchildrenを1つしか与えていなくともコンテキストメニューItemに変換する
+      // childrenが正しく動作するようにする場合、`ContextMenu2Container`を親とする
+      return React.Children.toArray(children)
+        .filter((child) => {
+          if (!React.isValidElement(child)) return false;
+          
+          const type = child.type;
+          // Fragment特殊処理
+          if (type === React.Fragment) return true;
+          
+          // 特定の名前を持つコンポーネントを常に表示
+          const displayName = 
+            typeof type === "function" || typeof type === "object" 
+              ? (type as any).displayName 
+              : undefined;
+            
+          // TrigerItemやDataTable2関連コンポーネントは常に表示
+          if (
+            displayName === "ContextMenu2TriggerItem" ||
+            displayName === "DataTable2MenuCountControl" ||
+            displayName === "DataTable2MenuSpaceControl" ||
+            displayName === "DataTable2MenuOrderControl"
+          ) {
+            return true;
+          }
 
-      if (filteredChildren.length === 0 && noResultsMessage) {
-        return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
-      }
+          // ContextMenu2Containerは常に表示（ネスト可能にするため）
+          if (displayName === "ContextMenu2Container") {
+            return true;
+          }
+          
+          // 通常の表示条件
+          return isTopLevel || (
+            typeof type === "function" || typeof type === "object" 
+            ? focusableItems.includes((type as any).displayName)
+            : false
+          );
+        })
+        .map((child) => {
+          if (!React.isValidElement(child)) return child;
 
-      return filteredChildren.map((child, index) => {
-        if (!React.isValidElement(child)) return child;
-        return React.cloneElement(child, {
-          tabIndex: activeIndex === index ? 0 : -1,
-          ref: (el: HTMLElement) => {
-            listRef.current[index] = el;
-          },
-          ...getItemProps(),
-          ...child.props,
-          key: flattenedChildren[index]?.id,
+          return React.cloneElement(child, {
+            tabIndex: activeIndex === child.key ? 0 : -1,
+            ref: (el: HTMLElement) => {
+              listRef.current[child.key as number] = el;
+            },
+            ...getItemProps(),
+            ...child.props,
+            key: child.key,
+          });
         });
-      });
     };
 
     return (
@@ -419,7 +444,7 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
                         $hasStickyHeader={!!stickyHeader}
                         $hasStickyFooter={!!stickyFooter}
                       >
-                        {renderChildren()}
+                        {renderChildren(children)}
                       </ContentContainer>
                       {stickyFooter && (
                         <StickyFooter>{stickyFooter}</StickyFooter>
@@ -455,8 +480,9 @@ export const ContextMenu2Container = ({
   if (
     !isValidElement(children) ||
     typeof children.type === "string" ||
-    !("displayName" in children.type) ||
-    children.type.displayName !== ContextMenu2.displayName
+    !(typeof children.type === "function" || typeof children.type === "object") ||
+    !("displayName" in (children.type as any)) ||
+    (children.type as any).displayName !== ContextMenu2.displayName
   ) {
     throw new Error(
       "ContextMenu2Container には 1 つの ContextMenu2 しか入れられません",
