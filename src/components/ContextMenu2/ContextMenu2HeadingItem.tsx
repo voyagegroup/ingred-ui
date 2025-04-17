@@ -10,10 +10,8 @@ export const ContextMenu2HeadingItem = styled(({ className, children }) => {
   border-radius: 4px;
   padding: 4px 8px;
   margin-bottom: 4px;
-  font-style: normal;
   font-weight: 700;
   font-size: 12px;
-  line-height: 1.4;
   color: ${colors.basic[900]};
   background: ${colors.basic[100]};
 
