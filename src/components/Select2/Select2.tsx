@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useMemo,
-  useState,
-  useRef,
-  useEffect,
-} from "react";
+import React, { useCallback, useMemo, useState, useRef, useEffect } from "react";
 import Icon from "../Icon";
 import Button from "../Button";
 import {
@@ -72,9 +66,7 @@ export const Select2: React.FC<Select2Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const [tempSelectedValues, setTempSelectedValues] = useState<
-    (string | number)[]
-  >([]);
+  const [tempSelectedValues, setTempSelectedValues] = useState<(string | number)[]>([]);
   const [isTagOverflowing, setIsTagOverflowing] = useState(false);
   const tagContainerRef = useRef<HTMLDivElement>(null);
 
@@ -95,7 +87,7 @@ export const Select2: React.FC<Select2Props> = ({
     (newValue: string | number | (string | number)[]) => {
       onChange?.(newValue as never);
     },
-    [onChange],
+    [onChange]
   );
 
   const handleOpenChange = useCallback(
@@ -110,7 +102,7 @@ export const Select2: React.FC<Select2Props> = ({
         }
       }
     },
-    [disabled, multiple, selectedValues],
+    [disabled, multiple, selectedValues]
   );
 
   const handleSingleSelect = useCallback(
@@ -121,7 +113,7 @@ export const Select2: React.FC<Select2Props> = ({
         setSearchValue("");
       }
     },
-    [handleChange],
+    [handleChange]
   );
 
   const handleMultipleSelect = useCallback(
@@ -135,7 +127,7 @@ export const Select2: React.FC<Select2Props> = ({
         return newValues;
       });
     },
-    [],
+    []
   );
 
   const handleApply = useCallback(() => {
@@ -154,21 +146,16 @@ export const Select2: React.FC<Select2Props> = ({
   const handleTagRemove = useCallback(
     (tagValue: string | number) => {
       if (multiple && Array.isArray(value)) {
-        const newValues = (value as (string | number)[]).filter(
-          (v) => v !== tagValue,
-        );
+        const newValues = (value as (string | number)[]).filter(v => v !== tagValue);
         handleChange(newValues);
       }
     },
-    [multiple, value, handleChange],
+    [multiple, value, handleChange]
   );
 
-  const handleSearchChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(e.target.value);
-    },
-    [],
-  );
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  }, []);
 
   const handleTagContainerClick = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
@@ -176,7 +163,7 @@ export const Select2: React.FC<Select2Props> = ({
 
   const selectedOption = useMemo(
     () => options.find((option) => option.value === value),
-    [options, value],
+    [options, value]
   );
 
   const selectedOptions = useMemo(() => {
@@ -187,7 +174,7 @@ export const Select2: React.FC<Select2Props> = ({
   const filteredOptions = useMemo(() => {
     if (!searchValue) return options;
     return options.filter((option) =>
-      option.label.toLowerCase().includes(searchValue.toLowerCase()),
+      option.label.toLowerCase().includes(searchValue.toLowerCase())
     );
   }, [options, searchValue]);
 
@@ -195,7 +182,7 @@ export const Select2: React.FC<Select2Props> = ({
     if (!tagContainerRef.current) return;
 
     setIsTagOverflowing(
-      tagContainerRef.current.scrollWidth > tagContainerRef.current.clientWidth,
+      tagContainerRef.current.scrollWidth > tagContainerRef.current.clientWidth
     );
   }, []);
 
@@ -223,24 +210,25 @@ export const Select2: React.FC<Select2Props> = ({
     }
   }, [multiple, value]);
 
-  const stickyHeader = useMemo(
-    () => (
-      <StyledContextMenu2TextInputItem
-        autoFocus
-        placeholder={searchPlaceholder}
-        value={searchValue}
-        onChange={handleSearchChange}
-      />
-    ),
-    [searchValue, searchPlaceholder, handleSearchChange],
-  );
+  const stickyHeader = useMemo(() => (
+    <StyledContextMenu2TextInputItem
+      autoFocus
+      placeholder={searchPlaceholder}
+      value={searchValue}
+      onChange={handleSearchChange}
+    />
+  ), [searchValue, searchPlaceholder, handleSearchChange]);
 
   const stickyFooter = useMemo(() => {
     if (!multiple) return null;
-
+    
     return (
       <ContextMenu2ButtonControlsItem>
-        <Button color="clear" size="small" onClick={handleCancel}>
+        <Button
+          color="clear"
+          size="small"
+          onClick={handleCancel}
+        >
           {cancelButtonText}
         </Button>
         <Button
@@ -259,16 +247,14 @@ export const Select2: React.FC<Select2Props> = ({
     handleApply,
     handleCancel,
     applyButtonText,
-    cancelButtonText,
+    cancelButtonText
   ]);
 
   const triggerElement = (
     <SelectButton
       $disabled={disabled}
       $error={error}
-      $hasValue={
-        multiple ? Array.isArray(value) && value.length > 0 : !!selectedOption
-      }
+      $hasValue={multiple ? (Array.isArray(value) && value.length > 0) : !!selectedOption}
       $isOpen={isOpen}
       $multiple={multiple}
       $size={size}
@@ -299,7 +285,7 @@ export const Select2: React.FC<Select2Props> = ({
 
   return (
     <Select2Container>
-      <SelectContainer
+      <SelectContainer 
         $disabled={disabled}
         $error={error}
         $isOpen={isOpen}
@@ -308,7 +294,7 @@ export const Select2: React.FC<Select2Props> = ({
         data-disabled={disabled}
         data-overflowing={isTagOverflowing}
         style={{
-          cursor: !multiple && !disabled ? "pointer" : "default",
+          cursor: !multiple && !disabled ? 'pointer' : 'default'
         }}
       >
         <ContextMenu2Container>
@@ -322,10 +308,10 @@ export const Select2: React.FC<Select2Props> = ({
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((option) => {
-                const isChecked = multiple
+                const isChecked = multiple 
                   ? tempSelectedValues.includes(option.value)
                   : option.value === value;
-
+                
                 const handleChange = () => {
                   if (multiple) {
                     handleMultipleSelect(!isChecked, option);
@@ -333,14 +319,15 @@ export const Select2: React.FC<Select2Props> = ({
                     handleSingleSelect(option);
                   }
                 };
-
+                
                 return (
                   <ContextMenu2CheckItem
                     key={option.value.toString()}
                     checked={isChecked}
                     closeOnChange={!multiple}
                     disabled={option.disabled}
-                    onChange={handleChange as any}
+                    // @ts-ignore 型エラーを一時的に無視
+                    onChange={handleChange}
                   >
                     {option.label}
                   </ContextMenu2CheckItem>
@@ -351,32 +338,31 @@ export const Select2: React.FC<Select2Props> = ({
             )}
           </ContextMenu2>
         </ContextMenu2Container>
-
+        
         {multiple && (
           <InputArea>
-            <TagContainer
+            <TagContainer 
               ref={tagContainerRef}
               onClick={handleTagContainerClick}
             >
-              {selectedOptions.map((option) => {
-                return (
-                  <StyledTag
-                    key={option.value.toString()}
-                    disabled={disabled}
-                    label={option.label}
-                    size={size}
-                    variant={computedTagVariant}
-                    // eslint-disable-next-line react/jsx-handler-names
-                    onRemove={
-                      disabled ? undefined : () => handleTagRemove(option.value)
-                    }
-                  />
-                );
-              })}
+              {selectedOptions.map((option) => (
+                <StyledTag
+                  key={option.value.toString()}
+                  disabled={disabled}
+                  label={option.label}
+                  size={size}
+                  variant={computedTagVariant}
+                  onRemove={
+                    disabled
+                      ? undefined
+                      : () => handleTagRemove(option.value)
+                  }
+                />
+              ))}
             </TagContainer>
           </InputArea>
         )}
       </SelectContainer>
     </Select2Container>
   );
-};
+}; 
