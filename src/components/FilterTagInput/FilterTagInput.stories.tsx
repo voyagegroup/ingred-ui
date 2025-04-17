@@ -294,12 +294,24 @@ export const Error: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="add_line" />,
-        label: "Option 1",
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
       },
       {
-        icon: <Icon name="add_line" />,
-        label: "Option 2",
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
       },
     ],
     error: true,
