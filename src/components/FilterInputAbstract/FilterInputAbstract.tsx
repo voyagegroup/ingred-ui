@@ -94,11 +94,14 @@ export const FilterInputAbstract = ({
     setIsSelectOpen(!isSelectOpen);
   }, [disabled, isSelectOpen, setIsSelectOpen]);
 
-  const handleOpenChange = useCallback((open: boolean) => {
-    if (!disabled) {
-      setIsSelectOpen(open);
-    }
-  }, [disabled, setIsSelectOpen]);
+  const handleOpenChange = useCallback(
+    (open: boolean) => {
+      if (!disabled) {
+        setIsSelectOpen(open);
+      }
+    },
+    [disabled, setIsSelectOpen],
+  );
 
   useEffect(() => {
     if (!window.ResizeObserver) return;
