@@ -118,7 +118,6 @@ InternalContextMenu2TextInputItem.displayName = "ContextMenu2TextInputItem";
 export const ContextMenu2TextInputItem = styled(
   InternalContextMenu2TextInputItem,
 )`
-  // padding: 6px 8px;
 
   input {
     display: block;
