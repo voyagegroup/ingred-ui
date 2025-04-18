@@ -78,7 +78,7 @@ export const Select2: React.FC<Select2Props> = ({
   const [isTagOverflowing, setIsTagOverflowing] = useState(false);
   const tagContainerRef = useRef<HTMLDivElement>(null);
 
-    // タグのバリアントを自動的に設定
+  // タグのバリアントを自動的に設定
   // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
   const computedTagVariant = useMemo(() => {
     if (tagVariant) return tagVariant;
@@ -363,6 +363,9 @@ export const Select2: React.FC<Select2Props> = ({
             >
               {selectedOptions.map((option) => {
                 const handleRemove = () => handleTagRemove(option.value);
+                const handleTagRemoveHandler = disabled
+                  ? undefined
+                  : handleRemove;
                 return (
                   <StyledTag
                     key={option.value.toString()}
@@ -370,8 +373,7 @@ export const Select2: React.FC<Select2Props> = ({
                     label={option.label}
                     size={size}
                     variant={computedTagVariant}
-                    // eslint-disable-next-line react/jsx-handler-names
-                    onRemove={disabled ? undefined : handleRemove}
+                    onRemove={handleTagRemoveHandler}
                   />
                 );
               })}
