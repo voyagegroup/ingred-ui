@@ -530,7 +530,6 @@ export const FilterTagInput = ({
           data-overflowing={isInlineOverflowing}
           type="button"
           disabled={disabled}
-          // eslint-disable-next-line react/jsx-handler-names
           onClick={handleModalOpen}
         >
           <Icon
@@ -548,7 +547,6 @@ export const FilterTagInput = ({
         title={title}
         values={values}
         onApply={handlePanelApply}
-        // eslint-disable-next-line react/jsx-handler-names
         onClose={handleModalClose}
       />
     </>
