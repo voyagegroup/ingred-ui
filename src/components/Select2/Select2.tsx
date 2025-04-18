@@ -78,6 +78,8 @@ export const Select2: React.FC<Select2Props> = ({
   const [isTagOverflowing, setIsTagOverflowing] = useState(false);
   const tagContainerRef = useRef<HTMLDivElement>(null);
 
+    // タグのバリアントを自動的に設定
+  // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
   const computedTagVariant = useMemo(() => {
     if (tagVariant) return tagVariant;
     return variant === "light" ? "dark" : "light";
