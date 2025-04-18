@@ -89,6 +89,17 @@ export const FilterInputAbstract = ({
     [onSelectChange, setIsSelectOpen],
   );
 
+  const handleClick = useCallback(() => {
+    if (disabled) return;
+    setIsSelectOpen(!isSelectOpen);
+  }, [disabled, isSelectOpen, setIsSelectOpen]);
+
+  const handleOpenChange = useCallback((open: boolean) => {
+    if (!disabled) {
+      setIsSelectOpen(open);
+    }
+  }, [disabled, setIsSelectOpen]);
+
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!el.current) return;
@@ -123,18 +134,13 @@ export const FilterInputAbstract = ({
               type="button"
               disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
-              // eslint-disable-next-line react/jsx-handler-names
-              onClick={() => {
-                if (disabled) return;
-                setIsSelectOpen(!isSelectOpen);
-              }}
+              onClick={handleClick}
             >
               {selectOptions[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />
             </styled.DropDownTrigger>
           }
-          // eslint-disable-next-line react/jsx-handler-names
-          onOpenChange={(open) => !disabled && setIsSelectOpen(open)}
+          onOpenChange={handleOpenChange}
         >
           {selectOptions.map(({ label, icon }, i) => (
             <ContextMenu2CheckItem

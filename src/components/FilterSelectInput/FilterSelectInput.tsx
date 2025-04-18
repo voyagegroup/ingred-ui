@@ -110,6 +110,21 @@ export const FilterSelectInput = ({
     [onChange],
   );
 
+  const handleSelectClick = useCallback(() => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
+  }, [disabled, isOpen]);
+
+  const handleMenuOpenChange = useCallback(
+    (open: boolean) => {
+      if (!disabled) {
+        handleOpenChange(open);
+      }
+    },
+    [disabled, handleOpenChange],
+  );
+
   return (
     <FilterInputAbstract
       size={size}
@@ -131,8 +146,7 @@ export const FilterSelectInput = ({
                 $size={size}
                 $variant={variant}
                 disabled={disabled}
-                // eslint-disable-next-line react/jsx-handler-names
-                onClick={() => !disabled && setIsOpen(!isOpen)}
+                onClick={handleSelectClick}
               >
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
                 <styled.SelectIcon>
@@ -140,8 +154,7 @@ export const FilterSelectInput = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
-            // eslint-disable-next-line react/jsx-handler-names
-            onOpenChange={(open) => !disabled && handleOpenChange(open)}
+            onOpenChange={handleMenuOpenChange}
           >
             <styled.StyledContextMenu2TextInputItem
               autoFocus
