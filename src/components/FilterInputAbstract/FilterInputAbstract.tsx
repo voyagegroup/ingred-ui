@@ -38,14 +38,14 @@ export const FilterTag = ({
   onRemove,
 }: FilterTagProps) => {
   const { disabled } = React.useContext(FilterInputContext);
+  const handleRemove = disabled ? undefined : onRemove;
   return (
     <Tag
       label={label}
       size={size}
       variant={variant}
       disabled={disabled}
-      // eslint-disable-next-line react/jsx-handler-names
-      onRemove={disabled ? undefined : onRemove}
+      onRemove={handleRemove}
     />
   );
 };
