@@ -120,7 +120,7 @@ const FilterInputPanel = ({
     setInputValue("");
   }, []);
 
-  const handleChancelClick = useCallback(() => {
+  const handleCancelClick = useCallback(() => {
     onClose();
   }, [onClose]);
 
@@ -128,6 +128,69 @@ const FilterInputPanel = ({
     onApply(userValues, userSelectedIndex);
     onClose();
   }, [userValues, userSelectedIndex, onApply, onClose]);
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    },
+    [],
+  );
+
+  const handleCompositionStart = useCallback(() => {
+    setIsInlineComposing(true);
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    setIsInlineComposing(false);
+  }, []);
+
+  const handleInputBlur = useCallback(() => {
+    setInputValue("");
+  }, []);
+
+  // タグのレンダリングをメモ化
+  const renderedUserTags = useMemo(
+    () =>
+      userValues.map((value, i) => (
+        <FilterTag
+          key={value}
+          size="medium"
+          variant="light"
+          label={value}
+          onRemove={() => handleTagRemove(i)}
+        />
+      )),
+    [userValues, handleTagRemove],
+  );
+
+  // セレクトオプションのレンダリングをメモ化
+  const renderedSelectOptions = useMemo(
+    () =>
+      modifiedSelectOptions.map(({ label, icon }, i) => (
+        <ContextMenu2CheckItem
+          key={label}
+          prepend={icon}
+          checked={userSelectedIndex === i}
+          onChange={() => handleSelectChange(i)}
+        >
+          {label}
+        </ContextMenu2CheckItem>
+      )),
+    [modifiedSelectOptions, userSelectedIndex, handleSelectChange],
+  );
+
+  // 現在選択されているオプションの表示をメモ化
+  const selectedOptionDisplay = useMemo(
+    () => (
+      <>
+        {React.cloneElement(modifiedSelectOptions[userSelectedIndex].icon, {
+          size: menuIconSize,
+        })}
+        {modifiedSelectOptions[userSelectedIndex].label}
+      </>
+    ),
+    [modifiedSelectOptions, userSelectedIndex, menuIconSize],
+  );
 
   // isOpen が true になったら、現状の値を初期値としてセットする
   // 「適用」するまでは、親に値を返さない
@@ -156,29 +219,16 @@ const FilterInputPanel = ({
                       {longestLabelOption.label}
                     </styled.PanelSelectTriggerSpacer>
                     <styled.PanelSelectTriggerLabel>
-                      {React.cloneElement(
-                        modifiedSelectOptions[userSelectedIndex].icon,
-                        { size: menuIconSize },
-                      )}
-                      {modifiedSelectOptions[userSelectedIndex].label}
+                      {selectedOptionDisplay}
                     </styled.PanelSelectTriggerLabel>
                     <styled.PanelSelectTriggerIcon>
                       <Icon name="arrow_down" color="currentColor" />
                     </styled.PanelSelectTriggerIcon>
                   </styled.PanelSelectTrigger>
                 }
-                onOpenChange={(open) => setIsSelectOpen(open)}
+                onOpenChange={setIsSelectOpen}
               >
-                {modifiedSelectOptions.map(({ label, icon }, i) => (
-                  <ContextMenu2CheckItem
-                    key={label}
-                    prepend={icon}
-                    checked={userSelectedIndex === i}
-                    onChange={() => handleSelectChange(i)}
-                  >
-                    {label}
-                  </ContextMenu2CheckItem>
-                ))}
+                {renderedSelectOptions}
               </ContextMenu2>
             </ContextMenu2Container>
           </styled.PanelLeft>
@@ -189,26 +239,18 @@ const FilterInputPanel = ({
                 type="button"
                 onClick={handleFocusTriggerClick}
               />
-              {userValues.map((value, i) => (
-                <FilterTag
-                  key={value}
-                  size="medium"
-                  variant="light"
-                  label={value}
-                  onRemove={() => handleTagRemove(i)}
-                />
-              ))}
+              {renderedUserTags}
               <styled.PanelInput>
                 <input
                   ref={inputEl}
                   type="text"
                   aria-label="フィルターする値"
                   value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onCompositionStart={() => setIsInlineComposing(true)}
-                  onCompositionEnd={() => setIsInlineComposing(false)}
+                  onChange={handleInputChange}
+                  onCompositionStart={handleCompositionStart}
+                  onCompositionEnd={handleCompositionEnd}
                   onKeyDown={handleKeyDown}
-                  onBlur={() => setInputValue("")}
+                  onBlur={handleInputBlur}
                 />
                 <styled.PanelInputSpacer>{inputValue}</styled.PanelInputSpacer>
               </styled.PanelInput>
@@ -222,7 +264,7 @@ const FilterInputPanel = ({
           </styled.PanelRight>
           <styled.PanelButtons>
             <li>
-              <Button size="small" color="clear" onClick={handleChancelClick}>
+              <Button size="small" color="clear" onClick={handleCancelClick}>
                 キャンセル
               </Button>
             </li>
@@ -247,12 +289,14 @@ type FilterTagInputProps = {
   values: string[];
   selectedIndex: number;
   selectOptions: { icon: ReactElement; label: string }[];
-  onChange: (values: string[]) => void;
+  onChange: (values: string[], selectedIndex: number) => void;
   onSelectChange: (index: number) => void;
   size?: FilterSize;
   variant?: "light" | "dark";
   tagVariant?: "light" | "dark";
   menuIconSize?: IconSize | number;
+  disabled?: boolean;
+  error?: boolean;
 };
 export const FilterTagInput = ({
   title,
@@ -263,18 +307,28 @@ export const FilterTagInput = ({
   onSelectChange,
   size = "medium",
   variant = "dark",
-  tagVariant = "light",
+  tagVariant,
   menuIconSize = 22,
+  disabled = false,
+  error = false,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const inputEl = useRef<HTMLInputElement>(null);
+
+  // タグのバリアントを自動的に設定
+  // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
+  const computedTagVariant = useMemo(() => {
+    if (tagVariant) return tagVariant;
+    return variant === "light" ? "dark" : "light";
+  }, [variant, tagVariant]);
 
   const inlineFieldEl = useRef<HTMLDivElement>(null);
   const inlineFieldInnerEl = useRef<HTMLDivElement>(null);
-  const inlineInputEl = useRef<HTMLInputElement>(null);
 
   // inlineFieldEl の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
@@ -284,15 +338,15 @@ export const FilterTagInput = ({
     setIsInlineOverflowing(
       inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
     );
-  }, []);
+  }, [setIsInlineOverflowing]);
 
   // inlineFieldEl が狭すぎる場合は、モーダルパネル内で入力させる。
   // その判定。
   const computeInlineFieldVisibleWidth = useCallback(() => {
-    if (!inlineFieldEl.current || !inlineInputEl.current) return;
+    if (!inlineFieldEl.current || !inputEl.current) return;
 
-    // inlineInputEl がどれくらい見えているか？
-    const inlineInputRect = inlineInputEl.current.getBoundingClientRect();
+    // inputEl がどれくらい見えているか？
+    const inputRect = inputEl.current.getBoundingClientRect();
     const inlineFieldRect = inlineFieldEl.current.getBoundingClientRect();
     const inlineFieldPaddingRight = Number(
       window
@@ -300,7 +354,7 @@ export const FilterTagInput = ({
         .paddingRight.replace("px", ""),
     );
     const visibleWidth =
-      inlineFieldRect.right - inlineFieldPaddingRight - inlineInputRect.left;
+      inlineFieldRect.right - inlineFieldPaddingRight - inputRect.left;
     return visibleWidth;
   }, []);
 
@@ -311,7 +365,7 @@ export const FilterTagInput = ({
 
       // 0 文字目で backspace を押した場合は、最後の値を削除する
       if (event.key === "Backspace" && event.target.selectionStart === 0) {
-        onChange(values.slice(0, -1));
+        onChange(values.slice(0, -1), selectedIndex);
         requestAnimationFrame(() => {
           checkInlineOverflow();
           computeInlineFieldVisibleWidth();
@@ -323,7 +377,7 @@ export const FilterTagInput = ({
       if (trimmedValue === "" || values.includes(trimmedValue)) return;
 
       if (event.key === "Enter") {
-        onChange([...values, trimmedValue]);
+        onChange([...values, trimmedValue], selectedIndex);
         setInputValue("");
         requestAnimationFrame(() => {
           checkInlineOverflow();
@@ -331,46 +385,76 @@ export const FilterTagInput = ({
         });
       }
     },
-    [
-      values,
-      onChange,
-      setInputValue,
-      isInlineComposing,
-      checkInlineOverflow,
-      computeInlineFieldVisibleWidth,
-    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [values, onChange, setInputValue, isInlineComposing, selectedIndex],
   );
 
   const handleTagRemove = useCallback(
     (index: number) => {
       const newValues = [...values];
       newValues.splice(index, 1);
-      onChange(newValues);
+      onChange(newValues, selectedIndex);
       requestAnimationFrame(() => {
         checkInlineOverflow();
         computeInlineFieldVisibleWidth();
       });
     },
-    [values, onChange, checkInlineOverflow, computeInlineFieldVisibleWidth],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [values, onChange, selectedIndex],
   );
 
   const handlePanelApply = useCallback(
     (newValues: string[], newSelectedIndex: number) => {
-      onChange(newValues);
+      onChange(newValues, newSelectedIndex);
       onSelectChange(newSelectedIndex);
       requestAnimationFrame(() => {
         checkInlineOverflow();
         computeInlineFieldVisibleWidth();
       });
     },
-    [
-      onChange,
-      onSelectChange,
-      checkInlineOverflow,
-      computeInlineFieldVisibleWidth,
-    ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onChange, onSelectChange],
   );
 
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.target.value);
+    },
+    [],
+  );
+
+  const handleCompositionStart = useCallback(() => {
+    setIsInlineComposing(true);
+  }, []);
+
+  const handleCompositionEnd = useCallback(() => {
+    setIsInlineComposing(false);
+  }, []);
+
+  const handleModalOpen = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+
+  const handleModalClose = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
+
+  const handleFocus = useCallback(() => {
+    if (!disabled) {
+      setIsFocused(true);
+    }
+  }, [disabled]);
+
+  const handleBlur = useCallback(() => {
+    setIsFocused(false);
+  }, []);
+
+  const handleBlurWithClear = useCallback(() => {
+    handleBlur();
+    setInputValue("");
+  }, [handleBlur]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!window.ResizeObserver) return;
     if (!inlineFieldEl.current) return;
@@ -388,56 +472,73 @@ export const FilterTagInput = ({
     };
   }, [checkInlineOverflow, computeInlineFieldVisibleWidth]);
 
-  return (
-    <FilterInputAbstract
-      size={size}
-      selectedIndex={selectedIndex}
-      selectOptions={selectOptions}
-      onSelectChange={onSelectChange}
-    >
-      <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
-        <styled.InlineFieldInner ref={inlineFieldInnerEl}>
-          {values.map((value, i) => (
-            <FilterTag
-              key={value}
-              size={size}
-              variant={tagVariant}
-              label={value}
-              onRemove={() => handleTagRemove(i)}
-            />
-          ))}
-          <styled.InlineInput>
-            {!inputValue && (
-              <styled.InlineInputIcon>
-                <Icon name="filter" color="currentColor" />
-              </styled.InlineInputIcon>
-            )}
-            <input
-              ref={inlineInputEl}
-              type="text"
-              aria-label="フィルターする値"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onCompositionStart={() => setIsInlineComposing(true)}
-              onCompositionEnd={() => setIsInlineComposing(false)}
-              onKeyDown={handleKeyDown}
-              onBlur={() => setInputValue("")}
-            />
-          </styled.InlineInput>
-        </styled.InlineFieldInner>
-      </styled.InlineField>
-      <styled.OverflowIndicator
-        $size={size}
-        aria-label="フィルター入力パネルを開く"
-        data-overflowing={isInlineOverflowing}
-        type="button"
-        onClick={() => setIsModalOpen(true)}
-      >
-        <Icon
-          name={isSmall ? "filter" : "expand_diagonal_s_fill"}
-          color="currentColor"
+  // タグのレンダリングをメモ化
+  const renderedTags = useMemo(
+    () =>
+      values.map((value, i) => (
+        <FilterTag
+          key={value}
+          size={size}
+          variant={computedTagVariant}
+          label={value}
+          onRemove={() => handleTagRemove(i)}
         />
-      </styled.OverflowIndicator>
+      )),
+    [values, size, computedTagVariant, handleTagRemove],
+  );
+
+  return (
+    <>
+      <FilterInputAbstract
+        size={size}
+        selectedIndex={selectedIndex}
+        selectOptions={selectOptions}
+        disabled={disabled}
+        error={error}
+        isOpen={isFocused}
+        onSelectChange={onSelectChange}
+      >
+        <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
+          <styled.InlineFieldInner ref={inlineFieldInnerEl}>
+            {renderedTags}
+            <styled.InlineInput>
+              {!inputValue && (
+                <styled.InlineInputIcon>
+                  <Icon name="filter" color="currentColor" />
+                </styled.InlineInputIcon>
+              )}
+              <input
+                ref={inputEl}
+                type="text"
+                aria-label="フィルターする値"
+                value={inputValue}
+                disabled={disabled}
+                onChange={handleInputChange}
+                onKeyDown={handleKeyDown}
+                onCompositionStart={handleCompositionStart}
+                onCompositionEnd={handleCompositionEnd}
+                onFocus={handleFocus}
+                // eslint-disable-next-line react/jsx-handler-names
+                onBlur={handleBlurWithClear}
+              />
+            </styled.InlineInput>
+          </styled.InlineFieldInner>
+        </styled.InlineField>
+        <styled.OverflowIndicator
+          $size={size}
+          aria-label="フィルター入力パネルを開く"
+          data-overflowing={isInlineOverflowing}
+          type="button"
+          disabled={disabled}
+          onClick={handleModalOpen}
+        >
+          <Icon
+            name={isSmall ? "filter" : "expand_diagonal_s_fill"}
+            color="currentColor"
+          />
+        </styled.OverflowIndicator>
+      </FilterInputAbstract>
+
       <FilterInputPanel
         isOpen={isModalOpen}
         menuIconSize={menuIconSize}
@@ -446,8 +547,8 @@ export const FilterTagInput = ({
         title={title}
         values={values}
         onApply={handlePanelApply}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleModalClose}
       />
-    </FilterInputAbstract>
+    </>
   );
 };

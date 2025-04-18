@@ -26,7 +26,7 @@ export const ContextMenu2ButtonControlsItem = styled(
   justify-content: flex-end;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 6px 0;
+  padding: 16px 0 8px;
   margin: 0;
   list-style: none;
 `;

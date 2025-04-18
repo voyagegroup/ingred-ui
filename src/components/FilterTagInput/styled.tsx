@@ -29,12 +29,6 @@ export const InlineField = styled.div<StyledProps>`
     display: none;
   }
 
-  &:has(input:focus) {
-    outline: auto;
-    outline-offset: -1px;
-    outline: auto -webkit-focus-ring-color;
-  }
-
   &:where(${FilterInputAbstract}[data-small="true"] *) {
     display: none;
   }
@@ -68,6 +62,14 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   background-color: ${colors.basic[0]};
   box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:disabled {
+    color: ${colors.basic[400]};
+    background-color: ${colors.basic[200]};
+    cursor: not-allowed;
+    box-shadow: none;
+  }
 
   &:where([data-overflowing="true"]) {
     display: grid;
@@ -90,6 +92,12 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
     border: 1px solid ${colors.basic[400]};
     border-radius: 4px;
     box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
+
+    &:disabled {
+      border-color: ${colors.basic[300]};
+      background-color: ${colors.basic[200]};
+      box-shadow: none;
+    }
   }
 
   &:where(${FilterInputAbstract}[data-small="true"] *:active:not(:disabled)) {
@@ -293,10 +301,14 @@ export const PanelTagField = styled.div`
   background: ${colors.basic[100]};
 
   &:has(input:focus) {
-    outline: auto;
-    outline: auto -webkit-focus-ring-color;
+    outline: none;
+    border-color: ${colors.blue[500]};
+    box-shadow: 0 0 0 3px ${colors.blue[200]}66;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
   }
-`; // ↑ outline が 2 だけれど、前者は Firefox 用に必要
+`;
 
 export const PanelTagFieldFocusTrigger = styled.button`
   position: absolute;

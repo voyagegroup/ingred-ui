@@ -29,18 +29,11 @@ const meta = {
     tagVariant: {
       control: { type: "radio" },
       options: ["light", "dark"],
-      description: "タグの背景色バリエーション",
+      description:
+        "タグの背景色バリエーション。省略した場合はvariantに応じて自動的に決定（variantが'light'の場合は'dark'、'dark'の場合は'light'）",
       table: {
         type: { summary: "light | dark" },
-        defaultValue: { summary: "light" },
-      },
-    },
-    placeholder: {
-      control: { type: "text" },
-      description: "入力フィールドのプレースホルダー",
-      table: {
-        type: { summary: "string" },
-        defaultValue: { summary: "" },
+        defaultValue: { summary: "variantに連動" },
       },
     },
   },
@@ -78,7 +71,7 @@ export const Default: StoryObj<typeof meta> = {
       "tiger",
       "giraffe",
       ["🐘", "ゾウ", "ぞう", "象"],
-      "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
+      "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
     ],
     selectedIndex: 0,
     selectOptions: [
@@ -103,7 +96,6 @@ export const Default: StoryObj<typeof meta> = {
         label: "いずれかを含む",
       },
     ],
-    placeholder: "検索...",
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -201,8 +193,12 @@ export const Sizes: StoryObj<typeof meta> = {
  *   - light: 明るい背景色
  *   - dark: 暗い背景色（デフォルト）
  * - tagVariant: タグの背景色
- *   - light: 明るい背景色（デフォルト）
+ *   - 指定なし: 親コンポーネントのvariantに応じて自動的に設定（推奨）
+ *   - light: 明るい背景色
  *   - dark: 暗い背景色
+ *
+ * コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。
+ * variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。
  */
 export const Variants: StoryObj<typeof meta> = {
   args: {
@@ -243,18 +239,130 @@ export const Variants: StoryObj<typeof meta> = {
         <FilterComboBox
           {...args}
           variant="light"
-          tagVariant="dark"
           onChange={handleChange}
           onSelectChange={handleSelectChange}
         />
         <FilterComboBox
           {...args}
           variant="dark"
-          tagVariant="light"
           onChange={handleChange}
           onSelectChange={handleSelectChange}
         />
       </div>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。tagVariantを明示的に指定することで、この自動連動をオーバーライドすることもできます。',
+      },
+    },
+  },
+};
+
+/**
+ * 無効状態のサンプル
+ */
+export const Disabled: StoryObj<typeof meta> = {
+  args: {
+    values: ["パンダ", "ヒョウ"],
+    options: [
+      ["ウサギ", "うさぎ", "兎"],
+      ["パンダ", "ぱんだ", "熊猫"],
+      ["レッサーパンダ", "れっさーぱんだ"],
+      "ヒョウ",
+      "ライオン",
+      "tiger",
+      "giraffe",
+      ["🐘", "ゾウ", "ぞう", "象"],
+    ],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
+    ],
+    disabled: true,
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+    const handleChange = (values: string[]) => updateArgs({ values });
+    const handleSelectChange = (selectedIndex: number) =>
+      updateArgs({ selectedIndex });
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>
+          <p>無効状態</p>
+          <FilterComboBox
+            {...args}
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
+        <div>
+          <p>通常状態</p>
+          <FilterComboBox
+            {...args}
+            disabled={false}
+            onChange={handleChange}
+            onSelectChange={handleSelectChange}
+          />
+        </div>
+      </div>
+    );
+  },
+};
+
+/**
+ * エラー状態
+ */
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    values: ["パンダ", "ヒョウ"],
+    options: [
+      ["ウサギ", "うさぎ", "兎"],
+      ["パンダ", "ぱんだ", "熊猫"],
+      ["レッサーパンダ", "れっさーぱんだ"],
+      "ヒョウ",
+      "ライオン",
+    ],
+    selectedIndex: 0,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+    ],
+    error: true,
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <FilterComboBox
+        {...args}
+        onChange={(values) => updateArgs({ values })}
+        onSelectChange={(selectedIndex) => updateArgs({ selectedIndex })}
+      />
     );
   },
 };
