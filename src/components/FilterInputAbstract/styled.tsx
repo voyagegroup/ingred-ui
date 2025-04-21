@@ -42,7 +42,11 @@ export type FilterTagProps = {
   $size: FilterSize;
 };
 
-export const FilterInputAbstract = styled.div`
+export const FilterInputAbstract = styled.div<{
+  $isOpen?: boolean;
+  $error?: boolean;
+  $disabled?: boolean;
+}>`
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -50,6 +54,59 @@ export const FilterInputAbstract = styled.div`
   gap: 0;
   ${filterBaseStyle}
   overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  border: 1px solid
+    ${({ $error, $disabled, $isOpen }) => {
+      if ($error) return colors.red[500];
+      if ($disabled) return colors.basic[400];
+      if ($isOpen) return colors.blue[500];
+      return colors.basic[400];
+    }};
+
+  &:hover:not([data-disabled="true"]) {
+    border-color: ${({ $error, theme }) =>
+      $error ? colors.red[500] : theme.palette.primary.main};
+  }
+
+  ${({ $isOpen, $error }) =>
+    $isOpen &&
+    `
+    box-shadow: 0 0 0 3px ${
+      $error ? `${colors.red[200]}66` : `${colors.blue[200]}66`
+    };
+  `}
+
+  &[data-disabled="true"] {
+    background-color: ${colors.basic[200]};
+    border-color: ${colors.basic[400]};
+
+    /* 入力エリアのみ無効化 */
+    > :nth-child(2) {
+      cursor: not-allowed;
+      user-select: none;
+      transition: all 0.2s ease;
+
+      /* 共通のdisabledスタイル */
+      &,
+      input,
+      button {
+        color: ${colors.basic[400]};
+        background-color: ${colors.basic[200]};
+      }
+
+      input,
+      button {
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      button svg {
+        color: ${colors.basic[400]};
+      }
+    }
+  }
 
   &[data-size="small"] {
     ${getFilterSizeStyle("small")}
@@ -82,9 +139,22 @@ export const DropDownTrigger = styled.button`
   border: 0;
   border-right: 1px solid ${colors.basic[400]};
   outline-offset: -1px;
-  color: #000;
-  background: ${colors.basic[0]};
-  cursor: pointer;
+  color: ${({ disabled }) =>
+    disabled ? colors.basic[400] : colors.basic[900]};
+  background: ${({ disabled }) =>
+    disabled ? colors.basic[200] : colors.basic[0]};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  transition: all 0.2s ease;
+
+  /* アイコンの色を制御 */
+  svg {
+    color: ${({ disabled }) => (disabled ? colors.basic[400] : "currentColor")};
+    transition: color 0.2s ease;
+  }
+
+  &:hover:not([disabled]) {
+    background: ${colors.basic[100]};
+  }
 
   /* サイズバリエーション */
   &:where(${FilterInputAbstract}[data-size="small"] *) {

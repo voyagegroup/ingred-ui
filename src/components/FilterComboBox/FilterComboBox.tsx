@@ -17,12 +17,12 @@ import {
   ContextMenu2Container,
   ContextMenu2CheckItem,
   ContextMenu2ButtonControlsItem,
-  ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
 import Button from "../Button";
 import Icon from "../Icon";
 import * as styled from "./styled";
 import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
+import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 type FilterTagInputProps = {
   values: string[];
@@ -34,7 +34,12 @@ type FilterTagInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   tagVariant?: FilterVariant;
-  placeholder?: string;
+  searchPlaceholder?: string;
+  noResultsMessage?: string;
+  disabled?: boolean;
+  applyButtonText?: string;
+  cancelButtonText?: string;
+  error?: boolean;
 };
 
 export const FilterComboBox = ({
@@ -46,26 +51,36 @@ export const FilterComboBox = ({
   onSelectChange,
   size = "medium",
   variant = "dark",
-  tagVariant = "light",
-  placeholder = "絞り込む",
+  tagVariant,
+  searchPlaceholder = "検索",
+  noResultsMessage = "見つかりませんでした",
+  disabled = false,
+  applyButtonText = "適用",
+  cancelButtonText = "キャンセル",
+  error = false,
 }: FilterTagInputProps) => {
   const [userValue, setUserValue] = useState("");
-  const [userEnteredValue, setUserEnteredValue] = useState("");
   const [isComposing, setIsComposing] = useState(false);
   const [tempValues, setTempValues] = useState<string[]>(values);
   const [isOpen, setIsOpen] = useState(false);
 
+  // タグのvariantを計算: 明示的に指定されていれば、それを使用。そうでなければvariantに応じて自動的に設定
+  const computedTagVariant = useMemo(() => {
+    if (tagVariant) return tagVariant;
+    return variant === "light" ? "dark" : "light";
+  }, [variant, tagVariant]);
+
   // タグリスト部分で、CSS の overflow が発生しているか否か
   const [isInlineOverflowing, setIsInlineOverflowing] = useState(false);
-  const inlineFieldEl = useRef<HTMLDivElement>(null);
+  const tagListRef = useRef<HTMLDivElement>(null);
 
-  // inlineFieldEl の大きさを監視して、
+  // tagListRef の大きさを監視して、
   // overflow したら isInlineOverflowing を true にする
   const checkInlineOverflow = useCallback(() => {
-    if (!inlineFieldEl.current) return;
+    if (!tagListRef.current) return;
 
     setIsInlineOverflowing(
-      inlineFieldEl.current.clientWidth < inlineFieldEl.current.scrollWidth,
+      tagListRef.current.clientWidth < tagListRef.current.scrollWidth,
     );
   }, []);
 
@@ -74,23 +89,26 @@ export const FilterComboBox = ({
   const getFilteredOptions = useCallback(
     (value: string) => {
       const trimmedValue = value.trim();
+      if (!trimmedValue)
+        return options.map((option) => {
+          return !Array.isArray(option) ? [option] : option;
+        });
+
       const filtered = options.filter((option) => {
         if (!Array.isArray(option)) return option.includes(trimmedValue);
         return option.some((o) => o.includes(trimmedValue));
       });
-      const normalized = (filtered.length === 0 ? options : filtered).map(
-        (option) => {
-          return !Array.isArray(option) ? [option] : option;
-        },
-      );
+      const normalized = filtered.map((option) => {
+        return !Array.isArray(option) ? [option] : option;
+      });
       return normalized;
     },
     [options],
   );
 
   const filteredOptions = useMemo(() => {
-    return getFilteredOptions(userEnteredValue);
-  }, [userEnteredValue, getFilteredOptions]);
+    return getFilteredOptions(userValue);
+  }, [userValue, getFilteredOptions]);
 
   const handleSelect = useCallback(
     (value: string) => {
@@ -105,43 +123,36 @@ export const FilterComboBox = ({
 
   const handleEnter = useCallback(() => {
     if (isComposing) return;
-    setUserEnteredValue(userValue);
     if (!userValue.trim()) return;
 
-    const filteredOptions = getFilteredOptions(userEnteredValue);
+    const filteredOptions = getFilteredOptions(userValue);
 
     if (filteredOptions.length !== 1) return;
     handleSelect(filteredOptions[0][0]);
-  }, [
-    isComposing,
-    userValue,
-    userEnteredValue,
-    getFilteredOptions,
-    handleSelect,
-  ]);
+    setUserValue("");
+  }, [isComposing, userValue, getFilteredOptions, handleSelect]);
 
   const handleOnChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setUserValue(event.target.value);
-      if (!isComposing) setUserEnteredValue(event.target.value);
     },
-    [isComposing, setUserValue, setUserEnteredValue],
+    [setUserValue],
   );
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "Enter") {
-        setUserEnteredValue(userValue);
         return;
       }
     },
-    [userValue, setUserEnteredValue],
+    [],
   );
 
   const handleRemove = useCallback(
     (value: string) => {
       const newValues = values.filter((v) => v !== value);
       onChange(newValues);
+      setTempValues(newValues);
     },
     [values, onChange],
   );
@@ -153,7 +164,6 @@ export const FilterComboBox = ({
         setTempValues(values);
       }
       setUserValue("");
-      setUserEnteredValue("");
     },
     [values],
   );
@@ -168,16 +178,50 @@ export const FilterComboBox = ({
     setIsOpen(false);
   }, [values]);
 
+  // 検索窓を上部に固定
+  const stickyHeader = useMemo(
+    () => (
+      <styled.StyledContextMenu2TextInputItem
+        autoFocus
+        value={userValue}
+        placeholder={searchPlaceholder}
+        onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
+        onEnter={handleEnter}
+      />
+    ),
+    [userValue, searchPlaceholder, handleOnChange, handleKeyDown, handleEnter],
+  );
+
+  // 適用/キャンセルボタンを下部に固定
+  const stickyFooter = useMemo(
+    () => (
+      <ContextMenu2ButtonControlsItem>
+        <Button size="small" color="clear" onClick={handleCancel}>
+          {cancelButtonText}
+        </Button>
+        <Button size="small" onClick={handleApply}>
+          {applyButtonText}
+        </Button>
+      </ContextMenu2ButtonControlsItem>
+    ),
+    [handleCancel, handleApply, applyButtonText, cancelButtonText],
+  );
+
   useEffect(() => {
     if (!window.ResizeObserver) return;
-    if (!inlineFieldEl.current) return;
+    if (!tagListRef.current) return;
 
     const resizeObserver = new window.ResizeObserver(() => {
-      if (!inlineFieldEl.current) return;
+      if (!tagListRef.current) return;
       checkInlineOverflow();
     });
 
-    resizeObserver.observe(inlineFieldEl.current);
+    resizeObserver.observe(tagListRef.current);
+    // 初回チェック
+    checkInlineOverflow();
 
     return () => {
       resizeObserver.disconnect();
@@ -189,62 +233,64 @@ export const FilterComboBox = ({
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
+      disabled={disabled}
+      error={error}
+      isOpen={isOpen}
       onSelectChange={onSelectChange}
     >
       <styled.SelectContainer
-        data-overflowing={isInlineOverflowing}
         $variant={variant}
+        data-overflowing={isInlineOverflowing}
       >
         <ContextMenu2Container>
           <ContextMenu2
-            open={isOpen}
+            open={isOpen && !disabled}
             trigger={
-              <styled.Select type="button" $variant={variant}>
+              <styled.Select
+                type="button"
+                $variant={variant}
+                disabled={disabled}
+                aria-label="タグを追加"
+                // eslint-disable-next-line react/jsx-handler-names
+                onClick={() => {
+                  if (disabled) return;
+                  setIsOpen(!isOpen);
+                }}
+              >
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={handleOpenChange}
+            stickyHeader={stickyHeader}
+            stickyFooter={stickyFooter}
+            noResultsMessage={noResultsMessage}
+            // eslint-disable-next-line react/jsx-handler-names
+            onOpenChange={(open) => !disabled && handleOpenChange(open)}
           >
-            <styled.StyledContextMenu2TextInputItem
-              autoFocus
-              value={userValue}
-              placeholder={placeholder}
-              onChange={handleOnChange}
-              onKeyDown={handleKeyDown}
-              onCompositionStart={() => setIsComposing(true)}
-              onCompositionEnd={() => setIsComposing(false)}
-              onEnter={handleEnter}
-            />
-            {filteredOptions.map((option) => (
-              <ContextMenu2CheckItem
-                key={option[0]}
-                checked={tempValues.includes(option[0])}
-                closeOnChange={false}
-                onChange={() => handleSelect(option[0])}
-              >
-                {option[0]}
-              </ContextMenu2CheckItem>
-            ))}
-            <ContextMenu2SeparatorItem />
-            <ContextMenu2ButtonControlsItem>
-              <Button size="small" color="clear" onClick={handleCancel}>
-                キャンセル
-              </Button>
-              <Button size="small" onClick={handleApply}>
-                適用
-              </Button>
-            </ContextMenu2ButtonControlsItem>
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((option) => (
+                <ContextMenu2CheckItem
+                  key={option[0]}
+                  checked={tempValues.includes(option[0])}
+                  closeOnChange={false}
+                  onChange={() => handleSelect(option[0])}
+                >
+                  {option[0]}
+                </ContextMenu2CheckItem>
+              ))
+            ) : (
+              <ContextMenu2NoResultsMessage message={noResultsMessage} />
+            )}
           </ContextMenu2>
         </ContextMenu2Container>
-        <styled.TagList ref={inlineFieldEl}>
+        <styled.TagList ref={tagListRef}>
           {values.map((value) => (
             <FilterTag
               key={value}
               label={value}
               size={size}
-              variant={tagVariant}
+              variant={computedTagVariant}
               onRemove={() => handleRemove(value)}
             />
           ))}

@@ -16,6 +16,7 @@ import {
 import Icon from "../Icon";
 import * as styled from "./styled";
 import { FilterSize, FilterVariant } from "../FilterInputAbstract/types";
+import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 type FilterSelectInputProps = {
   value: string;
@@ -27,6 +28,9 @@ type FilterSelectInputProps = {
   size?: FilterSize;
   variant?: FilterVariant;
   searchPlaceholder?: string;
+  noResultsMessage?: string;
+  disabled?: boolean;
+  error?: boolean;
 };
 
 export const FilterSelectInput = ({
@@ -39,6 +43,9 @@ export const FilterSelectInput = ({
   size = "medium",
   variant = "dark",
   searchPlaceholder = "絞り込む",
+  noResultsMessage = "見つかりませんでした",
+  disabled = false,
+  error = false,
 }: FilterSelectInputProps) => {
   const [width, setWidth] = useState(0);
   const [userValue, setUserValue] = useState("");
@@ -103,46 +110,76 @@ export const FilterSelectInput = ({
     [onChange],
   );
 
+  const handleSelectClick = useCallback(() => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+    }
+  }, [disabled, isOpen]);
+
+  const handleMenuOpenChange = useCallback(
+    (open: boolean) => {
+      if (!disabled) {
+        handleOpenChange(open);
+      }
+    },
+    [disabled, handleOpenChange],
+  );
+
   return (
     <FilterInputAbstract
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
+      disabled={disabled}
+      error={error}
+      isOpen={isOpen}
       onSelectChange={onSelectChange}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>
           <ContextMenu2
-            open={isOpen}
+            open={isOpen && !disabled}
             minWidth={width}
             trigger={
-              <styled.Select type="button" $size={size} $variant={variant}>
+              <styled.Select
+                type="button"
+                $size={size}
+                $variant={variant}
+                disabled={disabled}
+                onClick={handleSelectClick}
+              >
                 <styled.SelectLabel $size={size}>{value}</styled.SelectLabel>
                 <styled.SelectIcon>
                   <Icon name="arrow_down" color="currentColor" />
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={handleOpenChange}
+            onOpenChange={handleMenuOpenChange}
           >
             <styled.StyledContextMenu2TextInputItem
               autoFocus
               value={userValue}
               placeholder={searchPlaceholder}
+              disabled={disabled}
               onChange={handleOnChange}
               onKeyDown={handleKeyDown}
               onCompositionStart={() => setIsComposing(true)}
               onCompositionEnd={() => setIsComposing(false)}
             />
-            {filteredOptions.map((v) => (
-              <ContextMenu2CheckItem
-                key={v}
-                checked={v === value}
-                onChange={() => handleOptionClick(v)}
-              >
-                {v}
-              </ContextMenu2CheckItem>
-            ))}
+            {filteredOptions.length > 0 ? (
+              filteredOptions.map((v) => (
+                <ContextMenu2CheckItem
+                  key={v}
+                  checked={v === value}
+                  disabled={disabled}
+                  onChange={() => handleOptionClick(v)}
+                >
+                  {v}
+                </ContextMenu2CheckItem>
+              ))
+            ) : (
+              <ContextMenu2NoResultsMessage message={noResultsMessage} />
+            )}
           </ContextMenu2>
         </ContextMenu2Container>
       </styled.SelectContainer>

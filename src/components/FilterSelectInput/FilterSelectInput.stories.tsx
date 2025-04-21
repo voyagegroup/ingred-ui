@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useArgs } from "@storybook/client-api";
 import { FilterSelectInput } from "./index";
 import Icon from "../Icon";
 
-const meta = {
+const meta: Meta<typeof FilterSelectInput> = {
   title: "Components/Inputs/FilterSelectInput",
   component: FilterSelectInput,
   argTypes: {
     size: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["small", "medium", "large"],
+      description: "Size of the input",
     },
     variant: {
-      control: {
-        type: "select",
-      },
+      control: { type: "radio" },
       options: ["light", "dark"],
+      description: "Color variation",
     },
     searchPlaceholder: {
       control: {
         type: "text",
       },
       description: "検索窓のプレースホルダーテキスト",
+    },
+    disabled: {
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether the input is disabled",
+    },
+    error: {
+      control: { type: "radio" },
+      options: [true, false],
+      description: "Whether to display error state",
     },
   },
 } satisfies Meta<typeof FilterSelectInput>;
@@ -228,16 +236,75 @@ export const Variants: StoryObj<typeof meta> = {
       </div>
     );
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。',
+      },
+    },
+  },
 };
 
 /**
- * 検索窓のプレースホルダーをカスタマイズできます。
- * デフォルトは「絞り込む」です。
+ * 無効化状態のサンプル
  */
-export const SearchPlaceholder: StoryObj<typeof meta> = {
+export const Disabled: StoryObj<typeof meta> = {
   args: {
-    value: "選択肢1",
-    options: ["選択肢1", "選択肢2", "選択肢3"],
+    value: "項目1",
+    options: ["項目1", "項目2", "項目3"],
+    selectedIndex: 0,
+    disabled: true,
+    selectOptions: [
+      {
+        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        label: "含む",
+      },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
+    ],
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <div>無効化状態</div>
+        <FilterSelectInput
+          {...args}
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+        <div>通常状態</div>
+        <FilterSelectInput
+          {...args}
+          disabled={false}
+          onChange={(newValue) => updateArgs({ value: newValue })}
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </div>
+    );
+  },
+};
+
+export const Error: StoryObj<typeof meta> = {
+  args: {
+    value: "value1",
+    options: ["value1", "value2"],
     selectedIndex: 0,
     selectOptions: [
       {
@@ -254,34 +321,31 @@ export const SearchPlaceholder: StoryObj<typeof meta> = {
         ),
         label: "含まない",
       },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
     ],
+    error: true,
   },
   render: (args) => {
-    const [, updateArgs] = useArgs();
-    const handleChange = (value: string) => updateArgs({ value });
-    const handleSelectChange = (selectedIndex: number) =>
-      updateArgs({ selectedIndex });
+    const [value, setValue] = useState(args.value);
+    const [selectedIndex, setSelectedIndex] = useState(args.selectedIndex);
 
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <div>
-          <p>デフォルトのプレースホルダー：</p>
-          <FilterSelectInput
-            {...args}
-            onChange={handleChange}
-            onSelectChange={handleSelectChange}
-          />
-        </div>
-        <div>
-          <p>カスタムプレースホルダー：</p>
-          <FilterSelectInput
-            {...args}
-            searchPlaceholder="キーワードを入力..."
-            onChange={handleChange}
-            onSelectChange={handleSelectChange}
-          />
-        </div>
-      </div>
+      <FilterSelectInput
+        {...args}
+        value={value}
+        selectedIndex={selectedIndex}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        onSelectChange={(newIndex) => {
+          setSelectedIndex(newIndex);
+        }}
+      />
     );
   },
 };

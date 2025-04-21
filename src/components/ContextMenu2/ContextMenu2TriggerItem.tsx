@@ -62,3 +62,6 @@ export const ContextMenu2TriggerItem = styled(InternalContextMenu2TriggerItem)`
     background: ${colors.basic[200]};
   }
 `;
+
+// styled-componentsで作成されたコンポーネントにも明示的にdisplayNameを設定
+ContextMenu2TriggerItem.displayName = "ContextMenu2TriggerItem";

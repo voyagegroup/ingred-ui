@@ -8,6 +8,7 @@ import React, {
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
+import Icon from "../Icon";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
@@ -22,16 +23,8 @@ type ContextMenu2CheckItemProps = {
 const ButtonPrepend = styled.span`
   color: ${colors.basic[900]};
 `;
-const CheckMark = styled(
-  ({ className, checked }: { className?: string; checked: boolean }) => (
-    <svg width="18" height="19" viewBox="0 0 18 19" className={className}>
-      <path
-        fill={checked ? colors.blue[500] : "none"}
-        d="m7.5 11.7 6.9-6.9 1 1.1-7.9 8L2.7 9l1-1 3.8 3.6Z"
-      />
-    </svg>
-  ),
-)`
+
+const StyledIcon = styled.span`
   margin-left: auto;
 `;
 
@@ -49,7 +42,9 @@ const InternalContextMenu2CheckItem = forwardRef<
     <button type="button" {...props} ref={ref} onClick={handleClick}>
       {prepend && <ButtonPrepend>{prepend}</ButtonPrepend>}
       {children}
-      <CheckMark checked={checked ?? false} />
+      <StyledIcon>
+        {checked && <Icon name="check_thin" color={colors.blue[500]} />}
+      </StyledIcon>
     </button>
   );
 });
