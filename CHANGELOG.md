@@ -1,5 +1,23 @@
 # Changelog
 
+## 22.3.0
+
+### Minor Changes
+
+- [#1790](https://github.com/voyagegroup/ingred-ui/pull/1790) [`a223064a`](https://github.com/voyagegroup/ingred-ui/commit/a223064aea7b2b54ce50957bda00fd6ee6aa95d9) Thanks [@noronaoki](https://github.com/noronaoki)! - フィルターコンポーネントの機能強化とアイコンサイズの柔軟な指定
+
+  - FilterTagInputコンポーネントの機能強化
+
+    - isOverFlowingの問題を修正
+    - サイズに応じたボタン調整
+    - パネル内のTagの調整
+    - スタイルの統合
+    - カラーバリエーションの追加
+
+  - アイコン関連の改善
+    - アイコンサイズを任意の数値で指定可能に
+    - オペレーターアイコンのサイズ調整機能の追加
+
 ## 22.2.1
 
 ### Patch Changes
