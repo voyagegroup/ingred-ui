@@ -123,7 +123,7 @@ type ContextMenu2Props = {
 
 const ContextMenu2Panel = styled.div`
   z-index: ${depth.dropdown};
-  padding: 10px 8px;
+  padding: 8px;
   border: 1px solid ${colors.basic[200]};
   border-radius: 6px;
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
@@ -146,7 +146,7 @@ const StickyHeader = styled.div`
   padding-bottom: 8px;
   border-bottom: 1px solid ${colors.basic[200]};
   margin: 0 -8px 0;
-  padding: 0 8px 8px;
+  padding: 8px 16px 16px;
 `;
 
 const StickyFooter = styled.div`
