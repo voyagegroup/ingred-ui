@@ -95,6 +95,7 @@ export const StyledContextMenu2TextInputItem = styled(
   top: 0;
   z-index: 1;
   background-color: ${colors.basic[0]};
+  padding: 2px 4px 4px;
 
   input {
     &::placeholder {
