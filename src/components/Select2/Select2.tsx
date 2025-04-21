@@ -46,6 +46,7 @@ type Select2Props = {
   size?: Select2Size;
   variant?: Select2Variant;
   tagVariant?: TagVariant;
+  searchable?: boolean;
   searchPlaceholder?: string;
   noResultsMessage?: string;
   error?: boolean;
@@ -62,6 +63,7 @@ export const Select2: React.FC<Select2Props> = ({
   size = "medium",
   variant = "light",
   tagVariant,
+  searchable = false,
   searchPlaceholder = "検索",
   noResultsMessage = "見つかりませんでした",
   error = false,
@@ -187,11 +189,11 @@ export const Select2: React.FC<Select2Props> = ({
   }, [multiple, options, value]);
 
   const filteredOptions = useMemo(() => {
-    if (!searchValue) return options;
+    if (!searchable || !searchValue) return options;
     return options.filter((option) =>
       option.label.toLowerCase().includes(searchValue.toLowerCase()),
     );
-  }, [options, searchValue]);
+  }, [options, searchValue, searchable]);
 
   const checkTagOverflow = useCallback(() => {
     if (!tagContainerRef.current) return;
@@ -226,15 +228,16 @@ export const Select2: React.FC<Select2Props> = ({
   }, [multiple, value]);
 
   const stickyHeader = useMemo(
-    () => (
-      <StyledContextMenu2TextInputItem
-        autoFocus
-        placeholder={searchPlaceholder}
-        value={searchValue}
-        onChange={handleSearchChange}
-      />
-    ),
-    [searchValue, searchPlaceholder, handleSearchChange],
+    () =>
+      searchable ? (
+        <StyledContextMenu2TextInputItem
+          autoFocus
+          placeholder={searchPlaceholder}
+          value={searchValue}
+          onChange={handleSearchChange}
+        />
+      ) : null,
+    [searchable, searchValue, searchPlaceholder, handleSearchChange],
   );
 
   const stickyFooter = useMemo(() => {
@@ -315,7 +318,7 @@ export const Select2: React.FC<Select2Props> = ({
       >
         <ContextMenu2Container>
           <ContextMenu2
-            noResultsMessage={noResultsMessage}
+            noResultsMessage={searchable ? noResultsMessage : undefined}
             open={isOpen}
             stickyFooter={stickyFooter}
             stickyHeader={stickyHeader}
