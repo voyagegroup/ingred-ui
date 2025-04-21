@@ -125,6 +125,23 @@ export const FilterSelectInput = ({
     [disabled, handleOpenChange],
   );
 
+  // 検索窓を上部に固定
+  const stickyHeader = useMemo(
+    () => (
+      <styled.StyledContextMenu2TextInputItem
+        autoFocus
+        value={userValue}
+        placeholder={searchPlaceholder}
+        disabled={disabled}
+        onChange={handleOnChange}
+        onKeyDown={handleKeyDown}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
+      />
+    ),
+    [userValue, searchPlaceholder, disabled, handleOnChange, handleKeyDown],
+  );
+
   return (
     <FilterInputAbstract
       size={size}
@@ -155,17 +172,8 @@ export const FilterSelectInput = ({
               </styled.Select>
             }
             onOpenChange={handleMenuOpenChange}
+            stickyHeader={stickyHeader}
           >
-            <styled.StyledContextMenu2TextInputItem
-              autoFocus
-              value={userValue}
-              placeholder={searchPlaceholder}
-              disabled={disabled}
-              onChange={handleOnChange}
-              onKeyDown={handleKeyDown}
-              onCompositionStart={() => setIsComposing(true)}
-              onCompositionEnd={() => setIsComposing(false)}
-            />
             {filteredOptions.length > 0 ? (
               filteredOptions.map((v) => (
                 <ContextMenu2CheckItem
