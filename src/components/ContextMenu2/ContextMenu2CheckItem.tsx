@@ -25,7 +25,7 @@ const ButtonPrepend = styled.span`
 `;
 
 const StyledIcon = styled.span`
-  margin-left: auto;
+  margin-left: 12px;
 `;
 
 const InternalContextMenu2CheckItem = forwardRef<
