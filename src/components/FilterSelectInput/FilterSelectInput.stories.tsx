@@ -57,7 +57,14 @@ export const Default: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" size={22} />,
+        icon: (
+          <Icon
+            name="operator_match"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
+        ),
         label: "含む",
       },
       {
@@ -73,29 +80,56 @@ export const Default: StoryObj<typeof meta> = {
       },
       {
         icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" size={22} />
+          <Icon
+            name="operator_contains"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
         ),
         label: "いずれかを含む",
       },
       {
         icon: (
-          <Icon name="operator_starts_with" type="line" color="currentColor" size={22} />
+          <Icon
+            name="operator_starts_with"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
         ),
         label: "で始まる",
       },
       {
         icon: (
-          <Icon name="operator_ends_with" type="line" color="currentColor" size={22} />
+          <Icon
+            name="operator_ends_with"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
         ),
         label: "で終わる",
       },
       {
-        icon: <Icon name="operator_equal" type="line" color="currentColor" size={22} />,
+        icon: (
+          <Icon
+            name="operator_equal"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
+        ),
         label: "同じ",
       },
       {
         icon: (
-          <Icon name="operator_not_equal" type="line" color="currentColor" size={22} />
+          <Icon
+            name="operator_not_equal"
+            type="line"
+            color="currentColor"
+            size={22}
+          />
         ),
         label: "同じでない",
       },

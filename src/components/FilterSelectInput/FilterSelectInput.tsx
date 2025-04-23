@@ -171,8 +171,8 @@ export const FilterSelectInput = ({
                 </styled.SelectIcon>
               </styled.Select>
             }
-            onOpenChange={handleMenuOpenChange}
             stickyHeader={stickyHeader}
+            onOpenChange={handleMenuOpenChange}
           >
             {filteredOptions.length > 0 ? (
               filteredOptions.map((v) => (
