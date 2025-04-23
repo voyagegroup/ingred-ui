@@ -35,7 +35,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-fnykZs gNtTaN"
+    class="sc-fnykZs cxQFJs"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; min-width: auto; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
@@ -45,7 +45,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       class="sc-idiyUo eRJoiQ"
     >
       <p
-        class="sc-dIouRR iafWcv"
+        class="sc-dIouRR TuUAv"
       >
         ステータスを変更
       </p>
@@ -73,7 +73,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
           </span>
         </div>
         <p
-          class="sc-hHLeRK jzidqu"
+          class="sc-hHLeRK XDcYG"
         >
           ヘルプテキスト
         </p>
@@ -82,7 +82,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-kgflAQ tWjLj"
       />
       <button
-        class="sc-gsnTZi grkKuj"
+        class="sc-gsnTZi lhIOjZ"
         tabindex="-1"
         type="button"
       >
@@ -112,14 +112,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         アイコンボタン
       </button>
       <button
-        class="sc-gsnTZi grkKuj"
+        class="sc-gsnTZi lhIOjZ"
         tabindex="-1"
         type="button"
       >
         ボタン
       </button>
       <button
-        class="sc-gsnTZi kbIWLm"
+        class="sc-gsnTZi kHYuDQ"
         color="danger"
         tabindex="-1"
         type="button"
@@ -129,7 +129,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-kDDrLX duizbt"
+        class="sc-kDDrLX cjCYFD"
         type="button"
       >
         <span
@@ -157,7 +157,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </button>
       <button
-        class="sc-jSMfEi gBqvgq"
+        class="sc-jSMfEi mUWzY"
         tabindex="-1"
         type="button"
       >
@@ -200,7 +200,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </button>
       <button
-        class="sc-jSMfEi kVMRgt"
+        class="sc-jSMfEi jOyZZz"
         tabindex="-1"
         type="button"
       >
@@ -228,7 +228,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         />
       </button>
       <button
-        class="sc-jSMfEi kVMRgt"
+        class="sc-jSMfEi jOyZZz"
         tabindex="-1"
         type="button"
       >
@@ -238,7 +238,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         />
       </button>
       <button
-        class="sc-jSMfEi kVMRgt"
+        class="sc-jSMfEi jOyZZz"
         tabindex="-1"
         type="button"
       >
@@ -296,7 +296,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </li>
       </ul>
       <button
-        class="sc-gsnTZi grkKuj"
+        class="sc-gsnTZi lhIOjZ"
         tabindex="-1"
         type="button"
       >
