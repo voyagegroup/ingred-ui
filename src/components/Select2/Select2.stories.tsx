@@ -11,7 +11,7 @@ export default {
       description: {
         component: `
 選択肢の中から項目を選択するコンポーネントです。
-検索機能付きのセレクトボックスです。
+検索機能（オプション）付きのセレクトボックスです。
 単一選択と複数選択の両方に対応しています。
         `,
       },
@@ -46,6 +46,14 @@ export default {
       options: [true, false],
       control: { type: "radio" },
       description: "エラー状態",
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    searchable: {
+      options: [true, false],
+      control: { type: "radio" },
+      description: "検索機能の有効/無効",
       table: {
         defaultValue: { summary: false },
       },
@@ -95,6 +103,26 @@ export const Basic: Story<Select2Props> = Template.bind({});
 Basic.args = {
   options,
   placeholder: "果物を選択",
+  searchable: false,
+};
+
+export const WithSearch: Story<Select2Props> = Template.bind({});
+WithSearch.args = {
+  options,
+  placeholder: "果物を選択",
+  searchable: true,
+  searchPlaceholder: "果物を検索",
+};
+WithSearch.parameters = {
+  docs: {
+    description: {
+      story: `
+検索機能を有効にした例です。
+searchable={true}を指定することで、オプションを検索できる入力欄が表示されます。
+searchPlaceholderで検索入力欄のプレースホルダーを指定できます。
+      `,
+    },
+  },
 };
 
 export const Error: Story<Select2Props> = Template.bind({});
@@ -182,14 +210,61 @@ export const MultipleSelection: Story<Select2Props> = (args) => {
 MultipleSelection.args = {
   options,
   placeholder: "果物を選択（複数可）",
+  searchable: false,
   applyButtonText: "適用",
   cancelButtonText: "キャンセル",
 };
 MultipleSelection.parameters = {
   docs: {
     description: {
-      story:
-        "複数選択モード（multiple={true}）では、複数の選択肢を選択できます。選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。",
+      story: `
+複数選択モード（multiple={true}）では、複数の選択肢を選択できます。
+選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。
+選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。
+      `,
+    },
+  },
+};
+
+export const MultipleSelectionWithSearch: Story<Select2Props> = (args) => {
+  const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
+    "apple",
+    "orange",
+  ]);
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        {...args}
+        multiple={true}
+        value={selectedValues}
+        onChange={(newValues: string | number | (string | number)[]) => {
+          if (Array.isArray(newValues)) {
+            setSelectedValues(newValues);
+          }
+        }}
+      />
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {selectedValues.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+MultipleSelectionWithSearch.args = {
+  options,
+  placeholder: "果物を選択（複数可）",
+  searchable: true,
+  searchPlaceholder: "果物を検索",
+  applyButtonText: "適用",
+  cancelButtonText: "キャンセル",
+};
+MultipleSelectionWithSearch.parameters = {
+  docs: {
+    description: {
+      story: `
+複数選択モードと検索機能を組み合わせた例です。
+多くの選択肢から複数の項目を選択する場合に特に有用です。
+      `,
     },
   },
 };

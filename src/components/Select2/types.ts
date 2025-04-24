@@ -107,12 +107,19 @@ export type Select2Props = {
    */
   placeholder?: string;
   /**
+   * 検索機能を有効にするかどうか
+   * @default false
+   */
+  searchable?: boolean;
+  /**
    * 検索入力のプレースホルダー
+   * searchableがtrueの場合のみ使用されます
    * @default "検索"
    */
   searchPlaceholder?: string;
   /**
    * 検索結果がない場合のメッセージ
+   * searchableがtrueの場合のみ使用されます
    * @default "オプションがありません"
    */
   noResultsMessage?: string;

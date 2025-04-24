@@ -46,7 +46,7 @@ export const ContextMenu2TriggerItem = styled(InternalContextMenu2TriggerItem)`
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  padding: 6px 8px;
+  padding: 8px;
   border: 0;
   border-radius: 6px;
   background: transparent;

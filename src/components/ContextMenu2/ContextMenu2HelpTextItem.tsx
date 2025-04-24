@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
+import { trimVertical } from "../../styles/typography";
 
 // 特に機能を持たない、見た目付きの ContextMenu2 用の1行テキスト
 type Props = {
@@ -9,8 +10,9 @@ type Props = {
   children: ReactNode;
 };
 
-const Text = styled.p`
+const Text = styled.p<{ $trim?: boolean }>`
   margin: 0;
+  ${({ $trim }) => $trim && trimVertical}
 `;
 
 export const ContextMenu2HelpTextItem = styled(
@@ -18,7 +20,7 @@ export const ContextMenu2HelpTextItem = styled(
     return (
       <div className={className}>
         {prepend && <div>{prepend}</div>}
-        <Text>{children}</Text>
+        <Text $trim>{children}</Text>
       </div>
     );
   },
@@ -26,6 +28,7 @@ export const ContextMenu2HelpTextItem = styled(
   display: flex;
   gap: 4px;
   align-items: center;
+  margin-top: 8px;
   padding: 6px 8px;
   /* Slide/Text 12 */
   font-size: 12px;

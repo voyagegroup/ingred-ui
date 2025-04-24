@@ -9,13 +9,13 @@ export const ContextMenu2HeadingItem = styled(({ className, children }) => {
 })`
   border-radius: 4px;
   padding: 4px 8px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   font-weight: 700;
   font-size: 12px;
   color: ${colors.basic[900]};
   background: ${colors.basic[100]};
 
   &:not(:first-child) {
-    margin-top: 4px;
+    margin-top: 8px;
   }
 `;

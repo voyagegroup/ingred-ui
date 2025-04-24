@@ -62,7 +62,7 @@ export const ContextMenu2ButtonItem = styled(
   gap: 4px;
   box-sizing: border-box;
   width: 100%;
-  padding: 6px 8px;
+  padding: 8px;
   border: 0;
   border-radius: 6px;
   /* UI/Text 14 */
