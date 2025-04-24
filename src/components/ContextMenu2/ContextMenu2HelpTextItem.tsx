@@ -28,6 +28,7 @@ export const ContextMenu2HelpTextItem = styled(
   display: flex;
   gap: 4px;
   align-items: center;
+  margin-top: 8px;
   padding: 6px 8px;
   /* Slide/Text 12 */
   font-size: 12px;
