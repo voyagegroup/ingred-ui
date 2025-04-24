@@ -1,5 +1,21 @@
 # Changelog
 
+## 22.3.1
+
+### Patch Changes
+
+- [#1794](https://github.com/voyagegroup/ingred-ui/pull/1794) [`b53d69a5`](https://github.com/voyagegroup/ingred-ui/commit/b53d69a56527ec0bfcc915c0c904e89dfea44237) Thanks [@noronaoki](https://github.com/noronaoki)! - fix(ContextMenu2): ドロップダウンコンポーネントのスタイルと機能を改善
+
+  - ContextMenu2のパディングとマージンを調整し、より一貫性のあるデザインに修正
+    - パネルのパディングを `10px 8px` から `8px` に統一
+    - ヘッダーのパディングを調整（`8px 16px 16px`）
+    - アイテム間のマージンを8pxに統一
+  - FilterSelectInputの検索機能の実装方法を改善（stickyHeaderとして実装）
+  - Select2の検索機能をオプション化
+    - `searchable` propを追加（デフォルト: `false`）
+    - 検索機能が無効の場合は検索UIを表示しない
+  - テキストユーティリティを追加（`textUtils.trimVertical`）
+
 ## 22.3.0
 
 ### Minor Changes
