@@ -634,8 +634,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     />
                   )}
                 </styled.HeaderSearch>
-                {/* 件数変更メニューを利用する、もしくはその他のメニューを表示する場合に条件付きレンダリングをする */}
-                {/* 将来的には、メニューを表示するかどうかをコンテキストメニューの表示によって切り替えるようにする */}
+                {/** 件数変更メニューを利用する、もしくはその他のメニューを表示する場合に条件付きレンダリングをする
+                  * 将来的には、メニューを表示するかどうかをコンテキストメニューの表示によって切り替えるようにする
+                  */}
                 {(menuButtons || onPageSizeChange) && (
                   <ContextMenu2Container>
                     <ContextMenu2
