@@ -615,7 +615,7 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               role="tabpanel"
               aria-labelledby="list-items-tab"
             >
-              <styled.LeftPanelHeader>
+              <styled.LeftPanelHeader hasMenu={!!(menuButtons || onPageSizeChange)}>
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
@@ -634,25 +634,26 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
                     />
                   )}
                 </styled.HeaderSearch>
-                <ContextMenu2Container>
-                  <ContextMenu2
-                    width={136}
-                    trigger={
-                      <styled.HeaderMenuButton type="button">
-                        <Icon name="more_vert" color={colors.basic[900]} />
-                      </styled.HeaderMenuButton>
-                    }
-                  >
-                    {onPageSizeChange && (
-                      <DualListBox2MenuCountControl
-                        pageSize={pageSize}
-                        pageSizeOptions={pageSizeOptions}
-                        onPageSizeChange={onPageSizeChange}
-                      />
-                    )}
-                    {menuButtons}
-                  </ContextMenu2>
-                </ContextMenu2Container>
+                {(menuButtons || onPageSizeChange) && (
+                  <ContextMenu2Container>
+                    <ContextMenu2
+                      trigger={
+                        <styled.HeaderMenuButton type="button">
+                          <Icon name="more_vert" color={colors.basic[900]} />
+                        </styled.HeaderMenuButton>
+                      }
+                    >
+                      {onPageSizeChange && (
+                        <DualListBox2MenuCountControl
+                          pageSize={pageSize}
+                          pageSizeOptions={pageSizeOptions}
+                          onPageSizeChange={onPageSizeChange}
+                        />
+                      )}
+                      {menuButtons}
+                    </ContextMenu2>
+                  </ContextMenu2Container>
+                )}
                 <styled.HeaderCount>
                   {loading ? (
                     <Spinner width="16px" />
