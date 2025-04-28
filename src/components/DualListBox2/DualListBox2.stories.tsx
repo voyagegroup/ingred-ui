@@ -158,7 +158,6 @@ export const Default: Story = {
     const menuButtons = (
       <>
         <ContextMenu2
-          width={186}
           trigger={
             <ContextMenu2TriggerItem append={pageSize}>
               件数を変更
