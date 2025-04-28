@@ -615,7 +615,9 @@ export const DualListBox2 = forwardRef<HTMLDivElement, DualListBox2Props>(
               role="tabpanel"
               aria-labelledby="list-items-tab"
             >
-              <styled.LeftPanelHeader hasMenu={!!(menuButtons || onPageSizeChange)}>
+              <styled.LeftPanelHeader
+                hasMenu={!!(menuButtons || onPageSizeChange)}
+              >
                 <styled.HeaderSearch>
                   <Icon name="search" size="sm" color={colors.basic[600]} />
                   <input
