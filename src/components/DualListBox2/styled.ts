@@ -142,12 +142,16 @@ export const LeftPanelBody = styled.div`
   overflow-y: auto;
 `;
 
-export const LeftPanelHeader = styled.div`
+export const LeftPanelHeader = styled.div<{ hasMenu?: boolean }>`
   display: grid;
   grid-template:
-    "search search search search menu"
-    "count buttons . load load" /
-    auto auto 1fr auto;
+    ${({ hasMenu = false }) =>
+      hasMenu
+        ? `"search search menu"
+           "count buttons buttons"`
+        : `"search search search"
+           "count buttons buttons"`} /
+    auto 1fr auto;
   align-items: center;
   gap: 8px;
   padding: 16px;
