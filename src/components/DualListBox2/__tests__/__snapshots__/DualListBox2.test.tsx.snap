@@ -50,7 +50,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-breuTD jaTTxd"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -600,7 +600,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-breuTD ha-dJAk"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -631,32 +631,6 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               value=""
             />
           </div>
-          <button
-            aria-expanded="false"
-            aria-haspopup="dialog"
-            class="sc-fnykZs elYlne"
-            type="button"
-          >
-            <span
-              class="sc-eCYdqJ iymozk"
-              size="18"
-            >
-              <svg
-                viewBox="0 0 18 18"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0h18v18H0z"
-                  fill="none"
-                />
-                <path
-                  d="M11.5,3A1.5,1.5,0,1,0,13,4.5,1.5,1.5,0,0,0,11.5,3Zm0,10.5A1.5,1.5,0,1,0,13,15,1.5,1.5,0,0,0,11.5,13.5Zm0-5.25A1.5,1.5,0,1,0,13,9.75,1.5,1.5,0,0,0,11.5,8.25Z"
-                  fill="#041C33"
-                  transform="translate(-2.5 -0.75)"
-                />
-              </svg>
-            </span>
-          </button>
           <div
             class="sc-fEOsli diBZUB"
           >
@@ -1080,7 +1054,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD bBhWi"
+          class="sc-breuTD ha-dJAk"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -1112,32 +1086,6 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               value=""
             />
           </div>
-          <button
-            aria-expanded="false"
-            aria-haspopup="dialog"
-            class="sc-fnykZs elYlne"
-            type="button"
-          >
-            <span
-              class="sc-eCYdqJ iymozk"
-              size="18"
-            >
-              <svg
-                viewBox="0 0 18 18"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0 0h18v18H0z"
-                  fill="none"
-                />
-                <path
-                  d="M11.5,3A1.5,1.5,0,1,0,13,4.5,1.5,1.5,0,0,0,11.5,3Zm0,10.5A1.5,1.5,0,1,0,13,15,1.5,1.5,0,0,0,11.5,13.5Zm0-5.25A1.5,1.5,0,1,0,13,9.75,1.5,1.5,0,0,0,11.5,8.25Z"
-                  fill="#041C33"
-                  transform="translate(-2.5 -0.75)"
-                />
-              </svg>
-            </span>
-          </button>
           <div
             class="sc-fEOsli diBZUB"
           >
