@@ -93,7 +93,7 @@ const filterPacksExample: FilterPackType[] = [
 ];
 
 export const Example: StoryObj<LocaleProviderProps> = {
-  render: (args) => {
+  render: (args: LocaleProviderProps) => {
     const localeOptions = Object.keys(locales).map((locale) => ({
       label: locale,
       value: locale as keyof typeof locales,

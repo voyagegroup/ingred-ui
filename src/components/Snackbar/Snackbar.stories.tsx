@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import Snackbar, { SnackbarProps } from "./Snackbar";
 import Button from "../Button";
 
@@ -22,16 +21,15 @@ export default {
         <>
           <Title />
           <Markdown>{"It express `position: fixed;` panel."}</Markdown>
-          <ArgsTable of={Snackbar} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof Snackbar>;
 
-const Template: StoryObj<SnackbarProps> = {
-  render: (args) => {
+const Template: StoryObj<typeof Snackbar> = {
+  render: (args: SnackbarProps) => {
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
 
     return (

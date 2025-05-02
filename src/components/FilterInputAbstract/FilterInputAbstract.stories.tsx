@@ -51,7 +51,7 @@ export const Default: StoryObj<typeof meta> = {
     ...defaultArgs,
     size: "small",
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterInputAbstract>) => {
     const [, updateArgs] = useArgs();
 
     return (

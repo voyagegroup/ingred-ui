@@ -12,14 +12,14 @@ export default {
 };
 
 export const Example: StoryObj<DatePickerProps> = {
-  render: (args) => {
+  render: (args: DatePickerProps) => {
     const [date, setDate] = useState(dayjs());
     return <DatePicker {...args} date={date} onDateChange={setDate} />;
   },
 };
 
 export const WithActions: StoryObj<DatePickerProps> = {
-  render: (args) => {
+  render: (args: DatePickerProps) => {
     const [date, setDate] = useState(dayjs());
     const actions = [
       {
@@ -54,7 +54,7 @@ export const WithActions: StoryObj<DatePickerProps> = {
 };
 
 export const WithActionsWithDefaultClickAction: StoryObj<DatePickerProps> = {
-  render: (args) => {
+  render: (args: DatePickerProps) => {
     const [date, setDate] = useState(dayjs());
     const [clickAction, setClickAction] = useState("今日");
     const actions = [
@@ -111,7 +111,7 @@ export const Disabled: StoryObj<DatePickerProps> = {
 };
 
 export const IsOutsideRange: StoryObj<DatePickerProps> = {
-  render: (args) => {
+  render: (args: DatePickerProps) => {
     const [date, setDate] = useState(dayjs());
     const isOutsideRange = (day: dayjs.Dayjs) =>
       day.isBefore(dayjs().subtract(1, "day"));

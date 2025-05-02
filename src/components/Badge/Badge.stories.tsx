@@ -25,7 +25,7 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 const Template: Story = {
-  render: (args: Story["args"]) => <Badge {...args} />,
+  render: (args: React.ComponentProps<typeof Badge>) => <Badge {...args} />,
 };
 
 export const Primary: Story = {

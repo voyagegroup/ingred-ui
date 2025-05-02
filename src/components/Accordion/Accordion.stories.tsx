@@ -41,7 +41,7 @@ export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Example: Story = {
-  render: (args: Story["args"]) => (
+  render: (args: AccordionProps) => (
     <Accordion
       title={args.title}
       disabled={args.disabled}
@@ -144,7 +144,7 @@ export const Controlled: Story = {
 };
 
 export const DynamicHeight: Story = {
-  render: (args: Story["args"]) => {
+  render: (args: AccordionProps) => {
     const [rows, setRows] = useState<number>(1);
     const handleAddRow = () => setRows((prevState) => prevState + 1);
     const handleRemoveRow = () =>

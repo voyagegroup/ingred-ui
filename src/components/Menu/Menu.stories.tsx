@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import Menu, { MenuProps } from "./Menu";
 import Button from "../Button";
 import { action } from "@storybook/addon-actions";
@@ -20,16 +19,15 @@ export default {
               "A Menu displays a list of choices. It appears when the user interacts with a button, or other control."
             }
           </Markdown>
-          <ArgsTable of={Menu} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof Menu>;
 
-const Template: StoryObj<MenuProps> = {
-  render: (args) => {
+const Template: StoryObj<typeof Menu> = {
+  render: (args: MenuProps) => {
     const [buttonElement, setButtonElement] =
       React.useState<HTMLElement | null>(null);
     const [showMenu, setShowMenu] = React.useState(false);

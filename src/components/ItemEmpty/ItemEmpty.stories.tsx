@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Title, Stories } from "@storybook/blocks";
 import ItemEmpty, { ItemEmptyProps } from "./ItemEmpty";
 
 export default {
@@ -16,7 +16,6 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={ItemEmpty} />
           <Stories includePrimary title="Stories" />
         </>
       ),

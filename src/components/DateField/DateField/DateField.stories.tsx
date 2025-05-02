@@ -9,7 +9,7 @@ export default {
 };
 
 export const Example: StoryObj<DateFieldProps> = {
-  render: (args) => {
+  render: (args: DateFieldProps) => {
     const [date, setDate] = useState(dayjs());
     return <DateField {...args} date={date} onDateChange={setDate} />;
   },
@@ -19,7 +19,7 @@ export const Custom: StoryObj<DateFieldProps> = {
   args: {
     format: "MM/DD/YYYY HH:mm:ss",
   },
-  render: (args) => {
+  render: (args: DateFieldProps) => {
     const [date, setDate] = useState(dayjs());
     return <DateField {...args} date={date} onDateChange={setDate} />;
   },

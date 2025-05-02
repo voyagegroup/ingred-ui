@@ -12,6 +12,8 @@ import { useTheme } from "../../themes/useTheme";
 import FloatingTip from "../FloatingTip";
 import { StoryObj } from "@storybook/react";
 
+type DataType = (typeof data)[number];
+
 export default {
   title: "Components/Data Display/DataTable",
   component: DataTable,
@@ -42,34 +44,32 @@ export default {
   },
 };
 
-export const Overview: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
-  render: (args) => {
+export const Overview: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => {
     return <DataTable {...args} />;
   },
 };
 
-export const WithVerticalLine: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => {
+export const WithVerticalLine: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => {
     return <DataTable {...args} enableRuledLine={true} />;
   },
 };
 
-export const WithPagination: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => <DataTable {...args} enablePagination={true} data={data} />,
+export const WithPagination: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => (
+    <DataTable {...args} enablePagination={true} data={data} />
+  ),
 };
 
-export const WithStickyHeader: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => <DataTable {...args} tableMaxHeight="300px" data={data} />,
+export const WithStickyHeader: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => (
+    <DataTable {...args} tableMaxHeight="300px" data={data} />
+  ),
 };
 
-export const WithTabs: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
-  render: (args) => (
+export const WithTabs: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => (
     <DataTable
       {...args}
       enablePagination={true}
@@ -78,15 +78,17 @@ export const WithTabs: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
       tabs={[
         {
           label: "All",
-          filter: (data) => data,
+          filter: (data: DataType[]) => data,
         },
         {
           label: "imp odd",
-          filter: (data) => data.filter((item) => item.imp % 2 !== 0),
+          filter: (data: DataType[]) =>
+            data.filter((item: DataType) => item.imp % 2 !== 0),
         },
         {
           label: "imp even",
-          filter: (data) => data.filter((item) => item.imp % 2 === 0),
+          filter: (data: DataType[]) =>
+            data.filter((item: DataType) => item.imp % 2 === 0),
         },
         {
           label: "empty",
@@ -105,31 +107,28 @@ export const WithTabs: StoryObj<DataTableProps<(typeof data)[number], "id">> = {
   ),
 };
 
-export const WithSearch: StoryObj<DataTableProps<(typeof data)[number], "id">> =
-  {
-    render: (args) => {
-      const [searchText, setSearchText] = React.useState("");
-      const searchedItems = data.filter((item) =>
-        `${item.id}`.includes(searchText),
-      );
-      const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchText(event.target.value);
-      };
-      return (
-        <>
-          <Spacer mb={2}>
-            <TextField placeholder="IDで絞り込む" onChange={handleInput} />
-          </Spacer>
-          <DataTable {...args} enablePagination={true} data={searchedItems} />
-        </>
-      );
-    },
-  };
+export const WithSearch: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => {
+    const [searchText, setSearchText] = React.useState("");
+    const searchedItems = data.filter((item: DataType) =>
+      `${item.id}`.includes(searchText),
+    );
+    const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(event.target.value);
+    };
+    return (
+      <>
+        <Spacer mb={2}>
+          <TextField placeholder="IDで絞り込む" onChange={handleInput} />
+        </Spacer>
+        <DataTable {...args} enablePagination={true} data={searchedItems} />
+      </>
+    );
+  },
+};
 
-export const SelectableRows: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => {
+export const SelectableRows: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => {
     const [selectedRows, setSelectedRows] = React.useState<number[]>([32205]);
     const handleClick = () => {
       alert(selectedRows.join(","));
@@ -144,15 +143,17 @@ export const SelectableRows: StoryObj<
           tabs={[
             {
               label: "All",
-              filter: (data) => data,
+              filter: (data: DataType[]) => data,
             },
             {
               label: "imp odd",
-              filter: (data) => data.filter((item) => item.imp % 2 !== 0),
+              filter: (data: DataType[]) =>
+                data.filter((item: DataType) => item.imp % 2 !== 0),
             },
             {
               label: "imp even",
-              filter: (data) => data.filter((item) => item.imp % 2 === 0),
+              filter: (data: DataType[]) =>
+                data.filter((item: DataType) => item.imp % 2 === 0),
             },
             {
               label: "empty",
@@ -166,10 +167,8 @@ export const SelectableRows: StoryObj<
   },
 };
 
-export const SelectableRow: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => {
+export const SelectableRow: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => {
     const [selectedRow, setSelectedRow] = React.useState<number>(32205);
     const handleClick = () => {
       alert(selectedRow);
@@ -263,10 +262,8 @@ export const CustomCell: StoryObj<DataTableProps<(typeof data)[number], "id">> =
     },
   };
 
-export const WithEmptyTable: StoryObj<
-  DataTableProps<(typeof data)[number], "id">
-> = {
-  render: (args) => (
+export const WithEmptyTable: StoryObj<DataTableProps<DataType, "id">> = {
+  render: (args: DataTableProps<DataType, "id">) => (
     <DataTable
       {...args}
       data={[]}

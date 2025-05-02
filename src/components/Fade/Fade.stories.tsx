@@ -1,7 +1,6 @@
-import { Stories, Title } from "@storybook/addon-docs";
-import { Markdown } from "@storybook/blocks";
-import { StoryObj } from "@storybook/react";
 import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Stories, Title, Markdown } from "@storybook/blocks";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import ToggleButton from "../ToggleButton";
@@ -34,10 +33,10 @@ export default {
       ),
     },
   },
-};
+} as Meta<typeof Fade>;
 
 export const Example: StoryObj<typeof Fade> = {
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof Fade>) => {
     const [isOpen, setIsOpen] = React.useState(args.in);
     const handleToggle = () => {
       setIsOpen(!isOpen);

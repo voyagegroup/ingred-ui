@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Story, Meta } from "@storybook/react";
+import { StoryFn, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
 import { Select2Option, Select2Props } from "./types";
 
@@ -74,7 +74,7 @@ const options: Select2Option[] = [
   { value: "mango", label: "マンゴー" },
 ];
 
-const Template: Story<Select2Props> = (args) => {
+const Template: StoryFn<Select2Props> = (args: Select2Props) => {
   let defaultValue: string | number | (string | number)[] = "";
   if (args.value !== undefined) {
     defaultValue = args.value;
@@ -99,14 +99,14 @@ const Template: Story<Select2Props> = (args) => {
   );
 };
 
-export const Basic: Story<Select2Props> = Template.bind({});
+export const Basic: StoryFn<Select2Props> = Template.bind({});
 Basic.args = {
   options,
   placeholder: "果物を選択",
   searchable: false,
 };
 
-export const WithSearch: Story<Select2Props> = Template.bind({});
+export const WithSearch: StoryFn<Select2Props> = Template.bind({});
 WithSearch.args = {
   options,
   placeholder: "果物を選択",
@@ -125,7 +125,7 @@ searchPlaceholderで検索入力欄のプレースホルダーを指定できま
   },
 };
 
-export const Error: Story<Select2Props> = Template.bind({});
+export const Error: StoryFn<Select2Props> = Template.bind({});
 Error.args = {
   options,
   placeholder: "果物を選択",
@@ -140,20 +140,20 @@ Error.parameters = {
   },
 };
 
-export const Disabled: Story<Select2Props> = Template.bind({});
+export const Disabled: StoryFn<Select2Props> = Template.bind({});
 Disabled.args = {
   options,
   placeholder: "果物を選択",
   disabled: true,
 };
 
-export const WithDefaultValue: Story<Select2Props> = Template.bind({});
+export const WithDefaultValue: StoryFn<Select2Props> = Template.bind({});
 WithDefaultValue.args = {
   options,
   value: "apple",
 };
 
-export const WithManyOptions: Story<Select2Props> = Template.bind({});
+export const WithManyOptions: StoryFn<Select2Props> = Template.bind({});
 WithManyOptions.args = {
   options: [
     ...options,
@@ -171,7 +171,7 @@ WithManyOptions.args = {
   placeholder: "果物を選択",
 };
 
-export const WithDisabledOptions: Story<Select2Props> = Template.bind({});
+export const WithDisabledOptions: StoryFn<Select2Props> = Template.bind({});
 WithDisabledOptions.args = {
   options: [
     { value: "apple", label: "りんご" },
@@ -183,7 +183,9 @@ WithDisabledOptions.args = {
   placeholder: "果物を選択",
 };
 
-export const MultipleSelection: Story<Select2Props> = (args) => {
+export const MultipleSelection: StoryFn<Select2Props> = (
+  args: Select2Props,
+) => {
   const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
     "apple",
     "orange",
@@ -226,7 +228,9 @@ MultipleSelection.parameters = {
   },
 };
 
-export const MultipleSelectionWithSearch: Story<Select2Props> = (args) => {
+export const MultipleSelectionWithSearch: StoryFn<Select2Props> = (
+  args: Select2Props,
+) => {
   const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
     "apple",
     "orange",

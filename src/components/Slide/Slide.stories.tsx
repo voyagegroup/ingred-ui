@@ -1,7 +1,6 @@
-import { Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
 import React from "react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Stories, Title, Markdown } from "@storybook/blocks";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import ToggleButton from "../ToggleButton";
@@ -43,10 +42,10 @@ export default {
       ),
     },
   },
-};
+} as Meta<typeof Slide>;
 
 export const Example: StoryObj<typeof Slide> = {
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof Slide>) => {
     const [isOpen, setIsOpen] = React.useState(args.in);
     const handleToggle = () => {
       setIsOpen(!isOpen);

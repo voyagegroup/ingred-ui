@@ -2,7 +2,7 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import { action } from "@storybook/addon-actions";
-import Button, { ButtonProps } from "./Button";
+import Button from "./Button";
 import Flex from "../Flex";
 import Icon from "../Icon";
 

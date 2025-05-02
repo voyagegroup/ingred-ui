@@ -2,7 +2,7 @@ import * as React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import Button from "../Button";
-import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
+import ButtonGroup from "./ButtonGroup";
 import { Flex, Icon, Spacer, Typography } from "..";
 
 const meta: Meta<typeof ButtonGroup> = {

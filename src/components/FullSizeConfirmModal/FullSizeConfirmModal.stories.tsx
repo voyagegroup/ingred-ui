@@ -1,6 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories } from "@storybook/blocks";
 import FullSizeConfirmModal, {
   FullSizeConfirmModalProps,
 } from "./FullSizeConfirmModal";
@@ -24,16 +24,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={FullSizeConfirmModal} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof FullSizeConfirmModal>;
 
-const Template: StoryObj<FullSizeConfirmModalProps> = {
-  render: (args) => {
+const Template: StoryObj<typeof FullSizeConfirmModal> = {
+  render: (args: FullSizeConfirmModalProps) => {
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
     const handleToggleButton = () => {
       setIsOpen(!isOpen);

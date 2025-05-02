@@ -121,7 +121,7 @@ export const Default: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterTagInput>) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -158,7 +158,7 @@ export const Sizes: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterTagInput>) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -208,7 +208,7 @@ export const Variants: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterTagInput>) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -261,7 +261,7 @@ export const Disabled: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterTagInput>) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -321,7 +321,7 @@ export const Error: StoryObj<typeof meta> = {
     ],
     error: true,
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterTagInput>) => {
     const [values, setValues] = useState(args.values);
     const [selectedIndex, setSelectedIndex] = useState(args.selectedIndex);
 

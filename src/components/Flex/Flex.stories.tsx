@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import Flex, { FlexProps } from "./Flex";
 
 export default {
@@ -22,16 +21,15 @@ export default {
               "Flex can easier express CSS that related flexbox with simple props."
             }
           </Markdown>
-          <ArgsTable of={Flex} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof Flex>;
 
-export const Example: StoryObj<FlexProps> = {
-  render: (args) => (
+export const Example: StoryObj<typeof Flex> = {
+  render: (args: FlexProps) => (
     <Flex {...args}>
       {Array.from({ length: 3 }, (_, i) => (
         <div

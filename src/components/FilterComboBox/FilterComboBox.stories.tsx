@@ -71,7 +71,7 @@ export const Default: StoryObj<typeof meta> = {
       "tiger",
       "giraffe",
       ["🐘", "ゾウ", "ぞう", "象"],
-      "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
+      "すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値すごく長い値",
     ],
     selectedIndex: 0,
     selectOptions: [
@@ -97,7 +97,7 @@ export const Default: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -156,7 +156,7 @@ export const Sizes: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
     const [, updateArgs] = useArgs();
     const handleChange = (values: string[]) => updateArgs({ values });
     const handleSelectChange = (selectedIndex: number) =>
@@ -228,7 +228,7 @@ export const Variants: StoryObj<typeof meta> = {
       },
     ],
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
     const [, updateArgs] = useArgs();
     const handleChange = (values: string[]) => updateArgs({ values });
     const handleSelectChange = (selectedIndex: number) =>
@@ -302,7 +302,7 @@ export const Disabled: StoryObj<typeof meta> = {
     ],
     disabled: true,
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
     const [, updateArgs] = useArgs();
     const handleChange = (values: string[]) => updateArgs({ values });
     const handleSelectChange = (selectedIndex: number) =>
@@ -354,7 +354,7 @@ export const Error: StoryObj<typeof meta> = {
     ],
     error: true,
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
     const [, updateArgs] = useArgs();
 
     return (

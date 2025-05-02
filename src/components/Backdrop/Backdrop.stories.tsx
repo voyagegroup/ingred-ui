@@ -17,7 +17,9 @@ const meta: Meta<typeof Backdrop> = {
       page: () => (
         <>
           <Title />
-          <Markdown>{"クリックで開閉できるBackdropとSpinnerのサンプルです。"}</Markdown>
+          <Markdown>
+            {"クリックで開閉できるBackdropとSpinnerのサンプルです。"}
+          </Markdown>
           <Controls />
           <Stories includePrimary title="Stories" />
         </>
@@ -30,7 +32,7 @@ export default meta;
 type Story = StoryObj<typeof Backdrop>;
 
 export const Example: Story = {
-  render: (args: Story["args"]) => {
+  render: (args: BackdropProps) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const handleToggle = () => {
       setIsOpen(!isOpen);

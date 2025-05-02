@@ -54,7 +54,7 @@ export const Sizes: Story = {
     variant: "light",
     onRemove: () => {},
   },
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Tag>) => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <Tag {...args} label="Small" size="small" />
       <Tag {...args} label="Medium" size="medium" />
@@ -69,7 +69,7 @@ export const Variants: Story = {
     size: "medium",
     onRemove: () => {},
   },
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof Tag>) => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <Tag {...args} label="Light" variant="light" />
       <Tag {...args} label="Dark" variant="dark" />

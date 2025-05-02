@@ -35,11 +35,13 @@ export default {
 };
 
 export const Example: StoryObj<DropdownButtonProps> = {
-  render: (args) => <DropdownButton {...args}>Click me!!</DropdownButton>,
+  render: (args: DropdownButtonProps) => (
+    <DropdownButton {...args}>Click me!!</DropdownButton>
+  ),
 };
 
 export const Colors: StoryObj<DropdownButtonProps> = {
-  render: (args) => (
+  render: (args: DropdownButtonProps) => (
     <Flex display="flex">
       <div>
         <Typography weight="bold">Primary</Typography>
@@ -77,7 +79,7 @@ export const Colors: StoryObj<DropdownButtonProps> = {
 };
 
 export const Sizes: StoryObj<DropdownButtonProps> = {
-  render: (args) => (
+  render: (args: DropdownButtonProps) => (
     <Flex display="flex">
       <div>
         <Typography weight="bold">Small</Typography>
@@ -107,7 +109,7 @@ export const Sizes: StoryObj<DropdownButtonProps> = {
 };
 
 export const Split: StoryObj<DropdownButtonProps> = {
-  render: (args) => (
+  render: (args: DropdownButtonProps) => (
     <Flex display="flex">
       <div>
         <Typography weight="bold">Normal</Typography>

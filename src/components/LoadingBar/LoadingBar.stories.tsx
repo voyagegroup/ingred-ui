@@ -1,7 +1,7 @@
 import React from "react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories } from "@storybook/blocks";
 import LoadingBar from "./LoadingBar";
-import { StoryObj } from "@storybook/react";
 
 export default {
   title: "Components/Feedback/LoadingBar",
@@ -12,16 +12,15 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={LoadingBar} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof LoadingBar>;
 
 export const Example: StoryObj<typeof LoadingBar> = {
-  render: (args) => (
+  render: (args: React.ComponentProps<typeof LoadingBar>) => (
     <div style={{ padding: "24px", backgroundColor: "silver" }}>
       <LoadingBar {...args} />
     </div>

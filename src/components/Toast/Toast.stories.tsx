@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import Toast, { ToastProps } from "./Toast";
 import Button from "../Button";
 
@@ -27,16 +26,15 @@ export default {
               "The toast is used to show alerts on top of an overlay. The toast will close itself when the close button is clicked, or after a timeout.",
             ].join("\n")}
           </Markdown>
-          <ArgsTable of={Toast} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof Toast>;
 
-const Template: StoryObj<ToastProps> = {
-  render: (args) => {
+const Template: StoryObj<typeof Toast> = {
+  render: (args: ToastProps) => {
     const ToastSample = () => {
       const { addToast } = Toast.useToasts();
       const handleClick = () => {
