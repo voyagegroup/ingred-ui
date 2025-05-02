@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 import { FilterComboBox } from "./index";
 import Icon from "../Icon";
 
@@ -36,10 +36,18 @@ const meta = {
         defaultValue: { summary: "variantに連動" },
       },
     },
+    onChange: {
+      action: "onChange",
+    },
+    onSelectChange: {
+      action: "onSelectChange",
+    },
   },
 } satisfies Meta<typeof FilterComboBox>;
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 /**
  * Storybook の Docs の画面では、エンターキーが吸い取られてしまうようです。<br />
@@ -59,7 +67,7 @@ export default meta;
  * 例:
  * options の項目が `[ "イルカ", ["パンダ", "ぱんだ", "熊猫"], "ライオン" ]` の場合、ユーザー入力が "ぱんだ"、"パン"、"猫" と入力したときにどの場合にも「パンダ」がフィルタリングされます。
  */
-export const Default: StoryObj<typeof meta> = {
+export const Default: Story = {
   args: {
     values: ["パンダ", "ヒョウ"],
     options: [
@@ -96,8 +104,10 @@ export const Default: StoryObj<typeof meta> = {
         label: "いずれかを含む",
       },
     ],
+    onChange: (values) => console.log(values),
+    onSelectChange: (selectedIndex) => console.log(selectedIndex),
   },
-  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
+  render: (args) => {
     const [, updateArgs] = useArgs();
 
     return (
@@ -119,7 +129,7 @@ export const Default: StoryObj<typeof meta> = {
  * - medium: 高さ32px（デフォルト）
  * - large: 高さ40px
  */
-export const Sizes: StoryObj<typeof meta> = {
+export const Sizes: Story = {
   args: {
     values: ["パンダ", "ヒョウ"],
     options: [
@@ -155,31 +165,29 @@ export const Sizes: StoryObj<typeof meta> = {
         label: "いずれかを含む",
       },
     ],
+    onChange: (values) => console.log(values),
+    onSelectChange: (selectedIndex) => console.log(selectedIndex),
   },
-  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
-    const [, updateArgs] = useArgs();
-    const handleChange = (values: string[]) => updateArgs({ values });
-    const handleSelectChange = (selectedIndex: number) =>
-      updateArgs({ selectedIndex });
-
+  render: (args) => {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <FilterComboBox
           {...args}
           size="small"
-          onChange={handleChange}
-          onSelectChange={handleSelectChange}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
         />
         <FilterComboBox
           {...args}
-          onChange={handleChange}
-          onSelectChange={handleSelectChange}
+          size="medium"
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
         />
         <FilterComboBox
           {...args}
           size="large"
-          onChange={handleChange}
-          onSelectChange={handleSelectChange}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
         />
       </div>
     );
@@ -200,7 +208,7 @@ export const Sizes: StoryObj<typeof meta> = {
  * コンポーネントのvariantに応じてタグのvariantが自動的に切り替わります。
  * variantが"light"の場合はタグは"dark"に、variantが"dark"の場合はタグは"light"になります。
  */
-export const Variants: StoryObj<typeof meta> = {
+export const Variants: Story = {
   args: {
     values: ["パンダ", "ヒョウ"],
     options: [
@@ -209,6 +217,9 @@ export const Variants: StoryObj<typeof meta> = {
       ["レッサーパンダ", "れっさーぱんだ"],
       "ヒョウ",
       "ライオン",
+      "tiger",
+      "giraffe",
+      ["🐘", "ゾウ", "ぞう", "象"],
     ],
     selectedIndex: 0,
     selectOptions: [
@@ -226,27 +237,30 @@ export const Variants: StoryObj<typeof meta> = {
         ),
         label: "含まない",
       },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
     ],
+    onChange: (values) => console.log(values),
+    onSelectChange: (selectedIndex) => console.log(selectedIndex),
   },
-  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
-    const [, updateArgs] = useArgs();
-    const handleChange = (values: string[]) => updateArgs({ values });
-    const handleSelectChange = (selectedIndex: number) =>
-      updateArgs({ selectedIndex });
-
+  render: (args) => {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
         <FilterComboBox
           {...args}
           variant="light"
-          onChange={handleChange}
-          onSelectChange={handleSelectChange}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
         />
         <FilterComboBox
           {...args}
           variant="dark"
-          onChange={handleChange}
-          onSelectChange={handleSelectChange}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
         />
       </div>
     );
@@ -264,7 +278,7 @@ export const Variants: StoryObj<typeof meta> = {
 /**
  * 無効状態のサンプル
  */
-export const Disabled: StoryObj<typeof meta> = {
+export const Disabled: Story = {
   args: {
     values: ["パンダ", "ヒョウ"],
     options: [
@@ -301,32 +315,25 @@ export const Disabled: StoryObj<typeof meta> = {
       },
     ],
     disabled: true,
+    onChange: (values) => console.log(values),
+    onSelectChange: (selectedIndex) => console.log(selectedIndex),
   },
-  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
-    const [, updateArgs] = useArgs();
-    const handleChange = (values: string[]) => updateArgs({ values });
-    const handleSelectChange = (selectedIndex: number) =>
-      updateArgs({ selectedIndex });
-
+  render: (args) => {
     return (
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <div>
-          <p>無効状態</p>
-          <FilterComboBox
-            {...args}
-            onChange={handleChange}
-            onSelectChange={handleSelectChange}
-          />
-        </div>
-        <div>
-          <p>通常状態</p>
-          <FilterComboBox
-            {...args}
-            disabled={false}
-            onChange={handleChange}
-            onSelectChange={handleSelectChange}
-          />
-        </div>
+        <div>無効状態</div>
+        <FilterComboBox
+          {...args}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
+        />
+        <div>通常状態</div>
+        <FilterComboBox
+          {...args}
+          disabled={false}
+          onChange={args.onChange}
+          onSelectChange={args.onSelectChange}
+        />
       </div>
     );
   },
@@ -335,7 +342,7 @@ export const Disabled: StoryObj<typeof meta> = {
 /**
  * エラー状態
  */
-export const Error: StoryObj<typeof meta> = {
+export const Error: Story = {
   args: {
     values: ["パンダ", "ヒョウ"],
     options: [
@@ -344,6 +351,9 @@ export const Error: StoryObj<typeof meta> = {
       ["レッサーパンダ", "れっさーぱんだ"],
       "ヒョウ",
       "ライオン",
+      "tiger",
+      "giraffe",
+      ["🐘", "ゾウ", "ぞう", "象"],
     ],
     selectedIndex: 0,
     selectOptions: [
@@ -351,17 +361,33 @@ export const Error: StoryObj<typeof meta> = {
         icon: <Icon name="operator_match" type="line" color="currentColor" />,
         label: "含む",
       },
+      {
+        icon: (
+          <Icon
+            name="operator_does_not_match"
+            type="line"
+            color="currentColor"
+          />
+        ),
+        label: "含まない",
+      },
+      {
+        icon: (
+          <Icon name="operator_contains" type="line" color="currentColor" />
+        ),
+        label: "いずれかを含む",
+      },
     ],
     error: true,
+    onChange: (values) => console.log(values),
+    onSelectChange: (selectedIndex) => console.log(selectedIndex),
   },
-  render: (args: React.ComponentProps<typeof FilterComboBox>) => {
-    const [, updateArgs] = useArgs();
-
+  render: (args) => {
     return (
       <FilterComboBox
         {...args}
-        onChange={(values) => updateArgs({ values })}
-        onSelectChange={(selectedIndex) => updateArgs({ selectedIndex })}
+        onChange={args.onChange}
+        onSelectChange={args.onSelectChange}
       />
     );
   },

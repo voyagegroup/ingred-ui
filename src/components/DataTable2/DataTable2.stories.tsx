@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useState } from "@storybook/preview-api";
-import { useArgs } from "@storybook/client-api";
+import { useState, useArgs } from "@storybook/preview-api";
 import {
   type TableColumn,
   type SortDirection,

@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 import { FilterInputAbstract } from "./FilterInputAbstract";
 import Icon from "../Icon";
 
@@ -16,6 +16,9 @@ const meta = {
         type: { summary: "small | medium | large" },
         defaultValue: { summary: "small" },
       },
+    },
+    onSelectChange: {
+      action: "onSelectChange",
     },
   },
 } satisfies Meta<typeof FilterInputAbstract>;
@@ -40,6 +43,7 @@ const defaultArgs = {
       label: "いずれかを含む",
     },
   ],
+  onSelectChange: () => {},
 };
 
 /**
