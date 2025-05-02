@@ -1,9 +1,9 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Title, Stories, Markdown } from "@storybook/blocks";
-import Flex, { FlexProps } from "./Flex";
+import Flex from "./Flex";
 
-export default {
+const meta = {
   title: "Components/Layout/Flex",
   component: Flex,
   args: {
@@ -26,10 +26,14 @@ export default {
       ),
     },
   },
-} as Meta<typeof Flex>;
+} satisfies Meta<typeof Flex>;
 
-export const Example: StoryObj<typeof Flex> = {
-  render: (args: FlexProps) => (
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Example: Story = {
+  render: (args) => (
     <Flex {...args}>
       {Array.from({ length: 3 }, (_, i) => (
         <div

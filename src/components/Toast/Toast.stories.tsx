@@ -1,10 +1,10 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Title, Stories, Markdown } from "@storybook/blocks";
-import Toast, { ToastProps } from "./Toast";
+import Toast from "./Toast";
 import Button from "../Button";
 
-export default {
+const meta = {
   title: "Components/Feedback/Toast",
   component: Toast,
   args: {
@@ -31,55 +31,57 @@ export default {
       ),
     },
   },
-} as Meta<typeof Toast>;
+} satisfies Meta<typeof Toast>;
 
-const Template: StoryObj<typeof Toast> = {
-  render: (args: ToastProps) => {
-    const ToastSample = () => {
-      const { addToast } = Toast.useToasts();
-      const handleClick = () => {
-        addToast(args.appearance, args);
-      };
-      return (
-        <div>
-          <Button inline onClick={handleClick}>
-            Show Toast
-          </Button>
-        </div>
-      );
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+const BaseToastTemplate = (args: any) => {
+  const ToastSample = () => {
+    const { addToast } = Toast.useToasts();
+    const handleClick = () => {
+      addToast(args.appearance as "info" | "success" | "warning" | "error", args);
     };
     return (
-      <Toast.Provider {...args}>
-        <ToastSample />
-      </Toast.Provider>
+      <div>
+        <Button inline onClick={handleClick}>
+          Show Toast
+        </Button>
+      </div>
     );
-  },
+  };
+  return (
+    <Toast.Provider {...args}>
+      <ToastSample />
+    </Toast.Provider>
+  );
 };
 
-export const Info = {
-  ...Template,
+export const Info: Story = {
   args: {
     appearance: "info",
   },
+  render: BaseToastTemplate,
 };
 
-export const Success = {
-  ...Template,
+export const Success: Story = {
   args: {
     appearance: "success",
   },
+  render: BaseToastTemplate,
 };
 
-export const Warning = {
-  ...Template,
+export const Warning: Story = {
   args: {
     appearance: "warning",
   },
+  render: BaseToastTemplate,
 };
 
-export const Error = {
-  ...Template,
+export const Error: Story = {
   args: {
     appearance: "error",
   },
+  render: BaseToastTemplate,
 };

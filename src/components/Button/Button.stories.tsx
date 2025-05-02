@@ -91,7 +91,7 @@ export const BasicDark: Story = {
 export const PrimaryPale: Story = {
   args: {
     children: "pale",
-    color: "primary-pale",
+    color: "primaryPale",
   },
 };
 

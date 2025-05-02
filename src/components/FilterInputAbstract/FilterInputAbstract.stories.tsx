@@ -21,6 +21,13 @@ const meta = {
       action: "onSelectChange",
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: "フィルタータイプ入力コンポーネントの基本抽象コンポーネントです。内部利用専用です。"
+      }
+    }
+  },
 } satisfies Meta<typeof FilterInputAbstract>;
 
 export default meta;

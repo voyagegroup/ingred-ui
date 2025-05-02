@@ -29,7 +29,7 @@ const meta = {
       description: "無効状態",
       table: {
         type: { summary: "boolean" },
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
   },

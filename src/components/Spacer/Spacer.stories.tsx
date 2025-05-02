@@ -2,9 +2,8 @@ import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Title, Stories, Markdown } from "@storybook/blocks";
 import Spacer from "../Spacer";
-import { SpacerProps } from "../../utils/spacer";
 
-export default {
+const meta = {
   title: "Components/Layout/Spacer",
   component: Spacer,
   args: {
@@ -50,10 +49,14 @@ export default {
       ),
     },
   },
-} as Meta<typeof Spacer>;
+} satisfies Meta<typeof Spacer>;
 
-export const Example: StoryObj<typeof Spacer> = {
-  render: (args: SpacerProps) => (
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Example: Story = {
+  render: (args) => (
     <>
       <Spacer {...args}>
         <div

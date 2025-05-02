@@ -19,7 +19,8 @@ const config: StorybookConfig = {
     },
   },
   docs: {
-    autodocs: "tag",
+    autodocs: true,
+    defaultName: 'Documentation',
   },
   staticDirs: ["../assets"],
   typescript: {
