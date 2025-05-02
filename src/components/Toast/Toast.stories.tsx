@@ -41,7 +41,10 @@ const BaseToastTemplate = (args: any) => {
   const ToastSample = () => {
     const { addToast } = Toast.useToasts();
     const handleClick = () => {
-      addToast(args.appearance as "info" | "success" | "warning" | "error", args);
+      addToast(
+        args.appearance as "info" | "success" | "warning" | "error",
+        args,
+      );
     };
     return (
       <div>

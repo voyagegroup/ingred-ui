@@ -28,11 +28,11 @@ const meta = {
       options: [true, false],
       description: "Whether to display error state",
     },
-    onChange: { 
-      action: "onChange" 
+    onChange: {
+      action: "onChange",
     },
-    onSelectChange: { 
-      action: "onSelectChange" 
+    onSelectChange: {
+      action: "onSelectChange",
     },
   },
 } satisfies Meta<typeof FilterTagInput>;
