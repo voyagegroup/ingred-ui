@@ -1,30 +1,34 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import Badge from "./Badge";
 
-export default {
+const meta: Meta<typeof Badge> = {
   title: "Components/Data Display/Badge",
-  components: Badge,
+  component: Badge,
   parameters: {
     docs: {
       source: { language: "tsx" },
       page: () => (
         <>
           <Title />
-          <ArgsTable of={Badge} />
+          <Markdown>{"色やラベルをpropsで指定できます。"}</Markdown>
+          <Controls />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
 };
+export default meta;
 
-const Template: StoryObj<typeof Badge> = {
-  render: (args) => <Badge {...args} />,
+type Story = StoryObj<typeof Badge>;
+
+const Template: Story = {
+  render: (args: Story["args"]) => <Badge {...args} />,
 };
 
-export const Primary: StoryObj<typeof Badge> = {
+export const Primary: Story = {
   ...Template,
   args: {
     color: "primary",
@@ -32,14 +36,14 @@ export const Primary: StoryObj<typeof Badge> = {
   },
 };
 
-export const Secondary: StoryObj<typeof Badge> = {
+export const Secondary: Story = {
   ...Template,
   args: {
     color: "secondary",
     children: "secondary",
   },
 };
-export const Success: StoryObj<typeof Badge> = {
+export const Success: Story = {
   ...Template,
   args: {
     color: "success",
@@ -47,7 +51,7 @@ export const Success: StoryObj<typeof Badge> = {
   },
 };
 
-export const Warning: StoryObj<typeof Badge> = {
+export const Warning: Story = {
   ...Template,
   args: {
     color: "warning",
@@ -55,7 +59,7 @@ export const Warning: StoryObj<typeof Badge> = {
   },
 };
 
-export const Danger: StoryObj<typeof Badge> = {
+export const Danger: Story = {
   ...Template,
   args: {
     color: "danger",
@@ -63,7 +67,7 @@ export const Danger: StoryObj<typeof Badge> = {
   },
 };
 
-export const Basic: StoryObj<typeof Badge> = {
+export const Basic: Story = {
   ...Template,
   args: {
     color: "basic",

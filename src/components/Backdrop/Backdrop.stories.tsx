@@ -1,13 +1,13 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import Backdrop, { BackdropProps } from "./Backdrop";
 import Spinner from "../Spinner";
 import Button from "../Button";
 
-export default {
+const meta: Meta<typeof Backdrop> = {
   title: "Components/Feedback/Backdrop",
-  components: Backdrop,
+  component: Backdrop,
   args: {
     isOpen: false,
   },
@@ -17,16 +17,20 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={Backdrop} />
+          <Markdown>{"クリックで開閉できるBackdropとSpinnerのサンプルです。"}</Markdown>
+          <Controls />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
 };
+export default meta;
 
-export const Example: StoryObj<BackdropProps> = {
-  render: (args) => {
+type Story = StoryObj<typeof Backdrop>;
+
+export const Example: Story = {
+  render: (args: Story["args"]) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const handleToggle = () => {
       setIsOpen(!isOpen);

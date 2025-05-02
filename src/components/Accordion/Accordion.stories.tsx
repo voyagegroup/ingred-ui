@@ -1,10 +1,11 @@
 import * as React from "react";
-import { StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import Accordion, { AccordionProps } from "./Accordion";
 import { useState } from "react";
 import { ActionButton, Flex } from "..";
 
-export default {
+const meta: Meta<typeof Accordion> = {
   title: "Components/navigation/Accordion",
   component: Accordion,
   args: {
@@ -13,10 +14,34 @@ export default {
     disabled: false,
     expanded: false,
   },
-};
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <div>
+            <Markdown>
+              {`
+### Accordionの使い方
 
-export const Example: StoryObj<AccordionProps> = {
-  render: (args) => (
+- title, children, disabled, expanded などのpropsを指定できます。
+- 複数展開やコントロール例もサンプルで確認できます。
+              `}
+            </Markdown>
+            <Controls />
+            <Stories includePrimary title="Samples" />
+          </div>
+        </>
+      ),
+    },
+  },
+};
+export default meta;
+
+type Story = StoryObj<typeof Accordion>;
+
+export const Example: Story = {
+  render: (args: Story["args"]) => (
     <Accordion
       title={args.title}
       disabled={args.disabled}
@@ -27,7 +52,7 @@ export const Example: StoryObj<AccordionProps> = {
   ),
 };
 
-export const Multiple: StoryObj<AccordionProps> = {
+export const Multiple: Story = {
   render: () => (
     <>
       <Accordion title="title1">
@@ -61,7 +86,7 @@ export const Multiple: StoryObj<AccordionProps> = {
   ),
 };
 
-export const Controlled: StoryObj<AccordionProps> = {
+export const Controlled: Story = {
   render: () => {
     const [expanded, setExpanded] = React.useState<string | false>("title1");
     const handleChange =
@@ -118,8 +143,8 @@ export const Controlled: StoryObj<AccordionProps> = {
   },
 };
 
-export const DynamicHeight: StoryObj<AccordionProps> = {
-  render: (args) => {
+export const DynamicHeight: Story = {
+  render: (args: Story["args"]) => {
     const [rows, setRows] = useState<number>(1);
     const handleAddRow = () => setRows((prevState) => prevState + 1);
     const handleRemoveRow = () =>
