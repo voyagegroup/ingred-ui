@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import ErrorText, { ErrorTextProps } from "./ErrorText";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import ErrorText from "./ErrorText";
+import { Title, Stories } from "@storybook/blocks";
 
 export default {
   title: "Components/Data Display/ErrorText",
@@ -15,12 +15,11 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={ErrorText} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof ErrorText>;
 
-export const Example: StoryObj<ErrorTextProps> = {};
+export const Example: StoryObj<typeof ErrorText> = {};

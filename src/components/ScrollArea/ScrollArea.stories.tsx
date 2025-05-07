@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import ScrollArea, { ScrollAreaProps } from "./ScrollArea";
 import Spacer from "../Spacer";
 
@@ -22,16 +21,15 @@ export default {
               "\n",
             )}
           </Markdown>
-          <ArgsTable of={ScrollArea} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof ScrollArea>;
 
-export const Example: StoryObj<ScrollAreaProps> = {
-  render: (args) => (
+export const Example: StoryObj<typeof ScrollArea> = {
+  render: (args: ScrollAreaProps) => (
     <div style={{ border: "1px solid black" }}>
       <ScrollArea {...args}>
         <Spacer p={5}>

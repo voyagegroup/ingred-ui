@@ -1,11 +1,9 @@
 import React from "react";
-import { Title, Stories, ArgsTable } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import Spacer from "../Spacer";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { SpacerProps } from "../../utils/spacer";
 
-export default {
+const meta = {
   title: "Components/Layout/Spacer",
   component: Spacer,
   args: {
@@ -23,7 +21,6 @@ export default {
               "Spacer can easier express `margin` & `padding` with simple props."
             }
           </Markdown>
-          <ArgsTable of={Spacer} />
           <Stories includePrimary title="Stories" />
           <Markdown>
             {[
@@ -52,9 +49,13 @@ export default {
       ),
     },
   },
-};
+} satisfies Meta<typeof Spacer>;
 
-export const Example: StoryObj<SpacerProps> = {
+export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Example: Story = {
   render: (args) => (
     <>
       <Spacer {...args}>

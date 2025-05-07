@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 import { FilterInputAbstract } from "./FilterInputAbstract";
 import Icon from "../Icon";
 
@@ -15,6 +15,17 @@ const meta = {
       table: {
         type: { summary: "small | medium | large" },
         defaultValue: { summary: "small" },
+      },
+    },
+    onSelectChange: {
+      action: "onSelectChange",
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "フィルタータイプ入力コンポーネントの基本抽象コンポーネントです。内部利用専用です。",
       },
     },
   },
@@ -40,6 +51,7 @@ const defaultArgs = {
       label: "いずれかを含む",
     },
   ],
+  onSelectChange: () => {},
 };
 
 /**
@@ -51,7 +63,7 @@ export const Default: StoryObj<typeof meta> = {
     ...defaultArgs,
     size: "small",
   },
-  render: (args) => {
+  render: (args: React.ComponentProps<typeof FilterInputAbstract>) => {
     const [, updateArgs] = useArgs();
 
     return (

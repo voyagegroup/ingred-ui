@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/client-api";
+import { useArgs } from "@storybook/preview-api";
 import { FilterTagInput } from "./index";
 import Icon from "../Icon";
 
-const meta: Meta<typeof FilterTagInput> = {
+const meta = {
   title: "Components/Inputs/FilterTagInput",
   component: FilterTagInput,
   argTypes: {
@@ -28,10 +28,18 @@ const meta: Meta<typeof FilterTagInput> = {
       options: [true, false],
       description: "Whether to display error state",
     },
+    onChange: {
+      action: "onChange",
+    },
+    onSelectChange: {
+      action: "onSelectChange",
+    },
   },
-};
+} satisfies Meta<typeof FilterTagInput>;
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
 
 /**
  * 入力内容がタグ形式で表示される。<br />
@@ -71,7 +79,7 @@ export default meta;
  * ```
  *
  */
-export const Default: StoryObj<typeof meta> = {
+export const Default: Story = {
   args: {
     title: "任意タイトル",
     values: ["テキスト", "value2", "value3"],
@@ -120,6 +128,8 @@ export const Default: StoryObj<typeof meta> = {
         label: "同じでない",
       },
     ],
+    onChange: (newValues) => console.log(newValues),
+    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -136,7 +146,7 @@ export const Default: StoryObj<typeof meta> = {
   },
 };
 
-export const Sizes: StoryObj<typeof meta> = {
+export const Sizes: Story = {
   args: {
     title: "サイズバリエーション",
     values: ["small", "medium", "large"],
@@ -157,6 +167,8 @@ export const Sizes: StoryObj<typeof meta> = {
         label: "含まない",
       },
     ],
+    onChange: (newValues) => console.log(newValues),
+    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -186,7 +198,7 @@ export const Sizes: StoryObj<typeof meta> = {
   },
 };
 
-export const Variants: StoryObj<typeof meta> = {
+export const Variants: Story = {
   args: {
     title: "カラーバリエーション",
     values: ["light", "dark"],
@@ -207,6 +219,8 @@ export const Variants: StoryObj<typeof meta> = {
         label: "含まない",
       },
     ],
+    onChange: (newValues) => console.log(newValues),
+    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -238,7 +252,7 @@ export const Variants: StoryObj<typeof meta> = {
   },
 };
 
-export const Disabled: StoryObj<typeof meta> = {
+export const Disabled: Story = {
   args: {
     title: "無効状態のサンプル",
     values: ["テキスト", "value2", "value3"],
@@ -260,6 +274,8 @@ export const Disabled: StoryObj<typeof meta> = {
         label: "含まない",
       },
     ],
+    onChange: (newValues) => console.log(newValues),
+    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -292,7 +308,7 @@ export const Disabled: StoryObj<typeof meta> = {
   },
 };
 
-export const Error: StoryObj<typeof meta> = {
+export const Error: Story = {
   args: {
     title: "Filter",
     values: ["value1", "value2"],
@@ -320,6 +336,8 @@ export const Error: StoryObj<typeof meta> = {
       },
     ],
     error: true,
+    onChange: (newValues) => console.log(newValues),
+    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [values, setValues] = useState(args.values);
@@ -330,9 +348,11 @@ export const Error: StoryObj<typeof meta> = {
         {...args}
         values={values}
         selectedIndex={selectedIndex}
-        onChange={(newValues, newSelectedIndex) => {
+        onChange={(newValues) => {
           setValues(newValues);
-          setSelectedIndex(newSelectedIndex);
+        }}
+        onSelectChange={(newIndex) => {
+          setSelectedIndex(newIndex);
         }}
       />
     );

@@ -10,7 +10,7 @@ export default {
 };
 
 export const Example: StoryObj<ToggleButtonProps> = {
-  render: (args) => {
+  render: (args: ToggleButtonProps) => {
     const [checked, setChecked] = React.useState<boolean>(false);
     return (
       <ToggleButton

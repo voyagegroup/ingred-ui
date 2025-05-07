@@ -1,11 +1,10 @@
 import { action } from "@storybook/addon-actions";
-import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
+import { Meta, StoryObj } from "@storybook/react";
+import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import React from "react";
-import ActionButton, { ActionButtonProps } from "./ActionButton";
+import ActionButton from "./ActionButton";
 
-export default {
+const meta: Meta<typeof ActionButton> = {
   title: "Components/Inputs/ActionButton",
   component: ActionButton,
   args: {
@@ -19,28 +18,31 @@ export default {
       page: () => (
         <>
           <Title />
-          <Markdown>{"It can behave like a `<button />` tags."}</Markdown>
-          <ArgsTable of={ActionButton} />
+          <Markdown>{"It can behave like a `<button />` tag."}</Markdown>
+          <Controls />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
 };
+export default meta;
 
-export const Primary: StoryObj<ActionButtonProps> = {
+type Story = StoryObj<typeof ActionButton>;
+
+export const Primary: Story = {
   args: {
     color: "primary",
   },
 };
 
-export const Warning: StoryObj<ActionButtonProps> = {
+export const Warning: Story = {
   args: {
     color: "warning",
   },
 };
 
-export const Disabled: StoryObj<ActionButtonProps> = {
+export const Disabled: Story = {
   args: {
     disabled: true,
   },

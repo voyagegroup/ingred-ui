@@ -1,6 +1,5 @@
-import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
+import { Meta, StoryObj } from "@storybook/react";
+import { Stories, Title, Markdown } from "@storybook/blocks";
 import React from "react";
 import Flex from "../Flex";
 import Icon from "../Icon";
@@ -37,15 +36,14 @@ export default {
               "Usage example is included in ”Canvas” Tab at header.",
             ].join("\n")}
           </Markdown>
-          <ArgsTable of={NavigationRail} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof NavigationRail>;
 
-export const Example: StoryObj = {
+export const Example: StoryObj<typeof NavigationRail> = {
   render: () => {
     return (
       <NavigationRail.Container>

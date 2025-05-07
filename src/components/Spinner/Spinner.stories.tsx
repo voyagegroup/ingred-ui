@@ -1,7 +1,7 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
-import Spinner, { SpinnerProps } from "./Spinner";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories } from "@storybook/blocks";
+import Spinner from "./Spinner";
 
 export default {
   title: "Components/Feedback/Spinner",
@@ -12,12 +12,11 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={Spinner} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof Spinner>;
 
-export const Example: StoryObj<SpinnerProps> = {};
+export const Example: StoryObj<typeof Spinner> = {};

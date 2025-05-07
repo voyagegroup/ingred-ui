@@ -1,8 +1,8 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories } from "@storybook/blocks";
 import { action } from "@storybook/addon-actions";
-import ContextMenu, { ContextMenuProps } from "./ContextMenu";
+import ContextMenu from "./ContextMenu";
 
 export default {
   title: "Components/Navigation/ContextMenu",
@@ -13,15 +13,14 @@ export default {
       page: () => (
         <>
           <Title />
-          <ArgsTable of={ContextMenu} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof ContextMenu>;
 
-export const Basic: StoryObj<ContextMenuProps> = {
+export const Basic: StoryObj<typeof ContextMenu> = {
   args: {
     contents: [
       {
@@ -36,7 +35,7 @@ export const Basic: StoryObj<ContextMenuProps> = {
   },
 };
 
-export const Disabled: StoryObj<ContextMenuProps> = {
+export const Disabled: StoryObj<typeof ContextMenu> = {
   args: {
     contents: [
       {
@@ -52,7 +51,7 @@ export const Disabled: StoryObj<ContextMenuProps> = {
   },
 };
 
-export const Warning: StoryObj<ContextMenuProps> = {
+export const Warning: StoryObj<typeof ContextMenu> = {
   args: {
     contents: [
       {

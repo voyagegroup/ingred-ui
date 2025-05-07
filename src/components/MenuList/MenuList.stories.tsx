@@ -1,7 +1,6 @@
 import React from "react";
-import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import { Meta, StoryObj } from "@storybook/react";
+import { Title, Stories, Markdown } from "@storybook/blocks";
 import MenuList, { MenuListProps } from "./MenuList";
 import { action } from "@storybook/addon-actions";
 
@@ -17,16 +16,15 @@ export default {
           <Markdown>
             {`MenuList is a lower-level component that is leveraged [&lt;Menu /&gt;](${window.location.origin}/?path=/docs/components-navigation-menu--example).`}
           </Markdown>
-          <ArgsTable of={MenuList} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-};
+} as Meta<typeof MenuList>;
 
-const Template: StoryObj<MenuListProps> = {
-  render: (args) => {
+const Template: StoryObj<typeof MenuList> = {
+  render: (args: MenuListProps) => {
     return (
       <div style={{ backgroundColor: "silver", padding: "10px" }}>
         <MenuList {...args} />

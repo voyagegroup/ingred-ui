@@ -30,7 +30,7 @@ export const Example: StoryObj<RadioButtonProps> = {
   args: {
     name: "example",
   },
-  render: (args) => (
+  render: (args: RadioButtonProps) => (
     <>
       <RadioButton {...args}>ラベル One</RadioButton>
       <br />

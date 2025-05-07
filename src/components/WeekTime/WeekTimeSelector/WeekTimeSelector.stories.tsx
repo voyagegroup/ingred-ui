@@ -11,7 +11,7 @@ export const Example: StoryObj<WeekTimeSelectorProps> = {
   args: {
     weekTime: "ffffffffffffffffffffffffffffffffffffffffff",
   },
-  render: (args) => {
+  render: (args: WeekTimeSelectorProps) => {
     const [weekTime, setWeekTime] = React.useState(args.weekTime);
 
     return <WeekTimeSelector weekTime={weekTime} onChange={setWeekTime} />;

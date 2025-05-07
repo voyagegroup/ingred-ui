@@ -1,17 +1,33 @@
 import * as React from "react";
-import { StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
+import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
 import Button from "../Button";
-import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
+import ButtonGroup from "./ButtonGroup";
 import { Flex, Icon, Spacer, Typography } from "..";
 
-export default {
+const meta: Meta<typeof ButtonGroup> = {
   title: "Components/Inputs/ButtonGroup",
   component: ButtonGroup,
   subcomponents: { Button },
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Markdown>{`ButtonGroupは複数のボタンをグループ化して一括でスタイルやサイズを制御できます。`}</Markdown>
+          <Controls />
+          <Stories includePrimary title="Samples" />
+        </>
+      ),
+    },
+  },
 };
+export default meta;
 
-export const Example: StoryObj<ButtonGroupProps> = {
-  render: (args) => (
+type Story = StoryObj<typeof ButtonGroup>;
+
+export const Example: Story = {
+  render: (args: Story["args"]) => (
     <ButtonGroup {...args}>
       <Button>Save</Button>
       <Button>Edit</Button>
@@ -21,7 +37,7 @@ export const Example: StoryObj<ButtonGroupProps> = {
   ),
 };
 
-export const DesignSamples: StoryObj = {
+export const DesignSamples: Story = {
   render: () => (
     <Flex display="flex">
       <div>
@@ -301,8 +317,8 @@ export const DesignSamples: StoryObj = {
   ),
 };
 
-export const DisablePartially: StoryObj<ButtonGroupProps> = {
-  render: (args) => (
+export const DisablePartially: Story = {
+  render: (args: Story["args"]) => (
     <ButtonGroup {...args}>
       <Button>Save</Button>
       <Button disabled>Edit</Button>
@@ -312,8 +328,8 @@ export const DisablePartially: StoryObj<ButtonGroupProps> = {
   ),
 };
 
-export const MinSize: StoryObj<ButtonGroupProps> = {
-  render: (args) => (
+export const MinSize: Story = {
+  render: (args: Story["args"]) => (
     <Flex display="flex">
       <div>
         <Typography weight="bold">minSize Small</Typography>
@@ -362,8 +378,8 @@ export const MinSize: StoryObj<ButtonGroupProps> = {
   ),
 };
 
-export const LinkMixed: StoryObj<ButtonGroupProps> = {
-  render: (args) => {
+export const LinkMixed: Story = {
+  render: (args: Story["args"]) => {
     const Link: React.FC<{
       href: string;
       className: string;
