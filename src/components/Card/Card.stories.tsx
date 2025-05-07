@@ -1,7 +1,6 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import { Markdown } from "@storybook/blocks";
-import { Title, Stories } from "@storybook/blocks";
+import { Markdown, Title, Stories } from "@storybook/blocks";
 import Card, { CardProps } from "./Card";
 
 export default {
