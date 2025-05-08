@@ -4,7 +4,12 @@ import { colors } from "../../styles";
 
 // 特に機能を持たない、見た目付きの ContextMenu2 用の「見出し」
 
-export const ContextMenu2HeadingItem = styled(({ className, children }) => {
+type HeadingItemProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+
+export const ContextMenu2HeadingItem = styled(({ className, children }: HeadingItemProps) => {
   return <p className={className}>{children}</p>;
 })`
   border-radius: 4px;
