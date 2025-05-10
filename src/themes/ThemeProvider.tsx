@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
 };
 const ThemeProvider: React.FunctionComponent<Props> = ({ children, theme }) => (
-  <StyleSheetManager enableVendorPrefixes>
+  <StyleSheetManager disableVendorPrefixes={false}>
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
   </StyleSheetManager>
 );

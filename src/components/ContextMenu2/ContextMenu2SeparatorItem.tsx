@@ -8,9 +8,11 @@ type SeparatorItemProps = {
   className?: string;
 };
 
-export const ContextMenu2SeparatorItem = styled(({ className }: SeparatorItemProps) => {
-  return <hr className={className} />;
-})`
+export const ContextMenu2SeparatorItem = styled(
+  ({ className }: SeparatorItemProps) => {
+    return <hr className={className} />;
+  },
+)`
   margin: 8px 0;
   color: ${colors.basic[200]};
   border-top: 1px solid currentColor;

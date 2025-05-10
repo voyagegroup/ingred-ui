@@ -9,9 +9,11 @@ type HeadingItemProps = {
   children: React.ReactNode;
 };
 
-export const ContextMenu2HeadingItem = styled(({ className, children }: HeadingItemProps) => {
-  return <p className={className}>{children}</p>;
-})`
+export const ContextMenu2HeadingItem = styled(
+  ({ className, children }: HeadingItemProps) => {
+    return <p className={className}>{children}</p>;
+  },
+)`
   border-radius: 4px;
   padding: 4px 8px;
   margin-bottom: 8px;
