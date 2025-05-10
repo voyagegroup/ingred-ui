@@ -12,7 +12,7 @@ const Fade: React.FunctionComponent<CSSTransitionProps> = ({
 
   return (
     <Styled.CSSTransition
-      nodeRef={nodeRef as React.RefObject<unknown>}
+      nodeRef={nodeRef}
       appear={true}
       mountOnEnter={true}
       timeout={timeout}
