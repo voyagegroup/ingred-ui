@@ -3,18 +3,18 @@
 exports[`FloatingTip component testing FloatingTip 1`] = `
 <DocumentFragment>
   <div
-    class="sc-dkzDqf jySaMj"
+    class="sc-fmZSGO dnqLBA"
   >
     <div
-      class="sc-eCYdqJ fxZLaq fade-transition-appear fade-transition-appear-active"
+      class="sc-dYOLZc hPsiRt fade-transition-appear fade-transition-appear-active"
       data-floating-ui-inert=""
     >
       <div
-        class="sc-hKMtZM gENyvx"
+        class="sc-gwsNht ciIChm"
       />
     </div>
     <div
-      class="sc-gsnTZi nDsAv"
+      class="sc-hKDTPf eHtvIa"
       data-floating-ui-focusable=""
       id=":r0:"
       role="dialog"
@@ -22,20 +22,20 @@ exports[`FloatingTip component testing FloatingTip 1`] = `
       tabindex="-1"
     >
       <div
-        class="sc-jSMfEi dgdpow"
+        class="sc-jMpmlX bfWxsl"
       >
         <div
-          class="sc-gKXOVf JRXny"
+          class="sc-hoLldG fLfhby"
         >
           <div>
             hoge
           </div>
         </div>
         <div
-          class="sc-iBkjds jLsWjl"
+          class="sc-jZhnRx bZYesz"
         >
           <span
-            class="sc-bczRLJ gJuzRf"
+            class="sc-bXdtCk ggTZnd"
             size="18"
           >
             <svg

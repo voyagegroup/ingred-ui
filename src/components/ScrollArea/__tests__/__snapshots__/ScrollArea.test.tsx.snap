@@ -3,8 +3,10 @@
 exports[`ScrollArea component testing ScrollArea 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ fXrQyx"
+    class="sc-bXdtCk ffVYtj"
     height="auto"
+    maxheight="none"
+    minheight="none"
   >
     <div>
       hoge

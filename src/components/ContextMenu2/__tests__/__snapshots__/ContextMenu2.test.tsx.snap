@@ -41,7 +41,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-fnykZs cxQFJs"
+    class="sc-dHKmnV bWxvwo"
     data-floating-ui-focusable=""
     id=":r1:"
     role="dialog"
@@ -49,19 +49,19 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
     tabindex="-1"
   >
     <div
-      class="sc-idiyUo eRJoiQ"
+      class="sc-hLyRwt jRdXFI"
     >
       <p
-        class="sc-dIouRR TuUAv"
+        class="sc-iLBnws fVxPFs"
       >
         ステータスを変更
       </p>
       <div
-        class="sc-dmRaPn aAiNo"
+        class="sc-fGlNzy hmnNFu"
       >
         <div>
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-fmZSGO naXpd"
             size="18"
           >
             <svg
@@ -80,24 +80,24 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
           </span>
         </div>
         <p
-          class="sc-hHLeRK fDZduO"
+          class="sc-eGjrzz eiKhWT"
         >
           ヘルプテキスト
         </p>
       </div>
       <hr
-        class="sc-kgflAQ tWjLj"
+        class="sc-hawdNJ bFRDZp"
       />
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-hKDTPf jOFScb"
         tabindex="-1"
         type="button"
       >
         <span
-          class="sc-bczRLJ gjrGrq"
+          class="sc-bXdtCk cPSCTd"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-fmZSGO naXpd"
             size="18"
           >
             <svg
@@ -119,14 +119,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         アイコンボタン
       </button>
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-hKDTPf jOFScb"
         tabindex="-1"
         type="button"
       >
         ボタン
       </button>
       <button
-        class="sc-gsnTZi kHYuDQ"
+        class="sc-hKDTPf xhtyq"
         color="danger"
         tabindex="-1"
         type="button"
@@ -136,21 +136,21 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-kDDrLX cjCYFD"
+        class="sc-llIIlC fPDZgD"
         type="button"
       >
         <span
-          class="sc-papXJ flsUCO"
+          class="sc-kThouk krVvIl"
         >
           入れ子トリガー
         </span>
         <span
-          class="sc-jqUVSM cjnGLN"
+          class="sc-dTdQuR ddabir"
         >
           100
         </span>
         <span
-          class="sc-dkzDqf kPdxGi"
+          class="sc-fmZSGO naXpd"
           size="18"
         >
           <svg
@@ -164,15 +164,15 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </button>
       <button
-        class="sc-jSMfEi mUWzY"
+        class="sc-jMpmlX eRtVlL"
         tabindex="-1"
         type="button"
       >
         <span
-          class="sc-hKMtZM gEhuHi"
+          class="sc-gwsNht bjkGLQ"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-fmZSGO naXpd"
             size="18"
           >
             <svg
@@ -188,10 +188,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
         含む
         <span
-          class="sc-eCYdqJ kxUHtX"
+          class="sc-dYOLZc evqSwF"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-fmZSGO naXpd"
             size="18"
           >
             <svg
@@ -207,15 +207,15 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
       </button>
       <button
-        class="sc-jSMfEi jOyZZz"
+        class="sc-jMpmlX hhhSDo"
         tabindex="-1"
         type="button"
       >
         <span
-          class="sc-hKMtZM gEhuHi"
+          class="sc-gwsNht bjkGLQ"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-fmZSGO naXpd"
             size="18"
           >
             <svg
@@ -231,45 +231,45 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </span>
         含まない
         <span
-          class="sc-eCYdqJ kxUHtX"
+          class="sc-dYOLZc evqSwF"
         />
       </button>
       <button
-        class="sc-jSMfEi jOyZZz"
+        class="sc-jMpmlX hhhSDo"
         tabindex="-1"
         type="button"
       >
         アイコンなしチェック1
         <span
-          class="sc-eCYdqJ kxUHtX"
+          class="sc-dYOLZc evqSwF"
         />
       </button>
       <button
-        class="sc-jSMfEi jOyZZz"
+        class="sc-jMpmlX hhhSDo"
         tabindex="-1"
         type="button"
       >
         アイコンなしチェック2
         <span
-          class="sc-eCYdqJ kxUHtX"
+          class="sc-dYOLZc evqSwF"
         />
       </button>
       <button
-        class="sc-ftvSup cobQkW"
+        class="sc-hBDmJg ljnXvO"
         tabindex="-1"
         type="button"
       >
         スイッチ
         <span
-          class="sc-gKXOVf hyivqH"
+          class="sc-hoLldG cuapxF"
         >
           <span
-            class="sc-iBkjds gVa-DCt"
+            class="sc-jZhnRx cAakXI"
           />
         </span>
       </button>
       <div
-        class="sc-ksZaOG bquZOH"
+        class="sc-dACwDz etXABJ"
       >
         <input
           data-ios="false"
@@ -279,31 +279,41 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         />
       </div>
       <ul
-        class="sc-fLlhyt gBbOiv"
+        class="sc-iayzNI livxWh"
       >
         <li>
           <button
-            class="sc-ivTmOn sc-cxabCf gFzxQX doCBWJ"
+            active="[object Object]"
+            borderradius="4px"
+            class="sc-gfUXbm sc-cTIdZS bZssAy cWFzfe"
             color="clear"
             font-size="12px"
             height="28px"
+            hover="[object Object]"
+            normal="[object Object]"
+            paddinginline="6px"
           >
             キャンセル
           </button>
         </li>
         <li>
           <button
-            class="sc-ivTmOn sc-cxabCf gFzxQX jGTGDe"
+            active="[object Object]"
+            borderradius="4px"
+            class="sc-gfUXbm sc-cTIdZS bZssAy ghgdFh"
             color="primary"
             font-size="12px"
             height="28px"
+            hover="[object Object]"
+            normal="[object Object]"
+            paddinginline="6px"
           >
             適用
           </button>
         </li>
       </ul>
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-hKDTPf jOFScb"
         tabindex="-1"
         type="button"
       >
