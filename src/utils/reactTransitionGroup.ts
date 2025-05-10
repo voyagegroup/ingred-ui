@@ -2,9 +2,13 @@ import { CSSTransitionProps as OriginalCSSTransitionProps } from "react-transiti
 import Fade from "../components/Fade";
 import Grow from "../components/Grow";
 import Slide from "../components/Slide";
+import React from "react";
 
-export type CSSTransitionProps = Partial<OriginalCSSTransitionProps> & {
+export type CSSTransitionProps = Partial<
+  Omit<OriginalCSSTransitionProps, "nodeRef">
+> & {
   children?: React.ComponentElement<HTMLElement, any>;
+  nodeRef?: React.RefObject<HTMLDivElement>;
 };
 
 export type TransitionComponent = typeof Fade | typeof Grow | typeof Slide;

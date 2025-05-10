@@ -3,21 +3,32 @@
 exports[`Button component testing ButtonGroup 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ kQjzkA"
+    class="sc-bXdtCk idAVcO"
+    minsize="fit-content"
   >
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-fmZSGO sc-gwsNht kGRuiP krYvwt"
       color="basicLight"
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Edit
     </button>
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-fmZSGO sc-gwsNht kGRuiP krYvwt"
       color="basicLight"
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Save
     </button>

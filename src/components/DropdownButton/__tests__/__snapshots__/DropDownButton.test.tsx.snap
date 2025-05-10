@@ -3,24 +3,30 @@
 exports[`DropdownButton component testing not splited disable 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ iHkOCJ"
+    class="sc-dYOLZc jbDZtn"
     data-floating-ui-inert=""
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV gJAork sc-iBkjds jECwvP"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig cFMqSN sc-jZhnRx kgYKjF"
       color="primary"
       data-testid="menu-toggle"
       disabled=""
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Save
       <div
-        class="sc-hKMtZM gHErep"
+        class="sc-gwsNht iKvryC"
+        pr="0.5"
       />
       <span
-        class="sc-ftvSup cgVcmC"
+        class="sc-hBDmJg bzQSRF"
         size="18"
       >
         <svg
@@ -35,10 +41,10 @@ exports[`DropdownButton component testing not splited disable 1`] = `
     </button>
   </div>
   <div
-    class="sc-ksZaOG fgOtcW"
+    class="sc-dACwDz fugJLZ"
   >
     <div
-      class="sc-breuTD gslte"
+      class="sc-kAFUCS dRISfq"
       data-floating-ui-focusable=""
       id=":r2:"
       role="dialog"
@@ -46,58 +52,87 @@ exports[`DropdownButton component testing not splited disable 1`] = `
       tabindex="-1"
     >
       <div
-        class="sc-papXJ gHZzeo"
+        class="sc-kThouk iBbJyp"
+        maxheight="none"
       >
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save and execute
           </p>
         </div>
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save as draft
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Cancel
           </p>
@@ -111,23 +146,29 @@ exports[`DropdownButton component testing not splited disable 1`] = `
 exports[`DropdownButton component testing not splited enable 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ iHkOCJ"
+    class="sc-dYOLZc jbDZtn"
     data-floating-ui-inert=""
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV gJAork sc-iBkjds jECwvP"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig cFMqSN sc-jZhnRx kgYKjF"
       color="primary"
       data-testid="menu-toggle"
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Save
       <div
-        class="sc-hKMtZM gHErep"
+        class="sc-gwsNht iKvryC"
+        pr="0.5"
       />
       <span
-        class="sc-ftvSup cgVcmC"
+        class="sc-hBDmJg bzQSRF"
         size="18"
       >
         <svg
@@ -142,17 +183,17 @@ exports[`DropdownButton component testing not splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-ksZaOG kYwgGm"
+    class="sc-dACwDz kJZjmJ"
   >
     <div
-      class="sc-fnykZs kOawsR fade-transition-enter fade-transition-enter-active"
+      class="sc-dHKmnV dkgcXg fade-transition-enter fade-transition-enter-active"
     >
       <div
-        class="sc-hAZoDl cLLXyY"
+        class="sc-kHNKno jPZoGU"
       />
     </div>
     <div
-      class="sc-breuTD gslte"
+      class="sc-kAFUCS dRISfq"
       data-floating-ui-focusable=""
       id=":r0:"
       role="dialog"
@@ -160,58 +201,87 @@ exports[`DropdownButton component testing not splited enable 1`] = `
       tabindex="-1"
     >
       <div
-        class="sc-papXJ gHZzeo"
+        class="sc-kThouk iBbJyp"
+        maxheight="none"
       >
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save and execute
           </p>
         </div>
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save as draft
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Cancel
           </p>
@@ -225,29 +295,39 @@ exports[`DropdownButton component testing not splited enable 1`] = `
 exports[`DropdownButton component testing splited disable 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ iHkOCJ"
+    class="sc-dYOLZc jbDZtn"
     data-floating-ui-inert=""
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-jSMfEi xUbxp"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig gRGSei sc-jMpmlX gqlPbs"
       color="primary"
       disabled=""
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Save
     </button>
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-gKXOVf cwUGoA"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig gRGSei sc-hoLldG dREWUO"
       color="primary"
       data-testid="menu-toggle"
       disabled=""
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       <span
-        class="sc-ftvSup cgVcmC"
+        class="sc-hBDmJg bzQSRF"
         size="18"
       >
         <svg
@@ -262,10 +342,10 @@ exports[`DropdownButton component testing splited disable 1`] = `
     </button>
   </div>
   <div
-    class="sc-ksZaOG fgOtcW"
+    class="sc-dACwDz fugJLZ"
   >
     <div
-      class="sc-breuTD gslte"
+      class="sc-kAFUCS dRISfq"
       data-floating-ui-focusable=""
       id=":r6:"
       role="dialog"
@@ -273,58 +353,87 @@ exports[`DropdownButton component testing splited disable 1`] = `
       tabindex="-1"
     >
       <div
-        class="sc-papXJ gHZzeo"
+        class="sc-kThouk iBbJyp"
+        maxheight="none"
       >
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save and execute
           </p>
         </div>
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save as draft
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Cancel
           </p>
@@ -338,27 +447,37 @@ exports[`DropdownButton component testing splited disable 1`] = `
 exports[`DropdownButton component testing splited enable 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCYdqJ iHkOCJ"
+    class="sc-dYOLZc jbDZtn"
     data-floating-ui-inert=""
     role="button"
   >
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-jSMfEi xUbxp"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig gRGSei sc-jMpmlX gqlPbs"
       color="primary"
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       Save
     </button>
     <button
-      class="sc-gsnTZi sc-dkzDqf bveZbV AXAtv sc-gKXOVf cwUGoA"
+      active="[object Object]"
+      borderradius="6px"
+      class="sc-hKDTPf sc-fmZSGO dIkYig gRGSei sc-hoLldG dREWUO"
       color="primary"
       data-testid="menu-toggle"
       font-size="13px"
       height="32px"
+      hover="[object Object]"
+      normal="[object Object]"
+      paddinginline="8px"
     >
       <span
-        class="sc-ftvSup cgVcmC"
+        class="sc-hBDmJg bzQSRF"
         size="18"
       >
         <svg
@@ -373,17 +492,17 @@ exports[`DropdownButton component testing splited enable 1`] = `
     </button>
   </div>
   <div
-    class="sc-ksZaOG kYwgGm"
+    class="sc-dACwDz kJZjmJ"
   >
     <div
-      class="sc-fnykZs kOawsR fade-transition-enter fade-transition-enter-active"
+      class="sc-dHKmnV dkgcXg fade-transition-enter fade-transition-enter-active"
     >
       <div
-        class="sc-hAZoDl cLLXyY"
+        class="sc-kHNKno jPZoGU"
       />
     </div>
     <div
-      class="sc-breuTD gslte"
+      class="sc-kAFUCS dRISfq"
       data-floating-ui-focusable=""
       id=":r4:"
       role="dialog"
@@ -391,58 +510,87 @@ exports[`DropdownButton component testing splited enable 1`] = `
       tabindex="-1"
     >
       <div
-        class="sc-papXJ gHZzeo"
+        class="sc-kThouk iBbJyp"
+        maxheight="none"
       >
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save and execute
           </p>
         </div>
         <hr
-          class="sc-evZas htEONu"
+          class="sc-dibcMh fCkdsF"
           color="#E2E8EA"
+          mx="2"
+          my="1"
           orientation="horizontal"
         />
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Save as draft
           </p>
         </div>
         <div
-          class="sc-crXcEl cpBNq"
+          active="[object Object]"
+          class="sc-kieALA ioBXW"
+          hover="[object Object]"
+          normal="[object Object]"
         >
           <p
-            class="sc-bczRLJ dkTFVi sc-iqcoie"
+            align="left"
+            class="sc-bXdtCk cynPHj sc-elFkmj"
             color="#041C33"
             font-size="13px"
+            lineheight="1.4"
+            weight="normal"
           >
             Cancel
           </p>

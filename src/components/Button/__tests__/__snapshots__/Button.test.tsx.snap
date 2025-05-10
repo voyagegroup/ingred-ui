@@ -3,10 +3,15 @@
 exports[`Button component testing Button 1`] = `
 <DocumentFragment>
   <button
-    class="sc-gsnTZi sc-dkzDqf bveZbV gJAork"
+    active="[object Object]"
+    borderradius="6px"
+    class="sc-hKDTPf sc-fmZSGO dIkYig cFMqSN"
     color="primary"
     font-size="13px"
     height="32px"
+    hover="[object Object]"
+    normal="[object Object]"
+    paddinginline="8px"
   />
 </DocumentFragment>
 `;

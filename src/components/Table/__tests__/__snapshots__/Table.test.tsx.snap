@@ -3,88 +3,109 @@
 exports[`Table component testing Table 1`] = `
 <DocumentFragment>
   <table
-    class="sc-eCYdqJ gCynDg"
+    class="sc-dYOLZc VWuyc"
   >
     <tbody>
       <tr
-        class="sc-dkzDqf csKmfg"
+        class="sc-fmZSGO jyestF"
+        verticalspacing="medium"
       >
         <th
-          class="sc-hKMtZM dBLJAh"
+          class="sc-gwsNht MrQaM"
           width="177px"
         >
           <div
-            class="sc-bczRLJ gxrEyT"
+            align="left"
+            class="sc-bXdtCk jnaFvW"
             color="#041C33"
             font-size="14px"
+            lineheight="normal"
+            weight="bold"
           >
             Title
           </div>
         </th>
         <td
-          class="sc-gsnTZi bCtKCV"
+          class="sc-hKDTPf evCnhq"
           width="auto"
         >
           <div
-            class="sc-bczRLJ cTnYtN"
+            align="left"
+            class="sc-bXdtCk cECRTw"
             color="#041C33"
             font-size="14px"
+            lineheight="1.4"
+            weight="normal"
           >
             Content
           </div>
         </td>
       </tr>
       <tr
-        class="sc-dkzDqf csKmfg"
+        class="sc-fmZSGO jyestF"
+        verticalspacing="medium"
       >
         <th
-          class="sc-hKMtZM dBLJAh"
+          class="sc-gwsNht MrQaM"
           width="177px"
         >
           <div
-            class="sc-bczRLJ gxrEyT"
+            align="left"
+            class="sc-bXdtCk jnaFvW"
             color="#041C33"
             font-size="14px"
+            lineheight="normal"
+            weight="bold"
           >
             Title
           </div>
         </th>
         <td
-          class="sc-gsnTZi bCtKCV"
+          class="sc-hKDTPf evCnhq"
           width="auto"
         >
           <div
-            class="sc-bczRLJ cTnYtN"
+            align="left"
+            class="sc-bXdtCk cECRTw"
             color="#041C33"
             font-size="14px"
+            lineheight="1.4"
+            weight="normal"
           >
             Content
           </div>
         </td>
       </tr>
       <tr
-        class="sc-dkzDqf csKmfg"
+        class="sc-fmZSGO jyestF"
+        verticalspacing="medium"
       >
         <th
-          class="sc-hKMtZM dBLJAh"
+          class="sc-gwsNht MrQaM"
           width="177px"
         >
           <div
-            class="sc-bczRLJ gxrEyT"
+            align="left"
+            class="sc-bXdtCk jnaFvW"
             color="#041C33"
             font-size="14px"
+            lineheight="normal"
+            weight="bold"
           >
             Title
           </div>
         </th>
         <td
-          class="sc-gsnTZi bCtKCV"
+          class="sc-hKDTPf evCnhq"
           width="auto"
         >
           <div
-            class="sc-bczRLJ cTnYtN"
+            align="left"
+            class="sc-bXdtCk cECRTw"
             color="#041C33"
             font-size="14px"
+            lineheight="1.4"
+            weight="normal"
           >
             Content
           </div>

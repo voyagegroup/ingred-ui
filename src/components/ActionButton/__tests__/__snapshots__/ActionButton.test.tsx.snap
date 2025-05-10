@@ -3,10 +3,13 @@
 exports[`ActionButton component testing ActionButton 1`] = `
 <DocumentFragment>
   <button
-    class="sc-dkzDqf gDnIQD"
+    bordercolor="#9CDDFD"
+    class="sc-fmZSGO dQPBmo"
+    hoverbackgroundcolor="#CDF0FE"
+    normalbackgroundcolor="#F2F9FC"
   >
     <span
-      class="sc-bczRLJ gJuzRf"
+      class="sc-bXdtCk ggTZnd"
       size="18"
     >
       <svg

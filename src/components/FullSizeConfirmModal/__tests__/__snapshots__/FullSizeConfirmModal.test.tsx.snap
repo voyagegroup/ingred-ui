@@ -3,41 +3,44 @@
 exports[`FullSizeConfirmModal component testing FullSizeConfirmModal 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fnykZs dDCXYC"
+    class="sc-dHKmnV jPthZs"
   >
     <div
-      class="sc-bjUoiL iQQjZl fade-transition-appear fade-transition-appear-active"
+      class="sc-groBii irOiHC fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-fEOsli dQTjDb"
+        class="sc-frmfij jIdWC"
       />
     </div>
     <div
-      class="sc-bjUoiL iQQjZl fade-transition-appear fade-transition-appear-active"
+      class="sc-groBii irOiHC fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-gsnTZi sc-dkzDqf eLlhHs fwEujt"
+        class="sc-hKDTPf sc-fmZSGO bMPYcd jEGVYO"
       >
         <form>
           <div
-            class="sc-hKMtZM koxoie"
+            class="sc-gwsNht hHjnqv"
           >
             <div
-              class="sc-eCYdqJ ifFEiN"
+              class="sc-dYOLZc jcRYkf"
             >
               <p
-                class="sc-papXJ cnpSpc"
+                align="left"
+                class="sc-kThouk darzNJ"
                 color="#041C33"
                 font-size="20px"
+                lineheight="1.4"
+                weight="bold"
               >
                 Title
               </p>
             </div>
             <div
-              class="sc-iBkjds dNFTDc"
+              class="sc-jZhnRx hIIhpE"
             >
               <span
-                class="sc-jqUVSM eIEBka"
+                class="sc-dTdQuR qorjZ"
                 size="24"
               >
                 <svg
@@ -54,10 +57,12 @@ exports[`FullSizeConfirmModal component testing FullSizeConfirmModal 1`] = `
             </div>
           </div>
           <div
-            class="sc-jSMfEi guNaib"
+            class="sc-jMpmlX kiKFqk"
           >
             <div
-              class="sc-kDDrLX gAJExr"
+              class="sc-llIIlC hgGimW"
+              pb="3"
+              px="3"
             />
           </div>
         </form>

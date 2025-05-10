@@ -3,7 +3,7 @@
 exports[`FileUploader component testing FileUploader 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bBrHrO eNHQSp"
+    class="sc-ffSBbn hiLbZg"
     data-disabled="false"
     data-size="medium"
     data-small="false"
@@ -12,11 +12,11 @@ exports[`FileUploader component testing FileUploader 1`] = `
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-ivTmOn eMwvsv"
+      class="sc-gfUXbm exgNRO"
       type="button"
     >
       <span
-        class="sc-bczRLJ gJuzRf"
+        class="sc-bXdtCk ggTZnd"
         size="18"
       >
         <svg
@@ -30,7 +30,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
         </svg>
       </span>
       <span
-        class="sc-bczRLJ gJuzRf"
+        class="sc-bXdtCk ggTZnd"
         size="18"
       >
         <svg

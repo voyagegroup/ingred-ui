@@ -201,7 +201,7 @@ type BaseButtonProps = baseProps & {
 
 export type ButtonProps = BaseButtonProps | AnchorProps;
 
-const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
     component,
     children,
@@ -238,7 +238,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
 
   return (
     <Styled.ButtonContainer
-      ref={ref}
+      ref={ref as any}
       {...rest}
       as={component || "button"}
       {...anchorProps}

@@ -3,28 +3,28 @@
 exports[`NavigationRail component testing NavigationRail 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi laAFwV"
+    class="sc-hKDTPf bkMzAk"
   >
     <div
-      class="sc-bczRLJ ecywsS"
+      class="sc-bXdtCk gJDnNI"
     >
       <div
-        class="sc-dkzDqf iDKdTY"
+        class="sc-fmZSGO dTzFra"
       >
         Add logo here
       </div>
       <div
-        class="sc-hKMtZM fjjllh"
+        class="sc-gwsNht grMNsW"
       >
         <div>
           <div
-            class="sc-hAZoDl fUXwKb"
+            class="sc-kHNKno dShZWV"
           >
             <div
-              class="sc-evZas edbJfk"
+              class="sc-dibcMh iRhwZf"
             >
               <span
-                class="sc-iBkjds RltOZ"
+                class="sc-jZhnRx cHmYTf"
                 size="24"
               >
                 <svg
@@ -42,27 +42,32 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
                 </svg>
               </span>
               <span
-                class="sc-breuTD cPWRYw"
+                class="sc-kAFUCS bxNtyl"
+                position="top-left"
+                variant="normal"
               >
                 0
               </span>
             </div>
             <div
-              class="sc-fnykZs iZYGdc"
+              class="sc-dHKmnV blQjEp"
             >
               <span
-                class="sc-jqUVSM jjrUoV sc-fEOsli iuVyCe"
+                align="left"
+                class="sc-dTdQuR uZQah sc-frmfij dfnPLl"
                 color="#0B82F4"
                 font-size="13px"
+                lineheight="1.4"
+                weight="bold"
               >
                 Settings
               </span>
             </div>
             <div
-              class="sc-bjUoiL cTyZcu"
+              class="sc-groBii cGhOqX"
             >
               <span
-                class="sc-iBkjds kTxGwl"
+                class="sc-jZhnRx jmTNEH"
                 size="18"
               >
                 <svg
@@ -77,21 +82,24 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
             </div>
           </div>
           <div
-            class="sc-idiyUo bEDjCm"
+            class="sc-hLyRwt gzELRG"
             height="auto"
           >
             <div
-              class="sc-dIouRR gWBgmg"
+              class="sc-iLBnws kQAaVB"
             >
               <div
-                class="sc-jqUVSM jjrUoV sc-hHLeRK cHEVa"
+                align="left"
+                class="sc-dTdQuR uZQah sc-eGjrzz bcmGeB"
                 color="#0B82F4"
                 font-size="13px"
+                lineheight="1.4"
+                weight="bold"
               >
                 Account Setting
               </div>
               <span
-                class="sc-ksZaOG bpKZyL"
+                class="sc-dACwDz fhyUBW"
               >
                 0
               </span>
@@ -99,13 +107,13 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
           </div>
         </div>
         <div
-          class="sc-kDDrLX eUrGXR"
+          class="sc-llIIlC bBgEaG"
         >
           <div
-            class="sc-evZas edbJfk"
+            class="sc-dibcMh iRhwZf"
           >
             <span
-              class="sc-iBkjds RltOZ"
+              class="sc-jZhnRx cHmYTf"
               size="24"
             >
               <svg
@@ -123,37 +131,42 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
               </svg>
             </span>
             <span
-              class="sc-breuTD cPWRYw"
+              class="sc-kAFUCS bxNtyl"
+              position="top-left"
+              variant="normal"
             >
               0
             </span>
           </div>
           <div
-            class="sc-iqcoie jIOSzb"
+            class="sc-elFkmj gmaLzI"
           >
             <span
-              class="sc-jqUVSM poCul sc-crXcEl bEFRWD"
+              align="left"
+              class="sc-dTdQuR lgHCcZ sc-kieALA jrrmMq"
               color="#041C33"
               font-size="13px"
+              lineheight="1.4"
+              weight="bold"
             >
               Dashboard
             </span>
           </div>
           <span
-            class="sc-ksZaOG bpKZyL"
+            class="sc-dACwDz fhyUBW"
           >
             0
           </span>
         </div>
       </div>
       <div
-        class="sc-eCYdqJ cxoYtZ"
+        class="sc-dYOLZc jkzhqI"
       >
         <div
-          class="sc-gKXOVf hakqLa"
+          class="sc-hoLldG bhRpBp"
         >
           <span
-            class="sc-iBkjds kTxGwl"
+            class="sc-jZhnRx jmTNEH"
             size="18"
           >
             <svg
@@ -180,7 +193,7 @@ exports[`NavigationRail component testing NavigationRail 1`] = `
       </div>
     </div>
     <div
-      class="sc-jSMfEi cbaSoq"
+      class="sc-jMpmlX fzLguq"
     >
       hogehoge
     </div>
