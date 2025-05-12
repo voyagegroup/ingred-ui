@@ -3,16 +3,21 @@
 exports[`Snackbar component testing Snackbar 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ ksUyTU"
+    class="sc-bXdtCk eQILYd"
+    horizontal="right"
+    vertical="bottom"
   >
     <div
-      class="sc-gsnTZi hAEgqN"
+      background="#FFFFFF"
+      boxshadow="0px 0px 16px rgba(4, 28, 51, 0.16)"
+      class="sc-hKDTPf hSzIIs"
+      iconcolor="#041C33"
     >
       <div
-        class="sc-dkzDqf chbnnt"
+        class="sc-fmZSGO dCsRAi"
       >
         <span
-          class="sc-hKMtZM gLnfjV"
+          class="sc-gwsNht gSgqpy"
           size="18"
         >
           <svg

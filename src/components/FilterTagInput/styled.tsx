@@ -177,7 +177,12 @@ const PanelInner = styled.div`
   }
 `;
 
-export const Panel = styled(({ className, children }) => {
+type PanelProps = {
+  className?: string;
+  children: React.ReactNode;
+};
+
+export const Panel = styled(({ className, children }: PanelProps) => {
   return (
     <div className={className}>
       <PanelInner>{children}</PanelInner>

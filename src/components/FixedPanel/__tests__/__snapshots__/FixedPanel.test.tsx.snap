@@ -3,9 +3,10 @@
 exports[`FixedPanel component testing FixedPanel 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ lcCYzv"
+    class="sc-bXdtCk bKMYuX"
     height="0"
     offset="0"
+    placement="top"
   />
 </DocumentFragment>
 `;

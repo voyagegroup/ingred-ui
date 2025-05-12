@@ -262,12 +262,7 @@ export const Default: StoryObj<typeof meta> = {
               >
                 アーカイブする
               </ContextMenu2ButtonItem>
-              <ContextMenu2HeadingItem
-                closeOnClick
-                onClick={() => alert("任意機能")}
-              >
-                操作
-              </ContextMenu2HeadingItem>
+              <ContextMenu2HeadingItem>操作</ContextMenu2HeadingItem>
               <ContextMenu2ButtonItem
                 closeOnClick
                 onClick={() => alert("任意機能")}

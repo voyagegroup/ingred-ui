@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ThemeContext } from "styled-components";
+import { ThemeContext, StyleSheetManager } from "styled-components";
 import { Theme } from "./createTheme";
 
 type Props = {
@@ -7,7 +7,9 @@ type Props = {
   children: React.ReactNode;
 };
 const ThemeProvider: React.FunctionComponent<Props> = ({ children, theme }) => (
-  <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+  <StyleSheetManager enableVendorPrefixes>
+    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+  </StyleSheetManager>
 );
 
 export { ThemeProvider };

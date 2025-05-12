@@ -4,9 +4,15 @@ import { colors } from "../../styles";
 
 // 特に機能を持たない、見た目付きの ContextMenu2 用の区切り線
 
-export const ContextMenu2SeparatorItem = styled(({ className }) => {
-  return <hr className={className} />;
-})`
+type SeparatorItemProps = {
+  className?: string;
+};
+
+export const ContextMenu2SeparatorItem = styled(
+  ({ className }: SeparatorItemProps) => {
+    return <hr className={className} />;
+  },
+)`
   margin: 8px 0;
   color: ${colors.basic[200]};
   border-top: 1px solid currentColor;

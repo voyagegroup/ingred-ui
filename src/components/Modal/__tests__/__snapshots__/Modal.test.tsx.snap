@@ -3,13 +3,13 @@
 exports[`Modal component testing Modal with background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ gkusWi"
+    class="sc-bXdtCk kRvfUg"
   >
     <div
-      class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
+      class="sc-fmZSGO ggzQqc fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-gsnTZi dhTMxg"
+        class="sc-hKDTPf iglFyL"
       />
     </div>
     <div>
@@ -22,13 +22,13 @@ exports[`Modal component testing Modal with background 1`] = `
 exports[`Modal component testing Modal without background 1`] = `
 <DocumentFragment>
   <div
-    class="sc-bczRLJ gkusWi"
+    class="sc-bXdtCk kRvfUg"
   >
     <div
-      class="sc-dkzDqf gGBthk fade-transition-appear fade-transition-appear-active"
+      class="sc-fmZSGO ggzQqc fade-transition-appear fade-transition-appear-active"
     >
       <div
-        class="sc-gsnTZi dhTMxg"
+        class="sc-hKDTPf iglFyL"
       />
     </div>
     <div>
