@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import { ContextMenu2HeadingItem } from "../ContextMenu2";
 
 export type Select2OptionGroupProps = {
   /**
@@ -14,17 +13,14 @@ export type Select2OptionGroupProps = {
 
 /**
  * Select2OptionGroupコンポーネント
- *
- * Select2コンポーネント内で使用することを想定しています。
- * オプションをグループ化するためのコンポーネントです。
+ * 
+ * このコンポーネントはグループ化された選択肢を表現します。
+ * 内部的には何もレンダリングせず、Select2コンポーネントがこのコンポーネントの
+ * プロパティを取得して、適切な方法でレンダリングします。
  */
-export const Select2OptionGroup: React.FC<Select2OptionGroupProps> = ({ label, children }) => {
-  return (
-    <>
-      <ContextMenu2HeadingItem>{label}</ContextMenu2HeadingItem>
-      {children}
-    </>
-  );
+export const Select2OptionGroup: React.FC<Select2OptionGroupProps> = (_props) => {
+  // 何もレンダリングしない
+  return null;
 };
 
 // コンポーネントの表示名を設定（デバッグ用）

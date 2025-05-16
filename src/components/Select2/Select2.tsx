@@ -75,48 +75,55 @@ export const Select2: React.FC<Select2Props> = ({
     }
   }, [value, multiple]);
 
-  // 子要素から選択肢を抽出する
-  const childrenOptions = useMemo(() => {
+  // 子要素からオプション情報を抽出する
+  const extractOptionsFromChildren = useMemo(() => {
     if (!children) return [];
-
-    const extractedOptions: Select2Option[] = [];
-
-    Children.forEach(children, (child) => {
-      if (!isValidElement(child)) return;
-
-      const childElement = child as ReactElement;
-
-      if (childElement.type && typeof childElement.type !== "string") {
-        const componentName =
-          (childElement.type as any).displayName ||
-          (childElement.type as any).name;
-
-        if (
-          componentName === "Select2Option" ||
-          childElement.props.value !== undefined
-        ) {
-          const optionValue = childElement.props.value;
-          const optionLabel = childElement.props.children;
-          const optionDisabled = !!childElement.props.disabled;
-
-          if (optionValue !== undefined) {
-            extractedOptions.push({
-              value: optionValue,
-              label: String(optionLabel),
-              disabled: optionDisabled,
-            });
+    
+    const options: Select2Option[] = [];
+    
+    // 子要素から選択肢を再帰的に抽出する関数
+    const extractOptions = (childElements: React.ReactNode) => {
+      Children.forEach(childElements, (child) => {
+        if (!isValidElement(child)) return;
+        
+        const childElement = child as ReactElement;
+        if (childElement.type && typeof childElement.type !== "string") {
+          const componentName =
+            (childElement.type as any).displayName ||
+            (childElement.type as any).name;
+          
+          // Select2Optionコンポーネントから選択肢を抽出
+          if (componentName === "Select2Option") {
+            const optionValue = childElement.props.value;
+            const optionLabel = childElement.props.children;
+            const optionDisabled = !!childElement.props.disabled;
+            
+            if (optionValue !== undefined) {
+              options.push({
+                value: optionValue,
+                label: String(optionLabel),
+                disabled: optionDisabled,
+              });
+            }
+          }
+          // Select2OptionGroupの場合は子要素を再帰的に処理
+          else if (componentName === "Select2OptionGroup") {
+            if (childElement.props.children) {
+              extractOptions(childElement.props.children);
+            }
           }
         }
-      }
-    });
-
-    return extractedOptions;
+      });
+    };
+    
+    extractOptions(children);
+    return options;
   }, [children]);
-
+  
   // 従来のoptionsとchildrenから抽出したoptionsを合わせた配列
   const allOptions = useMemo(() => {
-    return [...options, ...childrenOptions];
-  }, [options, childrenOptions]);
+    return [...options, ...extractOptionsFromChildren];
+  }, [options, extractOptionsFromChildren]);
 
   const handleChange = useCallback(
     (newValue: string | number | (string | number)[]) => {
@@ -325,94 +332,150 @@ export const Select2: React.FC<Select2Props> = ({
     </SelectButton>
   );
 
-  // 子要素を処理する関数
-  const renderMenuContent = () => {
-    // 子要素を再帰的に処理する関数
-    const processChildren = (childrenElements: React.ReactNode): React.ReactNode => {
-      return Children.map(childrenElements, (child) => {
-        if (!isValidElement(child)) return null;
+  // 宣言的APIでの子要素をContextMenu2の項目に変換
+  const renderChildrenAsMenuItems = (childrenElements: React.ReactNode): React.ReactNode[] => {
+    // 型定義
+    type OptionGroup = {
+      label: string;
+      options: ReactElement[];
+    }
 
-        // 子要素が "Select2Option" タイプなどの時の処理
-        const childElement = child as ReactElement;
+    const items: React.ReactNode[] = [];
+    let currentGroup: OptionGroup | null = null;
 
-        if (childElement.type && typeof childElement.type !== "string") {
-          const componentName =
-            (childElement.type as any).displayName ||
-            (childElement.type as any).name;
-
-          // Select2Optionコンポーネントの場合
-          if (
-            componentName === "Select2Option" ||
-            childElement.props.value !== undefined
-          ) {
-            const optionValue = childElement.props.value;
-            const optionDisabled = !!childElement.props.disabled;
-            const optionLabel = childElement.props.children;
-
-            // 値のチェック
-            if (optionValue === undefined) return null;
-
-            const isChecked = multiple
-              ? tempSelectedValues.includes(optionValue)
-              : optionValue === value;
-
-            const handleChange = () => {
-              if (multiple) {
-                handleMultipleSelect(!isChecked, {
-                  value: optionValue,
-                  label: String(optionLabel),
-                  disabled: optionDisabled,
-                });
-              } else {
-                handleSingleSelect({
-                  value: optionValue,
-                  label: String(optionLabel),
-                  disabled: optionDisabled,
-                });
-              }
-            };
-
-            return (
-              <ContextMenu2CheckItem
-                key={optionValue.toString()}
-                checked={isChecked}
-                closeOnChange={!multiple}
-                disabled={optionDisabled}
-                tabIndex={0}
-                onChange={handleChange}
-              >
-                {optionLabel}
-              </ContextMenu2CheckItem>
-            );
-          }
-
-          // Select2OptionGroupの場合
-          if (componentName === "Select2OptionGroup") {
-            // OptionGroupの子要素を再帰的に処理
-            return (
-              <>
-                <ContextMenu2HeadingItem>{childElement.props.label}</ContextMenu2HeadingItem>
-                {processChildren(childElement.props.children)}
-              </>
-            );
-          }
-
-          // Select2Separatorの場合
-          if (componentName === "Select2Separator") {
-            return <ContextMenu2SeparatorItem />;
-          }
-
-          // それ以外のコンポーネント（HeadingItem、SeparatorItemなど）はそのまま返す
-          return childElement;
+    // 子要素からSelect2Option要素を抽出してCheckItemに変換する関数
+    const convertOptionToCheckItem = (option: ReactElement, keyPrefix: string, index: number): ReactElement => {
+      const optionValue = option.props.value;
+      const optionDisabled = !!option.props.disabled;
+      const optionLabel = option.props.children;
+      
+      const isChecked = multiple
+        ? tempSelectedValues.includes(optionValue)
+        : optionValue === value;
+      
+      const handleChange = () => {
+        if (multiple) {
+          handleMultipleSelect(!isChecked, {
+            value: optionValue,
+            label: String(optionLabel),
+            disabled: optionDisabled,
+          });
+        } else {
+          handleSingleSelect({
+            value: optionValue,
+            label: String(optionLabel),
+            disabled: optionDisabled,
+          });
         }
+      };
+      
+      return (
+        <ContextMenu2CheckItem
+          key={`${keyPrefix}-${index}`}
+          checked={isChecked}
+          closeOnChange={!multiple}
+          disabled={optionDisabled}
+          tabIndex={0}
+          onChange={handleChange}
+        >
+          {optionLabel}
+        </ContextMenu2CheckItem>
+      );
+    };
 
-        return childElement; // 単純なテキストノードなどはそのまま返す
+    // 現在のグループをrender
+    const renderCurrentGroup = () => {
+      if (currentGroup === null) return;
+      
+      const group = currentGroup; // ローカル変数にコピーして型を安定させる
+      
+      items.push(
+        <ContextMenu2HeadingItem key={`heading-${group.label}`}>
+          {group.label}
+        </ContextMenu2HeadingItem>
+      );
+      
+      group.options.forEach((option, index) => {
+        items.push(convertOptionToCheckItem(option, `option-${group.label}`, index));
       });
     };
 
-    // 子要素があればそれを使用し、なければoptionsからリストを生成
+    // 子要素を走査して構造データを構築
+    Children.forEach(childrenElements, (child) => {
+      if (!isValidElement(child)) return;
+      
+      const childElement = child as ReactElement;
+      
+      if (childElement.type && typeof childElement.type !== "string") {
+        const componentName =
+          (childElement.type as any).displayName ||
+          (childElement.type as any).name;
+        
+        // Select2OptionGroupの場合
+        if (componentName === "Select2OptionGroup") {
+          // 既存のグループを追加
+          if (currentGroup !== null) {
+            renderCurrentGroup();
+          }
+          
+          // 新しいグループを開始
+          currentGroup = {
+            label: childElement.props.label as string,
+            options: []
+          };
+          
+          // グループの子要素を処理
+          if (childElement.props.children) {
+            Children.forEach(childElement.props.children, (groupChild) => {
+              if (isValidElement(groupChild)) {
+                const groupChildElement = groupChild as ReactElement;
+                const groupChildName = 
+                  (groupChildElement.type as any).displayName ||
+                  (groupChildElement.type as any).name;
+                
+                if (groupChildName === "Select2Option" && currentGroup !== null) {
+                  currentGroup.options.push(groupChildElement);
+                }
+              }
+            });
+          }
+        }
+        // Select2Separatorの場合
+        else if (componentName === "Select2Separator") {
+          items.push(<ContextMenu2SeparatorItem key={`separator-${items.length}`} />);
+        }
+        // Select2Optionの場合
+        else if (componentName === "Select2Option") {
+          if (currentGroup !== null) {
+            currentGroup.options.push(childElement);
+          } else {
+            const optionValue = childElement.props.value;
+            if (optionValue === undefined) return;
+            
+            items.push(convertOptionToCheckItem(childElement, `option`, items.length));
+          }
+        }
+        // その他のコンポーネントはそのまま追加
+        else {
+          items.push(childElement);
+        }
+      }
+    });
+    
+    // 最後のグループを追加
+    if (currentGroup !== null) {
+      renderCurrentGroup();
+    }
+    
+    return items;
+  };
+
+  // 子要素を処理する関数
+  const renderMenuContent = () => {
+    // 子要素があればそれを処理
     if (children) {
-      return processChildren(children);
+      // 宣言的APIの子要素を処理してメニュー項目を生成
+      return renderChildrenAsMenuItems(children);
     }
 
     // 子要素がない場合は従来通りoptionsからリストを生成

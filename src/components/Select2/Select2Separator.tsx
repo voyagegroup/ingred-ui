@@ -1,14 +1,15 @@
 import React from "react";
-import { ContextMenu2SeparatorItem } from "../ContextMenu2";
 
 /**
  * Select2Separatorコンポーネント
- *
- * Select2コンポーネント内で使用することを想定しています。
- * オプショングループ間のセパレータとして機能します。
+ * 
+ * このコンポーネントはセパレータを表現します。
+ * 内部的には何もレンダリングせず、Select2コンポーネントがこのコンポーネントを
+ * 検出して、適切な方法でセパレータをレンダリングします。
  */
 export const Select2Separator: React.FC = () => {
-  return <ContextMenu2SeparatorItem />;
+  // 何もレンダリングしない
+  return null;
 };
 
 // コンポーネントの表示名を設定（デバッグ用）

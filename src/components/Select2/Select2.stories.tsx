@@ -3,7 +3,6 @@ import { Story, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
 import { Select2Option } from "./Select2Option";
 import { Select2Props, Select2Option as Select2OptionType } from "./types";
-import { ContextMenu2HeadingItem, ContextMenu2SeparatorItem } from "../ContextMenu2";
 import { Select2OptionGroup } from "./Select2OptionGroup";
 import { Select2Separator } from "./Select2Separator";
 
@@ -323,8 +322,6 @@ export const WithDeclarativeAPI = () => {
           ))}
         </Select2OptionGroup>
 
-        <Select2Separator />
-
         <Select2OptionGroup label="野菜">
           {vegetableOptions.map((option) => (
             <Select2Option
@@ -427,8 +424,6 @@ export const WithDeclarativeAPIMultiple = () => {
           ))}
         </Select2OptionGroup>
 
-        <Select2Separator />
-
         <Select2OptionGroup label="野菜">
           {vegetableOptions.map((option) => (
             <Select2Option
@@ -439,8 +434,6 @@ export const WithDeclarativeAPIMultiple = () => {
             </Select2Option>
           ))}
         </Select2OptionGroup>
-
-        <Select2Separator />
 
         <Select2OptionGroup label="肉類">
           {meatOptions.map((option) => (
