@@ -9,7 +9,7 @@ export default {
 };
 
 export const Example: StoryObj<DateRangeFieldProps> = {
-  render: (args: DateRangeFieldProps) => {
+  render: (args) => {
     const [date, setDate] = useState({
       startDate: dayjs(),
       endDate: dayjs().add(1, "day"),
@@ -22,7 +22,7 @@ export const Custom: StoryObj<DateRangeFieldProps> = {
   args: {
     format: "MM/DD/YYYY",
   },
-  render: (args: DateRangeFieldProps) => {
+  render: (args) => {
     const [date, setDate] = useState({
       startDate: dayjs(),
       endDate: dayjs().add(1, "day"),

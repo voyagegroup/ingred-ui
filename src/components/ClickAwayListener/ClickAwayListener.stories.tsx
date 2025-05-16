@@ -1,9 +1,9 @@
+import { ArgsTable, Stories, Title } from "@storybook/addon-docs";
+import { StoryObj } from "@storybook/react";
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
 import Button from "../Button";
 import Typography from "../Typography";
 import ClickAwayListener from "./ClickAwayListener";
-import { Title, Stories } from "@storybook/blocks";
 
 export default {
   title: "Components/Utils/ClickAwayListener",
@@ -14,14 +14,15 @@ export default {
       page: () => (
         <>
           <Title />
+          <ArgsTable of={ClickAwayListener} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof ClickAwayListener>;
+};
 
-export const Basic: StoryObj<typeof ClickAwayListener> = {
+export const Basic: StoryObj = {
   render: () => {
     const [text, setText] = React.useState("not clicked");
 

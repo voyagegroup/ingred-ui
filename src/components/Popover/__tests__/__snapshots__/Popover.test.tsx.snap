@@ -15,7 +15,6 @@ exports[`Popover component testing Popover 1`] = `
     </div>
     <div
       class="sc-bczRLJ jRMOjB"
-      data-floating-ui-focusable=""
       id=":r0:"
       role="dialog"
       style="position: absolute; top: 0px; left: 0px;"

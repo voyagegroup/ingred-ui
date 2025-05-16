@@ -12,7 +12,7 @@ export default {
 };
 
 export const Example: StoryObj<DateRangePickerProps> = {
-  render: (args: DateRangePickerProps) => {
+  render: (args) => {
     const [date, setDate] = useState({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
@@ -30,7 +30,7 @@ export const Example: StoryObj<DateRangePickerProps> = {
 };
 
 export const WithActions: StoryObj<DateRangePickerProps> = {
-  render: (args: DateRangePickerProps) => {
+  render: (args) => {
     const [date, setDate] = useState({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),
@@ -79,7 +79,7 @@ export const WithActions: StoryObj<DateRangePickerProps> = {
 
 export const WithActionsWithDefaultClickAction: StoryObj<DateRangePickerProps> =
   {
-    render: (args: DateRangePickerProps) => {
+    render: (args) => {
       const [date, setDate] = useState({
         startDate: dayjs(),
         endDate: dayjs().add(1, "week"),
@@ -152,7 +152,7 @@ export const Disabled: StoryObj<DateRangePickerProps> = {
 };
 
 export const IsOutsideRange: StoryObj<DateRangePickerProps> = {
-  render: (args: DateRangePickerProps) => {
+  render: (args) => {
     const [date, setDate] = useState({
       startDate: dayjs(),
       endDate: dayjs().add(1, "week"),

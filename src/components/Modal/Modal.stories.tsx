@@ -1,6 +1,6 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Modal, { ModalProps } from "./Modal";
 import Button from "../Button";
 import Fade from "../Fade";
@@ -17,15 +17,16 @@ export default {
       page: () => (
         <>
           <Title />
+          <ArgsTable of={Modal} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof Modal>;
+};
 
-export const Example: StoryObj<typeof Modal> = {
-  render: (args: ModalProps) => {
+export const Example: StoryObj<ModalProps> = {
+  render: (args) => {
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
     const handleToggleOpen = () => {
       setIsOpen(!isOpen);

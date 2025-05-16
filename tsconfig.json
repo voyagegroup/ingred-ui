@@ -25,16 +25,10 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "noEmit": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "skipLibCheck": true
   },
   "include": [
-    "src",
-    ".storybook/**/*"
+    "src"
   ],
   "exclude": [
     "node_modules",

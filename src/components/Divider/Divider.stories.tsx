@@ -1,11 +1,12 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories, Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Divider, { DividerProps } from "./Divider";
 
 export default {
   title: "Components/Data Display/Divider",
-  component: Divider,
+  components: Divider,
   parameters: {
     docs: {
       source: { type: "code" },
@@ -17,23 +18,24 @@ export default {
               "`<Divider />` is wrapper of `<hr />` tag that separate content into clear groups."
             }
           </Markdown>
+          <ArgsTable of={Divider} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof Divider>;
-
-export const Normal: StoryObj<typeof Divider> = {
-  render: (args: DividerProps) => <Divider {...args} />,
 };
 
-export const WithSpace: StoryObj<typeof Divider> = {
+export const Normal: StoryObj<DividerProps> = {
+  render: (args) => <Divider {...args} />,
+};
+
+export const WithSpace: StoryObj<DividerProps> = {
   args: {
     m: 3,
     p: 1,
   },
-  render: (args: DividerProps) => <Divider {...args} />,
+  render: (args) => <Divider {...args} />,
   parameters: {
     docs: {
       description: {
@@ -44,15 +46,15 @@ export const WithSpace: StoryObj<typeof Divider> = {
   },
 };
 
-export const OverrideColor: StoryObj<typeof Divider> = {
+export const OverrideColor: StoryObj<DividerProps> = {
   args: {
     color: "red",
   },
-  render: (args: DividerProps) => <Divider {...args} />,
+  render: (args) => <Divider {...args} />,
 };
 
-export const Vertical: StoryObj<typeof Divider> = {
-  render: (args: DividerProps) => (
+export const Vertical: StoryObj<DividerProps> = {
+  render: (args) => (
     <div
       style={{
         display: "flex",

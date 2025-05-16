@@ -37,8 +37,8 @@ const CreatableSelect = <T,>(
 
   const theme = useTheme();
   const handleInputChange: CreatableSelectProps<T>["onInputChange"] = (
-    newValue: string,
-    actionMeta: { action: string },
+    newValue,
+    actionMeta,
   ) => {
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
@@ -52,18 +52,18 @@ const CreatableSelect = <T,>(
         placeholder={placeholder}
         closeMenuOnSelect={closeMenuOnSelect}
         noOptionsMessage={() => emptyMessage}
-        formatCreateLabel={(text: string) => `${addMessage} "${text}"`}
+        formatCreateLabel={(text) => `${addMessage} "${text}"`}
         isDisabled={isDisabled}
         styles={getOverrideStyles<T>(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactCreatableSelectMenuList
-        theme={(originalTheme: any) => ({
+        theme={(originalTheme) => ({
           ...originalTheme,
           palette: theme.palette,
         })}
         {...rest}
         components={{
-          DropdownIndicator: (props: any) => (
+          DropdownIndicator: (props) => (
             <DropdownIndicator {...props} error={error} />
           ),
           ClearIndicator,
