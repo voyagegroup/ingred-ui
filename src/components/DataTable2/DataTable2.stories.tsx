@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useState, useArgs } from "@storybook/preview-api";
+import { useState } from "@storybook/preview-api";
+import { useArgs } from "@storybook/client-api";
 import {
   type TableColumn,
   type SortDirection,
@@ -164,7 +165,7 @@ export const Default: StoryObj<typeof meta> = {
     onColumnsChange: () => {},
     children: null,
   },
-  render: (args: React.ComponentProps<typeof DataTable2>) => {
+  render: (args) => {
     const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
       columns: TableColumn[];
       currentPage: number;
@@ -557,7 +558,7 @@ export const Loading: StoryObj<typeof meta> = {
     onColumnsChange: () => {},
     children: null,
   },
-  render: (args: React.ComponentProps<typeof DataTable2>) => {
+  render: (args) => {
     const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
       columns: TableColumn[];
       currentPage: number;

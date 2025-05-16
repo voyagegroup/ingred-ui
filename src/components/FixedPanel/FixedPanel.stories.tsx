@@ -1,6 +1,7 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories, Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Flex from "../Flex";
 import Spacer from "../Spacer";
 import Button from "../Button";
@@ -22,20 +23,21 @@ export default {
           <Title />
           <Markdown>
             {[
-              'It implement like "Header/Footer" UI that is styled `position: fixed;`.',
+              "It implement like ”Header/Footer” UI that is styled `position: fixed;`.",
               "",
-              'Usage example is included in "Canvas" Tab at header.',
+              "Usage example is included in ”Canvas” Tab at header.",
             ].join("\n")}
           </Markdown>
+          <ArgsTable of={FixedPanel} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof FixedPanel>;
+};
 
-export const Example: StoryObj<typeof FixedPanel> = {
-  render: (args: FixedPanelProps) => {
+export const Example: StoryObj<FixedPanelProps> = {
+  render: (args) => {
     const buttonContainerRef = React.useRef(null);
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
     React.useEffect(() => {

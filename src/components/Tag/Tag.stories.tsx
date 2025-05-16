@@ -29,7 +29,7 @@ const meta = {
       description: "無効状態",
       table: {
         type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
+        defaultValue: { summary: false },
       },
     },
   },
@@ -54,7 +54,7 @@ export const Sizes: Story = {
     variant: "light",
     onRemove: () => {},
   },
-  render: (args: React.ComponentProps<typeof Tag>) => (
+  render: (args) => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <Tag {...args} label="Small" size="small" />
       <Tag {...args} label="Medium" size="medium" />
@@ -69,7 +69,7 @@ export const Variants: Story = {
     size: "medium",
     onRemove: () => {},
   },
-  render: (args: React.ComponentProps<typeof Tag>) => (
+  render: (args) => (
     <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
       <Tag {...args} label="Light" variant="light" />
       <Tag {...args} label="Dark" variant="dark" />

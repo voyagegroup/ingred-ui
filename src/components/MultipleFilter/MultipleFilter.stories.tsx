@@ -140,7 +140,7 @@ const skipFilterPacksExample: FilterPackType[] = [
 ];
 
 export const Example: StoryObj<MultipleFilterProps> = {
-  render: (args: MultipleFilterProps) => {
+  render: (args) => {
     const [, setFilters] = React.useState<ReferredFilterType[]>([]);
     const handleChange = (referredFilters: ReferredFilterType[]) => {
       setFilters(referredFilters);
@@ -162,7 +162,7 @@ export const Example: StoryObj<MultipleFilterProps> = {
 };
 
 export const SkipExample: StoryObj<MultipleFilterProps> = {
-  render: (args: MultipleFilterProps) => {
+  render: (args) => {
     const [, setFilters] = React.useState<ReferredFilterType[]>([]);
     const handleChange = (referredFilters: ReferredFilterType[]) => {
       setFilters(referredFilters);
@@ -221,7 +221,7 @@ const filterPacksWithDataTableExample: FilterPackType[] = [
 ];
 
 export const WithDataTableExample: StoryObj<MultipleFilterProps> = {
-  render: (args: MultipleFilterProps) => {
+  render: (args) => {
     const data = [
       { id: 1, product: "Laptop", category: "Electronics", inStock: "Yes" },
       { id: 2, product: "Smartphone", category: "Electronics", inStock: "Yes" },

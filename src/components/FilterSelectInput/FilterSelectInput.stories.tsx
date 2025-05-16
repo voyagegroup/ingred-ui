@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { useArgs } from "@storybook/preview-api";
+import { useArgs } from "@storybook/client-api";
 import { FilterSelectInput } from "./index";
 import Icon from "../Icon";
 
-const meta = {
+const meta: Meta<typeof FilterSelectInput> = {
   title: "Components/Inputs/FilterSelectInput",
   component: FilterSelectInput,
   argTypes: {
@@ -34,18 +34,10 @@ const meta = {
       options: [true, false],
       description: "Whether to display error state",
     },
-    onChange: {
-      action: "onChange",
-    },
-    onSelectChange: {
-      action: "onSelectChange",
-    },
   },
 } satisfies Meta<typeof FilterSelectInput>;
 
 export default meta;
-
-type Story = StoryObj<typeof meta>;
 
 /**
  * 入力内容をリストから選択させるフィルターの入力です。
@@ -53,7 +45,7 @@ type Story = StoryObj<typeof meta>;
  *
  * 自動で横 100% に広がります。必要に応じて、親要素の幅を指定してください。
  */
-export const Default: Story = {
+export const Default: StoryObj<typeof meta> = {
   args: {
     value: "項目1",
     options: [
@@ -142,8 +134,6 @@ export const Default: Story = {
         label: "同じでない",
       },
     ],
-    onChange: (newValue) => console.log(newValue),
-    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -177,7 +167,7 @@ export const Default: Story = {
  * - medium: 高さ32px（デフォルト）
  * - large: 高さ40px
  */
-export const Sizes: Story = {
+export const Sizes: StoryObj<typeof meta> = {
   args: {
     value: "項目1",
     options: [
@@ -208,8 +198,6 @@ export const Sizes: Story = {
         label: "いずれかを含む",
       },
     ],
-    onChange: (newValue) => console.log(newValue),
-    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -241,7 +229,7 @@ export const Sizes: Story = {
   },
 };
 
-export const Variants: Story = {
+export const Variants: StoryObj<typeof meta> = {
   args: {
     value: "選択肢1",
     options: ["選択肢1", "選択肢2", "選択肢3"],
@@ -262,8 +250,6 @@ export const Variants: Story = {
         label: "含まない",
       },
     ],
-    onChange: (newValue) => console.log(newValue),
-    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -298,7 +284,7 @@ export const Variants: Story = {
 /**
  * 無効化状態のサンプル
  */
-export const Disabled: Story = {
+export const Disabled: StoryObj<typeof meta> = {
   args: {
     value: "項目1",
     options: ["項目1", "項目2", "項目3"],
@@ -326,8 +312,6 @@ export const Disabled: Story = {
         label: "いずれかを含む",
       },
     ],
-    onChange: (newValue) => console.log(newValue),
-    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [, updateArgs] = useArgs();
@@ -352,7 +336,7 @@ export const Disabled: Story = {
   },
 };
 
-export const Error: Story = {
+export const Error: StoryObj<typeof meta> = {
   args: {
     value: "value1",
     options: ["value1", "value2"],
@@ -380,8 +364,6 @@ export const Error: Story = {
       },
     ],
     error: true,
-    onChange: (newValue) => console.log(newValue),
-    onSelectChange: (newIndex) => console.log(newIndex),
   },
   render: (args) => {
     const [value, setValue] = useState(args.value);

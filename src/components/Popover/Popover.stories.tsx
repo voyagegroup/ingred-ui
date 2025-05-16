@@ -1,6 +1,6 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Popover, { PopoverProps } from "./Popover";
 import Spacer from "../Spacer";
 import Flex from "../Flex";
@@ -19,15 +19,16 @@ export default {
       page: () => (
         <>
           <Title />
+          <ArgsTable of={Popover} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof Popover>;
+};
 
-export const Example: StoryObj<typeof Popover> = {
-  render: (args: PopoverProps) => {
+export const Example: StoryObj<PopoverProps> = {
+  render: (args) => {
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
     const [buttonElement, setButtonElement] =
       React.useState<HTMLElement | null>(null);

@@ -1,6 +1,6 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import ConfirmModal, { ConfirmModalProps } from "./ConfirmModal";
 import { action } from "@storybook/addon-actions";
 import Button from "../Button";
@@ -22,15 +22,16 @@ export default {
       page: () => (
         <>
           <Title />
+          <ArgsTable of={ConfirmModal} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} as Meta<typeof ConfirmModal>;
+};
 
-const Template: StoryObj<typeof ConfirmModal> = {
-  render: (args: ConfirmModalProps) => {
+const Template: StoryObj<ConfirmModalProps> = {
+  render: (args) => {
     const [isOpen, setIsOpen] = React.useState(args.isOpen);
     const handleToggleButton = () => {
       setIsOpen(!isOpen);
@@ -64,7 +65,7 @@ export const WithOneSubAction = {
       <ActionButton
         icon="export"
         type="button"
-        onClick={action('clicked "Add"')}
+        onClick={action(`clicked "Add"`)}
       >
         Add
       </ActionButton>,
@@ -74,26 +75,20 @@ export const WithOneSubAction = {
 
 export const WithTwoSubActions = {
   ...Template,
-  args: {
-    children: "Content",
-    onSubmit: action("submitted"),
-    subActions: [
-      <ActionButton
-        icon="export"
-        type="button"
-        onClick={action('clicked "Add"')}
-      >
-        Add
-      </ActionButton>,
-      <ActionButton
-        icon="export"
-        type="button"
-        onClick={action('clicked "Download"')}
-      >
-        Download
-      </ActionButton>,
-    ],
-  },
+  children: "Content",
+  onSubmit: action("submitted"),
+  subActions: [
+    <ActionButton icon="export" type="button" onClick={action(`clicked "Add"`)}>
+      Add
+    </ActionButton>,
+    <ActionButton
+      icon="export"
+      type="button"
+      onClick={action(`clicked "Download"`)}
+    >
+      Download
+    </ActionButton>,
+  ],
 };
 
 export const Loading = {

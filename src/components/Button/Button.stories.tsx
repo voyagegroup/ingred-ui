@@ -1,14 +1,15 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import { action } from "@storybook/addon-actions";
-import Button from "./Button";
+import Button, { ButtonProps } from "./Button";
 import Flex from "../Flex";
 import Icon from "../Icon";
 
-const meta: Meta<typeof Button> = {
+export default {
   title: "Components/Inputs/Button",
-  component: Button,
+  components: Button,
   args: {
     onClick: action("clicked"),
   },
@@ -18,112 +19,121 @@ const meta: Meta<typeof Button> = {
       page: () => (
         <>
           <Title />
-          <div>
-            <Markdown>
-              {`
-### Use with router library like "react-router"
-
-Here's an example code.  
-
-But We have plan to change like [Material-UI](https://material-ui.com/guides/composition/#link).
-
-\`\`\`tsx
-// Get "className" prop to enable <Button /> style.
-const LinkToHome = ({ className, children }) => (
-  // "href" prop defines not via <Button />
-  <Link className={className} href="/home">
-    {children}
-  </Link>
-);
-
-const ButtonWithRouterLink = ({ children }) => (
-  <Button component={LinkToHome}>{children}</Button>
-);
-\`\`\`
-              `}
-            </Markdown>
-            <Controls />
-            <Stories includePrimary title="Samples" />
-          </div>
+          <ArgsTable of={Button} />
+          <Stories includePrimary title="Samples" />
+          <Markdown>
+            {[
+              '### Use with router library like "react-router"',
+              "Here's an example code.  ",
+              "",
+              "But We have plan to change like [Material-UI](https://material-ui.com/guides/composition/#link).",
+              "",
+              "```tsx",
+              '// Get "className" prop to enable <Button /> style.',
+              "const LinkToHome = ({ className, children }) => (",
+              '// "href" prop defines not via <Button />',
+              '  <Link className={className} href="/home">',
+              "    {children}",
+              "  </Link>",
+              ");",
+              "",
+              "const ButtonWithRouterLink = ({ children }) => (",
+              "  <Button component={LinkToHome}>{children}</Button>",
+              ");",
+              "```",
+            ].join("\n")}
+          </Markdown>
         </>
       ),
     },
   },
 };
-export default meta;
 
-type Story = StoryObj<typeof Button>;
+const Template: StoryObj<ButtonProps> = {
+  render: (args) => <Button {...args} />,
+};
 
-export const PrimaryButton: Story = {
+export const Primary: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "primary",
   },
 };
 
-export const BasicLight: Story = {
+export const BasicLight: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "basic light",
     color: "basicLight",
   },
 };
 
-export const Danger: Story = {
+export const Danger: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "danger",
     color: "danger",
   },
 };
 
-export const Clear: Story = {
+export const Clear: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "clear",
     color: "clear",
   },
 };
 
-export const BasicDark: Story = {
+export const BasicDark: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "basic dark",
     color: "basicDark",
   },
 };
 
-export const PrimaryPale: Story = {
+export const PrimaryPale: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "pale",
-    color: "primaryPale",
+    color: "primary-pale",
   },
 };
 
-export const Small: Story = {
+export const Small: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "small",
     size: "small",
   },
 };
 
-export const Medium: Story = {
+export const Medium: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "medium",
     size: "medium",
   },
 };
 
-export const Large: Story = {
+export const Large: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "large",
     size: "large",
   },
 };
 
-export const Disabled: Story = {
+export const Disabled: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "disabled",
     disabled: true,
   },
 };
 
-export const UseHrefProps: Story = {
+export const UseHrefProps: StoryObj<ButtonProps> = {
+  ...Template,
   args: {
     children: "use href props",
     href: "https://www.google.com",
@@ -132,7 +142,7 @@ export const UseHrefProps: Story = {
   },
 };
 
-export const DesignSamples: Story = {
+export const DesignSamples: StoryObj = {
   render: () => (
     <>
       <Flex display="flex" gap={3}>
