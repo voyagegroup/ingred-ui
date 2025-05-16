@@ -60,6 +60,11 @@ export const TabList = styled.ul`
 
   @media (max-width: 640px) {
     display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: ${colors.basic[0]};
+    border-bottom: 1px solid ${colors.basic[400]};
   }
 
   button {
@@ -140,6 +145,10 @@ export const LeftPanel = styled.div<{ isShow: boolean }>`
 export const LeftPanelBody = styled.div`
   flex-grow: 1;
   overflow-y: auto;
+
+  @media (max-width: 640px) {
+    overflow: initial;
+  }
 `;
 
 export const LeftPanelHeader = styled.div<{ hasMenu?: boolean }>`
@@ -161,6 +170,9 @@ export const LeftPanelHeader = styled.div<{ hasMenu?: boolean }>`
 
   @media (max-width: 640px) {
     border-radius: 0;
+    position: sticky;
+    top: 36.5px;
+    z-index: 1;
   }
 `;
 
@@ -273,9 +285,13 @@ export const HeaderLoadButton = styled.button`
 export const RightPanel = LeftPanel;
 
 export const RightPanelHeader = styled.div`
-  position: sticky;
-  top: -1px;
-  z-index: 2;
+  @media (max-width: 640px) {
+    display: flex;
+    position: sticky;
+    top: 36.5px;
+    z-index: 1;
+    border-left: none;
+  }
   display: flex;
   justify-content: space-between;
   padding: 8px 16px;
@@ -336,6 +352,12 @@ export const SelectedPanelHeading = styled.p`
   line-height: 16px;
   color: ${colors.basic[900]};
   background: ${colors.basic[200]};
+
+  @media (max-width: 640px) {
+    border-left: none;
+    top: 81.5px;
+    z-index: 1;
+  }
 `;
 
 //
