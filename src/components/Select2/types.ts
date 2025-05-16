@@ -1,4 +1,5 @@
 import { Theme } from "../../themes";
+import React from "react";
 
 export type Select2Size = "small" | "medium" | "large";
 export type Select2Variant = "light" | "dark";
@@ -141,4 +142,9 @@ export type Select2Props = {
    * @default "キャンセル"
    */
   cancelButtonText?: string;
+  /**
+   * 子要素（宣言的API用）
+   * Select2Option、ContextMenu2HeadingItem、ContextMenu2SeparatorItemなどを指定できます
+   */
+  children?: React.ReactNode;
 };
