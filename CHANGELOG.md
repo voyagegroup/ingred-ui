@@ -1,20 +1,5 @@
 # Changelog
 
-## 22.4.0
-
-### Minor Changes
-
-- [#1800](https://github.com/voyagegroup/ingred-ui/pull/1800) [`ea94c85c545f5e2bac3af46c8f1227f277f7c153`](https://github.com/voyagegroup/ingred-ui/commit/ea94c85c545f5e2bac3af46c8f1227f277f7c153) Thanks [@noronaoki](https://github.com/noronaoki)! - Storybook v8へアップグレード
-
-  - Storybook v6からv7を経由してv8にアップグレード
-  - ストーリーファイルの型定義を新しい形式に更新
-    - `Meta<typeof Component>` → `satisfies Meta<typeof Component>`
-    - `StoryObj<typeof Component>` → `StoryObj<typeof meta>`
-    - `Template.bind({})` → オブジェクト形式に変更
-  - `.storybook/main.ts`の設定を更新
-    - `autodocs: true`に変更
-    - `defaultName: 'Documentation'`を追加
-
 ## 22.3.2
 
 ### Patch Changes
