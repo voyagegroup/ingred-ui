@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
-import { Select2Option, Select2Props } from "./types";
+import { Select2Option } from "./Select2Option";
+import { Select2Props, Select2Option as Select2OptionType } from "./types";
+import { ContextMenu2HeadingItem } from "../ContextMenu2";
 
 export default {
   title: "Components/Inputs/Select2",
@@ -61,7 +63,7 @@ export default {
   },
 } as Meta<typeof Select2>;
 
-const options: Select2Option[] = [
+const options: Select2OptionType[] = [
   { value: "apple", label: "りんご" },
   { value: "banana", label: "バナナ" },
   { value: "orange", label: "オレンジ" },
@@ -264,6 +266,174 @@ MultipleSelectionWithSearch.parameters = {
       story: `
 複数選択モードと検索機能を組み合わせた例です。
 多くの選択肢から複数の項目を選択する場合に特に有用です。
+      `,
+    },
+  },
+};
+
+// 宣言的APIの例
+export const WithDeclarativeAPI = () => {
+  const [value, setValue] = useState<string | number>("");
+
+  // フルーツのオプション
+  const fruitOptions = [
+    { value: "apple", label: "りんご" },
+    { value: "orange", label: "オレンジ" },
+    { value: "banana", label: "バナナ" },
+    { value: "grape", label: "ブドウ" },
+    { value: "melon", label: "メロン" },
+  ];
+
+  // 野菜のオプション
+  const vegetableOptions = [
+    { value: "carrot", label: "にんじん" },
+    { value: "potato", label: "じゃがいも" },
+    { value: "lettuce", label: "レタス" },
+    { value: "tomato", label: "トマト" },
+    { value: "cucumber", label: "きゅうり" },
+  ];
+
+  // 肉類のオプション
+  const meatOptions = [
+    { value: "beef", label: "牛肉" },
+    { value: "pork", label: "豚肉" },
+    { value: "chicken", label: "鶏肉" },
+  ];
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        options={[]} // 子要素を使う場合はoptionsは空配列でOK
+        placeholder="食材を選択"
+        searchable={true}
+        searchPlaceholder="検索..."
+        value={value}
+        onChange={(newValue: any) => setValue(newValue as string | number)}
+      >
+        <ContextMenu2HeadingItem>果物</ContextMenu2HeadingItem>
+        {fruitOptions.map((option) => (
+          <Select2Option key={option.value} value={option.value}>
+            {option.label}
+          </Select2Option>
+        ))}
+
+        <ContextMenu2HeadingItem>野菜</ContextMenu2HeadingItem>
+        {vegetableOptions.map((option) => (
+          <Select2Option key={option.value} value={option.value}>
+            {option.label}
+          </Select2Option>
+        ))}
+
+        <ContextMenu2HeadingItem>肉類</ContextMenu2HeadingItem>
+        {meatOptions.map((option) => (
+          <Select2Option key={option.value} value={option.value}>
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {value}</p>
+      </div>
+    </div>
+  );
+};
+WithDeclarativeAPI.parameters = {
+  docs: {
+    description: {
+      story: `
+ContextMenu2HeadingItemとContextMenu2SeparatorItemを直接使用した例です。
+Select2コンポーネント内で、これらのコンポーネントと組み合わせることができます。
+      `,
+    },
+  },
+};
+
+// 宣言的APIを使用した複数選択の例
+export const WithDeclarativeAPIMultiple = () => {
+  const [values, setValues] = useState<(string | number)[]>([
+    "apple",
+    "potato",
+  ]);
+
+  // フルーツのオプション
+  const fruitOptions = [
+    { value: "apple", label: "りんご" },
+    { value: "orange", label: "オレンジ" },
+    { value: "banana", label: "バナナ" },
+    { value: "grape", label: "ブドウ" },
+    { value: "melon", label: "メロン" },
+  ];
+
+  // 野菜のオプション
+  const vegetableOptions = [
+    { value: "carrot", label: "にんじん" },
+    { value: "potato", label: "じゃがいも" },
+    { value: "lettuce", label: "レタス" },
+    { value: "tomato", label: "トマト" },
+    { value: "cucumber", label: "きゅうり" },
+  ];
+
+  // 肉類のオプション
+  const meatOptions = [
+    { value: "beef", label: "牛肉" },
+    { value: "pork", label: "豚肉" },
+    { value: "chicken", label: "鶏肉" },
+  ];
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        options={[]} // 子要素を使う場合はoptionsは空配列でOK
+        placeholder="食材を選択（複数可）"
+        searchable={true}
+        searchPlaceholder="検索..."
+        multiple={true}
+        value={values}
+        applyButtonText="適用"
+        cancelButtonText="キャンセル"
+        onChange={(newValues: any) => {
+          if (Array.isArray(newValues)) {
+            setValues(newValues);
+          }
+        }}
+      >
+        <ContextMenu2HeadingItem>果物</ContextMenu2HeadingItem>
+        {fruitOptions.map((option) => (
+          <Select2Option key={option.value} value={option.value}>
+            {option.label}
+          </Select2Option>
+        ))}
+
+        <ContextMenu2HeadingItem>野菜</ContextMenu2HeadingItem>
+        {vegetableOptions.map((option) => (
+          <Select2Option key={option.value} value={option.value}>
+            {option.label}
+          </Select2Option>
+        ))}
+
+        <ContextMenu2HeadingItem>肉類</ContextMenu2HeadingItem>
+        {meatOptions.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.value === "beef"}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {values.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+WithDeclarativeAPIMultiple.parameters = {
+  docs: {
+    description: {
+      story: `
+ContextMenu2HeadingItemとContextMenu2SeparatorItemを直接使用した複数選択の例です。
+複数選択モード（multiple={true}）と宣言的APIを組み合わせることで、グループ化された選択肢から複数の項目を選択できます。
       `,
     },
   },

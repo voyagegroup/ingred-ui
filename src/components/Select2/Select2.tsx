@@ -4,6 +4,9 @@ import React, {
   useState,
   useRef,
   useEffect,
+  Children,
+  isValidElement,
+  ReactElement,
 } from "react";
 import Icon from "../Icon";
 import Button from "../Button";
@@ -25,34 +28,8 @@ import {
   TagContainer,
   StyledTag,
 } from "./styled";
-import { Select2Size, Select2Variant } from "./types";
-import { TagVariant } from "../Tag/types";
+import { Select2Props, Select2Option } from "./types";
 import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
-
-// 内部定義と競合しないように名前を変更
-type Select2Option = {
-  value: string | number;
-  label: string;
-  disabled?: boolean;
-};
-
-type Select2Props = {
-  value: (string | number) | (string | number)[];
-  onChange: (value: (string | number) | (string | number)[]) => void;
-  options: Select2Option[];
-  multiple?: boolean;
-  disabled?: boolean;
-  placeholder?: string;
-  size?: Select2Size;
-  variant?: Select2Variant;
-  tagVariant?: TagVariant;
-  searchable?: boolean;
-  searchPlaceholder?: string;
-  noResultsMessage?: string;
-  error?: boolean;
-  applyButtonText?: string;
-  cancelButtonText?: string;
-};
 
 export const Select2: React.FC<Select2Props> = ({
   options = [],
@@ -69,6 +46,7 @@ export const Select2: React.FC<Select2Props> = ({
   error = false,
   applyButtonText = "適用",
   cancelButtonText = "キャンセル",
+  children,
   onChange,
   ...rest
 }) => {
@@ -94,6 +72,49 @@ export const Select2: React.FC<Select2Props> = ({
       return value !== undefined ? [value as string | number] : [];
     }
   }, [value, multiple]);
+
+  // 子要素から選択肢を抽出する
+  const childrenOptions = useMemo(() => {
+    if (!children) return [];
+
+    const extractedOptions: Select2Option[] = [];
+
+    Children.forEach(children, (child) => {
+      if (!isValidElement(child)) return;
+
+      const childElement = child as ReactElement;
+
+      if (childElement.type && typeof childElement.type !== "string") {
+        const componentName =
+          (childElement.type as any).displayName ||
+          (childElement.type as any).name;
+
+        if (
+          componentName === "Select2Option" ||
+          childElement.props.value !== undefined
+        ) {
+          const optionValue = childElement.props.value;
+          const optionLabel = childElement.props.children;
+          const optionDisabled = !!childElement.props.disabled;
+
+          if (optionValue !== undefined) {
+            extractedOptions.push({
+              value: optionValue,
+              label: String(optionLabel),
+              disabled: optionDisabled,
+            });
+          }
+        }
+      }
+    });
+
+    return extractedOptions;
+  }, [children]);
+
+  // 従来のoptionsとchildrenから抽出したoptionsを合わせた配列
+  const allOptions = useMemo(() => {
+    return [...options, ...childrenOptions];
+  }, [options, childrenOptions]);
 
   const handleChange = useCallback(
     (newValue: string | number | (string | number)[]) => {
@@ -179,14 +200,14 @@ export const Select2: React.FC<Select2Props> = ({
   }, []);
 
   const selectedOption = useMemo(
-    () => options.find((option) => option.value === value),
-    [options, value],
+    () => allOptions.find((option) => option.value === value),
+    [allOptions, value],
   );
 
   const selectedOptions = useMemo(() => {
     if (!multiple || !Array.isArray(value)) return [];
-    return options.filter((option) => value.includes(option.value));
-  }, [multiple, options, value]);
+    return allOptions.filter((option) => value.includes(option.value));
+  }, [multiple, allOptions, value]);
 
   const filteredOptions = useMemo(() => {
     if (!searchable || !searchValue) return options;
@@ -302,6 +323,108 @@ export const Select2: React.FC<Select2Props> = ({
     </SelectButton>
   );
 
+  // 子要素を処理する関数
+  const renderMenuContent = () => {
+    // 子要素があればそれを使用し、なければoptionsからリストを生成
+    if (children) {
+      return Children.map(children, (child) => {
+        if (!isValidElement(child)) return null;
+
+        // 子要素が "Select2Option" タイプなどの時の処理
+        const childElement = child as ReactElement;
+
+        if (childElement.type && typeof childElement.type !== "string") {
+          const componentName =
+            (childElement.type as any).displayName ||
+            (childElement.type as any).name;
+
+          // Select2Optionコンポーネントの場合
+          if (
+            componentName === "Select2Option" ||
+            childElement.props.value !== undefined
+          ) {
+            const optionValue = childElement.props.value;
+            const optionDisabled = !!childElement.props.disabled;
+            const optionLabel = childElement.props.children;
+
+            // 値のチェック
+            if (optionValue === undefined) return null;
+
+            const isChecked = multiple
+              ? tempSelectedValues.includes(optionValue)
+              : optionValue === value;
+
+            const handleChange = () => {
+              if (multiple) {
+                handleMultipleSelect(!isChecked, {
+                  value: optionValue,
+                  label: String(optionLabel),
+                  disabled: optionDisabled,
+                });
+              } else {
+                handleSingleSelect({
+                  value: optionValue,
+                  label: String(optionLabel),
+                  disabled: optionDisabled,
+                });
+              }
+            };
+
+            return (
+              <ContextMenu2CheckItem
+                key={optionValue.toString()}
+                checked={isChecked}
+                closeOnChange={!multiple}
+                disabled={optionDisabled}
+                tabIndex={0}
+                onChange={handleChange}
+              >
+                {optionLabel}
+              </ContextMenu2CheckItem>
+            );
+          }
+
+          // それ以外のコンポーネント（HeadingItem、SeparatorItemなど）はそのまま返す
+          return childElement;
+        }
+
+        return childElement; // 単純なテキストノードなどはそのまま返す
+      });
+    }
+
+    // 子要素がない場合は従来通りoptionsからリストを生成
+    if (filteredOptions.length > 0) {
+      return filteredOptions.map((option) => {
+        const isChecked = multiple
+          ? tempSelectedValues.includes(option.value)
+          : option.value === value;
+
+        const handleChange = () => {
+          if (multiple) {
+            handleMultipleSelect(!isChecked, option);
+          } else {
+            handleSingleSelect(option);
+          }
+        };
+
+        return (
+          <ContextMenu2CheckItem
+            key={option.value.toString()}
+            checked={isChecked}
+            closeOnChange={!multiple}
+            disabled={option.disabled}
+            tabIndex={0}
+            onChange={handleChange}
+          >
+            {option.label}
+          </ContextMenu2CheckItem>
+        );
+      });
+    }
+
+    return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
+  };
+
   return (
     <Select2Container>
       <SelectContainer
@@ -325,36 +448,7 @@ export const Select2: React.FC<Select2Props> = ({
             trigger={triggerElement}
             onOpenChange={handleOpenChange}
           >
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map((option) => {
-                const isChecked = multiple
-                  ? tempSelectedValues.includes(option.value)
-                  : option.value === value;
-
-                const handleChange = () => {
-                  if (multiple) {
-                    handleMultipleSelect(!isChecked, option);
-                  } else {
-                    handleSingleSelect(option);
-                  }
-                };
-
-                return (
-                  <ContextMenu2CheckItem
-                    key={option.value.toString()}
-                    checked={isChecked}
-                    closeOnChange={!multiple}
-                    disabled={option.disabled}
-                    // 型の不一致を一時的に許容
-                    onChange={handleChange}
-                  >
-                    {option.label}
-                  </ContextMenu2CheckItem>
-                );
-              })
-            ) : (
-              <ContextMenu2NoResultsMessage message={noResultsMessage} />
-            )}
+            {renderMenuContent()}
           </ContextMenu2>
         </ContextMenu2Container>
 
