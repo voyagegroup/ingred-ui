@@ -15,6 +15,8 @@ import {
   ContextMenu2CheckItem,
   ContextMenu2Container,
   ContextMenu2ButtonControlsItem,
+  ContextMenu2HeadingItem,
+  ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
 import {
   Select2Container,
@@ -325,9 +327,9 @@ export const Select2: React.FC<Select2Props> = ({
 
   // 子要素を処理する関数
   const renderMenuContent = () => {
-    // 子要素があればそれを使用し、なければoptionsからリストを生成
-    if (children) {
-      return Children.map(children, (child) => {
+    // 子要素を再帰的に処理する関数
+    const processChildren = (childrenElements: React.ReactNode): React.ReactNode => {
+      return Children.map(childrenElements, (child) => {
         if (!isValidElement(child)) return null;
 
         // 子要素が "Select2Option" タイプなどの時の処理
@@ -384,12 +386,33 @@ export const Select2: React.FC<Select2Props> = ({
             );
           }
 
+          // Select2OptionGroupの場合
+          if (componentName === "Select2OptionGroup") {
+            // OptionGroupの子要素を再帰的に処理
+            return (
+              <>
+                <ContextMenu2HeadingItem>{childElement.props.label}</ContextMenu2HeadingItem>
+                {processChildren(childElement.props.children)}
+              </>
+            );
+          }
+
+          // Select2Separatorの場合
+          if (componentName === "Select2Separator") {
+            return <ContextMenu2SeparatorItem />;
+          }
+
           // それ以外のコンポーネント（HeadingItem、SeparatorItemなど）はそのまま返す
           return childElement;
         }
 
         return childElement; // 単純なテキストノードなどはそのまま返す
       });
+    };
+
+    // 子要素があればそれを使用し、なければoptionsからリストを生成
+    if (children) {
+      return processChildren(children);
     }
 
     // 子要素がない場合は従来通りoptionsからリストを生成

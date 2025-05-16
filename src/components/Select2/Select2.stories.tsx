@@ -3,7 +3,9 @@ import { Story, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
 import { Select2Option } from "./Select2Option";
 import { Select2Props, Select2Option as Select2OptionType } from "./types";
-import { ContextMenu2HeadingItem } from "../ContextMenu2";
+import { ContextMenu2HeadingItem, ContextMenu2SeparatorItem } from "../ContextMenu2";
+import { Select2OptionGroup } from "./Select2OptionGroup";
+import { Select2Separator } from "./Select2Separator";
 
 export default {
   title: "Components/Inputs/Select2",
@@ -310,26 +312,42 @@ export const WithDeclarativeAPI = () => {
         value={value}
         onChange={(newValue: any) => setValue(newValue as string | number)}
       >
-        <ContextMenu2HeadingItem>果物</ContextMenu2HeadingItem>
-        {fruitOptions.map((option) => (
-          <Select2Option key={option.value} value={option.value}>
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2OptionGroup label="果物">
+          {fruitOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
 
-        <ContextMenu2HeadingItem>野菜</ContextMenu2HeadingItem>
-        {vegetableOptions.map((option) => (
-          <Select2Option key={option.value} value={option.value}>
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2Separator />
 
-        <ContextMenu2HeadingItem>肉類</ContextMenu2HeadingItem>
-        {meatOptions.map((option) => (
-          <Select2Option key={option.value} value={option.value}>
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2OptionGroup label="野菜">
+          {vegetableOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2Separator />
+
+        <Select2OptionGroup label="肉類">
+          {meatOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
       </Select2>
       <div style={{ marginTop: "16px" }}>
         <p>選択された値: {value}</p>
@@ -341,8 +359,9 @@ WithDeclarativeAPI.parameters = {
   docs: {
     description: {
       story: `
-ContextMenu2HeadingItemとContextMenu2SeparatorItemを直接使用した例です。
-Select2コンポーネント内で、これらのコンポーネントと組み合わせることができます。
+Select2OptionGroupコンポーネントとSelect2Separatorコンポーネントを使用した例です。
+Select2OptionGroupはオプションをグループ化し、各グループにラベルを付けることができます。
+Select2Separatorはグループ間にセパレータを追加します。
       `,
     },
   },
@@ -397,30 +416,43 @@ export const WithDeclarativeAPIMultiple = () => {
           }
         }}
       >
-        <ContextMenu2HeadingItem>果物</ContextMenu2HeadingItem>
-        {fruitOptions.map((option) => (
-          <Select2Option key={option.value} value={option.value}>
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2OptionGroup label="果物">
+          {fruitOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
 
-        <ContextMenu2HeadingItem>野菜</ContextMenu2HeadingItem>
-        {vegetableOptions.map((option) => (
-          <Select2Option key={option.value} value={option.value}>
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2Separator />
 
-        <ContextMenu2HeadingItem>肉類</ContextMenu2HeadingItem>
-        {meatOptions.map((option) => (
-          <Select2Option
-            key={option.value}
-            value={option.value}
-            disabled={option.value === "beef"}
-          >
-            {option.label}
-          </Select2Option>
-        ))}
+        <Select2OptionGroup label="野菜">
+          {vegetableOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2Separator />
+
+        <Select2OptionGroup label="肉類">
+          {meatOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+              disabled={option.value === "beef"}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
       </Select2>
       <div style={{ marginTop: "16px" }}>
         <p>選択された値: {values.join(", ")}</p>
@@ -432,8 +464,11 @@ WithDeclarativeAPIMultiple.parameters = {
   docs: {
     description: {
       story: `
-ContextMenu2HeadingItemとContextMenu2SeparatorItemを直接使用した複数選択の例です。
-複数選択モード（multiple={true}）と宣言的APIを組み合わせることで、グループ化された選択肢から複数の項目を選択できます。
+Select2OptionGroupコンポーネントとSelect2Separatorコンポーネントを使用した複数選択の例です。
+Select2OptionGroupはオプションをグループ化し、各グループにラベルを付けることができます。
+Select2Separatorはグループ間にセパレータを追加します。
+複数選択モード（multiple={true}）と組み合わせることで、グループ化された選択肢から複数の項目を選択できます。
+選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。
       `,
     },
   },
