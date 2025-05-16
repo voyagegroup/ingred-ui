@@ -4,6 +4,10 @@ import React, {
   useState,
   useRef,
   useEffect,
+  Children,
+  isValidElement,
+  cloneElement,
+  ReactElement,
 } from "react";
 import Icon from "../Icon";
 import Button from "../Button";
@@ -12,6 +16,8 @@ import {
   ContextMenu2CheckItem,
   ContextMenu2Container,
   ContextMenu2ButtonControlsItem,
+  ContextMenu2HeadingItem,
+  ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
 import {
   Select2Container,
@@ -25,21 +31,16 @@ import {
   TagContainer,
   StyledTag,
 } from "./styled";
-import { Select2Size, Select2Variant } from "./types";
+import { Select2Size, Select2Variant, Select2Option } from "./types";
 import { TagVariant } from "../Tag/types";
 import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
-
-// 内部定義と競合しないように名前を変更
-type Select2Option = {
-  value: string | number;
-  label: string;
-  disabled?: boolean;
-};
+import { Select2OptionProps } from "./Select2Option";
+import { Select2OptionGroupProps } from "./Select2OptionGroup";
 
 type Select2Props = {
   value: (string | number) | (string | number)[];
   onChange: (value: (string | number) | (string | number)[]) => void;
-  options: Select2Option[];
+  options?: Select2Option[];
   multiple?: boolean;
   disabled?: boolean;
   placeholder?: string;
@@ -52,6 +53,12 @@ type Select2Props = {
   error?: boolean;
   applyButtonText?: string;
   cancelButtonText?: string;
+  children?: React.ReactNode;
+};
+
+type GroupInfo = {
+  label: string;
+  options: Select2Option[];
 };
 
 export const Select2: React.FC<Select2Props> = ({
@@ -70,6 +77,7 @@ export const Select2: React.FC<Select2Props> = ({
   applyButtonText = "適用",
   cancelButtonText = "キャンセル",
   onChange,
+  children,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -302,6 +310,290 @@ export const Select2: React.FC<Select2Props> = ({
     </SelectButton>
   );
 
+  // コンポーネントの子要素からオプションを抽出
+  const processChildren = () => {
+    if (!children) return null;
+
+    const result: ReactElement[] = [];
+    let currentGroup: GroupInfo | null = null;
+
+    Children.forEach(children, (child) => {
+      if (!isValidElement(child)) return;
+
+      const childType = child.type as any;
+      const displayName = childType.displayName;
+
+      // Select2OptionGroup
+      if (displayName === "Select2OptionGroup") {
+        // 以前のグループがあればそれを追加
+        if (currentGroup) {
+          result.push(
+            <ContextMenu2HeadingItem key={`group-${currentGroup.label}`}>
+              {currentGroup.label}
+            </ContextMenu2HeadingItem>
+          );
+
+          currentGroup.options.forEach((option) => {
+            const isChecked = multiple
+              ? tempSelectedValues.includes(option.value)
+              : option.value === value;
+
+            const handleChange = () => {
+              if (multiple) {
+                handleMultipleSelect(!isChecked, option);
+              } else {
+                handleSingleSelect(option);
+              }
+            };
+
+            result.push(
+              <ContextMenu2CheckItem
+                key={option.value.toString()}
+                checked={isChecked}
+                closeOnChange={!multiple}
+                disabled={option.disabled}
+                tabIndex={0}
+                onChange={handleChange}
+              >
+                {option.label}
+              </ContextMenu2CheckItem>
+            );
+          });
+        }
+
+        // 新しいグループを開始
+        currentGroup = {
+          label: (child.props as Select2OptionGroupProps).label,
+          options: [],
+        };
+
+        // グループ内の子要素を処理
+        Children.forEach(child.props.children, (groupChild) => {
+          if (
+            isValidElement(groupChild) &&
+            (groupChild.type as any).displayName === "Select2Option"
+          ) {
+            const { value, disabled, children } = groupChild.props as Select2OptionProps;
+            currentGroup!.options.push({
+              value,
+              label: children as string,
+              disabled,
+            });
+          }
+        });
+      }
+      // Select2Option（ルートレベル）
+      else if (displayName === "Select2Option") {
+        // 以前のグループがあればそれを追加
+        if (currentGroup) {
+          result.push(
+            <ContextMenu2HeadingItem key={`group-${currentGroup.label}`}>
+              {currentGroup.label}
+            </ContextMenu2HeadingItem>
+          );
+
+          currentGroup.options.forEach((option) => {
+            const isChecked = multiple
+              ? tempSelectedValues.includes(option.value)
+              : option.value === value;
+
+            const handleChange = () => {
+              if (multiple) {
+                handleMultipleSelect(!isChecked, option);
+              } else {
+                handleSingleSelect(option);
+              }
+            };
+
+            result.push(
+              <ContextMenu2CheckItem
+                key={option.value.toString()}
+                checked={isChecked}
+                closeOnChange={!multiple}
+                disabled={option.disabled}
+                tabIndex={0}
+                onChange={handleChange}
+              >
+                {option.label}
+              </ContextMenu2CheckItem>
+            );
+          });
+          currentGroup = null;
+        }
+
+        const { value: optionValue, disabled: optionDisabled, children: optionLabel } = child.props as Select2OptionProps;
+        const option = {
+          value: optionValue,
+          label: optionLabel as string,
+          disabled: optionDisabled,
+        };
+
+        const isChecked = multiple
+          ? tempSelectedValues.includes(option.value)
+          : option.value === value;
+
+        const handleChange = () => {
+          if (multiple) {
+            handleMultipleSelect(!isChecked, option);
+          } else {
+            handleSingleSelect(option);
+          }
+        };
+
+        result.push(
+          <ContextMenu2CheckItem
+            key={option.value.toString()}
+            checked={isChecked}
+            closeOnChange={!multiple}
+            disabled={option.disabled}
+            tabIndex={0}
+            onChange={handleChange}
+          >
+            {option.label}
+          </ContextMenu2CheckItem>
+        );
+      }
+      // その他のContextMenu2アイテム（HeadingItem, SeparatorItemなど）
+      else if (
+        displayName === "ContextMenu2HeadingItem" ||
+        displayName === "ContextMenu2SeparatorItem" ||
+        displayName === "ContextMenu2HelpTextItem" ||
+        displayName === "ContextMenu2ButtonItem"
+      ) {
+        // 以前のグループがあればそれを追加
+        if (currentGroup) {
+          result.push(
+            <ContextMenu2HeadingItem key={`group-${currentGroup.label}`}>
+              {currentGroup.label}
+            </ContextMenu2HeadingItem>
+          );
+
+          currentGroup.options.forEach((option) => {
+            const isChecked = multiple
+              ? tempSelectedValues.includes(option.value)
+              : option.value === value;
+
+            const handleChange = () => {
+              if (multiple) {
+                handleMultipleSelect(!isChecked, option);
+              } else {
+                handleSingleSelect(option);
+              }
+            };
+
+            result.push(
+              <ContextMenu2CheckItem
+                key={option.value.toString()}
+                checked={isChecked}
+                closeOnChange={!multiple}
+                disabled={option.disabled}
+                tabIndex={0}
+                onChange={handleChange}
+              >
+                {option.label}
+              </ContextMenu2CheckItem>
+            );
+          });
+          currentGroup = null;
+        }
+
+        result.push(
+          cloneElement(child as React.ReactElement<any>, {
+            key: `custom-${result.length}`,
+            "data-tabindex": 0,
+          })
+        );
+      }
+    });
+
+    // 最後のグループを処理
+    if (currentGroup) {
+      result.push(
+        <ContextMenu2HeadingItem key={`group-${currentGroup.label}`}>
+          {currentGroup.label}
+        </ContextMenu2HeadingItem>
+      );
+
+      currentGroup.options.forEach((option) => {
+        const isChecked = multiple
+          ? tempSelectedValues.includes(option.value)
+          : option.value === value;
+
+        const handleChange = () => {
+          if (multiple) {
+            handleMultipleSelect(!isChecked, option);
+          } else {
+            handleSingleSelect(option);
+          }
+        };
+
+        result.push(
+          <ContextMenu2CheckItem
+            key={option.value.toString()}
+            checked={isChecked}
+            closeOnChange={!multiple}
+            disabled={option.disabled}
+            tabIndex={0}
+            onChange={handleChange}
+          >
+            {option.label}
+          </ContextMenu2CheckItem>
+        );
+      });
+    }
+
+    return result;
+  };
+
+  // コンポーネントの子要素または options から生成されたアイテム
+  const menuItems = useMemo(() => {
+    // コンポーネントベースAPIを優先
+    if (children) {
+      return processChildren();
+    }
+
+    // options配列を使用する従来のAPI
+    if (filteredOptions.length > 0) {
+      return filteredOptions.map((option) => {
+        const isChecked = multiple
+          ? tempSelectedValues.includes(option.value)
+          : option.value === value;
+
+        const handleChange = () => {
+          if (multiple) {
+            handleMultipleSelect(!isChecked, option);
+          } else {
+            handleSingleSelect(option);
+          }
+        };
+
+        return (
+          <ContextMenu2CheckItem
+            key={option.value.toString()}
+            checked={isChecked}
+            closeOnChange={!multiple}
+            disabled={option.disabled}
+            tabIndex={0}
+            onChange={handleChange}
+          >
+            {option.label}
+          </ContextMenu2CheckItem>
+        );
+      });
+    }
+
+    return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
+  }, [
+    children,
+    filteredOptions,
+    multiple,
+    tempSelectedValues,
+    value,
+    handleMultipleSelect,
+    handleSingleSelect,
+    noResultsMessage,
+  ]);
+
   return (
     <Select2Container>
       <SelectContainer
@@ -325,36 +617,7 @@ export const Select2: React.FC<Select2Props> = ({
             trigger={triggerElement}
             onOpenChange={handleOpenChange}
           >
-            {filteredOptions.length > 0 ? (
-              filteredOptions.map((option) => {
-                const isChecked = multiple
-                  ? tempSelectedValues.includes(option.value)
-                  : option.value === value;
-
-                const handleChange = () => {
-                  if (multiple) {
-                    handleMultipleSelect(!isChecked, option);
-                  } else {
-                    handleSingleSelect(option);
-                  }
-                };
-
-                return (
-                  <ContextMenu2CheckItem
-                    key={option.value.toString()}
-                    checked={isChecked}
-                    closeOnChange={!multiple}
-                    disabled={option.disabled}
-                    // 型の不一致を一時的に許容
-                    onChange={handleChange}
-                  >
-                    {option.label}
-                  </ContextMenu2CheckItem>
-                );
-              })
-            ) : (
-              <ContextMenu2NoResultsMessage message={noResultsMessage} />
-            )}
+            {menuItems}
           </ContextMenu2>
         </ContextMenu2Container>
 
