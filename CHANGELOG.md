@@ -1,5 +1,13 @@
 # Changelog
 
+## 22.3.3
+
+### Patch Changes
+
+- [#1811](https://github.com/voyagegroup/ingred-ui/pull/1811) [`33cf9b99`](https://github.com/voyagegroup/ingred-ui/commit/33cf9b994a807fb181ecf417a3524cb6d1a4ca6a) Thanks [@deatiger](https://github.com/deatiger)! - Export Select2 which can be imported from projects
+
+- [#1813](https://github.com/voyagegroup/ingred-ui/pull/1813) [`4f8ddf7c`](https://github.com/voyagegroup/ingred-ui/commit/4f8ddf7c738631326a206c3d2ac46fa0bee3ea6c) Thanks [@deatiger](https://github.com/deatiger)! - Revert #1800
+
 ## 22.3.2
 
 ### Patch Changes
