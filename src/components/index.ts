@@ -146,6 +146,8 @@ export * from "./ScrollArea";
 export { default as Select } from "./Select";
 export * from "./Select";
 
+export * from "./Select2";
+
 export { default as Slide } from "./Slide";
 export * from "./Slide";
 
