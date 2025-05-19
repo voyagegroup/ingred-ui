@@ -498,6 +498,9 @@ export const WithMaxSelectionStrict = () => {
       <Select2
         multiple
         value={selected}
+        placeholder={`最大${MAX}件まで選択可能`}
+        applyButtonText="適用"
+        cancelButtonText="キャンセル"
         onChange={(newSelected: string[] | number[] | string | number) => {
           if (Array.isArray(newSelected) && newSelected.length > MAX) {
             // 上限を超えたら何もしない
@@ -505,9 +508,6 @@ export const WithMaxSelectionStrict = () => {
           }
           setSelected(newSelected as (string | number)[]);
         }}
-        placeholder={`最大${MAX}件まで選択可能`}
-        applyButtonText="適用"
-        cancelButtonText="キャンセル"
         onTempChange={setTempSelected}
       >
         {options.map((opt) => (
