@@ -143,4 +143,9 @@ export type Select2Props = {
    * Select2Option、ContextMenu2HeadingItem、ContextMenu2SeparatorItemなどを指定できます
    */
   children?: React.ReactNode;
+  /**
+   * 複数選択時の一時的な選択値が変化したときに呼ばれるコールバック
+   * multiple=trueのときのみ有効
+   */
+  onTempChange?: (tempSelected: (string | number)[]) => void;
 };

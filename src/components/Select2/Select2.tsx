@@ -49,6 +49,7 @@ export const Select2: React.FC<Select2Props> = ({
   cancelButtonText = "キャンセル",
   children,
   onChange,
+  onTempChange,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -241,6 +242,13 @@ export const Select2: React.FC<Select2Props> = ({
       setTempSelectedValues(value);
     }
   }, [multiple, value]);
+
+  useEffect(() => {
+    if (multiple && typeof onTempChange === "function") {
+      onTempChange(tempSelectedValues);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [multiple, tempSelectedValues]);
 
   const stickyHeader = useMemo(
     () =>

@@ -476,3 +476,62 @@ Select2Separatorはグループ間にセパレータを追加します。
     },
   },
 };
+
+// 選択数上限サンプル（厳密版）
+export const WithMaxSelectionStrict = () => {
+  const MAX = 5;
+  const [selected, setSelected] = React.useState<(string | number)[]>([]);
+  const [tempSelected, setTempSelected] = React.useState<(string | number)[]>(
+    [],
+  );
+  const options = [
+    { value: "a", label: "A" },
+    { value: "b", label: "B" },
+    { value: "c", label: "C" },
+    { value: "d", label: "D" },
+    { value: "e", label: "E" },
+    { value: "f", label: "F" },
+    { value: "g", label: "G" },
+  ];
+  return (
+    <div style={{ width: 300 }}>
+      <Select2
+        multiple
+        value={selected}
+        onChange={(newSelected: string[] | number[] | string | number) => {
+          if (Array.isArray(newSelected) && newSelected.length > MAX) {
+            // 上限を超えたら何もしない
+            return;
+          }
+          setSelected(newSelected as (string | number)[]);
+        }}
+        onTempChange={setTempSelected}
+        placeholder={`最大${MAX}件まで選択可能`}
+        applyButtonText="適用"
+        cancelButtonText="キャンセル"
+      >
+        {options.map((opt) => (
+          <Select2Option
+            key={opt.value}
+            value={opt.value}
+            disabled={
+              tempSelected.length >= MAX && !tempSelected.includes(opt.value)
+            }
+          >
+            {opt.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: 16 }}>
+        <p>選択中: {selected.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+WithMaxSelectionStrict.parameters = {
+  docs: {
+    description: {
+      story: `選択数の上限（${5}件）を超えた場合、未選択のオプションがdisabledになり、onChangeでも5件を超える選択は受け付けません。`,
+    },
+  },
+};
