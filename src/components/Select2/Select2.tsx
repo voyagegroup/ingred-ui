@@ -34,7 +34,6 @@ import { Select2Props, Select2Option } from "./types";
 import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 export const Select2: React.FC<Select2Props> = ({
-  options = [],
   value,
   multiple = false,
   disabled = false,
@@ -61,7 +60,6 @@ export const Select2: React.FC<Select2Props> = ({
   const tagContainerRef = useRef<HTMLDivElement>(null);
 
   // タグのバリアントを自動的に設定
-  // ユーザーが明示的に指定した場合はそれを優先、指定がなければ親コンポーネントのvariantに基づいて自動設定
   const computedTagVariant = useMemo(() => {
     if (tagVariant) return tagVariant;
     return variant === "light" ? "dark" : "light";
@@ -78,26 +76,19 @@ export const Select2: React.FC<Select2Props> = ({
   // 子要素からオプション情報を抽出する
   const extractOptionsFromChildren = useMemo(() => {
     if (!children) return [];
-    
     const options: Select2Option[] = [];
-    
-    // 子要素から選択肢を再帰的に抽出する関数
     const extractOptions = (childElements: React.ReactNode) => {
       Children.forEach(childElements, (child) => {
         if (!isValidElement(child)) return;
-        
         const childElement = child as ReactElement;
         if (childElement.type && typeof childElement.type !== "string") {
           const componentName =
             (childElement.type as any).displayName ||
             (childElement.type as any).name;
-          
-          // Select2Optionコンポーネントから選択肢を抽出
           if (componentName === "Select2Option") {
             const optionValue = childElement.props.value;
             const optionLabel = childElement.props.children;
             const optionDisabled = !!childElement.props.disabled;
-            
             if (optionValue !== undefined) {
               options.push({
                 value: optionValue,
@@ -105,9 +96,7 @@ export const Select2: React.FC<Select2Props> = ({
                 disabled: optionDisabled,
               });
             }
-          }
-          // Select2OptionGroupの場合は子要素を再帰的に処理
-          else if (componentName === "Select2OptionGroup") {
+          } else if (componentName === "Select2OptionGroup") {
             if (childElement.props.children) {
               extractOptions(childElement.props.children);
             }
@@ -115,15 +104,9 @@ export const Select2: React.FC<Select2Props> = ({
         }
       });
     };
-    
     extractOptions(children);
     return options;
   }, [children]);
-  
-  // 従来のoptionsとchildrenから抽出したoptionsを合わせた配列
-  const allOptions = useMemo(() => {
-    return [...options, ...extractOptionsFromChildren];
-  }, [options, extractOptionsFromChildren]);
 
   const handleChange = useCallback(
     (newValue: string | number | (string | number)[]) => {
@@ -161,7 +144,6 @@ export const Select2: React.FC<Select2Props> = ({
   const handleMultipleSelect = useCallback(
     (checked: boolean, option: Select2Option) => {
       if (option.disabled) return;
-
       setTempSelectedValues((prev) => {
         const newValues = checked
           ? [...prev, option.value]
@@ -209,21 +191,24 @@ export const Select2: React.FC<Select2Props> = ({
   }, []);
 
   const selectedOption = useMemo(
-    () => allOptions.find((option) => option.value === value),
-    [allOptions, value],
+    () => extractOptionsFromChildren.find((option) => option.value === value),
+    [extractOptionsFromChildren, value],
   );
 
   const selectedOptions = useMemo(() => {
     if (!multiple || !Array.isArray(value)) return [];
-    return allOptions.filter((option) => value.includes(option.value));
-  }, [multiple, allOptions, value]);
+    return extractOptionsFromChildren.filter((option) =>
+      value.includes(option.value),
+    );
+  }, [multiple, extractOptionsFromChildren, value]);
 
+  // 検索機能用: 子要素から抽出したoptionsをフィルタリング
   const filteredOptions = useMemo(() => {
-    if (!searchable || !searchValue) return options;
-    return options.filter((option) =>
+    if (!searchable || !searchValue) return extractOptionsFromChildren;
+    return extractOptionsFromChildren.filter((option) =>
       option.label.toLowerCase().includes(searchValue.toLowerCase()),
     );
-  }, [options, searchValue, searchable]);
+  }, [extractOptionsFromChildren, searchValue, searchable]);
 
   const checkTagOverflow = useCallback(() => {
     if (!tagContainerRef.current) return;
@@ -333,26 +318,32 @@ export const Select2: React.FC<Select2Props> = ({
   );
 
   // 宣言的APIでの子要素をContextMenu2の項目に変換
-  const renderChildrenAsMenuItems = (childrenElements: React.ReactNode): React.ReactNode[] => {
+  const renderChildrenAsMenuItems = (
+    childrenElements: React.ReactNode,
+  ): React.ReactNode[] => {
     // 型定義
     type OptionGroup = {
       label: string;
       options: ReactElement[];
-    }
+    };
 
     const items: React.ReactNode[] = [];
     let currentGroup: OptionGroup | null = null;
 
     // 子要素からSelect2Option要素を抽出してCheckItemに変換する関数
-    const convertOptionToCheckItem = (option: ReactElement, keyPrefix: string, index: number): ReactElement => {
+    const convertOptionToCheckItem = (
+      option: ReactElement,
+      keyPrefix: string,
+      index: number,
+    ): ReactElement => {
       const optionValue = option.props.value;
       const optionDisabled = !!option.props.disabled;
       const optionLabel = option.props.children;
-      
+
       const isChecked = multiple
         ? tempSelectedValues.includes(optionValue)
         : optionValue === value;
-      
+
       const handleChange = () => {
         if (multiple) {
           handleMultipleSelect(!isChecked, {
@@ -368,7 +359,7 @@ export const Select2: React.FC<Select2Props> = ({
           });
         }
       };
-      
+
       return (
         <ContextMenu2CheckItem
           key={`${keyPrefix}-${index}`}
@@ -386,54 +377,59 @@ export const Select2: React.FC<Select2Props> = ({
     // 現在のグループをrender
     const renderCurrentGroup = () => {
       if (currentGroup === null) return;
-      
+
       const group = currentGroup; // ローカル変数にコピーして型を安定させる
-      
+
       items.push(
         <ContextMenu2HeadingItem key={`heading-${group.label}`}>
           {group.label}
-        </ContextMenu2HeadingItem>
+        </ContextMenu2HeadingItem>,
       );
-      
+
       group.options.forEach((option, index) => {
-        items.push(convertOptionToCheckItem(option, `option-${group.label}`, index));
+        items.push(
+          convertOptionToCheckItem(option, `option-${group.label}`, index),
+        );
       });
     };
 
     // 子要素を走査して構造データを構築
     Children.forEach(childrenElements, (child) => {
       if (!isValidElement(child)) return;
-      
+
       const childElement = child as ReactElement;
-      
+
       if (childElement.type && typeof childElement.type !== "string") {
         const componentName =
           (childElement.type as any).displayName ||
           (childElement.type as any).name;
-        
+
         // Select2OptionGroupの場合
         if (componentName === "Select2OptionGroup") {
           // 既存のグループを追加
           if (currentGroup !== null) {
             renderCurrentGroup();
           }
-          
+
           // 新しいグループを開始
           currentGroup = {
             label: childElement.props.label as string,
-            options: []
+            options: [],
           };
-          
+
           // グループの子要素を処理
           if (childElement.props.children) {
             Children.forEach(childElement.props.children, (groupChild) => {
               if (isValidElement(groupChild)) {
                 const groupChildElement = groupChild as ReactElement;
-                const groupChildName = 
+                const groupChildName =
                   (groupChildElement.type as any).displayName ||
                   (groupChildElement.type as any).name;
-                
-                if (groupChildName === "Select2Option" && currentGroup !== null) {
+
+                if (
+                  groupChildName === "Select2Option" &&
+                  currentGroup !== null
+                ) {
                   currentGroup.options.push(groupChildElement);
                 }
               }
@@ -442,7 +438,9 @@ export const Select2: React.FC<Select2Props> = ({
         }
         // Select2Separatorの場合
         else if (componentName === "Select2Separator") {
-          items.push(<ContextMenu2SeparatorItem key={`separator-${items.length}`} />);
+          items.push(
+            <ContextMenu2SeparatorItem key={`separator-${items.length}`} />,
+          );
         }
         // Select2Optionの場合
         else if (componentName === "Select2Option") {
@@ -451,8 +449,10 @@ export const Select2: React.FC<Select2Props> = ({
           } else {
             const optionValue = childElement.props.value;
             if (optionValue === undefined) return;
-            
-            items.push(convertOptionToCheckItem(childElement, `option`, items.length));
+
+            items.push(
+              convertOptionToCheckItem(childElement, `option`, items.length),
+            );
           }
         }
         // その他のコンポーネントはそのまま追加
@@ -461,12 +461,12 @@ export const Select2: React.FC<Select2Props> = ({
         }
       }
     });
-    
+
     // 最後のグループを追加
     if (currentGroup !== null) {
       renderCurrentGroup();
     }
-    
+
     return items;
   };
 

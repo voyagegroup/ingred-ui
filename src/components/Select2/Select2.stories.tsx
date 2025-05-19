@@ -97,21 +97,29 @@ const Template: Story<Select2Props> = (args) => {
         onChange={(newValue: string | number | (string | number)[]) =>
           setValue(newValue)
         }
-      />
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
     </div>
   );
 };
 
 export const Basic: Story<Select2Props> = Template.bind({});
 Basic.args = {
-  options,
   placeholder: "果物を選択",
   searchable: false,
 };
 
 export const WithSearch: Story<Select2Props> = Template.bind({});
 WithSearch.args = {
-  options,
   placeholder: "果物を選択",
   searchable: true,
   searchPlaceholder: "果物を検索",
@@ -130,7 +138,6 @@ searchPlaceholderで検索入力欄のプレースホルダーを指定できま
 
 export const Error: Story<Select2Props> = Template.bind({});
 Error.args = {
-  options,
   placeholder: "果物を選択",
   error: true,
 };
@@ -145,46 +152,26 @@ Error.parameters = {
 
 export const Disabled: Story<Select2Props> = Template.bind({});
 Disabled.args = {
-  options,
   placeholder: "果物を選択",
   disabled: true,
 };
 
 export const WithDefaultValue: Story<Select2Props> = Template.bind({});
 WithDefaultValue.args = {
-  options,
   value: "apple",
 };
 
 export const WithManyOptions: Story<Select2Props> = Template.bind({});
 WithManyOptions.args = {
-  options: [
-    ...options,
-    { value: "watermelon", label: "スイカ" },
-    { value: "lemon", label: "レモン" },
-    { value: "lime", label: "ライム" },
-    { value: "cherry", label: "さくらんぼ" },
-    { value: "blueberry", label: "ブルーベリー" },
-    { value: "raspberry", label: "ラズベリー" },
-    { value: "blackberry", label: "ブラックベリー" },
-    { value: "plum", label: "プラム" },
-    { value: "persimmon", label: "柿" },
-    { value: "fig", label: "イチジク" },
-  ],
   placeholder: "果物を選択",
 };
+WithManyOptions.decorators = [(Story) => <Story />];
 
 export const WithDisabledOptions: Story<Select2Props> = Template.bind({});
 WithDisabledOptions.args = {
-  options: [
-    { value: "apple", label: "りんご" },
-    { value: "banana", label: "バナナ", disabled: true },
-    { value: "orange", label: "オレンジ" },
-    { value: "grape", label: "ブドウ", disabled: true },
-    { value: "melon", label: "メロン" },
-  ],
   placeholder: "果物を選択",
 };
+WithDisabledOptions.decorators = [(Story) => <Story />];
 
 export const MultipleSelection: Story<Select2Props> = (args) => {
   const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
@@ -203,7 +190,17 @@ export const MultipleSelection: Story<Select2Props> = (args) => {
             setSelectedValues(newValues);
           }
         }}
-      />
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
       <div style={{ marginTop: "16px" }}>
         <p>選択された値: {selectedValues.join(", ")}</p>
       </div>
@@ -211,7 +208,6 @@ export const MultipleSelection: Story<Select2Props> = (args) => {
   );
 };
 MultipleSelection.args = {
-  options,
   placeholder: "果物を選択（複数可）",
   searchable: false,
   applyButtonText: "適用",
@@ -246,7 +242,17 @@ export const MultipleSelectionWithSearch: Story<Select2Props> = (args) => {
             setSelectedValues(newValues);
           }
         }}
-      />
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
       <div style={{ marginTop: "16px" }}>
         <p>選択された値: {selectedValues.join(", ")}</p>
       </div>
@@ -254,7 +260,6 @@ export const MultipleSelectionWithSearch: Story<Select2Props> = (args) => {
   );
 };
 MultipleSelectionWithSearch.args = {
-  options,
   placeholder: "果物を選択（複数可）",
   searchable: true,
   searchPlaceholder: "果物を検索",
@@ -304,7 +309,6 @@ export const WithDeclarativeAPI = () => {
   return (
     <div style={{ width: "300px" }}>
       <Select2
-        options={[]} // 子要素を使う場合はoptionsは空配列でOK
         placeholder="食材を選択"
         searchable={true}
         searchPlaceholder="検索..."
@@ -313,10 +317,7 @@ export const WithDeclarativeAPI = () => {
       >
         <Select2OptionGroup label="果物">
           {fruitOptions.map((option) => (
-            <Select2Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select2Option key={option.value} value={option.value}>
               {option.label}
             </Select2Option>
           ))}
@@ -324,10 +325,7 @@ export const WithDeclarativeAPI = () => {
 
         <Select2OptionGroup label="野菜">
           {vegetableOptions.map((option) => (
-            <Select2Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select2Option key={option.value} value={option.value}>
               {option.label}
             </Select2Option>
           ))}
@@ -337,10 +335,7 @@ export const WithDeclarativeAPI = () => {
 
         <Select2OptionGroup label="肉類">
           {meatOptions.map((option) => (
-            <Select2Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select2Option key={option.value} value={option.value}>
               {option.label}
             </Select2Option>
           ))}
@@ -399,7 +394,6 @@ export const WithDeclarativeAPIMultiple = () => {
   return (
     <div style={{ width: "300px" }}>
       <Select2
-        options={[]} // 子要素を使う場合はoptionsは空配列でOK
         placeholder="食材を選択（複数可）"
         searchable={true}
         searchPlaceholder="検索..."
@@ -415,10 +409,7 @@ export const WithDeclarativeAPIMultiple = () => {
       >
         <Select2OptionGroup label="果物">
           {fruitOptions.map((option) => (
-            <Select2Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select2Option key={option.value} value={option.value}>
               {option.label}
             </Select2Option>
           ))}
@@ -426,10 +417,7 @@ export const WithDeclarativeAPIMultiple = () => {
 
         <Select2OptionGroup label="野菜">
           {vegetableOptions.map((option) => (
-            <Select2Option
-              key={option.value}
-              value={option.value}
-            >
+            <Select2Option key={option.value} value={option.value}>
               {option.label}
             </Select2Option>
           ))}

@@ -63,10 +63,6 @@ export type Select2StyleProps = {
 
 export type Select2Props = {
   /**
-   * 選択肢の配列
-   */
-  options: Select2Option[];
-  /**
    * 選択された値。multipleがtrueの場合は配列、falseの場合は単一の値
    */
   value?: string | number | (string | number)[];
