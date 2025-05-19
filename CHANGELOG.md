@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.0.0
+
+### Major Changes
+
+- [#1815](https://github.com/voyagegroup/ingred-ui/pull/1815) [`468f382a`](https://github.com/voyagegroup/ingred-ui/commit/468f382acbb61bdcd9958d0f489b492a4b8f6bff) Thanks [@noronaoki](https://github.com/noronaoki)! - Select2: options propsを廃止し、宣言的API（JSXの子要素）に統一しました。
+
 ## 22.3.3
 
 ### Patch Changes
