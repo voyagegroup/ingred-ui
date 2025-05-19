@@ -1,4 +1,5 @@
 import { Theme } from "../../themes";
+import React from "react";
 
 export type Select2Size = "small" | "medium" | "large";
 export type Select2Variant = "light" | "dark";
@@ -61,10 +62,6 @@ export type Select2StyleProps = {
 };
 
 export type Select2Props = {
-  /**
-   * 選択肢の配列
-   */
-  options: Select2Option[];
   /**
    * 選択された値。multipleがtrueの場合は配列、falseの場合は単一の値
    */
@@ -141,4 +138,14 @@ export type Select2Props = {
    * @default "キャンセル"
    */
   cancelButtonText?: string;
+  /**
+   * 子要素（宣言的API用）
+   * Select2Option、ContextMenu2HeadingItem、ContextMenu2SeparatorItemなどを指定できます
+   */
+  children?: React.ReactNode;
+  /**
+   * 複数選択時の一時的な選択値が変化したときに呼ばれるコールバック
+   * multiple=trueのときのみ有効
+   */
+  onTempChange?: (tempSelected: (string | number)[]) => void;
 };
