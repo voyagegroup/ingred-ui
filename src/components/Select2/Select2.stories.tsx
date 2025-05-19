@@ -299,8 +299,8 @@ MultipleSelectionWithSearch.parameters = {
   },
 };
 
-// 宣言的APIの例
-export const WithDeclarativeAPI = () => {
+// グループ化やセパレータの例
+export const WithOptionGroups = () => {
   const [value, setValue] = useState<string | number>("");
 
   // フルーツのオプション
@@ -369,7 +369,7 @@ export const WithDeclarativeAPI = () => {
     </div>
   );
 };
-WithDeclarativeAPI.parameters = {
+WithOptionGroups.parameters = {
   docs: {
     description: {
       story: `
@@ -382,7 +382,7 @@ Select2Separatorはグループ間にセパレータを追加します。
 };
 
 // 宣言的APIを使用した複数選択の例
-export const WithDeclarativeAPIMultiple = () => {
+export const WithOptionGroupsMultiple = () => {
   const [values, setValues] = useState<(string | number)[]>([
     "apple",
     "potato",
@@ -463,7 +463,7 @@ export const WithDeclarativeAPIMultiple = () => {
     </div>
   );
 };
-WithDeclarativeAPIMultiple.parameters = {
+WithOptionGroupsMultiple.parameters = {
   docs: {
     description: {
       story: `
@@ -523,7 +523,7 @@ export const WithMaxSelectionStrict = () => {
         ))}
       </Select2>
       <div style={{ marginTop: 16 }}>
-        <p>選択中: {selected.join(", ")}</p>
+        <p>選択中（上限5個まで）: {selected.join(", ")}</p>
       </div>
     </div>
   );
