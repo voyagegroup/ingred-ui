@@ -505,10 +505,10 @@ export const WithMaxSelectionStrict = () => {
           }
           setSelected(newSelected as (string | number)[]);
         }}
-        onTempChange={setTempSelected}
         placeholder={`最大${MAX}件まで選択可能`}
         applyButtonText="適用"
         cancelButtonText="キャンセル"
+        onTempChange={setTempSelected}
       >
         {options.map((opt) => (
           <Select2Option
