@@ -167,11 +167,33 @@ WithManyOptions.args = {
 };
 WithManyOptions.decorators = [(Story) => <Story />];
 
-export const WithDisabledOptions: Story<Select2Props> = Template.bind({});
+export const WithDisabledOptions: Story<Select2Props> = (args) => {
+  return (
+    <div style={{ width: 300 }}>
+      <Select2 {...args}>
+        <Select2Option value="apple">りんご</Select2Option>
+        <Select2Option disabled value="banana">
+          バナナ
+        </Select2Option>
+        <Select2Option value="orange">オレンジ</Select2Option>
+        <Select2Option disabled value="grape">
+          ブドウ
+        </Select2Option>
+        <Select2Option value="melon">メロン</Select2Option>
+      </Select2>
+    </div>
+  );
+};
 WithDisabledOptions.args = {
   placeholder: "果物を選択",
 };
-WithDisabledOptions.decorators = [(Story) => <Story />];
+WithDisabledOptions.parameters = {
+  docs: {
+    description: {
+      story: `一部のオプション（バナナ・ブドウ）はdisabled（選択不可）です。`,
+    },
+  },
+};
 
 export const MultipleSelection: Story<Select2Props> = (args) => {
   const [selectedValues, setSelectedValues] = useState<(string | number)[]>([

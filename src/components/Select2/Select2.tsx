@@ -317,33 +317,33 @@ export const Select2: React.FC<Select2Props> = ({
     </SelectButton>
   );
 
-  // 宣言的APIでの子要素をContextMenu2の項目に変換
+  // 子要素をContextMenu2の項目に変換
   const renderChildrenAsMenuItems = (
     childrenElements: React.ReactNode,
+    filteredValueSet?: Set<string | number>,
   ): React.ReactNode[] => {
-    // 型定義
     type OptionGroup = {
       label: string;
       options: ReactElement[];
     };
-
     const items: React.ReactNode[] = [];
     let currentGroup: OptionGroup | null = null;
 
-    // 子要素からSelect2Option要素を抽出してCheckItemに変換する関数
     const convertOptionToCheckItem = (
       option: ReactElement,
       keyPrefix: string,
       index: number,
-    ): ReactElement => {
+    ): ReactElement | null => {
       const optionValue = option.props.value;
       const optionDisabled = !!option.props.disabled;
       const optionLabel = option.props.children;
-
+      // 検索中はfilteredValueSetに含まれないoptionは描画しない
+      if (filteredValueSet && !filteredValueSet.has(optionValue)) {
+        return null;
+      }
       const isChecked = multiple
         ? tempSelectedValues.includes(optionValue)
         : optionValue === value;
-
       const handleChange = () => {
         if (multiple) {
           handleMultipleSelect(!isChecked, {
@@ -359,7 +359,6 @@ export const Select2: React.FC<Select2Props> = ({
           });
         }
       };
-
       return (
         <ContextMenu2CheckItem
           key={`${keyPrefix}-${index}`}
@@ -374,50 +373,39 @@ export const Select2: React.FC<Select2Props> = ({
       );
     };
 
-    // 現在のグループをrender
     const renderCurrentGroup = () => {
       if (currentGroup === null) return;
-
-      const group = currentGroup; // ローカル変数にコピーして型を安定させる
-
+      const group = currentGroup;
+      // グループ内に描画するoptionがなければグループごとスキップ
+      const groupItems = group.options
+        .map((option, index) =>
+          convertOptionToCheckItem(option, `option-${group.label}`, index),
+        )
+        .filter(Boolean);
+      if (groupItems.length === 0) return;
       items.push(
         <ContextMenu2HeadingItem key={`heading-${group.label}`}>
           {group.label}
         </ContextMenu2HeadingItem>,
       );
-
-      group.options.forEach((option, index) => {
-        items.push(
-          convertOptionToCheckItem(option, `option-${group.label}`, index),
-        );
-      });
+      items.push(...groupItems);
     };
 
-    // 子要素を走査して構造データを構築
     Children.forEach(childrenElements, (child) => {
       if (!isValidElement(child)) return;
-
       const childElement = child as ReactElement;
-
       if (childElement.type && typeof childElement.type !== "string") {
         const componentName =
           (childElement.type as any).displayName ||
           (childElement.type as any).name;
-
-        // Select2OptionGroupの場合
         if (componentName === "Select2OptionGroup") {
-          // 既存のグループを追加
           if (currentGroup !== null) {
             renderCurrentGroup();
           }
-
-          // 新しいグループを開始
           currentGroup = {
             label: childElement.props.label as string,
             options: [],
           };
-
-          // グループの子要素を処理
           if (childElement.props.children) {
             Children.forEach(childElement.props.children, (groupChild) => {
               if (isValidElement(groupChild)) {
@@ -425,7 +413,6 @@ export const Select2: React.FC<Select2Props> = ({
                 const groupChildName =
                   (groupChildElement.type as any).displayName ||
                   (groupChildElement.type as any).name;
-
                 if (
                   groupChildName === "Select2Option" &&
                   currentGroup !== null
@@ -435,56 +422,56 @@ export const Select2: React.FC<Select2Props> = ({
               }
             });
           }
-        }
-        // Select2Separatorの場合
-        else if (componentName === "Select2Separator") {
-          items.push(
-            <ContextMenu2SeparatorItem key={`separator-${items.length}`} />,
-          );
-        }
-        // Select2Optionの場合
-        else if (componentName === "Select2Option") {
+        } else if (componentName === "Select2Separator") {
+          // セパレータは前後に描画するoptionがある場合のみ表示
+          if (items.length > 0) {
+            items.push(
+              <ContextMenu2SeparatorItem key={`separator-${items.length}`} />,
+            );
+          }
+        } else if (componentName === "Select2Option") {
           if (currentGroup !== null) {
             currentGroup.options.push(childElement);
           } else {
             const optionValue = childElement.props.value;
-            if (optionValue === undefined) return;
-
+            if (filteredValueSet && !filteredValueSet.has(optionValue)) {
+              return;
+            }
             items.push(
               convertOptionToCheckItem(childElement, `option`, items.length),
             );
           }
-        }
-        // その他のコンポーネントはそのまま追加
-        else {
+        } else {
           items.push(childElement);
         }
       }
     });
-
-    // 最後のグループを追加
     if (currentGroup !== null) {
       renderCurrentGroup();
     }
-
     return items;
   };
 
   // 子要素を処理する関数
   const renderMenuContent = () => {
-    // 子要素があればそれを処理
+    // 検索中はfilteredOptionsのvalueだけを許可
+    const isSearching = searchable && !!searchValue;
+    const filteredValueSet = isSearching
+      ? new Set(filteredOptions.map((opt) => opt.value))
+      : undefined;
     if (children) {
-      // 宣言的APIの子要素を処理してメニュー項目を生成
-      return renderChildrenAsMenuItems(children);
+      const items = renderChildrenAsMenuItems(children, filteredValueSet);
+      if (items.length === 0) {
+        return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
+      }
+      return items;
     }
-
-    // 子要素がない場合は従来通りoptionsからリストを生成
+    // fallback: filteredOptionsをそのまま描画
     if (filteredOptions.length > 0) {
       return filteredOptions.map((option) => {
         const isChecked = multiple
           ? tempSelectedValues.includes(option.value)
           : option.value === value;
-
         const handleChange = () => {
           if (multiple) {
             handleMultipleSelect(!isChecked, option);
@@ -492,7 +479,6 @@ export const Select2: React.FC<Select2Props> = ({
             handleSingleSelect(option);
           }
         };
-
         return (
           <ContextMenu2CheckItem
             key={option.value.toString()}
@@ -507,7 +493,6 @@ export const Select2: React.FC<Select2Props> = ({
         );
       });
     }
-
     return <ContextMenu2NoResultsMessage message={noResultsMessage} />;
   };
 
