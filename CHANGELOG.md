@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.0.1
+
+### Patch Changes
+
+- [#1819](https://github.com/voyagegroup/ingred-ui/pull/1819) [`0d2f0876`](https://github.com/voyagegroup/ingred-ui/commit/0d2f087645fe34a3f38479495e94c3984b75e9bd) Thanks [@deatiger](https://github.com/deatiger)! - Fix type name of Select2Option
+
 ## 23.0.0
 
 ### Major Changes
