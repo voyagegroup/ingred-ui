@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Story, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
 import { Select2Option } from "./Select2Option";
-import { Select2Props, Select2Option as Select2OptionType } from "./types";
+import { Select2Props, Select2OptionProps } from "./types";
 import { Select2OptionGroup } from "./Select2OptionGroup";
 import { Select2Separator } from "./Select2Separator";
 
@@ -64,7 +64,7 @@ export default {
   },
 } as Meta<typeof Select2>;
 
-const options: Select2OptionType[] = [
+const options: Select2OptionProps[] = [
   { value: "apple", label: "りんご" },
   { value: "banana", label: "バナナ" },
   { value: "orange", label: "オレンジ" },
