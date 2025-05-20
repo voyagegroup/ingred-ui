@@ -36,7 +36,7 @@ export const SELECT2_SIZES: Record<Select2Size, Select2SizeConfig> = {
   },
 } as const;
 
-export type Select2Option = {
+export type Select2OptionProps = {
   /**
    * 選択肢の値
    */

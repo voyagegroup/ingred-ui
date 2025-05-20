@@ -30,7 +30,7 @@ import {
   TagContainer,
   StyledTag,
 } from "./styled";
-import { Select2Props, Select2Option } from "./types";
+import { Select2Props, Select2OptionProps } from "./types";
 import { ContextMenu2NoResultsMessage } from "../ContextMenu2/ContextMenu2NoResultsMessage";
 
 export const Select2: React.FC<Select2Props> = ({
@@ -77,7 +77,7 @@ export const Select2: React.FC<Select2Props> = ({
   // 子要素からオプション情報を抽出する
   const extractOptionsFromChildren = useMemo(() => {
     if (!children) return [];
-    const options: Select2Option[] = [];
+    const options: Select2OptionProps[] = [];
     const extractOptions = (childElements: React.ReactNode) => {
       Children.forEach(childElements, (child) => {
         if (!isValidElement(child)) return;
@@ -132,7 +132,7 @@ export const Select2: React.FC<Select2Props> = ({
   );
 
   const handleSingleSelect = useCallback(
-    (option: Select2Option) => {
+    (option: Select2OptionProps) => {
       if (!option.disabled) {
         handleChange(option.value);
         setIsOpen(false);
@@ -143,7 +143,7 @@ export const Select2: React.FC<Select2Props> = ({
   );
 
   const handleMultipleSelect = useCallback(
-    (checked: boolean, option: Select2Option) => {
+    (checked: boolean, option: Select2OptionProps) => {
       if (option.disabled) return;
       setTempSelectedValues((prev) => {
         const newValues = checked
