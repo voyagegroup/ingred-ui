@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.0.2
+
+### Patch Changes
+
+- [#1810](https://github.com/voyagegroup/ingred-ui/pull/1810) [`07493b0a`](https://github.com/voyagegroup/ingred-ui/commit/07493b0ad5257803e9609728cea31f3dfac04318) Thanks [@noronaoki](https://github.com/noronaoki)! - Dual listbox2のsticky設定のバグ修正
+
 ## 23.0.1
 
 ### Patch Changes
