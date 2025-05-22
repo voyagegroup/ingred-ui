@@ -9,7 +9,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
   >
     <ul
       aria-label="リストの表示切り替え"
-      class="sc-jqUVSM byqyFJ"
+      class="sc-jqUVSM bZycZw"
       role="tablist"
     >
       <li>
@@ -50,7 +50,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD jaTTxd"
+          class="sc-breuTD cxAgmh"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -165,7 +165,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <div
             class="sc-cxabCf edqkNY"
@@ -416,7 +416,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         class="sc-crXcEl bjMufC"
       >
         <div
-          class="sc-dIouRR kkysIy"
+          class="sc-dIouRR iJGmbm"
         >
           <div
             class="sc-hHLeRK fhzPNq"
@@ -480,10 +480,10 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
@@ -511,7 +511,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             />
           </div>
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
@@ -559,7 +559,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
   >
     <ul
       aria-label="リストの表示切り替え"
-      class="sc-jqUVSM byqyFJ"
+      class="sc-jqUVSM bZycZw"
       role="tablist"
     >
       <li>
@@ -600,7 +600,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD ha-dJAk"
+          class="sc-breuTD hzKQQI"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -689,7 +689,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <div
             class="sc-gicCDI bcXmbd"
@@ -860,7 +860,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         class="sc-crXcEl bjMufC"
       >
         <div
-          class="sc-dIouRR kkysIy"
+          class="sc-dIouRR iJGmbm"
         >
           <div
             class="sc-hHLeRK fhzPNq"
@@ -924,10 +924,10 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
@@ -960,7 +960,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             />
           </div>
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
@@ -1013,7 +1013,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
   >
     <ul
       aria-label="リストの表示切り替え"
-      class="sc-jqUVSM byqyFJ"
+      class="sc-jqUVSM bZycZw"
       role="tablist"
     >
       <li>
@@ -1054,7 +1054,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-breuTD ha-dJAk"
+          class="sc-breuTD hzKQQI"
         >
           <div
             class="sc-ksZaOG HDGZE"
@@ -1146,7 +1146,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           </ul>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <button
             aria-expanded="false"
@@ -1245,7 +1245,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         class="sc-crXcEl bjMufC"
       >
         <div
-          class="sc-dIouRR kkysIy"
+          class="sc-dIouRR iJGmbm"
         >
           <div
             class="sc-hHLeRK fhzPNq"
@@ -1309,10 +1309,10 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           </div>
         </div>
         <div
-          class="sc-evZas dnjCJp"
+          class="sc-evZas fZGMkm"
         >
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
@@ -1345,7 +1345,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             />
           </div>
           <p
-            class="sc-bBrHrO gxaSUU"
+            class="sc-bBrHrO gXhUgk"
           >
             <span
               class="sc-eCYdqJ iymozk"
