@@ -156,10 +156,6 @@ export const DropDownTrigger = styled.button<{
     transition: color 0.2s ease;
   }
 
-  &:hover:not([disabled]) {
-    background: ${colors.basic[100]};
-  }
-
   /* サイズバリエーション */
   &:where(${FilterInputAbstract}[data-size="small"] *) {
     ${getTriggerIconSizeStyle("small")}
