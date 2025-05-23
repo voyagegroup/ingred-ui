@@ -148,11 +148,11 @@ export const FilterInputAbstract = ({
           open={disabled ? false : isSelectOpen}
           trigger={
             <styled.DropDownTrigger
+              $variant={variant}
               type="button"
               disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
               onClick={handleClick}
-              $variant={variant}
             >
               {selectOptionsWithColor[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />

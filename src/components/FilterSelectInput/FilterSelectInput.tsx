@@ -144,6 +144,7 @@ export const FilterSelectInput = ({
 
   return (
     <FilterInputAbstract
+      variant={variant}
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
@@ -151,7 +152,6 @@ export const FilterSelectInput = ({
       error={error}
       isOpen={isOpen}
       onSelectChange={onSelectChange}
-      variant={variant}
     >
       <styled.SelectContainer ref={triggerEl}>
         <ContextMenu2Container>

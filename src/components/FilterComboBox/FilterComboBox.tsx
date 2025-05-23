@@ -230,6 +230,7 @@ export const FilterComboBox = ({
 
   return (
     <FilterInputAbstract
+      variant={variant}
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}
@@ -237,7 +238,6 @@ export const FilterComboBox = ({
       error={error}
       isOpen={isOpen}
       onSelectChange={onSelectChange}
-      variant={variant}
     >
       <styled.SelectContainer
         $variant={variant}
