@@ -4,11 +4,13 @@ import React, {
   type ButtonHTMLAttributes,
   useContext,
   useCallback,
+  type ReactElement,
 } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
 import Icon from "../Icon";
+import type { Props as IconProps } from "../Icon/Icon";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
@@ -18,10 +20,26 @@ type ContextMenu2CheckItemProps = {
   prepend?: ReactNode;
   children: ReactNode;
   onChange?: (checked: boolean) => void;
+  color?: "danger" | undefined;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ButtonPrepend = styled.span`
-  color: ${colors.basic[900]};
+  /* アイコンのデフォルトサイズと色を設定 */
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* span要素のサイズも設定 */
+  span {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* disabled状態の時の色 */
+  button:disabled & {
+    color: ${colors.basic[400]};
+  }
 `;
 
 const StyledIcon = styled.span`
@@ -38,9 +56,17 @@ const InternalContextMenu2CheckItem = forwardRef<
     closeOnChange && close();
   }, [checked, close, closeOnChange, onChange]);
 
+  // prependがIconコンポーネントの場合、colorを自動設定
+  const prependWithColor =
+    React.isValidElement(prepend) && prepend.type === Icon
+      ? React.cloneElement(prepend as ReactElement<IconProps>, {
+          color: "currentColor",
+        })
+      : prepend;
+
   return (
     <button type="button" {...props} ref={ref} onClick={handleClick}>
-      {prepend && <ButtonPrepend>{prepend}</ButtonPrepend>}
+      {prepend && <ButtonPrepend>{prependWithColor}</ButtonPrepend>}
       {children}
       <StyledIcon>
         {checked && <Icon name="check_thin" color={colors.blue[500]} />}

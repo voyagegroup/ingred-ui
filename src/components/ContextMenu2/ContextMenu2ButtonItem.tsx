@@ -5,10 +5,13 @@ import React, {
   type ReactNode,
   type ButtonHTMLAttributes,
   type MouseEvent,
+  type ReactElement,
 } from "react";
 import { ContextMenu2Context } from "./context";
 import styled from "styled-components";
 import { colors } from "../../styles";
+import Icon from "../Icon";
+import type { Props as IconProps } from "../Icon/Icon";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
@@ -17,10 +20,26 @@ type ContextMenu2ButtonItemProps = {
   prepend?: ReactNode;
   children: ReactNode;
   closeOnClick?: boolean;
+  color?: "danger" | undefined;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const ButtonAppend = styled.span`
-  color: ${colors.basic[700]};
+const ButtonPrepend = styled.span`
+  /* アイコンのデフォルトサイズと色を設定 */
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* span要素のサイズも設定 */
+  span {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* disabled状態の時の色 */
+  button:disabled & {
+    color: ${colors.basic[400]};
+  }
 `;
 
 const InternalContextMenu2ButtonItem = forwardRef<
@@ -36,6 +55,15 @@ const InternalContextMenu2ButtonItem = forwardRef<
     },
     [closeOnClick, close, onClick],
   );
+
+  // prependがIconコンポーネントの場合、colorを自動設定
+  const prependWithColor =
+    React.isValidElement(prepend) && prepend.type === Icon
+      ? React.cloneElement(prepend as ReactElement<IconProps>, {
+          color: "currentColor",
+        })
+      : prepend;
+
   return (
     <button
       type="button"
@@ -44,7 +72,7 @@ const InternalContextMenu2ButtonItem = forwardRef<
       data-pressed={pressed}
       onClick={handleClick}
     >
-      {prepend && <ButtonAppend>{prepend}</ButtonAppend>}
+      {prepend && <ButtonPrepend>{prependWithColor}</ButtonPrepend>}
       {children}
     </button>
   );

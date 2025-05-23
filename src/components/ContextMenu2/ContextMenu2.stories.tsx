@@ -123,16 +123,17 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
                 if (checked) setCheckedIndex(0);
               }}
             >
-              含む
+              通常時
             </ContextMenu2CheckItem>
             <ContextMenu2CheckItem
+              color="danger"
               checked={checkedIndex === 1}
               prepend={<Icon name="image" />}
               onChange={(checked) => {
                 if (checked) setCheckedIndex(1);
               }}
             >
-              含まない
+              危険な選択肢
             </ContextMenu2CheckItem>
             <ContextMenu2CheckItem
               disabled
