@@ -490,6 +490,7 @@ export const FilterTagInput = ({
   return (
     <>
       <FilterInputAbstract
+        variant={variant}
         size={size}
         selectedIndex={selectedIndex}
         selectOptions={selectOptions}
