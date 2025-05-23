@@ -8,6 +8,7 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
+import type { Props as IconProps } from "../Icon/Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
@@ -56,7 +57,7 @@ export const FilterTag = ({
 // 本体のコンポーネント
 type FilterInputAbstractProps = {
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<IconProps>; label: string }[];
   children?: ReactNode;
   onSelectChange: (index: number) => void;
   size?: "small" | "medium" | "large";
@@ -80,6 +81,17 @@ export const FilterInputAbstract = ({
   const [isSmall, setIsSmall] = useState(false);
 
   const el = useRef<HTMLDivElement>(null);
+
+  // selectOptionsのiconにデフォルトでcurrentColorを設定
+  const selectOptionsWithColor = selectOptions.map((option) => ({
+    ...option,
+    icon:
+      React.isValidElement(option.icon) && option.icon.type === Icon
+        ? React.cloneElement(option.icon as ReactElement<IconProps>, {
+            color: option.icon.props.color || "currentColor",
+          })
+        : option.icon,
+  }));
 
   const handleSelectChange = useCallback(
     (index: number) => {
@@ -139,13 +151,13 @@ export const FilterInputAbstract = ({
               aria-label="フィルターのタイプを選ぶ"
               onClick={handleClick}
             >
-              {selectOptions[selectedIndex].icon}
+              {selectOptionsWithColor[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />
             </styled.DropDownTrigger>
           }
           onOpenChange={handleOpenChange}
         >
-          {selectOptions.map(({ label, icon }, i) => (
+          {selectOptionsWithColor.map(({ label, icon }, i) => (
             <ContextMenu2CheckItem
               key={label}
               prepend={icon}
