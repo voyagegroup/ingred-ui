@@ -67,6 +67,19 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
               アーカイブする
             </ContextMenu2ButtonItem>
             <ContextMenu2ButtonItem
+              prepend={<Icon name="image" />}
+              onClick={() => alert("通常時")}
+            >
+              通常時
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem
+              disabled
+              prepend={<Icon name="image" />}
+              onClick={() => alert("disabled")}
+            >
+              無効時
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem
               color="danger"
               prepend={<Icon name="image" />}
               onClick={() => alert("削除する")}
