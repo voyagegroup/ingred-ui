@@ -68,6 +68,7 @@ export const Overview: StoryObj<typeof ContextMenu2> = {
             </ContextMenu2ButtonItem>
             <ContextMenu2ButtonItem
               color="danger"
+              prepend={<Icon name="image" />}
               onClick={() => alert("削除する")}
             >
               削除する
