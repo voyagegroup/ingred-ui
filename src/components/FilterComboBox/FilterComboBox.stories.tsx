@@ -76,23 +76,15 @@ export const Default: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
+        icon: <Icon name="operator_does_not_match" type="line" />,
         label: "含まない",
       },
       {
-        icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" />
-        ),
+        icon: <Icon name="operator_contains" type="line" />,
         label: "いずれかを含む",
       },
     ],
@@ -135,23 +127,15 @@ export const Sizes: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
+        icon: <Icon name="operator_does_not_match" type="line" />,
         label: "含まない",
       },
       {
-        icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" />
-        ),
+        icon: <Icon name="operator_contains" type="line" />,
         label: "いずれかを含む",
       },
     ],
@@ -213,17 +197,11 @@ export const Variants: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
+        icon: <Icon name="operator_does_not_match" type="line" />,
         label: "含まない",
       },
     ],
@@ -280,23 +258,15 @@ export const Disabled: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-          />
-        ),
+        icon: <Icon name="operator_does_not_match" type="line" />,
         label: "含まない",
       },
       {
-        icon: (
-          <Icon name="operator_contains" type="line" color="currentColor" />
-        ),
+        icon: <Icon name="operator_contains" type="line" />,
         label: "いずれかを含む",
       },
     ],
@@ -348,7 +318,7 @@ export const Error: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: <Icon name="operator_match" type="line" color="currentColor" />,
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
     ],
