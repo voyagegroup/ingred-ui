@@ -15,7 +15,7 @@ import {
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import * as styled from "./styled";
-import { FilterSize } from "./types";
+import { FilterSize, FilterVariant } from "./types";
 import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
@@ -61,6 +61,7 @@ type FilterInputAbstractProps = {
   children?: ReactNode;
   onSelectChange: (index: number) => void;
   size?: "small" | "medium" | "large";
+  variant?: FilterVariant;
   disabled?: boolean;
   error?: boolean;
   isOpen?: boolean;
@@ -71,6 +72,7 @@ export const FilterInputAbstract = ({
   onSelectChange,
   children,
   size = "medium",
+  variant = "light",
   disabled = false,
   error = false,
   isOpen = false,
@@ -150,6 +152,7 @@ export const FilterInputAbstract = ({
               disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
               onClick={handleClick}
+              $variant={variant}
             >
               {selectOptionsWithColor[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />

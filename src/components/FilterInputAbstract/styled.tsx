@@ -1,7 +1,12 @@
 import styled, { css } from "styled-components";
 import { colors } from "../../styles";
 import { ContextMenu2CheckItem } from "../ContextMenu2/ContextMenu2CheckItem";
-import { FILTER_SIZES, FilterSize } from "./types";
+import {
+  FILTER_SIZES,
+  FilterSize,
+  FilterVariant,
+  FILTER_VARIANTS,
+} from "./types";
 
 // フィルターのベーススタイル
 export const filterBaseStyle = css`
@@ -124,7 +129,10 @@ export const FilterInputAbstract = styled.div<{
   }
 `;
 
-export const DropDownTrigger = styled.button`
+export const DropDownTrigger = styled.button<{
+  disabled?: boolean;
+  $variant?: FilterVariant;
+}>`
   flex-shrink: 0;
   position: relative;
   z-index: 1;
@@ -137,8 +145,8 @@ export const DropDownTrigger = styled.button`
   outline-offset: -1px;
   color: ${({ disabled }) =>
     disabled ? colors.basic[400] : colors.basic[900]};
-  background: ${({ disabled }) =>
-    disabled ? colors.basic[200] : colors.basic[0]};
+  background: ${({ disabled, $variant = "light" }) =>
+    disabled ? colors.basic[200] : FILTER_VARIANTS[$variant].background};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease;
 

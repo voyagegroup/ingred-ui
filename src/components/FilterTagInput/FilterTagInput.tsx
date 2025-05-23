@@ -497,6 +497,7 @@ export const FilterTagInput = ({
         error={error}
         isOpen={isFocused}
         onSelectChange={onSelectChange}
+        variant={variant}
       >
         <styled.InlineField ref={inlineFieldEl} $size={size} $variant={variant}>
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
