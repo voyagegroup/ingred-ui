@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.1.0
+
+### Minor Changes
+
+- [#1822](https://github.com/voyagegroup/ingred-ui/pull/1822) [`ff999c11`](https://github.com/voyagegroup/ingred-ui/commit/ff999c11e46fc19f07cf5dc62bb65b950912cfa5) Thanks [@noronaoki](https://github.com/noronaoki)! - filter系コンポーネントのドロップダウン周りとcontextmenu2のリストメニューのスタイリングの修正
+
 ## 23.0.2
 
 ### Patch Changes
