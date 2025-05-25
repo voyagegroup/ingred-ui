@@ -54,7 +54,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       >
         <div>
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-bczRLJ gJuzRf"
             size="18"
           >
             <svg
@@ -82,15 +82,15 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         class="sc-kgflAQ tWjLj"
       />
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-dkzDqf cdxsZa"
         tabindex="-1"
         type="button"
       >
         <span
-          class="sc-bczRLJ gjrGrq"
+          class="sc-gsnTZi cqsEkE"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-bczRLJ gJuzRf"
             size="18"
           >
             <svg
@@ -103,7 +103,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
               />
               <path
                 d="M10.25,8.25H14l-4.5,4.5L5,8.25H8.75V3h1.5ZM3.5,15h12V9.75H17v6a.75.75,0,0,1-.75.75H2.75A.75.75,0,0,1,2,15.75v-6H3.5Z"
-                fill="#596978"
+                fill="currentColor"
                 transform="translate(-0.5 -0.75)"
               />
             </svg>
@@ -112,14 +112,14 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         アイコンボタン
       </button>
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-dkzDqf cdxsZa"
         tabindex="-1"
         type="button"
       >
         ボタン
       </button>
       <button
-        class="sc-gsnTZi kHYuDQ"
+        class="sc-dkzDqf hClLqL"
         color="danger"
         tabindex="-1"
         type="button"
@@ -143,7 +143,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
           100
         </span>
         <span
-          class="sc-dkzDqf kPdxGi"
+          class="sc-bczRLJ gJuzRf"
           size="18"
         >
           <svg
@@ -162,10 +162,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         type="button"
       >
         <span
-          class="sc-hKMtZM gEhuHi"
+          class="sc-hKMtZM fbdcDs"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-bczRLJ gJuzRf"
             size="18"
           >
             <svg
@@ -174,7 +174,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
             >
               <path
                 d="M4.828 21L4.808 21.02L4.787 21H2.992C2.72881 20.9997 2.4765 20.895 2.29049 20.7088C2.10448 20.5226 2 20.2702 2 20.007V3.993C2.00183 3.73038 2.1069 3.47902 2.29251 3.29322C2.47813 3.10742 2.72938 3.00209 2.992 3H21.008C21.556 3 22 3.445 22 3.993V20.007C21.9982 20.2696 21.8931 20.521 21.7075 20.7068C21.5219 20.8926 21.2706 20.9979 21.008 21H4.828ZM20 15V5H4V19L14 9L20 15ZM20 17.828L14 11.828L6.828 19H20V17.828ZM8 11C7.46957 11 6.96086 10.7893 6.58579 10.4142C6.21071 10.0391 6 9.53043 6 9C6 8.46957 6.21071 7.96086 6.58579 7.58579C6.96086 7.21071 7.46957 7 8 7C8.53043 7 9.03914 7.21071 9.41421 7.58579C9.78929 7.96086 10 8.46957 10 9C10 9.53043 9.78929 10.0391 9.41421 10.4142C9.03914 10.7893 8.53043 11 8 11Z"
-                fill="#596978"
+                fill="currentColor"
               />
             </svg>
           </span>
@@ -184,7 +184,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
           class="sc-eCYdqJ kxUHtX"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-bczRLJ gJuzRf"
             size="18"
           >
             <svg
@@ -205,10 +205,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         type="button"
       >
         <span
-          class="sc-hKMtZM gEhuHi"
+          class="sc-hKMtZM fbdcDs"
         >
           <span
-            class="sc-dkzDqf kPdxGi"
+            class="sc-bczRLJ gJuzRf"
             size="18"
           >
             <svg
@@ -217,7 +217,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
             >
               <path
                 d="M4.828 21L4.808 21.02L4.787 21H2.992C2.72881 20.9997 2.4765 20.895 2.29049 20.7088C2.10448 20.5226 2 20.2702 2 20.007V3.993C2.00183 3.73038 2.1069 3.47902 2.29251 3.29322C2.47813 3.10742 2.72938 3.00209 2.992 3H21.008C21.556 3 22 3.445 22 3.993V20.007C21.9982 20.2696 21.8931 20.521 21.7075 20.7068C21.5219 20.8926 21.2706 20.9979 21.008 21H4.828ZM20 15V5H4V19L14 9L20 15ZM20 17.828L14 11.828L6.828 19H20V17.828ZM8 11C7.46957 11 6.96086 10.7893 6.58579 10.4142C6.21071 10.0391 6 9.53043 6 9C6 8.46957 6.21071 7.96086 6.58579 7.58579C6.96086 7.21071 7.46957 7 8 7C8.53043 7 9.03914 7.21071 9.41421 7.58579C9.78929 7.96086 10 8.46957 10 9C10 9.53043 9.78929 10.0391 9.41421 10.4142C9.03914 10.7893 8.53043 11 8 11Z"
-                fill="#596978"
+                fill="currentColor"
               />
             </svg>
           </span>
@@ -296,7 +296,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         </li>
       </ul>
       <button
-        class="sc-gsnTZi lhIOjZ"
+        class="sc-dkzDqf cdxsZa"
         tabindex="-1"
         type="button"
       >

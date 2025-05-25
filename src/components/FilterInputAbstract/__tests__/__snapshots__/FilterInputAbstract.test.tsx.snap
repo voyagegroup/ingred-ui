@@ -12,7 +12,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-ivTmOn eMwvsv"
+      class="sc-ivTmOn fWOPLR"
       type="button"
     >
       <span

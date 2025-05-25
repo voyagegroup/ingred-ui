@@ -57,80 +57,31 @@ export const Default: StoryObj<typeof meta> = {
     selectedIndex: 0,
     selectOptions: [
       {
-        icon: (
-          <Icon
-            name="operator_match"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_match" type="line" />,
         label: "含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_does_not_match"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_does_not_match" type="line" />,
         label: "含まない",
       },
       {
-        icon: (
-          <Icon
-            name="operator_contains"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_contains" type="line" />,
         label: "いずれかを含む",
       },
       {
-        icon: (
-          <Icon
-            name="operator_starts_with"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_starts_with" type="line" />,
         label: "で始まる",
       },
       {
-        icon: (
-          <Icon
-            name="operator_ends_with"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_ends_with" type="line" />,
         label: "で終わる",
       },
       {
-        icon: (
-          <Icon
-            name="operator_equal"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_equal" type="line" />,
         label: "同じ",
       },
       {
-        icon: (
-          <Icon
-            name="operator_not_equal"
-            type="line"
-            color="currentColor"
-            size={22}
-          />
-        ),
+        icon: <Icon name="operator_not_equal" type="line" />,
         label: "同じでない",
       },
     ],
