@@ -11,7 +11,7 @@ export const Example: StoryObj<WeekTimeProps> = {
   args: {
     weekTime: "ffffffffffffffffffffffffffffffffffffffffff",
   },
-  render: (args: WeekTimeProps) => {
+  render: (args) => {
     return <WeekTime weekTime={args.weekTime} />;
   },
 };

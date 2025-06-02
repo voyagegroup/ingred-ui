@@ -8,13 +8,14 @@ import React, {
   createContext,
 } from "react";
 import Icon from "../Icon";
+import type { Props as IconProps } from "../Icon/Icon";
 import {
   ContextMenu2,
   ContextMenu2Container,
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import * as styled from "./styled";
-import { FilterSize } from "./types";
+import { FilterSize, FilterVariant } from "./types";
 import { Tag } from "../Tag";
 
 export const FilterInputContext = createContext({
@@ -56,10 +57,11 @@ export const FilterTag = ({
 // 本体のコンポーネント
 type FilterInputAbstractProps = {
   selectedIndex: number;
-  selectOptions: { icon: ReactElement; label: string }[];
+  selectOptions: { icon: ReactElement<IconProps>; label: string }[];
   children?: ReactNode;
   onSelectChange: (index: number) => void;
   size?: "small" | "medium" | "large";
+  variant?: FilterVariant;
   disabled?: boolean;
   error?: boolean;
   isOpen?: boolean;
@@ -70,6 +72,7 @@ export const FilterInputAbstract = ({
   onSelectChange,
   children,
   size = "medium",
+  variant = "light",
   disabled = false,
   error = false,
   isOpen = false,
@@ -80,6 +83,17 @@ export const FilterInputAbstract = ({
   const [isSmall, setIsSmall] = useState(false);
 
   const el = useRef<HTMLDivElement>(null);
+
+  // selectOptionsのiconにデフォルトでcurrentColorを設定
+  const selectOptionsWithColor = selectOptions.map((option) => ({
+    ...option,
+    icon:
+      React.isValidElement(option.icon) && option.icon.type === Icon
+        ? React.cloneElement(option.icon as ReactElement<IconProps>, {
+            color: option.icon.props.color || "currentColor",
+          })
+        : option.icon,
+  }));
 
   const handleSelectChange = useCallback(
     (index: number) => {
@@ -134,18 +148,19 @@ export const FilterInputAbstract = ({
           open={disabled ? false : isSelectOpen}
           trigger={
             <styled.DropDownTrigger
+              $variant={variant}
               type="button"
               disabled={disabled}
               aria-label="フィルターのタイプを選ぶ"
               onClick={handleClick}
             >
-              {selectOptions[selectedIndex].icon}
+              {selectOptionsWithColor[selectedIndex].icon}
               <Icon name="arrow_down" color="currentColor" />
             </styled.DropDownTrigger>
           }
           onOpenChange={handleOpenChange}
         >
-          {selectOptions.map(({ label, icon }, i) => (
+          {selectOptionsWithColor.map(({ label, icon }, i) => (
             <ContextMenu2CheckItem
               key={label}
               prepend={icon}

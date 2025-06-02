@@ -1,19 +1,36 @@
 # Changelog
 
-## 22.4.0
+## 23.1.0
 
 ### Minor Changes
 
-- [#1800](https://github.com/voyagegroup/ingred-ui/pull/1800) [`ea94c85c545f5e2bac3af46c8f1227f277f7c153`](https://github.com/voyagegroup/ingred-ui/commit/ea94c85c545f5e2bac3af46c8f1227f277f7c153) Thanks [@noronaoki](https://github.com/noronaoki)! - Storybook v8へアップグレード
+- [#1822](https://github.com/voyagegroup/ingred-ui/pull/1822) [`ff999c11`](https://github.com/voyagegroup/ingred-ui/commit/ff999c11e46fc19f07cf5dc62bb65b950912cfa5) Thanks [@noronaoki](https://github.com/noronaoki)! - filter系コンポーネントのドロップダウン周りとcontextmenu2のリストメニューのスタイリングの修正
 
-  - Storybook v6からv7を経由してv8にアップグレード
-  - ストーリーファイルの型定義を新しい形式に更新
-    - `Meta<typeof Component>` → `satisfies Meta<typeof Component>`
-    - `StoryObj<typeof Component>` → `StoryObj<typeof meta>`
-    - `Template.bind({})` → オブジェクト形式に変更
-  - `.storybook/main.ts`の設定を更新
-    - `autodocs: true`に変更
-    - `defaultName: 'Documentation'`を追加
+## 23.0.2
+
+### Patch Changes
+
+- [#1810](https://github.com/voyagegroup/ingred-ui/pull/1810) [`07493b0a`](https://github.com/voyagegroup/ingred-ui/commit/07493b0ad5257803e9609728cea31f3dfac04318) Thanks [@noronaoki](https://github.com/noronaoki)! - Dual listbox2のsticky設定のバグ修正
+
+## 23.0.1
+
+### Patch Changes
+
+- [#1819](https://github.com/voyagegroup/ingred-ui/pull/1819) [`0d2f0876`](https://github.com/voyagegroup/ingred-ui/commit/0d2f087645fe34a3f38479495e94c3984b75e9bd) Thanks [@deatiger](https://github.com/deatiger)! - Fix type name of Select2Option
+
+## 23.0.0
+
+### Major Changes
+
+- [#1815](https://github.com/voyagegroup/ingred-ui/pull/1815) [`468f382a`](https://github.com/voyagegroup/ingred-ui/commit/468f382acbb61bdcd9958d0f489b492a4b8f6bff) Thanks [@noronaoki](https://github.com/noronaoki)! - Select2: options propsを廃止し、宣言的API（JSXの子要素）に統一しました。
+
+## 22.3.3
+
+### Patch Changes
+
+- [#1811](https://github.com/voyagegroup/ingred-ui/pull/1811) [`33cf9b99`](https://github.com/voyagegroup/ingred-ui/commit/33cf9b994a807fb181ecf417a3524cb6d1a4ca6a) Thanks [@deatiger](https://github.com/deatiger)! - Export Select2 which can be imported from projects
+
+- [#1813](https://github.com/voyagegroup/ingred-ui/pull/1813) [`4f8ddf7c`](https://github.com/voyagegroup/ingred-ui/commit/4f8ddf7c738631326a206c3d2ac46fa0bee3ea6c) Thanks [@deatiger](https://github.com/deatiger)! - Revert #1800
 
 ## 22.3.2
 

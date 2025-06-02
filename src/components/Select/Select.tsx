@@ -187,7 +187,7 @@ const Select = <OptionValue, IsMulti extends boolean>(
   const handleInputChange: SelectProps<
     OptionValue,
     IsMulti
-  >["onInputChange"] = (newValue: string, actionMeta: { action: string }) => {
+  >["onInputChange"] = (newValue, actionMeta) => {
     if (onInputChange) {
       onInputChange(newValue, actionMeta);
     }
@@ -204,13 +204,13 @@ const Select = <OptionValue, IsMulti extends boolean>(
         styles={getOverrideStyles<OptionValue>(theme, error)}
         maxMenuHeight={150}
         // MEMO: use palette in Styled.ReactSelectMenuList
-        theme={(originalTheme: any) => ({
+        theme={(originalTheme) => ({
           ...originalTheme,
           palette: theme.palette,
         })}
         {...rest}
         components={{
-          DropdownIndicator: (props: any) => (
+          DropdownIndicator: (props) => (
             <DropdownIndicator {...props} error={error} />
           ),
           ClearIndicator,

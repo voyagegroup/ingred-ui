@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Story, Meta } from "@storybook/react";
 import { Select2 } from "./Select2";
-import { Select2Option, Select2Props } from "./types";
+import { Select2Option } from "./Select2Option";
+import { Select2Props, Select2OptionProps } from "./types";
+import { Select2OptionGroup } from "./Select2OptionGroup";
+import { Select2Separator } from "./Select2Separator";
 
-const meta = {
+export default {
   title: "Components/Inputs/Select2",
   component: Select2,
   parameters: {
@@ -39,7 +42,7 @@ const meta = {
       control: { type: "radio" },
       description: "無効状態",
       table: {
-        defaultValue: { summary: "false" },
+        defaultValue: { summary: false },
       },
     },
     error: {
@@ -47,7 +50,7 @@ const meta = {
       control: { type: "radio" },
       description: "エラー状態",
       table: {
-        defaultValue: { summary: "false" },
+        defaultValue: { summary: false },
       },
     },
     searchable: {
@@ -55,18 +58,13 @@ const meta = {
       control: { type: "radio" },
       description: "検索機能の有効/無効",
       table: {
-        defaultValue: { summary: "false" },
+        defaultValue: { summary: false },
       },
     },
   },
-} satisfies Meta<typeof Select2>;
+} as Meta<typeof Select2>;
 
-export default meta;
-
-// StoryObj型をPartial<Select2Props>に変更して、必須プロパティのチェックを回避
-type Story = StoryObj<Partial<Select2Props>>;
-
-const options: Select2Option[] = [
+const options: Select2OptionProps[] = [
   { value: "apple", label: "りんご" },
   { value: "banana", label: "バナナ" },
   { value: "orange", label: "オレンジ" },
@@ -79,8 +77,7 @@ const options: Select2Option[] = [
   { value: "mango", label: "マンゴー" },
 ];
 
-// 単一選択用のレンダー関数
-const Template = (args: any) => {
+const Template: Story<Select2Props> = (args) => {
   let defaultValue: string | number | (string | number)[] = "";
   if (args.value !== undefined) {
     defaultValue = args.value;
@@ -100,211 +97,441 @@ const Template = (args: any) => {
         onChange={(newValue: string | number | (string | number)[]) =>
           setValue(newValue)
         }
-      />
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
     </div>
   );
 };
 
-export const Basic: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択",
-    searchable: false,
-  },
-  render: (args) =>
-    Template({
-      ...args,
-      options,
-      placeholder: "果物を選択",
-      searchable: false,
-    }),
+export const Basic: Story<Select2Props> = Template.bind({});
+Basic.args = {
+  placeholder: "果物を選択",
+  searchable: false,
 };
 
-export const WithSearch: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択",
-    searchable: true,
-    searchPlaceholder: "果物を検索",
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
+export const WithSearch: Story<Select2Props> = Template.bind({});
+WithSearch.args = {
+  placeholder: "果物を選択",
+  searchable: true,
+  searchPlaceholder: "果物を検索",
+};
+WithSearch.parameters = {
+  docs: {
+    description: {
+      story: `
 検索機能を有効にした例です。
 searchable={true}を指定することで、オプションを検索できる入力欄が表示されます。
 searchPlaceholderで検索入力欄のプレースホルダーを指定できます。
       `,
-      },
     },
   },
-  render: (args) => Template(args),
 };
 
-export const Error: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択",
-    error: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story:
-          "エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。",
-      },
+export const Error: Story<Select2Props> = Template.bind({});
+Error.args = {
+  placeholder: "果物を選択",
+  error: true,
+};
+Error.parameters = {
+  docs: {
+    description: {
+      story:
+        "エラー状態を表示するためのオプションです。エラーメッセージはコンポーネント側では表示されないので、必要に応じてプロダクト側で別途エラーメッセージを実装してください。",
     },
   },
-  render: (args) => Template(args),
 };
 
-export const Disabled: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択",
-    disabled: true,
-  },
-  render: (args) => Template(args),
+export const Disabled: Story<Select2Props> = Template.bind({});
+Disabled.args = {
+  placeholder: "果物を選択",
+  disabled: true,
 };
 
-export const WithDefaultValue: Story = {
-  args: {
-    options,
-    value: "apple",
-  },
-  render: (args) => Template(args),
+export const WithDefaultValue: Story<Select2Props> = Template.bind({});
+WithDefaultValue.args = {
+  value: "apple",
 };
 
-export const WithManyOptions: Story = {
-  args: {
-    options: [
-      ...options,
-      { value: "watermelon", label: "スイカ" },
-      { value: "lemon", label: "レモン" },
-      { value: "lime", label: "ライム" },
-      { value: "cherry", label: "さくらんぼ" },
-      { value: "blueberry", label: "ブルーベリー" },
-      { value: "raspberry", label: "ラズベリー" },
-      { value: "blackberry", label: "ブラックベリー" },
-      { value: "plum", label: "プラム" },
-      { value: "persimmon", label: "柿" },
-      { value: "fig", label: "イチジク" },
-    ],
-    placeholder: "果物を選択",
+export const WithManyOptions: Story<Select2Props> = Template.bind({});
+WithManyOptions.args = {
+  placeholder: "果物を選択",
+};
+WithManyOptions.decorators = [(Story) => <Story />];
+
+export const WithDisabledOptions: Story<Select2Props> = (args) => {
+  return (
+    <div style={{ width: 300 }}>
+      <Select2 {...args}>
+        <Select2Option value="apple">りんご</Select2Option>
+        <Select2Option disabled value="banana">
+          バナナ
+        </Select2Option>
+        <Select2Option value="orange">オレンジ</Select2Option>
+        <Select2Option disabled value="grape">
+          ブドウ
+        </Select2Option>
+        <Select2Option value="melon">メロン</Select2Option>
+      </Select2>
+    </div>
+  );
+};
+WithDisabledOptions.args = {
+  placeholder: "果物を選択",
+};
+WithDisabledOptions.parameters = {
+  docs: {
+    description: {
+      story: `一部のオプション（バナナ・ブドウ）はdisabled（選択不可）です。`,
+    },
   },
-  render: (args) => Template(args),
 };
 
-export const WithDisabledOptions: Story = {
-  args: {
-    options: [
-      { value: "apple", label: "りんご" },
-      { value: "banana", label: "バナナ", disabled: true },
-      { value: "orange", label: "オレンジ" },
-      { value: "grape", label: "ブドウ", disabled: true },
-      { value: "melon", label: "メロン" },
-    ],
-    placeholder: "果物を選択",
-  },
-  render: (args) => Template(args),
-};
+export const MultipleSelection: Story<Select2Props> = (args) => {
+  const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
+    "apple",
+    "orange",
+  ]);
 
-export const MultipleSelection: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択（複数可）",
-    searchable: false,
-    applyButtonText: "適用",
-    cancelButtonText: "キャンセル",
-    multiple: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        {...args}
+        multiple={true}
+        value={selectedValues}
+        onChange={(newValues: string | number | (string | number)[]) => {
+          if (Array.isArray(newValues)) {
+            setSelectedValues(newValues);
+          }
+        }}
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {selectedValues.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+MultipleSelection.args = {
+  placeholder: "果物を選択（複数可）",
+  searchable: false,
+  applyButtonText: "適用",
+  cancelButtonText: "キャンセル",
+};
+MultipleSelection.parameters = {
+  docs: {
+    description: {
+      story: `
 複数選択モード（multiple={true}）では、複数の選択肢を選択できます。
 選択はContextMenu内で一時的に保持され、「適用」ボタンをクリックすると確定されます。
 選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。
       `,
-      },
     },
-  },
-  render: (args) => {
-    const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
-      "apple",
-      "orange",
-    ]);
-
-    // argsからoptionsを抽出、存在しない場合はデフォルトのoptionsを使用
-    const optionsToUse = args.options || options;
-
-    return (
-      <div style={{ width: "300px" }}>
-        <Select2
-          {...args}
-          options={optionsToUse}
-          multiple={true}
-          value={selectedValues}
-          onChange={(newValues: string | number | (string | number)[]) => {
-            if (Array.isArray(newValues)) {
-              setSelectedValues(newValues);
-            }
-          }}
-        />
-        <div style={{ marginTop: "16px" }}>
-          <p>選択された値: {selectedValues.join(", ")}</p>
-        </div>
-      </div>
-    );
   },
 };
 
-export const MultipleSelectionWithSearch: Story = {
-  args: {
-    options,
-    placeholder: "果物を選択（複数可）",
-    searchable: true,
-    searchPlaceholder: "果物を検索",
-    applyButtonText: "適用",
-    cancelButtonText: "キャンセル",
-    multiple: true,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: `
+export const MultipleSelectionWithSearch: Story<Select2Props> = (args) => {
+  const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
+    "apple",
+    "orange",
+  ]);
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        {...args}
+        multiple={true}
+        value={selectedValues}
+        onChange={(newValues: string | number | (string | number)[]) => {
+          if (Array.isArray(newValues)) {
+            setSelectedValues(newValues);
+          }
+        }}
+      >
+        {options.map((option) => (
+          <Select2Option
+            key={option.value}
+            value={option.value}
+            disabled={option.disabled}
+          >
+            {option.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {selectedValues.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+MultipleSelectionWithSearch.args = {
+  placeholder: "果物を選択（複数可）",
+  searchable: true,
+  searchPlaceholder: "果物を検索",
+  applyButtonText: "適用",
+  cancelButtonText: "キャンセル",
+};
+MultipleSelectionWithSearch.parameters = {
+  docs: {
+    description: {
+      story: `
 複数選択モードと検索機能を組み合わせた例です。
 多くの選択肢から複数の項目を選択する場合に特に有用です。
       `,
-      },
     },
   },
-  render: (args) => {
-    const [selectedValues, setSelectedValues] = useState<(string | number)[]>([
-      "apple",
-      "orange",
-    ]);
+};
 
-    // argsからoptionsを抽出、存在しない場合はデフォルトのoptionsを使用
-    const optionsToUse = args.options || options;
+// グループ化やセパレータの例
+export const WithOptionGroups = () => {
+  const [value, setValue] = useState<string | number>("");
 
-    return (
-      <div style={{ width: "300px" }}>
-        <Select2
-          {...args}
-          options={optionsToUse}
-          multiple={true}
-          value={selectedValues}
-          onChange={(newValues: string | number | (string | number)[]) => {
-            if (Array.isArray(newValues)) {
-              setSelectedValues(newValues);
-            }
-          }}
-        />
-        <div style={{ marginTop: "16px" }}>
-          <p>選択された値: {selectedValues.join(", ")}</p>
-        </div>
+  // フルーツのオプション
+  const fruitOptions = [
+    { value: "apple", label: "りんご" },
+    { value: "orange", label: "オレンジ" },
+    { value: "banana", label: "バナナ" },
+    { value: "grape", label: "ブドウ" },
+    { value: "melon", label: "メロン" },
+  ];
+
+  // 野菜のオプション
+  const vegetableOptions = [
+    { value: "carrot", label: "にんじん" },
+    { value: "potato", label: "じゃがいも" },
+    { value: "lettuce", label: "レタス" },
+    { value: "tomato", label: "トマト" },
+    { value: "cucumber", label: "きゅうり" },
+  ];
+
+  // 肉類のオプション
+  const meatOptions = [
+    { value: "beef", label: "牛肉" },
+    { value: "pork", label: "豚肉" },
+    { value: "chicken", label: "鶏肉" },
+  ];
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        placeholder="食材を選択"
+        searchable={true}
+        searchPlaceholder="検索..."
+        value={value}
+        onChange={(newValue: any) => setValue(newValue as string | number)}
+      >
+        <Select2OptionGroup label="果物">
+          {fruitOptions.map((option) => (
+            <Select2Option key={option.value} value={option.value}>
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2OptionGroup label="野菜">
+          {vegetableOptions.map((option) => (
+            <Select2Option key={option.value} value={option.value}>
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2Separator />
+
+        <Select2OptionGroup label="肉類">
+          {meatOptions.map((option) => (
+            <Select2Option key={option.value} value={option.value}>
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {value}</p>
       </div>
-    );
+    </div>
+  );
+};
+WithOptionGroups.parameters = {
+  docs: {
+    description: {
+      story: `
+Select2OptionGroupコンポーネントとSelect2Separatorコンポーネントを使用した例です。
+Select2OptionGroupはオプションをグループ化し、各グループにラベルを付けることができます。
+Select2Separatorはグループ間にセパレータを追加します。
+      `,
+    },
+  },
+};
+
+// 宣言的APIを使用した複数選択の例
+export const WithOptionGroupsMultiple = () => {
+  const [values, setValues] = useState<(string | number)[]>([
+    "apple",
+    "potato",
+  ]);
+
+  // フルーツのオプション
+  const fruitOptions = [
+    { value: "apple", label: "りんご" },
+    { value: "orange", label: "オレンジ" },
+    { value: "banana", label: "バナナ" },
+    { value: "grape", label: "ブドウ" },
+    { value: "melon", label: "メロン" },
+  ];
+
+  // 野菜のオプション
+  const vegetableOptions = [
+    { value: "carrot", label: "にんじん" },
+    { value: "potato", label: "じゃがいも" },
+    { value: "lettuce", label: "レタス" },
+    { value: "tomato", label: "トマト" },
+    { value: "cucumber", label: "きゅうり" },
+  ];
+
+  // 肉類のオプション
+  const meatOptions = [
+    { value: "beef", label: "牛肉" },
+    { value: "pork", label: "豚肉" },
+    { value: "chicken", label: "鶏肉" },
+  ];
+
+  return (
+    <div style={{ width: "300px" }}>
+      <Select2
+        placeholder="食材を選択（複数可）"
+        searchable={true}
+        searchPlaceholder="検索..."
+        multiple={true}
+        value={values}
+        applyButtonText="適用"
+        cancelButtonText="キャンセル"
+        onChange={(newValues: any) => {
+          if (Array.isArray(newValues)) {
+            setValues(newValues);
+          }
+        }}
+      >
+        <Select2OptionGroup label="果物">
+          {fruitOptions.map((option) => (
+            <Select2Option key={option.value} value={option.value}>
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2OptionGroup label="野菜">
+          {vegetableOptions.map((option) => (
+            <Select2Option key={option.value} value={option.value}>
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+
+        <Select2OptionGroup label="肉類">
+          {meatOptions.map((option) => (
+            <Select2Option
+              key={option.value}
+              value={option.value}
+              disabled={option.value === "beef"}
+            >
+              {option.label}
+            </Select2Option>
+          ))}
+        </Select2OptionGroup>
+      </Select2>
+      <div style={{ marginTop: "16px" }}>
+        <p>選択された値: {values.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+WithOptionGroupsMultiple.parameters = {
+  docs: {
+    description: {
+      story: `
+Select2OptionGroupコンポーネントとSelect2Separatorコンポーネントを使用した複数選択の例です。
+Select2OptionGroupはオプションをグループ化し、各グループにラベルを付けることができます。
+Select2Separatorはグループ間にセパレータを追加します。
+複数選択モード（multiple={true}）と組み合わせることで、グループ化された選択肢から複数の項目を選択できます。
+選択済みの項目はタグとして表示され、タグの削除ボタンをクリックすると選択を解除できます。
+      `,
+    },
+  },
+};
+
+// 選択数上限サンプル（厳密版）
+export const WithMaxSelectionStrict = () => {
+  const MAX = 5;
+  const [selected, setSelected] = React.useState<(string | number)[]>([]);
+  const [tempSelected, setTempSelected] = React.useState<(string | number)[]>(
+    [],
+  );
+  const options = [
+    { value: "a", label: "A" },
+    { value: "b", label: "B" },
+    { value: "c", label: "C" },
+    { value: "d", label: "D" },
+    { value: "e", label: "E" },
+    { value: "f", label: "F" },
+    { value: "g", label: "G" },
+  ];
+  return (
+    <div style={{ width: 300 }}>
+      <Select2
+        multiple
+        value={selected}
+        placeholder={`最大${MAX}件まで選択可能`}
+        applyButtonText="適用"
+        cancelButtonText="キャンセル"
+        onChange={(newSelected: string[] | number[] | string | number) => {
+          if (Array.isArray(newSelected) && newSelected.length > MAX) {
+            // 上限を超えたら何もしない
+            return;
+          }
+          setSelected(newSelected as (string | number)[]);
+        }}
+        onTempChange={setTempSelected}
+      >
+        {options.map((opt) => (
+          <Select2Option
+            key={opt.value}
+            value={opt.value}
+            disabled={
+              tempSelected.length >= MAX && !tempSelected.includes(opt.value)
+            }
+          >
+            {opt.label}
+          </Select2Option>
+        ))}
+      </Select2>
+      <div style={{ marginTop: 16 }}>
+        <p>選択中（上限5個まで）: {selected.join(", ")}</p>
+      </div>
+    </div>
+  );
+};
+WithMaxSelectionStrict.parameters = {
+  docs: {
+    description: {
+      story: `選択数の上限（${5}件）を超えた場合、未選択のオプションがdisabledになり、onChangeでも5件を超える選択は受け付けません。`,
+    },
   },
 };

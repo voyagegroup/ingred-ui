@@ -18,7 +18,7 @@ export default {
 };
 
 export const Example: StoryObj<CheckBoxProps> = {
-  render: (args: CheckBoxProps) => <Checkbox {...args}>Checkbox</Checkbox>,
+  render: (args) => <Checkbox {...args}>Checkbox</Checkbox>,
 };
 
 export const DesignSamples: StoryObj = {

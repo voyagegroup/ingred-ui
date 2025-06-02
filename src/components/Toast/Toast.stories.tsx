@@ -1,10 +1,11 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Title, Stories, Markdown } from "@storybook/blocks";
-import Toast from "./Toast";
+import { StoryObj } from "@storybook/react";
+import { Markdown } from "@storybook/blocks";
+import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
+import Toast, { ToastProps } from "./Toast";
 import Button from "../Button";
 
-const meta = {
+export default {
   title: "Components/Feedback/Toast",
   component: Toast,
   args: {
@@ -26,65 +27,61 @@ const meta = {
               "The toast is used to show alerts on top of an overlay. The toast will close itself when the close button is clicked, or after a timeout.",
             ].join("\n")}
           </Markdown>
+          <ArgsTable of={Toast} />
           <Stories includePrimary title="Stories" />
         </>
       ),
     },
   },
-} satisfies Meta<typeof Toast>;
+};
 
-export default meta;
-
-type Story = StoryObj<typeof meta>;
-
-const BaseToastTemplate = (args: any) => {
-  const ToastSample = () => {
-    const { addToast } = Toast.useToasts();
-    const handleClick = () => {
-      addToast(
-        args.appearance as "info" | "success" | "warning" | "error",
-        args,
+const Template: StoryObj<ToastProps> = {
+  render: (args) => {
+    const ToastSample = () => {
+      const { addToast } = Toast.useToasts();
+      const handleClick = () => {
+        addToast(args.appearance, args);
+      };
+      return (
+        <div>
+          <Button inline onClick={handleClick}>
+            Show Toast
+          </Button>
+        </div>
       );
     };
     return (
-      <div>
-        <Button inline onClick={handleClick}>
-          Show Toast
-        </Button>
-      </div>
+      <Toast.Provider {...args}>
+        <ToastSample />
+      </Toast.Provider>
     );
-  };
-  return (
-    <Toast.Provider {...args}>
-      <ToastSample />
-    </Toast.Provider>
-  );
+  },
 };
 
-export const Info: Story = {
+export const Info = {
+  ...Template,
   args: {
     appearance: "info",
   },
-  render: BaseToastTemplate,
 };
 
-export const Success: Story = {
+export const Success = {
+  ...Template,
   args: {
     appearance: "success",
   },
-  render: BaseToastTemplate,
 };
 
-export const Warning: Story = {
+export const Warning = {
+  ...Template,
   args: {
     appearance: "warning",
   },
-  render: BaseToastTemplate,
 };
 
-export const Error: Story = {
+export const Error = {
+  ...Template,
   args: {
     appearance: "error",
   },
-  render: BaseToastTemplate,
 };

@@ -144,6 +144,7 @@ export const FilterSelectInput = ({
 
   return (
     <FilterInputAbstract
+      variant={variant}
       size={size}
       selectedIndex={selectedIndex}
       selectOptions={selectOptions}

@@ -27,5 +27,3 @@ release_note.md
 storybook-static
 
 /.idea/
-
-*storybook.log

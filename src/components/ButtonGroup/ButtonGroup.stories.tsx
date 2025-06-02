@@ -1,33 +1,17 @@
 import * as React from "react";
-import { Meta, StoryObj } from "@storybook/react";
-import { Controls, Stories, Title, Markdown } from "@storybook/blocks";
+import { StoryObj } from "@storybook/react";
 import Button from "../Button";
-import ButtonGroup from "./ButtonGroup";
+import ButtonGroup, { ButtonGroupProps } from "./ButtonGroup";
 import { Flex, Icon, Spacer, Typography } from "..";
 
-const meta: Meta<typeof ButtonGroup> = {
+export default {
   title: "Components/Inputs/ButtonGroup",
   component: ButtonGroup,
   subcomponents: { Button },
-  parameters: {
-    docs: {
-      page: () => (
-        <>
-          <Title />
-          <Markdown>{`ButtonGroupは複数のボタンをグループ化して一括でスタイルやサイズを制御できます。`}</Markdown>
-          <Controls />
-          <Stories includePrimary title="Samples" />
-        </>
-      ),
-    },
-  },
 };
-export default meta;
 
-type Story = StoryObj<typeof ButtonGroup>;
-
-export const Example: Story = {
-  render: (args: Story["args"]) => (
+export const Example: StoryObj<ButtonGroupProps> = {
+  render: (args) => (
     <ButtonGroup {...args}>
       <Button>Save</Button>
       <Button>Edit</Button>
@@ -37,7 +21,7 @@ export const Example: Story = {
   ),
 };
 
-export const DesignSamples: Story = {
+export const DesignSamples: StoryObj = {
   render: () => (
     <Flex display="flex">
       <div>
@@ -317,8 +301,8 @@ export const DesignSamples: Story = {
   ),
 };
 
-export const DisablePartially: Story = {
-  render: (args: Story["args"]) => (
+export const DisablePartially: StoryObj<ButtonGroupProps> = {
+  render: (args) => (
     <ButtonGroup {...args}>
       <Button>Save</Button>
       <Button disabled>Edit</Button>
@@ -328,8 +312,8 @@ export const DisablePartially: Story = {
   ),
 };
 
-export const MinSize: Story = {
-  render: (args: Story["args"]) => (
+export const MinSize: StoryObj<ButtonGroupProps> = {
+  render: (args) => (
     <Flex display="flex">
       <div>
         <Typography weight="bold">minSize Small</Typography>
@@ -378,8 +362,8 @@ export const MinSize: Story = {
   ),
 };
 
-export const LinkMixed: Story = {
-  render: (args: Story["args"]) => {
+export const LinkMixed: StoryObj<ButtonGroupProps> = {
+  render: (args) => {
     const Link: React.FC<{
       href: string;
       className: string;
