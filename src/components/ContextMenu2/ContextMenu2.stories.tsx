@@ -19,6 +19,14 @@ import {
 import Button from "../Button";
 import ActionButton from "../ActionButton";
 import Icon from "../Icon";
+import {
+  offset,
+  shift,
+  flip,
+  size,
+  hide,
+  limitShift,
+} from "@floating-ui/react";
 
 export default {
   title: "Components/Navigation/ContextMenu2",
@@ -698,6 +706,85 @@ export const Sortable: StoryObj<typeof ContextMenu2> = {
           </ContextMenu2>
         </ContextMenu2Container>
       </>
+    );
+  },
+};
+
+/**
+ * 右側にメニューを表示する例（placement/middlewareをpropsで渡せる設計なら、ここで切り替え可能）
+ * middlewareをpropsで渡せる場合の例:
+ *
+ * <ContextMenu2
+ *   trigger={<button type="button">右側に出す</button>}
+ *   width={200}
+ *   middleware={[
+ *     offset({ mainAxis: 16 }),
+ *     shift({ padding: 8 }),
+ *     flip(),
+ *   ]}
+ * >
+ *   ...
+ * </ContextMenu2>
+ *
+ * 現状はContextMenu2の内部実装でplacement/middlewareが決まっているため、
+ * triggerの配置やContextMenu2のカスタマイズ例として参考にしてください。
+ */
+export const PlacementRight: StoryObj<typeof ContextMenu2> = {
+  render: () => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <ContextMenu2Container>
+          <ContextMenu2
+            trigger={<button type="button">メニューを出す</button>}
+            width={200}
+            placement="bottom-start"
+            middleware={[
+              offset({ mainAxis: 8 }), // トリガーから8px下にずらす
+              shift({ padding: 24, limiter: limitShift() }), // 画面端から20px離し、limitShiftで移動量を制限
+              flip(), // 画面からはみ出しそうな場合に自動で反転
+              size({
+                // 利用可能な幅・高さに自動調整
+                apply({ availableWidth, availableHeight, elements }) {
+                  Object.assign(elements.floating.style, {
+                    maxWidth: `${availableWidth}px`,
+                    maxHeight: `${availableHeight}px`,
+                  });
+                },
+              }),
+              hide(), // 参照要素が見えなくなったら非表示にする
+            ]}
+          >
+            <ContextMenu2ButtonItem onClick={() => alert("A")}>
+              A
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+            <ContextMenu2ButtonItem onClick={() => alert("B")}>
+              B
+            </ContextMenu2ButtonItem>
+          </ContextMenu2>
+        </ContextMenu2Container>
+      </div>
     );
   },
 };
