@@ -79,6 +79,14 @@ export const ModalFooter = styled.div`
 
 export const IconContainer = styled.div`
   cursor: pointer;
+  height: fit-content;
+  & > span {
+    border-radius: ${({ theme }) => `${theme.radius / 2}px`};
+    transition: background 0.2s;
+  }
+  &:hover > span {
+    background: ${({ theme }) => theme.palette.gray.light};
+  }
 `;
 
 export const LoadingContainer = styled.div`
