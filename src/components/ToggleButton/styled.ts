@@ -25,7 +25,7 @@ export const ToggleButton = styled.span<{
     if (disabled && checked) {
       return hexToRgba(theme.palette.primary.main, 0.6);
     } else if (disabled && !checked) {
-      return theme.palette.gray.light;
+      return hexToRgba(theme.palette.gray.highlight, 0.6);
     } else if (checked) {
       return theme.palette.primary.main;
     }
