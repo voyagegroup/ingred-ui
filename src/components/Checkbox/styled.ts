@@ -33,7 +33,7 @@ export const Checkbox = styled.input<{
         ? // チェックアイコン（小）
           `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxwYXRoIGQ9Ik0yLjU5MTMgNi4yNDc0OUMyLjQ4OTY1IDYuMTQ1ODMgMi40ODk2NSA1Ljk4MTAyIDIuNTkxMyA1Ljg3OTM2TDguMzU4NTQgMC4xMTIxMjlDOC40NjAxOSAwLjAxMDQ3NTMgOC42MjUwMSAwLjAxMDQ3NTEgOC43MjY2NiAwLjExMjEyOUw5LjcwOTU4IDEuMDk1MDRDOS44MTEyMyAxLjE5NjcgOS44MTEyMyAxLjM2MTUxIDkuNzA5NTggMS40NjMxN0wzLjk0MjM0IDcuMjMwNEMzLjg0MDY5IDcuMzMyMDUgMy42NzU4NyA3LjMzMjA1IDMuNTc0MjIgNy4yMzA0TDIuNTkxMyA2LjI0NzQ5WiIgZmlsbD0id2hpdGUiLz4gPHBhdGggZD0iTTMuOTQyMzQgNy4yMzA0QzMuODQwNjkgNy4zMzIwNSAzLjY3NTg3IDcuMzMyMDUgMy41NzQyMiA3LjIzMDRMMC40NzcxMTkgNC4xMzMzQzAuMzc1NDY1IDQuMDMxNjUgMC4zNzU0NjUgMy44NjY4NCAwLjQ3NzExOSAzLjc2NTE4TDEuNDYwMDMgMi43ODIyN0MxLjU2MTY5IDIuNjgwNjEgMS43MjY1IDIuNjgwNjEgMS44MjgxNiAyLjc4MjI3TDQuOTI1MzEgNS44Nzk0MkM1LjAyNjk3IDUuOTgxMDggNS4wMjY5NyA2LjE0NTg5IDQuOTI1MzEgNi4yNDc1NUwzLjk0MjM0IDcuMjMwNFoiIGZpbGw9IndoaXRlIi8+IDwvc3ZnPg==')`
         : // チェックアイコン（大）
-          `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxwYXRoIGQ9Ik0zLjM2OTcgNy4xNTg5NEMzLjI1MjU1IDcuMDQxNzggMy4yNTI1NSA2Ljg1MTgzIDMuMzY5NyA2LjczNDY3TDEwLjAxNjUgMC4wODc4NjgxQzEwLjEzMzcgLTAuMDI5Mjg5MiAxMC4zMjM2IC0wLjAyOTI4OTQgMTAuNDQwOCAwLjA4Nzg2NzlMMTEuNTczNiAxLjIyMDY5QzExLjY5MDcgMS4zMzc4NSAxMS42OTA3IDEuNTI3OCAxMS41NzM2IDEuNjQ0OTVMNC45MjY3OSA4LjI5MTc2QzQuODA5NjMgOC40MDg5MSA0LjYxOTY4IDguNDA4OTEgNC41MDI1MiA4LjI5MTc2TDMuMzY5NyA3LjE1ODk0WiIgZmlsbD0id2hpdGUiLz4gPHBhdGggZD0iTTQuOTI2NzkgOC4yOTE3NkM0LjgwOTYzIDguNDA4OTEgNC42MTk2OCA4LjQwODkxIDQuNTAyNTIgOC4yOTE3NkwwLjkzMzA4MyA0LjcyMjMyQzAuODE1OTI2IDQuNjA1MTYgMC44MTU5MjYgNC40MTUyMSAwLjkzMzA4MyA0LjI5ODA1TDIuMDY1OSAzLjE2NTIzQzIuMTgzMDYgMy4wNDgwNyAyLjM3MzAxIDMuMDQ4MDcgMi40OTAxNyAzLjE2NTIzTDYuMDU5NjggNi43MzQ3NEM2LjE3Njg0IDYuODUxOSA2LjE3Njg0IDcuMDQxODUgNi4wNTk2OCA3LjE1OTAxTDQuOTI2NzkgOC4yOTE3NloiIGZpbGw9IndoaXRlIi8+IDwvc3ZnPg==')`};
+          `url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDEyIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxwYXRoIGQ9Ik0zLjM2OTcgNy4xNTg5NEMzLjI1MjU1IDcuMDQxNzggMy4yNTI1NSA2Ljg1MTgzIDMuMzY5NyA2LjczNDY3TDEwLjAxNjUgMC4wODc4NjgxQzEwLjEzMzcgLTAuMDI5Mjg5MiAxMC4zMjM2IC0wLjAyOTI4OTQgMTAuNDQwOCAwLjA4Nzg2NzlMMTEuNTczNiAxLjIyMDY5QzExLjY5MDcgMS4zMzc4NSAxMS42OTA3IDEuNTI3OCAxMS41NzM2IDEuNjQ0OTVMNC45MjY3OSA4LjI5MTc2QzQuODA5NjMgOC40MDg5MSA0LjYxOTY4IDguNDA4OTEgNC41MDI1MiA4LjI5MTc2TDMuMzY5NyA3LjE1ODk0WiIgZmlsbD0id2hpdGUiLz4gPHBhdGggZD0iTTQuOTI2NzkgOC4yOTE3NkM0LjgwOTYzIDguNDA4OTEgNC42MTk2OCA4LjQwODkxIDQuNTAyNTIgOC4yOTE3NkwwLjkzMzA4MyA0LjcyMzJDMC44MTU5MjYgNC42MDUxNiAwLjgxNTkyNiA0LjQxNTIxIDAuOTMzMDgzIDQuMjk4MDVMMi4wNjU5IDMuMTY1MjNDMi4xODMwNiAzLjA0ODA3IDIuMzczMDEgMy4wNDgwNyAyLjQ5MDE3IDMuMTY1MjNMNi4wNTk2OCA2LjczNDc0QzYuMTc2ODQgNi44NTE5IDYuMTc2ODQgNy4wNDE4NSA2LjA1OTY4IDcuMTU5MDFMNC45MjY3OSA4LjI5MTc2WiIgZmlsbD0id2hpdGUiLz4gPC9zdmc+')`};
     background-repeat: no-repeat;
     background-position: center center;
   }
@@ -75,13 +75,16 @@ export const Span = styled.span<{
   indeterminate: boolean;
   error: boolean;
   disabled: boolean;
+  checked?: boolean;
 }>`
   display: inline-flex;
   align-items: center;
-  color: ${({ error }) =>
-    error
-      ? ({ theme }) => theme.palette.danger.main
-      : ({ theme }) => theme.palette.black};
+  color: ${({ error, checked, disabled, theme }) => {
+    if (disabled) return theme.palette.text.disabled;
+    if (checked) return theme.palette.primary.main;
+    if (error) return theme.palette.danger.main;
+    return theme.palette.black;
+  }};
   font-size: ${({ size }) =>
     size === CheckboxSize.SMALL ? `${fontSize.sm}px` : `${fontSize.md}px`};
   &:disabled {
