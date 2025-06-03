@@ -487,6 +487,14 @@ export const FilterTagInput = ({
     [values, size, computedTagVariant, handleTagRemove],
   );
 
+  // sizeに応じたアイコンサイズをローカル定義で決定
+  const LOCAL_ICON_SIZES = {
+    small: 18,
+    medium: 20,
+    large: 22,
+  } as const;
+  const iconSize = LOCAL_ICON_SIZES[size];
+
   return (
     <>
       <FilterInputAbstract
@@ -532,6 +540,7 @@ export const FilterTagInput = ({
           <Icon
             name={isSmall ? "filter" : "expand_diagonal_s_fill"}
             color="currentColor"
+            size={iconSize}
           />
         </styled.OverflowIndicator>
       </FilterInputAbstract>
