@@ -503,11 +503,6 @@ export const FilterTagInput = ({
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
             {renderedTags}
             <styled.InlineInput>
-              {!inputValue && (
-                <styled.InlineInputIcon>
-                  <Icon name="filter" color="currentColor" />
-                </styled.InlineInputIcon>
-              )}
               <input
                 ref={inputEl}
                 type="text"
