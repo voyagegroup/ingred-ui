@@ -31,6 +31,7 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
     } = props;
     if (process.env.NODE_ENV !== "production" && children) {
       // テキストノードだけでなく、childrenが存在する場合は警告
+      // eslint-disable-next-line no-console
       console.warn(
         "[ingred-ui] ToggleButton: childrenによるラベル指定は非推奨です。別の手段でラベルを指定してください。",
       );
