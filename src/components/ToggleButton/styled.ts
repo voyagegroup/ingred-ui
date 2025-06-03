@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components";
 import { getShadow } from "../../utils/getShadow";
+import { hexToRgba } from "../../utils/hexToRgba";
 
 export const Container = styled.div<{
   width: string;
 }>`
   position: relative;
-  width: ${({ width }) => width};
-  height: calc(1px * 2 + 22px);
+  width: 40px;
+  height: 22px;
 `;
 
 export const ToggleButton = styled.span<{
@@ -15,32 +16,39 @@ export const ToggleButton = styled.span<{
 }>`
   position: absolute;
   top: 50%;
-  left: 4px;
+  left: 3px;
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
   border-radius: 14px;
   background-color: ${({ checked, disabled, theme }) => {
-    let backgroundColor = theme.palette.background.default;
-    if (disabled) {
-      backgroundColor = theme.palette.gray.light;
+    if (disabled && checked) {
+      return hexToRgba(theme.palette.primary.main, 0.6);
+    } else if (disabled && !checked) {
+      return theme.palette.gray.light;
     } else if (checked) {
-      backgroundColor = theme.palette.primary.main;
+      return theme.palette.primary.main;
     }
-    return backgroundColor;
+    return theme.palette.background.default;
   }};
   border: 1px solid
-    ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.dark
-        : theme.palette.divider};
+    ${({ checked, disabled, theme }) => {
+      if (disabled && checked) {
+        return hexToRgba(theme.palette.primary.main, 0.6);
+      } else if (disabled && !checked) {
+        return hexToRgba(theme.palette.divider, 0.6);
+      } else if (checked) {
+        return theme.palette.primary.dark;
+      }
+      return theme.palette.divider;
+    }};
   box-shadow: ${({ theme }) =>
     getShadow(
       3,
       theme.palette.action.shadowOpacity,
       theme.palette.action.shadowBase,
     )};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 export const LabelText = styled.div`
@@ -48,7 +56,7 @@ export const LabelText = styled.div`
   width: 100%;
   word-break: break-all;
   white-space: nowrap;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 `;
 
 export const CheckedLabelText = styled(LabelText)`
@@ -75,22 +83,29 @@ export const Label = styled.label<LabelProps>`
   align-items: center;
   justify-content: space-between;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  width: ${({ width }) => width};
-  height: calc(1px * 2 + 22px);
+  width: 40px;
+  height: 22px;
   background-color: ${({ checked, disabled, theme }) => {
-    let backgroundColor = theme.palette.gray.highlight;
-    if (disabled) {
-      backgroundColor = theme.palette.gray.light;
+    if (disabled && checked) {
+      return theme.palette.gray.light;
+    } else if (disabled && !checked) {
+      return theme.palette.gray.light;
     } else if (checked) {
-      backgroundColor = theme.palette.background.hint;
+      return theme.palette.background.hint;
     }
-    return backgroundColor;
+    return theme.palette.gray.highlight;
   }};
   border: 1px solid
-    ${({ checked, disabled, theme }) =>
-      checked && !disabled
-        ? theme.palette.primary.main
-        : theme.palette.divider};
+    ${({ checked, disabled, theme }) => {
+      if (disabled && checked) {
+        return theme.palette.divider;
+      } else if (disabled && !checked) {
+        return theme.palette.divider;
+      } else if (checked) {
+        return theme.palette.primary.main;
+      }
+      return theme.palette.divider;
+    }};
   border-radius: 56px;
   box-shadow: ${({ theme }) =>
     getShadow(
@@ -98,13 +113,13 @@ export const Label = styled.label<LabelProps>`
       theme.palette.action.shadowOpacity,
       theme.palette.action.shadowBase,
     )};
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   ${({ checked }) =>
     checked &&
     css`
       & > ${ToggleButton} {
-        left: calc(100% - 14px - 6px);
+        left: calc(100% - 14px - 5px);
       }
       & > ${CheckedLabelText} {
         opacity: 1;
