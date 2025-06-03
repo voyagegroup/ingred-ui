@@ -50,7 +50,7 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
   height: auto;
   margin-bottom: ${({ showFooter, theme }) =>
     /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
-    !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
+    !showFooter ? 0 : theme.spacing * 2 * 2 + 32}px;
   ${({ overflowYScroll }) =>
     overflowYScroll
       ? addScrollbarProperties({
