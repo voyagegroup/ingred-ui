@@ -2,6 +2,7 @@ import React, { forwardRef, type ReactNode } from "react";
 import styled from "styled-components";
 import { colors } from "../../styles";
 import Icon from "../Icon";
+import { trimVertical } from "../../styles/typography";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのトリガー
 
@@ -25,8 +26,8 @@ const TriggerAppend = styled.span`
   /* UI/Text 13 */
   font-weight: 400;
   font-size: 13px;
-  line-height: 19px;
   color: ${colors.basic[700]};
+  ${trimVertical}
 `;
 
 const InternalContextMenu2TriggerItem = forwardRef<
@@ -37,13 +38,16 @@ const InternalContextMenu2TriggerItem = forwardRef<
     <button type="button" {...props} ref={ref}>
       <TriggerLabel>{children}</TriggerLabel>
       {append && <TriggerAppend>{append}</TriggerAppend>}
-      <Icon name="arrow_right" />
+      <span style={{ marginLeft: "4px" }}>
+        <Icon name="arrow_right" />
+      </span>
     </button>
   );
 });
 InternalContextMenu2TriggerItem.displayName = "ContextMenu2TriggerItem";
 export const ContextMenu2TriggerItem = styled(InternalContextMenu2TriggerItem)`
   display: flex;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
   padding: 8px;
