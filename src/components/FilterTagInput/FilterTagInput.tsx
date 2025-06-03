@@ -522,6 +522,7 @@ export const FilterTagInput = ({
         </styled.InlineField>
         <styled.OverflowIndicator
           $size={size}
+          $variant={variant}
           aria-label="フィルター入力パネルを開く"
           data-overflowing={isInlineOverflowing}
           type="button"
