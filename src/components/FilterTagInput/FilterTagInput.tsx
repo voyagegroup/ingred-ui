@@ -24,6 +24,7 @@ import {
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
+import { colors } from "../../styles/color";
 
 //
 // -----------------------------------------------------------------------------
@@ -59,7 +60,10 @@ const FilterInputPanel = ({
   const modifiedSelectOptions = useMemo(() => {
     return selectOptions.map((option) => ({
       ...option,
-      icon: React.cloneElement(option.icon, { size: menuIconSize }),
+      icon: React.cloneElement(option.icon, {
+        size: menuIconSize,
+        color: colors.basic[900],
+      }),
     }));
   }, [selectOptions, menuIconSize]);
 
