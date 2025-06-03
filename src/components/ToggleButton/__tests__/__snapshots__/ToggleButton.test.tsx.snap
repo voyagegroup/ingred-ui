@@ -3,11 +3,11 @@
 exports[`ToggleButton component testing ToggleButton 1`] = `
 <DocumentFragment>
   <div
-    class="sc-gsnTZi cFtvDM"
+    class="sc-gsnTZi evpUDt"
     width="48px"
   >
     <label
-      class="sc-gKXOVf hllYLd"
+      class="sc-gKXOVf dsNlxO"
       width="48px"
     >
       <input
@@ -16,7 +16,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         type="checkbox"
       />
       <div
-        class="sc-hKMtZM sc-eCYdqJ fEjsWu jDJtjl"
+        class="sc-hKMtZM sc-eCYdqJ duLeLX jDJtjl"
       >
         <div
           class="sc-bczRLJ glkMsN"
@@ -25,7 +25,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         />
       </div>
       <div
-        class="sc-hKMtZM sc-jSMfEi fEjsWu kqRAsJ"
+        class="sc-hKMtZM sc-jSMfEi duLeLX kqRAsJ"
       >
         <div
           class="sc-bczRLJ jjEXQA"
@@ -34,7 +34,7 @@ exports[`ToggleButton component testing ToggleButton 1`] = `
         />
       </div>
       <span
-        class="sc-dkzDqf dOoUqQ"
+        class="sc-dkzDqf klIXyt"
       />
     </label>
   </div>
