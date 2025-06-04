@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.2.0
+
+### Minor Changes
+
+- [#1825](https://github.com/voyagegroup/ingred-ui/pull/1825) [`dd271268`](https://github.com/voyagegroup/ingred-ui/commit/dd271268e7184e215372fbd46eab73c450a62e8a) Thanks [@noronaoki](https://github.com/noronaoki)! - 各種コンポーネントの細かい修正など
+
 ## 23.1.0
 
 ### Minor Changes
