@@ -24,6 +24,7 @@ import {
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
+import { colors } from "../../styles/color";
 
 //
 // -----------------------------------------------------------------------------
@@ -59,7 +60,10 @@ const FilterInputPanel = ({
   const modifiedSelectOptions = useMemo(() => {
     return selectOptions.map((option) => ({
       ...option,
-      icon: React.cloneElement(option.icon, { size: menuIconSize }),
+      icon: React.cloneElement(option.icon, {
+        size: menuIconSize,
+        color: colors.basic[900],
+      }),
     }));
   }, [selectOptions, menuIconSize]);
 
@@ -487,6 +491,14 @@ export const FilterTagInput = ({
     [values, size, computedTagVariant, handleTagRemove],
   );
 
+  // sizeに応じたアイコンサイズをローカル定義で決定
+  const LOCAL_ICON_SIZES = {
+    small: 18,
+    medium: 20,
+    large: 22,
+  } as const;
+  const iconSize = LOCAL_ICON_SIZES[size];
+
   return (
     <>
       <FilterInputAbstract
@@ -503,11 +515,6 @@ export const FilterTagInput = ({
           <styled.InlineFieldInner ref={inlineFieldInnerEl}>
             {renderedTags}
             <styled.InlineInput>
-              {!inputValue && (
-                <styled.InlineInputIcon>
-                  <Icon name="filter" color="currentColor" />
-                </styled.InlineInputIcon>
-              )}
               <input
                 ref={inputEl}
                 type="text"
@@ -527,6 +534,7 @@ export const FilterTagInput = ({
         </styled.InlineField>
         <styled.OverflowIndicator
           $size={size}
+          $variant={variant}
           aria-label="フィルター入力パネルを開く"
           data-overflowing={isInlineOverflowing}
           type="button"
@@ -536,6 +544,7 @@ export const FilterTagInput = ({
           <Icon
             name={isSmall ? "filter" : "expand_diagonal_s_fill"}
             color="currentColor"
+            size={iconSize}
           />
         </styled.OverflowIndicator>
       </FilterInputAbstract>

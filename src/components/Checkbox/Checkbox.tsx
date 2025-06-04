@@ -49,6 +49,7 @@ const Checkbox = React.forwardRef<HTMLLabelElement, CheckBoxProps>(
           indeterminate={indeterminate}
           hasChild={!!children}
           disabled={disabled}
+          checked={rest.checked}
         >
           {children}
         </Styled.Span>

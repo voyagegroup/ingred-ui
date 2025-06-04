@@ -166,8 +166,7 @@ export const Placeholder = styled.span<{
   $variant?: Select2Props["variant"];
   $disabled?: boolean;
 }>`
-  color: ${({ $disabled }) =>
-    $disabled ? colors.basic[400] : colors.basic[900]};
+  color: ${colors.basic[400]};
   padding: 0 6px;
 `;
 

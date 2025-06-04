@@ -50,7 +50,7 @@ export const ScrollContainer = styled.div<ScrollContainerProps>`
   height: auto;
   margin-bottom: ${({ showFooter, theme }) =>
     /* MEMO: Height of ModalFooter(padding-top + padding-bottom + Button size="medium") */
-    !showFooter ? 0 : theme.spacing * 2 * 2 + 42}px;
+    !showFooter ? 0 : theme.spacing * 2 * 2 + 32}px;
   ${({ overflowYScroll }) =>
     overflowYScroll
       ? addScrollbarProperties({
@@ -79,6 +79,14 @@ export const ModalFooter = styled.div`
 
 export const IconContainer = styled.div`
   cursor: pointer;
+  height: fit-content;
+  & > span {
+    border-radius: ${({ theme }) => `${theme.radius / 2}px`};
+    transition: background 0.2s;
+  }
+  &:hover > span {
+    background: ${({ theme }) => theme.palette.gray.light};
+  }
 `;
 
 export const LoadingContainer = styled.div`

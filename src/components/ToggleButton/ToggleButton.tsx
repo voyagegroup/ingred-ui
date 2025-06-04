@@ -4,6 +4,10 @@ import Typography from "../Typography";
 import * as Styled from "./styled";
 
 export type ToggleButtonProps = React.ComponentPropsWithRef<"input"> & {
+  /**
+   * @deprecated ラベルテキストの直接指定（children）は非推奨です。別の手段でラベルを指定してください。
+   */
+  children?: React.ReactNode;
   disabled?: boolean;
   onChange?: () => void;
   width?: string;
@@ -23,7 +27,15 @@ const ToggleButton = React.forwardRef<HTMLDivElement, ToggleButtonProps>(
       checkedText = "",
       unCheckedText = "",
       inputRef,
+      children,
     } = props;
+    if (process.env.NODE_ENV !== "production" && children) {
+      // テキストノードだけでなく、childrenが存在する場合は警告
+      // eslint-disable-next-line no-console
+      console.warn(
+        "[ingred-ui] ToggleButton: childrenによるラベル指定は非推奨です。別の手段でラベルを指定してください。",
+      );
+    }
     return (
       <Styled.Container ref={ref} width={width}>
         <Styled.Label checked={checked} disabled={disabled} width={width}>

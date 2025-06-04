@@ -41,7 +41,10 @@ export const InlineFieldInner = styled.div`
   white-space: nowrap;
 `;
 
-export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
+export const OverflowIndicator = styled.button<{
+  $size?: FilterSize;
+  $variant: FilterVariant;
+}>`
   position: absolute;
   inset: 0 0 0 auto;
   display: none;
@@ -59,7 +62,7 @@ export const OverflowIndicator = styled.button<{ $size?: FilterSize }>`
   border: 0;
   outline-offset: -1px;
   color: ${colors.basic[900]};
-  background-color: ${colors.basic[0]};
+  background-color: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
   box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
   transition: background-color 0.2s ease;

@@ -129,7 +129,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
-        class="sc-kDDrLX cjCYFD"
+        class="sc-kDDrLX gwpKBZ"
         type="button"
       >
         <span
@@ -138,22 +138,26 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
           入れ子トリガー
         </span>
         <span
-          class="sc-jqUVSM cjnGLN"
+          class="sc-jqUVSM ZOYLW"
         >
           100
         </span>
         <span
-          class="sc-bczRLJ gJuzRf"
-          size="18"
+          style="margin-left: 4px;"
         >
-          <svg
-            viewBox="0 0 20 20"
+          <span
+            class="sc-bczRLJ gJuzRf"
+            size="18"
           >
-            <path
-              d="M10.9 10 6.8 5.9l1.1-1.2 5.3 5.3L8 15.3l-1.1-1.2z"
-              fill="#596978"
-            />
-          </svg>
+            <svg
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10.9 10 6.8 5.9l1.1-1.2 5.3 5.3L8 15.3l-1.1-1.2z"
+                fill="#596978"
+              />
+            </svg>
+          </span>
         </span>
       </button>
       <button
@@ -254,10 +258,10 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       >
         スイッチ
         <span
-          class="sc-gKXOVf hyivqH"
+          class="sc-gKXOVf bWfjls"
         >
           <span
-            class="sc-iBkjds gVa-DCt"
+            class="sc-iBkjds hXnYwK"
           />
         </span>
       </button>
