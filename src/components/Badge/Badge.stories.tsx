@@ -2,6 +2,7 @@ import React from "react";
 import { StoryObj } from "@storybook/react";
 import { Title, ArgsTable, Stories } from "@storybook/addon-docs";
 import Badge from "./Badge";
+import Icon from "../Icon";
 
 export default {
   title: "Components/Data Display/Badge",
@@ -18,55 +19,75 @@ export default {
       ),
     },
   },
+  argTypes: {
+    color: {
+      control: { type: "select" },
+      options: [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "basic",
+      ],
+    },
+    size: {
+      control: { type: "select" },
+      options: ["medium", "small"],
+    },
+    iconPosition: {
+      control: { type: "select" },
+      options: ["left", "right"],
+    },
+  },
 };
 
 const Template: StoryObj<typeof Badge> = {
   render: (args) => <Badge {...args} />,
 };
 
-export const Primary: StoryObj<typeof Badge> = {
+export const Normal: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "primary",
-    children: "primary",
+    children: "normal",
   },
 };
 
-export const Secondary: StoryObj<typeof Badge> = {
-  ...Template,
-  args: {
-    color: "secondary",
-    children: "secondary",
-  },
-};
-export const Success: StoryObj<typeof Badge> = {
+export const NormalWithIconLeft: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "success",
-    children: "success",
+    children: "icon left",
+    icon: <Icon name="check" size="sm" />,
+    iconPosition: "left",
   },
 };
 
-export const Warning: StoryObj<typeof Badge> = {
+export const NormalWithIconRight: StoryObj<typeof Badge> = {
   ...Template,
   args: {
-    color: "warning",
-    children: "warning",
+    color: "success",
+    children: "icon right",
+    icon: <Icon name="check" size="sm" />,
+    iconPosition: "right",
   },
 };
 
-export const Danger: StoryObj<typeof Badge> = {
+export const Pill: StoryObj<typeof Badge> = {
   ...Template,
   args: {
-    color: "danger",
-    children: "danger",
+    type: "pill",
+    color: "secondary",
+    children: "pill",
   },
 };
 
-export const Basic: StoryObj<typeof Badge> = {
+export const Signal: StoryObj<typeof Badge> = {
   ...Template,
   args: {
-    color: "basic",
-    children: "basic",
+    type: "signal",
+    color: "success",
+    children: "signal",
   },
 };
