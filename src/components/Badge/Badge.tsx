@@ -14,9 +14,9 @@ export type BadgeColor =
 const getColor = (key: BadgeColor, theme: Theme) => {
   switch (key) {
     case "primary":
-      return theme.palette.primary.main;
+      return theme.palette.primary.highlight;
     case "secondary":
-      return theme.palette.gray.deepDark;
+      return theme.palette.basicDark.dark;
     case "success":
       return theme.palette.success.main;
     case "warning":
@@ -25,6 +25,24 @@ const getColor = (key: BadgeColor, theme: Theme) => {
       return theme.palette.danger.main;
     case "basic":
       return theme.palette.black;
+  }
+};
+
+const getTextColor = (key: BadgeColor, theme: Theme) => {
+  switch (key) {
+    case "primary":
+      return theme.palette.text.primary;
+    case "success":
+      return theme.palette.success.deepDark;
+    case "danger":
+      return theme.palette.text.white;
+    case "secondary":
+      return theme.palette.text.secondary;
+    case "warning":
+    case "basic":
+      return theme.palette.text.primary;
+    default:
+      return theme.palette.text.white;
   }
 };
 
@@ -81,7 +99,11 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
         ref={ref}
         as={component}
         type={type}
-        color={theme.palette.text.white}
+        color={
+          type === "normal"
+            ? getTextColor(color, theme)
+            : theme.palette.text.white
+        }
         backgroundColor={getColor(color, theme)}
         fontSize={fontSize}
         fontWeight={fontWeight}

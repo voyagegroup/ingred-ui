@@ -59,7 +59,7 @@ export const NormalWithIconLeft: StoryObj<typeof Badge> = {
   args: {
     color: "success",
     children: "icon left",
-    icon: <Icon name="check" size="sm" />,
+    icon: <Icon name="check_thin" size="sm" />,
     iconPosition: "left",
   },
 };
@@ -69,7 +69,7 @@ export const NormalWithIconRight: StoryObj<typeof Badge> = {
   args: {
     color: "success",
     children: "icon right",
-    icon: <Icon name="check" size="sm" />,
+    icon: <Icon name="check_thin" size="sm" />,
     iconPosition: "right",
   },
 };
