@@ -35,10 +35,6 @@ export default {
       control: { type: "select" },
       options: ["medium", "small"],
     },
-    iconPosition: {
-      control: { type: "select" },
-      options: ["left", "right"],
-    },
   },
 };
 
@@ -54,23 +50,12 @@ export const Normal: StoryObj<typeof Badge> = {
   },
 };
 
-export const NormalWithIconLeft: StoryObj<typeof Badge> = {
+export const NormalWithIcon: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "success",
-    children: "icon left",
-    icon: <Icon name="check_thin" size="sm" />,
-    iconPosition: "left",
-  },
-};
-
-export const NormalWithIconRight: StoryObj<typeof Badge> = {
-  ...Template,
-  args: {
-    color: "success",
-    children: "icon right",
-    icon: <Icon name="check_thin" size="sm" />,
-    iconPosition: "right",
+    children: "with icon",
+    icon: <Icon name="check_thin" size="sm" color="currentColor" />,
   },
 };
 
