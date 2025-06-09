@@ -3728,11 +3728,6 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.6.tgz#628effeeae2064a1b4e79f78e81d87b7e5fc7b50"
   integrity sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==
 
-"@types/estree@0.0.39":
-  version "0.0.39"
-  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
-  integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
-
 "@types/estree@^0.0.51":
   version "0.0.51"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.51.tgz#cfd70924a25a3fd32b218e5e420e6897e1ac4f40"
@@ -4006,14 +4001,6 @@
   version "1.20.5"
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.5.tgz#7923a0abbac4b6301d51f450db342bd4aff1ac84"
   integrity sha512-aten5YPFp8G+cMpkTK5MCcUW5GlwZUby+qlt0/3oFgOCooFgzqvZQ9/0tROY49sUYmhEybBBj3jwpkQ/R3rjjw==
-
-"@types/rollup-plugin-peer-deps-external@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@types/rollup-plugin-peer-deps-external/-/rollup-plugin-peer-deps-external-2.2.1.tgz#7711fe77727c2ec920d3e096fa4e61d02734a23d"
-  integrity sha512-CUK4Mi3M3A/0coRUeo4McvUFOxR5H6UYd6Wt3D+K4c4fJupolMSoIxsZaBG1g/BJQOaujf78Pf7KhgfhrX1FZA==
-  dependencies:
-    "@types/node" "*"
-    rollup "^0.63.4"
 
 "@types/scheduler@*":
   version "0.16.6"
@@ -11243,7 +11230,7 @@ rollup-plugin-peer-deps-external@2.2.4:
   resolved "https://registry.yarnpkg.com/rollup-plugin-peer-deps-external/-/rollup-plugin-peer-deps-external-2.2.4.tgz#8a420bbfd6dccc30aeb68c9bf57011f2f109570d"
   integrity sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==
 
-rollup@4.34.7:
+rollup@4.34.7, "rollup@^2.25.0 || ^3.3.0", rollup@^3.27.1:
   version "4.34.7"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-4.34.7.tgz#e00d8550688a616a3481c6446bb688d4c753ba8f"
   integrity sha512-8qhyN0oZ4x0H6wmBgfKxJtxM7qS98YJ0k0kNh5ECVtuchIJ7z9IVVvzpmtQyT10PXKMtBxYr1wQ5Apg8RS8kXQ==
@@ -11269,21 +11256,6 @@ rollup@4.34.7:
     "@rollup/rollup-win32-arm64-msvc" "4.34.7"
     "@rollup/rollup-win32-ia32-msvc" "4.34.7"
     "@rollup/rollup-win32-x64-msvc" "4.34.7"
-    fsevents "~2.3.2"
-
-rollup@^0.63.4:
-  version "0.63.5"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-0.63.5.tgz#5543eecac9a1b83b7e1be598b5be84c9c0a089db"
-  integrity sha512-dFf8LpUNzIj3oE0vCvobX6rqOzHzLBoblyFp+3znPbjiSmSvOoK2kMKx+Fv9jYduG1rvcCfCveSgEaQHjWRF6g==
-  dependencies:
-    "@types/estree" "0.0.39"
-    "@types/node" "*"
-
-"rollup@^2.25.0 || ^3.3.0", rollup@^3.27.1:
-  version "3.29.4"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.29.4.tgz#4d70c0f9834146df8705bfb69a9a19c9e1109981"
-  integrity sha512-oWzmBZwvYrU0iJHtDmhsm662rC15FRXmcjCk1xD771dFDx5jJ02ufAQQTn0etB2emNk4J9EZg/yWKpsn9BWGRw==
-  optionalDependencies:
     fsevents "~2.3.2"
 
 run-async@^2.4.1:
