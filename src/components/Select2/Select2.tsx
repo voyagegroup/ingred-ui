@@ -308,18 +308,24 @@ export const Select2: React.FC<Select2Props> = ({
       type="button"
       {...rest}
     >
-      {!multiple && (
-        <SelectLabel>
-          {selectedOption ? (
-            selectedOption.label
-          ) : (
-            <Placeholder $disabled={disabled} $variant={variant}>
-              {placeholder}
-            </Placeholder>
-          )}
-        </SelectLabel>
+      {multiple && Array.isArray(value) && value.length === 0 ? (
+        <Placeholder $disabled={disabled} $variant={variant}>
+          {placeholder}
+        </Placeholder>
+      ) : (
+        !multiple && (
+          <SelectLabel>
+            {selectedOption ? (
+              selectedOption.label
+            ) : (
+              <Placeholder $disabled={disabled} $variant={variant}>
+                {placeholder}
+              </Placeholder>
+            )}
+          </SelectLabel>
+        )
       )}
-      <IconArea $disabled={disabled} $size={size}>
+      <IconArea $disabled={disabled} $size={size} $multiple={multiple}>
         <Icon name="arrow_down" color="currentColor" />
       </IconArea>
     </SelectButton>

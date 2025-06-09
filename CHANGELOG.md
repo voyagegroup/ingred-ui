@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.2.1
+
+### Patch Changes
+
+- [#1828](https://github.com/voyagegroup/ingred-ui/pull/1828) [`335ff66a`](https://github.com/voyagegroup/ingred-ui/commit/335ff66a25887c654496fc410f634b5bdd513e01) Thanks [@noronaoki](https://github.com/noronaoki)! - select2のplaceholderとerrorTextの軽い修正
+
 ## 23.2.0
 
 ### Minor Changes
