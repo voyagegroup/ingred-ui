@@ -26,4 +26,38 @@ describe("Input component testing", () => {
     const { asFragment } = renderWithThemeProvider(<Input multiline />);
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test("Input sizes", () => {
+    const { asFragment: smallFragment } = renderWithThemeProvider(
+      <Input size="small" />,
+    );
+    expect(smallFragment()).toMatchSnapshot();
+
+    const { asFragment: mediumFragment } = renderWithThemeProvider(
+      <Input size="medium" />,
+    );
+    expect(mediumFragment()).toMatchSnapshot();
+
+    const { asFragment: largeFragment } = renderWithThemeProvider(
+      <Input size="large" />,
+    );
+    expect(largeFragment()).toMatchSnapshot();
+  });
+
+  test("Input variants", () => {
+    const { asFragment: lightFragment } = renderWithThemeProvider(
+      <Input variant="light" />,
+    );
+    expect(lightFragment()).toMatchSnapshot();
+
+    const { asFragment: darkFragment } = renderWithThemeProvider(
+      <Input variant="dark" />,
+    );
+    expect(darkFragment()).toMatchSnapshot();
+  });
+
+  test("Input fullWidth", () => {
+    const { asFragment } = renderWithThemeProvider(<Input fullWidth />);
+    expect(asFragment()).toMatchSnapshot();
+  });
 });
