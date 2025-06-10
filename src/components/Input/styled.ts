@@ -1,43 +1,128 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import {
+  InputSize,
+  InputVariant,
+  INPUT_SIZES,
+  getInputVariantConfig,
+  TEXTAREA_PADDING,
+  getErrorStyles,
+} from "./types";
 
 export const Input = styled.input<{
-  isError: boolean;
+  $error: boolean;
   width?: string | number;
   resize?: string;
+  $size?: InputSize;
+  $variant?: InputVariant;
+  $fullWidth?: boolean;
+  $isFocused?: boolean;
+  as?: string | React.ComponentType<any>;
 }>`
-  ${({ width }) =>
-    width ? `width: ${isNaN(+width) ? width : width + "px"}` : "auto"};
-  padding: 10px 8px;
-  border: 0;
-  font-size: 14px;
-  color: ${({ theme, isError }) =>
-    isError ? theme.palette.danger.main : theme.palette.black};
-  background-color: ${({ theme, isError }) =>
-    isError
+  /* 幅設定 */
+  ${({ width, $fullWidth }) =>
+    $fullWidth
+      ? `width: 100%;`
+      : width
+      ? `width: ${isNaN(+width) ? width : width + "px"}`
+      : "auto"};
+
+  /* サイズに基づくスタイル */
+  height: ${({ $size = "medium", as }) =>
+    as === "textarea" ? "auto" : INPUT_SIZES[$size].height};
+  font-size: ${({ $size = "medium" }) => INPUT_SIZES[$size].fontSize};
+  padding: ${({ $size = "medium", as }) =>
+    as === "textarea" ? TEXTAREA_PADDING : INPUT_SIZES[$size].padding};
+  border-radius: ${({ $size = "medium" }) => INPUT_SIZES[$size].borderRadius};
+
+  /* バリアントに基づくスタイル */
+  background-color: ${({ $error, $variant = "light", theme }) => {
+    const variants = getInputVariantConfig(theme);
+    return $error
       ? theme.palette.danger.highlight
-      : theme.palette.background.default};
-  border: 1px solid ${({ theme }) => theme.palette.divider};
-  border-radius: ${({ theme }) => theme.radius}px;
-  border-color: ${({ theme, isError }) =>
-    isError ? theme.palette.danger.main : theme.palette.divider};
+      : variants[$variant].background;
+  }};
+
+  /* 共通スタイル */
+  border: 1px solid
+    ${({ $error, $variant = "light", $isFocused, theme }) => {
+      const variants = getInputVariantConfig(theme);
+      if ($error) return getErrorStyles(theme).borderColor;
+      if ($isFocused) return variants[$variant].focusBorderColor;
+      return variants[$variant].borderColor;
+    }};
+  color: ${({ theme }) => theme.palette.black};
   resize: ${({ resize }) => resize};
+
   /* MEMO: To take a place that display LastPass icon. */
   background-position: calc(100% - 35px) 50% !important;
+
+  /* トランジション - Select2と同様 */
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  /* ホバー状態 */
+  &:hover:not(:disabled) {
+    border-color: ${({ $error, $variant = "light", theme }) => {
+      const variants = getInputVariantConfig(theme);
+      return $error
+        ? getErrorStyles(theme).borderColor
+        : variants[$variant].hoverBorderColor;
+    }};
+  }
+
+  /* フォーカス状態（コンポーネント管理） */
+  ${({ $isFocused, $error, $variant = "light", theme }) => {
+    if (!$isFocused) return "";
+    const variants = getInputVariantConfig(theme);
+    return css`
+      outline: none;
+      border-color: ${$error
+        ? getErrorStyles(theme).borderColor
+        : variants[$variant].focusBorderColor};
+      box-shadow: 0 0 0 3px
+        ${$error
+          ? getErrorStyles(theme).shadowColor
+          : variants[$variant].focusShadowColor};
+    `;
+  }}
+
+  /* 標準のフォーカススタイル（キーボードアクセシビリティのため） */
   &:focus {
     outline: none;
-    border-color: ${({ theme }) => theme.palette.primary.main};
+    border-color: ${({ $error, $variant = "light", theme }) => {
+      const variants = getInputVariantConfig(theme);
+      return $error
+        ? getErrorStyles(theme).borderColor
+        : variants[$variant].focusBorderColor;
+    }};
+    box-shadow: 0 0 0 3px
+      ${({ $error, $variant = "light", theme }) => {
+        const variants = getInputVariantConfig(theme);
+        return $error
+          ? getErrorStyles(theme).shadowColor
+          : variants[$variant].focusShadowColor;
+      }};
   }
+
+  /* プレースホルダー */
   &::placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
+    transition: color 0.2s ease;
   }
-  /* Edge */
+
+  /* Edge用プレースホルダー */
   &::-ms-input-placeholder {
     color: ${({ theme }) => theme.palette.text.hint};
+    transition: color 0.2s ease;
   }
+
+  /* 無効状態 */
   &:disabled {
     color: ${({ theme }) => theme.palette.text.disabled};
     border-color: ${({ theme }) => theme.palette.divider};
-    box-shadow: "none";
+    box-shadow: none;
     background-color: ${({ theme }) => theme.palette.gray.light};
     cursor: not-allowed;
   }
