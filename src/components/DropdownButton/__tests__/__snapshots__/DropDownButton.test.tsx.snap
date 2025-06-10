@@ -134,7 +134,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
         >
           <path
             d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
-            fill="#FDFEFF"
+            fill="#FFFFFF"
           />
         </svg>
       </span>
@@ -363,7 +363,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
         >
           <path
             d="m10 10.9 4.1-4.1 1.2 1.1-5.3 5.3L4.7 8l1.2-1.1z"
-            fill="#FDFEFF"
+            fill="#FFFFFF"
           />
         </svg>
       </span>

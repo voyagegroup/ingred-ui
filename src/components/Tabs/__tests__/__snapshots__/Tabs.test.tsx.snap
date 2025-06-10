@@ -18,7 +18,7 @@ exports[`Tabs component testing Tabs 1`] = `
         value="hoge"
       >
         <div
-          class="sc-crXcEl ktMtgi"
+          class="sc-iqcoie gvDwvh"
           display="flex"
         >
           <p
@@ -36,7 +36,7 @@ exports[`Tabs component testing Tabs 1`] = `
         value="fuga"
       >
         <div
-          class="sc-crXcEl ktMtgi"
+          class="sc-iqcoie gvDwvh"
           display="flex"
         >
           <p
@@ -74,7 +74,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="hoge"
       >
         <div
-          class="sc-crXcEl hQYuYU"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p
@@ -99,7 +99,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="fuga"
       >
         <div
-          class="sc-crXcEl hQYuYU"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p
@@ -124,7 +124,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="piyo"
       >
         <div
-          class="sc-crXcEl hQYuYU"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p

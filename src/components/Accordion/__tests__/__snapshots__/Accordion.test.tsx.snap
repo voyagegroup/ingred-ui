@@ -41,7 +41,7 @@ exports[`Accordion component testing Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-ftvSup bxDIpT"
+      class="sc-ftvSup hVDXaO"
       height="0px"
       overflow="hidden"
     >
@@ -93,7 +93,7 @@ exports[`Accordion component testing Disable Accordion 1`] = `
       </div>
     </div>
     <div
-      class="sc-ftvSup bxDIpT"
+      class="sc-ftvSup hVDXaO"
       height="0px"
       overflow="hidden"
     >
