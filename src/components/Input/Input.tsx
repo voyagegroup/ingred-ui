@@ -90,11 +90,11 @@ const Input = React.forwardRef<
     event.currentTarget.blur();
   }, []);
 
-  const handleFocus = React.useCallback((event: InputEvent) => {
+  const handleFocus = React.useCallback(() => {
     setIsFocused(true);
   }, []);
 
-  const handleBlur = React.useCallback((event: InputEvent) => {
+  const handleBlur = React.useCallback(() => {
     setIsFocused(false);
   }, []);
 
@@ -118,8 +118,10 @@ const Input = React.forwardRef<
       $size={size}
       $variant={variant}
       $fullWidth={fullWidth}
-      onFocus={createChainedFunction(handleFocus, onFocus)}
-      onBlur={createChainedFunction(handleBlur, onBlur)}
+      onFocus={
+        onFocus ? createChainedFunction(handleFocus, onFocus) : handleFocus
+      }
+      onBlur={onBlur ? createChainedFunction(handleBlur, onBlur) : handleBlur}
       onWheel={createChainedFunction(
         rest.type === "number" ? handleWheel : null,
         rest.onWheel,

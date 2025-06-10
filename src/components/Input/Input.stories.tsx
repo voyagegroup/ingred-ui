@@ -77,14 +77,14 @@ export const Variants: StoryObj<InputProps> = {
               無効状態
             </Typography>
             <Spacer pt={1} />
-            <Input variant="light" disabled placeholder="Disabled" />
+            <Input disabled variant="light" placeholder="Disabled" />
           </div>
           <div>
             <Typography size="sm" color="secondary">
               エラー状態
             </Typography>
             <Spacer pt={1} />
-            <Input variant="light" error placeholder="Error" />
+            <Input error variant="light" placeholder="Error" />
           </div>
         </Flex>
       </div>
@@ -111,14 +111,14 @@ export const Variants: StoryObj<InputProps> = {
               無効状態
             </Typography>
             <Spacer pt={1} />
-            <Input variant="dark" disabled placeholder="Disabled" />
+            <Input disabled variant="dark" placeholder="Disabled" />
           </div>
           <div>
             <Typography size="sm" color="secondary">
               エラー状態
             </Typography>
             <Spacer pt={1} />
-            <Input variant="dark" error placeholder="Error" />
+            <Input error variant="dark" placeholder="Error" />
           </div>
         </Flex>
       </div>
@@ -220,8 +220,8 @@ export const Textarea: StoryObj<InputProps> = {
             <Spacer pt={1} />
             <Input
               multiline
-              placeholder="Non-resizable textarea"
               resize="none"
+              placeholder="Non-resizable textarea"
               rows={3}
             />
           </div>
@@ -237,8 +237,8 @@ export const Textarea: StoryObj<InputProps> = {
             </Typography>
             <Spacer pt={1} />
             <Input
-              multiline
               error
+              multiline
               placeholder="Error state textarea"
               rows={3}
             />
