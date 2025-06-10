@@ -1,4 +1,3 @@
-import { Theme } from "../../themes";
 import React from "react";
 
 export type BadgeColor =
@@ -47,4 +46,4 @@ export type BadgeProps = React.ComponentPropsWithoutRef<"a" | "span"> & {
    * アイコン要素
    */
   icon?: React.ReactNode;
-}; 
+};

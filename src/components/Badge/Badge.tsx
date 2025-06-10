@@ -1,7 +1,8 @@
 import * as React from "react";
 import * as Styled from "./styled";
 import { useTheme } from "../../themes/useTheme";
-import { BadgeProps, BadgeColor, BadgeType, BadgeSize } from "./types";
+import { BadgeProps } from "./types";
+import { IconSize } from "../Icon/Icon";
 
 const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
   function Badge(
@@ -19,7 +20,18 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
     ref,
   ) {
     const theme = useTheme();
-    
+
+    // バッジサイズからアイコンサイズへの変換
+    const getIconSize = (badgeSize: string): IconSize | number => {
+      switch (badgeSize) {
+        case "small":
+          return 14; // 直接ピクセル値を指定
+        case "medium":
+        default:
+          return 16; // 直接ピクセル値を指定
+      }
+    };
+
     // Signal Badge
     if (type === "signal") {
       return (
@@ -27,6 +39,7 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
           ref={ref as any}
           as={component as any}
           size={size}
+          fontWeight={fontWeight}
           {...rest}
         >
           <Styled.SignalDot
@@ -37,11 +50,11 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
         </Styled.SignalWrapper>
       );
     }
-    
+
     // Normal & Pill Badge
     const textColor = Styled.getTextColor(color, theme, type);
     const backgroundColor = Styled.getBackgroundColor(color, theme, type);
-    
+
     // コンポーネントの共通プロパティ
     const commonProps = {
       ref,
@@ -51,20 +64,24 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
       fontSize,
       fontWeight,
       size,
-      ...rest
+      ...rest,
     };
-    
+
     // タイプに応じたコンポーネントをレンダリング
-    const BadgeComponent = type === "normal" ? Styled.NormalBadge : Styled.PillBadge;
-    
+    const BadgeComponent =
+      type === "normal" ? Styled.NormalBadge : Styled.PillBadge;
+
+    // アイコン要素にアイコンサイズを設定
+    const iconElement = icon
+      ? React.cloneElement(icon as React.ReactElement, {
+          size: getIconSize(size),
+        })
+      : null;
+
     return (
       <BadgeComponent {...commonProps}>
-        {icon && (
-          <Styled.Icon>
-            {icon}
-          </Styled.Icon>
-        )}
-        {children}
+        {iconElement && <Styled.Icon>{iconElement}</Styled.Icon>}
+        <Styled.Text>{children}</Styled.Text>
       </BadgeComponent>
     );
   },

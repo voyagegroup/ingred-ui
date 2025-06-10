@@ -60,7 +60,7 @@ export type Palette = {
 };
 
 export const palette: Palette = {
-  white: colors.basic[50],
+  white: colors.basic[0],
   black: colors.basic[900],
   primary: {
     deepDark: colors.blue[700],
@@ -117,10 +117,10 @@ export const palette: Palette = {
     secondary: colors.basic[700],
     disabled: colors.basic[400],
     hint: colors.basic[400],
-    white: "#FFFFFF",
+    white: colors.basic[0],
   },
   background: {
-    default: "#FFFFFF",
+    default: colors.basic[0],
     dark: colors.blue[40],
     active: colors.blue[100],
     hint: colors.blue[50],

@@ -46,7 +46,7 @@ export const Normal: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "primary",
-    children: "normal",
+    children: "ノーマル",
   },
 };
 
@@ -54,8 +54,8 @@ export const NormalWithIcon: StoryObj<typeof Badge> = {
   ...Template,
   args: {
     color: "success",
-    children: "with icon",
-    icon: <Icon name="check_thin" size="sm" color="currentColor" />,
+    children: "アイコン付き",
+    icon: <Icon name="image" size="sm" color="currentColor" />,
   },
 };
 
@@ -64,7 +64,7 @@ export const Pill: StoryObj<typeof Badge> = {
   args: {
     type: "pill",
     color: "secondary",
-    children: "pill",
+    children: "ピルタイプ",
   },
 };
 
@@ -73,6 +73,6 @@ export const Signal: StoryObj<typeof Badge> = {
   args: {
     type: "signal",
     color: "success",
-    children: "signal",
+    children: "ステータス",
   },
 };

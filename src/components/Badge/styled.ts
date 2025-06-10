@@ -1,9 +1,14 @@
 import styled, { css } from "styled-components";
 import { BadgeColor, BadgeType, BadgeSize } from "./types";
 import { Theme } from "../../themes";
+import { trimVertical } from "../../styles/typography";
 
 // 背景色の決定ロジック - 各タイプごとに明確に定義
-export const getBackgroundColor = (key: BadgeColor, theme: Theme, type: BadgeType) => {
+export const getBackgroundColor = (
+  key: BadgeColor,
+  theme: Theme,
+  type: BadgeType,
+) => {
   switch (type) {
     // normalタイプの背景色
     case "normal":
@@ -19,10 +24,10 @@ export const getBackgroundColor = (key: BadgeColor, theme: Theme, type: BadgeTyp
         case "danger":
           return theme.palette.danger.highlight;
         case "basic":
-          return theme.palette.gray.light;
+          return theme.palette.black;
       }
       break;
-      
+
     // pillタイプの背景色
     case "pill":
       switch (key) {
@@ -37,10 +42,10 @@ export const getBackgroundColor = (key: BadgeColor, theme: Theme, type: BadgeTyp
         case "danger":
           return theme.palette.danger.main;
         case "basic":
-          return theme.palette.gray.dark;
+          return theme.palette.black;
       }
       break;
-      
+
     // signalタイプのドットの色
     case "signal":
       switch (key) {
@@ -62,7 +67,11 @@ export const getBackgroundColor = (key: BadgeColor, theme: Theme, type: BadgeTyp
 };
 
 // テキスト色の決定ロジック - 各タイプごとに明確に定義
-export const getTextColor = (key: BadgeColor, theme: Theme, type: BadgeType) => {
+export const getTextColor = (
+  key: BadgeColor,
+  theme: Theme,
+  type: BadgeType,
+) => {
   switch (type) {
     // normalタイプのテキスト色
     case "normal":
@@ -78,11 +87,10 @@ export const getTextColor = (key: BadgeColor, theme: Theme, type: BadgeType) => 
         case "warning":
           return theme.palette.warning.deepDark;
         case "basic":
-          return theme.palette.text.primary;
-        default:
-          return theme.palette.text.primary;
+          return theme.palette.text.white;
       }
-      
+      break;
+
     // pillタイプのテキスト色
     case "pill":
       switch (key) {
@@ -93,15 +101,14 @@ export const getTextColor = (key: BadgeColor, theme: Theme, type: BadgeType) => 
         case "success":
           return theme.palette.text.white;
         case "warning":
-          return theme.palette.black;
+          return theme.palette.warning.deepDark;
         case "danger":
           return theme.palette.text.white;
         case "basic":
           return theme.palette.text.white;
-        default:
-          return theme.palette.text.white;
       }
-      
+      break;
+
     // signalタイプのテキスト色
     case "signal":
       switch (key) {
@@ -117,25 +124,23 @@ export const getTextColor = (key: BadgeColor, theme: Theme, type: BadgeType) => 
           return theme.palette.danger.deepDark;
         case "basic":
           return theme.palette.text.primary;
-        default:
-          return theme.palette.text.primary;
       }
+      break;
   }
 };
 
 // 共通のスタイル
 const commonBadgeStyles = css<{
   size?: BadgeSize;
-  fontSize: string;
-  fontWeight: string;
+  fontSize?: string;
+  fontWeight?: string;
 }>`
   display: inline-flex;
   align-items: center;
-  height: ${({ size = "medium" }) => (size === "small" ? "20px" : "24px")};
   text-align: center;
-  font-size: ${({ size = "medium", fontSize }) =>
+  font-size: ${({ size = "medium", fontSize = "13px" }) =>
     size === "small" ? "12px" : fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
+  font-weight: ${({ fontWeight = "normal" }) => fontWeight};
   text-decoration: none;
 `;
 
@@ -144,18 +149,17 @@ export const NormalBadge = styled.span<{
   color: string;
   backgroundColor: string;
   size?: BadgeSize;
-  fontSize: string;
-  fontWeight: string;
+  fontSize?: string;
+  fontWeight?: string;
 }>`
   ${commonBadgeStyles}
   padding: 0 ${({ size = "medium", theme }) =>
-    size === "small"
-      ? `${theme.spacing * 0.75}px`
-      : `${theme.spacing}px`};
+    size === "small" ? `${theme.spacing * 0.75}px` : `${theme.spacing}px`};
   border-radius: ${({ theme }) => `${theme.radius * 0.75}px`};
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ color }) => color};
   gap: ${({ size = "medium" }) => (size === "small" ? "2px" : "4px")};
+  height: ${({ size = "medium" }) => (size === "small" ? "22px" : "24px")};
 `;
 
 // Pill Badge
@@ -163,28 +167,33 @@ export const PillBadge = styled.span<{
   color: string;
   backgroundColor: string;
   size?: BadgeSize;
-  fontSize: string;
-  fontWeight: string;
+  fontSize?: string;
+  fontWeight?: string;
 }>`
   ${commonBadgeStyles}
   padding: 0 ${({ size = "medium", theme }) =>
-    size === "small"
-      ? `${theme.spacing * 0.75}px`
-      : `${theme.spacing}px`};
+    size === "small" ? `${theme.spacing * 0.75}px` : `${theme.spacing}px`};
   border-radius: 10rem;
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ color }) => color};
-  gap: ${({ size = "medium" }) => (size === "small" ? "2px" : "4px")};
+  height: ${({ size = "medium" }) => (size === "small" ? "20px" : "24px")};
 `;
 
 // Signal Badge Components
-export const SignalWrapper = styled.span<{ size?: BadgeSize }>`
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+export const SignalWrapper = styled.span<{
+  size?: BadgeSize;
+  fontWeight?: string;
+}>`
+  ${commonBadgeStyles}
+  gap: ${({ size = "medium", theme }) =>
+    size === "small" ? `${theme.spacing / 2}px` : `${theme.spacing * 0.75}px`};
   border: 1px solid ${({ theme }) => theme.palette.basicDark.dark};
-  border-radius: ${({ theme }) => theme.radius / 2}px;
-  padding: ${({ theme }) => theme.spacing / 2}px;
+  border-radius: 10rem;
+  padding: 0
+    ${({ size = "medium", theme }) =>
+      size === "small"
+        ? `${theme.spacing / 2}px`
+        : `${theme.spacing * 0.75}px`};
   height: ${({ size = "medium" }) => (size === "small" ? "20px" : "24px")};
 `;
 
@@ -199,14 +208,18 @@ export const SignalDot = styled.span<{
   height: ${({ size = "medium" }) => (size === "small" ? "10px" : "12px")};
 `;
 
-export const SignalText = styled.span`
-  display: inline-flex;
-  align-items: center;
+export const SignalText = styled.span<{
+  size?: BadgeSize;
+}>`
+  ${trimVertical}
 `;
 
 // アイコン用のスタイル
-export const Icon = styled.span`
-  display: inline-flex;
-  align-items: center;
-  margin-right: 4px;
+export const Icon = styled.span``;
+
+// テキスト用のスタイル
+export const Text = styled.span<{
+  size?: BadgeSize;
+}>`
+  ${trimVertical}
 `;
