@@ -14,17 +14,19 @@ type ContentWrapperProps = {
 export const Container = styled.div<ContainerProps>`
   display: flex;
   width: 100%;
+  /* サイズに応じたパディングの調整 */
   padding: ${({ theme, size }) =>
-    size === "small"
-      ? `${theme.spacing}px ${theme.spacing * 1.5}px`
-      : `${theme.spacing * 2}px`};
-  border-radius: 6px;
+    size === "small" ? `${theme.spacing}px` : `${theme.spacing * 1.5}px`};
+  border-radius: ${({ theme, size }) =>
+    size === "small" ? `${theme.radius / 2}px` : `${theme.radius}px`};
   position: relative;
 
+  /* Flexコンテナ内の要素の間隔を調整 */
   & > div {
     gap: ${({ theme }) => theme.spacing}px;
   }
 
+  /* タイプに基づいたスタイリング（背景色、テキスト色、ボーダー色） */
   ${({ theme, type }) => {
     switch (type) {
       case "info":
@@ -58,6 +60,7 @@ export const Container = styled.div<ContainerProps>`
 export const ContentWrapper = styled.div<ContentWrapperProps>`
   display: flex;
   align-items: center;
+  /* サイズに応じたフォントサイズの調整 */
   font-size: ${({ size }) =>
     size === "small" ? `${fontSize.sm}px` : `${fontSize.md}px`};
   line-height: 1.4;

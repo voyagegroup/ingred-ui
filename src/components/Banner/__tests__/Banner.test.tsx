@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { cleanup } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import Banner from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
@@ -66,5 +66,29 @@ describe("Banner component testing", () => {
       </Banner>,
     );
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  // アクセシビリティ関連のテスト
+  test("Info banner has correct accessibility attributes", () => {
+    renderWithThemeProvider(<Banner type="info" message="Info message" />);
+    const banner = screen.getByText("Info message").closest("div[role]");
+    expect(banner).toHaveAttribute("role", "status");
+    expect(banner).toHaveAttribute("aria-live", "polite");
+  });
+
+  test("Warning banner has correct accessibility attributes", () => {
+    renderWithThemeProvider(
+      <Banner type="warning" message="Warning message" />,
+    );
+    const banner = screen.getByText("Warning message").closest("div[role]");
+    expect(banner).toHaveAttribute("role", "alert");
+    expect(banner).toHaveAttribute("aria-live", "polite");
+  });
+
+  test("Error banner has correct accessibility attributes", () => {
+    renderWithThemeProvider(<Banner type="error" message="Error message" />);
+    const banner = screen.getByText("Error message").closest("div[role]");
+    expect(banner).toHaveAttribute("role", "alert");
+    expect(banner).toHaveAttribute("aria-live", "assertive");
   });
 });

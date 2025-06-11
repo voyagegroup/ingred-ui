@@ -1,6 +1,18 @@
 import * as React from "react";
 
+/**
+ * バナーのタイプを定義します
+ * info: 情報提供用
+ * warning: 警告用
+ * error: エラー用
+ */
 export type BannerType = "info" | "warning" | "error";
+
+/**
+ * バナーのサイズを定義します
+ * small: 小さいサイズ
+ * medium: 中サイズ（デフォルト）
+ */
 export type BannerSize = "small" | "medium";
 
 export type BannerProps = {

@@ -7,17 +7,28 @@ import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
 import { BannerProps, BannerType } from "./types";
 
-const getIconNameByType = (type: BannerType): IconName => {
-  switch (type) {
-    case "info":
-      return "information";
-    case "warning":
-      return "alert";
-    case "error":
-      return "alert";
-    default:
-      return "information";
-  }
+type AriaLive = "polite" | "assertive" | "off";
+
+// タイプごとの設定をマッピングオブジェクトとして定義
+const bannerTypeConfig = {
+  info: {
+    iconName: "information" as IconName,
+    getColor: (theme: any) => theme.palette.primary.main,
+    role: "status",
+    ariaLive: "polite" as AriaLive,
+  },
+  warning: {
+    iconName: "alert" as IconName,
+    getColor: (theme: any) => theme.palette.warning.deepDark,
+    role: "alert",
+    ariaLive: "polite" as AriaLive,
+  },
+  error: {
+    iconName: "alert" as IconName,
+    getColor: (theme: any) => theme.palette.danger.main,
+    role: "alert",
+    ariaLive: "assertive" as AriaLive,
+  },
 };
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
@@ -25,20 +36,9 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
   ref,
 ) {
   const theme = useTheme();
-  const iconName = getIconNameByType(type);
-
-  const getIconColor = () => {
-    switch (type) {
-      case "info":
-        return theme.palette.primary.main;
-      case "warning":
-        return theme.palette.warning.deepDark;
-      case "error":
-        return theme.palette.danger.main;
-      default:
-        return theme.palette.primary.main;
-    }
-  };
+  const config = bannerTypeConfig[type] || bannerTypeConfig.info;
+  const iconName = config.iconName;
+  const iconColor = config.getColor(theme);
 
   // messageとchildrenの両方が提供された場合、messageを優先
   const content = message || children;
@@ -49,13 +49,15 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
       type={type}
       size={size}
       className={className}
+      role={config.role}
+      aria-live={config.ariaLive}
       {...rest}
     >
       <Flex display="flex" alignItems="center">
         <Icon
           name={iconName}
           size={size === "small" ? "md-lg" : "lg"}
-          color={getIconColor()}
+          color={iconColor}
         />
         {typeof content === "string" || typeof content === "number" ? (
           <Typography

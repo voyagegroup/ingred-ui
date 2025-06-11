@@ -1,6 +1,7 @@
 import React from "react";
 import { StoryObj } from "@storybook/react";
-import Banner, { BannerProps } from "./Banner";
+import Banner from "./Banner";
+import { BannerProps } from "./types";
 import Flex from "../Flex";
 import Typography from "../Typography";
 
@@ -11,8 +12,40 @@ export default {
     docs: {
       description: {
         component:
-          "バナーは、コンテキストに関連するメッセージを表示するためのコンポーネントです。",
+          "バナーは、コンテキストに関連するメッセージを表示するためのコンポーネントです。" +
+          "タイプに応じて適切なアクセシビリティ属性（role、aria-live）が自動的に設定されます。" +
+          'Info: role="status", aria-live="polite"' +
+          'Warning: role="alert", aria-live="polite"' +
+          'Error: role="alert", aria-live="assertive"',
       },
+    },
+  },
+  argTypes: {
+    type: {
+      description: "バナーのタイプ（info, warning, error）",
+      control: { type: "select", options: ["info", "warning", "error"] },
+      table: {
+        type: { summary: "BannerType" },
+        defaultValue: { summary: "info" },
+      },
+    },
+    size: {
+      description: "バナーのサイズ（small, medium）",
+      control: { type: "select", options: ["small", "medium"] },
+      table: {
+        type: { summary: "BannerSize" },
+        defaultValue: { summary: "medium" },
+      },
+    },
+    message: {
+      description: "バナーに表示するメッセージ（childrenより優先されます）",
+      control: { type: "text" },
+    },
+    children: {
+      description: "バナーの内容（messageが指定されている場合は無視されます）",
+    },
+    className: {
+      description: "追加のCSSクラス",
     },
   },
 };
