@@ -5,7 +5,7 @@ import Typography from "../Typography";
 import Flex from "../Flex";
 import Icon from "../Icon";
 import { IconName } from "../Icon/Icon";
-import { BannerProps, BannerType } from "./types";
+import { BannerProps } from "./types";
 
 type AriaLive = "polite" | "assertive" | "off";
 

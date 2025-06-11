@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, screen } from "@testing-library/react";
 import Banner from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
