@@ -110,8 +110,13 @@ export const Medium: StoryObj<BannerProps> = {
   },
 };
 
-export const ClosableDemo: StoryObj = {
-  render: () => {
+export const ClosableDemo: StoryObj<BannerProps> = {
+  args: {
+    type: "warning",
+    closable: true,
+    message: "これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。",
+  },
+  render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [visible, setVisible] = useState(true);
 
@@ -127,9 +132,7 @@ export const ClosableDemo: StoryObj = {
       <Flex display="flex" flexDirection="column" gap={2}>
         {visible ? (
           <Banner
-            closable
-            type="warning"
-            message="これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。"
+            {...args}
             onClose={handleClose}
           />
         ) : (

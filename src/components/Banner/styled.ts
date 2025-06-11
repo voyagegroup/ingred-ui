@@ -21,10 +21,6 @@ export const Container = styled.div<ContainerProps>`
     size === "small" ? `${theme.radius / 2}px` : `${theme.radius}px`};
   position: relative;
 
-  /* Flexコンテナ内の要素の間隔を調整 */
-  & > div {
-    gap: ${({ theme }) => theme.spacing}px;
-  }
 
   /* タイプに基づいたスタイリング（背景色、テキスト色、ボーダー色） */
   ${({ theme, type }) => {
@@ -81,11 +77,6 @@ export const CloseButton = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  &:focus {
-    outline: none;
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: color-mix(in srgb, currentColor 4%, transparent);
   }
 `;
