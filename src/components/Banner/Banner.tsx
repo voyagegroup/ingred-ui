@@ -21,9 +21,13 @@ export type BannerProps = {
    */
   size?: BannerSize;
   /**
-   * バナーに表示するメッセージ
+   * バナーに表示するメッセージ（childrenと併用する場合はこちらが優先されます）
    */
-  message: React.ReactNode;
+  message?: React.ReactNode;
+  /**
+   * バナーの内容（messageと併用する場合はmessageが優先されます）
+   */
+  children?: React.ReactNode;
   /**
    * 追加のCSSクラス
    */
@@ -44,7 +48,7 @@ const getIconNameByType = (type: BannerType): IconName => {
 };
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
-  { type = "info", size = "medium", message, className, ...rest },
+  { type = "info", size = "medium", message, children, className, ...rest },
   ref,
 ) {
   const theme = useTheme();
@@ -55,13 +59,16 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
       case "info":
         return theme.palette.primary.main;
       case "warning":
-        return theme.palette.warning.main;
+        return theme.palette.warning.deepDark;
       case "error":
         return theme.palette.danger.main;
       default:
         return theme.palette.primary.main;
     }
   };
+
+  // messageとchildrenの両方が提供された場合、messageを優先
+  const content = message || children;
 
   return (
     <Styled.Container
@@ -77,13 +84,17 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
           size={size === "small" ? "md-lg" : "lg"}
           color={getIconColor()}
         />
-        <Typography
-          color="inherit"
-          component="div"
-          size={size === "small" ? "sm" : "md"}
-        >
-          {message}
-        </Typography>
+        {typeof content === "string" || typeof content === "number" ? (
+          <Typography
+            color="inherit"
+            component="div"
+            size={size === "small" ? "sm" : "md"}
+          >
+            {content}
+          </Typography>
+        ) : (
+          <Styled.ContentWrapper size={size}>{content}</Styled.ContentWrapper>
+        )}
       </Flex>
     </Styled.Container>
   );

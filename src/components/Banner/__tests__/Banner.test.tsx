@@ -41,4 +41,30 @@ describe("Banner component testing", () => {
     );
     expect(asFragment()).toMatchSnapshot();
   });
+
+  test("Banner with children", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <Banner type="info">
+        <div>Custom content inside banner</div>
+      </Banner>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  test("Banner with complex children", () => {
+    const { asFragment } = renderWithThemeProvider(
+      <Banner type="warning">
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <img
+            src="https://via.placeholder.com/24"
+            alt="Icon"
+            width="24"
+            height="24"
+          />
+          <span>Content with image</span>
+        </div>
+      </Banner>,
+    );
+    expect(asFragment()).toMatchSnapshot();
+  });
 });

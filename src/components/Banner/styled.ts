@@ -1,8 +1,13 @@
 import styled, { css } from "styled-components";
 import { BannerType, BannerSize } from "./Banner";
+import { fontSize } from "../Typography/Typography";
 
 type ContainerProps = {
   type: BannerType;
+  size: BannerSize;
+};
+
+type ContentWrapperProps = {
   size: BannerSize;
 };
 
@@ -24,28 +29,37 @@ export const Container = styled.div<ContainerProps>`
     switch (type) {
       case "info":
         return css`
-          background-color: ${theme.palette.primary.highlight};
+          background-color: ${theme.palette.primary.ultraLight};
           color: ${theme.palette.primary.dark};
           border: 1px solid ${theme.palette.primary.light};
         `;
       case "warning":
         return css`
-          background-color: ${theme.palette.warning.highlight};
-          color: ${theme.palette.warning.dark};
-          border: 1px solid ${theme.palette.warning.light};
+          background-color: ${theme.palette.warning.ultraLight};
+          color: ${theme.palette.warning.deepDark};
+          border: 1px solid ${theme.palette.warning.dark};
         `;
       case "error":
         return css`
-          background-color: ${theme.palette.danger.highlight};
+          background-color: ${theme.palette.danger.ultraLight};
           color: ${theme.palette.danger.dark};
           border: 1px solid ${theme.palette.danger.light};
         `;
       default:
         return css`
-          background-color: ${theme.palette.primary.highlight};
+          background-color: ${theme.palette.primary.ultraLight};
           color: ${theme.palette.primary.dark};
           border: 1px solid ${theme.palette.primary.light};
         `;
     }
   }}
+`;
+
+export const ContentWrapper = styled.div<ContentWrapperProps>`
+  display: flex;
+  align-items: center;
+  font-size: ${({ size }) =>
+    size === "small" ? `${fontSize.sm}px` : `${fontSize.md}px`};
+  line-height: 1.4;
+  color: inherit;
 `;
