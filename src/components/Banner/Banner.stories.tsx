@@ -110,7 +110,6 @@ export const Medium: StoryObj<BannerProps> = {
   },
 };
 
-
 export const ClosableDemo: StoryObj = {
   render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks

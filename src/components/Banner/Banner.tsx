@@ -75,7 +75,11 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
         justifyContent="space-between"
         style={{ width: "100%" }}
       >
-        <Flex display="flex" alignItems="center" gap={size === "small" ? 1 : 1.5}>
+        <Flex
+          display="flex"
+          alignItems="center"
+          gap={size === "small" ? 1 : 1.5}
+        >
           <Icon
             name={iconName}
             size={size === "small" ? "md-lg" : "lg"}
@@ -96,11 +100,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
 
         {closable && (
           <Styled.CloseButton aria-label="閉じる" onClick={handleClose}>
-            <Icon
-              name="close"
-              size="md"
-              color={iconColor}
-            />
+            <Icon name="close" size="md" color={iconColor} />
           </Styled.CloseButton>
         )}
       </Flex>
