@@ -110,15 +110,6 @@ export const Medium: StoryObj<BannerProps> = {
   },
 };
 
-export const Closable: StoryObj<BannerProps> = {
-  ...Template,
-  args: {
-    type: "info",
-    message:
-      "これは閉じることができるバナーです。右側の×ボタンをクリックしてください。",
-    closable: true,
-  },
-};
 
 export const ClosableDemo: StoryObj = {
   render: () => {
