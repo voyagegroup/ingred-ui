@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { BannerType, BannerSize } from "./Banner";
+import { BannerType, BannerSize } from "./types";
 import { fontSize } from "../Typography/Typography";
 
 type ContainerProps = {
