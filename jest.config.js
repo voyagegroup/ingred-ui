@@ -13,5 +13,4 @@ module.exports = {
   modulePathIgnorePatterns: ["<rootDir>/example"],
   clearMocks: true,
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 };
