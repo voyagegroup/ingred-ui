@@ -640,3 +640,142 @@ export const Loading: StoryObj<typeof meta> = {
     );
   },
 };
+
+/**
+ * `availableRowIds` プロパティを使用することで、フィルタリング等で表示されない行を選択状態から自動的に除外できます。<br />
+ * この例では、名前フィルターを適用すると、フィルターに一致しない行は自動的に選択解除されます。<br />
+ * 一括選択時も、`availableRowIds` で指定された行のみが選択されます。
+ */
+export const WithAvailableRowIds: StoryObj<typeof meta> = {
+  args: {
+    bordered: false,
+    columns: [
+      {
+        id: crypto.randomUUID(),
+        label: "名前",
+        order: 0,
+        visible: true,
+        sortable: false,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "ステータス",
+        order: 1,
+        visible: true,
+        sortable: false,
+        filtered: false,
+      },
+    ],
+    pageSize: 10,
+    pageSizeOptions: [10, 20],
+    currentPage: 0,
+    totalCount: 10,
+    rowControls: (
+      <>
+        <ContextMenu2HeadingItem>選択されたアイテム</ContextMenu2HeadingItem>
+        <ContextMenu2ButtonItem
+          closeOnClick
+          onClick={() => alert("選択されたアイテムに対する操作")}
+        >
+          アクションを実行
+        </ContextMenu2ButtonItem>
+      </>
+    ),
+    onCheckedRowsChange: () => {},
+    onPageSizeChange: () => {},
+    onPageChange: () => {},
+    onColumnsChange: () => {},
+    children: null,
+  },
+  render: (args) => {
+    const [{ columns }, updateArgs] = useArgs<{
+      columns: TableColumn[];
+    }>();
+
+    const [checkedRows, setCheckedRows] = useState<string[]>([]);
+    const [nameFilter, setNameFilter] = useState<string>("");
+
+    // サンプルデータ
+    const allData = useMemo(
+      () => [
+        { id: "1", name: "太郎", status: "有効" },
+        { id: "2", name: "花子", status: "無効" },
+        { id: "3", name: "次郎", status: "有効" },
+        { id: "4", name: "美咲", status: "無効" },
+        { id: "5", name: "健太", status: "有効" },
+      ],
+      [],
+    );
+
+    // フィルタリングされたデータ
+    const filteredData = useMemo(() => {
+      if (!nameFilter) return allData;
+      return allData.filter((item) =>
+        item.name.toLowerCase().includes(nameFilter.toLowerCase()),
+      );
+    }, [allData, nameFilter]);
+
+    // 現在有効な行IDのリスト
+    const availableRowIds = useMemo(
+      () => filteredData.map((item) => item.id),
+      [filteredData],
+    );
+
+    return (
+      <div style={{ height: 500 }}>
+        <div style={{ marginBottom: 16 }}>
+          <label htmlFor="name-filter">
+            名前フィルター:
+            <input
+              id="name-filter"
+              type="text"
+              value={nameFilter}
+              placeholder="名前を入力..."
+              aria-label="名前フィルター"
+              style={{ marginLeft: 8, padding: 4 }}
+              onChange={(e) => setNameFilter(e.target.value)}
+            />
+          </label>
+          <div style={{ marginTop: 8, fontSize: 14, color: "#666" }}>
+            選択中: {checkedRows.length}件 | 表示中: {filteredData.length}件 |
+            全件数: {allData.length}件
+          </div>
+          {nameFilter && (
+            <div style={{ marginTop: 4, fontSize: 12, color: "#999" }}>
+              フィルター適用中: &quot;{nameFilter}&quot; を含む名前のみ表示
+            </div>
+          )}
+        </div>
+
+        <DataTable2
+          {...args}
+          columns={columns}
+          totalCount={filteredData.length}
+          availableRowIds={availableRowIds}
+          onCheckedRowsChange={setCheckedRows}
+          onPageSizeChange={() => {}}
+          onPageChange={() => {}}
+          onColumnsChange={(columns) => updateArgs({ columns })}
+        >
+          <DataTable2Head>
+            <DataTable2Column>
+              <DataTable2ColumnLabel>名前</DataTable2ColumnLabel>
+            </DataTable2Column>
+            <DataTable2Column>
+              <DataTable2ColumnLabel>ステータス</DataTable2ColumnLabel>
+            </DataTable2Column>
+          </DataTable2Head>
+          <DataTable2Body>
+            {filteredData.map((dataRow) => (
+              <DataTable2Row key={dataRow.id} id={dataRow.id}>
+                <DataTable2Cell>{dataRow.name}</DataTable2Cell>
+                <DataTable2Cell>{dataRow.status}</DataTable2Cell>
+              </DataTable2Row>
+            ))}
+          </DataTable2Body>
+        </DataTable2>
+      </div>
+    );
+  },
+};

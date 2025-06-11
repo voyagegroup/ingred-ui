@@ -36,16 +36,29 @@ type ToolbarProps = {
   extraButtons?: ReactNode;
 };
 const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
-  const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
-    useContext(DataTable2Context);
+  const {
+    isSmallLayout,
+    columns,
+    rowIds,
+    checkedRows,
+    availableRowIds,
+    setCheckedRows,
+  } = useContext(DataTable2Context);
+
+  // 実際に選択対象となる行IDを決定（availableRowIdsが指定されていればそれを使用）
+  const targetRowIds = useMemo(
+    () => availableRowIds || rowIds,
+    [availableRowIds, rowIds],
+  );
 
   const isAllChecked = useMemo(
-    () => checkedRows.length === rowIds.length,
-    [checkedRows, rowIds],
+    () => targetRowIds.length > 0 && checkedRows.length === targetRowIds.length,
+    [checkedRows, targetRowIds],
   );
   const isIndeterminate = useMemo(
-    () => checkedRows.length !== 0 && checkedRows.length !== rowIds.length,
-    [checkedRows, rowIds],
+    () =>
+      checkedRows.length !== 0 && checkedRows.length !== targetRowIds.length,
+    [checkedRows, targetRowIds],
   );
 
   const [isControlOpen, setIsControlOpen] = useState(false);
@@ -56,8 +69,8 @@ const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
   );
 
   const onCheck = useCallback(() => {
-    !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
-  }, [isAllChecked, rowIds, setCheckedRows]);
+    !isAllChecked ? setCheckedRows(targetRowIds) : setCheckedRows([]);
+  }, [isAllChecked, targetRowIds, setCheckedRows]);
 
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
@@ -165,6 +178,12 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
+  /**
+   * 現在有効（表示可能）な行のIDリスト
+   * フィルタリング等で表示されない行は選択状態から自動的に除外されます
+   * 指定しない場合は従来通りの動作となります
+   */
+  availableRowIds?: string[];
 } & ToolbarProps;
 
 export const DataTable2 = ({
@@ -180,6 +199,7 @@ export const DataTable2 = ({
   onPageSizeChange,
   onColumnsChange,
   onCheckedRowsChange,
+  availableRowIds,
   children,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
@@ -217,10 +237,15 @@ export const DataTable2 = ({
 
   const handleCheckedRows = useCallback(
     (checkedRows: string[]) => {
-      setCheckedRows(checkedRows);
-      onCheckedRowsChange?.(checkedRows);
+      // availableRowIdsが指定されている場合、有効な行のみにフィルタリング
+      const filteredCheckedRows = availableRowIds
+        ? checkedRows.filter((id) => availableRowIds.includes(id))
+        : checkedRows;
+
+      setCheckedRows(filteredCheckedRows);
+      onCheckedRowsChange?.(filteredCheckedRows);
     },
-    [setCheckedRows, onCheckedRowsChange],
+    [setCheckedRows, onCheckedRowsChange, availableRowIds],
   );
 
   // ページ移動した場合全選択を解除
@@ -230,6 +255,19 @@ export const DataTable2 = ({
     previousPage.current = currentPage;
   }, [currentPage, handleCheckedRows]);
 
+  // availableRowIdsが変更された場合、選択状態をフィルタリング
+  useEffect(() => {
+    if (availableRowIds && checkedRows.length > 0) {
+      const filteredCheckedRows = checkedRows.filter((id) =>
+        availableRowIds.includes(id),
+      );
+      if (filteredCheckedRows.length !== checkedRows.length) {
+        setCheckedRows(filteredCheckedRows);
+        onCheckedRowsChange?.(filteredCheckedRows);
+      }
+    }
+  }, [availableRowIds, checkedRows, onCheckedRowsChange]);
+
   return (
     <styled.DataTable2 ref={elRef} bordered={bordered}>
       <DataTable2Context.Provider
@@ -238,6 +276,7 @@ export const DataTable2 = ({
           rowIds,
           hasRowControls: !!rowControls,
           checkedRows,
+          availableRowIds,
           totalCount,
           currentPage,
           pageSize,

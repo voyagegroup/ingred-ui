@@ -12,6 +12,7 @@ export const DataTable2Context = createContext<
     rowIds: string[]; // 全行の ID のリスト。コンテキストを通して、枝葉コンポーネントで共有する
     hasRowControls: boolean;
     checkedRows: string[];
+    availableRowIds?: string[]; // 現在有効（表示可能）な行のIDリスト
     columns: TableColumn[];
     setRowIds: (rowIds: string[]) => void;
     setCheckedRows: (rowIds: string[]) => void;
@@ -36,6 +37,7 @@ export const DataTable2Context = createContext<
   rowIds: [],
   hasRowControls: false,
   checkedRows: [],
+  availableRowIds: undefined,
 
   isSmallLayout: false,
   totalCount: 0,
