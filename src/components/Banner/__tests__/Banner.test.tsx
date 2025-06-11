@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@testing-library/jest-dom";
-import { cleanup, screen } from "@testing-library/react";
+import { cleanup, screen, fireEvent } from "@testing-library/react";
 import Banner from "..";
 import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 
@@ -90,5 +90,41 @@ describe("Banner component testing", () => {
     const banner = screen.getByText("Error message").closest("div[role]");
     expect(banner).toHaveAttribute("role", "alert");
     expect(banner).toHaveAttribute("aria-live", "assertive");
+  });
+
+  // 閉じる機能のテスト
+  test("Closable banner renders close button with ConfirmModal style", () => {
+    renderWithThemeProvider(
+      <Banner closable type="info" message="Closable banner" />,
+    );
+    const closeButton = screen.getByLabelText("閉じる");
+    expect(closeButton).toBeInTheDocument();
+
+    // ConfirmModal風のスタイルが適用されていることを確認
+    const iconElement = closeButton.querySelector("span");
+    expect(iconElement).toBeInTheDocument();
+  });
+
+  test("Close button triggers onClose callback", () => {
+    const handleClose = jest.fn();
+    renderWithThemeProvider(
+      <Banner
+        closable
+        type="info"
+        message="Closable banner"
+        onClose={handleClose}
+      />,
+    );
+    const closeButton = screen.getByLabelText("閉じる");
+    fireEvent.click(closeButton);
+    expect(handleClose).toHaveBeenCalledTimes(1);
+  });
+
+  test("Banner without closable prop doesn't render close button", () => {
+    renderWithThemeProvider(
+      <Banner type="info" message="Non-closable banner" />,
+    );
+    const closeButton = screen.queryByLabelText("閉じる");
+    expect(closeButton).not.toBeInTheDocument();
   });
 });

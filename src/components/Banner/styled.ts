@@ -66,3 +66,26 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   line-height: 1.4;
   color: inherit;
 `;
+
+export const CloseButton = styled.button`
+  cursor: pointer;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin-left: ${({ theme }) => theme.spacing}px;
+  background: none;
+  border: none;
+  border-radius: ${({ theme }) => theme.radius / 2}px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+`;

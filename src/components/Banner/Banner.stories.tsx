@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StoryObj } from "@storybook/react";
 import Banner from "./Banner";
 import { BannerProps } from "./types";
 import Flex from "../Flex";
 import Typography from "../Typography";
+import Button from "../Button";
 
 export default {
   title: "Components/Feedback/Banner",
@@ -46,6 +47,19 @@ export default {
     },
     className: {
       description: "追加のCSSクラス",
+    },
+    closable: {
+      description:
+        "閉じるボタンを表示するかどうか（ConfirmModalと同様のスタイル）",
+      control: "boolean",
+      table: {
+        type: { summary: "boolean" },
+        defaultValue: { summary: "false" },
+      },
+    },
+    onClose: {
+      description: "閉じるボタンがクリックされたときのコールバック関数",
+      action: "閉じるボタンがクリックされました",
     },
   },
 };
@@ -96,9 +110,49 @@ export const Medium: StoryObj<BannerProps> = {
   },
 };
 
+export const Closable: StoryObj<BannerProps> = {
+  ...Template,
+  args: {
+    type: "info",
+    message:
+      "これは閉じることができるバナーです。右側の×ボタンをクリックしてください。",
+    closable: true,
+  },
+};
+
+export const ClosableDemo: StoryObj = {
+  render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [visible, setVisible] = useState(true);
+
+    const handleClose = () => {
+      setVisible(false);
+    };
+
+    const handleReset = () => {
+      setVisible(true);
+    };
+
+    return (
+      <Flex display="flex" flexDirection="column" gap={2}>
+        {visible ? (
+          <Banner
+            closable
+            type="warning"
+            message="これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。"
+            onClose={handleClose}
+          />
+        ) : (
+          <Button onClick={handleReset}>バナーを再表示</Button>
+        )}
+      </Flex>
+    );
+  },
+};
+
 export const WithImage: StoryObj<BannerProps> = {
   render: () => (
-    <Banner type="info">
+    <Banner closable type="info">
       <Flex display="flex" alignItems="center" gap={2}>
         <img
           src="https://placehold.jp/3d4070/ffffff/50x50.png"
@@ -115,7 +169,7 @@ export const WithImage: StoryObj<BannerProps> = {
 
 export const RichContent: StoryObj<BannerProps> = {
   render: () => (
-    <Banner type="warning">
+    <Banner closable type="warning">
       <Flex display="flex" flexDirection="column" gap={1}>
         <Typography size="lg" weight="bold">
           重要なお知らせ
@@ -158,6 +212,9 @@ export const AllVariants: StoryObj = {
       <Banner type="info" size="small" message="小サイズのバナー" />
       <Banner type="warning" size="small" message="小サイズの警告バナー" />
       <Banner type="error" size="small" message="小サイズのエラーバナー" />
+      <Banner closable type="info" message="閉じることができるバナー" />
+      <Banner closable type="warning" message="閉じることができる警告バナー" />
+      <Banner closable type="error" message="閉じることができるエラーバナー" />
     </Flex>
   ),
 };

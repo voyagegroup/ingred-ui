@@ -38,4 +38,13 @@ export type BannerProps = {
    * 追加のCSSクラス
    */
   className?: string;
+  /**
+   * 閉じるボタンを表示するかどうか
+   * @default false
+   */
+  closable?: boolean;
+  /**
+   * 閉じるボタンがクリックされたときのコールバック関数
+   */
+  onClose?: () => void;
 } & React.HTMLAttributes<HTMLDivElement>;

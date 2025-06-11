@@ -32,7 +32,16 @@ const bannerTypeConfig = {
 };
 
 const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
-  { type = "info", size = "medium", message, children, className, ...rest },
+  {
+    type = "info",
+    size = "medium",
+    message,
+    children,
+    className,
+    closable = false,
+    onClose,
+    ...rest
+  },
   ref,
 ) {
   const theme = useTheme();
@@ -42,6 +51,13 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
 
   // messageとchildrenの両方が提供された場合、messageを優先
   const content = message || children;
+
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (onClose) {
+      onClose();
+    }
+  };
 
   return (
     <Styled.Container
@@ -53,22 +69,39 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
       aria-live={config.ariaLive}
       {...rest}
     >
-      <Flex display="flex" alignItems="center">
-        <Icon
-          name={iconName}
-          size={size === "small" ? "md-lg" : "lg"}
-          color={iconColor}
-        />
-        {typeof content === "string" || typeof content === "number" ? (
-          <Typography
-            color="inherit"
-            component="div"
-            size={size === "small" ? "sm" : "md"}
-          >
-            {content}
-          </Typography>
-        ) : (
-          <Styled.ContentWrapper size={size}>{content}</Styled.ContentWrapper>
+      <Flex
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        style={{ width: "100%" }}
+      >
+        <Flex display="flex" alignItems="center">
+          <Icon
+            name={iconName}
+            size={size === "small" ? "md-lg" : "lg"}
+            color={iconColor}
+          />
+          {typeof content === "string" || typeof content === "number" ? (
+            <Typography
+              color="inherit"
+              component="div"
+              size={size === "small" ? "sm" : "md"}
+            >
+              {content}
+            </Typography>
+          ) : (
+            <Styled.ContentWrapper size={size}>{content}</Styled.ContentWrapper>
+          )}
+        </Flex>
+
+        {closable && (
+          <Styled.CloseButton aria-label="閉じる" onClick={handleClose}>
+            <Icon
+              name="close"
+              size={size === "small" ? "md" : "lg"}
+              color={iconColor}
+            />
+          </Styled.CloseButton>
         )}
       </Flex>
     </Styled.Container>
