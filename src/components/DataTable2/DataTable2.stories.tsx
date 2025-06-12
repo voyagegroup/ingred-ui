@@ -176,13 +176,6 @@ export const Default: StoryObj<typeof meta> = {
 
     // コンテンツ
     const [data, setData] = useState(mockData);
-    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
-    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
-    const pageData = useMemo(
-      () =>
-        data.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
-      [data, pageSize, currentPage],
-    );
 
     // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
     // columns とは更新頻度が違うので、別で管理する。
@@ -221,6 +214,88 @@ export const Default: StoryObj<typeof meta> = {
     // 登録日
     const [dateFilterType, setDateFilterType] = useState<number>(0);
     const [dateFilterValues, setDateFilterValues] = useState<string[]>([]);
+
+    // フィルタリング関数
+    const applyFilter = useCallback(
+      (
+        data: typeof mockData,
+        filterType: number,
+        filterValues: string[],
+        field: keyof (typeof mockData)[0],
+      ) => {
+        if (filterValues.length === 0) return data;
+
+        switch (filterType) {
+          case 0: // 含む
+            return data.filter((item) =>
+              filterValues.some((value) =>
+                String(item[field]).toLowerCase().includes(value.toLowerCase()),
+              ),
+            );
+          case 1: // 含まない
+            return data.filter(
+              (item) =>
+                !filterValues.some((value) =>
+                  String(item[field])
+                    .toLowerCase()
+                    .includes(value.toLowerCase()),
+                ),
+            );
+          case 2: // いずれかを含む
+            return data.filter((item) =>
+              filterValues.some((value) =>
+                String(item[field]).toLowerCase().includes(value.toLowerCase()),
+              ),
+            );
+          default:
+            return data;
+        }
+      },
+      [],
+    );
+
+    // フィルタリング後のデータ
+    const filteredData = useMemo(() => {
+      let result = [...data];
+
+      // 名前フィルター
+      result = applyFilter(result, nameFilterType, nameFilterValues, "name");
+      // ステータスフィルター
+      result = applyFilter(
+        result,
+        statusFilterType,
+        statusFilterValues,
+        "status",
+      );
+      // メールアドレスフィルター
+      result = applyFilter(result, emailFilterType, emailFilterValues, "email");
+      // 登録日フィルター
+      result = applyFilter(result, dateFilterType, dateFilterValues, "date");
+
+      return result;
+    }, [
+      data,
+      nameFilterType,
+      nameFilterValues,
+      statusFilterType,
+      statusFilterValues,
+      emailFilterType,
+      emailFilterValues,
+      dateFilterType,
+      dateFilterValues,
+      applyFilter,
+    ]);
+
+    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
+    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
+    const pageData = useMemo(
+      () =>
+        filteredData.slice(
+          currentPage * pageSize,
+          currentPage * pageSize + pageSize,
+        ),
+      [filteredData, pageSize, currentPage],
+    );
     // フィルタ適用時のカラムの状態にも連動させる
     const changeFilterStatus = useCallback(
       (
@@ -245,7 +320,7 @@ export const Default: StoryObj<typeof meta> = {
         <DataTable2
           {...args}
           columns={columns}
-          totalCount={data.length}
+          totalCount={filteredData.length}
           rowControls={
             <>
               <ContextMenu2HeadingItem>
@@ -342,6 +417,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setNameFilterType}
               />
@@ -378,6 +454,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setStatusFilterType}
               />
@@ -414,6 +491,7 @@ export const Default: StoryObj<typeof meta> = {
                     values,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setEmailFilterType}
               />
@@ -450,6 +528,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     values,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setDateFilterType}
               />
