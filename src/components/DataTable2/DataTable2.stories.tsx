@@ -40,7 +40,8 @@ const createMockData = (count: number) =>
         ? `Test_User_123456789_Long_Name_For_Testing${i}`
         : `普羅久斗太郎${i}`,
     status: i % 3 === 0 ? "有効" : "無効",
-    email: i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
+    email:
+      i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
     date: `2019/08/12`,
   }));
 
@@ -167,12 +168,13 @@ export const Default: StoryObj<typeof meta> = {
     children: null,
   },
   render: (args) => {
-    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] = useArgs<{
-      columns: TableColumn[];
-      currentPage: number;
-      pageSize: number;
-      totalCount: number;
-    }>();
+    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
+      useArgs<{
+        columns: TableColumn[];
+        currentPage: number;
+        pageSize: number;
+        totalCount: number;
+      }>();
 
     const [checkedRows, setCheckedRows] = useState<string[]>([]);
 
@@ -648,12 +650,13 @@ export const Loading: StoryObj<typeof meta> = {
     children: null,
   },
   render: (args) => {
-    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] = useArgs<{
-      columns: TableColumn[];
-      currentPage: number;
-      pageSize: number;
-      totalCount: number;
-    }>();
+    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
+      useArgs<{
+        columns: TableColumn[];
+        currentPage: number;
+        pageSize: number;
+        totalCount: number;
+      }>();
 
     // コンテンツ
     const data = useMemo(() => createMockData(totalCount), [totalCount]);
