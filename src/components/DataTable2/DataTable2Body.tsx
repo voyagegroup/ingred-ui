@@ -23,7 +23,8 @@ export const DataTable2Body = ({ children }: { children: ReactNode }) => {
     if (
       newRowIds.length === rowIds.length &&
       newRowIds.every((id) => rowIds.includes(id))
-    ) return;
+    )
+      return;
     setRowIds(newRowIds);
   }, [children, rowIds, setRowIds]);
 
