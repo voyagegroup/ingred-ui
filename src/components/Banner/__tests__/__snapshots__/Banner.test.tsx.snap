@@ -4,7 +4,7 @@ exports[`Banner component testing Banner with children 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi hGsPPT"
+    class="sc-gsnTZi bXaQjd"
     role="status"
     type="info"
   >
@@ -65,7 +65,7 @@ exports[`Banner component testing Banner with complex children 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi bMVIJZ"
+    class="sc-gsnTZi geveWj"
     role="alert"
     type="warning"
   >
@@ -123,7 +123,7 @@ exports[`Banner component testing Banner with type error 1`] = `
 <DocumentFragment>
   <div
     aria-live="assertive"
-    class="sc-gsnTZi jSZpNM"
+    class="sc-gsnTZi fIQyjq"
     role="alert"
     type="error"
   >
@@ -171,7 +171,7 @@ exports[`Banner component testing Banner with type info 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi hGsPPT"
+    class="sc-gsnTZi bXaQjd"
     role="status"
     type="info"
   >
@@ -232,7 +232,7 @@ exports[`Banner component testing Banner with type warning 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi bMVIJZ"
+    class="sc-gsnTZi geveWj"
     role="alert"
     type="warning"
   >
@@ -280,7 +280,7 @@ exports[`Banner component testing Medium size banner 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi hGsPPT"
+    class="sc-gsnTZi bXaQjd"
     role="status"
     type="info"
   >
@@ -341,7 +341,7 @@ exports[`Banner component testing Small size banner 1`] = `
 <DocumentFragment>
   <div
     aria-live="polite"
-    class="sc-gsnTZi UOfhk"
+    class="sc-gsnTZi cploy"
     role="status"
     type="info"
   >

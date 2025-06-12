@@ -114,7 +114,8 @@ export const ClosableDemo: StoryObj<BannerProps> = {
   args: {
     type: "warning",
     closable: true,
-    message: "これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。",
+    message:
+      "これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。",
   },
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -131,10 +132,7 @@ export const ClosableDemo: StoryObj<BannerProps> = {
     return (
       <Flex display="flex" flexDirection="column" gap={2}>
         {visible ? (
-          <Banner
-            {...args}
-            onClose={handleClose}
-          />
+          <Banner {...args} onClose={handleClose} />
         ) : (
           <Button onClick={handleReset}>バナーを再表示</Button>
         )}

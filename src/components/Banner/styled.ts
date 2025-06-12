@@ -21,7 +21,6 @@ export const Container = styled.div<ContainerProps>`
     size === "small" ? `${theme.radius / 2}px` : `${theme.radius}px`};
   position: relative;
 
-
   /* タイプに基づいたスタイリング（背景色、テキスト色、ボーダー色） */
   ${({ theme, type }) => {
     switch (type) {
