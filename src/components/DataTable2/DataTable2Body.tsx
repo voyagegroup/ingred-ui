@@ -19,7 +19,11 @@ export const DataTable2Body = ({ children }: { children: ReactNode }) => {
       if (typeof child.props.id !== "string") return;
       newRowIds.push(child.props.id);
     });
-    if (newRowIds.filter((id) => !rowIds.includes(id)).length === 0) return;
+    // rowIdsが変化した場合のみsetRowIdsを呼び出す
+    if (
+      newRowIds.length === rowIds.length &&
+      newRowIds.every((id) => rowIds.includes(id))
+    ) return;
     setRowIds(newRowIds);
   }, [children, rowIds, setRowIds]);
 
