@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.2.2
+
+### Patch Changes
+
+- [#1835](https://github.com/voyagegroup/ingred-ui/pull/1835) [`eebf1253`](https://github.com/voyagegroup/ingred-ui/commit/eebf1253da912d5f694d9db07d7f9bb85131afe0) Thanks [@deatiger](https://github.com/deatiger)! - 絞り込みによって表示行が変更された際、表示されていない選択行を解除
+
 ## 23.2.1
 
 ### Patch Changes
