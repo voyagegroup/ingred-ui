@@ -16,6 +16,7 @@ export type Color = {
 
 export const colors = {
   red: {
+    50: "#FFF4F5",
     100: "#FFE2E5",
     200: "#FFBAC3",
     300: "#F96979",
@@ -41,6 +42,7 @@ export const colors = {
     900: "#022575",
   },
   yellow: {
+    50: "#FFFCE4",
     100: "#FEFACF",
     200: "#FEF4A0",
     300: "#FEED71",
@@ -52,6 +54,7 @@ export const colors = {
     900: "#785F03",
   },
   green: {
+    50: "#F4FFE2",
     100: "#ECFCD3",
     200: "#D6F9A9",
     300: "#B4ED7B",

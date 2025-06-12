@@ -11,6 +11,9 @@ export * from "./Backdrop";
 export { default as Badge } from "./Badge";
 export * from "./Badge";
 
+export { default as Banner } from "./Banner";
+export * from "./Banner";
+
 export { default as Button } from "./Button";
 export * from "./Button";
 
