@@ -7,7 +7,13 @@ export type PaletteColor = {
   dark: string;
   main: string;
   light: string;
+  softlight?: string;
   highlight: string;
+};
+
+// successカラー用に拡張した型
+export type SuccessPaletteColor = PaletteColor & {
+  medium: string; // green[200]用
 };
 
 export type PaletteText = {
@@ -54,7 +60,7 @@ export type Palette = {
 };
 
 export const palette: Palette = {
-  white: colors.basic[50],
+  white: colors.basic[0],
   black: colors.basic[900],
   primary: {
     deepDark: colors.blue[700],
@@ -82,6 +88,7 @@ export const palette: Palette = {
     dark: colors.green[600],
     main: colors.green[500],
     light: colors.green[300],
+    softlight: colors.green[200],
     highlight: colors.green[100],
   },
   warning: {
@@ -110,10 +117,10 @@ export const palette: Palette = {
     secondary: colors.basic[700],
     disabled: colors.basic[400],
     hint: colors.basic[400],
-    white: "#FFFFFF",
+    white: colors.basic[0],
   },
   background: {
-    default: "#FFFFFF",
+    default: colors.basic[0],
     dark: colors.blue[40],
     active: colors.blue[100],
     hint: colors.blue[50],
