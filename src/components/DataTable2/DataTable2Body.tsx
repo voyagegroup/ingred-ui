@@ -19,7 +19,7 @@ export const DataTable2Body = ({ children }: { children: ReactNode }) => {
       if (typeof child.props.id !== "string") return;
       newRowIds.push(child.props.id);
     });
-    // rowIdsが変化した場合のみsetRowIdsを呼び出す
+    // 表示されている行 ( Children ) の ids が変更されていない場合は rowIds を更新しない
     if (
       newRowIds.length === rowIds.length &&
       newRowIds.every((id) => rowIds.includes(id))
