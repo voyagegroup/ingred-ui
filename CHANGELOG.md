@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.2.3
+
+### Patch Changes
+
+- [#1837](https://github.com/voyagegroup/ingred-ui/pull/1837) [`eddd212e`](https://github.com/voyagegroup/ingred-ui/commit/eddd212e8be1fdecfeb5a101a99c92caaf067da5) Thanks [@deatiger](https://github.com/deatiger)! - １ページあたりの表示件数より少ないデータ件数の場合でも、絞り込みによって選択解除をする
+
 ## 23.2.2
 
 ### Patch Changes
