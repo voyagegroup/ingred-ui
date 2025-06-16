@@ -230,6 +230,16 @@ export const DataTable2 = ({
     previousPage.current = currentPage;
   }, [currentPage, handleCheckedRows]);
 
+  // rowIds が変化した場合、表示されていない選択行を解除
+  useEffect(() => {
+    if (checkedRows.length === 0) return; // 選択行がない場合は何もしない
+
+    const newCheckedRows = checkedRows.filter((id) => rowIds.includes(id));
+    if (newCheckedRows.length !== checkedRows.length) {
+      handleCheckedRows(newCheckedRows);
+    }
+  }, [rowIds, checkedRows, handleCheckedRows]);
+
   return (
     <styled.DataTable2 ref={elRef} bordered={bordered}>
       <DataTable2Context.Provider

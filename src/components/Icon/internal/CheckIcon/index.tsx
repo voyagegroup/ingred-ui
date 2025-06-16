@@ -12,3 +12,7 @@ const CheckIcon: React.FunctionComponent<IconProps> = ({ fill }) => (
 );
 
 export { CheckIcon };
+
+/**
+ * @deprecated このアイコンは非推奨です。代わりに `CheckThinIcon` を使用してください。
+ */

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "@storybook/preview-api";
 import { useArgs } from "@storybook/client-api";
@@ -32,16 +32,18 @@ const meta = {
 
 export default meta;
 
-const mockData = Array.from({ length: 1000 }, (_, i) => ({
-  id: `unique-${i}`,
-  name:
-    i % 10 === 0
-      ? `Test_User_123456789_Long_Name_For_Testing${i}`
-      : `普羅久斗太郎${i}`,
-  status: i % 3 === 0 ? "有効" : "無効",
-  email: i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
-  date: `2019/08/12`,
-}));
+const createMockData = (count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: `unique-${i}`,
+    name:
+      i % 10 === 0
+        ? `Test_User_123456789_Long_Name_For_Testing${i}`
+        : `普羅久斗太郎${i}`,
+    status: i % 3 === 0 ? "有効" : "無効",
+    email:
+      i % 11 === 0 ? `long-long-email.${i}@fluct.jp` : `email.${i}@fluct.jp`,
+    date: `2019/08/12`,
+  }));
 
 const pageSizeOptions = [10, 20, 50, 100, 200];
 const filterTypes = [
@@ -149,7 +151,7 @@ export const Default: StoryObj<typeof meta> = {
     pageSize: pageSizeOptions[3],
     pageSizeOptions,
     currentPage: 0,
-    totalCount: mockData.length,
+    totalCount: 1000,
     rowControls: null,
     extraButtons: (
       <DataTable2ActionButton
@@ -166,23 +168,26 @@ export const Default: StoryObj<typeof meta> = {
     children: null,
   },
   render: (args) => {
-    const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
-      columns: TableColumn[];
-      currentPage: number;
-      pageSize: number;
-    }>();
+    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
+      useArgs<{
+        columns: TableColumn[];
+        currentPage: number;
+        pageSize: number;
+        totalCount: number;
+      }>();
 
     const [checkedRows, setCheckedRows] = useState<string[]>([]);
 
+    // totalCountに基づいてmockDataを動的に生成
+    const mockData = useMemo(() => createMockData(totalCount), [totalCount]);
+
     // コンテンツ
     const [data, setData] = useState(mockData);
-    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
-    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
-    const pageData = useMemo(
-      () =>
-        data.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
-      [data, pageSize, currentPage],
-    );
+
+    // totalCountが変更されたらdataも更新
+    useEffect(() => {
+      setData(mockData);
+    }, [mockData]);
 
     // カラム幅（<DataTable2Column />（実質は th）にそれぞれ付与して使う）
     // columns とは更新頻度が違うので、別で管理する。
@@ -221,6 +226,88 @@ export const Default: StoryObj<typeof meta> = {
     // 登録日
     const [dateFilterType, setDateFilterType] = useState<number>(0);
     const [dateFilterValues, setDateFilterValues] = useState<string[]>([]);
+
+    // フィルタリング関数
+    const applyFilter = useCallback(
+      (
+        data: ReturnType<typeof createMockData>,
+        filterType: number,
+        filterValues: string[],
+        field: keyof ReturnType<typeof createMockData>[0],
+      ) => {
+        if (filterValues.length === 0) return data;
+
+        switch (filterType) {
+          case 0: // 含む
+            return data.filter((item) =>
+              filterValues.some((value) =>
+                String(item[field]).toLowerCase().includes(value.toLowerCase()),
+              ),
+            );
+          case 1: // 含まない
+            return data.filter(
+              (item) =>
+                !filterValues.some((value) =>
+                  String(item[field])
+                    .toLowerCase()
+                    .includes(value.toLowerCase()),
+                ),
+            );
+          case 2: // いずれかを含む
+            return data.filter((item) =>
+              filterValues.some((value) =>
+                String(item[field]).toLowerCase().includes(value.toLowerCase()),
+              ),
+            );
+          default:
+            return data;
+        }
+      },
+      [],
+    );
+
+    // フィルタリング後のデータ
+    const filteredData = useMemo(() => {
+      let result = [...data];
+
+      // 名前フィルター
+      result = applyFilter(result, nameFilterType, nameFilterValues, "name");
+      // ステータスフィルター
+      result = applyFilter(
+        result,
+        statusFilterType,
+        statusFilterValues,
+        "status",
+      );
+      // メールアドレスフィルター
+      result = applyFilter(result, emailFilterType, emailFilterValues, "email");
+      // 登録日フィルター
+      result = applyFilter(result, dateFilterType, dateFilterValues, "date");
+
+      return result;
+    }, [
+      data,
+      nameFilterType,
+      nameFilterValues,
+      statusFilterType,
+      statusFilterValues,
+      emailFilterType,
+      emailFilterValues,
+      dateFilterType,
+      dateFilterValues,
+      applyFilter,
+    ]);
+
+    // ページネーションに応じたデータの構築は、コンポーネントの外で行う
+    // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
+    const pageData = useMemo(
+      () =>
+        filteredData.slice(
+          currentPage * pageSize,
+          currentPage * pageSize + pageSize,
+        ),
+      [filteredData, pageSize, currentPage],
+    );
     // フィルタ適用時のカラムの状態にも連動させる
     const changeFilterStatus = useCallback(
       (
@@ -245,7 +332,7 @@ export const Default: StoryObj<typeof meta> = {
         <DataTable2
           {...args}
           columns={columns}
-          totalCount={data.length}
+          totalCount={filteredData.length}
           rowControls={
             <>
               <ContextMenu2HeadingItem>
@@ -342,6 +429,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setNameFilterType}
               />
@@ -378,6 +466,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setStatusFilterType}
               />
@@ -414,6 +503,7 @@ export const Default: StoryObj<typeof meta> = {
                     values,
                     dateFilterValues,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setEmailFilterType}
               />
@@ -450,6 +540,7 @@ export const Default: StoryObj<typeof meta> = {
                     emailFilterValues,
                     values,
                   );
+                  updateArgs({ currentPage: 0 });
                 }}
                 onSelectChange={setDateFilterType}
               />
@@ -559,14 +650,16 @@ export const Loading: StoryObj<typeof meta> = {
     children: null,
   },
   render: (args) => {
-    const [{ columns, currentPage, pageSize }, updateArgs] = useArgs<{
-      columns: TableColumn[];
-      currentPage: number;
-      pageSize: number;
-    }>();
+    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
+      useArgs<{
+        columns: TableColumn[];
+        currentPage: number;
+        pageSize: number;
+        totalCount: number;
+      }>();
 
     // コンテンツ
-    const data = mockData;
+    const data = useMemo(() => createMockData(totalCount), [totalCount]);
     // ページネーションに応じたデータの構築は、コンポーネントの外で行う
     // DataTable2 としては、全件データを持たず、与えられたデータをそのまま表示するだけ
     const pageData = useMemo(

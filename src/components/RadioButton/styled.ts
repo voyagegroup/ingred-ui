@@ -91,8 +91,12 @@ export const Indicator = styled.span<IndicatorProps>`
   }
 `;
 
-export const Label = styled.span`
+export const Label = styled.span<{ checked?: boolean; disabled?: boolean }>`
   flex: 0 1 auto;
   font-size: inherit;
-  color: inherit;
+  color: ${({ checked, disabled, theme }) => {
+    if (disabled) return theme.palette.text.disabled;
+    if (checked) return theme.palette.primary.main;
+    return theme.palette.black;
+  }};
 `;

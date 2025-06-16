@@ -17,9 +17,9 @@ describe("getShadow", () => {
       3,
       shadowOpacity,
       shadowBase,
-      "0px -2px rgba(4, 28, 51, 0.16) inset, 0px 1px rgba(4, 28, 51, 0.08)",
+      "0px -2px rgba(4, 28, 51, 0.08) inset, 0px 1px rgba(4, 28, 51, 0.08)",
     ],
-    [4, shadowOpacity, shadowBase, "0px 1px rgba(4, 28, 51, 0.16) inset"],
+    [4, shadowOpacity, shadowBase, "0px 1px rgba(4, 28, 51, 0.08) inset"],
     [5, shadowOpacity, shadowBase, "0px 0px 16px rgba(4, 28, 51, 0.16)"],
     [5, shadowOpacity, primary, "0px 0px 16px rgba(11, 130, 244, 0.16)"],
   ])(

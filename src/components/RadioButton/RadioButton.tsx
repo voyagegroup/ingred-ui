@@ -65,7 +65,11 @@ const RadioButton = React.forwardRef<
         onChange={handleChange}
       />
       <Styled.Indicator size={size} {...indicatorSizes[size]} />
-      {children != null ? <Styled.Label>{children}</Styled.Label> : null}
+      {children != null ? (
+        <Styled.Label checked={rest.checked} disabled={disabled}>
+          {children}
+        </Styled.Label>
+      ) : null}
     </Styled.Wrapper>
   );
 });

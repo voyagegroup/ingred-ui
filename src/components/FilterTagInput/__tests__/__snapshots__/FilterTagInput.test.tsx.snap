@@ -139,23 +139,6 @@ exports[`FileUploader component testing FileUploader 1`] = `
         <div
           class="sc-ezWOiH bwxRDj"
         >
-          <div
-            class="sc-bZkfAO ijetUZ"
-          >
-            <span
-              class="sc-bczRLJ gJuzRf"
-              size="18"
-            >
-              <svg
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M10 18h4v-2h-4v2ZM3 6v2h18V6H3Zm3 7h12v-2H6v2Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-          </div>
           <input
             aria-label="フィルターする値"
             type="text"
@@ -166,13 +149,13 @@ exports[`FileUploader component testing FileUploader 1`] = `
     </div>
     <button
       aria-label="フィルター入力パネルを開く"
-      class="sc-gicCDI ictzgV"
+      class="sc-gicCDI eZZcyl"
       data-overflowing="false"
       type="button"
     >
       <span
-        class="sc-bczRLJ gJuzRf"
-        size="18"
+        class="sc-bczRLJ sdtRL"
+        size="20"
       >
         <svg
           viewBox="0 0 16 16"

@@ -34,6 +34,7 @@ import {
   FloatingPortal,
   FloatingFocusManager,
   useMergeRefs,
+  Placement,
 } from "@floating-ui/react";
 import { getMaxIndex } from "./floating-ui-utils";
 import styled from "styled-components";
@@ -119,6 +120,14 @@ type ContextMenu2Props = {
    * 検索結果が0件の場合に表示するメッセージ
    */
   noResultsMessage?: string;
+  /**
+   * Floating UIのplacement（表示位置）を外部から渡す（高度なカスタマイズ用）
+   */
+  placement?: Placement;
+  /**
+   * Floating UIのmiddleware配列を外部から渡す（高度なカスタマイズ用）
+   */
+  middleware?: Array<any>;
 };
 
 const ContextMenu2Panel = styled.div`
@@ -182,6 +191,8 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
       onOpenChange,
       stickyHeader,
       stickyFooter,
+      placement,
+      middleware,
     },
     ref,
   ) => {
@@ -216,7 +227,8 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
         setIsOpen(open);
         onOpenChange?.(open);
       },
-      middleware: [
+      placement,
+      middleware: middleware ?? [
         offset({
           mainAxis: 5,
           crossAxis: 0,
@@ -245,11 +257,8 @@ export const ContextMenu2 = forwardRef<HTMLButtonElement, ContextMenu2Props>(
           const isSmallScreen = mql.matches;
 
           return {
-            // 入れ子のフライアウトは左右に展開される
-            // ただし、画面幅が狭い場合は余裕がないので上下に展開させる
             allowedPlacements: isSmallScreen
-              ? // ? ["bottom-start", "top-start"]
-                ["bottom-start"] // 入れ子内で bottom, top の両方を許可すると、スクロールの挙動がおかしくなる。bottom のみに制限
+              ? ["bottom-start"]
               : ["right-start", "left-start"],
             autoAlignment: false,
           };

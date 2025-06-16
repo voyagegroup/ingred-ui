@@ -1,5 +1,29 @@
 # Changelog
 
+## 23.2.3
+
+### Patch Changes
+
+- [#1837](https://github.com/voyagegroup/ingred-ui/pull/1837) [`eddd212e`](https://github.com/voyagegroup/ingred-ui/commit/eddd212e8be1fdecfeb5a101a99c92caaf067da5) Thanks [@deatiger](https://github.com/deatiger)! - １ページあたりの表示件数より少ないデータ件数の場合でも、絞り込みによって選択解除をする
+
+## 23.2.2
+
+### Patch Changes
+
+- [#1835](https://github.com/voyagegroup/ingred-ui/pull/1835) [`eebf1253`](https://github.com/voyagegroup/ingred-ui/commit/eebf1253da912d5f694d9db07d7f9bb85131afe0) Thanks [@deatiger](https://github.com/deatiger)! - 絞り込みによって表示行が変更された際、表示されていない選択行を解除
+
+## 23.2.1
+
+### Patch Changes
+
+- [#1828](https://github.com/voyagegroup/ingred-ui/pull/1828) [`335ff66a`](https://github.com/voyagegroup/ingred-ui/commit/335ff66a25887c654496fc410f634b5bdd513e01) Thanks [@noronaoki](https://github.com/noronaoki)! - select2のplaceholderとerrorTextの軽い修正
+
+## 23.2.0
+
+### Minor Changes
+
+- [#1825](https://github.com/voyagegroup/ingred-ui/pull/1825) [`dd271268`](https://github.com/voyagegroup/ingred-ui/commit/dd271268e7184e215372fbd46eab73c450a62e8a) Thanks [@noronaoki](https://github.com/noronaoki)! - 各種コンポーネントの細かい修正など
+
 ## 23.1.0
 
 ### Minor Changes

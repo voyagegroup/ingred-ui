@@ -90,7 +90,7 @@ export const SelectButton = styled.button<{
   inset: 0;
   display: flex;
   justify-content: ${({ $multiple }) =>
-    $multiple ? "flex-end" : "space-between"};
+    $multiple ? "flex-start" : "space-between"};
   align-items: center;
   width: 100%;
   height: 100%;
@@ -166,14 +166,14 @@ export const Placeholder = styled.span<{
   $variant?: Select2Props["variant"];
   $disabled?: boolean;
 }>`
-  color: ${({ $disabled }) =>
-    $disabled ? colors.basic[400] : colors.basic[900]};
+  color: ${colors.basic[400]};
   padding: 0 6px;
 `;
 
 export const IconArea = styled.div<{
   $size?: Select2Size;
   $disabled?: boolean;
+  $multiple?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -182,6 +182,7 @@ export const IconArea = styled.div<{
   width: ${({ $size }) => ($size ? SELECT2_SIZES[$size].iconSize : "18px")};
   aspect-ratio: 1;
   margin-right: 8px;
+  margin-left: ${({ $multiple }) => ($multiple ? "auto" : "0")};
   position: relative;
   z-index: 4;
   svg {

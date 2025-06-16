@@ -22,7 +22,8 @@ export const AccordionTitle = styled(Flex)<{
 `;
 
 export const AccordionTitleChildren = styled.div`
-  padding: ${({ theme }) => theme.spacing * 1.25}px;
+  padding: ${({ theme }) => theme.spacing}px
+    ${({ theme }) => theme.spacing * 2}px;
   width: 100%;
 `;
 
