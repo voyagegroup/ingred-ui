@@ -2,13 +2,7 @@ import * as React from "react";
 import * as Styled from "./styled";
 import { Property } from "csstype";
 import { createChainedFunction } from "../../utils/createChainedFunction";
-import {
-  InputSize,
-  InputVariant,
-  getInputVariantConfig,
-  getErrorStyles,
-} from "./types";
-import { ThemeContext } from "styled-components";
+import { InputSize, InputVariant } from "./types";
 
 export type InputProps = (
   | React.ComponentPropsWithoutRef<"input">
@@ -74,12 +68,6 @@ const Input = React.forwardRef<
 ) {
   const [isFocused, setIsFocused] = React.useState(false);
   const Element = multiline ? "textarea" : "input";
-
-  // テーマベースの設定をメモ化（将来的にはstyled-componentに統合）
-  const theme = React.useContext(ThemeContext);
-  React.useMemo(() => (theme ? getInputVariantConfig(theme) : null), [theme]);
-
-  React.useMemo(() => (theme ? getErrorStyles(theme) : null), [theme]);
 
   // イベントハンドラ型を簡略化
   type InputEvent = React.SyntheticEvent<
