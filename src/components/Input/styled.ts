@@ -19,12 +19,12 @@ export const Input = styled.input<{
   as?: string | React.ComponentType<any>;
 }>`
   /* 幅設定 */
-  ${({ width, $fullWidth }) => {
+  width: ${({ width, $fullWidth }) => {
     if ($fullWidth) {
-      return `width: 100%;`;
+      return "100%";
     }
     if (width) {
-      return `width: ${isNaN(+width) ? width : width + "px"}`;
+      return `${isNaN(+width) ? width : width + "px"}`;
     }
     return "auto";
   }};
