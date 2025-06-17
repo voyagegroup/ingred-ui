@@ -8,9 +8,6 @@ import {
   getTextColor,
 } from "./types";
 
-// コンポーネント型の定義
-type BadgeComponentType = React.ElementType<any>;
-
 const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
   function Badge(
     {
@@ -40,8 +37,8 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
     if (type === "signal") {
       return (
         <Styled.SignalWrapper
-          ref={ref as React.Ref<HTMLSpanElement>}
-          as={component as BadgeComponentType}
+          ref={ref}
+          as={component}
           size={size}
           fontWeight={fontWeight}
           fontSize={fontSize}
@@ -67,7 +64,7 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
     return (
       <BadgeComponent
         ref={ref}
-        as={component as BadgeComponentType}
+        as={component}
         color={textColor}
         backgroundColor={backgroundColor}
         fontSize={fontSize}
