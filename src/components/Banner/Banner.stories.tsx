@@ -48,15 +48,6 @@ export default {
     className: {
       description: "追加のCSSクラス",
     },
-    closable: {
-      description:
-        "閉じるボタンを表示するかどうか（ConfirmModalと同様のスタイル）",
-      control: "boolean",
-      table: {
-        type: { summary: "boolean" },
-        defaultValue: { summary: "false" },
-      },
-    },
     onClose: {
       description: "閉じるボタンがクリックされたときのコールバック関数",
       action: "閉じるボタンがクリックされました",
@@ -113,7 +104,6 @@ export const Medium: StoryObj<BannerProps> = {
 export const ClosableDemo: StoryObj<BannerProps> = {
   args: {
     type: "warning",
-    closable: true,
     message:
       "これは閉じることができるバナーです。右側の×ボタンをクリックすると非表示になります。",
   },
@@ -142,56 +132,79 @@ export const ClosableDemo: StoryObj<BannerProps> = {
 };
 
 export const WithImage: StoryObj<BannerProps> = {
-  render: () => (
-    <Banner closable type="info">
-      <Flex display="flex" alignItems="center" gap={2}>
-        <img
-          src="https://placehold.jp/3d4070/ffffff/50x50.png"
-          alt="サンプル画像"
-          style={{ borderRadius: "4px" }}
-        />
-        <Typography>
-          画像付きバナーの例です。任意のコンテンツを配置できます。
-        </Typography>
+  render: () => {
+    const [visible, setVisible] = useState(true);
+    const handleClose = () => setVisible(false);
+    const handleReset = () => setVisible(true);
+    return (
+      <Flex display="flex" flexDirection="column" gap={2}>
+        {visible ? (
+          <Banner type="info" onClose={handleClose}>
+            <Flex display="flex" alignItems="center" gap={2}>
+              <img
+                src="https://placehold.jp/3d4070/ffffff/50x50.png"
+                alt="サンプル画像"
+                style={{ borderRadius: "4px" }}
+              />
+              <Typography>
+                画像付きバナーの例です。任意のコンテンツを配置できます。
+              </Typography>
+            </Flex>
+          </Banner>
+        ) : (
+          <Button onClick={handleReset}>バナーを再表示</Button>
+        )}
       </Flex>
-    </Banner>
-  ),
+    );
+  },
 };
 
 export const RichContent: StoryObj<BannerProps> = {
-  render: () => (
-    <Banner closable type="warning">
-      <Flex display="flex" flexDirection="column" gap={1}>
-        <Typography size="lg" weight="bold">
-          重要なお知らせ
-        </Typography>
-        <Typography>
-          複数行のリッチなコンテンツを配置できます。レイアウトも自由に調整可能です。
-        </Typography>
-        <Flex display="flex" gap={1} alignItems="center">
-          <span
-            style={{
-              textDecoration: "underline",
-              cursor: "pointer",
-              color: "inherit",
-            }}
-          >
-            詳細を見る
-          </span>
-          <span>|</span>
-          <span
-            style={{
-              textDecoration: "underline",
-              cursor: "pointer",
-              color: "inherit",
-            }}
-          >
-            閉じる
-          </span>
-        </Flex>
+  render: () => {
+    const [visible, setVisible] = useState(true);
+    const handleClose = () => setVisible(false);
+    const handleReset = () => setVisible(true);
+    return (
+      <Flex display="flex" flexDirection="column" gap={2}>
+        {visible ? (
+          <Banner type="warning" onClose={handleClose}>
+            <Flex display="flex" flexDirection="column" gap={1}>
+              <Typography size="lg" weight="bold">
+                重要なお知らせ
+              </Typography>
+              <Typography>
+                複数行のリッチなコンテンツを配置できます。レイアウトも自由に調整可能です。
+              </Typography>
+              <Flex display="flex" gap={1} alignItems="center">
+                <span
+                  style={{
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    color: "inherit",
+                  }}
+                >
+                  詳細を見る
+                </span>
+                <span>|</span>
+                <span
+                  style={{
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                    color: "inherit",
+                  }}
+                  onClick={handleClose}
+                >
+                  ここで閉じるのもアリです
+                </span>
+              </Flex>
+            </Flex>
+          </Banner>
+        ) : (
+          <Button onClick={handleReset}>バナーを再表示</Button>
+        )}
       </Flex>
-    </Banner>
-  ),
+    );
+  },
 };
 
 export const AllVariants: StoryObj = {
@@ -203,9 +216,9 @@ export const AllVariants: StoryObj = {
       <Banner type="info" size="small" message="小サイズのバナー" />
       <Banner type="warning" size="small" message="小サイズの警告バナー" />
       <Banner type="error" size="small" message="小サイズのエラーバナー" />
-      <Banner closable type="info" message="閉じることができるバナー" />
-      <Banner closable type="warning" message="閉じることができる警告バナー" />
-      <Banner closable type="error" message="閉じることができるエラーバナー" />
+      <Banner type="info" size="medium" message="中サイズのバナー" />
+      <Banner type="warning" size="medium" message="中サイズの警告バナー" />
+      <Banner type="error" size="medium" message="中サイズのエラーバナー" />
     </Flex>
   ),
 };

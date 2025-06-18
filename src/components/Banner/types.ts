@@ -39,11 +39,6 @@ export type BannerProps = {
    */
   className?: string;
   /**
-   * 閉じるボタンを表示するかどうか
-   * @default false
-   */
-  closable?: boolean;
-  /**
    * 閉じるボタンがクリックされたときのコールバック関数
    */
   onClose?: () => void;

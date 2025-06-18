@@ -93,14 +93,14 @@ describe("Banner component testing", () => {
   });
 
   // 閉じる機能のテスト
-  test("Closable banner renders close button with ConfirmModal style", () => {
+  test("Banner with onClose renders close button", () => {
     renderWithThemeProvider(
-      <Banner closable type="info" message="Closable banner" />,
+      <Banner type="info" message="Closable banner" onClose={() => {}} />,
     );
     const closeButton = screen.getByLabelText("閉じる");
     expect(closeButton).toBeInTheDocument();
 
-    // ConfirmModal風のスタイルが適用されていることを確認
+    // Closeボタンのアイコンが存在することを確認
     const iconElement = closeButton.querySelector("span");
     expect(iconElement).toBeInTheDocument();
   });
@@ -108,19 +108,14 @@ describe("Banner component testing", () => {
   test("Close button triggers onClose callback", () => {
     const handleClose = jest.fn();
     renderWithThemeProvider(
-      <Banner
-        closable
-        type="info"
-        message="Closable banner"
-        onClose={handleClose}
-      />,
+      <Banner type="info" message="Closable banner" onClose={handleClose} />,
     );
     const closeButton = screen.getByLabelText("閉じる");
     fireEvent.click(closeButton);
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
-  test("Banner without closable prop doesn't render close button", () => {
+  test("Banner without onClose prop doesn't render close button", () => {
     renderWithThemeProvider(
       <Banner type="info" message="Non-closable banner" />,
     );

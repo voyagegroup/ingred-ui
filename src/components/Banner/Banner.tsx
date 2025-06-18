@@ -38,7 +38,6 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
     message,
     children,
     className,
-    closable = false,
     onClose,
     ...rest
   },
@@ -98,7 +97,7 @@ const Banner = React.forwardRef<HTMLDivElement, BannerProps>(function Banner(
           )}
         </Flex>
 
-        {closable && (
+        {onClose && (
           <Styled.CloseButton aria-label="閉じる" onClick={handleClose}>
             <Icon name="close" size="md" color={iconColor} />
           </Styled.CloseButton>
