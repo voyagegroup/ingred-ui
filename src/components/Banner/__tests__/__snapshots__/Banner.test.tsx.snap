@@ -9,7 +9,7 @@ exports[`Banner component testing Banner with children 1`] = `
     type="info"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -70,7 +70,7 @@ exports[`Banner component testing Banner with complex children 1`] = `
     type="warning"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -128,7 +128,7 @@ exports[`Banner component testing Banner with type error 1`] = `
     type="error"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -176,7 +176,7 @@ exports[`Banner component testing Banner with type info 1`] = `
     type="info"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -237,7 +237,7 @@ exports[`Banner component testing Banner with type warning 1`] = `
     type="warning"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -285,7 +285,7 @@ exports[`Banner component testing Medium size banner 1`] = `
     type="info"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
@@ -346,7 +346,7 @@ exports[`Banner component testing Small size banner 1`] = `
     type="info"
   >
     <div
-      class="sc-eCYdqJ ljAMHk"
+      class="sc-eCYdqJ jEMFJx"
       display="flex"
       style="width: 100%;"
     >
