@@ -9,6 +9,7 @@ export type PaletteColor = {
   light: string;
   softlight?: string;
   highlight: string;
+  ultraLight?: string;
 };
 
 // successカラー用に拡張した型
@@ -68,6 +69,7 @@ export const palette: Palette = {
     main: colors.blue[500],
     light: colors.blue[200],
     highlight: colors.blue[100],
+    ultraLight: colors.blue[50],
   },
   primaryPale: {
     deepDark: colors.blue[600],
@@ -75,6 +77,7 @@ export const palette: Palette = {
     main: colors.blue[50],
     light: colors.blue[200],
     highlight: colors.blue[100],
+    ultraLight: colors.blue[50],
   },
   basicDark: {
     deepDark: colors.basic[400],
@@ -82,6 +85,7 @@ export const palette: Palette = {
     main: colors.basic[100],
     light: colors.basic[300],
     highlight: colors.basic[100],
+    ultraLight: colors.basic[50],
   },
   success: {
     deepDark: colors.green[700],
@@ -90,6 +94,7 @@ export const palette: Palette = {
     light: colors.green[300],
     softlight: colors.green[200],
     highlight: colors.green[100],
+    ultraLight: colors.green[50],
   },
   warning: {
     deepDark: colors.yellow[900],
@@ -97,6 +102,7 @@ export const palette: Palette = {
     main: colors.yellow[500],
     light: colors.yellow[400],
     highlight: colors.yellow[100],
+    ultraLight: colors.yellow[50],
   },
   danger: {
     deepDark: colors.red[700],
@@ -104,6 +110,7 @@ export const palette: Palette = {
     main: colors.red[500],
     light: colors.red[300],
     highlight: colors.red[100],
+    ultraLight: colors.red[50],
   },
   gray: {
     deepDark: colors.basic[600],
@@ -111,6 +118,7 @@ export const palette: Palette = {
     main: colors.basic[300],
     light: colors.basic[200],
     highlight: colors.basic[100],
+    ultraLight: colors.basic[50],
   },
   text: {
     primary: colors.blue[500],
