@@ -38,7 +38,6 @@ type FilterInputPanelProps = {
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
   menuIconSize: IconSize | number;
-  confirmOnBlur?: boolean;
 };
 
 const FilterInputPanel = ({
@@ -50,13 +49,25 @@ const FilterInputPanel = ({
   onApply,
   onClose,
   menuIconSize,
-  confirmOnBlur = false,
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
   const [userValues, setUserValues] = useState<string[]>([]);
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const confirmValue = useCallback(
+    (value: string) => {
+      const trimmedValue = value.trim();
+      if (trimmedValue === "" || userValues.includes(trimmedValue)) {
+        setInputValue("");
+        return;
+      }
+      setUserValues([...userValues, trimmedValue]);
+      setInputValue("");
+    },
+    [userValues],
+  );
 
   const modifiedSelectOptions = useMemo(() => {
     return selectOptions.map((option) => ({
@@ -109,20 +120,17 @@ const FilterInputPanel = ({
         return;
       }
 
-      const trimmedValue = event.target.value.trim();
-      if (trimmedValue === "" || userValues.includes(trimmedValue)) return;
-
       if (event.key === "Enter") {
-        setUserValues([...userValues, trimmedValue]);
-        setInputValue("");
+        confirmValue(event.target.value);
       }
     },
-    [userValues, setUserValues, isInlineComposing],
+    [userValues, isInlineComposing, confirmValue],
   );
 
   const handleClearButtonClick = useCallback(() => {
     setUserValues([]);
     setInputValue("");
+    setIsInlineComposing(false);
   }, []);
 
   const handleCancelClick = useCallback(() => {
@@ -150,14 +158,8 @@ const FilterInputPanel = ({
   }, []);
 
   const handleInputBlur = useCallback(() => {
-    if (confirmOnBlur) {
-      const trimmedValue = inputValue.trim();
-      if (trimmedValue !== "" && !userValues.includes(trimmedValue)) {
-        setUserValues([...userValues, trimmedValue]);
-      }
-    }
-    setInputValue("");
-  }, [confirmOnBlur, inputValue, userValues]);
+    confirmValue(inputValue);
+  }, [inputValue, confirmValue]);
 
   // タグのレンダリングをメモ化
   const renderedUserTags = useMemo(
@@ -308,7 +310,6 @@ type FilterTagInputProps = {
   menuIconSize?: IconSize | number;
   disabled?: boolean;
   error?: boolean;
-  confirmOnBlur?: boolean;
 };
 export const FilterTagInput = ({
   title,
@@ -323,7 +324,6 @@ export const FilterTagInput = ({
   menuIconSize = 22,
   disabled = false,
   error = false,
-  confirmOnBlur = false,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -371,6 +371,34 @@ export const FilterTagInput = ({
     return visibleWidth;
   }, []);
 
+  const addValue = useCallback(
+    (value: string) => {
+      const trimmedValue = value.trim();
+      if (trimmedValue === "") {
+        setInputValue("");
+        return;
+      }
+      if (values.includes(trimmedValue)) {
+        setInputValue("");
+        return;
+      }
+
+      onChange([...values, trimmedValue], selectedIndex);
+      setInputValue("");
+      requestAnimationFrame(() => {
+        checkInlineOverflow();
+        computeInlineFieldVisibleWidth();
+      });
+    },
+    [
+      values,
+      onChange,
+      selectedIndex,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+    ],
+  );
+
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (isInlineComposing) return;
@@ -386,20 +414,19 @@ export const FilterTagInput = ({
         return;
       }
 
-      const trimmedValue = event.target.value.trim();
-      if (trimmedValue === "" || values.includes(trimmedValue)) return;
-
       if (event.key === "Enter") {
-        onChange([...values, trimmedValue], selectedIndex);
-        setInputValue("");
-        requestAnimationFrame(() => {
-          checkInlineOverflow();
-          computeInlineFieldVisibleWidth();
-        });
+        addValue(event.target.value);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [values, onChange, setInputValue, isInlineComposing, selectedIndex],
+    [
+      isInlineComposing,
+      onChange,
+      values,
+      selectedIndex,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+      addValue,
+    ],
   );
 
   const handleTagRemove = useCallback(
@@ -464,27 +491,8 @@ export const FilterTagInput = ({
 
   const handleBlurWithClear = useCallback(() => {
     handleBlur();
-    if (confirmOnBlur) {
-      const trimmedValue = inputValue.trim();
-      if (trimmedValue !== "" && !values.includes(trimmedValue)) {
-        onChange([...values, trimmedValue], selectedIndex);
-        requestAnimationFrame(() => {
-          checkInlineOverflow();
-          computeInlineFieldVisibleWidth();
-        });
-      }
-    }
-    setInputValue("");
-  }, [
-    handleBlur,
-    confirmOnBlur,
-    inputValue,
-    values,
-    onChange,
-    selectedIndex,
-    checkInlineOverflow,
-    computeInlineFieldVisibleWidth,
-  ]);
+    addValue(inputValue);
+  }, [handleBlur, inputValue, addValue]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -578,7 +586,6 @@ export const FilterTagInput = ({
       </FilterInputAbstract>
 
       <FilterInputPanel
-        confirmOnBlur={confirmOnBlur}
         isOpen={isModalOpen}
         menuIconSize={menuIconSize}
         selectOptions={selectOptions}

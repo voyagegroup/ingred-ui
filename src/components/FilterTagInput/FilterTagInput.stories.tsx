@@ -315,25 +315,3 @@ export const Error: StoryObj<typeof meta> = {
     );
   },
 };
-
-export const ConfirmOnBlur: StoryObj<typeof meta> = {
-  args: {
-    ...Default.args,
-    confirmOnBlur: true,
-  },
-  render: (args) => {
-    const [, updateArgs] = useArgs();
-
-    return (
-      <>
-        <FilterTagInput
-          {...args}
-          onChange={(newValues, newSelectedIndex) =>
-            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
-          }
-          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
-        />
-      </>
-    );
-  },
-};
