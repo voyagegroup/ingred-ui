@@ -62,7 +62,7 @@
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "@types/react-transition-group": "4.4.4",
-    "@types/rollup-plugin-peer-deps-external": "2.2.1",
+    "@types/rollup-plugin-auto-external": "2.0.5",
     "@types/styled-components": "5.1.25",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.10.0",
@@ -80,8 +80,9 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "rollup": "4.34.7",
+    "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-imagemin": "0.5.0",
-    "rollup-plugin-peer-deps-external": "2.2.4",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "scaffdog": "3.0.0",
     "storybook": "7.5.3",
     "styled-components": "5.3.5",
@@ -89,14 +90,22 @@
     "typescript": "5.2.2",
     "vite": "4.5.14"
   },
-  "files": [
-    "dist"
-  ],
   "resolutions": {
     "colors": "1.4.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "overrides": {
+    "vite": {
+      "rollup": "3.29.5"
+    },
+    "@storybook/react-vite": {
+      "rollup": "3.29.5"
+    }
   }
 }
