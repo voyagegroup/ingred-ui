@@ -300,13 +300,14 @@ export const PanelSelectTriggerIcon = styled.div`
 `;
 
 export const PanelTagField = styled.div`
+  position: relative;
   display: flex;
   gap: 6px;
   align-items: flex-start;
   flex-wrap: wrap;
   box-sizing: border-box;
   min-height: 34px;
-  padding: 4px 8px;
+  padding: 6px 37px 6px 6px;
   border: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: 6px;
   background: ${({ theme }) => theme.palette.basicDark.ultraLight};
