@@ -39,6 +39,7 @@ type FilterInputPanelProps = {
   onApply: (values: string[], selectedIndex: number) => void;
   onClose: () => void;
   menuIconSize: IconSize | number;
+  confirmOnBlur?: boolean;
 };
 
 const FilterInputPanel = ({
@@ -50,6 +51,7 @@ const FilterInputPanel = ({
   onApply,
   onClose,
   menuIconSize,
+  confirmOnBlur = false,
 }: FilterInputPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isInlineComposing, setIsInlineComposing] = useState(false);
@@ -149,8 +151,14 @@ const FilterInputPanel = ({
   }, []);
 
   const handleInputBlur = useCallback(() => {
+    if (confirmOnBlur) {
+      const trimmedValue = inputValue.trim();
+      if (trimmedValue !== "" && !userValues.includes(trimmedValue)) {
+        setUserValues([...userValues, trimmedValue]);
+      }
+    }
     setInputValue("");
-  }, []);
+  }, [confirmOnBlur, inputValue, userValues]);
 
   // タグのレンダリングをメモ化
   const renderedUserTags = useMemo(
@@ -301,6 +309,7 @@ type FilterTagInputProps = {
   menuIconSize?: IconSize | number;
   disabled?: boolean;
   error?: boolean;
+  confirmOnBlur?: boolean;
 };
 export const FilterTagInput = ({
   title,
@@ -315,6 +324,7 @@ export const FilterTagInput = ({
   menuIconSize = 22,
   disabled = false,
   error = false,
+  confirmOnBlur = false,
 }: FilterTagInputProps) => {
   const { isSmall } = useContext(FilterInputContext);
   const [inputValue, setInputValue] = useState("");
@@ -455,8 +465,14 @@ export const FilterTagInput = ({
 
   const handleBlurWithClear = useCallback(() => {
     handleBlur();
+    if (confirmOnBlur) {
+      const trimmedValue = inputValue.trim();
+      if (trimmedValue !== "" && !values.includes(trimmedValue)) {
+        onChange([...values, trimmedValue], selectedIndex);
+      }
+    }
     setInputValue("");
-  }, [handleBlur]);
+  }, [handleBlur, confirmOnBlur, inputValue, values, onChange, selectedIndex]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -558,6 +574,7 @@ export const FilterTagInput = ({
         values={values}
         onApply={handlePanelApply}
         onClose={handleModalClose}
+        confirmOnBlur={confirmOnBlur}
       />
     </>
   );

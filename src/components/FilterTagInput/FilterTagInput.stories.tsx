@@ -114,7 +114,9 @@ export const Default: StoryObj<typeof meta> = {
       <>
         <FilterTagInput
           {...args}
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </>
@@ -146,19 +148,25 @@ export const Sizes: StoryObj<typeof meta> = {
         <FilterTagInput
           {...args}
           size="small"
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
         <FilterTagInput
           {...args}
           size="medium"
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
         <FilterTagInput
           {...args}
           size="large"
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </div>
@@ -190,13 +198,17 @@ export const Variants: StoryObj<typeof meta> = {
         <FilterTagInput
           {...args}
           variant="light"
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
         <FilterTagInput
           {...args}
           variant="dark"
-          onChange={(newValues) => updateArgs({ values: newValues })}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
           onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
         />
       </div>
@@ -238,7 +250,9 @@ export const Disabled: StoryObj<typeof meta> = {
           <p style={{ marginBottom: "0.5rem" }}>無効状態</p>
           <FilterTagInput
             {...args}
-            onChange={(newValues) => updateArgs({ values: newValues })}
+            onChange={(newValues, newSelectedIndex) =>
+              updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+            }
             onSelectChange={(newIndex) =>
               updateArgs({ selectedIndex: newIndex })
             }
@@ -249,7 +263,9 @@ export const Disabled: StoryObj<typeof meta> = {
           <FilterTagInput
             {...args}
             disabled={false}
-            onChange={(newValues) => updateArgs({ values: newValues })}
+            onChange={(newValues, newSelectedIndex) =>
+              updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+            }
             onSelectChange={(newIndex) =>
               updateArgs({ selectedIndex: newIndex })
             }
@@ -294,7 +310,30 @@ export const Error: StoryObj<typeof meta> = {
           setValues(newValues);
           setSelectedIndex(newSelectedIndex);
         }}
+        onSelectChange={(newIndex) => setSelectedIndex(newIndex)}
       />
+    );
+  },
+};
+
+export const ConfirmOnBlur: StoryObj<typeof meta> = {
+  args: {
+    ...Default.args,
+    confirmOnBlur: true,
+  },
+  render: (args) => {
+    const [, updateArgs] = useArgs();
+
+    return (
+      <>
+        <FilterTagInput
+          {...args}
+          onChange={(newValues, newSelectedIndex) =>
+            updateArgs({ values: newValues, selectedIndex: newSelectedIndex })
+          }
+          onSelectChange={(newIndex) => updateArgs({ selectedIndex: newIndex })}
+        />
+      </>
     );
   },
 };
