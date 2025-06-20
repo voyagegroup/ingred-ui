@@ -49,6 +49,6 @@ export const FILTER_VARIANTS: Record<FilterVariant, FilterVariantConfig> = {
     background: colors.basic[0],
   },
   dark: {
-    background: colors.basic[100],
+    background: colors.basic[50],
   },
 } as const;

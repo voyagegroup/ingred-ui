@@ -204,7 +204,7 @@ export const PanelTitle = styled.div`
   font-weight: 700;
   font-size: 16px;
   color: ${colors.basic[900]};
-  background: ${colors.basic[100]};
+  background: ${colors.basic[50]};
 `;
 
 export const PanelLeft = styled.div`
@@ -246,7 +246,7 @@ export const PanelSelectTrigger = styled.button`
   line-height: 16px;
   text-align: left;
   color: ${colors.basic[900]};
-  background: ${colors.basic[100]};
+  background: ${colors.basic[50]};
 
   @media (max-width: ${BreakPoint.MEDIUM}px) {
     width: fit-content;
@@ -301,7 +301,7 @@ export const PanelTagField = styled.div`
   padding: 6px 37px 6px 6px;
   border: 1px solid ${colors.basic[400]};
   border-radius: 6px;
-  background: ${colors.basic[100]};
+  background: ${colors.basic[50]};
 
   &:has(input:focus) {
     outline: none;
