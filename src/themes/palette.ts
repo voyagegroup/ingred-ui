@@ -9,7 +9,7 @@ export type PaletteColor = {
   light: string;
   softlight?: string;
   highlight: string;
-  ultraLight?: string;
+  ultraLight: string;
 };
 
 // successカラー用に拡張した型
