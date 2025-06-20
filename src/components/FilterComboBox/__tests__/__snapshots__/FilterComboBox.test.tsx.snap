@@ -12,7 +12,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
       aria-expanded="false"
       aria-haspopup="dialog"
       aria-label="フィルターのタイプを選ぶ"
-      class="sc-ivTmOn ljHaqd"
+      class="sc-ivTmOn LxMNT"
       type="button"
     >
       <span
@@ -44,14 +44,14 @@ exports[`FileUploader component testing FileUploader 1`] = `
       </span>
     </button>
     <div
-      class="sc-jIZahH eQLyNq"
+      class="sc-jIZahH kEBbdA"
       data-overflowing="false"
     >
       <button
         aria-expanded="false"
         aria-haspopup="dialog"
         aria-label="タグを追加"
-        class="sc-gXmSlM cLANdJ"
+        class="sc-gXmSlM iINwrb"
         type="button"
       >
         <span

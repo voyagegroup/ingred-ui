@@ -546,15 +546,15 @@ export const FilterTagInput = ({
             <styled.InlineInput>
               <input
                 ref={inputEl}
-                type="text"
                 aria-label="フィルターする値"
-                value={inputValue}
                 disabled={disabled}
+                type="text"
+                value={inputValue}
                 onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                onCompositionStart={handleCompositionStart}
                 onCompositionEnd={handleCompositionEnd}
+                onCompositionStart={handleCompositionStart}
                 onFocus={handleFocus}
+                onKeyDown={handleKeyDown}
                 // eslint-disable-next-line react/jsx-handler-names
                 onBlur={handleBlurWithClear}
               />
@@ -579,6 +579,7 @@ export const FilterTagInput = ({
       </FilterInputAbstract>
 
       <FilterInputPanel
+        confirmOnBlur={confirmOnBlur}
         isOpen={isModalOpen}
         menuIconSize={menuIconSize}
         selectOptions={selectOptions}
@@ -587,7 +588,6 @@ export const FilterTagInput = ({
         values={values}
         onApply={handlePanelApply}
         onClose={handleModalClose}
-        confirmOnBlur={confirmOnBlur}
       />
     </>
   );
