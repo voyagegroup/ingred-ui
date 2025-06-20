@@ -469,10 +469,23 @@ export const FilterTagInput = ({
       const trimmedValue = inputValue.trim();
       if (trimmedValue !== "" && !values.includes(trimmedValue)) {
         onChange([...values, trimmedValue], selectedIndex);
+        requestAnimationFrame(() => {
+          checkInlineOverflow();
+          computeInlineFieldVisibleWidth();
+        });
       }
     }
     setInputValue("");
-  }, [handleBlur, confirmOnBlur, inputValue, values, onChange, selectedIndex]);
+  }, [
+    handleBlur,
+    confirmOnBlur,
+    inputValue,
+    values,
+    onChange,
+    selectedIndex,
+    checkInlineOverflow,
+    computeInlineFieldVisibleWidth,
+  ]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
