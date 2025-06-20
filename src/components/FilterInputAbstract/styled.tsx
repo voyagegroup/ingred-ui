@@ -1,17 +1,16 @@
 import styled, { css } from "styled-components";
-import { colors } from "../../styles";
 import { ContextMenu2CheckItem } from "../ContextMenu2/ContextMenu2CheckItem";
 import {
   FILTER_SIZES,
   FilterSize,
   FilterVariant,
-  FILTER_VARIANTS,
+  getFilterVariantConfig,
 } from "./types";
 
 // フィルターのベーススタイル
 export const filterBaseStyle = css`
-  border: 1px solid ${colors.basic[400]};
-  background-color: ${colors.basic[0]};
+  border: 1px solid ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme }) => theme.palette.background.default};
 `;
 
 // サイズに応じたスタイルを生成するヘルパー関数
@@ -59,29 +58,31 @@ export const FilterInputAbstract = styled.div<{
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   border: 1px solid
-    ${({ $error, $disabled, $isOpen }) => {
-      if ($error) return colors.red[500];
-      if ($disabled) return colors.basic[400];
-      if ($isOpen) return colors.blue[500];
-      return colors.basic[400];
+    ${({ $error, $disabled, $isOpen, theme }) => {
+      if ($error) return theme.palette.danger.main;
+      if ($disabled) return theme.palette.divider;
+      if ($isOpen) return theme.palette.primary.main;
+      return theme.palette.divider;
     }};
 
   &:hover:not([data-disabled="true"]) {
     border-color: ${({ $error, theme }) =>
-      $error ? colors.red[500] : theme.palette.primary.main};
+      $error ? theme.palette.danger.main : theme.palette.primary.main};
   }
 
-  ${({ $isOpen, $error }) =>
+  ${({ $isOpen, $error, theme }) =>
     $isOpen &&
     `
     box-shadow: 0 0 0 3px ${
-      $error ? `${colors.red[200]}66` : `${colors.blue[200]}66`
+      $error
+        ? `${theme.palette.danger.light}66`
+        : `${theme.palette.primary.light}66`
     };
   `}
 
   &[data-disabled="true"] {
-    background-color: ${colors.basic[200]};
-    border-color: ${colors.basic[400]};
+    background-color: ${({ theme }) => theme.palette.gray.light};
+    border-color: ${({ theme }) => theme.palette.divider};
 
     /* 入力エリアのみ無効化 */
     > :nth-child(2) {
@@ -93,8 +94,8 @@ export const FilterInputAbstract = styled.div<{
       &,
       input,
       button {
-        color: ${colors.basic[400]};
-        background-color: ${colors.basic[200]};
+        color: ${({ theme }) => theme.palette.text.disabled};
+        background-color: ${({ theme }) => theme.palette.gray.light};
       }
 
       input,
@@ -104,7 +105,7 @@ export const FilterInputAbstract = styled.div<{
       }
 
       button svg {
-        color: ${colors.basic[400]};
+        color: ${({ theme }) => theme.palette.text.disabled};
       }
     }
   }
@@ -141,18 +142,22 @@ export const DropDownTrigger = styled.button<{
   align-items: center;
   height: 100%;
   border: 0;
-  border-right: 1px solid ${colors.basic[400]};
+  border-right: 1px solid ${({ theme }) => theme.palette.divider};
   outline-offset: -1px;
-  color: ${({ disabled }) =>
-    disabled ? colors.basic[400] : colors.basic[900]};
-  background: ${({ disabled, $variant = "light" }) =>
-    disabled ? colors.basic[200] : FILTER_VARIANTS[$variant].background};
+  color: ${({ disabled, theme }) =>
+    disabled ? theme.palette.text.disabled : theme.palette.black};
+  background: ${({ disabled, $variant = "light", theme }) => {
+    if (disabled) return theme.palette.gray.light;
+    const variantConfig = getFilterVariantConfig(theme);
+    return variantConfig[$variant].background;
+  }};
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease;
 
   /* アイコンの色を制御 */
   svg {
-    color: ${({ disabled }) => (disabled ? colors.basic[400] : "currentColor")};
+    color: ${({ disabled, theme }) =>
+      disabled ? theme.palette.text.disabled : "currentColor"};
     transition: color 0.2s ease;
   }
 

@@ -24,7 +24,6 @@ import {
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
-import { colors } from "../../styles/color";
 
 //
 // -----------------------------------------------------------------------------
@@ -64,7 +63,7 @@ const FilterInputPanel = ({
       ...option,
       icon: React.cloneElement(option.icon, {
         size: menuIconSize,
-        color: colors.basic[900],
+        color: "#212529", // theme.palette.black相当
       }),
     }));
   }, [selectOptions, menuIconSize]);

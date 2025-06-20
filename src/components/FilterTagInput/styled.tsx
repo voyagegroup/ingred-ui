@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { BreakPoint, colors } from "../../styles";
+import { BreakPoint } from "../../styles";
 import { palette } from "../../themes/palette";
 import { getShadow } from "../../utils/getShadow";
 import {
   FilterSize,
   FilterVariant,
-  FILTER_VARIANTS,
+  getFilterVariantConfig,
 } from "../FilterInputAbstract/types";
 import { FilterInputAbstract } from "../FilterInputAbstract/styled";
 
@@ -23,7 +23,10 @@ export const InlineField = styled.div<StyledProps>`
   border-radius: 0 4px 4px 0;
   overflow: auto;
   scrollbar-width: none;
-  background: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
+  background: ${({ $variant, theme }) => {
+    const variantConfig = getFilterVariantConfig(theme);
+    return variantConfig[$variant].background;
+  }};
 
   &::-webkit-scrollbar {
     display: none;
@@ -61,15 +64,18 @@ export const OverflowIndicator = styled.button<{
   }};
   border: 0;
   outline-offset: -1px;
-  color: ${colors.basic[900]};
-  background-color: ${({ $variant }) => FILTER_VARIANTS[$variant].background};
+  color: ${({ theme }) => theme.palette.black};
+  background-color: ${({ $variant, theme }) => {
+    const variantConfig = getFilterVariantConfig(theme);
+    return variantConfig[$variant].background;
+  }};
   box-shadow: -2px 0px 4px rgba(4, 28, 51, 0.16);
   cursor: pointer;
   transition: background-color 0.2s ease;
 
   &:disabled {
-    color: ${colors.basic[400]};
-    background-color: ${colors.basic[200]};
+    color: ${({ theme }) => theme.palette.text.disabled};
+    background-color: ${({ theme }) => theme.palette.gray.light};
     cursor: not-allowed;
     box-shadow: none;
   }
@@ -92,13 +98,13 @@ export const OverflowIndicator = styled.button<{
       }
     }};
     aspect-ratio: 1;
-    border: 1px solid ${colors.basic[400]};
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     border-radius: 4px;
     box-shadow: ${getShadow(1, 0.04, palette.action.shadowBase)};
 
     &:disabled {
-      border-color: ${colors.basic[300]};
-      background-color: ${colors.basic[200]};
+      border-color: ${({ theme }) => theme.palette.gray.main};
+      background-color: ${({ theme }) => theme.palette.gray.light};
       box-shadow: none;
     }
   }
@@ -145,7 +151,7 @@ export const InlineInputIcon = styled.div`
   display: grid;
   place-items: center;
   width: 20px;
-  color: ${colors.basic[600]};
+  color: ${({ theme }) => theme.palette.icon.line};
   pointer-events: none;
 `;
 //
@@ -164,8 +170,8 @@ const PanelInner = styled.div`
   max-width: 800px;
   padding: 16px;
   border-radius: 6px;
-  background: ${colors.basic[0]};
-  border: 1px solid ${colors.basic[200]};
+  background: ${({ theme }) => theme.palette.background.default};
+  border: 1px solid ${({ theme }) => theme.palette.gray.light};
   /* Drop shadow Common */
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
   pointer-events: auto;
@@ -203,8 +209,8 @@ export const PanelTitle = styled.div`
   /* UI/Text 16 bold */
   font-weight: 700;
   font-size: 16px;
-  color: ${colors.basic[900]};
-  background: ${colors.basic[50]};
+  color: ${({ theme }) => theme.palette.black};
+  background: ${({ theme }) => theme.palette.basicDark.ultraLight};
 `;
 
 export const PanelLeft = styled.div`
@@ -223,7 +229,7 @@ export const PanelLabel = styled.p`
   font-weight: 700;
   font-size: 13px;
   line-height: 16px;
-  color: ${colors.basic[900]};
+  color: ${({ theme }) => theme.palette.black};
 `;
 
 export const PanelSelectTrigger = styled.button`
@@ -238,78 +244,77 @@ export const PanelSelectTrigger = styled.button`
   max-width: 100%;
   height: 34px;
   padding: 4px 8px;
-  border: 1px solid ${colors.basic[400]};
+  border: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: 6px;
   /* UI/Text 13 */
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
   text-align: left;
-  color: ${colors.basic[900]};
-  background: ${colors.basic[50]};
+  color: ${({ theme }) => theme.palette.black};
+  background: ${({ theme }) => theme.palette.basicDark.ultraLight};
+  cursor: pointer;
+  transition: all 0.2s ease;
 
-  @media (max-width: ${BreakPoint.MEDIUM}px) {
-    width: fit-content;
+  &:hover {
+    outline: none;
+  }
+
+  &:focus-visible {
+    border-color: ${({ theme }) => theme.palette.primary.main};
+    box-shadow: 0 0 0 3px ${({ theme }) => `${theme.palette.primary.light}66`};
   }
 `;
 
-export const PanelSelectTriggerSpacer = styled.span`
+export const PanelSelectTriggerSpacer = styled.div`
   grid-area: spacer;
   display: flex;
-  gap: 4px;
-  white-space: nowrap;
-  height: 0;
-  padding-right: 22px;
-  overflow: hidden;
+  gap: 2px;
+  align-items: center;
   visibility: hidden;
-  pointer-events: none;
+  /* UI/Text 13 */
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: left;
 `;
 
-export const PanelSelectTriggerLabel = styled.span`
+export const PanelSelectTriggerLabel = styled.div`
   grid-area: label;
   display: flex;
+  gap: 2px;
   align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* UI/Text 13 */
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: left;
+  color: ${({ theme }) => theme.palette.black};
 `;
 
-export const PanelSelectTriggerIcon = styled.span`
+export const PanelSelectTriggerIcon = styled.div`
   grid-area: downArrow;
-  flex-shrink: 0;
-  width: 18px;
-  color: ${colors.basic[900]};
-`;
-
-export const PanelButtons = styled.ul`
-  grid-area: bottom;
   display: flex;
-  gap: 8px;
-  justify-content: end;
-  padding: 16px 0 0;
-  border-top: 1px solid ${colors.basic[200]};
-  list-style: none;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const PanelTagField = styled.div`
-  position: relative;
   display: flex;
-  flex-wrap: wrap;
   gap: 6px;
+  align-items: flex-start;
+  flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 6px 37px 6px 6px;
-  border: 1px solid ${colors.basic[400]};
+  min-height: 34px;
+  padding: 4px 8px;
+  border: 1px solid ${({ theme }) => theme.palette.divider};
   border-radius: 6px;
-  background: ${colors.basic[50]};
+  background: ${({ theme }) => theme.palette.basicDark.ultraLight};
+  cursor: text;
 
-  &:has(input:focus) {
-    outline: none;
-    border-color: ${colors.blue[500]};
-    box-shadow: 0 0 0 3px ${colors.blue[200]}66;
-    transition:
-      border-color 0.2s,
-      box-shadow 0.2s;
+  &:focus-within {
+    border-color: ${({ theme }) => theme.palette.primary.main};
+    box-shadow: 0 0 0 3px ${({ theme }) => `${theme.palette.primary.light}66`};
   }
 `;
 
@@ -317,7 +322,9 @@ export const PanelTagFieldFocusTrigger = styled.button`
   position: absolute;
   inset: 0;
   border: 0;
+  padding: 0;
   background: transparent;
+  cursor: text;
 `;
 
 export const PanelInput = styled.div`
@@ -339,12 +346,14 @@ export const PanelInput = styled.div`
     background: transparent;
   }
 `;
+
 export const PanelInputSpacer = styled.div`
   visibility: hidden;
   white-space: pre;
   grid-area: 1 / 2;
   font: inherit;
 `;
+
 export const PanelClearButton = styled.button`
   position: absolute;
   inset: 0 8px 0 auto;
@@ -353,7 +362,17 @@ export const PanelClearButton = styled.button`
   height: 18px;
   border: 0;
   margin: auto 0;
-  color: ${colors.basic[900]};
+  color: ${({ theme }) => theme.palette.black};
   background: transparent;
   cursor: pointer;
+`;
+
+export const PanelButtons = styled.ul`
+  grid-area: bottom;
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+  padding: 16px 0 0;
+  border-top: 1px solid ${({ theme }) => theme.palette.gray.light};
+  list-style: none;
 `;

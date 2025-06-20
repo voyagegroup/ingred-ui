@@ -1,4 +1,4 @@
-import { colors } from "../../styles";
+import { Theme } from "../../themes";
 
 export type FilterSize = "small" | "medium" | "large";
 
@@ -44,11 +44,13 @@ export const FILTER_SIZES: Record<FilterSize, FilterSizeConfig> = {
   },
 } as const;
 
-export const FILTER_VARIANTS: Record<FilterVariant, FilterVariantConfig> = {
+export const getFilterVariantConfig = (
+  theme: Theme,
+): Record<FilterVariant, FilterVariantConfig> => ({
   light: {
-    background: colors.basic[0],
+    background: theme.palette.background.default,
   },
   dark: {
-    background: colors.basic[50],
+    background: theme.palette.basicDark.ultraLight,
   },
-} as const;
+});
