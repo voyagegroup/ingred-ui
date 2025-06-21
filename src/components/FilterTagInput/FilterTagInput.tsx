@@ -224,6 +224,12 @@ const FilterInputPanel = ({
           <styled.PanelLeft>
             <styled.PanelLabel>条件</styled.PanelLabel>
             <ContextMenu2Container>
+              {/*
+               * TODO: 現状、ここのセレクトボックスは独自実装になっている
+               *       Select2コンポーネントは、現状ではアイコン付きのオプションに対応していないため、
+               *       FilterTagInputではやむを得ず独自実装のセレクトボックスを採用している。
+               *       Select2がアイコン付きオプションに対応したら、ここの独自実装はSelect2に差し替える。
+               */}
               <ContextMenu2
                 open={isSelectOpen}
                 trigger={
