@@ -260,10 +260,6 @@ export const PanelSelectTrigger = styled.button`
     width: fit-content;
   }
 
-  &:hover {
-    outline: none;
-  }
-
   &:focus-visible {
     border-color: ${({ theme }) => theme.palette.primary.main};
     box-shadow: 0 0 0 3px ${({ theme }) => `${theme.palette.primary.light}66`};
