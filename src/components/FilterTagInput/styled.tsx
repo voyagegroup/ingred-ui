@@ -255,7 +255,7 @@ export const PanelSelectTrigger = styled.button`
   background: ${({ theme }) => theme.palette.basicDark.ultraLight};
   cursor: pointer;
   transition: all 0.2s ease;
-  
+
   @media (max-width: ${BreakPoint.MEDIUM}px) {
     width: fit-content;
   }
