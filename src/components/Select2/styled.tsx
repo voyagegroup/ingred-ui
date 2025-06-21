@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { Select2Size, Select2Props, SELECT2_SIZES } from "./types";
 import { ContextMenu2TextInputItem } from "../ContextMenu2";
 import { Tag } from "../Tag";
@@ -22,16 +21,18 @@ export const SelectContainer = styled.div<{
   align-items: center;
   width: 100%;
   height: ${({ $size = "medium" }) => SELECT2_SIZES[$size].height};
-  background-color: ${({ $variant, $disabled }) => {
-    if ($disabled) return colors.basic[200];
-    return $variant === "light" ? colors.basic[0] : colors.basic[100];
+  background-color: ${({ theme, $variant, $disabled }) => {
+    if ($disabled) return theme.palette.gray.light;
+    return $variant === "light"
+      ? theme.palette.background.default
+      : theme.palette.basicDark.ultraLight;
   }};
   border: 1px solid
-    ${({ $error, $disabled, $isOpen }) => {
-      if ($error) return colors.red[500];
-      if ($disabled) return colors.basic[400];
-      if ($isOpen) return colors.blue[500];
-      return colors.basic[400];
+    ${({ theme, $error, $disabled, $isOpen }) => {
+      if ($error) return theme.palette.danger.main;
+      if ($disabled) return theme.palette.divider;
+      if ($isOpen) return theme.palette.primary.main;
+      return theme.palette.divider;
     }};
   border-radius: 6px;
   transition:
@@ -40,18 +41,20 @@ export const SelectContainer = styled.div<{
 
   /* disabled状態ではない場合のみhoverスタイルを適用 */
   &:hover:not([disabled]):not([data-disabled="true"]) {
-    border-color: ${({ $error, $disabled }) => {
-      if ($disabled) return colors.basic[400];
-      if ($error) return colors.red[500];
-      return colors.blue[500];
+    border-color: ${({ theme, $error, $disabled }) => {
+      if ($disabled) return theme.palette.divider;
+      if ($error) return theme.palette.danger.main;
+      return theme.palette.primary.main;
     }};
   }
 
-  ${({ $isOpen, $error }) =>
+  ${({ theme, $isOpen, $error }) =>
     $isOpen &&
     `
     box-shadow: 0 0 0 3px ${
-      $error ? `${colors.red[200]}66` : `${colors.blue[200]}66`
+      $error
+        ? `${theme.palette.danger.light}66`
+        : `${theme.palette.primary.light}66`
     };
   `}
 
@@ -166,7 +169,7 @@ export const Placeholder = styled.span<{
   $variant?: Select2Props["variant"];
   $disabled?: boolean;
 }>`
-  color: ${colors.basic[400]};
+  color: ${({ theme }) => theme.palette.text.disabled};
   padding: 0 6px;
 `;
 
@@ -177,8 +180,8 @@ export const IconArea = styled.div<{
 }>`
   display: flex;
   align-items: center;
-  color: ${({ $disabled }) =>
-    $disabled ? colors.basic[400] : colors.basic[900]};
+  color: ${({ theme, $disabled }) =>
+    $disabled ? theme.palette.text.disabled : theme.palette.black};
   width: ${({ $size }) => ($size ? SELECT2_SIZES[$size].iconSize : "18px")};
   aspect-ratio: 1;
   margin-right: 8px;
@@ -203,7 +206,7 @@ export const StyledContextMenu2TextInputItem = styled(
 )`
   input {
     &::placeholder {
-      color: ${colors.basic[600]};
+      color: ${({ theme }) => theme.palette.icon.line};
     }
   }
 `;

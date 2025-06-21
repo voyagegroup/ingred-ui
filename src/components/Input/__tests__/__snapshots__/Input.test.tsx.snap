@@ -77,7 +77,7 @@ exports[`Input component testing Input variants 1`] = `
 exports[`Input component testing Input variants 2`] = `
 <DocumentFragment>
   <input
-    class="sc-bczRLJ cPMYaG"
+    class="sc-bczRLJ bJsTYc"
   />
 </DocumentFragment>
 `;
