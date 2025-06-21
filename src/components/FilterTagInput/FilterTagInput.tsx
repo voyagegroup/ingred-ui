@@ -8,6 +8,7 @@ import React, {
   type ReactElement,
   type KeyboardEvent,
 } from "react";
+import { useTheme } from "styled-components";
 import Icon, { IconSize } from "../Icon";
 import {
   ContextMenu2,
@@ -55,6 +56,7 @@ const FilterInputPanel = ({
   const [userValues, setUserValues] = useState<string[]>([]);
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const theme = useTheme();
 
   const confirmValue = useCallback(
     (value: string) => {
@@ -74,10 +76,10 @@ const FilterInputPanel = ({
       ...option,
       icon: React.cloneElement(option.icon, {
         size: menuIconSize,
-        color: "#212529", // theme.palette.black相当
+        color: theme.palette.black,
       }),
     }));
-  }, [selectOptions, menuIconSize]);
+  }, [selectOptions, menuIconSize, theme.palette.black]);
 
   const longestLabelOption = useMemo(() => {
     return modifiedSelectOptions.reduce(
