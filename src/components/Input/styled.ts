@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   InputSize,
   InputVariant,
@@ -7,6 +7,7 @@ import {
   TEXTAREA_PADDING,
   getErrorStyles,
 } from "./types";
+import { focusInteraction } from "../../styles/interaction";
 
 export const Input = styled.input<{
   $error: boolean;
@@ -75,25 +76,9 @@ export const Input = styled.input<{
     }};
   }
 
-  /* フォーカス状態（コンポーネント管理） */
-  ${({ $isFocused, $error, $variant = "light", theme }) => {
-    if (!$isFocused) return "";
-    const variants = getInputVariantConfig(theme);
-    return css`
-      outline: none;
-      border-color: ${$error
-        ? getErrorStyles(theme).borderColor
-        : variants[$variant].focusBorderColor};
-      box-shadow: 0 0 0 3px
-        ${$error
-          ? getErrorStyles(theme).shadowColor
-          : variants[$variant].focusShadowColor};
-    `;
-  }}
-
-  /* 標準のフォーカススタイル（キーボードアクセシビリティのため） */
+  /* フォーカス状態 */
   &:focus {
-    ${({ theme, $error }) => theme.interaction.focus($error)}
+    ${({ theme, $error }) => focusInteraction(theme, $error)}
   }
 
   /* プレースホルダー */
