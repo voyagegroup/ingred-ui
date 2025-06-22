@@ -26,14 +26,14 @@ type ContextMenu2CheckItemProps = {
 const ButtonPrepend = styled.span`
   /* アイコンのデフォルトサイズと色を設定 */
   svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
   }
 
   /* span要素のサイズも設定 */
   span {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
   }
 
   /* disabled状態の時の色 */
