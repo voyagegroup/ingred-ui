@@ -102,15 +102,6 @@ export const ComboBoxInput = styled.div`
   }
 `;
 
-export const ComboBoxNoData = styled.div`
-  padding: 12px;
-  text-align: center;
-  background-color: ${({ theme }) => theme.palette.background.default};
-  border-top: 1px solid ${({ theme }) => theme.palette.gray.main};
-  font-size: 13px;
-  color: #666;
-`;
-
 export const SelectContainer = styled.div<StyledProps>`
   position: relative;
   display: flex;
