@@ -7,7 +7,6 @@ import {
   TEXTAREA_PADDING,
   getErrorStyles,
 } from "./types";
-import { focusInteraction } from "../../styles/interaction";
 
 export const Input = styled.input<{
   $error: boolean;
@@ -78,7 +77,7 @@ export const Input = styled.input<{
 
   /* フォーカス状態 */
   &:focus {
-    ${({ theme, $error }) => focusInteraction(theme, $error)}
+    ${({ theme, $error }) => theme.interaction.focus($error)}
   }
 
   /* プレースホルダー */

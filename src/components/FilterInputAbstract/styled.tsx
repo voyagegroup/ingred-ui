@@ -58,10 +58,9 @@ export const FilterInputAbstract = styled.div<{
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   border: 1px solid
-    ${({ $error, $disabled, $isOpen, theme }) => {
+    ${({ $error, $disabled, theme }) => {
       if ($error) return theme.palette.danger.main;
       if ($disabled) return theme.palette.divider;
-      if ($isOpen) return theme.palette.primary.main;
       return theme.palette.divider;
     }};
 
@@ -70,15 +69,8 @@ export const FilterInputAbstract = styled.div<{
       $error ? theme.palette.danger.main : theme.palette.primary.main};
   }
 
-  ${({ $isOpen, $error, theme }) =>
-    $isOpen &&
-    `
-    box-shadow: 0 0 0 3px ${
-      $error
-        ? `${theme.palette.danger.light}66`
-        : `${theme.palette.primary.light}66`
-    };
-  `}
+  ${({ theme, $isOpen, $error }) =>
+    $isOpen && theme.interaction.focus($error)}
 
   &[data-disabled="true"] {
     background-color: ${({ theme }) => theme.palette.gray.light};
