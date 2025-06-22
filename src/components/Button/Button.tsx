@@ -258,7 +258,7 @@ const Button = React.forwardRef<
     >
       {icon && icon}
       {icon && children && <Spacer pr={0.5} />}
-      {children}
+      {children && <Styled.Text>{children}</Styled.Text>}
     </Styled.ButtonContainer>
   );
 });
