@@ -41,42 +41,47 @@ const StyledIcon = styled.span`
 const InternalContextMenu2CheckItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2CheckItemProps
->(({ checked, closeOnChange, prepend, children, onChange, color, ...props }, ref) => {
-  const theme = useTheme();
-  const { close } = useContext(ContextMenu2Context);
-  const handleClick = useCallback(() => {
-    onChange && onChange(!checked);
-    closeOnChange && close();
-  }, [checked, close, closeOnChange, onChange]);
+>(
+  (
+    { checked, closeOnChange, prepend, children, onChange, color, ...props },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const { close } = useContext(ContextMenu2Context);
+    const handleClick = useCallback(() => {
+      onChange && onChange(!checked);
+      closeOnChange && close();
+    }, [checked, close, closeOnChange, onChange]);
 
-  // prependがIconコンポーネントの場合、colorとsizeを自動設定
-  const finalPrepend =
-    React.isValidElement(prepend) && prepend.type === Icon
-      ? React.cloneElement(prepend as ReactElement<IconProps>, {
-          color: "currentColor",
-          size: "md",
-        })
-      : prepend;
+    // prependがIconコンポーネントの場合、colorとsizeを自動設定
+    const finalPrepend =
+      React.isValidElement(prepend) && prepend.type === Icon
+        ? React.cloneElement(prepend as ReactElement<IconProps>, {
+            color: "currentColor",
+            size: "md",
+          })
+        : prepend;
 
-  return (
-    <button type="button" {...props} ref={ref} onClick={handleClick}>
-      {finalPrepend && <ButtonPrepend>{finalPrepend}</ButtonPrepend>}
-      {children}
-      <StyledIcon>
-        {checked && (
-          <Icon
-            name="check_thin"
-            color={
-              color === "danger"
-                ? theme.palette.danger.main
-                : theme.palette.primary.main
-            }
-          />
-        )}
-      </StyledIcon>
-    </button>
-  );
-});
+    return (
+      <button type="button" {...props} ref={ref} onClick={handleClick}>
+        {finalPrepend && <ButtonPrepend>{finalPrepend}</ButtonPrepend>}
+        {children}
+        <StyledIcon>
+          {checked && (
+            <Icon
+              name="check_thin"
+              color={
+                color === "danger"
+                  ? theme.palette.danger.main
+                  : theme.palette.primary.main
+              }
+            />
+          )}
+        </StyledIcon>
+      </button>
+    );
+  },
+);
 InternalContextMenu2CheckItem.displayName = "ContextMenu2CheckItem";
 
 type Theme = {

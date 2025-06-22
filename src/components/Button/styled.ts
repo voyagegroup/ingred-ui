@@ -2,13 +2,13 @@ import styled, { css } from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
 import type { ButtonColorStyle, ButtonSize } from "./Button";
-import { trimVertical } from '../../styles/typography';
+import { trimVertical } from "../../styles/typography";
 
 // アイコンの具体的なサイズをここで定義
 const iconPixelSize = {
-  small: '16px',
-  medium: '18px',
-  large: '20px',
+  small: "16px",
+  medium: "18px",
+  large: "20px",
 };
 
 export type ContainerProps = ButtonColorStyle & {
