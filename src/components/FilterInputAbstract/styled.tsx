@@ -58,11 +58,8 @@ export const FilterInputAbstract = styled.div<{
     border-color 0.2s ease,
     box-shadow 0.2s ease;
   border: 1px solid
-    ${({ $error, $disabled, theme }) => {
-      if ($error) return theme.palette.danger.main;
-      if ($disabled) return theme.palette.divider;
-      return theme.palette.divider;
-    }};
+    ${({ $error, theme }) =>
+      $error ? theme.palette.danger.main : theme.palette.divider};
 
   &:hover:not([data-disabled="true"]) {
     border-color: ${({ $error, theme }) =>
