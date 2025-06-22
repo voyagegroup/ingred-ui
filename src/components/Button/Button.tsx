@@ -201,7 +201,10 @@ type BaseButtonProps = baseProps & {
 
 export type ButtonProps = BaseButtonProps | AnchorProps;
 
-const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
+const Button = React.forwardRef<
+  HTMLButtonElement & HTMLAnchorElement,
+  ButtonProps
+>(function Button(
   {
     component,
     children,
@@ -242,6 +245,7 @@ const Button = React.forwardRef<HTMLElement, ButtonProps>(function Button(
       {...rest}
       as={component || "button"}
       {...anchorProps}
+      size={size}
       inline={inline}
       paddingInline={paddingInline[size]}
       normal={colorStyle.normal}
