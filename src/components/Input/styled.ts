@@ -93,20 +93,7 @@ export const Input = styled.input<{
 
   /* 標準のフォーカススタイル（キーボードアクセシビリティのため） */
   &:focus {
-    outline: none;
-    border-color: ${({ $error, $variant = "light", theme }) => {
-      const variants = getInputVariantConfig(theme);
-      return $error
-        ? getErrorStyles(theme).borderColor
-        : variants[$variant].focusBorderColor;
-    }};
-    box-shadow: 0 0 0 3px
-      ${({ $error, $variant = "light", theme }) => {
-        const variants = getInputVariantConfig(theme);
-        return $error
-          ? getErrorStyles(theme).shadowColor
-          : variants[$variant].focusShadowColor;
-      }};
+    ${({ theme, $error }) => theme.interaction.focus($error)}
   }
 
   /* プレースホルダー */

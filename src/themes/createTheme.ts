@@ -10,6 +10,9 @@ export type ThemeOptions = {
   spacing?: number;
   radius?: number;
   depth?: DepthOptions;
+  interaction?: {
+    focus: (isError?: boolean) => string;
+  };
 };
 
 export type Theme = {
@@ -18,6 +21,9 @@ export type Theme = {
   spacing: number;
   radius: number;
   depth: Depth;
+  interaction: {
+    focus: (isError?: boolean) => string;
+  };
 };
 
 export function createTheme(options: ThemeOptions = {}): Theme {
@@ -35,6 +41,18 @@ export function createTheme(options: ThemeOptions = {}): Theme {
   const radius = radiusInput || Radius;
 
   const theme = deepmerge({ palette, shadow, spacing, depth, radius }, other);
+
+  theme.interaction = {
+    focus: (isError = false) => `
+      outline: none;
+      border-color: ${
+        isError ? theme.palette.danger.main : theme.palette.primary.main
+      };
+      box-shadow: 0 0 0 3px ${
+        isError ? theme.palette.danger.pale : theme.palette.primary.pale
+      };
+    `,
+  };
 
   return theme;
 }
