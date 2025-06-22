@@ -47,8 +47,7 @@ export const SelectContainer = styled.div<{
     }};
   }
 
-  ${({ theme, $isOpen, $error }) =>
-    $isOpen && theme.interaction.focus($error)}
+  ${({ theme, $isOpen, $error }) => $isOpen && theme.interaction.focus($error)}
 
   &::before {
     content: "";
