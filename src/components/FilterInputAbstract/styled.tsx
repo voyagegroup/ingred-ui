@@ -69,8 +69,7 @@ export const FilterInputAbstract = styled.div<{
       $error ? theme.palette.danger.main : theme.palette.primary.main};
   }
 
-  ${({ theme, $isOpen, $error }) =>
-    $isOpen && theme.interaction.focus($error)}
+  ${({ theme, $isOpen, $error }) => $isOpen && theme.interaction.focus($error)}
 
   &[data-disabled="true"] {
     background-color: ${({ theme }) => theme.palette.gray.light};

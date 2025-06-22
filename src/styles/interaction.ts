@@ -16,4 +16,4 @@ export const createFocusInteraction = (theme: Theme) => {
       box-shadow: 0 0 0 3px ${color};
     `;
   };
-}; 
+};
