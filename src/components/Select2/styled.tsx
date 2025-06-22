@@ -28,10 +28,9 @@ export const SelectContainer = styled.div<{
       : theme.palette.basicDark.ultraLight;
   }};
   border: 1px solid
-    ${({ theme, $error, $disabled, $isOpen }) => {
+    ${({ theme, $error, $disabled }) => {
       if ($error) return theme.palette.danger.main;
       if ($disabled) return theme.palette.divider;
-      if ($isOpen) return theme.palette.primary.main;
       return theme.palette.divider;
     }};
   border-radius: 6px;
@@ -49,14 +48,7 @@ export const SelectContainer = styled.div<{
   }
 
   ${({ theme, $isOpen, $error }) =>
-    $isOpen &&
-    `
-    box-shadow: 0 0 0 3px ${
-      $error
-        ? `${theme.palette.danger.light}66`
-        : `${theme.palette.primary.light}66`
-    };
-  `}
+    $isOpen && theme.interaction.focus($error)}
 
   &::before {
     content: "";
