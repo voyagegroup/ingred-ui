@@ -127,7 +127,7 @@ export const ContextMenu2TextInputItem = styled(
     font-size: 13px;
     line-height: 19px;
     color: ${({ theme }) => theme.palette.black};
-    background: ${({ theme }) => theme.palette.background.default};
+    background: ${({ theme }) => theme.palette.basicDark.ultraLight};
     transition:
       border-color 0.2s ease,
       box-shadow 0.2s ease;
