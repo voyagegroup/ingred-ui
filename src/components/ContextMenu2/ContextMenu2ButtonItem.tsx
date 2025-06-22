@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import { ContextMenu2Context } from "./context";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import Icon from "../Icon";
 import type { Props as IconProps } from "../Icon/Icon";
 
@@ -30,7 +29,7 @@ const ButtonPrepend = styled.span`
 
   /* disabled状態の時の色 */
   button:disabled & {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 `;
 
@@ -91,8 +90,8 @@ export const ContextMenu2ButtonItem = styled(
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${({ color }) =>
-    color === "danger" ? colors.red[500] : colors.basic[900]};
+  color: ${({ color, theme }) =>
+    color === "danger" ? theme.palette.danger.main : theme.palette.black};
   background: transparent;
   transition: background 0.2s;
 
@@ -101,15 +100,17 @@ export const ContextMenu2ButtonItem = styled(
   }
 
   &:disabled {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 
   &[data-pressed="true"],
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    color: ${({ color }) =>
-      color === "danger" ? colors.red[500] : colors.basic[900]};
-    background: ${({ color }) =>
-      color === "danger" ? colors.red[100] : colors.basic[200]};
+    color: ${({ color, theme }) =>
+      color === "danger" ? theme.palette.danger.main : theme.palette.black};
+    background: ${({ color, theme }) =>
+      color === "danger"
+        ? theme.palette.danger.highlight
+        : theme.palette.gray.light};
   }
 `;

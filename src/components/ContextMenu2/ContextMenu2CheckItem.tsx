@@ -7,10 +7,10 @@ import React, {
   type ReactElement,
 } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
 import Icon from "../Icon";
 import type { Props as IconProps } from "../Icon/Icon";
+import { useTheme } from "../../themes/useTheme";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
@@ -30,7 +30,7 @@ const ButtonPrepend = styled.span`
 
   /* disabled状態の時の色 */
   button:disabled & {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 `;
 
@@ -41,7 +41,8 @@ const StyledIcon = styled.span`
 const InternalContextMenu2CheckItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2CheckItemProps
->(({ checked, closeOnChange, prepend, children, onChange, ...props }, ref) => {
+>(({ checked, closeOnChange, prepend, children, onChange, color, ...props }, ref) => {
+  const theme = useTheme();
   const { close } = useContext(ContextMenu2Context);
   const handleClick = useCallback(() => {
     onChange && onChange(!checked);
@@ -62,7 +63,16 @@ const InternalContextMenu2CheckItem = forwardRef<
       {finalPrepend && <ButtonPrepend>{finalPrepend}</ButtonPrepend>}
       {children}
       <StyledIcon>
-        {checked && <Icon name="check_thin" color={colors.blue[500]} />}
+        {checked && (
+          <Icon
+            name="check_thin"
+            color={
+              color === "danger"
+                ? theme.palette.danger.main
+                : theme.palette.primary.main
+            }
+          />
+        )}
       </StyledIcon>
     </button>
   );
@@ -89,8 +99,8 @@ export const ContextMenu2CheckItem = styled(
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${({ color }) =>
-    color === "danger" ? colors.red[500] : colors.basic[900]};
+  color: ${({ color, theme }) =>
+    color === "danger" ? theme.palette.danger.main : theme.palette.black};
   background: transparent;
   transition: background 0.2s;
 
@@ -100,11 +110,11 @@ export const ContextMenu2CheckItem = styled(
 
   &:hover,
   &:focus {
-    background: ${colors.basic[200]};
+    background: ${({ theme }) => theme.palette.gray.light};
   }
 
   &:disabled {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
     cursor: not-allowed;
 
     &:hover {
