@@ -3,6 +3,8 @@ import * as Styled from "./styled";
 import { NavigationRailContext } from "../utils";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { BreakPoint } from "../../../styles/breakPoint";
+import Button from "../../Button";
+import Icon from "../../Icon";
 
 export type NavigationRailContainerProps = {
   /**
@@ -79,7 +81,19 @@ const NavigationRailContainer = React.forwardRef<
         handleMobileMenuToggle,
       }}
     >
-      <Styled.Container ref={ref}>{children}</Styled.Container>
+      <Styled.Container ref={ref}>
+        {children}
+        <Styled.MobileMenuButton>
+          <Button
+            color="clear"
+            size="small"
+            onClick={handleMobileMenuToggle}
+            aria-label="メニューを開く"
+          >
+            <Icon name="menu" size="md" />
+          </Button>
+        </Styled.MobileMenuButton>
+      </Styled.Container>
     </NavigationRailContext.Provider>
   );
 });

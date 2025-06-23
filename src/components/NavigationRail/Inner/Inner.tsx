@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { addScrollbarProperties } from "../../../utils/scrollbar";
 import { NavigationRailContentHeight } from "../constants";
+import { BreakPoint } from "../../../styles/breakPoint";
 
 export const Header = styled.div`
   flex-shrink: 0;
@@ -25,4 +26,8 @@ export const Footer = styled.div`
   display: flex;
   align-items: center;
   border-top: 1px solid ${({ theme }) => theme.palette.gray.light};
+
+  @media (max-width: ${BreakPoint.MOBILE}px) {
+    display: none;
+  }
 `;
