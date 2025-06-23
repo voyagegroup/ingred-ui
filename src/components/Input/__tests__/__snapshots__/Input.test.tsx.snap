@@ -3,7 +3,7 @@
 exports[`Input component testing Input 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bczRLJ iPYcpZ"
+    class="sc-bczRLJ ciJXkK"
   />
 </DocumentFragment>
 `;
@@ -11,7 +11,7 @@ exports[`Input component testing Input 1`] = `
 exports[`Input component testing Input disabled 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bczRLJ iPYcpZ"
+    class="sc-bczRLJ ciJXkK"
     disabled=""
   />
 </DocumentFragment>
@@ -20,7 +20,16 @@ exports[`Input component testing Input disabled 1`] = `
 exports[`Input component testing Input error 1`] = `
 <DocumentFragment>
   <input
-    class="sc-bczRLJ jmKQCE"
+    aria-invalid="true"
+    class="sc-bczRLJ cHjFUY"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input fullWidth 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ izAMBl"
   />
 </DocumentFragment>
 `;
@@ -28,7 +37,47 @@ exports[`Input component testing Input error 1`] = `
 exports[`Input component testing Input multiline 1`] = `
 <DocumentFragment>
   <textarea
-    class="sc-bczRLJ iPYcpZ"
+    class="sc-bczRLJ cetqik"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input sizes 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ hJcfAI"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input sizes 2`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ ciJXkK"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input sizes 3`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ lhDzKN"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input variants 1`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ ciJXkK"
+  />
+</DocumentFragment>
+`;
+
+exports[`Input component testing Input variants 2`] = `
+<DocumentFragment>
+  <input
+    class="sc-bczRLJ cPMYaG"
   />
 </DocumentFragment>
 `;

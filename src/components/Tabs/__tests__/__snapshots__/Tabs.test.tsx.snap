@@ -18,7 +18,7 @@ exports[`Tabs component testing Tabs 1`] = `
         value="hoge"
       >
         <div
-          class="sc-ftvSup gIaYWH"
+          class="sc-iqcoie gvDwvh"
           display="flex"
         >
           <p
@@ -36,7 +36,7 @@ exports[`Tabs component testing Tabs 1`] = `
         value="fuga"
       >
         <div
-          class="sc-ftvSup gIaYWH"
+          class="sc-iqcoie gvDwvh"
           display="flex"
         >
           <p
@@ -74,7 +74,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="hoge"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p
@@ -85,11 +85,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             hoge 
           </p>
           <span
-            class="sc-iBkjds dzlDKr"
+            class="sc-ftvSup eZLrnN"
             color="#FFFFFF"
-            font-size="13px"
             font-weight="bold"
-            type="pill"
           >
             1
           </span>
@@ -101,7 +99,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="fuga"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p
@@ -112,11 +110,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             fuga 
           </p>
           <span
-            class="sc-iBkjds goPNhc"
-            color="#FFFFFF"
-            font-size="13px"
+            class="sc-ftvSup dogKGC"
+            color="#596978"
             font-weight="bold"
-            type="pill"
           >
             2
           </span>
@@ -128,7 +124,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         value="piyo"
       >
         <div
-          class="sc-ftvSup gTeVeh"
+          class="sc-iqcoie hcsHWD"
           display="flex"
         >
           <p
@@ -139,11 +135,9 @@ exports[`Tabs component testing Tabs with badge 1`] = `
             piyo 
           </p>
           <span
-            class="sc-iBkjds goPNhc"
-            color="#FFFFFF"
-            font-size="13px"
+            class="sc-ftvSup dogKGC"
+            color="#596978"
             font-weight="bold"
-            type="pill"
           >
             3
           </span>

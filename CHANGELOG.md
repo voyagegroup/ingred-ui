@@ -1,5 +1,15 @@
 # Changelog
 
+## 23.3.0
+
+### Minor Changes
+
+- [#1830](https://github.com/voyagegroup/ingred-ui/pull/1830) [`3ea65e19`](https://github.com/voyagegroup/ingred-ui/commit/3ea65e19e8d6a0ef0ec3a45292f2be6cea986fd6) Thanks [@noronaoki](https://github.com/noronaoki)! - アイコン付きとシグナルタイプのバリエーションを追加した
+
+- [#1833](https://github.com/voyagegroup/ingred-ui/pull/1833) [`32b0dd1f`](https://github.com/voyagegroup/ingred-ui/commit/32b0dd1f66d3d6805c5aa2e639301696af49941c) Thanks [@noronaoki](https://github.com/noronaoki)! - Bannerの新規追加
+
+- [#1831](https://github.com/voyagegroup/ingred-ui/pull/1831) [`e7636649`](https://github.com/voyagegroup/ingred-ui/commit/e7636649b616aa7927b91cf7e8eeb935230690a2) Thanks [@noronaoki](https://github.com/noronaoki)! - Inputのスタイルを改善
+
 ## 23.2.3
 
 ### Patch Changes

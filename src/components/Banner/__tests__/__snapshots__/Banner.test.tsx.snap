@@ -1,0 +1,399 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner component testing Banner with children 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi bXaQjd"
+    role="status"
+    type="info"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="none"
+            />
+            <path
+              d="M11 7V5H9V7H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              d="M11 14V9H9V14H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
+              fill="#0B82F4"
+              fill-rule="evenodd"
+              transform="translate(2 2)"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-dkzDqf dyrjBY"
+        >
+          <div>
+            Custom content inside banner
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Banner with complex children 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi geveWj"
+    role="alert"
+    type="warning"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0H24V24H0Z"
+              fill="none"
+            />
+            <path
+              d="M12.866,3l9.526,16.5a1,1,0,0,1-.866,1.5H2.474a1,1,0,0,1-.866-1.5L11.134,3a1,1,0,0,1,1.732,0ZM4.206,19H19.794L12,5.5,4.206,19ZM11,16h2v2H11Zm0-7h2v5H11Z"
+              fill="#785F03"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-dkzDqf dyrjBY"
+        >
+          <div
+            style="display: flex; align-items: center; gap: 8px;"
+          >
+            <img
+              alt="Icon"
+              height="24"
+              src="https://via.placeholder.com/24"
+              width="24"
+            />
+            <span>
+              Content with image
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Banner with type error 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="assertive"
+    class="sc-gsnTZi fIQyjq"
+    role="alert"
+    type="error"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0H24V24H0Z"
+              fill="none"
+            />
+            <path
+              d="M12.866,3l9.526,16.5a1,1,0,0,1-.866,1.5H2.474a1,1,0,0,1-.866-1.5L11.134,3a1,1,0,0,1,1.732,0ZM4.206,19H19.794L12,5.5,4.206,19ZM11,16h2v2H11Zm0-7h2v5H11Z"
+              fill="#EB0A4E"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-bczRLJ bdqCNN"
+          color="inherit"
+          font-size="14px"
+        >
+          Error message
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Banner with type info 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi bXaQjd"
+    role="status"
+    type="info"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="none"
+            />
+            <path
+              d="M11 7V5H9V7H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              d="M11 14V9H9V14H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
+              fill="#0B82F4"
+              fill-rule="evenodd"
+              transform="translate(2 2)"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-bczRLJ bdqCNN"
+          color="inherit"
+          font-size="14px"
+        >
+          Info message
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Banner with type warning 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi geveWj"
+    role="alert"
+    type="warning"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0,0H24V24H0Z"
+              fill="none"
+            />
+            <path
+              d="M12.866,3l9.526,16.5a1,1,0,0,1-.866,1.5H2.474a1,1,0,0,1-.866-1.5L11.134,3a1,1,0,0,1,1.732,0ZM4.206,19H19.794L12,5.5,4.206,19ZM11,16h2v2H11Zm0-7h2v5H11Z"
+              fill="#785F03"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-bczRLJ bdqCNN"
+          color="inherit"
+          font-size="14px"
+        >
+          Warning message
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Medium size banner 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi bXaQjd"
+    role="status"
+    type="info"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ mdqMp"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi llQWsy"
+          size="24"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="none"
+            />
+            <path
+              d="M11 7V5H9V7H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              d="M11 14V9H9V14H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
+              fill="#0B82F4"
+              fill-rule="evenodd"
+              transform="translate(2 2)"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-bczRLJ bdqCNN"
+          color="inherit"
+          font-size="14px"
+        >
+          Medium size banner
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Banner component testing Small size banner 1`] = `
+<DocumentFragment>
+  <div
+    aria-live="polite"
+    class="sc-gsnTZi cploy"
+    role="status"
+    type="info"
+  >
+    <div
+      class="sc-eCYdqJ jEMFJx"
+      display="flex"
+      style="width: 100%;"
+    >
+      <div
+        class="sc-eCYdqJ jEaNgF"
+        display="flex"
+      >
+        <span
+          class="sc-jSMfEi cLFvnm"
+          size="20"
+        >
+          <svg
+            fill="none"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="none"
+            />
+            <path
+              d="M11 7V5H9V7H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              d="M11 14V9H9V14H11Z"
+              fill="#0B82F4"
+              transform="translate(2 2)"
+            />
+            <path
+              clip-rule="evenodd"
+              d="M10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0ZM2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
+              fill="#0B82F4"
+              fill-rule="evenodd"
+              transform="translate(2 2)"
+            />
+          </svg>
+        </span>
+        <div
+          class="sc-bczRLJ hEOzTa"
+          color="inherit"
+          font-size="13px"
+        >
+          Small size banner
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

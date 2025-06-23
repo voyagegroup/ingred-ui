@@ -1,40 +1,12 @@
 import * as React from "react";
 import * as Styled from "./styled";
-import { Theme } from "../../themes";
 import { useTheme } from "../../themes/useTheme";
-
-export type BadgeColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "basic";
-
-const getColor = (key: BadgeColor, theme: Theme) => {
-  switch (key) {
-    case "primary":
-      return theme.palette.primary.main;
-    case "secondary":
-      return theme.palette.gray.deepDark;
-    case "success":
-      return theme.palette.success.main;
-    case "warning":
-      return theme.palette.warning.main;
-    case "danger":
-      return theme.palette.danger.main;
-    case "basic":
-      return theme.palette.black;
-  }
-};
-
-export type BadgeProps = React.ComponentPropsWithoutRef<"a" | "span"> & {
-  color: BadgeColor;
-  type?: Styled.BadgeType;
-  fontSize?: string;
-  fontWeight?: string;
-  component?: "span" | "a";
-};
+import {
+  BadgeProps,
+  BADGE_SIZE,
+  getBackgroundColor,
+  getTextColor,
+} from "./types";
 
 const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
   function Badge(
@@ -42,27 +14,67 @@ const Badge = React.forwardRef<HTMLSpanElement | HTMLAnchorElement, BadgeProps>(
       color,
       type = "normal",
       component = "span",
-      fontSize = "13px",
+      fontSize,
       fontWeight = "normal",
+      size = "medium",
+      icon,
       children,
       ...rest
     },
     ref,
   ) {
     const theme = useTheme();
+
+    // アイコン要素の生成（サイズを設定）
+    const iconElement = React.useMemo(() => {
+      if (!icon) return null;
+
+      const iconSize = BADGE_SIZE[size].iconSize;
+      return React.cloneElement(icon as React.ReactElement, { size: iconSize });
+    }, [icon, size]);
+
+    // Signal Badge
+    if (type === "signal") {
+      return (
+        <Styled.SignalWrapper
+          ref={ref}
+          as={component}
+          size={size}
+          fontWeight={fontWeight}
+          fontSize={fontSize}
+          {...rest}
+        >
+          <Styled.SignalDot
+            backgroundColor={getBackgroundColor(color, theme, "signal")}
+            size={size}
+          />
+          {children}
+        </Styled.SignalWrapper>
+      );
+    }
+
+    // Normal & Pill Badge
+    const textColor = getTextColor(color, theme, type);
+    const backgroundColor = getBackgroundColor(color, theme, type);
+
+    // タイプに応じたコンポーネントをレンダリング
+    const BadgeComponent =
+      type === "normal" ? Styled.NormalBadge : Styled.PillBadge;
+
     return (
-      <Styled.Container
+      <BadgeComponent
         ref={ref}
         as={component}
-        type={type}
-        color={theme.palette.text.white}
-        backgroundColor={getColor(color, theme)}
+        color={textColor}
+        backgroundColor={backgroundColor}
         fontSize={fontSize}
         fontWeight={fontWeight}
+        size={size}
         {...rest}
       >
+        {iconElement && <Styled.Icon>{iconElement}</Styled.Icon>}
         {children}
-      </Styled.Container>
+      </BadgeComponent>
     );
   },
 );
