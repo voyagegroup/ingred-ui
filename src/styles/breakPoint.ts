@@ -1,6 +1,7 @@
 export const BreakPoint = {
   X_SMALL: 375,
   SMALL: 416,
+  MOBILE: 440,
   MEDIUM: 816,
   LARGE: 1008,
   X_LARGE: 1200,

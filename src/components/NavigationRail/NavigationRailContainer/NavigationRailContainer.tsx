@@ -1,6 +1,8 @@
 import React from "react";
 import * as Styled from "./styled";
 import { NavigationRailContext } from "../utils";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import { BreakPoint } from "../../../styles/breakPoint";
 
 export type NavigationRailContainerProps = {
   /**
@@ -28,6 +30,11 @@ const NavigationRailContainer = React.forwardRef<
   const [isOpen, setIsOpen] = React.useState<boolean>(defaultFixed);
   const [isFixed, setIsFixed] = React.useState<boolean>(defaultFixed);
 
+  // Mobile detection and state
+  const isMobile = useMediaQuery(`(max-width: ${BreakPoint.MOBILE}px)`);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] =
+    React.useState<boolean>(false);
+
   const handleOpen = () => {
     if (!isFixed) {
       setIsOpen(true);
@@ -54,6 +61,10 @@ const NavigationRailContainer = React.forwardRef<
     if (onChangeFixed) onChangeFixed(false);
   };
 
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <NavigationRailContext.Provider
       value={{
@@ -63,6 +74,9 @@ const NavigationRailContainer = React.forwardRef<
         handleClose,
         handleFixed,
         handleUnFixed,
+        isMobile,
+        isMobileMenuOpen,
+        handleMobileMenuToggle,
       }}
     >
       <Styled.Container ref={ref}>{children}</Styled.Container>
