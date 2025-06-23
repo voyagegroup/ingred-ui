@@ -141,6 +141,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
         >
           <input
             aria-label="フィルターする値"
+            enterkeyhint="enter"
             type="text"
             value=""
           />
