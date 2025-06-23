@@ -75,7 +75,7 @@ const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
               aria-label="メニューを閉じる"
               onClick={handleMobileMenuToggle}
             >
-              <Icon name="close" size="md" />
+              <Icon name="close" size="md" color="currentColor" />
             </Button>
           </Styled.MobileCloseButton>
         </Styled.Container>

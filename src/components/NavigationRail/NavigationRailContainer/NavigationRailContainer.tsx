@@ -108,7 +108,7 @@ const NavigationRailContainer = React.forwardRef<
             aria-label="メニューを開く"
             onClick={handleMobileMenuToggle}
           >
-            <Icon name="menu" size="md" />
+            <Icon name="menu" size="md" color="currentColor" />
           </Button>
         </Styled.MobileMenuButton>
       </Styled.Container>
