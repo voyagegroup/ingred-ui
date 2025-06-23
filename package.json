@@ -96,6 +96,7 @@
     "colors": "1.4.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "rollup": "4.34.7",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5"
   }
