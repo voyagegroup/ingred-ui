@@ -521,6 +521,7 @@ export const FilterTagInput = ({
                 aria-label="フィルターする値"
                 value={inputValue}
                 disabled={disabled}
+                enterKeyHint="enter" // Android の仮想キーボードの確定ボタンを「OK」表示にする
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
                 onCompositionStart={handleCompositionStart}
