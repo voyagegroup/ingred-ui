@@ -81,6 +81,8 @@ const NavigationRailContainer = React.forwardRef<
         document.removeEventListener("keydown", handleKeyDown);
       };
     }
+
+    return undefined;
   }, [isMobile, isMobileMenuOpen]);
 
   return (
@@ -103,8 +105,8 @@ const NavigationRailContainer = React.forwardRef<
           <Button
             color="clear"
             size="small"
-            onClick={handleMobileMenuToggle}
             aria-label="メニューを開く"
+            onClick={handleMobileMenuToggle}
           >
             <Icon name="menu" size="md" />
           </Button>

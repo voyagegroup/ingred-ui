@@ -40,6 +40,18 @@ const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
       handleMobileMenuToggle,
     } = React.useContext(NavigationRailContext);
 
+    const handleMouseEnter = () => {
+      if (!isMobile) {
+        handleOpen?.();
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (!isMobile) {
+        handleClose?.();
+      }
+    };
+
     return (
       <>
         <Styled.MobileOverlay
@@ -52,16 +64,16 @@ const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
           isFixed={isFixed}
           isMobile={isMobile}
           isMobileMenuOpen={isMobileMenuOpen}
-          onMouseEnter={!isMobile ? handleOpen : undefined}
-          onMouseLeave={!isMobile ? handleClose : undefined}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           {children}
           <Styled.MobileCloseButton>
             <Button
               color="clear"
               size="small"
-              onClick={handleMobileMenuToggle}
               aria-label="メニューを閉じる"
+              onClick={handleMobileMenuToggle}
             >
               <Icon name="close" size="md" />
             </Button>
