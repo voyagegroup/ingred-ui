@@ -67,6 +67,22 @@ const NavigationRailContainer = React.forwardRef<
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  // Handle Escape key to close mobile menu
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isMobile && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobile && isMobileMenuOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isMobile, isMobileMenuOpen]);
+
   return (
     <NavigationRailContext.Provider
       value={{
