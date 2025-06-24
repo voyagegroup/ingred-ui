@@ -50,7 +50,7 @@ export const Example: StoryObj = {
     return (
       <NavigationRail.Container>
         <NavigationRail>
-          <NavigationRail.Header></NavigationRail.Header>
+          <NavigationRail.Header />
           <NavigationRail.Content>
             <NavigationRail.Menu
               title="Dashboard"
