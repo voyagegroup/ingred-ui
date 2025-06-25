@@ -1,6 +1,5 @@
 import React, { forwardRef, type ReactNode } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import Icon from "../Icon";
 import { trimVertical } from "../../styles/typography";
 
@@ -18,7 +17,7 @@ const TriggerLabel = styled.span`
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${colors.basic[900]};
+  color: ${({ theme }) => theme.palette.black};
 `;
 
 const TriggerAppend = styled.span`
@@ -26,7 +25,7 @@ const TriggerAppend = styled.span`
   /* UI/Text 13 */
   font-weight: 400;
   font-size: 13px;
-  color: ${colors.basic[700]};
+  color: ${({ theme }) => theme.palette.text.secondary};
   ${trimVertical}
 `;
 
@@ -63,7 +62,7 @@ export const ContextMenu2TriggerItem = styled(InternalContextMenu2TriggerItem)`
   &:hover,
   &:focus,
   &[aria-expanded="true"] {
-    background: ${colors.basic[200]};
+    background: ${({ theme }) => theme.palette.gray.light};
   }
 `;
 

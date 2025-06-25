@@ -7,10 +7,10 @@ import React, {
   type ReactElement,
 } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
 import Icon from "../Icon";
 import type { Props as IconProps } from "../Icon/Icon";
+import { useTheme } from "../../themes/useTheme";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
 
@@ -24,21 +24,13 @@ type ContextMenu2CheckItemProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ButtonPrepend = styled.span`
-  /* アイコンのデフォルトサイズと色を設定 */
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  /* span要素のサイズも設定 */
-  span {
-    width: 22px;
-    height: 22px;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   /* disabled状態の時の色 */
   button:disabled & {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 `;
 
@@ -49,31 +41,47 @@ const StyledIcon = styled.span`
 const InternalContextMenu2CheckItem = forwardRef<
   HTMLButtonElement,
   ContextMenu2CheckItemProps
->(({ checked, closeOnChange, prepend, children, onChange, ...props }, ref) => {
-  const { close } = useContext(ContextMenu2Context);
-  const handleClick = useCallback(() => {
-    onChange && onChange(!checked);
-    closeOnChange && close();
-  }, [checked, close, closeOnChange, onChange]);
+>(
+  (
+    { checked, closeOnChange, prepend, children, onChange, color, ...props },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const { close } = useContext(ContextMenu2Context);
+    const handleClick = useCallback(() => {
+      onChange && onChange(!checked);
+      closeOnChange && close();
+    }, [checked, close, closeOnChange, onChange]);
 
-  // prependがIconコンポーネントの場合、colorを自動設定
-  const prependWithColor =
-    React.isValidElement(prepend) && prepend.type === Icon
-      ? React.cloneElement(prepend as ReactElement<IconProps>, {
-          color: "currentColor",
-        })
-      : prepend;
+    // prependがIconコンポーネントの場合、colorとsizeを自動設定
+    const finalPrepend =
+      React.isValidElement(prepend) && prepend.type === Icon
+        ? React.cloneElement(prepend as ReactElement<IconProps>, {
+            color: "currentColor",
+            size: "md",
+          })
+        : prepend;
 
-  return (
-    <button type="button" {...props} ref={ref} onClick={handleClick}>
-      {prepend && <ButtonPrepend>{prependWithColor}</ButtonPrepend>}
-      {children}
-      <StyledIcon>
-        {checked && <Icon name="check_thin" color={colors.blue[500]} />}
-      </StyledIcon>
-    </button>
-  );
-});
+    return (
+      <button type="button" {...props} ref={ref} onClick={handleClick}>
+        {finalPrepend && <ButtonPrepend>{finalPrepend}</ButtonPrepend>}
+        {children}
+        <StyledIcon>
+          {checked && (
+            <Icon
+              name="check_thin"
+              color={
+                color === "danger"
+                  ? theme.palette.danger.main
+                  : theme.palette.primary.main
+              }
+            />
+          )}
+        </StyledIcon>
+      </button>
+    );
+  },
+);
 InternalContextMenu2CheckItem.displayName = "ContextMenu2CheckItem";
 
 type Theme = {
@@ -96,8 +104,8 @@ export const ContextMenu2CheckItem = styled(
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${({ color }) =>
-    color === "danger" ? colors.red[500] : colors.basic[900]};
+  color: ${({ color, theme }) =>
+    color === "danger" ? theme.palette.danger.main : theme.palette.black};
   background: transparent;
   transition: background 0.2s;
 
@@ -107,11 +115,11 @@ export const ContextMenu2CheckItem = styled(
 
   &:hover,
   &:focus {
-    background: ${colors.basic[200]};
+    background: ${({ theme }) => theme.palette.gray.light};
   }
 
   &:disabled {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
     cursor: not-allowed;
 
     &:hover {

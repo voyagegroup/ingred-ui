@@ -6,20 +6,28 @@ exports[`Button component testing ButtonGroup 1`] = `
     class="sc-bczRLJ kQjzkA"
   >
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      class="sc-dkzDqf sc-eCYdqJ hlbYnK euMZWK"
       color="basicLight"
       font-size="13px"
       height="32px"
     >
-      Edit
+      <div
+        class="sc-hKMtZM eoeHmW"
+      >
+        Edit
+      </div>
     </button>
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      class="sc-dkzDqf sc-eCYdqJ hlbYnK euMZWK"
       color="basicLight"
       font-size="13px"
       height="32px"
     >
-      Save
+      <div
+        class="sc-hKMtZM eoeHmW"
+      >
+        Save
+      </div>
     </button>
   </div>
 </DocumentFragment>

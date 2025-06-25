@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import { ContextMenu2Context } from "./context";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import Icon from "../Icon";
 import type { Props as IconProps } from "../Icon/Icon";
 
@@ -24,21 +23,13 @@ type ContextMenu2ButtonItemProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const ButtonPrepend = styled.span`
-  /* アイコンのデフォルトサイズと色を設定 */
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  /* span要素のサイズも設定 */
-  span {
-    width: 22px;
-    height: 22px;
-  }
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   /* disabled状態の時の色 */
   button:disabled & {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 `;
 
@@ -56,11 +47,12 @@ const InternalContextMenu2ButtonItem = forwardRef<
     [closeOnClick, close, onClick],
   );
 
-  // prependがIconコンポーネントの場合、colorを自動設定
-  const prependWithColor =
+  // prependがIconコンポーネントの場合、colorとsizeを自動設定
+  const finalPrepend =
     React.isValidElement(prepend) && prepend.type === Icon
       ? React.cloneElement(prepend as ReactElement<IconProps>, {
           color: "currentColor",
+          size: "md",
         })
       : prepend;
 
@@ -72,7 +64,7 @@ const InternalContextMenu2ButtonItem = forwardRef<
       data-pressed={pressed}
       onClick={handleClick}
     >
-      {prepend && <ButtonPrepend>{prependWithColor}</ButtonPrepend>}
+      {finalPrepend && <ButtonPrepend>{finalPrepend}</ButtonPrepend>}
       {children}
     </button>
   );
@@ -98,8 +90,8 @@ export const ContextMenu2ButtonItem = styled(
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${({ color }) =>
-    color === "danger" ? colors.red[500] : colors.basic[900]};
+  color: ${({ color, theme }) =>
+    color === "danger" ? theme.palette.danger.main : theme.palette.black};
   background: transparent;
   transition: background 0.2s;
 
@@ -108,15 +100,17 @@ export const ContextMenu2ButtonItem = styled(
   }
 
   &:disabled {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
   }
 
   &[data-pressed="true"],
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    color: ${({ color }) =>
-      color === "danger" ? colors.red[500] : colors.basic[900]};
-    background: ${({ color }) =>
-      color === "danger" ? colors.red[100] : colors.basic[200]};
+    color: ${({ color, theme }) =>
+      color === "danger" ? theme.palette.danger.main : theme.palette.black};
+    background: ${({ color, theme }) =>
+      color === "danger"
+        ? theme.palette.danger.highlight
+        : theme.palette.gray.light};
   }
 `;
