@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.3.2
+
+### Patch Changes
+
+- [#1848](https://github.com/voyagegroup/ingred-ui/pull/1848) [`f8cb4399`](https://github.com/voyagegroup/ingred-ui/commit/f8cb43998f2f9ac7eee92efc1f71f9652b63009b) Thanks [@deatiger](https://github.com/deatiger)! - Input の型の絞り込みを修正
+
 ## 23.3.1
 
 ### Patch Changes
