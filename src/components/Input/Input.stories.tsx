@@ -149,6 +149,94 @@ export const FullWidth: StoryObj<InputProps> = {
   ),
 };
 
+export const WithWidth: StoryObj<InputProps> = {
+  render: () => (
+    <Flex display="flex" flexDirection="column" gap={8}>
+      <div>
+        <Typography weight="bold">Size指定 + Width指定</Typography>
+        <Spacer pt={1} />
+        <Flex display="flex" flexDirection="column" gap={4}>
+          <div>
+            <Typography size="sm" color="secondary">
+              Small size with width=&ldquo;120px&rdquo;
+            </Typography>
+            <Spacer pt={1} />
+            <Input
+              size="small"
+              width="120px"
+              placeholder="Small + 120px"
+              onChange={(
+                event: React.ChangeEvent<
+                  HTMLInputElement | HTMLTextAreaElement
+                >,
+              ) => {
+                console.log(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <Typography size="sm" color="secondary">
+              Medium size with width=&ldquo;200px&rdquo;
+            </Typography>
+            <Spacer pt={1} />
+            <Input
+              size="medium"
+              width="200px"
+              placeholder="Medium + 200px"
+              onChange={(
+                event: React.ChangeEvent<
+                  HTMLInputElement | HTMLTextAreaElement
+                >,
+              ) => {
+                console.log(event.target.value);
+              }}
+            />
+          </div>
+          <div>
+            <Typography size="sm" color="secondary">
+              Large size with width=&ldquo;300px&rdquo;
+            </Typography>
+            <Spacer pt={1} />
+            <Input
+              size="large"
+              width="300px"
+              placeholder="Large + 300px"
+              onChange={(
+                event: React.ChangeEvent<
+                  HTMLInputElement | HTMLTextAreaElement
+                >,
+              ) => {
+                console.log(event.target.value);
+              }}
+            />
+          </div>
+        </Flex>
+      </div>
+      <div>
+        <Typography weight="bold">Textarea with size + width</Typography>
+        <Spacer pt={1} />
+        <div>
+          <Typography size="sm" color="secondary">
+            Multiline with size=&ldquo;large&rdquo; and
+            width=&ldquo;250px&rdquo;
+          </Typography>
+          <Spacer pt={1} />
+          <Input
+            multiline={true}
+            size="large"
+            width="250px"
+            rows={4}
+            placeholder="Textarea with size and width"
+            onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+              console.log(event.target.value);
+            }}
+          />
+        </div>
+      </div>
+    </Flex>
+  ),
+};
+
 export const Textarea: StoryObj<InputProps> = {
   render: () => (
     <Flex display="flex" flexDirection="column" gap={8}>

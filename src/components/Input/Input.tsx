@@ -46,6 +46,10 @@ export type InputProps = (
    * エラーメッセージ（アクセシビリティ用）
    */
   errorMessage?: string;
+  /**
+   * 幅を明示的に指定
+   */
+  width?: string | number;
 };
 
 const Input = React.forwardRef<
