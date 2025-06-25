@@ -565,6 +565,7 @@ export const FilterTagInput = ({
                 disabled={disabled}
                 type="text"
                 value={inputValue}
+                enterKeyHint="enter" // Android の仮想キーボードの確定ボタンを「OK」表示にする
                 onChange={handleInputChange}
                 onCompositionEnd={handleCompositionEnd}
                 onCompositionStart={handleCompositionStart}

@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.3.1
+
+### Patch Changes
+
+- [#1844](https://github.com/voyagegroup/ingred-ui/pull/1844) [`4ddd38dd`](https://github.com/voyagegroup/ingred-ui/commit/4ddd38ddbefabb47534447788b20952a4d6214a9) Thanks [@deatiger](https://github.com/deatiger)! - Android 端末で FilterTagInput の入力値を確定できない不具合を修正
+
 ## 23.3.0
 
 ### Minor Changes
