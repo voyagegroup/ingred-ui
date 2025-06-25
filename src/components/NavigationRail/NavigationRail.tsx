@@ -1,6 +1,8 @@
 import React from "react";
 import * as Styled from "./styled";
 import { NavigationRailContext } from "./utils";
+import Button from "../Button";
+import Icon from "../Icon";
 import { NavigationRailContainer } from "./NavigationRailContainer";
 import { Header, Content, Footer } from "./Inner";
 import { MainContent } from "./MainContent";
@@ -28,20 +30,56 @@ type Props = {
 
 const NavigationRail = React.forwardRef<HTMLDivElement, Props>(
   function NavigationRail({ children }, ref) {
-    const { isOpen, isFixed, handleOpen, handleClose } = React.useContext(
-      NavigationRailContext,
-    );
+    const {
+      isOpen,
+      isFixed,
+      handleOpen,
+      handleClose,
+      isMobile,
+      isMobileMenuOpen,
+      handleMobileMenuToggle,
+    } = React.useContext(NavigationRailContext);
+
+    const handleMouseEnter = () => {
+      if (!isMobile) {
+        handleOpen?.();
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (!isMobile) {
+        handleClose?.();
+      }
+    };
 
     return (
-      <Styled.Container
-        ref={ref}
-        isOpen={isOpen}
-        isFixed={isFixed}
-        onMouseEnter={handleOpen}
-        onMouseLeave={handleClose}
-      >
-        {children}
-      </Styled.Container>
+      <>
+        <Styled.MobileOverlay
+          isVisible={isMobile && isMobileMenuOpen}
+          onClick={handleMobileMenuToggle}
+        />
+        <Styled.Container
+          ref={ref}
+          isOpen={isOpen}
+          isFixed={isFixed}
+          isMobile={isMobile}
+          isMobileMenuOpen={isMobileMenuOpen}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {children}
+          <Styled.MobileCloseButton>
+            <Button
+              color="clear"
+              size="small"
+              aria-label="メニューを閉じる"
+              onClick={handleMobileMenuToggle}
+            >
+              <Icon name="close" size="md" color="currentColor" />
+            </Button>
+          </Styled.MobileCloseButton>
+        </Styled.Container>
+      </>
     );
   },
 );

@@ -50,7 +50,9 @@ const ExpansionMenu = React.forwardRef<
   ref,
 ) {
   const theme = useTheme();
-  const { isOpen } = React.useContext(NavigationRailContext);
+  const { isOpen, isMobile, isMobileMenuOpen } = React.useContext(
+    NavigationRailContext,
+  );
 
   const [isExpand, setIsExpand] = React.useState<boolean>(defaultExpand);
   const [delayTransition, setDelayTransition] = React.useState<boolean>(false);
@@ -90,7 +92,7 @@ const ExpansionMenu = React.forwardRef<
             color={isActive ? "active" : theme.palette.black}
           />
         </NotificationBadge>
-        <Styled.TextContainer isOpen={isOpen}>
+        <Styled.TextContainer isOpen={isOpen || (isMobile && isMobileMenuOpen)}>
           <Styled.TextWrapper
             component="span"
             color={isActive ? "primary" : "initial"}
@@ -100,7 +102,10 @@ const ExpansionMenu = React.forwardRef<
             {title}
           </Styled.TextWrapper>
         </Styled.TextContainer>
-        <Styled.ArrowIconWrapper isExpand={isExpand} isOpen={isOpen}>
+        <Styled.ArrowIconWrapper
+          isExpand={isExpand}
+          isOpen={isOpen || (isMobile && isMobileMenuOpen)}
+        >
           <Icon
             name="arrow_bottom"
             color={isActive ? "active" : theme.palette.black}
@@ -110,7 +115,10 @@ const ExpansionMenu = React.forwardRef<
       </Styled.Container>
       <Styled.Expansion
         ref={expansionElement}
-        isExpand={(isExpand && isOpen) || expansionHeight === "auto"}
+        isExpand={
+          (isExpand && (isOpen || (isMobile && isMobileMenuOpen))) ||
+          expansionHeight === "auto"
+        }
         height={expansionHeight}
         delay={delayTransition}
       >
