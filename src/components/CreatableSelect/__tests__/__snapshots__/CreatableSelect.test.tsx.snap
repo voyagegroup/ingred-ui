@@ -27,7 +27,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
           class=" css-1iral9k-ValueContainer"
         >
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-5kixvp-MultiValueGeneric"
@@ -56,7 +56,7 @@ exports[`CreatableSelect component testing Disable multiple CreatableSelected 1`
             </div>
           </div>
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-5kixvp-MultiValueGeneric"
@@ -345,7 +345,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
           class=" css-1iral9k-ValueContainer"
         >
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-1644w8u-MultiValueGeneric"
@@ -374,7 +374,7 @@ exports[`CreatableSelect component testing Error multiple CreatableSelected 1`] 
             </div>
           </div>
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-1644w8u-MultiValueGeneric"
@@ -704,7 +704,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
           class=" css-1iral9k-ValueContainer"
         >
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-1x88s89-MultiValueGeneric"
@@ -733,7 +733,7 @@ exports[`CreatableSelect component testing Normal multiple CreatableSelected 1`]
             </div>
           </div>
           <div
-            class=" css-tiolb5-multiValue"
+            class=" css-17xcxo6-multiValue"
           >
             <div
               class=" css-1x88s89-MultiValueGeneric"

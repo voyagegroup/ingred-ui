@@ -241,6 +241,7 @@ export const FilterComboBox = ({
     >
       <styled.SelectContainer
         $variant={variant}
+        $size={size}
         data-overflowing={isInlineOverflowing}
       >
         <ContextMenu2Container>
@@ -250,6 +251,7 @@ export const FilterComboBox = ({
               <styled.Select
                 type="button"
                 $variant={variant}
+                $size={size}
                 disabled={disabled}
                 aria-label="タグを追加"
                 // eslint-disable-next-line react/jsx-handler-names

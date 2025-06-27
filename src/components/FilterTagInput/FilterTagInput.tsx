@@ -8,6 +8,7 @@ import React, {
   type ReactElement,
   type KeyboardEvent,
 } from "react";
+import { useTheme } from "styled-components";
 import Icon, { IconSize } from "../Icon";
 import {
   ContextMenu2,
@@ -24,7 +25,6 @@ import {
 import Modal from "../Modal";
 import Fade from "../Fade";
 import Button from "../Button";
-import { colors } from "../../styles/color";
 
 //
 // -----------------------------------------------------------------------------
@@ -56,16 +56,30 @@ const FilterInputPanel = ({
   const [userValues, setUserValues] = useState<string[]>([]);
   const [userSelectedIndex, setUserSelectedIndex] = useState(0);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const theme = useTheme();
+
+  const confirmValue = useCallback(
+    (value: string) => {
+      const trimmedValue = value.trim();
+      if (trimmedValue === "" || userValues.includes(trimmedValue)) {
+        setInputValue("");
+        return;
+      }
+      setUserValues([...userValues, trimmedValue]);
+      setInputValue("");
+    },
+    [userValues],
+  );
 
   const modifiedSelectOptions = useMemo(() => {
     return selectOptions.map((option) => ({
       ...option,
       icon: React.cloneElement(option.icon, {
         size: menuIconSize,
-        color: colors.basic[900],
+        color: theme.palette.black,
       }),
     }));
-  }, [selectOptions, menuIconSize]);
+  }, [selectOptions, menuIconSize, theme.palette.black]);
 
   const longestLabelOption = useMemo(() => {
     return modifiedSelectOptions.reduce(
@@ -108,20 +122,17 @@ const FilterInputPanel = ({
         return;
       }
 
-      const trimmedValue = event.target.value.trim();
-      if (trimmedValue === "" || userValues.includes(trimmedValue)) return;
-
       if (event.key === "Enter") {
-        setUserValues([...userValues, trimmedValue]);
-        setInputValue("");
+        confirmValue(event.target.value);
       }
     },
-    [userValues, setUserValues, isInlineComposing],
+    [userValues, isInlineComposing, confirmValue],
   );
 
   const handleClearButtonClick = useCallback(() => {
     setUserValues([]);
     setInputValue("");
+    setIsInlineComposing(false);
   }, []);
 
   const handleCancelClick = useCallback(() => {
@@ -149,8 +160,8 @@ const FilterInputPanel = ({
   }, []);
 
   const handleInputBlur = useCallback(() => {
-    setInputValue("");
-  }, []);
+    confirmValue(inputValue);
+  }, [inputValue, confirmValue]);
 
   // タグのレンダリングをメモ化
   const renderedUserTags = useMemo(
@@ -213,6 +224,12 @@ const FilterInputPanel = ({
           <styled.PanelLeft>
             <styled.PanelLabel>条件</styled.PanelLabel>
             <ContextMenu2Container>
+              {/*
+               * TODO: 現状、ここのセレクトボックスは独自実装になっている
+               *       Select2コンポーネントは、現状ではアイコン付きのオプションに対応していないため、
+               *       FilterTagInputではやむを得ず独自実装のセレクトボックスを採用している。
+               *       Select2がアイコン付きオプションに対応したら、ここの独自実装はSelect2に差し替える。
+               */}
               <ContextMenu2
                 open={isSelectOpen}
                 trigger={
@@ -362,6 +379,34 @@ export const FilterTagInput = ({
     return visibleWidth;
   }, []);
 
+  const addValue = useCallback(
+    (value: string) => {
+      const trimmedValue = value.trim();
+      if (trimmedValue === "") {
+        setInputValue("");
+        return;
+      }
+      if (values.includes(trimmedValue)) {
+        setInputValue("");
+        return;
+      }
+
+      onChange([...values, trimmedValue], selectedIndex);
+      setInputValue("");
+      requestAnimationFrame(() => {
+        checkInlineOverflow();
+        computeInlineFieldVisibleWidth();
+      });
+    },
+    [
+      values,
+      onChange,
+      selectedIndex,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+    ],
+  );
+
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (isInlineComposing) return;
@@ -377,20 +422,19 @@ export const FilterTagInput = ({
         return;
       }
 
-      const trimmedValue = event.target.value.trim();
-      if (trimmedValue === "" || values.includes(trimmedValue)) return;
-
       if (event.key === "Enter") {
-        onChange([...values, trimmedValue], selectedIndex);
-        setInputValue("");
-        requestAnimationFrame(() => {
-          checkInlineOverflow();
-          computeInlineFieldVisibleWidth();
-        });
+        addValue(event.target.value);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [values, onChange, setInputValue, isInlineComposing, selectedIndex],
+    [
+      isInlineComposing,
+      onChange,
+      values,
+      selectedIndex,
+      checkInlineOverflow,
+      computeInlineFieldVisibleWidth,
+      addValue,
+    ],
   );
 
   const handleTagRemove = useCallback(
@@ -455,8 +499,8 @@ export const FilterTagInput = ({
 
   const handleBlurWithClear = useCallback(() => {
     handleBlur();
-    setInputValue("");
-  }, [handleBlur]);
+    addValue(inputValue);
+  }, [handleBlur, inputValue, addValue]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -517,16 +561,16 @@ export const FilterTagInput = ({
             <styled.InlineInput>
               <input
                 ref={inputEl}
-                type="text"
                 aria-label="フィルターする値"
-                value={inputValue}
                 disabled={disabled}
+                type="text"
+                value={inputValue}
                 enterKeyHint="enter" // Android の仮想キーボードの確定ボタンを「OK」表示にする
                 onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                onCompositionStart={handleCompositionStart}
                 onCompositionEnd={handleCompositionEnd}
+                onCompositionStart={handleCompositionStart}
                 onFocus={handleFocus}
+                onKeyDown={handleKeyDown}
                 // eslint-disable-next-line react/jsx-handler-names
                 onBlur={handleBlurWithClear}
               />
