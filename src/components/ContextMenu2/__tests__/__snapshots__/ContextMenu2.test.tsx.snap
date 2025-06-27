@@ -45,7 +45,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       class="sc-idiyUo eRJoiQ"
     >
       <p
-        class="sc-dIouRR TuUAv"
+        class="sc-dIouRR BtSPa"
       >
         ステータスを変更
       </p>
@@ -258,7 +258,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       >
         スイッチ
         <span
-          class="sc-gKXOVf bWfjls"
+          class="sc-gKXOVf dheynt"
         >
           <span
             class="sc-iBkjds hXnYwK"

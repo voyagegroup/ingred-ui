@@ -150,7 +150,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
     </div>
     <button
       aria-label="フィルター入力パネルを開く"
-      class="sc-gicCDI cXVqtv"
+      class="sc-gicCDI fmzCbK"
       data-overflowing="false"
       type="button"
     >

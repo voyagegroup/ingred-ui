@@ -6,7 +6,7 @@ exports[`Button component testing ButtonGroup 1`] = `
     class="sc-bczRLJ kQjzkA"
   >
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK RCJzE"
       color="basicLight"
       font-size="13px"
       height="32px"
@@ -14,7 +14,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       Edit
     </button>
     <button
-      class="sc-dkzDqf sc-hKMtZM hlbYnK ifHAXU"
+      class="sc-dkzDqf sc-hKMtZM hlbYnK RCJzE"
       color="basicLight"
       font-size="13px"
       height="32px"
