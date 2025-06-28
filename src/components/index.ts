@@ -60,6 +60,9 @@ export * from "./DateRangePicker";
 export { default as Divider } from "./Divider";
 export * from "./Divider";
 
+export { default as Drawer } from "./Drawer";
+export * from "./Drawer";
+
 export { default as DropdownButton } from "./DropdownButton";
 export * from "./DropdownButton";
 
