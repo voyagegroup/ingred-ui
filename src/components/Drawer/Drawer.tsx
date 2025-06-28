@@ -376,19 +376,33 @@ const Drawer: React.FC<DrawerProps> = ({
                   zIndex: 10,
                   backgroundColor: "transparent",
                   cursor: direction === "bottom" ? "ns-resize" : "ew-resize",
-                  transition: "background-color 0.2s ease",
+                  transition: "border-color 0.2s ease",
                   ...(direction === "left"
-                    ? { top: 0, right: 0, width: 8, height: "100%" }
+                    ? { top: 0, right: 0, width: 8, height: "100%", borderRight: "2px solid transparent" }
                     : direction === "right"
-                    ? { top: 0, left: 0, width: 8, height: "100%" }
-                    : { top: 0, left: 0, width: "100%", height: 8 }),
+                    ? { top: 0, left: 0, width: 8, height: "100%", borderLeft: "2px solid transparent" }
+                    : { top: 0, left: 0, width: "100%", height: 8, borderTop: "2px solid transparent" }),
                 }}
                 onMouseDown={handleResizeStart}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+                  const target = e.target as HTMLElement;
+                  if (direction === "left") {
+                    target.style.borderRight = "2px solid #3b82f6";
+                  } else if (direction === "right") {
+                    target.style.borderLeft = "2px solid #3b82f6";
+                  } else {
+                    target.style.borderTop = "2px solid #3b82f6";
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.backgroundColor = "transparent";
+                  const target = e.target as HTMLElement;
+                  if (direction === "left") {
+                    target.style.borderRight = "2px solid transparent";
+                  } else if (direction === "right") {
+                    target.style.borderLeft = "2px solid transparent";
+                  } else {
+                    target.style.borderTop = "2px solid transparent";
+                  }
                 }}
               />
             )}

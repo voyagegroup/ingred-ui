@@ -35,17 +35,24 @@ const meta: Meta<typeof Drawer> = {
       control: "text",
       description: "最大サイズ - 数値(800)はpx、文字列は単位必須", 
     },
+    // 内部制御のプロパティは非表示
+    isOpen: {
+      table: { disable: true },
+    },
+    onClose: {
+      table: { disable: true },
+    },
+    onResize: {
+      table: { disable: true },
+    },
     stickyHeader: {
-      control: "text",
-      description: "スクロール時も上部に固定されるヘッダー要素",
+      table: { disable: true },
     },
     stickyFooter: {
-      control: "text", 
-      description: "スクロール時も下部に固定されるフッター要素",
+      table: { disable: true },
     },
     confirmOnClose: {
-      control: "object",
-      description: "閉じる前に確認ダイアログを表示（boolean | string | object）",
+      table: { disable: true },
     },
   },
 };
