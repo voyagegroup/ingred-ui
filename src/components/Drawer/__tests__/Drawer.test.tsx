@@ -77,26 +77,26 @@ describe("Drawer", () => {
 
   it("applies custom size", () => {
     renderWithThemeProvider(
-      <Drawer isOpen={true} direction="right" size={600}>
+      <Drawer isOpen={true} direction="right" size={400} maxSize={600}>
         <div>Test Content</div>
       </Drawer>
     );
     
     const contentArea = screen.getByText("Test Content").parentElement;
     const drawerContainer = contentArea?.parentElement; // Drawerコンテナ
-    expect(drawerContainer).toHaveStyle("width: 600px");
+    expect(drawerContainer).toHaveStyle("width: 400px");
   });
 
   it("applies different size values", () => {
     renderWithThemeProvider(
-      <Drawer isOpen={true} direction="right" size={500}>
+      <Drawer isOpen={true} direction="right" size={400} maxSize={600}>
         <div>Test Content</div>
       </Drawer>
     );
     
     const contentArea = screen.getByText("Test Content").parentElement;
     const drawerContainer = contentArea?.parentElement;
-    expect(drawerContainer).toHaveStyle("width: 500px");
+    expect(drawerContainer).toHaveStyle("width: 400px");
   });
 
   it("displays content immediately when opened", async () => {
@@ -112,6 +112,39 @@ describe("Drawer", () => {
     await waitFor(() => {
       expect(screen.getByText("Test Content")).toBeInTheDocument();
     }, { timeout: 100 });
+  });
+
+  // バリデーションエラーのテスト
+  describe("Size validation errors", () => {
+    it("throws error when size is smaller than minSize", () => {
+      expect(() => {
+        renderWithThemeProvider(
+          <Drawer isOpen={true} direction="right" size={100} minSize={200}>
+            <div>Test Content</div>
+          </Drawer>
+        );
+      }).toThrow("Drawer: size (100px) cannot be smaller than minSize (200px)");
+    });
+
+    it("throws error when size is larger than maxSize", () => {
+      expect(() => {
+        renderWithThemeProvider(
+          <Drawer isOpen={true} direction="right" size={600} maxSize={400}>
+            <div>Test Content</div>
+          </Drawer>
+        );
+      }).toThrow("Drawer: size (600px) cannot be larger than maxSize (400px)");
+    });
+
+    it("throws error when minSize is larger than maxSize", () => {
+      expect(() => {
+        renderWithThemeProvider(
+          <Drawer isOpen={true} direction="right" minSize={600} maxSize={400}>
+            <div>Test Content</div>
+          </Drawer>
+        );
+      }).toThrow("Drawer: minSize (600px) cannot be larger than maxSize (400px)");
+    });
   });
 
   // リサイズ機能のテスト
@@ -575,7 +608,7 @@ describe("Drawer", () => {
       fireEvent.keyDown(window, { key: "Escape" });
       expect(screen.getByText("確認")).toBeInTheDocument();
       
-      const confirmButton = screen.getByText("閉じる");
+      const confirmButton = screen.getByText("変更を破棄して閉じる");
       fireEvent.click(confirmButton);
       
       expect(onClose).toHaveBeenCalledWith("escapeKey");
@@ -592,7 +625,7 @@ describe("Drawer", () => {
       fireEvent.keyDown(window, { key: "Escape" });
       expect(screen.getByText("確認")).toBeInTheDocument();
       
-      const cancelButton = screen.getByText("キャンセル");
+      const cancelButton = screen.getByText("編集を続ける");
       fireEvent.click(cancelButton);
       
       // 少し待ってからダイアログが閉じたことを確認

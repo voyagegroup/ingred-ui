@@ -510,8 +510,6 @@ export const WithCloseConfirmation: Story = {
     confirmOnClose: {
       title: "変更の破棄",
       message: "保存されていない変更があります。このまま閉じると変更内容が失われますが、よろしいですか？",
-      confirmText: "破棄して閉じる",
-      cancelText: "キャンセル",
     },
   },
 };
@@ -743,7 +741,8 @@ export const DynamicConfirmClose: Story = {
   render: DynamicConfirmTemplate,
   args: {
     direction: "right",
-    size: 500,
+    size: 300,
+    minSize: 300,
     resizable: true,
   },
   parameters: {

@@ -35,6 +35,17 @@ const Drawer: React.FC<DrawerProps> = ({
   const convertedMinSize = convertToPixels(minSize, direction);
   const convertedMaxSize = convertToPixels(maxSize, direction);
   
+  // サイズ制約のバリデーション
+  if (convertedMinSize > convertedMaxSize) {
+    throw new Error(`Drawer: minSize (${convertedMinSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`);
+  }
+  if (convertedSize < convertedMinSize) {
+    throw new Error(`Drawer: size (${convertedSize}px) cannot be smaller than minSize (${convertedMinSize}px)`);
+  }
+  if (convertedSize > convertedMaxSize) {
+    throw new Error(`Drawer: size (${convertedSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`);
+  }
+  
   // アニメーション状態管理
   const [isVisible, setIsVisible] = useState(false);
   const [shouldShow, setShouldShow] = useState(false); // Drawerの実際の表示位置制御
@@ -61,17 +72,31 @@ const Drawer: React.FC<DrawerProps> = ({
     return {
       title: config.title || "確認",
       message: config.message || "変更内容が保存されていません。閉じてもよろしいですか？",
-      confirmText: config.confirmText || "閉じる",
-      cancelText: config.cancelText || "キャンセル",
-      buttonColor: config.buttonColor || "primary",
+      confirmText: config.confirmText || "変更を破棄して閉じる",
+      cancelText: config.cancelText || "編集を続ける",
+      buttonColor: config.buttonColor || "danger",
     };
   }, [confirmOnClose]);
 
   // サイズが外部から変更された場合の同期
   useEffect(() => {
     const newSize = convertToPixels(size, direction);
+    const newMinSize = convertToPixels(minSize, direction);
+    const newMaxSize = convertToPixels(maxSize, direction);
+    
+    // 動的変更時のバリデーション
+    if (newMinSize > newMaxSize) {
+      throw new Error(`Drawer: minSize (${newMinSize}px) cannot be larger than maxSize (${newMaxSize}px)`);
+    }
+    if (newSize < newMinSize) {
+      throw new Error(`Drawer: size (${newSize}px) cannot be smaller than minSize (${newMinSize}px)`);
+    }
+    if (newSize > newMaxSize) {
+      throw new Error(`Drawer: size (${newSize}px) cannot be larger than maxSize (${newMaxSize}px)`);
+    }
+    
     setCurrentSize(newSize);
-  }, [size, direction]);
+  }, [size, minSize, maxSize, direction]);
 
   // isOpenの変化に応じてアニメーション制御
   useEffect(() => {
