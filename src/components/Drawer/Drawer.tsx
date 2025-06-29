@@ -1,15 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Portal from "../Portal";
 import ConfirmModal from "../ConfirmModal";
-
-// 確認ダイアログの設定型
-export type ConfirmCloseConfig = {
-  title?: string;
-  message?: string;
-  confirmText?: string;
-  cancelText?: string;
-  buttonColor?: "primary" | "primaryPale" | "basicLight" | "basicDark" | "danger" | "clear";
-};
+import { DrawerProps, CloseReason } from "./types";
 
 // 相対値をpx値に変換するヘルパー関数
 const convertToPixels = (value: string | number, direction: "left" | "right" | "bottom"): number => {
@@ -44,21 +36,6 @@ const convertToPixels = (value: string | number, direction: "left" | "right" | "
   // 無効な値の場合はエラー警告とフォールバック
   console.error(`Drawer: 無効なサイズ値です: "${value}". デフォルト値を使用します。`);
   return 400; // フォールバック
-};
-
-export type DrawerProps = {
-  isOpen: boolean;
-  direction: "left" | "right" | "bottom";
-  onClose?: (reason: "backdropClick" | "escapeKey") => void;
-  size?: string | number; // 数値(400)はpx、文字列は単位必須("400px", "30vw", "25%")
-  resizable?: boolean; // リサイズ可能かどうか
-  minSize?: string | number; // 数値(200)はpx、文字列は単位必須
-  maxSize?: string | number; // 数値(800)はpx、文字列は単位必須
-  onResize?: (newSize: number) => void; // リサイズ時のコールバック（常にpx値）
-  stickyHeader?: React.ReactNode; // スクロール時も上部に固定されるヘッダー
-  stickyFooter?: React.ReactNode; // スクロール時も下部に固定されるフッター
-  confirmOnClose?: boolean | string | ConfirmCloseConfig; // 閉じる前に確認ダイアログを表示
-  children: React.ReactNode;
 };
 
 const Drawer: React.FC<DrawerProps> = ({
@@ -96,7 +73,7 @@ const Drawer: React.FC<DrawerProps> = ({
 
   // 確認ダイアログの状態管理
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [pendingCloseReason, setPendingCloseReason] = useState<"backdropClick" | "escapeKey" | null>(null);
+  const [pendingCloseReason, setPendingCloseReason] = useState<CloseReason | null>(null);
 
   // confirmOnCloseの設定をパース
   const confirmConfig = React.useMemo(() => {
@@ -267,7 +244,7 @@ const Drawer: React.FC<DrawerProps> = ({
   };
 
   // 閉じる処理の共通ロジック
-  const requestClose = (reason: "backdropClick" | "escapeKey") => {
+  const requestClose = (reason: CloseReason) => {
     if (confirmConfig) {
       setPendingCloseReason(reason);
       setShowConfirmDialog(true);
