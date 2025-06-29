@@ -11,7 +11,7 @@ describe("Drawer", () => {
         <div>Test Content</div>
       </Drawer>,
     );
-    
+
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 
@@ -21,7 +21,7 @@ describe("Drawer", () => {
         <div>Test Content</div>
       </Drawer>,
     );
-    
+
     expect(screen.queryByText("Test Content")).not.toBeInTheDocument();
   });
 
@@ -124,13 +124,13 @@ describe("Drawer", () => {
       { children: React.ReactNode },
       { hasError: boolean; error?: Error }
     > {
+      static getDerivedStateFromError(error: Error) {
+        return { hasError: true, error };
+      }
+
       constructor(props: { children: React.ReactNode }) {
         super(props);
         this.state = { hasError: false };
-      }
-
-      static getDerivedStateFromError(error: Error) {
-        return { hasError: true, error };
       }
 
       render() {
@@ -170,11 +170,13 @@ describe("Drawer", () => {
         renderWithThemeProvider(
           <ErrorBoundary>
             <Drawer isOpen={true} direction="right" minSize={600} maxSize={400}>
-        <div>Test Content</div>
-      </Drawer>
+              <div>Test Content</div>
+            </Drawer>
           </ErrorBoundary>,
         );
-      }).toThrow("Drawer: minSize (600px) cannot be larger than maxSize (400px)");
+      }).toThrow(
+        "Drawer: minSize (600px) cannot be larger than maxSize (400px)",
+      );
     });
   });
 
