@@ -6,11 +6,11 @@ import { defaultTheme } from "../themes/defaultTheme";
 // ThemeProviderでラップしたrenderヘルパー
 export const renderWithThemeProvider = (
   ui: React.ReactElement,
-  options?: Omit<RenderOptions, "wrapper">,
+  options?: Omit<RenderOptions, "wrapper">
 ): RenderResult => {
   const Wrapper = ({ children }: { children: React.ReactNode }) => (
     <ThemeProvider theme={defaultTheme}>{children}</ThemeProvider>
   );
 
   return render(ui, { wrapper: Wrapper, ...options });
-};
+}; 
