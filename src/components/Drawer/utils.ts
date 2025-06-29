@@ -35,7 +35,7 @@ export const convertToPixels = (
 
   // 単位なしの文字列は警告を出す
   if (!isNaN(numericValue)) {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV !== "production") {
       // eslint-disable-next-line no-console
       console.warn(
         `Drawer: 文字列サイズには単位を指定してください。"${value}" → "${value}px" を推奨`,
@@ -45,7 +45,7 @@ export const convertToPixels = (
   }
 
   // 無効な値の場合はエラー警告とフォールバック
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV !== "production") {
     // eslint-disable-next-line no-console
     console.error(
       `Drawer: 無効なサイズ値です: "${value}". デフォルト値を使用します。`,

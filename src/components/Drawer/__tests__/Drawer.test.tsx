@@ -11,7 +11,7 @@ describe("Drawer", () => {
         <div>Test Content</div>
       </Drawer>,
     );
-
+    
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 
@@ -21,7 +21,7 @@ describe("Drawer", () => {
         <div>Test Content</div>
       </Drawer>,
     );
-
+    
     expect(screen.queryByText("Test Content")).not.toBeInTheDocument();
   });
 
@@ -119,12 +119,36 @@ describe("Drawer", () => {
 
   // バリデーションエラーのテスト
   describe("Size validation errors", () => {
+    // Error boundaryコンポーネントでエラーをキャッチ
+    class ErrorBoundary extends React.Component<
+      { children: React.ReactNode },
+      { hasError: boolean; error?: Error }
+    > {
+      constructor(props: { children: React.ReactNode }) {
+        super(props);
+        this.state = { hasError: false };
+      }
+
+      static getDerivedStateFromError(error: Error) {
+        return { hasError: true, error };
+      }
+
+      render() {
+        if (this.state.hasError) {
+          throw this.state.error; // エラーを再度投げる
+        }
+        return this.props.children;
+      }
+    }
+
     it("throws error when size is smaller than minSize", () => {
       expect(() => {
         renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" size={100} minSize={200}>
-            <div>Test Content</div>
-          </Drawer>,
+          <ErrorBoundary>
+            <Drawer isOpen={true} direction="right" size={100} minSize={200}>
+              <div>Test Content</div>
+            </Drawer>
+          </ErrorBoundary>,
         );
       }).toThrow("Drawer: size (100px) cannot be smaller than minSize (200px)");
     });
@@ -132,9 +156,11 @@ describe("Drawer", () => {
     it("throws error when size is larger than maxSize", () => {
       expect(() => {
         renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" size={600} maxSize={400}>
-            <div>Test Content</div>
-          </Drawer>,
+          <ErrorBoundary>
+            <Drawer isOpen={true} direction="right" size={600} maxSize={400}>
+              <div>Test Content</div>
+            </Drawer>
+          </ErrorBoundary>,
         );
       }).toThrow("Drawer: size (600px) cannot be larger than maxSize (400px)");
     });
@@ -142,13 +168,13 @@ describe("Drawer", () => {
     it("throws error when minSize is larger than maxSize", () => {
       expect(() => {
         renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" minSize={600} maxSize={400}>
-            <div>Test Content</div>
-          </Drawer>,
+          <ErrorBoundary>
+            <Drawer isOpen={true} direction="right" minSize={600} maxSize={400}>
+        <div>Test Content</div>
+      </Drawer>
+          </ErrorBoundary>,
         );
-      }).toThrow(
-        "Drawer: minSize (600px) cannot be larger than maxSize (400px)",
-      );
+      }).toThrow("Drawer: minSize (600px) cannot be larger than maxSize (400px)");
     });
   });
 

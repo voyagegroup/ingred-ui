@@ -93,7 +93,7 @@ const MainTemplate = (args: any) => {
             <Typography>
               ESCキーまたは背景クリックで閉じることができます。
             </Typography>
-            <Typography>
+          <Typography>
               コントロールパネルで各種設定を変更してお試しください。
             </Typography>
           </div>
@@ -165,9 +165,9 @@ export const Default: Story = {
 
 // スマホ用表示サンプル
 const MobileTemplate = (args: any) => {
-  const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
-  return (
+    return (
     <div
       style={{
         padding: 16,
@@ -214,10 +214,10 @@ const MobileTemplate = (args: any) => {
         メニューを開く
       </Button>
 
-      <Drawer
-        {...args}
-        isOpen={open}
-        stickyHeader={
+        <Drawer
+          {...args}
+          isOpen={open}
+          stickyHeader={
           <div
             style={{
               padding: "12px 16px",
@@ -240,9 +240,9 @@ const MobileTemplate = (args: any) => {
             <Typography weight="bold" color="#374151">
               メニュー
             </Typography>
-          </div>
-        }
-        stickyFooter={
+            </div>
+          }
+          stickyFooter={
           <div
             style={{
               padding: "16px",
@@ -257,8 +257,8 @@ const MobileTemplate = (args: any) => {
             >
               閉じる
             </Button>
-          </div>
-        }
+            </div>
+          }
         onClose={() => setOpen(false)}
       >
         <div style={{ padding: 16 }}>
@@ -295,8 +295,8 @@ const MobileTemplate = (args: any) => {
               <Typography color="#9ca3af" size="lg">
                 ‹
               </Typography>
-            </div>
-          ))}
+                </div>
+              ))}
 
           {/* 追加コンテンツ */}
           <div
@@ -316,10 +316,10 @@ const MobileTemplate = (args: any) => {
               {args.resizable && "上端をドラッグしてサイズを調整できます。"}
             </Typography>
           </div>
-        </div>
-      </Drawer>
-    </div>
-  );
+          </div>
+        </Drawer>
+      </div>
+    );
 };
 
 export const MobileView: Story = {
