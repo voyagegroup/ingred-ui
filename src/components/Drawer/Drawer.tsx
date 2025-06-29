@@ -54,32 +54,16 @@ const Drawer: React.FC<DrawerProps> = ({
   const confirmConfig = React.useMemo(() => {
     if (!confirmOnClose) return null;
     
-    if (typeof confirmOnClose === "boolean") {
-      return {
-        title: "確認",
-        message: "変更内容が保存されていません。閉じてもよろしいですか？",
-        confirmText: "閉じる",
-        cancelText: "キャンセル",
-        buttonColor: "primary" as const,
-      };
-    }
-    
-    if (typeof confirmOnClose === "string") {
-      return {
-        title: "確認", 
-        message: confirmOnClose,
-        confirmText: "閉じる",
-        cancelText: "キャンセル",
-        buttonColor: "primary" as const,
-      };
-    }
+    const config = typeof confirmOnClose === "string" 
+      ? { message: confirmOnClose } 
+      : confirmOnClose;
     
     return {
-      title: confirmOnClose.title || "確認",
-      message: confirmOnClose.message || "変更内容が保存されていません。閉じてもよろしいですか？",
-      confirmText: confirmOnClose.confirmText || "閉じる",
-      cancelText: confirmOnClose.cancelText || "キャンセル",
-      buttonColor: confirmOnClose.buttonColor || "primary",
+      title: config.title || "確認",
+      message: config.message || "変更内容が保存されていません。閉じてもよろしいですか？",
+      confirmText: config.confirmText || "閉じる",
+      cancelText: config.cancelText || "キャンセル",
+      buttonColor: config.buttonColor || "primary",
     };
   }, [confirmOnClose]);
 

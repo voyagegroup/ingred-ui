@@ -21,7 +21,7 @@ export type DrawerProps = {
   onResize?: (newSize: number) => void; // リサイズ時のコールバック（常にpx値）
   stickyHeader?: React.ReactNode; // スクロール時も上部に固定されるヘッダー
   stickyFooter?: React.ReactNode; // スクロール時も下部に固定されるフッター
-  confirmOnClose?: boolean | string | ConfirmCloseConfig; // 閉じる前に確認ダイアログを表示
+  confirmOnClose?: string | ConfirmCloseConfig; // 閉じる前に確認ダイアログを表示
   children: React.ReactNode;
 };
 

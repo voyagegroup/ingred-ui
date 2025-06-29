@@ -512,10 +512,10 @@ describe("Drawer", () => {
       expect(screen.queryByText("確認")).not.toBeInTheDocument();
     });
 
-    it("shows default confirmation dialog when confirmOnClose is true", () => {
+    it("shows confirmation dialog with default values when using object config", () => {
       const onClose = jest.fn();
     renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
+          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={{}}>
             <div>Test Content</div>
           </Drawer>
       );
@@ -567,7 +567,7 @@ describe("Drawer", () => {
     it("closes drawer when user confirms in dialog", () => {
       const onClose = jest.fn();
     renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
+          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
             <div>Test Content</div>
           </Drawer>
       );
@@ -584,7 +584,7 @@ describe("Drawer", () => {
     it("cancels close when user cancels in dialog", async () => {
       const onClose = jest.fn();
     renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
+          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
             <div>Test Content</div>
           </Drawer>
       );
@@ -607,7 +607,7 @@ describe("Drawer", () => {
     it("works with backdrop click", () => {
       const onClose = jest.fn();
     renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
+          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
             <div>Test Content</div>
           </Drawer>
       );
