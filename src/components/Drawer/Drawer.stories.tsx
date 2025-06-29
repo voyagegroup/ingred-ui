@@ -5,7 +5,7 @@ import Button from "../Button";
 import Typography from "../Typography";
 
 const meta: Meta<typeof Drawer> = {
-  title: "Components/Overlays/Drawer",
+  title: "Components/Utils/Drawer",
   component: Drawer,
   parameters: {
     layout: "fullscreen",
