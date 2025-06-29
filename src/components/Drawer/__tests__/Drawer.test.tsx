@@ -9,9 +9,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right">
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     expect(screen.getByText("Test Content")).toBeInTheDocument();
   });
 
@@ -19,9 +19,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={false} direction="right">
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     expect(screen.queryByText("Test Content")).not.toBeInTheDocument();
   });
 
@@ -30,17 +30,17 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" onClose={onClose}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     // 背景をクリック（ポータル → オーバーレイ → Drawerコンテナ）
     const contentArea = screen.getByText("Test Content").parentElement; // スクロール可能なコンテンツエリア
-    const drawerContainer = contentArea?.parentElement; // Drawerコンテナ  
+    const drawerContainer = contentArea?.parentElement; // Drawerコンテナ
     const backdrop = drawerContainer?.parentElement; // 背景オーバーレイ
-    if (backdrop) {
-      fireEvent.click(backdrop);
-      expect(onClose).toHaveBeenCalledWith("backdropClick");
-    }
+
+    expect(backdrop).toBeTruthy();
+    fireEvent.click(backdrop!);
+    expect(onClose).toHaveBeenCalledWith("backdropClick");
   });
 
   it("calls onClose when Escape key is pressed", () => {
@@ -48,9 +48,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" onClose={onClose}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     fireEvent.keyDown(window, { key: "Escape" });
     expect(onClose).toHaveBeenCalledWith("escapeKey");
   });
@@ -59,9 +59,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="left">
         <div>Left Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     expect(screen.getByText("Left Content")).toBeInTheDocument();
   });
 
@@ -69,9 +69,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="bottom">
         <div>Bottom Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     expect(screen.getByText("Bottom Content")).toBeInTheDocument();
   });
 
@@ -79,9 +79,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" size={400} maxSize={600}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     const contentArea = screen.getByText("Test Content").parentElement;
     const drawerContainer = contentArea?.parentElement; // Drawerコンテナ
     expect(drawerContainer).toHaveStyle("width: 400px");
@@ -91,9 +91,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" size={400} maxSize={600}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     const contentArea = screen.getByText("Test Content").parentElement;
     const drawerContainer = contentArea?.parentElement;
     expect(drawerContainer).toHaveStyle("width: 400px");
@@ -103,15 +103,18 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right">
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     expect(screen.getByText("Test Content")).toBeInTheDocument();
-    
+
     // すぐに表示されることを確認
-    await waitFor(() => {
-      expect(screen.getByText("Test Content")).toBeInTheDocument();
-    }, { timeout: 100 });
+    await waitFor(
+      () => {
+        expect(screen.getByText("Test Content")).toBeInTheDocument();
+      },
+      { timeout: 100 },
+    );
   });
 
   // バリデーションエラーのテスト
@@ -121,7 +124,7 @@ describe("Drawer", () => {
         renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" size={100} minSize={200}>
             <div>Test Content</div>
-          </Drawer>
+          </Drawer>,
         );
       }).toThrow("Drawer: size (100px) cannot be smaller than minSize (200px)");
     });
@@ -131,7 +134,7 @@ describe("Drawer", () => {
         renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" size={600} maxSize={400}>
             <div>Test Content</div>
-          </Drawer>
+          </Drawer>,
         );
       }).toThrow("Drawer: size (600px) cannot be larger than maxSize (400px)");
     });
@@ -141,9 +144,11 @@ describe("Drawer", () => {
         renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" minSize={600} maxSize={400}>
             <div>Test Content</div>
-          </Drawer>
+          </Drawer>,
         );
-      }).toThrow("Drawer: minSize (600px) cannot be larger than maxSize (400px)");
+      }).toThrow(
+        "Drawer: minSize (600px) cannot be larger than maxSize (400px)",
+      );
     });
   });
 
@@ -152,9 +157,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" resizable={true}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     const resizeHandle = screen.getByTestId("resize-handle");
     expect(resizeHandle).toBeInTheDocument();
   });
@@ -163,9 +168,9 @@ describe("Drawer", () => {
     renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" resizable={false}>
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     const drawerContainer = screen.getByText("Test Content").parentElement;
     const resizeHandle = drawerContainer?.querySelector('div[style*="cursor"]');
     expect(resizeHandle).not.toBeInTheDocument();
@@ -174,9 +179,9 @@ describe("Drawer", () => {
   it("applies min and max size constraints", () => {
     const onResize = jest.fn();
     renderWithThemeProvider(
-      <Drawer 
-        isOpen={true} 
-        direction="right" 
+      <Drawer
+        isOpen={true}
+        direction="right"
         resizable={true}
         size={300}
         minSize={200}
@@ -184,9 +189,9 @@ describe("Drawer", () => {
         onResize={onResize}
       >
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     const contentArea = screen.getByText("Test Content").parentElement;
     const drawerContainer = contentArea?.parentElement;
     expect(drawerContainer).toHaveStyle("width: 300px");
@@ -195,33 +200,37 @@ describe("Drawer", () => {
   it("calls onResize when provided", () => {
     const onResize = jest.fn();
     renderWithThemeProvider(
-      <Drawer 
-        isOpen={true} 
-        direction="right" 
+      <Drawer
+        isOpen={true}
+        direction="right"
         resizable={true}
         onResize={onResize}
       >
         <div>Test Content</div>
-      </Drawer>
+      </Drawer>,
     );
-    
+
     // onResizeが関数として提供されていることを確認
     expect(typeof onResize).toBe("function");
   });
 
   it("handles different directions for resize handle positioning", () => {
-    const directions: Array<"left" | "right" | "bottom"> = ["left", "right", "bottom"];
-    
+    const directions: Array<"left" | "right" | "bottom"> = [
+      "left",
+      "right",
+      "bottom",
+    ];
+
     directions.forEach((direction) => {
       const { unmount } = renderWithThemeProvider(
         <Drawer isOpen={true} direction={direction} resizable={true}>
           <div>{direction} Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const resizeHandle = screen.getByTestId("resize-handle");
       expect(resizeHandle).toBeInTheDocument();
-      
+
       unmount();
     });
   });
@@ -243,12 +252,12 @@ describe("Drawer", () => {
     });
 
     it("converts vw values to pixels", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="30vw">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       // 30vw = 30% of 1000px = 300px
@@ -256,12 +265,12 @@ describe("Drawer", () => {
     });
 
     it("converts vh values to pixels", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="bottom" size="40vh">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       // 40vh = 40% of 800px = 320px
@@ -269,12 +278,12 @@ describe("Drawer", () => {
     });
 
     it("converts percentage values to pixels", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="left" size="25%">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       // 25% = 25% of viewport width = 250px
@@ -282,31 +291,31 @@ describe("Drawer", () => {
     });
 
     it("handles px string values", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="400px">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 400px");
     });
 
     it("handles mixed relative and absolute min/max sizes", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
-          direction="right" 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
           size="30vw"
           minSize={200}
           maxSize="50vw"
           resizable={true}
         >
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 300px");
@@ -314,59 +323,59 @@ describe("Drawer", () => {
 
     it("warns for string values without units", () => {
       const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
-      
-    renderWithThemeProvider(
+
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="400">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(consoleSpy).toHaveBeenCalledWith(
-        'Drawer: 文字列サイズには単位を指定してください。"400" → "400px" を推奨'
+        'Drawer: 文字列サイズには単位を指定してください。"400" → "400px" を推奨',
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 400px");
-      
+
       consoleSpy.mockRestore();
     });
 
     it("shows error and falls back for invalid values", () => {
       const consoleSpy = jest.spyOn(console, "error").mockImplementation();
-      
-    renderWithThemeProvider(
+
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="invalid">
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(consoleSpy).toHaveBeenCalledWith(
-        'Drawer: 無効なサイズ値です: "invalid". デフォルト値を使用します。'
+        'Drawer: 無効なサイズ値です: "invalid". デフォルト値を使用します。',
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 400px");
-      
+
       consoleSpy.mockRestore();
     });
 
     it("accepts numeric values without warnings", () => {
       const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
-      
-    renderWithThemeProvider(
+
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size={400}>
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(consoleSpy).not.toHaveBeenCalled();
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 400px");
-      
+
       consoleSpy.mockRestore();
     });
   });
@@ -388,12 +397,12 @@ describe("Drawer", () => {
     });
 
     it("uses vw default values", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Default Drawer</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Default Drawer").parentElement;
       const drawerContainer = contentArea?.parentElement;
       // 30vw = 30% of 1000px = 300px
@@ -401,24 +410,24 @@ describe("Drawer", () => {
     });
 
     it("works for left direction with vw defaults", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="left">
           <div>Left Drawer</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Left Drawer").parentElement;
       const drawerContainer = contentArea?.parentElement;
       expect(drawerContainer).toHaveStyle("width: 300px");
     });
 
     it("works for bottom direction with vw defaults", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="bottom">
           <div>Bottom Drawer</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Bottom Drawer").parentElement;
       const drawerContainer = contentArea?.parentElement;
       // 30vw = 30% of 1000px = 300px (bottom drawerでもvwが適用される)
@@ -429,83 +438,83 @@ describe("Drawer", () => {
   // stickyHeader/Footerのテスト
   describe("StickyHeader and StickyFooter", () => {
     it("renders stickyHeader when provided", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
           direction="right"
           stickyHeader={<div data-testid="sticky-header">Header Content</div>}
         >
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(screen.getByTestId("sticky-header")).toBeInTheDocument();
       expect(screen.getByText("Header Content")).toBeInTheDocument();
     });
 
     it("renders stickyFooter when provided", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
           direction="right"
           stickyFooter={<div data-testid="sticky-footer">Footer Content</div>}
         >
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(screen.getByTestId("sticky-footer")).toBeInTheDocument();
       expect(screen.getByText("Footer Content")).toBeInTheDocument();
     });
 
     it("renders both stickyHeader and stickyFooter together", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
           direction="right"
           stickyHeader={<div data-testid="sticky-header">Header</div>}
           stickyFooter={<div data-testid="sticky-footer">Footer</div>}
         >
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(screen.getByTestId("sticky-header")).toBeInTheDocument();
       expect(screen.getByTestId("sticky-footer")).toBeInTheDocument();
       expect(screen.getByText("Main Content")).toBeInTheDocument();
     });
 
     it("does not render stickyHeader when not provided", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(screen.queryByTestId("sticky-header")).not.toBeInTheDocument();
     });
 
     it("does not render stickyFooter when not provided", () => {
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       expect(screen.queryByTestId("sticky-footer")).not.toBeInTheDocument();
     });
 
     it("applies correct styling to stickyHeader", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
           direction="right"
           stickyHeader={<div data-testid="sticky-header">Header</div>}
         >
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const stickyHeader = screen.getByTestId("sticky-header").parentElement;
       expect(stickyHeader).toHaveStyle("position: sticky");
       expect(stickyHeader).toHaveStyle("top: 0");
@@ -513,16 +522,16 @@ describe("Drawer", () => {
     });
 
     it("applies correct styling to stickyFooter", () => {
-    renderWithThemeProvider(
-        <Drawer 
-          isOpen={true} 
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
           direction="right"
           stickyFooter={<div data-testid="sticky-footer">Footer</div>}
         >
           <div>Main Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       const stickyFooter = screen.getByTestId("sticky-footer").parentElement;
       expect(stickyFooter).toHaveStyle("position: sticky");
       expect(stickyFooter).toHaveStyle("bottom: 0");
@@ -534,12 +543,12 @@ describe("Drawer", () => {
   describe("Close Confirmation Dialog", () => {
     it("does not show confirmation dialog when confirmOnClose is not set", () => {
       const onClose = jest.fn();
-    renderWithThemeProvider(
+      renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" onClose={onClose}>
           <div>Test Content</div>
-        </Drawer>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(onClose).toHaveBeenCalledWith("escapeKey");
       expect(screen.queryByText("確認")).not.toBeInTheDocument();
@@ -547,28 +556,42 @@ describe("Drawer", () => {
 
     it("shows confirmation dialog with default values when using object config", () => {
       const onClose = jest.fn();
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={{}}>
-            <div>Test Content</div>
-          </Drawer>
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose={{}}
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(onClose).not.toHaveBeenCalled();
       expect(screen.getByText("確認")).toBeInTheDocument();
-      expect(screen.getByText("変更内容が保存されていません。閉じてもよろしいですか？")).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          "変更内容が保存されていません。閉じてもよろしいですか？",
+        ),
+      ).toBeInTheDocument();
     });
 
     it("shows custom message when confirmOnClose is string", () => {
       const onClose = jest.fn();
       const customMessage = "カスタム確認メッセージです";
-      
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={customMessage}>
-            <div>Test Content</div>
-          </Drawer>
+
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose={customMessage}
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(onClose).not.toHaveBeenCalled();
       expect(screen.getByText(customMessage)).toBeInTheDocument();
@@ -582,13 +605,18 @@ describe("Drawer", () => {
         confirmText: "はい",
         cancelText: "いいえ",
       };
-      
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={customConfig}>
-            <div>Test Content</div>
-          </Drawer>
+
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose={customConfig}
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(onClose).not.toHaveBeenCalled();
       expect(screen.getByText("カスタムタイトル")).toBeInTheDocument();
@@ -599,61 +627,75 @@ describe("Drawer", () => {
 
     it("closes drawer when user confirms in dialog", () => {
       const onClose = jest.fn();
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
-            <div>Test Content</div>
-          </Drawer>
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose="確認メッセージ"
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(screen.getByText("確認")).toBeInTheDocument();
-      
+
       const confirmButton = screen.getByText("変更を破棄して閉じる");
       fireEvent.click(confirmButton);
-      
+
       expect(onClose).toHaveBeenCalledWith("escapeKey");
     });
 
     it("cancels close when user cancels in dialog", async () => {
       const onClose = jest.fn();
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
-            <div>Test Content</div>
-          </Drawer>
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose="確認メッセージ"
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       fireEvent.keyDown(window, { key: "Escape" });
       expect(screen.getByText("確認")).toBeInTheDocument();
-      
+
       const cancelButton = screen.getByText("編集を続ける");
       fireEvent.click(cancelButton);
-      
+
       // 少し待ってからダイアログが閉じたことを確認
       await waitFor(() => {
         expect(screen.queryByText("確認")).not.toBeInTheDocument();
       });
-      
+
       expect(onClose).not.toHaveBeenCalled();
       expect(screen.getByText("Test Content")).toBeInTheDocument();
     });
 
     it("works with backdrop click", () => {
       const onClose = jest.fn();
-    renderWithThemeProvider(
-          <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose="確認メッセージ">
-            <div>Test Content</div>
-          </Drawer>
+      renderWithThemeProvider(
+        <Drawer
+          isOpen={true}
+          direction="right"
+          confirmOnClose="確認メッセージ"
+          onClose={onClose}
+        >
+          <div>Test Content</div>
+        </Drawer>,
       );
-      
+
       const contentArea = screen.getByText("Test Content").parentElement;
       const drawerContainer = contentArea?.parentElement;
       const backdrop = drawerContainer?.parentElement;
-      
-      if (backdrop) {
-        fireEvent.click(backdrop);
-        expect(screen.getByText("確認")).toBeInTheDocument();
-        expect(onClose).not.toHaveBeenCalled();
-      }
+
+      expect(backdrop).toBeTruthy();
+      fireEvent.click(backdrop!);
+      expect(screen.getByText("確認")).toBeInTheDocument();
+      expect(onClose).not.toHaveBeenCalled();
     });
   });
-}); 
+});

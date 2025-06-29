@@ -6,7 +6,13 @@ export type ConfirmCloseConfig = {
   message?: string;
   confirmText?: string;
   cancelText?: string;
-  buttonColor?: "primary" | "primaryPale" | "basicLight" | "basicDark" | "danger" | "clear";
+  buttonColor?:
+    | "primary"
+    | "primaryPale"
+    | "basicLight"
+    | "basicDark"
+    | "danger"
+    | "clear";
 };
 
 // Drawerコンポーネントのプロパティ型
@@ -26,4 +32,4 @@ export type DrawerProps = {
 };
 
 // 閉じる理由の型
-export type CloseReason = "backdropClick" | "escapeKey"; 
+export type CloseReason = "backdropClick" | "escapeKey";

@@ -14,8 +14,9 @@ export const Backdrop = styled.div<BackdropProps>`
   bottom: 0;
   background-color: #001326cb; // TODO: テーマカラーに変更する（Modalと同じ値）
   z-index: 1200;
-  opacity: ${({ shouldShow }) => shouldShow ? 1 : 0};
-  transition: opacity ${({ transitionDuration }) => transitionDuration}ms ease-out;
+  opacity: ${({ shouldShow }) => (shouldShow ? 1 : 0)};
+  transition: opacity ${({ transitionDuration }) => transitionDuration}ms
+    ease-out;
 `;
 
 // Drawerコンテナ
@@ -30,7 +31,7 @@ const getContainerTransform = (direction: string, shouldShow: boolean) => {
   if (shouldShow) {
     return "translate3d(0, 0, 0)"; // 画面内位置（最終位置）
   }
-  
+
   // 画面外位置（初期位置）
   switch (direction) {
     case "left":
@@ -46,20 +47,24 @@ const getContainerTransform = (direction: string, shouldShow: boolean) => {
 
 export const DrawerContainer = styled.div<DrawerContainerProps>`
   position: fixed;
-  top: ${({ direction }) => direction === "bottom" ? "auto" : 0};
-  bottom: ${({ direction }) => direction === "bottom" ? 0 : 0};
-  left: ${({ direction }) => direction === "right" ? "auto" : 0};
-  right: ${({ direction }) => direction === "left" ? "auto" : 0};
-  width: ${({ direction, currentSize }) => direction === "bottom" ? "100%" : `${currentSize}px`};
-  height: ${({ direction, currentSize }) => direction === "bottom" ? `${currentSize}px` : "100%"};
+  top: ${({ direction }) => (direction === "bottom" ? "auto" : 0)};
+  bottom: ${({ direction }) => (direction === "bottom" ? 0 : 0)};
+  left: ${({ direction }) => (direction === "right" ? "auto" : 0)};
+  right: ${({ direction }) => (direction === "left" ? "auto" : 0)};
+  width: ${({ direction, currentSize }) =>
+    direction === "bottom" ? "100%" : `${currentSize}px`};
+  height: ${({ direction, currentSize }) =>
+    direction === "bottom" ? `${currentSize}px` : "100%"};
   background-color: ${({ theme }) => theme.palette.background.default};
   box-shadow: 0 2px 16px rgba(4, 28, 51, 0.12); // TODO: テーマカラーに変更する
   z-index: 1201;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transform: ${({ direction, shouldShow }) => getContainerTransform(direction, shouldShow)};
-  transition: transform ${({ transitionDuration }) => transitionDuration}ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: ${({ direction, shouldShow }) =>
+    getContainerTransform(direction, shouldShow)};
+  transition: transform ${({ transitionDuration }) => transitionDuration}ms
+    cubic-bezier(0.23, 1, 0.32, 1);
 `;
 
 // リサイズハンドル
@@ -71,9 +76,10 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
   position: absolute;
   z-index: 10;
   background-color: transparent;
-  cursor: ${({ direction }) => direction === "bottom" ? "ns-resize" : "ew-resize"};
+  cursor: ${({ direction }) =>
+    direction === "bottom" ? "ns-resize" : "ew-resize"};
   transition: border-color 0.2s ease;
-  
+
   ${({ direction }) => {
     switch (direction) {
       case "left":
@@ -83,7 +89,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           width: 8px;
           height: 100%;
           border-right: 2px solid transparent;
-          
+
           &:hover {
             border-right: 2px solid ${({ theme }) => theme.palette.primary.main};
           }
@@ -95,7 +101,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           width: 8px;
           height: 100%;
           border-left: 2px solid transparent;
-          
+
           &:hover {
             border-left: 2px solid ${({ theme }) => theme.palette.primary.main};
           }
@@ -107,7 +113,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           width: 100%;
           height: 8px;
           border-top: 2px solid transparent;
-          
+
           &:hover {
             border-top: 2px solid ${({ theme }) => theme.palette.primary.main};
           }
@@ -144,4 +150,4 @@ export const StickyFooter = styled.div`
   border-top: 1px solid ${({ theme }) => theme.palette.divider};
   margin-top: 8px;
   padding-top: 8px;
-`; 
+`;

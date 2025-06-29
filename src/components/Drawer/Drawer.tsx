@@ -12,15 +12,14 @@ import {
   StickyFooter,
 } from "./styled";
 
-
 const Drawer: React.FC<DrawerProps> = ({
   isOpen,
   direction,
   onClose,
   size = "30vw",
   resizable = false,
-  minSize = "20vw", 
-  maxSize = "50vw",
+  minSize = "20vw",
+  maxSize = "60vw",
   onResize,
   stickyHeader,
   stickyFooter,
@@ -29,27 +28,33 @@ const Drawer: React.FC<DrawerProps> = ({
 }) => {
   // 固定アニメーション時間
   const transitionDuration = 300;
-  
+
   // 相対値をpx値に変換（初期化時のみ）
   const convertedSize = convertToPixels(size, direction);
   const convertedMinSize = convertToPixels(minSize, direction);
   const convertedMaxSize = convertToPixels(maxSize, direction);
-  
+
   // サイズ制約のバリデーション
   if (convertedMinSize > convertedMaxSize) {
-    throw new Error(`Drawer: minSize (${convertedMinSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`);
+    throw new Error(
+      `Drawer: minSize (${convertedMinSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`,
+    );
   }
   if (convertedSize < convertedMinSize) {
-    throw new Error(`Drawer: size (${convertedSize}px) cannot be smaller than minSize (${convertedMinSize}px)`);
+    throw new Error(
+      `Drawer: size (${convertedSize}px) cannot be smaller than minSize (${convertedMinSize}px)`,
+    );
   }
   if (convertedSize > convertedMaxSize) {
-    throw new Error(`Drawer: size (${convertedSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`);
+    throw new Error(
+      `Drawer: size (${convertedSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`,
+    );
   }
-  
+
   // アニメーション状態管理
   const [isVisible, setIsVisible] = useState(false);
   const [shouldShow, setShouldShow] = useState(false); // Drawerの実際の表示位置制御
-  
+
   // リサイズ状態管理（内部は常にpx値）
   const [currentSize, setCurrentSize] = useState(convertedSize);
   const dragging = useRef(false);
@@ -59,19 +64,23 @@ const Drawer: React.FC<DrawerProps> = ({
 
   // 確認ダイアログの状態管理
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
-  const [pendingCloseReason, setPendingCloseReason] = useState<CloseReason | null>(null);
+  const [pendingCloseReason, setPendingCloseReason] =
+    useState<CloseReason | null>(null);
 
   // confirmOnCloseの設定をパース
   const confirmConfig = React.useMemo(() => {
     if (!confirmOnClose) return null;
-    
-    const config = typeof confirmOnClose === "string" 
-      ? { message: confirmOnClose } 
-      : confirmOnClose;
-    
+
+    const config =
+      typeof confirmOnClose === "string"
+        ? { message: confirmOnClose }
+        : confirmOnClose;
+
     return {
       title: config.title || "確認",
-      message: config.message || "変更内容が保存されていません。閉じてもよろしいですか？",
+      message:
+        config.message ||
+        "変更内容が保存されていません。閉じてもよろしいですか？",
       confirmText: config.confirmText || "変更を破棄して閉じる",
       cancelText: config.cancelText || "編集を続ける",
       buttonColor: config.buttonColor || "danger",
@@ -83,18 +92,24 @@ const Drawer: React.FC<DrawerProps> = ({
     const newSize = convertToPixels(size, direction);
     const newMinSize = convertToPixels(minSize, direction);
     const newMaxSize = convertToPixels(maxSize, direction);
-    
+
     // 動的変更時のバリデーション
     if (newMinSize > newMaxSize) {
-      throw new Error(`Drawer: minSize (${newMinSize}px) cannot be larger than maxSize (${newMaxSize}px)`);
+      throw new Error(
+        `Drawer: minSize (${newMinSize}px) cannot be larger than maxSize (${newMaxSize}px)`,
+      );
     }
     if (newSize < newMinSize) {
-      throw new Error(`Drawer: size (${newSize}px) cannot be smaller than minSize (${newMinSize}px)`);
+      throw new Error(
+        `Drawer: size (${newSize}px) cannot be smaller than minSize (${newMinSize}px)`,
+      );
     }
     if (newSize > newMaxSize) {
-      throw new Error(`Drawer: size (${newSize}px) cannot be larger than maxSize (${newMaxSize}px)`);
+      throw new Error(
+        `Drawer: size (${newSize}px) cannot be larger than maxSize (${newMaxSize}px)`,
+      );
     }
-    
+
     setCurrentSize(newSize);
   }, [size, minSize, maxSize, direction]);
 
@@ -117,38 +132,41 @@ const Drawer: React.FC<DrawerProps> = ({
       }, transitionDuration);
       return () => clearTimeout(timer);
     }
-    
+
     // その他の場合は何もしない
     return undefined;
   }, [isOpen, isVisible]);
 
   // リサイズハンドラー
-  const handleResize = useCallback((e: MouseEvent) => {
-    if (!dragging.current) return;
+  const handleResize = useCallback(
+    (e: MouseEvent) => {
+      if (!dragging.current) return;
 
-    const isHorizontal = direction === "left" || direction === "right";
-    const currentPos = isHorizontal ? e.clientX : e.clientY;
-    
-    let delta = currentPos - startPos.current;
-    
-    // 方向に応じてデルタを調整
-    if (direction === "right") delta = -delta;
-    if (direction === "bottom") delta = -delta;
-    
-    let newSize = startSize.current + delta;
-    
-    // 最小・最大サイズの制限（変換済みの値を使用）
-    newSize = Math.max(convertedMinSize, Math.min(convertedMaxSize, newSize));
-    
-    setCurrentSize(newSize);
-    onResize?.(newSize);
-  }, [direction, convertedMinSize, convertedMaxSize, onResize]);
+      const isHorizontal = direction === "left" || direction === "right";
+      const currentPos = isHorizontal ? e.clientX : e.clientY;
+
+      let delta = currentPos - startPos.current;
+
+      // 方向に応じてデルタを調整
+      if (direction === "right") delta = -delta;
+      if (direction === "bottom") delta = -delta;
+
+      let newSize = startSize.current + delta;
+
+      // 最小・最大サイズの制限（変換済みの値を使用）
+      newSize = Math.max(convertedMinSize, Math.min(convertedMaxSize, newSize));
+
+      setCurrentSize(newSize);
+      onResize?.(newSize);
+    },
+    [direction, convertedMinSize, convertedMaxSize, onResize],
+  );
 
   const handleResizeEnd = useCallback(() => {
     dragging.current = false;
     document.body.style.userSelect = "";
     document.body.style.cursor = "";
-    
+
     // リサイズ終了直後の短時間は背景クリックを無効化
     justFinishedResizing.current = true;
     setTimeout(() => {
@@ -156,20 +174,23 @@ const Drawer: React.FC<DrawerProps> = ({
     }, 100);
   }, []);
 
-  const handleResizeStart = useCallback((e: React.MouseEvent) => {
-    if (!resizable) return;
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    dragging.current = true;
-    const isHorizontal = direction === "left" || direction === "right";
-    startPos.current = isHorizontal ? e.clientX : e.clientY;
-    startSize.current = currentSize;
-    
-    document.body.style.userSelect = "none";
-    document.body.style.cursor = isHorizontal ? "ew-resize" : "ns-resize";
-  }, [resizable, direction, currentSize]);
+  const handleResizeStart = useCallback(
+    (e: React.MouseEvent) => {
+      if (!resizable) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      dragging.current = true;
+      const isHorizontal = direction === "left" || direction === "right";
+      startPos.current = isHorizontal ? e.clientX : e.clientY;
+      startSize.current = currentSize;
+
+      document.body.style.userSelect = "none";
+      document.body.style.cursor = isHorizontal ? "ew-resize" : "ns-resize";
+    },
+    [resizable, direction, currentSize],
+  );
 
   // グローバルマウスイベントリスナー
   useEffect(() => {
@@ -196,22 +217,18 @@ const Drawer: React.FC<DrawerProps> = ({
     };
   }, [resizable, handleResize, handleResizeEnd]);
 
-  // ESCキー処理
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen && !showConfirmDialog) {
-        requestClose("escapeKey");
+  // 閉じる処理の共通ロジック
+  const requestClose = useCallback(
+    (reason: CloseReason) => {
+      if (confirmConfig) {
+        setPendingCloseReason(reason);
+        setShowConfirmDialog(true);
+      } else {
+        onClose?.(reason);
       }
-    };
-
-    if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, showConfirmDialog, confirmConfig]);
+    },
+    [confirmConfig, onClose],
+  );
 
   // 確認ダイアログのハンドラー
   const handleConfirmClose = () => {
@@ -227,15 +244,27 @@ const Drawer: React.FC<DrawerProps> = ({
     setPendingCloseReason(null);
   };
 
-  // 閉じる処理の共通ロジック
-  const requestClose = (reason: CloseReason) => {
-    if (confirmConfig) {
-      setPendingCloseReason(reason);
-      setShowConfirmDialog(true);
-    } else {
-      onClose?.(reason);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleConfirmClose();
   };
+
+  // ESCキー処理
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen && !showConfirmDialog) {
+        requestClose("escapeKey");
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, showConfirmDialog, requestClose]);
 
   // 背景クリック処理
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -243,7 +272,7 @@ const Drawer: React.FC<DrawerProps> = ({
     if (dragging.current || justFinishedResizing.current) {
       return;
     }
-    
+
     if (e.target === e.currentTarget) {
       requestClose("backdropClick");
     }
@@ -253,8 +282,6 @@ const Drawer: React.FC<DrawerProps> = ({
   if (!isVisible) {
     return null;
   }
-
-
 
   return (
     <>
@@ -266,10 +293,7 @@ const Drawer: React.FC<DrawerProps> = ({
           confirmText={confirmConfig.confirmText}
           cancelText={confirmConfig.cancelText}
           buttonColor={confirmConfig.buttonColor}
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleConfirmClose();
-          }}
+          onSubmit={handleSubmit}
           onClose={() => handleCancelClose()}
         >
           {confirmConfig.message}
@@ -294,30 +318,20 @@ const Drawer: React.FC<DrawerProps> = ({
             {resizable && (
               <ResizeHandle
                 direction={direction}
-                onMouseDown={handleResizeStart}
                 data-testid="resize-handle"
+                onMouseDown={handleResizeStart}
               />
             )}
-            
+
             {/* stickyHeader */}
-            {stickyHeader && (
-              <StickyHeader>
-                {stickyHeader}
-              </StickyHeader>
-            )}
-            
+            {stickyHeader && <StickyHeader>{stickyHeader}</StickyHeader>}
+
             {/* スクロール可能なコンテンツエリア */}
-            <ScrollableContent>
-              {children}
-            </ScrollableContent>
-            
-                        {/* stickyFooter */}
-            {stickyFooter && (
-              <StickyFooter>
-                {stickyFooter}
-              </StickyFooter>
-            )}
-            </DrawerContainer>
+            <ScrollableContent>{children}</ScrollableContent>
+
+            {/* stickyFooter */}
+            {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
+          </DrawerContainer>
         </Backdrop>
       </Portal>
     </>
