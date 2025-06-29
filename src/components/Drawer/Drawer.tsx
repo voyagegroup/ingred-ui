@@ -2,6 +2,14 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import Portal from "../Portal";
 import ConfirmModal from "../ConfirmModal";
 import { DrawerProps, CloseReason } from "./types";
+import {
+  Backdrop,
+  DrawerContainer,
+  ResizeHandle,
+  StickyHeader,
+  ScrollableContent,
+  StickyFooter,
+} from "./styled";
 
 // 相対値をpx値に変換するヘルパー関数
 const convertToPixels = (value: string | number, direction: "left" | "right" | "bottom"): number => {
@@ -270,24 +278,7 @@ const Drawer: React.FC<DrawerProps> = ({
     return null;
   }
 
-  // アニメーション用のtransform値を計算
-  const getTransform = () => {
-    if (shouldShow) {
-      return "translate3d(0, 0, 0)"; // 画面内位置（最終位置）
-    }
-    
-    // 画面外位置（初期位置）
-    switch (direction) {
-      case "left":
-        return "translate3d(-100%, 0, 0)";
-      case "right":
-        return "translate3d(100%, 0, 0)";
-      case "bottom":
-        return "translate3d(0, 100%, 0)";
-      default:
-        return "translate3d(0, 0, 0)";
-    }
-  };
+
 
   return (
     <>
@@ -311,126 +302,47 @@ const Drawer: React.FC<DrawerProps> = ({
 
       <Portal>
         {/* 背景オーバーレイ */}
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            zIndex: 1200,
-            opacity: shouldShow ? 1 : 0,
-            transition: `opacity ${transitionDuration}ms ease-out`,
-          }}
+        <Backdrop
+          shouldShow={shouldShow}
+          transitionDuration={transitionDuration}
           onClick={handleBackdropClick}
         >
           {/* Drawerコンテナ */}
-          <div
-            style={{
-              position: "fixed",
-              top: direction === "bottom" ? "auto" : 0,
-              bottom: direction === "bottom" ? 0 : 0,
-              left: direction === "right" ? "auto" : 0,
-              right: direction === "left" ? "auto" : 0,
-              width: direction === "bottom" ? "100%" : `${currentSize}px`,
-              height: direction === "bottom" ? `${currentSize}px` : "100%",
-              backgroundColor: "#fff",
-              boxShadow: "0 2px 16px rgba(0,0,0,0.12)",
-              zIndex: 1201,
-              display: "flex",
-              flexDirection: "column",
-              overflow: "hidden", // コンテナ自体はhidden、中央エリアでスクロール制御
-              transform: getTransform(),
-              transition: `transform ${transitionDuration}ms cubic-bezier(0.23, 1, 0.32, 1)`,
-            }}
+          <DrawerContainer
+            direction={direction}
+            currentSize={currentSize}
+            shouldShow={shouldShow}
+            transitionDuration={transitionDuration}
           >
             {/* リサイズハンドル */}
             {resizable && (
-              <div
-                style={{
-                  position: "absolute",
-                  zIndex: 10,
-                  backgroundColor: "transparent",
-                  cursor: direction === "bottom" ? "ns-resize" : "ew-resize",
-                  transition: "border-color 0.2s ease",
-                  ...(direction === "left"
-                    ? { top: 0, right: 0, width: 8, height: "100%", borderRight: "2px solid transparent" }
-                    : direction === "right"
-                    ? { top: 0, left: 0, width: 8, height: "100%", borderLeft: "2px solid transparent" }
-                    : { top: 0, left: 0, width: "100%", height: 8, borderTop: "2px solid transparent" }),
-                }}
+              <ResizeHandle
+                direction={direction}
                 onMouseDown={handleResizeStart}
-                onMouseEnter={(e) => {
-                  const target = e.target as HTMLElement;
-                  if (direction === "left") {
-                    target.style.borderRight = "2px solid #3b82f6";
-                  } else if (direction === "right") {
-                    target.style.borderLeft = "2px solid #3b82f6";
-                  } else {
-                    target.style.borderTop = "2px solid #3b82f6";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.target as HTMLElement;
-                  if (direction === "left") {
-                    target.style.borderRight = "2px solid transparent";
-                  } else if (direction === "right") {
-                    target.style.borderLeft = "2px solid transparent";
-                  } else {
-                    target.style.borderTop = "2px solid transparent";
-                  }
-                }}
+                data-testid="resize-handle"
               />
             )}
             
             {/* stickyHeader */}
             {stickyHeader && (
-              <div
-                style={{
-                  position: "sticky",
-                  top: 0,
-                  backgroundColor: "#ffffff",
-                  zIndex: 1,
-                  borderBottom: "1px solid #e5e7eb",
-                  marginBottom: 8,
-                  paddingBottom: 8,
-                }}
-              >
+              <StickyHeader>
                 {stickyHeader}
-              </div>
+              </StickyHeader>
             )}
             
             {/* スクロール可能なコンテンツエリア */}
-            <div
-              style={{
-                flex: 1,
-                overflow: "auto",
-                paddingTop: stickyHeader ? 0 : 0,
-                paddingBottom: stickyFooter ? 0 : 0,
-              }}
-            >
+            <ScrollableContent>
               {children}
-            </div>
+            </ScrollableContent>
             
-            {/* stickyFooter */}
+                        {/* stickyFooter */}
             {stickyFooter && (
-              <div
-                style={{
-                  position: "sticky",
-                  bottom: 0,
-                  backgroundColor: "#ffffff",
-                  zIndex: 1,
-                  borderTop: "1px solid #e5e7eb",
-                  marginTop: 8,
-                  paddingTop: 8,
-                }}
-              >
+              <StickyFooter>
                 {stickyFooter}
-              </div>
+              </StickyFooter>
             )}
-          </div>
-        </div>
+            </DrawerContainer>
+        </Backdrop>
       </Portal>
     </>
   );

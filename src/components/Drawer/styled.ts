@@ -12,7 +12,7 @@ export const Backdrop = styled.div<BackdropProps>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(${({ theme }) => theme.palette.action.shadowBase}, ${({ theme }) => theme.palette.action.shadowOpacity * 6});
+  background-color: rgba(4, 28, 51, 0.8);
   z-index: 1200;
   opacity: ${({ shouldShow }) => shouldShow ? 1 : 0};
   transition: opacity ${({ transitionDuration }) => transitionDuration}ms ease-out;
@@ -52,8 +52,8 @@ export const DrawerContainer = styled.div<DrawerContainerProps>`
   right: ${({ direction }) => direction === "left" ? "auto" : 0};
   width: ${({ direction, currentSize }) => direction === "bottom" ? "100%" : `${currentSize}px`};
   height: ${({ direction, currentSize }) => direction === "bottom" ? `${currentSize}px` : "100%"};
-  background-color: ${({ theme }) => theme.palette.background.default};
-  box-shadow: ${({ theme }) => theme.shadow["3dShadowBasic"]};
+  background-color: ${({ theme }) => theme?.palette?.background?.default || "#ffffff"};
+  box-shadow: 0 2px 16px rgba(4, 28, 51, 0.12);
   z-index: 1201;
   display: flex;
   flex-direction: column;
@@ -85,7 +85,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           border-right: 2px solid transparent;
           
           &:hover {
-            border-right: 2px solid ${({ theme }) => theme.palette.primary.main};
+            border-right: 2px solid ${({ theme }) => theme?.palette?.primary?.main || "#0b82f4"};
           }
         `;
       case "right":
@@ -97,7 +97,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           border-left: 2px solid transparent;
           
           &:hover {
-            border-left: 2px solid ${({ theme }) => theme.palette.primary.main};
+            border-left: 2px solid ${({ theme }) => theme?.palette?.primary?.main || "#0b82f4"};
           }
         `;
       case "bottom":
@@ -109,7 +109,7 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           border-top: 2px solid transparent;
           
           &:hover {
-            border-top: 2px solid ${({ theme }) => theme.palette.primary.main};
+            border-top: 2px solid ${({ theme }) => theme?.palette?.primary?.main || "#0b82f4"};
           }
         `;
       default:
@@ -122,9 +122,9 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
 export const StickyHeader = styled.div`
   position: sticky;
   top: 0;
-  background-color: ${({ theme }) => theme.palette.background.default};
+  background-color: ${({ theme }) => theme?.palette?.background?.default || "#ffffff"};
   z-index: 1;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
+  border-bottom: 1px solid ${({ theme }) => theme?.palette?.divider || "#e5e7eb"};
   margin-bottom: 8px;
   padding-bottom: 8px;
 `;
@@ -139,9 +139,9 @@ export const ScrollableContent = styled.div`
 export const StickyFooter = styled.div`
   position: sticky;
   bottom: 0;
-  background-color: ${({ theme }) => theme.palette.background.default};
+  background-color: ${({ theme }) => theme?.palette?.background?.default || "#ffffff"};
   z-index: 1;
-  border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  border-top: 1px solid ${({ theme }) => theme?.palette?.divider || "#e5e7eb"};
   margin-top: 8px;
   padding-top: 8px;
 `; 

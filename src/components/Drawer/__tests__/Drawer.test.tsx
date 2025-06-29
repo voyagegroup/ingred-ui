@@ -1,13 +1,12 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
+import { screen, fireEvent, waitFor } from "@testing-library/react";
+import { renderWithThemeProvider } from "../../../utils/renderWithThemeProvider";
 import Drawer from "../Drawer";
-import { defaultTheme } from "../../../themes";
 
 describe("Drawer", () => {
   it("opens and displays content when isOpen is true", () => {
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right">
         <div>Test Content</div>
       </Drawer>
@@ -17,7 +16,7 @@ describe("Drawer", () => {
   });
 
   it("does not render when isOpen is false", () => {
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={false} direction="right">
         <div>Test Content</div>
       </Drawer>
@@ -28,7 +27,7 @@ describe("Drawer", () => {
 
   it("calls onClose when backdrop is clicked", () => {
     const onClose = jest.fn();
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" onClose={onClose}>
         <div>Test Content</div>
       </Drawer>
@@ -46,7 +45,7 @@ describe("Drawer", () => {
 
   it("calls onClose when Escape key is pressed", () => {
     const onClose = jest.fn();
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" onClose={onClose}>
         <div>Test Content</div>
       </Drawer>
@@ -57,7 +56,7 @@ describe("Drawer", () => {
   });
 
   it("uses fixed transition duration", () => {
-    const { rerender } = render(
+    const { rerender } = renderWithThemeProvider(
       <Drawer isOpen={false} direction="right">
         <div>Test Content</div>
       </Drawer>
@@ -74,7 +73,7 @@ describe("Drawer", () => {
   });
 
   it("handles direction prop correctly", () => {
-    const { rerender } = render(
+    const { rerender } = renderWithThemeProvider(
       <Drawer isOpen={true} direction="left">
         <div>Left Drawer</div>
       </Drawer>
@@ -92,7 +91,7 @@ describe("Drawer", () => {
   });
 
   it("applies custom size", () => {
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" size={600}>
         <div>Test Content</div>
       </Drawer>
@@ -104,7 +103,7 @@ describe("Drawer", () => {
   });
 
   it("handles animation states properly", async () => {
-    const { rerender } = render(
+    const { rerender } = renderWithThemeProvider(
       <Drawer isOpen={false} direction="right">
         <div>Test Content</div>
       </Drawer>
@@ -141,20 +140,18 @@ describe("Drawer", () => {
 
   // リサイズ機能のテスト
   it("renders resize handle when resizable is true", () => {
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" resizable={true}>
         <div>Test Content</div>
       </Drawer>
     );
     
-    const contentArea = screen.getByText("Test Content").parentElement;
-    const drawerContainer = contentArea?.parentElement;
-    const resizeHandle = drawerContainer?.querySelector('div[style*="cursor"]');
+    const resizeHandle = screen.getByTestId("resize-handle");
     expect(resizeHandle).toBeInTheDocument();
   });
 
   it("does not render resize handle when resizable is false", () => {
-    render(
+    renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" resizable={false}>
         <div>Test Content</div>
       </Drawer>
@@ -167,7 +164,7 @@ describe("Drawer", () => {
 
   it("applies min and max size constraints", () => {
     const onResize = jest.fn();
-    render(
+    renderWithThemeProvider(
       <Drawer 
         isOpen={true} 
         direction="right" 
@@ -188,7 +185,7 @@ describe("Drawer", () => {
 
   it("calls onResize when provided", () => {
     const onResize = jest.fn();
-    render(
+    renderWithThemeProvider(
       <Drawer 
         isOpen={true} 
         direction="right" 
@@ -204,7 +201,7 @@ describe("Drawer", () => {
   });
 
   it("updates size when size prop changes", () => {
-    const { rerender } = render(
+    const { rerender } = renderWithThemeProvider(
       <Drawer isOpen={true} direction="right" size={300}>
         <div>Test Content</div>
       </Drawer>
@@ -230,15 +227,13 @@ describe("Drawer", () => {
     const directions: Array<"left" | "right" | "bottom"> = ["left", "right", "bottom"];
     
     directions.forEach((direction) => {
-      const { unmount } = render(
+      const { unmount } = renderWithThemeProvider(
         <Drawer isOpen={true} direction={direction} resizable={true}>
           <div>{direction} Content</div>
         </Drawer>
       );
       
-      const contentArea = screen.getByText(`${direction} Content`).parentElement;
-      const drawerContainer = contentArea?.parentElement;
-      const resizeHandle = drawerContainer?.querySelector('div[style*="cursor"]');
+      const resizeHandle = screen.getByTestId("resize-handle");
       expect(resizeHandle).toBeInTheDocument();
       
       unmount();
@@ -262,7 +257,7 @@ describe("Drawer", () => {
     });
 
     it("converts vw values to pixels", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="30vw">
           <div>Test Content</div>
         </Drawer>
@@ -275,7 +270,7 @@ describe("Drawer", () => {
     });
 
     it("converts vh values to pixels", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="bottom" size="40vh">
           <div>Test Content</div>
         </Drawer>
@@ -288,7 +283,7 @@ describe("Drawer", () => {
     });
 
     it("converts percentage values to pixels", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="left" size="25%">
           <div>Test Content</div>
         </Drawer>
@@ -301,7 +296,7 @@ describe("Drawer", () => {
     });
 
     it("handles px string values", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="400px">
           <div>Test Content</div>
         </Drawer>
@@ -313,7 +308,7 @@ describe("Drawer", () => {
     });
 
     it("handles mixed relative and absolute min/max sizes", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right" 
@@ -334,7 +329,7 @@ describe("Drawer", () => {
     it("warns for string values without units", () => {
       const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
       
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="400">
           <div>Test Content</div>
         </Drawer>
@@ -354,7 +349,7 @@ describe("Drawer", () => {
     it("shows error and falls back for invalid values", () => {
       const consoleSpy = jest.spyOn(console, "error").mockImplementation();
       
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size="invalid">
           <div>Test Content</div>
         </Drawer>
@@ -374,7 +369,7 @@ describe("Drawer", () => {
     it("accepts numeric values without warnings", () => {
       const consoleSpy = jest.spyOn(console, "warn").mockImplementation();
       
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" size={400}>
           <div>Test Content</div>
         </Drawer>
@@ -407,7 +402,7 @@ describe("Drawer", () => {
     });
 
     it("uses vw default values", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Default Drawer</div>
         </Drawer>
@@ -420,7 +415,7 @@ describe("Drawer", () => {
     });
 
     it("works for all directions with vw defaults", () => {
-      const { rerender } = render(
+      const { rerender } = renderWithThemeProvider(
         <Drawer isOpen={true} direction="left">
           <div>Left Drawer</div>
         </Drawer>
@@ -446,7 +441,7 @@ describe("Drawer", () => {
   // stickyHeader/Footerのテスト
   describe("StickyHeader and StickyFooter", () => {
     it("renders stickyHeader when provided", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right"
@@ -461,7 +456,7 @@ describe("Drawer", () => {
     });
 
     it("renders stickyFooter when provided", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right"
@@ -476,7 +471,7 @@ describe("Drawer", () => {
     });
 
     it("renders both stickyHeader and stickyFooter together", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right"
@@ -493,7 +488,7 @@ describe("Drawer", () => {
     });
 
     it("does not render stickyHeader when not provided", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Main Content</div>
         </Drawer>
@@ -503,7 +498,7 @@ describe("Drawer", () => {
     });
 
     it("does not render stickyFooter when not provided", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right">
           <div>Main Content</div>
         </Drawer>
@@ -513,7 +508,7 @@ describe("Drawer", () => {
     });
 
     it("applies correct styling to stickyHeader", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right"
@@ -530,7 +525,7 @@ describe("Drawer", () => {
     });
 
     it("applies correct styling to stickyFooter", () => {
-      render(
+    renderWithThemeProvider(
         <Drawer 
           isOpen={true} 
           direction="right"
@@ -551,7 +546,7 @@ describe("Drawer", () => {
   describe("Close Confirmation Dialog", () => {
     it("does not show confirmation dialog when confirmOnClose is not set", () => {
       const onClose = jest.fn();
-      render(
+    renderWithThemeProvider(
         <Drawer isOpen={true} direction="right" onClose={onClose}>
           <div>Test Content</div>
         </Drawer>
@@ -564,12 +559,10 @@ describe("Drawer", () => {
 
     it("shows default confirmation dialog when confirmOnClose is true", () => {
       const onClose = jest.fn();
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       fireEvent.keyDown(window, { key: "Escape" });
@@ -582,12 +575,10 @@ describe("Drawer", () => {
       const onClose = jest.fn();
       const customMessage = "カスタム確認メッセージです";
       
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={customMessage}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       fireEvent.keyDown(window, { key: "Escape" });
@@ -604,12 +595,10 @@ describe("Drawer", () => {
         cancelText: "いいえ",
       };
       
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={customConfig}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       fireEvent.keyDown(window, { key: "Escape" });
@@ -622,12 +611,10 @@ describe("Drawer", () => {
 
     it("closes drawer when user confirms in dialog", () => {
       const onClose = jest.fn();
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       // ESCキーで確認ダイアログを表示
@@ -643,12 +630,10 @@ describe("Drawer", () => {
 
     it("cancels close when user cancels in dialog", async () => {
       const onClose = jest.fn();
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       // ESCキーで確認ダイアログを表示
@@ -671,12 +656,10 @@ describe("Drawer", () => {
 
     it("works with backdrop click", () => {
       const onClose = jest.fn();
-      render(
-        <ThemeProvider theme={defaultTheme}>
+    renderWithThemeProvider(
           <Drawer isOpen={true} direction="right" onClose={onClose} confirmOnClose={true}>
             <div>Test Content</div>
           </Drawer>
-        </ThemeProvider>
       );
       
       // 背景クリックで確認ダイアログを表示
