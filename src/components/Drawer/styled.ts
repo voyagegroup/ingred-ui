@@ -70,7 +70,6 @@ export const DrawerContainer = styled.div<DrawerContainerProps>`
 // リサイズハンドル
 export type ResizeHandleProps = {
   direction: "left" | "right" | "bottom";
-  active?: boolean;
 };
 
 export const ResizeHandle = styled.div<ResizeHandleProps>`
@@ -81,15 +80,13 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
   cursor: ${({ direction }) =>
     direction === "bottom" ? "ns-resize" : "ew-resize"};
 
-  ${({ direction, theme, active }) =>
+  ${({ direction }) =>
     direction === "bottom"
       ? css`
           top: 0;
           left: 0;
           width: 100%;
           height: 8px;
-          border-top: 2px solid
-            ${active ? theme.palette.primary.main : "transparent"};
           @media (pointer: coarse) {
             height: 32px;
           }
@@ -99,9 +96,6 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           ${direction === "right" ? "left: 0;" : "right: 0;"}
           width: 8px;
           height: 100%;
-          border-${direction === "right" ? "left" : "right"}: 2px solid ${
-            active ? theme.palette.primary.main : "transparent"
-          };
           @media (pointer: coarse) {
             width: 32px;
           }
@@ -113,7 +107,7 @@ export type ResizeBarProps = ResizeHandleProps & { active?: boolean };
 
 export const ResizeBar = styled.div<ResizeBarProps>`
   background: ${({ theme, active }) =>
-    active ? theme.palette.primary.main : theme.palette.gray.main};
+    active ? theme.palette.gray.dark : theme.palette.gray.main};
   border-radius: 2px;
   position: absolute;
   z-index: 11;
