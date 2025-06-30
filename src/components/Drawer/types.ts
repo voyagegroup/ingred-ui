@@ -29,6 +29,10 @@ export type DrawerProps = {
   stickyFooter?: React.ReactNode; // スクロール時も下部に固定されるフッター
   confirmOnClose?: string | ConfirmCloseConfig; // 閉じる前に確認ダイアログを表示
   children: React.ReactNode;
+  /**
+   * ドロワー表示中も背景をスクロール可能にする（Backdrop非表示）
+   */
+  allowBackgroundScroll?: boolean;
 };
 
 // 閉じる理由の型

@@ -16,14 +16,15 @@ const Drawer: React.FC<DrawerProps> = ({
   isOpen,
   direction,
   onClose,
-  size = "30vw",
+  size = "40vw",
   resizable = false,
   minSize = "20vw",
-  maxSize = "60vw",
+  maxSize = "90vw",
   onResize,
   stickyHeader,
   stickyFooter,
   confirmOnClose,
+  allowBackgroundScroll = false,
   children,
 }) => {
   // 固定アニメーション時間
@@ -34,21 +35,22 @@ const Drawer: React.FC<DrawerProps> = ({
   const convertedMinSize = convertToPixels(minSize, direction);
   const convertedMaxSize = convertToPixels(maxSize, direction);
 
-  // サイズ制約のバリデーション
-  if (convertedMinSize > convertedMaxSize) {
-    throw new Error(
-      `Drawer: minSize (${convertedMinSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`,
-    );
-  }
-  if (convertedSize < convertedMinSize) {
-    throw new Error(
-      `Drawer: size (${convertedSize}px) cannot be smaller than minSize (${convertedMinSize}px)`,
-    );
-  }
-  if (convertedSize > convertedMaxSize) {
-    throw new Error(
-      `Drawer: size (${convertedSize}px) cannot be larger than maxSize (${convertedMaxSize}px)`,
-    );
+  // サイズ制約のバリデーション（自動補正＋開発時のみ警告）
+  let safeMin = Math.min(convertedMinSize, convertedMaxSize);
+  let safeMax = Math.max(convertedMinSize, convertedMaxSize);
+  let safeSize = Math.max(safeMin, Math.min(convertedSize, safeMax));
+
+  if (process.env.NODE_ENV !== "production") {
+    if (convertedMinSize > convertedMaxSize) {
+      console.warn(
+        `Drawer: minSize (${convertedMinSize}px) が maxSize (${convertedMaxSize}px) より大きいです。自動補正します。`,
+      );
+    }
+    if (convertedSize < safeMin || convertedSize > safeMax) {
+      console.warn(
+        `Drawer: size (${convertedSize}px) が min/max の範囲外です。自動補正します。`,
+      );
+    }
   }
 
   // アニメーション状態管理
@@ -56,7 +58,7 @@ const Drawer: React.FC<DrawerProps> = ({
   const [shouldShow, setShouldShow] = useState(false); // Drawerの実際の表示位置制御
 
   // リサイズ状態管理（内部は常にpx値）
-  const [currentSize, setCurrentSize] = useState(convertedSize);
+  const [currentSize, setCurrentSize] = useState(safeSize);
   const dragging = useRef(false);
   const startPos = useRef(0);
   const startSize = useRef(0);
@@ -92,25 +94,24 @@ const Drawer: React.FC<DrawerProps> = ({
     const newSize = convertToPixels(size, direction);
     const newMinSize = convertToPixels(minSize, direction);
     const newMaxSize = convertToPixels(maxSize, direction);
+    let safeMin = Math.min(newMinSize, newMaxSize);
+    let safeMax = Math.max(newMinSize, newMaxSize);
+    let safeSize = Math.max(safeMin, Math.min(newSize, safeMax));
 
-    // 動的変更時のバリデーション
-    if (newMinSize > newMaxSize) {
-      throw new Error(
-        `Drawer: minSize (${newMinSize}px) cannot be larger than maxSize (${newMaxSize}px)`,
-      );
-    }
-    if (newSize < newMinSize) {
-      throw new Error(
-        `Drawer: size (${newSize}px) cannot be smaller than minSize (${newMinSize}px)`,
-      );
-    }
-    if (newSize > newMaxSize) {
-      throw new Error(
-        `Drawer: size (${newSize}px) cannot be larger than maxSize (${newMaxSize}px)`,
-      );
+    if (process.env.NODE_ENV !== "production") {
+      if (newMinSize > newMaxSize) {
+        console.warn(
+          `Drawer: minSize (${newMinSize}px) が maxSize (${newMaxSize}px) より大きいです。自動補正します。`,
+        );
+      }
+      if (newSize < safeMin || newSize > safeMax) {
+        console.warn(
+          `Drawer: size (${newSize}px) が min/max の範囲外です。自動補正します。`,
+        );
+      }
     }
 
-    setCurrentSize(newSize);
+    setCurrentSize(safeSize);
   }, [size, minSize, maxSize, direction]);
 
   // isOpenの変化に応じてアニメーション制御
@@ -137,6 +138,18 @@ const Drawer: React.FC<DrawerProps> = ({
     return undefined;
   }, [isOpen, isVisible]);
 
+  // isOpenの変化に合わせてbodyスクロールを制御
+  useEffect(() => {
+    if (!allowBackgroundScroll && isOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+    return;
+  }, [isOpen, allowBackgroundScroll]);
+
   // リサイズハンドラー
   const handleResize = useCallback(
     (e: MouseEvent) => {
@@ -154,12 +167,12 @@ const Drawer: React.FC<DrawerProps> = ({
       let newSize = startSize.current + delta;
 
       // 最小・最大サイズの制限（変換済みの値を使用）
-      newSize = Math.max(convertedMinSize, Math.min(convertedMaxSize, newSize));
+      newSize = Math.max(safeMin, Math.min(safeMax, newSize));
 
       setCurrentSize(newSize);
       onResize?.(newSize);
     },
-    [direction, convertedMinSize, convertedMaxSize, onResize],
+    [direction, safeMin, safeMax, onResize],
   );
 
   const handleResizeEnd = useCallback(() => {
@@ -301,13 +314,8 @@ const Drawer: React.FC<DrawerProps> = ({
       )}
 
       <Portal>
-        {/* 背景オーバーレイ */}
-        <Backdrop
-          shouldShow={shouldShow}
-          transitionDuration={transitionDuration}
-          onClick={handleBackdropClick}
-        >
-          {/* Drawerコンテナ */}
+        {/* allowBackgroundScrollがtrueならBackdropなしでDrawerContainerのみ */}
+        {allowBackgroundScroll ? (
           <DrawerContainer
             direction={direction}
             currentSize={currentSize}
@@ -332,7 +340,39 @@ const Drawer: React.FC<DrawerProps> = ({
             {/* stickyFooter */}
             {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
           </DrawerContainer>
-        </Backdrop>
+        ) : (
+          <Backdrop
+            shouldShow={shouldShow}
+            transitionDuration={transitionDuration}
+            onClick={handleBackdropClick}
+          >
+            {/* Drawerコンテナ */}
+            <DrawerContainer
+              direction={direction}
+              currentSize={currentSize}
+              shouldShow={shouldShow}
+              transitionDuration={transitionDuration}
+            >
+              {/* リサイズハンドル */}
+              {resizable && (
+                <ResizeHandle
+                  direction={direction}
+                  data-testid="resize-handle"
+                  onMouseDown={handleResizeStart}
+                />
+              )}
+
+              {/* stickyHeader */}
+              {stickyHeader && <StickyHeader>{stickyHeader}</StickyHeader>}
+
+              {/* スクロール可能なコンテンツエリア */}
+              <ScrollableContent>{children}</ScrollableContent>
+
+              {/* stickyFooter */}
+              {stickyFooter && <StickyFooter>{stickyFooter}</StickyFooter>}
+            </DrawerContainer>
+          </Backdrop>
+        )}
       </Portal>
     </>
   );
