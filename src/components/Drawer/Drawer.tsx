@@ -378,7 +378,12 @@ const Drawer: React.FC<DrawerProps> = ({
                 direction={direction}
                 data-testid="resize-handle"
                 onMouseDown={handleResizeStart}
-                onTouchStart={handleResizeStart}
+                onTouchStart={(e) => {
+                  handleResizeStart(e);
+                  setIsHandleHovered(true);
+                }}
+                onTouchEnd={() => setIsHandleHovered(false)}
+                onTouchCancel={() => setIsHandleHovered(false)}
                 onMouseEnter={() => setIsHandleHovered(true)}
                 onMouseLeave={() => setIsHandleHovered(false)}
               />
@@ -420,7 +425,12 @@ const Drawer: React.FC<DrawerProps> = ({
                   direction={direction}
                   data-testid="resize-handle"
                   onMouseDown={handleResizeStart}
-                  onTouchStart={handleResizeStart}
+                  onTouchStart={(e) => {
+                    handleResizeStart(e);
+                    setIsHandleHovered(true);
+                  }}
+                  onTouchEnd={() => setIsHandleHovered(false)}
+                  onTouchCancel={() => setIsHandleHovered(false)}
                   onMouseEnter={() => setIsHandleHovered(true)}
                   onMouseLeave={() => setIsHandleHovered(false)}
                 />
