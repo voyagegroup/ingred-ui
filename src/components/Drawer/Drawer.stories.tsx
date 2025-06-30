@@ -54,6 +54,11 @@ const meta: Meta<typeof Drawer> = {
     confirmOnClose: {
       table: { disable: true },
     },
+    allowBackgroundScroll: {
+      control: "boolean",
+      description:
+        "ドロワー表示中も背景をスクロール可能にする（Backdrop非表示）",
+    },
   },
 };
 
@@ -63,18 +68,51 @@ type Story = StoryObj<typeof meta>;
 // メインテンプレート - すべてのプロパティをコントロールで制御可能
 const MainTemplate = (args: any) => {
   const [open, setOpen] = useState(false);
+  const [openScrollable, setOpenScrollable] = useState(false);
   const [currentSize, setCurrentSize] = useState(args.size);
 
   return (
     <div style={{ padding: 20 }}>
-      <Button onClick={() => setOpen(true)}>
+      <Button
+        onClick={() => {
+          setOpen(true);
+          setOpenScrollable(false); // もう一方を閉じる
+        }}
+      >
         Open {args.direction} Drawer {args.resizable ? "(Resizable)" : ""}
-      </Button>
+      </Button>{" "}
+      <div style={{ marginTop: 10, fontSize: 14, color: "#666" }}>
+        <Typography>
+          AllowBackgroundScrollが有効の時、ドロワーの起動は入れ違いになります。
+        </Typography>
+        <Button
+          onClick={() => {
+            setOpenScrollable(true);
+            setOpen(false); // もう一方を閉じる
+          }}
+          style={{ marginLeft: 8 }}
+        >
+          Open other Drawer
+        </Button>
+      </div>
       <div style={{ marginTop: 10, fontSize: 14, color: "#666" }}>
         現在サイズ: {currentSize}px
         {args.resizable && " (端をドラッグしてリサイズ可能)"}
       </div>
-
+      <div
+        style={{
+          height: 1200,
+          background: "#f3f4f6",
+          marginBottom: 24,
+          borderRadius: 8,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#888",
+        }}
+      >
+        ここは背景のダミーコンテンツです（スクロールテスト用）
+      </div>
       <Drawer
         {...args}
         isOpen={open}
@@ -136,7 +174,7 @@ const MainTemplate = (args: any) => {
           {/* 長いコンテンツでスクロールテスト */}
           <div style={{ marginTop: 20 }}>
             <Typography weight="bold">スクロールテスト</Typography>
-            {Array.from({ length: 15 }, (_, i) => (
+            {Array.from({ length: 25 }, (_, i) => (
               <div
                 key={i}
                 style={{ padding: "8px 0", borderBottom: "1px solid #eee" }}
@@ -144,6 +182,21 @@ const MainTemplate = (args: any) => {
                 行 {i + 1}: スクロールテスト用のコンテンツです。
               </div>
             ))}
+          </div>
+        </div>
+      </Drawer>
+      {/* allowBackgroundScroll=trueのDrawer */}
+      <Drawer
+        {...args}
+        isOpen={openScrollable}
+        onClose={() => setOpenScrollable(false)}
+      >
+        <div style={{ padding: 16 }}>
+          <Typography weight="bold" size="xl">
+            allowBackgroundScroll Drawer
+          </Typography>
+          <div style={{ marginTop: 16 }}>
+            <Typography>ESCキーで閉じることができます。</Typography>
           </div>
         </div>
       </Drawer>
