@@ -10,6 +10,7 @@ import {
   StickyHeader,
   ScrollableContent,
   StickyFooter,
+  ResizeBar,
 } from "./styled";
 
 const Drawer: React.FC<DrawerProps> = ({
@@ -70,6 +71,9 @@ const Drawer: React.FC<DrawerProps> = ({
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [pendingCloseReason, setPendingCloseReason] =
     useState<CloseReason | null>(null);
+
+  // リサイズハンドルhover状態
+  const [isHandleHovered, setIsHandleHovered] = useState(false);
 
   // confirmOnCloseの設定をパース
   const confirmConfig = React.useMemo(() => {
@@ -360,6 +364,14 @@ const Drawer: React.FC<DrawerProps> = ({
             shouldShow={shouldShow}
             transitionDuration={transitionDuration}
           >
+            {/* リサイズ可能な時はグレーのバーを表示（方向ごとに位置・向きを変える） */}
+            {resizable && (
+              <ResizeBar
+                direction={direction}
+                data-testid="resize-bar"
+                active={isHandleHovered}
+              />
+            )}
             {/* リサイズハンドル */}
             {resizable && (
               <ResizeHandle
@@ -367,6 +379,8 @@ const Drawer: React.FC<DrawerProps> = ({
                 data-testid="resize-handle"
                 onMouseDown={handleResizeStart}
                 onTouchStart={handleResizeStart}
+                onMouseEnter={() => setIsHandleHovered(true)}
+                onMouseLeave={() => setIsHandleHovered(false)}
               />
             )}
 
@@ -392,6 +406,14 @@ const Drawer: React.FC<DrawerProps> = ({
               shouldShow={shouldShow}
               transitionDuration={transitionDuration}
             >
+              {/* リサイズ可能な時はグレーのバーを表示（方向ごとに位置・向きを変える） */}
+              {resizable && (
+                <ResizeBar
+                  direction={direction}
+                  data-testid="resize-bar"
+                  active={isHandleHovered}
+                />
+              )}
               {/* リサイズハンドル */}
               {resizable && (
                 <ResizeHandle
@@ -399,6 +421,8 @@ const Drawer: React.FC<DrawerProps> = ({
                   data-testid="resize-handle"
                   onMouseDown={handleResizeStart}
                   onTouchStart={handleResizeStart}
+                  onMouseEnter={() => setIsHandleHovered(true)}
+                  onMouseLeave={() => setIsHandleHovered(false)}
                 />
               )}
 

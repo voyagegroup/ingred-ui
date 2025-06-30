@@ -76,64 +76,71 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
   position: absolute;
   z-index: 10;
   background-color: transparent;
+  transition: border-color 0.2s ease;
   cursor: ${({ direction }) =>
     direction === "bottom" ? "ns-resize" : "ew-resize"};
-  transition: border-color 0.2s ease;
 
-  ${({ direction }) => {
-    switch (direction) {
-      case "left":
-        return css`
-          top: 0;
-          right: 0;
-          width: 8px;
-          height: 100%;
-          border-right: 2px solid transparent;
-
-          &:hover {
-            border-right: 2px solid ${({ theme }) => theme.palette.primary.main};
-          }
-
-          @media (pointer: coarse) {
-            width: 32px;
-          }
-        `;
-      case "right":
-        return css`
-          top: 0;
-          left: 0;
-          width: 8px;
-          height: 100%;
-          border-left: 2px solid transparent;
-
-          &:hover {
-            border-left: 2px solid ${({ theme }) => theme.palette.primary.main};
-          }
-
-          @media (pointer: coarse) {
-            width: 32px;
-          }
-        `;
-      case "bottom":
-        return css`
+  ${({ direction, theme }) =>
+    direction === "bottom"
+      ? css`
           top: 0;
           left: 0;
           width: 100%;
           height: 8px;
           border-top: 2px solid transparent;
-
           &:hover {
-            border-top: 2px solid ${({ theme }) => theme.palette.primary.main};
+            border-top: 2px solid ${theme.palette.primary.main};
           }
-
           @media (pointer: coarse) {
             height: 32px;
           }
-        `;
-      default:
-        return "";
-    }
-  }}
+        `
+      : css`
+          top: 0;
+          ${direction === "right" ? "left: 0;" : "right: 0;"}
+          width: 8px;
+          height: 100%;
+          border-${
+            direction === "right" ? "left" : "right"
+          }: 2px solid transparent;
+          &:hover {
+            border-${direction === "right" ? "left" : "right"}: 2px solid ${
+              theme.palette.primary.main
+            };
+          }
+          @media (pointer: coarse) {
+            width: 32px;
+          }
+        `}
+`;
+
+// リサイズバー
+export type ResizeBarProps = ResizeHandleProps & { active?: boolean };
+
+export const ResizeBar = styled.div<ResizeBarProps>`
+  background: ${({ theme, active }) =>
+    active ? theme.palette.primary.main : theme.palette.gray.main};
+  border-radius: 2px;
+  position: absolute;
+  z-index: 11;
+  ${({ direction }) =>
+    direction === "bottom"
+      ? css`
+          width: 24px;
+          height: 2px;
+          left: 50%;
+          bottom: 0;
+          transform: translateX(-50%) translateY(8px);
+          position: relative;
+          margin-top: 6px;
+        `
+      : css`
+          width: 2px;
+          height: 24px;
+          ${direction === "right" ? "left: 6px;" : "right: 6px;"}
+          top: 50%;
+          transform: translateY(-50%);
+        `}
 `;
 
 // スティッキーヘッダー

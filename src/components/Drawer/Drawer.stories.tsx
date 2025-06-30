@@ -265,18 +265,7 @@ const ResponsiveSample = (args: any) => {
               position: "relative",
             }}
           >
-            {/* スワイプハンドル（モバイルのみ） */}
-            {isMobile && (
-              <div
-                style={{
-                  width: 36,
-                  height: 4,
-                  background: "#d1d5db",
-                  borderRadius: 2,
-                  margin: "0 auto 12px",
-                }}
-              />
-            )}
+            {/* スワイプハンドル（モバイルのみ）削除済み */}
             <Typography weight="bold" color="#374151">
               {isMobile ? "メニュー" : "Drawer"}
             </Typography>
