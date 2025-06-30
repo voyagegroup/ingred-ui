@@ -36,17 +36,19 @@ const Drawer: React.FC<DrawerProps> = ({
   const convertedMaxSize = convertToPixels(maxSize, direction);
 
   // サイズ制約のバリデーション（自動補正＋開発時のみ警告）
-  let safeMin = Math.min(convertedMinSize, convertedMaxSize);
-  let safeMax = Math.max(convertedMinSize, convertedMaxSize);
-  let safeSize = Math.max(safeMin, Math.min(convertedSize, safeMax));
+  const safeMin = Math.min(convertedMinSize, convertedMaxSize);
+  const safeMax = Math.max(convertedMinSize, convertedMaxSize);
+  const safeSize = Math.max(safeMin, Math.min(convertedSize, safeMax));
 
   if (process.env.NODE_ENV !== "production") {
     if (convertedMinSize > convertedMaxSize) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Drawer: minSize (${convertedMinSize}px) が maxSize (${convertedMaxSize}px) より大きいです。自動補正します。`,
       );
     }
     if (convertedSize < safeMin || convertedSize > safeMax) {
+      // eslint-disable-next-line no-console
       console.warn(
         `Drawer: size (${convertedSize}px) が min/max の範囲外です。自動補正します。`,
       );
@@ -94,17 +96,19 @@ const Drawer: React.FC<DrawerProps> = ({
     const newSize = convertToPixels(size, direction);
     const newMinSize = convertToPixels(minSize, direction);
     const newMaxSize = convertToPixels(maxSize, direction);
-    let safeMin = Math.min(newMinSize, newMaxSize);
-    let safeMax = Math.max(newMinSize, newMaxSize);
-    let safeSize = Math.max(safeMin, Math.min(newSize, safeMax));
+    const safeMin = Math.min(newMinSize, newMaxSize);
+    const safeMax = Math.max(newMinSize, newMaxSize);
+    const safeSize = Math.max(safeMin, Math.min(newSize, safeMax));
 
     if (process.env.NODE_ENV !== "production") {
       if (newMinSize > newMaxSize) {
+        // eslint-disable-next-line no-console
         console.warn(
           `Drawer: minSize (${newMinSize}px) が maxSize (${newMaxSize}px) より大きいです。自動補正します。`,
         );
       }
       if (newSize < safeMin || newSize > safeMax) {
+        // eslint-disable-next-line no-console
         console.warn(
           `Drawer: size (${newSize}px) が min/max の範囲外です。自動補正します。`,
         );

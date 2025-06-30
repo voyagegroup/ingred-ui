@@ -86,11 +86,11 @@ const MainTemplate = (args: any) => {
           AllowBackgroundScrollが有効の時、ドロワーの起動は入れ違いになります。
         </Typography>
         <Button
+          style={{ marginLeft: 8 }}
           onClick={() => {
             setOpenScrollable(true);
             setOpen(false); // もう一方を閉じる
           }}
-          style={{ marginLeft: 8 }}
         >
           Open other Drawer
         </Button>
@@ -117,11 +117,12 @@ const MainTemplate = (args: any) => {
         {...args}
         isOpen={open}
         size={currentSize}
-        onClose={() => setOpen(false)}
+        allowBackgroundScroll={false}
         onResize={(newSize) => {
           setCurrentSize(newSize);
           args.onResize?.(newSize);
         }}
+        onClose={() => setOpen(false)}
       >
         <div style={{ padding: 16 }}>
           <Typography weight="bold" size="xl">
@@ -189,6 +190,7 @@ const MainTemplate = (args: any) => {
       <Drawer
         {...args}
         isOpen={openScrollable}
+        allowBackgroundScroll={true}
         onClose={() => setOpenScrollable(false)}
       >
         <div style={{ padding: 16 }}>
