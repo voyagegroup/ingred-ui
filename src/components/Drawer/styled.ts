@@ -93,6 +93,10 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           &:hover {
             border-right: 2px solid ${({ theme }) => theme.palette.primary.main};
           }
+
+          @media (pointer: coarse) {
+            width: 32px;
+          }
         `;
       case "right":
         return css`
@@ -105,6 +109,10 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           &:hover {
             border-left: 2px solid ${({ theme }) => theme.palette.primary.main};
           }
+
+          @media (pointer: coarse) {
+            width: 32px;
+          }
         `;
       case "bottom":
         return css`
@@ -116,6 +124,10 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
 
           &:hover {
             border-top: 2px solid ${({ theme }) => theme.palette.primary.main};
+          }
+
+          @media (pointer: coarse) {
+            height: 32px;
           }
         `;
       default:
