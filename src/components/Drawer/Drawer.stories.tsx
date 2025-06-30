@@ -83,7 +83,7 @@ const MainTemplate = (args: any) => {
       </Button>{" "}
       <div style={{ marginTop: 10, fontSize: 14, color: "#666" }}>
         <Typography>
-          AllowBackgroundScrollが有効の時、ドロワーの起動は入れ違いになります。
+          AllowBackgroundScrollが有効の時、背景がクリックできるため、他のドロワーを起動すると入れ違いになります。
         </Typography>
         <Button
           style={{ marginLeft: 8 }}
