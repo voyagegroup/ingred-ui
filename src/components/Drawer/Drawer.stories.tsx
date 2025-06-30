@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Drawer from "./Drawer";
 import Button from "../Button";
 import Typography from "../Typography";
@@ -216,60 +216,43 @@ export const Default: Story = {
   },
 };
 
-// スマホ用表示サンプル
-const MobileTemplate = (args: any) => {
+// レスポンシブDrawerサンプル
+const ResponsiveSample = (args: any) => {
   const [open, setOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1024,
+  );
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // 600px未満ならモバイル、600px以上ならデスクトップ
+  const isMobile = windowWidth < 600;
+  const direction = isMobile ? "bottom" : "right";
+  const size = isMobile ? "70vh" : "30vw";
+  const minSize = isMobile ? "40vh" : "20vw";
+  const maxSize = isMobile ? "90vh" : "50vw";
 
   return (
-    <div
-      style={{
-        padding: 16,
-        minHeight: "100vh",
-        background: "#f5f5f5",
-      }}
-    >
-      {/* シンプルなヘッダー */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 20,
-          padding: "12px 0",
-        }}
+    <div style={{ padding: 16, minHeight: "100vh", background: "#f5f5f5" }}>
+      <Button
+        style={{ width: isMobile ? "100%" : undefined }}
+        onClick={() => setOpen(true)}
       >
-        <Typography size="xl" weight="bold" color="#333">
-          マイアプリ
-        </Typography>
-      </div>
-
-      {/* メインコンテンツ */}
-      <div
-        style={{
-          background: "white",
-          borderRadius: 8,
-          padding: 20,
-          marginBottom: 20,
-          boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-        }}
-      >
-        <Typography size="lg" weight="bold" color="#333">
-          モバイル向けDrawer
-        </Typography>
-        <div style={{ marginTop: 12, color: "#666" }}>
-          <Typography>• 画面下からスライドアップ</Typography>
-          <Typography>• タッチ操作でリサイズ可能</Typography>
-          <Typography>• シンプルでクリーンなUI</Typography>
-        </div>
-      </div>
-
-      <Button style={{ width: "100%" }} onClick={() => setOpen(true)}>
-        メニューを開く
+        {isMobile
+          ? "メニューを開く（モバイル）"
+          : "Open Drawer（デスクトップ）"}
       </Button>
-
       <Drawer
         {...args}
         isOpen={open}
+        direction={direction}
+        size={size}
+        minSize={minSize}
+        maxSize={maxSize}
         stickyHeader={
           <div
             style={{
@@ -280,18 +263,20 @@ const MobileTemplate = (args: any) => {
               position: "relative",
             }}
           >
-            {/* スワイプハンドル */}
-            <div
-              style={{
-                width: 36,
-                height: 4,
-                background: "#d1d5db",
-                borderRadius: 2,
-                margin: "0 auto 12px",
-              }}
-            />
+            {/* スワイプハンドル（モバイルのみ） */}
+            {isMobile && (
+              <div
+                style={{
+                  width: 36,
+                  height: 4,
+                  background: "#d1d5db",
+                  borderRadius: 2,
+                  margin: "0 auto 12px",
+                }}
+              />
+            )}
             <Typography weight="bold" color="#374151">
-              メニュー
+              {isMobile ? "メニュー" : "Drawer"}
             </Typography>
           </div>
         }
@@ -315,42 +300,52 @@ const MobileTemplate = (args: any) => {
         onClose={() => setOpen(false)}
       >
         <div style={{ padding: 16 }}>
-          {/* アクション一覧 */}
-          {[
-            { title: "写真を撮る", desc: "カメラを起動して写真を撮影" },
-            { title: "ギャラリーから選択", desc: "既存の写真から選択" },
-            { title: "ファイルを選択", desc: "デバイス内のファイルから選択" },
-            { title: "URLから追加", desc: "ウェブ上のファイルのURLを入力" },
-            { title: "設定", desc: "アプリの設定を変更" },
-          ].map((action, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                padding: "16px 0",
-                borderBottom: i < 4 ? "1px solid #e5e7eb" : "none",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                alert(`${action.title} が選択されました`);
-                setOpen(false);
-              }}
-            >
-              <div style={{ flex: 1 }}>
-                <Typography weight="bold" color="#374151">
-                  {action.title}
-                </Typography>
-                <Typography size="sm" color="#6b7280">
-                  {action.desc}
+          <Typography weight="bold" size="xl">
+            {isMobile ? "モバイルDrawer" : "デスクトップDrawer"}
+          </Typography>
+          <div style={{ marginTop: 16 }}>
+            <Typography>
+              {isMobile
+                ? "画面下からスライドアップし、タッチ操作でリサイズ可能です。"
+                : "画面右からスライドインし、端をドラッグでリサイズ可能です。"}
+            </Typography>
+          </div>
+          {/* アクション一覧（モバイル風） */}
+          {isMobile &&
+            [
+              { title: "写真を撮る", desc: "カメラを起動して写真を撮影" },
+              { title: "ギャラリーから選択", desc: "既存の写真から選択" },
+              { title: "ファイルを選択", desc: "デバイス内のファイルから選択" },
+              { title: "URLから追加", desc: "ウェブ上のファイルのURLを入力" },
+              { title: "設定", desc: "アプリの設定を変更" },
+            ].map((action, i) => (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  padding: "16px 0",
+                  borderBottom: i < 4 ? "1px solid #e5e7eb" : "none",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  alert(`${action.title} が選択されました`);
+                  setOpen(false);
+                }}
+              >
+                <div style={{ flex: 1 }}>
+                  <Typography weight="bold" color="#374151">
+                    {action.title}
+                  </Typography>
+                  <Typography size="sm" color="#6b7280">
+                    {action.desc}
+                  </Typography>
+                </div>
+                <Typography color="#9ca3af" size="lg">
+                  ‹
                 </Typography>
               </div>
-              <Typography color="#9ca3af" size="lg">
-                ‹
-              </Typography>
-            </div>
-          ))}
-
+            ))}
           {/* 追加コンテンツ */}
           <div
             style={{
@@ -365,8 +360,8 @@ const MobileTemplate = (args: any) => {
               ヒント
             </Typography>
             <Typography size="sm" color="#6b7280">
-              このDrawerは{args.resizable ? "リサイズ可能" : "固定サイズ"}です。
-              {args.resizable && "上端をドラッグしてサイズを調整できます。"}
+              このDrawerは{isMobile ? "リサイズ可能" : "リサイズ可能"}です。
+              {isMobile && "上端をドラッグしてサイズを調整できます。"}
             </Typography>
           </div>
         </div>
@@ -375,20 +370,10 @@ const MobileTemplate = (args: any) => {
   );
 };
 
-export const MobileView: Story = {
-  render: MobileTemplate,
+export const Responsive: Story = {
+  render: ResponsiveSample,
   args: {
-    direction: "bottom",
-    size: "60vh",
     resizable: true,
-    minSize: "30vh",
-    maxSize: "80vh",
-  },
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-    layout: "fullscreen",
   },
 };
 
