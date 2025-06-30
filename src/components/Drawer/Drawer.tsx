@@ -156,11 +156,20 @@ const Drawer: React.FC<DrawerProps> = ({
 
   // リサイズハンドラー
   const handleResize = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       if (!dragging.current) return;
 
       const isHorizontal = direction === "left" || direction === "right";
-      const currentPos = isHorizontal ? e.clientX : e.clientY;
+      // タッチかマウスかで座標取得方法を分岐
+      let currentPos: number;
+      if (e instanceof TouchEvent) {
+        const touch = e.touches[0] || e.changedTouches[0];
+        currentPos = isHorizontal ? touch.clientX : touch.clientY;
+      } else {
+        currentPos = isHorizontal
+          ? (e as MouseEvent).clientX
+          : (e as MouseEvent).clientY;
+      }
 
       let delta = currentPos - startPos.current;
 
@@ -192,7 +201,7 @@ const Drawer: React.FC<DrawerProps> = ({
   }, []);
 
   const handleResizeStart = useCallback(
-    (e: React.MouseEvent) => {
+    (e: React.MouseEvent | React.TouchEvent) => {
       if (!resizable) return;
 
       e.preventDefault();
@@ -200,7 +209,19 @@ const Drawer: React.FC<DrawerProps> = ({
 
       dragging.current = true;
       const isHorizontal = direction === "left" || direction === "right";
-      startPos.current = isHorizontal ? e.clientX : e.clientY;
+      let start: number;
+      if ("touches" in e && e.touches.length > 0) {
+        start = isHorizontal ? e.touches[0].clientX : e.touches[0].clientY;
+      } else if ("changedTouches" in e && e.changedTouches.length > 0) {
+        start = isHorizontal
+          ? e.changedTouches[0].clientX
+          : e.changedTouches[0].clientY;
+      } else {
+        start = isHorizontal
+          ? (e as React.MouseEvent).clientX
+          : (e as React.MouseEvent).clientY;
+      }
+      startPos.current = start;
       startSize.current = currentSize;
 
       document.body.style.userSelect = "none";
@@ -209,7 +230,7 @@ const Drawer: React.FC<DrawerProps> = ({
     [resizable, direction, currentSize],
   );
 
-  // グローバルマウスイベントリスナー
+  // グローバルマウス/タッチイベントリスナー
   useEffect(() => {
     if (!resizable) return;
 
@@ -218,8 +239,17 @@ const Drawer: React.FC<DrawerProps> = ({
         handleResize(e);
       }
     };
-
     const handleMouseUp = () => {
+      if (dragging.current) {
+        handleResizeEnd();
+      }
+    };
+    const handleTouchMove = (e: TouchEvent) => {
+      if (dragging.current) {
+        handleResize(e);
+      }
+    };
+    const handleTouchEnd = () => {
       if (dragging.current) {
         handleResizeEnd();
       }
@@ -227,10 +257,14 @@ const Drawer: React.FC<DrawerProps> = ({
 
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [resizable, handleResize, handleResizeEnd]);
 
@@ -332,6 +366,7 @@ const Drawer: React.FC<DrawerProps> = ({
                 direction={direction}
                 data-testid="resize-handle"
                 onMouseDown={handleResizeStart}
+                onTouchStart={handleResizeStart}
               />
             )}
 
@@ -363,6 +398,7 @@ const Drawer: React.FC<DrawerProps> = ({
                   direction={direction}
                   data-testid="resize-handle"
                   onMouseDown={handleResizeStart}
+                  onTouchStart={handleResizeStart}
                 />
               )}
 
