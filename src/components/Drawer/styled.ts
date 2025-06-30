@@ -70,6 +70,7 @@ export const DrawerContainer = styled.div<DrawerContainerProps>`
 // リサイズハンドル
 export type ResizeHandleProps = {
   direction: "left" | "right" | "bottom";
+  active?: boolean;
 };
 
 export const ResizeHandle = styled.div<ResizeHandleProps>`
@@ -80,17 +81,15 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
   cursor: ${({ direction }) =>
     direction === "bottom" ? "ns-resize" : "ew-resize"};
 
-  ${({ direction, theme }) =>
+  ${({ direction, theme, active }) =>
     direction === "bottom"
       ? css`
           top: 0;
           left: 0;
           width: 100%;
           height: 8px;
-          border-top: 2px solid transparent;
-          &:hover {
-            border-top: 2px solid ${theme.palette.primary.main};
-          }
+          border-top: 2px solid
+            ${active ? theme.palette.primary.main : "transparent"};
           @media (pointer: coarse) {
             height: 32px;
           }
@@ -100,14 +99,9 @@ export const ResizeHandle = styled.div<ResizeHandleProps>`
           ${direction === "right" ? "left: 0;" : "right: 0;"}
           width: 8px;
           height: 100%;
-          border-${
-            direction === "right" ? "left" : "right"
-          }: 2px solid transparent;
-          &:hover {
-            border-${direction === "right" ? "left" : "right"}: 2px solid ${
-              theme.palette.primary.main
-            };
-          }
+          border-${direction === "right" ? "left" : "right"}: 2px solid ${
+            active ? theme.palette.primary.main : "transparent"
+          };
           @media (pointer: coarse) {
             width: 32px;
           }

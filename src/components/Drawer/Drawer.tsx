@@ -234,6 +234,21 @@ const Drawer: React.FC<DrawerProps> = ({
     [resizable, direction, currentSize],
   );
 
+  // タッチ用リサイズハンドルhover制御
+  const handleResizeTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      handleResizeStart(e);
+      setIsHandleHovered(true);
+    },
+    [handleResizeStart],
+  );
+  const handleResizeTouchEnd = useCallback(() => {
+    setIsHandleHovered(false);
+  }, []);
+  const handleResizeTouchCancel = useCallback(() => {
+    setIsHandleHovered(false);
+  }, []);
+
   // グローバルマウス/タッチイベントリスナー
   useEffect(() => {
     if (!resizable) return;
@@ -378,12 +393,9 @@ const Drawer: React.FC<DrawerProps> = ({
                 direction={direction}
                 data-testid="resize-handle"
                 onMouseDown={handleResizeStart}
-                onTouchStart={(e) => {
-                  handleResizeStart(e);
-                  setIsHandleHovered(true);
-                }}
-                onTouchEnd={() => setIsHandleHovered(false)}
-                onTouchCancel={() => setIsHandleHovered(false)}
+                onTouchStart={handleResizeTouchStart}
+                onTouchEnd={handleResizeTouchEnd}
+                onTouchCancel={handleResizeTouchCancel}
                 onMouseEnter={() => setIsHandleHovered(true)}
                 onMouseLeave={() => setIsHandleHovered(false)}
               />
@@ -425,12 +437,9 @@ const Drawer: React.FC<DrawerProps> = ({
                   direction={direction}
                   data-testid="resize-handle"
                   onMouseDown={handleResizeStart}
-                  onTouchStart={(e) => {
-                    handleResizeStart(e);
-                    setIsHandleHovered(true);
-                  }}
-                  onTouchEnd={() => setIsHandleHovered(false)}
-                  onTouchCancel={() => setIsHandleHovered(false)}
+                  onTouchStart={handleResizeTouchStart}
+                  onTouchEnd={handleResizeTouchEnd}
+                  onTouchCancel={handleResizeTouchCancel}
                   onMouseEnter={() => setIsHandleHovered(true)}
                   onMouseLeave={() => setIsHandleHovered(false)}
                 />
