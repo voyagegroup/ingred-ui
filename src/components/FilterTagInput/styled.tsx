@@ -122,6 +122,7 @@ export const OverflowIndicator = styled.button<{
     inset: 0 100% 0 auto;
     width: 20px;
     background-color: transparent;
+    pointer-events: none;
   }
 `;
 

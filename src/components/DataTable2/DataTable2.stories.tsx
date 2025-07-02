@@ -23,6 +23,7 @@ import {
   ContextMenu2ButtonItem,
 } from "../ContextMenu2";
 import { FilterTagInput } from "../FilterTagInput";
+import { FilterComboBox } from "../FilterComboBox";
 
 const meta = {
   title: "Components/Data Display/DataTable2",
@@ -452,12 +453,13 @@ export const Default: StoryObj<typeof meta> = {
               >
                 ステータス
               </DataTable2ColumnLabel>
-              <FilterTagInput
-                title="ステータス"
-                size="small"
+              <FilterComboBox
                 values={statusFilterValues}
+                options={["有効", "無効", "保留"]}
                 selectedIndex={statusFilterType}
                 selectOptions={filterTypes}
+                size="small"
+                onSelectChange={setStatusFilterType}
                 onChange={(values) => {
                   setStatusFilterValues(values);
                   changeFilterStatus(
@@ -468,7 +470,6 @@ export const Default: StoryObj<typeof meta> = {
                   );
                   updateArgs({ currentPage: 0 });
                 }}
-                onSelectChange={setStatusFilterType}
               />
             </DataTable2Column>
             <DataTable2Column
