@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.3.3
+
+### Patch Changes
+
+- [#1853](https://github.com/voyagegroup/ingred-ui/pull/1853) [`563b413d`](https://github.com/voyagegroup/ingred-ui/commit/563b413da5762612bc53ea652f24d5c4fa7ced7d) Thanks [@noronaoki](https://github.com/noronaoki)! - DataTable2に関連するマイナーバグfix
+
 ## 23.3.2
 
 ### Patch Changes
