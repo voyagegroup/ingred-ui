@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import {
   InputSize,
   InputVariant,
@@ -75,38 +75,9 @@ export const Input = styled.input<{
     }};
   }
 
-  /* フォーカス状態（コンポーネント管理） */
-  ${({ $isFocused, $error, $variant = "light", theme }) => {
-    if (!$isFocused) return "";
-    const variants = getInputVariantConfig(theme);
-    return css`
-      outline: none;
-      border-color: ${$error
-        ? getErrorStyles(theme).borderColor
-        : variants[$variant].focusBorderColor};
-      box-shadow: 0 0 0 3px
-        ${$error
-          ? getErrorStyles(theme).shadowColor
-          : variants[$variant].focusShadowColor};
-    `;
-  }}
-
-  /* 標準のフォーカススタイル（キーボードアクセシビリティのため） */
+  /* フォーカス状態 */
   &:focus {
-    outline: none;
-    border-color: ${({ $error, $variant = "light", theme }) => {
-      const variants = getInputVariantConfig(theme);
-      return $error
-        ? getErrorStyles(theme).borderColor
-        : variants[$variant].focusBorderColor;
-    }};
-    box-shadow: 0 0 0 3px
-      ${({ $error, $variant = "light", theme }) => {
-        const variants = getInputVariantConfig(theme);
-        return $error
-          ? getErrorStyles(theme).shadowColor
-          : variants[$variant].focusShadowColor;
-      }};
+    ${({ theme, $error }) => theme.interaction.focus($error)}
   }
 
   /* プレースホルダー */

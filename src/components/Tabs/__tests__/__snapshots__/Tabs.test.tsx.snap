@@ -31,7 +31,7 @@ exports[`Tabs component testing Tabs 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-hKMtZM iffqmv"
         tabindex="-1"
         value="fuga"
       >
@@ -94,7 +94,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-hKMtZM iffqmv"
         tabindex="-1"
         value="fuga"
       >
@@ -119,7 +119,7 @@ exports[`Tabs component testing Tabs with badge 1`] = `
         </div>
       </button>
       <button
-        class="sc-hKMtZM bCWiJq"
+        class="sc-hKMtZM iffqmv"
         tabindex="-1"
         value="piyo"
       >

@@ -16,7 +16,7 @@ exports[`DataTable component testing DataTable 1`] = `
         >
           <thead>
             <tr
-              class="sc-hHLeRK cVPKua"
+              class="sc-hHLeRK fyREtD"
             >
               <th
                 class="sc-kDDrLX iGnGwZ"
@@ -56,7 +56,7 @@ exports[`DataTable component testing DataTable 1`] = `
           </thead>
           <tbody>
             <tr
-              class="sc-hHLeRK cVPKua"
+              class="sc-hHLeRK fyREtD"
             >
               <td
                 class="sc-dIouRR jZIBYQ"
@@ -86,7 +86,7 @@ exports[`DataTable component testing DataTable 1`] = `
               </td>
             </tr>
             <tr
-              class="sc-hHLeRK cVPKua"
+              class="sc-hHLeRK fyREtD"
             >
               <td
                 class="sc-dIouRR jZIBYQ"
