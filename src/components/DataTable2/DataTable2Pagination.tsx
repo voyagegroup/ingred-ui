@@ -51,7 +51,7 @@ export const DataTable2Pagination = () => {
       <button
         type="button"
         aria-label="前のページへ"
-        disabled={currentPage === minPage}
+        disabled={currentPage === minPage || totalCount === 0}
         onClick={() => setCurrentPage(Math.max(currentPage - 1, minPage))}
       >
         <Icon name="arrow_left" color="currentColor" />
@@ -66,15 +66,21 @@ export const DataTable2Pagination = () => {
             width={296}
             trigger={
               <button type="button">
-                {Math.min(currentPage * pageSize + 1, pageSize * maxPage)}
-                <styled.ToolbarPaginationOperator>
-                  -
-                </styled.ToolbarPaginationOperator>
-                {Math.min((currentPage + 1) * pageSize, totalCount)}
-                <styled.ToolbarPaginationOperator>
-                  /
-                </styled.ToolbarPaginationOperator>
-                {totalCount}
+                {totalCount === 0 ? (
+                  <>0 / 0</>
+                ) : (
+                  <>
+                    {Math.min(currentPage * pageSize + 1, totalCount)}
+                    <styled.ToolbarPaginationOperator>
+                      -
+                    </styled.ToolbarPaginationOperator>
+                    {Math.min((currentPage + 1) * pageSize, totalCount)}
+                    <styled.ToolbarPaginationOperator>
+                      /
+                    </styled.ToolbarPaginationOperator>
+                    {totalCount}
+                  </>
+                )}
                 <Icon name="arrow_down" size="sm" color="currentColor" />
               </button>
             }
@@ -95,7 +101,7 @@ export const DataTable2Pagination = () => {
       <button
         type="button"
         aria-label="次のページへ"
-        disabled={currentPage === maxPage}
+        disabled={currentPage === maxPage || totalCount === 0}
         onClick={() => setCurrentPage(Math.min(currentPage + 1, maxPage))}
       >
         <Icon name="arrow_right" color="currentColor" />

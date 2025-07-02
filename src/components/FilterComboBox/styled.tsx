@@ -14,7 +14,7 @@ export const SelectContainer = styled.div<StyledProps>`
   position: relative;
   display: flex;
   align-items: center;
-  min-width: 0;
+  min-width: 130px;
   width: calc(100% + 46px);
   height: 100%;
   margin-left: -46px;
