@@ -4,7 +4,6 @@ import React, {
   type ButtonHTMLAttributes,
 } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { getShadow } from "../../utils/getShadow";
 
 // 特に機能を持たない、見た目付きの入れ子メニューのボタン
@@ -28,13 +27,15 @@ const SwitchTruck = styled.span<{
   width: 40px;
   height: 22px;
   background-color: ${({ checked, disabled, theme }) => {
-    if (disabled) return colors.basic[200];
+    if (disabled) return theme.palette.gray.light;
     if (checked) return theme.palette.background.hint;
     return theme.palette.gray.highlight;
   }};
   border: 1px solid
     ${({ checked, disabled, theme }) =>
-      checked && !disabled ? theme.palette.primary.main : colors.basic[400]};
+      checked && !disabled
+        ? theme.palette.primary.main
+        : theme.palette.text.disabled};
   border-radius: 999px;
   box-shadow: ${({ theme }) =>
     getShadow(
@@ -58,16 +59,16 @@ const SwitchThumb = styled.span<{
   border-radius: 14px;
   background-color: ${({ checked, disabled, theme }) => {
     if (disabled && !checked) return theme.palette.gray.light;
-    if (disabled && checked) return colors.blue[500];
+    if (disabled && checked) return theme.palette.primary.main;
     if (checked) return theme.palette.primary.main;
     return theme.palette.background.default;
   }};
   opacity: ${({ checked, disabled }) => (checked && disabled ? 0.6 : null)};
   border: 1px solid
-    ${({ checked, disabled }) => {
-      if (disabled && !checked) return colors.basic[400];
-      if (checked) return colors.blue[600];
-      return colors.basic[400];
+    ${({ checked, disabled, theme }) => {
+      if (disabled && !checked) return theme.palette.text.disabled;
+      if (checked) return theme.palette.primary.dark;
+      return theme.palette.text.disabled;
     }};
   box-shadow: ${({ theme }) =>
     getShadow(
@@ -128,10 +129,10 @@ export const ContextMenu2SwitchItem = styled(
   font-size: 14px;
   line-height: 20px;
   text-align: left;
-  color: ${({ disabled, color }) => {
-    if (disabled) return colors.basic[400];
-    if (color === "danger") return colors.red[500];
-    return colors.basic[900];
+  color: ${({ disabled, color, theme }) => {
+    if (disabled) return theme.palette.text.disabled;
+    if (color === "danger") return theme.palette.danger.main;
+    return theme.palette.black;
   }};
   background: transparent;
   transition: background 0.2s;
@@ -142,6 +143,6 @@ export const ContextMenu2SwitchItem = styled(
 
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    background: ${colors.basic[200]};
+    background: ${({ theme }) => theme.palette.gray.light};
   }
 `;
