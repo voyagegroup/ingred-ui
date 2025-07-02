@@ -1,5 +1,23 @@
 # Changelog
 
+## 23.3.3
+
+### Patch Changes
+
+- [#1853](https://github.com/voyagegroup/ingred-ui/pull/1853) [`563b413d`](https://github.com/voyagegroup/ingred-ui/commit/563b413da5762612bc53ea652f24d5c4fa7ced7d) Thanks [@noronaoki](https://github.com/noronaoki)! - DataTable2に関連するマイナーバグfix
+
+## 23.3.2
+
+### Patch Changes
+
+- [#1848](https://github.com/voyagegroup/ingred-ui/pull/1848) [`f8cb4399`](https://github.com/voyagegroup/ingred-ui/commit/f8cb43998f2f9ac7eee92efc1f71f9652b63009b) Thanks [@deatiger](https://github.com/deatiger)! - Input の型の絞り込みを修正
+
+## 23.3.1
+
+### Patch Changes
+
+- [#1844](https://github.com/voyagegroup/ingred-ui/pull/1844) [`4ddd38dd`](https://github.com/voyagegroup/ingred-ui/commit/4ddd38ddbefabb47534447788b20952a4d6214a9) Thanks [@deatiger](https://github.com/deatiger)! - Android 端末で FilterTagInput の入力値を確定できない不具合を修正
+
 ## 23.3.0
 
 ### Minor Changes

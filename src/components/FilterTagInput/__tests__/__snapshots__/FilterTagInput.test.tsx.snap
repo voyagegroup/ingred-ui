@@ -141,6 +141,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
         >
           <input
             aria-label="フィルターする値"
+            enterkeyhint="enter"
             type="text"
             value=""
           />
@@ -149,7 +150,7 @@ exports[`FileUploader component testing FileUploader 1`] = `
     </div>
     <button
       aria-label="フィルター入力パネルを開く"
-      class="sc-gicCDI eZZcyl"
+      class="sc-gicCDI dwTJWZ"
       data-overflowing="false"
       type="button"
     >

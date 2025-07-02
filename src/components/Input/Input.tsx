@@ -46,6 +46,10 @@ export type InputProps = (
    * エラーメッセージ（アクセシビリティ用）
    */
   errorMessage?: string;
+  /**
+   * 幅を明示的に指定
+   */
+  width?: string | number;
 };
 
 const Input = React.forwardRef<
@@ -111,8 +115,10 @@ const Input = React.forwardRef<
       }
       onBlur={onBlur ? createChainedFunction(handleBlur, onBlur) : handleBlur}
       onWheel={createChainedFunction(
-        rest.type === "number" ? handleWheel : null,
-        rest.onWheel,
+        !multiline && "type" in rest && rest.type === "number"
+          ? handleWheel
+          : null,
+        "onWheel" in rest ? rest.onWheel : undefined,
       )}
     />
   );
