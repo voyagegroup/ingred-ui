@@ -25,6 +25,7 @@ import {
   ContextMenu2ButtonItem,
   ContextMenu2HeadingItem,
 } from "../ContextMenu2";
+import { useTheme } from "../../themes/useTheme";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
@@ -51,6 +52,7 @@ const Toolbar = ({
 }: ToolbarProps) => {
   const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
+  const theme = useTheme();
 
   const isAllChecked = useMemo(
     () => checkedRows.length === rowIds.length,
@@ -200,7 +202,7 @@ const Toolbar = ({
             width={316}
             trigger={
               <styled.DataTable2ExtrasMenuTrigger>
-                <Icon name="more_vert" />
+                <Icon name="setting" color={theme.palette.black} />
               </styled.DataTable2ExtrasMenuTrigger>
             }
             onOpenChange={setIsExtrasMenuOpen}
