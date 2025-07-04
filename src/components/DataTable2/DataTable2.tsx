@@ -109,6 +109,57 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
+  // 共通のボタンレンダリング関数
+  const renderBulkActionButton = useCallback(
+    (action: BulkAction, index: number, isDesktop: boolean) => {
+      if (action.type === "single") {
+        return (
+          <Button
+            key={index}
+            icon={action.icon}
+            color={action.color ?? "basicLight"}
+            size="small"
+            inline={isDesktop}
+            style={action.style}
+            disabled={
+              (action.enabledWhen ?? "checked") === "checked"
+                ? checkedRows.length === 0
+                : action.disabled?.(checkedRows) ?? false
+            }
+            onClick={() => action.onClick(checkedRows)}
+          >
+            {action.label}
+          </Button>
+        );
+      } else if (action.type === "group") {
+        return (
+          <ButtonGroup key={index} size="small">
+            {action.items.map((item, itemIndex) => (
+              <Button
+                key={itemIndex}
+                icon={item.icon}
+                color={item.color ?? "basicLight"}
+                style={item.style}
+                disabled={
+                  (item.enabledWhen ?? "checked") === "checked"
+                    ? checkedRows.length === 0
+                    : item.disabled?.(checkedRows) ?? false
+                }
+                onClick={() => item.onClick(checkedRows)}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </ButtonGroup>
+        );
+      } else {
+        // divider type
+        return <styled.DashedDivider key={index} />;
+      }
+    },
+    [checkedRows],
+  );
+
   // 一括操作エリアの描画ロジック
   let bulkArea: React.ReactNode = null;
   if (customBulkActionArea) {
@@ -125,7 +176,7 @@ const Toolbar = ({
       );
 
       bulkArea = (
-        <div>
+        <styled.BulkActionContainer>
           {dropdownActions.length > 0 && (
             <DropdownButton
               size="small"
@@ -163,105 +214,19 @@ const Toolbar = ({
               {checkedRows.length}件の操作
             </DropdownButton>
           )}
-          {toolbarActions.map((action, index) => {
-            if (action.type === "single") {
-              return (
-                <Button
-                  key={index}
-                  icon={action.icon}
-                  color={action.color ?? "basicLight"}
-                  size="small"
-                  inline
-                  style={action.style}
-                  disabled={
-                    (action.enabledWhen ?? "checked") === "checked"
-                      ? checkedRows.length === 0
-                      : action.disabled?.(checkedRows) ?? false
-                  }
-                  onClick={() => action.onClick(checkedRows)}
-                >
-                  {action.label}
-                </Button>
-              );
-            } else if (action.type === "group") {
-              return (
-                <ButtonGroup key={index} size="small">
-                  {action.items.map((item, itemIndex) => (
-                    <Button
-                      key={itemIndex}
-                      icon={item.icon}
-                      color={item.color ?? "basicLight"}
-                      style={item.style}
-                      disabled={
-                        (item.enabledWhen ?? "checked") === "checked"
-                          ? checkedRows.length === 0
-                          : item.disabled?.(checkedRows) ?? false
-                      }
-                      onClick={() => item.onClick(checkedRows)}
-                    >
-                      {item.label}
-                    </Button>
-                  ))}
-                </ButtonGroup>
-              );
-            } else {
-              // divider type
-              return <styled.DashedDivider key={index} />;
-            }
-          })}
-        </div>
+          {toolbarActions.map((action, index) =>
+            renderBulkActionButton(action, index, true),
+          )}
+        </styled.BulkActionContainer>
       );
     } else {
       // デスクトップ時: 全てのボタンをツールバーに横並びで表示
       bulkArea = (
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {bulkActions.map((action, index) => {
-            if (action.type === "single") {
-              return (
-                <Button
-                  key={index}
-                  icon={action.icon}
-                  color={action.color ?? "basicLight"}
-                  size="small"
-                  inline
-                  style={action.style}
-                  disabled={
-                    (action.enabledWhen ?? "checked") === "checked"
-                      ? checkedRows.length === 0
-                      : action.disabled?.(checkedRows) ?? false
-                  }
-                  onClick={() => action.onClick(checkedRows)}
-                >
-                  {action.label}
-                </Button>
-              );
-            } else if (action.type === "group") {
-              return (
-                <ButtonGroup key={index} size="small">
-                  {action.items.map((item, itemIndex) => (
-                    <Button
-                      key={itemIndex}
-                      icon={item.icon}
-                      color={item.color ?? "basicLight"}
-                      style={item.style}
-                      disabled={
-                        (item.enabledWhen ?? "checked") === "checked"
-                          ? checkedRows.length === 0
-                          : item.disabled?.(checkedRows) ?? false
-                      }
-                      onClick={() => item.onClick(checkedRows)}
-                    >
-                      {item.label}
-                    </Button>
-                  ))}
-                </ButtonGroup>
-              );
-            } else {
-              // divider type
-              return <styled.DashedDivider key={index} />;
-            }
-          })}
-        </div>
+        <styled.BulkActionContainer>
+          {bulkActions.map((action, index) =>
+            renderBulkActionButton(action, index, true),
+          )}
+        </styled.BulkActionContainer>
       );
     }
   }
@@ -269,9 +234,7 @@ const Toolbar = ({
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
       {/* 左側カスタム領域 */}
-      <styled.ToolbarBulkArea
-        style={{ display: "flex", alignItems: "center", gap: 8 }}
-      >
+      <styled.ToolbarBulkArea>
         <Checkbox
           checked={isAllChecked || isIndeterminate}
           indeterminate={isIndeterminate}

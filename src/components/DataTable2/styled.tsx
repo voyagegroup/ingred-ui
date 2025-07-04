@@ -541,3 +541,9 @@ export const DashedDivider = styled.span`
   border-left: 1px dashed ${({ theme }) => theme.palette.divider};
   vertical-align: middle;
 `;
+
+export const BulkActionContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
