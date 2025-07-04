@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo, useEffect, useContext } from "react";
+import React, { useCallback, useMemo, useEffect } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "@storybook/preview-api";
 import { useArgs } from "@storybook/client-api";
 import {
   type TableColumn,
   type SortDirection,
+  type BulkAction,
   DataTable2,
   DataTable2Column,
   DataTable2ColumnLabel,
@@ -12,23 +13,13 @@ import {
   DataTable2Body,
   DataTable2Row,
   DataTable2Cell,
-  DataTable2ActionButton,
   DataTable2InlineEditor,
   DataTable2InlineSelectEditor,
 } from "./index";
 import Icon from "../Icon";
 import ActionButton from "../ActionButton";
-import {
-  ContextMenu2HeadingItem,
-  ContextMenu2ButtonItem,
-} from "../ContextMenu2";
 import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
-import Button from "../Button";
-import ButtonGroup from "../ButtonGroup";
-import Divider from "../Divider";
-import DropdownButton from "../DropdownButton";
-import { DataTable2Context } from "./context";
 import type { ReactNode } from "react";
 
 const meta = {
@@ -77,10 +68,11 @@ type DataTable2StoryArgs = {
   pageSizeOptions: number[];
   currentPage: number;
   totalCount: number;
-  rowControls: ReactNode | null;
-  toolbarButtons?: ReactNode[];
-  toolbarDropdownItems?: { text: string; onClick: () => void }[];
-  toolbarActionArea?: ReactNode;
+  bulkActions?: BulkAction[];
+  customBulkActionArea?: (props: {
+    isSmallLayout: boolean;
+    checkedRows: string[];
+  }) => ReactNode;
   extraButtons?: ReactNode | undefined;
   onCheckedRowsChange: (checkedRows: string[]) => void;
   onPageSizeChange: (pageSize: number) => void;
@@ -178,70 +170,39 @@ export const Default: StoryObj<typeof meta> = {
     pageSizeOptions,
     currentPage: 0,
     totalCount: 1000,
-    rowControls: null,
-    toolbarButtons: [
-      <Button
-        key="add"
-        size="small"
-        icon={<Icon name="add_line" />}
-        color="primary"
-        onClick={() => alert("新規作成")}
-      >
-        新規作成
-      </Button>,
-      <ButtonGroup key="group1" size="small" style={{ marginLeft: 8 }}>
-        <Button icon={<Icon name="copy" />} onClick={() => alert("複製")}>
-          複製
-        </Button>
-        <Button
-          icon={<Icon name="delete_bin" />}
-          color="danger"
-          onClick={() => alert("削除")}
-        >
-          削除
-        </Button>
-        <Button icon={<Icon name="check" />} onClick={() => alert("有効")}>
-          有効
-        </Button>
-      </ButtonGroup>,
-      <Divider key="divider1" orientation="vertical" py={2} mx={2} />,
-      <ButtonGroup key="group2" size="small">
-        <Button icon={<Icon name="forbid" />} onClick={() => alert("無効")}>
-          無効
-        </Button>
-        <Button
-          icon={<Icon name="alert" />}
-          color="danger"
-          onClick={() => alert("警告")}
-        >
-          警告
-        </Button>
-      </ButtonGroup>,
-      <span key="dropdown" style={{ marginLeft: 8 }}>
-        <DropdownButton
-          size="small"
-          color="basicLight"
-          contents={[
-            { text: "一括アーカイブ", onClick: () => alert("一括アーカイブ") },
-            {
-              text: "一括エクスポート",
-              onClick: () => alert("一括エクスポート"),
-            },
-          ]}
-        >
-          その他
-        </DropdownButton>
-      </span>,
-    ],
-    toolbarDropdownItems: [
-      { text: "新規作成", onClick: () => alert("新規作成") },
-      { text: "複製", onClick: () => alert("複製") },
-      { text: "削除", onClick: () => alert("削除") },
-      { text: "有効", onClick: () => alert("有効") },
-      { text: "無効", onClick: () => alert("無効") },
-      { text: "警告", onClick: () => alert("警告") },
-      { text: "一括アーカイブ", onClick: () => alert("一括アーカイブ") },
-      { text: "一括エクスポート", onClick: () => alert("一括エクスポート") },
+    bulkActions: [
+      {
+        type: "single" as const,
+        label: "有効にする",
+        icon: <Icon name="checkbox_circle" />,
+        onClick: () => alert("有効にする"),
+        color: "primary" as const,
+      },
+      {
+        type: "group" as const,
+        items: [
+          {
+            label: "複製する",
+            icon: <Icon name="copy" />,
+            onClick: () => alert("複製する"),
+          },
+          {
+            label: "削除する",
+            icon: <Icon name="delete_bin" />,
+            onClick: () => alert("削除する"),
+            color: "danger" as const,
+          },
+        ],
+      },
+      {
+        type: "divider" as const,
+      },
+      {
+        type: "single" as const,
+        label: "アーカイブする",
+        icon: <Icon name="alert" />,
+        onClick: () => alert("アーカイブする"),
+      },
     ],
     extraButtons: undefined,
     onCheckedRowsChange: () => {},
@@ -259,29 +220,7 @@ export const Default: StoryObj<typeof meta> = {
         totalCount: number;
       }>();
     // argsからDataTable2Propsのみ抽出
-    const {
-      toolbarButtons,
-      toolbarDropdownItems,
-      toolbarActionArea,
-      ...dataTable2Args
-    } = args;
-    const { isSmallLayout, checkedRows } = useContext(DataTable2Context);
-    const ToolbarActionArea = () => {
-      if (isSmallLayout) {
-        const n = checkedRows.length;
-        return (
-          <DropdownButton
-            size="small"
-            color="basicLight"
-            contents={toolbarDropdownItems ?? []}
-            disabled={n === 0}
-          >
-            {n}件の操作
-          </DropdownButton>
-        );
-      }
-      return <>{toolbarButtons ?? []}</>;
-    };
+    const { bulkActions, customBulkActionArea, ...dataTable2Args } = args;
 
     // totalCountに基づいてmockDataを動的に生成
     const mockData = useMemo(() => createMockData(totalCount), [totalCount]);
@@ -438,7 +377,8 @@ export const Default: StoryObj<typeof meta> = {
           {...dataTable2Args}
           columns={columns}
           totalCount={filteredData.length}
-          rowControls={null}
+          bulkActions={bulkActions}
+          customBulkActionArea={customBulkActionArea}
           onCheckedRowsChange={() => {}}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
@@ -462,7 +402,6 @@ export const Default: StoryObj<typeof meta> = {
               }
             });
           }}
-          toolbarActionArea={<ToolbarActionArea />}
         >
           <DataTable2Head>
             <DataTable2Column
@@ -710,7 +649,6 @@ export const Loading: StoryObj<typeof meta> = {
     pageSizeOptions: [50],
     currentPage: 0,
     totalCount: 100,
-    rowControls: null,
     onCheckedRowsChange: () => {},
     onPageSizeChange: () => {},
     onPageChange: () => {},
@@ -853,7 +791,6 @@ export const Controlled: StoryObj<typeof meta> = {
     pageSizeOptions,
     currentPage: 0,
     totalCount: 1000,
-    rowControls: null,
     extraButtons: undefined,
     children: null,
   },
@@ -902,29 +839,29 @@ export const Controlled: StoryObj<typeof meta> = {
     const bulkActions = React.useMemo(
       () => [
         {
+          type: "single" as const,
           label: "有効にする",
           icon: <Icon name="checkbox_circle" />,
           onClick: () => alert(`有効にする: ${checkedRows.join(", ")}`),
-          important: true,
           color: "primary" as const,
         },
         {
+          type: "single" as const,
           label: "アーカイブする",
           icon: <Icon name="alert" />,
           onClick: () => alert(`アーカイブする: ${checkedRows.join(", ")}`),
-          important: true,
         },
         {
+          type: "single" as const,
           label: "複製する",
           icon: <Icon name="copy" />,
           onClick: () => alert(`複製する: ${checkedRows.join(", ")}`),
-          important: false,
         },
         {
+          type: "single" as const,
           label: "削除する",
           icon: <Icon name="delete_bin" />,
           onClick: () => alert(`削除する: ${checkedRows.join(", ")}`),
-          important: false,
           color: "danger" as const,
         },
       ],
@@ -937,7 +874,6 @@ export const Controlled: StoryObj<typeof meta> = {
           {...args}
           columns={columns}
           totalCount={data.length}
-          rowControls={null}
           bulkActions={bulkActions}
           onCheckedRowsChange={setCheckedRows}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}

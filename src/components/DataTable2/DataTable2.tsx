@@ -14,43 +14,65 @@ import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
 import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
 import { DataTable2MenuSpaceControl } from "./DataTable2MenuSpaceControl";
 import { DataTable2Pagination } from "./DataTable2Pagination";
-import { DataTable2RowControls } from "./DataTable2RowControls";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
 import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 import Button from "../Button";
-import { ContextMenu2ButtonControlsItem } from "../ContextMenu2/ContextMenu2ButtonControlsItem";
-import {
-  ContextMenu2ButtonItem,
-  ContextMenu2HeadingItem,
-} from "../ContextMenu2";
 import { useTheme } from "../../themes/useTheme";
 import ButtonGroup from "../ButtonGroup";
+import DropdownButton from "../DropdownButton";
+import Divider from "../Divider";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-type BulkAction = {
+// BulkAction型定義
+export type BulkActionItem = {
   label: string;
-  icon?: ReactNode;
+  icon?: React.ReactNode;
   onClick: (selectedRows: string[]) => void;
-  important?: boolean; // trueなら常時表示、falseならメニューに格納
-  color?: "danger" | "primary" | "default";
+  color?:
+    | "danger"
+    | "primary"
+    | "primaryPale"
+    | "basicLight"
+    | "basicDark"
+    | "clear";
+  disabled?: (selectedRows: string[]) => boolean;
 };
 
+export type BulkActionGroup = {
+  type: "group";
+  items: BulkActionItem[];
+};
+
+export type BulkActionSingle = {
+  type: "single";
+} & BulkActionItem;
+
+export type BulkActionDivider = {
+  type: "divider";
+};
+
+export type BulkAction = BulkActionSingle | BulkActionGroup | BulkActionDivider;
+
 type ToolbarProps = {
-  rowControls?: ReactNode;
-  bulkActions?: BulkAction[];
   extraButtons?: ReactNode;
 };
 
 const Toolbar = ({
-  rowControls,
-  bulkActions = [],
   extraButtons,
-}: ToolbarProps) => {
+  bulkActions,
+  customBulkActionArea,
+}: ToolbarProps & {
+  bulkActions?: BulkAction[];
+  customBulkActionArea?: (context: {
+    isSmallLayout: boolean;
+    checkedRows: string[];
+  }) => React.ReactNode;
+}) => {
   const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
   const theme = useTheme();
@@ -64,7 +86,6 @@ const Toolbar = ({
     [checkedRows, rowIds],
   );
 
-  const [isBulkMenuOpen, setIsBulkMenuOpen] = useState(false);
   const [isExtrasMenuOpen, setIsExtrasMenuOpen] = useState(false);
 
   const hasFilterItems = useMemo(
@@ -76,47 +97,95 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // Figma準拠の一括操作ボタン定義
-  const leftActions = [
-    {
-      label: "複製",
-      icon: <Icon name="copy" size="sm-md" color="currentColor" />,
-      onClick: (selected: string[]) => {},
-      color: "default",
-      important: true,
-      disabled: checkedRows.length === 0,
-    },
-    {
-      label: "削除",
-      icon: <Icon name="delete_bin" size="sm-md" color="currentColor" />,
-      onClick: (selected: string[]) => {},
-      color: "danger",
-      important: true,
-      disabled: checkedRows.length === 0,
-    },
-  ];
-  const leftActions2 = [
-    {
-      label: "有効にする",
-      icon: <Icon name="check" size="sm-md" color="currentColor" />,
-      onClick: (selected: string[]) => {},
-      color: "default",
-      important: true,
-      disabled: checkedRows.length === 0,
-    },
-    {
-      label: "無効にする",
-      icon: <Icon name="forbid" size="sm-md" color="currentColor" />,
-      onClick: (selected: string[]) => {},
-      color: "default",
-      important: true,
-      disabled: checkedRows.length === 0,
-    },
-  ];
+  // 一括操作エリアの描画ロジック
+  let bulkArea: React.ReactNode = null;
+  if (customBulkActionArea) {
+    bulkArea = customBulkActionArea({ isSmallLayout, checkedRows });
+  } else if (bulkActions && bulkActions.length > 0) {
+    if (isSmallLayout) {
+      // モバイル時：すべてのアクションをDropdownButtonにまとめる
+      const allItems = bulkActions.flatMap((action) => {
+        if (action.type === "single") {
+          return [action];
+        } else if (action.type === "group") {
+          return action.items;
+        } else {
+          return []; // dividerは無視
+        }
+      });
+
+      bulkArea = (
+        <DropdownButton
+          size="small"
+          color="basicLight"
+          contents={allItems.map((item) => ({
+            text: item.label,
+            onClick: () => item.onClick(checkedRows),
+            disabled:
+              checkedRows.length === 0 ||
+              (item.disabled?.(checkedRows) ?? false),
+            icon: item.icon,
+          }))}
+          disabled={checkedRows.length === 0}
+        >
+          {checkedRows.length}件の操作
+        </DropdownButton>
+      );
+    } else {
+      // デスクトップ時：構造を保持してレンダリング
+      bulkArea = (
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {bulkActions.map((action, index) => {
+            if (action.type === "single") {
+              return (
+                <Button
+                  key={index}
+                  icon={action.icon}
+                  color={action.color}
+                  size="small"
+                  disabled={
+                    checkedRows.length === 0 ||
+                    (action.disabled?.(checkedRows) ?? false)
+                  }
+                  onClick={() => action.onClick(checkedRows)}
+                >
+                  {action.label}
+                </Button>
+              );
+            } else if (action.type === "group") {
+              return (
+                <ButtonGroup key={index} size="small">
+                  {action.items.map((item, itemIndex) => (
+                    <Button
+                      key={itemIndex}
+                      icon={item.icon}
+                      color={item.color}
+                      disabled={
+                        checkedRows.length === 0 ||
+                        (item.disabled?.(checkedRows) ?? false)
+                      }
+                      onClick={() => item.onClick(checkedRows)}
+                    >
+                      {item.label}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              );
+            } else if (action.type === "divider") {
+              return (
+                <Divider key={index} orientation="vertical" py={2} mx={2} />
+              );
+            }
+            return null;
+          })}
+        </div>
+      );
+    }
+  }
 
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
-      {/* 一括操作（左寄せ） */}
+      {/* 左側カスタム領域 */}
       <styled.ToolbarBulkArea
         style={{ display: "flex", alignItems: "center", gap: 8 }}
       >
@@ -125,7 +194,6 @@ const Toolbar = ({
           indeterminate={isIndeterminate}
           onChange={onCheck}
         />
-        {/* BulkSelectedTextはisSmallLayoutで非表示にする */}
         {!isSmallLayout && (
           <styled.BulkSelectedText>
             <span
@@ -136,127 +204,7 @@ const Toolbar = ({
             件を
           </styled.BulkSelectedText>
         )}
-        {isSmallLayout ? (
-          // TODO: 将来的にはDropdownButtonコンポーネントに差し替えて、メニューも統一的に扱うことを検討する
-          <ContextMenu2Container>
-            <ContextMenu2
-              open={isBulkMenuOpen}
-              onOpenChange={setIsBulkMenuOpen}
-              trigger={
-                <Button
-                  size="small"
-                  color="basicLight"
-                  inline
-                  disabled={checkedRows.length === 0}
-                  onClick={() => setIsBulkMenuOpen((v) => !v)}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    fontWeight: 400,
-                    minWidth: "fit-content",
-                    paddingRight: theme.spacing / 2,
-                  }}
-                >
-                  <span
-                    style={{
-                      color:
-                        checkedRows.length === 0
-                          ? theme.palette.text.disabled
-                          : theme.palette.primary.main,
-                      fontWeight: 700,
-                    }}
-                  >
-                    {checkedRows.length}
-                  </span>
-                  件の操作
-                  <Icon name="arrow_bottom" size="sm-md" />
-                </Button>
-              }
-            >
-              <ContextMenu2HeadingItem>
-                {checkedRows.length}件を
-              </ContextMenu2HeadingItem>
-              {leftActions.concat(leftActions2).map((action) => (
-                <ContextMenu2ButtonItem
-                  key={action.label}
-                  onClick={() => action.onClick(checkedRows)}
-                  disabled={action.disabled}
-                  color={action.color === "danger" ? "danger" : undefined}
-                  prepend={action.icon}
-                >
-                  {action.label}
-                </ContextMenu2ButtonItem>
-              ))}
-              <ContextMenu2ButtonItem
-                onClick={() => {}}
-                disabled={checkedRows.length > 0}
-                style={{ color: theme.palette.primary.main, fontWeight: 400 }}
-              >
-                キャンペーンの新規作成
-              </ContextMenu2ButtonItem>
-            </ContextMenu2>
-          </ContextMenu2Container>
-        ) : (
-          <>
-            {/* ボタングループ1（複製・削除） */}
-            <ButtonGroup size="small" style={{ marginLeft: 4 }}>
-              {leftActions.map((action) => (
-                <Button
-                  key={action.label}
-                  onClick={() => action.onClick(checkedRows)}
-                  color={action.color === "danger" ? "danger" : "basicLight"}
-                  disabled={action.disabled}
-                  icon={action.icon}
-                  style={{ fontWeight: 400 }}
-                >
-                  {action.label}
-                </Button>
-              ))}
-            </ButtonGroup>
-            {/* 区切り線 */}
-            <div
-              style={{
-                width: 1,
-                height: 28,
-                background: theme.palette.gray.main,
-                margin: "0 4px",
-              }}
-            />
-            {/* ボタングループ2（有効にする・無効にする） */}
-            <ButtonGroup size="small">
-              {leftActions2.map((action) => (
-                <Button
-                  key={action.label}
-                  onClick={() => action.onClick(checkedRows)}
-                  color="basicLight"
-                  disabled={action.disabled}
-                  icon={action.icon}
-                  style={{ fontWeight: 400 }}
-                >
-                  {action.label}
-                </Button>
-              ))}
-            </ButtonGroup>
-            {/* 区切り線 */}
-            <div
-              style={{
-                width: 1,
-                height: 28,
-                background: theme.palette.gray.main,
-                margin: "0 4px",
-              }}
-            />
-            {/* キャンペーンの新規作成（チェックなしでenabled、チェックありでdisabled） */}
-            <Button
-              color="primary"
-              size="small"
-              disabled={checkedRows.length > 0}
-              inline
-            >
-              キャンペーンの新規作成
-            </Button>
-          </>
-        )}
+        {bulkArea}
       </styled.ToolbarBulkArea>
 
       {/* 右寄せ：フィルタ・ページング・extraButtons */}
@@ -328,9 +276,16 @@ type DataTable2Props = {
    */
   onColumnsChange: (columns: TableColumn[]) => void;
   /**
-   * ツールバー左側のカスタム領域。任意のボタン群やUIを自由に設置可能。
+   * 一括操作ボタン群の定義。デスクトップ時はButtonGroup、モバイル時はDropdownButtonで自動切り替え。
    */
-  toolbarActionArea?: ReactNode;
+  bulkActions?: BulkAction[];
+  /**
+   * 一括操作エリアを完全カスタマイズしたい場合のrender-props。isSmallLayout, checkedRows等を受け取れる。
+   */
+  customBulkActionArea?: (context: {
+    isSmallLayout: boolean;
+    checkedRows: string[];
+  }) => React.ReactNode;
 } & {
   /**
    * 見た目の制御。枠線で囲むか否か。枠線で囲むと角丸も適用される
@@ -342,13 +297,10 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
-  rowControls?: ReactNode;
 } & ToolbarProps;
 
 export const DataTable2 = ({
   bordered,
-  rowControls,
-  bulkActions,
   extraButtons,
   currentPage,
   pageSize,
@@ -360,7 +312,8 @@ export const DataTable2 = ({
   onColumnsChange,
   onCheckedRowsChange,
   children,
-  toolbarActionArea,
+  bulkActions,
+  customBulkActionArea,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);
@@ -445,9 +398,9 @@ export const DataTable2 = ({
         }}
       >
         <Toolbar
-          rowControls={rowControls}
-          bulkActions={bulkActions}
           extraButtons={extraButtons}
+          bulkActions={bulkActions}
+          customBulkActionArea={customBulkActionArea}
         />
         <styled.Viewport>
           <table>{children}</table>
