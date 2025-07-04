@@ -26,6 +26,7 @@ import {
   ContextMenu2HeadingItem,
 } from "../ContextMenu2";
 import { useTheme } from "../../themes/useTheme";
+import ButtonGroup from "../ButtonGroup";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
@@ -75,118 +76,185 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // 重要度で分ける
-  const importantActions = bulkActions.filter((a) => a.important !== false);
-  const menuActions = bulkActions.filter((a) => a.important === false);
+  // Figma準拠の一括操作ボタン定義
+  const leftActions = [
+    {
+      label: "複製",
+      icon: <Icon name="copy" size="sm-md" color="currentColor" />,
+      onClick: (selected: string[]) => {},
+      color: "default",
+      important: true,
+      disabled: checkedRows.length === 0,
+    },
+    {
+      label: "削除",
+      icon: <Icon name="delete_bin" size="sm-md" color="currentColor" />,
+      onClick: (selected: string[]) => {},
+      color: "danger",
+      important: true,
+      disabled: checkedRows.length === 0,
+    },
+  ];
+  const leftActions2 = [
+    {
+      label: "有効にする",
+      icon: <Icon name="check" size="sm-md" color="currentColor" />,
+      onClick: (selected: string[]) => {},
+      color: "default",
+      important: true,
+      disabled: checkedRows.length === 0,
+    },
+    {
+      label: "無効にする",
+      icon: <Icon name="forbid" size="sm-md" color="currentColor" />,
+      onClick: (selected: string[]) => {},
+      color: "default",
+      important: true,
+      disabled: checkedRows.length === 0,
+    },
+  ];
 
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
       {/* 一括操作（左寄せ） */}
-      <styled.ToolbarBulkArea>
+      <styled.ToolbarBulkArea
+        style={{ display: "flex", alignItems: "center", gap: 8 }}
+      >
         <Checkbox
           checked={isAllChecked || isIndeterminate}
           indeterminate={isIndeterminate}
           onChange={onCheck}
         />
+        {/* BulkSelectedTextはisSmallLayoutで非表示にする */}
+        {!isSmallLayout && (
+          <styled.BulkSelectedText>
+            <span
+              style={{ color: theme.palette.primary.main, fontWeight: 700 }}
+            >
+              {checkedRows.length}
+            </span>
+            件を
+          </styled.BulkSelectedText>
+        )}
         {isSmallLayout ? (
+          // TODO: 将来的にはDropdownButtonコンポーネントに差し替えて、メニューも統一的に扱うことを検討する
           <ContextMenu2Container>
             <ContextMenu2
               open={isBulkMenuOpen}
               onOpenChange={setIsBulkMenuOpen}
               trigger={
-                <styled.BulkActionMenuTrigger
-                  type="button"
-                  disabled={rowIds.length === 0}
+                <Button
+                  size="small"
+                  color="basicLight"
+                  inline
+                  disabled={checkedRows.length === 0}
+                  onClick={() => setIsBulkMenuOpen((v) => !v)}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    fontWeight: 400,
+                    minWidth: "fit-content",
+                    paddingRight: theme.spacing / 2,
+                  }}
                 >
-                  <Icon name="more_vert" />
-                </styled.BulkActionMenuTrigger>
+                  <span
+                    style={{
+                      color:
+                        checkedRows.length === 0
+                          ? theme.palette.text.disabled
+                          : theme.palette.primary.main,
+                      fontWeight: 700,
+                    }}
+                  >
+                    {checkedRows.length}
+                  </span>
+                  件の操作
+                  <Icon name="arrow_bottom" size="sm-md" />
+                </Button>
               }
             >
               <ContextMenu2HeadingItem>
                 {checkedRows.length}件を
               </ContextMenu2HeadingItem>
-              {importantActions.map(
-                (action: (typeof importantActions)[number], i: number) => (
-                  <ContextMenu2ButtonItem
-                    key={action.label + i}
-                    onClick={() => action.onClick(checkedRows)}
-                    disabled={checkedRows.length === 0}
-                    color={action.color === "danger" ? "danger" : undefined}
-                    prepend={action.icon}
-                  >
-                    {action.label}
-                  </ContextMenu2ButtonItem>
-                ),
-              )}
-              {menuActions.map(
-                (action: (typeof menuActions)[number], i: number) => (
-                  <ContextMenu2ButtonItem
-                    key={action.label + i}
-                    onClick={() => action.onClick(checkedRows)}
-                    disabled={checkedRows.length === 0}
-                    color={action.color === "danger" ? "danger" : undefined}
-                    prepend={action.icon}
-                  >
-                    {action.label}
-                  </ContextMenu2ButtonItem>
-                ),
-              )}
+              {leftActions.concat(leftActions2).map((action) => (
+                <ContextMenu2ButtonItem
+                  key={action.label}
+                  onClick={() => action.onClick(checkedRows)}
+                  disabled={action.disabled}
+                  color={action.color === "danger" ? "danger" : undefined}
+                  prepend={action.icon}
+                >
+                  {action.label}
+                </ContextMenu2ButtonItem>
+              ))}
+              <ContextMenu2ButtonItem
+                onClick={() => {}}
+                disabled={checkedRows.length > 0}
+                style={{ color: theme.palette.primary.main, fontWeight: 400 }}
+              >
+                キャンペーンの新規作成
+              </ContextMenu2ButtonItem>
             </ContextMenu2>
           </ContextMenu2Container>
         ) : (
           <>
-            <styled.BulkSelectedText>
-              {checkedRows.length}件を
-            </styled.BulkSelectedText>
-            {importantActions.map(
-              (action: (typeof importantActions)[number], i: number) => (
+            {/* ボタングループ1（複製・削除） */}
+            <ButtonGroup size="small" style={{ marginLeft: 4 }}>
+              {leftActions.map((action) => (
                 <Button
-                  key={action.label + i}
+                  key={action.label}
                   onClick={() => action.onClick(checkedRows)}
-                  color={
-                    action.color === "default" || !action.color
-                      ? "basicLight"
-                      : action.color
-                  }
-                  size="small"
-                  disabled={checkedRows.length === 0}
+                  color={action.color === "danger" ? "danger" : "basicLight"}
+                  disabled={action.disabled}
                   icon={action.icon}
-                  style={{ marginRight: 4 }}
+                  style={{ fontWeight: 400 }}
                 >
                   {action.label}
                 </Button>
-              ),
-            )}
-            {menuActions.length > 0 && (
-              <ContextMenu2Container>
-                <ContextMenu2
-                  open={isBulkMenuOpen}
-                  onOpenChange={setIsBulkMenuOpen}
-                  trigger={
-                    <styled.BulkActionMenuTrigger
-                      type="button"
-                      disabled={checkedRows.length === 0}
-                    >
-                      <Icon name="more_vert" />
-                    </styled.BulkActionMenuTrigger>
-                  }
+              ))}
+            </ButtonGroup>
+            {/* 区切り線 */}
+            <div
+              style={{
+                width: 1,
+                height: 28,
+                background: theme.palette.gray.main,
+                margin: "0 4px",
+              }}
+            />
+            {/* ボタングループ2（有効にする・無効にする） */}
+            <ButtonGroup size="small">
+              {leftActions2.map((action) => (
+                <Button
+                  key={action.label}
+                  onClick={() => action.onClick(checkedRows)}
+                  color="basicLight"
+                  disabled={action.disabled}
+                  icon={action.icon}
+                  style={{ fontWeight: 400 }}
                 >
-                  {menuActions.map(
-                    (action: (typeof menuActions)[number], i: number) => (
-                      <styled.BulkActionMenuItem
-                        key={action.label + i}
-                        onClick={() => action.onClick(checkedRows)}
-                        color={action.color}
-                        disabled={checkedRows.length === 0}
-                      >
-                        {action.icon}
-                        {action.label}
-                      </styled.BulkActionMenuItem>
-                    ),
-                  )}
-                </ContextMenu2>
-              </ContextMenu2Container>
-            )}
+                  {action.label}
+                </Button>
+              ))}
+            </ButtonGroup>
+            {/* 区切り線 */}
+            <div
+              style={{
+                width: 1,
+                height: 28,
+                background: theme.palette.gray.main,
+                margin: "0 4px",
+              }}
+            />
+            {/* キャンペーンの新規作成（チェックなしでenabled、チェックありでdisabled） */}
+            <Button
+              color="primary"
+              size="small"
+              disabled={checkedRows.length > 0}
+              inline
+            >
+              キャンペーンの新規作成
+            </Button>
           </>
         )}
       </styled.ToolbarBulkArea>

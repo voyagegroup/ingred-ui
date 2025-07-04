@@ -100,6 +100,7 @@ export const Toolbar = styled.div<{ isSmallLayout: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
+  justify-content: space-between;
   padding: 16px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
   background: ${colors.basic[100]};
 `;
@@ -193,7 +194,6 @@ export const ToolbarExtras = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: auto;
 `;
 
 export const DataTable2ActionButton = styled.button`
@@ -508,8 +508,6 @@ export const BulkActionButton = styled.button<{
 
 export const BulkActionMenuTrigger = styled.button`
   ${actionButton}
-  padding: 4px 8px;
-  background: #fff;
 `;
 
 export const BulkActionMenuItem = styled.button<{
