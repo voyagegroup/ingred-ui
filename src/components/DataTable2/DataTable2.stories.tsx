@@ -18,6 +18,8 @@ import {
 } from "./index";
 import Icon from "../Icon";
 import ActionButton from "../ActionButton";
+import Button from "../Button";
+import ButtonGroup from "../ButtonGroup";
 import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
 import type { ReactNode } from "react";
@@ -179,26 +181,33 @@ export const Default: StoryObj<typeof meta> = {
         color: "basicLight",
         enabledWhen: "checked",
       },
+
       {
-        type: "single",
-        label: "複製する",
-        icon: <Icon name="copy" color="currentColor" />,
-        onClick: () => alert("複製"),
-        enabledWhen: "checked",
+        type: "group",
+        items: [
+          {
+            label: "複製する",
+            icon: <Icon name="copy" color="currentColor" />,
+            onClick: () => alert("複製"),
+            enabledWhen: "checked",
+          },
+          {
+            label: "削除する",
+            icon: <Icon name="delete_bin" color="currentColor" />,
+            onClick: () => alert("削除"),
+            enabledWhen: "checked",
+          },
+        ],
       },
       {
-        type: "single",
-        label: "削除する",
-        icon: <Icon name="delete_bin" color="currentColor" />,
-        onClick: () => alert("削除"),
-        color: "danger",
-        enabledWhen: "checked",
+        type: "divider",
       },
       {
         type: "single",
         label: "新規作成",
         onClick: () => alert("チェックされていない時だけ押せる"),
         enabledWhen: "custom",
+        color: "primary",
         disabled: (checkedRows) => checkedRows.length > 0,
         displayIn: "toolbar",
       },

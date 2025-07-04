@@ -20,6 +20,7 @@ import Checkbox from "../Checkbox";
 import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 import Button from "../Button";
 import { useTheme } from "../../themes/useTheme";
+import ButtonGroup from "../ButtonGroup";
 import DropdownButton from "../DropdownButton";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,22 +28,47 @@ import DropdownButton from "../DropdownButton";
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
 // BulkAction型定義
-export type BulkAction = {
-  type: "single";
-  label: string;
-  icon?: React.ReactNode;
-  onClick: (selectedRows: string[]) => void;
-  color?:
-    | "danger"
-    | "primary"
-    | "primaryPale"
-    | "basicLight"
-    | "basicDark"
-    | "clear";
-  displayIn?: "dropdown" | "toolbar";
-  enabledWhen?: "checked" | "custom";
-  disabled?: (checkedRows: string[]) => boolean;
-};
+export type BulkAction =
+  | {
+      type: "single";
+      label: string;
+      icon?: React.ReactNode;
+      onClick: (selectedRows: string[]) => void;
+      color?:
+        | "danger"
+        | "primary"
+        | "primaryPale"
+        | "basicLight"
+        | "basicDark"
+        | "clear";
+      displayIn?: "dropdown" | "toolbar";
+      enabledWhen?: "checked" | "custom";
+      disabled?: (checkedRows: string[]) => boolean;
+      style?: React.CSSProperties; // テキスト色などのカスタムスタイル
+    }
+  | {
+      type: "group";
+      items: {
+        label: string;
+        icon?: React.ReactNode;
+        onClick: (selectedRows: string[]) => void;
+        color?:
+          | "danger"
+          | "primary"
+          | "primaryPale"
+          | "basicLight"
+          | "basicDark"
+          | "clear";
+        enabledWhen?: "checked" | "custom";
+        disabled?: (checkedRows: string[]) => boolean;
+        style?: React.CSSProperties;
+      }[];
+      displayIn?: "dropdown" | "toolbar";
+    }
+  | {
+      type: "divider";
+      displayIn?: "dropdown" | "toolbar";
+    };
 
 type ToolbarProps = {
   extraButtons?: ReactNode;
@@ -99,65 +125,142 @@ const Toolbar = ({
       );
 
       bulkArea = (
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div>
           {dropdownActions.length > 0 && (
             <DropdownButton
               size="small"
               color="basicLight"
-              contents={dropdownActions.map((action) => ({
-                text: action.label,
-                onClick: () => action.onClick(checkedRows),
-                disabled:
-                  (action.enabledWhen ?? "checked") === "checked"
-                    ? checkedRows.length === 0
-                    : action.disabled?.(checkedRows) ?? false,
-                icon: action.icon,
-              }))}
+              contents={dropdownActions.flatMap((action) => {
+                if (action.type === "single") {
+                  return [
+                    {
+                      text: action.label,
+                      onClick: () => action.onClick(checkedRows),
+                      disabled:
+                        (action.enabledWhen ?? "checked") === "checked"
+                          ? checkedRows.length === 0
+                          : action.disabled?.(checkedRows) ?? false,
+                      icon: action.icon,
+                    },
+                  ];
+                } else if (action.type === "group") {
+                  return action.items.map((item) => ({
+                    text: item.label,
+                    onClick: () => item.onClick(checkedRows),
+                    disabled:
+                      (item.enabledWhen ?? "checked") === "checked"
+                        ? checkedRows.length === 0
+                        : item.disabled?.(checkedRows) ?? false,
+                    icon: item.icon,
+                  }));
+                } else {
+                  // divider type
+                  return [];
+                }
+              })}
               disabled={checkedRows.length === 0}
             >
               {checkedRows.length}件の操作
             </DropdownButton>
           )}
-          {toolbarActions.map((action, index) => (
-            <Button
-              key={index}
-              icon={action.icon}
-              color={action.color}
-              size="small"
-              inline
-              disabled={
-                (action.enabledWhen ?? "checked") === "checked"
-                  ? checkedRows.length === 0
-                  : action.disabled?.(checkedRows) ?? false
-              }
-              onClick={() => action.onClick(checkedRows)}
-            >
-              {action.label}
-            </Button>
-          ))}
+          {toolbarActions.map((action, index) => {
+            if (action.type === "single") {
+              return (
+                <Button
+                  key={index}
+                  icon={action.icon}
+                  color={action.color ?? "basicLight"}
+                  size="small"
+                  inline
+                  style={action.style}
+                  disabled={
+                    (action.enabledWhen ?? "checked") === "checked"
+                      ? checkedRows.length === 0
+                      : action.disabled?.(checkedRows) ?? false
+                  }
+                  onClick={() => action.onClick(checkedRows)}
+                >
+                  {action.label}
+                </Button>
+              );
+            } else if (action.type === "group") {
+              return (
+                <ButtonGroup key={index} size="small">
+                  {action.items.map((item, itemIndex) => (
+                    <Button
+                      key={itemIndex}
+                      icon={item.icon}
+                      color={item.color ?? "basicLight"}
+                      style={item.style}
+                      disabled={
+                        (item.enabledWhen ?? "checked") === "checked"
+                          ? checkedRows.length === 0
+                          : item.disabled?.(checkedRows) ?? false
+                      }
+                      onClick={() => item.onClick(checkedRows)}
+                    >
+                      {item.label}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              );
+            } else {
+              // divider type
+              return <styled.DashedDivider key={index} />;
+            }
+          })}
         </div>
       );
     } else {
       // デスクトップ時: 全てのボタンをツールバーに横並びで表示
       bulkArea = (
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {bulkActions.map((action, index) => (
-            <Button
-              key={index}
-              icon={action.icon}
-              color={action.color}
-              size="small"
-              inline
-              disabled={
-                (action.enabledWhen ?? "checked") === "checked"
-                  ? checkedRows.length === 0
-                  : action.disabled?.(checkedRows) ?? false
-              }
-              onClick={() => action.onClick(checkedRows)}
-            >
-              {action.label}
-            </Button>
-          ))}
+          {bulkActions.map((action, index) => {
+            if (action.type === "single") {
+              return (
+                <Button
+                  key={index}
+                  icon={action.icon}
+                  color={action.color ?? "basicLight"}
+                  size="small"
+                  inline
+                  style={action.style}
+                  disabled={
+                    (action.enabledWhen ?? "checked") === "checked"
+                      ? checkedRows.length === 0
+                      : action.disabled?.(checkedRows) ?? false
+                  }
+                  onClick={() => action.onClick(checkedRows)}
+                >
+                  {action.label}
+                </Button>
+              );
+            } else if (action.type === "group") {
+              return (
+                <ButtonGroup key={index} size="small">
+                  {action.items.map((item, itemIndex) => (
+                    <Button
+                      key={itemIndex}
+                      icon={item.icon}
+                      color={item.color ?? "basicLight"}
+                      style={item.style}
+                      disabled={
+                        (item.enabledWhen ?? "checked") === "checked"
+                          ? checkedRows.length === 0
+                          : item.disabled?.(checkedRows) ?? false
+                      }
+                      onClick={() => item.onClick(checkedRows)}
+                    >
+                      {item.label}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+              );
+            } else {
+              // divider type
+              return <styled.DashedDivider key={index} />;
+            }
+          })}
         </div>
       );
     }
