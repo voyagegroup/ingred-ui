@@ -19,23 +19,36 @@ import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
 import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
+import Button from "../Button";
+import { ContextMenu2ButtonControlsItem } from "../ContextMenu2/ContextMenu2ButtonControlsItem";
+import {
+  ContextMenu2ButtonItem,
+  ContextMenu2HeadingItem,
+} from "../ContextMenu2";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
+type BulkAction = {
+  label: string;
+  icon?: ReactNode;
+  onClick: (selectedRows: string[]) => void;
+  important?: boolean; // trueなら常時表示、falseならメニューに格納
+  color?: "danger" | "primary" | "default";
+};
+
 type ToolbarProps = {
-  /**
-   * 「◯件選択中」をクリックしたときに表示される ContextMenu2 の中身を指定できます。
-   * `<ContextMenu2>` 内に格納できるコンポーネントのみで構成してください。
-   */
   rowControls?: ReactNode;
-  /**
-   * 右上に任意のボタンを設置できます。
-   */
+  bulkActions?: BulkAction[];
   extraButtons?: ReactNode;
 };
-const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
+
+const Toolbar = ({
+  rowControls,
+  bulkActions = [],
+  extraButtons,
+}: ToolbarProps) => {
   const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
 
@@ -48,7 +61,8 @@ const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
     [checkedRows, rowIds],
   );
 
-  const [isControlOpen, setIsControlOpen] = useState(false);
+  const [isBulkMenuOpen, setIsBulkMenuOpen] = useState(false);
+  const [isExtrasMenuOpen, setIsExtrasMenuOpen] = useState(false);
 
   const hasFilterItems = useMemo(
     () => columns.some((column) => column.filtered !== undefined),
@@ -59,56 +73,145 @@ const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
+  // 重要度で分ける
+  const importantActions = bulkActions.filter((a) => a.important !== false);
+  const menuActions = bulkActions.filter((a) => a.important === false);
+
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
-      {rowControls && (
-        <>
-          <Checkbox
-            checked={isAllChecked || isIndeterminate}
-            indeterminate={isIndeterminate}
-            onChange={onCheck}
-          />
-          <DataTable2RowControls>{rowControls}</DataTable2RowControls>
-          <styled.ToolbarSeparator />
-        </>
-      )}
+      {/* 一括操作（左寄せ） */}
+      <styled.ToolbarBulkArea>
+        <Checkbox
+          checked={isAllChecked || isIndeterminate}
+          indeterminate={isIndeterminate}
+          onChange={onCheck}
+        />
+        {isSmallLayout ? (
+          <ContextMenu2Container>
+            <ContextMenu2
+              open={isBulkMenuOpen}
+              onOpenChange={setIsBulkMenuOpen}
+              trigger={
+                <styled.BulkActionMenuTrigger
+                  type="button"
+                  disabled={rowIds.length === 0}
+                >
+                  <Icon name="more_vert" />
+                </styled.BulkActionMenuTrigger>
+              }
+            >
+              <ContextMenu2HeadingItem>
+                {checkedRows.length}件を
+              </ContextMenu2HeadingItem>
+              {importantActions.map(
+                (action: (typeof importantActions)[number], i: number) => (
+                  <ContextMenu2ButtonItem
+                    key={action.label + i}
+                    onClick={() => action.onClick(checkedRows)}
+                    disabled={checkedRows.length === 0}
+                    color={action.color === "danger" ? "danger" : undefined}
+                    prepend={action.icon}
+                  >
+                    {action.label}
+                  </ContextMenu2ButtonItem>
+                ),
+              )}
+              {menuActions.map(
+                (action: (typeof menuActions)[number], i: number) => (
+                  <ContextMenu2ButtonItem
+                    key={action.label + i}
+                    onClick={() => action.onClick(checkedRows)}
+                    disabled={checkedRows.length === 0}
+                    color={action.color === "danger" ? "danger" : undefined}
+                    prepend={action.icon}
+                  >
+                    {action.label}
+                  </ContextMenu2ButtonItem>
+                ),
+              )}
+            </ContextMenu2>
+          </ContextMenu2Container>
+        ) : (
+          <>
+            <styled.BulkSelectedText>
+              {checkedRows.length}件を
+            </styled.BulkSelectedText>
+            {importantActions.map(
+              (action: (typeof importantActions)[number], i: number) => (
+                <Button
+                  key={action.label + i}
+                  onClick={() => action.onClick(checkedRows)}
+                  color={
+                    action.color === "default" || !action.color
+                      ? "basicLight"
+                      : action.color
+                  }
+                  size="small"
+                  disabled={checkedRows.length === 0}
+                  icon={action.icon}
+                  style={{ marginRight: 4 }}
+                >
+                  {action.label}
+                </Button>
+              ),
+            )}
+            {menuActions.length > 0 && (
+              <ContextMenu2Container>
+                <ContextMenu2
+                  open={isBulkMenuOpen}
+                  onOpenChange={setIsBulkMenuOpen}
+                  trigger={
+                    <styled.BulkActionMenuTrigger
+                      type="button"
+                      disabled={checkedRows.length === 0}
+                    >
+                      <Icon name="more_vert" />
+                    </styled.BulkActionMenuTrigger>
+                  }
+                >
+                  {menuActions.map(
+                    (action: (typeof menuActions)[number], i: number) => (
+                      <styled.BulkActionMenuItem
+                        key={action.label + i}
+                        onClick={() => action.onClick(checkedRows)}
+                        color={action.color}
+                        disabled={checkedRows.length === 0}
+                      >
+                        {action.icon}
+                        {action.label}
+                      </styled.BulkActionMenuItem>
+                    ),
+                  )}
+                </ContextMenu2>
+              </ContextMenu2Container>
+            )}
+          </>
+        )}
+      </styled.ToolbarBulkArea>
 
-      {/* ページネーション */}
-      <DataTable2Pagination />
-
-      {hasFilterItems && (
-        <>
-          <styled.ToolbarSeparator />
-          <DataTable2FilterControls />
-        </>
-      )}
-
+      {/* 右寄せ：フィルタ・ページング・extraButtons */}
       <styled.ToolbarExtras>
-        {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
+        {hasFilterItems && <DataTable2FilterControls />}
+        <DataTable2Pagination />
+        {!isSmallLayout && extraButtons}
         <ContextMenu2Container>
           <ContextMenu2
-            open={isControlOpen}
+            open={isExtrasMenuOpen}
             width={316}
             trigger={
               <styled.DataTable2ExtrasMenuTrigger>
                 <Icon name="more_vert" />
               </styled.DataTable2ExtrasMenuTrigger>
             }
-            onOpenChange={setIsControlOpen}
+            onOpenChange={setIsExtrasMenuOpen}
           >
-            {isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
-
-            {/* 並び替え */}
+            {isSmallLayout && extraButtons}
             {columns.some((column) => column.sortable) && (
               <DataTable2MenuOrderControl
-                onClose={() => setIsControlOpen(false)}
+                onClose={() => setIsExtrasMenuOpen(false)}
               />
             )}
-
-            {/* 件数 */}
             <DataTable2MenuCountControl />
-
-            {/* 密度 */}
             <DataTable2MenuSpaceControl />
           </ContextMenu2>
         </ContextMenu2Container>
@@ -165,11 +268,13 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
+  rowControls?: ReactNode;
 } & ToolbarProps;
 
 export const DataTable2 = ({
   bordered,
   rowControls,
+  bulkActions,
   extraButtons,
   currentPage,
   pageSize,
@@ -246,7 +351,7 @@ export const DataTable2 = ({
         value={{
           isSmallLayout,
           rowIds,
-          hasRowControls: !!rowControls,
+          hasRowControls: !!bulkActions || !!extraButtons,
           checkedRows,
           totalCount,
           currentPage,
@@ -264,7 +369,11 @@ export const DataTable2 = ({
           setRowSpacing,
         }}
       >
-        <Toolbar rowControls={rowControls} extraButtons={extraButtons} />
+        <Toolbar
+          rowControls={rowControls}
+          bulkActions={bulkActions}
+          extraButtons={extraButtons}
+        />
         <styled.Viewport>
           <table>{children}</table>
         </styled.Viewport>

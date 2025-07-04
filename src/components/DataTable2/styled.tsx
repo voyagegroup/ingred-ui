@@ -466,3 +466,73 @@ export const DataTable2InlineEditorButton = styled.div`
     }
   }
 `;
+
+// 一括操作UI用スタイル
+export const ToolbarBulkArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+export const BulkSelectedText = styled.span`
+  font-size: 13px;
+  color: ${colors.basic[900]};
+  margin-inline: 4px 0;
+`;
+
+export const BulkActionButton = styled.button<{
+  color?: "danger" | "primary" | "default";
+}>`
+  ${actionButton}
+  background: ${({ color }) =>
+    color === "danger"
+      ? colors.red[100]
+      : color === "primary"
+      ? colors.blue[100]
+      : "#fff"};
+  color: ${({ color }) =>
+    color === "danger"
+      ? colors.red[700]
+      : color === "primary"
+      ? colors.blue[700]
+      : colors.basic[900]};
+  &:hover:not(:disabled) {
+    background: ${({ color }) =>
+      color === "danger"
+        ? colors.red[200]
+        : color === "primary"
+        ? colors.blue[200]
+        : colors.basic[100]};
+  }
+`;
+
+export const BulkActionMenuTrigger = styled.button`
+  ${actionButton}
+  padding: 4px 8px;
+  background: #fff;
+`;
+
+export const BulkActionMenuItem = styled.button<{
+  color?: "danger" | "primary" | "default";
+}>`
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: ${({ color }) =>
+    color === "danger"
+      ? colors.red[700]
+      : color === "primary"
+      ? colors.blue[700]
+      : colors.basic[900]};
+  cursor: pointer;
+  &:hover:not(:disabled) {
+    background: ${colors.basic[100]};
+  }
+  &:disabled {
+    color: ${colors.basic[400]};
+    cursor: not-allowed;
+  }
+`;

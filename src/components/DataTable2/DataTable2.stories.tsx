@@ -154,14 +154,39 @@ export const Default: StoryObj<typeof meta> = {
     currentPage: 0,
     totalCount: 1000,
     rowControls: null,
-    extraButtons: (
-      <DataTable2ActionButton
-        prepend={<Icon name="download_cloud" />}
-        onClick={() => alert("自由におけるボタン")}
-      >
-        ダウンロード
-      </DataTable2ActionButton>
-    ),
+    bulkActions: [
+      {
+        label: "有効にする",
+        icon: <Icon name="checkbox_circle" />,
+        onClick: (selectedRows) =>
+          alert(`有効にする: ${selectedRows.join(", ")}`),
+        important: true,
+        color: "primary",
+      },
+      {
+        label: "アーカイブする",
+        icon: <Icon name="alert" />,
+        onClick: (selectedRows) =>
+          alert(`アーカイブする: ${selectedRows.join(", ")}`),
+        important: true,
+      },
+      {
+        label: "複製する",
+        icon: <Icon name="copy" />,
+        onClick: (selectedRows) =>
+          alert(`複製する: ${selectedRows.join(", ")}`),
+        important: false,
+      },
+      {
+        label: "削除する",
+        icon: <Icon name="delete_bin" />,
+        onClick: (selectedRows) =>
+          alert(`削除する: ${selectedRows.join(", ")}`),
+        important: false,
+        color: "danger",
+      },
+    ],
+    extraButtons: undefined,
     onCheckedRowsChange: () => {},
     onPageSizeChange: () => {},
     onPageChange: () => {},
@@ -176,8 +201,6 @@ export const Default: StoryObj<typeof meta> = {
         pageSize: number;
         totalCount: number;
       }>();
-
-    const [checkedRows, setCheckedRows] = useState<string[]>([]);
 
     // totalCountに基づいてmockDataを動的に生成
     const mockData = useMemo(() => createMockData(totalCount), [totalCount]);
@@ -334,45 +357,8 @@ export const Default: StoryObj<typeof meta> = {
           {...args}
           columns={columns}
           totalCount={filteredData.length}
-          rowControls={
-            <>
-              <ContextMenu2HeadingItem>
-                ステータスを変更
-              </ContextMenu2HeadingItem>
-              <ContextMenu2ButtonItem
-                closeOnClick
-                onClick={() => alert(`有効: ${checkedRows.join()}`)}
-              >
-                有効にする
-              </ContextMenu2ButtonItem>
-              <ContextMenu2ButtonItem
-                closeOnClick
-                onClick={() => alert(`アーカイブ: ${checkedRows.join()}`)}
-              >
-                アーカイブする
-              </ContextMenu2ButtonItem>
-              <ContextMenu2HeadingItem
-                closeOnClick
-                onClick={() => alert("任意機能")}
-              >
-                操作
-              </ContextMenu2HeadingItem>
-              <ContextMenu2ButtonItem
-                closeOnClick
-                onClick={() => alert("任意機能")}
-              >
-                複製する
-              </ContextMenu2ButtonItem>
-              <ContextMenu2ButtonItem
-                closeOnClick
-                color="danger"
-                onClick={() => alert("任意機能")}
-              >
-                削除する
-              </ContextMenu2ButtonItem>
-            </>
-          }
-          onCheckedRowsChange={setCheckedRows}
+          rowControls={null}
+          onCheckedRowsChange={() => {}}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
           onColumnsChange={(columns) => {
@@ -725,6 +711,189 @@ export const Loading: StoryObj<typeof meta> = {
                 </DataTable2Cell>
                 <DataTable2Cell loading={i % 5 === 0}>
                   {dataRow.status}
+                </DataTable2Cell>
+              </DataTable2Row>
+            ))}
+          </DataTable2Body>
+        </DataTable2>
+      </div>
+    );
+  },
+};
+
+/**
+ * 外部でcheckedRowsを管理するControlledストーリー
+ */
+export const Controlled: StoryObj<typeof meta> = {
+  args: {
+    bordered: false,
+    columns: [
+      {
+        id: crypto.randomUUID(),
+        label: "名前",
+        order: 0,
+        visible: true,
+        sortable: false,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "ステータス",
+        order: 1,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "メールアドレス",
+        order: 2,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "登録日",
+        order: 3,
+        visible: true,
+        sortable: true,
+        filtered: false,
+      },
+      {
+        id: crypto.randomUUID(),
+        label: "操作",
+        order: 4,
+        visible: true,
+        sortable: false,
+      },
+    ],
+    pageSize: pageSizeOptions[3],
+    pageSizeOptions,
+    currentPage: 0,
+    totalCount: 1000,
+    rowControls: null,
+    extraButtons: undefined,
+    children: null,
+  },
+  render: (args) => {
+    const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
+      useArgs<{
+        columns: TableColumn[];
+        currentPage: number;
+        pageSize: number;
+        totalCount: number;
+      }>();
+
+    const [checkedRows, setCheckedRows] = React.useState<string[]>([]);
+
+    // カラム幅管理
+    const [columnWidths, setColumnWidths] = React.useState<
+      (number | undefined)[]
+    >(() => Array(columns.length).fill(188));
+    const onWidthChange = React.useCallback(
+      (index: number, width: number | undefined) => {
+        const newColumnWidths = [...columnWidths];
+        newColumnWidths[index] = width;
+        setColumnWidths(newColumnWidths);
+      },
+      [columnWidths, setColumnWidths],
+    );
+
+    // totalCountに基づいてmockDataを動的に生成
+    const mockData = React.useMemo(
+      () => createMockData(totalCount),
+      [totalCount],
+    );
+    const [data, setData] = React.useState(mockData);
+    React.useEffect(() => {
+      setData(mockData);
+    }, [mockData]);
+
+    // フィルタ・ソート等は省略
+    const pageData = React.useMemo(
+      () =>
+        data.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
+      [data, pageSize, currentPage],
+    );
+
+    // bulkActionsは外部のcheckedRowsを参照
+    const bulkActions = React.useMemo(
+      () => [
+        {
+          label: "有効にする",
+          icon: <Icon name="checkbox_circle" />,
+          onClick: () => alert(`有効にする: ${checkedRows.join(", ")}`),
+          important: true,
+          color: "primary" as const,
+        },
+        {
+          label: "アーカイブする",
+          icon: <Icon name="alert" />,
+          onClick: () => alert(`アーカイブする: ${checkedRows.join(", ")}`),
+          important: true,
+        },
+        {
+          label: "複製する",
+          icon: <Icon name="copy" />,
+          onClick: () => alert(`複製する: ${checkedRows.join(", ")}`),
+          important: false,
+        },
+        {
+          label: "削除する",
+          icon: <Icon name="delete_bin" />,
+          onClick: () => alert(`削除する: ${checkedRows.join(", ")}`),
+          important: false,
+          color: "danger" as const,
+        },
+      ],
+      [checkedRows],
+    );
+
+    return (
+      <div style={{ height: 500 }}>
+        <DataTable2
+          {...args}
+          columns={columns}
+          totalCount={data.length}
+          rowControls={null}
+          bulkActions={bulkActions}
+          onCheckedRowsChange={setCheckedRows}
+          onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
+          onPageChange={(currentPage: number) => updateArgs({ currentPage })}
+          onColumnsChange={(columns) => updateArgs({ columns })}
+        >
+          <DataTable2Head>
+            {columns.map((col, i) => (
+              <DataTable2Column
+                key={col.id}
+                isResizable
+                width={columnWidths[i]}
+                minWidth={188}
+                onWidthChange={(w) => onWidthChange(i, w)}
+              >
+                <DataTable2ColumnLabel>{col.label}</DataTable2ColumnLabel>
+              </DataTable2Column>
+            ))}
+          </DataTable2Head>
+          <DataTable2Body>
+            {pageData.map((dataRow) => (
+              <DataTable2Row key={dataRow.id} id={dataRow.id}>
+                <DataTable2Cell>{dataRow.name}</DataTable2Cell>
+                <DataTable2Cell>{dataRow.status}</DataTable2Cell>
+                <DataTable2Cell>{dataRow.email}</DataTable2Cell>
+                <DataTable2Cell>{dataRow.date}</DataTable2Cell>
+                <DataTable2Cell>
+                  <ActionButton
+                    type="button"
+                    color="primary"
+                    icon="pencil"
+                    onClick={() =>
+                      alert("ドロワーを開く機能を独自に実装してください")
+                    }
+                  >
+                    編集
+                  </ActionButton>
                 </DataTable2Cell>
               </DataTable2Row>
             ))}
