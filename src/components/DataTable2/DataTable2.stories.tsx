@@ -172,36 +172,35 @@ export const Default: StoryObj<typeof meta> = {
     totalCount: 1000,
     bulkActions: [
       {
-        type: "single" as const,
+        type: "single",
         label: "有効にする",
-        icon: <Icon name="checkbox_circle" />,
+        icon: <Icon name="checkbox_circle" color="currentColor" />,
         onClick: () => alert("有効にする"),
-        color: "primary" as const,
+        color: "basicLight",
+        enabledWhen: "checked",
       },
       {
-        type: "group" as const,
-        items: [
-          {
-            label: "複製する",
-            icon: <Icon name="copy" />,
-            onClick: () => alert("複製する"),
-          },
-          {
-            label: "削除する",
-            icon: <Icon name="delete_bin" />,
-            onClick: () => alert("削除する"),
-            color: "danger" as const,
-          },
-        ],
+        type: "single",
+        label: "複製する",
+        icon: <Icon name="copy" color="currentColor" />,
+        onClick: () => alert("複製"),
+        enabledWhen: "checked",
       },
       {
-        type: "divider" as const,
+        type: "single",
+        label: "削除する",
+        icon: <Icon name="delete_bin" color="currentColor" />,
+        onClick: () => alert("削除"),
+        color: "danger",
+        enabledWhen: "checked",
       },
       {
-        type: "single" as const,
-        label: "アーカイブする",
-        icon: <Icon name="alert" />,
-        onClick: () => alert("アーカイブする"),
+        type: "single",
+        label: "新規作成",
+        onClick: () => alert("チェックされていない時だけ押せる"),
+        enabledWhen: "custom",
+        disabled: (checkedRows) => checkedRows.length > 0,
+        displayIn: "toolbar",
       },
     ],
     extraButtons: undefined,
@@ -836,33 +835,33 @@ export const Controlled: StoryObj<typeof meta> = {
     );
 
     // bulkActionsは外部のcheckedRowsを参照
-    const bulkActions = React.useMemo(
+    const bulkActions: BulkAction[] = React.useMemo(
       () => [
         {
-          type: "single" as const,
+          type: "single",
           label: "有効にする",
           icon: <Icon name="checkbox_circle" />,
           onClick: () => alert(`有効にする: ${checkedRows.join(", ")}`),
-          color: "primary" as const,
+          color: "primary",
         },
         {
-          type: "single" as const,
+          type: "single",
           label: "アーカイブする",
           icon: <Icon name="alert" />,
           onClick: () => alert(`アーカイブする: ${checkedRows.join(", ")}`),
         },
         {
-          type: "single" as const,
+          type: "single",
           label: "複製する",
           icon: <Icon name="copy" />,
           onClick: () => alert(`複製する: ${checkedRows.join(", ")}`),
         },
         {
-          type: "single" as const,
+          type: "single",
           label: "削除する",
           icon: <Icon name="delete_bin" />,
           onClick: () => alert(`削除する: ${checkedRows.join(", ")}`),
-          color: "danger" as const,
+          color: "danger",
         },
       ],
       [checkedRows],

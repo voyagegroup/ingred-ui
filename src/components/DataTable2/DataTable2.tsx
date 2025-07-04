@@ -20,16 +20,15 @@ import Checkbox from "../Checkbox";
 import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
 import Button from "../Button";
 import { useTheme } from "../../themes/useTheme";
-import ButtonGroup from "../ButtonGroup";
 import DropdownButton from "../DropdownButton";
-import Divider from "../Divider";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
 // BulkAction型定義
-export type BulkActionItem = {
+export type BulkAction = {
+  type: "single";
   label: string;
   icon?: React.ReactNode;
   onClick: (selectedRows: string[]) => void;
@@ -40,23 +39,10 @@ export type BulkActionItem = {
     | "basicLight"
     | "basicDark"
     | "clear";
-  disabled?: (selectedRows: string[]) => boolean;
+  displayIn?: "dropdown" | "toolbar";
+  enabledWhen?: "checked" | "custom";
+  disabled?: (checkedRows: string[]) => boolean;
 };
-
-export type BulkActionGroup = {
-  type: "group";
-  items: BulkActionItem[];
-};
-
-export type BulkActionSingle = {
-  type: "single";
-} & BulkActionItem;
-
-export type BulkActionDivider = {
-  type: "divider";
-};
-
-export type BulkAction = BulkActionSingle | BulkActionGroup | BulkActionDivider;
 
 type ToolbarProps = {
   extraButtons?: ReactNode;
@@ -100,84 +86,78 @@ const Toolbar = ({
   // 一括操作エリアの描画ロジック
   let bulkArea: React.ReactNode = null;
   if (customBulkActionArea) {
+    // カスタムエリアが指定されている場合はそれを使用
     bulkArea = customBulkActionArea({ isSmallLayout, checkedRows });
   } else if (bulkActions && bulkActions.length > 0) {
     if (isSmallLayout) {
-      // モバイル時：すべてのアクションをDropdownButtonにまとめる
-      const allItems = bulkActions.flatMap((action) => {
-        if (action.type === "single") {
-          return [action];
-        } else if (action.type === "group") {
-          return action.items;
-        } else {
-          return []; // dividerは無視
-        }
-      });
+      // モバイル時: displayIn設定に基づいて表示場所を分ける
+      const dropdownActions = bulkActions.filter(
+        (action) => (action.displayIn ?? "dropdown") === "dropdown",
+      );
+      const toolbarActions = bulkActions.filter(
+        (action) => (action.displayIn ?? "dropdown") === "toolbar",
+      );
 
       bulkArea = (
-        <DropdownButton
-          size="small"
-          color="basicLight"
-          contents={allItems.map((item) => ({
-            text: item.label,
-            onClick: () => item.onClick(checkedRows),
-            disabled:
-              checkedRows.length === 0 ||
-              (item.disabled?.(checkedRows) ?? false),
-            icon: item.icon,
-          }))}
-          disabled={checkedRows.length === 0}
-        >
-          {checkedRows.length}件の操作
-        </DropdownButton>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          {dropdownActions.length > 0 && (
+            <DropdownButton
+              size="small"
+              color="basicLight"
+              contents={dropdownActions.map((action) => ({
+                text: action.label,
+                onClick: () => action.onClick(checkedRows),
+                disabled:
+                  (action.enabledWhen ?? "checked") === "checked"
+                    ? checkedRows.length === 0
+                    : action.disabled?.(checkedRows) ?? false,
+                icon: action.icon,
+              }))}
+              disabled={checkedRows.length === 0}
+            >
+              {checkedRows.length}件の操作
+            </DropdownButton>
+          )}
+          {toolbarActions.map((action, index) => (
+            <Button
+              key={index}
+              icon={action.icon}
+              color={action.color}
+              size="small"
+              inline
+              disabled={
+                (action.enabledWhen ?? "checked") === "checked"
+                  ? checkedRows.length === 0
+                  : action.disabled?.(checkedRows) ?? false
+              }
+              onClick={() => action.onClick(checkedRows)}
+            >
+              {action.label}
+            </Button>
+          ))}
+        </div>
       );
     } else {
-      // デスクトップ時：構造を保持してレンダリング
+      // デスクトップ時: 全てのボタンをツールバーに横並びで表示
       bulkArea = (
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          {bulkActions.map((action, index) => {
-            if (action.type === "single") {
-              return (
-                <Button
-                  key={index}
-                  icon={action.icon}
-                  color={action.color}
-                  size="small"
-                  disabled={
-                    checkedRows.length === 0 ||
-                    (action.disabled?.(checkedRows) ?? false)
-                  }
-                  onClick={() => action.onClick(checkedRows)}
-                >
-                  {action.label}
-                </Button>
-              );
-            } else if (action.type === "group") {
-              return (
-                <ButtonGroup key={index} size="small">
-                  {action.items.map((item, itemIndex) => (
-                    <Button
-                      key={itemIndex}
-                      icon={item.icon}
-                      color={item.color}
-                      disabled={
-                        checkedRows.length === 0 ||
-                        (item.disabled?.(checkedRows) ?? false)
-                      }
-                      onClick={() => item.onClick(checkedRows)}
-                    >
-                      {item.label}
-                    </Button>
-                  ))}
-                </ButtonGroup>
-              );
-            } else if (action.type === "divider") {
-              return (
-                <Divider key={index} orientation="vertical" py={2} mx={2} />
-              );
-            }
-            return null;
-          })}
+          {bulkActions.map((action, index) => (
+            <Button
+              key={index}
+              icon={action.icon}
+              color={action.color}
+              size="small"
+              inline
+              disabled={
+                (action.enabledWhen ?? "checked") === "checked"
+                  ? checkedRows.length === 0
+                  : action.disabled?.(checkedRows) ?? false
+              }
+              onClick={() => action.onClick(checkedRows)}
+            >
+              {action.label}
+            </Button>
+          ))}
         </div>
       );
     }
@@ -276,7 +256,7 @@ type DataTable2Props = {
    */
   onColumnsChange: (columns: TableColumn[]) => void;
   /**
-   * 一括操作ボタン群の定義。デスクトップ時はButtonGroup、モバイル時はDropdownButtonで自動切り替え。
+   * 一括操作ボタン群の定義。デスクトップ時は横並びボタン、モバイル時はdisplayInで表示場所を制御。
    */
   bulkActions?: BulkAction[];
   /**

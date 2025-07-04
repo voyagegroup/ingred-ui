@@ -534,3 +534,10 @@ export const BulkActionMenuItem = styled.button<{
     cursor: not-allowed;
   }
 `;
+
+export const DashedDivider = styled.span`
+  display: inline-block;
+  height: 18px;
+  border-left: 1px dashed ${({ theme }) => theme.palette.divider};
+  vertical-align: middle;
+`;
