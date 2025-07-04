@@ -327,6 +327,10 @@ type DataTable2Props = {
    * @param columns 変更後のカラム
    */
   onColumnsChange: (columns: TableColumn[]) => void;
+  /**
+   * ツールバー左側のカスタム領域。任意のボタン群やUIを自由に設置可能。
+   */
+  toolbarActionArea?: ReactNode;
 } & {
   /**
    * 見た目の制御。枠線で囲むか否か。枠線で囲むと角丸も適用される
@@ -356,6 +360,7 @@ export const DataTable2 = ({
   onColumnsChange,
   onCheckedRowsChange,
   children,
+  toolbarActionArea,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);

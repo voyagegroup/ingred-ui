@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useEffect } from "react";
+import React, { useCallback, useMemo, useEffect, useContext } from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { useState } from "@storybook/preview-api";
 import { useArgs } from "@storybook/client-api";
@@ -24,6 +24,12 @@ import {
 } from "../ContextMenu2";
 import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
+import Button from "../Button";
+import ButtonGroup from "../ButtonGroup";
+import Divider from "../Divider";
+import DropdownButton from "../DropdownButton";
+import { DataTable2Context } from "./context";
+import type { ReactNode } from "react";
 
 const meta = {
   title: "Components/Data Display/DataTable2",
@@ -63,6 +69,25 @@ const filterTypes = [
     label: "いずれかを含む",
   },
 ];
+
+type DataTable2StoryArgs = {
+  bordered?: boolean;
+  columns: TableColumn[];
+  pageSize: number;
+  pageSizeOptions: number[];
+  currentPage: number;
+  totalCount: number;
+  rowControls: ReactNode | null;
+  toolbarButtons?: ReactNode[];
+  toolbarDropdownItems?: { text: string; onClick: () => void }[];
+  toolbarActionArea?: ReactNode;
+  extraButtons?: ReactNode | undefined;
+  onCheckedRowsChange: (checkedRows: string[]) => void;
+  onPageSizeChange: (pageSize: number) => void;
+  onPageChange: (currentPage: number) => void;
+  onColumnsChange: (columns: TableColumn[]) => void;
+  children: ReactNode | null;
+};
 
 /**
  * DataTable2 に高さを指定したい場合、親に高さを明示してください。<br />
@@ -154,37 +179,69 @@ export const Default: StoryObj<typeof meta> = {
     currentPage: 0,
     totalCount: 1000,
     rowControls: null,
-    bulkActions: [
-      {
-        label: "有効にする",
-        icon: <Icon name="checkbox_circle" />,
-        onClick: (selectedRows) =>
-          alert(`有効にする: ${selectedRows.join(", ")}`),
-        important: true,
-        color: "primary",
-      },
-      {
-        label: "アーカイブする",
-        icon: <Icon name="alert" />,
-        onClick: (selectedRows) =>
-          alert(`アーカイブする: ${selectedRows.join(", ")}`),
-        important: true,
-      },
-      {
-        label: "複製する",
-        icon: <Icon name="copy" />,
-        onClick: (selectedRows) =>
-          alert(`複製する: ${selectedRows.join(", ")}`),
-        important: false,
-      },
-      {
-        label: "削除する",
-        icon: <Icon name="delete_bin" />,
-        onClick: (selectedRows) =>
-          alert(`削除する: ${selectedRows.join(", ")}`),
-        important: false,
-        color: "danger",
-      },
+    toolbarButtons: [
+      <Button
+        key="add"
+        size="small"
+        icon={<Icon name="add_line" />}
+        color="primary"
+        onClick={() => alert("新規作成")}
+      >
+        新規作成
+      </Button>,
+      <ButtonGroup key="group1" size="small" style={{ marginLeft: 8 }}>
+        <Button icon={<Icon name="copy" />} onClick={() => alert("複製")}>
+          複製
+        </Button>
+        <Button
+          icon={<Icon name="delete_bin" />}
+          color="danger"
+          onClick={() => alert("削除")}
+        >
+          削除
+        </Button>
+        <Button icon={<Icon name="check" />} onClick={() => alert("有効")}>
+          有効
+        </Button>
+      </ButtonGroup>,
+      <Divider key="divider1" orientation="vertical" py={2} mx={2} />,
+      <ButtonGroup key="group2" size="small">
+        <Button icon={<Icon name="forbid" />} onClick={() => alert("無効")}>
+          無効
+        </Button>
+        <Button
+          icon={<Icon name="alert" />}
+          color="danger"
+          onClick={() => alert("警告")}
+        >
+          警告
+        </Button>
+      </ButtonGroup>,
+      <span key="dropdown" style={{ marginLeft: 8 }}>
+        <DropdownButton
+          size="small"
+          color="basicLight"
+          contents={[
+            { text: "一括アーカイブ", onClick: () => alert("一括アーカイブ") },
+            {
+              text: "一括エクスポート",
+              onClick: () => alert("一括エクスポート"),
+            },
+          ]}
+        >
+          その他
+        </DropdownButton>
+      </span>,
+    ],
+    toolbarDropdownItems: [
+      { text: "新規作成", onClick: () => alert("新規作成") },
+      { text: "複製", onClick: () => alert("複製") },
+      { text: "削除", onClick: () => alert("削除") },
+      { text: "有効", onClick: () => alert("有効") },
+      { text: "無効", onClick: () => alert("無効") },
+      { text: "警告", onClick: () => alert("警告") },
+      { text: "一括アーカイブ", onClick: () => alert("一括アーカイブ") },
+      { text: "一括エクスポート", onClick: () => alert("一括エクスポート") },
     ],
     extraButtons: undefined,
     onCheckedRowsChange: () => {},
@@ -192,7 +249,7 @@ export const Default: StoryObj<typeof meta> = {
     onPageChange: () => {},
     onColumnsChange: () => {},
     children: null,
-  },
+  } as DataTable2StoryArgs,
   render: (args) => {
     const [{ columns, currentPage, pageSize, totalCount }, updateArgs] =
       useArgs<{
@@ -201,6 +258,30 @@ export const Default: StoryObj<typeof meta> = {
         pageSize: number;
         totalCount: number;
       }>();
+    // argsからDataTable2Propsのみ抽出
+    const {
+      toolbarButtons,
+      toolbarDropdownItems,
+      toolbarActionArea,
+      ...dataTable2Args
+    } = args;
+    const { isSmallLayout, checkedRows } = useContext(DataTable2Context);
+    const ToolbarActionArea = () => {
+      if (isSmallLayout) {
+        const n = checkedRows.length;
+        return (
+          <DropdownButton
+            size="small"
+            color="basicLight"
+            contents={toolbarDropdownItems ?? []}
+            disabled={n === 0}
+          >
+            {n}件の操作
+          </DropdownButton>
+        );
+      }
+      return <>{toolbarButtons ?? []}</>;
+    };
 
     // totalCountに基づいてmockDataを動的に生成
     const mockData = useMemo(() => createMockData(totalCount), [totalCount]);
@@ -354,7 +435,7 @@ export const Default: StoryObj<typeof meta> = {
     return (
       <div style={{ height: 500 }}>
         <DataTable2
-          {...args}
+          {...dataTable2Args}
           columns={columns}
           totalCount={filteredData.length}
           rowControls={null}
@@ -363,7 +444,6 @@ export const Default: StoryObj<typeof meta> = {
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
           onColumnsChange={(columns) => {
             updateArgs({ columns });
-            // 各カラムのフィルターの状態に応じて、フィルタ入力値をクリアする
             columns.forEach((c) => {
               if (c.filtered) return;
               switch (c.id) {
@@ -382,6 +462,7 @@ export const Default: StoryObj<typeof meta> = {
               }
             });
           }}
+          toolbarActionArea={<ToolbarActionArea />}
         >
           <DataTable2Head>
             <DataTable2Column
