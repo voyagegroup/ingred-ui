@@ -46,7 +46,7 @@ export type BulkAction =
         | "basicDark"
         | "clear";
       displayIn?: "dropdown" | "toolbar";
-      enabledWhen?: "checked" | "custom";
+      enabledWhen?: "checked" | "unchecked" | "custom";
       disabled?: (checkedRows: string[]) => boolean;
       style?: React.CSSProperties; // テキスト色などのカスタムスタイル
     }
@@ -63,7 +63,7 @@ export type BulkAction =
           | "basicLight"
           | "basicDark"
           | "clear";
-        enabledWhen?: "checked" | "custom";
+        enabledWhen?: "checked" | "unchecked" | "custom";
         disabled?: (checkedRows: string[]) => boolean;
         style?: React.CSSProperties;
       }[];
@@ -118,12 +118,7 @@ const Toolbar = ({
   // チェックが無い時のみenableのボタンを識別する関数
   const isUncheckedOnlyAction = useCallback((action: BulkAction) => {
     if (action.type !== "single") return false;
-    return (
-      action.enabledWhen === "custom" &&
-      action.disabled &&
-      action.disabled([]) === false && // チェックが無い時はenable
-      action.disabled(["dummy"]) === true // チェックがある時はdisable
-    );
+    return action.enabledWhen === "unchecked";
   }, []);
 
   // 共通のボタンレンダリング関数
@@ -139,8 +134,10 @@ const Toolbar = ({
             inline={isDesktop}
             style={action.style}
             disabled={
-              (action.enabledWhen ?? "checked") === "checked"
+              action.enabledWhen === "checked" || action.enabledWhen === undefined
                 ? checkedRows.length === 0
+                : action.enabledWhen === "unchecked"
+                ? checkedRows.length > 0
                 : action.disabled?.(checkedRows) ?? false
             }
             onClick={() => action.onClick(checkedRows)}
@@ -158,8 +155,10 @@ const Toolbar = ({
                 color={item.color ?? "basicLight"}
                 style={item.style}
                 disabled={
-                  (item.enabledWhen ?? "checked") === "checked"
+                  item.enabledWhen === "checked" || item.enabledWhen === undefined
                     ? checkedRows.length === 0
+                    : item.enabledWhen === "unchecked"
+                    ? checkedRows.length > 0
                     : item.disabled?.(checkedRows) ?? false
                 }
                 onClick={() => item.onClick(checkedRows)}
@@ -220,8 +219,10 @@ const Toolbar = ({
                         key={index}
                         prepend={action.icon}
                         disabled={
-                          (action.enabledWhen ?? "checked") === "checked"
+                          action.enabledWhen === "checked" || action.enabledWhen === undefined
                             ? checkedRows.length === 0
+                            : action.enabledWhen === "unchecked"
+                            ? checkedRows.length > 0
                             : action.disabled?.(checkedRows) ?? false
                         }
                         onClick={() => {
@@ -238,8 +239,10 @@ const Toolbar = ({
                         key={`${index}-${itemIndex}`}
                         prepend={item.icon}
                         disabled={
-                          (item.enabledWhen ?? "checked") === "checked"
+                          item.enabledWhen === "checked" || item.enabledWhen === undefined
                             ? checkedRows.length === 0
+                            : item.enabledWhen === "unchecked"
+                            ? checkedRows.length > 0
                             : item.disabled?.(checkedRows) ?? false
                         }
                         onClick={() => {
@@ -282,7 +285,7 @@ const Toolbar = ({
                       <ContextMenu2ButtonItem
                         key={index}
                         prepend={action.icon}
-                        disabled={action.disabled?.(checkedRows) ?? false}
+                        disabled={checkedRows.length > 0}
                         onClick={() => {
                           action.onClick(checkedRows);
                           setIsUncheckedActionsMenuOpen(false);
