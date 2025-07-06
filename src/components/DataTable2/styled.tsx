@@ -547,3 +547,22 @@ export const BulkActionContainer = styled.div`
   align-items: center;
   gap: 8px;
 `;
+
+export const BulkActionDropdownButton = styled.button`
+  ${actionButton}
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 4px;
+  min-width: auto;
+  
+  &:disabled {
+    color: ${colors.basic[400]};
+    background: ${colors.basic[200]};
+    cursor: not-allowed;
+  }
+  
+  &:hover:not(:disabled) {
+    background: ${colors.basic[100]};
+  }
+`;
