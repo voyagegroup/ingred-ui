@@ -6,7 +6,6 @@ import React, {
   useEffect,
   useContext,
   type ReactNode,
-  Children,
 } from "react";
 import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
@@ -18,14 +17,13 @@ import { DataTable2Pagination } from "./DataTable2Pagination";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
-import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
-import Button from "../Button";
-import { useTheme } from "../../themes/useTheme";
-import ButtonGroup from "../ButtonGroup";
-import {
+import { ContextMenu2Container, ContextMenu2 ,
   ContextMenu2ButtonItem,
   ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
+import Button from "../Button";
+import { useTheme } from "../../themes/useTheme";
+import ButtonGroup from "../ButtonGroup";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
@@ -34,7 +32,7 @@ import {
 // BulkAction型定義
 export type BulkAction =
   | {
-      type: "single";
+      type: "singleButton";
       label: string;
       icon?: React.ReactNode;
       onClick: (selectedRows: string[]) => void;
@@ -45,13 +43,13 @@ export type BulkAction =
         | "basicLight"
         | "basicDark"
         | "clear";
-      displayIn?: "dropdown" | "toolbar";
+      displayIn?: "toolbar" | "dropdown";
       enabledWhen?: "checked" | "unchecked" | "custom";
       disabled?: (checkedRows: string[]) => boolean;
       style?: React.CSSProperties; // テキスト色などのカスタムスタイル
     }
   | {
-      type: "group";
+      type: "groupButton";
       items: {
         label: string;
         icon?: React.ReactNode;
@@ -67,11 +65,11 @@ export type BulkAction =
         disabled?: (checkedRows: string[]) => boolean;
         style?: React.CSSProperties;
       }[];
-      displayIn?: "dropdown" | "toolbar";
+      displayIn?: "toolbar" | "dropdown";
     }
   | {
       type: "divider";
-      displayIn?: "dropdown" | "toolbar";
+      displayIn?: "toolbar" | "dropdown";
     };
 
 type ToolbarProps = {
@@ -106,6 +104,7 @@ const Toolbar = ({
   const [isBulkMenuOpen, setIsBulkMenuOpen] = useState(false);
   const [isUncheckedActionsMenuOpen, setIsUncheckedActionsMenuOpen] = useState(false);
 
+
   const hasFilterItems = useMemo(
     () => columns.some((column) => column.filtered !== undefined),
     [columns],
@@ -115,16 +114,12 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // チェックが無い時のみenableのボタンを識別する関数
-  const isUncheckedOnlyAction = useCallback((action: BulkAction) => {
-    if (action.type !== "single") return false;
-    return action.enabledWhen === "unchecked";
-  }, []);
+
 
   // 共通のボタンレンダリング関数
   const renderBulkActionButton = useCallback(
     (action: BulkAction, index: number, isDesktop: boolean) => {
-      if (action.type === "single") {
+      if (action.type === "singleButton") {
         return (
           <Button
             key={index}
@@ -145,7 +140,7 @@ const Toolbar = ({
             {action.label}
           </Button>
         );
-      } else if (action.type === "group") {
+      } else if (action.type === "groupButton") {
         return (
           <ButtonGroup key={index} size="small">
             {action.items.map((item, itemIndex) => (
@@ -182,38 +177,43 @@ const Toolbar = ({
     // カスタムエリアが指定されている場合はそれを使用
     bulkArea = customBulkActionArea({ isSmallLayout, checkedRows });
   } else if (bulkActions && bulkActions.length > 0) {
-    if (isSmallLayout) {
-      // モバイル時: displayIn設定に基づいて表示場所を分ける
-      const dropdownActions = bulkActions.filter(
-        (action) => (action.displayIn ?? "dropdown") === "dropdown",
-      );
-      const toolbarActions = bulkActions.filter(
-        (action) => (action.displayIn ?? "dropdown") === "toolbar" && !isUncheckedOnlyAction(action),
-      );
-      const uncheckedOnlyActions = bulkActions.filter(
-        (action) => isUncheckedOnlyAction(action),
-      );
+    // enabledWhenによる分離
+    const checkedActions = bulkActions.filter(
+      (action) => {
+        if (action.type === "divider") return false;
+        return (action as any).enabledWhen === "checked" || (action as any).enabledWhen === undefined;
+      }
+    ) as (BulkAction & { type: "singleButton" | "groupButton" })[];
+    const uncheckedActions = bulkActions.filter(
+      (action) => {
+        if (action.type === "divider") return false;
+        return (action as any).enabledWhen === "unchecked";
+      }
+    ) as (BulkAction & { type: "singleButton" | "groupButton" })[];
 
+    if (isSmallLayout) {
+      // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
       bulkArea = (
         <styled.BulkActionContainer>
-          {dropdownActions.length > 0 && (
+          {checkedActions.length > 0 && (
             <ContextMenu2Container>
               <ContextMenu2
                 open={isBulkMenuOpen}
-                onOpenChange={setIsBulkMenuOpen}
                 trigger={
                   <styled.BulkActionDropdownButton
                     type="button"
                     disabled={checkedRows.length === 0}
                   >
-                    {checkedRows.length}件の操作
+                    <span style={{ marginRight: '4px' }}>{checkedRows.length}</span>
+                    件を操作
                     <Icon name="arrow_down" size="sm-md" color="currentColor" />
                   </styled.BulkActionDropdownButton>
                 }
                 width={200}
+                onOpenChange={setIsBulkMenuOpen}
               >
-                {dropdownActions.map((action, index) => {
-                  if (action.type === "single") {
+                {checkedActions.map((action, index) => {
+                  if (action.type === "singleButton") {
                     return (
                       <ContextMenu2ButtonItem
                         key={index}
@@ -221,8 +221,6 @@ const Toolbar = ({
                         disabled={
                           action.enabledWhen === "checked" || action.enabledWhen === undefined
                             ? checkedRows.length === 0
-                            : action.enabledWhen === "unchecked"
-                            ? checkedRows.length > 0
                             : action.disabled?.(checkedRows) ?? false
                         }
                         onClick={() => {
@@ -233,7 +231,7 @@ const Toolbar = ({
                         {action.label}
                       </ContextMenu2ButtonItem>
                     );
-                  } else if (action.type === "group") {
+                  } else if (action.type === "groupButton") {
                     return action.items.map((item, itemIndex) => (
                       <ContextMenu2ButtonItem
                         key={`${index}-${itemIndex}`}
@@ -241,8 +239,6 @@ const Toolbar = ({
                         disabled={
                           item.enabledWhen === "checked" || item.enabledWhen === undefined
                             ? checkedRows.length === 0
-                            : item.enabledWhen === "unchecked"
-                            ? checkedRows.length > 0
                             : item.disabled?.(checkedRows) ?? false
                         }
                         onClick={() => {
@@ -261,14 +257,10 @@ const Toolbar = ({
               </ContextMenu2>
             </ContextMenu2Container>
           )}
-          {toolbarActions.map((action, index) =>
-            renderBulkActionButton(action, index, true),
-          )}
-          {uncheckedOnlyActions.length > 0 && (
+          {uncheckedActions.length > 0 && (
             <ContextMenu2Container>
               <ContextMenu2
                 open={isUncheckedActionsMenuOpen}
-                onOpenChange={setIsUncheckedActionsMenuOpen}
                 trigger={
                   <styled.BulkActionDropdownButton
                     type="button"
@@ -278,9 +270,10 @@ const Toolbar = ({
                   </styled.BulkActionDropdownButton>
                 }
                 width={200}
+                onOpenChange={setIsUncheckedActionsMenuOpen}
               >
-                {uncheckedOnlyActions.map((action, index) => {
-                  if (action.type === "single") {
+                {uncheckedActions.map((action, index) => {
+                  if (action.type === "singleButton") {
                     return (
                       <ContextMenu2ButtonItem
                         key={index}
@@ -294,6 +287,20 @@ const Toolbar = ({
                         {action.label}
                       </ContextMenu2ButtonItem>
                     );
+                  } else if (action.type === "groupButton") {
+                    return action.items.map((item, itemIndex) => (
+                      <ContextMenu2ButtonItem
+                        key={`${index}-${itemIndex}`}
+                        prepend={item.icon}
+                        disabled={checkedRows.length > 0}
+                        onClick={() => {
+                          item.onClick(checkedRows);
+                          setIsUncheckedActionsMenuOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </ContextMenu2ButtonItem>
+                    ));
                   }
                   return null;
                 })}
@@ -303,10 +310,144 @@ const Toolbar = ({
         </styled.BulkActionContainer>
       );
     } else {
-      // デスクトップ時: 全てのボタンをツールバーに横並びで表示
+      // デスクトップ時: enabledWhenによる分離と破線区切り
+      const checkedToolbarActions = checkedActions.filter(
+        (action) => (action.displayIn ?? "toolbar") === "toolbar"
+      );
+      const checkedDropdownActions = checkedActions.filter(
+        (action) => (action.displayIn ?? "toolbar") === "dropdown"
+      );
+      const uncheckedToolbarActions = uncheckedActions.filter(
+        (action) => (action.displayIn ?? "toolbar") === "toolbar"
+      );
+      const uncheckedDropdownActions = uncheckedActions.filter(
+        (action) => (action.displayIn ?? "toolbar") === "dropdown"
+      );
+
       bulkArea = (
         <styled.BulkActionContainer>
-          {bulkActions.map((action, index) =>
+          {/* 左側: checked時enabledなアクション */}
+          {checkedDropdownActions.length > 0 && (
+            <ContextMenu2Container>
+              <ContextMenu2
+                open={isBulkMenuOpen}
+                trigger={
+                  <styled.BulkActionDropdownButton
+                    type="button"
+                    disabled={checkedRows.length === 0}
+                  >
+                    <Icon name="more_vert" size="sm-md" color="currentColor" />
+                  </styled.BulkActionDropdownButton>
+                }
+                width={200}
+                onOpenChange={setIsBulkMenuOpen}
+              >
+                {checkedDropdownActions.map((action, index) => {
+                  if (action.type === "singleButton") {
+                    return (
+                      <ContextMenu2ButtonItem
+                        key={index}
+                        prepend={action.icon}
+                        disabled={
+                          action.enabledWhen === "checked" || action.enabledWhen === undefined
+                            ? checkedRows.length === 0
+                            : action.disabled?.(checkedRows) ?? false
+                        }
+                        onClick={() => {
+                          action.onClick(checkedRows);
+                          setIsBulkMenuOpen(false);
+                        }}
+                      >
+                        {action.label}
+                      </ContextMenu2ButtonItem>
+                    );
+                  } else if (action.type === "groupButton") {
+                    return action.items.map((item, itemIndex) => (
+                      <ContextMenu2ButtonItem
+                        key={`${index}-${itemIndex}`}
+                        prepend={item.icon}
+                        disabled={
+                          item.enabledWhen === "checked" || item.enabledWhen === undefined
+                            ? checkedRows.length === 0
+                            : item.disabled?.(checkedRows) ?? false
+                        }
+                        onClick={() => {
+                          item.onClick(checkedRows);
+                          setIsBulkMenuOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </ContextMenu2ButtonItem>
+                    ));
+                  } else {
+                    // divider type
+                    return <ContextMenu2SeparatorItem key={index} />;
+                  }
+                })}
+              </ContextMenu2>
+            </ContextMenu2Container>
+          )}
+          {checkedToolbarActions.map((action, index) =>
+            renderBulkActionButton(action, index, true),
+          )}
+          
+          {/* 破線区切り */}
+          {(checkedActions.length > 0 && uncheckedActions.length > 0) && (
+            <styled.DashedDivider />
+          )}
+          
+          {/* 右側: unchecked時enabledなアクション */}
+          {uncheckedDropdownActions.length > 0 && (
+            <ContextMenu2Container>
+              <ContextMenu2
+                open={isUncheckedActionsMenuOpen}
+                trigger={
+                  <styled.BulkActionDropdownButton
+                    type="button"
+                    disabled={checkedRows.length > 0}
+                  >
+                    <Icon name="more_vert" size="sm-md" color="currentColor" />
+                  </styled.BulkActionDropdownButton>
+                }
+                width={200}
+                onOpenChange={setIsUncheckedActionsMenuOpen}
+              >
+                {uncheckedDropdownActions.map((action, index) => {
+                  if (action.type === "singleButton") {
+                    return (
+                      <ContextMenu2ButtonItem
+                        key={index}
+                        prepend={action.icon}
+                        disabled={checkedRows.length > 0}
+                        onClick={() => {
+                          action.onClick(checkedRows);
+                          setIsUncheckedActionsMenuOpen(false);
+                        }}
+                      >
+                        {action.label}
+                      </ContextMenu2ButtonItem>
+                    );
+                  } else if (action.type === "groupButton") {
+                    return action.items.map((item, itemIndex) => (
+                      <ContextMenu2ButtonItem
+                        key={`${index}-${itemIndex}`}
+                        prepend={item.icon}
+                        disabled={checkedRows.length > 0}
+                        onClick={() => {
+                          item.onClick(checkedRows);
+                          setIsUncheckedActionsMenuOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </ContextMenu2ButtonItem>
+                    ));
+                  }
+                  return null;
+                })}
+              </ContextMenu2>
+            </ContextMenu2Container>
+          )}
+          {uncheckedToolbarActions.map((action, index) =>
             renderBulkActionButton(action, index, true),
           )}
         </styled.BulkActionContainer>
@@ -405,7 +546,11 @@ type DataTable2Props = {
    */
   onColumnsChange: (columns: TableColumn[]) => void;
   /**
-   * 一括操作ボタン群の定義。デスクトップ時は横並びボタン、モバイル時はdisplayInで表示場所を制御。
+   * 一括操作ボタン群の定義。enabledWhenとdisplayInで表示場所を制御：
+   * - enabledWhen: "checked" + displayIn: "toolbar" → デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン
+   * - enabledWhen: "checked" + displayIn: "dropdown" → デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン
+   * - enabledWhen: "unchecked" + displayIn: "toolbar" → デスクトップ時は右側の直接ボタン、モバイル時は右側の3点リーダーボタン
+   * - enabledWhen: "unchecked" + displayIn: "dropdown" → デスクトップ・モバイル共に右側の3点リーダーボタン
    */
   bulkActions?: BulkAction[];
   /**

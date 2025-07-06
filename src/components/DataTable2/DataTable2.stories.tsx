@@ -18,8 +18,7 @@ import {
 } from "./index";
 import Icon from "../Icon";
 import ActionButton from "../ActionButton";
-import Button from "../Button";
-import ButtonGroup from "../ButtonGroup";
+
 import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
 import type { ReactNode } from "react";
@@ -173,42 +172,80 @@ export const Default: StoryObj<typeof meta> = {
     currentPage: 0,
     totalCount: 1000,
     bulkActions: [
+      // checked時enabled + toolbar（デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン）
       {
-        type: "single",
+        type: "singleButton",
         label: "有効にする",
         icon: <Icon name="checkbox_circle" color="currentColor" />,
         onClick: () => alert("有効にする"),
         color: "basicLight",
         enabledWhen: "checked",
+        displayIn: "toolbar",
       },
-
       {
-        type: "group",
+        type: "groupButton",
         items: [
           {
-            label: "複製する",
-            icon: <Icon name="copy" color="currentColor" />,
-            onClick: () => alert("複製"),
+            label: "未読にする",
+            icon: <Icon name="eye_off" color="currentColor" />,
+            onClick: () => alert("未読"),
             enabledWhen: "checked",
           },
           {
-            label: "削除する",
-            icon: <Icon name="delete_bin" color="currentColor" />,
-            onClick: () => alert("削除"),
+            label: "既読にする",
+            icon: <Icon name="eye" color="currentColor" />,
+            onClick: () => alert("既読"),
             enabledWhen: "checked",
           },
         ],
+        enabledWhen: "checked",
+        displayIn: "toolbar",
+      },
+      // checked時enabled + dropdown（デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン）
+      {
+        type: "singleButton",
+        label: "エクスポート",
+        icon: <Icon name="copy" color="currentColor" />,
+        onClick: () => alert("エクスポート"),
+        color: "primary",
+        enabledWhen: "checked",
+        displayIn: "dropdown",
       },
       {
-        type: "divider",
+        type: "singleButton",
+        label: "ダウンロード",
+        icon: <Icon name="folder" color="currentColor" />,
+        onClick: () => alert("ダウンロード"),
+        color: "basicLight",
+        enabledWhen: "checked",
+        displayIn: "dropdown",
       },
+      // unchecked時enabled + toolbar（デスクトップ時は右側の直接ボタン、モバイル時は右側の3点リーダーボタン）
       {
-        type: "single",
+        type: "singleButton",
         label: "新規作成",
-        onClick: () => alert("チェックされていない時だけ押せる"),
+        icon: <Icon name="copy" color="currentColor" />,
+        onClick: () => alert("新規作成"),
         enabledWhen: "unchecked",
         color: "primary",
         displayIn: "toolbar",
+      },
+      // unchecked時enabled + dropdown（デスクトップ・モバイル共に右側の3点リーダーボタン）
+      {
+        type: "singleButton",
+        label: "インポート",
+        icon: <Icon name="import" color="currentColor" />,
+        onClick: () => alert("インポート"),
+        enabledWhen: "unchecked",
+        displayIn: "dropdown",
+      },
+      {
+        type: "singleButton",
+        label: "設定",
+        icon: <Icon name="setting" color="currentColor" />,
+        onClick: () => alert("設定"),
+        enabledWhen: "unchecked",
+        displayIn: "dropdown",
       },
     ],
     extraButtons: undefined,
@@ -846,30 +883,32 @@ export const Controlled: StoryObj<typeof meta> = {
     const bulkActions: BulkAction[] = React.useMemo(
       () => [
         {
-          type: "single",
+          type: "singleButton",
           label: "有効にする",
           icon: <Icon name="checkbox_circle" />,
           onClick: () => alert(`有効にする: ${checkedRows.join(", ")}`),
           color: "primary",
         },
         {
-          type: "single",
+          type: "singleButton",
           label: "アーカイブする",
           icon: <Icon name="alert" />,
           onClick: () => alert(`アーカイブする: ${checkedRows.join(", ")}`),
         },
         {
-          type: "single",
+          type: "singleButton",
           label: "複製する",
           icon: <Icon name="copy" />,
           onClick: () => alert(`複製する: ${checkedRows.join(", ")}`),
+          displayIn: "dropdown",
         },
         {
-          type: "single",
+          type: "singleButton",
           label: "削除する",
           icon: <Icon name="delete_bin" />,
           onClick: () => alert(`削除する: ${checkedRows.join(", ")}`),
           color: "danger",
+          displayIn: "dropdown",
         },
       ],
       [checkedRows],
