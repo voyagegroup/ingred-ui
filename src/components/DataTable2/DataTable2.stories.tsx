@@ -204,6 +204,12 @@ export const Default: StoryObj<typeof meta> = {
 
       // checked時enabled + dropdown（デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン）
       {
+        type: "heading",
+        label: "一括操作",
+        enabledWhen: "checked",
+        displayIn: "dropdown",
+      },
+      {
         type: "singleButton",
         label: "エクスポート",
         icon: <Icon name="copy" color="currentColor" />,
@@ -218,6 +224,20 @@ export const Default: StoryObj<typeof meta> = {
         icon: <Icon name="folder" color="currentColor" />,
         onClick: () => alert("ダウンロード"),
         color: "basicLight",
+        enabledWhen: "checked",
+        displayIn: "dropdown",
+      },
+      {
+        type: "separator",
+        enabledWhen: "checked",
+        displayIn: "dropdown",
+      },
+      {
+        type: "singleButton",
+        label: "削除",
+        icon: <Icon name="close" color="currentColor" />,
+        onClick: () => alert("削除"),
+        color: "danger",
         enabledWhen: "checked",
         displayIn: "dropdown",
       },

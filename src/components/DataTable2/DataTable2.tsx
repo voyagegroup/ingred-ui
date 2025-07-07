@@ -22,6 +22,7 @@ import {
   ContextMenu2,
   ContextMenu2ButtonItem,
   ContextMenu2SeparatorItem,
+  ContextMenu2HeadingItem,
 } from "../ContextMenu2";
 import Button from "../Button";
 import { useTheme } from "../../themes/useTheme";
@@ -68,10 +69,22 @@ export type TableAction =
         style?: React.CSSProperties;
       }[];
       displayIn?: "toolbar" | "dropdown";
+      enabledWhen?: "checked" | "unchecked" | "custom";
     }
   | {
       type: "divider";
       displayIn?: "toolbar" | "dropdown";
+    }
+  | {
+      type: "separator";
+      displayIn?: "toolbar" | "dropdown";
+      enabledWhen?: "checked" | "unchecked" | "custom";
+    }
+  | {
+      type: "heading";
+      label: string;
+      displayIn?: "toolbar" | "dropdown";
+      enabledWhen?: "checked" | "unchecked" | "custom";
     };
 
 const Toolbar = ({
@@ -161,7 +174,23 @@ const Toolbar = ({
           </ButtonGroup>
         );
       } else {
-        return <styled.DashedDivider key={index} />;
+        // divider, separator, heading type
+        if (action.type === "separator") {
+          return <styled.DashedDivider key={index} />;
+        } else if (action.type === "heading") {
+          // toolbar内でheadingは適切に表示できないので、単純なテキストとして表示
+          return (
+            <span
+              key={index}
+              style={{ padding: "8px", fontSize: "14px", fontWeight: "bold" }}
+            >
+              {action.label}
+            </span>
+          );
+        } else {
+          // divider type (for backward compatibility)
+          return <styled.DashedDivider key={index} />;
+        }
       }
     },
     [checkedRows],
@@ -175,16 +204,14 @@ const Toolbar = ({
   } else if (tableActions && tableActions.length > 0) {
     // enabledWhenによる分離
     const checkedActions = tableActions.filter((action) => {
-      if (action.type === "divider") return false;
       return (
         (action as any).enabledWhen === "checked" ||
         (action as any).enabledWhen === undefined
       );
-    }) as (TableAction & { type: "singleButton" | "groupButton" })[];
+    });
     const uncheckedActions = tableActions.filter((action) => {
-      if (action.type === "divider") return false;
       return (action as any).enabledWhen === "unchecked";
-    }) as (TableAction & { type: "singleButton" | "groupButton" })[];
+    });
 
     if (isSmallLayout) {
       // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
@@ -261,8 +288,19 @@ const Toolbar = ({
                       </ContextMenu2ButtonItem>
                     ));
                   } else {
-                    // divider type
-                    return <ContextMenu2SeparatorItem key={index} />;
+                    // divider, separator, heading type
+                    if (action.type === "separator") {
+                      return <ContextMenu2SeparatorItem key={index} />;
+                    } else if (action.type === "heading") {
+                      return (
+                        <ContextMenu2HeadingItem key={index}>
+                          {action.label}
+                        </ContextMenu2HeadingItem>
+                      );
+                    } else {
+                      // divider type (for backward compatibility)
+                      return <ContextMenu2SeparatorItem key={index} />;
+                    }
                   }
                 })}
               </ContextMenu2>
@@ -312,8 +350,21 @@ const Toolbar = ({
                         {item.label}
                       </ContextMenu2ButtonItem>
                     ));
+                  } else {
+                    // divider, separator, heading type
+                    if (action.type === "separator") {
+                      return <ContextMenu2SeparatorItem key={index} />;
+                    } else if (action.type === "heading") {
+                      return (
+                        <ContextMenu2HeadingItem key={index}>
+                          {action.label}
+                        </ContextMenu2HeadingItem>
+                      );
+                    } else {
+                      // divider type (for backward compatibility)
+                      return <ContextMenu2SeparatorItem key={index} />;
+                    }
                   }
-                  return null;
                 })}
               </ContextMenu2>
             </ContextMenu2Container>
@@ -406,8 +457,19 @@ const Toolbar = ({
                           </ContextMenu2ButtonItem>
                         ));
                       } else {
-                        // divider type
-                        return <ContextMenu2SeparatorItem key={index} />;
+                        // divider, separator, heading type
+                        if (dropdownAction.type === "separator") {
+                          return <ContextMenu2SeparatorItem key={index} />;
+                        } else if (dropdownAction.type === "heading") {
+                          return (
+                            <ContextMenu2HeadingItem key={index}>
+                              {dropdownAction.label}
+                            </ContextMenu2HeadingItem>
+                          );
+                        } else {
+                          // divider type (for backward compatibility)
+                          return <ContextMenu2SeparatorItem key={index} />;
+                        }
                       }
                     })}
                   </ContextMenu2>
@@ -486,8 +548,21 @@ const Toolbar = ({
                             {item.label}
                           </ContextMenu2ButtonItem>
                         ));
+                      } else {
+                        // divider, separator, heading type
+                        if (dropdownAction.type === "separator") {
+                          return <ContextMenu2SeparatorItem key={index} />;
+                        } else if (dropdownAction.type === "heading") {
+                          return (
+                            <ContextMenu2HeadingItem key={index}>
+                              {dropdownAction.label}
+                            </ContextMenu2HeadingItem>
+                          );
+                        } else {
+                          // divider type (for backward compatibility)
+                          return <ContextMenu2SeparatorItem key={index} />;
+                        }
                       }
-                      return null;
                     })}
                   </ContextMenu2>
                 </ContextMenu2Container>,
