@@ -17,7 +17,9 @@ import { DataTable2Pagination } from "./DataTable2Pagination";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
-import { ContextMenu2Container, ContextMenu2 ,
+import {
+  ContextMenu2Container,
+  ContextMenu2,
   ContextMenu2ButtonItem,
   ContextMenu2SeparatorItem,
 } from "../ContextMenu2";
@@ -29,8 +31,8 @@ import ButtonGroup from "../ButtonGroup";
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-// BulkAction型定義
-export type BulkAction =
+// TableAction型定義
+export type TableAction =
   | {
       type: "singleButton";
       label: string;
@@ -78,11 +80,11 @@ type ToolbarProps = {
 
 const Toolbar = ({
   extraButtons,
-  bulkActions,
-  customBulkActionArea,
+  tableActions,
+  customTableActionArea,
 }: ToolbarProps & {
-  bulkActions?: BulkAction[];
-  customBulkActionArea?: (context: {
+  tableActions?: TableAction[];
+  customTableActionArea?: (context: {
     isSmallLayout: boolean;
     checkedRows: string[];
   }) => React.ReactNode;
@@ -102,8 +104,8 @@ const Toolbar = ({
 
   const [isExtrasMenuOpen, setIsExtrasMenuOpen] = useState(false);
   const [isBulkMenuOpen, setIsBulkMenuOpen] = useState(false);
-  const [isUncheckedActionsMenuOpen, setIsUncheckedActionsMenuOpen] = useState(false);
-
+  const [isUncheckedActionsMenuOpen, setIsUncheckedActionsMenuOpen] =
+    useState(false);
 
   const hasFilterItems = useMemo(
     () => columns.some((column) => column.filtered !== undefined),
@@ -114,11 +116,9 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-
-
   // 共通のボタンレンダリング関数
   const renderBulkActionButton = useCallback(
-    (action: BulkAction, index: number, isDesktop: boolean) => {
+    (action: TableAction, index: number, isDesktop: boolean) => {
       if (action.type === "singleButton") {
         return (
           <Button
@@ -129,7 +129,8 @@ const Toolbar = ({
             inline={isDesktop}
             style={action.style}
             disabled={
-              action.enabledWhen === "checked" || action.enabledWhen === undefined
+              action.enabledWhen === "checked" ||
+              action.enabledWhen === undefined
                 ? checkedRows.length === 0
                 : action.enabledWhen === "unchecked"
                 ? checkedRows.length > 0
@@ -150,7 +151,8 @@ const Toolbar = ({
                 color={item.color ?? "basicLight"}
                 style={item.style}
                 disabled={
-                  item.enabledWhen === "checked" || item.enabledWhen === undefined
+                  item.enabledWhen === "checked" ||
+                  item.enabledWhen === undefined
                     ? checkedRows.length === 0
                     : item.enabledWhen === "unchecked"
                     ? checkedRows.length > 0
@@ -171,29 +173,28 @@ const Toolbar = ({
     [checkedRows],
   );
 
-  // 一括操作エリアの描画ロジック
-  let bulkArea: React.ReactNode = null;
-  if (customBulkActionArea) {
+  // テーブルアクションエリアの描画ロジック
+  let tableActionArea: React.ReactNode = null;
+  if (customTableActionArea) {
     // カスタムエリアが指定されている場合はそれを使用
-    bulkArea = customBulkActionArea({ isSmallLayout, checkedRows });
-  } else if (bulkActions && bulkActions.length > 0) {
+    tableActionArea = customTableActionArea({ isSmallLayout, checkedRows });
+  } else if (tableActions && tableActions.length > 0) {
     // enabledWhenによる分離
-    const checkedActions = bulkActions.filter(
-      (action) => {
-        if (action.type === "divider") return false;
-        return (action as any).enabledWhen === "checked" || (action as any).enabledWhen === undefined;
-      }
-    ) as (BulkAction & { type: "singleButton" | "groupButton" })[];
-    const uncheckedActions = bulkActions.filter(
-      (action) => {
-        if (action.type === "divider") return false;
-        return (action as any).enabledWhen === "unchecked";
-      }
-    ) as (BulkAction & { type: "singleButton" | "groupButton" })[];
+    const checkedActions = tableActions.filter((action) => {
+      if (action.type === "divider") return false;
+      return (
+        (action as any).enabledWhen === "checked" ||
+        (action as any).enabledWhen === undefined
+      );
+    }) as (TableAction & { type: "singleButton" | "groupButton" })[];
+    const uncheckedActions = tableActions.filter((action) => {
+      if (action.type === "divider") return false;
+      return (action as any).enabledWhen === "unchecked";
+    }) as (TableAction & { type: "singleButton" | "groupButton" })[];
 
     if (isSmallLayout) {
       // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
-      bulkArea = (
+      tableActionArea = (
         <styled.BulkActionContainer>
           {checkedActions.length > 0 && (
             <ContextMenu2Container>
@@ -204,7 +205,9 @@ const Toolbar = ({
                     type="button"
                     disabled={checkedRows.length === 0}
                   >
-                    <span style={{ marginRight: '4px' }}>{checkedRows.length}</span>
+                    <span style={{ marginRight: "4px" }}>
+                      {checkedRows.length}
+                    </span>
                     件を操作
                     <Icon name="arrow_down" size="sm-md" color="currentColor" />
                   </styled.BulkActionDropdownButton>
@@ -219,7 +222,8 @@ const Toolbar = ({
                         key={index}
                         prepend={action.icon}
                         disabled={
-                          action.enabledWhen === "checked" || action.enabledWhen === undefined
+                          action.enabledWhen === "checked" ||
+                          action.enabledWhen === undefined
                             ? checkedRows.length === 0
                             : action.disabled?.(checkedRows) ?? false
                         }
@@ -237,7 +241,8 @@ const Toolbar = ({
                         key={`${index}-${itemIndex}`}
                         prepend={item.icon}
                         disabled={
-                          item.enabledWhen === "checked" || item.enabledWhen === undefined
+                          item.enabledWhen === "checked" ||
+                          item.enabledWhen === undefined
                             ? checkedRows.length === 0
                             : item.disabled?.(checkedRows) ?? false
                         }
@@ -312,19 +317,19 @@ const Toolbar = ({
     } else {
       // デスクトップ時: enabledWhenによる分離と破線区切り
       const checkedToolbarActions = checkedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "toolbar"
+        (action) => (action.displayIn ?? "toolbar") === "toolbar",
       );
       const checkedDropdownActions = checkedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "dropdown"
+        (action) => (action.displayIn ?? "toolbar") === "dropdown",
       );
       const uncheckedToolbarActions = uncheckedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "toolbar"
+        (action) => (action.displayIn ?? "toolbar") === "toolbar",
       );
       const uncheckedDropdownActions = uncheckedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "dropdown"
+        (action) => (action.displayIn ?? "toolbar") === "dropdown",
       );
 
-      bulkArea = (
+      tableActionArea = (
         <styled.BulkActionContainer>
           {/* 左側: checked時enabledなアクション */}
           {checkedDropdownActions.length > 0 && (
@@ -349,7 +354,8 @@ const Toolbar = ({
                         key={index}
                         prepend={action.icon}
                         disabled={
-                          action.enabledWhen === "checked" || action.enabledWhen === undefined
+                          action.enabledWhen === "checked" ||
+                          action.enabledWhen === undefined
                             ? checkedRows.length === 0
                             : action.disabled?.(checkedRows) ?? false
                         }
@@ -367,7 +373,8 @@ const Toolbar = ({
                         key={`${index}-${itemIndex}`}
                         prepend={item.icon}
                         disabled={
-                          item.enabledWhen === "checked" || item.enabledWhen === undefined
+                          item.enabledWhen === "checked" ||
+                          item.enabledWhen === undefined
                             ? checkedRows.length === 0
                             : item.disabled?.(checkedRows) ?? false
                         }
@@ -390,12 +397,12 @@ const Toolbar = ({
           {checkedToolbarActions.map((action, index) =>
             renderBulkActionButton(action, index, true),
           )}
-          
+
           {/* 破線区切り */}
-          {(checkedActions.length > 0 && uncheckedActions.length > 0) && (
+          {checkedActions.length > 0 && uncheckedActions.length > 0 && (
             <styled.DashedDivider />
           )}
-          
+
           {/* 右側: unchecked時enabledなアクション */}
           {uncheckedDropdownActions.length > 0 && (
             <ContextMenu2Container>
@@ -474,7 +481,7 @@ const Toolbar = ({
             件を
           </styled.BulkSelectedText>
         )}
-        {bulkArea}
+        {tableActionArea}
       </styled.ToolbarBulkArea>
 
       {/* 右寄せ：フィルタ・ページング・extraButtons */}
@@ -546,17 +553,17 @@ type DataTable2Props = {
    */
   onColumnsChange: (columns: TableColumn[]) => void;
   /**
-   * 一括操作ボタン群の定義。enabledWhenとdisplayInで表示場所を制御：
+   * テーブルアクションボタン群の定義。enabledWhenとdisplayInで表示場所を制御：
    * - enabledWhen: "checked" + displayIn: "toolbar" → デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン
    * - enabledWhen: "checked" + displayIn: "dropdown" → デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン
    * - enabledWhen: "unchecked" + displayIn: "toolbar" → デスクトップ時は右側の直接ボタン、モバイル時は右側の3点リーダーボタン
    * - enabledWhen: "unchecked" + displayIn: "dropdown" → デスクトップ・モバイル共に右側の3点リーダーボタン
    */
-  bulkActions?: BulkAction[];
+  tableActions?: TableAction[];
   /**
-   * 一括操作エリアを完全カスタマイズしたい場合のrender-props。isSmallLayout, checkedRows等を受け取れる。
+   * テーブルアクションエリアを完全カスタマイズしたい場合のrender-props。isSmallLayout, checkedRows等を受け取れる。
    */
-  customBulkActionArea?: (context: {
+  customTableActionArea?: (context: {
     isSmallLayout: boolean;
     checkedRows: string[];
   }) => React.ReactNode;
@@ -586,8 +593,8 @@ export const DataTable2 = ({
   onColumnsChange,
   onCheckedRowsChange,
   children,
-  bulkActions,
-  customBulkActionArea,
+  tableActions,
+  customTableActionArea,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);
@@ -653,7 +660,7 @@ export const DataTable2 = ({
         value={{
           isSmallLayout,
           rowIds,
-          hasRowControls: !!bulkActions || !!extraButtons,
+          hasRowControls: !!tableActions || !!extraButtons,
           checkedRows,
           totalCount,
           currentPage,
@@ -673,8 +680,8 @@ export const DataTable2 = ({
       >
         <Toolbar
           extraButtons={extraButtons}
-          bulkActions={bulkActions}
-          customBulkActionArea={customBulkActionArea}
+          tableActions={tableActions}
+          customTableActionArea={customTableActionArea}
         />
         <styled.Viewport>
           <table>{children}</table>

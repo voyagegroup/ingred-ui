@@ -5,7 +5,7 @@ import { useArgs } from "@storybook/client-api";
 import {
   type TableColumn,
   type SortDirection,
-  type BulkAction,
+  type TableAction,
   DataTable2,
   DataTable2Column,
   DataTable2ColumnLabel,
@@ -69,8 +69,8 @@ type DataTable2StoryArgs = {
   pageSizeOptions: number[];
   currentPage: number;
   totalCount: number;
-  bulkActions?: BulkAction[];
-  customBulkActionArea?: (props: {
+  tableActions?: TableAction[];
+  customTableActionArea?: (props: {
     isSmallLayout: boolean;
     checkedRows: string[];
   }) => ReactNode;
@@ -171,7 +171,7 @@ export const Default: StoryObj<typeof meta> = {
     pageSizeOptions,
     currentPage: 0,
     totalCount: 1000,
-    bulkActions: [
+    tableActions: [
       // checked時enabled + toolbar（デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン）
       {
         type: "singleButton",
@@ -264,7 +264,7 @@ export const Default: StoryObj<typeof meta> = {
         totalCount: number;
       }>();
     // argsからDataTable2Propsのみ抽出
-    const { bulkActions, customBulkActionArea, ...dataTable2Args } = args;
+    const { tableActions, customTableActionArea, ...dataTable2Args } = args;
 
     // totalCountに基づいてmockDataを動的に生成
     const mockData = useMemo(() => createMockData(totalCount), [totalCount]);
@@ -421,8 +421,8 @@ export const Default: StoryObj<typeof meta> = {
           {...dataTable2Args}
           columns={columns}
           totalCount={filteredData.length}
-          bulkActions={bulkActions}
-          customBulkActionArea={customBulkActionArea}
+          tableActions={tableActions}
+          customTableActionArea={customTableActionArea}
           onCheckedRowsChange={() => {}}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
@@ -879,8 +879,8 @@ export const Controlled: StoryObj<typeof meta> = {
       [data, pageSize, currentPage],
     );
 
-    // bulkActionsは外部のcheckedRowsを参照
-    const bulkActions: BulkAction[] = React.useMemo(
+    // tableActionsは外部のcheckedRowsを参照
+    const tableActions: TableAction[] = React.useMemo(
       () => [
         {
           type: "singleButton",
@@ -920,7 +920,7 @@ export const Controlled: StoryObj<typeof meta> = {
           {...args}
           columns={columns}
           totalCount={data.length}
-          bulkActions={bulkActions}
+          tableActions={tableActions}
           onCheckedRowsChange={setCheckedRows}
           onPageSizeChange={(pageSize: number) => updateArgs({ pageSize })}
           onPageChange={(currentPage: number) => updateArgs({ currentPage })}
