@@ -74,15 +74,10 @@ export type TableAction =
       displayIn?: "toolbar" | "dropdown";
     };
 
-type ToolbarProps = {
-  extraButtons?: ReactNode;
-};
-
 const Toolbar = ({
-  extraButtons,
   tableActions,
   customTableActionArea,
-}: ToolbarProps & {
+}: {
   tableActions?: TableAction[];
   customTableActionArea?: (context: {
     isSmallLayout: boolean;
@@ -547,7 +542,7 @@ const Toolbar = ({
       <styled.ToolbarExtras>
         {hasFilterItems && <DataTable2FilterControls />}
         <DataTable2Pagination />
-        {!isSmallLayout && extraButtons}
+
         <ContextMenu2Container>
           <ContextMenu2
             open={isExtrasMenuOpen}
@@ -559,7 +554,6 @@ const Toolbar = ({
             }
             onOpenChange={setIsExtrasMenuOpen}
           >
-            {isSmallLayout && extraButtons}
             {columns.some((column) => column.sortable) && (
               <DataTable2MenuOrderControl
                 onClose={() => setIsExtrasMenuOpen(false)}
@@ -637,11 +631,10 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
-} & ToolbarProps;
+};
 
 export const DataTable2 = ({
   bordered,
-  extraButtons,
   currentPage,
   pageSize,
   pageSizeOptions,
@@ -719,7 +712,7 @@ export const DataTable2 = ({
         value={{
           isSmallLayout,
           rowIds,
-          hasRowControls: !!tableActions || !!extraButtons,
+          hasRowControls: !!tableActions,
           checkedRows,
           totalCount,
           currentPage,
@@ -738,7 +731,6 @@ export const DataTable2 = ({
         }}
       >
         <Toolbar
-          extraButtons={extraButtons}
           tableActions={tableActions}
           customTableActionArea={customTableActionArea}
         />

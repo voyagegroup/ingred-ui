@@ -74,7 +74,7 @@ type DataTable2StoryArgs = {
     isSmallLayout: boolean;
     checkedRows: string[];
   }) => ReactNode;
-  extraButtons?: ReactNode | undefined;
+
   onCheckedRowsChange: (checkedRows: string[]) => void;
   onPageSizeChange: (pageSize: number) => void;
   onPageChange: (currentPage: number) => void;
@@ -249,7 +249,7 @@ export const Default: StoryObj<typeof meta> = {
         displayIn: "dropdown",
       },
     ],
-    extraButtons: undefined,
+
     onCheckedRowsChange: () => {},
     onPageSizeChange: () => {},
     onPageChange: () => {},
