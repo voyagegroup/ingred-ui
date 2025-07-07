@@ -174,15 +174,6 @@ export const Default: StoryObj<typeof meta> = {
     tableActions: [
       // checked時enabled + toolbar（デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン）
       {
-        type: "singleButton",
-        label: "有効にする",
-        icon: <Icon name="checkbox_circle" color="currentColor" />,
-        onClick: () => alert("有効にする"),
-        color: "basicLight",
-        enabledWhen: "checked",
-        displayIn: "toolbar",
-      },
-      {
         type: "groupButton",
         items: [
           {
@@ -201,6 +192,16 @@ export const Default: StoryObj<typeof meta> = {
         enabledWhen: "checked",
         displayIn: "toolbar",
       },
+      {
+        type: "singleButton",
+        label: "有効にする",
+        icon: <Icon name="checkbox_circle" color="currentColor" />,
+        onClick: () => alert("有効にする"),
+        color: "basicLight",
+        enabledWhen: "checked",
+        displayIn: "toolbar",
+      },
+
       // checked時enabled + dropdown（デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン）
       {
         type: "singleButton",
