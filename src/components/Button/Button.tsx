@@ -178,6 +178,10 @@ type baseProps = {
     | React.ComponentType<{ className: string }>;
   color?: ButtonColor;
   /**
+   * テキストカラーを直接指定したい場合に使用
+   */
+  textColor?: string;
+  /**
    * Control whether "inline" or "block" Element.
    */
   inline?: boolean;
@@ -209,6 +213,7 @@ const Button = React.forwardRef<
     component,
     children,
     color = "primary",
+    textColor,
     inline = false,
     size = "medium",
     icon,
@@ -258,7 +263,7 @@ const Button = React.forwardRef<
     >
       {icon && icon}
       {icon && children && <Spacer pr={0.5} />}
-      {children && <Styled.Text>{children}</Styled.Text>}
+      {children && <Styled.Text $textColor={textColor}>{children}</Styled.Text>}
     </Styled.ButtonContainer>
   );
 });

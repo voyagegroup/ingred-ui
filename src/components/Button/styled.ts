@@ -22,8 +22,9 @@ export type ContainerProps = ButtonColorStyle & {
   disabled?: boolean;
 };
 
-export const Text = styled.div`
+export const Text = styled.div<{ $textColor?: string }>`
   ${trimVertical}
+  ${({ $textColor }) => $textColor && `color: ${$textColor};`}
 `;
 
 export const ButtonContainer = styled(BaseButton)<

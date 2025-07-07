@@ -12,7 +12,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       height="32px"
     >
       <div
-        class="sc-hKMtZM eoeHmW"
+        class="sc-hKMtZM iorTpH"
       >
         Edit
       </div>
@@ -24,7 +24,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       height="32px"
     >
       <div
-        class="sc-hKMtZM eoeHmW"
+        class="sc-hKMtZM iorTpH"
       >
         Save
       </div>

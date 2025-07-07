@@ -16,7 +16,7 @@ exports[`DropdownButton component testing not splited disable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         Save
         <div
@@ -126,7 +126,7 @@ exports[`DropdownButton component testing not splited enable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         Save
         <div
@@ -243,7 +243,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         Save
       </div>
@@ -257,7 +257,7 @@ exports[`DropdownButton component testing splited disable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         <span
           class="sc-papXJ hnQhun"
@@ -362,7 +362,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         Save
       </div>
@@ -375,7 +375,7 @@ exports[`DropdownButton component testing splited enable 1`] = `
       height="32px"
     >
       <div
-        class="sc-dkzDqf iVkTgt"
+        class="sc-dkzDqf geHc"
       >
         <span
           class="sc-papXJ hnQhun"

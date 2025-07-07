@@ -286,7 +286,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
             height="28px"
           >
             <div
-              class="sc-cxabCf hoHJbC"
+              class="sc-cxabCf kWjYtr"
             >
               キャンセル
             </div>
@@ -300,7 +300,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
             height="28px"
           >
             <div
-              class="sc-cxabCf hoHJbC"
+              class="sc-cxabCf kWjYtr"
             >
               適用
             </div>

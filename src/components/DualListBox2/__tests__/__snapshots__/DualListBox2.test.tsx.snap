@@ -476,7 +476,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
               type="button"
             >
               <div
-                class="sc-dkzDqf iVkTgt"
+                class="sc-dkzDqf geHc"
               >
                 選択をクリア
               </div>
@@ -924,7 +924,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               type="button"
             >
               <div
-                class="sc-dkzDqf iVkTgt"
+                class="sc-dkzDqf geHc"
               >
                 選択をクリア
               </div>
@@ -1313,7 +1313,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
               type="button"
             >
               <div
-                class="sc-dkzDqf iVkTgt"
+                class="sc-dkzDqf geHc"
               >
                 選択をクリア
               </div>
