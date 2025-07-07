@@ -103,7 +103,7 @@ const Toolbar = ({
   );
 
   const [isExtrasMenuOpen, setIsExtrasMenuOpen] = useState(false);
-  const [isBulkMenuOpen, setIsBulkMenuOpen] = useState(false);
+  const [isTableActionMenuOpen, setIsTableActionMenuOpen] = useState(false);
   const [isUncheckedActionsMenuOpen, setIsUncheckedActionsMenuOpen] =
     useState(false);
 
@@ -117,7 +117,7 @@ const Toolbar = ({
   }, [isAllChecked, rowIds, setCheckedRows]);
 
   // 共通のボタンレンダリング関数
-  const renderBulkActionButton = useCallback(
+  const renderTableActionButton = useCallback(
     (action: TableAction, index: number, isDesktop: boolean) => {
       if (action.type === "singleButton") {
         return (
@@ -194,25 +194,37 @@ const Toolbar = ({
     if (isSmallLayout) {
       // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
       tableActionArea = (
-        <styled.BulkActionContainer>
+        <styled.TableActionContainer>
           {checkedActions.length > 0 && (
             <ContextMenu2Container>
               <ContextMenu2
-                open={isBulkMenuOpen}
+                open={isTableActionMenuOpen}
                 trigger={
-                  <styled.BulkActionDropdownButton
+                  // TODO: 将来的にこの「n件を操作」ドロップダウンボタンを専用コンポーネントとして切り出す
+                  // - TableActionDropdownTriggerコンポーネントのようなコンポーネント名を検討
+                  // - disabled状態での色制御やスタイルの一元管理
+                  // - 他の箇所での再利用可能性を考慮
+                  <styled.TableActionDropdownButton
                     type="button"
                     disabled={checkedRows.length === 0}
                   >
-                    <span style={{ marginRight: "4px" }}>
+                    <span
+                      style={{
+                        color:
+                          checkedRows.length === 0
+                            ? "inherit"
+                            : theme.palette.primary.main,
+                        fontWeight: 700,
+                      }}
+                    >
                       {checkedRows.length}
                     </span>
                     件を操作
                     <Icon name="arrow_down" size="sm-md" color="currentColor" />
-                  </styled.BulkActionDropdownButton>
+                  </styled.TableActionDropdownButton>
                 }
                 width={200}
-                onOpenChange={setIsBulkMenuOpen}
+                onOpenChange={setIsTableActionMenuOpen}
               >
                 {checkedActions.map((action, index) => {
                   if (action.type === "singleButton") {
@@ -228,7 +240,7 @@ const Toolbar = ({
                         }
                         onClick={() => {
                           action.onClick(checkedRows);
-                          setIsBulkMenuOpen(false);
+                          setIsTableActionMenuOpen(false);
                         }}
                       >
                         {action.label}
@@ -247,7 +259,7 @@ const Toolbar = ({
                         }
                         onClick={() => {
                           item.onClick(checkedRows);
-                          setIsBulkMenuOpen(false);
+                          setIsTableActionMenuOpen(false);
                         }}
                       >
                         {item.label}
@@ -266,12 +278,12 @@ const Toolbar = ({
               <ContextMenu2
                 open={isUncheckedActionsMenuOpen}
                 trigger={
-                  <styled.BulkActionDropdownButton
+                  <styled.TableActionDropdownButton
                     type="button"
                     disabled={checkedRows.length > 0}
                   >
                     <Icon name="more_vert" size="sm-md" color="currentColor" />
-                  </styled.BulkActionDropdownButton>
+                  </styled.TableActionDropdownButton>
                 }
                 width={200}
                 onOpenChange={setIsUncheckedActionsMenuOpen}
@@ -311,18 +323,12 @@ const Toolbar = ({
               </ContextMenu2>
             </ContextMenu2Container>
           )}
-        </styled.BulkActionContainer>
+        </styled.TableActionContainer>
       );
     } else {
       // デスクトップ時: enabledWhenによる分離と破線区切り
-      const checkedToolbarActions = checkedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "toolbar",
-      );
       const checkedDropdownActions = checkedActions.filter(
         (action) => (action.displayIn ?? "toolbar") === "dropdown",
-      );
-      const uncheckedToolbarActions = uncheckedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "toolbar",
       );
       const uncheckedDropdownActions = uncheckedActions.filter(
         (action) => (action.displayIn ?? "toolbar") === "dropdown",
@@ -337,7 +343,7 @@ const Toolbar = ({
 
           if (displayIn === "toolbar") {
             // toolbarボタンを直接レンダリング
-            elements.push(renderBulkActionButton(action, originalIndex, true));
+            elements.push(renderTableActionButton(action, originalIndex, true));
           } else if (displayIn === "dropdown") {
             // dropdownボタンがまだ追加されていない場合のみ追加
             const hasDropdownButton = elements.some(
@@ -348,9 +354,9 @@ const Toolbar = ({
               elements.push(
                 <ContextMenu2Container key="checked-dropdown">
                   <ContextMenu2
-                    open={isBulkMenuOpen}
+                    open={isTableActionMenuOpen}
                     trigger={
-                      <styled.BulkActionDropdownButton
+                      <styled.TableActionDropdownButton
                         type="button"
                         disabled={checkedRows.length === 0}
                       >
@@ -359,10 +365,10 @@ const Toolbar = ({
                           size="sm-md"
                           color="currentColor"
                         />
-                      </styled.BulkActionDropdownButton>
+                      </styled.TableActionDropdownButton>
                     }
                     width={200}
-                    onOpenChange={setIsBulkMenuOpen}
+                    onOpenChange={setIsTableActionMenuOpen}
                   >
                     {checkedDropdownActions.map((dropdownAction, index) => {
                       if (dropdownAction.type === "singleButton") {
@@ -379,7 +385,7 @@ const Toolbar = ({
                             }
                             onClick={() => {
                               dropdownAction.onClick(checkedRows);
-                              setIsBulkMenuOpen(false);
+                              setIsTableActionMenuOpen(false);
                             }}
                           >
                             {dropdownAction.label}
@@ -398,7 +404,7 @@ const Toolbar = ({
                             }
                             onClick={() => {
                               item.onClick(checkedRows);
-                              setIsBulkMenuOpen(false);
+                              setIsTableActionMenuOpen(false);
                             }}
                           >
                             {item.label}
@@ -428,7 +434,7 @@ const Toolbar = ({
 
           if (displayIn === "toolbar") {
             // toolbarボタンを直接レンダリング
-            elements.push(renderBulkActionButton(action, originalIndex, true));
+            elements.push(renderTableActionButton(action, originalIndex, true));
           } else if (displayIn === "dropdown") {
             // dropdownボタンがまだ追加されていない場合のみ追加
             const hasDropdownButton = elements.some(
@@ -442,7 +448,7 @@ const Toolbar = ({
                   <ContextMenu2
                     open={isUncheckedActionsMenuOpen}
                     trigger={
-                      <styled.BulkActionDropdownButton
+                      <styled.TableActionDropdownButton
                         type="button"
                         disabled={checkedRows.length > 0}
                       >
@@ -451,7 +457,7 @@ const Toolbar = ({
                           size="sm-md"
                           color="currentColor"
                         />
-                      </styled.BulkActionDropdownButton>
+                      </styled.TableActionDropdownButton>
                     }
                     width={200}
                     onOpenChange={setIsUncheckedActionsMenuOpen}
@@ -499,7 +505,7 @@ const Toolbar = ({
       };
 
       tableActionArea = (
-        <styled.BulkActionContainer>
+        <styled.TableActionContainer>
           {/* 左側: checked時enabledなアクション（配列順序通り） */}
           {renderCheckedActionsInOrder()}
 
@@ -510,7 +516,7 @@ const Toolbar = ({
 
           {/* 右側: unchecked時enabledなアクション（配列順序通り） */}
           {renderUncheckedActionsInOrder()}
-        </styled.BulkActionContainer>
+        </styled.TableActionContainer>
       );
     }
   }
@@ -518,24 +524,24 @@ const Toolbar = ({
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
       {/* 左側カスタム領域 */}
-      <styled.ToolbarBulkArea>
+      <styled.ToolbarTableActionArea>
         <Checkbox
           checked={isAllChecked || isIndeterminate}
           indeterminate={isIndeterminate}
           onChange={onCheck}
         />
         {!isSmallLayout && (
-          <styled.BulkSelectedText>
+          <styled.TableSelectedText>
             <span
               style={{ color: theme.palette.primary.main, fontWeight: 700 }}
             >
               {checkedRows.length}
             </span>
             件を
-          </styled.BulkSelectedText>
+          </styled.TableSelectedText>
         )}
         {tableActionArea}
-      </styled.ToolbarBulkArea>
+      </styled.ToolbarTableActionArea>
 
       {/* 右寄せ：フィルタ・ページング・extraButtons */}
       <styled.ToolbarExtras>

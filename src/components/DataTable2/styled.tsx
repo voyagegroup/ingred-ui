@@ -468,19 +468,19 @@ export const DataTable2InlineEditorButton = styled.div`
 `;
 
 // 一括操作UI用スタイル
-export const ToolbarBulkArea = styled.div`
+export const ToolbarTableActionArea = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 
-export const BulkSelectedText = styled.span`
+export const TableSelectedText = styled.span`
   font-size: 13px;
   color: ${colors.basic[900]};
   margin-inline: 4px 0;
 `;
 
-export const BulkActionButton = styled.button<{
+export const TableActionButton = styled.button<{
   color?: "danger" | "primary" | "default";
 }>`
   ${actionButton}
@@ -506,11 +506,11 @@ export const BulkActionButton = styled.button<{
   }
 `;
 
-export const BulkActionMenuTrigger = styled.button`
+export const TableActionMenuTrigger = styled.button`
   ${actionButton}
 `;
 
-export const BulkActionMenuItem = styled.button<{
+export const TableActionMenuItem = styled.button<{
   color?: "danger" | "primary" | "default";
 }>`
   width: 100%;
@@ -542,13 +542,13 @@ export const DashedDivider = styled.span`
   vertical-align: middle;
 `;
 
-export const BulkActionContainer = styled.div`
+export const TableActionContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
 
-export const BulkActionDropdownButton = styled.button`
+export const TableActionDropdownButton = styled.button`
   ${actionButton}
   display: flex;
   align-items: center;
