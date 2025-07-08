@@ -38,7 +38,6 @@ import {
 } from "@floating-ui/react";
 import { getMaxIndex } from "./floating-ui-utils";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
 import { ContextMenu2ButtonItem } from "./ContextMenu2ButtonItem";
 import { ContextMenu2CheckItem } from "./ContextMenu2CheckItem";
@@ -133,10 +132,10 @@ type ContextMenu2Props = {
 const ContextMenu2Panel = styled.div`
   z-index: ${depth.dropdown};
   padding: 8px;
-  border: 1px solid ${colors.basic[200]};
+  border: 1px solid ${({ theme }) => theme.palette.gray.light};
   border-radius: 6px;
   box-shadow: 0px 0px 16px rgba(4, 28, 51, 0.08);
-  background: #ffffff;
+  background: ${({ theme }) => theme.palette.white};
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -150,10 +149,10 @@ const ContextMenu2Panel = styled.div`
 const StickyHeader = styled.div`
   position: sticky;
   top: 0;
-  background: #ffffff;
+  background: ${({ theme }) => theme.palette.white};
   z-index: 1;
   padding-bottom: 8px;
-  border-bottom: 1px solid ${colors.basic[200]};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.gray.light};
   margin: 0 -8px 0;
   padding: 8px 16px 16px;
 `;
@@ -162,8 +161,8 @@ const StickyFooter = styled.div`
   position: sticky;
   bottom: 0;
   z-index: 1;
-  background: #ffffff;
-  border-top: 1px solid ${colors.basic[200]};
+  background: ${({ theme }) => theme.palette.white};
+  border-top: 1px solid ${({ theme }) => theme.palette.gray.light};
   margin: 0 8px 0;
 `;
 

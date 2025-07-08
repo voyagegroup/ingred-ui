@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 
 const StyledMessage = styled.p`
   margin: 16px 0;
   font-size: 13px;
-  color: ${colors.basic[700]};
+  color: ${({ theme }) => theme.palette.text.secondary};
   text-align: center;
 `;
 
