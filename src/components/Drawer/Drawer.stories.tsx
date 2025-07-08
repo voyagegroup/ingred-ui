@@ -870,3 +870,62 @@ export const DynamicConfirmClose: Story = {
     },
   },
 };
+
+// アンカーリンクでDrawerを開くサンプル
+const AnchorTriggerSample = (args: any) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div style={{ padding: 20 }}>
+      <a
+        href="https://example.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          color: "#1976d2",
+          textDecoration: "underline",
+          cursor: "pointer",
+          fontSize: 16,
+        }}
+        onClick={(e) => {
+          // 通常クリック（左クリック、かつ修飾キーなし）のみDrawerを開く
+          if (
+            e.button === 0 && // 左クリック
+            !e.ctrlKey &&
+            !e.metaKey &&
+            !e.shiftKey &&
+            !e.altKey
+          ) {
+            e.preventDefault();
+            setOpen(true);
+          }
+          // それ以外（右クリック、Ctrl/⌘クリック、ミドルクリック）は通常のリンク挙動
+        }}
+      >
+        アンカーリンクでDrawerを開く（新規タブ操作は通常遷移）
+      </a>
+      <Drawer {...args} isOpen={open} onClose={() => setOpen(false)}>
+        <div style={{ padding: 16 }}>
+          <Typography weight="bold" size="xl">
+            アンカーリンクから開いたDrawer
+          </Typography>
+          <div style={{ marginTop: 16 }}>
+            <Typography>
+              通常クリックでDrawerが開きます。
+              <br />
+              右クリックやCtrl/⌘クリックでは新規タブで遷移します。
+            </Typography>
+          </div>
+        </div>
+      </Drawer>
+    </div>
+  );
+};
+
+export const AnchorTrigger: Story = {
+  render: AnchorTriggerSample,
+  args: {
+    direction: "right",
+    size: 400,
+  },
+};
