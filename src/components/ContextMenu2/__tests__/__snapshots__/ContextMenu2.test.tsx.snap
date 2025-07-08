@@ -35,7 +35,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
   />
   <div
     aria-orientation="vertical"
-    class="sc-fnykZs cxQFJs"
+    class="sc-fnykZs lfaaFr"
     id=":r1:"
     role="dialog"
     style="position: absolute; left: 0px; top: 0px; width: 316px; min-width: auto; transform: translate(0px, 5px); max-width: 0px; max-height: 0px;"
@@ -87,7 +87,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         type="button"
       >
         <span
-          class="sc-gsnTZi cqsEkE"
+          class="sc-gsnTZi kjdeNj"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -166,7 +166,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         type="button"
       >
         <span
-          class="sc-hKMtZM fbdcDs"
+          class="sc-hKMtZM ckqPBz"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -209,7 +209,7 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
         type="button"
       >
         <span
-          class="sc-hKMtZM fbdcDs"
+          class="sc-hKMtZM ckqPBz"
         >
           <span
             class="sc-bczRLJ gJuzRf"
@@ -280,22 +280,30 @@ exports[`ContextMenu2 component testing ContextMenu2 1`] = `
       >
         <li>
           <button
-            class="sc-ivTmOn sc-cxabCf gFzxQX doCBWJ"
+            class="sc-ivTmOn sc-llJcti gFzxQX cwQMdf"
             color="clear"
             font-size="12px"
             height="28px"
           >
-            キャンセル
+            <div
+              class="sc-cxabCf kWjYtr"
+            >
+              キャンセル
+            </div>
           </button>
         </li>
         <li>
           <button
-            class="sc-ivTmOn sc-cxabCf gFzxQX jGTGDe"
+            class="sc-ivTmOn sc-llJcti gFzxQX isJfaQ"
             color="primary"
             font-size="12px"
             height="28px"
           >
-            適用
+            <div
+              class="sc-cxabCf kWjYtr"
+            >
+              適用
+            </div>
           </button>
         </li>
       </ul>

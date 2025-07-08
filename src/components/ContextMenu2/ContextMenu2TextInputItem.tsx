@@ -9,7 +9,6 @@ import React, {
   useEffect,
 } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { ContextMenu2Context } from "./context";
 
 // 特に機能を持たない、見た目付きのテキスト入力
@@ -124,12 +123,12 @@ export const ContextMenu2TextInputItem = styled(
     width: 100%;
     padding: 6px 8px;
     border-radius: 6px;
-    border: 1px solid ${colors.basic[400]};
+    border: 1px solid ${({ theme }) => theme.palette.text.disabled};
     /* UI/Text 13 */
     font-size: 13px;
     line-height: 19px;
-    color: ${colors.basic[900]};
-    background: ${colors.basic[100]};
+    color: ${({ theme }) => theme.palette.black};
+    background: ${({ theme }) => theme.palette.gray.highlight};
 
     &[data-ios="true"] {
       font-size: 16px;

@@ -6,6 +6,7 @@ import { action } from "@storybook/addon-actions";
 import Button, { ButtonProps } from "./Button";
 import Flex from "../Flex";
 import Icon from "../Icon";
+import { useTheme } from "../../themes";
 
 export default {
   title: "Components/Inputs/Button",
@@ -139,6 +140,26 @@ export const UseHrefProps: StoryObj<ButtonProps> = {
     href: "https://www.google.com",
     target: "_blank",
     rel: "noopener noreferrer",
+  },
+};
+
+export const CustomTextColor: StoryObj<ButtonProps> = {
+  ...Template,
+  args: {
+    children: "テキスト",
+    color: "basicLight",
+  },
+  render: (args) => {
+    const theme = useTheme();
+    return (
+      <Button
+        {...args}
+        textColor={theme.palette.danger.main}
+        icon={<Icon name="image" color={theme.palette.danger.main} />}
+      >
+        テキスト
+      </Button>
+    );
   },
 };
 

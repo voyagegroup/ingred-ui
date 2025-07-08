@@ -1,7 +1,15 @@
 import styled, { css } from "styled-components";
 
 import { BaseButton } from "./internal/BaseButton";
-import { ButtonColorStyle } from "./Button";
+import type { ButtonColorStyle, ButtonSize } from "./Button";
+import { trimVertical } from "../../styles/typography";
+
+// アイコンの具体的なサイズをここで定義
+const iconPixelSize = {
+  small: "16px",
+  medium: "18px",
+  large: "20px",
+};
 
 export type ContainerProps = ButtonColorStyle & {
   color: string;
@@ -14,7 +22,14 @@ export type ContainerProps = ButtonColorStyle & {
   disabled?: boolean;
 };
 
-export const ButtonContainer = styled(BaseButton)<ContainerProps>`
+export const Text = styled.div<{ $textColor?: string }>`
+  ${trimVertical}
+  ${({ $textColor }) => $textColor && `color: ${$textColor};`}
+`;
+
+export const ButtonContainer = styled(BaseButton)<
+  ContainerProps & { size: ButtonSize }
+>`
   display: ${({ inline }) => (inline ? "inline-flex" : "flex")};
   justify-content: center;
   align-items: center;
@@ -29,6 +44,17 @@ export const ButtonContainer = styled(BaseButton)<ContainerProps>`
   font-size: ${({ fontSize }) => fontSize};
   box-shadow: ${({ normal }) => normal.boxShadow};
   transition: background 0.3s;
+
+  & > span,
+  & svg {
+    width: ${({ size }) => iconPixelSize[size]};
+    height: ${({ size }) => iconPixelSize[size]};
+  }
+
+  & > span {
+    display: inline-flex;
+    align-items: center;
+  }
 
   &[disabled] {
     ${({ color }) =>

@@ -19,10 +19,10 @@ import { SortableContext, useSortable, arrayMove } from "@dnd-kit/sortable";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { createPortal } from "react-dom";
 import Icon from "../Icon";
 import { depth } from "../../styles/depth";
+import { useTheme } from "../../themes/useTheme";
 
 export const ContextMenu2SortableContext = createContext<{
   isSorting: boolean;
@@ -200,6 +200,7 @@ export const ContextMenu2SortableItem = ({
     id,
   });
   const { isGhost } = useContext(ContextMenu2SortableItemContext);
+  const theme = useTheme();
 
   return (
     <SortableItem
@@ -220,7 +221,7 @@ export const ContextMenu2SortableItem = ({
         {...attributes}
         {...listeners}
       >
-        <Icon name="braille" size="lg" color={colors.basic[900]} />
+        <Icon name="braille" size="lg" color={theme.palette.black} />
       </SortableHandle>
       <SortableContents isGhost={isGhost}>{children}</SortableContents>
     </SortableItem>
