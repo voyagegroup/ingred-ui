@@ -70,7 +70,6 @@ const Input = React.forwardRef<
   },
   ref,
 ) {
-  const [isFocused, setIsFocused] = React.useState(false);
   const Element = multiline ? "textarea" : "input";
 
   // イベントハンドラ型を簡略化
@@ -78,16 +77,13 @@ const Input = React.forwardRef<
     HTMLInputElement | HTMLTextAreaElement
   >;
 
+  // フォーカスイベントハンドラの型エイリアス
+  type FocusHandler = React.FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
+
   const handleWheel = React.useCallback((event: InputEvent) => {
     event.currentTarget.blur();
-  }, []);
-
-  const handleFocus = React.useCallback(() => {
-    setIsFocused(true);
-  }, []);
-
-  const handleBlur = React.useCallback(() => {
-    setIsFocused(false);
   }, []);
 
   // アクセシビリティのためのプロパティ
@@ -102,18 +98,15 @@ const Input = React.forwardRef<
     <Styled.Input
       {...rest}
       {...ariaProps}
-      ref={ref as any} // ジェネリック型の制約のため、ここではanyを使用
+      ref={ref as any}
       as={Element}
       $error={error}
-      $isFocused={isFocused}
       resize={resize}
       $size={size}
       $variant={variant}
       $fullWidth={fullWidth}
-      onFocus={
-        onFocus ? createChainedFunction(handleFocus, onFocus) : handleFocus
-      }
-      onBlur={onBlur ? createChainedFunction(handleBlur, onBlur) : handleBlur}
+      onFocus={onFocus as FocusHandler}
+      onBlur={onBlur as FocusHandler}
       onWheel={createChainedFunction(
         !multiline && "type" in rest && rest.type === "number"
           ? handleWheel

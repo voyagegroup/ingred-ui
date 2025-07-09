@@ -3,6 +3,7 @@ import { Radius, Space, Depth, Shadow } from "../styles";
 import { DepthOptions, depth } from "../styles/depth";
 import { deepmerge } from "../utils/deepmerge";
 import { DeepPartial } from "../types";
+import { createFocusInteraction } from "../styles/interaction";
 
 export type ThemeOptions = {
   palette?: DeepPartial<Palette>;
@@ -10,6 +11,9 @@ export type ThemeOptions = {
   spacing?: number;
   radius?: number;
   depth?: DepthOptions;
+  interaction?: {
+    focus: (isError?: boolean) => string;
+  };
 };
 
 export type Theme = {
@@ -18,6 +22,9 @@ export type Theme = {
   spacing: number;
   radius: number;
   depth: Depth;
+  interaction: {
+    focus: (isError?: boolean) => any;
+  };
 };
 
 export function createTheme(options: ThemeOptions = {}): Theme {
@@ -35,6 +42,10 @@ export function createTheme(options: ThemeOptions = {}): Theme {
   const radius = radiusInput || Radius;
 
   const theme = deepmerge({ palette, shadow, spacing, depth, radius }, other);
+
+  theme.interaction = {
+    focus: createFocusInteraction(theme),
+  };
 
   return theme;
 }

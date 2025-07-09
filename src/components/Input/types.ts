@@ -54,7 +54,7 @@ export const getInputVariantConfig = (
     focusShadowColor: `${theme.palette.primary.light}66`, // 青色 + 40%透明度
   },
   dark: {
-    background: theme.palette.basicDark.main, // グレー背景
+    background: theme.palette.basicDark.ultraLight, // グレー背景
     borderColor: theme.palette.divider,
     hoverBorderColor: theme.palette.primary.main,
     focusBorderColor: theme.palette.primary.main,

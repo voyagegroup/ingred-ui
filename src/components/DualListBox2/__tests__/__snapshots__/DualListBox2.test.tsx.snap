@@ -50,7 +50,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-ksZaOG dTgztG"
+          class="sc-ksZaOG epRBkT"
         >
           <div
             class="sc-hAZoDl hCUelP"
@@ -84,7 +84,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           <button
             aria-expanded="false"
             aria-haspopup="dialog"
-            class="sc-fEOsli kPBeeH"
+            class="sc-fEOsli duRlCr"
             type="button"
           >
             <span
@@ -113,7 +113,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             4件
           </div>
           <ul
-            class="sc-idiyUo lFqnU"
+            class="sc-idiyUo dWMFes"
           >
             <li>
               <button
@@ -168,11 +168,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
           class="sc-breuTD bPfCHR"
         >
           <div
-            class="sc-llJcti cVIjgV"
+            class="sc-llJcti doaKAw"
           >
             リストアイテム1
             <div
-              class="sc-cxabCf bFvcap"
+              class="sc-cxabCf eFmUYN"
             >
               <li>
                 <button
@@ -228,11 +228,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-llJcti cVIjgV"
+            class="sc-llJcti doaKAw"
           >
             リストアイテム2
             <div
-              class="sc-cxabCf bFvcap"
+              class="sc-cxabCf eFmUYN"
             >
               <li>
                 <button
@@ -288,11 +288,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-llJcti cVIjgV"
+            class="sc-llJcti doaKAw"
           >
             リストアイテム3
             <div
-              class="sc-cxabCf bFvcap"
+              class="sc-cxabCf eFmUYN"
             >
               <li>
                 <button
@@ -348,11 +348,11 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             </div>
           </div>
           <div
-            class="sc-llJcti cVIjgV"
+            class="sc-llJcti doaKAw"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <div
-              class="sc-cxabCf bFvcap"
+              class="sc-cxabCf eFmUYN"
             >
               <li>
                 <button
@@ -416,7 +416,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
         class="sc-evZas blLXDe"
       >
         <div
-          class="sc-hHLeRK gjTOHt"
+          class="sc-hHLeRK ifoLQw"
         >
           <div
             class="sc-dmRaPn jvzRtm"
@@ -469,7 +469,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             class="sc-bBrHrO kzpmIC"
           >
             <button
-              class="sc-gsnTZi sc-hKMtZM bveZbV jZBGwJ"
+              class="sc-gsnTZi sc-hKMtZM bveZbV fdyWJF"
               color="basicLight"
               font-size="12px"
               height="28px"
@@ -506,7 +506,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             追加
           </p>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             リストアイテム1
             <button
@@ -539,7 +539,7 @@ exports[`DualListBox2 component testing DualListBox2 1`] = `
             除外
           </p>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button
@@ -604,7 +604,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-ksZaOG kkacUz"
+          class="sc-ksZaOG dYKjDe"
         >
           <div
             class="sc-hAZoDl hCUelP"
@@ -641,7 +641,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             4件
           </div>
           <ul
-            class="sc-idiyUo lFqnU"
+            class="sc-idiyUo dWMFes"
           >
             <li>
               <button
@@ -696,7 +696,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
           class="sc-breuTD bPfCHR"
         >
           <div
-            class="sc-ezWOiH VvKVV"
+            class="sc-ezWOiH cwBixM"
           >
             <button
               aria-expanded="false"
@@ -707,7 +707,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               アコーディオン1
             </button>
             <ul
-              class="sc-kLLXSd inxnQV"
+              class="sc-kLLXSd eEmAex"
             >
               <li>
                 <button
@@ -776,7 +776,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             </div>
           </div>
           <div
-            class="sc-ezWOiH VvKVV"
+            class="sc-ezWOiH cwBixM"
           >
             <button
               aria-expanded="false"
@@ -787,7 +787,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
               アコーディオン2
             </button>
             <ul
-              class="sc-kLLXSd inxnQV"
+              class="sc-kLLXSd eEmAex"
             >
               <li>
                 <button
@@ -864,7 +864,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
         class="sc-evZas blLXDe"
       >
         <div
-          class="sc-hHLeRK gjTOHt"
+          class="sc-hHLeRK ifoLQw"
         >
           <div
             class="sc-dmRaPn jvzRtm"
@@ -917,7 +917,7 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             class="sc-bBrHrO kzpmIC"
           >
             <button
-              class="sc-gsnTZi sc-hKMtZM bveZbV jZBGwJ"
+              class="sc-gsnTZi sc-hKMtZM bveZbV fdyWJF"
               color="basicLight"
               font-size="12px"
               height="28px"
@@ -954,12 +954,12 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             追加
           </p>
           <div
-            class="sc-gicCDI fbHXjj"
+            class="sc-gicCDI hFuLcS"
           >
             アコーディオン1
           </div>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             リストアイテム1
             <button
@@ -992,12 +992,12 @@ exports[`DualListBox2 component testing DualListBox2 Accordion 1`] = `
             除外
           </p>
           <div
-            class="sc-gicCDI fbHXjj"
+            class="sc-gicCDI hFuLcS"
           >
             アコーディオン2
           </div>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button
@@ -1062,7 +1062,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         role="tabpanel"
       >
         <div
-          class="sc-ksZaOG kkacUz"
+          class="sc-ksZaOG dYKjDe"
         >
           <div
             class="sc-hAZoDl hCUelP"
@@ -1100,7 +1100,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             -件
           </div>
           <ul
-            class="sc-idiyUo lFqnU"
+            class="sc-idiyUo dWMFes"
           >
             <li>
               <button
@@ -1159,7 +1159,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           <button
             aria-expanded="false"
             aria-label="セクション1を開く"
-            class="sc-gXmSlM jrDSKe"
+            class="sc-gXmSlM fvINHz"
             type="button"
           >
             <span
@@ -1203,7 +1203,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
           <button
             aria-expanded="false"
             aria-label="セクション2を開く"
-            class="sc-gXmSlM jrDSKe"
+            class="sc-gXmSlM fvINHz"
             type="button"
           >
             <span
@@ -1253,7 +1253,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
         class="sc-evZas blLXDe"
       >
         <div
-          class="sc-hHLeRK gjTOHt"
+          class="sc-hHLeRK ifoLQw"
         >
           <div
             class="sc-dmRaPn jvzRtm"
@@ -1306,7 +1306,7 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             class="sc-bBrHrO kzpmIC"
           >
             <button
-              class="sc-gsnTZi sc-hKMtZM bveZbV jZBGwJ"
+              class="sc-gsnTZi sc-hKMtZM bveZbV fdyWJF"
               color="basicLight"
               font-size="12px"
               height="28px"
@@ -1343,12 +1343,12 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             追加
           </p>
           <div
-            class="sc-gicCDI fbHXjj"
+            class="sc-gicCDI hFuLcS"
           >
             セクション1
           </div>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             リストアイテム1
             <button
@@ -1381,12 +1381,12 @@ exports[`DualListBox2 component testing DualListBox2 Section 1`] = `
             除外
           </p>
           <div
-            class="sc-gicCDI fbHXjj"
+            class="sc-gicCDI hFuLcS"
           >
             セクション2
           </div>
           <div
-            class="sc-iIPllB eKeUfc"
+            class="sc-iIPllB bmydtd"
           >
             長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い長い名前のリストアイテム
             <button
