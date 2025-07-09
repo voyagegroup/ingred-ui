@@ -67,9 +67,8 @@ export const colors = {
   },
   basic: {
     0: "#FFFFFF",
-    50: "#FDFEFF",
-
-    100: "#F5F7F8",
+    50: "#F8F9FA",
+    100: "#F2F4F5",
     200: "#E2E8EA",
     300: "#D1D5DA",
     400: "#B3BAC1",

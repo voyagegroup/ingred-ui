@@ -125,10 +125,20 @@ export const ContextMenu2TextInputItem = styled(
     border-radius: 6px;
     border: 1px solid ${({ theme }) => theme.palette.text.disabled};
     /* UI/Text 13 */
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     font-size: 13px;
     line-height: 19px;
     color: ${({ theme }) => theme.palette.black};
     background: ${({ theme }) => theme.palette.gray.highlight};
+    color: ${({ theme }) => theme.palette.black};
+    background: ${({ theme }) => theme.palette.basicDark.ultraLight};
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+
+    &:focus {
+      ${({ theme }) => theme.interaction.focus()}
+    }
 
     &[data-ios="true"] {
       font-size: 16px;

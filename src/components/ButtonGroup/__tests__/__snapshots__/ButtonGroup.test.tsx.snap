@@ -6,7 +6,7 @@ exports[`Button component testing ButtonGroup 1`] = `
     class="sc-bczRLJ kQjzkA"
   >
     <button
-      class="sc-dkzDqf sc-eCYdqJ hlbYnK euMZWK"
+      class="sc-dkzDqf sc-eCYdqJ hlbYnK fREsTW"
       color="basicLight"
       font-size="13px"
       height="32px"
@@ -18,7 +18,7 @@ exports[`Button component testing ButtonGroup 1`] = `
       </div>
     </button>
     <button
-      class="sc-dkzDqf sc-eCYdqJ hlbYnK euMZWK"
+      class="sc-dkzDqf sc-eCYdqJ hlbYnK fREsTW"
       color="basicLight"
       font-size="13px"
       height="32px"

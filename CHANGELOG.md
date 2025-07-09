@@ -1,5 +1,15 @@
 # Changelog
 
+## 23.4.0
+
+### Minor Changes
+
+- [#1842](https://github.com/voyagegroup/ingred-ui/pull/1842) [`05aec96017c8306cf55fd9628008985ed3e23fbb`](https://github.com/voyagegroup/ingred-ui/commit/05aec96017c8306cf55fd9628008985ed3e23fbb) Thanks [@noronaoki](https://github.com/noronaoki)! - ContextMenu2とButtonのアイコンスタイルの調整と軽微な修正
+
+### Patch Changes
+
+- [#1841](https://github.com/voyagegroup/ingred-ui/pull/1841) [`a8f56d0db453fb318d8ca3dc0b03b05ad721bf7e`](https://github.com/voyagegroup/ingred-ui/commit/a8f56d0db453fb318d8ca3dc0b03b05ad721bf7e) Thanks [@noronaoki](https://github.com/noronaoki)! - Colorsの変更、Darkカラー定義の修正、filterTagInputの入力確定ロジックを修正
+
 ## 23.3.3
 
 ### Patch Changes
