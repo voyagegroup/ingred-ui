@@ -174,12 +174,6 @@ export const Default: StoryObj<typeof meta> = {
     tableActions: [
       // checked時enabled + toolbar（デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン）
       {
-        type: "heading",
-        label: "ステータスを変更",
-        enabledWhen: "checked",
-        displayIn: "dropdown",
-      },
-      {
         type: "groupButton",
         items: [
           {
@@ -197,6 +191,7 @@ export const Default: StoryObj<typeof meta> = {
         ],
         enabledWhen: "checked",
         displayIn: "toolbar",
+        headingLabel: "ステータスを変更",
       },
       {
         type: "singleButton",
@@ -206,6 +201,7 @@ export const Default: StoryObj<typeof meta> = {
         color: "basicLight",
         enabledWhen: "checked",
         displayIn: "toolbar",
+        headingLabel: "ステータスを変更",
       },
 
       // checked時enabled + dropdown（デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン）
@@ -241,7 +237,7 @@ export const Default: StoryObj<typeof meta> = {
       {
         type: "singleButton",
         label: "削除",
-        icon: <Icon name="delete_bin" color="currentColor" />,
+        icon: <Icon name="close" color="currentColor" />,
         onClick: () => alert("削除"),
         color: "danger",
         enabledWhen: "checked",

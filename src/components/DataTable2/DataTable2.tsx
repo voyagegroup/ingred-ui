@@ -50,6 +50,7 @@ export type TableAction =
       enabledWhen?: "checked" | "unchecked" | "custom";
       disabled?: (checkedRows: string[]) => boolean;
       style?: React.CSSProperties; // テキスト色などのカスタムスタイル
+      headingLabel?: string; // モバイル時のグループヘッダー（同じheadingLabelのアクションが自動グループ化される）
     }
   | {
       type: "groupButton";
@@ -70,6 +71,7 @@ export type TableAction =
       }[];
       displayIn?: "toolbar" | "dropdown";
       enabledWhen?: "checked" | "unchecked" | "custom";
+      headingLabel?: string; // モバイル時のグループヘッダー（同じheadingLabelのアクションが自動グループ化される）
     }
   | {
       type: "divider";
@@ -196,6 +198,180 @@ const Toolbar = ({
     [checkedRows],
   );
 
+  // モバイル時のアクションをグループ化してContextMenu2アイテムに変換するヘルパー関数
+  const createMobileGroupedActions = useCallback(
+    (actions: TableAction[], isUnchecked = false) => {
+      const result: React.ReactNode[] = [];
+      const processedGroups = new Set<string>();
+
+      actions.forEach((action, actionIndex) => {
+        // headingLabelが指定されている場合のグループ処理
+        if (
+          (action.type === "singleButton" || action.type === "groupButton") &&
+          action.headingLabel &&
+          !processedGroups.has(action.headingLabel)
+        ) {
+          processedGroups.add(action.headingLabel);
+
+          // 同じheadingLabelのアクションを全て取得
+          const groupActions = actions.filter(
+            (a) =>
+              (a.type === "singleButton" || a.type === "groupButton") &&
+              a.headingLabel === action.headingLabel,
+          );
+
+          // headingLabelをヘッダーとして追加
+          result.push(
+            <ContextMenu2HeadingItem
+              key={`group-${action.headingLabel}-heading`}
+            >
+              {action.headingLabel}
+            </ContextMenu2HeadingItem>,
+          );
+
+          // グループ内のアクションを処理
+          groupActions.forEach((groupAction, groupIndex) => {
+            if (groupAction.type === "singleButton") {
+              result.push(
+                <ContextMenu2ButtonItem
+                  key={`group-${groupAction.headingLabel}-${groupIndex}`}
+                  prepend={groupAction.icon}
+                  disabled={
+                    isUnchecked
+                      ? checkedRows.length > 0
+                      : groupAction.enabledWhen === "checked" ||
+                        groupAction.enabledWhen === undefined
+                      ? checkedRows.length === 0
+                      : groupAction.enabledWhen === "unchecked"
+                      ? checkedRows.length > 0
+                      : groupAction.disabled?.(checkedRows) ?? false
+                  }
+                  onClick={() => {
+                    groupAction.onClick(checkedRows);
+                    if (isUnchecked) {
+                      setIsUncheckedActionsMenuOpen(false);
+                    } else {
+                      setIsTableActionMenuOpen(false);
+                    }
+                  }}
+                >
+                  {groupAction.label}
+                </ContextMenu2ButtonItem>,
+              );
+            } else if (groupAction.type === "groupButton") {
+              groupAction.items.forEach((item, itemIndex) => {
+                result.push(
+                  <ContextMenu2ButtonItem
+                    key={`group-${action.headingLabel}-${groupIndex}-${itemIndex}`}
+                    prepend={item.icon}
+                    disabled={
+                      isUnchecked
+                        ? checkedRows.length > 0
+                        : item.enabledWhen === "checked" ||
+                          item.enabledWhen === undefined
+                        ? checkedRows.length === 0
+                        : item.enabledWhen === "unchecked"
+                        ? checkedRows.length > 0
+                        : item.disabled?.(checkedRows) ?? false
+                    }
+                    onClick={() => {
+                      item.onClick(checkedRows);
+                      if (isUnchecked) {
+                        setIsUncheckedActionsMenuOpen(false);
+                      } else {
+                        setIsTableActionMenuOpen(false);
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </ContextMenu2ButtonItem>,
+                );
+              });
+            }
+          });
+        }
+        // singleButton, groupButton, divider, separator, heading type
+        else if (
+          (action.type === "singleButton" || action.type === "groupButton") &&
+          !action.headingLabel
+        ) {
+          if (action.type === "singleButton") {
+            result.push(
+              <ContextMenu2ButtonItem
+                key={actionIndex}
+                prepend={action.icon}
+                disabled={
+                  isUnchecked
+                    ? checkedRows.length > 0
+                    : action.enabledWhen === "checked" ||
+                      action.enabledWhen === undefined
+                    ? checkedRows.length === 0
+                    : action.enabledWhen === "unchecked"
+                    ? checkedRows.length > 0
+                    : action.disabled?.(checkedRows) ?? false
+                }
+                onClick={() => {
+                  action.onClick(checkedRows);
+                  if (isUnchecked) {
+                    setIsUncheckedActionsMenuOpen(false);
+                  } else {
+                    setIsTableActionMenuOpen(false);
+                  }
+                }}
+              >
+                {action.label}
+              </ContextMenu2ButtonItem>,
+            );
+          } else if (action.type === "groupButton") {
+            action.items.forEach((item, itemIndex) => {
+              result.push(
+                <ContextMenu2ButtonItem
+                  key={`${actionIndex}-${itemIndex}`}
+                  prepend={item.icon}
+                  disabled={
+                    isUnchecked
+                      ? checkedRows.length > 0
+                      : item.enabledWhen === "checked" ||
+                        item.enabledWhen === undefined
+                      ? checkedRows.length === 0
+                      : item.enabledWhen === "unchecked"
+                      ? checkedRows.length > 0
+                      : item.disabled?.(checkedRows) ?? false
+                  }
+                  onClick={() => {
+                    item.onClick(checkedRows);
+                    if (isUnchecked) {
+                      setIsUncheckedActionsMenuOpen(false);
+                    } else {
+                      setIsTableActionMenuOpen(false);
+                    }
+                  }}
+                >
+                  {item.label}
+                </ContextMenu2ButtonItem>,
+              );
+            });
+          }
+        }
+        // separator, heading, dividerタイプの処理
+        else if (action.type === "separator") {
+          result.push(<ContextMenu2SeparatorItem key={actionIndex} />);
+        } else if (action.type === "heading") {
+          result.push(
+            <ContextMenu2HeadingItem key={actionIndex}>
+              {action.label}
+            </ContextMenu2HeadingItem>,
+          );
+        } else if (action.type === "divider") {
+          result.push(<ContextMenu2SeparatorItem key={actionIndex} />);
+        }
+      });
+
+      return result;
+    },
+    [checkedRows, setIsTableActionMenuOpen, setIsUncheckedActionsMenuOpen],
+  );
+
   // テーブルアクションエリアの描画ロジック
   let tableActionArea: React.ReactNode = null;
   if (customTableActionArea) {
@@ -248,61 +424,7 @@ const Toolbar = ({
                 width={200}
                 onOpenChange={setIsTableActionMenuOpen}
               >
-                {checkedActions.map((action, index) => {
-                  if (action.type === "singleButton") {
-                    return (
-                      <ContextMenu2ButtonItem
-                        key={index}
-                        prepend={action.icon}
-                        disabled={
-                          action.enabledWhen === "checked" ||
-                          action.enabledWhen === undefined
-                            ? checkedRows.length === 0
-                            : action.disabled?.(checkedRows) ?? false
-                        }
-                        onClick={() => {
-                          action.onClick(checkedRows);
-                          setIsTableActionMenuOpen(false);
-                        }}
-                      >
-                        {action.label}
-                      </ContextMenu2ButtonItem>
-                    );
-                  } else if (action.type === "groupButton") {
-                    return action.items.map((item, itemIndex) => (
-                      <ContextMenu2ButtonItem
-                        key={`${index}-${itemIndex}`}
-                        prepend={item.icon}
-                        disabled={
-                          item.enabledWhen === "checked" ||
-                          item.enabledWhen === undefined
-                            ? checkedRows.length === 0
-                            : item.disabled?.(checkedRows) ?? false
-                        }
-                        onClick={() => {
-                          item.onClick(checkedRows);
-                          setIsTableActionMenuOpen(false);
-                        }}
-                      >
-                        {item.label}
-                      </ContextMenu2ButtonItem>
-                    ));
-                  } else {
-                    // divider, separator, heading type
-                    if (action.type === "separator") {
-                      return <ContextMenu2SeparatorItem key={index} />;
-                    } else if (action.type === "heading") {
-                      return (
-                        <ContextMenu2HeadingItem key={index}>
-                          {action.label}
-                        </ContextMenu2HeadingItem>
-                      );
-                    } else {
-                      // divider type (for backward compatibility)
-                      return <ContextMenu2SeparatorItem key={index} />;
-                    }
-                  }
-                })}
+                {createMobileGroupedActions(checkedActions)}
               </ContextMenu2>
             </ContextMenu2Container>
           )}
@@ -321,51 +443,7 @@ const Toolbar = ({
                 width={200}
                 onOpenChange={setIsUncheckedActionsMenuOpen}
               >
-                {uncheckedActions.map((action, index) => {
-                  if (action.type === "singleButton") {
-                    return (
-                      <ContextMenu2ButtonItem
-                        key={index}
-                        prepend={action.icon}
-                        disabled={checkedRows.length > 0}
-                        onClick={() => {
-                          action.onClick(checkedRows);
-                          setIsUncheckedActionsMenuOpen(false);
-                        }}
-                      >
-                        {action.label}
-                      </ContextMenu2ButtonItem>
-                    );
-                  } else if (action.type === "groupButton") {
-                    return action.items.map((item, itemIndex) => (
-                      <ContextMenu2ButtonItem
-                        key={`${index}-${itemIndex}`}
-                        prepend={item.icon}
-                        disabled={checkedRows.length > 0}
-                        onClick={() => {
-                          item.onClick(checkedRows);
-                          setIsUncheckedActionsMenuOpen(false);
-                        }}
-                      >
-                        {item.label}
-                      </ContextMenu2ButtonItem>
-                    ));
-                  } else {
-                    // divider, separator, heading type
-                    if (action.type === "separator") {
-                      return <ContextMenu2SeparatorItem key={index} />;
-                    } else if (action.type === "heading") {
-                      return (
-                        <ContextMenu2HeadingItem key={index}>
-                          {action.label}
-                        </ContextMenu2HeadingItem>
-                      );
-                    } else {
-                      // divider type (for backward compatibility)
-                      return <ContextMenu2SeparatorItem key={index} />;
-                    }
-                  }
-                })}
+                {createMobileGroupedActions(uncheckedActions, true)}
               </ContextMenu2>
             </ContextMenu2Container>
           )}
