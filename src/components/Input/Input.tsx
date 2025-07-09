@@ -77,6 +77,11 @@ const Input = React.forwardRef<
     HTMLInputElement | HTMLTextAreaElement
   >;
 
+  // フォーカスイベントハンドラの型エイリアス
+  type FocusHandler = React.FocusEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  >;
+
   const handleWheel = React.useCallback((event: InputEvent) => {
     event.currentTarget.blur();
   }, []);
@@ -100,8 +105,8 @@ const Input = React.forwardRef<
       $size={size}
       $variant={variant}
       $fullWidth={fullWidth}
-      onFocus={onFocus as any}
-      onBlur={onBlur as any}
+      onFocus={onFocus as FocusHandler}
+      onBlur={onBlur as FocusHandler}
       onWheel={createChainedFunction(
         !multiline && "type" in rest && rest.type === "number"
           ? handleWheel
