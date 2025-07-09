@@ -177,15 +177,15 @@ export const Default: StoryObj<typeof meta> = {
         type: "groupButton",
         items: [
           {
-            label: "未読にする",
+            label: "有効にする",
             icon: <Icon name="eye_off" color="currentColor" />,
-            onClick: () => alert("未読"),
+            onClick: () => alert("有効"),
             enabledWhen: "checked",
           },
           {
-            label: "既読にする",
+            label: "停止する",
             icon: <Icon name="eye" color="currentColor" />,
-            onClick: () => alert("既読"),
+            onClick: () => alert("停止"),
             enabledWhen: "checked",
           },
         ],
@@ -195,9 +195,9 @@ export const Default: StoryObj<typeof meta> = {
       },
       {
         type: "singleButton",
-        label: "有効にする",
-        icon: <Icon name="checkbox_circle" color="currentColor" />,
-        onClick: () => alert("有効にする"),
+        label: "複製",
+        icon: <Icon name="copy" color="currentColor" />,
+        onClick: () => alert("複製"),
         color: "basicLight",
         enabledWhen: "checked",
         displayIn: "toolbar",
@@ -214,7 +214,7 @@ export const Default: StoryObj<typeof meta> = {
       {
         type: "singleButton",
         label: "エクスポート",
-        icon: <Icon name="copy" color="currentColor" />,
+        icon: <Icon name="export" color="currentColor" />,
         onClick: () => alert("エクスポート"),
         color: "primary",
         enabledWhen: "checked",
@@ -223,7 +223,7 @@ export const Default: StoryObj<typeof meta> = {
       {
         type: "singleButton",
         label: "ダウンロード",
-        icon: <Icon name="folder" color="currentColor" />,
+        icon: <Icon name="download_cloud" color="currentColor" />,
         onClick: () => alert("ダウンロード"),
         color: "basicLight",
         enabledWhen: "checked",
@@ -237,7 +237,7 @@ export const Default: StoryObj<typeof meta> = {
       {
         type: "singleButton",
         label: "削除",
-        icon: <Icon name="close" color="currentColor" />,
+        icon: <Icon name="delete_bin" color="currentColor" />,
         onClick: () => alert("削除"),
         color: "danger",
         enabledWhen: "checked",
