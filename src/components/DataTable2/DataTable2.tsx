@@ -433,12 +433,13 @@ const Toolbar = ({
               <ContextMenu2
                 open={isUncheckedActionsMenuOpen}
                 trigger={
-                  <styled.TableActionDropdownButton
+                  <Button
                     type="button"
+                    color="basicLight"
+                    size="small"
+                    icon={<Icon name="more_vert" color="currentColor" />}
                     disabled={checkedRows.length > 0}
-                  >
-                    <Icon name="more_vert" size="sm-md" color="currentColor" />
-                  </styled.TableActionDropdownButton>
+                  />
                 }
                 width={200}
                 onOpenChange={setIsUncheckedActionsMenuOpen}
@@ -480,16 +481,13 @@ const Toolbar = ({
                   <ContextMenu2
                     open={isTableActionMenuOpen}
                     trigger={
-                      <styled.TableActionDropdownButton
+                      <Button
                         type="button"
+                        color="basicLight"
+                        size="small"
+                        icon={<Icon name="more_vert" color="currentColor" />}
                         disabled={checkedRows.length === 0}
-                      >
-                        <Icon
-                          name="more_vert"
-                          size="sm-md"
-                          color="currentColor"
-                        />
-                      </styled.TableActionDropdownButton>
+                      />
                     }
                     width={200}
                     onOpenChange={setIsTableActionMenuOpen}
@@ -583,16 +581,13 @@ const Toolbar = ({
                   <ContextMenu2
                     open={isUncheckedActionsMenuOpen}
                     trigger={
-                      <styled.TableActionDropdownButton
+                      <Button
                         type="button"
+                        color="basicLight"
+                        size="small"
+                        icon={<Icon name="more_vert" color="currentColor" />}
                         disabled={checkedRows.length > 0}
-                      >
-                        <Icon
-                          name="more_vert"
-                          size="sm-md"
-                          color="currentColor"
-                        />
-                      </styled.TableActionDropdownButton>
+                      />
                     }
                     width={200}
                     onOpenChange={setIsUncheckedActionsMenuOpen}

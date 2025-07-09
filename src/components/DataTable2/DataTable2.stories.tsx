@@ -247,7 +247,6 @@ export const Default: StoryObj<typeof meta> = {
       {
         type: "singleButton",
         label: "新規作成",
-        icon: <Icon name="copy" color="currentColor" />,
         onClick: () => alert("新規作成"),
         enabledWhen: "unchecked",
         color: "primary",
