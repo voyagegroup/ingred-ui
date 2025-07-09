@@ -1,0 +1,238 @@
+# INGRED UI コーディング規約
+
+## 1. コンポーネント構造
+
+### 1.1. ディレクトリ構造
+
+- 各コンポーネントは独自のディレクトリを持ち、以下の構成を基本とする
+  ```
+  ComponentName/
+  ├── ComponentName.tsx      # メインコンポーネント
+  ├── ComponentName.stories.tsx  # Storybook
+  ├── styled.ts              # スタイル定義
+  ├── index.ts               # エクスポート
+  ├── internal/              # 内部コンポーネント
+  └── __tests__/             # テスト
+      ├── ComponentName.test.tsx
+      └── __snapshots__/
+  ```
+
+### 1.2. エクスポート規約
+
+- `index.ts`では、メインコンポーネントをデフォルトエクスポートし、型定義は名前付きエクスポートする
+  ```typescript
+  export { default } from "./ComponentName";
+  export type { ComponentNameProps } from "./ComponentName";
+  ```
+
+### 1.3. 内部コンポーネント
+
+- コンポーネント内部でのみ使用されるサブコンポーネントは`internal/`ディレクトリに配置する
+- 他のコンポーネントから参照されるべきでない実装の詳細を隠蔽する
+
+## 2. コンポーネント実装
+
+### 2.1. コンポーネント定義
+
+- React.forwardRefを使用して、参照を渡せるようにする
+- TypeScriptの型定義を明示的に行う
+- propsには適切なデフォルト値を設定する
+
+```typescript
+const ComponentName = React.forwardRef<HTMLElement, ComponentNameProps>(
+  function ComponentName({
+    prop1 = defaultValue1,
+    prop2 = defaultValue2,
+    ...rest
+  }, ref) {
+    // 実装
+    return (...)
+  }
+);
+```
+
+### 2.2. スタイル定義
+
+- styled-componentsを使用する
+- スタイルは`styled.ts`ファイルに分離する
+- テーマから値を参照する
+- propsを使用した条件付きスタイリングを活用する
+
+```typescript
+// styled.ts
+export const Container = styled.div<ContainerProps>`
+  display: ${({ inline }) => (inline ? "inline-flex" : "flex")};
+  color: ${({ theme }) => theme.palette.text.primary};
+  // ...
+`;
+```
+
+### 2.3. 型定義
+
+- 各コンポーネントのpropsには明示的な型定義を行う
+- 外部に公開するpropsの型はエクスポートする
+- 内部で使用する型はエクスポートしない
+- 複合的な型や条件付き型を活用する
+
+```typescript
+export type ButtonSize = "small" | "medium" | "large";
+export type ButtonColor = "primary" | "secondary" | /* ... */;
+
+export type ButtonProps = {
+  size?: ButtonSize;
+  color?: ButtonColor;
+  // ...
+} & React.ComponentPropsWithoutRef<"button">;
+```
+
+## 3. テーマと色彩
+
+### 3.1. テーマの使用
+
+- 色や間隔、フォントサイズなどの値は直接指定せず、テーマから取得する
+- `useTheme()`フックを使用してテーマにアクセスする
+
+```typescript
+const theme = useTheme();
+// theme.palette.primary.main などを使用
+```
+
+### 3.2. カラーパレット
+
+- 定義済みのカラーパレットを使用する
+- 新しい色を追加する場合は、既存のパレットに追加する
+- 色の濃淡は `.deepDark`, `.dark`, `.main`, `.light`, `.highlight` の命名規則に従う
+
+## 4. コーディングスタイル
+
+### 4.1. 命名規則
+
+- コンポーネント名: PascalCase
+- 関数名: camelCase
+- イベントハンドラ: handle〜, on〜, setで始める
+- 定数: UPPER_CASE
+- 変数: camelCase
+- ファイル名: コンポーネントと同じ名前（PascalCase）
+
+### 4.2. JSX記法
+
+- self-closing tagsを使用する（`<Component />`）
+- propsは適切に並べ替える（callbacksは最後に配置）
+- コンポーネントは不必要なフラグメントで囲まない
+
+### 4.3. コメント
+
+- 複雑なロジックには適切なコメントを記述する
+- 公開APIには JSDoc スタイルのコメントを追加する
+
+```typescript
+/**
+ * 説明文
+ * @param props - プロパティの説明
+ */
+```
+
+## 5. テスト
+
+### 5.1. テスト構造
+
+- 各コンポーネントには少なくとも基本的な表示テストを作成する
+- `__tests__`ディレクトリ内に配置する
+- スナップショットテストを基本とする
+
+```typescript
+describe("ComponentName component testing", () => {
+  afterEach(cleanup);
+
+  test("ComponentName", () => {
+    const { asFragment } = renderWithThemeProvider(<ComponentName />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+});
+```
+
+### 5.2. テストユーティリティ
+
+- テストには`@testing-library/react`を使用する
+- テーマ付きでレンダリングするためのユーティリティ関数を使用する
+
+## 6. Storybook
+
+### 6.1. ストーリー構造
+
+- 各コンポーネントには対応するStorybookのストーリーを作成する
+- 基本的な使用例、バリエーション、エッジケースを含める
+- コンポーネントのドキュメントとしても機能するよう詳細に記述する
+
+### 6.2. ストーリーの命名規則
+
+- ストーリー名は機能またはバリエーションを表す名前にする
+- 階層構造を使用して整理する（例: `Components/Button/Primary`）
+
+## 7. アクセシビリティ
+
+### 7.1. 基本ルール
+
+- すべてのインタラクティブな要素には適切なアクセシビリティ属性を設定する
+- キーボードナビゲーションをサポートする
+- 適切なARIAロールと属性を使用する
+
+### 7.2. ESLintルール
+
+- jsx-a11yプラグインの推奨設定に従う
+- 必要な場合のみ例外を設定する
+
+## 8. パフォーマンス
+
+### 8.1. メモ化
+
+- 必要に応じてReact.memo、useCallbackおよびuseMemoを適切に使用する
+- 不要な再レンダリングを防ぐ
+
+### 8.2. コード分割
+
+- 大きなコンポーネントは必要に応じて分割する
+- 内部実装は適切に抽象化する
+
+## 9. バージョン管理とリリース
+
+### 9.1. ChangeSetの使用
+
+- 変更点は適切にChangeSetを作成する
+- セマンティックバージョニングに従う
+
+### 9.2. CHANGELOGの更新
+
+- すべての変更はCHANGELOGに記録する
+- 破壊的変更は明示的に記載する
+
+## 10. コード品質
+
+### 10.1. リンター
+
+- ESLintの設定に従う
+- コミット前にリンターを実行する
+- 警告は可能な限り修正する
+
+### 10.2. フォーマッター
+
+- Prettierの設定に従う
+- コード形式の一貫性を保つ
+
+## 11. TypeScript型アサーションの指針
+
+- `any`型のアサーションは極力避けること。
+  - 型安全性が失われ、バグの温床となるため。
+- 型アサーション（as 型）を使う場合は、できるだけ具体的な型（例: as FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>）を指定し、最低限の型安全性を担保すること。
+- 型アサーションを使わずに済む設計が理想だが、styled-components等の制約でやむを得ず使う場合も`any`は避ける。
+- 長い型指定は型エイリアスでまとめ、可読性・保守性を高めること。
+- 型アサーションの影響範囲は限定的であるが、他の型やPropsに波及しないよう注意すること。
+
+この規約はINGRED UIの開発における基本的なガイドラインです。プロジェクトの進化に合わせて継続的に改善していきましょう。
+
+### 10.2. フォーマッター
+
+- Prettierの設定に従う
+- コード形式の一貫性を保つ
+
+この規約はINGRED UIの開発における基本的なガイドラインです。プロジェクトの進化に合わせて継続的に改善していきましょう。

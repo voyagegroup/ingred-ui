@@ -97,7 +97,7 @@ export const PrimaryPale: StoryObj<ButtonProps> = {
   ...Template,
   args: {
     children: "pale",
-    color: "primary-pale",
+    color: "primaryPale",
   },
 };
 
