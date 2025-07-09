@@ -1,6 +1,5 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { colors } from "../../styles";
 import { trimVertical } from "../../styles/typography";
 
 // 特に機能を持たない、見た目付きの ContextMenu2 用の1行テキスト
@@ -34,5 +33,5 @@ export const ContextMenu2HelpTextItem = styled(
   font-size: 12px;
   line-height: 20px;
   letter-spacing: 0;
-  color: ${colors.basic[700]};
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;

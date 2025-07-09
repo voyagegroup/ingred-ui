@@ -11,7 +11,11 @@ exports[`Button component testing ButtonGroup 1`] = `
       font-size="13px"
       height="32px"
     >
-      Edit
+      <div
+        class="sc-hKMtZM iorTpH"
+      >
+        Edit
+      </div>
     </button>
     <button
       class="sc-dkzDqf sc-hKMtZM hlbYnK RCJzE"
@@ -19,7 +23,11 @@ exports[`Button component testing ButtonGroup 1`] = `
       font-size="13px"
       height="32px"
     >
-      Save
+      <div
+        class="sc-hKMtZM iorTpH"
+      >
+        Save
+      </div>
     </button>
   </div>
 </DocumentFragment>

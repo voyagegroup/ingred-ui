@@ -123,9 +123,13 @@ export const ContextMenu2TextInputItem = styled(
     width: 100%;
     padding: 6px 8px;
     border-radius: 6px;
+    border: 1px solid ${({ theme }) => theme.palette.text.disabled};
+    /* UI/Text 13 */
     border: 1px solid ${({ theme }) => theme.palette.divider};
     font-size: 13px;
     line-height: 19px;
+    color: ${({ theme }) => theme.palette.black};
+    background: ${({ theme }) => theme.palette.gray.highlight};
     color: ${({ theme }) => theme.palette.black};
     background: ${({ theme }) => theme.palette.basicDark.ultraLight};
     transition:
