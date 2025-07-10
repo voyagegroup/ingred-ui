@@ -40,72 +40,6 @@ import ButtonGroup from "../ButtonGroup";
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
 
-// TODO: 削除予定 - 新しい型定義への移行完了後に削除
-// この型定義は将来的に削除予定（安全のため現在は重複定義を保持）
-export type LegacyTableAction =
-  | {
-      type: "singleButton";
-      label: string;
-      icon?: React.ReactNode;
-      onClick: (selectedRows: string[]) => void;
-      color?:
-        | "danger"
-        | "primary"
-        | "primaryPale"
-        | "basicLight"
-        | "basicDark"
-        | "clear";
-      displayIn?: "toolbar" | "dropdown";
-      enabledWhen?: "checked" | "unchecked" | "custom";
-      disabled?: (checkedRows: string[]) => boolean;
-      style?: React.CSSProperties; // テキスト色などのカスタムスタイル
-      headingLabel?: string; // モバイル時のグループヘッダー（同じheadingLabelのアクションが自動グループ化される）
-      dynamicIconColor?: {
-        enabled: string; // 選択時（有効時）のアイコン色
-        disabled?: string; // 非選択時（無効時）のアイコン色（省略時はcurrentColor）
-      };
-    }
-  | {
-      type: "groupButton";
-      items: {
-        label: string;
-        icon?: React.ReactNode;
-        onClick: (selectedRows: string[]) => void;
-        color?:
-          | "danger"
-          | "primary"
-          | "primaryPale"
-          | "basicLight"
-          | "basicDark"
-          | "clear";
-        enabledWhen?: "checked" | "unchecked" | "custom";
-        disabled?: (checkedRows: string[]) => boolean;
-        style?: React.CSSProperties;
-        dynamicIconColor?: {
-          enabled: string; // 選択時（有効時）のアイコン色
-          disabled?: string; // 非選択時（無効時）のアイコン色（省略時はcurrentColor）
-        };
-      }[];
-      displayIn?: "toolbar" | "dropdown";
-      enabledWhen?: "checked" | "unchecked" | "custom";
-      headingLabel?: string; // モバイル時のグループヘッダー（同じheadingLabelのアクションが自動グループ化される）
-    }
-  | {
-      type: "divider";
-      displayIn?: "toolbar" | "dropdown";
-    }
-  | {
-      type: "separator";
-      displayIn?: "toolbar" | "dropdown";
-      enabledWhen?: "checked" | "unchecked" | "custom";
-    }
-  | {
-      type: "heading";
-      label: string;
-      displayIn?: "toolbar" | "dropdown";
-      enabledWhen?: "checked" | "unchecked" | "custom";
-    };
-
 const Toolbar = ({
   tableActions,
   customTableActionArea,
@@ -159,41 +93,6 @@ const Toolbar = ({
     },
     [checkedRows.length, theme],
   );
-
-  // TODO: 削除予定 - 新しい関数への移行完了後に削除
-  // const getDynamicIcon = useCallback(
-  //   (
-  //     originalIcon: React.ReactNode,
-  //     dynamicIconColor?: { enabled: string; disabled?: string },
-  //   ) => {
-  //     // dynamicIconColorが指定されている場合、選択状態に応じて色を変更
-  //     if (dynamicIconColor && React.isValidElement(originalIcon)) {
-  //       const isEnabled = checkedRows.length > 0;
-  //       let targetColor = isEnabled
-  //         ? dynamicIconColor.enabled
-  //         : dynamicIconColor.disabled || "currentColor";
-  //
-  //       // テーマの色を解決
-  //       if (targetColor === "success") {
-  //         targetColor = theme.palette.success.main;
-  //       } else if (targetColor === "danger") {
-  //         targetColor = theme.palette.danger.main;
-  //       } else if (targetColor === "primary") {
-  //         targetColor = theme.palette.primary.main;
-  //       } else if (targetColor === "warning") {
-  //         targetColor = theme.palette.warning.main;
-  //       }
-  //       // currentColorやその他のCSS色値はそのまま使用
-  //
-  //       return React.cloneElement(originalIcon, {
-  //         ...originalIcon.props,
-  //         color: targetColor,
-  //       });
-  //     }
-  //     return originalIcon;
-  //   },
-  //   [checkedRows.length, theme.palette],
-  // );
 
   // 共通のボタンレンダリング関数
   const renderTableActionButton = useCallback(
