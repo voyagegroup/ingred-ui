@@ -25,9 +25,9 @@ import type { ReactNode } from "react";
 
 // crypto.randomUUIDの代替関数（古いブラウザ対応）
 const generateUUID = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
-    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 };
@@ -193,7 +193,6 @@ export const Default: StoryObj<typeof meta> = {
             enabledWhen: "checked",
             dynamicIconColor: {
               enabled: "success",
-              disabled: "currentColor",
             },
           },
           {
@@ -204,7 +203,6 @@ export const Default: StoryObj<typeof meta> = {
             enabledWhen: "checked",
             dynamicIconColor: {
               enabled: "danger",
-              disabled: "currentColor",
             },
           },
         ],
