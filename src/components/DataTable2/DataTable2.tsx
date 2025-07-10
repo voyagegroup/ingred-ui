@@ -9,6 +9,8 @@ import React, {
 } from "react";
 import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
+// import type { TableAction as ImportedTableAction } from "./types/tableActions"; // TODO: 後で使用予定
+import { getDynamicIcon as newGetDynamicIcon } from "./utils/toolbarUtils"; // テスト用に新しい関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
 import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
@@ -32,7 +34,9 @@ import ButtonGroup from "../ButtonGroup";
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-// TableAction型定義
+
+// TODO: 型定義の分離作業中 - types/tableActions.ts から ImportedTableAction をインポート済み
+// この型定義は将来的に削除予定（安全のため現在は重複定義を保持）
 export type TableAction =
   | {
       type: "singleButton";

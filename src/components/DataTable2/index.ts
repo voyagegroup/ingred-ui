@@ -1,5 +1,6 @@
 export type { TableColumn, SortDirection } from "./types";
 export type { TableAction } from "./DataTable2";
+export type { TableAction as NewTableAction } from "./types/tableActions";
 export { DataTable2 } from "./DataTable2";
 export { DataTable2Head } from "./DataTable2Head";
 export { DataTable2Column, DataTable2ColumnLabel } from "./DataTable2Column";
