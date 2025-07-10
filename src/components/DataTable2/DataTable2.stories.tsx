@@ -23,6 +23,15 @@ import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
 import type { ReactNode } from "react";
 
+// crypto.randomUUIDの代替関数（古いブラウザ対応）
+const generateUUID = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+};
+
 const meta = {
   title: "Components/Data Display/DataTable2",
   component: DataTable2,
@@ -128,7 +137,7 @@ export const Default: StoryObj<typeof meta> = {
     bordered: false,
     columns: [
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "名前",
         order: 0,
         visible: true,
@@ -136,7 +145,7 @@ export const Default: StoryObj<typeof meta> = {
         filtered: false,
       },
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "ステータス",
         order: 1,
         visible: true,
@@ -144,7 +153,7 @@ export const Default: StoryObj<typeof meta> = {
         filtered: false,
       },
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "メールアドレス",
         order: 2,
         visible: true,
@@ -152,7 +161,7 @@ export const Default: StoryObj<typeof meta> = {
         filtered: false,
       },
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "登録日",
         order: 3,
         visible: true,
@@ -160,7 +169,7 @@ export const Default: StoryObj<typeof meta> = {
         filtered: false,
       },
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "操作",
         order: 4,
         visible: true,
@@ -726,7 +735,7 @@ export const Loading: StoryObj<typeof meta> = {
     bordered: false,
     columns: [
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "カラム1",
         order: 0,
         visible: true,
@@ -734,7 +743,7 @@ export const Loading: StoryObj<typeof meta> = {
         filtered: undefined, // filtered をすべて undefined にすると、フィルター機能が非表示になります
       },
       {
-        id: crypto.randomUUID(),
+        id: generateUUID(),
         label: "カラム2",
         order: 1,
         visible: true,
