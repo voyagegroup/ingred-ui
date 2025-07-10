@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.5.0
+
+### Minor Changes
+
+- [#1859](https://github.com/voyagegroup/ingred-ui/pull/1859) [`453f4a67c2227d027deb9ae4f185f6a60707d55e`](https://github.com/voyagegroup/ingred-ui/commit/453f4a67c2227d027deb9ae4f185f6a60707d55e) Thanks [@noronaoki](https://github.com/noronaoki)! - 新規アイコン4つ追加
+
 ## 23.4.0
 
 ### Minor Changes
