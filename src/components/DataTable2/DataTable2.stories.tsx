@@ -17,7 +17,7 @@ import {
   DataTable2InlineSelectEditor,
 } from "./index";
 import Icon from "../Icon";
-import ActionButton from "../ActionButton";
+import Button from "../Button";
 
 import { FilterTagInput } from "../FilterTagInput";
 import { FilterComboBox } from "../FilterComboBox";
@@ -689,16 +689,18 @@ export const Default: StoryObj<typeof meta> = {
                 <DataTable2Cell>{dataRow.email}</DataTable2Cell>
                 <DataTable2Cell>{dataRow.date}</DataTable2Cell>
                 <DataTable2Cell>
-                  <ActionButton
+                  <Button
                     type="button"
-                    color="primary"
-                    icon="pencil"
+                    color="primaryPale"
+                    size="small"
+                    inline={true}
+                    icon={<Icon name="pencil" color="currentColor" />}
                     onClick={() =>
                       alert("ドロワーを開く機能を独自に実装してください")
                     }
                   >
                     編集
-                  </ActionButton>
+                  </Button>
                 </DataTable2Cell>
               </DataTable2Row>
             ))}
