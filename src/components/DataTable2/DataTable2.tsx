@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
-// import type { TableAction as ImportedTableAction } from "./types/tableActions"; // TODO: 後で使用予定
+import type { TableAction as NewTableAction } from "./types/tableActions";
 import { getDynamicIcon as newGetDynamicIcon } from "./utils/toolbarUtils"; // テスト用に新しい関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
@@ -138,40 +138,57 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // アイコンの色を動的に変更するヘルパー関数
+  // アイコンの色を動的に変更するヘルパー関数（新しい分離した関数を使用）
   const getDynamicIcon = useCallback(
     (
       originalIcon: React.ReactNode,
       dynamicIconColor?: { enabled: string; disabled?: string },
     ) => {
-      // dynamicIconColorが指定されている場合、選択状態に応じて色を変更
-      if (dynamicIconColor && React.isValidElement(originalIcon)) {
-        const isEnabled = checkedRows.length > 0;
-        let targetColor = isEnabled
-          ? dynamicIconColor.enabled
-          : dynamicIconColor.disabled || "currentColor";
-
-        // テーマの色を解決
-        if (targetColor === "success") {
-          targetColor = theme.palette.success.main;
-        } else if (targetColor === "danger") {
-          targetColor = theme.palette.danger.main;
-        } else if (targetColor === "primary") {
-          targetColor = theme.palette.primary.main;
-        } else if (targetColor === "warning") {
-          targetColor = theme.palette.warning.main;
-        }
-        // currentColorやその他のCSS色値はそのまま使用
-
-        return React.cloneElement(originalIcon, {
-          ...originalIcon.props,
-          color: targetColor,
-        });
-      }
-      return originalIcon;
+      const isEnabled = checkedRows.length > 0;
+      return newGetDynamicIcon(
+        originalIcon,
+        dynamicIconColor,
+        isEnabled,
+        theme,
+      );
     },
-    [checkedRows.length, theme.palette],
+    [checkedRows.length, theme],
   );
+
+  // TODO: 削除予定 - 新しい関数への移行完了後に削除
+  // const getDynamicIcon = useCallback(
+  //   (
+  //     originalIcon: React.ReactNode,
+  //     dynamicIconColor?: { enabled: string; disabled?: string },
+  //   ) => {
+  //     // dynamicIconColorが指定されている場合、選択状態に応じて色を変更
+  //     if (dynamicIconColor && React.isValidElement(originalIcon)) {
+  //       const isEnabled = checkedRows.length > 0;
+  //       let targetColor = isEnabled
+  //         ? dynamicIconColor.enabled
+  //         : dynamicIconColor.disabled || "currentColor";
+  //
+  //       // テーマの色を解決
+  //       if (targetColor === "success") {
+  //         targetColor = theme.palette.success.main;
+  //       } else if (targetColor === "danger") {
+  //         targetColor = theme.palette.danger.main;
+  //       } else if (targetColor === "primary") {
+  //         targetColor = theme.palette.primary.main;
+  //       } else if (targetColor === "warning") {
+  //         targetColor = theme.palette.warning.main;
+  //       }
+  //       // currentColorやその他のCSS色値はそのまま使用
+  //
+  //       return React.cloneElement(originalIcon, {
+  //         ...originalIcon.props,
+  //         color: targetColor,
+  //       });
+  //     }
+  //     return originalIcon;
+  //   },
+  //   [checkedRows.length, theme.palette],
+  // );
 
   // 共通のボタンレンダリング関数
   const renderTableActionButton = useCallback(

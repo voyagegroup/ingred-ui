@@ -43,9 +43,13 @@ describe("toolbarUtils", () => {
 
       expect(React.isValidElement(result)).toBe(true);
       // テーマのsuccess色が適用されることを確認
-      if (React.isValidElement(result)) {
-        expect(result.props.color).toBe(defaultTheme.palette.success.main);
-      }
+      expect(result).toMatchObject(
+        expect.objectContaining({
+          props: expect.objectContaining({
+            color: defaultTheme.palette.success.main,
+          }),
+        }),
+      );
     });
 
     it("should apply disabled color when not enabled", () => {
@@ -59,9 +63,13 @@ describe("toolbarUtils", () => {
       );
 
       expect(React.isValidElement(result)).toBe(true);
-      if (React.isValidElement(result)) {
-        expect(result.props.color).toBe(defaultTheme.palette.danger.main);
-      }
+      expect(result).toMatchObject(
+        expect.objectContaining({
+          props: expect.objectContaining({
+            color: defaultTheme.palette.danger.main,
+          }),
+        }),
+      );
     });
 
     it("should use currentColor as default when disabled color is not specified", () => {
@@ -75,9 +83,13 @@ describe("toolbarUtils", () => {
       );
 
       expect(React.isValidElement(result)).toBe(true);
-      if (React.isValidElement(result)) {
-        expect(result.props.color).toBe("currentColor");
-      }
+      expect(result).toMatchObject(
+        expect.objectContaining({
+          props: expect.objectContaining({
+            color: "currentColor",
+          }),
+        }),
+      );
     });
   });
 
