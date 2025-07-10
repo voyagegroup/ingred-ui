@@ -14,6 +14,7 @@ import {
   getDynamicIcon as newGetDynamicIcon,
   categorizeActionsByEnabledWhen,
   categorizeActionsByDisplayIn,
+  isActionDisabled,
 } from "./utils/toolbarUtils"; // ユーティリティ関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
@@ -206,14 +207,7 @@ const Toolbar = ({
             size="small"
             inline={isDesktop}
             style={action.style}
-            disabled={
-              action.enabledWhen === "checked" ||
-              action.enabledWhen === undefined
-                ? checkedRows.length === 0
-                : action.enabledWhen === "unchecked"
-                ? checkedRows.length > 0
-                : action.disabled?.(checkedRows) ?? false
-            }
+            disabled={isActionDisabled(action, checkedRows)}
             onClick={() => action.onClick(checkedRows)}
           >
             {action.label}
@@ -228,14 +222,7 @@ const Toolbar = ({
                 icon={getDynamicIcon(item.icon, item.dynamicIconColor)}
                 color={item.color ?? "basicLight"}
                 style={item.style}
-                disabled={
-                  item.enabledWhen === "checked" ||
-                  item.enabledWhen === undefined
-                    ? checkedRows.length === 0
-                    : item.enabledWhen === "unchecked"
-                    ? checkedRows.length > 0
-                    : item.disabled?.(checkedRows) ?? false
-                }
+                disabled={isActionDisabled(item, checkedRows)}
                 onClick={() => item.onClick(checkedRows)}
               >
                 {item.label}
@@ -307,16 +294,11 @@ const Toolbar = ({
                     groupAction.icon,
                     groupAction.dynamicIconColor,
                   )}
-                  disabled={
-                    isUnchecked
-                      ? checkedRows.length > 0
-                      : groupAction.enabledWhen === "checked" ||
-                        groupAction.enabledWhen === undefined
-                      ? checkedRows.length === 0
-                      : groupAction.enabledWhen === "unchecked"
-                      ? checkedRows.length > 0
-                      : groupAction.disabled?.(checkedRows) ?? false
-                  }
+                  disabled={isActionDisabled(
+                    groupAction,
+                    checkedRows,
+                    isUnchecked,
+                  )}
                   onClick={() => {
                     groupAction.onClick(checkedRows);
                     if (isUnchecked) {
@@ -335,16 +317,7 @@ const Toolbar = ({
                   <ContextMenu2ButtonItem
                     key={`group-${action.headingLabel}-${groupIndex}-${itemIndex}`}
                     prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
-                    disabled={
-                      isUnchecked
-                        ? checkedRows.length > 0
-                        : item.enabledWhen === "checked" ||
-                          item.enabledWhen === undefined
-                        ? checkedRows.length === 0
-                        : item.enabledWhen === "unchecked"
-                        ? checkedRows.length > 0
-                        : item.disabled?.(checkedRows) ?? false
-                    }
+                    disabled={isActionDisabled(item, checkedRows, isUnchecked)}
                     onClick={() => {
                       item.onClick(checkedRows);
                       if (isUnchecked) {
@@ -371,16 +344,7 @@ const Toolbar = ({
               <ContextMenu2ButtonItem
                 key={actionIndex}
                 prepend={getDynamicIcon(action.icon, action.dynamicIconColor)}
-                disabled={
-                  isUnchecked
-                    ? checkedRows.length > 0
-                    : action.enabledWhen === "checked" ||
-                      action.enabledWhen === undefined
-                    ? checkedRows.length === 0
-                    : action.enabledWhen === "unchecked"
-                    ? checkedRows.length > 0
-                    : action.disabled?.(checkedRows) ?? false
-                }
+                disabled={isActionDisabled(action, checkedRows, isUnchecked)}
                 onClick={() => {
                   action.onClick(checkedRows);
                   if (isUnchecked) {
@@ -399,16 +363,7 @@ const Toolbar = ({
                 <ContextMenu2ButtonItem
                   key={`${actionIndex}-${itemIndex}`}
                   prepend={item.icon}
-                  disabled={
-                    isUnchecked
-                      ? checkedRows.length > 0
-                      : item.enabledWhen === "checked" ||
-                        item.enabledWhen === undefined
-                      ? checkedRows.length === 0
-                      : item.enabledWhen === "unchecked"
-                      ? checkedRows.length > 0
-                      : item.disabled?.(checkedRows) ?? false
-                  }
+                  disabled={isActionDisabled(item, checkedRows, isUnchecked)}
                   onClick={() => {
                     item.onClick(checkedRows);
                     if (isUnchecked) {
@@ -560,13 +515,10 @@ const Toolbar = ({
                           <ContextMenu2ButtonItem
                             key={index}
                             prepend={dropdownAction.icon}
-                            disabled={
-                              dropdownAction.enabledWhen === "checked" ||
-                              dropdownAction.enabledWhen === undefined
-                                ? checkedRows.length === 0
-                                : dropdownAction.disabled?.(checkedRows) ??
-                                  false
-                            }
+                            disabled={isActionDisabled(
+                              dropdownAction,
+                              checkedRows,
+                            )}
                             onClick={() => {
                               dropdownAction.onClick(checkedRows);
                               setIsTableActionMenuOpen(false);
@@ -580,12 +532,7 @@ const Toolbar = ({
                           <ContextMenu2ButtonItem
                             key={`${index}-${itemIndex}`}
                             prepend={item.icon}
-                            disabled={
-                              item.enabledWhen === "checked" ||
-                              item.enabledWhen === undefined
-                                ? checkedRows.length === 0
-                                : item.disabled?.(checkedRows) ?? false
-                            }
+                            disabled={isActionDisabled(item, checkedRows)}
                             onClick={() => {
                               item.onClick(checkedRows);
                               setIsTableActionMenuOpen(false);
@@ -660,7 +607,11 @@ const Toolbar = ({
                           <ContextMenu2ButtonItem
                             key={index}
                             prepend={dropdownAction.icon}
-                            disabled={checkedRows.length > 0}
+                            disabled={isActionDisabled(
+                              dropdownAction,
+                              checkedRows,
+                              true,
+                            )}
                             onClick={() => {
                               dropdownAction.onClick(checkedRows);
                               setIsUncheckedActionsMenuOpen(false);
@@ -674,7 +625,7 @@ const Toolbar = ({
                           <ContextMenu2ButtonItem
                             key={`${index}-${itemIndex}`}
                             prepend={item.icon}
-                            disabled={checkedRows.length > 0}
+                            disabled={isActionDisabled(item, checkedRows, true)}
                             onClick={() => {
                               item.onClick(checkedRows);
                               setIsUncheckedActionsMenuOpen(false);

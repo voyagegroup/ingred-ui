@@ -3,6 +3,7 @@ import {
   getDynamicIcon,
   categorizeActionsByEnabledWhen,
   categorizeActionsByDisplayIn,
+  isActionDisabled,
 } from "../toolbarUtils";
 import { defaultTheme } from "../../../../themes/defaultTheme";
 import type { TableAction } from "../../types/tableActions";
@@ -165,6 +166,58 @@ describe("toolbarUtils", () => {
 
       expect(result.toolbarActions).toHaveLength(3); // 1つのtoolbar + 1つのデフォルト + 1つのdivider
       expect(result.dropdownActions).toHaveLength(1);
+    });
+  });
+
+  describe("isActionDisabled", () => {
+    const checkedRows = ["row1", "row2"];
+    const emptyCheckedRows: string[] = [];
+
+    it("should handle checked enabledWhen", () => {
+      const action = { enabledWhen: "checked" as const };
+
+      expect(isActionDisabled(action, checkedRows)).toBe(false);
+      expect(isActionDisabled(action, emptyCheckedRows)).toBe(true);
+    });
+
+    it("should handle unchecked enabledWhen", () => {
+      const action = { enabledWhen: "unchecked" as const };
+
+      expect(isActionDisabled(action, checkedRows)).toBe(true);
+      expect(isActionDisabled(action, emptyCheckedRows)).toBe(false);
+    });
+
+    it("should handle undefined enabledWhen as checked", () => {
+      const action = {};
+
+      expect(isActionDisabled(action, checkedRows)).toBe(false);
+      expect(isActionDisabled(action, emptyCheckedRows)).toBe(true);
+    });
+
+    it("should handle custom enabledWhen with disabled function", () => {
+      const action = {
+        enabledWhen: "custom" as const,
+        disabled: (rows: string[]) => rows.length < 2,
+      };
+
+      expect(isActionDisabled(action, checkedRows)).toBe(false); // 2件選択なのでfalse
+      expect(isActionDisabled(action, ["row1"])).toBe(true); // 1件選択なのでtrue
+      expect(isActionDisabled(action, emptyCheckedRows)).toBe(true); // 0件選択なのでtrue
+    });
+
+    it("should handle custom enabledWhen without disabled function", () => {
+      const action = { enabledWhen: "custom" as const };
+
+      expect(isActionDisabled(action, checkedRows)).toBe(false);
+      expect(isActionDisabled(action, emptyCheckedRows)).toBe(false);
+    });
+
+    it("should handle unchecked context", () => {
+      const action = { enabledWhen: "checked" as const };
+
+      // uncheckedコンテキストでは選択状態に関係なく、行が選択されていると無効
+      expect(isActionDisabled(action, checkedRows, true)).toBe(true);
+      expect(isActionDisabled(action, emptyCheckedRows, true)).toBe(false);
     });
   });
 });

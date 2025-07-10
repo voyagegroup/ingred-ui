@@ -84,3 +84,36 @@ export const categorizeActionsByDisplayIn = (actions: TableAction[]) => {
 
   return { toolbarActions, dropdownActions };
 };
+
+/**
+ * enabledWhenとcustomDisabled関数に基づいてアクションが無効かどうかを判定
+ *
+ * @param action - 判定対象のアクションまたはアイテム
+ * @param checkedRows - 現在選択されている行の配列
+ * @param isUncheckedContext - unchecked系アクション専用のコンテキストかどうか
+ * @returns アクションが無効かどうか
+ */
+export const isActionDisabled = (
+  action: {
+    enabledWhen?: "checked" | "unchecked" | "custom";
+    disabled?: (checkedRows: string[]) => boolean;
+  },
+  checkedRows: string[],
+  isUncheckedContext = false,
+): boolean => {
+  // unchecked系コンテキストの場合、選択状態があると無効
+  if (isUncheckedContext) {
+    return checkedRows.length > 0;
+  }
+
+  // 通常のコンテキストでの判定
+  if (action.enabledWhen === "checked" || action.enabledWhen === undefined) {
+    return checkedRows.length === 0;
+  } else if (action.enabledWhen === "unchecked") {
+    return checkedRows.length > 0;
+  } else if (action.enabledWhen === "custom") {
+    return action.disabled?.(checkedRows) ?? false;
+  }
+
+  return false;
+};
