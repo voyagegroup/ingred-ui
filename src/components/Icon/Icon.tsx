@@ -108,6 +108,10 @@ import { OperatorGreaterThanIcon } from "./internal/OperatorGreaterThanIcon";
 import { OperatorGreaterThanOrEqualToIcon } from "./internal/OperatorGreaterThanOrEqualToIcon";
 import { OperatorLessThanIcon } from "./internal/OperatorLessThanIcon";
 import { OperatorLessThanOrEqualToIcon } from "./internal/OperatorLessThanOrEqualToIcon";
+import { BookmarkIcon } from "./internal/BookmarkIcon";
+import { CircleIcon } from "./internal/CircleIcon";
+import { MoneyDollarCircleIcon } from "./internal/MoneyDollarCircleIcon";
+import { MoneyJpyCircleIcon } from "./internal/MoneyJpyCircleIcon";
 
 /** @deprecated "arrow_bottom" は "arrow_down" に置き換わりました */
 type DeprecatedArrowBottom = "arrow_bottom";
@@ -218,7 +222,11 @@ export type IconName =
   | "operator_greater_than"
   | "operator_greater_than_or_equal_to"
   | "operator_less_than"
-  | "operator_less_than_or_equal_to";
+  | "operator_less_than_or_equal_to"
+  | "bookmark"
+  | "circle"
+  | "money_dollar_circle"
+  | "money_jpy_circle";
 
 type IconType = "fill" | "line";
 type IconColor = IconType | "active" | string;
@@ -345,6 +353,10 @@ export const icons: {
   operator_greater_than_or_equal_to: OperatorGreaterThanOrEqualToIcon,
   operator_less_than: OperatorLessThanIcon,
   operator_less_than_or_equal_to: OperatorLessThanOrEqualToIcon,
+  bookmark: BookmarkIcon,
+  circle: CircleIcon,
+  money_dollar_circle: MoneyDollarCircleIcon,
+  money_jpy_circle: MoneyJpyCircleIcon,
 };
 
 const iconFactory = (name: IconName | DeprecatedArrowBottom) => {
