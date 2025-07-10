@@ -10,7 +10,11 @@ import React, {
 import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
 import type { TableAction } from "./types/tableActions"; // 分離した型定義を使用
-import { getDynamicIcon as newGetDynamicIcon } from "./utils/toolbarUtils"; // テスト用に新しい関数をインポート
+import {
+  getDynamicIcon as newGetDynamicIcon,
+  categorizeActionsByEnabledWhen,
+  categorizeActionsByDisplayIn,
+} from "./utils/toolbarUtils"; // ユーティリティ関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
 import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
