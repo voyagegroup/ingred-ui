@@ -51,6 +51,10 @@ export type TableAction =
       disabled?: (checkedRows: string[]) => boolean;
       style?: React.CSSProperties; // テキスト色などのカスタムスタイル
       headingLabel?: string; // モバイル時のグループヘッダー（同じheadingLabelのアクションが自動グループ化される）
+      dynamicIconColor?: {
+        enabled: string; // 選択時（有効時）のアイコン色
+        disabled?: string; // 非選択時（無効時）のアイコン色（省略時はcurrentColor）
+      };
     }
   | {
       type: "groupButton";
@@ -68,6 +72,10 @@ export type TableAction =
         enabledWhen?: "checked" | "unchecked" | "custom";
         disabled?: (checkedRows: string[]) => boolean;
         style?: React.CSSProperties;
+        dynamicIconColor?: {
+          enabled: string; // 選択時（有効時）のアイコン色
+          disabled?: string; // 非選択時（無効時）のアイコン色（省略時はcurrentColor）
+        };
       }[];
       displayIn?: "toolbar" | "dropdown";
       enabledWhen?: "checked" | "unchecked" | "custom";
@@ -126,6 +134,41 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
+  // アイコンの色を動的に変更するヘルパー関数
+  const getDynamicIcon = useCallback(
+    (
+      originalIcon: React.ReactNode,
+      dynamicIconColor?: { enabled: string; disabled?: string },
+    ) => {
+      // dynamicIconColorが指定されている場合、選択状態に応じて色を変更
+      if (dynamicIconColor && React.isValidElement(originalIcon)) {
+        const isEnabled = checkedRows.length > 0;
+        let targetColor = isEnabled
+          ? dynamicIconColor.enabled
+          : dynamicIconColor.disabled || "currentColor";
+
+        // テーマの色を解決
+        if (targetColor === "success") {
+          targetColor = theme.palette.success.main;
+        } else if (targetColor === "danger") {
+          targetColor = theme.palette.danger.main;
+        } else if (targetColor === "primary") {
+          targetColor = theme.palette.primary.main;
+        } else if (targetColor === "warning") {
+          targetColor = theme.palette.warning.main;
+        }
+        // currentColorやその他のCSS色値はそのまま使用
+
+        return React.cloneElement(originalIcon, {
+          ...originalIcon.props,
+          color: targetColor,
+        });
+      }
+      return originalIcon;
+    },
+    [checkedRows.length, theme.palette],
+  );
+
   // 共通のボタンレンダリング関数
   const renderTableActionButton = useCallback(
     (action: TableAction, index: number, isDesktop: boolean) => {
@@ -133,7 +176,7 @@ const Toolbar = ({
         return (
           <Button
             key={index}
-            icon={action.icon}
+            icon={getDynamicIcon(action.icon, action.dynamicIconColor)}
             color={action.color ?? "basicLight"}
             size="small"
             inline={isDesktop}
@@ -157,7 +200,7 @@ const Toolbar = ({
             {action.items.map((item, itemIndex) => (
               <Button
                 key={itemIndex}
-                icon={item.icon}
+                icon={getDynamicIcon(item.icon, item.dynamicIconColor)}
                 color={item.color ?? "basicLight"}
                 style={item.style}
                 disabled={
@@ -235,7 +278,10 @@ const Toolbar = ({
               result.push(
                 <ContextMenu2ButtonItem
                   key={`group-${groupAction.headingLabel}-${groupIndex}`}
-                  prepend={groupAction.icon}
+                  prepend={getDynamicIcon(
+                    groupAction.icon,
+                    groupAction.dynamicIconColor,
+                  )}
                   disabled={
                     isUnchecked
                       ? checkedRows.length > 0
@@ -263,7 +309,7 @@ const Toolbar = ({
                 result.push(
                   <ContextMenu2ButtonItem
                     key={`group-${action.headingLabel}-${groupIndex}-${itemIndex}`}
-                    prepend={item.icon}
+                    prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
                     disabled={
                       isUnchecked
                         ? checkedRows.length > 0
@@ -299,7 +345,7 @@ const Toolbar = ({
             result.push(
               <ContextMenu2ButtonItem
                 key={actionIndex}
-                prepend={action.icon}
+                prepend={getDynamicIcon(action.icon, action.dynamicIconColor)}
                 disabled={
                   isUnchecked
                     ? checkedRows.length > 0

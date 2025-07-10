@@ -178,15 +178,25 @@ export const Default: StoryObj<typeof meta> = {
         items: [
           {
             label: "有効にする",
-            icon: <Icon name="eye_off" color="currentColor" />,
-            onClick: () => alert("有効"),
+            icon: <Icon name="circle" type="fill" color="currentColor" />,
+            onClick: (checkedRows) =>
+              alert(`有効 (${checkedRows.length}件選択)`),
             enabledWhen: "checked",
+            dynamicIconColor: {
+              enabled: "success",
+              disabled: "currentColor",
+            },
           },
           {
             label: "停止する",
-            icon: <Icon name="eye" color="currentColor" />,
-            onClick: () => alert("停止"),
+            icon: <Icon name="circle" type="fill" color="currentColor" />,
+            onClick: (checkedRows) =>
+              alert(`停止 (${checkedRows.length}件選択)`),
             enabledWhen: "checked",
+            dynamicIconColor: {
+              enabled: "danger",
+              disabled: "currentColor",
+            },
           },
         ],
         enabledWhen: "checked",
@@ -197,7 +207,17 @@ export const Default: StoryObj<typeof meta> = {
         type: "singleButton",
         label: "複製",
         icon: <Icon name="copy" color="currentColor" />,
-        onClick: () => alert("複製"),
+        onClick: (checkedRows) => alert(`複製 (${checkedRows.length}件選択)`),
+        color: "basicLight",
+        enabledWhen: "checked",
+        displayIn: "toolbar",
+        headingLabel: "ステータスを変更",
+      },
+      {
+        type: "singleButton",
+        label: "削除",
+        icon: <Icon name="delete_bin" color="currentColor" />,
+        onClick: (checkedRows) => alert(`削除 (${checkedRows.length}件選択)`),
         color: "basicLight",
         enabledWhen: "checked",
         displayIn: "toolbar",
@@ -215,7 +235,8 @@ export const Default: StoryObj<typeof meta> = {
         type: "singleButton",
         label: "エクスポート",
         icon: <Icon name="export" color="currentColor" />,
-        onClick: () => alert("エクスポート"),
+        onClick: (checkedRows) =>
+          alert(`エクスポート (${checkedRows.length}件選択)`),
         color: "primary",
         enabledWhen: "checked",
         displayIn: "dropdown",
@@ -224,7 +245,8 @@ export const Default: StoryObj<typeof meta> = {
         type: "singleButton",
         label: "ダウンロード",
         icon: <Icon name="download_cloud" color="currentColor" />,
-        onClick: () => alert("ダウンロード"),
+        onClick: (checkedRows) =>
+          alert(`ダウンロード (${checkedRows.length}件選択)`),
         color: "basicLight",
         enabledWhen: "checked",
         displayIn: "dropdown",
@@ -236,13 +258,14 @@ export const Default: StoryObj<typeof meta> = {
       },
       {
         type: "singleButton",
-        label: "削除",
-        icon: <Icon name="delete_bin" color="currentColor" />,
-        onClick: () => alert("削除"),
-        color: "danger",
+        label: "その他",
+        icon: <Icon name="copy" color="currentColor" />,
+        onClick: (checkedRows) => alert(`その他 (${checkedRows.length}件選択)`),
+        color: "basicLight",
         enabledWhen: "checked",
         displayIn: "dropdown",
       },
+
       // unchecked時enabled + toolbar（デスクトップ時は右側の直接ボタン、モバイル時は右側の3点リーダーボタン）
       {
         type: "singleButton",
@@ -253,6 +276,12 @@ export const Default: StoryObj<typeof meta> = {
         displayIn: "toolbar",
       },
       // unchecked時enabled + dropdown（デスクトップ・モバイル共に右側の3点リーダーボタン）
+      {
+        type: "heading",
+        label: "データ管理",
+        enabledWhen: "unchecked",
+        displayIn: "dropdown",
+      },
       {
         type: "singleButton",
         label: "インポート",
