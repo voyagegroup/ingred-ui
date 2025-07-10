@@ -449,16 +449,9 @@ const Toolbar = ({
     // カスタムエリアが指定されている場合はそれを使用
     tableActionArea = customTableActionArea({ isSmallLayout, checkedRows });
   } else if (tableActions && tableActions.length > 0) {
-    // enabledWhenによる分離
-    const checkedActions = tableActions.filter((action) => {
-      return (
-        (action as any).enabledWhen === "checked" ||
-        (action as any).enabledWhen === undefined
-      );
-    });
-    const uncheckedActions = tableActions.filter((action) => {
-      return (action as any).enabledWhen === "unchecked";
-    });
+    // enabledWhenによる分離（分離したユーティリティ関数を使用）
+    const { checkedActions, uncheckedActions } =
+      categorizeActionsByEnabledWhen(tableActions);
 
     if (isSmallLayout) {
       // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
@@ -523,12 +516,10 @@ const Toolbar = ({
       );
     } else {
       // デスクトップ時: enabledWhenによる分離と破線区切り
-      const checkedDropdownActions = checkedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "dropdown",
-      );
-      const uncheckedDropdownActions = uncheckedActions.filter(
-        (action) => (action.displayIn ?? "toolbar") === "dropdown",
-      );
+      const { dropdownActions: checkedDropdownActions } =
+        categorizeActionsByDisplayIn(checkedActions);
+      const { dropdownActions: uncheckedDropdownActions } =
+        categorizeActionsByDisplayIn(uncheckedActions);
 
       // checked時のアクションを配列の順序通りに並べる関数
       const renderCheckedActionsInOrder = () => {

@@ -1,5 +1,6 @@
 import React from "react";
 import type { Theme } from "../../../themes/createTheme";
+import type { TableAction } from "../types/tableActions";
 
 /**
  * アイコンの色を動的に変更するヘルパー関数
@@ -48,16 +49,17 @@ export const getDynamicIcon = (
  * @param actions - TableActionの配列
  * @returns checked用とunchecked用に分離されたアクション
  */
-export const categorizeActionsByEnabledWhen = <
-  T extends { enabledWhen?: "checked" | "unchecked" | "custom" },
->(
-  actions: T[],
-) => {
+export const categorizeActionsByEnabledWhen = (actions: TableAction[]) => {
   const checkedActions = actions.filter((action) => {
-    return action.enabledWhen === "checked" || action.enabledWhen === undefined;
+    // enabledWhenプロパティが存在しない型もあるため、安全にアクセス
+    const enabledWhen =
+      "enabledWhen" in action ? action.enabledWhen : undefined;
+    return enabledWhen === "checked" || enabledWhen === undefined;
   });
   const uncheckedActions = actions.filter((action) => {
-    return action.enabledWhen === "unchecked";
+    const enabledWhen =
+      "enabledWhen" in action ? action.enabledWhen : undefined;
+    return enabledWhen === "unchecked";
   });
 
   return { checkedActions, uncheckedActions };
@@ -69,16 +71,15 @@ export const categorizeActionsByEnabledWhen = <
  * @param actions - TableActionの配列
  * @returns toolbar用とdropdown用に分離されたアクション
  */
-export const categorizeActionsByDisplayIn = <
-  T extends { displayIn?: "toolbar" | "dropdown" },
->(
-  actions: T[],
-) => {
+export const categorizeActionsByDisplayIn = (actions: TableAction[]) => {
   const toolbarActions = actions.filter((action) => {
-    return (action.displayIn ?? "toolbar") === "toolbar";
+    // displayInプロパティが存在しない型もあるため、安全にアクセス
+    const displayIn = "displayIn" in action ? action.displayIn : undefined;
+    return (displayIn ?? "toolbar") === "toolbar";
   });
   const dropdownActions = actions.filter((action) => {
-    return (action.displayIn ?? "toolbar") === "dropdown";
+    const displayIn = "displayIn" in action ? action.displayIn : undefined;
+    return (displayIn ?? "toolbar") === "dropdown";
   });
 
   return { toolbarActions, dropdownActions };

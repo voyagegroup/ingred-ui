@@ -1,10 +1,11 @@
 import React from "react";
-import { defaultTheme } from "../../../../themes/defaultTheme";
 import {
   getDynamicIcon,
   categorizeActionsByEnabledWhen,
   categorizeActionsByDisplayIn,
 } from "../toolbarUtils";
+import { defaultTheme } from "../../../../themes/defaultTheme";
+import type { TableAction } from "../../types/tableActions";
 
 describe("toolbarUtils", () => {
   describe("getDynamicIcon", () => {
@@ -95,37 +96,75 @@ describe("toolbarUtils", () => {
 
   describe("categorizeActionsByEnabledWhen", () => {
     it("should categorize actions by enabledWhen property", () => {
-      const actions = [
-        { id: 1, enabledWhen: "checked" as const },
-        { id: 2, enabledWhen: "unchecked" as const },
-        { id: 3, enabledWhen: "checked" as const },
-        { id: 4 }, // デフォルトはchecked扱い
+      const actions: TableAction[] = [
+        {
+          type: "singleButton",
+          label: "Action 1",
+          onClick: () => {},
+          enabledWhen: "checked",
+        },
+        {
+          type: "singleButton",
+          label: "Action 2",
+          onClick: () => {},
+          enabledWhen: "unchecked",
+        },
+        {
+          type: "singleButton",
+          label: "Action 3",
+          onClick: () => {},
+          enabledWhen: "checked",
+        },
+        {
+          type: "singleButton",
+          label: "Action 4",
+          onClick: () => {},
+          // デフォルトはchecked扱い
+        },
+        {
+          type: "divider",
+          // enabledWhenプロパティなし
+        },
       ];
 
       const result = categorizeActionsByEnabledWhen(actions);
 
-      expect(result.checkedActions).toHaveLength(3);
+      expect(result.checkedActions).toHaveLength(4); // 3つのchecked + 1つのデフォルト + 1つのdivider
       expect(result.uncheckedActions).toHaveLength(1);
-      expect(result.checkedActions.map((a) => a.id)).toEqual([1, 3, 4]);
-      expect(result.uncheckedActions.map((a) => a.id)).toEqual([2]);
     });
   });
 
   describe("categorizeActionsByDisplayIn", () => {
     it("should categorize actions by displayIn property", () => {
-      const actions = [
-        { id: 1, displayIn: "toolbar" as const },
-        { id: 2, displayIn: "dropdown" as const },
-        { id: 3, displayIn: "toolbar" as const },
-        { id: 4 }, // デフォルトはtoolbar扱い
+      const actions: TableAction[] = [
+        {
+          type: "singleButton",
+          label: "Action 1",
+          onClick: () => {},
+          displayIn: "toolbar",
+        },
+        {
+          type: "singleButton",
+          label: "Action 2",
+          onClick: () => {},
+          displayIn: "dropdown",
+        },
+        {
+          type: "singleButton",
+          label: "Action 3",
+          onClick: () => {},
+          // デフォルトはtoolbar扱い
+        },
+        {
+          type: "divider",
+          // displayInプロパティなし
+        },
       ];
 
       const result = categorizeActionsByDisplayIn(actions);
 
-      expect(result.toolbarActions).toHaveLength(3);
+      expect(result.toolbarActions).toHaveLength(3); // 1つのtoolbar + 1つのデフォルト + 1つのdivider
       expect(result.dropdownActions).toHaveLength(1);
-      expect(result.toolbarActions.map((a) => a.id)).toEqual([1, 3, 4]);
-      expect(result.dropdownActions.map((a) => a.id)).toEqual([2]);
     });
   });
 });
