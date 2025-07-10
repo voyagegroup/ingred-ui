@@ -149,7 +149,7 @@ const Toolbar = ({
         }
       }
     },
-    [checkedRows],
+    [checkedRows, getDynamicIcon],
   );
 
   // モバイル時のアクションをグループ化してContextMenu2アイテムに変換するヘルパー関数
@@ -261,7 +261,7 @@ const Toolbar = ({
               result.push(
                 <ContextMenu2ButtonItem
                   key={`${actionIndex}-${itemIndex}`}
-                  prepend={item.icon}
+                  prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
                   disabled={isActionDisabled(item, checkedRows, isUnchecked)}
                   onClick={() => {
                     item.onClick(checkedRows);
@@ -294,7 +294,12 @@ const Toolbar = ({
 
       return result;
     },
-    [checkedRows, setIsTableActionMenuOpen, setIsUncheckedActionsMenuOpen],
+    [
+      checkedRows,
+      setIsTableActionMenuOpen,
+      setIsUncheckedActionsMenuOpen,
+      getDynamicIcon,
+    ],
   );
 
   // テーブルアクションエリアの描画ロジック
@@ -413,7 +418,10 @@ const Toolbar = ({
                         return (
                           <ContextMenu2ButtonItem
                             key={index}
-                            prepend={dropdownAction.icon}
+                            prepend={getDynamicIcon(
+                              dropdownAction.icon,
+                              dropdownAction.dynamicIconColor,
+                            )}
                             disabled={isActionDisabled(
                               dropdownAction,
                               checkedRows,
@@ -430,7 +438,10 @@ const Toolbar = ({
                         return dropdownAction.items.map((item, itemIndex) => (
                           <ContextMenu2ButtonItem
                             key={`${index}-${itemIndex}`}
-                            prepend={item.icon}
+                            prepend={getDynamicIcon(
+                              item.icon,
+                              item.dynamicIconColor,
+                            )}
                             disabled={isActionDisabled(item, checkedRows)}
                             onClick={() => {
                               item.onClick(checkedRows);
@@ -505,7 +516,10 @@ const Toolbar = ({
                         return (
                           <ContextMenu2ButtonItem
                             key={index}
-                            prepend={dropdownAction.icon}
+                            prepend={getDynamicIcon(
+                              dropdownAction.icon,
+                              dropdownAction.dynamicIconColor,
+                            )}
                             disabled={isActionDisabled(
                               dropdownAction,
                               checkedRows,
@@ -523,7 +537,10 @@ const Toolbar = ({
                         return dropdownAction.items.map((item, itemIndex) => (
                           <ContextMenu2ButtonItem
                             key={`${index}-${itemIndex}`}
-                            prepend={item.icon}
+                            prepend={getDynamicIcon(
+                              item.icon,
+                              item.dynamicIconColor,
+                            )}
                             disabled={isActionDisabled(item, checkedRows, true)}
                             onClick={() => {
                               item.onClick(checkedRows);

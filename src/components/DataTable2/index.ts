@@ -1,6 +1,6 @@
 export type { TableColumn, SortDirection } from "./types";
 export type { TableAction } from "./types/tableActions"; // メインの型定義に変更
-export type { LegacyTableAction } from "./DataTable2"; // 後方互換のため保持
+// export type { LegacyTableAction } from "./DataTable2"; // 後方互換のため保持（削除済み）
 export { DataTable2 } from "./DataTable2";
 export { DataTable2Head } from "./DataTable2Head";
 export { DataTable2Column, DataTable2ColumnLabel } from "./DataTable2Column";
