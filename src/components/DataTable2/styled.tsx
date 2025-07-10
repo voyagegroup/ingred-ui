@@ -480,29 +480,36 @@ export const TableSelectedText = styled.span`
   margin-inline: 4px 0;
 `;
 
+const getActionButtonBackground = (
+  color?: "danger" | "primary" | "default",
+) => {
+  if (color === "danger") return colors.red[100];
+  if (color === "primary") return colors.blue[100];
+  return "#fff";
+};
+
+const getActionButtonColor = (color?: "danger" | "primary" | "default") => {
+  if (color === "danger") return colors.red[700];
+  if (color === "primary") return colors.blue[700];
+  return colors.basic[900];
+};
+
+const getActionButtonHoverBackground = (
+  color?: "danger" | "primary" | "default",
+) => {
+  if (color === "danger") return colors.red[200];
+  if (color === "primary") return colors.blue[200];
+  return colors.basic[100];
+};
+
 export const TableActionButton = styled.button<{
   color?: "danger" | "primary" | "default";
 }>`
   ${actionButton}
-  background: ${({ color }) =>
-    color === "danger"
-      ? colors.red[100]
-      : color === "primary"
-      ? colors.blue[100]
-      : "#fff"};
-  color: ${({ color }) =>
-    color === "danger"
-      ? colors.red[700]
-      : color === "primary"
-      ? colors.blue[700]
-      : colors.basic[900]};
+  background: ${({ color }) => getActionButtonBackground(color)};
+  color: ${({ color }) => getActionButtonColor(color)};
   &:hover:not(:disabled) {
-    background: ${({ color }) =>
-      color === "danger"
-        ? colors.red[200]
-        : color === "primary"
-        ? colors.blue[200]
-        : colors.basic[100]};
+    background: ${({ color }) => getActionButtonHoverBackground(color)};
   }
 `;
 
@@ -519,12 +526,7 @@ export const TableActionMenuItem = styled.button<{
   border: none;
   padding: 8px 12px;
   font-size: 13px;
-  color: ${({ color }) =>
-    color === "danger"
-      ? colors.red[700]
-      : color === "primary"
-      ? colors.blue[700]
-      : colors.basic[900]};
+  color: ${({ color }) => getActionButtonColor(color)};
   cursor: pointer;
   &:hover:not(:disabled) {
     background: ${colors.basic[100]};
@@ -555,13 +557,13 @@ export const TableActionDropdownButton = styled.button`
   gap: 4px;
   padding-right: 4px;
   min-width: auto;
-  
+
   &:disabled {
     color: ${colors.basic[400]};
     background: ${colors.basic[200]};
     cursor: not-allowed;
   }
-  
+
   &:hover:not(:disabled) {
     background: ${colors.basic[100]};
   }
