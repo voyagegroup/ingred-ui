@@ -11,7 +11,7 @@ const actionButton = `
   padding: 4px;
   border: 1px solid ${colors.basic[400]};
   border-radius: 4px;
-  background: #ffffff;
+  background: #ffffff; // TODO: theme.palette.background.default への変更を検討
   /* UI/Text 12 */
   font-size: 12px;
   color: ${colors.basic[900]};
@@ -32,7 +32,7 @@ const actionButton = `
     border-bottom-right-radius: 0;
   }
   &:where(:hover:not(:disabled)) {
-    background: ${colors.basic[100]};
+    background: ${colors.basic[100]}; // TODO: theme.palette.gray.highlight等への変更を検討
   }
   &:where(:active:not(:disabled)) {
     padding-block: 6px 2px;
@@ -52,18 +52,18 @@ export const DataTable2 = styled.div<{ bordered?: boolean }>`
     position: absolute;
     z-index: 2;
     inset: 0;
-    border-block: 1px solid ${colors.basic[400]};
+    border-block: 1px solid ${({ theme }) => theme.palette.divider};
     border-radius: inherit;
     pointer-events: none;
   }
 
-  ${({ bordered }) =>
+  ${({ bordered, theme }) =>
     bordered &&
     `
       overflow: hidden;
       border-radius: 6px;
       &::after {
-      border-inline: 1px solid ${colors.basic[400]};
+      border-inline: 1px solid ${theme.palette.divider};
   `}
 `;
 
@@ -102,7 +102,7 @@ export const Toolbar = styled.div<{ isSmallLayout: boolean }>`
   gap: 8px;
   justify-content: space-between;
   padding: 16px ${({ isSmallLayout }) => (isSmallLayout ? 12 : 16)}px;
-  background: ${colors.basic[100]};
+  background: ${({ theme }) => theme.palette.gray.highlight};
 `;
 
 export const RowMenuTrigger = styled.button`
@@ -173,20 +173,20 @@ export const ToolbarFilterTrigger = styled.button`
   /* UI/Text 13 */
   font-size: 13px;
   line-height: 16px;
-  color: ${colors.blue[500]};
-  background: #ffffff;
+  color: ${({ theme }) => theme.palette.primary.main};
+  background: ${({ theme }) => theme.palette.background.default};
   cursor: pointer;
   transition: background 0.2s;
 
   &:where(:disabled) {
-    color: ${colors.basic[400]};
-    background: ${colors.basic[200]};
+    color: ${({ theme }) => theme.palette.text.disabled};
+    background: ${({ theme }) => theme.palette.gray.light};
     cursor: not-allowed;
   }
 
   &:where(:not(:disabled):hover),
   &:where([aria-expanded="true"]) {
-    background: ${colors.blue[100]};
+    background: ${({ theme }) => theme.palette.primary.highlight};
   }
 `;
 
@@ -212,12 +212,18 @@ export const DataTable2Header = styled.thead`
   z-index: 2;
   top: 0;
   background:
-    linear-gradient(${colors.basic[400]}, ${colors.basic[400]}) 0 0 / 100% 1px
-      no-repeat,
-    linear-gradient(${colors.basic[400]}, ${colors.basic[400]}) 0 100% / 100%
-      1px no-repeat,
-    #fff;
-  box-shadow: 0px 4px 0px rgba(4, 28, 51, 0.04);
+    linear-gradient(
+        ${({ theme }) => theme.palette.divider},
+        ${({ theme }) => theme.palette.divider}
+      )
+      0 0 / 100% 1px no-repeat,
+    linear-gradient(
+        ${({ theme }) => theme.palette.divider},
+        ${({ theme }) => theme.palette.divider}
+      )
+      0 100% / 100% 1px no-repeat,
+    ${({ theme }) => theme.palette.background.default};
+  box-shadow: 0px 4px 0px rgba(4, 28, 51, 0.04); // TODO: theme.palette.action.shadowBase等への変更を検討
 `;
 
 //
@@ -363,16 +369,16 @@ export const SortButton = styled.button`
 //
 // -----------------------------------------------------------------------------
 export const DataTable2Row = styled.tr<{ isSmallLayout: boolean }>`
-  background: #ffffff;
+  background: ${({ theme }) => theme.palette.background.default};
   transition: background 0.2s;
-  border-bottom: 1px solid ${colors.basic[400]};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
 
   &[data-highlighted="true"] {
-    background: ${colors.blue[100]};
+    background: ${({ theme }) => theme.palette.primary.highlight};
   }
 
   &:not([data-highlighted="true"]):hover {
-    background: ${colors.basic[100]};
+    background: ${({ theme }) => theme.palette.gray.highlight};
   }
 
   td {
@@ -482,34 +488,40 @@ export const TableSelectedText = styled.span`
 
 const getActionButtonBackground = (
   color?: "danger" | "primary" | "default",
+  theme?: any,
 ) => {
-  if (color === "danger") return colors.red[100];
-  if (color === "primary") return colors.blue[100];
-  return "#fff";
+  if (color === "danger") return theme?.palette.danger.highlight;
+  if (color === "primary") return theme?.palette.primary.highlight;
+  return theme?.palette.background.default;
 };
 
-const getActionButtonColor = (color?: "danger" | "primary" | "default") => {
-  if (color === "danger") return colors.red[700];
-  if (color === "primary") return colors.blue[700];
-  return colors.basic[900];
+const getActionButtonColor = (
+  color?: "danger" | "primary" | "default",
+  theme?: any,
+) => {
+  if (color === "danger") return theme?.palette.danger.dark;
+  if (color === "primary") return theme?.palette.primary.dark;
+  return theme?.palette.text.secondary;
 };
 
 const getActionButtonHoverBackground = (
   color?: "danger" | "primary" | "default",
+  theme?: any,
 ) => {
-  if (color === "danger") return colors.red[200];
-  if (color === "primary") return colors.blue[200];
-  return colors.basic[100];
+  if (color === "danger") return theme?.palette.danger.light;
+  if (color === "primary") return theme?.palette.primary.light;
+  return theme?.palette.gray.highlight;
 };
 
 export const TableActionButton = styled.button<{
   color?: "danger" | "primary" | "default";
 }>`
   ${actionButton}
-  background: ${({ color }) => getActionButtonBackground(color)};
-  color: ${({ color }) => getActionButtonColor(color)};
+  background: ${({ color, theme }) => getActionButtonBackground(color, theme)};
+  color: ${({ color, theme }) => getActionButtonColor(color, theme)};
   &:hover:not(:disabled) {
-    background: ${({ color }) => getActionButtonHoverBackground(color)};
+    background: ${({ color, theme }) =>
+      getActionButtonHoverBackground(color, theme)};
   }
 `;
 
@@ -526,13 +538,13 @@ export const TableActionMenuItem = styled.button<{
   border: none;
   padding: 8px 12px;
   font-size: 13px;
-  color: ${({ color }) => getActionButtonColor(color)};
+  color: ${({ color, theme }) => getActionButtonColor(color, theme)};
   cursor: pointer;
   &:hover:not(:disabled) {
-    background: ${colors.basic[100]};
+    background: ${({ theme }) => theme.palette.gray.highlight};
   }
   &:disabled {
-    color: ${colors.basic[400]};
+    color: ${({ theme }) => theme.palette.text.disabled};
     cursor: not-allowed;
   }
 `;
@@ -559,12 +571,12 @@ export const TableActionDropdownButton = styled.button`
   min-width: auto;
 
   &:disabled {
-    color: ${colors.basic[400]};
-    background: ${colors.basic[200]};
+    color: ${({ theme }) => theme.palette.text.disabled};
+    background: ${({ theme }) => theme.palette.gray.light};
     cursor: not-allowed;
   }
 
   &:hover:not(:disabled) {
-    background: ${colors.basic[100]};
+    background: ${({ theme }) => theme.palette.gray.highlight};
   }
 `;
