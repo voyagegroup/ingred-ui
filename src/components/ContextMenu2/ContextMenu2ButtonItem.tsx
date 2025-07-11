@@ -51,7 +51,8 @@ const InternalContextMenu2ButtonItem = forwardRef<
   const finalPrepend =
     React.isValidElement(prepend) && prepend.type === Icon
       ? React.cloneElement(prepend as ReactElement<IconProps>, {
-          color: "currentColor",
+          color:
+            (prepend as ReactElement<IconProps>).props.color || "currentColor",
           size: "md",
         })
       : prepend;

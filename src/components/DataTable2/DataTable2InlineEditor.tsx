@@ -9,7 +9,7 @@ import {
   ContextMenu2CheckItem,
 } from "../ContextMenu2";
 import Button from "../Button";
-import ActionButton from "../ActionButton";
+import Icon from "../Icon";
 import * as styled from "./styled";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -49,7 +49,13 @@ export const DataTable2InlineEditor = ({
           <ContextMenu2
             width={252}
             trigger={
-              <ActionButton type="button" color="primary" icon="pencil" />
+              <Button
+                type="button"
+                color="primaryPale"
+                size="small"
+                inline={true}
+                icon={<Icon name="pencil" color="currentColor" />}
+              />
             }
             open={isOpen}
             onOpenChange={setIsOpen}
@@ -110,7 +116,13 @@ export const DataTable2InlineSelectEditor = ({
           <ContextMenu2
             width={252}
             trigger={
-              <ActionButton type="button" color="primary" icon="pencil" />
+              <Button
+                type="button"
+                color="primaryPale"
+                size="small"
+                inline={true}
+                icon={<Icon name="pencil" color="currentColor" />}
+              />
             }
             open={isOpen}
             onOpenChange={setIsOpen}

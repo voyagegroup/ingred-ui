@@ -9,35 +9,53 @@ import React, {
 } from "react";
 import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
+import type { TableAction } from "./types/tableActions"; // 分離した型定義を使用
+import {
+  categorizeActionsByDisplayIn,
+  categorizeActionsByEnabledWhen,
+  getActionKey,
+  getDropdownItemKey,
+  getGroupItemKey,
+  getDynamicIcon as newGetDynamicIcon,
+  isActionDisabled,
+} from "./utils/toolbarUtils"; // ユーティリティ関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
 import { DataTable2MenuOrderControl } from "./DataTable2MenuOrderControl";
 import { DataTable2MenuCountControl } from "./DataTable2MenuCountControl";
 import { DataTable2MenuSpaceControl } from "./DataTable2MenuSpaceControl";
 import { DataTable2Pagination } from "./DataTable2Pagination";
-import { DataTable2RowControls } from "./DataTable2RowControls";
 import * as styled from "./styled";
 import Icon from "../Icon";
 import Checkbox from "../Checkbox";
-import { ContextMenu2Container, ContextMenu2 } from "../ContextMenu2";
+import {
+  ContextMenu2Container,
+  ContextMenu2,
+  ContextMenu2ButtonItem,
+  ContextMenu2SeparatorItem,
+  ContextMenu2HeadingItem,
+} from "../ContextMenu2";
+import Button from "../Button";
+import { useTheme } from "../../themes/useTheme";
+import ButtonGroup from "../ButtonGroup";
 
 ////////////////////////////////////////////////////////////////////////////////
 // Components
 ////////////////////////////////////////////////////////////////////////////////
 // 左上コントロール群
-type ToolbarProps = {
-  /**
-   * 「◯件選択中」をクリックしたときに表示される ContextMenu2 の中身を指定できます。
-   * `<ContextMenu2>` 内に格納できるコンポーネントのみで構成してください。
-   */
-  rowControls?: ReactNode;
-  /**
-   * 右上に任意のボタンを設置できます。
-   */
-  extraButtons?: ReactNode;
-};
-const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
+
+const Toolbar = ({
+  tableActions,
+  customTableActionArea,
+}: {
+  tableActions?: TableAction[]; // 分離した型定義を使用
+  customTableActionArea?: (context: {
+    isSmallLayout: boolean;
+    checkedRows: string[];
+  }) => React.ReactNode;
+}) => {
   const { isSmallLayout, columns, rowIds, checkedRows, setCheckedRows } =
     useContext(DataTable2Context);
+  const theme = useTheme();
 
   const isAllChecked = useMemo(
     () => checkedRows.length === rowIds.length,
@@ -48,7 +66,10 @@ const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
     [checkedRows, rowIds],
   );
 
-  const [isControlOpen, setIsControlOpen] = useState(false);
+  const [isExtrasMenuOpen, setIsExtrasMenuOpen] = useState(false);
+  const [isTableActionMenuOpen, setIsTableActionMenuOpen] = useState(false);
+  const [isUncheckedActionsMenuOpen, setIsUncheckedActionsMenuOpen] =
+    useState(false);
 
   const hasFilterItems = useMemo(
     () => columns.some((column) => column.filtered !== undefined),
@@ -59,56 +80,632 @@ const Toolbar = ({ rowControls, extraButtons }: ToolbarProps) => {
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
+  // アイコンの色を動的に変更するヘルパー関数
+  const getDynamicIcon = useCallback(
+    (
+      originalIcon: React.ReactNode,
+      dynamicIconColor?: { enabled: string; disabled?: string },
+    ) => {
+      const isEnabled = checkedRows.length > 0;
+      return newGetDynamicIcon(
+        originalIcon,
+        dynamicIconColor,
+        isEnabled,
+        theme,
+      );
+    },
+    [checkedRows.length, theme],
+  );
+
+  // 共通のボタンレンダリング関数
+  const renderTableActionButton = useCallback(
+    (action: TableAction, index: number, isDesktop: boolean) => {
+      if (action.type === "singleButton") {
+        return (
+          <Button
+            key={getActionKey(action, index)}
+            icon={getDynamicIcon(action.icon, action.dynamicIconColor)}
+            color={action.color ?? "basicLight"}
+            size="small"
+            inline={isDesktop}
+            style={action.style}
+            disabled={isActionDisabled(action, checkedRows)}
+            onClick={() => action.onClick(checkedRows)}
+          >
+            {action.label}
+          </Button>
+        );
+      } else if (action.type === "groupButton") {
+        return (
+          <ButtonGroup key={getActionKey(action, index)} size="small">
+            {action.items.map((item, itemIndex) => (
+              <Button
+                key={getGroupItemKey(item, index, itemIndex)}
+                icon={getDynamicIcon(item.icon, item.dynamicIconColor)}
+                color={item.color ?? "basicLight"}
+                style={item.style}
+                disabled={isActionDisabled(item, checkedRows)}
+                onClick={() => item.onClick(checkedRows)}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </ButtonGroup>
+        );
+      } else {
+        // divider, separator, heading type
+        if (action.type === "separator") {
+          return <styled.DashedDivider key={getActionKey(action, index)} />;
+        } else if (action.type === "heading") {
+          // toolbar内でheadingは適切に表示できないので、単純なテキストとして表示
+          return (
+            <span
+              key={getActionKey(action, index)}
+              style={{ padding: "8px", fontSize: "14px", fontWeight: "bold" }}
+            >
+              {action.label}
+            </span>
+          );
+        } else {
+          // divider type (for backward compatibility)
+          return <styled.DashedDivider key={getActionKey(action, index)} />;
+        }
+      }
+    },
+    [checkedRows, getDynamicIcon],
+  );
+
+  // モバイル時のアクションをグループ化してContextMenu2アイテムに変換するヘルパー関数
+  const createMobileGroupedActions = useCallback(
+    (actions: TableAction[], isUnchecked = false) => {
+      const result: React.ReactNode[] = [];
+      const processedGroups = new Set<string>();
+
+      actions.forEach((action, actionIndex) => {
+        // headingLabelが指定されている場合のグループ処理
+        if (
+          (action.type === "singleButton" || action.type === "groupButton") &&
+          action.headingLabel &&
+          !processedGroups.has(action.headingLabel)
+        ) {
+          processedGroups.add(action.headingLabel);
+
+          // 同じheadingLabelのアクションを全て取得
+          const groupActions = actions.filter(
+            (a) =>
+              (a.type === "singleButton" || a.type === "groupButton") &&
+              a.headingLabel === action.headingLabel,
+          );
+
+          // headingLabelをヘッダーとして追加
+          result.push(
+            <ContextMenu2HeadingItem
+              key={`group-${action.headingLabel}-heading`}
+            >
+              {action.headingLabel}
+            </ContextMenu2HeadingItem>,
+          );
+
+          // グループ内のアクションを処理
+          groupActions.forEach((groupAction, groupIndex) => {
+            if (groupAction.type === "singleButton") {
+              result.push(
+                <ContextMenu2ButtonItem
+                  key={`group-${groupAction.headingLabel}-${
+                    groupAction.label || groupIndex
+                  }`}
+                  prepend={getDynamicIcon(
+                    groupAction.icon,
+                    groupAction.dynamicIconColor,
+                  )}
+                  disabled={isActionDisabled(
+                    groupAction,
+                    checkedRows,
+                    isUnchecked,
+                  )}
+                  onClick={() => {
+                    groupAction.onClick(checkedRows);
+                    if (isUnchecked) {
+                      setIsUncheckedActionsMenuOpen(false);
+                    } else {
+                      setIsTableActionMenuOpen(false);
+                    }
+                  }}
+                >
+                  {groupAction.label}
+                </ContextMenu2ButtonItem>,
+              );
+            } else if (groupAction.type === "groupButton") {
+              groupAction.items.forEach((item, itemIndex) => {
+                result.push(
+                  <ContextMenu2ButtonItem
+                    key={getDropdownItemKey(
+                      item,
+                      `group-${action.headingLabel}-group`,
+                      groupIndex,
+                      itemIndex,
+                    )}
+                    prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
+                    disabled={isActionDisabled(item, checkedRows, isUnchecked)}
+                    onClick={() => {
+                      item.onClick(checkedRows);
+                      if (isUnchecked) {
+                        setIsUncheckedActionsMenuOpen(false);
+                      } else {
+                        setIsTableActionMenuOpen(false);
+                      }
+                    }}
+                  >
+                    {item.label}
+                  </ContextMenu2ButtonItem>,
+                );
+              });
+            }
+          });
+        }
+        // singleButton, groupButton, divider, separator, heading type
+        else if (
+          (action.type === "singleButton" || action.type === "groupButton") &&
+          !action.headingLabel
+        ) {
+          if (action.type === "singleButton") {
+            result.push(
+              <ContextMenu2ButtonItem
+                key={`single-${action.label || actionIndex}`}
+                prepend={getDynamicIcon(action.icon, action.dynamicIconColor)}
+                disabled={isActionDisabled(action, checkedRows, isUnchecked)}
+                onClick={() => {
+                  action.onClick(checkedRows);
+                  if (isUnchecked) {
+                    setIsUncheckedActionsMenuOpen(false);
+                  } else {
+                    setIsTableActionMenuOpen(false);
+                  }
+                }}
+              >
+                {action.label}
+              </ContextMenu2ButtonItem>,
+            );
+          } else if (action.type === "groupButton") {
+            action.items.forEach((item, itemIndex) => {
+              result.push(
+                <ContextMenu2ButtonItem
+                  key={getDropdownItemKey(
+                    item,
+                    "mobile-group",
+                    actionIndex,
+                    itemIndex,
+                  )}
+                  prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
+                  disabled={isActionDisabled(item, checkedRows, isUnchecked)}
+                  onClick={() => {
+                    item.onClick(checkedRows);
+                    if (isUnchecked) {
+                      setIsUncheckedActionsMenuOpen(false);
+                    } else {
+                      setIsTableActionMenuOpen(false);
+                    }
+                  }}
+                >
+                  {item.label}
+                </ContextMenu2ButtonItem>,
+              );
+            });
+          }
+        }
+        // separator, heading, dividerタイプの処理
+        else if (action.type === "separator") {
+          result.push(
+            <ContextMenu2SeparatorItem
+              // eslint-disable-next-line react/no-array-index-key
+              key={`separator-${actionIndex}`}
+            />,
+          );
+        } else if (action.type === "heading") {
+          result.push(
+            <ContextMenu2HeadingItem
+              key={`heading-${action.label || actionIndex}`}
+            >
+              {action.label}
+            </ContextMenu2HeadingItem>,
+          );
+        } else if (action.type === "divider") {
+          result.push(
+            <ContextMenu2SeparatorItem
+              // eslint-disable-next-line react/no-array-index-key
+              key={`divider-${actionIndex}`}
+            />,
+          );
+        }
+      });
+
+      return result;
+    },
+    [
+      checkedRows,
+      setIsTableActionMenuOpen,
+      setIsUncheckedActionsMenuOpen,
+      getDynamicIcon,
+    ],
+  );
+
+  // テーブルアクションエリアの描画ロジック
+  let tableActionArea: React.ReactNode = null;
+  if (customTableActionArea) {
+    // カスタムエリアが指定されている場合はそれを使用
+    tableActionArea = customTableActionArea({ isSmallLayout, checkedRows });
+  } else if (tableActions && tableActions.length > 0) {
+    // enabledWhenによる分離（分離したユーティリティ関数を使用）
+    const { checkedActions, uncheckedActions } =
+      categorizeActionsByEnabledWhen(tableActions);
+
+    if (isSmallLayout) {
+      // モバイル時: checkedActionsは「n件を操作」ドロップダウン、uncheckedActionsは右側3点リーダーボタン
+      tableActionArea = (
+        <styled.TableActionContainer>
+          {checkedActions.length > 0 && (
+            <ContextMenu2Container>
+              <ContextMenu2
+                open={isTableActionMenuOpen}
+                trigger={
+                  // TODO: 将来的にこの「n件を操作」ドロップダウンボタンを専用コンポーネントとして切り出す
+                  // - TableActionDropdownTriggerコンポーネントのようなコンポーネント名を検討
+                  // - disabled状態での色制御やスタイルの一元管理
+                  // - 他の箇所での再利用可能性を考慮
+                  <styled.TableActionDropdownButton
+                    type="button"
+                    disabled={checkedRows.length === 0}
+                  >
+                    <span
+                      style={{
+                        color:
+                          checkedRows.length === 0
+                            ? "inherit"
+                            : theme.palette.primary.main,
+                        fontWeight: 700,
+                      }}
+                    >
+                      {checkedRows.length}
+                    </span>
+                    件を操作
+                    <Icon name="arrow_down" size="sm-md" color="currentColor" />
+                  </styled.TableActionDropdownButton>
+                }
+                width={200}
+                onOpenChange={setIsTableActionMenuOpen}
+              >
+                {createMobileGroupedActions(checkedActions)}
+              </ContextMenu2>
+            </ContextMenu2Container>
+          )}
+          {uncheckedActions.length > 0 && (
+            <ContextMenu2Container>
+              <ContextMenu2
+                open={isUncheckedActionsMenuOpen}
+                trigger={
+                  <Button
+                    type="button"
+                    color="basicLight"
+                    size="small"
+                    icon={<Icon name="more_vert" color="currentColor" />}
+                    disabled={checkedRows.length > 0}
+                  />
+                }
+                width={200}
+                onOpenChange={setIsUncheckedActionsMenuOpen}
+              >
+                {createMobileGroupedActions(uncheckedActions, true)}
+              </ContextMenu2>
+            </ContextMenu2Container>
+          )}
+        </styled.TableActionContainer>
+      );
+    } else {
+      // デスクトップ時: enabledWhenによる分離と破線区切り
+      const { dropdownActions: checkedDropdownActions } =
+        categorizeActionsByDisplayIn(checkedActions);
+      const { dropdownActions: uncheckedDropdownActions } =
+        categorizeActionsByDisplayIn(uncheckedActions);
+
+      // checked時のアクションを配列の順序通りに並べる関数
+      const renderCheckedActionsInOrder = () => {
+        const elements: React.ReactNode[] = [];
+
+        checkedActions.forEach((action, originalIndex) => {
+          const displayIn = action.displayIn ?? "toolbar";
+
+          if (displayIn === "toolbar") {
+            // toolbarボタンを直接レンダリング
+            elements.push(renderTableActionButton(action, originalIndex, true));
+          } else if (displayIn === "dropdown") {
+            // dropdownボタンがまだ追加されていない場合のみ追加
+            const hasDropdownButton = elements.some(
+              (el) => React.isValidElement(el) && el.key === "checked-dropdown",
+            );
+
+            if (!hasDropdownButton) {
+              elements.push(
+                <ContextMenu2Container key="checked-dropdown">
+                  <ContextMenu2
+                    open={isTableActionMenuOpen}
+                    trigger={
+                      <Button
+                        type="button"
+                        color="basicLight"
+                        size="small"
+                        icon={<Icon name="more_vert" color="currentColor" />}
+                        disabled={checkedRows.length === 0}
+                      />
+                    }
+                    width={200}
+                    onOpenChange={setIsTableActionMenuOpen}
+                  >
+                    {checkedDropdownActions.map((dropdownAction, index) => {
+                      if (dropdownAction.type === "singleButton") {
+                        return (
+                          <ContextMenu2ButtonItem
+                            key={`checked-single-${
+                              dropdownAction.label || index
+                            }`}
+                            prepend={getDynamicIcon(
+                              dropdownAction.icon,
+                              dropdownAction.dynamicIconColor,
+                            )}
+                            disabled={isActionDisabled(
+                              dropdownAction,
+                              checkedRows,
+                            )}
+                            onClick={() => {
+                              dropdownAction.onClick(checkedRows);
+                              setIsTableActionMenuOpen(false);
+                            }}
+                          >
+                            {dropdownAction.label}
+                          </ContextMenu2ButtonItem>
+                        );
+                      } else if (dropdownAction.type === "groupButton") {
+                        return dropdownAction.items.map((item, itemIndex) => (
+                          <ContextMenu2ButtonItem
+                            key={getDropdownItemKey(
+                              item,
+                              "checked-group",
+                              index,
+                              itemIndex,
+                            )}
+                            prepend={getDynamicIcon(
+                              item.icon,
+                              item.dynamicIconColor,
+                            )}
+                            disabled={isActionDisabled(item, checkedRows)}
+                            onClick={() => {
+                              item.onClick(checkedRows);
+                              setIsTableActionMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </ContextMenu2ButtonItem>
+                        ));
+                      } else {
+                        // divider, separator, heading type
+                        if (dropdownAction.type === "separator") {
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`checked-separator-sep-${index}`}
+                            />
+                          );
+                        } else if (dropdownAction.type === "heading") {
+                          return (
+                            <ContextMenu2HeadingItem
+                              key={`checked-heading-${
+                                dropdownAction.label || `heading${index}`
+                              }`}
+                            >
+                              {dropdownAction.label}
+                            </ContextMenu2HeadingItem>
+                          );
+                        } else {
+                          // divider type (for backward compatibility)
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`checked-divider-div-${index}`}
+                            />
+                          );
+                        }
+                      }
+                    })}
+                  </ContextMenu2>
+                </ContextMenu2Container>,
+              );
+            }
+          }
+        });
+
+        return elements;
+      };
+
+      // unchecked時のアクションを配列の順序通りに並べる関数
+      const renderUncheckedActionsInOrder = () => {
+        const elements: React.ReactNode[] = [];
+
+        uncheckedActions.forEach((action, originalIndex) => {
+          const displayIn = action.displayIn ?? "toolbar";
+
+          if (displayIn === "toolbar") {
+            // toolbarボタンを直接レンダリング
+            elements.push(renderTableActionButton(action, originalIndex, true));
+          } else if (displayIn === "dropdown") {
+            // dropdownボタンがまだ追加されていない場合のみ追加
+            const hasDropdownButton = elements.some(
+              (el) =>
+                React.isValidElement(el) && el.key === "unchecked-dropdown",
+            );
+
+            if (!hasDropdownButton) {
+              elements.push(
+                <ContextMenu2Container key="unchecked-dropdown">
+                  <ContextMenu2
+                    open={isUncheckedActionsMenuOpen}
+                    trigger={
+                      <Button
+                        type="button"
+                        color="basicLight"
+                        size="small"
+                        icon={<Icon name="more_vert" color="currentColor" />}
+                        disabled={checkedRows.length > 0}
+                      />
+                    }
+                    width={200}
+                    onOpenChange={setIsUncheckedActionsMenuOpen}
+                  >
+                    {uncheckedDropdownActions.map((dropdownAction, index) => {
+                      if (dropdownAction.type === "singleButton") {
+                        return (
+                          <ContextMenu2ButtonItem
+                            key={`unchecked-single-${
+                              dropdownAction.label || index
+                            }`}
+                            prepend={getDynamicIcon(
+                              dropdownAction.icon,
+                              dropdownAction.dynamicIconColor,
+                            )}
+                            disabled={isActionDisabled(
+                              dropdownAction,
+                              checkedRows,
+                              true,
+                            )}
+                            onClick={() => {
+                              dropdownAction.onClick(checkedRows);
+                              setIsUncheckedActionsMenuOpen(false);
+                            }}
+                          >
+                            {dropdownAction.label}
+                          </ContextMenu2ButtonItem>
+                        );
+                      } else if (dropdownAction.type === "groupButton") {
+                        return dropdownAction.items.map((item, itemIndex) => (
+                          <ContextMenu2ButtonItem
+                            key={getDropdownItemKey(
+                              item,
+                              "unchecked-group",
+                              index,
+                              itemIndex,
+                            )}
+                            prepend={getDynamicIcon(
+                              item.icon,
+                              item.dynamicIconColor,
+                            )}
+                            disabled={isActionDisabled(item, checkedRows, true)}
+                            onClick={() => {
+                              item.onClick(checkedRows);
+                              setIsUncheckedActionsMenuOpen(false);
+                            }}
+                          >
+                            {item.label}
+                          </ContextMenu2ButtonItem>
+                        ));
+                      } else {
+                        // divider, separator, heading type
+                        if (dropdownAction.type === "separator") {
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`unchecked-separator-sep-${index}`}
+                            />
+                          );
+                        } else if (dropdownAction.type === "heading") {
+                          return (
+                            <ContextMenu2HeadingItem
+                              key={`unchecked-heading-${
+                                dropdownAction.label || `heading${index}`
+                              }`}
+                            >
+                              {dropdownAction.label}
+                            </ContextMenu2HeadingItem>
+                          );
+                        } else {
+                          // divider type (for backward compatibility)
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`unchecked-divider-div-${index}`}
+                            />
+                          );
+                        }
+                      }
+                    })}
+                  </ContextMenu2>
+                </ContextMenu2Container>,
+              );
+            }
+          }
+        });
+
+        return elements;
+      };
+
+      tableActionArea = (
+        <styled.TableActionContainer>
+          {/* 左側: checked時enabledなアクション（配列順序通り） */}
+          {renderCheckedActionsInOrder()}
+
+          {/* 破線区切り */}
+          {checkedActions.length > 0 && uncheckedActions.length > 0 && (
+            <styled.DashedDivider />
+          )}
+
+          {/* 右側: unchecked時enabledなアクション（配列順序通り） */}
+          {renderUncheckedActionsInOrder()}
+        </styled.TableActionContainer>
+      );
+    }
+  }
+
   return (
     <styled.Toolbar isSmallLayout={isSmallLayout}>
-      {rowControls && (
-        <>
-          <Checkbox
-            checked={isAllChecked || isIndeterminate}
-            indeterminate={isIndeterminate}
-            onChange={onCheck}
-          />
-          <DataTable2RowControls>{rowControls}</DataTable2RowControls>
-          <styled.ToolbarSeparator />
-        </>
-      )}
+      {/* 左側カスタム領域 */}
+      <styled.ToolbarTableActionArea>
+        <Checkbox
+          checked={isAllChecked || isIndeterminate}
+          indeterminate={isIndeterminate}
+          onChange={onCheck}
+        />
+        {!isSmallLayout && (
+          <styled.TableSelectedText>
+            <span
+              style={{ color: theme.palette.primary.main, fontWeight: 700 }}
+            >
+              {checkedRows.length}
+            </span>
+            件を
+          </styled.TableSelectedText>
+        )}
+        {tableActionArea}
+      </styled.ToolbarTableActionArea>
 
-      {/* ページネーション */}
-      <DataTable2Pagination />
-
-      {hasFilterItems && (
-        <>
-          <styled.ToolbarSeparator />
-          <DataTable2FilterControls />
-        </>
-      )}
-
+      {/* 右寄せ：フィルタ・ページング・extraButtons */}
       <styled.ToolbarExtras>
-        {!isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
+        {hasFilterItems && <DataTable2FilterControls />}
+        <DataTable2Pagination />
+
         <ContextMenu2Container>
           <ContextMenu2
-            open={isControlOpen}
+            open={isExtrasMenuOpen}
             width={316}
             trigger={
               <styled.DataTable2ExtrasMenuTrigger>
-                <Icon name="more_vert" />
+                <Icon name="setting" color={theme.palette.black} />
               </styled.DataTable2ExtrasMenuTrigger>
             }
-            onOpenChange={setIsControlOpen}
+            onOpenChange={setIsExtrasMenuOpen}
           >
-            {isSmallLayout && extraButtons /* DataTable2ActionButton が入る */}
-
-            {/* 並び替え */}
             {columns.some((column) => column.sortable) && (
               <DataTable2MenuOrderControl
-                onClose={() => setIsControlOpen(false)}
+                onClose={() => setIsExtrasMenuOpen(false)}
               />
             )}
-
-            {/* 件数 */}
             <DataTable2MenuCountControl />
-
-            {/* 密度 */}
             <DataTable2MenuSpaceControl />
           </ContextMenu2>
         </ContextMenu2Container>
@@ -154,6 +751,21 @@ type DataTable2Props = {
    * @param columns 変更後のカラム
    */
   onColumnsChange: (columns: TableColumn[]) => void;
+  /**
+   * テーブルアクションボタン群の定義。enabledWhenとdisplayInで表示場所を制御：
+   * - enabledWhen: "checked" + displayIn: "toolbar" → デスクトップ時は左側の直接ボタン、モバイル時は「n件を操作」ドロップダウン
+   * - enabledWhen: "checked" + displayIn: "dropdown" → デスクトップ時は左側の3点リーダーボタン、モバイル時は「n件を操作」ドロップダウン
+   * - enabledWhen: "unchecked" + displayIn: "toolbar" → デスクトップ時は右側の直接ボタン、モバイル時は右側の3点リーダーボタン
+   * - enabledWhen: "unchecked" + displayIn: "dropdown" → デスクトップ・モバイル共に右側の3点リーダーボタン
+   */
+  tableActions?: TableAction[]; // 分離した型定義を使用
+  /**
+   * テーブルアクションエリアを完全カスタマイズしたい場合のrender-props。isSmallLayout, checkedRows等を受け取れる。
+   */
+  customTableActionArea?: (context: {
+    isSmallLayout: boolean;
+    checkedRows: string[];
+  }) => React.ReactNode;
 } & {
   /**
    * 見た目の制御。枠線で囲むか否か。枠線で囲むと角丸も適用される
@@ -165,12 +777,10 @@ type DataTable2Props = {
    * 読み取り専用で、今のところは外から `checkedRows` を変更することはできません
    */
   onCheckedRowsChange?: (checkedRows: string[]) => void;
-} & ToolbarProps;
+};
 
 export const DataTable2 = ({
   bordered,
-  rowControls,
-  extraButtons,
   currentPage,
   pageSize,
   pageSizeOptions,
@@ -181,6 +791,8 @@ export const DataTable2 = ({
   onColumnsChange,
   onCheckedRowsChange,
   children,
+  tableActions,
+  customTableActionArea,
 }: DataTable2Props) => {
   const [isSmallLayout, setIsSmallLayout] = useState(false);
   const [rowIds, setRowIds] = useState<string[]>([]);
@@ -246,7 +858,7 @@ export const DataTable2 = ({
         value={{
           isSmallLayout,
           rowIds,
-          hasRowControls: !!rowControls,
+          hasRowControls: !!tableActions,
           checkedRows,
           totalCount,
           currentPage,
@@ -264,7 +876,10 @@ export const DataTable2 = ({
           setRowSpacing,
         }}
       >
-        <Toolbar rowControls={rowControls} extraButtons={extraButtons} />
+        <Toolbar
+          tableActions={tableActions}
+          customTableActionArea={customTableActionArea}
+        />
         <styled.Viewport>
           <table>{children}</table>
         </styled.Viewport>

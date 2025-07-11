@@ -25,7 +25,7 @@ import { DataTable2Context } from "./context";
 
 // 左上コントロール群
 export const DataTable2FilterControls = () => {
-  const { columns, setColumns } = useContext(DataTable2Context);
+  const { columns, setColumns, isSmallLayout } = useContext(DataTable2Context);
 
   const [isOpen, setIsOpen] = useState(false);
   const [userChecked, setUserChecked] = useState<boolean[]>(
@@ -79,7 +79,7 @@ export const DataTable2FilterControls = () => {
             disabled={numOfFilters === 0}
           >
             <Icon name="filter" color="currentColor" />
-            {numOfFilters}列に適用中
+            {isSmallLayout ? numOfFilters : `${numOfFilters}列に適用中`}
           </styled.ToolbarFilterTrigger>
         }
         open={isOpen}
