@@ -112,7 +112,7 @@ export const RowMenuTrigger = styled.button`
   em {
     font-style: normal;
     font-weight: 700;
-    color: ${colors.blue[500]};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 
   :disabled em {
@@ -125,7 +125,7 @@ export const ToolbarSeparator = styled.hr`
   height: 20px;
   margin: 0;
   border: 0;
-  border-left: 1px dashed ${colors.basic[400]};
+  border-left: 1px dashed ${({ theme }) => theme.palette.divider};
 `;
 
 export const ToolbarPagination = styled.div`
@@ -160,7 +160,7 @@ export const ToolbarPagination = styled.div`
 `;
 
 export const ToolbarPaginationOperator = styled.span`
-  color: ${colors.basic[600]};
+  color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
 export const ToolbarFilterTrigger = styled.button`
@@ -252,7 +252,7 @@ export const DataTable2ColumnInner = styled.div<{ isSmallLayout: boolean }>`
 `;
 
 export const DragHandle = styled.button`
-  --color: ${colors.basic[400]};
+  --color: ${({ theme }) => theme.palette.divider};
   position: absolute;
   inset: 0 -10px 0 auto;
   width: 10px;
@@ -267,7 +267,7 @@ export const DragHandle = styled.button`
 
   &:hover,
   &:where(th[data-dragging="true"] *) {
-    --color: ${colors.blue[500]};
+    --color: ${({ theme }) => theme.palette.primary.main};
   }
 
   &:where(th:last-child *) {
@@ -354,7 +354,7 @@ export const SortButton = styled.button`
 
   svg {
     display: block;
-    fill: ${colors.basic[400]};
+    fill: ${({ theme }) => theme.palette.divider};
   }
 
   &[data-sort-direction="asc"] path:nth-child(1) {
@@ -455,7 +455,7 @@ export const DataTable2InlineEditor = styled.div`
   width: fit-content;
 
   a {
-    color: ${colors.blue[500]};
+    color: ${({ theme }) => theme.palette.primary.main};
   }
 `;
 
