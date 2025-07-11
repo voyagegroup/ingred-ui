@@ -117,3 +117,80 @@ export const isActionDisabled = (
 
   return false;
 };
+
+/**
+ * TableActionのキーを生成するヘルパー関数
+ *
+ * @param action - TableAction
+ * @param index - 配列内のインデックス
+ * @returns ユニークなキー文字列
+ */
+export const getActionKey = (action: TableAction, index: number): string => {
+  if (action.type === "singleButton") {
+    return `single-${action.label || `action-${index}`}`;
+  } else if (action.type === "groupButton") {
+    const firstItemLabel = action.items[0]?.label || "";
+    return `group-${firstItemLabel || `action-${index}`}`;
+  } else if (action.type === "separator") {
+    return `separator-${index}`;
+  } else if (action.type === "heading") {
+    return `heading-${action.label || `action-${index}`}`;
+  } else if (action.type === "divider") {
+    return `divider-${index}`;
+  }
+  return `action-${index}`;
+};
+
+/**
+ * ButtonGroupのアイテムキーを生成するヘルパー関数
+ *
+ * @param item - グループ内のアイテム
+ * @param parentIndex - 親グループのインデックス
+ * @param itemIndex - アイテムのインデックス
+ * @returns ユニークなキー文字列
+ */
+export const getGroupItemKey = (
+  item: { label?: string },
+  parentIndex: number,
+  itemIndex: number,
+): string => {
+  return `group-${parentIndex}-item-${item.label || `item-${itemIndex}`}`;
+};
+
+/**
+ * ドロップダウン内のアイテム用のより具体的なキーを生成するヘルパー関数
+ *
+ * @param item - ドロップダウン内のアイテム
+ * @param prefix - キーのプレフィックス
+ * @param parentIndex - 親要素のインデックス
+ * @param itemIndex - アイテムのインデックス
+ * @returns ユニークなキー文字列
+ */
+export const getDropdownItemKey = (
+  item: { label?: string; icon?: React.ReactNode },
+  prefix: string,
+  parentIndex: number,
+  itemIndex: number,
+): string => {
+  // ラベル、アイコン名（可能であれば）、またはインデックスの組み合わせでユニークなキーを生成
+  let identifier = item.label;
+
+  if (
+    !identifier &&
+    item.icon &&
+    typeof item.icon === "object" &&
+    item.icon !== null
+  ) {
+    // アイコンからpropsを取得してnameを抽出する試み
+    const iconProps = (item.icon as any)?.props;
+    if (iconProps?.name) {
+      identifier = `icon-${iconProps.name}`;
+    }
+  }
+
+  if (!identifier) {
+    identifier = `item-${itemIndex}`;
+  }
+
+  return `${prefix}-${parentIndex}-${identifier}`;
+};

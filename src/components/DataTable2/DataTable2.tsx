@@ -11,9 +11,12 @@ import type { TableColumn } from "./types";
 import { DataTable2Context, type RowSpacing } from "./context";
 import type { TableAction } from "./types/tableActions"; // 分離した型定義を使用
 import {
-  getDynamicIcon as newGetDynamicIcon,
-  categorizeActionsByEnabledWhen,
   categorizeActionsByDisplayIn,
+  categorizeActionsByEnabledWhen,
+  getActionKey,
+  getDropdownItemKey,
+  getGroupItemKey,
+  getDynamicIcon as newGetDynamicIcon,
   isActionDisabled,
 } from "./utils/toolbarUtils"; // ユーティリティ関数をインポート
 import { DataTable2FilterControls } from "./DataTable2FilterControls";
@@ -77,7 +80,7 @@ const Toolbar = ({
     !isAllChecked ? setCheckedRows(rowIds) : setCheckedRows([]);
   }, [isAllChecked, rowIds, setCheckedRows]);
 
-  // アイコンの色を動的に変更するヘルパー関数（新しい分離した関数を使用）
+  // アイコンの色を動的に変更するヘルパー関数
   const getDynamicIcon = useCallback(
     (
       originalIcon: React.ReactNode,
@@ -100,7 +103,7 @@ const Toolbar = ({
       if (action.type === "singleButton") {
         return (
           <Button
-            key={index}
+            key={getActionKey(action, index)}
             icon={getDynamicIcon(action.icon, action.dynamicIconColor)}
             color={action.color ?? "basicLight"}
             size="small"
@@ -114,10 +117,10 @@ const Toolbar = ({
         );
       } else if (action.type === "groupButton") {
         return (
-          <ButtonGroup key={index} size="small">
+          <ButtonGroup key={getActionKey(action, index)} size="small">
             {action.items.map((item, itemIndex) => (
               <Button
-                key={itemIndex}
+                key={getGroupItemKey(item, index, itemIndex)}
                 icon={getDynamicIcon(item.icon, item.dynamicIconColor)}
                 color={item.color ?? "basicLight"}
                 style={item.style}
@@ -132,12 +135,12 @@ const Toolbar = ({
       } else {
         // divider, separator, heading type
         if (action.type === "separator") {
-          return <styled.DashedDivider key={index} />;
+          return <styled.DashedDivider key={getActionKey(action, index)} />;
         } else if (action.type === "heading") {
           // toolbar内でheadingは適切に表示できないので、単純なテキストとして表示
           return (
             <span
-              key={index}
+              key={getActionKey(action, index)}
               style={{ padding: "8px", fontSize: "14px", fontWeight: "bold" }}
             >
               {action.label}
@@ -145,7 +148,7 @@ const Toolbar = ({
           );
         } else {
           // divider type (for backward compatibility)
-          return <styled.DashedDivider key={index} />;
+          return <styled.DashedDivider key={getActionKey(action, index)} />;
         }
       }
     },
@@ -188,7 +191,9 @@ const Toolbar = ({
             if (groupAction.type === "singleButton") {
               result.push(
                 <ContextMenu2ButtonItem
-                  key={`group-${groupAction.headingLabel}-${groupIndex}`}
+                  key={`group-${groupAction.headingLabel}-${
+                    groupAction.label || groupIndex
+                  }`}
                   prepend={getDynamicIcon(
                     groupAction.icon,
                     groupAction.dynamicIconColor,
@@ -214,7 +219,12 @@ const Toolbar = ({
               groupAction.items.forEach((item, itemIndex) => {
                 result.push(
                   <ContextMenu2ButtonItem
-                    key={`group-${action.headingLabel}-${groupIndex}-${itemIndex}`}
+                    key={getDropdownItemKey(
+                      item,
+                      `group-${action.headingLabel}-group`,
+                      groupIndex,
+                      itemIndex,
+                    )}
                     prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
                     disabled={isActionDisabled(item, checkedRows, isUnchecked)}
                     onClick={() => {
@@ -241,7 +251,7 @@ const Toolbar = ({
           if (action.type === "singleButton") {
             result.push(
               <ContextMenu2ButtonItem
-                key={actionIndex}
+                key={`single-${action.label || actionIndex}`}
                 prepend={getDynamicIcon(action.icon, action.dynamicIconColor)}
                 disabled={isActionDisabled(action, checkedRows, isUnchecked)}
                 onClick={() => {
@@ -260,7 +270,12 @@ const Toolbar = ({
             action.items.forEach((item, itemIndex) => {
               result.push(
                 <ContextMenu2ButtonItem
-                  key={`${actionIndex}-${itemIndex}`}
+                  key={getDropdownItemKey(
+                    item,
+                    "mobile-group",
+                    actionIndex,
+                    itemIndex,
+                  )}
                   prepend={getDynamicIcon(item.icon, item.dynamicIconColor)}
                   disabled={isActionDisabled(item, checkedRows, isUnchecked)}
                   onClick={() => {
@@ -280,15 +295,27 @@ const Toolbar = ({
         }
         // separator, heading, dividerタイプの処理
         else if (action.type === "separator") {
-          result.push(<ContextMenu2SeparatorItem key={actionIndex} />);
+          result.push(
+            <ContextMenu2SeparatorItem
+              // eslint-disable-next-line react/no-array-index-key
+              key={`separator-${actionIndex}`}
+            />,
+          );
         } else if (action.type === "heading") {
           result.push(
-            <ContextMenu2HeadingItem key={actionIndex}>
+            <ContextMenu2HeadingItem
+              key={`heading-${action.label || actionIndex}`}
+            >
               {action.label}
             </ContextMenu2HeadingItem>,
           );
         } else if (action.type === "divider") {
-          result.push(<ContextMenu2SeparatorItem key={actionIndex} />);
+          result.push(
+            <ContextMenu2SeparatorItem
+              // eslint-disable-next-line react/no-array-index-key
+              key={`divider-${actionIndex}`}
+            />,
+          );
         }
       });
 
@@ -417,7 +444,9 @@ const Toolbar = ({
                       if (dropdownAction.type === "singleButton") {
                         return (
                           <ContextMenu2ButtonItem
-                            key={index}
+                            key={`checked-single-${
+                              dropdownAction.label || index
+                            }`}
                             prepend={getDynamicIcon(
                               dropdownAction.icon,
                               dropdownAction.dynamicIconColor,
@@ -437,7 +466,12 @@ const Toolbar = ({
                       } else if (dropdownAction.type === "groupButton") {
                         return dropdownAction.items.map((item, itemIndex) => (
                           <ContextMenu2ButtonItem
-                            key={`${index}-${itemIndex}`}
+                            key={getDropdownItemKey(
+                              item,
+                              "checked-group",
+                              index,
+                              itemIndex,
+                            )}
                             prepend={getDynamicIcon(
                               item.icon,
                               item.dynamicIconColor,
@@ -454,16 +488,30 @@ const Toolbar = ({
                       } else {
                         // divider, separator, heading type
                         if (dropdownAction.type === "separator") {
-                          return <ContextMenu2SeparatorItem key={index} />;
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`checked-separator-sep-${index}`}
+                            />
+                          );
                         } else if (dropdownAction.type === "heading") {
                           return (
-                            <ContextMenu2HeadingItem key={index}>
+                            <ContextMenu2HeadingItem
+                              key={`checked-heading-${
+                                dropdownAction.label || `heading${index}`
+                              }`}
+                            >
                               {dropdownAction.label}
                             </ContextMenu2HeadingItem>
                           );
                         } else {
                           // divider type (for backward compatibility)
-                          return <ContextMenu2SeparatorItem key={index} />;
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`checked-divider-div-${index}`}
+                            />
+                          );
                         }
                       }
                     })}
@@ -515,7 +563,9 @@ const Toolbar = ({
                       if (dropdownAction.type === "singleButton") {
                         return (
                           <ContextMenu2ButtonItem
-                            key={index}
+                            key={`unchecked-single-${
+                              dropdownAction.label || index
+                            }`}
                             prepend={getDynamicIcon(
                               dropdownAction.icon,
                               dropdownAction.dynamicIconColor,
@@ -536,7 +586,12 @@ const Toolbar = ({
                       } else if (dropdownAction.type === "groupButton") {
                         return dropdownAction.items.map((item, itemIndex) => (
                           <ContextMenu2ButtonItem
-                            key={`${index}-${itemIndex}`}
+                            key={getDropdownItemKey(
+                              item,
+                              "unchecked-group",
+                              index,
+                              itemIndex,
+                            )}
                             prepend={getDynamicIcon(
                               item.icon,
                               item.dynamicIconColor,
@@ -553,16 +608,30 @@ const Toolbar = ({
                       } else {
                         // divider, separator, heading type
                         if (dropdownAction.type === "separator") {
-                          return <ContextMenu2SeparatorItem key={index} />;
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`unchecked-separator-sep-${index}`}
+                            />
+                          );
                         } else if (dropdownAction.type === "heading") {
                           return (
-                            <ContextMenu2HeadingItem key={index}>
+                            <ContextMenu2HeadingItem
+                              key={`unchecked-heading-${
+                                dropdownAction.label || `heading${index}`
+                              }`}
+                            >
                               {dropdownAction.label}
                             </ContextMenu2HeadingItem>
                           );
                         } else {
                           // divider type (for backward compatibility)
-                          return <ContextMenu2SeparatorItem key={index} />;
+                          return (
+                            <ContextMenu2SeparatorItem
+                              // eslint-disable-next-line react/no-array-index-key
+                              key={`unchecked-divider-div-${index}`}
+                            />
+                          );
                         }
                       }
                     })}
